@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function AudioRecorderEnumTest() {
   describe('AudioRecorderEnumTest', () => {
@@ -38,7 +38,7 @@ export default function AudioRecorderEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_0100', Level.LEVEL0,async (done: Function) => {
       expect(media.AudioOutputFormat.DEFAULT).assertEqual(0);
       expect(media.AudioOutputFormat.MPEG_4).assertEqual(2);
       expect(media.AudioOutputFormat.AMR_NB).assertEqual(3);
@@ -54,7 +54,7 @@ export default function AudioRecorderEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_0100', Level.LEVEL0,async (done: Function) => {
       expect(media.AudioEncoder.DEFAULT).assertEqual(0);
       expect(media.AudioEncoder.AMR_NB).assertEqual(1);
       expect(media.AudioEncoder.AMR_WB).assertEqual(2);
@@ -70,7 +70,7 @@ export default function AudioRecorderEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_CODECMIMETYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_CODECMIMETYPE_0100', Level.LEVEL0,async (done: Function) => {
       expect(media.CodecMimeType.AUDIO_AAC).assertEqual('audio/mp4a-latm');
       expect(media.CodecMimeType.AUDIO_VORBIS).assertEqual('audio/vorbis');
       expect(media.CodecMimeType.AUDIO_FLAC).assertEqual('audio/flac');

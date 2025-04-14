@@ -17,7 +17,7 @@ import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
 import { testAVPlayerFun, setSource } from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { resourceManager } from '@kit.LocalizationKit';
 
 const VIDEO_SOURCE = 'H264_AAC.mp4';
@@ -91,7 +91,7 @@ export default function AVPlayerAudioEffectModeTest() {
        * @tc.type      : Function test
        * @tc.level     : Level1
    */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
       let i = 1;
       let playCount = 1;
@@ -222,7 +222,7 @@ export default function AVPlayerAudioEffectModeTest() {
         * @tc.type      : Reliability test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_RELIABILITY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_RELIABILITY_0100', Level.LEVEL0,async (done: Function) => {
       let playCount = 1;
       let expecterror = false;
       let invalidlist = [-1, 1000000];
@@ -325,7 +325,7 @@ export default function AVPlayerAudioEffectModeTest() {
         * @tc.type      : Reliability test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_RELIABILITY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_RELIABILITY_0200', Level.LEVEL0,async (done: Function) => {
       let expecterror = false;
       let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
       let steps = new Array('prepare', 'reset', 'release');
@@ -408,7 +408,7 @@ export default function AVPlayerAudioEffectModeTest() {
         * @tc.type      : Stability test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_STABILITY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_STABILITY_0100', Level.LEVEL0,async (done: Function) => {
       let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
       let playCount = 1;
       await media.createAVPlayer().then((video) => {
@@ -503,7 +503,7 @@ export default function AVPlayerAudioEffectModeTest() {
         * @tc.type      : performance test
         * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_APITIME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_AUDIOEFFECTMODE_APITIME_0100', Level.LEVEL0,async (done: Function) => {
       let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
       await media.createAVPlayer().then((video) => {
         if (typeof (video) != 'undefined') {
@@ -571,7 +571,7 @@ export default function AVPlayerAudioEffectModeTest() {
         * @tc.type      : performance test
         * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_GET_MAX_AMPLITUDE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_GET_MAX_AMPLITUDE_0100', Level.LEVEL0,async (done: Function) => {
       let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
       await media.createAVPlayer().then((video) => {
         if (typeof (video) != 'undefined') {

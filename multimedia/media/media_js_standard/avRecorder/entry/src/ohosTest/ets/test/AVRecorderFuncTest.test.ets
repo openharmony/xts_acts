@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import eventEmitter from '@ohos.events.emitter';
 import { Permissions } from '@ohos.abilityAccessCtrl';
 import { BusinessError } from '@ohos.base';
@@ -408,7 +408,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -427,7 +427,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -448,7 +448,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -469,7 +469,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -490,7 +490,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -511,7 +511,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -532,7 +532,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -553,7 +553,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -574,7 +574,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -595,7 +595,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1000', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1000 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -616,7 +616,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_1100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -637,7 +637,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -668,7 +668,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -699,7 +699,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -730,7 +730,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -761,7 +761,7 @@ export default function avRecorderTest() {
        * @tc.type      : Function test
        * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -791,7 +791,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_FORMAT_API_0600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -822,7 +822,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -841,7 +841,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_FUNCTION_0101 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -860,7 +860,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -879,7 +879,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -898,7 +898,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -917,7 +917,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -936,7 +936,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -955,7 +955,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -974,7 +974,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_0800', Level.LEVEL0,async (done: Function) => {
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
       fdPath = "fd://" + fdObject.fdNumber;
@@ -992,7 +992,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_START_API_0900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1011,7 +1011,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1000', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1000 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1030,7 +1030,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1049,7 +1049,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1068,7 +1068,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1087,7 +1087,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1106,7 +1106,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PAUSE_API_1500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1125,7 +1125,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1144,7 +1144,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1163,7 +1163,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1182,7 +1182,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_1900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1201,7 +1201,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2000', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2000 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1220,7 +1220,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1239,7 +1239,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1258,7 +1258,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESUME_API_2300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1277,7 +1277,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1296,7 +1296,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_STOP_API_2500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1315,7 +1315,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1333,7 +1333,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RESET_API_2700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1352,7 +1352,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1371,7 +1371,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_2900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1390,7 +1390,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_3000', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_RELEASE_API_3000 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1409,7 +1409,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1428,7 +1428,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1447,7 +1447,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1466,7 +1466,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1485,7 +1485,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1504,7 +1504,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1523,7 +1523,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1542,7 +1542,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETINPUTSURFACE_API_3800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1561,7 +1561,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1580,7 +1580,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1599,7 +1599,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1618,7 +1618,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1637,7 +1637,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1656,7 +1656,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1675,7 +1675,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1694,7 +1694,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1713,7 +1713,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1754,7 +1754,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0100 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1773,7 +1773,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0200 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1792,7 +1792,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0300', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0300 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1810,7 +1810,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0400', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0400 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1829,7 +1829,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0500', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0500 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1848,7 +1848,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0600', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0600 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1867,7 +1867,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0700', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0700 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1886,7 +1886,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0800', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0800 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1905,7 +1905,7 @@ export default function avRecorderTest() {
         * @tc.type      : Performance test
         * @tc.level     : Level 4
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0900', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0900 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1924,7 +1924,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1943,7 +1943,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1962,7 +1962,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -1981,7 +1981,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -2000,7 +2000,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -2019,7 +2019,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -2038,7 +2038,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -2057,7 +2057,7 @@ export default function avRecorderTest() {
         * @tc.type      : Reliabilit test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001 start')
       let fileName: string = commonFun.resourceName();
       fdObject = await commonFun.getFd(fileName);
@@ -2095,7 +2095,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 start')
       let timestamp = Date.now();
       let filename = `avRecorder_${timestamp}.mp3`;
@@ -2118,7 +2118,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_WAV_0100 start')
       let timestamp = Date.now();
       let filename = `avRecorder_${timestamp}.wav`;
@@ -2144,7 +2144,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0100 start')
       let timestamp = Date.now();
       let filename = `avRecorder_${timestamp}.wav`;
@@ -2170,7 +2170,7 @@ export default function avRecorderTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200', Level.LEVEL0,async (done: Function) => {
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 start')
       let timestamp = Date.now();
       let filename = `avRecorder_${timestamp}.wav`;

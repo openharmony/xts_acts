@@ -16,7 +16,7 @@
 import myScreenCaptureNdk from 'libnativeAVScreenCapturendk.so'
 import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import display from '@ohos.display'
 import Utils from './Utils'
 import {Component, Driver, ON } from '@ohos.UiTest';
@@ -84,7 +84,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0100', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureTest();
       console.info(Tag + "normalAVScreenCaptureTest-------------result:" + result);
@@ -105,7 +105,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0200', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenRecordTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenRecordTest();
       console.info(Tag + "normalAVScreenRecordTest-------------result:" + result);
@@ -126,7 +126,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0300', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSurfaceTest();
       console.info(Tag + "normalAVScreenCaptureSurfaceTest-------------result:" + result);
@@ -147,7 +147,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONFIGURE_0400', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "originAVScreenCaptureTest-------------before click:");
       let result: number = myScreenCaptureNdk.originAVScreenCaptureTest();
       console.info(Tag + "originAVScreenCaptureTest-------------res:" + result);
@@ -163,7 +163,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0100', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureDisplayCallbackSuccess-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureDisplayCallbackSuccess();
       console.info(Tag + "normalAVScreenCaptureDisplayCallbackSuccess-------------result:" + result);
@@ -184,7 +184,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetDisplayCallback_0200', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFalse-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetDisplayCallbackFail();
       console.info(Tag + "normalAVScreenCaptureSetDisplayCallbackFail-------------result:" + result);
@@ -205,7 +205,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0100', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorTest();
       console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------res:" + result);
@@ -227,7 +227,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0200', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorTest();
       console.info(Tag + "normalAVScreenCaptureShowCursorTest-------------res:" + result);
@@ -249,7 +249,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0300', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullFalse();
       console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullFalse-------------res:" + result);
@@ -265,7 +265,7 @@ export default function nativeAVScreenCaptureNdkTest() {
      * @tc.type         Function
      * @tc.level        Level 1
      */
-    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SHOW_CURSOR_0400', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureShowCursorWithParaNullTrue();
       console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------res:" + result);

@@ -14,7 +14,7 @@
  */
 
 import { playVideoSource } from './VideoPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import MediaTestBase from './MediaTestBase';
 
 export default function videoPlayerHLSTest() {
@@ -52,7 +52,7 @@ export default function videoPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100', Level.LEVEL0,async (done: Function) => {
       await playVideoSource(HTTP_PATH + 'videotest/720p_1m_index.m3u8', 1280, 720, 247466, VIDEO_PLAY_TIME, done);
       done();
     })
@@ -64,7 +64,7 @@ export default function videoPlayerHLSTest() {
   * @tc.type      : Function test
   * @tc.level     : Level1
 */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_Separate_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_Separate_0100', Level.LEVEL0,async (done: Function) => {
       await playVideoSource(HTTP_PATH + 'videotest/HLS/separates/sep.m3u8', 1920, 1080, 245500, VIDEO_PLAY_TIME, done);
       done();
     })
@@ -77,8 +77,8 @@ export default function videoPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_AudioOnly_0100', 0, async (done: Function) => {
-      await playVideoSource(HTTP_PATH + 'videotest/audioOnly/output.m3u8', 0, 0, 40030, AUDIO_PLAY_TIME, done);
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_AudioOnly_0100', Level.LEVEL0,async (done: Function) => {
+      await playVideoSource(HTTP_PATH + 'videotest/audioOnly/output.m3u8', Level.LEVEL0,0, 40030, AUDIO_PLAY_TIME, done);
       done();
     })
 
@@ -90,7 +90,7 @@ export default function videoPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_Variant_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_Variant_0100', Level.LEVEL0,async (done: Function) => {
       await playVideoSource(HTTP_PATH + 'videotest/a-variant/output.m3u8', null, null, 40030, AUDIO_PLAY_TIME, done);
       done();
     })
@@ -103,7 +103,7 @@ export default function videoPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_AudioOff_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_AudioOff_0100', Level.LEVEL0,async (done: Function) => {
       await playVideoSource(HTTP_PATH + 'videotest/a-variant/output.m3u8', null, null, 40030, AUDIO_PLAY_TIME, done);
       done();
     })
@@ -116,7 +116,7 @@ export default function videoPlayerHLSTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_CodecChange_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_CodecChange_0100', Level.LEVEL0,async (done: Function) => {
       await playVideoSource(HTTP_PATH + 'videotest/a-variant/output.m3u8', null, null, 40030, AUDIO_PLAY_TIME, done);
       done();
     })

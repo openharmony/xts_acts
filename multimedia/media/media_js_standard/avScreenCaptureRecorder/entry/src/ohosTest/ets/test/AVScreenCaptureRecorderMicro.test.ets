@@ -15,7 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import myScreenCaptureNdk from 'libentry.so';
 
@@ -66,7 +66,7 @@ export default function AVScreenCaptureRecorderMicro() {
         * @tc.type      : Performance test
         * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100', Level.LEVEL0,async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1100 start')
 
       let mySteps = new Array(
@@ -116,7 +116,7 @@ export default function AVScreenCaptureRecorderMicro() {
         * @tc.type      : Performance test
         * @tc.level     : Level 1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200', Level.LEVEL0,async (done: Function) => {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 start')
       let result: number = myScreenCaptureNdk.OHAVMuxerByAddTrackH265();
       if (result != 0) {
