@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager'
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -38,7 +38,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: publishAsUser 
      * @tc.desc: test function publishAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Publish_5000', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_5000', Level.LEVEL3, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5000 START`);
 
         commonEventManager.publishAsUser("event.test", 0, (err) => {
@@ -61,7 +61,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: publishAsUser
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ans_Publish_Publish_5100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_5100', Level.LEVEL3, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5100 START`);
 
         let publishData: commonEventManager.CommonEventPublishData = {
@@ -89,7 +89,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('Sub_Notification_Ces_StaticEvent_Config_1200', 0, async (done: Function) => {
+    it('Sub_Notification_Ces_StaticEvent_Config_1200', Level.LEVEL3, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1200 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event", (err) => {
@@ -112,7 +112,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('Sub_Notification_Ces_StaticEvent_Config_1300', 0, async (done: Function) => {
+    it('Sub_Notification_Ces_StaticEvent_Config_1300', Level.LEVEL3, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1300 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
@@ -128,7 +128,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
         console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1300 END`);
     });
 
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_278', 0, (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_278
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_278', Level.LEVEL0, (done: Function) => {
       //构造commonEventManager.publish401错误码
       try {
         commonEventManager.publish("EVENT01", null);
@@ -194,8 +199,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
       }
     })
 
-
-     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', 0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_279
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', Level.LEVEL2, async (done: Function) => {
       //构造notificationManager.publish 1600004错误码
       let basicContent: notificationManager.NotificationBasicContent = {
         title: "test_title",
@@ -342,8 +351,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
 
     })
 
-
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_280', 0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_280
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_280', Level.LEVEL0, async (done: Function) => {
       let id = 1
       let label = "label"
       try {
@@ -396,8 +409,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
 
     })
 
-
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_281', 0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_281
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_281', Level.LEVEL0, async (done: Function) => {
 
       try {
         notificationManager.addSlot(null, (err) => {
@@ -473,8 +490,12 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
 
     })
 
-
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', 0, async (done: () => void) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_284
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', Level.LEVEL0, async (done: () => void) => {
       try {
         notificationManager.setBadgeNumber(null, (err) => {
           console.log(`setBadgeNumber failed, error code: ${err.code}, message: ${err.message}`)
@@ -636,8 +657,12 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', 0, async (done: () => vo
       })
     })
 
-
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', 0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_282
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (done: Function) => {
   notificationManager.requestEnableNotification(CustomGlobal.context)
 
   await sleep(1000)
@@ -746,8 +771,12 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', 0, async (done: Function
 
 })
 
-
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', 0, async (done: () => void) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_283
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
 
   notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
     expect(true).assertTrue();
@@ -780,8 +809,12 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', 0, async (done: () => vo
 })
 
 
-
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', 0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_287
+     * @tc.name: commonEventManager.publish
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', Level.LEVEL0, async (done: Function) => {
 
       let BundleOption: notification.BundleOption = {
         bundle: "com.example.secondaryDirectory",
@@ -817,7 +850,7 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', 0, async (done: () => vo
       notification.remove(bundle, notificationKey, reason, removeCallback);
     });
 
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', 0, async (done: Function) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', Level.LEVEL0, async (done: Function) => {
 
       const TEST_SUITE_NAME = 'Sub_Notification'
       const TEST_CASE_NAME = 'Sub_Notification_Ces_Publish_CommonEvent_7900_287'
