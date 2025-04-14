@@ -1177,6 +1177,55 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
+     * @tc.number SUB_Request_Download_TaskGrouping_0400
+     * @tc.name   SUB_Request_Download_TaskGrouping_0400
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_TaskGrouping_0400', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_TaskGrouping_0400 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_TaskGrouping_0400.txt',
+        network: request.agent.Network.ANY,
+      };
+      let notification: request.agent.Notification = {}
+
+      let groupConfig: request.agent.GroupConfig = {
+        notification: notification
+      }
+      let task1 = await request.agent.create(baseContext, config);
+      let gid: string = await request.agent.createGroup(groupConfig)
+      console.info("====>SUB_Request_Download_TaskGrouping_0400 createGroup success");
+      await request.agent.attachGroup(gid, [task1.tid]);
+      console.info("====>SUB_Request_Download_TaskGrouping_0400 attachGroup success tid: " + task1.tid);
+      await task1.start();
+      console.info("====>SUB_Request_Download_TaskGrouping_0400 task1 start success");
+      await request.agent.deleteGroup(gid);
+      console.info("====>SUB_Request_Download_TaskGrouping_0400 deleteGroup success");
+      config.saveas = './SUB_Request_Download_TaskGrouping_0400'
+      let task2 = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_TaskGrouping_0400 task2 success");
+      try {
+        await request.agent.attachGroup(gid, [task2.tid]);
+        console.info("====>SUB_Request_Download_TaskGrouping_0400 attachGroup task2 success tid: " + task1.tid);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_TaskGrouping_0400 attachGroup err: " + JSON.stringify(err));
+        expect(err.code === 21900008)
+        await request.agent.remove(task1.tid);
+        await request.agent.remove(task2.tid);
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_Request_Download_TaskGrouping_1000
      * @tc.name   SUB_Request_Download_TaskGrouping_1000
      * @tc.desc   request group task
@@ -1615,6 +1664,192 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0300
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0300
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0300', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0300 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0300.txt',
+        network: request.agent.Network.ANY,
+      };
+      let speed: number = 48 * 1024;
+      let proSize: number = 0;
+      let progressCallback = async (pro: request.agent.Progress) => {
+        try {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0300 pro: " + JSON.stringify(pro));
+          let rate = (pro.processed - proSize) / 1024;
+          proSize = pro.processed;
+          console.info("====>SUB_Request_Download_setMaxSpeed_0300 rate is: " + rate);
+          if(rate === 48) {
+            task.off('progress', progressCallback);
+            await request.agent.remove(task.tid);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0300 remove success");
+            expect(rate).assertEqual(48);
+            done();
+          }
+        } catch (err) {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0300 progressCallback err: " + JSON.stringify(err));
+          done();
+        }
+      }
+
+      let task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0300 create task success");
+      await task.setMaxSpeed(speed);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0300 setMaxSpeed success");
+      await task.start();
+      console.info("====>SUB_Request_Download_setMaxSpeed_0300 start success");
+      task.on('progress', progressCallback);
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0500
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0500
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0500', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0500 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0500.txt',
+        network: request.agent.Network.ANY,
+      };
+      let speed: number = 48 * 1024;
+      let proSize: number = 0;
+      let count: number = 0;
+      let pauseCallback = async (pro: request.agent.Progress) => {
+        try {
+          task.off('pause', pauseCallback);
+          count += 1;
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 pauseCallback off");
+          await task.resume();
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 pauseCallback resume");
+        } catch (err) {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 pauseCallback err: " + JSON.stringify(err));
+        }
+      };
+
+      let progressCallback = async (pro: request.agent.Progress) => {
+        try {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 pro: " + JSON.stringify(pro));
+          let rate = (pro.processed - proSize) / 1024;
+          proSize = pro.processed;
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 rate is: " + rate);
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 count is: " + count);
+          if(rate === 48 && count === 0) {
+            count += 1;
+            expect(rate).assertEqual(48);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0500 first rate is: " + rate);
+            task.on('pause', pauseCallback);
+            await task.pause();
+            console.info("====>SUB_Request_Download_setMaxSpeed_0500 pause success");
+          }
+
+          if(rate === 48 && count === 2) {
+            count += 1;
+            task.off('progress', progressCallback);
+            expect(rate).assertEqual(48);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0500 second rate is: " + rate);
+            await request.agent.remove(task.tid);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0500 remove success");
+            done();
+          }
+        } catch (err) {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0500 progressCallback err: " + JSON.stringify(err));
+          done();
+        }
+      }
+
+      let task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0500 create task success");
+      await task.setMaxSpeed(speed);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0500 setMaxSpeed success");
+      task.on('progress', progressCallback);
+      await task.start();
+      console.info("====>SUB_Request_Download_setMaxSpeed_0500 start success");
+    });
+
+    /**
+     * @tc.number SUB_Request_Download_setMaxSpeed_0600
+     * @tc.name   SUB_Request_Download_setMaxSpeed_0600
+     * @tc.desc   set task maxSpeed
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_setMaxSpeed_0600', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_setMaxSpeed_0600 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_setMaxSpeed_0600.txt',
+        network: request.agent.Network.ANY,
+      };
+      let speed: number = 48 * 1024;
+      let proSize: number = 0;
+      let count: number = 0;
+      let progressCallback = async (pro: request.agent.Progress) => {
+        try {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0600 pro: " + JSON.stringify(pro));
+          let rate = (pro.processed - proSize) / 1024;
+          proSize = pro.processed;
+          console.info("====>SUB_Request_Download_setMaxSpeed_0600 rate is: " + rate);
+          console.info("====>SUB_Request_Download_setMaxSpeed_0600 count is: " + count);
+          if(rate === 48 && count === 0) {
+            count += 1;
+            expect(rate).assertEqual(48);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0600 first rate is: " + rate);
+            await task.stop();
+            console.info("====>SUB_Request_Download_setMaxSpeed_0600 progressCallback stop success");
+            await task.start();
+            console.info("====>SUB_Request_Download_setMaxSpeed_0600 progressCallback start success");
+          }
+
+          if(rate === 48 && count === 1) {
+            count += 1;
+            task.off('progress', progressCallback);
+            expect(rate).assertEqual(48);
+            console.info("====>SUB_Request_Download_setMaxSpeed_0600 progressCallback second rate is: " + rate);
+            let t = setTimeout(async () => {
+              clearTimeout(t)
+              await request.agent.remove(task.tid);
+              console.info("====>SUB_Request_Download_setMaxSpeed_0600 progressCallback remove success");
+              done();
+            }, 1000)
+          }
+        } catch (err) {
+          console.info("====>SUB_Request_Download_setMaxSpeed_0600 progressCallback err: " + JSON.stringify(err));
+          done();
+        }
+      }
+
+      let task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0600 create task success");
+      await task.setMaxSpeed(speed);
+      console.info("====>SUB_Request_Download_setMaxSpeed_0600 setMaxSpeed success");
+      task.on('progress', progressCallback);
+      await task.start();
+      console.info("====>SUB_Request_Download_setMaxSpeed_0600 start success");
+    });
+
+    /**
      * @tc.number SUB_Request_Agent_customizingNotification_0500
      * @tc.name   SUB_Request_Agent_customizingNotification_0500
      * @tc.desc   testing text and title of notification
@@ -1855,6 +2090,129 @@ export default function requestDownloadJSUnit() {
         if (task !== null){
           await request.agent.remove(task.tid);
         }
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_Optimize_0100
+     * @tc.name   SUB_Request_Agent_Optimize_0100
+     * @tc.desc   request group task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_Optimize_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_Optimize_0100 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_Optimize_0100.txt',
+        network: request.agent.Network.ANY,
+      };
+      let count: number = 0;
+      let pauseCallback = async (progress: request.agent.Progress) => {
+        count += 1;
+        console.info("====>SUB_Request_Agent_Optimize_0100 pauseCallback count is: " + count);
+        if(count === 2) {
+          count = 0;
+          task1.on('resume', resumeCallback);
+          task2.on('resume', resumeCallback);
+          await task1.resume();
+          await task2.resume();
+          console.info("====>SUB_Request_Agent_Optimize_0100 pauseCallback resume success");
+        }
+      };
+
+      let resumeCallback = async (progress: request.agent.Progress) => {
+        count += 1;
+        console.info("====>SUB_Request_Agent_Optimize_0100 resumeCallback count is: " + count);
+        if(count === 2) {
+          count = 0;
+          task1.on('remove', removeCallback);
+          task2.on('remove', removeCallback);
+          await request.agent.remove(task1.tid);
+          await request.agent.remove(task2.tid);
+          console.info("====>SUB_Request_Agent_Optimize_0100 resumeCallback remove success");
+        }
+      };
+
+      let removeCallback = async (progress: request.agent.Progress) => {
+        try {
+          count += 1;
+          console.info("====>SUB_Request_Agent_Optimize_0100 removeCallback count is: " + count);
+          if(count === 2) {
+            task1.off('pause');
+            task1.off('resume');
+            task1.off('remove');
+            task2.off('pause');
+            task2.off('resume');
+            task2.off('remove');
+            expect(count).assertEqual(2)
+            done();
+            console.info("====>SUB_Request_Agent_Optimize_0100 removeCallback remove tasks success");
+          }
+        } catch (err) {
+          console.info("====>SUB_Request_Agent_Optimize_0100 removeCallback err: " + JSON.stringify(err));
+          done();
+        }
+      };
+
+      let task1 = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Agent_Optimize_0100 task1 create success");
+      config.saveas = './SUB_Request_Agent_Optimize_0100'
+      let task2 = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Agent_Optimize_0100 task2 create success");
+      await task1.start();
+      await task2.start();
+      console.info("====>SUB_Request_Agent_Optimize_0100 tasks start success");
+      task1.on('pause', pauseCallback);
+      task2.on('pause', pauseCallback);
+      await task1.pause();
+      await task2.pause();
+    });
+
+    /*
+     * @tc.number: SUB_Request_DownloadManagement_Download_0100
+     * @tc.name: SUB_Request_DownloadManagement_Download_0100
+     * @tc.desc: request undefined file size
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_DownloadManagement_Download_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_DownloadManagement_Download_0100 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_DownloadManagement_Download_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_DownloadManagement_Download_0100 create success");
+        let completedCallback = async (pro: request.agent.Progress) => {
+          try {
+            task.off('completed', completedCallback);
+            console.info("====>SUB_Request_DownloadManagement_Download_0100 response info: " + JSON.stringify(pro));
+            expect(pro.sizes[0]).assertEqual(-1);
+            done();
+          } catch (err) {
+            console.info("====>SUB_Request_DownloadManagement_Download_0100 err: " + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('completed', completedCallback);
+        await task.start();
+        console.info("====>SUB_Request_DownloadManagement_Download_0100 task.start");
+      } catch (err) {
+        console.info("====>SUB_Request_DownloadManagement_Download_0100 create catch err: " + JSON.stringify(err));
         expect().assertFail();
         done();
       }
