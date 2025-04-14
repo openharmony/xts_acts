@@ -70,14 +70,14 @@ export default function NetworkManagerWebsocketTest() {
   
     /**
      * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100
-     * @tc.name: websocket::connect
+     * @tc.name: testTelephonyNetstackWebSocketCertVerifyXts0100
      * @tc.desc: Test connect property
-     * @tc.level 3
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) =>  {
-      let caseName = "SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0100";
+    it("testTelephonyNetstackWebSocketCertVerifyXts0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) =>  {
+      let caseName = "testTelephonyNetstackWebSocketCertVerifyXts0100";
       webSocket.connect(url1, webSocketRequestOptions_caPath1, (err: BusinessError, data: boolean) => {
         if (err) {
           console.log(`${caseName} connect failed, err: ${JSON.stringify(err)}`);
