@@ -167,9 +167,9 @@ export default function inputMethodEngineJSUnit() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level0
     */
-    it('inputMethodEngine_test_getInputMethodEngine_001', Level.LEVEL2, async (done: Function) => {
+    it('inputMethodEngine_test_getInputMethodEngine_001', Level.LEVEL0, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>inputMethodEngine_test_getInputMethodEngine_001 unSubscriberCallback start");

@@ -119,9 +119,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   2
+    * @tc.level   0
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', Level.LEVEL2, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', Level.LEVEL0, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 unSubscriberCallback start');
@@ -189,9 +189,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   2
+    * @tc.level   0
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', Level.LEVEL2, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', Level.LEVEL0, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 unSubscriberCallback start');
