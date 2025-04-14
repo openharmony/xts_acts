@@ -36,7 +36,6 @@ struct TipsDialogTest {
 
   dialogControllerImage: CustomDialogController = new CustomDialogController({
     builder: TipsDialog({
-      imageRes: $r('sys.media.ohos_ic_public_voice'),
       content: '想要卸载这个APP嘛?',
       theme: this.customTheme,
       themeColorMode: ThemeColorMode.LIGHT,

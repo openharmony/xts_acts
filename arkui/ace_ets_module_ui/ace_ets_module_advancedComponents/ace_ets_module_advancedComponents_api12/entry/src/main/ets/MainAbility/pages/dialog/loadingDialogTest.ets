@@ -43,7 +43,6 @@ struct Index {
 
   build() {
     Row() {
-      Stack() {
         Column() {
           Button('LoadingDialog')
             .width(96)
@@ -52,7 +51,6 @@ struct Index {
               this.dialogController.open();
             })
         }
-      }
       .width('100%')
       .height('100%')
       .justifyContent(FlexAlign.Center)
