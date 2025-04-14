@@ -52,11 +52,10 @@ struct Index {
               this.dialogController.open();
             })
         }
-        .margin({ bottom: 300 })
       }
-      .align(Alignment.Bottom)
       .width('100%')
       .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
