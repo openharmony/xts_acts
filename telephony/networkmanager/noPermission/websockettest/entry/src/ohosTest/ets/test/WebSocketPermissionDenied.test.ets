@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import webSocket from '@ohos.net.webSocket';
 
@@ -39,7 +39,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectCode201Callback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCode201Callback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCode201Callback0100';
       console.info(`${caseName} test start`);
       try {
@@ -66,7 +66,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectOptionsCode201Callback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectOptionsCode201Callback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectOptionsCode201Callback0200';
       console.info(`${caseName} test start`);
       try {
@@ -98,7 +98,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketConnectOptionsCode201Promise0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectOptionsCode201Promise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectOptionsCode201Promise0300';
       console.info(`${caseName} test start`);
       try {
@@ -130,7 +130,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCode201Callback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCode201Callback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCode201Callback0100';
       console.info(`${caseName} test start`);
       try {
@@ -156,7 +156,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketSendCode201Promise0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketSendCode201Promise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketSendCode201Promise0200';
       console.info(`${caseName} test start`);
       try {
@@ -182,7 +182,7 @@ export default function WebSocketPermissionDeniedTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testNetworkMgrWebSocketCloseCode201Callback0100', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseCode201Callback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseCode201Callback0100';
       console.info(`${caseName} test start`);
       try {
@@ -208,7 +208,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseOptionsCode201Callback0200', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseOptionsCode201Callback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseOptionsCode201Callback0200';
       console.info(`${caseName} test start`);
       try {
@@ -238,7 +238,7 @@ export default function WebSocketPermissionDeniedTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrWebSocketCloseOptionsCode201Promise0300', 0, async (done: Function) => {
+    it('testNetworkMgrWebSocketCloseOptionsCode201Promise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketCloseOptionsCode201Promise0300';
       console.info(`${caseName} test start`);
       try {

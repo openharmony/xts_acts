@@ -33,9 +33,9 @@ export default function networkManagerWithWifiTest() {
    * @tc.desc  : Subscribe to the network connection status of the current device;wifi.
    * @tc.size  : MediumTest
    * @tc.type  : Function
-   * @tc.level : level 3
+   * @tc.level : level 0
    */
-    it('testNetworkMgrNetworkSubscribe0600', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0600';
       console.info(`${caseName} test start`);
       try {
@@ -81,9 +81,9 @@ export default function networkManagerWithWifiTest() {
 * @tc.desc  : Unsubscribe to the network connection status of the device;wifi.
 * @tc.size  : MediumTest
 * @tc.type  : Function
-* @tc.level : level 3
+* @tc.level : level 0
 */
-    it('testNetworkMgrNetworkUnsubscribe0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkUnsubscribe0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkUnsubscribe0200';
       console.info(`${caseName} test start`);
       try {
@@ -119,7 +119,7 @@ export default function networkManagerWithWifiTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testNetworkMgrNetworkSubscribe0400', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0400';
       console.info(`${caseName} test start`);
       try {
@@ -163,7 +163,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkGetType0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkGetType0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkGetType0200';
       console.info(`${caseName} test start`);
       try {
@@ -198,7 +198,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkUnsubscribe0300', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkUnsubscribe0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkUnsubscribe0300';
       console.info(`${caseName} test start`);
       try {
@@ -234,7 +234,7 @@ export default function networkManagerWithWifiTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrNetworkSubscribe0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSubscribe0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,  async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSubscribe0200';
       console.info(`${caseName} test start`);
       try {
@@ -320,4 +320,3 @@ export default function networkManagerWithWifiTest() {
 
   });
 }
-
