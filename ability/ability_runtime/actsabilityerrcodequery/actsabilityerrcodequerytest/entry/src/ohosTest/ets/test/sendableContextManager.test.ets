@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
+import { systemParameterEnhance} from '@kit.BasicServicesKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base from '@ohos.base';
 import { common, sendableContextManager } from '@kit.AbilityKit';
@@ -28,7 +29,7 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
 let subscriber: commonEventManager.CommonEventSubscriber;
 let context = getContext(this) as common.UIAbilityContext;
 let wantAgentData: WantAgent;
-
+let mpEnable="";
 function publishCB(err: BusinessError) {
   if (err) {
     console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
@@ -42,7 +43,12 @@ export default function sendableContextManagerTest() {
   describe('sendableContextManagerTest', () => {
 
     beforeAll(() => {
-      context = globalThis.context
+      context = globalThis.context;
+      try {
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
+      } catch(err) {
+        console.info(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
+      }
     })
     beforeEach(() => {
     })
@@ -174,24 +180,25 @@ export default function sendableContextManagerTest() {
      */
     it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
-      let link:string = 'https://www.applicationContext02.com'
-      let want: Want = {
-        bundleName:"com.test.actsabilityerrcodequerytest",
-        abilityName:"applicationContext02",
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 600);
+      if (mpEnable === 'true') {
+        let link:string = 'https://www.applicationContext02.com'
+        let want: Want = {
+          bundleName:"com.test.actsabilityerrcodequerytest",
+          abilityName:"applicationContext02",
+          parameters: {
+            appLinkingOnly: false,
+            demo_num: 111
           }
+        }
+        commonEventManager.createSubscriber(ACTS_EVENT)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            subscriber = commonEventSubscriber;
+            let unSubscribeCallback = () => {
+              setTimeout(async () => {
+                console.info(`====>${tag} unSubscribeCallback`);
+                done();
+              }, 600);
+            }
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
@@ -210,6 +217,15 @@ export default function sendableContextManagerTest() {
             commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
           }, 100)
         })
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+      
     })
 
     /*
