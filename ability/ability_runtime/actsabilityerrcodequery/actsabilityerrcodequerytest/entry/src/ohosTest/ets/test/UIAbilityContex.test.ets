@@ -65,12 +65,13 @@ export default function UIAbilityContex() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
+    afterEach(async () => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a TestAbility");
+      await abilityDelegator.executeShellCommand("aa start -b com.acts.moveabilitytobgtest -a TestAbility");
+      await sleep(3000);
     })
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
