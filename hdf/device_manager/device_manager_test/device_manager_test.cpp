@@ -12,7 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
+#include <gtest/gtest.h>
+#include "edm_errors.h"
+#include "hilog_wrapper.h"
 #define private public
 #include "dev_change_callback.h"
 #include "etx_device_mgr.h"
@@ -21,10 +24,6 @@
 #include "bus_extension_core.h"
 #include "driver_pkg_manager.h"
 #undef private
-
-#include <gtest/gtest.h>
-#include "edm_errors.h"
-#include "hilog_wrapper.h"
 
 namespace OHOS {
 namespace ExternalDeviceManager {
