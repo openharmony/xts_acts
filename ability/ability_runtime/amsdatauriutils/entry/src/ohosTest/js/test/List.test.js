@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import ActsDataUriUtilsTest from './DataUriUtilsJsSt.test.js'
+import DataUriUtilsJsStNew from './DataUriUtilsJsStNew.test.js'
+
 export default function testsuite() {
-ActsDataUriUtilsTest()
+  ActsDataUriUtilsTest()
+  DataUriUtilsJsStNew()
 }

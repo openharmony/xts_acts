@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import moveAbilityToBackgroundTest from './MoveAbilityToBackground.test'
+import LifeCycleLinstenerTest from './LifeCycleLinstener.test'
 
 export default function testsuite() {
+  LifeCycleLinstenerTest();
   moveAbilityToBackgroundTest();
 }
