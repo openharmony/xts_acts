@@ -1361,7 +1361,7 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value asssertImageSize(napi_env env, napi_callback_info info) {
+static napi_value AsssertImageSize(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_value argValue[NUM_2] = {0};
     size_t argCount = NUM_2;
@@ -2403,6 +2403,7 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"CreateFromFd", nullptr, CreateFromFd, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateFromData", nullptr, CreateFromData, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMap", nullptr, CreatePixelMap, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AsssertImageSize", nullptr, AsssertImageSize, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMapList", nullptr, CreatePixelMapList, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageInfo", nullptr, GetImageInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageProperty", nullptr, GetImageProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
