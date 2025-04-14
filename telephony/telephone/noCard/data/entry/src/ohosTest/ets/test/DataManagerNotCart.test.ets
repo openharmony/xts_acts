@@ -35,9 +35,9 @@ export default function dataManagerNotCartTest() {
      * @tc.desc  : Obtain the uplink and downlink status of cellular data services.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataFlowType0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0500';
       console.info(`${caseName} test start `);
       // There is no SIM card inserted.
@@ -69,9 +69,9 @@ export default function dataManagerNotCartTest() {
      * @tc.desc  : Obtain the uplink and downlink status of cellular data services.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataFlowType0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0900';
       console.info(`${caseName} test start `);
       // There is no SIM card inserted.

@@ -24,7 +24,7 @@ export default function NetManagerTlsSocketServerTest() {
          * @tc.name Test on() interface
          * @tc.desc Function test
          */
-        it('NetworkManager_TLSSocketServer_on_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('NetworkManager_TLSSocketServer_on_connect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'NetworkManager_TLSSocketServer_on_connect_0100';
             let tlsServer = netSocket.constructTLSSocketServerInstance();
             try {
