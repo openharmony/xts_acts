@@ -57,7 +57,8 @@ void NativeDrawingBitmapLargeValueTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild001, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild001,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -74,7 +75,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild003, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild003,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -92,7 +94,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild004, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapBuild004,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -110,7 +113,7 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapCreateFromPixels005,
- TestSize.Level1)
+    Function | MediumTest | Level1)
 {
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
@@ -138,7 +141,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapGetImageInfo006, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bitmapGetImageInfo006,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -154,10 +158,11 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_bi
  * @tc.name: NativeDrawingBitmapLargeValueTest_BitmapReadPixels007
  * @tc.desc: test for drawing_BitmapReadPixels.
  * @tc.size  : MediumTest
- * @tc.type  : Function
+ * @tc.type  : Functionx
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_BitmapReadPixels007, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_BitmapReadPixels007,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -188,7 +193,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_Bi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_GetColorFormat008, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_GetColorFormat008,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;
@@ -228,7 +234,8 @@ HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_Ge
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_GetAlphaFormat009, TestSize.Level1)
+HWTEST_F(NativeDrawingBitmapLargeValueTest, NativeDrawingBitmapLargeValueTest_GetAlphaFormat009,
+    Function | MediumTest | Level1)
 {
     const unsigned int width = 2160;
     const unsigned int height = 4096;

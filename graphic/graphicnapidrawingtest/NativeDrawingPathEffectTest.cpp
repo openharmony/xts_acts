@@ -43,7 +43,7 @@ void NativeDrawingPathEffectTest::TearDown() {}
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingPathEffectTest, NativeDrawingPathEffectTest_PathEffect001, TestSize.Level1)
+HWTEST_F(NativeDrawingPathEffectTest, NativeDrawingPathEffectTest_PathEffect001, Function | MediumTest | Level1)
 {
     OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
     EXPECT_NE(pen, nullptr);
