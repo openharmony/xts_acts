@@ -15,8 +15,10 @@
 
 import onVisiable from './onVisiable/onVisiable.test';
 import panGestureOnOffTest from './PanGesture/panGestureOnOff.test';
+import PreDrag from './Drag/PreDrag.test';
 
 export default function testsuite() {
   onVisiable();
   panGestureOnOffTest();
+  PreDrag();
 }
