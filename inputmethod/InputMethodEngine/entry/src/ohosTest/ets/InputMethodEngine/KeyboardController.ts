@@ -18,6 +18,7 @@ import display from '@ohos.display';
 import windowManager from '@ohos.window';
 import commoneventmanager from '@ohos.commonEventManager';
 import inputMethod from '@ohos.inputMethod';
+import { resourceManager } from '@kit.LocalizationKit';
 
 
 let inputMethodEngine = inputmethodengine.getInputMethodEngine();
@@ -308,6 +309,22 @@ export class KeyboardController {
         case 110:
           console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200 event:' + data.event);
           that.Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200();
+          break;
+        case 111:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500();
+          break;
+        case 112:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600();
+          break;
+        case 113:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700();
+          break;
+        case 114:
+          console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800 event:' + data.event);
+          that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800();
           break;
       }
     }
@@ -1621,48 +1638,107 @@ export class KeyboardController {
     commoneventmanager.publish('SUB_InputMethod_IME_PrivateDateTransferred_1101', commonEventPublishData, this.publishCallback);
   }
 
+  private async wrapAssertWithTwoIn1Judgement(assertRunnable: () => Promise<boolean>): Promise<() => Promise<boolean>> {
+    let value = this.mContext.resourceManager.getDeviceCapabilitySync();
+    let isTwoIn1 = value.deviceType === resourceManager.DeviceType.DEVICE_TYPE_2IN1;
+
+    console.info(TAG + ` isTwoIn1 ${isTwoIn1}`);
+    if (isTwoIn1) {
+      return () => assertRunnable();
+    }
+
+    try {
+      await assertRunnable();
+      console.info(TAG + 'Not twoIn1 device should throw 801');
+      return () => Promise.resolve(false);
+    } catch (err) {
+      console.info(TAG + ` Throw err is ${JSON.stringify(err)}`);
+      return () => Promise.resolve(err.code === 801);
+    }
+  }
+
   async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100 attachOptions is' + JSON.stringify(attachOptions));
 
       return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.NONE;
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200 attachOptions is' + JSON.stringify(attachOptions));
 
       return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.MOUSE;
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300 attachOptions is' + JSON.stringify(attachOptions));
 
       return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH;
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400 attachOptions is' + JSON.stringify(attachOptions));
 
       return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.OTHER;
-    });
+    }));
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500(): Promise<void> {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let attachOptions = this.InputClient.getAttachOptions();
+
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500 attachOptions is' + JSON.stringify(attachOptions));
+
+      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.NONE;
+    }));
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600(): Promise<void> {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let attachOptions = this.InputClient.getAttachOptions();
+
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600 attachOptions is' + JSON.stringify(attachOptions));
+
+      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.MOUSE;
+    }));
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700(): Promise<void> {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let attachOptions = this.InputClient.getAttachOptions();
+
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700 attachOptions is' + JSON.stringify(attachOptions));
+
+      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH;
+    }));
+  }
+
+  async Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800(): Promise<void> {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let attachOptions = this.InputClient.getAttachOptions();
+
+      console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800 attachOptions is' + JSON.stringify(attachOptions));
+
+      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.OTHER;
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100 attachOptions is' + JSON.stringify(attachOptions));
@@ -1678,11 +1754,11 @@ export class KeyboardController {
           this.InputClient.off('attachOptionsDidChange');
         });
       });
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', await this.wrapAssertWithTwoIn1Judgement(async () => {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 attachOptions is' + JSON.stringify(attachOptions));
@@ -1730,11 +1806,11 @@ export class KeyboardController {
           resolve(count === 2);
         }, 1000);
       });
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
       return new Promise((resolve, reject) => {
         let count1 = 0;
         let count2 = 0;
@@ -1756,11 +1832,11 @@ export class KeyboardController {
           this.InputClient.off('attachOptionsDidChange');
         }, 1000);
       });
-    });
+    }));
   }
 
   async Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200(): Promise<void> {
-    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', async () => {
+    this.testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', await this.wrapAssertWithTwoIn1Judgement(async () => {
       return new Promise((resolve, reject) => {
         let count1 = 0;
         let count2 = 0;
@@ -1783,7 +1859,7 @@ export class KeyboardController {
           this.InputClient.off('attachOptionsDidChange');
         }, 1000);
       });
-    });
+    }));
   }
 
   private async testTemplate(testName: string, assertFunction: () => Promise<boolean>): Promise<void> {

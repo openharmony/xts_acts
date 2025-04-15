@@ -3812,6 +3812,98 @@ export default function inputMethodEngineJSUnit() {
     });
 
     /*
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500
+    * @tc.name   Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500', 0, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          }
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
+        inputMethod.getController().showTextInput(inputMethod.RequestKeyboardReason.NONE);
+      }
+
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500', 111, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600
+    * @tc.name   Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600', 0, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          }
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
+        inputMethod.getController().showTextInput(inputMethod.RequestKeyboardReason.MOUSE);
+      }
+
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600', 112, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700
+    * @tc.name   Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700', 0, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          }
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
+        inputMethod.getController().showTextInput(inputMethod.RequestKeyboardReason.TOUCH);
+      }
+
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700', 113, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800
+    * @tc.name   Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800', 0, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          }
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE, inputMethod.RequestKeyboardReason.NONE);
+        inputMethod.getController().showTextInput(inputMethod.RequestKeyboardReason.OTHER);
+      }
+
+      testTemplate('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800', 114, done, beforePublish);
+    });
+
+    /*
     * @tc.number  Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400
     * @tc.name   Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400
     * @tc.desc    Function test
