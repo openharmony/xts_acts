@@ -19,6 +19,7 @@ import textPickerRangeTest from "./textpicker/textPickerRangeTest.test"
 import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
 import swiperIndicatorDistanceTest from "./swiper/SwiperIndicatorDistanceTest.test"
+import customDialogBackGroundTest from "./customdialog/customDialogBackGroundTest.test"
 
 export default function testsuite() {
   customDialogTest();
@@ -27,4 +28,5 @@ export default function testsuite() {
   textPickerEnableHapticFeedbackTest();
   datePickerEnableHapticFeedbackTest();
   swiperIndicatorDistanceTest();
+  customDialogBackGroundTest();
 }
