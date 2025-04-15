@@ -133,7 +133,8 @@
     "pages/ArkUI/HoverSpen",
     "pages/ArkUI/stopSwiper",
     "pages/ArkUI/AccessibilityRoleTypeTest",
-    "pages/ArkUI/StylusPen"
+    "pages/ArkUI/StylusPen",
+    "pages/ArkUI/AccessibilityFocusDrawLevel"
   ]
 }
 
