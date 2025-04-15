@@ -90,7 +90,7 @@ export default function ConnextionErrorCode() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrSocketLocalBindErrCo0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketLocalBindErrCo0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketLocalBindErrCo0300';
       console.info(`${caseName} test start`);
       try {

@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it , Level, Size, TestType} from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_DOMAIN_HTTPS: string = "https://httpbin.org/anything";
@@ -45,7 +45,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0100', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0100";
       console.info(`${caseName} test Start`);
       try {
@@ -91,7 +91,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0200', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0200";
       console.info(`${caseName} test Start`);
       try {
@@ -135,7 +135,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0300', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0300";
       console.info(`${caseName} test Start`);
       try {
@@ -181,7 +181,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0400', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0400";
       console.info(`${caseName} test Start`);
       try {
@@ -225,7 +225,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0500', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0500";
       console.info(`${caseName} test Start`);
       try {
@@ -271,7 +271,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodGET0600', 0, async (done: Function) => {
+    it('testHttpRequestMethodGET0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodGET0600";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -315,7 +315,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD0700', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD0700";
       console.info(`${caseName} test Start`);
       try {
@@ -361,7 +361,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD0800', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD0800";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -405,7 +405,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD0900', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD0900";
       console.info(`${caseName} test Start`);
       try {
@@ -451,7 +451,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD1000', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD1000";
       console.info(`${caseName} test Start`);
       try {
@@ -495,7 +495,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD1100', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD1100";
       console.info(`${caseName} test Start`);
       try {
@@ -541,7 +541,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodHEAD1200', 0, async (done: Function) => {
+    it('testHttpRequestMethodHEAD1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodHEAD1200";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -585,7 +585,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1300', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1300";
       console.info(`${caseName} test Start`);
       try {
@@ -631,7 +631,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1400', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1400";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -676,7 +676,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1500', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1500";
       console.info(`${caseName} test Start`);
       try {
@@ -722,7 +722,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1600', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1600";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -766,7 +766,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1700', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1700";
       console.info(`${caseName} test Start`);
       try {
@@ -813,7 +813,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodOPTIONS1800', 0, async (done: Function) => {
+    it('testHttpRequestMethodOPTIONS1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodOPTIONS1800";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -857,7 +857,7 @@ export default function HttpRequestMethodTest() {
       * @tc.type  :  Function
       * @tc.level :  level 2
       */
-    it('testHttpRequestMethodPOST1900', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST1900";
       console.info(`${caseName} test Start`);
       try {
@@ -903,7 +903,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPOST2000', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST2000";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -947,7 +947,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPOST2100', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST2100";
       console.info(`${caseName} test Start`);
       try {
@@ -993,7 +993,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPOST2200', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST2200";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -1037,7 +1037,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPOST2300', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST2300";
       console.info(`${caseName} test Start`);
       try {
@@ -1083,7 +1083,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPOST2400', 0, async (done: Function) => {
+    it('testHttpRequestMethodPOST2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPOST2400";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -1127,7 +1127,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT2500', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT2500";
       console.info(`${caseName} test Start`);
       try {
@@ -1173,7 +1173,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT2600', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT2600";
       console.info(`${caseName} test Start`);
       try {
@@ -1217,7 +1217,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT2700', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT2700";
       console.info(`${caseName} test Start`);
       try {
@@ -1263,7 +1263,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT2800', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT2800";
       console.info(`${caseName} test Start`);
       try {
@@ -1307,7 +1307,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT2900', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT2900";
       console.info(`${caseName} test Start`);
       try {
@@ -1353,7 +1353,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodPUT3000', 0, async (done: Function) => {
+    it('testHttpRequestMethodPUT3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodPUT3000";
       console.info(`${caseName} test Start`);
       try {
@@ -1397,7 +1397,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3100', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3100";
       console.info(`${caseName} test Start`);
       try {
@@ -1443,7 +1443,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3200', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3200";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -1487,7 +1487,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3300', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3300";
       console.info(`${caseName} test Start`);
       try {
@@ -1533,7 +1533,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3400', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3400";
       console.info(`${caseName} test Start`);
       try {
@@ -1577,7 +1577,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3500', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3500";
       console.info(`${caseName} test Start`);
       try {
@@ -1623,7 +1623,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodDELETE3600', 0, async (done: Function) => {
+    it('testHttpRequestMethodDELETE3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodDELETE3600";
       console.info(`${caseName} test Start`);
       try {
@@ -1667,7 +1667,7 @@ export default function HttpRequestMethodTest() {
        * @tc.type  :  Function
        * @tc.level :  level 2
        */
-    it('testHttpRequestMethodTRACE3700', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE3700";
       console.info(`${caseName} test Start`);
       try {
@@ -1713,7 +1713,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodTRACE3800', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE3800";
       console.info(`${caseName} test Start`);
       try {
@@ -1757,7 +1757,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodTRACE3900', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE3900";
       console.info(`${caseName} test Start`);
       try {
@@ -1803,7 +1803,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodTRACE4000', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE4000";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -1847,7 +1847,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodTRACE4100', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE4100";
       console.info(`${caseName} test Start`);
       try {
@@ -1893,7 +1893,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodTRACE4200', 0, async (done: Function) => {
+    it('testHttpRequestMethodTRACE4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodTRACE4200";
       console.info(`${caseName} test Start`);
       try {
@@ -1937,7 +1937,7 @@ export default function HttpRequestMethodTest() {
         * @tc.type  :  Function
         * @tc.level :  level 2
         */
-    it('testHttpRequestMethodCONNECT4300', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4300";
       console.info(`${caseName} test Start`);
       try {
@@ -1983,7 +1983,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodCONNECT4400', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4400";
       console.info(`${caseName} test Start`);
       try {
@@ -2027,7 +2027,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodCONNECT4500', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4500";
       console.info(`${caseName} test Start`);
       try {
@@ -2073,7 +2073,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodCONNECT4600', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4600";
       console.info(`${caseName} test Start`);
       let httpRequest: http.HttpRequest = http.createHttp();
@@ -2117,7 +2117,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodCONNECT4700', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4700";
       console.info(`${caseName} test Start`);
       try {
@@ -2163,7 +2163,7 @@ export default function HttpRequestMethodTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpRequestMethodCONNECT4800', 0, async (done: Function) => {
+    it('testHttpRequestMethodCONNECT4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpRequestMethodCONNECT4800";
       console.info(`${caseName} test Start`);
       try {

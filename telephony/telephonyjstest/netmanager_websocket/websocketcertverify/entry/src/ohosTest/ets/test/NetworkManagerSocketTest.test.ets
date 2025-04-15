@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, Level, Size, TestType } from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError } from '@ohos.base';
 
@@ -37,14 +37,14 @@ export default function NetworkManagerSocketTest() {
 
     /**
      * @tc.number: SUB_Telephony_Netstack_UNIX_Socket_Xts_0100
-     * @tc.name: Test create constructLocalSocketInstance object
+     * @tc.name: testTelephonyNetstackUNIXSocketXts0100
      * @tc.desc: Function Test
-     * @tc.level 3
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0100", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_Netstack_UNIX_Socket_Xts_0100";
+    it("testTelephonyNetstackUNIXSocketXts0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonyNetstackUNIXSocketXts0100";
       let client = socket.constructLocalSocketInstance();
       client.getExtraOptions().then((data) => {
         console.info(`${caseName} getExtraOptions success, data: ${JSON.stringify(data)}`);
@@ -58,14 +58,14 @@ export default function NetworkManagerSocketTest() {
 
     /**
      * @tc.number: SUB_Telephony_Netstack_UNIX_Socket_Xts_0200
-     * @tc.name: Test create constructLocalSocketInstance object
+     * @tc.name: testTelephonyNetstackUNIXSocketXts0200
      * @tc.desc: Function Test
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_Netstack_UNIX_Socket_Xts_0200", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_Netstack_UNIX_Socket_Xts_0200";
+    it("testTelephonyNetstackUNIXSocketXts0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonyNetstackUNIXSocketXts0200";
       let server = socket.constructLocalSocketServerInstance();
       server.getExtraOptions().then((data) => {
         console.info(`${caseName} getExtraOptions success, data: ${JSON.stringify(data)}`);

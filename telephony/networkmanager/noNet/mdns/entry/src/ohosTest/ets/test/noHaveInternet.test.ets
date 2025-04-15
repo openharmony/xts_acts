@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import mdns from '@ohos.net.mdns';
 import { BusinessError } from '@ohos.base';
 
@@ -39,9 +39,9 @@ export default function NoHaveInternetTest() {
      * @tc.desc  : Add an mDNS service callback
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrAddLocalService2900", 0, async (done: Function) => {
+    it("testNetworkMgrAddLocalService2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testNetworkMgrAddLocalService2900";
       console.info(`${caseName} test start `);
       try {
@@ -81,7 +81,7 @@ export default function NoHaveInternetTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it("testNetworkMgrAddLocalService3000", 0, async (done: Function) => {
+    it("testNetworkMgrAddLocalService3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testNetworkMgrAddLocalService3000";
       console.info(`${caseName} test start `);
       try {
@@ -120,9 +120,9 @@ export default function NoHaveInternetTest() {
      * @tc.desc  : Return a DiscoveryService object callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrCreateDiscoveryService0500", 0, async (done: Function) => {
+    it("testNetworkMgrCreateDiscoveryService0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testNetworkMgrCreateDiscoveryService0500";
       console.info(`${caseName} test start `);
       try {
@@ -144,9 +144,9 @@ export default function NoHaveInternetTest() {
      * @tc.desc  : Parsing an mDNS service callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrResolveLocalService1700", 0, async (done: Function) => {
+    it("testNetworkMgrResolveLocalService1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testNetworkMgrResolveLocalService1700";
       console.info(`${caseName} test start `);
       try {
@@ -186,9 +186,9 @@ export default function NoHaveInternetTest() {
      * @tc.desc  : Parsing an mDNS service Promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrResolveLocalService1800", 0, async (done: Function) => {
+    it("testNetworkMgrResolveLocalService1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testNetworkMgrResolveLocalService1800";
       console.info(`${caseName} test start `);
       try {
