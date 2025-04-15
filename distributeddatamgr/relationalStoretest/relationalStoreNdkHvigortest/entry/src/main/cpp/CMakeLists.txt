@@ -21,3 +21,10 @@ target_link_libraries(rdbvalue PUBLIC
      libhilog_ndk.z.so
      libnative_rdb_ndk.z.so
 )
+
+add_library(transaction SHARED transactionNdk.cpp)
+target_link_libraries(transaction PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libnative_rdb_ndk.z.so
+)
