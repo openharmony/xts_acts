@@ -21,6 +21,7 @@ import webViewZoomRatio from './WebViewZoomRatio.test';
 import WebViewEnumAndFontLibrary from './WebViewEnumAndFontLibrary.test';
 import WebViewEnumAndSetWebController from './WebViewEnumAndSetWebController.test';
 import WebViewOverviewModeAccess from './WebViewOverviewModeAccess.test';
+import webZoomAccessTest from './WebZoomAccessTest.test';
 
 
 export default function testsuite() {
@@ -33,4 +34,5 @@ export default function testsuite() {
   WebViewEnumAndFontLibrary();
   WebViewEnumAndSetWebController();
   WebViewOverviewModeAccess();
+  webZoomAccessTest();
 }
