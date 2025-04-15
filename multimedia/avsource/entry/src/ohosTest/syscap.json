@@ -11,7 +11,8 @@
                     "SystemCapability.Multimedia.Media.AudioEncoder",
                     "SystemCapability.Multimedia.Media.VideoDecoder",
                     "SystemCapability.Multimedia.Media.VideoEncoder",
-                    "SystemCapability.Multimedia.Media.CodecBase"
+                    "SystemCapability.Multimedia.Media.CodecBase",
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]
