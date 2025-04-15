@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, expect, it, afterEach, afterAll } from '@ohos/hypium';
+import {describe, expect, it, afterEach, afterAll, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError} from '@ohos.base';
 
@@ -43,14 +43,14 @@ export default function MulticastconnectionPromiseTest() {
 
         /**
          * @tc.number SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100
-         * @tc.name connection::addCustomDnsRule
+         * @tc.name testNetworkManagerDNSaddCustomDNSRulePromise0100
          * @tc.desc Test addCustomDNSRule property
-         * @tc.level Level1
+         * @tc.level Level0
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
-            let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0100";
+        it("testNetworkManagerDNSaddCustomDNSRulePromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+            let caseName = "testNetworkManagerDNSaddCustomDNSRulePromise0100";
             connection.addCustomDnsRule(host,ip).then((data) => {
                 console.log(`${caseName} addCustomDNSRule success, data: ${JSON.stringify(data)}`);
                 expect(data == undefined).assertTrue();
@@ -70,7 +70,7 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0300", 0 , async (done:Function) => {
+        it("SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             let caseName = "SUB_NetworkManager_DNS_addCustomDNSRule_Promise_0300";
             connection.addCustomDnsRule(host_null,ip).then((data) => {
                 console.log(`${caseName} addCustomDNSRule failed, data: ${JSON.stringify(data)}`);
@@ -91,7 +91,7 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
+        it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
             let caseName = "SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0100";
             connection.removeCustomDnsRule(host).then((data) => {
@@ -113,7 +113,7 @@ export default function MulticastconnectionPromiseTest() {
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0300", 0 , async (done:Function) => {
+        it("SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
             let caseName = "SUB_NetworkManager_DNS_removeCustomDNSRule_Promise_0300";
             connection.removeCustomDnsRule(host_null).then((data) => {
@@ -127,16 +127,16 @@ export default function MulticastconnectionPromiseTest() {
 
         /**
          * @tc.number SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100
-         * @tc.name connection::clearCustomDnsRules
+         * @tc.name testNetworkManagerDNSclearCustomDNSRulePromise0100
          * @tc.desc Test clearCustomDnsRules property
-         * @tc.level Level1
+         * @tc.level Level0
          * @tc.type: Function
          * @tc.size: SmallTest
          */
-        it("SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100", 0 , async (done:Function) => {
+        it("testNetworkManagerDNSclearCustomDNSRulePromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
             await connection.addCustomDnsRule(host1,ip1);
             await connection.addCustomDnsRule(host2,ip2);
-            let caseName = "SUB_NetworkManager_DNS_clearCustomDNSRule_Promise_0100";
+            let caseName = "testNetworkManagerDNSclearCustomDNSRulePromise0100";
             connection.clearCustomDnsRules().then((data) => {
                 console.log(`${caseName} clearCustomDnsRules success, data: ${JSON.stringify(data)}`);
                 expect(data==undefined).assertTrue();
