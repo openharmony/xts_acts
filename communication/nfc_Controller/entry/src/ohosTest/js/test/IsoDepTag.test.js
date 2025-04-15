@@ -478,6 +478,54 @@ export default function nfcIsoDepTagTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1500
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card HceService transmit
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1500', Level.LEVEL2, async function (done)  {
+            let hceService =new cardEmulation.HceService();
+            console.info('[NFC_test]15 hceService state is ' + hceService ) 
+            await hceService.transmit(undefined).then(() => {
+                    console.info("[NFC_test]15 hceService.transmit success "  );
+                    expect().assertFail();
+                    done();
+                }).catch((err)=> {
+                    console.info("[NFC_test]15 hceService.transmit err: " + err);
+                    expect(401).assertEqual(err.code);
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1600
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card HceService transmit
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1600', Level.LEVEL2, async function (done)  {
+            let hceService =new cardEmulation.HceService();
+            console.info('[NFC_test]16 hceService state is ' + hceService )
+            hceService.transmit(undefined, (err, data)=> {
+                if (err) {
+                    console.info("[NFC_test]16 hceService.transmit err: " + err);
+                    expect(401).assertEqual(err.code);
+                    done();
+                } else {
+                    console.info("[NFC_test]16 hceService.transmit data: " + data);
+                    expect().assertFail();
+                    done();
+                }
+             })
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
