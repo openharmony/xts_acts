@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterAll , Level, Size, TestType} from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -47,7 +47,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0100', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0100';
       console.info(`${caseName} test start `);
       try {
@@ -75,9 +75,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Get the SIM card for default mobile data.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0200', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0200';
       console.info(`${caseName} test start `);
       try {
@@ -107,9 +107,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Get the SIM card for default mobile data.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0300', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0300';
       console.info(`${caseName} test start `);
       try {
@@ -140,9 +140,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Get the SIM card for default mobile data.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0400', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0400';
       console.info(`${caseName} test start `);
       try {
@@ -171,7 +171,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0500', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0500';
       console.info(`${caseName} test start `);
       try {
@@ -202,7 +202,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
      */
-    it('testTelephonyDataGetDefaultCellularDataSlotId0600', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotId0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotId0600';
       console.info(`${caseName} test start `);
       try {
@@ -235,7 +235,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0100', 0, (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotIdSync0100';
       console.info(`${caseName} test start `);
       try {
@@ -257,9 +257,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Get the SIM card for default mobile data.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0200', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotIdSync0200';
       console.info(`${caseName} test start `);
       try {
@@ -285,7 +285,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0300', 0, (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSlotIdSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSlotIdSync0300';
       console.info(`${caseName} test start `);
       try {
@@ -319,7 +319,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
    */
-    it('testTelephonyDataGetCellularDataFlowType0100', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0100';
       console.info(`${caseName} test start `);
       try {
@@ -355,9 +355,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Obtain the uplink and downlink status of cellular data services.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataFlowType0200', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0200';
       console.info(`${caseName} test start `);
       try {
@@ -397,9 +397,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Obtain the uplink and downlink status of cellular data services.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
      */
-    it('testTelephonyDataGetCellularDataFlowType0600', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0600';
       console.info(`${caseName} test start `);
       try {
@@ -435,7 +435,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataFlowType0700', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataFlowType0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataFlowType0700';
       console.info(`${caseName} test start `);
       try {
@@ -473,9 +473,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Get the connection status of a packet switched domain (PS domain).
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataState0100', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0100';
       console.info(`${caseName} test start `);
       try {
@@ -513,7 +513,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataState0200', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0200';
       console.info(`${caseName} test start `);
       try {
@@ -576,7 +576,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataState0300', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0300';
       console.info(`${caseName} test start `);
       try {
@@ -616,9 +616,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Get the connection status of a packet switched domain (PS domain).
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataState0500', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0500';
       console.info(`${caseName} test start `);
       try {
@@ -652,9 +652,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Get the connection status of a packet switched domain (PS domain).
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('testTelephonyDataGetCellularDataState0600', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0600';
       console.info(`${caseName} test start `);
       try {
@@ -712,7 +712,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetCellularDataState0700', 0, async (done: Function) => {
+    it('testTelephonyDataGetCellularDataState0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetCellularDataState0700';
       console.info(`${caseName} test start `);
       try {
@@ -750,9 +750,9 @@ export default function dataManagerTest() {
     * @tc.desc  : Check whether the cellular data service is enabled.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('testTelephonyDataIsCellularDataEnabled0100', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0100';
       console.info(`${caseName} test start `);
       try {
@@ -783,7 +783,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataEnabled0200', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0200';
       console.info(`${caseName} test start `);
       try {
@@ -817,7 +817,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataEnabled0300', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0300';
       console.info(`${caseName} test start `);
       try {
@@ -850,7 +850,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 2
     */
-    it('testTelephonyDataIsCellularDataEnabled0400', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0400';
       console.info(`${caseName} test start `);
       try {
@@ -871,9 +871,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Check whether the cellular data service is enabled.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataIsCellularDataEnabled0500', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0500';
       console.info(`${caseName} test start `);
       try {
@@ -902,7 +902,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataEnabled0600', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0600';
       console.info(`${caseName} test start `);
       try {
@@ -934,7 +934,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataEnabled0700', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataEnabled0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataEnabled0700';
       console.info(`${caseName} test start `);
       try {
@@ -965,9 +965,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Check whether roaming is enabled for cellular data services.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0300', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0300';
       console.info(`${caseName} test start `);
       try {
@@ -1007,7 +1007,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0500', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0500';
       console.info(`${caseName} test start `);
       try {
@@ -1036,9 +1036,9 @@ export default function dataManagerTest() {
      * @tc.desc  : Check whether roaming is enabled for cellular data services.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0700', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0700';
       console.info(`${caseName} test start `);
       try {
@@ -1074,7 +1074,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0800', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0800';
       console.info(`${caseName} test start `);
       try {
@@ -1112,7 +1112,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled1100', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled1100';
       console.info(`${caseName} test start `);
       try {
@@ -1141,7 +1141,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
     */
-    it('testTelephonyDataIsCellularDataRoamingEnabled0900', 0, async (done: Function) => {
+    it('testTelephonyDataIsCellularDataRoamingEnabled0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabled0900';
       console.info(`${caseName} test start `);
       try {
@@ -1181,7 +1181,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetDefaultCellularDataSimId0100', 0, (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSimId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSimId0100';
       console.info(`${caseName} test start `);
       try {
@@ -1205,7 +1205,7 @@ export default function dataManagerTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it('testTelephonyDataGetDefaultCellularDataSimId0200', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSimId0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSimId0200';
       console.info(`${caseName} test start `);
       try {
@@ -1230,7 +1230,7 @@ export default function dataManagerTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testTelephonyDataGetDefaultCellularDataSimId0300', 0, async (done: Function) => {
+    it('testTelephonyDataGetDefaultCellularDataSimId0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyDataGetDefaultCellularDataSimId0300';
       console.info(`${caseName} test start `);
       try {
