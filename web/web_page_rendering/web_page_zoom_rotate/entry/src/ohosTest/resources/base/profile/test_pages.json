@@ -8,6 +8,7 @@
     "testability/pages/WebViewZoomRatio",
     "testability/pages/WebViewEnumAndFontLibrary",
     "testability/pages/WebViewEnumAndSetWebController",
-    "testability/pages/WebViewOverviewModeAccess"
+    "testability/pages/WebViewOverviewModeAccess",
+	"testability/pages/WebZoomAccessTest"
   ]
 }
