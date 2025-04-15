@@ -17,7 +17,7 @@ import distributedObject from '@ohos.data.distributedDataObject';
 import commonType from '@ohos.data.commonType';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility';
-import bundle from '@ohos.bundle';
+import bundleManager from '@ohos.bundle.bundleManager';
 const CATCH_ERR = -1;
 let context;
 const TAG = "OBJECTSTORE_TEST";
@@ -46,14 +46,19 @@ const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
 let tokenID = undefined;
 async function grantPerm() {
-    console.info("====grant Permission start====");
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.dataObject', 0, 100);
-    tokenID = appInfo.accessTokenId;
-    console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
-    let atManager = abilityAccessCtrl.createAtManager();
-    let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
-    console.info("tokenId" + tokenID + " result:" + result);
-    console.info("====grant Permission end====");
+    try {
+        console.info("====grant Permission start====");
+        let bundleInfo = await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+        tokenID = bundleInfo.appInfo.accessTokenId;
+        console.info("accessTokenId" + tokenID);
+        let atManager = abilityAccessCtrl.createAtManager();
+        console.info("createAtManager success");
+        let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
+        console.info("tokenId" + tokenID + " result:" + result);
+        console.info("====grant Permission end====");
+    } catch (err) {
+        console.error("error: code:" + err.code + "message:" + err.message)
+    }
 }
 
 export default function objectStoreTestV9() {
