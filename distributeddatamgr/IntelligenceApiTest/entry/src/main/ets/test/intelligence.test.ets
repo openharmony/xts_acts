@@ -26,6 +26,8 @@ import { ErrorCode } from '@kit.AbilityKit';
 import deviceInfo from '@ohos.deviceInfo';
 
 const TAG =["Intelligence_Test"];
+const delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+const context = delegator.getAppContext().getApplicationContext();
 
 let textConfig:intelligence.ModelConfig  = {
   version:intelligence.ModelVersion.BASIC_MODEL,
@@ -690,19 +692,19 @@ export default function intelligenceTest() {
               done();
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest1300 catch::' + err.code);
+          console.info(TAG + 'intelligenceApiTest1300 catch:' + err.code);
           expect(err.code).assertEqual(401);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'catch::' + err.code);
+            console.info(TAG + 'intelligenceApiTest1300 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest1300 end');
+      console.info(TAG + 'intelligenceApiTest1300 end');
     })
 
     /**
@@ -723,11 +725,11 @@ export default function intelligenceTest() {
         expect().assertFail();
         done();
       } catch (err) {
-        console.info(TAG, 'intelligenceApiTest1400 catch::' + err.code);
+        console.info(TAG + 'intelligenceApiTest1400 catch:' + err.code);
         expect(err.code).assertEqual(401);
         done();
       }
-      console.info(TAG, 'intelligenceApiTest1400 end');
+      console.info(TAG + 'intelligenceApiTest1400 end');
     });
 
 
@@ -788,7 +790,7 @@ export default function intelligenceTest() {
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest1500 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest1500 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
@@ -807,7 +809,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest1600  start');
+      console.info(TAG + 'intelligenceApiTest1600  start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigVector]
       };
@@ -835,13 +837,13 @@ export default function intelligenceTest() {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition);
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest1600 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest1600 catch:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest1600 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest1600 catch:' + err.code);
           done();
         }
       } else {
@@ -852,7 +854,7 @@ export default function intelligenceTest() {
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest1600 end');
+      console.info(TAG + 'intelligenceApiTest1600 end');
     });
 
 
@@ -866,7 +868,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest1700 start');
+      console.info(TAG + 'intelligenceApiTest1700 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigVector]
       };
@@ -894,13 +896,13 @@ export default function intelligenceTest() {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition);
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest1700 catch::' + err.code);
+                console.info(TAG + 'intelligenceApiTest1700 catch:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest1700 catch::' + err.code);
+          console.info(TAG + 'intelligenceApiTest1700 catch:' + err.code);
           done();
         }
       } else {
@@ -911,7 +913,7 @@ export default function intelligenceTest() {
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest1700 end');
+      console.info(TAG + 'intelligenceApiTest1700 end');
     })
 
 
@@ -925,7 +927,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest1800 start');
+      console.info(TAG + 'intelligenceApiTest1800 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigVector]
       };
@@ -953,24 +955,24 @@ export default function intelligenceTest() {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition);
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest1800 retrieveRdb is fail::' + err.code);
+                console.info(TAG + 'intelligenceApiTest1800 retrieveRdb is fail:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest1800 catch::' + err.code);
+          console.info(TAG + 'intelligenceApiTest1800 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest1800 catch::' + err.code);
+            console.info(TAG + 'intelligenceApiTest1800 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest1800 end');
+      console.info(TAG + 'intelligenceApiTest1800 end');
     })
 
 
@@ -984,7 +986,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest1900 start');
+      console.info(TAG + 'intelligenceApiTest1900 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigVector]
       };
@@ -1012,18 +1014,18 @@ export default function intelligenceTest() {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition)
                   .catch((err:BusinessError) => {
-                    console.info(TAG, 'Aip_007 catch::' + err.code);
+                    console.info(TAG + 'intelligenceApiTest1900 catch:' + err.code);
                     expect(err.code).assertEqual(31300100);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest1900 catch::' + err.code);
+                console.info(TAG + 'intelligenceApiTest1900 catch::' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest1900 catch::' + err.code);
+          console.info(TAG + 'intelligenceApiTest1900 catch:' + err.code);
           done();
         }
       } else {
@@ -1034,7 +1036,7 @@ export default function intelligenceTest() {
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest1900 end');
+      console.info(TAG + 'intelligenceApiTest1900 end');
     })
 
 
@@ -1048,7 +1050,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2000 start');
+      console.info(TAG + 'intelligenceApiTest2000 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigVector]
       };
@@ -1079,12 +1081,12 @@ export default function intelligenceTest() {
                 data.retrieveRdb(query, retrievalCondition)
                   .then((rdbdata) => {
                     let length = rdbdata.records.length;
-                    console.info(TAG, 'Aip_008 get result length::' + length);
+                    console.info(TAG + 'intelligenceApiTest2000 retrieveRdb:' + length);
                     expect(length > 0).assertEqual(true);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2000 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest2000 catch:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
@@ -1096,12 +1098,12 @@ export default function intelligenceTest() {
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2000 catch::' + err.code);
+            console.info(TAG + 'intelligenceApiTest2000 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2000 end');
+      console.info(TAG + 'intelligenceApiTest2000 end');
     })
 
 
@@ -1115,7 +1117,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2100 start');
+      console.info(TAG + 'intelligenceApiTest2100 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigInvIdx]
       };
@@ -1154,34 +1156,34 @@ export default function intelligenceTest() {
           };
           await intelligence.getRetriever(retrievalConfig)
             .then((data) => {
-              console.info(TAG, 'intelligenceApiTest2100 get result:' + data);
+              console.info(TAG + 'intelligenceApiTest2100 get result:' + data);
               try {
                 let query = '数据库';
                 data.retrieveRdb(query, retrievalCondition)
                   .then((rdbdata) => {
                     let length = rdbdata.records.length;
-                    console.info(TAG, 'intelligenceApiTest2100 retrieveRdb:' + length);
+                    console.info(TAG + 'intelligenceApiTest2100 retrieveRdb:' + length);
                     expect(length).assertEqual(1);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2100 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest2100 catch:' + err.code);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest2100 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest2100 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2100 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest2100 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2100 end');
+      console.info(TAG + 'intelligenceApiTest2100 end');
     })
 
 
@@ -1195,7 +1197,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2200 start');
+      console.info(TAG + 'intelligenceApiTest2200 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigInvIdx]
       };
@@ -1238,24 +1240,24 @@ export default function intelligenceTest() {
                 let query = '数据库';
                 data.retrieveRdb(query, retrievalCondition);
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2200 retrieveRdb:' + err.code);
+                console.info(TAG, + 'intelligenceApiTest2200 retrieveRdb:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest2200 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest2200 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2200 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest2200 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2200 end');
+      console.info(TAG + 'intelligenceApiTest2200 end');
     })
 
 
@@ -1268,7 +1270,7 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
     it('intelligenceApiTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2300 start');
+      console.info(TAG + 'intelligenceApiTest2300 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigInvIdx]
       };
@@ -1311,29 +1313,29 @@ export default function intelligenceTest() {
                 let query = '数据库';
                 data.retrieveRdb(query, retrievalCondition)
                   .catch((err:BusinessError) => {
-                    console.info(TAG, 'intelligenceApiTest2300 retrieveRdb:' + err.code);
+                    console.info(TAG + 'intelligenceApiTest2300 retrieveRdb:' + err.code);
                     expect(err.code).assertEqual(31301010);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2300 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest2300 catch:' + err.code);
                 expect(err.code).assertEqual(401);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest2300 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest2300 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2300 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest2300 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2300 end');
+      console.info(TAG + 'intelligenceApiTest2300 end');
     })
 
 
@@ -1347,7 +1349,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2400  start');
+      console.info(TAG + 'intelligenceApiTest2400  start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigInvIdx, channelConfigVector]
       };
@@ -1405,28 +1407,28 @@ export default function intelligenceTest() {
                 data.retrieveRdb(query, retrievalCondition)
                   .then((rdbdata) => {
                     let length = rdbdata.records.length;
-                    console.info(TAG, 'intelligenceApiTest2400 retrieveRdb:' + length);
+                    console.info(TAG + 'intelligenceApiTest2400 retrieveRdb:' + length);
                     expect(length >= 2).assertEqual(true);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2400 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest2400 catch:' + err.code);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest2400 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest2400 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2400 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest2400 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2400 end');
+      console.info(TAG + 'intelligenceApiTest2400 end');
     })
 
 
@@ -1440,7 +1442,7 @@ export default function intelligenceTest() {
      */
 
     it('intelligenceApiTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.info(TAG, 'intelligenceApiTest2500 start');
+      console.info(TAG + 'intelligenceApiTest2500 start');
       let retrievalConfig:intelligence.RetrievalConfig = {
         channelConfigs: [channelConfigInvIdx, channelConfigVector]
       };
@@ -1520,28 +1522,28 @@ export default function intelligenceTest() {
                 data.retrieveRdb(query, retrievalCondition)
                   .then((rdbdata) => {
                     let length = rdbdata.records.length;
-                    console.info(TAG, 'intelligenceApiTest2500 retrieveRdb:' + length);
+                    console.info(TAG + 'intelligenceApiTest2500 retrieveRdb:' + length);
                     expect(length >= 2).assertEqual(true);
                     done();
                   });
               } catch (err) {
-                console.info(TAG, 'intelligenceApiTest2500 catch:' + err.code);
+                console.info(TAG + 'intelligenceApiTest2500 catch:' + err.code);
                 done();
               }
             });
         } catch (err) {
-          console.info(TAG, 'intelligenceApiTest2500 catch:' + err.code);
+          console.info(TAG + 'intelligenceApiTest2500 catch:' + err.code);
           done();
         }
       } else {
         await intelligence.getRetriever(retrievalConfig)
           .catch((err:BusinessError) => {
-            console.info(TAG, 'intelligenceApiTest2500 catch:' + err.code);
+            console.info(TAG + 'intelligenceApiTest2500 catch:' + err.code);
             expect(err.code).assertEqual(801);
             done();
           });
       }
-      console.info(TAG, 'intelligenceApiTest2500 end');
+      console.info(TAG + 'intelligenceApiTest2500 end');
     })
 
     /**
