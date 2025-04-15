@@ -45,7 +45,7 @@
     ],
     "abilities": [
       {
-        "name": "com.arkui.ace.imageText.api7.EntryAbility",
+        "name": "com.arkui.ace.imageText.api17.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",

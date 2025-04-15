@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.arkui.ace.imageText.api7",
+    "bundleName": "com.arkui.ace.imageText.api17",
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",

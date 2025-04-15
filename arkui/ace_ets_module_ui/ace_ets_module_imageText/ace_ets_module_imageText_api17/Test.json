@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.arkui.ace.imageText.api7",
+        "bundle-name": "com.arkui.ace.imageText.api17",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
