@@ -1044,6 +1044,368 @@ static napi_value GetRawFileContentTwo(napi_env env, napi_callback_info info)
     return CreateJsArrayValue(env, data, lenghtOne + lenghtTwo + lenghtThree);
 }
 
+static napi_value testGetIntPluralStringById0790_082(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, 2, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 0 && strcmp(result, "apples") == 0);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringByName0790_082(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[256];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, resId.c_str(), 2, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 0 && strcmp(result, "apples") == 0);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringById0790_082(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resId, 2.1, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 0 && strcmp(result, "apples") == 0);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringByName0790_082(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[271];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, resId.c_str(), 2.1, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 0 && strcmp(result, "apples") == 0);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringById119(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralString(nullptr, resId, 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringById120(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resId, 1.1, &result, 1);
+    code = OH_ResourceManager_GetDoublePluralString(nullptr, resId, 1.1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringById125(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, 0x12345678, 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001001);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringById126(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resId, 1.1, &result, 1);
+    code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, 0x12345678, 1.1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001001);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringById127(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value argv[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    uint32_t resIdTwo = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    napi_get_value_uint32(env, args[2], &resIdTwo);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resIdTwo, 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001002);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringById128(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value argv[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    uint32_t resIdTwo = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    napi_get_value_uint32(env, args[2], &resIdTwo);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resId, 1.1, &result, 1);
+    code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resIdTwo, 1.1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001002);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringById129(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value argv[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    uint32_t resIdTwo = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    napi_get_value_uint32(env, args[2], &resIdTwo);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resIdTwo, 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001006);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringById130(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value argv[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    uint32_t resId = 0;
+    uint32_t resIdTwo = 0;
+    napi_get_value_uint32(env, args[1], &resId);
+    napi_get_value_uint32(env, args[2], &resIdTwo);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resId, 1.1, &result, 1);
+    code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resIdTwo, 1.1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001006);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringByName133(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[256];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, resId.c_str(), 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralStringByName(nullptr, resId.c_str(), 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringByName134(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[271];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, resId.c_str(), 1.1, &result);
+    code = OH_ResourceManager_GetDoublePluralStringByName(nullptr, resId.c_str(), 1.1, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringByName139(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[256];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, resId.c_str(), 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, "error", 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001003);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringByName140(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[271];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, resId.c_str(), 1.1, &result);
+    code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, "error", 1.1, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001003);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetIntPluralStringByName141(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[256];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, resId.c_str(), 1, &result, 1);
+    code = OH_ResourceManager_GetIntPluralStringByName(mNativeResMgr, "test_cyc", 1, &result, 1);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001006);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value testGetDoublePluralStringByName142(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
+    char* result;
+    size_t strSize;
+    char strBuf[271];
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string resId(strBuf, strSize);
+    ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, resId.c_str(), 1.1, &result);
+    code = OH_ResourceManager_GetDoublePluralStringByName(mNativeResMgr, "test_cyc", 1.1, &result);
+
+    OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
+    bool flag = (code == 9001006);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1096,6 +1458,42 @@ static napi_value Init(napi_env env, napi_value exports)
         {"addResource", nullptr, AddResource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"removeResource", nullptr, RemoveResource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getRawFileContentTwo", nullptr, GetRawFileContentTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringById0790_082", nullptr, testGetIntPluralStringById0790_082, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringByName0790_082", nullptr, testGetIntPluralStringByName0790_082, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringById0790_082", nullptr, testGetDoublePluralStringById0790_082, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringByName0790_082", nullptr, testGetDoublePluralStringByName0790_082, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringById119", nullptr, testGetIntPluralStringById119, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringById120", nullptr, testGetDoublePluralStringById120, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringById125", nullptr, testGetIntPluralStringById125, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringById126", nullptr, testGetDoublePluralStringById126, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringById127", nullptr, testGetIntPluralStringById127, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringById128", nullptr, testGetDoublePluralStringById128, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringById129", nullptr, testGetIntPluralStringById129, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringById130", nullptr, testGetDoublePluralStringById130, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringByName133", nullptr, testGetIntPluralStringByName133, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringByName134", nullptr, testGetDoublePluralStringByName134, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringByName139", nullptr, testGetIntPluralStringByName139, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringByName140", nullptr, testGetDoublePluralStringByName140, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testGetIntPluralStringByName141", nullptr, testGetIntPluralStringByName141, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+        {"testGetDoublePluralStringByName142", nullptr, testGetDoublePluralStringByName142, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
