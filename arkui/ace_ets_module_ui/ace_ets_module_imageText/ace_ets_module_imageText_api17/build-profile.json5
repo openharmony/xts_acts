@@ -22,7 +22,7 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 17,
+        "compileSdkVersion": 18,
         "compatibleSdkVersion": 17,
         "runtimeOS": "OpenHarmony"
       }
