@@ -17,7 +17,6 @@ import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
 import settings from '@ohos.settings';
 import window from '@ohos.window';
@@ -60,17 +59,12 @@ export default function windowFocusTest() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let windowClass: window.Window;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
       windowClass = windowStage.getMainWindowSync();
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
-      let deviceTypeInfo = deviceInfo.deviceType
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);

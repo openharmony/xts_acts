@@ -18,7 +18,6 @@ import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import { Driver, ON } from '@ohos.UiTest';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
 import { ColorMetrics } from '@kit.ArkUI';
@@ -63,15 +62,12 @@ export default function windowPropertiesTest2() {
   describe('windowProperties_test2', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
-    let deviceType: string = '';
     let windowStage: ohosWindow.WindowStage;
     let isAutoWindow: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       isAutoWindow =
         settings.getValueSync(context, 'window_pcmode_switch_status', '', settings.domainName.DEVICE_SHARED);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);

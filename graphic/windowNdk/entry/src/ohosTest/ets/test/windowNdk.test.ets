@@ -17,8 +17,8 @@ import window from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import windowNdkTest from 'libentry.so';
 import { BusinessError } from '@ohos.base';
-import deviceInfo from '@ohos.deviceInfo';
 import { image } from '@kit.ImageKit';
+import settings from '@ohos.settings';
 
 function sleep(ms: number): Promise<string> {
   return new Promise((resolve) => {
@@ -35,7 +35,8 @@ export default function windowNdk() {
     let WindowClass:window.Window;
     let windowId:number;
     let context : common.UIAbilityContext;
-    let deviceType: string = '';
+    let isAutoWindow:string = '';
+    let isPCStatus: string = '';
     beforeAll(async() => {
       windowStage = AppStorage.get("windowStage") as window.WindowStage;
       console.log(`${Tag}:beforeAll start... `);
@@ -43,8 +44,16 @@ export default function windowNdk() {
       windowId = WindowClass.getWindowProperties().id;
       console.log(`${Tag}:windowId:${windowId} `);
       context = AppStorage.get("context") as common.UIAbilityContext;
-      deviceType = deviceInfo.deviceType;
-      console.log('windowNdk beforeAll deviceType =' + deviceType);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     })
     beforeEach(() => {
       console.log(`${Tag}:beforeEach start... `);
@@ -391,7 +400,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -413,7 +422,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled_false";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,false,false);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -434,7 +443,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -466,7 +475,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowStatusBarEnabled(subWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await subWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -515,7 +524,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowStatusBarEnabled(dialogWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await dialogWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -565,7 +574,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,true,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -586,7 +595,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled_false";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,false,false);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -607,7 +616,7 @@ export default function windowNdk() {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled_false_enableAnimation_true";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,false,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -639,7 +648,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowNavigationBarEnabled(subWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await subWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -688,7 +697,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowNavigationBarEnabled(dialogWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await dialogWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -738,7 +747,7 @@ export default function windowNdk() {
       let caseName = "test_SetWindowStatusBarColor_0xFF00FF00";
       let result = windowNdkTest.setWindowStatusBarColor(windowId,0XFF00FF00);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -762,7 +771,7 @@ export default function windowNdk() {
       let caseName = "test_SetWindowStatusBarColor_0xFF000000";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -807,7 +816,7 @@ export default function windowNdk() {
       let caseName = "test_getAvoidAreaByType_statusBar_show";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -833,7 +842,7 @@ export default function windowNdk() {
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result1: ${result1}`);
       await sleep(500);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -857,7 +866,7 @@ export default function windowNdk() {
       let caseName = "test_getAvoidAreaByType_setLayoutFullScreen";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{

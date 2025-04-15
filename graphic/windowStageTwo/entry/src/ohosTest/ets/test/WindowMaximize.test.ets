@@ -18,7 +18,6 @@ import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 
 export default function windowMaximizeTest() {
@@ -26,19 +25,22 @@ export default function windowMaximizeTest() {
     let sleep = (sleepMs: number) => new Promise < string > (resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
+    let isPCStatus: string = '';
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -176,7 +178,7 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(immersiveModeEnabledState).assertTrue();
             done();
           }else{
@@ -330,7 +332,7 @@ export default function windowMaximizeTest() {
         windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(immersiveModeEnabledState).assertTrue();
             done();
           }else{

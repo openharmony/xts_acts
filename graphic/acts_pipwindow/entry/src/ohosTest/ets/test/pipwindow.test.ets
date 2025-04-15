@@ -23,7 +23,7 @@ import common from '@ohos.app.ability.common';
 import { TextNodeController } from './CustomNode.test';
 import settings from '@ohos.settings';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+// let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 export default function pipWindowTest(context1: common.BaseContext, windowStage: ohosWindow.WindowStage) {
   describe('window_pipWindow_test', () => {
@@ -33,6 +33,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     let isAutoWindow: string =
       settings.getValueSync(globalThis.abilityContext, 'window_pcmode_switch_status', '',
         settings.domainName.DEVICE_SHARED);
+    let isPCStatus: string = settings.getValueSync(globalThis.abilityContext, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY);
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     let sleep = async (time:number):Promise<void> => {
       let timeoutId:number | null = null;
       await new Promise((resolve: (value: string) => void) => {
@@ -2279,7 +2284,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
         done();
         return;
@@ -2357,7 +2362,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
         done();
         return;
@@ -2438,7 +2443,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.level      : Level3
      */
     it('PiPSizeChange_Function_Callback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
         done();
         return;

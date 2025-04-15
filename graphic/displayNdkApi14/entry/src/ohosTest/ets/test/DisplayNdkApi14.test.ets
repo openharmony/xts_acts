@@ -21,7 +21,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { image } from '@kit.ImageKit';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 interface Capability{
   foldStatus:string;
@@ -65,7 +64,6 @@ export default function ActsDisplayNdkApi14Test() {
 
   describe('ActsDisplayNdkApi14Test', () => {
     let context : common.UIAbilityContext;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     let windowStage: window.WindowStage;
     let windowClass: window.Window;
@@ -87,8 +85,6 @@ export default function ActsDisplayNdkApi14Test() {
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       displayFoldStatus = display.getFoldStatus();
         console.log('jsUnittest beforeAll getFoldStatus =' + displayFoldStatus);
       try{

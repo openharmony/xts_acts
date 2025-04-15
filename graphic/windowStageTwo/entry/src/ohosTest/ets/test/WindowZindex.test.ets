@@ -18,7 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Test
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 
 export default function windowZindexTest() {
@@ -26,19 +25,22 @@ export default function windowZindexTest() {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
     let windowStage: window.WindowStage;
-    let deviceType: string = '';
     let isAutoWindow: string = '';
+    let isPCStatus: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context));
       windowStage = AppStorage.get('windowStage') as window.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     });
     beforeEach(() => {
     });
@@ -948,7 +950,7 @@ export default function windowZindexTest() {
     it('test_shiftAppWindowPointerEvent_subWindow_to_mainwindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_subWindow_to_mainwindow';
       console.log(caseName + 'begin');
-      if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
+      if(isPCStatus != '' || isAutoWindow == 'true'){
         let mainWindow = windowStage.getMainWindowSync();
       let driver = Driver.create();
       try{
@@ -1020,7 +1022,7 @@ export default function windowZindexTest() {
     it('test_shiftAppWindowPointerEvent_mainwindow_to_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_shiftAppWindowPointerEvent_mainwindow_to_subWindow';
       console.log(caseName + 'begin');
-      if(deviceType == '2in1' || (deviceType == 'tablet' && isAutoWindow == 'true')){
+      if(isPCStatus != '' || isAutoWindow == 'true'){
         let mainWindow = windowStage.getMainWindowSync();
       let driver = Driver.create();
       try{

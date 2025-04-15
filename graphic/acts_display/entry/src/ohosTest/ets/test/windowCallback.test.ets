@@ -52,9 +52,7 @@ export default function windowCallbackTest() {
     const TRUE_FLAG = true;
     let currentDeviceIsRk = false;
     beforeAll(() => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0490
