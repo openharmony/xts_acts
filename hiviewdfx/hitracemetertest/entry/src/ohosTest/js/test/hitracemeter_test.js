@@ -267,6 +267,25 @@ describe("HitraceMeterTest", function () {
             expect(flag).assertTrue();
         }
         console.info("------DFX_DFR_HitraceMeter_0600 end------");
+
+        flag = false;
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 5 start")
+            hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'myTestSyncTrace');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+            hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.MAX);
+            hiTraceMeter.startAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003, 'categoryTest');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+            hiTraceMeter.finishAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003);    
+
+            expect(flag).assertFalse();
+        } catch (err) {
+            flag = true;
+            console.info("DFX_DFR_HitraceMeter_0600 5 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 5 err = " + err);
+            expect(flag).assertTrue();
+        }
+        console.info("------DFX_DFR_HitraceMeter_0600 end------");
         done();
     })
 
