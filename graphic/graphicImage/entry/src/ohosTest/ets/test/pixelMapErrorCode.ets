@@ -20,6 +20,7 @@ import { image } from '@kit.ImageKit';
 import { taskpoolTest } from '../MainAbility/utils/taskpool'
 import resourceManager from '@ohos.resourceManager'
 import { rpc } from '@kit.IPCKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D'
 
 class MySequence implements rpc.Parcelable {
   pixel_map: image.PixelMap;
@@ -559,6 +560,159 @@ export default function imagePixelMapErrorCodeTest() {
           done();
         }
       })
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2000
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let rate: number = 0.5;
+      if (pixelMap != undefined) {
+        pixelMap.opacity(rate, (err: BusinessError) => {
+          if (err) {
+            console.error(`www data Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.info("www data Succeeded in setting opacity.");
+            expect(true).assertTrue();
+            done();
+          }
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2100
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let rate: number = 0.5;
+      if (pixelMap != undefined) {
+        pixelMap.opacity(rate).then(() => {
+          console.info('www data Succeeded in setting opacity.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`www data Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          done();
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2200
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      if (pixelMap != undefined) {
+        try {
+          pixelMap.setColorSpace(csm);
+          console.error('www data succeed in setColorSpace.');
+          expect(true).assertTrue();
+          done();
+        } catch(err){
+          console.error(`www data Failed to. code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2300
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        try {
+          pixelMap.setColorSpace(null);
+          expect().assertFail();
+          done();
+        } catch(err){
+          console.error(`www data Failed to. code is ${err.code}, message is ${err.message}`);
+          expect(Number(err.code) == 62980115).assertTrue();
+          done();
+        }
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2400
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let staticMetadata: image.HdrStaticMetadata = {
+        displayPrimariesX: [1.1, 1.1, 1.1],
+        displayPrimariesY: [1.2, 1.2, 1.2],
+        whitePointX: 1.1,
+        whitePointY: 1.2,
+        maxLuminance: 2.1,
+        minLuminance: 1.0,
+        maxContentLightLevel: 2.1,
+        maxFrameAverageLightLevel: 2.1,
+      };
+      taskpoolTest(pixelMap);
+      if (pixelMap != undefined) {
+        pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
+          console.info('www data Succeeded in setting pixelMap metadata.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`www data Failed to set the metadata.code ${error.code},message is ${error.message}`);
+          expect(Number(error.code) == 501).assertTrue();
+          done();
+        })
+      }
     });
   })
 }

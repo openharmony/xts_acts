@@ -17,6 +17,8 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
+import { text, drawing, common2D } from "@kit.ArkGraphics2D"
+
 export default function LineMetricsTest() {
   describe('LineMetricsTest', ()=> {
     beforeEach(async (done:Function)=> {
@@ -67,6 +69,49 @@ export default function LineMetricsTest() {
       console.info('[LineMetricsTest_0100] END');
       done();
     });
+
+    /**
+     * @tc.number    : SUB_BASIC_XTS_GRAPHICTEXT_API_0100
+     * @tc.name      : LineMetricsTest_0200
+     * @tc.desc      : runMetrics and LineMetrics
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('LineMetricsTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg  = "====testLineMetricsTest_0200===="
+      let fontCollection: text.FontCollection = new text.FontCollection();
+      try {
+        let fontFamilies: Array<string> = ["Clock_01"]
+        let myTextStyle: text.TextStyle = {
+          fontFamilies: fontFamilies
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+        }
+        let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+        let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
+        paragraphBuilder.addText(textData);
+        let paragraph: text.Paragraph = paragraphBuilder.build();
+        paragraph.layoutSync(600);
+        let lineMetrics: text.LineMetrics | undefined =  paragraph.getLineMetrics(0);
+        expect(lineMetrics?.startIndex != null).assertTrue();
+        expect(lineMetrics?.endIndex == 39).assertTrue();
+        expect(lineMetrics?.ascent != null).assertTrue();
+        expect(lineMetrics?.descent != null).assertTrue();
+        expect(lineMetrics?.height != null).assertTrue();
+        expect(lineMetrics?.width != null).assertTrue();
+        expect(lineMetrics?.left != null).assertTrue();
+        expect(lineMetrics?.baseline != null).assertTrue();
+        expect(lineMetrics?.lineNumber != null).assertTrue();
+        expect(lineMetrics?.topHeight != null).assertTrue();
+        done();
+      } catch(err){
+        console.info(msg + 'test error' + err);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
 
