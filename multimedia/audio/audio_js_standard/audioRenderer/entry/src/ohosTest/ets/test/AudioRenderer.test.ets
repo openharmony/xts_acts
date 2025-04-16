@@ -2533,9 +2533,9 @@ export default function audioRendererTest() {
       *@tc.desc      : on_outputDeviceChangeWithInfo
       *@tc.size      : MediumTest
       *@tc.type      : Function
-      *@tc.level     : Level2
+      *@tc.level     : Level 0
       */
-    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGEWITHINFO_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGEWITHINFO_0100", TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -2738,9 +2738,9 @@ export default function audioRendererTest() {
      *@tc.desc      : AudioStreamDeviceChangeReason
      *@tc.size      : MediumTest
      *@tc.type      : Function
-     *@tc.level     : Level2
+     *@tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_AUDIOSTREAMDEVICECHANGEREASON_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOSTREAMDEVICECHANGEREASON_0100", TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN)}`);
       expect(audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN).assertEqual(0);
       console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE)}`);
@@ -2758,9 +2758,9 @@ export default function audioRendererTest() {
        *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_48000
        *@tc.size      : MediumTest
        *@tc.type      : Function
-       *@tc.level     : Level2
+       *@tc.level     : Level 0
        */
-    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0100", TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -3417,9 +3417,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer-GetStreamInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETSTREAMINFO_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETSTREAMINFO_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -3467,9 +3467,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer-GetAudioSceneSync
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_SYNC_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_SYNC_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -4786,9 +4786,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - getAudioStreamId
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_0100", TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4929,9 +4929,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - setVolume 0 - promise
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_SET_VOLUME_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -12775,9 +12775,9 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - getVolume 0 - promise
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_VOLUME_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -13497,9 +13497,9 @@ export default function audioRendererTest() {
      *@tc.desc      : setDefaultOutputDevice input usage invalid return 6800103
      *@tc.size      : MediumTest
      *@tc.type      : Function
-     *@tc.level     : Level2
+     *@tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0001", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SET_DEFAULT_OUTPUT_DEVICE_0001", TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       let audioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_1,

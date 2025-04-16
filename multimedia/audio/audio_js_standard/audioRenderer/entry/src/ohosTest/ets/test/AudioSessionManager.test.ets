@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 import { sleep, Constant, AudioConcurrencyMode, AudioSessionDeactivatedReason } from './Common.test';
 import { BusinessError } from '@ohos.base';
@@ -199,7 +199,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_4', 4, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_4', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
       }
@@ -215,7 +215,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_5', 5, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_5', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy | undefined = undefined;
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, !isDone);
@@ -231,7 +231,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_6', 6, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_6', 3, async (done: Function) => {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, isDone);
     })
@@ -244,7 +244,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_7', 7, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_7', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
       }
@@ -260,7 +260,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_8', 8, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_8', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
         concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
       }
@@ -278,7 +278,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_9', 9, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_9', 3, async (done: Function) => {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, !isDone);
       let strategy: audio.AudioSessionStrategy = {
@@ -296,7 +296,7 @@ export default function audioSessionManagerTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', 10, async (done: Function) => {
+    it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', 3, async (done: Function) => {
       sessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
         if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType,Size,Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import ArrayList from '@ohos.util.ArrayList';
@@ -273,7 +273,8 @@ export default function audioManagerTest() {
             })
             .catch((error: BusinessError) => {
               if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP' ||
-                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO' || index == 'LINE_DIGITAL' || index == 'ACCESSORY_PORT'  ) {
+                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO' || 
+                index == 'LINE_DIGITAL' || index == 'ACCESSORY') {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
