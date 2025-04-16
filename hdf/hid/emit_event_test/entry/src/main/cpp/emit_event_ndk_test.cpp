@@ -22,10 +22,109 @@
 #include <js_native_api_types.h>
 #include <tuple>
 #include <unistd.h>
+#include <cctype>
 #include <vector>
 
-static int32_t deviceId = 0;
+struct Hid_DeviceHandle {
+    int32_t fd = -1;
+    int32_t nonBlock = 0;
+};
+
+Hid_DeviceHandle *NewHidDeviceHandle()
+{
+    return new Hid_DeviceHandle;
+}
+
+void DeleteHidDeviceHandle(Hid_DeviceHandle **dev)
+{
+    if (*dev != nullptr) {
+        delete *dev;
+        *dev = nullptr;
+    }
+}
+
 constexpr const char* DEVICE_NAME = "VSoC_keyboard";
+constexpr const char* KEYBOARD_SUFFIX = "keyboard";
+const uint32_t PARAM_0 = 0;
+const uint32_t PARAM_1 = 1;
+const uint64_t HID_DDK_INVALID_DEVICE_ID = 0xFFFFFFFFFFFFFFFF;
+const uint32_t DATA_BUFF_SIZE  = 1024;
+const uint32_t GET_REPORT_BUFF_SIZE = 9;
+const uint32_t INVALID_BUFF_SIZE = HID_MAX_REPORT_BUFFER_SIZE + 1;
+const uint32_t READ_TIME_OUT = 10000;
+const uint32_t SIXTEEN_BIT = 16;
+const uint32_t THIRTYTWO_BIT = 32;
+const uint32_t BUS_NUM_MASK = 0xFFFF0000;
+const uint32_t DEVICE_NUM_MASK = 0x0000FFFF;
+const uint32_t INVALID_NON_BLOCK = 2;
+
+static uint64_t ConvertDeviceId(uint64_t deviceId64)
+{
+    int32_t deviceId32 = static_cast<uint32_t>(deviceId64 >> THIRTYTWO_BIT);
+    uint32_t busNum = (deviceId32 & BUS_NUM_MASK) >> SIXTEEN_BIT;
+    uint32_t deviceNum = deviceId32 & DEVICE_NUM_MASK;
+    uint64_t deviceId = ((static_cast<uint64_t>(busNum) << THIRTYTWO_BIT) | deviceNum);
+
+    return deviceId;
+}
+
+static uint64_t GetDeviceId(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1];
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int64_t tmpDeviceId;
+    napi_get_value_int64(env, args[0], &tmpDeviceId);
+    uint64_t deviceId = ConvertDeviceId(tmpDeviceId);
+    return deviceId;
+}
+
+static napi_value IsHidDevice(napi_env env, napi_callback_info info)
+{
+    uint64_t deviceId = GetDeviceId(env, info);
+    int32_t returnValue = OH_Hid_Init();
+    Hid_DeviceHandle *deviceHandle = nullptr;
+
+    returnValue = OH_Hid_Open(deviceId, 0, &deviceHandle);
+    bool boolRet = returnValue == HID_DDK_SUCCESS ? true : false;
+    OH_Hid_Close(&deviceHandle);
+    OH_Hid_Release();
+    napi_value result = nullptr;
+    napi_status status = napi_get_boolean(env, boolRet, &result);
+    NAPI_CALL(env, status);
+    return result;
+}
+
+static bool CompareIgnoreCase(char a, char b)
+{
+    return std::tolower(a) == std::tolower(b);
+}
+
+static bool EndsWithSuffix(char data[], const char* suffix)
+{
+    size_t dataSize = strlen(data);
+    size_t suffixLen = strlen(suffix);
+    if (dataSize < suffixLen) {
+        return false;
+    }
+    for (size_t i = 0; i < suffixLen; ++i) {
+        if (!CompareIgnoreCase(data[dataSize - suffixLen + i], suffix[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+static bool IsUsbKeyboard(Hid_DeviceHandle *dev)
+{
+    std::vector<char> buffer(DATA_BUFF_SIZE, 0);
+    int32_t ret = OH_Hid_GetRawName(dev, buffer.data(), DATA_BUFF_SIZE);
+    if (ret != HID_DDK_SUCCESS) {
+        return false;
+    }
+    return EndsWithSuffix(buffer.data(), KEYBOARD_SUFFIX);
+}
 
 static int32_t CreateTestDevice(const char* str)
 {
@@ -73,6 +172,7 @@ static int32_t CreateTestDevice(const char* str)
 
 static napi_value HidCreateDeviceOne(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(DEVICE_NAME);
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
@@ -81,6 +181,7 @@ static napi_value HidCreateDeviceOne(napi_env env, napi_callback_info info)
 
 static napi_value HidCreateDeviceTwo(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(nullptr);
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
@@ -89,6 +190,7 @@ static napi_value HidCreateDeviceTwo(napi_env env, napi_callback_info info)
 
 static napi_value HidCreateDeviceThree(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice("");
     napi_value result = nullptr;
     NAPI_CALL(env, napi_create_int32(env, deviceId, &result));
@@ -97,6 +199,7 @@ static napi_value HidCreateDeviceThree(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(DEVICE_NAME);
     NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     Hid_EmitItem event = {
@@ -114,6 +217,7 @@ static napi_value HidEmitEventOne(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(DEVICE_NAME);
     NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 21;
@@ -130,6 +234,7 @@ static napi_value HidEmitEventTwo(napi_env env, napi_callback_info info)
 
 static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(DEVICE_NAME);
     NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     const uint16_t len = 20;
@@ -146,6 +251,7 @@ static napi_value HidEmitEventThree(napi_env env, napi_callback_info info)
 
 static napi_value HidDestroyDeviceOne(napi_env env, napi_callback_info info)
 {
+    int32_t deviceId = 0;
     deviceId = CreateTestDevice(DEVICE_NAME);
     NAPI_ASSERT(env, deviceId >= 0, "OH_Hid_CreateDevice failed");
     int32_t returnValue = OH_Hid_DestroyDevice(deviceId);
@@ -169,6 +275,1174 @@ static napi_value HidDestroyDeviceThree(napi_env env, napi_callback_info info)
     int32_t returnValue = OH_Hid_DestroyDevice(devId);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
+static napi_value HidInitOne(napi_env env, napi_callback_info info)
+{
+    int32_t returnValue = OH_Hid_Init();
+    returnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, returnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReleaseOne(napi_env env, napi_callback_info info)
+{
+    int32_t returnValue = OH_Hid_Release();
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReleaseTwo(napi_env env, napi_callback_info info)
+{
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+    int32_t returnValue = OH_Hid_Release();
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidOpenOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t initReturnValue = OH_Hid_Init();
+    NAPI_ASSERT(env, initReturnValue == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidOpenTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidOpenThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t initReturnValue = OH_Hid_Init();
+    NAPI_ASSERT(env, initReturnValue == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, nullptr);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidOpenFour(napi_env env, napi_callback_info info)
+{
+    int32_t initReturnValue = OH_Hid_Init();
+    NAPI_ASSERT(env, initReturnValue == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(HID_DDK_INVALID_DEVICE_ID, 0, &dev);
+
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidCloseOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    int32_t returnValue = OH_Hid_Close(&dev);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidCloseTwo(napi_env env, napi_callback_info info)
+{
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int32_t returnValue = OH_Hid_Close(nullptr);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidCloseThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidWriteOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[] = {0x02, 0x02};
+    uint32_t bytesWritten = 0;
+    int32_t returnValue = OH_Hid_Write(dev, data, sizeof(data), &bytesWritten);
+    DeleteHidDeviceHandle(&dev);
+
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidWriteTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[] = {0x02, 0x02};
+    uint32_t bytesWritten = 0;
+    returnValue = OH_Hid_Write(nullptr, data, sizeof(data), &bytesWritten);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Write failed");
+
+    returnValue = OH_Hid_Write(dev, nullptr, sizeof(data), &bytesWritten);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Write failed");
+
+    returnValue = OH_Hid_Write(dev, data, 0, &bytesWritten);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Write failed");
+
+    returnValue = OH_Hid_Write(dev, data, INVALID_BUFF_SIZE, &bytesWritten);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Write failed");
+
+    returnValue = OH_Hid_Write(dev, data, sizeof(data), nullptr);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Write failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidWriteThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    if (IsUsbKeyboard(dev)) {
+        uint8_t data[] = {0x00, 0x02};
+        uint32_t bytesWritten = 0;
+        returnValue = OH_Hid_Write(dev, data, sizeof(data), &bytesWritten);
+    }
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadTimeoutOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    int32_t returnValue = OH_Hid_ReadTimeout(dev, data, DATA_BUFF_SIZE, 1000, &bytesRead);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadTimeoutTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_ReadTimeout(nullptr, data, DATA_BUFF_SIZE, READ_TIME_OUT, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_ReadTimeout failed");
+
+    returnValue = OH_Hid_ReadTimeout(dev, nullptr, DATA_BUFF_SIZE, READ_TIME_OUT, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_ReadTimeout failed");
+
+    returnValue = OH_Hid_ReadTimeout(dev, data, 0, READ_TIME_OUT, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_ReadTimeout failed");
+
+    returnValue = OH_Hid_ReadTimeout(dev, data, INVALID_BUFF_SIZE, READ_TIME_OUT, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_ReadTimeout failed");
+
+    returnValue = OH_Hid_ReadTimeout(dev, data, DATA_BUFF_SIZE, READ_TIME_OUT, nullptr);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_ReadTimeout failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadTimeoutThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_ReadTimeout(dev, data, DATA_BUFF_SIZE, READ_TIME_OUT, &bytesRead);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadTimeoutFour(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_ReadTimeout(dev, data, DATA_BUFF_SIZE, 0, &bytesRead);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    int32_t returnValue = OH_Hid_Read(dev, data, DATA_BUFF_SIZE, &bytesRead);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_Read(nullptr, data, DATA_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Read failed");
+
+    returnValue = OH_Hid_Read(dev, nullptr, DATA_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Read failed");
+
+    returnValue = OH_Hid_Read(dev, data, 0, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Read failed");
+
+    returnValue = OH_Hid_Read(dev, data, INVALID_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Read failed");
+
+    returnValue = OH_Hid_Read(dev, data, DATA_BUFF_SIZE, nullptr);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_Read failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_Read(dev, data, DATA_BUFF_SIZE, &bytesRead);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidReadFour(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_SetNonBlocking(dev, 1);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_Read(dev, data, DATA_BUFF_SIZE, &bytesRead);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSetNonBlockingOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    int32_t returnValue = OH_Hid_SetNonBlocking(dev, 0);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSetNonBlockingTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_SetNonBlocking(nullptr, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SetNonBlocking failed");
+
+    returnValue = OH_Hid_SetNonBlocking(dev, INVALID_NON_BLOCK);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SetNonBlocking failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSetNonBlockingThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_SetNonBlocking(dev, 0);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawInfoOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    struct Hid_RawDevInfo rawDevInfo;
+    int32_t returnValue = OH_Hid_GetRawInfo(dev, &rawDevInfo);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawInfoTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    struct Hid_RawDevInfo rawDevInfo;
+    returnValue = OH_Hid_GetRawInfo(nullptr, &rawDevInfo);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawInfo failed");
+
+    returnValue = OH_Hid_GetRawInfo(dev, nullptr);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawInfo failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawInfoThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    struct Hid_RawDevInfo rawDevInfo;
+    returnValue = OH_Hid_GetRawInfo(dev, &rawDevInfo);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawNameOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    char data[DATA_BUFF_SIZE] = {0};
+    int32_t returnValue = OH_Hid_GetRawName(dev, data, DATA_BUFF_SIZE);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawNameTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    char data[DATA_BUFF_SIZE] = {0};
+    returnValue = OH_Hid_GetRawName(nullptr, data, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawName failed");
+
+    returnValue = OH_Hid_GetRawName(dev, nullptr, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawName failed");
+
+    returnValue = OH_Hid_GetRawName(dev, data, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawName failed");
+
+    returnValue = OH_Hid_GetRawName(dev, data, INVALID_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawName failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawNameThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    char data[DATA_BUFF_SIZE] = {0};
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_GetRawName(dev, data, DATA_BUFF_SIZE);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetPhysicalAddressOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    char data[DATA_BUFF_SIZE] = {0};
+    int32_t returnValue = OH_Hid_GetPhysicalAddress(dev, data, DATA_BUFF_SIZE);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetPhysicalAddressTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    char data[DATA_BUFF_SIZE] = {0};
+    returnValue = OH_Hid_GetPhysicalAddress(nullptr, data, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetPhysicalAddress failed");
+
+    returnValue = OH_Hid_GetPhysicalAddress(dev, nullptr, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetPhysicalAddress failed");
+
+    returnValue = OH_Hid_GetPhysicalAddress(dev, data, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetPhysicalAddress failed");
+
+    returnValue = OH_Hid_GetPhysicalAddress(dev, data, INVALID_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetPhysicalAddress failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetPhysicalAddressThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    char data[DATA_BUFF_SIZE] = {0};
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_GetPhysicalAddress(dev, data, DATA_BUFF_SIZE);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawUniqueIdOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    int32_t returnValue = OH_Hid_GetRawUniqueId(dev, data, DATA_BUFF_SIZE);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawUniqueIdTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    returnValue = OH_Hid_GetRawUniqueId(nullptr, data, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawUniqueId failed");
+
+    returnValue = OH_Hid_GetRawUniqueId(dev, nullptr, DATA_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawUniqueId failed");
+
+    returnValue = OH_Hid_GetRawUniqueId(dev, data, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawUniqueId failed");
+
+    returnValue = OH_Hid_GetRawUniqueId(dev, data, INVALID_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetRawUniqueId failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetRawUniqueIdThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    returnValue = OH_Hid_GetRawUniqueId(dev, data, DATA_BUFF_SIZE);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSendReportOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[] = {0x02, 0x02};
+    int32_t returnValue = OH_Hid_SendReport(dev, HID_OUTPUT_REPORT, data, sizeof(data));
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSendReportTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[] = {0x02, 0x02};
+    returnValue = OH_Hid_SendReport(nullptr, HID_OUTPUT_REPORT, data, sizeof(data));
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SendReport failed");
+
+    returnValue = OH_Hid_SendReport(dev, HID_OUTPUT_REPORT, nullptr, sizeof(data));
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SendReport failed");
+
+    returnValue = OH_Hid_SendReport(dev, HID_OUTPUT_REPORT, data, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SendReport failed");
+
+    returnValue = OH_Hid_SendReport(dev, HID_OUTPUT_REPORT, data, INVALID_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_SendReport failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSendReportThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 1, &dev);
+
+    uint8_t data[] = {0x02, 0x02};
+    returnValue = OH_Hid_SendReport(dev, HID_FEATURE_REPORT, data, sizeof(data));
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSendReportFour(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 1, &dev);
+
+    uint8_t data[] = {0x02, 0x02};
+    returnValue = OH_Hid_SendReport(dev, HID_INPUT_REPORT, data, sizeof(data));
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidSendReportFive(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    if (IsUsbKeyboard(dev)) {
+        uint8_t data[] = {0x00, 0x02};
+        returnValue = OH_Hid_SendReport(dev, HID_OUTPUT_REPORT, data, sizeof(data));
+        if (returnValue == HID_DDK_INVALID_OPERATION) {
+            returnValue = HID_DDK_SUCCESS;
+        }
+    }
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[GET_REPORT_BUFF_SIZE] = {0};
+    int32_t returnValue = OH_Hid_GetReport(dev, HID_OUTPUT_REPORT, data, GET_REPORT_BUFF_SIZE);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[GET_REPORT_BUFF_SIZE] = {0};
+    returnValue = OH_Hid_GetReport(nullptr, HID_OUTPUT_REPORT, data, GET_REPORT_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReport(dev, HID_OUTPUT_REPORT, nullptr, GET_REPORT_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReport(dev, HID_OUTPUT_REPORT, data, 0);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReport(dev, HID_OUTPUT_REPORT, data, INVALID_BUFF_SIZE);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 1, &dev);
+
+    uint8_t data[GET_REPORT_BUFF_SIZE] = {0};
+    returnValue = OH_Hid_GetReport(dev, HID_OUTPUT_REPORT, data, GET_REPORT_BUFF_SIZE);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportFour(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    if (IsUsbKeyboard(dev)) {
+        uint8_t data[GET_REPORT_BUFF_SIZE] = {0};
+        returnValue = OH_Hid_GetReport(dev, HID_INPUT_REPORT, data, GET_REPORT_BUFF_SIZE);
+        if (returnValue == HID_DDK_INVALID_OPERATION) {
+            returnValue = HID_DDK_SUCCESS;
+        }
+    }
+
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportFive(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 1, &dev);
+
+    uint8_t data[GET_REPORT_BUFF_SIZE] = {0};
+
+    returnValue = OH_Hid_GetReport(dev, HID_FEATURE_REPORT, data, GET_REPORT_BUFF_SIZE);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportDescriptorOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    Hid_DeviceHandle *dev = NewHidDeviceHandle();
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    int32_t returnValue = OH_Hid_GetReportDescriptor(dev, data, DATA_BUFF_SIZE, &bytesRead);
+    DeleteHidDeviceHandle(&dev);
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+static napi_value HidGetReportDescriptorTwo(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_GetReportDescriptor(nullptr, data, DATA_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReportDescriptor(dev, nullptr, DATA_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReportDescriptor(dev, data, 0, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReportDescriptor(dev, data, INVALID_BUFF_SIZE, &bytesRead);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+
+    returnValue = OH_Hid_GetReportDescriptor(dev, data, DATA_BUFF_SIZE, nullptr);
+    NAPI_ASSERT(env, returnValue == HID_DDK_INVALID_PARAMETER, "OH_Hid_GetReport failed");
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
+
+static napi_value HidGetReportDescriptorThree(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    int32_t hidInitRetVal = OH_Hid_Init();
+    NAPI_ASSERT(env, hidInitRetVal == HID_DDK_SUCCESS, "OH_Hid_Init failed");
+
+    int64_t deviceId64;
+    NAPI_CALL(env, napi_get_value_int64(env, args[PARAM_0], &deviceId64));
+    uint64_t deviceId = ConvertDeviceId(deviceId64);
+    Hid_DeviceHandle *dev;
+    int32_t returnValue = OH_Hid_Open(deviceId, 0, &dev);
+
+    uint8_t data[DATA_BUFF_SIZE] = {0};
+    uint32_t bytesRead = 0;
+    returnValue = OH_Hid_GetReportDescriptor(dev, data, DATA_BUFF_SIZE, &bytesRead);
+    OH_Hid_Close(&dev);
+    int32_t releaseReturnValue = OH_Hid_Release();
+    NAPI_ASSERT(env, releaseReturnValue == HID_DDK_SUCCESS, "OH_Hid_Release failed");
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
     return result;
 }
 
