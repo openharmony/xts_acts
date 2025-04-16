@@ -27,7 +27,32 @@ let testAbilityContext: common.UIAbilityContext;
 let driver = Driver.create();
 let isAppSelectorExist = true;
 let selectorName = "wei.hmsapp.appgallery";
+const TEST_CASE_NAME: string = 'SUB_Ability_AbilityRuntime_AppcloneChose_xxxx';
+let textsToMatch: Array<string> = ["打开", "允许", "本次允许"];
 
+async function clickMatchingButton(texts: Array<string>) {
+  for (const text of texts) {
+    let buttons = await driver.findComponents(ON.text(text));
+    if (buttons && buttons.length > 0) {
+      buttons[buttons.length - 1].click();
+      hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} click last button success`);
+      return true;
+    }
+  }
+  hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no matching button found`);
+  return false;
+};
+
+async function handlePermissionPrompt() {
+  let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+  hilog.info(0x0000, TAG, '%{public}s',
+    `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+  if (allowed) {
+    if (!await clickMatchingButton(textsToMatch)) {
+      hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no matching button found`);
+    }
+  }
+};
 function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
@@ -146,15 +171,7 @@ export default function actsStartAppCloneAppTest() {
         });
         await sleep(1000);
         try {
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
+          await handlePermissionPrompt();
           await sleep(1000);
           hilog.info(0x0000, TAG, '%{public}s',
             `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onForegroundFlag== ${onForegroundFlag} `);
@@ -215,15 +232,7 @@ export default function actsStartAppCloneAppTest() {
         });
         await sleep(1000);
         try {
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
+          await handlePermissionPrompt();
           await sleep(1000);
           hilog.info(0x0000, TAG, '%{public}s',
             `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onForegroundFlag== ${onForegroundFlag} `);
@@ -330,15 +339,7 @@ export default function actsStartAppCloneAppTest() {
         });
         await sleep(1000);
         try {
-          let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
-          hilog.info(0x0000, TAG, '%{public}s',
-            `${TEST_SUITE_NAME}#${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
-          if (allowed) {
-            let buttons = await driver.findComponents(ON.text('打开'));
-            if (buttons && buttons.length > 0) {
-              buttons[buttons.length - 1].click();
-            }
-          }
+          await handlePermissionPrompt();
           await sleep(1000);
           hilog.info(0x0000, TAG, '%{public}s',
             `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onForegroundFlag== ${onForegroundFlag} `);
