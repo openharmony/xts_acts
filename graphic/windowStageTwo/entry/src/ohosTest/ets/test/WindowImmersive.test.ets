@@ -18,14 +18,12 @@ import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
-import deviceInfo from '@ohos.deviceInfo';
 export default function windowImmersiveTest() {
   describe('windowImmersive_test', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:ohosWindow.WindowStage;
     let isPCStatus:string = '';
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     let avoidArea1: window.AvoidArea;
     
@@ -42,11 +40,7 @@ export default function windowImmersiveTest() {
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
-
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
-
       let windowClass = windowStage.getMainWindowSync();
         await windowClass.setWindowLayoutFullScreen(false);
         await windowClass.setWindowSystemBarEnable(['status']);
@@ -1078,7 +1072,7 @@ export default function windowImmersiveTest() {
       let caseName = 'TestSetImmersive';
       let windowClass = windowStage.getMainWindowSync();
       try {
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
+        if(isPCStatus == ''|| isAutoWindow =='false'){
         windowClass.setImmersiveModeEnabledState(false);
         let immersiveModeStateTrue: boolean = windowClass.getImmersiveModeEnabledState();
         console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${immersiveModeStateTrue}`);
@@ -1125,7 +1119,7 @@ export default function windowImmersiveTest() {
           windowClass.setImmersiveModeEnabledState(true);
           let beforeImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
           console.info(`${caseName} Succeeded in setting the immersiveMode enabled true. Data: ${beforeImmersiveModeState}`);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(beforeImmersiveModeState).assertTrue();
             await sleep(1000);
             windowClass.setImmersiveModeEnabledState(false);
@@ -1169,7 +1163,7 @@ export default function windowImmersiveTest() {
             windowClass.setImmersiveModeEnabledState(false);
             let afterImmersiveModeState: boolean = windowClass.getImmersiveModeEnabledState();
             console.info(`${caseName} Succeeded in setting the immersiveMode enabled false. Data: ${afterImmersiveModeState}`);
-            if(deviceType != '2in1'|| isAutoWindow =='false'){
+            if(isPCStatus == ''|| isAutoWindow =='false'){
             expect(afterImmersiveModeState).assertFalse();
             done();
           }else{

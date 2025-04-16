@@ -25,17 +25,21 @@ export default function windowPropertiesTest() {
     describe('windowProperties_test', () => {
         let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
         let context: common.UIAbilityContext;
-        let deviceType: string = '';
         let windowStage: ohosWindow.WindowStage;
         let isAutoWindow: string = '';
+        let isPCStatus: string = '';
         beforeAll(() => {
             context = AppStorage.get('context') as common.UIAbilityContext;
             console.log('windowTest context: ' + JSON.stringify(context))
             windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-            deviceType = deviceInfo.deviceType;
-            console.log('jsUnittest beforeAll deviceType =' + deviceType);
             isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
             console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+            isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+            //isPCStatus == '' 非PC设备
+            //isPCStatus == '1' PC设备状态栏dock未融合
+            //isPCStatus == '0' PC设备状态栏dock融合
+            console.info(`beforeAll isPCStatus: `+ isPCStatus);
+
 
         })
         beforeEach(() => {
@@ -3069,7 +3073,7 @@ export default function windowPropertiesTest() {
                 console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
                 const windowStatus = windowClass.getWindowStatus();
                 console.info(`${caseName} windowStatus is: ${windowStatus}`);
-                if (deviceType !== '2in1' || isAutoWindow == 'false') {
+                if (isPCStatus == '' || isAutoWindow == 'false') {
                     expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
                     await windowClass.recover();
                     done();
