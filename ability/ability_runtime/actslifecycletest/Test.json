@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "Actslifecycletest.hap"
+                "ActsLifeCycleTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
