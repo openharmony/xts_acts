@@ -474,7 +474,7 @@ export default function inputMethodAuthorityJSUnit() {
         console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 getInputMethodAbility success");
         let state =  await InputMethodAbility.getSecurityMode();
         console.info("====>Sub_InputMethod_IME_getSecurityMode_0101 state is: " + state);
-        expect(true).assertTrue();
+        expect(typeof (state) === 'number').assertTrue();
         done();
       }catch(err){
         console.info(`====>Sub_InputMethod_IME_getSecurityMode_0101 errCode:${err.code}, errMessage is ${err.message}`)
