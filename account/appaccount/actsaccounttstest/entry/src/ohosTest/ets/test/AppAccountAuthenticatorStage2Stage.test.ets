@@ -16,6 +16,8 @@ import account from '@ohos.account.appAccount'
 import Want from '@ohos.app.ability.Want';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
 const name = 'zhangsan'
 const fakeOwner = 'com.acts.notExist'
@@ -35,11 +37,11 @@ export default function AppAccountAuthenticatorStage2Stage() {
         action: "action1",
         parameters: {},
       }
-      try {
-        await globalThis.abilityContext.startAbility(wantInfo);
-      } catch (err) {
-        console.info("====>startAbility err:" + JSON.stringify(err));
-      }
+      globalThis.abilityContext.startAbilityForResult(wantInfo, (err: BusinessError, result: common.AbilityResult) => {
+        console.info("====>startAbilityForResult err: " + JSON.stringify(err));
+        console.info("====>startAbilityForResult result: " + JSON.stringify(result));
+        done();
+      });
       await driver.delayMs(500);
       try {
         let allowed = await driver.findComponent(ON.text("允许"));
@@ -54,7 +56,6 @@ export default function AppAccountAuthenticatorStage2Stage() {
       } catch (err) {
         console.info("====>click button err:" + JSON.stringify(err));
       }
-      done();
     });
 
     /*
