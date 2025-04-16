@@ -15,7 +15,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
-import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base';
 
 export default function inputMethodNormalStageJSUnit() {
