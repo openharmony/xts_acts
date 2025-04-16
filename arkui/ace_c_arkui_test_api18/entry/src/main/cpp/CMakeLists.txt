@@ -23,6 +23,7 @@ add_library(nativerender SHARED
     component/swiper_component.cpp
     component/text_component.cpp
     component/button_component.cpp
+    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
 )
 
 add_library(nativefunc SHARED
