@@ -1192,7 +1192,7 @@ static napi_value Wscanf_One(napi_env env, napi_callback_info info)
     fputws(wstr, fp);
     fseek(fp, PARAM_0, SEEK_SET);
     wchar_t tmp[PARAM_80] = {PARAM_0};
-    fgetws(tmp, sizeof(tmp)/sizeof(wchar_t), fp);
+    fgetws(tmp, sizeof(tmp) / sizeof(wchar_t), fp);
     fseek(fp, PARAM_0, SEEK_SET);
     OH_LOG_INFO(LOG_APP, "Wscanf_One tmp : %{public}ls ", tmp);
     FILE *fp1 = freopen(TEMP_FILE, "r", stdin);
