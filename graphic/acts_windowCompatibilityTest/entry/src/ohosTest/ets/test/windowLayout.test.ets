@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
+import settings from '@ohos.settings';
 
 async function sleep(time: number) {
   let timeoutId: number = 0;
@@ -34,13 +34,14 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
     console.log('describe window_focus_test start!!!')
     let tempWnd: window.Window | void;
     let subWin: window.Window | void;
-    let currentDeviceIsPC = false;
+    let isPCStatus: string = '';
     beforeAll(() => {
       console.info('window_layout_test beforeAll begin');
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-      console.info('window_layout_test beforeAll end');
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     })
     beforeEach(async ()=>{
       let msg = 'window_focus_test';
@@ -267,7 +268,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         console.log(msgStr + 'showWindow failed');
         expect().assertFail();
       });
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(async () => {
           console.info(msgStr + 'Succeeded in maximizing the main window.');
           await (win as window.Window).resize(707, 707).then(() => {
@@ -334,7 +335,7 @@ export default function windowLayoutTest(context: common.UIAbilityContext, windo
         expect().assertFail();
         done();
       });
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         await (win as window.Window).maximize(window.MaximizePresentation.ENTER_IMMERSIVE).then(() => {
           console.info(msgStr + 'Succeeded in maximizing the main window.');
           (win as window.Window).resize(500, 1000, (err: BusinessError) => {
