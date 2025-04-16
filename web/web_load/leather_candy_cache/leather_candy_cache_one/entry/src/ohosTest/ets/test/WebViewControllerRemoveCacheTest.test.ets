@@ -53,9 +53,9 @@ export default function webViewControllerRemoveCacheTest() {
     * @tc.desc       : test removeCache true
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testRemoveCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testRemoveCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testRemoveCache001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRemoveCache001", true, 77200, done);

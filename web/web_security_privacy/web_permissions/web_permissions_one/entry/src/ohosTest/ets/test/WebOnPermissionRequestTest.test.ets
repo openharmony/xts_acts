@@ -14,7 +14,7 @@
  */
 import { expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -60,9 +60,9 @@ export default function webOnPermissionRequest() {
     * @tc.desc        : test permissionRequest deny
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testPermissionRequestDenyGroup001', 0, async (done: Function) => {
+    it('testPermissionRequestDenyGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestDeny001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testPermissionRequestDeny001", '"deny"', 70320,
@@ -80,7 +80,7 @@ export default function webOnPermissionRequest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testPermissionRequestGrantGroup001', 0, async (done: Function) => {
+    it('testPermissionRequestGrantGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitPermissionRequestGrant001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testPermissionRequestGrant001", '"grant"', 70322,

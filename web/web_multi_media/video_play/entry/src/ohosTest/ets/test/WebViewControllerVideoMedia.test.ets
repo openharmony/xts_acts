@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
@@ -52,9 +52,9 @@ export default function webViewControllerVideoMedia() {
     * @tc.desc       : test WebViewControllerVideoMedia
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('StopAllMedia0100', 0, async (done: Function) => {
+    it('StopAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0100", 3, 77011, done);
@@ -77,7 +77,7 @@ export default function webViewControllerVideoMedia() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('StopAllMedia0200', 0, async (done: Function) => {
+    it('StopAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0200", 0, 77012, done);
@@ -100,7 +100,7 @@ export default function webViewControllerVideoMedia() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('StopAllMedia0300', 0, async (done: Function) => {
+    it('StopAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0300", 3, 77013, done);
@@ -123,7 +123,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('StopAllMedia0400', 0, async (done: Function) => {
+    it('StopAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0400", 2, 77014, done);
@@ -146,7 +146,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('StopAllMedia0500', 0, async (done: Function) => {
+    it('StopAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0500", 2, 77015, done);
@@ -169,7 +169,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('StopAllMedia0600', 0, async (done: Function) => {
+    it('StopAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0600", 3, 77016, done);
@@ -192,7 +192,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('StopAllMedia0700', 0, async (done: Function) => {
+    it('StopAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0700", 3, 77017, done);
@@ -215,7 +215,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('StopAllMedia0800', 0, async (done: Function) => {
+    it('StopAllMedia0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("StopAllMedia0800", 3, 77018, done);
@@ -238,7 +238,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0100', 0, async (done: Function) => {
+    it('ResumeAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0100", 1, 78011, done);
@@ -261,7 +261,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0200', 0, async (done: Function) => {
+    it('ResumeAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0200", 0, 78012, done);
@@ -284,7 +284,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0300', 0, async (done: Function) => {
+    it('ResumeAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0300", 1, 78013, done);
@@ -307,7 +307,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0400', 0, async (done: Function) => {
+    it('ResumeAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0400", 2, 78014, done);
@@ -330,7 +330,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0500', 0, async (done: Function) => {
+    it('ResumeAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0500", 3, 78015, done);
@@ -353,7 +353,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0600', 0, async (done: Function) => {
+    it('ResumeAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0600", 1, 78016, done);
@@ -376,7 +376,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('ResumeAllMedia0700', 0, async (done: Function) => {
+    it('ResumeAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ResumeAllMedia0700", 1, 78017, done);
@@ -399,7 +399,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0100', 0, async (done: Function) => {
+    it('PauseAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0100", 2, 79011, done);
@@ -422,7 +422,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0200', 0, async (done: Function) => {
+    it('PauseAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0200", 2, 79012, done);
@@ -445,7 +445,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0300', 0, async (done: Function) => {
+    it('PauseAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0300", 2, 79013, done);
@@ -468,7 +468,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0400', 0, async (done: Function) => {
+    it('PauseAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0400", 2, 79014, done);
@@ -491,7 +491,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0500', 0, async (done: Function) => {
+    it('PauseAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0500", 2, 79015, done);
@@ -514,7 +514,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0600', 0, async (done: Function) => {
+    it('PauseAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0600", 2, 79016, done);
@@ -537,7 +537,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0700', 0, async (done: Function) => {
+    it('PauseAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0700", 2, 79017, done);
@@ -560,7 +560,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('PauseAllMedia0800', 0, async (done: Function) => {
+    it('PauseAllMedia0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("PauseAllMedia0800", 2, 79018, done);
@@ -583,7 +583,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('CloseAllMediaPresentations0100', 0, async (done: Function) => {
+    it('CloseAllMediaPresentations0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("CloseAllMediaPresentations0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("CloseAllMediaPresentations0100", true, 8001, done);
@@ -606,7 +606,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('CloseAllMediaPresentations0200', 0, async (done: Function) => {
+    it('CloseAllMediaPresentations0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("CloseAllMediaPresentations0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("CloseAllMediaPresentations0200", true, 8002, done);
@@ -629,7 +629,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('CloseAllMediaPresentations0300', 0, async (done: Function) => {
+    it('CloseAllMediaPresentations0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("CloseAllMediaPresentations0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("CloseAllMediaPresentations0300", true, 8003, done);
@@ -652,7 +652,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('CloseAllMediaPresentations0400', 0, async (done: Function) => {
+    it('CloseAllMediaPresentations0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("CloseAllMediaPresentations0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("CloseAllMediaPresentations0400", true, 8004, done);
@@ -675,7 +675,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('CloseAllMediaPresentations0500', 0, async (done: Function) => {
+    it('CloseAllMediaPresentations0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("CloseAllMediaPresentations0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("CloseAllMediaPresentations0500", true, 8005, done);
@@ -698,7 +698,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0100', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0100", 0, 8101, done);
@@ -721,7 +721,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0200', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0200", 1, 8102, done);
@@ -744,7 +744,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0300', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0300", 2, 8103, done);
@@ -767,7 +767,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0400', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0400", 2, 8104, done);
@@ -790,7 +790,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0500', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0500", 3, 8105, done);
@@ -813,7 +813,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0600', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0600", true, 8106, done);
@@ -836,7 +836,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0700', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0700", 0, 8107, done);
@@ -859,7 +859,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0800', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0800", 1, 8108, done);
@@ -882,7 +882,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState0900', 0, async (done: Function) => {
+    it('GetMediaPlaybackState0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState0900", 1, 8109, done);
@@ -905,7 +905,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState1000', 0, async (done: Function) => {
+    it('GetMediaPlaybackState1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState1000", 1, 8110, done);
@@ -928,7 +928,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState1100', 0, async (done: Function) => {
+    it('GetMediaPlaybackState1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState1100", 2, 8111, done);
@@ -951,7 +951,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState1200', 0, async (done: Function) => {
+    it('GetMediaPlaybackState1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState1200", 2, 8112, done);
@@ -974,7 +974,7 @@ export default function webViewControllerVideoMedia() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('GetMediaPlaybackState1300', 0, async (done: Function) => {
+    it('GetMediaPlaybackState1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("GetMediaPlaybackState1300", 1, 8113, done);

@@ -59,9 +59,9 @@ export default function DNSHostIP() {
      * @tc.desc       : test DNSHostIP
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('setHostIP0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('setHostIP0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("setHostIP0100", 10)
       await Utils.sleep(5000);
       Utils.registerEvent("setHostIP0100", true, 8770, done);

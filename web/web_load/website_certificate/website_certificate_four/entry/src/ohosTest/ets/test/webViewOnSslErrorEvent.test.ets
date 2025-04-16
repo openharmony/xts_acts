@@ -52,9 +52,9 @@ export default function webViewOnSslErrorEvent() {
     * @tc.desc       : test WebOnSslErrorEvent
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('OnSslErrorEvent0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('OnSslErrorEvent0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("OnSslErrorEvent0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnSslErrorEvent0100", 2, 400, done);

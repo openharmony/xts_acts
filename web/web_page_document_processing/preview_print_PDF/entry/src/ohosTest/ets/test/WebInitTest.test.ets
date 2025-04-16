@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 
 export default function webInitTest() {
@@ -35,7 +35,7 @@ export default function webInitTest() {
      * tc.name testSetPrintBackgroundOne
      * tc.desc Support printing background colors
    */
-    it('testSetPrintBackgroundOne',0,async (done: Function) =>{
+    it('testSetPrintBackgroundOne',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       Utils.emitEvent("emitSetPrintBackgroundOne", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetPrintBackgroundOne",false,214,done);

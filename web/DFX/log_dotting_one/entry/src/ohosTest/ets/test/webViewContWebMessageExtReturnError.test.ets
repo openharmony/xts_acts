@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -71,7 +71,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetStringError
      *tc.desc test interface of WebMessageExt getString with unmatched type
      */
-    it('testWebMessageExtGetStringError', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetNumberError";
       Utils.registerEvent("testWebMessageExtGetStringError", "17100014", 826, done);
       Utils.registerEvent("testWebMessageExtGetStringError", "The type and value of the message do not match.", 827, done);
@@ -82,7 +82,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetNumberError
      *tc.desc test interface of WebMessageExt getNumber with unmatched type
      */
-    it('testWebMessageExtGetNumberError', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetBooleanError";
       Utils.registerEvent("testWebMessageExtGetNumberError", "17100014", 828, done);
       Utils.registerEvent("testWebMessageExtGetNumberError", "The type and value of the message do not match.", 829, done);
@@ -93,7 +93,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetBooleanError
      *tc.desc test interface of WebMessageExt getBoolean with unmatched type
      */
-    it('testWebMessageExtGetBooleanError', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetArrayBufferError";
       Utils.registerEvent("testWebMessageExtGetBooleanError", "17100014", 830, done);
       Utils.registerEvent("testWebMessageExtGetBooleanError", "The type and value of the message do not match.", 831, done);
@@ -104,7 +104,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetArrayBufferError
      *tc.desc test interface of WebMessageExt getArrayBuffer with unmatched type
      */
-    it('testWebMessageExtGetArrayBufferError', 0, async (done: Function) => {
+    it('testWebMessageExtGetArrayBufferError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetArrayError";
       Utils.registerEvent("testWebMessageExtGetArrayBufferError", "17100014", 832, done);
       Utils.registerEvent("testWebMessageExtGetArrayBufferError", "The type and value of the message do not match.", 833, done);
@@ -115,7 +115,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetArrayError
      *tc.desc test interface of WebMessageExt getArray with unmatched type
      */
-    it('testWebMessageExtGetArrayError', 0, async (done: Function) => {
+    it('testWebMessageExtGetArrayError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetErrorError";
       Utils.registerEvent("testWebMessageExtGetArrayError", "17100014", 834, done);
       Utils.registerEvent("testWebMessageExtGetArrayError", "The type and value of the message do not match.", 835, done);
@@ -126,7 +126,7 @@ export default function webViewContWebMessageExtReturnError() {
      *tc.name testWebMessageExtGetErrorError
      *tc.desc test interface of WebMessageExt getError with unmatched type
      */
-    it('testWebMessageExtGetErrorError', 0, async (done: Function) => {
+    it('testWebMessageExtGetErrorError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetErrorError";
       Utils.registerEvent("testWebMessageExtGetErrorError", "17100014", 836, done);
       Utils.registerEvent("testWebMessageExtGetErrorError", "The type and value of the message do not match.", 837, done);

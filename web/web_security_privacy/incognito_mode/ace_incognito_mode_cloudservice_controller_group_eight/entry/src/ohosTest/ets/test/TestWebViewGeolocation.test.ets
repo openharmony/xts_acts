@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -86,7 +86,7 @@ export default function ActsWebViewTest2() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0017', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0003', 'Invalid origin', 5005, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
@@ -105,7 +105,7 @@ export default function ActsWebViewTest2() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0018', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0004', 'Invalid origin', 5006, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
@@ -122,7 +122,7 @@ export default function ActsWebViewTest2() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0019', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_getStoredGeolocation0003', 'No data', 5007, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -139,7 +139,7 @@ export default function ActsWebViewTest2() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0020', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_getStoredGeolocation0004', 'No data', 5008, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

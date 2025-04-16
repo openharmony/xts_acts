@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function webOnInterceptKeyEvent() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnInterceptKeyEvent002', 0, async (done: Function) => {
+    it('testOnInterceptKeyEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnInterceptKeyEvent002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInterceptKeyEvent002", 2047, 70422, done);
@@ -74,7 +74,7 @@ export default function webOnInterceptKeyEvent() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnInterceptKeyEvent003', 0, async (done: Function) => {
+    it('testOnInterceptKeyEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnInterceptKeyEvent003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnInterceptKeyEvent003", 2047, 70425, done);

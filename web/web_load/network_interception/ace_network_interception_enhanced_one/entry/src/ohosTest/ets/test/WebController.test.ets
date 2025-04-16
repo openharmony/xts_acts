@@ -54,9 +54,9 @@ export default function webController() {
     * @tc.desc       : test stop
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testStop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testStop001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testStop001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStop001", true, 31007, done);

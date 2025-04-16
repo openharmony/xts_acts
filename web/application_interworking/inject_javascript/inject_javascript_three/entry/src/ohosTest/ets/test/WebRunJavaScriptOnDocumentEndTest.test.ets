@@ -84,5 +84,20 @@ export default function ActsWebRunJavaScriptOnDocumentEndTest() {
       sendEventByKey('WebRunJavaScriptOnDocumentEndTestButton', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_ACE_WEB_RUNJAVASCRIPTONDOCUMENTEND_API_0003
+    * @tc.name       : testWebRunJavaScriptOnDocumentEnd003
+    * @tc.desc       : test runJavaScriptOnDocumentEnd
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testWebRunJavaScriptOnDocumentEnd003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitWebRunJavaScriptOnDocumentEnd003", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testWebRunJavaScriptOnDocumentEnd003", true, 2025040802, done);
+      sendEventByKey('WebRunJavaScriptOnDocumentEndTestButton', 10, '');
+    })
+
   })
 }
