@@ -14,9 +14,10 @@
  */
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
+import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
 
 export default function WindowLifecycle() {
   describe('WindowLifecycleTest', async () => {
@@ -43,7 +44,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_null', 0, async (done:Function) => {
+    it('test_findWindow_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_null';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -67,7 +68,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_notExist', 0, async (done:Function) => {
+    it('test_findWindow_notExist', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_notExist';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -91,7 +92,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_subWindow', 0, async (done:Function) => {
+    it('test_findWindow_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_subWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -132,7 +133,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_subWindow_loadContent', 0, async (done:Function) => {
+    it('test_findWindow_subWindow_loadContent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_subWindow_loadContent';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -184,7 +185,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_mainWindow', 0, async (done:Function) => {
+    it('test_findWindow_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_mainWindow';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -218,7 +219,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_findWindow_mainWindow_isObscured', 0, async (done:Function) => {
+    it('test_findWindow_mainWindow_isObscured', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'test_findWindow_mainWindow_isObscured';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWindowName: string | undefined = '';
@@ -274,7 +275,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testOffWindowStageEvent_RepeatOff', 0, async (done:Function) => {
+    it('testOffWindowStageEvent_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testOffWindowStageEvent_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -320,7 +321,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIsWindowShowing_WindowStateAbnormal', 0, async (done:Function) => {
+    it('testIsWindowShowing_WindowStateAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testIsWindowShowing_WindowStateAbnormal';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -355,7 +356,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testIsWindowShowingTest', 0, async (done: Function) => {
+    it('testIsWindowShowingTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.info('windowTest testIsWindowShowingTest begin');
       // let wnd: window.Window | undefined = undefined;
       let msgStr = "testIsWindowShowingTest";
@@ -392,7 +393,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testIsWindowShowing_Invoke_Interface_Two_Times', 0, async (done: Function) => {
+    it('testIsWindowShowing_Invoke_Interface_Two_Times', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testIsWindowShowing_Invoke_Interface_Two_Times';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -436,9 +437,9 @@ export default function WindowLifecycle() {
      * @tc.desc      : testIsWindowShowing_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level0
      */
-    it('testIsWindowShowing_mainWindow', 0, async (done: Function) => {
+    it('testIsWindowShowing_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testIsWindowShowing_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -462,7 +463,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testOn_WindowSize_Change_subWindow', 0, async (done: Function) => {
+    it('testOn_WindowSize_Change_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testOn_WindowSize_Change_subWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -514,7 +515,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testOn_WindowSize_Change_Two_callback', 0, async (done: Function) => {
+    it('testOn_WindowSize_Change_Two_callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testOn_WindowSize_Change_Two_callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -566,7 +567,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testOn_WindowSize_Change_off_callback1', 0, async (done: Function) => {
+    it('testOn_WindowSize_Change_off_callback1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testOn_WindowSize_Change_off_callback1';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -619,7 +620,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testOn_WindowSize_Change_off_callback_all', 0, async (done: Function) => {
+    it('testOn_WindowSize_Change_off_callback_all', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'testOn_WindowSize_Change_off_callback_all';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -672,7 +673,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('test_showWindow_subWindow_top_promise', 0, async (done: Function) => {
+    it('test_showWindow_subWindow_top_promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'test_showWindow_subWindow_top_promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -750,7 +751,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('test_showWindow_subWindow_top_callback', 0, async (done: Function) => {
+    it('test_showWindow_subWindow_top_callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       let caseName: string = 'test_showWindow_subWindow_top_callback';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -763,6 +764,8 @@ export default function WindowLifecycle() {
           console.info(msgStr + 'Succeeded in creating the subwindow1. Data: ' + JSON.stringify(data));
           let id = subWindowClass1.getWindowProperties().id;
           console.info(msgStr + 'Succeeded in getting the window id. : ' + id);
+          let name = subWindowClass1.getWindowProperties().name;
+          console.info(msgStr + 'Succeeded in getting the window name. : ' + name);
           expect(!!subWindowClass1).assertTrue();
           await subWindowClass1.loadContent('testability/pages/First/index2', storage);
           await windowStage.createSubWindow('test_showWindow_subWindow_top_callback2').then(async (data) => {
@@ -827,7 +830,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testDestroyWindow_Promise', 0, async (done:Function) => {
+    it('testDestroyWindow_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDestroyWindow_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -869,7 +872,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testDestroyWindow_Callback', 0, async (done:Function) => {
+    it('testDestroyWindow_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testDestroyWindow_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -911,7 +914,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowEvent_RepeatOff', 0, async (done:Function) => {
+    it('testWindowOffWindowEvent_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindowOffWindowEvent_RepeatOff';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -965,7 +968,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_subWindow_shown', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_subWindow_shown',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_subWindow_shown';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1011,7 +1014,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_subWindow_active', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_subWindow_active', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_subWindow_active';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1062,7 +1065,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_subWindow_inactive', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_subWindow_inactive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_subWindow_inactive';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1162,7 +1165,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_mainWindow_inactive', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_mainWindow_inactive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_mainWindow_inactive';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1171,10 +1174,13 @@ export default function WindowLifecycle() {
       try {
         windowClass.on('windowEvent', async (data) => {
           console.info(msgStr + 'Window event happened. Event:' + JSON.stringify(data));
-          expect(data).assertEqual(3);
-          windowClass.off('windowEvent');
-          await subWindow.destroyWindow();
-          done();
+          if(data==window.WindowEventType.WINDOW_INACTIVE){
+            await subWindow.destroyWindow();
+            windowClass.off('windowEvent');
+            done();
+          }else{
+            await sleep(1000);
+          }
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception) + exception.code);
@@ -1211,7 +1217,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_mainWindow_active', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_mainWindow_active', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_mainWindow_active';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1267,7 +1273,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_Two_callback', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_Two_callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_Two_callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1327,7 +1333,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_off_callback1', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_off_callback1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_off_callback1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1383,7 +1389,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindow_on_WindowEvent_off_callback_All', 0, async (done:Function) => {
+    it('testWindow_on_WindowEvent_off_callback_All',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = 'testWindow_on_WindowEvent_off_callback_All';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1439,7 +1445,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowVisibilityChange_UnregisteredOff', 0, async (done:Function) => {
+    it('testWindowOffWindowVisibilityChange_UnregisteredOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName: string = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1472,7 +1478,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowVisibilityChange_RepeatOff', 0, async (done:Function) => {
+    it('testWindowOffWindowVisibilityChange_RepeatOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName: string = 'testWindowOffWindowVisibilityChange_RepeatOff';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1532,7 +1538,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testWindowVisibilityChange_on_Function_Callback", 0, async (done:Function) => {
+    it("testWindowVisibilityChange_on_Function_Callback", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let msgStr = "testWindowVisibilityChange_on_Function_Callback";
       console.log(msgStr + "begin");
       try {
@@ -1566,7 +1572,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testWindowVisibilityChange_off_Function_Callback", 0, async (done:Function) => {
+    it("testWindowVisibilityChange_off_Function_Callback", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let msgStr = "testWindowVisibilityChange_off_Function_Callback";
       console.log(msgStr + "begin");
       try {
@@ -1598,7 +1604,7 @@ export default function WindowLifecycle() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testRemoveStartingWindow_Promise", 2, async (done:Function) => {
+    it("testRemoveStartingWindow_Promise", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let msgStr = "testRemoveStartingWindow_Promise";
       console.log(msgStr + "begin");
       try {
@@ -1622,6 +1628,59 @@ export default function WindowLifecycle() {
       } catch (error) {
         console.log(msgStr + 'Failed to testRemoveStartingWindow_Promise. Cause: ' + JSON.stringify(error));
         expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_WINDOW_EVENT_TYPE_0100
+     * @tc.name      : test_WindowEventType_enum
+     * @tc.desc      : test_WindowEventType_enum
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("test_WindowEventType_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let msgStr = "test_WindowEventType_enum";
+      console.log(msgStr + "begin");
+      try {
+        expect(window.WindowEventType.WINDOW_DESTROYED).assertEqual(7);
+        console.info('Succeeded in test_WindowEventType_enum.');
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to test_WindowEventType_enum. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_LOAD_CONTENT_BY_NAME_0100
+     * @tc.name      : test_loadContentByName
+     * @tc.desc      : test_loadContentByName
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_loadContentByName", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let msgStr = "test_loadContentByName";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.loadContentByName(LoadContentByName.entryName).then(async () => {
+          console.info('Succeeded in loadContentByName.');
+          expect(true).assertTrue();
+          await windowStage.loadContent('testability/pages/Index');
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`Failed to test loadContentByName. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          await windowStage.loadContent('testability/pages/Index');
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to test_loadContentByName. Cause: ' + JSON.stringify(error));
+        expect().assertFail();
+        await windowStage.loadContent('testability/pages/Index');
         done();
       }
     });

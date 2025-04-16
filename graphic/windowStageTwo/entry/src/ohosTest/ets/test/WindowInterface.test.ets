@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { common, StartOptions, bundleManager } from '@kit.AbilityKit';
 import ohosWindow from '@ohos.window';
 import { Driver,  ON  } from '@ohos.UiTest';
@@ -21,7 +21,8 @@ import window from '@ohos.window';
 import settings from '@ohos.settings';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Want from '@ohos.app.ability.Want';
-import deviceInfo from '@ohos.deviceInfo';
+import { ColorMetrics } from '@kit.ArkUI';
+
 
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
@@ -106,7 +107,6 @@ export default function windowInterface() {
     let windowStage: ohosWindow.WindowStage;
     let isPCStatus: string = '';
     let mainWindowClass:ohosWindow.Window;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -119,8 +119,6 @@ export default function windowInterface() {
       console.info(`beforeAll isPCStatus: `+ isPCStatus);
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
       mainWindowClass = windowStage.getMainWindowSync();
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
@@ -170,7 +168,7 @@ export default function windowInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0100', 0, async (done: Function) => {
+    it('testStartMoving_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0100';
       await sleep(1000)
       let driver = await Driver.create();
@@ -211,7 +209,7 @@ export default function windowInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
+it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetResizeByDragEnabledTrueTest_0100';
   let windowClass = windowStage.getMainWindowSync()
   let enabled = true;
@@ -260,7 +258,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0100', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0100';
       let windowClass = windowStage.getMainWindowSync();
       await windowClass.setUIContent('testability/pages/Index');
@@ -318,7 +316,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0200', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0200';
       let driver = Driver.create()
       // 拉起Ability
@@ -382,7 +380,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0300', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0300';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -440,7 +438,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0400', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0400';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -499,7 +497,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0500', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0500';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -557,7 +555,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0600', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0600';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -608,7 +606,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0700', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0700';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -662,7 +660,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0800', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0800';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -714,7 +712,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0100', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0100';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -768,7 +766,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0200', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0200';
       let driver = Driver.create()
       // 拉起Ability
@@ -830,7 +828,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0300', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0300';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -886,7 +884,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0400', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0400';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -942,7 +940,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0500', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0500';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -998,7 +996,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0600', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0600';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1047,7 +1045,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0700', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0700';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1097,7 +1095,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0800', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0800';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1147,7 +1145,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0100', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0100';
       let options: StartOptions = {
         supportWindowModes: [
@@ -1183,7 +1181,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0200', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0200';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1232,7 +1230,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0300', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0300';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1280,7 +1278,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0400', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0400';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1331,7 +1329,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0500', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0500';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1382,7 +1380,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0600', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0600';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1421,7 +1419,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0700', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0700';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1489,7 +1487,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testisWindowRectAutoSave', 0, async (done: Function) => {
+    it('testisWindowRectAutoSave', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'isWindowRectAutoSaveTest';
       windowStage.setWindowRectAutoSave(true)
       await sleep(1000);
@@ -1549,7 +1547,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0200', 0, async (done: Function) => {
+    it('testStartMoving_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0200';
       let options: window.SubWindowOptions = {
         title: 'subWindow',
@@ -1606,7 +1604,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0300', 0, async (done: Function) => {
+    it('testStartMoving_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0300';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1671,13 +1669,13 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0100';
       let windowClass = windowStage.getMainWindowSync();
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      if(deviceType == '2in1'|| isAutoWindow =='true'){
+      if(isPCStatus == ''|| isAutoWindow =='true'){
         await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
       await sleep(1000)
       }
@@ -1721,13 +1719,13 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0200', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0200';
       let windowClass = windowStage.getMainWindowSync();
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      if(deviceType == '2in1'|| isAutoWindow =='true'){
+      if(isPCStatus == ''|| isAutoWindow =='true'){
         await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
         await sleep(1000)
       }
@@ -1770,7 +1768,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0300', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0300';
       let options: window.SubWindowOptions = {
         title: 'subWindow',
@@ -1834,7 +1832,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0400', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0400';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1907,7 +1905,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0500', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0500';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1971,7 +1969,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0100', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2024,7 +2022,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0200', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2077,7 +2075,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0300', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0400';
       let windowClass = windowStage.getMainWindowSync()
       try {
@@ -2113,7 +2111,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0400', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0300';
       try {
         let subWindow = windowStage.createSubWindow("testSubWindow");
@@ -2153,7 +2151,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0100', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityType_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2203,7 +2201,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0200', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2258,7 +2256,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0300', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityTypeTest_0300';
       let options: window.SubWindowOptions = {
         title: 'title',
@@ -2301,7 +2299,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledTrue_0200', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledTrue_0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledTrueTest_0200';
       if (isPCStatus != '') {
         try {
@@ -2361,7 +2359,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledFalse_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledFalse_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledFalseTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       if (isPCStatus != '') {
@@ -2412,7 +2410,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledFalse_0200', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledFalse_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledFalseTest_0200';
       if (isPCStatus != '') {
         let options: window.SubWindowOptions = {
@@ -2470,7 +2468,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowModalTrue', 0, async (done: Function) => {
+    it('testSetWindowModalTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetWindowModalTrueTest';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2535,7 +2533,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowModalFalse', 0, async (done: Function) => {
+    it('testSetWindowModalFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetWindowModalFalseTest';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2600,7 +2598,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_threeElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_threeElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_threeElement'
         let windowStageStart = await startAbility(message, context)
@@ -2637,7 +2635,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_fourSameElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fourSameElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_fourSameElement'
         let windowStageStart = await startAbility(message, context)
@@ -2675,7 +2673,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_fiveElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fiveElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_fiveElement'
         let windowStageStart = await startAbility(message, context)
@@ -2713,7 +2711,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_nullElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_nullElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_nullElement'
         let windowStageStart = await startAbility(message, context)
@@ -2749,7 +2747,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_onlySplit', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_onlySplit', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_onlySplit'
         let windowStageStart = await startAbility(message, context)
@@ -2785,7 +2783,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_afterTerminateAbility', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_afterTerminateAbility', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_afterTerminateAbility'
         let windowStageStart = await startAbility(message, context)
@@ -2826,7 +2824,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_modeChange_isImmersive', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_modeChange_isImmersive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_modeChange_isImmersive';
         let windowStageStart = await startAbility(message, context)
@@ -2904,7 +2902,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight'
         let limit = context.windowStage.getMainWindowSync().getWindowLimits()
@@ -2962,7 +2960,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3020,7 +3018,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_801', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_801'
         let options: window.SubWindowOptions = {
@@ -3073,7 +3071,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3131,7 +3129,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3184,7 +3182,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3244,7 +3242,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      *
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_followMinWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_followMinWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_followMinWidthHeight';
         let subwindow0 = await windowStage.createSubWindow('subwindow0');
@@ -3305,7 +3303,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight'
         let options: window.SubWindowOptions = {
@@ -3357,7 +3355,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_resolve_true', 0, async (done: Function) => {
+    it('test_on_windowWillClose_resolve_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_resolve_true'
       let result: boolean = false;
       const callback = () => {
@@ -3410,7 +3408,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_resolve_false', 0, async (done: Function) => {
+    it('test_on_windowWillClose_resolve_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_resolve_false'
       let result: boolean = true;
       let windowName: string | undefined;
@@ -3474,12 +3472,14 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_executeAfterOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_executeAfterOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_executeAfterOff'
       let result: boolean = true;
       const callback = async () => {
+        console.log(`${message} enter callback`)
         await sleep(3000);
         return new Promise<boolean>((resolve, reject) => {
+          console.log(`${message} callback return`)
           result = false;
           resolve(result);
         })
@@ -3491,9 +3491,11 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
         let driver: Driver = Driver.create()
         let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
         await button.click();
+        await sleep(1000);
         let startNum = (AppStorage.get('startNum') ? AppStorage.get('startNum') : 0) as number;
         AppStorage.setOrCreate('startNum', startNum - 1);
         windowClassStart.off('windowWillClose', callback);
+        console.log(`${message} succeed off listen`)
         expect().assertFail();
         done();
       } catch (err) {
@@ -3518,9 +3520,9 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_offWithoutOn', 0, async (done: Function) => {
+    it('test_on_windowWillClose_offWithoutOn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_offWithoutOn'
-      if (deviceType != "2in1" && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -3569,7 +3571,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_reject', 0, async (done: Function) => {
+    it('test_on_windowWillClose_reject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_reject';
       let windowName: string | undefined;
       const callback = () => {
@@ -3627,7 +3629,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_multiOn_UniqueOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_multiOn_UniqueOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_multiOn_UniqueOff';
       let windowName: string | undefined;
       let result: boolean = true;
@@ -3699,7 +3701,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_multiOn_AllOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_multiOn_AllOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_multiOn_AllOff';
       let windowName: string | undefined;
       let result: boolean = false;
@@ -3771,7 +3773,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_result_false', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_result_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_result_false'
       let result: boolean = true;
       const callback = () => {
@@ -3797,6 +3799,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'))
           await button.click()
+          await sleep(1000);
           try {
             window.findWindow('subwindow0');
             console.info(`subwindow0 is existing`);
@@ -3841,7 +3844,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_result_true', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_result_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_result_true'
       let result: boolean = false;
       const callback = () => {
@@ -3864,7 +3867,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           subWindowClass.on('windowWillClose', callback);
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
-          await button.click()
+          await button.click();
+          await sleep(1000);
           subWindowClass.off('windowWillClose', callback);
           try {
             window.findWindow('subwindow0');
@@ -3910,7 +3914,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_reject', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_reject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_reject'
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3931,7 +3935,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
           subWindowClass.on('windowWillClose', callback);
           let driver: Driver = Driver.create();
           let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
-          await button.click()
+          await button.click();
+          await sleep(1000);
           try {
             window.findWindow('subwindow0');
             console.info(`subwindow0 is existing`);
@@ -3977,7 +3982,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_minimize_maximize_recover_beforeOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_minimize_maximize_recover_beforeOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_minimize_maximize_recover_beforeOff'
       let windowName: string | undefined;
       let result: boolean = true;
@@ -4063,6 +4068,766 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
       ;
     });
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_MOVE_CONFIGURATION_0100
+     * @tc.name       : test_MoveConfiguration
+     * @tc.desc       : 验证moveWindowToAsync参数MoveConfiguration
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_MoveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_MoveConfiguration!'
+        try {
+          let windowStageStart = await startAbility(message, context);
+          let windowClassStart = windowStageStart.getMainWindowSync();
+          let displayId = windowClassStart.getWindowProperties().displayId
+          let moveConfiguration: window.MoveConfiguration = {
+            displayId: displayId
+          }
+          let promise = windowClassStart.moveWindowToAsync(300, 300, moveConfiguration);
+          promise.then(() => {
+            console.info(`${message} succeed in moveWindowToAsync`);
+          }).catch(async (err: BusinessError) => {
+            console.error(`${message} promise Failed to moveWindowToAsync, Cause code ${err.code}, message ${err.message} `);
+            expect(err.code).assertEqual(801);
+            done();
+          })
+          await sleep(1000)
+          let rect = windowClassStart.getWindowProperties().windowRect;
+          console.info(`${message} windowRect:${JSON.stringify(rect)}`);
+          expect(rect.left).assertEqual(300);
+          expect(rect.top).assertEqual(300);
+          done();
+        } catch (err) {
+          console.log(`${message} Failed to test MoveConfiguration.errcode:${err.code}, Cause: ${err.message}`)
+          expect(err.code).assertEqual(801);
+          done();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_MOVE_GLOBAL_0100
+     * @tc.name       : test_moveWindowToGlobal_moveConfiguration
+     * @tc.desc       : 验证moveWindowToGlobal参数MoveConfiguration
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_moveWindowToGlobal_moveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_moveWindowToGlobal_moveConfiguration!'
+      let options: window.SubWindowOptions = {
+        title: message,
+        decorEnabled: true,
+      };
+      try {
+        let promise = context.windowStage.createSubWindowWithOptions(message, options)
+        promise.then(async (data) => {
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          await subWindowClass.showWindow();
+          let displayId = subWindowClass.getWindowProperties().displayId;
+          let moveConfiguration: window.MoveConfiguration = {
+            displayId: displayId
+          }
+          let promise = subWindowClass.moveWindowToGlobal(300, 300, moveConfiguration);
+          promise.then(async () => {
+            console.info(`${message} succeed in moveWindowToGlobal`);
+          }).catch((err: BusinessError) => {
+            console.error(`${message} promise Failed to moveWindowToGlobal, Cause code ${err.code}, message ${err.message} `);
+            expect(err.code).assertEqual(801);
+            done();
+          });
+          await sleep(1000);
+          let rect = subWindowClass.getWindowProperties().windowRect;
+          console.info(`${message} after moving windowRect:${JSON.stringify(rect)}`);
+          expect(rect.left).assertEqual(300);
+          expect(rect.top).assertEqual(300);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to test MoveConfiguration, Cause code ${err.code}, message ${err.message} `);
+          if (err.code == 1300002 || err.code == 801){
+            expect(true).assertTrue();
+          } else {
+            expect().assertFail();
+          }
+          done();
+        });
+      } catch (err) {
+        console.log(`${message} Failed to test MoveConfiguration.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+        expect().assertFail();
+        done();
+      }
+
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_SUB_WINDOW_CLOSE_0100
+     * @tc.name       : test_on_subWindowClose
+     * @tc.desc       : 验证test_on_subWindowClose，result为false
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_on_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_on_subWindowClose!'
+        let result: boolean = true;
+        let windowStageStart = await startAbility(message, context);
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: true,
+        };
+        const callback = () => {
+          result = false;
+          return result
+        }
+        try {
+          let promise = windowStageStart.createSubWindowWithOptions('subwindow0', options);
+          promise.then(async (data) => {
+            const subWindowClass = data;
+            subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+            subWindowClass.showWindow();
+            await sleep(1000);
+            subWindowClass.on("subWindowClose", callback);
+            let driver: Driver = Driver.create();
+            let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+            await button.click();
+            await sleep(1000);
+            if (result) {
+              expect().assertFail();
+              done();
+            }
+            try {
+              window.findWindow('subwindow0')
+              console.error(`subwindow0 is existing`);
+              subWindowClass.off('subWindowClose', callback);
+              expect().assertFail();
+            } catch (exception) {
+              console.info(`subwindow0 is not existing`);
+              expect(true).assertTrue();
+            }
+            ;
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message}`);
+            try {
+              const windowClassFind = window.findWindow('subwindow0')
+              console.error(`The window ${windowClassFind} still exist`);
+              windowClassFind.off('subWindowClose', callback);
+            } catch (err) {
+              console.info(`The window does not exist`);
+            }
+            expect().assertFail();
+            ;
+            done();
+          })
+        } catch (err) {
+          console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_ON_SUB_WINDOW_CLOSE_0200
+     * @tc.name       : test_off_subWindowClose
+     * @tc.desc       :  验证test_off_subWindowClose，result为true
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_off_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        const message = 'test_off_subWindowClose!'
+        let result: boolean = false;
+        let windowStageStart = await startAbility(message, context);
+        let options: window.SubWindowOptions = {
+          title: 'subwindow0',
+          decorEnabled: true,
+        };
+        const callback = () => {
+          result = true;
+          return result
+        }
+        try {
+          let promise = windowStageStart.createSubWindowWithOptions('subwindow0', options);
+          promise.then(async (data) => {
+            const subWindowClass = data;
+            subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+            subWindowClass.showWindow();
+            await sleep(1000);
+            subWindowClass.on("subWindowClose", callback);
+            let driver: Driver = Driver.create();
+            let button = await driver.findComponent(ON.id('EnhanceCloseBtn'));
+            await button.click();
+            await sleep(1000);
+            if (!result) {
+              expect().assertFail();
+              done();
+            }
+            try {
+              window.findWindow('subwindow0');
+              console.info(`subwindow0 is still existing`);
+              subWindowClass.off('windowWillClose');
+              expect(true).assertTrue();
+            } catch (exception) {
+              console.error(`subwindow0 is not existing`);
+              expect().assertFail();
+            }
+            ;
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message}`);
+            try {
+              const windowClassFind = window.findWindow('subwindow0')
+              console.info(`The window ${windowClassFind} still exist`);
+              windowClassFind.off('subWindowClose');
+            } catch (err) {
+              console.info(`The window does not exist`);
+            }
+            expect().assertFail();
+            ;
+            done();
+          })
+        } catch (err) {
+          console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0100
+     * @tc.name       : test_setStatusBarColor_401
+     * @tc.desc       : setStatusBarColor接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_401!'
+      try {
+        let promise = mainWindowClass.setStatusBarColor(null);
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0200
+     * @tc.name       : test_setStatusBarColor_801
+     * @tc.desc       : setStatusBarColor接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_801!'
+      try {
+        let promise = mainWindowClass.setStatusBarColor(ColorMetrics.rgba(1, 1, 1));
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_401
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_401!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent('testability/pages/WindowTest/StartMoving')
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(null);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_801
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent('testability/pages/WindowTest/StartMoving')
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300002
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code ==1300002).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0400
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300004
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await subWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = subWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code == 801 || err.code ==1300004).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await subWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_dialog
+     * @tc.desc       : dialog调用setSystemAvoidAreaEnabled接口
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_dialog!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(true);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_isSystemAvoidAreaEnabled_801
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300004
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled()
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            console.info(`${message} after destroyWindow`);
+            await sleep(1000);
+            expect(err.code == 801 || err.code ==1300004).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300002
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/WindowTest/StartMoving')
+          await dialogWindowClass.showWindow();
+          await sleep(1000);
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled();
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code ==1300002).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number     : SUB_BASIC_WMS_getParentWindow_0300
+     * @tc.name       : testgetParentWindow
+     * @tc.desc       : testgetParentWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testgetParentWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let message = "testgetParentWindow";
+      let msgStr = 'jsunittest ' + message + ' ';
+      console.log(msgStr + 'begin.');
+      let windowStageStart = await startAbility(message, context);
+      let mainWindow = windowStageStart.getMainWindowSync();
+      let windowId = mainWindow.getWindowProperties().id;
+      console.info(msgStr +'windowId :'+windowId)
+      try {
+        let windowClass = await windowStage.createSubWindow('testgetParentWindow');
+        windowClass.setParentWindow(windowId).then(async() => {
+          console.info(msgStr +'Succeeded in  setParentWindow window.')
+          let parentClass = windowClass.getParentWindow();
+          let parentId = parentClass.getWindowProperties().id;
+          console.info(msgStr +'parentId :'+parentId)
+          expect(parentId).assertEqual(windowId);
+          await windowClass.destroyWindow();
+          await terminateAbility(message)
+          done()
+        }).catch(async(e: BusinessError) => {
+          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
+          await terminateAbility(message)
+          if(e.code == 801){
+            done();
+          }else{
+            expect(false).assertFail();
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await terminateAbility(message)
+        expect(false).assertFail();
+        done();
+      }
+
+    })
 
 
   })

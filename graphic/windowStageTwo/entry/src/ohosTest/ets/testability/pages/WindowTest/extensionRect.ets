@@ -23,9 +23,14 @@ let storage = LocalStorage.getShared()
 struct Extension {
 
   @State testNum: number = 0
+  @State message: string = ''
 
   build() {
     Column() {
+      Text(this.message + '')
+        .id('errorMessage')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
       Text(this.testNum + '')
         .id('testNum')
         .fontSize(20)
@@ -37,8 +42,70 @@ struct Extension {
           let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
           extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, (data: uiExtension.RectChangeOptions) => {
             console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
             this.testNum++
           })
+        })
+      Button('监听组件变化401')
+        .id('button401')
+        .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
+          let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
+          try {
+            extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, null)
+            this.message = 'success'
+          } catch (err) {
+            console.log('testUIExtensionHostRectChangeErrorCode401: err in page, err : ' + JSON.stringify(err))
+            this.message = err.code + ''
+          }
+        })
+      Button('取消一个函数监听')
+        .id('off_single')
+        .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
+          let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
+          let cb = (data: uiExtension.RectChangeOptions) => {
+            console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
+            this.testNum++
+          }
+          let cb2 = (data: uiExtension.RectChangeOptions) => {
+            console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
+            this.testNum++
+          }
+          extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb)
+          extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb2)
+          extensionWindow?.off('rectChange', cb)
+        })
+      Button('取消所有函数监听')
+        .id('off_all')
+        .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+          let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session1');
+          let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
+          let cb = (data: uiExtension.RectChangeOptions) => {
+            console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
+            this.testNum++
+          }
+          let cb2 = (data: uiExtension.RectChangeOptions) => {
+            console.log('Succeeded window rect changes. Data: + ' + JSON.stringify(data))
+            if (data.rect === undefined || data.reason === undefined) {
+              this.testNum--
+            }
+            this.testNum++
+          }
+          extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb)
+          extensionWindow?.on('rectChange', uiExtension.RectChangeReason.HOST_WINDOW_RECT_CHANGE, cb2)
+          extensionWindow?.off('rectChange')
         })
     }.width('100%').height('100%')
   }
