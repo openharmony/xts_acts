@@ -15,8 +15,10 @@
 import ArcSlider001 from './ArcSlider/ArcSlider001.test.ets'
 import ArcSlider002 from './ArcSlider/ArcSlider002.test.ets'
 import ArcSlider003 from './ArcSlider/ArcSlider003.test.ets'
+import ArcSlider004 from './ArcSlider/ArcSlider004.test.ets'
 export default function testsuite() {
   ArcSlider001();
   ArcSlider002();
   ArcSlider003();
+  ArcSlider004();
 }
