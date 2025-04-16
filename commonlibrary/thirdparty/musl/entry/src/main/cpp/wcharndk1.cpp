@@ -29,6 +29,7 @@
 #include <memory.h>
 #include <unistd.h>
 #include <securec.h>
+#include <hilog/log.h>
 
 #define PARAM_0 0
 #define PARAM_1 1
@@ -72,6 +73,11 @@
 #define FAILD (-1)
 #define SIZE_256 256
 #define PARAM_12 12
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_STATNDK"
 
 #define SIZEOF_WCHAR(x) (sizeof(x) / sizeof(wchar_t))
 static const char *TEMP_FILE = "/data/storage/el2/base/files/fzl.txt";
@@ -1180,11 +1186,15 @@ static napi_value Getwchar_One(napi_env env, napi_callback_info info)
 
 static napi_value Wscanf_One(napi_env env, napi_callback_info info)
 {
-    FILE *fp = fopen(TEMP_FILE, "w");
+    FILE *fp = fopen(TEMP_FILE, "w+");
     NAPI_ASSERT(env, fp != nullptr, "Wscanf_One fopen Error");
     wchar_t wstr[] = L"testwscanf";
     fputws(wstr, fp);
     fseek(fp, PARAM_0, SEEK_SET);
+    wchar_t tmp[PARAM_80] = {PARAM_0};
+    fgetws(tmp, sizeof(tmp)/sizeof(wchar_t), fp);
+    fseek(fp, PARAM_0, SEEK_SET);
+    OH_LOG_INFO(LOG_APP, "Wscanf_One tmp : %{public}ls ", tmp);
     FILE *fp1 = freopen(TEMP_FILE, "r", stdin);
     NAPI_ASSERT(env, fp1 != nullptr, "Wscanf_One freopen Error");
     wchar_t wch[50] = {PARAM_0};
@@ -1194,6 +1204,7 @@ static napi_value Wscanf_One(napi_env env, napi_callback_info info)
     fclose(fp1);
     remove(TEMP_FILE);
     napi_value result = nullptr;
+    OH_LOG_INFO(LOG_APP, "Wscanf_One wch : %{public}ls ", wch);
     napi_create_int32(env, wcscmp(wch, L"testwscanf") == ERRON_0, &result);
     return result;
 }
