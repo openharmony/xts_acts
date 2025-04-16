@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
-import usbManager from "@ohos.usbManager"
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
+import usbMgr from "@ohos.usbManager"
 import bundleManager from '@ohos.bundle.bundleManager'
 
 
@@ -24,8 +24,7 @@ export default function UsbSystemApiNormalJsTest() {
   describe('UsbSystemApiNormalJsTest', () => {
 
     const TAG: string = "[UsbSystemApiNormalJsTest]";
-    const PERMISSION_NORMAL_CODE: number = 202;
-    let deviceList = usbManager.getDevices();
+    let deviceList = usbMgr.getDevices();
     let portCurrentMode = 0;
     
 
@@ -49,7 +48,8 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testUsbAddDeviceAccessRightNormalApp001', 0, async (done: Function) => {
+    it('testUsbAddDeviceAccessRightNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       if (portCurrentMode != 1) {
         console.info('usb case get_device port is device');
         done()
@@ -63,14 +63,14 @@ export default function UsbSystemApiNormalJsTest() {
             let tokenIdStr = tokenId.toString();
             console.info(TAG, 'testUsbAddDeviceAccessRightNormalApp001 addDeviceAccessRight begin');
 
-            let rightResult = usbManager.addDeviceAccessRight(tokenIdStr, deviceList[0].name);
+            let rightResult = usbMgr.addDeviceAccessRight(tokenIdStr, deviceList[0].name);
             console.log(TAG, 'addDeviceAccessRight failed result: ' + rightResult);
             expect(rightResult === null).assertTrue();
         })
       } catch (err) {
         console.info(TAG, 'usb testUsbAddDeviceAccessRightNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
       }
       done()
     });
@@ -83,16 +83,17 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetFunctionsFromStringNormalApp001', 0, async (done: Function) => {
+    it('testGetFunctionsFromStringNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let strMaskCode = 'hdc';
       try {
-        let nMaskCode = usbManager.getFunctionsFromString(strMaskCode);
+        let nMaskCode = usbMgr.getFunctionsFromString(strMaskCode);
         console.info(TAG, 'Test USB getFunctionsFromString nMaskCode: ' + nMaskCode);
         expect(nMaskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetFunctionsFromStringNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -105,16 +106,17 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetStringFromFunctionsNormalApp001', 0, async (done: Function) => {
+    it('testGetStringFromFunctionsNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let funcs: number = 4;
       try {
-        let maskCode = usbManager.getStringFromFunctions(funcs);
+        let maskCode = usbMgr.getStringFromFunctions(funcs);
         console.info(TAG, 'Test USB getStringFromFunctions maskCode: ' + maskCode);
         expect(maskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetStringFromFunctionsNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -127,17 +129,18 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetDeviceFunctionsNormalApp001', 0, async (done: Function) => {
+    it('testSetDeviceFunctionsNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let funcs: number = 4;
       try {
-        await usbManager.setDeviceFunctions(funcs).then((data) => {
+        await usbMgr.setDeviceFunctions(funcs).then((data) => {
           console.info(TAG, 'Test USB setDeviceFunctions nMaskCode: ' + data);
           expect(data === null).assertTrue();
         })
       } catch(err) {
         console.info(TAG, 'usb testSetDeviceFunctionsNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -150,15 +153,16 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetDeviceFunctionsNormalApp001', 0, async (done: Function) => {
+    it('testGetDeviceFunctionsNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       try {
-        let maskCode = usbManager.getDeviceFunctions();
+        let maskCode = usbMgr.getDeviceFunctions();
         console.info(TAG, 'Test USB getDeviceFunctions maskCode: ' + maskCode);
         expect(maskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetDeviceFunctionsNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -171,14 +175,15 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetPortListNormalApp001', 0, async (done: Function) => {
+    it('testGetPortListNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       try {
-        let portList = usbManager.getPortList();
+        let portList = usbMgr.getPortList();
         console.info(TAG, 'Test USB getPortList maskCode: ' + JSON.stringify(portList));
         expect(portList === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetPortListNormalApp001 catch err code: ', err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -191,16 +196,17 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetPortSupportModesNormalApp001', 0, async (done: Function) => {
+    it('testGetPortSupportModesNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let portId: number = 1;
       try {
-        let portMode = usbManager.getPortSupportModes(portId);
+        let portMode = usbMgr.getPortSupportModes(portId);
         console.info(TAG, 'Test USB getPortSupportModes maskCode: ' + JSON.stringify(portMode));
         expect(portMode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetPortSupportModesNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
@@ -213,12 +219,13 @@ export default function UsbSystemApiNormalJsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetPortRoleTypesNormalApp001', 0, async (done: Function) => {
+    it('testSetPortRoleTypesNormalApp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let portId: number = 1;
       let powerRoleTy: number = 2;
       let dataRoleTy: number = 2;
       try {
-        await usbManager.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
+        await usbMgr.setPortRoleTypes(portId, powerRoleTy, dataRoleTy)
           .then((data) => {
             console.info(TAG, 'Test USB setPortRoleTypes nMaskCode: ' + data);
             expect(data === null).assertTrue();
@@ -226,12 +233,10 @@ export default function UsbSystemApiNormalJsTest() {
       } catch(err) {
         console.info(TAG, 'usb testSetPortRoleTypesNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
-        expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
+        expect(err.code).assertEqual(202);
         done()
       }
     });
 
   })
-
 }
-

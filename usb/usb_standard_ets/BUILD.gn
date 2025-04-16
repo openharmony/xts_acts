@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsUsbNormalAPPJSApiTest") {
+ohos_js_app_suite("ActsUsbETSApiTest") {
   test_hap = true
   testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsUsbNormalAPPJSApiTest"
+  hap_name = "ActsUsbETSApiTest"
   subsystem_name = "usb"
   part_name = "usb_manager"
 }
