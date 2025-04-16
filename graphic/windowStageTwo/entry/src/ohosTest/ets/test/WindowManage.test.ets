@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import common from '@ohos.app.ability.common';
@@ -113,7 +113,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithSystemWindow', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithSystemWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithSystemWindow';
       let subWindowClass: window.Window;
       createSysSubWindow(context, caseName).then(async (data) => {
@@ -150,7 +150,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithSubWindow', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithSubWindow';
       let subWindowClass: window.Window;
       createSubWindow(windowStage, caseName).then(async (data) => {
@@ -187,7 +187,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithWinNumberIs3', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithWinNumberIs3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithWinNumberIs3';
       let subWindowClass: window.Window;
       createSubWindow(windowStage, caseName).then(async (data) => {
@@ -223,7 +223,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithNegativeWinNumber', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithNegativeWinNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithNegativeWinNumber';
       let subWindowClass: window.Window;
       createSubWindow(windowStage, caseName).then(async (data) => {
@@ -259,7 +259,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithNegativeWinNumBerAndXY', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithNegativeWinNumBerAndXY', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithNegativeWinNumBerAndXY';
       let subWindowClass: window.Window;
       createSubWindow(windowStage, caseName).then(async (data) => {
@@ -295,7 +295,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithNegativeXY', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithNegativeXY', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'testGetWindowsByCoordinateWithNegativeXY';
       let subWindowClass: window.Window;
       createSubWindow(windowStage, caseName).then(async (data) => {
@@ -331,7 +331,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithTwoSubWindow', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithTwoSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithTwoSubWindow';
       let subWindowClass: window.Window;
       let sysSubWindowClass: window.Window;
@@ -372,7 +372,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetWindowsByCoordinateWithInvalidDisPlayId', 0, (done: Function) => {
+    it('testGetWindowsByCoordinateWithInvalidDisPlayId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = 'TestGetWindowsByCoordinateWithInvalidDisPlayId';
       try {
         window.getWindowsByCoordinate(123).then((data) => {
@@ -397,13 +397,49 @@ export default function windowManageTest() {
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
+     * @tc.name      : testGetWindowsByCoordinateWithNegativeX
+     * @tc.desc      : Get windows by coordinate.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testGetWindowsByCoordinateWithNegativeX', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
+      let caseName = 'testGetWindowsByCoordinateWithNegativeX';
+      let subWindowClass: window.Window;
+      createSubWindow(windowStage, caseName).then(async (data) => {
+        subWindowClass = data;
+        await sleep(1000);
+        window.getWindowsByCoordinate(displayId, 3, -1).then(async (data) => {
+          await subWindowClass.destroyWindow();
+          console.info(`${caseName} The window displayId is: ` + displayId);
+          console.info(`${caseName} Succeeded in getting window from point. Data: ` + JSON.stringify(data));
+          expect(data.length).assertEqual(2);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      }).catch((err: BusinessError) => {
+        if (err.code === 801) {
+          console.info(`${caseName} The current device type does not support to resize.`);
+          done();
+        } else {
+          console.error(`${caseName} Error. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0900
      * @tc.name      : testOnWindowStageClose
      * @tc.desc      : Listener for window stage close event.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnWindowStageClose', 0, async (done: Function) => {
+    it('testOnWindowStageClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnWindowStageClose';
       try {
         let driver: Driver = Driver.create();
@@ -439,7 +475,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnWindowStageCloseRepeat', 0, async (done: Function) => {
+    it('testOnWindowStageCloseRepeat',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnWindowStageCloseRepeat';
       try {
         let driver: Driver = Driver.create();
@@ -484,7 +520,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnWindowStageCloseOff', 0, async (done: Function) => {
+    it('testOnWindowStageCloseOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestOnWindowStageCloseOff';
       try {
         let driver: Driver = Driver.create();
@@ -530,7 +566,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTopmost', 0, async (done: Function) => {
+    it('testSetWindowTopmost', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowTopmost';
       try {
         windowClass.setWindowTopmost(false).then(() => {
@@ -561,7 +597,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTopmostInSubWindow', 0, async (done: Function) => {
+    it('testSetWindowTopmostInSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowTopmostInSubWindow';
       let subWindowClass = await windowStage.createSubWindow('subWindow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -599,7 +635,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTopmostUnauthorized', 0, async (done: Function) => {
+    it('testSetWindowTopmostUnauthorized',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowTopmostUnauthorized';
       let subWindowClass = await windowStage.createSubWindow('subWindow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -637,7 +673,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowMaximizeButtonVisible', 0, async (done: Function) =>  {
+    it('testSetWindowMaximizeButtonVisible', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>  {
       let caseName = 'TestSetWindowMaximizeButtonVisible';
       try {
         windowClass.setWindowTitleButtonVisible(false, false);
@@ -670,7 +706,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowMaximizeButtonVisibleUndefined', 0, async (done: Function) =>  {
+    it('testSetWindowMaximizeButtonVisibleUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>  {
       let caseName = 'TestSetWindowMaximizeButtonVisibleUndefined';
       try {
         windowClass.setWindowTitleButtonVisible(undefined, undefined);
@@ -699,7 +735,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowMaximizeButtonVisibleInSubWindow', 0, async (done: Function) => {
+    it('testSetWindowMaximizeButtonVisibleInSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestSetWindowMaximizeButtonVisibleInSubWindow';
       let subWindowClass = await windowStage.createSubWindow('TestSetWindowMaximizeButtonVisibleInSubWindow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -733,7 +769,7 @@ export default function windowManageTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testRestoreBySubWindow', 0, async (done: Function) => {
+    it('testRestoreBySubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'TestRestoreBySubWindow';
       let subWindowClass = await windowStage.createSubWindow('TestRestoreBySubWindow');
       console.info(`${caseName} Succeeded in creating the sub window.`);

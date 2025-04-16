@@ -570,6 +570,44 @@ static napi_value clearTouchFilter(napi_env env, napi_callback_info info){
     return resultValue;
 }
 
+
+napi_value CreateJsWindowLayoutInfoObject(napi_env env,const WindowManager_Rect& rect){
+    napi_value objValue = nullptr;
+    Check_Napi_Create_Object_Return_If_Null(env,objValue);
+    napi_set_named_property(env,objValue,"rect",GetRectAndConvertToJsValue(env,rect));
+    return objValue;
+}
+
+static napi_value getAllWIndowLayOutInfo(napi_env env, napi_callback_info info){
+    size_t argc = 4;
+    napi_value args[4] = {nullptr};
+    napi_get_cb_info(env, info, &argc,  args,nullptr,nullptr);
+
+    int32_t displayId;
+    napi_get_value_int32(env, args[0], &displayId);
+    WindowManager_Rect** windowLayoutInfo = (WindowManager_Rect**)malloc(sizeof(WindowManager_Rect));
+    size_t* windowLayoutInfoSize = (size_t*)malloc(sizeof(size_t));
+    auto res = OH_WindowManager_GetAllWindowLayoutInfoList(displayId,windowLayoutInfo,windowLayoutInfoSize);
+
+    if(res != 0){
+        napi_value resultValue;
+        napi_create_int32(env,res,&resultValue);
+        return resultValue;
+    }else{
+        napi_value arrayValue = nullptr;
+        napi_create_array_with_length(env,*windowLayoutInfoSize,&arrayValue);
+        for(size_t i = 0;i < *windowLayoutInfoSize;i++){
+            OH_LOG_INFO(LOG_APP,"*windowLayoutInfoSize : %{public}d",*windowLayoutInfoSize);
+            napi_set_element(env,arrayValue,i,CreateJsWindowLayoutInfoObject(env,*(windowLayoutInfo[0]+i)));
+        }
+        OH_WindowManager_ReleaseAllWindowLayoutInfoList(*windowLayoutInfo);
+        *windowLayoutInfo = NULL;
+        windowLayoutInfo = NULL;
+        return arrayValue;
+    }
+    
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -593,7 +631,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"registerMouseFilter", nullptr, registerMouseFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"clearMouseFilter", nullptr, clearMouseFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"registerTouchFilter", nullptr, registerTouchFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"clearTouchFilter", nullptr, clearTouchFilter, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"clearTouchFilter", nullptr, clearTouchFilter, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getAllWIndowLayOutInfo", nullptr, getAllWIndowLayOutInfo, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
