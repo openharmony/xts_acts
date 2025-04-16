@@ -45,7 +45,7 @@ export default function customDialogKeyboardAvoidDistance() {
     /**
      * @tc.number    CustomDialogKeyboardAvoidDistance_0100
      * @tc.name      CustomDialogKeyboardAvoidDistance_0100
-     * @tc.desc      set keyboardAvoidDistance:200px,levelUniqueId: Normal value
+     * @tc.desc      set keyboardAvoidDistance:20vp,levelUniqueId: Normal value
      * @tc.level:    Level 1
      * @tc.type :
      * @tc.size :
@@ -77,10 +77,12 @@ export default function customDialogKeyboardAvoidDistance() {
       console.info('[CustomDialog_001_keyboard] left: ' + rect1.left + ', top: ' + rect1.top +
         ', right:' + rect1.right + ', bottom:' + rect1.bottom );
       let keyboardAvoidDistance = top1 - bottom;
+      let str = vp2px(20);
+      let str1 = Math.ceil(str)
       let cancelButton1: Component = await driver.findComponent(ON.text('取消'));
       await CommonFunc.sleep(300);
       await cancelButton1?.click();
-      expect(keyboardAvoidDistance >= 199 && keyboardAvoidDistance <= 201 ).assertEqual(true);
+      expect(keyboardAvoidDistance >= str1 - 2 && keyboardAvoidDistance <= str1 + 2 ).assertEqual(true);
       console.info('CustomDialogKeyboardAvoidDistance_0100 END');
       done();
     });
