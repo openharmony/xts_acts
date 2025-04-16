@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
@@ -56,9 +56,9 @@ export default function GetCurrentSpeed() {
      * @tc.desc test getCurrentSpeed
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testWebView_getCurrentSpeed1000', 0, async () => {
+    it('testWebView_getCurrentSpeed1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getCurrentSpeed_1001 start')
       console.info('SUB_ACE_WEB_getCurrentSpeed_1001 start')
@@ -88,7 +88,7 @@ export default function GetCurrentSpeed() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getCurrentSpeed1001', 0, async () => {
+    it('testWebView_getCurrentSpeed1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getCurrentSpeed_1002 start')
       console.info('SUB_ACE_WEB_getCurrentSpeed_1002 start')
@@ -118,7 +118,7 @@ export default function GetCurrentSpeed() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getCurrentSpeed1002', 0, async () => {
+    it('testWebView_getCurrentSpeed1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getCurrentSpeed_1003 start')
       console.info('SUB_ACE_WEB_getCurrentSpeed_1003 start')
@@ -166,7 +166,7 @@ export default function GetCurrentSpeed() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getCurrentSpeed1003', 0, async () => {
+    it('testWebView_getCurrentSpeed1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getCurrentSpeed_1004 start')
       console.info('SUB_ACE_WEB_getCurrentSpeed_1004 start')

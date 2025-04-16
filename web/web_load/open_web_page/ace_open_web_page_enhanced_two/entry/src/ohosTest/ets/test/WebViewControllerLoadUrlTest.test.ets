@@ -53,9 +53,9 @@ export default function webViewControllerLoadUrlTest() {
     * @tc.desc       : test loadUrl with headers
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testLoadUrl005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testLoadUrl005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testLoadUrl005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl005", 'second', 77004, done);

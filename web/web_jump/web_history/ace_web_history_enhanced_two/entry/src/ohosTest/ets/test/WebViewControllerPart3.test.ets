@@ -53,9 +53,9 @@ export default function webViewControllerPart3Test() {
     * @tc.desc       : test restoreWebState
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testRestoreWebState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testRestoreWebState001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testRestoreWebState001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRestoreWebState001", "index", 100083, done);

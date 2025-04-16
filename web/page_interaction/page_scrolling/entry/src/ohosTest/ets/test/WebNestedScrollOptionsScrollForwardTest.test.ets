@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -60,7 +60,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testNestedScrollOptionsScrollForward001', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward001", true, 8001, done);
@@ -75,7 +75,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testNestedScrollOptionsScrollForward002', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward002", true, 8002, done);
@@ -90,7 +90,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward003', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward003", true, 8003, done);
@@ -105,7 +105,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward004', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward004", true, 8004, done);
@@ -120,7 +120,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward005', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward005", true, 8005, done);
@@ -135,7 +135,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward006', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward006", true, 8006, done);
@@ -150,7 +150,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward007', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward007", true, 8007, done);
@@ -165,7 +165,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward008', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward008", true, 8008, done);
@@ -180,7 +180,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward009', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward009", true, 8009, done);
@@ -195,7 +195,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward010', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward010", true, 8010, done);
@@ -210,7 +210,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward011', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward011", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward011", true, 8011, done);
@@ -225,7 +225,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward012', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward012", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward012", true, 8012, done);
@@ -240,7 +240,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward013', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward013", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward013", true, 8013, done);
@@ -255,7 +255,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward014', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward014", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward014", true, 8014, done);
@@ -270,7 +270,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward015', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward015", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward015", true, 8015, done);
@@ -285,7 +285,7 @@ export default function webNestedScrollOptionsScrollForwardTest() {
      * @tc.type        : Function
      * @tc.level       : Level 1
      */
-    it('testNestedScrollOptionsScrollForward016', 0, async (done: Function) => {
+    it('testNestedScrollOptionsScrollForward016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNestedScrollOptionsScrollForward016", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNestedScrollOptionsScrollForward016", true, 8016, done);

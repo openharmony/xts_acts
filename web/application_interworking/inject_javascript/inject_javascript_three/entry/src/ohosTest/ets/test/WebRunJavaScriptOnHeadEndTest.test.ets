@@ -98,5 +98,20 @@ export default function ActsWebRunJavaScriptHeadEndTest() {
       sendEventByKey('WebRunJavaScriptOnHeadEndTestButton', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_ACE_WEB_RUNJAVASCRIPTONHEADEND_API_0004
+    * @tc.name       : testWebRunJavaScriptOnHeadEnd004
+    * @tc.desc       : test runJavaScriptOnHeadEnd
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testWebRunJavaScriptOnHeadEnd004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd004", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testWebRunJavaScriptOnHeadEnd004", true, 2025040803, done);
+      sendEventByKey('WebRunJavaScriptOnHeadEndTestButton', 10, '');
+    })
+
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -59,9 +59,9 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.desc       : test accessibleGeolocation error
     * @tc.size       : MEDIUM
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('testGetAccessibleGeolocationError001', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError001", '17100011', 20020, done);
@@ -76,7 +76,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError002', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError002", '17100011', 20021, done);
@@ -91,7 +91,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError003', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError003", '17100011', 20022, done);
@@ -106,7 +106,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError004', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError004", '17100011', 20023, done);
@@ -121,7 +121,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError005', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError005", '17100011', 20024, done);
@@ -136,7 +136,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError006', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError006", '17100011', 20025, done);
@@ -151,7 +151,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError007', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError007", '17100011', 20026, done);
@@ -166,7 +166,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationError008', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError008", '17100011', 20027, done);
@@ -181,7 +181,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationError001', 0, async (done: Function) => {
+    it('testDeleteGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationError001", '17100011', 20010, done);
@@ -196,7 +196,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationError002', 0, async (done: Function) => {
+    it('testDeleteGeolocationError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationError002", '17100011', 20011, done);
@@ -211,7 +211,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationError003', 0, async (done: Function) => {
+    it('testDeleteGeolocationError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationError003", '17100011', 20012, done);
@@ -226,7 +226,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationError004', 0, async (done: Function) => {
+    it('testDeleteGeolocationError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationError004", '17100011', 20013, done);
@@ -241,7 +241,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationError001', 0, async (done: Function) => {
+    it('testAllowGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationError001", '17100011', 20000, done);
@@ -256,7 +256,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationError002', 0, async (done: Function) => {
+    it('testAllowGeolocationError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationError002", '17100011', 20001, done);
@@ -271,7 +271,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationError003', 0, async (done: Function) => {
+    it('testAllowGeolocationError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationError003", '17100011', 20002, done);
@@ -286,7 +286,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationError004', 0, async (done: Function) => {
+    it('testAllowGeolocationError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationError004", '17100011', 20003, done);
@@ -301,7 +301,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess001', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess001", 'Invalid origin', 11816, done);
@@ -316,7 +316,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess002', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess002", 'Invalid origin', 11818, done);
@@ -331,7 +331,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess003', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess003", 'Invalid origin', 11820, done);
@@ -346,7 +346,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess004', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess004", 'Invalid origin', 11822, done);
@@ -361,7 +361,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess005', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess005", 'Invalid origin', 11824, done);
@@ -376,7 +376,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess006', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess006", 'Invalid origin', 11826, done);
@@ -391,7 +391,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess007', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess007", 'Invalid origin', 11828, done);
@@ -406,7 +406,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetAccessibleGeolocationErrorMess008', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationErrorMess008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationErrorMess008", 'Invalid origin', 11830, done);
@@ -421,7 +421,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationErrorMess001', 0, async (done: Function) => {
+    it('testDeleteGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationErrorMess001", 'Invalid origin', 11832, done);
@@ -436,7 +436,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationErrorMess002', 0, async (done: Function) => {
+    it('testDeleteGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationErrorMess002", 'Invalid origin', 11834, done);
@@ -451,7 +451,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationErrorMess003', 0, async (done: Function) => {
+    it('testDeleteGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationErrorMess003", 'Invalid origin', 11836, done);
@@ -466,7 +466,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteGeolocationErrorMess004', 0, async (done: Function) => {
+    it('testDeleteGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteGeolocationErrorMess004", 'Invalid origin', 11838, done);
@@ -481,7 +481,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationErrorMess001', 0, async (done: Function) => {
+    it('testAllowGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationErrorMess001", 'Invalid origin', 11840, done);
@@ -496,7 +496,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationErrorMess002', 0, async (done: Function) => {
+    it('testAllowGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationErrorMess002", 'Invalid origin', 11842, done);
@@ -511,7 +511,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationErrorMess003', 0, async (done: Function) => {
+    it('testAllowGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationErrorMess003", 'Invalid origin', 11844, done);
@@ -526,7 +526,7 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testAllowGeolocationErrorMess004', 0, async (done: Function) => {
+    it('testAllowGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testAllowGeolocationErrorMess004", 'Invalid origin', 11846, done);

@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -72,7 +72,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testBlockNetWorkTrue
     *tc.desc test api blockNetWork set to true by load online website
     */
-    it('testBlockNetWorkTrue',0,async (done: Function) =>{
+    it('testBlockNetWorkTrue',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitBlockNetWorkFalse";
       let url = "http://www.weibo.com/";
       Utils.registerEvent("testBlockNetWorkTrue", url, 7112, done);
@@ -83,7 +83,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testBlockNetWorkFalse
     *tc.desc test api blockNetWork set to false by load online website
     */
-   it('testBlockNetWorkFalse',0,async (done: Function) =>{
+   it('testBlockNetWorkFalse',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
      emitKey="emitGetOriginsPromiseLoadLocalHtml01";
      let title = "weibo.com";
       Utils.registerEvent("testBlockNetWorkFalse", title, 7114, done);

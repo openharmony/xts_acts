@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
@@ -58,7 +58,7 @@ export default function webRequestHeaderList() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getSecurityLevel0001', 0, async () => {
+    it('testWebView_getSecurityLevel0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getSecurityLevel_SDK_0001 start')
       console.info('SUB_ACE_WEB_getSecurityLevel_SDK_0001 start')
@@ -86,7 +86,7 @@ export default function webRequestHeaderList() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onFirstContentfulPaint_navigationStartTick', 0, async () => {
+    it('testWebView_onFirstContentfulPaint_navigationStartTick',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_ ONFIRSTCONTENTFULPAINT_0001 start')
       console.info('SUB_ACE_WEB_ ONFIRSTCONTENTFULPAINT_0001 start')

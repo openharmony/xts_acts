@@ -54,9 +54,9 @@ export default function webViewControllerPart3Test() {
     * @tc.desc       : test setNetworkAvailable
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSetNetworkAvailable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetNetworkAvailable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailable001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailable001", 'false', 100055, done);

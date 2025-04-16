@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
 
@@ -57,9 +57,9 @@ export default function webMediaOption() {
     * @tc.desc        : test mediaOptions single instance
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testMediaOptions001', 0, async (done: Function) => {
+    it('testMediaOptions001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitMediaOptions001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaOptions001", false, 415, done);

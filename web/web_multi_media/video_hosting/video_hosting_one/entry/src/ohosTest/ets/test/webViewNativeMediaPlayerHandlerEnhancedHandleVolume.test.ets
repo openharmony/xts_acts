@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume0_handleVolumeChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume0_handleVolumeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume0_handleVolumeChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume0_handleVolumeChange", true, 1565,
@@ -96,7 +96,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
   *@tc.type Function
   *@tc.level Level 1
   */
-    it('testWebViewNativeMediaPlayerSetVolume0_5', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume0_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume0_5"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume0_5", true, 1568,
@@ -114,7 +114,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume0_1_handleVolumeChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume0_1_handleVolumeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume0_1_handleVolumeChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume0_1_handleVolumeChange", true, 1567,
@@ -133,7 +133,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume1", true, 1570,
@@ -150,7 +150,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume0_5_handleVolumeChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume0_5_handleVolumeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume0_5_handleVolumeChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume0_5_handleVolumeChange", true, 1569,
@@ -167,7 +167,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume1_handleVolumeChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume1_handleVolumeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetVolume1_handleVolumeChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume1_handleVolumeChange", true, 1571,
@@ -184,7 +184,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedHandleVolume() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetVolume1_1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetVolume1_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewNativeMediaPlayerSetVolume1_1'
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetVolume1_1", true, 1572,

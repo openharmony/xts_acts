@@ -60,9 +60,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test onRefreshAccessedHistory when loadUrl
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnRefreshAccessedHistory001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnRefreshAccessedHistory001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnRefreshAccessedHistory001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRefreshAccessedHistory001", "resource://rawfile/second.html", 60116, done);

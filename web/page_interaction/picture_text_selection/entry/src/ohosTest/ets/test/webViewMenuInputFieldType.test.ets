@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputFieldTypeNumber001', 0, async (done: Function) => {
+    it('testInputFieldTypeNumber001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeNumber001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInputFieldTypeNumber001", true, 2901, done);
@@ -67,7 +67,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputFieldTypeText001', 0, async (done: Function) => {
+    it('testInputFieldTypeText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeText001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInputFieldTypeText001", true, 2902, done);
@@ -82,7 +82,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputFieldTypePassword001', 0, async (done: Function) => {
+    it('testInputFieldTypePassword001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypePassWord001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInputFieldTypePassword001", true, 2903, done);
@@ -97,7 +97,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputFieldTypeTelephone001', 0, async (done: Function) => {
+    it('testInputFieldTypeTelephone001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeTelephone001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInputFieldTypeTelephone001", true, 2904, done);
@@ -112,7 +112,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInputFieldTypeOther001', 0, async (done: Function) => {
+    it('testInputFieldTypeOther001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeOther001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInputFieldTypeOther001", true, 2905, done);

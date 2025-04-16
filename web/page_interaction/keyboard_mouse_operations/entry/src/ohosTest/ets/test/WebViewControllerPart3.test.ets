@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function webViewControllerPart3Test() {
      *tc.name getHitTest
      *tc.desic Gets the type of HitTest
      */
-    it('getHitTest', 0, async (done: Function) => {
+    it('getHitTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("getHitTest", "7", 118, done);

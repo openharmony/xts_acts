@@ -43,5 +43,5 @@ export default function testsuite() {
        WebViewEnumAndFontLibrary();
        WebViewJavaScriptProxyAndOnPageVisible();
 	   enableFollowSystemFontWeight();
-	   webFantasyFont();
+	   webFantasyFont()
 }

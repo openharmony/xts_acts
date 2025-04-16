@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -71,7 +71,7 @@ export default function webViewSrollableJsunit() {
      *tc.name blurMode01
      *tc.desic test blurMode01 interface when choose callback mode.
      */
-    it('scroll01',0,async  (done: Function) =>{
+    it('scroll01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="scroll02";
       Utils.registerEvent("scroll01",50,20241225,done);
       sendEventByKey('scrollEvent01',10,'');
@@ -82,7 +82,7 @@ export default function webViewSrollableJsunit() {
    *tc.name blurMode02
    *tc.desic test blurMode02 interface when choose callback mode.
    */
-    it('scroll02',0,async  (done: Function) =>{
+    it('scroll02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="scroll02";
       Utils.registerEvent("scroll02",80,20241226,done);
       sendEventByKey('scrollEvent01',10,'');

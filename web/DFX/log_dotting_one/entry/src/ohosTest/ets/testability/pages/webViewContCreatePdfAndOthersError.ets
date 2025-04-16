@@ -30,7 +30,6 @@ class myInstance {
 struct webViewContCreatePdfAndOthersError {
   controller: webview.WebviewController = new webview.WebviewController();
   controllerNull: webview.WebviewController = new webview.WebviewController();
-  
   @State str: string = '';
   @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
     ' CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';

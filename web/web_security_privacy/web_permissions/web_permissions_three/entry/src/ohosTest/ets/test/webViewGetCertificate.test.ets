@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
@@ -70,7 +70,7 @@ export default function webViewGetCertificate() {
      *tc.name testGetCertificateCallback
      *tc.desc test interface of getCertificate with callback
      */
-    it('testGetCertificateCallback',0,async (done:Function) =>{
+    it('testGetCertificateCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function) =>{
       emitKey="emitGetCertificatePromise";
       Utils.registerEvent("testGetCertificateCallback",true,403,done);
       sendEventByKey('webViewGetCertificate',10,'');
@@ -80,7 +80,7 @@ export default function webViewGetCertificate() {
      *tc.name testGetCertificatePromise
      *tc.desc test interface of getCertificate with promise
      */
-    it('testGetCertificatePromise',0,async (done:Function) =>{
+    it('testGetCertificatePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function) =>{
       emitKey="emitGetCertificatePromise";
       Utils.registerEvent("testGetCertificatePromise",true,404,done);
       sendEventByKey('webViewGetCertificate',10,'');

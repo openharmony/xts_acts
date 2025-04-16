@@ -59,9 +59,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test onPageEnd normal
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnPageEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnPageEnd001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnPageEnd001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageEnd001", "resource://rawfile/second.html", 70007, done);
