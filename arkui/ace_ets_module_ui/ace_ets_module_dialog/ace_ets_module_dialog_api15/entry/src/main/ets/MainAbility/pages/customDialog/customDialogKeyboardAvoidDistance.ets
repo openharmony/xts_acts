@@ -12,179 +12,177 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promptAction } from '@kit.ArkUI'
 import { LengthMetrics } from '@kit.ArkUI';
-class Tmp {
-  public keyBoardHeight: Length = 200
 
-  constructor(keyBoardHeight: Length) {
-    this.keyBoardHeight = keyBoardHeight
-  }
-  public getKeyBoardHeight() {
-    return this.keyBoardHeight
+@CustomDialog
+struct testExampleTwo {
+  controllerTwo?: CustomDialogController
+
+  build() {
+    Column() {
+      Text('我是第二个弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭第二个弹窗')
+        .onClick(() => {
+          if (this.controllerTwo != undefined) {
+            this.controllerTwo.close()
+          }
+        })
+    }
   }
 }
-@Entry
-@Component
-struct prompt {
-  private customDialogComponentId: number = 0
-  @State keyBoardHeight: Length= 300
-  @State textValue: string = 'click me'
-  @State distanceId: number = 0
-  @State modal: boolean = true
-  @State mode: KeyboardAvoidMode = KeyboardAvoidMode.DEFAULT
-  @State keyboardAvoidDistance :LengthMetrics = LengthMetrics.px(200)
-  @State modeIndex: number = 0
-  @State showInSub: boolean = false
-  @State heigh: Dimension = 200
-  @State focus: boolean = false
-  @State mText1: string = ''
-  @State mText2: string = ''
-  @State mText3: string = ''
+
+@CustomDialog
+struct testExample {
+  @Link textValue: string
+  @Link inputValue: string
+  dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
+    builder: testExampleTwo(),
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -25 }
+  })
+  controller?: CustomDialogController
+  cancel: () => void = () => {
+  }
+  confirm: () => void = () => {
+  }
   controller1: TextInputController = new TextInputController()
-  @Builder CustomKeyboardBuilder(params: Tmp) {
+
+  @Builder
+  CustomKeyboardBuilder() {
     Column() {
       Button('x').onClick(() => {
         this.controller1.stopEditing()
-      }).id('close')
+      })
       Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item:number|string) => {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
           GridItem() {
             Button(item + '')
-              .width(110).onClick(() => {
+              .width('30%').onClick(() => {
               this.textValue += item
             })
           }
         })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-      .height(params.getKeyBoardHeight())
+      }
+      .maxCount(3).columnsGap(10).rowsGap(10)
+      .padding(5)
+      .height('50%')
     }.backgroundColor(Color.Gray).id('keyboard')
   }
-  @Builder customDialogComponent() {
+
+  build() {
     Column() {
+      Row({ space: 20 }) {
+        Button('确认')  .onClick(() => {
+          if (this.controller != undefined) {
+            this.inputValue = this.textValue
+            this.controller.close()
+            this.confirm()
+          }
+        }).backgroundColor(0xffffff).fontColor(Color.Red)
+        Button('取消').onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close()
+            this.cancel()
+          }
+        }).backgroundColor(0xffffff).fontColor(Color.Black)
+      }.margin({top:0})
+      TextInput({ placeholder: '', text: this.textValue, controller: this.controller1 })
+        .id('input1')
+        .width('90%')
+        .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance:true })
+        .border({ width: 1 })
+        .onChange((value: string) => {
+          this.textValue = value
+        })
       Text('弹窗').fontSize(30)
-      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .customKeyboard(this.CustomKeyboardBuilder(new Tmp(this.keyBoardHeight)),{supportAvoidance:true})
-    .id('input1')
-      .onChange((value: string) => {
-        this.textValue = value
-      }).defaultFocus(this.focus)
-    Row({ space: 20 }) {
-      Button('确认').onClick(() => {
-        promptAction.closeCustomDialog(this.customDialogComponentId)
-      })
-      Button('取消').onClick(() => {
-        promptAction.closeCustomDialog(this.customDialogComponentId)
-      })
-    }
-  }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween).id('customDialog')
+    }.justifyContent(FlexAlign.SpaceBetween)
+  }
 }
 
-build() {
-  Row() {
-    Column({ space: 20 }) {
-      Button('200')
-        .margin({top:10})
+@Entry
+@Component
+struct CustomDialogUser2 {
+  @State textValue: string = '11'
+  @State inputValue: string = 'click me'
+  @State alignsIndex: number = 0;
+  @State heights: Length = 300;
+  @State distanceId: number = 0
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: testExample({
+      cancel: () => {
+        this.onCancel()
+      },
+      confirm: () => {
+        this.onAccept()
+      },
+      textValue: $textValue,
+      inputValue: $inputValue,
+    }),
+    cancel: this.exitApp,
+    autoCancel: true,
+    keyboardAvoidDistance: LengthMetrics.vp(20),
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false,
+    cornerRadius: 10,
+  })
+  dialogController1: CustomDialogController | null = new CustomDialogController({
+    builder: testExample({
+      cancel: () => {
+        this.onCancel()
+      },
+      confirm: () => {
+        this.onAccept()
+      },
+      textValue: $textValue,
+      inputValue: $inputValue,
+    }),
+    cancel: this.exitApp,
+    autoCancel: true,
+    keyboardAvoidDistance: undefined,
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false,
+    cornerRadius: 10,
+  })
+
+  aboutToDisappear() {
+    this.dialogController = null
+  }
+
+  onCancel() {
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept() {
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp() {
+    console.info('Click the callback in the blank area')
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      Text('custom')
+      Button('20vp')
         .id('btn1')
-        .fontSize(30)
         .onClick(() => {
-          promptAction.openCustomDialog({
-            builder: () => {
-              this.customDialogComponent()
-            },
-            showInSubWindow: this.showInSub,
-            isModal:this.modal,
-            keyboardAvoidMode: this.mode,
-            keyboardAvoidDistance:this.keyboardAvoidDistance,
-            height: this.heigh,
-            maskRect: { x: 0, y: 0, width: '100%', height: '100%' },
-            maskColor: Color.Pink,
-            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-              console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-              console.log('dialog onWillDismiss')
-              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                dismissDialogAction.dismiss()
-              }
-              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                dismissDialogAction.dismiss()
-              }
-            }
-          }).then((dialogId: number) => {
-            this.customDialogComponentId = dialogId
-          })
-        })
-      Text(this.mText1)
-        .id('text1')
+          if (this.dialogController != null) {
+            this.dialogController.open()
+          }
+        }).backgroundColor(0x317aff)
 
       Button('undefined')
-        .margin({top:10})
         .id('btn2')
-        .fontSize(30)
+        .margin({ top: 10 })
         .onClick(() => {
-          promptAction.openCustomDialog({
-            builder: () => {
-              this.customDialogComponent()
-            },
-            showInSubWindow: this.showInSub,
-            isModal:this.modal,
-            keyboardAvoidMode: this.mode,
-            keyboardAvoidDistance:undefined,
-            height: this.heigh,
-            maskRect: { x: 0, y: 0, width: '100%', height: '100%' },
-            maskColor: Color.Pink,
-            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-              console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-              console.log('dialog onWillDismiss')
-              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                dismissDialogAction.dismiss()
-              }
-              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                dismissDialogAction.dismiss()
-              }
-            }
-          }).then((dialogId: number) => {
-            this.customDialogComponentId = dialogId
-
-          })
-        })
-      Text(this.mText2)
-        .id('text2')
-
-      Button('null')
-        .margin({top:10})
-        .id('btn3')
-        .fontSize(30)
-        .onClick(() => {
-          promptAction.openCustomDialog({
-            builder: () => {
-              this.customDialogComponent()
-            },
-            showInSubWindow: this.showInSub,
-            isModal:this.modal,
-            keyboardAvoidMode: this.mode,
-            keyboardAvoidDistance:null,
-            height: this.heigh,
-            maskRect: { x: 0, y: 0, width: '100%', height: '100%' },
-            maskColor: Color.Pink,
-            onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-              console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-              console.log('dialog onWillDismiss')
-              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                dismissDialogAction.dismiss()
-              }
-              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                dismissDialogAction.dismiss()
-              }
-            }
-          }).then((dialogId: number) => {
-            this.customDialogComponentId = dialogId
-          })
-        })
-      Text(this.mText3)
-        .id('text3')
-    }
-    .width('100%')
+          if (this.dialogController1 != null) {
+            this.dialogController1.open()
+          }
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
   }
-  .height('100%')
-}
 }
