@@ -670,9 +670,9 @@ describe('HiAppEventApiTest', function () {
     console.info('testHiAppEventApi29 start')
     HiAppEvent.write(HiAppEvent.Event.USER_LOGIN, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'userlogin',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -689,9 +689,9 @@ describe('HiAppEventApiTest', function () {
 
     HiAppEvent.write(HiAppEvent.Event.USER_LOGOUT, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'userlogout',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -708,9 +708,9 @@ describe('HiAppEventApiTest', function () {
 
     HiAppEvent.write(HiAppEvent.Event.DISTRIBUTED_SERVICE_START, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'serviceStart',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -942,7 +942,7 @@ describe('HiAppEventApiTest', function () {
         console.info('testHiAppEventApi37 end')
         done()
     })
-    
+
     /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3800
      * @tc.name: testHiAppEventApi38
@@ -1122,6 +1122,35 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo4, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo5, expectErr, done);
         console.info('testHiAppEventApi44 end');
+    });
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4500
+     * @tc.name testHiAppEventApi45
+     * @tc.desc HiAppEvent with predefined event and param.
+     */
+    it('testHiAppEventApi45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventApi45 start');
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "test_name",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                USER_ID: HiAppEventV9.param.USER_ID,
+                DISTRIBUTED_SERVICE_NAME: HiAppEventV9.param.DISTRIBUTED_SERVICE_NAME,
+                DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEventV9.param.DISTRIBUTED_SERVICE_INSTANCE_ID,
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi45 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi45 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi45 end');
     });
 })
 }
