@@ -162,6 +162,48 @@ export default function AVScreenCaptureRecorderMicro() {
       console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1200 end')
     })
     
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300
+        * @tc.name      : 01.AvScreenCaptureRecorder
+        * @tc.desc      : AvScreenCaptureRecorder
+        * @tc.size      : MediumTest
+        * @tc.type      : Performance test
+        * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300', 0, async (done: Function) => {
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300 start')
+
+      let mySteps = new Array(
+        // create
+        mediaTestBase.CREATE_EVENT,
+        // init
+        mediaTestBase.INITWITHERROR_EVENT,
+        mediaTestBase.SETONCALLBACK_EVENT,
+        //setMicEnable
+        mediaTestBase.SET_MIC_ENABLE_EVENT,
+        // start recorder
+        mediaTestBase.STARTRECORDER_EVENT,
+        // stop recorder
+        mediaTestBase.STOPRECORDER_EVENT,
+        mediaTestBase.RELEASECORDER_EVENT,
+        mediaTestBase.AV_CREATEAVPLAYER,
+        mediaTestBase.END_EVENT);
+      mediaTestBase.outputName = mediaTestBase.resourceName();
+      mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
+      let avConfig2: media.AVScreenCaptureRecordConfig = {
+        fd: mediaTestBase.outputFdObject.fd,
+        frameWidth: undefined,
+        frameHeight: undefined,
+        videoBitrate: undefined,
+        audioSampleRate: undefined,
+        audioChannelCount: undefined,
+        audioBitrate: undefined,
+        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4,
+      }
+
+      mediaTestBase.toNextStep2(mediaTestBase.avScreenCaptureRecorder, avConfig2, 3000, mySteps, done)
+      console.info(mediaTestBase.TAG + 'SUB_MULTIMEDIA_MEDIA_AVSCREENCAPTURERECORDER_1300 end')
+    })
   })
 }
 

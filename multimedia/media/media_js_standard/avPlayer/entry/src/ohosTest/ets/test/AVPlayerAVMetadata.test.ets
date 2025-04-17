@@ -980,5 +980,40 @@ export default function AVMetadata() {
       });
       done();
     });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_CALLBACK_FUNCTION_0100
+     * @tc.name      : 001.testAVMeta hdrType
+     * @tc.desc      : Local Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+        */
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', Level.LEVEL0, (done: Function) => {
+      console.info(TAG + "0100 is success");
+      let avMetadataExtractor: media.AVMetadataExtractor;
+    
+      media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+        if (error) {
+          console.error(TAG, `Failed to create AVMetadataExtractor, error message: ${JSON.stringify(error)}`);
+          done();
+          return;
+        }
+        avMetadataExtractor = extractor;
+        console.info(TAG, 'Succeeded in creating AVMetadataExtractor');
+        avMetadataExtractor.fdSrc = AVFileDescriptor;
+        avMetadataExtractor.fetchMetadata((err, metadata) => {
+          if (err) {
+            console.error(TAG, `fetchMetadata callback failed, err = ${JSON.stringify(err)}`);
+            done();
+            return;
+          }
+          console.info(TAG, `fetchMetadata callback success video album :${metadata.album}`);
+          expect(metadata.album).assertEqual("media");
+          avMetadataExtractor.release();
+          done();
+        });
+      });
+    });
   })
 }

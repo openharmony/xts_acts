@@ -168,6 +168,29 @@ export default class Commmon {
   }
 
   // create avRecorder(promise)
+
+  async idleCallbackWithError(avRecorder: media.AVRecorder, avConfig: media.AVRecorderConfig, done: Function) {
+    console.info('case idleCallback called');
+    media.createAVRecorder((error, recorder) => {
+      if (recorder != null) {
+        avRecorder = recorder;
+        console.info('createAVRecorder idleCallback success');
+      } else {
+        console.info(`createAVRecorder idleCallback fail, error:${error}`);
+      }
+    });
+    try {
+      avRecorder.prepare(avConfig) 
+      console.info('success excute avRecorder.prepare')
+    } catch (err) {
+      console.info('case avRecorderReliabilitWithErrorTest001 avRecorder.on(error) called, errMessage is ' + err.message);
+      console.info('case avRecorderReliabilitWithErrorTest001 avRecorder.on(error) called, errcode is ' + err.code)
+      expect(err.code).assertEqual(401)
+      done();
+    }
+    this.releaseDone(avRecorder, done)
+  }
+
   async idle(avRecorder: media.AVRecorder) {
     console.info('case createAVRecorder called');
     await media.createAVRecorder().then((recorder) => {
@@ -208,6 +231,26 @@ export default class Commmon {
         console.error(`case prepare error, errMessage is ${err.message}`);
       }
     })
+  }
+
+  prepareCallbackWithError(avRecorder: media.AVRecorder, avConfig: media.AVRecorderConfig) {
+    if (typeof (avRecorder) === 'undefined') {
+      return;
+    }
+    avRecorder.prepare(undefined, (err: BusinessError) => {
+      console.info('case prepare called' + err);
+      if (err == null) {
+        this.sleep(200)
+        console.error(`case prepare success, state is ${avRecorder.state}`);
+        expect(avRecorder.state).assertEqual(this.AV_RECORDER_STATE.PREPARED);
+        console.info('prepare success');
+      } else {
+        console.error(`case prepare error, errMessage is ${err.message}`);
+        console.info('case prepare error called, errcode is ' + err.code)
+        expect(err.code).assertEqual(401)
+      }
+    })
+    console.info('success excute prepareCallbackWithError ')
   }
 
   async preparePromise(avRecorder: media.AVRecorder, avConfig: media.AVRecorderConfig) {
@@ -755,6 +798,11 @@ export default class Commmon {
   async avRecorderReliabilitTest001(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder,
     recorderTime: number, done: Function) {
     this.idleCallback(avRecorder, avConfig, done)
+  }
+
+  async avRecorderReliabilitWithErrorTest001(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder,
+    recorderTime: number, done: Function) {
+    this.idleCallbackWithError(avRecorder, avConfig, done)
   }
 
   async avRecorderReliabilitTest04(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
@@ -1975,6 +2023,35 @@ export default class Commmon {
     avRecorder = await this.idle(avRecorder);
     this.getAVRecorderConfigTest45(avConfig, avRecorder, recorderTime, done)
     await this.preparePromise(avRecorder, avConfig)
+  }
+
+  async avRecorderReliabilitTest46(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
+    done: Function) {
+      avRecorder = await this.idle(avRecorder);
+      await this.prepareCallbackWithError(avRecorder, avConfig)
+      await this.releaseDone(avRecorder, done)
+  }
+
+  async avRecorderReliabilitTest47(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
+    done: Function) {
+    let avRecorderConfig: media.AVRecorderConfig;
+    let result = true;
+    avRecorder = await this.idle(avRecorder);
+    avRecorder.getAVRecorderConfig((err: BusinessError, config: media.AVRecorderConfig) => {
+      if (err) {
+        console.info('avRecorderReliabilitTest47 getAVRecorderConfig47 failed and catch error is ' + err.message);
+        console.error(`avRecorderReliabilitTest47 getAVRecorderConfig47 failed and catch error is ${err.message}`);
+        result = false
+        console.info('result is' + result)
+        expect(result).assertEqual(false);
+      } else {
+        console.info('avRecorderReliabilitTest47 getAVRecorderConfig success');
+        avRecorderConfig = config;
+        result = true;
+        expect(result).assertEqual(false);
+      }
+    });
+    await this.releaseDone(avRecorder, done)
   }
 
   async createTimeTestCallback(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
