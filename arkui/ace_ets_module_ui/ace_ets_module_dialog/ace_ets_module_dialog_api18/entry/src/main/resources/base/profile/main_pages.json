@@ -32,6 +32,7 @@
     "MainAbility/pages/bindMenu/bindMenuHapticFeedbackMode",
     "MainAbility/pages/bindContextMenu/bindContextMenuHapticFeedback",
     "MainAbility/pages/dialog/closeDialogTest",
-    "MainAbility/pages/promptAction/closeToastTest"
+    "MainAbility/pages/promptAction/closeToastTest",
+    "MainAbility/pages/bindContextMenu/previewBorderRadius"
   ]
 }
