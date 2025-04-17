@@ -302,9 +302,9 @@ napi_value OHDrawingFontGetPathForGlyph004(napi_env env, napi_callback_info info
     for (int i = 0; i < count; i++) {
         OH_Drawing_Path *path = OH_Drawing_PathCreate();
         if ((path != nullptr) &&
-        (OH_Drawing_FontGetPathForGlyph(font, glyphs[i], path) == OH_DRAWING_SUCCESS) &&
-        (OH_Drawing_PathGetLength(path, false) > 0) &&
-        (OH_Drawing_PathIsClosed(path, false) == true)) {
+            (OH_Drawing_FontGetPathForGlyph(font, glyphs[i], path) == OH_DRAWING_SUCCESS) &&
+            (OH_Drawing_PathGetLength(path, false) > 0) &&
+            (OH_Drawing_PathIsClosed(path, false) == true)) {
             napi_create_int32(env, SUCCESS, &result3);
         } else {
             napi_create_int32(env, FAIL, &result3);
