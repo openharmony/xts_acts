@@ -21,7 +21,7 @@ export const hidEmitEventThree: () => number;
 export const hidDestroyDeviceOne: () => number;
 export const hidDestroyDeviceTwo: () => number;
 export const hidDestroyDeviceThree: () => number;
-
+export const isHidDevice: (a: number) => number;
 export const hidInitOne: () => number;
 export const hidReleaseOne: () => number;
 export const hidReleaseTwo: () => number;
