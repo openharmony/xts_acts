@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterAll, describe, it, expect } from "@ohos/hypium"
+import { beforeAll, afterAll, describe, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import usbNoPerDdk from 'libusbddkndk.so'
 import deviceManager from "@ohos.driver.deviceManager";
 
@@ -483,6 +483,34 @@ export default function usbNoPerDdkTest() {
       } catch (err) {
         console.error(TAG, `testUsbSendPipeRequestWithAshmemNoPer001 failed, message is ${err.message}`);
         expect(err === null).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_Driver_Ext_DDK_0900
+     * @tc.name       : testUsbGetDevicesNoPer001
+     * @tc.desc       : OH_Usb_GetDevices Interface testing,teturn DDK_ERR_NOPERM
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testUsbGetDevicesNoPer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('----------------------testUsbGetDevicesNoPer001---------------------------');
+      try {
+        if (deviceId < 0) {
+          console.info(TAG, "Test USB device not connected");
+          expect(deviceId).assertEqual(USB_DDK_FAILED);
+          done();
+          return;
+        }
+        const ret = usbNoPerDdk.usbGetDevices(deviceId);
+        console.info("Test Result testUsbGetDevicesNoPer001 : " + ret);
+        expect(ret).assertEqual(DDK_ERR_NOPERM);
+        done();
+      } catch (err) {
+        console.error(TAG, `testUsbGetDevicesNoPer001 failed, message is ${err.message}`);
+        expect().assertFail();
         done();
       }
     });
