@@ -57,9 +57,9 @@ export default function webOnBeforeUnload() {
     * @tc.desc        : test OnBeforeUnload when refresh
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnBeforeUnload001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnBeforeUnload001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnBeforeUnload001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnBeforeUnload001", "resource://rawfile/onBeforeUnloadTest.html", 60402, done);

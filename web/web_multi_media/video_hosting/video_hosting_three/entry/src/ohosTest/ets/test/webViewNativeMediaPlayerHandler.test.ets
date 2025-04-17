@@ -53,9 +53,9 @@ export default function webViewNativeMediaPlayerHandler() {
     * @tc.desc       : test handlePlaybackRateChanged
     * @tc.size_t     : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWebViewNativeMediaPlayerHandlePlaybackRateChanged', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandlePlaybackRateChanged', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerHandlePlaybackRateChanged";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerHandlePlaybackRateChanged", true, 1304, done);

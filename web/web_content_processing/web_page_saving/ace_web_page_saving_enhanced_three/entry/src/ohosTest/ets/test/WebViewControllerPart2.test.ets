@@ -54,9 +54,9 @@ export default function webViewControllerPart2() {
     * @tc.desc       : test searchAllAsync
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSearchAllAsync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSearchAllAsync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSearchAllAsync001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchAllAsync001", 2, 37012, done);

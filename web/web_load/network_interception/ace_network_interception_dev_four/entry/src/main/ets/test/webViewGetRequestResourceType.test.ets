@@ -51,9 +51,9 @@ export default function webViewGetRequestResourceType() {
     * @tc.desc       : test webViewGetRequestResourceType
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('getRequestResourceType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('getRequestResourceType0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("getRequestResourceType0100", 10)
       await Utils.sleep(4000);
       Utils.registerEvent("getRequestResourceType0100", 0, 4900, done);

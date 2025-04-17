@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,  TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
@@ -57,7 +57,7 @@ export default function webRequestHeaderList() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_start0100', 0, async () => {
+    it('testWebView_start0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_start_0100 start')
       console.info('SUB_ACE_WEB_start_0100 start')
@@ -88,7 +88,7 @@ export default function webRequestHeaderList() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_start0105', 0, async () => {
+    it('testWebView_start0105',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_start_0105 start')
       console.info('SUB_ACE_WEB_start_0105 start')

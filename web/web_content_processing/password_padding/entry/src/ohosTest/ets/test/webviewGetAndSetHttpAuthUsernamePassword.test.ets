@@ -73,9 +73,9 @@ export default function ActsAceWebviewGetAndSetHttpAuthUsernamePassword() {
     * @tc.desc        : test webviewGetAndSetHttpAuthUsernamePassword
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testWebviewGetAndSetHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebviewGetAndSetHttpAuthUsernamePassword', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebviewGetAndSetHttpAuthUsernamePassword";
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebviewGetAndSetHttpAuthUsernamePassword", "success", 25001, done);

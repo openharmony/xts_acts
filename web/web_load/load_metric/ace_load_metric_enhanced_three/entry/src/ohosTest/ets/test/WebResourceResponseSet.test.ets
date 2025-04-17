@@ -54,9 +54,9 @@ export default function webResourceResponseSet() {
     * @tc.desc       : test setResponseData
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSetResponseData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetResponseData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSetResponseData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseData001", true, 36010, done);

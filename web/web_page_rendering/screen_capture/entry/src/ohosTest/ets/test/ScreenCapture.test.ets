@@ -31,9 +31,9 @@ export default function screenCapture() {
     * @tc.desc       : test ScreenCaptureConfigGetOrigin
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testScreenCaptureConfigGetOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testScreenCaptureConfigGetOrigin001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitScreenCaptureConfigGetOrigin001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScreenCaptureConfigGetOrigin001", true, 4202, done);
