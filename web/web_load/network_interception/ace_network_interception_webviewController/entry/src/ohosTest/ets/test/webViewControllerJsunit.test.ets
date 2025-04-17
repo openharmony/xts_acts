@@ -16,8 +16,8 @@
 import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-let emitKey = "emitpageDown";
 import { accessibility, config } from '@kit.AccessibilityKit';
+let emitKey = "emitpageDown";
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerJsunit() {
