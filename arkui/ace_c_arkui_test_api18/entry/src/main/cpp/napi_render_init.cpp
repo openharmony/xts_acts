@@ -20,6 +20,7 @@
 #include "textpicker/textPicker_enableHapticFeedback_test.h"
 #include "datepicker/datePicker_enableHapticFeedback_test.h"
 #include "swiper/swiper_indicator_test.h"
+#include "ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -43,6 +44,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr },
         { "swiperIndicatorTest", nullptr, SwiperIndicatorTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr },
+        {"testExpectedFrameRateRangeCallback", nullptr, ExpectedFrameRateRangeCallbackTest::testExpectedFrameRateRangeCallback001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
