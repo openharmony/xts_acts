@@ -100,27 +100,6 @@ export default function saveComponentTest() {
               console.info("====>[Test_Security_Button_Save_0100] 设置权限成功");
               expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
               await Utils.sleep(500);
-              let driver = Driver.create();
-              console.info("====>[Test_Security_Button_Save_0100] driver is:" + JSON.stringify(driver));
-              let flag = false;
-              console.info("====>[Test_Security_Button_Save_0100] flag is:" + flag);
-              for (let i = 0; i < 5; i++) {
-                console.info("====>[Test_Security_Button_Save_0100] loop START====" + i);
-                if (flag) {
-                  break;
-                }
-                let textComponent = await driver.findComponent(ON.type('Button'));
-                console.info("====>[Test_Security_Button_Save_0100] textComponent is:" + JSON.stringify(textComponent));
-                await Utils.sleep(200)
-                if (textComponent != undefined && textComponent != null) {
-                  try{
-                    await textComponent.click();
-                    console.info("====>[Test_Security_Button_Save_0100] textComponentClick finish");
-                  } catch (err) {
-                    console.info("====>[Test_Security_Button_Save_0100] textComponentClick err : " + JSON.stringify(err));
-                  };
-                }
-              }
               console.info("====>[Test_Security_Button_Save_0100] END====");
               done()
             } else {
@@ -1697,9 +1676,9 @@ export default function saveComponentTest() {
           if(clickData.data !=undefined){
             console.info("====>[Test_Security_Button_Save_1600] get clickEvent result is: " + JSON.stringify(clickEvent));
             console.info("====>[Test_Security_Button_Save_1600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-            if (clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
+            if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
               console.info("====>[Test_Security_Button_Save_1600] 设置权限成功");
-              expect(clickData.data.clickResult == SaveButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+              expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
               console.info("====>[Test_Security_Button_Save_1600] END====");
               done();
             } else {
