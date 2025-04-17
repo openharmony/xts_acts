@@ -14,7 +14,7 @@
  */
 import hidebug from '@ohos.hidebug';
 import hilog from '@ohos.hilog';
-import {describe, it, expect} from '@ohos/hypium';
+import {describe, it, expect, TestType, Level, Size} from '@ohos/hypium';
 
 export default function HidebugToDevJsTest() {
 describe('HidebugToDevJsTest', function () {
@@ -27,7 +27,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs01', 1, async function (done) {
+    it('testHiDebugJs01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
         try {
             let sysMemInfo = hidebug.getSystemMemInfo();
@@ -53,7 +53,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs02', 1, async function (done) {
+    it('testHiDebugJs02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let nativeMemInfo = hidebug.getAppNativeMemInfo();
             hilog.info(0x0000, 'HIDEBUGTEST', 'SUB_DFX_DFT_HiDebug_Mem_Js_0200 pss=%{public}d', nativeMemInfo.pss);
@@ -79,7 +79,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs03', 1, async function (done) {
+    it('testHiDebugJs03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let memoryLimit = hidebug.getAppMemoryLimit();
             hilog.info(0x0000, 'HIDEBUGTEST', 'SUB_DFX_DFT_HiDebug_Mem_Js_0300 rssLimit=%{public}d', memoryLimit.rssLimit);
@@ -102,7 +102,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs04', 1, async function (done) {
+    it('testHiDebugJs04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let vmMemory = hidebug.getAppVMMemoryInfo();
             hilog.info(0x0000, 'HIDEBUGTEST', 'SUB_DFX_DFT_HiDebug_Mem_Js_0400 heapTotal=%{public}d', vmMemory.totalHeap);
@@ -125,7 +125,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs05', 1, async function (done) {
+    it('testHiDebugJs05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let nativeMemInfo = hidebug.getAppNativeMemInfo();
             hilog.info(0x0000, 'HIDEBUGTEST', 'SUB_DFX_DFT_HiDebug_Mem_Js_0500 sharedClean=%{public}d', nativeMemInfo.sharedClean);
@@ -147,7 +147,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs06', 1, async function (done) {
+    it('testHiDebugJs06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let sysCpuUsage = hidebug.getSystemCpuUsage();
             console.info(`SUB_DFX_DFT_HiDebug_CPU_Js_0100 > sysCpuUsage =: ${sysCpuUsage}`)
@@ -168,7 +168,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs07', 1, async function (done) {
+    it('testHiDebugJs07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let appThreadCpuUsage = hidebug.getAppThreadCpuUsage();
             console.info(`SUB_DFX_DFT_HiDebug_CPU_Js_0200 > length =: ${appThreadCpuUsage.length}`)
@@ -194,7 +194,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs08', 1, async function (done) {
+    it('testHiDebugJs08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.MAIN_THREAD;
             let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
@@ -232,7 +232,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs09', 1, async function (done) {
+    it('testHiDebugJs09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = [hidebug.tags.ABILITY_MANAGER, hidebug.tags.ARKUI, hidebug.tags.ARK, hidebug.tags.BLUETOOTH,
@@ -266,7 +266,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs10', 1, async function (done) {
+    it('testHiDebugJs10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = [123];
@@ -290,7 +290,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs11', 1, async function (done) {
+    it('testHiDebugJs11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = [hidebug.tags.ABILITY_MANAGER];
@@ -314,7 +314,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs12', 1, async function (done) {
+    it('testHiDebugJs12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = 3;
             let tag = [hidebug.tags.ABILITY_MANAGER];
@@ -338,7 +338,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs13', 1, async function (done) {
+    it('testHiDebugJs13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = undefined;
@@ -362,7 +362,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs14', 1, async function (done) {
+    it('testHiDebugJs14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = hidebug.TraceFlag.ALL_THREADS;
             let tag = [hidebug.tags.ABILITY_MANAGER];
@@ -386,7 +386,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs15', 1, async function (done) {
+    it('testHiDebugJs15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = undefined;
             let tag = [hidebug.tags.ABILITY_MANAGER];
@@ -410,7 +410,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs16', 1, async function (done) {
+    it('testHiDebugJs16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let flag = 1;
             let tag = [hidebug.tags.ABILITY_MANAGER];
@@ -437,7 +437,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs17', 1, async function (done) {
+    it('testHiDebugJs17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             hidebug.stopAppTraceCapture();
             hidebug.stopAppTraceCapture();
@@ -458,7 +458,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs18', 1, async function (done) {
+    it('testHiDebugJs18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs18 start');
         try {
             let runtimeStats = hidebug.getVMRuntimeStats();
@@ -484,7 +484,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs19', 1, async function (done) {
+    it('testHiDebugJs19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs19 start');
         try {
             let gcCount = hidebug.getVMRuntimeStat("ark.gc.gc-count");
@@ -513,7 +513,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs20', 1, async function (done) {
+    it('testHiDebugJs20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs20 start');
         try {
             hidebug.getVMRuntimeStat("others");
@@ -535,7 +535,7 @@ describe('HidebugToDevJsTest', function () {
     * @tc.type Function
     * @tc.level Level3
     */
-    it('testHiDebugJs21', 1, async function (done) {
+    it('testHiDebugJs21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs21 start');
         try {
             let temp = hidebug.getAppMemoryLimit();
@@ -558,7 +558,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs22', 1, async function (done) {
+    it('testHiDebugJs22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs22 start');
         try {
             let type = 'js_heap';
@@ -594,7 +594,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs23', 1, async function (done) {
+    it('testHiDebugJs23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs23 start');
         try {
             let type = 'testHiDebugJs23';
@@ -618,7 +618,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs24', 1, async function (done) {
+    it('testHiDebugJs24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs24 start');
         try {
             let type = 'js_heap';
@@ -642,7 +642,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs25', 1, async function (done) {
+    it('testHiDebugJs25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs25 start');
         try {
             let type = 'js_heap';
@@ -666,7 +666,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs26', 1, async function (done) {
+    it('testHiDebugJs26', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs26 start');
         try {
             let type = 'js_heap';
@@ -690,7 +690,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs27', 1, async function (done) {
+    it('testHiDebugJs27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs27 start');
         try {
             let result = hidebug.isDebugState();
@@ -710,7 +710,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs28', 1, async function (done) {
+    it('testHiDebugJs28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs28 start');
         try {
             let result = hidebug.getGraphicsMemory();
@@ -730,7 +730,7 @@ describe('HidebugToDevJsTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugJs29', 1, async function (done) {
+    it('testHiDebugJs29', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiDebugJs29 start');
         try {
             let result = hidebug.getGraphicsMemorySync();
