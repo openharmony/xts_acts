@@ -50,21 +50,21 @@ export default function shareAcquireShareDataTest() {
     it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["button_onClick_event"]
+        events: ['button_onClick_event']
       };
       let subscriber : commonEventManager.CommonEventSubscriber;
       await commonEventManager.createSubscriber(commonEventSubscribeInfo)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
-          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          hilog.info(0x0000, TAG, '[%{public}s] createSubscriber succeed', TAG);
           commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            hilog.info(0x0000, TAG, '[%{public}s] subscribe callback. Gained commonEventData: %{public}s', TAG, JSON.stringify(commonEventData));
             try {
               expect(JSON.stringify(commonEventData.parameters?.result)).assertEqual(JSON.stringify('clearUpResult. code: 202, message: The application is not system-app, can not use system-api.'));
             } catch {
             }
             commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+              hilog.info(0x0000, TAG, '[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s', TAG, JSON.stringify(err), JSON.stringify(data));
               done();
             });
           })
@@ -74,9 +74,9 @@ export default function shareAcquireShareDataTest() {
           };
           testAbilityContext.startAbility(want, (err: BusinessError) => {
             if (err.code) {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility failed, err: %{public}s", TAG, JSON.stringify(err));
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility failed, err: %{public}s', TAG, JSON.stringify(err));
             } else {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility succeed", TAG);
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility succeed', TAG);
             }
           })
           const driver = Driver.create();
@@ -95,21 +95,21 @@ export default function shareAcquireShareDataTest() {
     it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["button_onClick_event"]
+        events: ['button_onClick_event']
       };
       let subscriber : commonEventManager.CommonEventSubscriber;
       await commonEventManager.createSubscriber(commonEventSubscribeInfo)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
-          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          hilog.info(0x0000, TAG, '[%{public}s] createSubscriber succeed', TAG);
           commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            hilog.info(0x0000, TAG, '[%{public}s] subscribe callback. Gained commonEventData: %{public}s', TAG, JSON.stringify(commonEventData));
             try {
               expect(JSON.stringify(commonEventData.parameters?.result)).assertEqual(JSON.stringify('acquireShareResult. code: 202, message: The application is not system-app, can not use system-api.'));
             } catch {
             }
             commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+              hilog.info(0x0000, TAG, '[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s', TAG, JSON.stringify(err), JSON.stringify(data));
               done();
             });
           })
@@ -119,9 +119,9 @@ export default function shareAcquireShareDataTest() {
           };
           testAbilityContext.startAbility(want, (err: BusinessError) => {
             if (err.code) {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility failed, err: %{public}s", TAG, JSON.stringify(err));
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility failed, err: %{public}s', TAG, JSON.stringify(err));
             } else {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility succeed", TAG);
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility succeed', TAG);
             }
           })
           const driver = Driver.create();
@@ -140,15 +140,15 @@ export default function shareAcquireShareDataTest() {
     it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200', 0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["button_onClick_event"]
+        events: ['button_onClick_event']
       };
       let subscriber : commonEventManager.CommonEventSubscriber;
       await commonEventManager.createSubscriber(commonEventSubscribeInfo)
         .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
-          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          hilog.info(0x0000, TAG, '[%{public}s] createSubscriber succeed', TAG);
           commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
-            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            hilog.info(0x0000, TAG, '[%{public}s] subscribe callback. Gained commonEventData: %{public}s', TAG, JSON.stringify(commonEventData));
             try {
               // expect(JSON.stringify(commonEventData.parameters?.result)).assertEqual(JSON.stringify('killProcessResult. code: 16000050, message: Internal error.'));
               expect(JSON.stringify(commonEventData.parameters?.result)).assertEqual(JSON.stringify('killProcessResult. code: 202, message: The application is not system-app, can not use system-api.'));
@@ -162,9 +162,9 @@ export default function shareAcquireShareDataTest() {
           };
           testAbilityContext.startAbility(want, (err: BusinessError) => {
             if (err.code) {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility failed, err: %{public}s", TAG, JSON.stringify(err));
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility failed, err: %{public}s', TAG, JSON.stringify(err));
             } else {
-              hilog.info(0x0000, TAG, "[%{public}s] startAbility succeed", TAG);
+              hilog.info(0x0000, TAG, '[%{public}s] startAbility succeed', TAG);
             }
           })
           const driver = Driver.create();
@@ -173,7 +173,7 @@ export default function shareAcquireShareDataTest() {
           await button.click();
           await sleep(2000);
           commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
-            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+            hilog.info(0x0000, TAG, '[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s', TAG, JSON.stringify(err), JSON.stringify(data));
           });
         })
     })

@@ -22,7 +22,7 @@ const TAG: string = 'actsAbilityRunTimeTest-Page ';
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
+  aboutToAppear(): void {
     hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index aboutToAppear');
   }
 
@@ -33,7 +33,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("Hello")
+        Text('Hello')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
 
@@ -41,19 +41,18 @@ struct Index {
           .margin({top: 10})
           .id('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200')
           .onClick(() => {
-            // let bundleName = 'com.test.actsshareacquiresharedatarely';
             let bundleName = 'com.example.helloworld';
             let TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200_button';
             try {
               appManager.killProcessesByBundleName(bundleName).then((data) => {
-                hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName success.", TAG);
+                hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName success.', TAG);
               }).catch((err: BusinessError) => {
-                hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName fail, err: %{public}s", TAG, JSON.stringify(err));
+                hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName fail, err: %{public}s', TAG, JSON.stringify(err));
               });
             } catch (paramError) {
               let code = (paramError as BusinessError).code;
               let message = (paramError as BusinessError).message;
-              hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName paramError.code: %{public}s, message: %{public}s", TAG, code, message);
+              hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName paramError.code: %{public}s, message: %{public}s', TAG, code, message);
             }
           })
 
@@ -62,18 +61,17 @@ struct Index {
           .id('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200')
           .onClick(() => {
             let bundleName = 'com.test.actsshareacquiresharedatarely';
-            // let bundleName = 'com.example.helloworld';
             let TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200_button';
             try {
               appManager.killProcessesByBundleName(bundleName).then((data) => {
-                hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName success.", TAG);
+                hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName success.', TAG);
               }).catch((err: BusinessError) => {
-                hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName fail, err: %{public}s", TAG, JSON.stringify(err));
+                hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName fail, err: %{public}s', TAG, JSON.stringify(err));
               });
             } catch (paramError) {
               let code = (paramError as BusinessError).code;
               let message = (paramError as BusinessError).message;
-              hilog.info(0x0000, TAG, "[%{public}s] killProcessesByBundleName paramError.code: %{public}s, message: %{public}s", TAG, code, message);
+              hilog.info(0x0000, TAG, '[%{public}s] killProcessesByBundleName paramError.code: %{public}s, message: %{public}s', TAG, code, message);
             }
           })
       }

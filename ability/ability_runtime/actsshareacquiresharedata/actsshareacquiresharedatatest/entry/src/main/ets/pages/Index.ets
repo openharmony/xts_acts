@@ -20,7 +20,7 @@ const TAG: string = 'actsAbilityRunTimeTest-Page ';
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
+  aboutToAppear(): void {
     hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index aboutToAppear');
   }
 

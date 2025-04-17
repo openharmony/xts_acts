@@ -17,8 +17,8 @@ group("ActsShareAcquireShareData") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsshareacquiresharedatarely:ActsShareAcquireShareDataRely",
       "actsshareacquiresharedatatest:ActsShareAcquireShareDataTest",
-      "actsshareacquiresharedatarely:ActsShareAcquireShareDataRely"
     ]
   }
 }
