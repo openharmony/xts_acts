@@ -15,10 +15,10 @@
 import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { accessibility, config } from '@kit.AccessibilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
 const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default function webviewApi() {
 
