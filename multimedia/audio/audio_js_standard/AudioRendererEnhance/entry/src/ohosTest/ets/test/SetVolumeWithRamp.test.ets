@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility';
@@ -191,7 +191,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(0);
         console.info(`${Tag}: setVolume 0: SUCCESS`);
@@ -218,7 +218,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(1);
         console.info(`${Tag}: setVolume 1: SUCCESS`);
@@ -245,7 +245,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(1);
         console.info(`${Tag}: setVolume 1: SUCCESS`);
@@ -272,7 +272,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(0);
         console.info(`${Tag}: setVolume 0: SUCCESS`);
@@ -299,7 +299,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(0);
         console.info(`${Tag}: setVolume 0: SUCCESS`);
@@ -326,7 +326,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(1);
         console.info(`${Tag}: setVolume 1: SUCCESS`);
@@ -353,7 +353,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolume(1);
         console.info(`${Tag}: setVolume 1: SUCCESS`);
@@ -380,7 +380,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolumeWithRamp('1', 1000)
         console.info(`${Tag}: setVolumeWithRamp '1',1000: SUCCESS`);
@@ -401,7 +401,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolumeWithRamp(1, '1000');
         console.info(`${Tag}: setVolumeWithRamp 1,'1000': SUCCESS`);
@@ -422,7 +422,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.setVolumeWithRamp();
         console.info(`${Tag}: setVolumeWithRamp no input: SUCCESS`);
@@ -443,7 +443,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.start();
         await audioRen.stop();
@@ -472,7 +472,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await audioRen.release();
         try {
@@ -500,7 +500,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let AudioStreamInfo: AudioStreamInfo = {
@@ -566,7 +566,7 @@ export default function audioRendererEnhanceTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETVOLUMEWITHRAMP_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await renderPlay();
         try {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base'
 
@@ -88,9 +88,9 @@ export default function maxAmplitudeFor() {
      * @tc.desc      : AudioRenderer - STATE_RUNNING
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RECORD_UV_VALUE_0200',0, function () {
+    it('SUB_MULTIMEDIA_AUDIO_RECORD_UV_VALUE_0200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, function () {
       audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((data) => {
         audioVolumeGroupManager.getMaxAmplitudeForInputDevice(data[0]).then((value) => {
           console.info(`mic volatileume amplitude is: ${value}`);
@@ -111,9 +111,9 @@ export default function maxAmplitudeFor() {
      * @tc.desc      : AudioRenderer - STATE_RUNNING
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_PlAY_UV_VALUE_0200',0, function () {
+    it('SUB_MULTIMEDIA_AUDIO_PlAY_UV_VALUE_0200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, function () {
       audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data) => {
         audioVolumeGroupManager.getMaxAmplitudeForOutputDevice(data[0]).then((value) => {
           console.info(`mic volatileume amplitude is: ${value}`);

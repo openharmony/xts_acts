@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 #include "common/common.h"
+#include "customdialog/customdialog_background.cpp"
 #include "customdialog/customdialog_test.cpp"
 
 namespace ArkUICapiTest {
@@ -25,6 +26,8 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"testCustomDialog001", nullptr, TestCustomDialog001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialog002", nullptr, TestCustomDialog002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCustomDialogWidth", nullptr, TestCustomDialogWidth, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCustomDialogHeight", nullptr, TestCustomDialogHeight, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCustomDialogBorderWidth", nullptr, TestCustomDialogBorderWidth, nullptr, nullptr, nullptr, napi_default,
