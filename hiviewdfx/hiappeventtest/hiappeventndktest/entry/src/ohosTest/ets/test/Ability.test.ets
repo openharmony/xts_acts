@@ -1,4 +1,4 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import hiappevent from 'libentry.so'
 
@@ -32,7 +32,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventWrite001', 0, async (done: Function) => {
+    it('testOHHiAppEventWrite001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventWrite();
       expect(result).assertEqual(0);
       done();
@@ -46,7 +46,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventConfigure001', 0, async (done: Function) => {
+    it('testOHHiAppEventConfigure001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventConfigure();
       expect(result).assertEqual(0);
       done();
@@ -60,7 +60,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddBoolParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddBoolParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddBoolParam();
       expect(result).assertEqual(0);
       done();
@@ -74,7 +74,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddBoolArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddBoolArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddBoolArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -88,7 +88,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt8Param001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt8Param001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt8Param();
       expect(result).assertEqual(0);
       done();
@@ -102,7 +102,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt8ArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt8ArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt8ArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -116,7 +116,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt16Param001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt16Param001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt16Param();
       expect(result).assertEqual(0);
       done();
@@ -130,7 +130,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt16ArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt16ArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt16ArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -144,7 +144,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt32Param001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt32Param001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt32Param();
       expect(result).assertEqual(0);
       done();
@@ -158,7 +158,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt32ArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt32ArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt32ArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -172,7 +172,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt64Param001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt64Param001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt64Param();
       expect(result).assertEqual(0);
       done();
@@ -186,7 +186,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddInt64ArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddInt64ArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddInt64ArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -200,7 +200,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddFloatParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddFloatParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddFloatParam();
       expect(result).assertEqual(0);
       done();
@@ -214,7 +214,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddFloatArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddFloatArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddFloatArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -228,7 +228,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddDoubleParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddDoubleParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddDoubleParam();
       expect(result).assertEqual(0);
       done();
@@ -242,7 +242,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddDoubleArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddDoubleArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddDoubleArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -256,7 +256,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddStringParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddStringParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddStringParam();
       expect(result).assertEqual(0);
       done();
@@ -270,7 +270,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventAddStringArrayParam001', 0, async (done: Function) => {
+    it('testOHHiAppEventAddStringArrayParam001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventAddStringArrayParam();
       expect(result).assertEqual(0);
       done();
@@ -284,7 +284,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHHiAppEventCreateParamList001', 0, async (done: Function) => {
+    it('testOHHiAppEventCreateParamList001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = hiappevent.oHHiAppEventCreateParamList();
       expect(result).assertEqual(0);
       done();
@@ -298,7 +298,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode01', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.setAppEventFilter();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0100 code1 : ${code}`);
@@ -329,7 +329,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode02', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.setTriggerCondition();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0200 code1 : ${code}`);
@@ -354,7 +354,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode03', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.setWatcherOnTrigger();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0300 code1 : ${code}`);
@@ -379,7 +379,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode04', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.setWatcherOnReceive();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0400 code1 : ${code}`);
@@ -404,7 +404,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode05', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.takeWatcherData();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0500 code1 : ${code}`);
@@ -432,7 +432,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode06', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.addWatcher();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0600 code1 : ${code}`);
@@ -457,7 +457,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventWatcherCode07', 1, async (done: Function) => {
+    it('testHiAppEventWatcherCode07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let code = hiappevent.removeWatcher();
         console.info(`SUB_DFX_DFT_HiAppEvent_Watcher_Code_0700 code1 : ${code}`);
