@@ -27,9 +27,11 @@
                 "power-shell wakeup",
                 "uinput -T -m 540 1752 540 751 100",
                 "uinput -K -d 2054 -u 2054",
+                "hidumper -s 3301 -a -t",
+                "echo 10000 > /sys/class/graphics/fb0/brightness",
+                "param set persist.skip_scb_charging 1",
                 "wait 5",
-                "uinput -T -m 540 1752 540 751 100",
-                "power-shell setmode 602"
+                "uinput -T -m 540 1752 540 751 100"
             ],
             "teardown-command": [
                 "power-shell setmode 601"
