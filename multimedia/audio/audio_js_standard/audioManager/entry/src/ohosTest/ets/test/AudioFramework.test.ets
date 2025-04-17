@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
@@ -88,16 +88,36 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
     devRoleName = 'ERROR : UNKNOWN : ' + value.deviceRole;
   }
 
-  if (value.deviceType == 1) {
+  if (value.deviceType == audio.DeviceType.EARPIECE) {
     devTypeName = 'EARPIECE';
-  } else if (value.deviceType == 2) {
+  } else if (value.deviceType == audio.DeviceType.SPEAKER) {
     devTypeName = 'SPEAKER';
-  } else if (value.deviceType == 3) {
+  } else if (value.deviceType == audio.DeviceType.WIRED_HEADSET) {
     devTypeName = 'WIRED_HEADSET';
-  } else if (value.deviceType == 8) {
+  } else if (value.deviceType == audio.DeviceType.WIRED_HEADPHONES) {
+    devTypeName = 'WIRED_HEADPHONES';
+  } else if (value.deviceType == audio.DeviceType.BLUETOOTH_SCO) {
+    devTypeName = 'BLUETOOTH_SCO';
+  } else if (value.deviceType == audio.DeviceType.BLUETOOTH_A2DP) {
     devTypeName = 'BLUETOOTH_A2DP';
-  } else if (value.deviceType == 15) {
+  } else if (value.deviceType == audio.DeviceType.MIC) {
     devTypeName = 'MIC';
+  } else if (value.deviceType == audio.DeviceType.USB_HEADSET) {
+    devTypeName = 'USB_HEADSET';
+  } else if (value.deviceType == audio.DeviceType.DISPLAY_PORT) {
+    devTypeName = 'DISPLAY_PORT';
+  } else if (value.deviceType == audio.DeviceType.REMOTE_CAST) {
+    devTypeName = 'REMOTE_CAST';
+  } else if (value.deviceType == audio.DeviceType.USB_DEVICE) {
+    devTypeName = 'USB_DEVICE';
+  //} else if (value.deviceType == audio.DeviceType.HDMI) {
+  //  devTypeName = 'HDMI';
+  //} else if (value.deviceType == audio.DeviceType.LINE_DIGITAL) {
+  //  devTypeName = 'LINE_DIGITAL';
+  } else if (value.deviceType == audio.DeviceType.REMOTE_DAUDIO) {
+    devTypeName = 'REMOTE_DAUDIO';
+  } else if (value.deviceType == audio.DeviceType.DEFAULT) {
+    devTypeName = 'DEFAULT';
   } else {
     devTypeName = 'ERROR : UNKNOWN :' + value.deviceType;
   }
@@ -2233,7 +2253,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const PROMISE = audioManager.getDevices(1);
       // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
       PROMISE.then((value) => {
