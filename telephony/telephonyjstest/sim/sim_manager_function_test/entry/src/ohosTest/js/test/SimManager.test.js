@@ -590,6 +590,13 @@ export default function SimManagerTest() {
      * @tc.desc
      */
     it('Telephony_Sim_getDefaultVoiceSimId_CallBack_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+      let simState = await sim.getSimStateSync(0);
+      let caseName = 'Telephony_Sim_getDefaultVoiceSimId_CallBack_0100';
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      }
       sim.getDefaultVoiceSimId((err, data) => {
         if(err){
           console.info("Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 err = " + JSON.stringify(err));
@@ -612,6 +619,13 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_getDefaultVoiceSimId_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       let promise = sim.getDefaultVoiceSimId();
+      let caseName = 'Telephony_Sim_getDefaultVoiceSimId_Promise_0100';
+      let simState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      }
       promise.then(data => {
         console.info("Telephony_Sim_getDefaultVoiceSimId_Promise_0100 data = " + JSON.stringify(data));
         sim.hasSimCard(0, (err, data) => {

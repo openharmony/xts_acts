@@ -355,6 +355,7 @@ export default function observerManagerTest() {
     it('testTelephonyObserverCallStateChangeOnId0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOnId0600';
       console.info(`${caseName} test start `);
+      if(sim.getMaxSimCount()>1){
       try {
         class Value {
           state: call.CallState = call.CallState.CALL_STATE_UNKNOWN
@@ -370,6 +371,11 @@ export default function observerManagerTest() {
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(error.code == 401);
+        done();
+      }
+      }else{
+        console.info(`${caseName}：Not support dual SIM cards.`);
+        ExpectTrue(true);
         done();
       }
       console.info(`${caseName} test end `);
