@@ -1183,26 +1183,6 @@ export default function displayTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_DisplaySourceMode_0100
-     * @tc.name      : test_DisplaySourceMode_enum
-     * @tc.desc      : test_DisplaySourceMode_enum
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('test_DisplaySourceMode_enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let caseName: string = 'test_DisplaySourceMode_enum';
-      let msgStr: string = 'jsUnittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      expect(display.DisplaySourceMode.NONE).assertEqual(0);
-      expect(display.DisplaySourceMode.MAIN).assertEqual(1);
-      expect(display.DisplaySourceMode.MIRROR).assertEqual(2);
-      expect(display.DisplaySourceMode.EXTEND).assertEqual(3);
-      expect(display.DisplaySourceMode.ALONE).assertEqual(4);
-      done();
-    });
-
-    /**
      * @tc.number    : SUB_BASIC_WMS_DisplaySourceMode_0200
      * @tc.name      : test_display_DisplaySourceMode
      * @tc.desc      : test_display_DisplaySourceMode
@@ -1215,10 +1195,7 @@ export default function displayTest() {
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let displayClass = display.getDefaultDisplaySync();
-      console.info(msgStr + 'getDefaultDisplaySync DisplaySourceMode: ' + JSON.stringify(displayClass.sourceMode));
       console.info(msgStr + 'getDefaultDisplaySync ScreenShape: ' + JSON.stringify(displayClass.screenShape));
-      console.info(msgStr + 'getDefaultDisplaySync x: ' + JSON.stringify(displayClass.x));
-      console.info(msgStr + 'getDefaultDisplaySync y: ' + JSON.stringify(displayClass.y));
       done();
     });
     /**

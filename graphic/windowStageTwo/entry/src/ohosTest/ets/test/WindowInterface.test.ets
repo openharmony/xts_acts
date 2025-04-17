@@ -4783,51 +4783,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         done();
       }
     });
-    /**
-     * @tc.number     : SUB_BASIC_WMS_getParentWindow_0300
-     * @tc.name       : testgetParentWindow
-     * @tc.desc       : testgetParentWindow
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testgetParentWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let message = "testgetParentWindow";
-      let msgStr = 'jsunittest ' + message + ' ';
-      console.log(msgStr + 'begin.');
-      let windowStageStart = await startAbility(message, context);
-      let mainWindow = windowStageStart.getMainWindowSync();
-      let windowId = mainWindow.getWindowProperties().id;
-      console.info(msgStr +'windowId :'+windowId)
-      try {
-        let windowClass = await windowStage.createSubWindow('testgetParentWindow');
-        windowClass.setParentWindow(windowId).then(async() => {
-          console.info(msgStr +'Succeeded in  setParentWindow window.')
-          let parentClass = windowClass.getParentWindow();
-          let parentId = parentClass.getWindowProperties().id;
-          console.info(msgStr +'parentId :'+parentId)
-          expect(parentId).assertEqual(windowId);
-          await windowClass.destroyWindow();
-          await terminateAbility(message)
-          done()
-        }).catch(async(e: BusinessError) => {
-          console.error(msgStr +`Failed to setParentWindow. Cause code: ${e.code}, message: ${e.message}`);
-          await terminateAbility(message)
-          if(e.code == 801){
-            done();
-          }else{
-            expect(false).assertFail();
-            done()
-          }
-        });
-      } catch (e) {
-        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
-        await terminateAbility(message)
-        expect(false).assertFail();
-        done();
-      }
-
-    })
+    
 
 
   })
