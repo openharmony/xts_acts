@@ -250,7 +250,7 @@ export default function flex_Wrap_FlexMarPad_TextMarPadTest() {
       expect(Math.floor(Math.abs((firstText.top - flexContainer.top) - vp2px(40))) <= 1).assertTrue();
 
       expect(Math.floor(Math.abs((secondText.left - firstText.right) - vp2px(20))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs((firstText.top) - (secondText.top))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(firstText.top - secondText.top)) <= 1).assertTrue();
 
       expect(Math.floor(Math.abs((thirdText.top - secondText.bottom) - vp2px(20))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.left - firstText.left)) <= 1).assertTrue();

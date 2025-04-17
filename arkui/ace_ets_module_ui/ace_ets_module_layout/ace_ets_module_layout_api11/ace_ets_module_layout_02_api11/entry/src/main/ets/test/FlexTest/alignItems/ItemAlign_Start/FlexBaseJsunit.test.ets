@@ -23,27 +23,27 @@ export default function flexBase_StartJsunit() {
   describe('flexItemAlignStartTest3', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexBase',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/ItemAlign_Start_FlexBase',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexBase state success " + JSON.stringify(pages));
-        if (!("FlexBase" == pages.name)) {
-          console.info("get FlexBase state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Start_FlexBase state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Start_FlexBase" == pages.name)) {
+          console.info("get ItemAlign_Start_FlexBase state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexBase page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Start_FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexBase page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Start_FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexBase after each called");
+      console.info("ItemAlign_Start_FlexBase after each called");
     });
 
     /**
@@ -60,12 +60,12 @@ export default function flexBase_StartJsunit() {
         name: 'width', value: 500
       });
       await CommonFunc.sleep(3000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flex01');
 
       expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue();
       expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue();
@@ -99,12 +99,12 @@ export default function flexBase_StartJsunit() {
         name: 'height', value: 140
       });
       await CommonFunc.sleep(3000);
-      let strJson1 = getInspectorByKey('flex01');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flex01');
 
-      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
-      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flex01');
       expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue();
       expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue();
       expect(Math.abs(textFlex02.top - textFlex03.top) <= 1).assertTrue();
