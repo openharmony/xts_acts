@@ -41,6 +41,25 @@ export default function HidEmitEventTest() {
   describe('HidEmitEventTest', () => {
 
     beforeAll(async () => {
+      try {
+        console.info(`before queryDevices`)
+        let devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
+        console.info(`after queryDevices`)
+        for (let item of devices) {
+          console.info(`enter for`)
+          let device: deviceManager.USBDevice = item as deviceManager.USBDevice;
+          if ((device.vendorId == 0x2109 && device.productId == 0x888b) ||
+            (device.vendorId == 0xbda && device.productId == 0x8153) ||
+            (!hidEmitEvent.isHidDevice(device.deviceId))) {
+            console.info(`Device vid = ${device.vendorId} pid = ${device.productId}, is not hid device`);
+            continue;
+          }
+          deviceId = device.deviceId;
+          console.info(`Hid device id is ${device.deviceId}`);
+        }
+      } catch (error) {
+        console.error(`Failed to query device. Code is ${error.code}, message is ${error.message}`);
+      }
       console.log(TAG, '*************hid Unit HidEmitEventTest start*************');
     })
 
@@ -56,7 +75,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidCreateDevice0100', 0, async (done: Function) => {
+    it('testHidCreateDevice0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidCreateDeviceOne();
       console.info(TAG, "Test result testHidCreateDevice0100 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
@@ -72,7 +91,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidCreateDevice0200', 0, async (done: Function) => {
+    it('testHidCreateDevice0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidCreateDeviceTwo();
       console.info(TAG, "Test result testHidCreateDevice0200 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
@@ -88,7 +107,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidCreateDevice0300', 0, async (done: Function) => {
+    it('testHidCreateDevice0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidCreateDeviceThree();
       console.info(TAG, "Test result testHidCreateDevice0300 : " + ret);
       IsDevcieSupport(ret, 'testHidCreateDevice0100');
@@ -104,7 +123,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidEmitEventOne0100', 0, async (done: Function) => {
+    it('testHidEmitEventOne0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidEmitEventOne();
       console.info(TAG, "Test result testHidEmitEventOne0100 : " + ret);
       IsDevcieSupport(ret, 'testHidEmitEventOne0100');
@@ -120,7 +139,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidEmitEventTwo0200', 0, async (done: Function) => {
+    it('testHidEmitEventTwo0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidEmitEventTwo();
       console.info(TAG, "Test result testHidEmitEventTwo0200 : " + ret);
       IsDevcieSupport(ret, 'testHidEmitEventTwo0200');
@@ -136,7 +155,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidEmitEventThree0300', 0, async (done: Function) => {
+    it('testHidEmitEventThree0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidEmitEventThree();
       console.info(TAG, "Test result testHidEmitEventThree0300 : " + ret);
       IsDevcieSupport(ret, 'testHidEmitEventThree0300');
@@ -152,7 +171,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidDestroyDeviceOne0100', 0, async (done: Function) => {
+    it('testHidDestroyDeviceOne0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidDestroyDeviceOne();
       console.info(TAG, "Test result testHidDestroyDeviceOne0100 : " + ret);
       IsDevcieSupport(ret, 'testHidDestroyDeviceOne0100');
@@ -168,7 +187,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidDestroyDeviceTwo0200', 0, async (done: Function) => {
+    it('testHidDestroyDeviceTwo0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidDestroyDeviceTwo();
       console.info(TAG, "Test result testHidDestroyDeviceTwo0200 : " + ret);
       IsDevcieSupport(ret, 'testHidDestroyDeviceTwo0200');
@@ -184,7 +203,7 @@ export default function HidEmitEventTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testHidDestroyDeviceThree0300', 0, async (done: Function) => {
+    it('testHidDestroyDeviceThree0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let ret = hidEmitEvent.hidDestroyDeviceThree();
       console.info(TAG, "Test result testHidDestroyDeviceThree0300 : " + ret);
       IsDevcieSupport(ret, 'testHidDestroyDeviceThree0300');
