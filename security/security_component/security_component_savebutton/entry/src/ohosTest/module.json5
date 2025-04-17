@@ -38,6 +38,7 @@
         "exported": true,
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
+        "supportWindowMode": ["fullscreen"],
         "skills": [
           {
             "actions": [
