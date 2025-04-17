@@ -823,7 +823,6 @@ struct WebComponent {
   @State isShouldOverlay: boolean = true;
   @State isCallback: boolean = true;
   @State flag: boolean = false
-  
   area?: Area
   @State emitKey: string = '';
 
@@ -933,8 +932,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSetPlayRateNegative1': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -970,8 +969,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSetPlayRate10': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1009,8 +1008,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1044,8 +1043,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1079,8 +1078,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1108,8 +1107,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerHandleVideoSizeChange': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1129,8 +1128,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerSeekNegative1': {
               this.flag = false
               this.controller.loadUrl($rawfile('multi_source_video_seek.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1161,8 +1160,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerPreloadAuto': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1181,8 +1180,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerTimeUpdate': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1201,8 +1200,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerBufferedEndTime': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1219,8 +1218,8 @@ struct WebComponent {
               mediaErrorState = 2
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaError.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1241,8 +1240,8 @@ struct WebComponent {
               mediaErrorState = 1
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaError.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1263,8 +1262,8 @@ struct WebComponent {
               mediaErrorState = 3
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaError.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1285,8 +1284,8 @@ struct WebComponent {
               networkState = 2
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1310,8 +1309,8 @@ struct WebComponent {
               networkState = 1
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerSetPlayRate.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1335,8 +1334,8 @@ struct WebComponent {
               networkState = 3
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaError.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1359,8 +1358,8 @@ struct WebComponent {
             case 'emitWebViewNativeMediaPlayerUpdateRect_4': {
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerUpdateRect.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1387,8 +1386,8 @@ struct WebComponent {
               readyState = 1
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1411,8 +1410,8 @@ struct WebComponent {
               readyState = 2
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1434,8 +1433,8 @@ struct WebComponent {
               readyState = 3
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
@@ -1457,8 +1456,8 @@ struct WebComponent {
               readyState = 4
               this.flag = false
               this.controller.loadUrl($rawfile('nativeMediaPlayerHandlerPreloadAuto.html'))
-              while (this.flag == false){
-                console.log('wait for page loading')
+              while (this.flag == false) {
+                console.log(this.emitKey + 'wait for page loading')
                 await Utils.sleep(1000)
               }
               await Utils.sleep(1000)
