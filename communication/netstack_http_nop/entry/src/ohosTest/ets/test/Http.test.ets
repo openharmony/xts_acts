@@ -58,11 +58,11 @@ export default function httpTest() {
      * @tc.number:SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100
      * @tc.name: Http_RequestInStream_HttpRequestOptions_Promise_100
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async (done: Function) => {
+    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100 begin');
       try {
         let promise = httpRequest.requestInStream("EXAMPLE_URL", {
