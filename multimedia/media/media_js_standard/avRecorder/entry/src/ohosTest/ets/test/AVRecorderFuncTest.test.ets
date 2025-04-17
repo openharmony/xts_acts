@@ -69,6 +69,23 @@ export default function avRecorderTest() {
       }
     }
 
+    let avProfile2: media.AVRecorderProfile = {
+      audioBitrate: -1,
+      audioChannels: 2,
+      audioSampleRate: 48000,
+      audioCodec: ENCORDER_AAC,
+      fileFormat: FORMAT_M4A,
+    }
+    let avConfig2: media.AVRecorderConfig = {
+      audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+      profile: avProfile2,
+      url: 'fd://',
+      rotation: 0,
+      location: {
+        latitude: 30, longitude: 130
+      }
+    }
+
     let execTimes: Array<number>;
 
     beforeAll(async () => {
@@ -2186,6 +2203,42 @@ export default function avRecorderTest() {
       avConfig.profile.audioSampleRate = 16000;
       commonFun.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
       console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_AMR_0200 end');
+      done();
+    })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0460
+        * @tc.name      : 001.test channel
+        * @tc.desc      : Recorder audio channel
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliabilit test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0460', Level.LEVEL0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0460 start')
+      let fileName: string = commonFun.resourceName();
+      fdObject = await commonFun.getFd(fileName);
+      fdPath = "fd://" + fdObject.fdNumber;
+      avConfig.url = fdPath;
+      commonFun.avRecorderReliabilitTest46(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PREPARE_API_0460 end')
+      done();
+    })
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_008
+        * @tc.name      : 001.test create->getAVRecorderConfig
+        * @tc.desc      : Recorder audio create->getAVRecorderConfig
+        * @tc.size      : MediumTest
+        * @tc.type      : Reliabilit test
+        * @tc.level     : Level2
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_008', Level.LEVEL0, async (done: Function) => {
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_008 start')
+      let fileName: string = commonFun.resourceName();
+      fdObject = await commonFun.getFd(fileName);
+      fdPath = "fd://" + fdObject.fdNumber;
+      avConfig.url = fdPath;
+      commonFun.avRecorderReliabilitTest47(avConfig, avRecorder, RECORDER_TIME, done);
+      console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_008 end');
       done();
     })
   })

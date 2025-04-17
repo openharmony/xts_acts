@@ -16,7 +16,7 @@
 import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
-import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTestBase';
+import { testAVPlayerFun, setSource, setSubtitle,setSubtitle3, PlayTest } from './AVPlayerTestBase';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -484,6 +484,53 @@ async function setPlaybackStrategyDASH(avPlayer: media.AVPlayer | null, done: Fu
   avPlayer?.on('stateChange', stateChangeCallback)
 }
 
+async function setPlaybackStrategyDASH2(avPlayer: media.AVPlayer | null, done: Function) {
+  let surfaceID: string = globalThis.value;
+  let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD, preferredAudioLanguage:undefined, preferredSubtitleLanguage:undefined }
+  let pauseCount = 0
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.surfaceId = surfaceID;
+        setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
+        avPlayer.prepare()
+        break;
+      case PREPARED:
+        avPlayer?.play()
+        break;
+      case PLAYING:
+        if (pauseCount++ == 0) {
+          avPlayer?.pause()
+        }
+        break;
+      case PAUSED:
+        avPlayer?.play()
+        break;
+      case COMPLETED:
+        avPlayer?.release()
+        break;
+      case RELEASED:
+        avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        avPlayer?.release().then(() => {
+        },
+          mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        expect().assertFail();
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback)
+}
+
 async function setPlaybackStrategy(avPlayer: media.AVPlayer | null, done: Function,
   playbackStrategy: media.PlaybackStrategy) {
   let surfaceID: string = globalThis.value;
@@ -671,6 +718,31 @@ async function testSubtitle(src: string | media.AVFileDescriptor, subtitleSrc: s
       expect().assertFail();
       done();
     }
+  });
+}
+
+async function testSubtitle3(src: string | media.AVFileDescriptor, subtitleSrc: string | media.AVFileDescriptor,
+  avPlayer: media.AVPlayer | null, done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      console.info('case createAVPlayer error code is' + err.code);
+      expect().assertFail();
+      done();
+    }
+    avPlayer?.on('error', async (err) => {
+      console.error(`case error called 2 , errMessage is ${err.message}`);
+      console.info('case error code 2 is' + err.code);
+    });
+    setOnCallback(avPlayer, done)
+    setSource(avPlayer, src);
+    setSubtitle3(avPlayer, subtitleSrc)
   });
 }
 
