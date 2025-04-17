@@ -37,9 +37,9 @@ export default function webInitTest() {
     * @tc.desc        : test fetch request not in customizeSchemes
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testCustomizeSchemesFetch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testCustomizeSchemesFetch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch001", true, 202, done);

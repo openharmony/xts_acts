@@ -53,9 +53,9 @@ export default function webViewControllerPart2() {
     * @tc.desc       : test clearHistory
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testClearHistory001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testClearHistory001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testClearHistory001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearHistory001", false, 37000, done);

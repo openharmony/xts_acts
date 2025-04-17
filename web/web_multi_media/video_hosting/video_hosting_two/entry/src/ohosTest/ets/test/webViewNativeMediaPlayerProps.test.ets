@@ -55,9 +55,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test MediaError.NETWORK_ERROR
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewNativeMediaPlayerNetworkError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerNetworkError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerNetworkError";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerNetworkError", true, 1300, done);
@@ -100,9 +100,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test CreateNativeMediaPlayerCallback
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 0
+     *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerCreateNativeMediaPlayerCallback", true, 1303, done);
@@ -175,9 +175,9 @@ export default function webViewNativeMediaPlayerProps() {
      *@tc.desc test MediaPlayerProps2
      *@tc.type Function
      *@tc.size MediumTest
-     *@tc.level Level 0
+     *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPreload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerPreload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let emitKey = "emitWebViewNativeMediaPlayerProps2";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerProps2", true, 1355, done);

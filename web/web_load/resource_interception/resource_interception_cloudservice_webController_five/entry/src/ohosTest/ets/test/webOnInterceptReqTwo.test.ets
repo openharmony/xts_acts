@@ -66,9 +66,12 @@ export default function webOnInterceptReqTwo() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBPATR2_API_0200
-     *tc.name testOnInterceptRequestAgainWebC
-     *tc.desc onInterceptRequest with setting webresourceresponse
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBPATR2_API_0200
+     * @tc.name       : testOnInterceptRequestAgainWebC
+     * @tc.desc       : onInterceptRequest with setting webresourceresponse
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
     it('testOnInterceptRequestAgainWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnInterceptRequestSecondWebC";

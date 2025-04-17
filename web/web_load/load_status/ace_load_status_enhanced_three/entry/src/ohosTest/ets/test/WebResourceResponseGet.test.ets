@@ -33,9 +33,9 @@ export default function webResourceResponseGet() {
     * @tc.desc       : test getRequestHeader
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testGetRequestHeader001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testGetRequestHeader001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetRequestHeader001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetRequestHeader001", true, 35010, done);

@@ -50,9 +50,9 @@ export default function setPathAllowingUniversalAccess() {
     * @tc.desc       : test setPathAllowingUniversalAccess
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('setPathAllowingUniversalAccess0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('setPathAllowingUniversalAccess0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("setPathAllowingUniversalAccess0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("setPathAllowingUniversalAccess0100", 1, 9470, done);

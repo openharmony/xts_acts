@@ -60,9 +60,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test blockNetWork true
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testBlockNetWork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testBlockNetWork001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitBlockNetWork001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBlockNetWork001", 'https://openharmony.cn/', 60418, done);
