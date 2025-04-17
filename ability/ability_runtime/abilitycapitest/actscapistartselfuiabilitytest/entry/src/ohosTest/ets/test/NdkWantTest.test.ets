@@ -38,7 +38,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0100', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0100', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -63,7 +63,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0200', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0200', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0200';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -88,7 +88,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0300', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0300', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0300';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -113,7 +113,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0400', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0400', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0400';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -139,7 +139,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0500', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0500', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0500';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -164,7 +164,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0600', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0600', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0600';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -189,7 +189,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0700', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0700', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0700';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -214,7 +214,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0800', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0800', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0800';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -239,7 +239,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_0900', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_0900', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_0900';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -264,7 +264,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1000', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1000', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1000';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -289,7 +289,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1100', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1100', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -314,7 +314,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1200', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1200', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1200';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -339,7 +339,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1300', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1300', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1300';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -364,7 +364,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1400', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1400', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1400';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -389,7 +389,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1500', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1500', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1500';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -414,7 +414,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1600', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1600', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1600';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -440,7 +440,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1700', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1700', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1700';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -465,7 +465,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1800', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1800', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1800';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -490,7 +490,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_1900', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_1900', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_1900';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -515,7 +515,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2000', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2000', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2000';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -540,7 +540,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2100', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2100', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2100';
       if(isEnabled == "true"){
         let subscriber = commonEventManager.createSubscriberSync({
@@ -559,10 +559,6 @@ export default function ndkTest() {
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.wantNdk_2100();
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + JSON.stringify(result));
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -580,7 +576,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2200', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2200', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2200';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -605,7 +601,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2300', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2300', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2300';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -630,7 +626,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2400', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2400', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2400';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -655,7 +651,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_WantNdk_2500', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantNdk_2500', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_WantNdk_2500';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);

@@ -23,7 +23,7 @@ const TAG = 'SUB_Ability_AbilityRuntime_StartSelfUIAbilityTest';
 
 let isEnabled:string;
 export default function ndkTest() {
-  describe('ActsCapiAbilityRuntimeNDKTest', () => {
+  describe('ActsNdkStartSelfTest', () => {
     beforeAll(() => {
       isEnabled = systemParameterEnhance.getSync('persist.sys.abilityms.start_options_with_animation');
     })
@@ -39,18 +39,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0100', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0100', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0100();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(401);
-          done();
-        }
+        expect(result).assertEqual(401);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -69,18 +64,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0200', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0200', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0200();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(401);
-          done();
-        }
+        expect(result).assertEqual(401);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -99,19 +89,14 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0300', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0300', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', `begin of ${TEST_SUITE_NAME} =========`);
         let result = testNapi.ndkStartAbility_0300();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          hilog.info(0x0000, TAG, '%{public}s', `end of ${TEST_SUITE_NAME} =========`);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        hilog.info(0x0000, TAG, '%{public}s', `end of ${TEST_SUITE_NAME} =========`);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -130,18 +115,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0400', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0400', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0400();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -160,18 +140,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0500', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0500', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0500();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -190,18 +165,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0900', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_0900', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_0900();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -220,18 +190,11 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1000', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1000', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1000();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
         done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
@@ -251,18 +214,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1100', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1100', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1100();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -281,18 +239,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1200', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1200', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1200();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000001);
-          done();
-        }
+        expect(result).assertEqual(16000001);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
@@ -311,7 +264,7 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1500', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1500', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_1500';
       hilog.info(0x0000, TAG, '%{public}s', `end of ${TEST_SUITE_NAME} =========`);
       if(isEnabled == "true"){
@@ -337,18 +290,13 @@ export default function ndkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1600', Level.LEVEL0, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NdkStartAbility_1600', Level.LEVEL3, (done: Function) => {
       const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartAbility_0100';
       if(isEnabled == "true"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         let result = testNapi.ndkStartAbility_1600();
-        if(result == 801){
-          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
-          done();
-        }else{
-          expect(result).assertEqual(16000018);
-          done();
-        }
+        expect(result).assertEqual(16000018);
+        done();
       }else if(isEnabled == "false"){
         hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= ` + isEnabled);
         done();
