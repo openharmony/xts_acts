@@ -410,7 +410,7 @@ export default function nfcATagSessionTest() {
                 console.info("[NFC_test] tagsession13 getMaxTransmitSize:" +mazSendLen);
                 expect(mazSendLen).assertInstanceOf('Number')
             } catch (error) {
-                console.info('[NFC_test] tagsession13 getMaxTransmitSize error' + JSON.stringify(err))
+                console.info('[NFC_test] tagsession13 getMaxTransmitSize error' + JSON.stringify(error))
                 expect('801').assertEqual(error.code)
             }
         })
@@ -559,7 +559,7 @@ export default function nfcATagSessionTest() {
             }
         })
 
-        **
+        /**
          * @tc.number SUB_Communication_NFC_nfcAtage_js_2200
          * @tc.name testsetSendDataTimeout
          * @tc.desc Test setSendDataTimeout api.
