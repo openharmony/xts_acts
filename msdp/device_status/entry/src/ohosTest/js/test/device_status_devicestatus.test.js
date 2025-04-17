@@ -53,10 +53,11 @@ export default function DeviceStatusDeviceStatusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0100 enter`);
       try {
         deviceStatus.off('steadyStandingDetect');
+        done();
       } catch (error) {
         console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0100: ${JSON.stringify(error, ['code', 'message'])}`);
         if(error.code == 801) {
@@ -64,7 +65,9 @@ export default function DeviceStatusDeviceStatusTest() {
         } else {
           expect(error.code).assertEqual(32500003);
         }
+        done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0100 end`);
     })
 
     /*
@@ -79,6 +82,7 @@ export default function DeviceStatusDeviceStatusTest() {
       console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0200 enter`);
       try {
         deviceStatus.on('steadyStandingDetect', (data) => {});
+        console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0200 success`);
         done();
       } catch (error) {
         console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0200: ${JSON.stringify(error, ['code', 'message'])}`);
@@ -87,6 +91,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0200 end`);
     })
 
     /*
@@ -97,10 +102,11 @@ export default function DeviceStatusDeviceStatusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0300 enter`);
       try {
         deviceStatus.on('testType', (data) => {});
+        done();
       } catch (error) {
         console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0300: ${JSON.stringify(error, ['code', 'message'])}`);
         if(error.code == 801) {
@@ -108,7 +114,9 @@ export default function DeviceStatusDeviceStatusTest() {
         } else {
           expect(error.code).assertEqual(401);
         }
+        done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0300 end`);
     })
 
     /*
@@ -119,10 +127,11 @@ export default function DeviceStatusDeviceStatusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+    it('SUB_MSDP_DeviceStatus_API_DeviceStatus_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
       console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0400 enter`);
       try {
         deviceStatus.off('testType', (data) => {});
+        done();
       } catch (error) {
         console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0400: ${JSON.stringify(error, ['code', 'message'])}`);
         if(error.code == 801) {
@@ -130,7 +139,9 @@ export default function DeviceStatusDeviceStatusTest() {
         } else {
           expect(error.code).assertEqual(401);
         }
+        done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0400 end`);
     })
 
     /*
@@ -162,6 +173,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0500 end`);
     })
 
     /*
@@ -186,6 +198,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0600 end`);
     })
 
     /*
@@ -211,6 +224,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0700 end`);
     })
 
     /*
@@ -237,6 +251,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0800 end`);
     })
 
     /*
@@ -261,6 +276,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_0900 end`);
     })
 
     /*
@@ -285,6 +301,7 @@ export default function DeviceStatusDeviceStatusTest() {
         }
         done();
       }
+      console.info(`SUB_MSDP_DeviceStatus_API_DeviceStatus_1000 end`);
     })
   })
 }
