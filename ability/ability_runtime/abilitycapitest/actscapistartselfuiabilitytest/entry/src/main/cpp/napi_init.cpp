@@ -850,9 +850,11 @@ static napi_value NdkStartAbilityWithOptions_2100(napi_env env, napi_callback_in
 
     //创建参数结构体实例，并设置参数
     OH_Pixelmap_InitializationOptions *createOpts = nullptr;
+    int32_t setWidth = 6;
+    int32_t setHeight = 4;
     OH_PixelmapInitializationOptions_Create(&createOpts);
-    OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
-    OH_PixelmapInitializationOptions_SetHeight(createOpts, 4);
+    OH_PixelmapInitializationOptions_SetWidth(createOpts, setWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOpts, setHeight);
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
 
@@ -960,7 +962,7 @@ static napi_value NdkStartAbilityWithOptions_2900(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_2900 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -990,7 +992,7 @@ static napi_value NdkStartAbilityWithOptions_3100(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3100 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1007,7 +1009,7 @@ static napi_value NdkStartAbilityWithOptions_3200(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3200 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1024,7 +1026,7 @@ static napi_value NdkStartAbilityWithOptions_3300(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3300 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1041,7 +1043,7 @@ static napi_value NdkStartAbilityWithOptions_3400(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3400 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1058,7 +1060,7 @@ static napi_value NdkStartAbilityWithOptions_3500(napi_env env, napi_callback_in
         ABILITY_RUNTIME_SUPPORTED_WINDOW_MODE_FLOATING,
     };
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
+    errCode = OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(nullptr, supportedWindowModes, supportedWindowModesSize);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3500 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1069,7 +1071,8 @@ static napi_value NdkStartAbilityWithOptions_3600(napi_env env, napi_callback_in
 {
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3600 begins");
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(nullptr, 100);
+    int32_t windowWidth = 100;
+    errCode = OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(nullptr, windowWidth);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3600 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1091,7 +1094,8 @@ static napi_value NdkStartAbilityWithOptions_3800(napi_env env, napi_callback_in
 {
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3800 begins");
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(nullptr, 100);
+    int32_t windowHeight = 100;
+    errCode = OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(nullptr, windowHeight);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_3800 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1113,7 +1117,8 @@ static napi_value NdkStartAbilityWithOptions_4000(napi_env env, napi_callback_in
 {
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_4000 begins");
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsMinWindowWidth(nullptr, 100);
+    int32_t minWindowWidth = 100;
+    errCode = OH_AbilityRuntime_SetStartOptionsMinWindowWidth(nullptr, minWindowWidth);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_4000 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1135,7 +1140,8 @@ static napi_value NdkStartAbilityWithOptions_4200(napi_env env, napi_callback_in
 {
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_4200 begins");
     AbilityRuntime_ErrorCode errCode;
-    errCode =  OH_AbilityRuntime_SetStartOptionsMinWindowHeight(nullptr, 100);
+    int32_t minWindowHeight = 100;
+    errCode = OH_AbilityRuntime_SetStartOptionsMinWindowHeight(nullptr, minWindowHeight);
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_4200 errCode=%{public}d", errCode);
     napi_value result;
     napi_create_int32(env, errCode, &result);
@@ -1540,8 +1546,6 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ndkStartAbilityWithOptions_0600", nullptr, NdkStartAbilityWithOptions_0600, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ndkStartAbilityWithOptions_0700", nullptr, NdkStartAbilityWithOptions_0700, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ndkStartAbilityWithOptions_0800", nullptr, NdkStartAbilityWithOptions_0800, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_0900", nullptr, NdkStartAbilityWithOptions_0900, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_1000", nullptr, NdkStartAbilityWithOptions_1000, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ndkStartAbilityWithOptions_1100", nullptr, NdkStartAbilityWithOptions_1100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ndkStartAbilityWithOptions_1200", nullptr, NdkStartAbilityWithOptions_1200, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ndkStartAbilityWithOptions_1300", nullptr, NdkStartAbilityWithOptions_1300, nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -1597,21 +1601,6 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ndkWantEx_2100", nullptr, NdkWantEx_2100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "startNativeChildProcess_0100", nullptr, StartNativeChildProcess_0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "startNativeChildProcess_0700", nullptr, StartNativeChildProcess_0700, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2300", nullptr, NdkWantEx_2300, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2400", nullptr, NdkWantEx_2400, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2500", nullptr, NdkWantEx_2500, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2600", nullptr, NdkWantEx_2600, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2700", nullptr, NdkWantEx_2700, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2800", nullptr, NdkWantEx_2800, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkWantEx_2900", nullptr, NdkWantEx_2900, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4300", nullptr, NdkStartAbilityWithOptions_4300, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4400", nullptr, NdkStartAbilityWithOptions_4400, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4500", nullptr, NdkStartAbilityWithOptions_4500, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4600", nullptr, NdkStartAbilityWithOp  tions_4600, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4700", nullptr, NdkStartAbilityWithOptions_4700, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4800", nullptr, NdkStartAbilityWithOptions_4800, nullptr, nullptr, nullptr, napi_default, nullptr },
-        // { "ndkStartAbilityWithOptions_4900", nullptr, NdkStartAbilityWithOptions_4900, nullptr, nullptr, nullptr, napi_default, nullptr },
-
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
