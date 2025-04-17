@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach,  it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-
 export default function PixelUnitsConversionJsunit() {
   describe('PixelUnitsConversionTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,12 +39,10 @@ export default function PixelUnitsConversionJsunit() {
       }
       done()
     });
-
     afterEach(async  () =>{
       await Utils.sleep(1000);
       console.info('PixelUnitsConversion after each called');
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0100
      * @tc.name Test the properties of components
@@ -54,7 +51,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0100', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('px2vp_01'));
@@ -65,7 +62,6 @@ export default function PixelUnitsConversionJsunit() {
       console.info('PixelUnitsConversionTest_0100 END');
       done();
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0200
      * @tc.name Test the properties of components
@@ -74,7 +70,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0200', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0200 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('vp2px_01'));
@@ -85,7 +81,6 @@ export default function PixelUnitsConversionJsunit() {
       console.info('PixelUnitsConversionTest_0200 END');
       done();
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0300
      * @tc.name Test the properties of components
@@ -94,7 +89,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0300', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0300 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('fp2px_01'));
@@ -105,7 +100,6 @@ export default function PixelUnitsConversionJsunit() {
       console.info('PixelUnitsConversionTest_0300 END');
       done();
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0400
      * @tc.name Test the properties of components
@@ -114,7 +108,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0400', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0400 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('px2fp_01'));
@@ -125,7 +119,6 @@ export default function PixelUnitsConversionJsunit() {
       console.info('PixelUnitsConversionTest_0400 END');
       done();
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0500
      * @tc.name Test the properties of components
@@ -134,7 +127,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0500', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0500 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('lpx2px_01'));
@@ -145,7 +138,6 @@ export default function PixelUnitsConversionJsunit() {
       console.info('PixelUnitsConversionTest_0500 END');
       done();
     });
-
     /**
      * @tc.number PixelUnitsConversionTest_0600
      * @tc.name Test the properties of components
@@ -154,7 +146,7 @@ export default function PixelUnitsConversionJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('PixelUnitsConversionTest_0600', 0, async (done: Function) => {
+    it('PixelUnitsConversionTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('PixelUnitsConversionTest_0600 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('px2lpx_01'));

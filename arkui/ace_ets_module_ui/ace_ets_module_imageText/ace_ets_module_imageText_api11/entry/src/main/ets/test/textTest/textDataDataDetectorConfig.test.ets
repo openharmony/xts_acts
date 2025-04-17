@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -46,8 +46,6 @@ export default function textDataDataDetectorConfig() {
       console.info("textDataDataDetectorConfig after each called");
     });
 
-
-
     /**
      * @tc.number    textDataDataDetectorConfig_0001
      * @tc.name      textDataDataDetectorConfig_0001
@@ -56,17 +54,13 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0001', 0, async (done: Function) => {
-
+    it('textDataDataDetectorConfig_0001', Level.LEVEL1, async (done: Function) => {
       console.info('[textDataDataDetectorConfig_0001] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('button.PHONE_NUMBER'));
       await btn.click()
       await CommonFunc.sleep(4000);
-
-
-
       let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
@@ -74,8 +68,6 @@ export default function textDataDataDetectorConfig() {
       console.info('[textDataDataDetectorConfig_0001] END');
       done();
     });
-
-
 
     /**
      * @tc.number    textDataDataDetectorConfig_0002
@@ -85,22 +77,16 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0002', 0, async (done: Function) => {
-
+    it('textDataDataDetectorConfig_0002', Level.LEVEL1, async (done: Function) => {
       console.info('[textDataDataDetectorConfig_0002] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('button.URL'));
       await btn.click()
       await CommonFunc.sleep(4000);
-
-
-
       let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
-
-
       console.info('[textDataDataDetectorConfig_0002] END');
       done();
     });
@@ -114,17 +100,13 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0003', 0, async (done: Function) => {
-
+    it('textDataDataDetectorConfig_0003', Level.LEVEL1, async (done: Function) => {
       console.info('[textDataDataDetectorConfig_0003] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('button.EMAIL'));
       await btn.click()
       await CommonFunc.sleep(4000);
-
-
-
       let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
@@ -142,28 +124,18 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0004', 0, async (done: Function) => {
-
+    it('textDataDataDetectorConfig_0004', Level.LEVEL1, async (done: Function) => {
       console.info('[textDataDataDetectorConfig_0004] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('button.ADDRESS'));
       await btn.click()
       await CommonFunc.sleep(4000);
-
-
-
       let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
-
       console.info('[textDataDataDetectorConfig_0004] END');
       done();
     });
-
-
-
-
-
   })
 }

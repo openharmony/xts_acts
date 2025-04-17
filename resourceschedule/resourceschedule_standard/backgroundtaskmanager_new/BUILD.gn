@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("backgroundtaskmanager_new_test") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "longtimetask:ActsResourcescheduleLongTimeTaskTest" ]
+    deps = [
+      "backgroundprocessmanager:ActsResourcescheduleBackgroundProcessMgrTest",
+      "longtimetask:ActsResourcescheduleLongTimeTaskTest",
+    ]
   }
 }

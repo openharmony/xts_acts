@@ -100,6 +100,7 @@ const props: ESObject = {
 }
 let filePath: ESObject;
 let fdNumber: number;
+let globalImagesource: image.ImageSource;
 
 async function getFd(fileName: string) {
   let context: ESObject = await AppStorage.get('thisContext');
@@ -129,6 +130,7 @@ async function getImagePropertyPromise(filename: string, done: Function, testNum
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     imageSourceApi
       .getImageProperty(key)
       .then((data) => {
@@ -152,6 +154,7 @@ async function getImagePropertyCb(filename: string, done: Function, testNum: str
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     imageSourceApi.getImageProperty(key, (err, data) => {
       if (err) {
         expect(false).assertTrue();
@@ -174,6 +177,7 @@ async function getImagePropertyCb2(filename: string, done: Function, testNum: st
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     let property: ESObject = {
       index: 0, defaultValue: "9999"
     };
@@ -199,6 +203,7 @@ async function getImagePropertyErr(done: Function, testNum: string, tag: string)
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     try {
       await imageSourceApi.getImageProperty(tag);
       expect(false).assertTrue();
@@ -222,7 +227,15 @@ export default function imageGetImagePropertySecond() {
       console.info("beforeEach case");
     });
 
-    afterEach(() => {
+    afterEach(async () => {
+      if (globalImagesource != undefined) {
+        console.info("globalImagesource release start");
+        try {
+          await globalImagesource.release();
+        } catch (error) {
+          console.info("globalImagesource release fail");
+        }
+      }
       console.info("afterEach case");
     });
 

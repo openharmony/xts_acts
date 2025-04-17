@@ -54,12 +54,12 @@ describe('relationalStoreTest', function () {
     /**
      * @tc.name testRdbStore0001
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      * @tc.size MediumTest
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_0900
      * @tc.desc RelationalStore store getRdbStore test
      */
-    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0001 start *************");
         await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (store) => {
             try {
@@ -77,12 +77,12 @@ describe('relationalStoreTest', function () {
     /**
      * @tc.name testRdbStore0002
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      * @tc.size MediumTest
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1000
      * @tc.desc RelationalStore store getRdbStore and create table
      */
-    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = data_Rdb.getRdbStore(context, STORE_CONFIG);
         await storePromise.then(async (store) => {
@@ -133,12 +133,12 @@ describe('relationalStoreTest', function () {
     /**
      * @tc.name testRdbStore0004
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      * @tc.size MediumTest
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1200
      * @tc.desc RelationalStore store deleteRdbStore
      */
-    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0004 start *************");
         try {
             let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
@@ -154,12 +154,12 @@ describe('relationalStoreTest', function () {
     /**
      * @tc.name testRdbStore0005
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      * @tc.size MediumTest
      * @tc.number SUB_DistributedData_RelationalStore_SDK_TransactionJsAPITest_1300
      * @tc.desc RelationalStore store deleteRdbStore
      */
-    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testRdbStore0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testRdbStore0005 start *************");
         try {
             let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);

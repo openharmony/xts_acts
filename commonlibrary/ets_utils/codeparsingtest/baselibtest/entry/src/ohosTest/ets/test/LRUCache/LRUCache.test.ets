@@ -32,9 +32,9 @@ export default function LRUCatchTest() {
      * @tc.desc       : Test the functionality of the put method in the LRU Cache.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLRUCachePutKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLRUCachePutKey0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLRUCachePutKey0001";
       try {
         let pro = new util.LRUCache<string, string>(1);
@@ -53,9 +53,9 @@ export default function LRUCatchTest() {
      * @tc.desc       : Test the functionality of the put method in the LRU Cache.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLRUCachePutKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLRUCachePutKey0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLRUCachePutKey0002";
       try {
         let pro = new util.LRUCache<number, number>(1);
@@ -74,9 +74,9 @@ export default function LRUCatchTest() {
      * @tc.desc       : Test the functionality of the put method in the LRU Cache.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLRUCachePutKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLRUCachePutKey0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLRUCachePutKey0003";
       try {
         let pro = new util.LRUCache<string, string>(1);
@@ -95,9 +95,9 @@ export default function LRUCatchTest() {
      * @tc.desc       : Test the functionality of the put method in the LRU Cache.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLRUCachePutKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLRUCachePutKey0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLRUCachePutKey0004";
       try {
         let pro = new util.LRUCache<string, number>(1);
@@ -116,9 +116,9 @@ export default function LRUCatchTest() {
      * @tc.desc       : Test the functionality of the put method in the LRU Cache.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testLRUCachePutKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testLRUCachePutKey0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testLRUCachePutKey0005";
       try {
         let pro = new util.LRUCache<string, string>(1);

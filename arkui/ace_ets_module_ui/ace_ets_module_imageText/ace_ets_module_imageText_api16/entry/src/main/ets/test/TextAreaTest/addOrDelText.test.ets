@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0001', 0, async (done: Function) => {
+    it('addOrDelText0001', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0001 START');
         await CommonFunc.sleep(500);
@@ -90,7 +90,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0002', 0, async (done: Function) => {
+    it('addOrDelText0002', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0002 START');
         await CommonFunc.sleep(500);
@@ -140,7 +140,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0003', 0, async (done: Function) => {
+    it('addOrDelText0003', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0003 START');
         await CommonFunc.sleep(500);
@@ -186,7 +186,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0004', 0, async (done: Function) => {
+    it('addOrDelText0004', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0004 START');
         await CommonFunc.sleep(500);
@@ -232,7 +232,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0005', 0, async (done: Function) => {
+    it('addOrDelText0005', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0005 START');
         await CommonFunc.sleep(500);
@@ -278,7 +278,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0006', 0, async (done: Function) => {
+    it('addOrDelText0006', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0006 START');
         await CommonFunc.sleep(500);
@@ -324,7 +324,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0007', 0, async (done: Function) => {
+    it('addOrDelText0007', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0007 START');
         await CommonFunc.sleep(500);
@@ -371,7 +371,7 @@ export default function addOrDelText() {
      * @tc.desic        The addText and deleteText methods are added to the 
                           textinput, search, and textarea components.
      */
-    it('addOrDelText0008', 0, async (done: Function) => {
+    it('addOrDelText0008', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('addOrDelText addOrDelText0008 START');
         await CommonFunc.sleep(500);

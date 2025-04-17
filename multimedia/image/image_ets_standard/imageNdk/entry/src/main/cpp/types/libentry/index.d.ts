@@ -97,3 +97,4 @@ export const PackingOptionsGetDesiredDynamicRange: (packing:image.PackingOption)
 export const PackingOptionsSetDesiredDynamicRange: (packing:image.PackingOption, dynamicRange:number) => number;
 export const PackingOptionsGetNeedsPackProperties: (packing:image.PackingOption) => number;
 export const PackingOptionsSetNeedsPackProperties: (packing:image.PackingOption, needsPackProperties:number) => number;
+export const AsssertImageSize: (width:number, height:number) => number;

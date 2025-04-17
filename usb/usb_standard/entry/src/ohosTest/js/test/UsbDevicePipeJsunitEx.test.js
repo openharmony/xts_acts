@@ -26,6 +26,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
   let gDeviceList;
   let gPipe;
+  let devices;
   let isDeviceConnected;
   const TAG = "[UsbDevicePipeJsFunctionsTest]";
 
@@ -1178,7 +1179,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info(TAG, 'usb case testSetInterface003 current device.configs.interfaces.length = 0');
-        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse(0);
+        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse();
       }
       var isClaimed = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
       expect(isClaimed).assertEqual(0);
@@ -1211,7 +1212,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info(TAG, 'usb case testSetInterface004 current device.configs.interfaces.length = 0');
-        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse(0);
+        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse();
       }
       var isClaimed = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
       expect(isClaimed).assertEqual(0);
@@ -1244,7 +1245,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info(TAG, 'usb case testSetInterface005 current device.configs.interfaces.length = 0');
-        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse(0);
+        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse();
       }
       var isClaimed = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
       expect(isClaimed).assertEqual(0);
@@ -1277,7 +1278,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
         console.info(TAG, 'usb case testSetInterface005 current device.configs.interfaces.length = 0');
-        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse(0);
+        expect(gDeviceList[0].configs[j].interfaces.length == 0).assertFalse();
       }
       var isClaimed = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[0], true);
       expect(isClaimed).assertEqual(0);
@@ -1609,6 +1610,5 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(err.code).assertEqual(401);
     }
   })
-
 })
 }

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0001', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0001', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0001 START');
         await CommonFunc.sleep(1000);
@@ -119,7 +119,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0002', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0002', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0002 START');
 
@@ -184,7 +184,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0003', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0003', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0003 START');
         await CommonFunc.sleep(1000);
@@ -249,7 +249,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0004', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0004', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0004 START');
 
@@ -314,7 +314,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0005', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0005', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0005 START');
         await CommonFunc.sleep(1000);
@@ -379,7 +379,7 @@ export default function TextOnWillChangeOptionsTest() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('TextOnWillChangeOptionsTest0006', 0, async (done: Function) => {
+    it('TextOnWillChangeOptionsTest0006', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('TextOnWillChangeOptionsTest TextOnWillChangeOptionsTest0006 START');
 

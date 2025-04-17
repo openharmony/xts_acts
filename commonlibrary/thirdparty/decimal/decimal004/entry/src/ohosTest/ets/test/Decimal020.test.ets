@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 function test_sign_001 (n: string, expected: number) {
     if (Number.isNaN(expected)) {
@@ -51,7 +51,7 @@ export default function DecimalTest020() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_sign_Func_001", 0, () => {
+    it("Decimal_sign_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         test_sign_002(NaN, NaN);
         test_sign_001('NaN', NaN);
         test_sign_002(Infinity, 1);
@@ -74,7 +74,7 @@ export default function DecimalTest020() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_sign_Func_002", 0, () => {
+    it("Decimal_sign_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         try {
             test_sign_001('ee', 0);
             expect(true).assertEqual(false);

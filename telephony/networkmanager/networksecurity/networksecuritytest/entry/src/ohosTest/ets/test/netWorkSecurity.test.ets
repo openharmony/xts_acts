@@ -80,9 +80,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtain system preset CA certificates and user installed CA certificates from certificate management, and verify the certificate chain passed in by the application.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0100';
       console.info(`${caseName} test start`);
       try {
@@ -773,9 +773,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityIsCleartextPermitted_1000',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityIsCleartextPermitted_1000',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermitted_1000';
       console.info(`${caseName} test start`);
       try {
@@ -797,9 +797,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100';
       console.info(`${caseName} test start`);
       try {

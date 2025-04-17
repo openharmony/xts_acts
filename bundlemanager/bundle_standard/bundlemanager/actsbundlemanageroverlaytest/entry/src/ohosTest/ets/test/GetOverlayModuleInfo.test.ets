@@ -34,7 +34,7 @@ export default function getOverlayModuleInfo() {
      * @tc.name: GetOverlayModuleInfoModuleNameIsNull
      * @tc.desc: The query fails when the incoming moduleName is empty
      */
-    it('GetOverlayModuleInfoModuleNameIsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async  () =>{
+    it('GetOverlayModuleInfoModuleNameIsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async  () =>{
       try {
         await overlay.getOverlayModuleInfo("").then(data => {
           console.info("GetOverlayModuleInfoModuleNameIsNull result" + JSON.stringify(data));
@@ -62,7 +62,7 @@ export default function getOverlayModuleInfo() {
      * @tc.name: GetOverlayModuleInfoModuleNameNotExisted
      * @tc.desc: The query fails when the incoming moduleName is not existed
      */
-    it('GetOverlayModuleInfoModuleNameNotExisted', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async  () =>{
+    it('GetOverlayModuleInfoModuleNameNotExisted', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async  () =>{
       try {
         await overlay.getOverlayModuleInfo(MODULE_NAME1).then(data => {
           console.info("GetOverlayModuleInfoModuleNameNotExisted result" + JSON.stringify(data));

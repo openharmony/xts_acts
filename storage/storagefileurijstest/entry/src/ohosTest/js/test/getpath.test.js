@@ -27,7 +27,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_001', 0, function () {
+    it('test_Fileuri_Getpath_001', Level.LEVEL0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments/test.txt";
       let uriOBJ = new fileUri.FileUri(fileuristr);
       let fpath = uriOBJ.path
@@ -68,7 +68,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_003', 0, function () {
+    it('test_Fileuri_Getpath_003', Level.LEVEL0, function () {
       try{
         let fileuristr = "file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test.txt?networkid=***";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -92,7 +92,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_004', 0, function () {
+    it('test_Fileuri_Getpath_004', Level.LEVEL0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments";
       let uriOBJ = new fileUri.FileUri(fileuristr);
       let fpath = uriOBJ.path
@@ -133,7 +133,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('test_Fileuri_Getpath_006', 1, function () {
+    it('test_Fileuri_Getpath_006', Level.LEVEL1, function () {
       try{
         let fileuristr = "file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/storage/Users/currentUser/Documents/test.txt?networkid=";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -158,7 +158,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_007', 0, function () {
+    it('test_Fileuri_Getpath_007', Level.LEVEL0, function () {
       try{
         let diruri = 'file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test#?$@/';
         for(let i = 1;i <= 100;i++){
@@ -188,7 +188,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Getpath_008', 0, function () {
+    it('test_Fileuri_Getpath_008', Level.LEVEL0, function () {
       try{
         let path = '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt/';
         for(let i = 1;i <= 100;i++){
@@ -212,7 +212,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Isremoteuri_001', 0, function () {
+    it('test_Fileuri_Isremoteuri_001', Level.LEVEL0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=authSourc1a1a1**e=admin";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -232,7 +232,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Isremoteuri_002', 0, function () {
+    it('test_Fileuri_Isremoteuri_002', Level.LEVEL0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=?#.123";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -252,7 +252,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Isremoteuri_003', 0, function () {
+    it('test_Fileuri_Isremoteuri_003', Level.LEVEL0, function () {
       console.log("test_Fileuri_Isremoteuri_003 start")
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=***";
@@ -273,7 +273,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('test_Fileuri_Isremoteuri_004', 0, function () {
+    it('test_Fileuri_Isremoteuri_004', Level.LEVEL0, function () {
       console.log("test_Fileuri_Isremoteuri_004 start")
       try{
         let diruri = 'file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/';
@@ -299,7 +299,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('test_Fileuri_Isremoteuri_005', 1, function () {
+    it('test_Fileuri_Isremoteuri_005', Level.LEVEL1, function () {
       console.log("test_Fileuri_Isremoteuri_005 start")
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=";
@@ -320,7 +320,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('fileuri_isremoteuri_006', 3, function () {
+    it('fileuri_isremoteuri_006', Level.LEVEL3, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=****";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -340,7 +340,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('test_Fileuri_Isremoteuri_007', 1, function () {
+    it('test_Fileuri_Isremoteuri_007', Level.LEVEL1, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files";
         let uriOBJ = new fileUri.FileUri(fileuristr);

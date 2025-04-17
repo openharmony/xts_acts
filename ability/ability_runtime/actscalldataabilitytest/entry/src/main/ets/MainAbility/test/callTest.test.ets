@@ -56,7 +56,7 @@ export default function callTest() {
     }
   }
 
-  describe('callTest',  () => {
+  describe('callTest', Level.LEVEL0, () => {
     /*
      * @tc.number  CallTest_0100
      * @tc.name    The deviceid passed in is null, so the installation free process is implemented

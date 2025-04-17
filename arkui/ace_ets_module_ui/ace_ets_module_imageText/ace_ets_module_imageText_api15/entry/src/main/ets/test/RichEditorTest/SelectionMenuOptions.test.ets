@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -54,7 +54,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0001', 0, async (done: Function) => {
+    it('SelectionMenuOptions0001', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0001 START');
         await CommonFunc.sleep(1000);
@@ -81,7 +81,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0002', 0, async (done: Function) => {
+    it('SelectionMenuOptions0002', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0002 START');
         await CommonFunc.sleep(1000);
@@ -107,7 +107,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0004', 0, async (done: Function) => {
+    it('SelectionMenuOptions0004', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0004 START');
         await CommonFunc.sleep(1000);
@@ -134,7 +134,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0005', 0, async (done: Function) => {
+    it('SelectionMenuOptions0005', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0005 START');
         await CommonFunc.sleep(1000);
@@ -160,7 +160,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0007', 0, async (done: Function) => {
+    it('SelectionMenuOptions0007', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0007 START');
         await CommonFunc.sleep(1000);
@@ -187,7 +187,7 @@ export default function SelectionMenuOptions() {
 	* @tc.type         Function
 	* @tc.level        1
      */
-    it('SelectionMenuOptions0008', 0, async (done: Function) => {
+    it('SelectionMenuOptions0008', Level.LEVEL1, async (done: Function) => {
         let driver = Driver.create();
         console.info('SelectionMenuOptions SelectionMenuOptions0008 START');
         await CommonFunc.sleep(1000);

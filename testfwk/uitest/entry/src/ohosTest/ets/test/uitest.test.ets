@@ -2513,7 +2513,7 @@ export default function UiTest() {
          * @tc.name: testWindowMaximize
          * @tc.desc: maximize this UiWindow.
          */
-        it('testWindowMaximize', 0, async () => {
+        it('testWindowMaximize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})

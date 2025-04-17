@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as asyKeyGenCallbackFunc from './utils/keyGenerate/asyKeyGenCallbackFunc';
@@ -54,7 +54,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0100: started.");
       let algName: string = "ECC_BrainPoolP160r1";
       let signVerifyAlg: string = "ECC_BrainPoolP160r1|SHA1";
@@ -79,7 +79,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0200: started.");
       let algName: string = "ECC_BrainPoolP192t1";
       let signVerifyAlg: string = "ECC_BrainPoolP192t1|SHA224";
@@ -104,7 +104,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0300: started.");
       let algName: string = "ECC_BrainPoolP224r1";
       let signVerifyAlg: string = "ECC_BrainPoolP224r1|SHA256";
@@ -129,7 +129,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0400: started.");
       let algName: string = "ECC_BrainPoolP256t1";
       let signVerifyAlg: string = "ECC_BrainPoolP256t1|SHA256";
@@ -154,7 +154,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0500: started.");
       let algName: string = "ECC_BrainPoolP320r1";
       let signVerifyAlg: string = "ECC_BrainPoolP320r1|SHA384";
@@ -179,7 +179,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0600: started.");
       let algName: string = "ECC_BrainPoolP384t1";
       let signVerifyAlg: string = "ECC_BrainPoolP384t1|SHA512";
@@ -204,7 +204,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0700: started.");
       let algName: string = "ECC_BrainPoolP512r1";
       let signVerifyAlg: string = "ECC_BrainPoolP512r1|MD5";
@@ -229,7 +229,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0800: started.");
       let algName: string = "ECC_BrainPoolP160t1";
       let signVerifyAlg: string = "ECC_BrainPoolP160t1|SHA1";
@@ -254,7 +254,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_0900: started.");
       let algName: string = "ECC_BrainPoolP192r1";
       let signVerifyAlg: string = "ECC_BrainPoolP192r1|SHA224";
@@ -279,7 +279,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1000: started.");
       let algName: string = "ECC_BrainPoolP224t1";
       let signVerifyAlg: string = "ECC_BrainPoolP224t1|SHA256";
@@ -304,7 +304,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1100: started.");
       let algName: string = "ECC_BrainPoolP256r1";
       let signVerifyAlg: string = "ECC_BrainPoolP256r1|SHA256";
@@ -329,7 +329,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1200: started.");
       let algName: string = "ECC_BrainPoolP320t1";
       let signVerifyAlg: string = "ECC_BrainPoolP320t1|SHA384";
@@ -354,7 +354,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1300: started.");
       let algName: string = "ECC_BrainPoolP384r1";
       let signVerifyAlg: string = "ECC_BrainPoolP384r1|SHA512";
@@ -379,7 +379,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1400: started.");
       let algName: string = "ECC_BrainPoolP512t1";
       let signVerifyAlg: string = "ECC_BrainPoolP512t1|MD5";
@@ -404,7 +404,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1500: started.");
       let spec: cryptoFramework.AsyKeySpec = specUtil.genP512t1KeySpec(cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC);
       let signVerifyAlg: string = "ECC_BrainPoolP512t1|MD5";
@@ -429,7 +429,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level1
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1600: started.");
       let curveName: string = "NID_brainpoolP512t1";
       let spec: cryptoFramework.ECCKeyPairSpec = {
@@ -460,7 +460,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1700: started.");
       let signVerifyAlg: string[] = ["ECC_BrainPoolP160r1|NoHash", "ECC_BrainPoolP160r1|SM3"];
       for (let i = 0; i < signVerifyAlg.length; i++) {
@@ -485,7 +485,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_SignVerify_BrainPool_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log("Security_CryptoFramework_SignVerify_BrainPool_Func_1800: started.");
       let signVerifyAlg: string[] = ["ECC_BrainPoolP160r1|NoHash", "ECC_BrainPoolP160r1|SM3"];
       for (let i = 0; i < signVerifyAlg.length; i++) {
@@ -510,7 +510,7 @@ export default function SecurityCryptoFwSignVerifyECCBrainPoolTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_BrainPool_Func_3100";
       console.log(testNumber + ": started");
       let signVerifyAlg: string = "ECC_BrainPoolP224t1|SHA256";

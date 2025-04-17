@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium';
 import testNapi from 'libentry.so';
 import { display } from '@kit.ArkUI';
 interface Capability{
@@ -84,7 +84,7 @@ export default function DisplayNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayId', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayId';
       try{
         let displayId  = testNapi.getId();
@@ -105,7 +105,7 @@ export default function DisplayNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayWidth', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayWidth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayWidth';
       try{
         let displayWidth  = testNapi.getWidth();
@@ -126,7 +126,7 @@ export default function DisplayNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayHeight', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayHeight';
       try{
         let displayHeight  = testNapi.getHeight();
@@ -145,9 +145,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayRotation
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayRotation', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayRotation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayRotation';
       try{
         let displayRotation  = testNapi.getRotation();
@@ -168,9 +168,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayOrientation
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayOrientation', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayOrientation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayOrientation';
       try{
         let displayOrientation  = testNapi.getOrientation();
@@ -199,9 +199,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio';
       try{
         let displayVirtualPixelRatio  = testNapi.getVirtualPixelRatio();
@@ -221,9 +221,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayRefreshRate
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayRefreshRate', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayRefreshRate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayRefreshRate';
       try{
         let displayRefreshRate  = testNapi.getRefreshRate();
@@ -242,9 +242,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayDensityDpi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityDpi', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityDpi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayDensityDpi';
       try{
         let displayDensityDpi  = testNapi.getDensityDpi();
@@ -263,9 +263,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayDensityPixels
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityPixels', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityPixels', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayDensityPixels';
       try{
         let displayDensityPixels  = testNapi.getDensityPixels();
@@ -284,9 +284,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayScaledDensity
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayScaledDensity', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayScaledDensity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayScaledDensity';
       try{
         let displayScaledDensity  = testNapi.getScaledDensity();
@@ -305,9 +305,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi';
       try{
         let displayDensityXdpi  = testNapi.getDensityXdpi();
@@ -326,9 +326,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi';
       try{
         let displayDensityYdpi  = testNapi.getDensityYdpi();
@@ -347,9 +347,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo';
       try{
         let displayCutoutInfo  = testNapi.getCutoutInfo();
@@ -368,9 +368,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_Create_DestroyDefaultDisplayCutoutInfo', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_Create_DestroyDefaultDisplayCutoutInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_Create_DestroyDefaultDisplayCutoutInfo';
       try{
         let displayCutoutInfo  = testNapi.getCutoutInfo();
@@ -389,9 +389,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_IsFoldable
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_IsFoldable', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_IsFoldable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_IsFoldable';
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
@@ -417,9 +417,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_GetFoldDisplayMode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_GetFoldDisplayMode', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_GetFoldDisplayMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetFoldDisplayMode';
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
@@ -445,9 +445,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener';
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
@@ -478,9 +478,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener';
       try{
         let displayIsFoldable  = testNapi.checkIsFoldDevice();
@@ -507,9 +507,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnRegisterDisplayChangeListener';
       try{
         let result  = testNapi.unregisterDisplayChange(0);
@@ -528,9 +528,9 @@ export default function DisplayNdkTest() {
      * @tc.desc      : test_OH_NativeDisplayManager_registerDisplayChangeListener
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_registerDisplayChangeListener', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_registerDisplayChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_registerDisplayChangeListener';
       try{
         let displayId1  = testNapi.registerDisplayChange((displayId: number) => {

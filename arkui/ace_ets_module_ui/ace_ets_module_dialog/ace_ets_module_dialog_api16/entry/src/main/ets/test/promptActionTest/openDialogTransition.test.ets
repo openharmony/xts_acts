@@ -39,7 +39,45 @@ export default function openDialogTransitionTest() {
         expect().assertFail();
       }
       done();
-    })
+    });
+
+    beforeEach(async () => {
+      console.info('OpenDialogTransitionTest beforeEach called');
+      try {
+        await router.replace({ url: 'MainAbility/pages/promptAction/openDialogTransition' });
+        await CommonFunc.sleep(1000);
+      } catch (err) {
+        console.error('beforeEach: router.replace error', err);
+      }
+    });
+
+    afterEach(async () => {
+      console.info('OpenDialogTransitionTest afterEach called');
+      let driver: Driver = Driver.create();
+
+      try {
+        let resetButtons = ['EnableTransition', 'EnableDialogTransition', 'EnableMaskTransition'];
+        for (let btnId of resetButtons) {
+          let btn = await driver.findComponent(ON.id(btnId));
+          if (btn) {
+            await btn.click();
+            await CommonFunc.sleep(200);
+          }
+        }
+      } catch (err) {
+        console.warn('afterEach: failed to reset state', err);
+      }
+
+      try {
+        let confirmBtn = await driver.findComponent(ON.id('Confirm'));
+        if (confirmBtn) {
+          await confirmBtn.click();
+          await CommonFunc.sleep(200);
+        }
+      } catch (e) {
+        console.warn('afterEach: no confirm button to click or already closed.');
+      }
+    });
 
     it('OpenDialogTransitionTest_100', 0, async (done: Function) => {
       console.info('OpenDialogTransitionTest_100 start');
@@ -49,7 +87,7 @@ export default function openDialogTransitionTest() {
       await CommonFunc.sleep(500);
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
@@ -67,8 +105,9 @@ export default function openDialogTransitionTest() {
       await dialogTransitionButton.click();
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
+      console.info('OpenDialogTransitionTest_200 ysq textContent is %s',JSON.parse(textContent).$attrs.content);
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
       await confirmButton.click();
@@ -88,7 +127,7 @@ export default function openDialogTransitionTest() {
       await defaultTransitionButton.click();
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
@@ -111,7 +150,7 @@ export default function openDialogTransitionTest() {
       await defaultTransitionButton.click();
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
@@ -134,7 +173,7 @@ export default function openDialogTransitionTest() {
       await dialogTransitionButton.click();
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
@@ -161,7 +200,7 @@ export default function openDialogTransitionTest() {
       await CommonFunc.sleep(500);
       let openDialogButton = await driver.findComponent(ON.id('OpenDialog'));
       await openDialogButton.click();
-      await CommonFunc.sleep(2000);
+      await CommonFunc.sleep(3000);
       let textContent = getInspectorByKey('TextContent');
       expect(JSON.parse(textContent).$attrs.content).assertEqual('弹窗');
       let confirmButton = await driver.findComponent(ON.id('Confirm'));
@@ -172,7 +211,7 @@ export default function openDialogTransitionTest() {
       await dialogTransitionButton.click();
       await CommonFunc.sleep(500);
       await defaultTransitionButton.click();
-      console.info('OpenDialogTransitionTest_500 end');
+      console.info('OpenDialogTransitionTest_600 end');
       done();
     });
 

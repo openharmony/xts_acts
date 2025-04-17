@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, Level } from '@ohos/hypium'
 import { getPermission, sleep, driveFn } from './common'
 import common from '@ohos.app.ability.common';
 
@@ -35,7 +35,7 @@ export default function getPhotoAccessHelper() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPhotoAccessHelper_000', 0, async (done: Function) => {
+    it('getPhotoAccessHelper_000', Level.LEVEL0, async (done: Function) => {
       try {
         const helper = photoAccessHelper.getPhotoAccessHelper(testContext);
         expect(helper !== undefined).assertTrue();

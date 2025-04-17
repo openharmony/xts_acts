@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, Level } from "@ohos/hypium";
 import {
   sleep,
   getPermission,
@@ -103,7 +103,7 @@ export default function setTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('set_photo_title_000', 0, async (done: Function) => {
+    it('set_photo_title_000', Level.LEVEL0, async (done: Function) => {
         const testNum = 'get_image_uri_000';
         await setPhotoAssetTitle(done, testNum);
         done();
@@ -117,7 +117,7 @@ export default function setTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('set_photo_title_001', 2, async (done: Function) => {
+    it('set_photo_title_001', Level.LEVEL2, async (done: Function) => {
         const testNum = 'set_photo_title_001';
         await setPhotoAssetErrorTitle1(done, testNum);
         done();
@@ -131,7 +131,7 @@ export default function setTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('set_photo_title_002', 2, async (done: Function) => {
+    it('set_photo_title_002', Level.LEVEL2, async (done: Function) => {
         const testNum = 'set_photo_title_002';
         await setPhotoAssetErrorTitle2(done, testNum);
         done();

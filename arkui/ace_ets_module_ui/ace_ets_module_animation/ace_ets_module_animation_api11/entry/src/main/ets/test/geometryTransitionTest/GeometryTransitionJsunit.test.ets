@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';
-
 export default function geometryTransitionJsunit() {
   describe('geometryTransitionTest', () => {
     beforeEach(async (done: Function) => {
@@ -38,13 +37,11 @@ export default function geometryTransitionJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info("geometryTransition after each called");
     });
-
-    it('geometryTransitionTest_0100', 0, async (done: Function) => {
+    it('geometryTransitionTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('geometryTransitionTest_0100 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 104,

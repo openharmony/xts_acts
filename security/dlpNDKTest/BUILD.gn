@@ -19,7 +19,7 @@ ohos_app_assist_suite("demo_ndk_main") {
   hap_name = "ActsDlpNDKMainTest"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "access_token"
+  part_name = "dlp_permission_service"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "security"
@@ -32,7 +32,7 @@ ohos_js_app_suite("ActsDlpNDKTest") {
   hap_name = "ActsDlpNDKTest"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "access_token"
+  part_name = "dlp_permission_service"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "security"

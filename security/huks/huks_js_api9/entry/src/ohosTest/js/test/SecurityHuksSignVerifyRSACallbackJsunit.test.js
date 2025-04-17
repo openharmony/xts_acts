@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksSignVerifyRSA } from './utils/param/signverify/publicSignverifyParam';
 import { stringToUint8Array } from './utils/param/publicFunc';
@@ -25,7 +25,7 @@ let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
 export default function SecurityHuksSignVerifyRSACallbackJsunit() {
   describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
-    it('Security_HUKS_SignVerify_API9_RSA_001', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_RSA_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize4096SIGNPKCS1SHA256KeyAlias001';
       let HuksOptions = {
         properties: new Array(
@@ -51,7 +51,7 @@ export default function SecurityHuksSignVerifyRSACallbackJsunit() {
       await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63Kb);
       done();
     });
-    it('Security_HUKS_SignVerify_API9_RSA_002', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_RSA_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize4096SIGNPKCS1SHA256KeyAlias002';
       let HuksOptions = {
         properties: new Array(
@@ -66,7 +66,7 @@ export default function SecurityHuksSignVerifyRSACallbackJsunit() {
       await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
       done();
     });
-    it('Security_HUKS_SignVerify_API9_RSA_003', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_RSA_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize4096SIGNPKCS1SHA256KeyAlias003';
       let HuksOptions = {
         properties: new Array(
@@ -92,7 +92,7 @@ export default function SecurityHuksSignVerifyRSACallbackJsunit() {
       await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
       done();
     });
-    it('Security_HUKS_SignVerify_API9_RSA_004', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_RSA_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testSignVerifyRSASize4096SIGNPKCS1SHA256KeyAlias004';
       let HuksOptions = {
         properties: new Array(

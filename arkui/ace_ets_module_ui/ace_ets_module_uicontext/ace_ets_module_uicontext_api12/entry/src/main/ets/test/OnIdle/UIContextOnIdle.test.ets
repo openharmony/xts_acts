@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   Component,
@@ -26,7 +26,6 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-
 export default function UIContextOnIdle() {
     describe('UIContextOnIdle', () => {
       beforeEach(async (done: Function) => {
@@ -49,7 +48,6 @@ export default function UIContextOnIdle() {
         }
         done()
       });
-
     /**
      * @tc.number UIContextApi1_0100
      * @tc.name UIContextApi1_0100
@@ -58,11 +56,9 @@ export default function UIContextOnIdle() {
      * @tc.type :
      * @tc.size :
      */
-
-    it('onIdleTest_0100', 0, async (done: Function) => {
+    it('onIdleTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextApi1_0100 START');
       await CommonFunc.sleep(1000);
-
       let driver: Driver = Driver.create()
       let btn: Component = await driver.findComponent(ON.id("OnIdle"))
       await CommonFunc.sleep(1000);

@@ -178,6 +178,7 @@ export default function list_SpaceChangeTest() {
         Math.round(globalThis.winTop + fourthListItem.bottom - 10),
         Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
         Math.round(globalThis.winTop + thirdListItem.bottom));
+      await CommonFunc.sleep(2000);
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');

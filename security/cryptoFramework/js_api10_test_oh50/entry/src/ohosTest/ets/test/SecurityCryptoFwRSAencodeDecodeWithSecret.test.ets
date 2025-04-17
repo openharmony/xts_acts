@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import { taskpool } from '@kit.ArkTS';
@@ -129,7 +129,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA512";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -163,7 +163,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -197,7 +197,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -231,7 +231,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -265,7 +265,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -299,7 +299,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA4096";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -333,7 +333,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA8192";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -367,7 +367,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA1024";
       let passWd: string = "";
       let cipherName: string = "AES-128-CBC";
@@ -391,7 +391,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA1024";
       let passWd: string = passwd_max_string;
       let cipherName: string = "AES-128-CBC";
@@ -415,7 +415,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA1024";
       let passWd: string = passwd_max_string + 'a';
       let cipherName: string = "AES-128-CBC";
@@ -439,7 +439,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA1024";
       let passWd: string = '嗨，嗨';
       let cipherName: string = "AES-128-CBC";
@@ -463,7 +463,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA1024";
       let passWd: string = 'a';
       let cipherName: string = "AES-128-CBC";
@@ -487,7 +487,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "123456";
       let cipherName: string = "AES-192-CBC";
@@ -511,7 +511,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = " ";
       let cipherName: string = "AES-192-CBC";
@@ -535,7 +535,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "abc";
       let cipherName: string = "RC5-CBC";
@@ -559,7 +559,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA512";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -603,7 +603,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA768";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -647,7 +647,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -691,7 +691,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA2048";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -735,7 +735,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA3072";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -779,7 +779,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA4096";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -823,7 +823,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA8192";
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
@@ -867,7 +867,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -889,7 +889,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -914,7 +914,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "abc123";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -936,7 +936,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = passwd_max_string + 'a';
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -958,7 +958,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "aBc123";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -980,7 +980,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "aBc123";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1002,7 +1002,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "aBc123";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
@@ -1024,7 +1024,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);
       try {
@@ -1045,7 +1045,7 @@ export default function SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_RSAEncodeDecodeWithPasswd_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let algName: string = "RSA768";
       let passWd: string = "";
       let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName);

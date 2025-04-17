@@ -492,6 +492,7 @@ import rowAlignItemsTest from './row/RowAlignItemsTest.test'
 import sliderWidthTest from './slider/SliderWidthTest.test'
 import sliderHeightTest from './slider/SliderHeightTest.test'
 import sliderEnabledTest from './slider/SliderEnabledTest.test'
+import SliderColorTest from './slider/SliderColorTest.test'
 import datePickerWidthTest from './datepicker/DatePickerWidthTest.test'
 import checkboxWidthTest from './checkbox/CheckboxWidthTest.test'
 import checkboxHeightTest from './checkbox/CheckboxHeightTest.test'
@@ -1406,6 +1407,7 @@ export default function testsuite() {
   textInputOnChangeTest()
   checkboxEnabledTest()
   sliderEnabledTest()
+  SliderColorTest()
   datePickerEnabledTest()
   textPickerOnChangeTest()
   datePickerOnDateChangeTest()

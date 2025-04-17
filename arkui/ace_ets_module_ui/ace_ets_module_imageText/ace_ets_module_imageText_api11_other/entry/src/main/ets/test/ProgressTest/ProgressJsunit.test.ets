@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0100', 0, async (done: Function) => {
+    it('ProgressJsunit_0100', Level.LEVEL1, async (done: Function) => {
       // Get the information of the Progress component
       console.info('[ProgressJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -67,7 +67,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0200', 0, async (done: Function) => {
+    it('ProgressJsunit_0200', Level.LEVEL1, async (done: Function) => {
       // Modify the total value of the Progress component
       console.info('[ProgressJsunit_0200] START');
       globalThis.value.message.notify({name:'progressTotal',value:200})
@@ -82,7 +82,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0300', 0, async (done: Function) => {
+    it('ProgressJsunit_0300', Level.LEVEL1, async (done: Function) => {
       // Modify the type of the Progress component
       console.info('[ProgressJsunit_0300] START');
       globalThis.value.message.notify({name:'ProgressType',value:ProgressStyle.Capsule})
@@ -96,7 +96,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0400', 0, async (done: Function) => {
+    it('ProgressJsunit_0400', Level.LEVEL1, async (done: Function) => {
       // Modify the color of the Progress component
       console.info('[ProgressJsunit_0400] START');
       globalThis.value.message.notify({name:'ProgressColor',value:Color.Blue})
@@ -111,7 +111,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0500', 0, async (done: Function) => {
+    it('ProgressJsunit_0500', Level.LEVEL1, async (done: Function) => {
       // Modify the backgroundColor of the Progress component
       console.info('[ProgressJsunit_0500] START');
       globalThis.value.message.notify({name:'backgroundColor',value:Color.Black})
@@ -125,7 +125,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0600', 0, async (done: Function) => {
+    it('ProgressJsunit_0600', Level.LEVEL1, async (done: Function) => {
       // Modify the style of the Progress component
       console.info('[ProgressJsunit_0600] START');
       globalThis.value.message.notify({name:'ProgressType',value:ProgressStyle.ScaleRing})
@@ -140,7 +140,7 @@ export default function ProgressJsunit() {
       done();
     });
     
-    it('ProgressJsunit_0700', 0, async (done: Function) => {
+    it('ProgressJsunit_0700', Level.LEVEL1, async (done: Function) => {
       // Modify the value of the Progress component
       console.info('[ProgressJsunit_0700] START');
       globalThis.value.message.notify({name:'progressValue',value:20})
@@ -154,7 +154,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0800', 0, async (done: Function) => {
+    it('ProgressJsunit_0800', Level.LEVEL1, async (done: Function) => {
       // Illegal modification of the value of the Progress component
       console.info('[ProgressJsunit_0800] START');
       globalThis.value.message.notify({name:'progressValue',value:-20})
@@ -176,7 +176,7 @@ export default function ProgressJsunit() {
       done();
     });
 
-    it('ProgressJsunit_0900', 0, async (done: Function) => {
+    it('ProgressJsunit_0900', Level.LEVEL1, async (done: Function) => {
       // Get the default value of the Progress component
       console.info('[ProgressJsunit_0900] START');
       let strJson = getInspectorByKey('pro2');

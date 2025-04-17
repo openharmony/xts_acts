@@ -48,9 +48,9 @@ export default function AssetNdkTest() {
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
-     * @tc.level  :Level3
+     * @tc.level  :Level0
      */
-    it('SUB_Security_DataSecurity_Asset_NDK_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+    it('SUB_Security_DataSecurity_Asset_NDK_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(myAssetNdk.asset_add(aw.aliasLong, aw.secLong))
         .assertEqual(0);
       expect(myAssetNdk.asset_queryAll(aw.aliasLong, aw.secLong))

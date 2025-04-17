@@ -61,7 +61,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi01
      * @tc.desc HiAppEvent write interface test.
      */
-    it('testHiAppEventApi01', 1, async function (done) {
+    it('testHiAppEventApi01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiAppEventApi01 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_int": 100, "key_string": "demo",
         "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -86,7 +86,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi02
      * @tc.desc 验证write(API7)接口，使用Promise异步回调可打点32以内各类型参数的事件，可调用成功，无返回错误码.
      */
-    it('testHiAppEventApi02', 1, async function (done) {
+    it('testHiAppEventApi02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHiAppEventApi02 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_int": 100, "key_string": "demo",
             "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -108,7 +108,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi03
      * @tc.desc HiAppEvent write EventType of STATISTIC.
      */
-    it('testHiAppEventApi03', 2, async function (done) {
+    it('testHiAppEventApi03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi03 start')
         HiAppEvent.write("write", HiAppEvent.EventType.STATISTIC, {"key_int": 100, "key_string": "demo",
         "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -134,7 +134,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi04
      * @tc.desc HiAppEvent write EventType of SECURITY.
      */
-    it('testHiAppEventApi04', 2, async function (done) {
+    it('testHiAppEventApi04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi04 start')
         HiAppEvent.write("write", HiAppEvent.EventType.SECURITY, {"key_int": 100, "key_string": "demo",
         "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -160,7 +160,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi05
      * @tc.desc HiAppEvent write EventType of BEHAVIOR.
      */
-    it('testHiAppEventApi05', 2, async function (done) {
+    it('testHiAppEventApi05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi05 start')
         HiAppEvent.write("write", HiAppEvent.EventType.BEHAVIOR, {"key_int": 100, "key_string": "demo",
         "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
@@ -187,7 +187,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi06
      * @tc.desc HiAppEvent write datatype of int.
      */
-    it('testHiAppEventApi06', 2, async function (done) {
+    it('testHiAppEventApi06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi06 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_int":100},
             (err, value) => {
@@ -210,7 +210,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi07
      * @tc.desc HiAppEvent write datatype of int array.
      */
-    it('testHiAppEventApi07', 2, async function (done) {
+    it('testHiAppEventApi07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi07 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_int_array":[100, 200]},
             (err, value) => {
@@ -233,7 +233,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi08
      * @tc.desc HiAppEvent write datatype of float.
      */
-    it('testHiAppEventApi08', 2, async function (done) {
+    it('testHiAppEventApi08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi08 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_float":1.1},
             (err, value) => {
@@ -256,7 +256,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi09
      * @tc.desc HiAppEvent write datatype of float array.
      */
-    it('testHiAppEventApi09', 3, async function (done) {
+    it('testHiAppEventApi09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi09 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_float_array":[1.1, 1.2]},
             (err, value) => {
@@ -279,7 +279,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi10
      * @tc.desc HiAppEvent write datatype of string.
      */
-    it('testHiAppEventApi10', 3, async function (done) {
+    it('testHiAppEventApi10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi10 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_string":"hello world"},
             (err, value) => {
@@ -302,7 +302,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi11
      * @tc.desc HiAppEvent write datatype of string array.
      */
-    it('testHiAppEventApi11', 3, async function (done) {
+    it('testHiAppEventApi11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi11 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_string_array":["hello world", "hello world2"]},
             (err, value) => {
@@ -325,7 +325,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi12
      * @tc.desc HiAppEvent write datatype of bool with true.
      */
-    it('testHiAppEventApi12', 3, async function (done) {
+    it('testHiAppEventApi12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi12 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_bool":true},
             (err, value) => {
@@ -348,7 +348,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi13
      * @tc.desc HiAppEvent write datatype of bool with false.
      */
-    it('testHiAppEventApi13', 3, async function (done) {
+    it('testHiAppEventApi13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi13 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_bool":false},
             (err, value) => {
@@ -371,7 +371,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi14
      * @tc.desc HiAppEvent write datatype of bool array.
      */
-    it('testHiAppEventApi14', 3, async function (done) {
+    it('testHiAppEventApi14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi14 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_bool_array":[false, true]},
             (err, value) => {
@@ -394,7 +394,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi15
      * @tc.desc HiAppEvent write datatype of char.
      */
-    it('testHiAppEventApi15', 3, async function (done) {
+    it('testHiAppEventApi15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi15 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_char":'c'},
             (err, value) => {
@@ -417,7 +417,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi16
      * @tc.desc HiAppEvent write datatype of long.
      */
-    it('testHiAppEventApi16', 3, async function (done) {
+    it('testHiAppEventApi16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi16 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_long":2147483647},
             (err, value) => {
@@ -440,7 +440,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi17
      * @tc.desc HiAppEvent write datatype of double.
      */
-    it('testHiAppEventApi17', 3, async function (done) {
+    it('testHiAppEventApi17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi17 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_double":100.123},
             (err, value) => {
@@ -463,7 +463,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi18
      * @tc.desc HiAppEvent write datatype of long.
      */
-    it('testHiAppEventApi18', 3, async function (done) {
+    it('testHiAppEventApi18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi18 start')
         HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_longlong":2147483647},
             (err, value) => {
@@ -486,7 +486,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi19
      * @tc.desc HiAppEvent write eventtype of none exists.
      */
-    it('testHiAppEventApi19', 3, async function (done) {
+    it('testHiAppEventApi19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi19 start')
         HiAppEvent.write("write", HiAppEvent.EventType.BEHAVIOR + 1, {"key_longlong":2147483647},
             (err, value) => {
@@ -509,7 +509,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi20
      * @tc.desc HiAppEvent write empty eventname .
      */
-    it('testHiAppEventApi20', 3, async function (done) {
+    it('testHiAppEventApi20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi20 start')
         HiAppEvent.write("", HiAppEvent.EventType.FAULT, {"key_longlong":2147483647},
             (err, value) => {
@@ -532,7 +532,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi21
      * @tc.desc HiAppEvent write long eventname .
      */
-    it('testHiAppEventApi21', 3, async function (done) {
+    it('testHiAppEventApi21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi21 start')
         var i = 0;
         var strlong = "";
@@ -561,7 +561,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi22
      * @tc.desc HiAppEvent configure interface with disable option set true.
      */
-     it('testHiAppEventApi22', 3, function () {
+     it('testHiAppEventApi22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info('testHiAppEventApi22 start')
         let configret =false;
         configret = HiAppEvent.configure({disable:true});
@@ -575,7 +575,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi23
      * @tc.desc HiAppEvent configure interface with disable option set false.
      */
-    it('testHiAppEventApi23', 3, function () {
+    it('testHiAppEventApi23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info('testHiAppEventApi23 start')
         let configret =false;
         configret = HiAppEvent.configure({disable: false});
@@ -588,7 +588,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi24
      * @tc.desc HiAppEvent configure interface with maxStorage option set 100M.
      */
-    it('testHiAppEventApi24', 3, function () {
+    it('testHiAppEventApi24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info('testHiAppEventApi24 start')
         let configret =false;
         configret = HiAppEvent.configure({maxStorage:'100M'});
@@ -666,13 +666,13 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi29
      * @tc.desc HiAppEvent with predefined event and param.
      */
-    it('testHiAppEventApi29', 3, async function (done) {
+    it('testHiAppEventApi29', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
     console.info('testHiAppEventApi29 start')
     HiAppEvent.write(HiAppEvent.Event.USER_LOGIN, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'userlogin',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -689,9 +689,9 @@ describe('HiAppEventApiTest', function () {
 
     HiAppEvent.write(HiAppEvent.Event.USER_LOGOUT, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'userlogout',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -708,9 +708,9 @@ describe('HiAppEventApiTest', function () {
 
     HiAppEvent.write(HiAppEvent.Event.DISTRIBUTED_SERVICE_START, HiAppEvent.EventType.BEHAVIOR,
         HiAppEvent.Param = {
-            USER_ID: 'serviceStart',
-            DISTRIBUTED_SERVICE_NAME: 'HiAppEvent',
-            DISTRIBUTED_SERVICE_INSTANCE_ID: 100
+            USER_ID: HiAppEvent.Param.USER_ID,
+            DISTRIBUTED_SERVICE_NAME: HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME,
+            DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEvent.Param.DISTRIBUTED_SERVICE_INSTANCE_ID,
         },
         (err, value) => {
             console.log('HiAppEvent into json-callback');
@@ -732,7 +732,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi30
      * @tc.desc HiAppEvent write by Promise.
      */
-    it('testHiAppEventApi30', 2, async function (done) {
+    it('testHiAppEventApi30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi30 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -760,7 +760,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi31
      * @tc.desc HiAppEvent write by  callback.
      */
-    it('testHiAppEventApi31', 2, async function (done) {
+    it('testHiAppEventApi31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi31 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -790,7 +790,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi32
      * @tc.desc 验证Write(API9)接口传入参数为特殊number，中文字符，可调用成功，无返回错误码.
      */
-    it('testHiAppEventApi32', 2, async function (done) {
+    it('testHiAppEventApi32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi32 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -817,7 +817,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi33
      * @tc.desc 验证Write(API9)接口成功，传入参数名称可以符合规格.
      */
-    it('testHiAppEventApi33', 2, async function (done) {
+    it('testHiAppEventApi33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi33 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -844,7 +844,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi34
      * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，大写字母为开头和结尾.
      */
-    it('testHiAppEventApi34', 2, async function (done) {
+    it('testHiAppEventApi34', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi34 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -871,7 +871,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi35
      * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，小写字母为开头和结尾.
      */
-    it('testHiAppEventApi35', 2, async function (done) {
+    it('testHiAppEventApi35', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi35 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -898,7 +898,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi36
      * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，$开头,以数字结尾，长度48字符.
      */
-    it('testHiAppEventApi36', 2, async function (done) {
+    it('testHiAppEventApi36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info('testHiAppEventApi36 start')
         HiAppEventV9.write({
             domain: "test_domain",
@@ -925,7 +925,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.name testHiAppEventApi37
      * @tc.desc HiAppEvent configure interface with disable option set false.
      */
-    it('testHiAppEventApi37', 3, async function (done) {
+    it('testHiAppEventApi37', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventApi37 start')
         try {
             HiAppEventV9.configure({disable: true});
@@ -949,7 +949,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Test the SetEventConfig interface.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi38', 0, async function (done) {
+    it('testHiAppEventApi38', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi38 start');
         let configInfo1 = {  // default, collect stack and trace
             "log_type": "0",
@@ -976,7 +976,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Test the SetEventConfig interface with invalid name.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi39', 0, async function (done) {
+    it('testHiAppEventApi39', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi39 start');
         let configInfo = {
             "log_type": "0",
@@ -998,7 +998,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Test the SetEventConfig interface with invalid config type.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi40', 0, async function (done) {
+    it('testHiAppEventApi40', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi40 start');
         let expectErr = createError2("value", "object");
         setEventConfigV9TestCatch("MAIN_THREAD_JANK", 0, expectErr, done);
@@ -1014,7 +1014,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Test the SetEventConfig interface when the config is empty.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi41', 0, async function (done) {
+    it('testHiAppEventApi41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi41 start');
         let configInfo = {};
         try {
@@ -1032,7 +1032,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Error code 401 is returned when the config log_type is invalid.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi42', 0, async function (done) {
+    it('testHiAppEventApi42', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi42 start');
         let configInfo1 = {
             "log_type": "-1",
@@ -1060,7 +1060,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Error code 401 is returned when the config log_type=1, but item number is not 5.
      * @tc.type: FUNC
      */
-    it('testHiAppEventApi43', 0, async function (done) {
+    it('testHiAppEventApi43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi43 start');
         let configInfo = {
             "log_type": "1",
@@ -1078,7 +1078,7 @@ describe('HiAppEventApiTest', function () {
      * @tc.desc: Error code 401 is returned when the value param item value is invalid.
      * @tc.type: FUNC
     */
-    it('testHiAppEventApi44', 0, async function (done) {
+    it('testHiAppEventApi44', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi44 start');
         let configInfo1 = {
             "log_type": "1",
@@ -1122,6 +1122,35 @@ describe('HiAppEventApiTest', function () {
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo4, expectErr, done);
         setEventConfigV9Test("MAIN_THREAD_JANK", configInfo5, expectErr, done);
         console.info('testHiAppEventApi44 end');
+    });
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4500
+     * @tc.name testHiAppEventApi45
+     * @tc.desc HiAppEvent with predefined event and param.
+     */
+    it('testHiAppEventApi45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('testHiAppEventApi45 start');
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "test_name",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                USER_ID: HiAppEventV9.param.USER_ID,
+                DISTRIBUTED_SERVICE_NAME: HiAppEventV9.param.DISTRIBUTED_SERVICE_NAME,
+                DISTRIBUTED_SERVICE_INSTANCE_ID: HiAppEventV9.param.DISTRIBUTED_SERVICE_INSTANCE_ID,
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi45 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi45 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi45 end');
     });
 })
 }

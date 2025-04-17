@@ -16,8 +16,8 @@
 import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
-import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { testAVPlayerFun, setSource, setSubtitle,setSubtitle3, PlayTest } from './AVPlayerTestBase';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
 
@@ -484,6 +484,53 @@ async function setPlaybackStrategyDASH(avPlayer: media.AVPlayer | null, done: Fu
   avPlayer?.on('stateChange', stateChangeCallback)
 }
 
+async function setPlaybackStrategyDASH2(avPlayer: media.AVPlayer | null, done: Function) {
+  let surfaceID: string = globalThis.value;
+  let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD, preferredAudioLanguage:undefined, preferredSubtitleLanguage:undefined }
+  let pauseCount = 0
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.surfaceId = surfaceID;
+        setPlayerPlaybackStrategy(avPlayer, playbackStrategy)
+        avPlayer.prepare()
+        break;
+      case PREPARED:
+        avPlayer?.play()
+        break;
+      case PLAYING:
+        if (pauseCount++ == 0) {
+          avPlayer?.pause()
+        }
+        break;
+      case PAUSED:
+        avPlayer?.play()
+        break;
+      case COMPLETED:
+        avPlayer?.release()
+        break;
+      case RELEASED:
+        avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        avPlayer?.release().then(() => {
+        },
+          mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        expect().assertFail();
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback)
+}
+
 async function setPlaybackStrategy(avPlayer: media.AVPlayer | null, done: Function,
   playbackStrategy: media.PlaybackStrategy) {
   let surfaceID: string = globalThis.value;
@@ -671,6 +718,31 @@ async function testSubtitle(src: string | media.AVFileDescriptor, subtitleSrc: s
       expect().assertFail();
       done();
     }
+  });
+}
+
+async function testSubtitle3(src: string | media.AVFileDescriptor, subtitleSrc: string | media.AVFileDescriptor,
+  avPlayer: media.AVPlayer | null, done: Function) {
+  console.info(`case media source: ${src}`)
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`)
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      console.info('case createAVPlayer error code is' + err.code);
+      expect().assertFail();
+      done();
+    }
+    avPlayer?.on('error', async (err) => {
+      console.error(`case error called 2 , errMessage is ${err.message}`);
+      console.info('case error code 2 is' + err.code);
+    });
+    setOnCallback(avPlayer, done)
+    setSource(avPlayer, src);
+    setSubtitle3(avPlayer, subtitleSrc)
   });
 }
 
@@ -1019,7 +1091,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FDSRC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FDSRC_0100', Level.LEVEL0,async (done: Function) => {
       let avPlayTest: PlayTest = {
         width: 720, height: 480, duration: 10100
       };
@@ -1035,7 +1107,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0100', Level.LEVEL0,async (done: Function) => {
       let videoTrackKey =
         new Array('bitrate', 'codec_mime', 'frame_rate', 'height', 'track_index', 'track_type', 'width');
       let audioTrackKey =
@@ -1056,7 +1128,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0200', Level.LEVEL0,async (done: Function) => {
       let audioTrackKey = new Array('channel_count', 'codec_mime', 'sample_rate', 'track_index', 'track_type');
       let audioTrackValue = new Array(1, 2, 48000, 0, 0);
       let descriptionKey = new Array(audioTrackKey);
@@ -1073,7 +1145,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0300', Level.LEVEL0,async (done: Function) => {
       let videoTrackKey =
         new Array('bitrate', 'codec_mime', 'frame_rate', 'height', 'track_index', 'track_type', 'width');
       let videoTrackValue = new Array(1506121, 0, 6000, 480, 0, 1, 720);
@@ -1092,7 +1164,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETPLAYBACKINFO_0100', Level.LEVEL0,async (done: Function) => {
       let descriptionKey =
         new Array('server_ip_address', 'average_download_rate', 'download_rate', 'is_downloading', 'buffer_duration');
       let descriptionValue = new Array('', '0', '0', '0', '0');
@@ -1108,7 +1180,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_VIDEOSCALETYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_VIDEOSCALETYPE_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testVideoScaleType(fileDescriptor, avPlayer, done);
       }
@@ -1121,7 +1193,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_OFF_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_OFF_CALLBACK_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testOffCallback(fileDescriptor, avPlayer, done);
       }
@@ -1134,7 +1206,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor && subtitleFdSrc) {
         testSubtitle(fileDescriptor, subtitleFdSrc, avPlayer, done);
       }
@@ -1147,7 +1219,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0200', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor && subtitleFdSrc) {
         testSubtitle(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, done);
       }
@@ -1160,7 +1232,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = { mutedMediaType: media.MediaType.MEDIA_TYPE_AUD }
         testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
@@ -1174,7 +1246,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_0200', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = { showFirstFrameOnPrepare: true }
         testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
@@ -1188,7 +1260,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_MUTE_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testSetMediaMuted(fileDescriptor, avPlayer, done);
       }
@@ -1201,7 +1273,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_STRATEGY_DASH_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testSetPlaybackStrategyDASH(fileDescriptor, avPlayer, done);
       }
@@ -1214,7 +1286,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = { thresholdForAutoQuickPlay: 5 }
         testSetPlaybackStrategyFlv(fileDescriptor, avPlayer, done, playbackStrategy);
@@ -1228,7 +1300,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0200', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = { thresholdForAutoQuickPlay: 1 }
         invalidPlaybackStrategy = true;
@@ -1243,7 +1315,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_FLV_SET_PLAYBACK_STRATEGY_0300', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = {}
         testSetPlaybackStrategyFlv(fileDescriptor, avPlayer, done, playbackStrategy);
@@ -1257,7 +1329,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testAVPlayerSeekContinuous(fileDescriptor, avPlayer, done);
       }
@@ -1271,7 +1343,7 @@ export default function AVPlayerLocalTest() {
       * @tc.type      : Function test
       * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SEEK_CONTINUOUS_0200', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor_mkv) {
         testAVPlayerSeekContinuous(fileDescriptor_mkv, avPlayer, done);
       }
@@ -1284,7 +1356,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_GET_PLAYBACK_POSITION_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor) {
         testGetPlaybackPosition(fileDescriptor, avPlayer, done);
       }
@@ -1297,7 +1369,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0000', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor && subtitleFdSrc) {
         testsubtitleUpdateListening(fileDescriptor, subtitleFdSrc, avPlayer, subtitleUpdateON, done);
       }
@@ -1310,7 +1382,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_ON_0100', Level.LEVEL0,async (done: Function) => {
       if (fileDescriptor && subtitleFdSrc) {
         testsubtitleUpdateListening(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, subtitleUpdateON, done);
       }

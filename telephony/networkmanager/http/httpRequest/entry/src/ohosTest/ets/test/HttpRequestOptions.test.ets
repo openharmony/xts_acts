@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -47,7 +47,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0100';
       console.info(`${caseName}---Start`);
       try {
@@ -98,7 +98,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0200';
       console.info(`${caseName}---Start`);
       try {
@@ -146,7 +146,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0300';
       console.info(`${caseName}---Start`);
       try {
@@ -193,7 +193,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0400';
       console.info(`${caseName}---Start`);
       try {
@@ -241,7 +241,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0500';
       console.info(`${caseName}---Start`);
       try {
@@ -286,7 +286,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0600';
       console.info(`${caseName}---Start`);
       try {
@@ -331,7 +331,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0700';
       console.info(`${caseName}---Start`);
       try {
@@ -375,7 +375,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest0800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest0800';
       console.info(`${caseName}---Start`);
       try {
@@ -442,7 +442,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1000';
       console.info(`${caseName}---Start`);
       try {
@@ -504,7 +504,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1100';
       console.info(`${caseName}---Start`);
       try {
@@ -550,7 +550,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1200';
       console.info(`${caseName}---Start`);
       try {
@@ -596,7 +596,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1300';
       console.info(`${caseName}---Start`);
       try {
@@ -642,7 +642,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1400';
       console.info(`${caseName}---Start`);
       try {
@@ -688,7 +688,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1500';
       console.info(`${caseName}---Start`);
       try {
@@ -731,7 +731,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1600';
       console.info(`${caseName}---Start`);
       try {
@@ -774,7 +774,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1700';
       console.info(`${caseName}---Start`);
       try {
@@ -817,7 +817,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest1800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest1800';
       console.info(`${caseName}---Start`);
       try {
@@ -860,7 +860,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2000';
       console.info(`${caseName}---Start`);
       try {
@@ -906,7 +906,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2200';
       console.info(`${caseName}---Start`);
       try {
@@ -949,7 +949,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2000';
       console.info(`${caseName}---Start`);
       try {
@@ -995,7 +995,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2400';
       console.info(`${caseName}---Start`);
       try {
@@ -1041,7 +1041,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2500';
       console.info(`${caseName}---Start`);
       try {
@@ -1084,7 +1084,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2600';
       console.info(`${caseName}---Start`);
       try {
@@ -1127,7 +1127,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2700';
       console.info(`${caseName}---Start`);
       try {
@@ -1173,7 +1173,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2800';
       console.info(`${caseName}---Start`);
       try {
@@ -1217,7 +1217,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest2900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest2900';
       console.info(`${caseName}---Start`);
       try {
@@ -1263,7 +1263,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3000';
       console.info(`${caseName}---Start`);
       try {
@@ -1306,7 +1306,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3100';
       console.info(`${caseName}---Start`);
       try {
@@ -1352,7 +1352,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3200';
       console.info(`${caseName}---Start`);
       try {
@@ -1395,7 +1395,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3300';
       console.info(`${caseName}---Start`);
       try {
@@ -1441,7 +1441,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3400';
       console.info(`${caseName}---Start`);
       try {
@@ -1484,7 +1484,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3500';
       console.info(`${caseName}---Start`);
       try {
@@ -1530,7 +1530,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3600';
       console.info(`${caseName}---Start`);
       try {
@@ -1577,7 +1577,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3700';
       console.info(`${caseName}---Start`);
       try {
@@ -1623,7 +1623,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3800';
       console.info(`${caseName}---Start`);
       try {
@@ -1666,7 +1666,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest3900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest3900';
       console.info(`${caseName}---Start`);
       try {
@@ -1709,7 +1709,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4000';
       console.info(`${caseName}---Start`);
       try {
@@ -1752,7 +1752,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4100';
       console.info(`${caseName}---Start`);
       try {
@@ -1799,7 +1799,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4200';
       console.info(`${caseName}---Start`);
       try {
@@ -1845,7 +1845,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4300';
       console.info(`${caseName}---Start`);
       try {
@@ -1888,7 +1888,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4400';
       console.info(`${caseName}---Start`);
       try {
@@ -1931,7 +1931,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4500';
       console.info(`${caseName}---Start`);
       try {
@@ -1978,7 +1978,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4600';
       console.info(`${caseName}---Start`);
       try {
@@ -2022,7 +2022,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4700';
       console.info(`${caseName}---Start`);
       try {
@@ -2068,7 +2068,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4800';
       console.info(`${caseName}---Start`);
       try {
@@ -2114,7 +2114,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest4900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest4900';
       console.info(`${caseName}---Start`);
       try {
@@ -2157,7 +2157,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest5000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest5000';
       console.info(`${caseName}---Start`);
       try {
@@ -2200,7 +2200,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest5200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest5200';
       console.info(`${caseName}---Start`);
       try {
@@ -2247,7 +2247,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest5300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest5300';
       console.info(`${caseName}---Start`);
       try {
@@ -2294,7 +2294,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest5600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest5600';
       console.info(`${caseName}---Start`);
       try {
@@ -2338,7 +2338,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest5700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest5700';
       console.info(`${caseName}---Start`);
       try {
@@ -2382,7 +2382,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest6000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest6000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest6000';
       console.info(`${caseName}---Start`);
       try {
@@ -2429,7 +2429,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest6100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest6100';
       console.info(`${caseName}---Start`);
       try {
@@ -2476,7 +2476,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest6400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest6400';
       console.info(`${caseName}---Start`);
       try {
@@ -2521,7 +2521,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest6500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest6500';
       console.info(`${caseName}---Start`);
       try {
@@ -2566,7 +2566,7 @@ export default function HttpRequestOptionsTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOptionsTest6800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOptionsTest6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOptionsTest6800';
       console.info(`${caseName}---Start`);
       try {

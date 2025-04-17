@@ -21,7 +21,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an TreeMap instance. For example: let treeMap = new TreeMap().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeMap = new TreeMap();
       expect(treeMap != undefined).assertEqual(true);
@@ -40,7 +40,7 @@ describe("TreeMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeMap = new TreeMap((a, b) => {return a > b});
       expect(treeMap != undefined).assertEqual(true);
@@ -64,7 +64,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, "四").
    */
-  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "四");
     let res = treeMap.get(0);
@@ -75,7 +75,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, 8).
    */
-  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, 8);
     let res = treeMap.get(0);
@@ -86,7 +86,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     let a = [1, 2, 3, 4];
     treeMap.set(0, a);
@@ -98,7 +98,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet005
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     let a = {name: "lala", age: "13"};
     treeMap.set(0, a);
@@ -110,7 +110,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet006
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(2, "*").
    */
-  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(2, "*");
     let res = treeMap.get(2);
@@ -121,7 +121,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet007
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(-2, 3.14).
    */
-  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(-2, 3.14);
     let res = treeMap.get(-2);
@@ -132,7 +132,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet008
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
    */
-  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, true);
     let res = treeMap.get(100);
@@ -143,7 +143,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet009
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
    */
-  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, "");
     let res = treeMap.get(100);
@@ -154,7 +154,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet010
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set("a", "四").
    */
-  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set("a", "四");
     let res = treeMap.get("a");
@@ -165,7 +165,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet011
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     for (let i = 0; i < 10000; i++) {
       treeMap.set(0, 8);
@@ -179,7 +179,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testHasKey012
    * @tc.desc: Determine whether the TreeMap contains the specified key. For example: treeMap.hasKey(1).
    */
-  it("testHasKey012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHasKey012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");

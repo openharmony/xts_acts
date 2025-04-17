@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-
 export default function componentSnapshotSync() {
   describe('componentSnapshotSync', () => {
     beforeEach(async (done: Function) => {
@@ -43,13 +41,12 @@ export default function componentSnapshotSync() {
     });
     afterEach(async () => {
     });
-
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0550
      * @tc.name testButton
      * @tc.desc
      */
-    it('componentSnapshotSync_0100', 0, async (done: Function) => {
+    it('componentSnapshotSync_0100', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0100 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -69,7 +66,7 @@ export default function componentSnapshotSync() {
      * @tc.name testButton
      * @tc.desc
      */
-    it('componentSnapshotSync_0200', 0, async (done: Function) => {
+    it('componentSnapshotSync_0200', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0200 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -84,13 +81,12 @@ export default function componentSnapshotSync() {
       console.info('componentSnapshotSync_0200 END')
       done();
     });
-
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0210
      * @tc.name testButton
      * @tc.desc
      */
-    it('componentSnapshotSync_0300', 0, async (done: Function) => {
+    it('componentSnapshotSync_0300', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0300 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -110,7 +106,7 @@ export default function componentSnapshotSync() {
      * @tc.name testButton
      * @tc.desc
      */
-    it('componentSnapshotSync_0400', 0, async (done: Function) => {
+    it('componentSnapshotSync_0400', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0400 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -130,7 +126,7 @@ export default function componentSnapshotSync() {
      * @tc.name testButton
      * @tc.desc
      */
-    it('componentSnapshotSync_0500', 0, async (done: Function) => {
+    it('componentSnapshotSync_0500', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0500 START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()

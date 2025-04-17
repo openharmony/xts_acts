@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect,it, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -28,8 +28,6 @@ function sleep(time: number) {
 }
 
 export default function textJsunit() {
-
-
   describe('textTest', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
@@ -60,7 +58,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey010', 0, async (done: Function) => {
+    it('textGetInspectorByKey010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       await sleep(3)
       let strJson = getInspectorByKey('Text');
@@ -115,7 +113,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey020', 0, async (done: Function) => {
+    it('textGetInspectorByKey020', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text1 component obj is: " + JSON.stringify(obj));
@@ -141,7 +139,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey030
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey030', 0, async (done: Function) => {
+    it('textGetInspectorByKey030', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text2');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text2 component obj is: " + JSON.stringify(obj));
@@ -166,7 +164,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey040
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey040', 0, async (done: Function) => {
+    it('textGetInspectorByKey040', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text3');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text3 component obj is: " + JSON.stringify(obj));
@@ -191,7 +189,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey050
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey050', 0, async (done: Function) => {
+    it('textGetInspectorByKey050', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text4');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text4 component obj is: " + JSON.stringify(obj));
@@ -212,7 +210,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey060
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey060', 0, async (done: Function) => {
+    it('textGetInspectorByKey060', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text5');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text5 component obj is: " + JSON.stringify(obj));
@@ -233,7 +231,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey070
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey070', 0, async (done: Function) => {
+    it('textGetInspectorByKey070', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text6');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text6 component obj is: " + JSON.stringify(obj));
@@ -250,7 +248,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey080
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey080', 0, async (done: ESObject) => {
+    it('textGetInspectorByKey080', Level.LEVEL1, async (done: ESObject) => {
       let strJson = getInspectorByKey('Text7');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text7 component obj is: " + JSON.stringify(obj));
@@ -267,7 +265,7 @@ export default function textJsunit() {
      * @tc.name textGetInspectorByKey090
      * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey090', 0, async (done: Function) => {
+    it('textGetInspectorByKey090', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('Text8');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd text8 component obj is: " + JSON.stringify(obj));

@@ -18,6 +18,33 @@ import { Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 import { image } from '@kit.ImageKit';
 import { taskpoolTest } from '../MainAbility/utils/taskpool'
+import resourceManager from '@ohos.resourceManager'
+import { rpc } from '@kit.IPCKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D'
+
+class MySequence implements rpc.Parcelable {
+  pixel_map: image.PixelMap;
+  constructor(conPixelmap: image.PixelMap) {
+    this.pixel_map = conPixelmap;
+  }
+  marshalling(messageSequence: rpc.MessageSequence) {
+    this.pixel_map.marshalling(messageSequence);
+    return true;
+  }
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    try {
+      let parcel:rpc.MessageSequence = new rpc.MessageSequence();
+      this.pixel_map = image.createPixelMapFromParcel(parcel);
+      expect().assertFail();
+    } catch(e) {
+      let error = e as BusinessError;
+      console.error(`www data createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
+      expect(Number(error.code) == 62980178).assertTrue();
+      return false;
+    }
+    return true;
+  }
+}
 
 export default function imagePixelMapErrorCodeTest() {
   describe('imagePixelMapErrorCodeTest', ()=> {
@@ -30,11 +57,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0100
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
       image.createPixelMapFromSurface('11111111', region).then(() => {
         console.info('www data Succeeded in creating pixelmap from SurfaceData');
@@ -51,11 +78,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0200
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
       image.createPixelMapFromSurface('11111111', null).then(() => {
         console.info('www data Succeeded in creating pixelmap from SurfaceData');
@@ -72,11 +99,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0300
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       image.createPixelMapFromSurface('11111111').then(() => {
         console.info('Succeeded in creating pixelmap from SurfaceData');
         expect().assertFail();
@@ -92,11 +119,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0400
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent("512.jpg");
@@ -120,11 +147,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0500
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent("512.jpg");
@@ -149,11 +176,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0600
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent("512.jpg");
@@ -177,11 +204,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0700
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let img = getContext().resourceManager.getMediaContentSync($r('app.media.app_icon'));
       let imageSource = image.createImageSource(img.buffer.slice(0));
       let decodingOptions: image.DecodingOptions = {
@@ -209,11 +236,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0800
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent('512.jpg');
@@ -236,11 +263,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_0900
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { 
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } 
@@ -262,11 +289,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_1000
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { 
         editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
@@ -288,11 +315,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_1100
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent("512.jpg");
@@ -316,11 +343,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_1200
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       const color: ArrayBuffer = new ArrayBuffer(96);
       let opts: image.InitializationOptions = { 
         editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
@@ -342,11 +369,11 @@ export default function imagePixelMapErrorCodeTest() {
      * @tc.number    ImagePixelMapTest
      * @tc.name      ImagePixelMapErrorCode_1300
      * @tc.desc      image pixelMap error code
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it("ImagePixelMapErrorCode_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+    it("ImagePixelMapErrorCode_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let context = getContext();
       let resourceMgr = context.resourceManager;
       const fileData = await resourceMgr.getRawFileContent("512.jpg");
@@ -363,6 +390,320 @@ export default function imagePixelMapErrorCodeTest() {
         console.error(`www data Failed to clone. code is ${error.code}, message is ${error.message}`);
         expect(Number(error.code) == 501).assertTrue();
         done();
+      }
+    });
+
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1400
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+      try {
+        image.createPixelMapFromSurfaceSync('11111111', region);
+        console.info('www data Succeeded in creating createPixelMapFromSurfaceSync');
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(`www data Failed to create createPixelMapFromSurfaceSync. code is ${error.code}`);
+        expect(Number(error.code) == 62980178).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1500
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      try {
+        image.createPixelMapFromSurfaceSync('11111111', null);
+        console.info('www data Succeeded in creating createPixelMapFromSurfaceSync');
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(`www data Failed to create createPixelMapFromSurfaceSync. code is ${error.code}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1600
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      try {
+        image.createPixelMapFromSurfaceSync('11111111');
+        console.info('www data Succeeded in creating createPixelMapFromSurfaceSync');
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.error(`www data Failed to create createPixelMapFromSurfaceSync. code is ${error.code}`);
+        expect(Number(error.code) == 62980178).assertTrue();
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1700
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      let img = getContext().resourceManager.getMediaContentSync($r('app.media.app_icon'));
+      let imageSource = image.createImageSource(img.buffer.slice(0));
+      let decodingOptions: image.DecodingOptions = {
+        desiredDynamicRange: image.DecodingDynamicRange.AUTO
+      };
+      let pixelmap = imageSource.createPixelMapSync(decodingOptions);
+      if (pixelmap != undefined) {
+        console.info('www data Succeeded in creating pixelMap object.');
+        pixelmap.toSdr().then(() => {
+          let imageInfo = pixelmap.getImageInfoSync();
+          console.info("www data after toSdr ,imageInfo isHdr:" + imageInfo.isHdr);
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`www data Failed to set sdr. code is ${error.code}, message is ${error.message}`);
+          expect(Number(error.code) == 62980137).assertTrue();
+          done();
+        });
+      } else {
+        console.info('Failed to create pixelMap.');
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1800
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.NV12, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      taskpoolTest(pixelMap);
+      try {
+        let imageInfo : image.ImageInfo = pixelMap.getImageInfoSync();
+        console.info('Succeeded to imageInfo');
+        expect().assertFail();
+        done();
+      } catch(error){
+        console.error(`www data Failed to imageInfo. code is ${error.code}, message is ${error.message}`);
+        expect(Number(error.code) == 501).assertTrue();
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_1900
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let bufferArr: Uint8Array = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i++) {
+        bufferArr[i] = 0x80;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: image.PixelMapFormat.BGRA_8888,
+        size: { height: 4, width: 6 },
+        alphaType: image.AlphaType.UNPREMUL
+      }
+      let pixelMap: image.PixelMap | undefined = undefined;
+      image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
+        console.error("www data 11111111");
+        pixelMap = srcPixelMap;
+        try {
+          // 序列化。
+          let parcelable: MySequence = new MySequence(pixelMap);
+          let data: rpc.MessageSequence = rpc.MessageSequence.create();
+          data.writeParcelable(parcelable);
+
+          // 反序列化 rpc获取到data。
+          let ret: MySequence = new MySequence(pixelMap);
+          data.readParcelable(ret);
+          
+          // 获取到pixelmap。
+          let unmarshPixelmap = ret.pixel_map;
+          done();
+        }catch(error){
+          expect().assertFail();
+          done();
+        }
+      })
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2000
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.RGB_565, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let rate: number = 0.5;
+      if (pixelMap != undefined) {
+        pixelMap.opacity(rate, (err: BusinessError) => {
+          if (err) {
+            console.error(`www data Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+            expect(Number(err) == 62980103).assertTrue();
+            done();
+          } else {
+            console.info("www data Succeeded in setting opacity.");
+            expect().assertFail();
+            done();
+          }
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2100
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let rate: number = 0.5;
+      if (pixelMap != undefined) {
+        pixelMap.opacity(rate, (err: BusinessError) => {
+          if (err) {
+            console.error(`www data Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.info("www data Succeeded in setting opacity.");
+            expect(true).assertTrue();
+            done();
+          }
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2200
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let rate: number = 0.5;
+      if (pixelMap != undefined) {
+        pixelMap.opacity(rate).then(() => {
+          console.info('www data Succeeded in setting opacity.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`www data Failed to set opacity. code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          done();
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2300
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      if (pixelMap != undefined) {
+        try {
+          pixelMap.setColorSpace(csm);
+          console.error('www data succeed in setColorSpace.');
+          expect(true).assertTrue();
+          done();
+        } catch(err){
+          console.error(`www data Failed to. code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2400
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        try {
+          pixelMap.setColorSpace(null);
+          expect().assertFail();
+          done();
+        } catch(err){
+          console.error(`www data Failed to. code is ${err.code}, message is ${err.message}`);
+          expect(Number(err.code) == 62980115).assertTrue();
+          done();
+        }
       }
     });
   })

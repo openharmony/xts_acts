@@ -46,9 +46,9 @@ export default function abilityTest() {
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
-     * @tc.level Level4
+     * @tc.level Level0
      */
-    it('Security_DataSecurity_Asset_Authentication_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it('Security_DataSecurity_Asset_Authentication_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
       await aw.assetAddAll(attr);

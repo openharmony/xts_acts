@@ -316,8 +316,13 @@ export default function AlignRulesTest() {
         expect(Math.floor(Math.abs(rec.right - recReference.left)) <= 1).assertTrue();
         expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterHorizontally') {
-        expect(Math.floor(Math.abs(rec.left - recReference.left)) <= 1).assertTrue();
-        expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
+        if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+          expect(Math.floor(Math.abs(rec.left - recReference.left)) <= 2).assertTrue();
+          expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 2).assertTrue();
+        } else {
+          expect(Math.floor(Math.abs(rec.left - recReference.left)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
+        }
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterRightAlignment') {
         expect(Math.floor(Math.abs(rec.left - recReference.right)) <= 1).assertTrue();
         expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();

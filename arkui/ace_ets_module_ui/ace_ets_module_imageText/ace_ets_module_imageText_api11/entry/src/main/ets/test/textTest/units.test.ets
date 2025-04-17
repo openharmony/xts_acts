@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common'
 import events_emitter from '@ohos.events.emitter';
 
@@ -51,7 +51,7 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsModuleName0001
      * @tc.desic         aceunitsModuleNameEtsTest0001
      */
-    it('testunitsModuleName0001', 0, async (done: Function) => {
+    it('testunitsModuleName0001', Level.LEVEL1, async (done: Function) => {
       console.info('unitsModuleName testunitsModuleName0001 START');
       await CommonFunc.sleep(2000);
       try {
@@ -83,7 +83,7 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsGlobalPosition0001
      * @tc.desic         aceunitsGlobalPositionEtsTest0001
      */
-    it('testunitsGlobalPosition0001', 0, async (done: Function) => {
+    it('testunitsGlobalPosition0001', Level.LEVEL1, async (done: Function) => {
       console.info('unitsModuleName testunitsGlobalPosition0001 START');
       await CommonFunc.sleep(2000);
       try {
@@ -109,7 +109,7 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsMinWidth0001
      * @tc.desic         aceunitsMinWidthEtsTest0001
      */
-    it('testunitsMinWidth0001', 0, async (done: Function) => {
+    it('testunitsMinWidth0001', Level.LEVEL1, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('minWidthText');
@@ -126,7 +126,7 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsMinWidth0002
      * @tc.desic         aceunitsMinWidthEtsTest0002
      */
-    it('testunitsMinWidth0002', 0, async (done: Function) => {
+    it('testunitsMinWidth0002', Level.LEVEL1, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('minWidthText');

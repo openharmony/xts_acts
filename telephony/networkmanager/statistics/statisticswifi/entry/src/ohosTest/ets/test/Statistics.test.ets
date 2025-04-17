@@ -335,14 +335,14 @@ export default function statisticsTest() {
 
     /* *
     * @tc.number: SUB_Network_Statistics_getTrafficStatsByNetwork_1800
-    * @tc.name  : GetTrafficStatsTestPromise1800
+    * @tc.name  : testNetworkStatisticsgetTrafficStatsByNetwork1800
     * @tc.desc  : Obtain the traffic usage details of all applications on a specified network within a specified period;promise.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('GetTrafficStatsTestPromise1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'GetTrafficStatsTestPromise1800';
+    it('testNetworkStatisticsgetTrafficStatsByNetwork1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkStatisticsgetTrafficStatsByNetwork1800';
       try {
         network.getType({
           success: async (data) => {
@@ -1020,14 +1020,14 @@ export default function statisticsTest() {
 
     /* *
     * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_2200
-    * @tc.name  : GetTrafficStatsByUidTestPromise2200
+    * @tc.name  : testNetworkStatisticsgetTrafficStatsByUidNetwork2200
     * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('GetTrafficStatsByUidTestPromise2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'GetTrafficStatsByUidTestPromise2200';
+    it('testNetworkStatisticsgetTrafficStatsByUidNetwork2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkStatisticsgetTrafficStatsByUidNetwork2200';
       try {
         network.getType({
           success: async (data) => {
@@ -1140,14 +1140,14 @@ export default function statisticsTest() {
 
     /* *
     * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_3400
-    * @tc.name  : GetTrafficStatsByUidTestPromise3400
+    * @tc.name  : testNetworkStatisticsgetTrafficStatsByUidNetwork3400
     * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('GetTrafficStatsByUidTestPromise3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'GetTrafficStatsByUidTestPromise3400';
+    it('testNetworkStatisticsgetTrafficStatsByUidNetwork3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkStatisticsgetTrafficStatsByUidNetwork3400';
       try {
         network.getType({
           success: async (data) => {
@@ -1458,14 +1458,14 @@ export default function statisticsTest() {
 
     /* *
     * @tc.number: SUB_Network_Statistics_getTrafficStatsByUidNetwork_6600
-    * @tc.name  : GetTrafficStatsByUidTestPromise6600
+    * @tc.name  : testNetworkStatisticsgetTrafficStatsByUidNetwork6600
     * @tc.desc  : Obtain the traffic usage details of a specified network within a specified period;promise.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it('GetTrafficStatsByUidTestPromise6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      const caseName: string = 'GetTrafficStatsByUidTestPromise6600';
+    it('testNetworkStatisticsgetTrafficStatsByUidNetwork6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = 'testNetworkStatisticsgetTrafficStatsByUidNetwork6600';
       try {
         network.getType({
           success: async (data) => {

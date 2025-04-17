@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import prompt from '@ohos.prompt'
 import { BusinessError } from '@ohos.base'
@@ -48,7 +48,7 @@ export default function abilityTest() {
      * @tc.name: getAbilityLists callback API.
      * @tc.desc: getAbilityLists callback API abilityType is spoken, stateType is install.
      */
-    it('wukongtest_0010', 1, async  ()=>{
+    it('wukongtest_0010', Level.LEVEL0, async  ()=>{
       cmd = "wukong exec -T 0.5 &";
       if(abilityDelegator != undefined){
         await abilityDelegator.executeShellCommand("pkill accessibility");

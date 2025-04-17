@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
-
-
 export default function pageTransitionJsunit() {
   describe('pageTransitionJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -40,13 +38,11 @@ export default function pageTransitionJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info("pageTransition after each called");
     });
-
-    it('pageTransitionTest_0100', 0, async (done: Function) => {
+    it('pageTransitionTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('pageTransitionTest_0100 START');
       let strJson = getInspectorByKey('Navigator');
       console.info("pageTransitionTest_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -55,8 +51,7 @@ export default function pageTransitionJsunit() {
       console.info('pageTransitionTest_0100 END');
       done();
     });
-
-    it('pageTransitionTest_0200', 0, async (done: Function) => {
+    it('pageTransitionTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('pageTransitionTest_0200 START');
       let strJson = getInspectorByKey('Navigator');
       console.info("pageTransitionTest_0200 component strJson:" + strJson);
@@ -65,8 +60,7 @@ export default function pageTransitionJsunit() {
       console.info('pageTransitionTest_0200 END');
       done();
     });
-
-    it('pageTransitionTest_0300', 0, async (done: Function) => {
+    it('pageTransitionTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('pageTransitionTest_0300 START');
       let strJson = getInspectorByKey('Navigator');
       console.info("pageTransitionTest_0300 component strJson:" + strJson);
@@ -75,8 +69,7 @@ export default function pageTransitionJsunit() {
       console.info('pageTransitionTest_0300 END');
       done();
     });
-
-    it('pageTransitionTest_0400', 0, async (done: Function) => {
+    it('pageTransitionTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('pageTransitionTest_0400 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -121,4 +114,3 @@ export default function pageTransitionJsunit() {
     });
   })
 }
-

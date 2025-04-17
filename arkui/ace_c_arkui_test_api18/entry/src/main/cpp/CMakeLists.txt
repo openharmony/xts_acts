@@ -16,12 +16,21 @@ add_library(nativerender SHARED
     component/component.cpp
     component/datepicker_component.cpp
     datepicker/datepicker_test.cpp
+    textpicker/text_picker_range_test.cpp
     textpicker/textPicker_enableHapticFeedback_test.cpp
     datepicker/datePicker_enableHapticFeedback_test.cpp
+    swiper/swiper_indicator_test.cpp
+    component/swiper_component.cpp
+    component/text_component.cpp
+    component/button_component.cpp
+    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
 )
 
 add_library(nativefunc SHARED
+    manager/plugin_manager.cpp
     napi_func_init.cpp
+    customdialog/customdialog_background.cpp
+    customdialog/customdialog_test.cpp
 )
 
 find_library(

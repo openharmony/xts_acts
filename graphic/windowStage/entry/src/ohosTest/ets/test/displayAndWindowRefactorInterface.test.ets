@@ -16,7 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
+import settings from '@ohos.settings';
 
 function createFirstWindow(windowConfig: ohosWindow.Configuration, msgStr: string): Promise<ohosWindow.Window> {
   return new Promise((resolve, reject) => {
@@ -63,12 +63,14 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
   windowStage: ohosWindow.WindowStage) {
   describe('displayAndWindowRefactorInterface_test', () => {
     console.log('describe displayAndWindowRefactorInterface_test start!!!')
-    let currentDeviceIsPC = false;
+    let isPCStatus: string = '';
     beforeAll(() => {
       console.info('displayAndWindowRefactorInterface_test beforeAll begin');
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
       console.info('displayAndWindowRefactorInterface_test beforeAll end');
     })
     /**
@@ -1577,7 +1579,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_True_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_True_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
       } else {
         let wnd: ohosWindow.Window | undefined = undefined;
@@ -1622,7 +1624,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_False_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async ()=> {
       let caseName = 'testSetWindowLayoutFullScreen_False_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
       } else {
           let wnd: ohosWindow.Window | undefined = undefined;
@@ -1668,7 +1670,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_True_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_True_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
       } else {
@@ -1729,7 +1731,7 @@ export default function displayAndWindowRefactorInterfaceTest(context: common.UI
     it('testSetWindowLayoutFullScreen_False_Callback', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) => {
       let caseName = 'testSetWindowLayoutFullScreen_False_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      if(currentDeviceIsPC){
+      if(isPCStatus != ''){
         console.info(msgStr + 'pc device is not support this interface setWindowLayoutFullScreen');
         done();
       } else {

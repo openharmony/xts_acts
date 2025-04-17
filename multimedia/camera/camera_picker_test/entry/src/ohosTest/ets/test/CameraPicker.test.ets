@@ -14,7 +14,7 @@
  */
 import camera from '@ohos.multimedia.camera';
 import picker from '@ohos.multimedia.cameraPicker';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import { UiDriver, BY } from '@ohos.UiTest'
 import data from '@ohos.telephony.data'
@@ -198,7 +198,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100--------------");
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK
@@ -230,7 +230,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101--------------");
       let photoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_FRONT
@@ -263,7 +263,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102--------------");
       let pathDir = getContext().filesDir;
       let filePath = pathDir + `/${new Date().getTime()}.jpg}`
@@ -301,7 +301,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103--------------");
       let uri: string = "fail_string";
       let photoProfile: picker.PickerProfile = {
@@ -334,7 +334,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100--------------");
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {
@@ -368,7 +368,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101--------------");
       let videoProfile: picker.PickerProfile = {
         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -400,7 +400,7 @@ export function cameraPicker() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102--------------");
       let videoDuration = 2;
       let videoProfile: picker.PickerProfile = {

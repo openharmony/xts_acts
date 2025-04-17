@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll, TestType, Size, Level  } from '@ohos/hypium';
 import http from '@ohos.net.http';
 import connection from '@ohos.net.connection';
 
@@ -62,14 +62,14 @@ export default function NetworkManagerAppProxyTest() {
   describe("NetworkManagerAppProxyTest", ()=> {
     /**
      * @tc.number: SUB_Telephony_netstack_App_Proxy_Xts_0100
-     * @tc.name: Setting Application-Level Proxy.
-     * @tc.desc: Function test
-     * @tc.level 1
+     * @tc.name: testTelephonynetstackAppProxyXts0100
+     * @tc.desc: Setting Application-Level Proxy.
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0100", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0100";
+    it("testTelephonynetstackAppProxyXts0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonynetstackAppProxyXts0100";
       let result = connection.setAppHttpProxy(httpProxy);
       if (result != undefined) {
         console.log(`${caseName} setAppHttpProxy fail ${JSON.stringify(result)}`);
@@ -83,14 +83,14 @@ export default function NetworkManagerAppProxyTest() {
     });
     /**
      * @tc.number: SUB_Telephony_netstack_App_Proxy_Xts_0200
-     * @tc.name: Setting Application-Level Proxy.
-     * @tc.desc: Function test
-     * @tc.level 1
+     * @tc.name: testTelephonynetstackAppProxyXts0200
+     * @tc.desc: Setting Application-Level Proxy.
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0200", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0200";
+    it("testTelephonynetstackAppProxyXts0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonynetstackAppProxyXts0200";
       let result = connection.setAppHttpProxy(httpProxy2);
       if (result != undefined) {
         console.log(`${caseName} setAppHttpProxy fail ${JSON.stringify(result)}`);
@@ -104,14 +104,14 @@ export default function NetworkManagerAppProxyTest() {
     });
     /**
      * @tc.number: SUB_Telephony_netstack_App_Proxy_Xts_0300
-     * @tc.name: Setting Application-Level Proxy.
-     * @tc.desc: Function test
-     * @tc.level 1
+     * @tc.name: testTelephonynetstackAppProxyXts0300
+     * @tc.desc: Setting Application-Level Proxy.
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0300", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0300";
+    it("testTelephonynetstackAppProxyXts0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonynetstackAppProxyXts0300";
       let result = connection.setAppHttpProxy(httpProxy3);
       if (result != undefined) {
         console.log(`${caseName} setAppHttpProxy fail ${JSON.stringify(result)}`);
@@ -124,14 +124,14 @@ export default function NetworkManagerAppProxyTest() {
     });
     /**
      * @tc.number: SUB_Telephony_netstack_App_Proxy_Xts_0400
-     * @tc.name: Setting Application-Level Proxy.
-     * @tc.desc: Function test
-     * @tc.level 1
+     * @tc.name: testTelephonynetstackAppProxyXts0400
+     * @tc.desc: Setting Application-Level Proxy.
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0400", 0, async (done:Function)=> {
-      let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0400";
+    it("testTelephonynetstackAppProxyXts0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "testTelephonynetstackAppProxyXts0400";
       let result = connection.setAppHttpProxy(httpProxy4);
       if (result != undefined) {
         console.log(`${caseName} setAppHttpProxy fail ${JSON.stringify(result)}`);
@@ -150,7 +150,7 @@ export default function NetworkManagerAppProxyTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_netstack_App_Proxy_Xts_0500", 0, async (done:Function)=> {
+    it("SUB_Telephony_netstack_App_Proxy_Xts_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let caseName = "SUB_Telephony_netstack_App_Proxy_Xts_0500";
       connection.setAppHttpProxy(httpProxy);
       connection.getDefaultHttpProxy((err,data)=> {

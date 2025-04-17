@@ -208,9 +208,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address(url is availableWebSocketAddress)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -447,9 +447,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,options is {},callback)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1200';
       console.info(`${caseName} test start`);
       try {
@@ -749,9 +749,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,options is null)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -873,9 +873,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,correct options)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectPromise0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0900';
       console.info(`${caseName} test start`);
       try {

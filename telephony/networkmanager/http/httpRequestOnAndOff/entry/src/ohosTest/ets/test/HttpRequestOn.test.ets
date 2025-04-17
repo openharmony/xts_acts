@@ -58,9 +58,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive  send one request with httpRequest.requestInStream only one listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
+    it('testHttpRequestOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0100";
       console.info(`${caseName} test Start`);
       try {
@@ -127,9 +127,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive send one request with httpRequest.requestInStream one more listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testTypeHeaderReceive0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
+    it('testTypeHeaderReceive0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0200SUB_Global_httpRequest_on_0200";
       console.info(`${caseName} test Start`);
       try {
@@ -197,9 +197,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive  send more request with httpRequest.requestInStream one more listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testOnTypeHeaderReceive0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
+    it('testOnTypeHeaderReceive0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpRequestOn0300";
       console.info(`${caseName} test Start`);
       try {
@@ -266,9 +266,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headersReceive  send one request with httpRequest.requestInStream only one listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestOn0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
+    it('testHttpRequestOn0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0400";
       console.info(`${caseName} test Start`);
       try {

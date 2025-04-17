@@ -15,7 +15,7 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError, emitter } from '@kit.BasicServicesKit';
@@ -832,7 +832,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -1060,7 +1060,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -1096,7 +1096,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -2811,6 +2811,110 @@ export default function audioCapturer() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_TIMESTAMP_INFO_SYNC
+     * @tc.name      : AudioCapturer-GET_AUDIO_TIMESTAMP_INFO_SYNC
+     * @tc.desc      : AudioCapturer GET_AUDIO_TIMESTAMP_INFO_SYNC
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_TIMESTAMP_INFO_SYNC',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+
+      let audioCapPromise: ESObject;
+      try {
+        audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
+      } catch (err) {
+        console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        await audioCapPromise.start();
+        let audioTimestampInfo: ESObject = audioCapPromise.getAudioTimestampInfoSync();
+        console.log(`${Tag} framePos: ${JSON.stringify(audioTimestampInfo.framePos)},
+          timestamp: ${JSON.stringify(audioTimestampInfo.timestamp)}`)
+        expect(audioTimestampInfo.timestamp != 0).assertTrue();
+      } catch (err) {
+        console.log(`${Tag} start-getAudioTimestampInfoSync err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+      }
+      try {
+        await audioCapPromise.release();
+      } catch (err) {
+        console.log(`${Tag} err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_TIMESTAMP_INFO
+     * @tc.name      : AudioCapturer-GET_AUDIO_TIMESTAMP_INFO
+     * @tc.desc      : AudioCapturer GET_AUDIO_TIMESTAMP_INFO
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_TIMESTAMP_INFO', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+
+      let audioCapPromise: ESObject;
+      try {
+        audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
+      } catch (err) {
+        console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        await audioCapPromise.start();
+        let audioTimestampInfo: ESObject = await audioCapPromise.getAudioTimestampInfo();
+        console.log(`${Tag} framePos: ${JSON.stringify(audioTimestampInfo.framePos)},
+          timestamp: ${JSON.stringify(audioTimestampInfo.timestamp)}`)
+        expect(audioTimestampInfo.timestamp != 0).assertTrue();
+      } catch (err) {
+        console.log(`${Tag} start-getAudioTimestampInfo err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+      }
+      try {
+        await audioCapPromise.release();
+      } catch (err) {
+        console.log(`${Tag} err: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+      }
+      done();
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_0100
      * @tc.name      : AudioCapturer-GET_AUDIO_TIME
      * @tc.desc      : AudioCapturer createAudioCapturer->stop->release
@@ -3990,7 +4094,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -4033,7 +4137,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4074,7 +4178,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_SYNC_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4117,7 +4221,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_OVERFLOW_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let AudioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_1,
@@ -4198,7 +4302,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -4252,7 +4356,7 @@ export default function audioCapturer() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200', Level.LEVEL0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_RENDERER_FORMAT_F32_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
         channels: audio.AudioChannel.CHANNEL_1,

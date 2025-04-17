@@ -53,17 +53,13 @@ export default function DataObjectPermissionTest() {
      * @tc.desc Test DataObject setSessionId Callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_DataObject_setSessionId_Callback_PermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
+    it('SUB_DataObject_setSessionId_Callback_PermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       console.info(TAG + '************ SUB_DataObject_setSessionId_Callback_PermissionTest_0100 start ************')
       try {
-        g_object.setSessionId(distributedDataObject.genSessionId(), ()=>{
-          console.info("join session");
-        });
-        g_object.setSessionId("", ()=>{
-          console.info("leave all session");
-        });
+        g_object.setSessionId(distributedDataObject.genSessionId(), ()=>{});
+        expect().assertFail();
       } catch (err) {
         console.error(TAG + 'Failed to setSession. Code: ' + err.code + ',message: ' + err.message)
         expect(err.code).assertEqual('201')
@@ -82,16 +78,8 @@ export default function DataObjectPermissionTest() {
     it('SUB_DataObject_setSessionId_Promise_PermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, () => {
       console.info(TAG + '************ SUB_DataObject_setSessionId_Promise_PermissionTest_0100 start ************')
       try {
-        g_object.setSessionId(distributedDataObject.genSessionId()).then (()=>{
-          console.info("join session.");
-        }).catch((error: BusinessError)=>{
-          console.info("error:" + error.code + error.message);
-        });
-        g_object.setSessionId().then (()=>{
-          console.info("leave all session.");
-        }).catch((error: BusinessError)=>{
-          console.info("error:" + error.code + error.message);
-        });
+        g_object.setSessionId(distributedDataObject.genSessionId());
+        expect().assertFail();
       } catch (err) {
         console.error(TAG + 'Failed to setSession. Code: ' + err.code + ',message: ' + err.message)
         expect(err.code).assertEqual('201')

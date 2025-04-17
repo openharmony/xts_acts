@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -29,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function APIsetOnclickTest() {
   describe('APIsetOnclickTest', () => {
     beforeEach(async (done: Function) => {
@@ -61,18 +60,16 @@ export default function APIsetOnclickTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnclickTest_0100', 0, async (done: Function) => {
+    it('APIsetOnclickTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnclickTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button1 = await driver.findComponent(ON.id('APIsetOnclickText01'));
       await button1.click();
       await CommonFunc.sleep(2000);
-
       let button2 = await driver.findComponent(ON.id('APIsetOnclickText02'));
       await button2.click();
       await CommonFunc.sleep(2000);
-
       let strJson = getInspectorByKey('APIsetOnclickText02');
       let obj:ESObject = JSON.parse(strJson);
       console.info("[APIsetOnclickTest_0100] component obj is: " + JSON.stringify(obj));
@@ -80,7 +77,5 @@ export default function APIsetOnclickTest() {
       console.info('[APIsetOnclickTest_0100] END');
       done();
     });
-
   })
 }
-

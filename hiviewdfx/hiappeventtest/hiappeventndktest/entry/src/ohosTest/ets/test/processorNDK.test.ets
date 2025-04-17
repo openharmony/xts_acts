@@ -26,7 +26,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("test_processor");
       const appId = "com.example.app";
       const routeInfo = "https://hiappevents.com/test";
@@ -42,7 +42,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("");
       const appId = "com.example.app";
       const routeInfo = "https://hiappevents.com/test";
@@ -58,7 +58,7 @@ export default function processorNDKTest() {
        * @tc.type Function
        * @tc.level Level3
        */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("Test_processor12");
         const appId = "";
         const routeInfo = "https://hiappevents.com/test";
@@ -74,7 +74,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("Test");
         const appId = "com.example.app";
         const routeInfo = "";
@@ -90,7 +90,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("1test");
         const appId = "com.example.app";
         const routeInfo = "https://hiappevents.com/test";
@@ -106,7 +106,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("Test");
         const appId = "com.example.app";
         const routeInfo = "a".repeat(9000);
@@ -123,7 +123,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("Test");
         const appId = "a".repeat(9000);
         const routeInfo = "https://hiappevents.com/test";
@@ -140,7 +140,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("test_processor");
         const result = hiappevent.SetReportPolicy(processor, 10, 5, true, false)
         expect(result).assertEqual(0); 
@@ -155,7 +155,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("test_processor");
         const result = hiappevent.SetReportPolicy(processor, -10, 0, false, true)
         expect(result).assertEqual(0); 
@@ -170,7 +170,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("test_processor");
         const result = hiappevent.SetReportPolicy(processor, 10000000, -10, false, false)
         expect(result).assertEqual(0); 
@@ -185,7 +185,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("test_processor");
         const result = hiappevent.SetReportPolicy(processor, 0, 10000, undefined, true)
         expect(result).assertEqual(0);
@@ -200,7 +200,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("123");
         const result = hiappevent.SetReportPolicy(processor, 0, 10000, undefined, true)
         expect(result).assertEqual(-7); 
@@ -215,7 +215,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const domain = "OS";
         const name = "ADDRESS_SANITIZER";
@@ -233,7 +233,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const domain = "com.example.domain";
         const name = "test_event";
@@ -251,7 +251,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("123");
         const domain = "OS";
         const name = "ADDRESS_SANITIZER";
@@ -269,7 +269,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const domain = "";
         const name = "RESOURCE_OVERLIMIT";
@@ -287,7 +287,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const domain = "OS";
         const name = "";
@@ -305,7 +305,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const domain = "OS";
         const name = "ADDRESS_SANITIZER";
@@ -323,7 +323,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const key = "test";
         const value = "test";
@@ -340,7 +340,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("a".repeat(257));
         const key = "test";
         const value = "test";
@@ -357,7 +357,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const key = "t".repeat(33);
         const value = "test";
@@ -374,7 +374,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const key = "123";
         const value = "t".repeat(1025);
@@ -390,7 +390,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const configId = 123;
         const result = hiappevent.SetConfigId(processor,configId);
@@ -405,7 +405,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("/test");
         const configId = 0;
         const result = hiappevent.SetConfigId(processor,configId);
@@ -421,7 +421,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessorr");
         const configId = -10;
         const result = hiappevent.SetConfigId(processor,configId);
@@ -437,7 +437,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessorr");
         const userIdNames= ['testprocessor','processor2','processor3'];
         const size = 1;
@@ -454,7 +454,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessor");
         const userIdNames= ['testprocessor'];
         const size = 2;
@@ -471,7 +471,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("123");
         const userIdNames= ['testprocessorr'];
         const size = 1;
@@ -488,7 +488,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocessorr");
         const userPropertyNames= ['testprocessor','processor2','processor3'];
         const size = 1;
@@ -505,7 +505,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("testprocessor");
       const userPropertyNames= ['testprocessor'];
       const size = 2;
@@ -522,7 +522,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("123");
       const userPropertyNames= ['testprocessorr'];
       const size = 1;
@@ -539,7 +539,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("ha_app_event");
         const appId = "com_huawei_hmos_sdk_ocg";
         const routeInfo = "AUTO";
@@ -561,7 +561,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("hiappevent");
         const appId = "com_huawei_hmos_sdk_ocg";
         const routeInfo = "AUTO";
@@ -584,7 +584,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("114");
         const result = hiappevent.AddProcessor(processor);
         expect(result).assertEqual(-7); 
@@ -599,7 +599,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("ha_app_event");
       const appId = "com_huawei_hmos_sdk_ocg";
       const routeInfo = "AUTO";
@@ -622,7 +622,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("test");
       const appId = "com_hmos_sdk_ocg";
       const routeInfo = "AUTO";
@@ -645,7 +645,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("testprocesoor")
         const result = hiappevent.DestroyProcessor(processor);
         expect(true).assertTrue();
@@ -660,7 +660,7 @@ export default function processorNDKTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)  => {
+      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("124")
         const result = hiappevent.DestroyProcessor(processor);
         expect(false).assertFalse();

@@ -27,7 +27,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('c');
         console.log('StringTest001 :' + value);
@@ -41,7 +41,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('ä');
         console.log('StringTest002 :' + value);
@@ -55,7 +55,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('a');
         console.log('StringTest003 :' + value);
@@ -69,7 +69,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var value = stringTest.localeCompare('z', 'de');
         console.log('StringTest004 :' + value);
         expect(value).assertEqual(-1);
@@ -82,7 +82,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var value = stringTest.localeCompare('z', 'sv');
         console.log('StringTest005 :' + value);
         expect(value).assertEqual(1);
@@ -95,7 +95,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('ff', 'de');
         console.log('StringTest006 :' + value);
@@ -109,7 +109,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "ä";
         var value = stringTest.localeCompare('fff', 'sv');
         console.log('StringTest007 :' + value);
@@ -123,7 +123,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('c', 'de', { sensitivity: 'base' });
         console.log('StringTest008 :' + value);
@@ -137,7 +137,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('A', 'de', { sensitivity: 'base' });
         console.log('StringTest009 :' + value);
@@ -151,7 +151,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('á', 'de', { sensitivity: 'base' });
         console.log('StringTest010 :' + value);
@@ -165,7 +165,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('zz', 'sv', { sensitivity: 'base' });
         console.log('StringTest011 :' + value);
@@ -179,7 +179,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('b', 'de', { sensitivity: 'accent' });
         console.log('StringTest012 :' + value);
@@ -193,7 +193,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('á', 'de', { sensitivity: 'accent' });
         console.log('StringTest013 :' + value);
@@ -207,7 +207,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('A', 'de', { sensitivity: 'accent' });
         console.log('StringTest014 :' + value);
@@ -221,7 +221,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('zz', 'sv', { sensitivity: 'accent' });
         console.log('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_015 :' + value);
@@ -235,7 +235,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         stringTest = "a";
         var value = stringTest.localeCompare('c', 'de', { sensitivity: 'case' });
         console.log('StringTest016 :' + value);
@@ -247,7 +247,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string localeCompare
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "a";
@@ -261,7 +261,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string localeCompare
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "a";
@@ -275,7 +275,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string localeCompare
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "a";
@@ -289,7 +289,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string localeCompare
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "ä";
@@ -303,7 +303,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string localeCompare
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "Test";
@@ -318,7 +318,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "TEST";
@@ -333,7 +333,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -348,7 +348,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "TEST";
@@ -363,7 +363,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "i";
@@ -378,7 +378,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "i";
@@ -393,7 +393,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -409,7 +409,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleLowerCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -425,7 +425,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "test";
@@ -440,7 +440,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -455,7 +455,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "test";
@@ -470,7 +470,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -485,7 +485,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -500,7 +500,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "\u0130";
@@ -516,7 +516,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles string toLocaleUpperCase
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_STRING_PROTOTYPE_035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         stringTest = "i\u0307";
@@ -534,7 +534,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -549,7 +549,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -564,7 +564,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = '123456.789';
@@ -579,7 +579,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = NaN;
@@ -594,7 +594,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -609,7 +609,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -624,7 +624,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -639,7 +639,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -654,7 +654,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -669,7 +669,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -684,7 +684,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -699,7 +699,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -714,7 +714,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -729,7 +729,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
@@ -748,7 +748,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -763,7 +763,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = 123456.789;
@@ -778,7 +778,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles number toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_NUMBER_PROTOTYPE_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var number = -1.3365;
@@ -794,7 +794,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -809,7 +809,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -824,7 +824,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -839,7 +839,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -854,7 +854,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -869,7 +869,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -884,7 +884,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -899,7 +899,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -914,7 +914,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -929,7 +929,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -944,7 +944,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
@@ -963,7 +963,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
@@ -982,7 +982,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -997,7 +997,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles bigint toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_BIGINT_PROTOTYPE_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var bigint = 123456789123456789n;
@@ -1013,7 +1013,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         let date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1028,7 +1028,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1043,7 +1043,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1058,7 +1058,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1073,7 +1073,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1088,7 +1088,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1103,7 +1103,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(0);
@@ -1118,7 +1118,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(0);
@@ -1135,7 +1135,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1151,7 +1151,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1167,7 +1167,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1182,7 +1182,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1197,7 +1197,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1212,7 +1212,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1227,7 +1227,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1243,7 +1243,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleDateString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1259,7 +1259,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1274,7 +1274,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
@@ -1293,7 +1293,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try { 
@@ -1312,7 +1312,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1328,7 +1328,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 18, 0, 0));
@@ -1344,7 +1344,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles date toLocaleTimeString 
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_DATE_PROTOTYPE_022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var date = new Date(Date.UTC(2022, 9, 20, 20, 0, 0));
@@ -1360,7 +1360,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
@@ -1375,7 +1375,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
@@ -1390,7 +1390,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
@@ -1405,7 +1405,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, 'a', '测试'];
@@ -1420,7 +1420,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, 'a', '测试', undefined];
@@ -1435,7 +1435,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         try {
@@ -1453,7 +1453,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = ['￥7', 500, 8123, 12];
@@ -1468,7 +1468,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = ['￥7', 500, 8123, 12];
@@ -1483,7 +1483,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = ['￥7', 500, 8123, 12, undefined];
@@ -1498,7 +1498,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [];
@@ -1513,7 +1513,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [1, , 3, ,"ABC"];
@@ -1528,7 +1528,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = [{a:1},{b:2}];
@@ -1544,7 +1544,7 @@ describe('etsIntlPtsFunTest', function () {
      * @tc.desc      : The current function handles array toLocaleString
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
     */
     it('SUB_ARK_ETS_INTL_ARRAY_PROTOTYPE_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var array = { length:3, 0:1, 1:2, 2:3 };

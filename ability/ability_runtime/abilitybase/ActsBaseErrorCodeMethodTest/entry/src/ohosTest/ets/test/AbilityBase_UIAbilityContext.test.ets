@@ -31,13 +31,13 @@ export default function openLinkTest() {
     beforeAll(() => {
       context = globalThis.context;
     });
-    afterEach((done: Function) => {
+    afterEach(() => {
     });
 
     /*
     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0100
     * @tc.name   : The input parameter want is null
-    * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+    * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
     * @tc.type   : Function
     * @tc.size   : MediumTest
     * @tc.level  : 0
@@ -50,20 +50,15 @@ export default function openLinkTest() {
         context.startAbility(want, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -71,7 +66,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0200
      * @tc.name   : The input parameter want is undefined
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -87,20 +82,15 @@ export default function openLinkTest() {
         context.startAbility(want, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -108,7 +98,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0300
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -124,20 +114,15 @@ export default function openLinkTest() {
         context.startAbility(want, options, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -145,7 +130,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0400
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -161,20 +146,15 @@ export default function openLinkTest() {
         context.startAbility(want, options, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -182,7 +162,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0500
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -196,20 +176,15 @@ export default function openLinkTest() {
         context.startAbility(want, options, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -217,7 +192,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0600
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -231,20 +206,15 @@ export default function openLinkTest() {
         context.startAbility(want, options, (err: BusinessError) => {
           if (err?.code) {
             console.error(`${tag}, startAbility failed, code is ${err.code}, message is ${err.message}`);
-            expect().assertFail();
+            expect(err.code).assertEqual(16000019);
             done();
           }
-          console.info(`${tag}, startAbility succeed`);
-          try{
-            expect().assertFail();
-          }catch(e){}
-          done();
         });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -252,7 +222,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0700
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -265,17 +235,22 @@ export default function openLinkTest() {
         displayId: 0
       }
       try {
-        context.startAbility(want, options);
-        console.info(`${tag}, startAbility succeed`);
-        try{
-          expect().assertFail();
-        }catch(e){}
-        done();
+        context.startAbility(want, options)
+          .then(() => {
+            console.info('startAbility succeed');
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000019);
+            done();
+          });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -283,7 +258,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0800
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -296,17 +271,22 @@ export default function openLinkTest() {
         displayId: 0
       }
       try {
-        context.startAbility(want, options);
-        console.info(`${tag}, startAbility succeed`);
-        try{
-          expect().assertFail();
-        }catch(e){}
-        done();
+        context.startAbility(want, options)
+          .then(() => {
+            console.info('startAbility succeed');
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000019);
+            done();
+          });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -314,7 +294,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_0900
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -325,17 +305,22 @@ export default function openLinkTest() {
       let want: Want|null|undefined =null;
       let options: StartOptions|null|undefined = {}
       try {
-        context.startAbility(want, options);
-        console.info(`${tag}, startAbility succeed`);
-        try{
-          expect().assertFail();
-        }catch(e){}
-        done();
+        context.startAbility(want, options)
+          .then(() => {
+            console.info('startAbility succeed');
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000019);
+            done();
+          });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -343,7 +328,7 @@ export default function openLinkTest() {
     /*
      * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_1000
      * @tc.name   : The input parameter want is null, options is an option object with parameter
-     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 16000019
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -351,20 +336,25 @@ export default function openLinkTest() {
     it('SUB_Ability_AbilityBase_UIAbilityContext_1000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1000`;
       console.log(`${tag}, it begin`);
-      let want: Want|null|undefined =null;
+      let want: Want|null|undefined =undefined;
       let options: StartOptions|null|undefined = {}
       try {
-        context.startAbility(want, options);
-        console.info(`${tag}, startAbility succeed`);
-        try{
-          expect().assertFail();
-        }catch(e){}
-        done();
+        context.startAbility(want, options)
+          .then(() => {
+            console.info('startAbility succeed');
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000019);
+            done();
+          });
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`${tag} startAbility failed, code is ${code}, message is ${message}`);
-        expect(code).assertEqual(401);
+        expect().assertFail();
         done();
       }
     });
@@ -526,7 +516,7 @@ export default function openLinkTest() {
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
       try {
-          context.startAbilityByCall(want).then(() => {
+        context.startAbilityByCall(want).then(() => {
           console.info(`#${tag}# startAbilityByCall successful`);
           expect().assertFail();
           done();

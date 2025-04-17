@@ -29,7 +29,7 @@ export default function IsApplicationEnabledETSUnit() {
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('Sub_Bms_Framework_Status_AppEnable_3000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
@@ -89,7 +89,7 @@ export default function IsApplicationEnabledETSUnit() {
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          */
-        it('Sub_Bms_Framework_Status_AppEnable_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('Sub_Bms_Framework_Status_AppEnable_3100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.isApplicationEnabled(BUNDLE_NAME_OTHER).then((data) => {
                 expect(data).assertTrue();

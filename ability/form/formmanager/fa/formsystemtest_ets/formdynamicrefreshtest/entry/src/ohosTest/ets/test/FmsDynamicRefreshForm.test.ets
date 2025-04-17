@@ -15,7 +15,7 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -71,7 +71,7 @@ export default function test() {
          * @tc.desc: 1.The form provider A to invoke the dynamic timed refresh interface.
          *           2.Verify the result of the dynamic timed refresh interface.
          */
-        it(`FMS_timedRefresh_0100`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0100`;
 
             const onRefreshCallback = async (_:BusinessError, data: CommonEventManager.CommonEventData) => {
@@ -120,7 +120,7 @@ export default function test() {
          * @tc.desc: 1.The form provider A to invoke the dynamic timed refresh interface.
          *           2.Verify the result of the dynamic timed refresh interface.
          */
-        it(`FMS_timedRefresh_0200`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0200`;
 
             const onRefreshCallback = async (_:BusinessError, data: CommonEventManager.CommonEventData) => {
@@ -169,7 +169,7 @@ export default function test() {
         * @tc.desc: 1.The form provider B to invoke the dynamic timed refresh interface.
         *           2.Verify the result of the dynamic timed refresh interface.
         */
-        it(`FMS_timedRefresh_0300`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0300`;
 
             const onRefreshCallback = async (_:BusinessError, data: CommonEventManager.CommonEventData) => {
@@ -247,7 +247,7 @@ export default function test() {
         * @tc.desc: 1.The form provider A to invoke the dynamic timed refresh interface.
         *           2.Verify the result of the dynamic timed refresh interface.
         */
-        it(`FMS_timedRefresh_0400`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0400`;
             let formId: string | undefined = '';
 
@@ -331,7 +331,7 @@ export default function test() {
         * @tc.desc: 1.The form provider A to invoke the dynamic timed refresh interface.
         *           2.Verify the result of the dynamic timed refresh interface.
         */
-        it(`FMS_timedRefresh_0500`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0500`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0500`;
 
             const onRefreshCallback = async (_:BusinessError, data: CommonEventManager.CommonEventData) => {
@@ -380,7 +380,7 @@ export default function test() {
         * @tc.desc: 1.The form provider A to invoke the dynamic timed refresh interface.
         *           2.Verify the result of the dynamic timed refresh interface.
         */
-        it(`FMS_timedRefresh_0600`, 0, async (done: ()=> void) => {
+        it(`FMS_timedRefresh_0600`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_timedRefresh_0600`;
 
             const onSupplyCallback = async (_:BusinessError, data: CommonEventManager.CommonEventData) => {

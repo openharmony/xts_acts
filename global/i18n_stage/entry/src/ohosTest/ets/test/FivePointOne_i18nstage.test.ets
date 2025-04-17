@@ -42,9 +42,9 @@ export default function FivePointOne_i18nStageTest() {
      * @tc.desc     : begin code same as stop code
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_refinedFormat_0160', Level.LEVEL0, () => {
+    it('SUB_GLOBAL_refinedFormat_0160', Level.LEVEL2, () => {
       let numFormat: intl.NumberFormat = new intl.NumberFormat("zh-hans-CN");
       let formattedRange: string = numFormat.formatRange(0, 0);
       expect(formattedRange == "~0").assertTrue();

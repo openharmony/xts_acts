@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
-
 export default function typeNodeProgressTest() {
   describe('typeNodeProgressTest', () => {
     beforeEach(async (done: Function) => {
@@ -41,7 +39,6 @@ export default function typeNodeProgressTest() {
       }
       done();
     });
-
     /**
      * @tc.number    ProgressTest_0100
      * @tc.name      ProgressTest_0100
@@ -50,7 +47,7 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ProgressTest_0100', 0, async (done: Function) => {
+    it('ProgressTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ProgressTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,7 +61,6 @@ export default function typeNodeProgressTest() {
       console.info('[ProgressTest_0100] END');
       done();
     });
-
     /**
      * @tc.number    initializeTest_0200
      * @tc.name      initializeTest_0200
@@ -73,7 +69,7 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('initializeTest_0200', 0, async (done: Function) => {
+    it('initializeTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('initializeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -87,7 +83,6 @@ export default function typeNodeProgressTest() {
       console.info('[initializeTest_0200] END');
       done();
     });
-
     /**
      * @tc.number    attributeTest_0300
      * @tc.name      attributeTest_0300
@@ -96,7 +91,7 @@ export default function typeNodeProgressTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('attributeTest_0300', 0, async (done: Function) => {
+    it('attributeTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('attributeTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -112,4 +107,3 @@ export default function typeNodeProgressTest() {
     });
   })
 }
-

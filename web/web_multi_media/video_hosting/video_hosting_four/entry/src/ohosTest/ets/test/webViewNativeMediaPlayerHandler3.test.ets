@@ -75,9 +75,9 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.desc test NativeMediaPlayerVSetPlayRate
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerUpdateRect_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821,

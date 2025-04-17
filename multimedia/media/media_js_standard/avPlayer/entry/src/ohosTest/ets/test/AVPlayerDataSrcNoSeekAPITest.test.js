@@ -17,7 +17,7 @@ import * as mediaTestBase from '../../../../../../MediaTestBase.js';
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerDataSrcNoSeekAPITest() {
     describe('AVPlayerDataSrcNoSeekAPITest', function () {
@@ -726,7 +726,7 @@ export default function AVPlayerDataSrcNoSeekAPITest() {
             * @tc.type      : Function test
             * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_STATE_PREPARED', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_DATASRC_NOSEEK_STATE_PREPARED', Level.LEVEL0,async function (done) {
             testTag = 'test_prepared';
             myStepsNameList.push("prepared -> release (released)");
             myStepsList.push(new Array(CREATE_EVENT, SETDATASRC_NOSEEK_EVENT, SETSURFACE_EVENT, surfaceID, PREPARE_EVENT, RELEASE_EVENT, END_EVENT));

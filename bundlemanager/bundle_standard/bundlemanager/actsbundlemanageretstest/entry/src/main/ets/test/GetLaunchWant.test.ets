@@ -29,7 +29,7 @@ export default function getLaunchWant() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWant', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+        it('testGetLaunchWant', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let want = bundleMgr.getLaunchWant();
             expect(want.abilityName).assertEqual(ABILITYNAME);
             expect(want.bundleName).assertEqual(BUNDLENAME);

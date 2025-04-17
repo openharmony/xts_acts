@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import {
@@ -98,7 +98,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12Cert: vectorP12Data = p12_rsa_cert;
         let p12_cert: Uint8Array = new Uint8Array(p12Cert.p12Cert);
@@ -133,7 +133,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_ecc_cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -163,7 +163,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_rsa_cert.p12Cert);
         let type = cert.EncodingBaseFormat.PEM;
@@ -195,7 +195,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_rsa_cert.p12Cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -228,7 +228,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_rsa_cert.p12Cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -259,7 +259,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_max_other);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -291,7 +291,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_rsa_error_format);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -316,7 +316,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_max_other);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -344,7 +344,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_priKey_usage_ex);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -373,7 +373,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_expired_cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -402,7 +402,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_expired_cert);
         let conf: cert.Pkcs12ParsingConfig = {
@@ -424,7 +424,7 @@ export default function certFrameworkParseP12CertTestUnit() {
      * @tc.level Level1
      * @tc.type Function
      */
-    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_Cert_Framework_ParseP12Cert_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let p12_cert: Uint8Array = new Uint8Array(p12_expired_cert);
         let conf: cert.Pkcs12ParsingConfig = {

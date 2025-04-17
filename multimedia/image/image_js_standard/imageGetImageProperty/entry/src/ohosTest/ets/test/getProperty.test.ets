@@ -122,6 +122,7 @@ async function testGetImagePropertyPromise(done: Function, testNum: string, type
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     imageSourceApi
       .getImageProperty(args)
       .then((data) => {
@@ -151,6 +152,7 @@ async function testGetImagePropertyCb(done: Function, testNum: string, type: str
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     imageSourceApi.getImageProperty(args, (err: BusinessError, data: string) => {
       if (err) {
         expect(false).assertTrue();
@@ -178,6 +180,7 @@ async function testGetImagePropertyOptCb(done: Function, testNum: string, type: 
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     let property: ESObject = { index: 0, defaultValue: "9999" };
     imageSourceApi.getImageProperty(args, property, (err, data) => {
       if (err) {
@@ -207,6 +210,7 @@ async function testGetImagePropertyPromiseErr(done: Function, testNum: string, t
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     if (isTypeErr) {
       try {
         await imageSourceApi.getImageProperty(args);
@@ -244,6 +248,7 @@ async function testGetImagePropertyCbErr(done: Function, testNum: string, type: 
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     if (isTypeErr) {
       try {
         imageSourceApi.getImageProperty(args, (error: BusinessError, data: string) => {
@@ -280,6 +285,7 @@ async function testGetImagePropertyOptCbErr(done: Function, testNum: string, typ
     expect(false).assertTrue();
     done();
   } else {
+    globalImagesource = imageSourceApi;
     let property: ESObject = { index: 0, defaultValue: "9999" };
     if (isTypeErr) {
       try {

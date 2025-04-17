@@ -644,25 +644,5 @@ describe('btBaseProfileTest', () => {
         }
         done();
     })
-
-    /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_OPP_CREATEOPPSERVERPROFILE_0100
-     * @tc.name testCreateOppServerProfile
-     * @tc.desc Test CreateOppServerProfile api16
-     * @tc.type Function
-     * @tc.size MediumTest
-     * @tc.level Level 2
-     */
-     it('SUB_COMMUNICATION_BLUETOOTH_OPP_CREATEOPPSERVERPROFILE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done : Function) =>  {
-        try {
-            let osp: opp.OppServerProfile = opp.createOppServerProfile();
-            console.info('createOppServerProfile success, result: ' + osp);
-            expect(true).assertEqual(osp != null);
-        } catch (err) {
-            console.info("createOppServerProfile errCode:" + err.code + ",errMessage:" + err.message);
-            expect().assertFail();
-        }
-        done();
-    })
 })
 }

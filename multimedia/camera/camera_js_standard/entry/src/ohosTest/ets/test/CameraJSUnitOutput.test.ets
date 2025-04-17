@@ -334,7 +334,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100--------------");
       try {
         cameraManager = cameraObj.getCameraManager(context);
@@ -355,7 +355,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------GET_CAMERAS--------------");
       cameraDevicesArray = cameraManager.getSupportedCameras();
       if (isEmpty(cameraDevicesArray)) {
@@ -396,7 +396,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
       cameraInput = cameraManager.createCameraInput(cameraDevicesArray[0]);
       if (isEmpty(cameraInput)) {
@@ -422,7 +422,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100--------------");
 
       console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100")
@@ -448,7 +448,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_PROMISE_0100--------------");
 
       let cameraOutputCap =
@@ -477,7 +477,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       await getVideoSurface();
       sleep(1000);
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100--------------");
@@ -509,7 +509,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100--------------");
 
       let cameraOutputCap =
@@ -538,7 +538,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100--------------");
       try {
         console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100")
@@ -559,7 +559,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_BEGIN_CONFIG_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_BEGIN_CONFIG_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_BEGIN_CONFIG_CALLBACK_0100--------------");
       if (isEmpty(captureSession)) {
@@ -582,7 +582,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_INPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_INPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_INPUT_CALLBACK_0100--------------");
       if (isEmpty(captureSession)) {
         console.info(TAG +
@@ -604,7 +604,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100--------------");
       if (isEmpty(captureSession)) {
         console.info(TAG +
@@ -631,7 +631,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(captureSession)) {
@@ -660,7 +660,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100--------------");
       await getVideoSurface();
@@ -697,7 +697,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(captureSession)) {
@@ -722,7 +722,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100--------------");
       createPhotoSession(1);
@@ -759,7 +759,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(metadataOutput)) {
@@ -793,7 +793,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_OFF_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_OFF_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_OFF_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(metadataOutput)) {
@@ -828,7 +828,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
@@ -860,7 +860,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_OFF_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_OFF_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_METADATA_OUTPUT_CALLBACK_OFF_ERROR_0100--------------");
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
@@ -893,7 +893,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(cameraSession)) {
@@ -929,7 +929,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(captureSession)) {
@@ -965,7 +965,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(captureSession)) {
@@ -1001,7 +1001,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(metadataOutput)) {
@@ -1034,7 +1034,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100--------------");
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG +
@@ -1056,7 +1056,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100--------------");
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG +
@@ -1079,7 +1079,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100--------------");
       if (isEmpty(mMetadataObjectArray)) {
         console.info(TAG +
@@ -1110,7 +1110,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
@@ -1142,7 +1142,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_PROMISE_0100--------------");
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_PROMISE_0100 start")
@@ -1164,7 +1164,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(previewOutput)) {
         console.info(TAG +
@@ -1188,7 +1188,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_PREVIEW_OUTPUT_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(cameraSession)) {
@@ -1224,7 +1224,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(cameraSession)) {
@@ -1260,7 +1260,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0200', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0200', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_RELEASE_SESSION_CALLBACK_0200--------------");
       createPhotoSession(1);
       if (isEmpty(cameraSession)) {
@@ -1296,7 +1296,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_PREVIEW_OUTPUT_CALLBACK_0100--------------");
       createPhotoSession(1);
       if (isEmpty(cameraSession)) {
@@ -1332,7 +1332,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100--------------");
       if (isEmpty(previewOutput)) {
         console.info(TAG +
@@ -1371,7 +1371,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100--------------");
       if (isEmpty(previewOutput)) {
         console.info(TAG +
@@ -1408,7 +1408,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       if (isEmpty(previewOutput)) {
         console.info(TAG +
@@ -1441,7 +1441,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100--------------");
       if (isEmpty(photoOutput)) {
@@ -1466,7 +1466,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100--------------");
       createPhotoSession(1);
@@ -1501,7 +1501,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_CALLBACK_0100--------------");
       createPhotoSession(1);
@@ -1541,7 +1541,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG +
         " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_PROMISE_0100--------------");
       if (isEmpty(photoOutput)) {
@@ -1581,7 +1581,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG +
           " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_SETTING_CALLBACK_0100--------------");
@@ -1625,7 +1625,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100--------------");
       if (isEmpty(photoOutput)) {
         console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START previewOutput == null || undefined")
@@ -1657,7 +1657,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100--------------");
       if (isEmpty(photoOutput)) {
         console.info(TAG +
@@ -1693,7 +1693,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_READY_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -1728,7 +1728,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100--------------");
       if (isEmpty(photoOutput)) {
         console.info(TAG +
@@ -1770,7 +1770,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100--------------");
       if (isEmpty(photoOutput)) {
         console.info(TAG +
@@ -1810,7 +1810,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       if (isEmpty(photoOutput)) {
         console.info(TAG +
@@ -1843,7 +1843,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100--------------");
         await getVideoSurface();
@@ -1880,7 +1880,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_PROMISE_0100--------------");
         await getVideoSurface();
@@ -1917,7 +1917,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_ESTIMATED_CAPTURE_DURATION_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -1949,7 +1949,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
@@ -1974,7 +1974,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ESTIMATED_CAPTURE_DURATION_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2011,7 +2011,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100', Level.LEVEL1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(metadataOutput)) {
         console.info(TAG +
@@ -2037,7 +2037,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100--------------");
         await getVideoSurface();
@@ -2082,7 +2082,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100--------------");
         await getVideoSurface();
@@ -2127,7 +2127,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_AVAILABLE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_AVAILABLE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_AVAILABLE_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2158,7 +2158,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_START_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_START_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_START_0100--------------");
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_START_0100 to operate");
@@ -2202,7 +2202,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_END_0100--------------");
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_END_0100 to operate");
       await getVideoSurface();
@@ -2241,7 +2241,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_AVAILABLE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_AVAILABLE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_AVAILABLE_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2278,7 +2278,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_ASSET_AVAILABLE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_ASSET_AVAILABLE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_PHOTO_ASSET_AVAILABLE_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2310,7 +2310,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_ASSET_AVAILABLE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_ASSET_AVAILABLE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_PHOTO_ASSET_AVAILABLE_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2348,7 +2348,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2390,7 +2390,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_WITH_INFO_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_WITH_INFO_0100', Level.LEVEL1, async (done: Function) => {
 
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_START_WITH_INFO_0100--------------");
       // 创建相机
@@ -2439,7 +2439,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2485,7 +2485,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_END_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2517,7 +2517,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_FRAME_SHUTTER_END_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2553,7 +2553,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_CAPTURE_END_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2598,7 +2598,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_READY_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_READY_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_READY_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2630,7 +2630,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_OFF_ERROR_0100--------------");
       // 创建相机
       getCameraDevices()
@@ -2670,7 +2670,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_GET_ACTIVE_PROFILE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_GET_ACTIVE_PROFILE_0100', Level.LEVEL1, async (done: Function) => {
 
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_GET_ACTIVE_PROFILE_0100--------------");
       // 创建相机
@@ -2705,7 +2705,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0200', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0200', Level.LEVEL1, async (done: Function) => {
 
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0200--------------");
       // 创建相机
@@ -2737,7 +2737,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300', Level.LEVEL2, async (done: Function) => {
 
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300--------------");
       // 创建相机
@@ -2770,7 +2770,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300', Level.LEVEL2, async (done: Function) => {
 
       console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ENABLE_MOVING_PHOTO_0300--------------");
       // 创建相机
@@ -2801,7 +2801,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_START_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_START_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_START_0100--------------");
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_START_0100 to operate");
@@ -2845,7 +2845,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_END_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_END_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_END_0100--------------");
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_END_0100 to operate");
       await getVideoSurface();
@@ -2885,7 +2885,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100--------------");
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100 to operate");
       await getVideoSurface();
@@ -2919,7 +2919,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_ERROR_0100--------------");
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_ERROR_0100 to operate");
@@ -2964,7 +2964,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------BEGIN SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_SUPPORTED_FRAME_RATES_0100--------------");    
 
       // 创建一个Video会话
@@ -2987,7 +2987,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_SET_FRAME_RATE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_SET_FRAME_RATE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_SET_FRAME_RATE_0100--------------");
       // 创建一个Video会话
       await startSession(0, cameraObj.SceneMode.NORMAL_VIDEO)
@@ -3150,7 +3150,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_ACTIVE_FRAME_RATE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_ACTIVE_FRAME_RATE_0100', Level.LEVEL1, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_GET_ACTIVE_FRAME_RATE_0100--------------");    
       // 创建一个Video会话
       await startSession(0, cameraObj.SceneMode.NORMAL_VIDEO)
@@ -3181,7 +3181,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_ERROR_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_ERROR_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_ERROR_0100--------------");
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_OFF_FRAME_ERROR_0100 to operate");
@@ -3228,7 +3228,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', Level.LEVEL1, async (done: Function) => {
       try {
         console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100--------------");
         await getVideoSurface();
@@ -3273,7 +3273,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_ERROR_01000--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG +
@@ -3309,7 +3309,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_FOCUS_STATE_CHANGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_FOCUS_STATE_CHANGE_0100', Level.LEVEL0, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_CALLBACK_ON_FOCUS_STATE_CHANGE_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG +

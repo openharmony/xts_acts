@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import { Driver, ON } from '@ohos.UiTest';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
 import { ColorMetrics } from '@kit.ArkUI';
@@ -63,15 +62,12 @@ export default function windowPropertiesTest2() {
   describe('windowProperties_test2', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context: common.UIAbilityContext;
-    let deviceType: string = '';
     let windowStage: ohosWindow.WindowStage;
     let isAutoWindow: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       isAutoWindow =
         settings.getValueSync(context, 'window_pcmode_switch_status', '', settings.domainName.DEVICE_SHARED);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
@@ -98,9 +94,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc      : test_statusBarContentColor
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level2
      */
-    it('testStatusBarContentColor', 0, async (done: Function) => {
+    it('testStatusBarContentColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_statusBarContentColor';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -123,9 +119,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc      : test_WindowProperties_drawableRect
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level2
      */
-    it('testWindowPropertiesDrawableRect', 0, async (done: Function) => {
+    it('testWindowPropertiesDrawableRect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_WindowProperties_drawableRect';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -150,9 +146,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setStatusBarColor_401
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 3
      */
-    it('test_setStatusBarColor_401', 0, async (done: Function) => {
+    it('test_setStatusBarColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setStatusBarColor_401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -179,9 +175,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setStatusBarColor_1300002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setStatusBarColor_1300002', 0, async (done: Function) => {
+    it('test_setStatusBarColor_1300002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setStatusBarColor_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -217,7 +213,7 @@ export default function windowPropertiesTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_setStatusBarColor_normal1', 0, async (done: Function) => {
+    it('test_setStatusBarColor_normal1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_setStatusBarColor_normal1";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -249,7 +245,7 @@ export default function windowPropertiesTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_setStatusBarColor_normal2', 0, async (done: Function) => {
+    it('test_setStatusBarColor_normal2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_setStatusBarColor_normal2";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -282,9 +278,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_getStatusBarProperty_1300002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_getStatusBarProperty_1300002', 0, async (done: Function) => {
+    it('test_getStatusBarProperty_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_getStatusBarProperty_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -315,7 +311,7 @@ export default function windowPropertiesTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_setWindowBackgroundColor_ColorMetrics_mainWindow', 0, async (done: Function) => {
+    it('test_setWindowBackgroundColor_ColorMetrics_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_setWindowBackgroundColor_ColorMetrics_mainWindow";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -341,7 +337,7 @@ export default function windowPropertiesTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_setWindowBackgroundColor_ColorMetrics_subWindow', 0, async (done: Function) => {
+    it('test_setWindowBackgroundColor_ColorMetrics_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = "test_setWindowBackgroundColor_ColorMetrics_subWindow";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.info(msgStr + 'begin.');
@@ -372,9 +368,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowShadowRadius_401
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_401', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -403,9 +399,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowShadowRadius_1300002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_1300002', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -434,9 +430,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowShadowRadius_1300004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_1300004', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -459,9 +455,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowShadowRadius_negative1
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_negative1', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_negative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_negative1";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -490,9 +486,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗设置没有阴影
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_0100', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -529,9 +525,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗设置阴影为4
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_0200', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_0200";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -568,9 +564,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗设置阴影为超大值
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowShadowRadius_0300', 0, async (done: Function) => {
+    it('test_setWindowShadowRadius_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowShadowRadius_0300";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -607,9 +603,9 @@ export default function windowPropertiesTest2() {
     //  * @tc.desc       : 验证悬浮窗设置阴影为0
     //  * @tc.size       : MediumTest
     //  * @tc.type       : Function
-    //  * @tc.level      : Level 2
+    //  * @tc.level      : Level 3
     //  */
-    // it('test_setWindowShadowRadius_0400', 0, async (done: Function) => {
+    // it('test_setWindowShadowRadius_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     //   let caseName = "test_setWindowShadowRadius_0400";
     //   let msgStr = 'jsunittest ' + caseName + ' ';
     //   console.log(msgStr + 'begin.');
@@ -653,9 +649,9 @@ export default function windowPropertiesTest2() {
     //  * @tc.desc       : 验证悬浮窗设置阴影为4
     //  * @tc.size       : MediumTest
     //  * @tc.type       : Function
-    //  * @tc.level      : Level 2
+    //  * @tc.level      : Level 3
     //  */
-    // it('test_setWindowShadowRadius_0500', 0, async (done: Function) => {
+    // it('test_setWindowShadowRadius_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     //   let caseName = "test_setWindowShadowRadius_0500";
     //   let msgStr = 'jsunittest ' + caseName + ' ';
     //   console.log(msgStr + 'begin.');
@@ -699,9 +695,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowCornerRadius_401
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_401', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_401";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -734,9 +730,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowCornerRadius_-1
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_negative1', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_negative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_negative1";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -769,9 +765,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowCornerRadius_1300002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_1300002', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -803,9 +799,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowCornerRadius_1300004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_1300004', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -842,9 +838,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_setWindowCornerRadius_dialog_1300004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_dialog_1300004', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_dialog_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_dialog_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -891,9 +887,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗圆角值为0
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_0100', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_0100";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -935,9 +931,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗圆角值为5
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_0200', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_0200";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -979,9 +975,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗圆角值为10000
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_0300', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_0300";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1023,9 +1019,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗圆角值为5.66666666
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_0400', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_0400";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1067,9 +1063,9 @@ export default function windowPropertiesTest2() {
     //  * @tc.desc       : 验证悬浮窗圆角值为0
     //  * @tc.size       : MediumTest
     //  * @tc.type       : Function
-    //  * @tc.level      : Level 2
+    //  * @tc.level      : Level 3
     //  */
-    // it('test_setWindowCornerRadius_0600', 0, async (done: Function) => {
+    // it('test_setWindowCornerRadius_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     //   let caseName = "test_setWindowCornerRadius_0600";
     //   let msgStr = 'jsunittest ' + caseName + ' ';
     //   console.log(msgStr + 'begin.');
@@ -1114,9 +1110,9 @@ export default function windowPropertiesTest2() {
     //  * @tc.desc       : 验证悬浮窗圆角值为5
     //  * @tc.size       : MediumTest
     //  * @tc.type       : Function
-    //  * @tc.level      : Level 2
+    //  * @tc.level      : Level 3
     //  */
-    // it('test_setWindowCornerRadius_0700', 0, async (done: Function) => {
+    // it('test_setWindowCornerRadius_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
     //   let caseName = "test_setWindowCornerRadius_0700";
     //   let msgStr = 'jsunittest ' + caseName + ' ';
     //   console.log(msgStr + 'begin.');
@@ -1161,9 +1157,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : 验证子窗多次设置圆角值
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('test_setWindowCornerRadius_0800', 0, async (done: Function) => {
+    it('test_setWindowCornerRadius_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_setWindowCornerRadius_0800";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1199,9 +1195,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_getWindowCornerRadius_1300002
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_getWindowCornerRadius_1300002', 0, async (done: Function) => {
+    it('test_getWindowCornerRadius_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_getWindowCornerRadius_1300002";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1230,9 +1226,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_getWindowCornerRadius_1300004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_getWindowCornerRadius_1300004', 0, async (done: Function) => {
+    it('test_getWindowCornerRadius_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_getWindowCornerRadius_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1258,9 +1254,9 @@ export default function windowPropertiesTest2() {
      * @tc.desc       : test_getWindowCornerRadius_dialog_1300004
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('test_getWindowCornerRadius_dialog_1300004', 0, async (done: Function) => {
+    it('test_getWindowCornerRadius_dialog_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "test_getWindowCornerRadius_dialog_1300004";
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin.');
@@ -1494,6 +1490,14 @@ export default function windowPropertiesTest2() {
       let windowClass: window.Window | undefined;
       try {
         windowClass = await windowStage.createSubWindow('testSnapshotIgnorePrivacyWithPrivacySubWindow');
+        console.info(`${caseName} Succeeded in creating the sub window.`);
+        await sleep(500);
+        await windowClass.setUIContent('testability/pages/First/index2');
+        console.info(`${caseName} Succeeded in loading the sub window content.`);
+        await sleep(500);
+        await windowClass.showWindow();
+        console.info(`${caseName} Succeeded in showing the sub window.`);
+        await sleep(500);
       } catch (err) {
         console.error(msgStr + 'createSubWindow ' + 'caught, err: ' + JSON.stringify(err));
         expect().assertFail();

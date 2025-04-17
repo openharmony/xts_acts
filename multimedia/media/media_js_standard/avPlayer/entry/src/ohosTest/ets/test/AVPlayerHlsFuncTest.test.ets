@@ -15,7 +15,7 @@
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../../MediaTestBase';
 import * as AVPlayerTestBase from '../../../../../../AVPlayerTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function AVPlayerHlsFuncTest() {
     describe('AVPlayerHlsFuncTest', function () {
@@ -148,7 +148,7 @@ export default function AVPlayerHlsFuncTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0100', Level.LEVEL0,async function (done) {
             await initAVPlayer(HTTP_PATH + '05.hls/hls_variant/index.m3u8', done);
             expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
             setBitrateState = AVPlayerTestBase.AV_PLAYER_STATE.PREPARED;
@@ -164,7 +164,7 @@ export default function AVPlayerHlsFuncTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0200', Level.LEVEL0,async function (done) {
             await initAVPlayer(HTTP_PATH + '05.hls/hls_variant/index.m3u8', done);
             expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
             setBitrateState = AVPlayerTestBase.AV_PLAYER_STATE.PLAYING;
@@ -180,7 +180,7 @@ export default function AVPlayerHlsFuncTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0300', Level.LEVEL0,async function (done) {
             await initAVPlayer(HTTP_PATH + '05.hls/hls_variant/index.m3u8', done);
             expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
             setBitrateState = AVPlayerTestBase.AV_PLAYER_STATE.PAUSED;
@@ -198,7 +198,7 @@ export default function AVPlayerHlsFuncTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0400', Level.LEVEL0,async function (done) {
             await initAVPlayer(HTTP_PATH + '05.hls/hls_variant/index.m3u8', done);
             expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
             setBitrateState = AVPlayerTestBase.AV_PLAYER_STATE.COMPLETED;
@@ -216,7 +216,7 @@ export default function AVPlayerHlsFuncTest() {
             * @tc.type      : Function test
             * @tc.level     : Level2
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_HLS_setBitrate_0500', Level.LEVEL0,async function (done) {
             await initAVPlayer(HTTP_PATH + '05.hls/hls_variant/index.m3u8', done);
             expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
             setBitrateState = AVPlayerTestBase.AV_PLAYER_STATE.PREPARED;

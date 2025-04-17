@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { driveFn, getPermission, photoType, sleep } from '../common'
 import common from '@ohos.app.ability.common'
 
@@ -144,7 +144,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_callback_000', 0, async (done: Function) => {
+    it('createImage_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_callback_000';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -161,7 +161,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_callback_001', 0, async (done: Function) => {
+    it('createImage_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_callback_001';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -175,7 +175,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_callback_002', 2, async (done: Function) => {
+    it('createImage_callback_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_callback_002';
       const type = undefined;
       const extension = 'jpg';
@@ -192,7 +192,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_callback_003', 2, async (done: Function) => {
+    it('createImage_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_callback_003';
       const type = photoType.IMAGE;
       const extension = '123';
@@ -209,7 +209,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_callback_004', 2, async (done: Function) => {
+    it('createImage_callback_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_callback_004';
       const type = photoType.IMAGE;
       const extension = undefined;
@@ -226,7 +226,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_callback_005', 2, async (done: Function) => {
+    it('createImage_callback_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_callback_005';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -243,7 +243,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_callback_006', 2, async (done: Function) => {
+    it('createImage_callback_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_callback_006';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -258,7 +258,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_promise_000', 0, async (done: Function) => {
+    it('createImage_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_promise_000';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -275,7 +275,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createImage_promise_001', 0, async (done: Function) => {
+    it('createImage_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createImage_promise_001';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -289,7 +289,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_002', 2, async (done: Function) => {
+    it('createImage_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_002';
       const type = undefined;
       const extension = 'jpg';
@@ -306,7 +306,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_003', 2, async (done: Function) => {
+    it('createImage_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_003';
       const type = photoType.IMAGE;
       const extension = '123';
@@ -323,7 +323,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_004', 2, async (done: Function) => {
+    it('createImage_promise_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_004';
       const type = photoType.IMAGE;
       const extension = undefined;
@@ -340,7 +340,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_005', 2, async (done: Function) => {
+    it('createImage_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_005';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -357,7 +357,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createImage_promise_006', 2, async (done: Function) => {
+    it('createImage_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createImage_promise_006';
       const type = photoType.IMAGE;
       const extension = 'jpg';
@@ -372,7 +372,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_callback_000', 0, async (done: Function) => {
+    it('createVideo_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_callback_000';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -389,7 +389,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_callback_001', 0, async (done: Function) => {
+    it('createVideo_callback_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_callback_001';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -403,7 +403,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_callback_002', 2, async (done: Function) => {
+    it('createVideo_callback_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_callback_002';
       const type = undefined;
       const extension = 'mp4';
@@ -420,7 +420,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_callback_003', 2, async (done: Function) => {
+    it('createVideo_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_callback_003';
       const type = photoType.VIDEO;
       const extension = '123';
@@ -437,7 +437,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_callback_004', 2, async (done: Function) => {
+    it('createVideo_callback_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_callback_004';
       const type = photoType.VIDEO;
       const extension = undefined;
@@ -454,7 +454,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_callback_005', 2, async (done: Function) => {
+    it('createVideo_callback_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_callback_005';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -471,7 +471,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_callback_006', 2, async (done: Function) => {
+    it('createVideo_callback_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_callback_006';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -486,7 +486,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_promise_000', 0, async (done: Function) => {
+    it('createVideo_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_promise_000';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -503,7 +503,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('createVideo_promise_001', 0, async (done: Function) => {
+    it('createVideo_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'createVideo_promise_001';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -517,7 +517,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_002', 2, async (done: Function) => {
+    it('createVideo_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_002';
       const type = undefined;
       const extension = 'mp4';
@@ -534,7 +534,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_003', 2, async (done: Function) => {
+    it('createVideo_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_003';
       const type = photoType.VIDEO;
       const extension = '123';
@@ -551,7 +551,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_004', 2, async (done: Function) => {
+    it('createVideo_promise_004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_004';
       const type = photoType.VIDEO;
       const extension = undefined;
@@ -568,7 +568,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_005', 2, async (done: Function) => {
+    it('createVideo_promise_005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_005';
       const type = photoType.VIDEO;
       const extension = 'mp4';
@@ -585,7 +585,7 @@ export default function createAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('createVideo_promise_006', 2, async (done: Function) => {
+    it('createVideo_promise_006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'createVideo_promise_006';
       const type = photoType.VIDEO;
       const extension = 'mp4';

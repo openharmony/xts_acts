@@ -149,9 +149,9 @@ export default function i18nStageTest() {
      * @tc.desc     : HolidayManager-input .ics file
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', Level.LEVEL0, () => {
+    it('SUB_GLOBAL_I18N_SR000IFGNH_0010', Level.LEVEL2, () => {
       try {
         let holidayManager = new I18n.HolidayManager("/system/lib/TR.ics");
         console.log('SUB_GLOBAL_I18N_SR000IFGNH_0010:' + holidayManager);
@@ -602,9 +602,9 @@ export default function i18nStageTest() {
      * @tc.desc     : check the dateStyle is adapt to auto
      * @tc.size     : MEDIUM
      * @tc.type     : Function
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it('dateTimeFormatAdapt_test_0010', Level.LEVEL0, () => {
+    it('dateTimeFormatAdapt_test_0010', Level.LEVEL2, () => {
       let data = new Date(2020, 11, 20, 14, 23, 16);
       let dateFmt = new Intl.DateTimeFormat("zh-CN", {
         dateStyle: 'auto'

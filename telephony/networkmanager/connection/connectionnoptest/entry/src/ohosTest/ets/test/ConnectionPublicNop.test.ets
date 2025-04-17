@@ -58,11 +58,11 @@ export default function ConnectionPublicNopTest() {
      * @tc.number:SUB_testNetworkMgrConnectionReportNetConnectedNop0100
      * @tc.name: testNetworkMgrConnectionReportNetConnectedNop0100
      * @tc.desc:Using the setAppNet (callback) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("testNetworkMgrConnectionReportNetConnectedNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testNetworkMgrConnectionReportNetConnectedNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0100----before----');
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
@@ -108,11 +108,11 @@ export default function ConnectionPublicNopTest() {
      * @tc.number:SUB_testNetworkMgrConnectionReportNetConnectedNop0200
      * @tc.name: testNetworkMgrConnectionReportNetConnectedNop0200
      * @tc.desc:Using the setAppNet (then) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("testNetworkMgrConnectionReportNetConnectedNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testNetworkMgrConnectionReportNetConnectedNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0200----before----');
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
@@ -158,11 +158,11 @@ export default function ConnectionPublicNopTest() {
      * @tc.number:SUB_testNetworkMgrConnectionReportNetConnectedNop0300
      * @tc.name: testNetworkMgrConnectionReportNetConnectedNop0300
      * @tc.desc:Using the addCustomDnsRule (callback) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("testNetworkMgrConnectionReportNetConnectedNop0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testNetworkMgrConnectionReportNetConnectedNop0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0300v----before----');
       try {
         connection.addCustomDnsRule("192.168.1.1", ["255.255.255.0", "127.0.0.1"], (error: BusinessError, data: void) => {
@@ -186,11 +186,11 @@ export default function ConnectionPublicNopTest() {
      * @tc.number:SUB_testNetworkMgrConnectionReportNetConnectedNop0400
      * @tc.name: testNetworkMgrConnectionReportNetConnectedNop0400
      * @tc.desc:Using the addCustomDnsRule (then) method without permission
-     * @tc.level:Level 2
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("testNetworkMgrConnectionReportNetConnectedNop0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("testNetworkMgrConnectionReportNetConnectedNop0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('--------testNetworkMgrConnectionReportNetConnectedNop0400----before----');
       try {
         connection.addCustomDnsRule("192.168.1.1", ["255.255.255.0", "127.0.0.1"]).then(() => {
@@ -351,14 +351,14 @@ export default function ConnectionPublicNopTest() {
 
     /**
      * @tc.number : SUB_Telephony_Connection_getAddressesByNameNop_0100
-     * @tc.name   : testConnectionGetAddressesByNameNop0100
+     * @tc.name   : testTelephonyConnectionGetAddressesByNameNop0100
      * @tc.desc   : AddressesByName Permission denied
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it("testConnectionGetAddressesByNameNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      const caseName: string = 'testConnectionGetAddressesByNameNop0100';
+    it("testTelephonyConnectionGetAddressesByNameNop0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      const caseName: string = 'testTelephonyConnectionGetAddressesByNameNop0100';
       console.info(`${caseName}---Start`);
       try{
         connection.getAddressesByName("www.baidu.com", (error: BusinessError, data: connection.NetAddress[]) => {
@@ -381,14 +381,14 @@ export default function ConnectionPublicNopTest() {
 
     /**
      * @tc.number : SUB_Telephony_Connection_getAddressesByNameNop_0200
-     * @tc.name   : testConnectionGetAddressesByNameNop0200
+     * @tc.name   : testTelephonyConnectionGetAddressesByNameNop0200
      * @tc.desc   : AddressesByName Permission denied
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it("testConnectionGetAddressesByNameNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      const caseName: string = 'testConnectionGetAddressesByNameNop0200';
+    it("testTelephonyConnectionGetAddressesByNameNop0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      const caseName: string = 'testTelephonyConnectionGetAddressesByNameNop0200';
       console.info(`${caseName}---Start`);
       try{
         connection.getAddressesByName("www.baidu.com").then((data :connection.NetAddress[] )=>{
@@ -410,11 +410,11 @@ export default function ConnectionPublicNopTest() {
      * @tc.number : SUB_Telephony_Connection_SetPacNop_0100
      * @tc.name   : testTelephonyConnectionSetPacNop0100
      * @tc.desc   : set PacUrl No Permission
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testTelephonyConnectionSetPacNop0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('testTelephonyConnectionSetPacNop0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testTelephonyConnectionSetPacNop0100';
       console.info(`${caseName}---Start`);
       try{

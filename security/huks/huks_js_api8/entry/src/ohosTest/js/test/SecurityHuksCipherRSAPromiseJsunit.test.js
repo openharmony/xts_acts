@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString } from './utils/param/publicFunc';
@@ -231,7 +231,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherRSAPromiseJsunit() {
   describe('SecurityHuksCipherRSAPromiseJsunit', function () {
-    it('Security_HUKS_Cipher_API8_RSA_101', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_RSA_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias101';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
       genHuksOptions.properties.splice(3, 1, HuksCipherRSA.HuksKeyRSABLOCKMODEECB);
@@ -265,7 +265,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_Cipher_API8_RSA_102', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_RSA_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
       let HuksOptions = {
@@ -283,7 +283,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_Cipher_API8_RSA_103', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_RSA_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias103';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias103';
       let HuksOptions = {
@@ -313,7 +313,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
       done();
     });
 
-    it('Security_HUKS_Cipher_API8_RSA_104', 0, async function (done) {
+    it('Security_HUKS_Cipher_API8_RSA_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias104';
       const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias104';
       let HuksOptions = {

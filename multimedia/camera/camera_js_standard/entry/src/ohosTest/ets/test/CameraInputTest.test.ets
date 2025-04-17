@@ -14,7 +14,7 @@
  */
 
 import cameraObj from '@ohos.multimedia.camera';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { surfaceIds } from '../testability/pages/Index';
 import Want from '@ohos.app.ability.Want';
@@ -343,7 +343,7 @@ export default function CameraInputTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100--------------");
    
       if (mCameraNum == 0) {
@@ -390,7 +390,7 @@ export default function CameraInputTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_RELEASE_ERROR_0100 FAILED with NoCamera");
@@ -422,7 +422,7 @@ export default function CameraInputTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100--------------");
       if (isEmpty(mCameraManager)) {
         console.info(TAG +
@@ -518,7 +518,7 @@ export default function CameraInputTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       let functionTag = "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100";
       console.info(functionTag);
       if (isEmpty(mCameraManager)) {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect} from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType} from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError} from '@ohos.base';
 
@@ -148,7 +148,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0100', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0100';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -245,7 +245,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0200', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0200';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -336,7 +336,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0300', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0300';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -428,7 +428,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0400', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0400';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -519,7 +519,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0500', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0500';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -610,7 +610,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0600', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0600';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
@@ -702,7 +702,7 @@ export default function TlsSkipRemoteValidationTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrTlsSkipRemoteValidation0700', 0, async (done: Function) => {
+    it('testNetworkMgrTlsSkipRemoteValidation0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = 'testNetworkMgrTlsSkipRemoteValidation0700';
       console.info(`${caseName}---Start`);
       let tls: socket.TLSSocket = socket.constructTLSSocketInstance();

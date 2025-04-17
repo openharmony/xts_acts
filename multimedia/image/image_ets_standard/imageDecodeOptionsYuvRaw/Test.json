@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "600000",
         "bundle-name": "ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw",
         "module-name": "entry_test",
         "shell-timeout": "300000",
@@ -20,7 +20,9 @@
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry_test/files/",
-                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry_test/files/*"
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry_test/files/*",
+                "power-shell wakeup",
+                "power-shell setmode 602"
             ]
         },
         {

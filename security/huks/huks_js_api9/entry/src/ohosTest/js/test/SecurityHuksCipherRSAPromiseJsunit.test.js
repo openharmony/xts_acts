@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString } from './utils/param/publicFunc';
@@ -271,7 +271,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherRSAPromiseJsunit() {
     describe('SecurityHuksCipherRSAPromiseJsunit', function () {
-        it('Security_HUKS_Cipher_API9_RSA_101', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_RSA_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias101';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -306,7 +306,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_RSA_102', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_RSA_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -328,7 +328,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_RSA_103', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_RSA_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -362,7 +362,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_RSA_104', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_RSA_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias104';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias104';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -384,7 +384,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize4096PADDINGPKCS1_V1_5SHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize4096PADDINGPKCS1_V1_5SHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGPKCS1_V1_5SHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGPKCS1_V1_5SHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -418,7 +418,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize4096PADDINGOAEPSHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize4096PADDINGOAEPSHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -452,7 +452,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize4096PADDINGOAEPSHA384KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize4096PADDINGOAEPSHA384KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA384KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA384NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -486,7 +486,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize4096PADDINGOAEPSHA512KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize4096PADDINGOAEPSHA512KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA384KeyAlias512';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGOAEPSHA384NewKeyAlias512';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize4096);
@@ -520,7 +520,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize3072PADDINGNONESHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize3072PADDINGNONESHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize3072PADDINGNONESHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize3072PADDINGNONESHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize3072);
@@ -554,7 +554,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize3072PADDINGPKCS1_V1_5SHA384KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize3072PADDINGPKCS1_V1_5SHA384KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize3072PADDINGPKCS1_V1_5SHA384KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize3072PADDINGPKCS1_V1_5SHA384NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize3072);
@@ -588,7 +588,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize3072PADDINGOAEPSHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize3072PADDINGOAEPSHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize3072);
@@ -622,7 +622,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize3072PADDINGOAEPSHA384KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize3072PADDINGOAEPSHA384KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA384KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA384NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize3072);
@@ -656,7 +656,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize3072PADDINGOAEPSHA512KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize3072PADDINGOAEPSHA512KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA384KeyAlias512';
             const newSrcKeyAlies = 'testCipherRSASize3072PADDINGOAEPSHA384NewKeyAlias512';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize3072);
@@ -690,7 +690,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize2048PADDINGNONESHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize2048PADDINGNONESHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize2048PADDINGNONESHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize2048PADDINGNONESHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize2048);
@@ -724,7 +724,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize2048PADDINGPKCS1_V1_5SHA512KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize2048PADDINGPKCS1_V1_5SHA512KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize2048PADDINGPKCS1_V1_5SHA512KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize2048PADDINGPKCS1_V1_5SHA512NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize2048);
@@ -758,7 +758,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize2048PADDINGOAEPSHA256KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize2048PADDINGOAEPSHA256KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA256KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA256NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize2048);
@@ -792,7 +792,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize2048PADDINGOAEPSHA384KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize2048PADDINGOAEPSHA384KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA384KeyAlias103';
             const newSrcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA384NewKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize2048);
@@ -826,7 +826,7 @@ export default function SecurityHuksCipherRSAPromiseJsunit() {
             done();
         });
 
-        it('testCipherRSASize2048PADDINGOAEPSHA512KeyAlias103', 0, async function (done) {
+        it('testCipherRSASize2048PADDINGOAEPSHA512KeyAlias103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA384KeyAlias512';
             const newSrcKeyAlies = 'testCipherRSASize2048PADDINGOAEPSHA384NewKeyAlias512';
             genHuksOptions.properties.splice(2, 1, HuksCipherRSA.HuksKeyRSASize2048);

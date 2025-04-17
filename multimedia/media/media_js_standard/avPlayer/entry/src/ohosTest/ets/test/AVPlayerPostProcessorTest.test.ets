@@ -17,7 +17,7 @@ import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
 import { testAVPlayerFun, setSource, setSubtitle, PlayTest } from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
 
@@ -175,7 +175,7 @@ export default function AVPlayerPostProcessorTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0100', Level.LEVEL0,async (done: Function) => {
       let initializedOperation = async () => {
         let playbackStrategy: media.PlaybackStrategy = { enableSuperResolution : true, mutedMediaType: media.MediaType.MEDIA_TYPE_AUD };
         avPlayer.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
@@ -230,7 +230,7 @@ export default function AVPlayerPostProcessorTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0200', Level.LEVEL0,async (done: Function) => {
       let initializedOperation = async () => {
         avPlayer.setSuperResolution(true).catch((error: BusinessError) => {
           console.error(`setSuperResolution failed, err code ${error.code} msg ${error.message}`)
@@ -281,7 +281,7 @@ export default function AVPlayerPostProcessorTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVPLAYER_SUPER_RESOLUTION_0300', Level.LEVEL0,async (done: Function) => {
       let initializedOperation = async () => {
         let playbackStrategy: media.PlaybackStrategy = { enableSuperResolution : true, mutedMediaType: media.MediaType.MEDIA_TYPE_AUD };
         avPlayer.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {

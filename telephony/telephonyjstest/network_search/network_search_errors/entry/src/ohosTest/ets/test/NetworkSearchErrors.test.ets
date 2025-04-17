@@ -307,7 +307,7 @@ describe('ActsNetworkSearchTest',  () => {
      * @tc.name    testGetOperatorName_0500
      * @tc.desc    Test getOperatorName api by callback.
      */
-     it('Telephony_NetworkSearch_getOperatorName_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>{
+     it('Telephony_NetworkSearch_getOperatorName_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
         radio.getOperatorName(0, (err, data) => {
             if (err) {
                 console.info(`Telephony_NetworkSearch_getOperatorName_Async_0500 fail err: ${err}`);
@@ -326,7 +326,7 @@ describe('ActsNetworkSearchTest',  () => {
      * @tc.name    testGetOperatorName_0600
      * @tc.desc    Test getOperatorName api by promise.
      */
-    it('Telephony_NetworkSearch_getOperatorName_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>{
+    it('Telephony_NetworkSearch_getOperatorName_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
         try {
             let data = await radio.getOperatorName(0);
             console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0500 finish data: ${data}`);
@@ -415,7 +415,7 @@ describe('ActsNetworkSearchTest',  () => {
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
      * @tc.desc    Function test
      */
-    it('Telephony_StateRegistry_off_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>{
+    it('Telephony_StateRegistry_off_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
         try {
             let callback = (NetworkState:observer.NetworkState) => {
                 console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
@@ -437,7 +437,7 @@ describe('ActsNetworkSearchTest',  () => {
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
      * @tc.desc    Function test
      */
-    it('Telephony_StateRegistry_off_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) =>{
+    it('Telephony_StateRegistry_off_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
         try {
             let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
                 console.log("on networkStateChange, data:" + JSON.stringify(data));

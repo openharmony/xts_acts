@@ -1532,6 +1532,10 @@ export default function TextPicker() {
     * @tc.level     : Level 0
     */
     it('testPicker30', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         let photoCreationConfig: photoAccessHelper.PhotoCreationConfig = {

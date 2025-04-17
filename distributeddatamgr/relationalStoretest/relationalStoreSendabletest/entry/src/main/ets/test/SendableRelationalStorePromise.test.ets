@@ -164,9 +164,9 @@ export default function rdbStoreSendableTest() {
      * @tc.desc Normal test case of sendableRelationalStore
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testRdbStoreSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void) => {
+    it('testRdbStoreSendable0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       console.log(TAG + "************* testRdbStoreSendable0001 start *************");
       if (!rdbStore) {
         expect().assertFail();
@@ -467,9 +467,9 @@ export default function rdbStoreSendableTest() {
      * @tc.desc Normal test case of sendableRelationalStore
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testRdbStoreSendable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
+    it('testRdbStoreSendable0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.log(TAG + "************* testRdbStoreSendable0006 start *************");
       try {
         const sendableAsset: sendableRelationalStore.Asset = sendableRelationalStore.toSendableAsset(asset1);

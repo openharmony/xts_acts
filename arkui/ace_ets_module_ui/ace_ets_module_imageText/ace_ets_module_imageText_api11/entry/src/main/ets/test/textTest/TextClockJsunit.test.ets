@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';;
@@ -45,7 +45,7 @@ export default function textClockJsunit() {
       console.info("text after each called");
     });
 
-    it('textClockTest01', 0, async (done: Function) => {
+    it('textClockTest01', Level.LEVEL2, async (done: Function) => {
       console.info('textClockTest01 START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textClock');
@@ -55,7 +55,7 @@ export default function textClockJsunit() {
       done();
     });
 
-    it('textClockTest02', 0, async (done: Function) => {
+    it('textClockTest02', Level.LEVEL2, async (done: Function) => {
       console.info('[textClockTest02] START');
       await CommonFunc.sleep(1000);
       try {
@@ -80,7 +80,7 @@ export default function textClockJsunit() {
       done();
     });
 
-    it('textClockTest03', 0, async (done: Function) => {
+    it('textClockTest03', Level.LEVEL2, async (done: Function) => {
       console.info('[textClockTest03] START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('textClock');
@@ -91,7 +91,7 @@ export default function textClockJsunit() {
       done();
     });
 
-    it('textClockTest04', 0, async (done: Function) => {
+    it('textClockTest04', Level.LEVEL2, async (done: Function) => {
       console.info('[textClockTest04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -117,7 +117,7 @@ export default function textClockJsunit() {
       done();
     });
 
-    it('textClockTest05', 0, async (done: Function) => {
+    it('textClockTest05', Level.LEVEL2, async (done: Function) => {
       console.info('[textClockTest05] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textClock');
@@ -128,7 +128,7 @@ export default function textClockJsunit() {
       done();
     });
 
-    it('textClockTest06', 0, async (done: Function) => {
+    it('textClockTest06', Level.LEVEL2, async (done: Function) => {
       console.info('[textClockTest06] START');
       try {
         let eventData: events_emitter.EventData = {

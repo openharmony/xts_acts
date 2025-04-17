@@ -565,7 +565,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_024
    * @tc.desc Function of API, invalid fpath.
    */
-  it('fileio_test_stream_create_stream_sync_024', 0, function () {
+  it('fileio_test_stream_create_stream_sync_024', Level.LEVEL0, function () {
     try {
       fileio.createStreamSync('', 'r');
       expect(null).assertFail();
@@ -758,7 +758,7 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_fdopen_stream_sync_001
    * @tc.desc Function of API, mode=r. The test file is not exist.
    */
-  it('fileio_test_stream_fdopen_stream_sync_001', 0, function () {
+  it('fileio_test_stream_fdopen_stream_sync_001', Level.LEVEL3, function () {
     try {
       let fd = -1;
       let mode = 'r';

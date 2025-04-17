@@ -16,6 +16,9 @@
 import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webOnUrlLoadIntercept() {
   describe('WebOnUrlLoadInterceptTest', () => {
@@ -39,6 +42,11 @@ export default function webOnUrlLoadIntercept() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -57,9 +65,9 @@ export default function webOnUrlLoadIntercept() {
     * @tc.desc        : test onLoadIntercept when return true
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnUrlLoadIntercept002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOnUrlLoadIntercept002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testOnUrlLoadIntercept002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnUrlLoadIntercept002", 'https://www.openharmony.cn/', 70544, done);

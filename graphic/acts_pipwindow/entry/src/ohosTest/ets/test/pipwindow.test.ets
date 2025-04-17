@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { UiDriver, BY, ON, PointerMatrix, Driver, Point } from '@ohos.UiTest'
@@ -23,7 +23,7 @@ import common from '@ohos.app.ability.common';
 import { TextNodeController } from './CustomNode.test';
 import settings from '@ohos.settings';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+// let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 export default function pipWindowTest(context1: common.BaseContext, windowStage: ohosWindow.WindowStage) {
   describe('window_pipWindow_test', () => {
@@ -33,6 +33,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     let isAutoWindow: string =
       settings.getValueSync(globalThis.abilityContext, 'window_pcmode_switch_status', '',
         settings.domainName.DEVICE_SHARED);
+    let isPCStatus: string = settings.getValueSync(globalThis.abilityContext, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY);
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     let sleep = async (time:number):Promise<void> => {
       let timeoutId:number | null = null;
       await new Promise((resolve: (value: string) => void) => {
@@ -61,9 +66,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : To test the function of isPiPEnabled
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level3
+     * @tc.level      : Level0
      */
-    it('isPiPEnabled_test', 0, async (done:Function) => {
+    it('isPiPEnabled_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.log('www data isPiPEnabled_test begin')
       try {
         let enable = pipWindow.isPiPEnabled();
@@ -85,7 +90,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('create_Function_Promise', 0, async (done:Function) => {
+    it('create_Function_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.log('www data create_Function_Promise begin')
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -131,7 +136,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('startPiP_Function_Promise', 0, async (done:Function) => {
+    it('startPiP_Function_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -178,7 +183,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('stopPiP_Function_Promise', 0, async (done:Function) => {
+    it('stopPiP_Function_Promise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -231,7 +236,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('setAutoStartEnabled_test', 0, async (done:Function) => {
+    it('setAutoStartEnabled_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -272,7 +277,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('updateContentSize_test', 0, async (done:Function) => {
+    it('updateContentSize_test', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -314,7 +319,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('stateChange_Function_Callback', 0, async (done:Function) => {
+    it('stateChange_Function_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -380,7 +385,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('stateChange_test', 0, async (done:Function) => {
+    it('stateChange_test',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -453,7 +458,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('controlPanelActionEvent_Function_Callback', 0, async (done:Function) => {
+    it('controlPanelActionEvent_Function_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -505,7 +510,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('controlPanelActionEvent_test', 0, async (done:Function) => {
+    it('controlPanelActionEvent_test',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
@@ -562,9 +567,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : To test the function of testPiPTemplateType
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level3
+     * @tc.level      : Level0
      */
-    it('testPiPTemplateType', 0, async (done:Function) => {
+    it('testPiPTemplateType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let msg = "testPiPTemplateType"
       try {
         expect(pipWindow.PiPTemplateType.VIDEO_PLAY).assertEqual(0);
@@ -583,9 +588,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : To test the function of testPiPEvent
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level3
+     * @tc.level      : Level1
      */
-    it('testPiPEvent', 0, async (done:Function) => {
+    it('testPiPEvent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let msg = "testPiPEvent"
       try {
         let event: pipWindow.PiPActionEventType = "playbackStateChanged";
@@ -613,7 +618,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('create_Function_Promise_2', 0, async (done:Function) => {
+    it('create_Function_Promise_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.log('www data create_Function_Promise begin')
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -659,7 +664,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('create_Function_Promise_3', 0, async (done:Function) => {
+    it('create_Function_Promise_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.log('www data create_Function_Promise begin')
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -705,7 +710,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('create_Function_Promise_4', 0, async (done:Function) => {
+    it('create_Function_Promise_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       console.log('www data create_Function_Promise begin')
       let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -751,7 +756,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT', 2, async (done:Function) => {
+    it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -799,7 +804,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD', 2, async (done:Function) => {
+    it('test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoPlayControlGroup_FAST_FORWARD_BACKWARD begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -847,7 +852,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD', 2, async (done:Function) => {
+    it('test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoPlayControlGroup_VIDEO_PREVIOUS_NEXT_FAST_FORWARD_BACKWARD begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -889,7 +894,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_MICROPHONE_SWITCH', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_MICROPHONE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -936,7 +941,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_HANG_UP_BUTTON', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_HANG_UP_BUTTON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_HANG_UP_BUTTON begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -983,7 +988,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1030,7 +1035,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1077,7 +1082,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1125,7 +1130,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1172,7 +1177,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoCallControlGroup_MICROPHONE_SWITCH_HANG_UP_BUTTON_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1220,7 +1225,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1267,7 +1272,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1315,7 +1320,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_MUTE_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_MUTE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_MUTE_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1362,7 +1367,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1409,7 +1414,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1456,7 +1461,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_MUTE_SWITCH_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1503,7 +1508,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH', 2, async (done:Function) => {
+    it('test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(tag + 'test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH begin');
       let pipController:pipWindow.PiPController| undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -1548,9 +1553,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestUpdatePiPControlStatusInVideoPlay
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestUpdatePiPControlStatusInVideoPlay', 2, (done: Function) => {
+    it('TestUpdatePiPControlStatusInVideoPlay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestUpdatePiPControlStatusInVideoPlay';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
       let pipController: pipWindow.PiPController;
@@ -1635,9 +1640,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestUpdatePiPControlStatelessType
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestUpdatePiPControlStatelessType', 2, (done: Function) => {
+    it('TestUpdatePiPControlStatelessType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestUpdatePiPControlStatelessType';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
       let pipController: pipWindow.PiPController;
@@ -1710,9 +1715,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestUpdatePiPControlStatusInVideoCall
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestUpdatePiPControlStatusInVideoCall', 2, (done: Function) => {
+    it('TestUpdatePiPControlStatusInVideoCall', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestUpdatePiPControlStatusInVideoCall';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_CALL);
       let pipController: pipWindow.PiPController;
@@ -1796,9 +1801,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestUpdatePiPControlStatusInVideoMeeting
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestUpdatePiPControlStatusInVideoMeeting', 2, (done: Function) => {
+    it('TestUpdatePiPControlStatusInVideoMeeting', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestUpdatePiPControlStatusInVideoMeeting';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_MEETING);
       let pipController: pipWindow.PiPController;
@@ -1882,9 +1887,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestUpdatePiPControlStatusInVideoLive
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestUpdatePiPControlStatusInVideoLive', 2, (done: Function) => {
+    it('TestUpdatePiPControlStatusInVideoLive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestUpdatePiPControlStatusInVideoLive';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_LIVE);
       let pipController: pipWindow.PiPController;
@@ -1967,9 +1972,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestSetPiPControlEnabledInVideoPlay
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestSetPiPControlEnabledInVideoPlay', 2, (done: Function) => {
+    it('TestSetPiPControlEnabledInVideoPlay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestSetPiPControlEnabledInVideoPlay';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
       let pipController: pipWindow.PiPController;
@@ -2036,9 +2041,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestSetPiPControlEnabledInVideoCall
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestSetPiPControlEnabledInVideoCall', 2, (done: Function) => {
+    it('TestSetPiPControlEnabledInVideoCall', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestSetPiPControlEnabledInVideoCall';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_CALL);
       let pipController: pipWindow.PiPController;
@@ -2105,9 +2110,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : TestSetPiPControlEnabledInVideoMeeting
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('TestSetPiPControlEnabledInVideoMeeting', 2, (done: Function) => {
+    it('TestSetPiPControlEnabledInVideoMeeting', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const message = 'TestSetPiPControlEnabledInVideoMeeting';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_MEETING);
       let pipController: pipWindow.PiPController;
@@ -2176,7 +2181,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testPiPControlCustomUI', 2, (done: Function) => {
+    it('testPiPControlCustomUI', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.log(`${tag} testPiPControlCustomUI begin`);
       const message = 'testPiPControlCustomUI';
       let nodeController: TextNodeController = new TextNodeController('this is custom UI');
@@ -2224,7 +2229,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCreateArgsContentNode', 2, (done: Function) => {
+    it('testCreateArgsContentNode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const caseName = 'TestCreateArgsContentNode';
       try {
         let windowClass = windowStage.getMainWindowSync();
@@ -2278,8 +2283,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('PiPSizeChange_Function_Callback_0', 0, async (done:Function) => {
-      if (deviceType === '2in1') {
+    it('PiPSizeChange_Function_Callback_0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
         done();
         return;
@@ -2340,7 +2345,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       } catch (err2) {
         console.log('data Failed0 to PiPSizeChange_test' + JSON.stringify(err2))
         if(err2.code == 801 || err2.code == 401){
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
         } else {
           expect().assertFail();
@@ -2356,8 +2361,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('PiPSizeChange_Function_Callback_1', 0, async (done:Function) => {
-      if (deviceType === '2in1') {
+    it('PiPSizeChange_Function_Callback_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
         done();
         return;
@@ -2437,8 +2442,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level3
      */
-    it('PiPSizeChange_Function_Callback_2', 0, async (done:Function) => {
-      if (deviceType === '2in1') {
+    it('PiPSizeChange_Function_Callback_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      if (isPCStatus != ''|| isAutoWindow == 'true') {
         console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
         done();
         return;
@@ -2528,7 +2533,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testgetPiPWindowInfo', 2, (done: Function) => {
+    it('testgetPiPWindowInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const caseName = 'testgetPiPWindowInfo';
       let pipWindowInfo: pipWindow.PiPWindowInfo | undefined = undefined;
       try {
@@ -2601,7 +2606,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testUpdateContentSizeErrCode401_0100', 0, async (done: Function) => {
+    it('testUpdateContentSizeErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testUpdateContentSizeErrCode401_0100';
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2651,7 +2656,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testUpdatePiPControlStatusErrCode401_0100', 0, async (done: Function) => {
+    it('testUpdatePiPControlStatusErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testUpdatePiPControlStatusErrCode401_0100';
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2701,7 +2706,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testSetPiPControlEnabledErrCode401_0100', 0, async (done: Function) => {
+    it('testSetPiPControlEnabledErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetPiPControlEnabledErrCode401_0100';
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2751,7 +2756,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOnPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOnPipWindowSizeChangeErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testOnPipWindowSizeChangeErrCode401_0100';
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2802,7 +2807,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOffPipWindowSizeChangeErrCode401_0100', 0, async (done: Function) => {
+    it('testOffPipWindowSizeChangeErrCode401_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testOffPipWindowSizeChangeErrCode401_0100';
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2851,9 +2856,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.desc       : testGetPiPWindowInfoErrCode1300014_0100
      * @tc.size       : MediumTestTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 3
      */
-    it('testGetPiPWindowInfoErrCode1300014_0100', 2, async (done: Function) => {
+    it('testGetPiPWindowInfoErrCode1300014_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testGetPiPWindowInfoErrCode1300014_0100';
       const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
       let pipController: pipWindow.PiPController | null = null;
@@ -2896,7 +2901,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_pipWindowSizeChange', 3, async (done: Function) => {
+    it('test_pipWindowSizeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_pipWindowSizeChange!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2921,24 +2926,25 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            await pipController.startPiP();
+            await sleep(1000);
+            pipController.on('pipWindowSizeChange', callback);
+            pipController.updateContentSize(800, 600);
+            await sleep(1000);
+            let pipWindowInfo = await pipController.getPiPWindowInfo();
+            let pipInfoSize = pipWindowInfo.size
+            console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo scale is ${pipInfoSize.scale}`)
+            console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
+            expect(pipSize.width).assertEqual(pipInfoSize.width);
+            expect(pipSize.height).assertEqual(pipInfoSize.height);
+            expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
+            pipController.off('pipWindowSizeChange', callback);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          await pipController.startPiP();
-          await sleep(1000);
-          pipController.on('pipWindowSizeChange', callback);
-          pipController.updateContentSize(800, 600);
-          await sleep(1000);
-          let pipWindowInfo = await pipController.getPiPWindowInfo();
-          let pipInfoSize = pipWindowInfo.size
-          console.log(`${message} pipWindowInfo width is ${pipInfoSize.width}, pipWindowInfo height is ${pipInfoSize.height}, pipWindowInfo height is ${pipInfoSize.scale}`)
-          console.log(`${message} callback width is ${pipSize.width}, callback height is ${pipSize.height}, callback scale is ${pipSize.scale}`)
-          expect(pipSize.width).assertEqual(pipInfoSize.width);
-          expect(pipSize.height).assertEqual(pipInfoSize.height);
-          expect(Math.abs(pipSize.scale - pipInfoSize.scale)).assertLessOrEqual(0.01)
-          pipController.off('pipWindowSizeChange', callback);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -2964,7 +2970,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_videoCallControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
+    it('test_videoCallControlGroup_MUTE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_videoCallControlGroup_MUTE_SWITCH!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -2985,20 +2991,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3024,7 +3031,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_VideoMeetingControlGroup_MICROPHONE_SWITCH', 3, async (done: Function) => {
+    it('test_VideoMeetingControlGroup_MICROPHONE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_VideoMeetingControlGroup_MICROPHONE_SWITCH!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3045,20 +3052,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3084,7 +3092,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
+    it('test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_VIDEO_PLAY_PAUSE!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3105,20 +3113,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3144,7 +3153,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_VideoLiveControlGroup_MUTE_SWITCH', 3, async (done: Function) => {
+    it('test_VideoLiveControlGroup_MUTE_SWITCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_MUTE_SWITCH!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3165,20 +3174,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`)
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`)
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`)
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`)
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3204,7 +3214,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE', 3, async (done: Function) => {
+    it('test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_VideoLiveControlGroup_MUTE_SWITCH_VIDEO_PLAY_PAUSE!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3225,20 +3235,21 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller. Data:${data}`);
+            let promise = pipController.startPiP();
+            promise.then(() => {
+              console.log(`${message} Succeeded in starting pip`);
+              expect(true).assertTrue();
+            }).catch((err: BusinessError) => {
+              console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
+              expect().assertFail();
+            });
+            await sleep(1000);
+            await pipController.stopPiP();
+            await sleep(1000);
+            done();
           }
-          console.log(`${message} Succeeded in creating pip controller. Data:${data}`);
-          let promise = pipController.startPiP();
-          promise.then(() => {
-            console.log(`${message} Succeeded in starting pip`);
-            expect(true).assertTrue();
-          }).catch((err: BusinessError) => {
-            console.error(`${message} promise failed to start pip, errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
-            expect().assertFail();
-          });
-          await sleep(1000);
-          await pipController.stopPiP();
-          await sleep(1000);
-          done();
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           if (err.code == 801) {
@@ -3264,7 +3275,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_on_controlEvent', 3, async (done: Function) => {
+    it('test_on_controlEvent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_controlEvent!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3291,27 +3302,28 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          await pipController.startPiP();
-          pipController.on('controlEvent', callback);
-          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
-          let BoundsCenter = await button1.getBoundsCenter();
-          let x = BoundsCenter.x;
-          let y = BoundsCenter.y;
-          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
-          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
-            await component.click();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            await pipController.startPiP();
+            pipController.on('controlEvent', callback);
+            let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let BoundsCenter = await button1.getBoundsCenter();
+            let x = BoundsCenter.x;
+            let y = BoundsCenter.y;
+            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+              await component.click();
+              await sleep(1000);
+              await driver.click(x, y + 182);
+            })
             await sleep(1000);
-            await driver.click(x, y + 182);
-          })
-          await sleep(1000);
-          expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
-          expect(controlParam.status).assertEqual(pipWindow.PiPControlStatus.PAUSE);
-          await pipController.stopPiP();
-          await sleep(10000)
-          pipController.off('controlEvent', callback);
-          done();
+            expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
+            expect(controlParam.status).assertEqual(pipWindow.PiPControlStatus.PAUSE);
+            await pipController.stopPiP();
+            await sleep(10000)
+            pipController.off('controlEvent', callback);
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           pipController?.off('controlEvent', callback);
@@ -3340,7 +3352,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_off_controlEvent', 3, async (done: Function) => {
+    it('test_off_controlEvent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_off_controlEvent!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3367,26 +3379,27 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          await pipController.startPiP();
-          pipController.on('controlEvent', callback);
-          pipController.off('controlEvent');
-          let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
-          let BoundsCenter = await button1.getBoundsCenter();
-          let x = BoundsCenter.x;
-          let y = BoundsCenter.y;
-          console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
-          await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
-            await component.click();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            await pipController.startPiP();
+            pipController.on('controlEvent', callback);
+            pipController.off('controlEvent');
+            let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let BoundsCenter = await button1.getBoundsCenter();
+            let x = BoundsCenter.x;
+            let y = BoundsCenter.y;
+            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
+              await component.click();
+              await sleep(1000);
+              await driver.click(x, y + 182);
+            })
             await sleep(1000);
-            await driver.click(x, y + 182);
-          })
-          await sleep(1000);
-          expect(controlParam).assertEqual(undefined);
-          await pipController.stopPiP();
-          await sleep(1000)
-          done();
+            expect(controlParam).assertEqual(undefined);
+            await pipController.stopPiP();
+            await sleep(1000)
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.log(`${message} promise Failed to create pipcontroller.errcode:${err.code}, Cause:${JSON.stringify(err.message)}`);
           pipController?.off('controlEvent');
@@ -3413,7 +3426,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_updateContentNode_ErrorCode_401', 3, async (done: Function) => {
+    it('test_updateContentNode_ErrorCode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_updateContentNode_ErrorCode_401!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3433,16 +3446,17 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.updateContentNode(null);
-            console.log(`${message} Succeeded updateContentNode`);
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code == 801 || err.code == 401).assertTrue();
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.updateContentNode(null);
+              console.log(`${message} Succeeded updateContentNode`);
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code == 401).assertTrue();
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3464,7 +3478,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_updateContentNode_ErrorCode_801', 3, async (done: Function) => {
+    it('test_updateContentNode_ErrorCode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_updateContentNode_ErrorCode_801!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3487,22 +3501,85 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              console.log(`${message} Succeeded startPiP`);
+              await sleep(1000);
+              await pipController.updateContentNode(contentNode);
+              console.log(`${message} Succeeded updateContentNode`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
           }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.startPiP();
-            console.log(`${message} Succeeded startPiP`);
-            await sleep(1000);
-            await pipController.updateContentNode(contentNode);
-            console.log(`${message} Succeeded updateContentNode`);
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentNode, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_updateContentNode_0100
+     * @tc.name       : test_updateContentNode1
+     * @tc.desc       : 验证先updateContentNode后startPIP
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_updateContentNode1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_updateContentNode1!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500
+      };
+      let windowClass = windowStage.getMainWindowSync();
+      let uiContext = windowClass.getUIContext();
+      let contentNode = typeNode.createNode(uiContext, 'XComponent');
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
-            await pipController.stopPiP();
-            await sleep(1000)
             done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code).assertEqual(801);
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.updateContentNode(contentNode);
+              await sleep(1000);
+              console.log(`${message} Succeeded updateContentNode`);
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3524,7 +3601,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_updateContentNode2', 3, async (done: Function) => {
+    it('test_updateContentNode2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_updateContentNode2!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3547,22 +3624,23 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
-          }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            await pipController.startPiP();
-            await sleep(1000);
-            console.log(`${message} Succeeded startPiP`);
-            await pipController.updateContentNode(contentNode);
-            console.log(`${message} Succeeded updateContentNode`);
-            expect(true).assertTrue();
-            await pipController.stopPiP();
-            await sleep(1000)
-            done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code).assertEqual(801);
-            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.updateContentNode(contentNode);
+              console.log(`${message} Succeeded updateContentNode`);
+              expect(true).assertTrue();
+              await pipController.stopPiP();
+              await sleep(1000)
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentNode, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code).assertEqual(801);
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
@@ -3584,7 +3662,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_updateContentSize_401', 3, async (done: Function) => {
+    it('test_updateContentSize_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_updateContentSize_401!'
       let pipController: pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
@@ -3605,17 +3683,191 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           if (!pipController.isPiPSupported()) {
             expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              pipController.updateContentSize(null, null);
+              console.log(`${message} Succeeded updateContentSize`);
+              expect().assertFail();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code == 401).assertTrue();
+              done();
+            }
           }
-          console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
-          try {
-            pipController.updateContentSize(null, null);
-            console.log(`${message} Succeeded updateContentSize`);
-            expect().assertFail();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0100
+     * @tc.name       : test_pip_create_with_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_with_localstorage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_pip_create_with_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let para: Record<string, number> = {'PropA': 47};
+      let storage: LocalStorage = new LocalStorage(para)
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: storage
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
             done();
-          } catch (err) {
-            console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
-            expect(err.code == 801 || err.code == 401).assertTrue();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0200
+     * @tc.name       : test_pip_create_null_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数为null
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_null_localstorage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_pip_create_null_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: null!
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
             done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
+              done();
+            }
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        });
+      } catch (err) {
+        console.error(`${message} Failed to test updateContentSize, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_CREATE_LOCALSTORAGE_0300
+     * @tc.name       : test_pip_create_undefined_localstorage
+     * @tc.desc       : 验证pipwindow.create带localstorage参数为undefined
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_pip_create_undefined_localstorage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_pip_create_undefined_localstorage!'
+      let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: undefined
+      };
+      try {
+        let promise = pipWindow.create(config);
+        promise.then(async (data) => {
+          pipController = data;
+          if (!pipController.isPiPSupported()) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
+            try {
+              await pipController.startPiP();
+              await sleep(1000);
+              console.log(`${message} Succeeded startPiP`);
+              await pipController.stopPiP();
+              await sleep(1000)
+              expect(true).assertTrue();
+              done();
+            } catch (err) {
+              console.error(`${message} Failed to updateContentSize, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801).assertTrue();
+              done();
+            }
           }
         }).catch((err: BusinessError) => {
           console.error(`${message} promise Failed to create pipcontroller, Cause code ${err.code}, message ${err.message}`);

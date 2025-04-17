@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import { Driver } from '@ohos.UiTest';
 import { ON } from '@ohos.UiTest';
@@ -83,15 +83,16 @@ export default function AudioRoutingManagerTest() {
      * @tc.desc      : getAvailableDevices-MEDIA_OUTPUT_DEVICES-speaker
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       try {
         let devices: ESObject = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
         console.log(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
         expect(devices[0].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
         expect(devices[0].deviceType > 0).assertTrue();
         expect(devices[0].id != null).assertTrue();
+        expect(devices[0].spatializationSupported === false).assertTrue();
         expect(devices[0].name).assertEqual("");
         expect(devices[0].address).assertEqual("");
         expect(devices[0].displayName != "").assertTrue();
@@ -112,9 +113,9 @@ export default function AudioRoutingManagerTest() {
      * @tc.desc      : getAvailableDevices-MEDIA_INPUT_DEVICES-MIC
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0200', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETAVAILABLEDEVICES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       try {
         let devices: ESObject = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
         console.info(`${Tag}:getAvailableDevices :SUCCESS ${JSON.stringify(devices)}`);
@@ -326,11 +327,16 @@ export default function AudioRoutingManagerTest() {
      * @tc.desc      : on - availableDeviceChange - errorParameter(-1) - 6800101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_AVAILABLEDEVICECHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_AVAILABLEDEVICECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       try {
         audioRoutingManager.on('availableDeviceChange', -1, (data: ESObject) => {
+          console.info(`${Tag}:on_availableDeviceChange -1: SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
           console.info(`${Tag}:on_availableDeviceChange -1: SUCCESS`);
         });
         expect(false).assertTrue();
@@ -356,6 +362,11 @@ export default function AudioRoutingManagerTest() {
         });
         expect(false).assertTrue();
         done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
+          console.info(`${Tag}:off_availableDeviceChange 9: SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.error(`${Tag}: on_availableDeviceChange 9 ERROR: ${error.message}, ${error.code}`);
         expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
@@ -374,6 +385,11 @@ export default function AudioRoutingManagerTest() {
       try {
         audioRoutingManager.on('availableDeviceChange', '123', (data: ESObject) => {
           console.info(`${Tag}: on_availableDeviceChange '123': SUCCESS`);
+        });
+        expect(false).assertTrue();
+        done();
+        audioRoutingManager.off('availableDeviceChange', (data: ESObject) => {
+          console.info(`${Tag}:off_availableDeviceChange 123: SUCCESS`);
         });
         expect(false).assertTrue();
         done();
@@ -413,9 +429,9 @@ export default function AudioRoutingManagerTest() {
      * @tc.desc      : on -off- micBlockStatusChanged
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICBLOCKSTATUSCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       try {
         let blockMic: boolean = audioRoutingManager.isMicBlockDetectionSupported()
         if (blockMic == true) {
