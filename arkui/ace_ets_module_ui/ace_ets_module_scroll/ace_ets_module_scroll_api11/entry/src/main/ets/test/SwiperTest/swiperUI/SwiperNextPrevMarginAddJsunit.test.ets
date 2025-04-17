@@ -1517,7 +1517,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
-      expect(Math.abs(Math.floor(swiperRight - swiperLeft) -  Math.floor(3 *(right - left) + vp2px(15 + 6))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((swiperRight - swiperLeft) -  (3 *(right - left) + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1932,7 +1932,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
-      expect(Math.abs(Math.floor(swiperRight - swiperLeft) -  Math.floor(3 *(right - left) + vp2px(15 + 6))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((swiperRight - swiperLeft) -  (3 *(right - left) + vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -3039,7 +3039,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect(Math.abs(Math.floor(swiperRight - swiperLeft) -  Math.floor(3 *(right - left) + vp2px(5))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((swiperRight - swiperLeft) -  (3 *(right - left) + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
@@ -3157,7 +3157,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
-      expect(Math.abs(Math.floor(swiperRight - swiperLeft) -  Math.floor(3 *(right - left) + vp2px(5))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((swiperRight - swiperLeft) -  (3 *(right - left) + vp2px(5)))) <= 1).assertTrue();
       done();
     });
 
