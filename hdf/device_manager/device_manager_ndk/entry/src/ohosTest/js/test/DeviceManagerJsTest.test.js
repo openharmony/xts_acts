@@ -118,7 +118,7 @@ describe("DeviceManagerJsTest", function () {
             expect(devices[0].description != null).assertEqual(true);
             expect(devices[0].vendorId != null).assertEqual(true);
             expect(devices[0].productId != null).assertEqual(true);
-            expect(devices[0].bustype != null).assertEqual(true);
+            expect(devices[0].busType != null).assertEqual(true);
         } catch (err) {
             console.info(TAG, 'Test case testQueryDevices001 catch err :' + err);
             expect().assertFail();
