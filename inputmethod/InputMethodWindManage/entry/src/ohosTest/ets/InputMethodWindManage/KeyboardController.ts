@@ -466,6 +466,14 @@ export class KeyboardController {
           console.debug(TAG + '====>start_on_sendMessage event:' + data.event);
           that.start_on_sendMessage(501);
           break;
+        case 502:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100 event:' + data.event);
+          that.Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100();
+          break;
+        case 503:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 event:' + data.event);
+          that.Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200();
+          break;
       }
     }
 
@@ -1711,12 +1719,12 @@ export class KeyboardController {
         flag: inputMethodEngine.PanelFlag.FLG_FLOATING
       };
       inputMethodAbility.createPanel(this.mContext, panelInfo).then(async(inputPanel: inputMethodEngine.Panel) => {
-        if(inputPanel){
-          let wid  = Math.floor(this.display_info.width * 0.4);
+        if (inputPanel) {
+          let wid = Math.floor(this.display_info.width * 0.4);
           let hei = Math.floor(this.display_info.height * 0.5);
           console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid: ${wid},hei: ${hei}`);
           await inputPanel.resize(wid, hei);
-          let wid_  = Math.floor(this.display_info.width * 0.3);
+          let wid_ = Math.floor(this.display_info.width * 0.3);
           let hei_ = Math.floor(this.display_info.height * 0.4);
           console.info(TAG + `====>Sub_InputMethod_IME_Dragging_0900 wid_: ${wid_},hei_: ${hei_}`);
           await inputPanel.moveTo(wid_, hei_);
@@ -1755,9 +1763,9 @@ export class KeyboardController {
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length );
           if (msgId === 'Sub_InputMethod_IME_Custom_0900') {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
-            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900')
           }else{
-            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('FAILED'))
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900')
           }
           that.InputClient.recvMessage()
         }
@@ -3286,6 +3294,65 @@ export class KeyboardController {
         };
       }
       commoneventmanager.publish(`${testCaseName}`, commonEventPublishData, this.publishCallback);   
+    }
+  }
+
+  private async Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputMethodEngine.EditorAttribute) => {
+      console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)}`); 
+      if (typeof (attr.windowId) === 'number' && typeof (attr.displayId) === 'number') {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+      commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100', commonEventPublishData, this.publishCallback);
+    });
+    try {
+      let callingDisplayDidChangeCallback = (num: number): void => {
+        console.info(TAG + `====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100 display id: ${num}`);
+      };
+      inputMethodEngine.getInputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback);
+      inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange', callingDisplayDidChangeCallback);
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100 cathch err: ' + JSON.stringify(err));
+      commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100', commonEventPublishData, this.publishCallback);
+    }
+  }
+
+  private async Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      let callingDisplayDidChangeCallback1 = (num: number): void => {
+        console.info(TAG + `====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 display id: ${num}`);
+      };
+      inputMethodEngine.getInputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback1);
+      inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange');
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+      console.info(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 success ');
+      commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200', commonEventPublishData, this.publishCallback);
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 cathch err: ' + JSON.stringify(err));
+      commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200', commonEventPublishData, this.publishCallback);
     }
   }
 }
