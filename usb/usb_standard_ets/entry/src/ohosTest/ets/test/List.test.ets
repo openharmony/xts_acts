@@ -14,15 +14,35 @@
  */
 
 import UsbSystemApiNormalJsTest from './UsbSystemApiNormalJsTest.test';
-import UsbNormalAppJsTest from './UsbNormalAppJsTest.test'
+import UsbSceneEtsTest from './UsbSceneEtsTest.test'
 import UsbApiBulkTransferTest from './UsbApiBulkTransferTest.test';
 import UsbApiInterruptTransferTest from './UsbApiInterruptTransferTest.test';
 import UsbApiIsochronousTransferTest from './UsbApiIsochronousTransferTest.test';
+import SerialTest from './SerialTest.test';
+import SerialAddTest from './SerialAddTest.test';
+import UsbAccessoryEtsTest from './UsbAccessoryEtsTest.test';
+import UsbCoreEtsTest from './UsbCoreEtsTest.test';
+import UsbCoreEtsTestEx from './UsbCoreEtsTestEx.test';
+import UsbDevicePipeTest from './UsbDevicePipeTest.test';
+import UsbDevicePipeTestEx from './UsbDevicePipeTestEx.test';
+import UsbApiParamExceEtsTest from './UsbApiParamExceEtsTest.test';
+import UsbApiTransferCompatEtsTest from './UsbApiTransferCompatEtsTest.test';
+import UsbApiDeprecatedEtsTest from './UsbApiDeprecatedEtsTest.test';
 
 export default function testsuite() {
   UsbSystemApiNormalJsTest()
-  UsbNormalAppJsTest()
+  UsbSceneEtsTest()
   UsbApiBulkTransferTest()
   UsbApiInterruptTransferTest()
   UsbApiIsochronousTransferTest()
+  SerialTest()
+  SerialAddTest()
+  UsbCoreEtsTest()
+  UsbCoreEtsTestEx()
+  UsbDevicePipeTest()
+  UsbDevicePipeTestEx()
+  UsbApiParamExceEtsTest()
+  UsbApiTransferCompatEtsTest()
+  UsbAccessoryEtsTest()
+  UsbApiDeprecatedEtsTest()
 }

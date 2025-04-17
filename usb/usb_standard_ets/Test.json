@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for usb js normal app Tests",
+    "description": "Configuration for usb js ETS Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "60000",   
-        "bundle-name": "com.acts.usb.normal",
+        "bundle-name": "com.acts.usb.ets.function",
         "module-name": "entry_test",
         "shell-timeout": "60000",
         "testcase-timeout": 60000
@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-              "ActsUsbNormalAPPJSApiTest.hap"
+              "ActsUsbETSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

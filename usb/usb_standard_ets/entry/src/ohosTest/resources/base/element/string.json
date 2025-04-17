@@ -17,12 +17,12 @@
       "value": "module description"
     },
     {
-      "name": "reason_usb_systemapi",
-      "value": "usb systemapi normal test"
+      "name": "reason_usb_ets",
+      "value": "usb ets test"
     },
     {
-      "name": "reason_usb_normal",
-      "value": "usb normal test"
+      "name": "reason_usb_stage",
+      "value": "usb stage test"
     }
   ]
 }
