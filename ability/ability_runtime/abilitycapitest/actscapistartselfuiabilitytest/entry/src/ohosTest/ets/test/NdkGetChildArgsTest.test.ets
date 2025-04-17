@@ -32,25 +32,19 @@ export default function ndkTest() {
      * @tc.desc To verify use OH_Ability_CreateNativeChildProcess in childprocess.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 3
      */
     it('SUB_Ability_AbilityRuntime_GetCurrentChildProcess_0100', Level.LEVEL3, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0100`;
       console.log(`${tag}, it begin`);
-      try {
-        let ret : Number = testNapi.startNativeChildProcess_0100();
-        hilog.info(0x0000, tag, '%{public}s', ` ${tag} execute result:` + ret);
-        if (ret == 801 || ret == 16010004){
-          done();
-          return;
-        }
-        expect(0).assertEqual(ret);
+      let ret : Number = testNapi.startNativeChildProcess_0100();
+      hilog.info(0x0000, tag, '%{public}s', ` ${tag} execute result:` + ret);
+      if (ret == 801 || ret == 16010004){
         done();
-      } catch(err) {
-        console.error(`${tag} error: ${JSON.stringify(err)}`);
-      } finally {
-        done();
+        return;
       }
+      expect(0).assertEqual(ret);
+      done();
     })
 
     /**
@@ -59,21 +53,15 @@ export default function ndkTest() {
      * @tc.desc To verify use OH_Ability_CreateNativeChildProcess in MainThread return nullptr.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 3
      */
     it('SUB_Ability_AbilityRuntime_GetCurrentChildProcess_0700', Level.LEVEL3, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0100`;
       console.log(`${tag}, it begin`);
-      try {
-        let ret : Number = testNapi.startNativeChildProcess_0700();
-        hilog.info(0x0000, tag, '%{public}s', ` ${tag} execute result:` + ret);
-        expect(0).assertEqual(ret);
-        done();
-      } catch(err) {
-        console.error(`${tag} error: ${JSON.stringify(err)}`);
-      } finally {
-        done();
-      }
+      let ret : Number = testNapi.startNativeChildProcess_0700();
+      hilog.info(0x0000, tag, '%{public}s', ` ${tag} execute result:` + ret);
+      expect(0).assertEqual(ret);
+      done();
     })
   })
 }
