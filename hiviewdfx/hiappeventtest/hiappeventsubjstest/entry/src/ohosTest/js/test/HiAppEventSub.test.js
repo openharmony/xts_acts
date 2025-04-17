@@ -2520,7 +2520,7 @@ describe('HiAppEventSubTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub34',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL 3, function () {
+    it('HiAppEventSub34',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function () {
         console.info('testHiAppEventSub34 start')
         HiAppEventV9.clearData()
         expect(true).assertTrue()
