@@ -51,7 +51,7 @@ export default class Ability001 extends UIAbility {
     };
     try {
       applicationContext.restartApp(want);
-      console.info(`${caseName} Succeed to restart App.`)
+      console.info(`${caseName} Succeed to restart App.`);
     } catch (e) {
       console.info(`${caseName} Failed to restart App.Code: ${e.code}, message: ${e.message}`);
     }
