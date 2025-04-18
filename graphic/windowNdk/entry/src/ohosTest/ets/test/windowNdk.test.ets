@@ -236,9 +236,10 @@ export default function windowNdk() {
     it('test_NDK_show_subWindow_Minimize_window', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow_Minimize_window";
       try {
+        let subWindow:window.Window;
         let promise = windowStage.createSubWindow('test_NDK_show_subWindow_Minimize_window');
         promise.then(async (data) => {
-          let subWindow = data;
+          subWindow = data;
           console.info(`${caseName}: Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowId = subWindow.getWindowProperties().id;
           console.info(`${caseName}: Succeeded in get the subwindow id: ` + subWindowId);
