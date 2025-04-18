@@ -3313,9 +3313,9 @@ export class KeyboardController {
       commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100', commonEventPublishData, this.publishCallback);
     });
     try {
-      let callingDisplayDidChangeCallback = (num: number) => {
+      let callingDisplayDidChangeCallback = (num: number): void => {
         console.info(TAG + `====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0100 display id: ${num}`);
-      }
+      };
       inputMethodEngine.getInputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback);
       inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange', callingDisplayDidChangeCallback);
     } catch (err) {
@@ -3335,9 +3335,9 @@ export class KeyboardController {
         data: 'FAILED'
     };
     try {
-      let callingDisplayDidChangeCallback1 = (num: number) => {
+      let callingDisplayDidChangeCallback1 = (num: number): void => {
         console.info(TAG + `====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 display id: ${num}`);
-      }
+      };
       inputMethodEngine.getInputMethodAbility().on('callingDisplayDidChange', callingDisplayDidChangeCallback1);
       inputMethodEngine.getInputMethodAbility().off('callingDisplayDidChange');
       commonEventPublishData = {
