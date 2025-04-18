@@ -111,3 +111,5 @@ export const ndkWantEx_2000: () => number;
 export const ndkWantEx_2100: () => number;
 export const startNativeChildProcess_0100: () => number;
 export const startNativeChildProcess_0700: () => number;
+export const ndkStartVisibility_0100: () => number;
+export const ndkStartVisibility_0200: () => number;

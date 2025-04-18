@@ -909,5 +909,49 @@ export default function ndkTest() {
           done();
         }
     })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_NdkStartVisibility_0100
+     * @tc.name   : The input parameter option is empty of OH_AbilityRuntime_SetStartOptionsStartVisibility.
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityRuntime_NdkStartVisibility_0100', Level.LEVEL3, (done: Function) => {
+      const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartVisibility_0100';
+        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= START`);
+        let result = testNapi.ndkStartVisibility_0100();
+        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} execute result:` + result);
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(401);
+          done();
+        }
+    })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_NdkStartVisibility_0200
+     * @tc.name   : The input parameter option is empty of OH_AbilityRuntime_GetStartOptionsStartVisibility.
+     * @tc.desc   : Expect: call failed
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityRuntime_NdkStartVisibility_0200', Level.LEVEL3, (done: Function) => {
+      const TEST_SUITE_NAME = 'SUB_Ability_AbilityRuntime_NdkStartVisibility_0200';
+        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} ========= START`);
+        let result = testNapi.ndkStartVisibility_0200();
+        hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} execute result:` + result);
+        if(result == 801){
+          hilog.info(0x0000, TAG, '%{public}s', ` ${TEST_SUITE_NAME} current device not support.`);
+          done();
+        }else{
+          expect(result).assertEqual(401);
+          done();
+        }
+    })
   })
 }
