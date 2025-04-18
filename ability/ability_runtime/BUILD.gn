@@ -64,6 +64,7 @@ group("ability_runtime") {
       "actsphotoeditorextensiontest:ActsPhotoEditorExtensionTest",
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsrequestdialogtest:actsrequestdialogtest",
+      "actsrestartapptest:ActsRestartAppTest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
