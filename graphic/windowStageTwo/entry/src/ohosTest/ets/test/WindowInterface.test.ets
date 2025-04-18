@@ -3522,7 +3522,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
      */
     it('test_on_windowWillClose_offWithoutOn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_offWithoutOn'
-      if (isPCStatus != '' && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4077,7 +4077,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
      * @tc.level      : Level 3
      */
     it('test_MoveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      if (isPCStatus != '' && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4176,7 +4176,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
      * @tc.level      : Level 3
      */
     it('test_on_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      if (isPCStatus != '' && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4248,7 +4248,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
      * @tc.level      : Level 3
      */
     it('test_off_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      if (isPCStatus != '' && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
