@@ -20,6 +20,13 @@
         },
         {
             "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        },
+        {
+            "type": "ShellKit",
             "teardown-command":[
                 "bm uninstall -n com.acts.osaccounttest"
             ]
