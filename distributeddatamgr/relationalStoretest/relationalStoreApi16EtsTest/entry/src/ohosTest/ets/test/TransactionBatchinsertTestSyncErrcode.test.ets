@@ -51,7 +51,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolutionSync errcode is 14800014
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4500
      * @tc.desc transaction.batchInsertWithConflictResolutionSync errcode is 14800014
      * @tc.size MediumTest
      * @tc.type Function
@@ -89,7 +89,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolutionSync errcode is 14800027
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4600
      * @tc.desc transaction.batchInsertWithConflictResolutionSync errcode is 14800027
      * @tc.size MediumTest
      * @tc.type Function
@@ -133,7 +133,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolutionSync errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4700
      * @tc.desc transaction.batchInsertWithConflictResolutionSync errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -172,7 +172,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolutionSync errcode is 14800047
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4800
      * @tc.desc transaction.batchInsertWithConflictResolutionSync errcode is 14800047
      * @tc.size MediumTest
      * @tc.type Function
