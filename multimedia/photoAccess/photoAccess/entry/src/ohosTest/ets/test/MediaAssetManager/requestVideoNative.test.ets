@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium'
 import mediaNative from "libentry.so";
 import { BusinessError } from '@ohos.base';
 
@@ -34,6 +34,21 @@ export default function requestVideoNativeTest() {
       await getPermission();
       await driveFn();
       await sleep(1000);
+    });
+
+    afterAll(async () => {
+      console.info('afterAll case');
+      try {
+        let files: string[] = fs.listFileSync(testContext.filesDir);
+        for (let i = 0; i < files.length; i++) {
+          if (files[i].includes('test')) {
+            console.info(`requestVideoNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
+            fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
+          }
+        }
+      } catch (error) {
+        console.error(`requestVideoNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
+      }
     });
     
     const ERROR_REQUEST_ID = "00000000-0000-0000-0000-000000000000";
