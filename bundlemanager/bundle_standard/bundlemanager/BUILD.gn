@@ -22,6 +22,8 @@ group("bundlemanager") {
       "actsbmscontextmenutest:ActsBmsContextmenuTest",
       "actsbmsetsunpermissiontest:ActsBmsEtsUnPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
+      "actsbmsgetlauncherabilityinfo2test:ActsBmsGetLauncherAbilityInfo2Test",
+      "actsbmsgetlauncherabilityinfotest:ActsBmsGetLauncherAbilityInfoTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
       "actsbmsjstest:ActsBmsJsTest",
       "actsbmsjsunpermissiontest:ActsBmsJsUnPermissionTest",
