@@ -23,7 +23,7 @@ struct FlexExceed_Auto {
   @State testPadding: number = 0
   @State testMargin: number = 0
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexExceed_Auto Page"
+  private content: string = 'FlexExceed_Auto Page'
 
   onPageShow() {
     console.info('FlexExceed_Auto onPageShow');
@@ -32,7 +32,7 @@ struct FlexExceed_Auto {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
       }

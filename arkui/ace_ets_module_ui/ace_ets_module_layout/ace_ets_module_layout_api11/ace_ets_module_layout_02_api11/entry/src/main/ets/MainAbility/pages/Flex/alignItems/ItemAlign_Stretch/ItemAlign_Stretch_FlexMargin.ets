@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexMargin_Stretch {
-  private content: string = "FlexMargin_Stretch Page";
+  private content: string = 'FlexMargin_Stretch Page';
 
   onPageShow() {
     console.info('FlexMargin_Stretch page show called');

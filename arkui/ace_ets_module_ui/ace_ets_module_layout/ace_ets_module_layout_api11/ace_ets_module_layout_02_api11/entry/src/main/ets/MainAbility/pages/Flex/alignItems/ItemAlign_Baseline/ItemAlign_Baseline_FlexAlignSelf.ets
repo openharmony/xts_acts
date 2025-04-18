@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexAlignSelf_Baseline {
-  private content: string = "FlexAlignSelf_Baseline Page";
+  private content: string = 'FlexAlignSelf_Baseline Page';
 
   onPageShow() {
     console.info('FlexAlignSelf_Baseline page show called');

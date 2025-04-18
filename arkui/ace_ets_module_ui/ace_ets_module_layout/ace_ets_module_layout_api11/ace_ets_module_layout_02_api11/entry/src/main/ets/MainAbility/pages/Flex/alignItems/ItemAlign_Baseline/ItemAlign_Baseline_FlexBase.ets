@@ -23,7 +23,7 @@ struct FlexBase_Baseline {
   @State testHeight: number = 150;
   @State testWidth: number = 450;
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexBase_Baseline Page";
+  private content: string = 'FlexBase_Baseline Page';
 
   onPageShow() {
     console.info('FlexBase_Center onPageShow');
@@ -32,7 +32,7 @@ struct FlexBase_Baseline {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
       }

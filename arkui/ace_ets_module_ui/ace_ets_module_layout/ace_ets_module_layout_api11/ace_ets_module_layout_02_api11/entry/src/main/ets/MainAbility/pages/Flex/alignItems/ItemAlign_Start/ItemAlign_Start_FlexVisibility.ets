@@ -22,7 +22,7 @@ import { MessageManager, Callback, Message } from '../../../../common/MessageMan
 struct FlexVisibility_Start {
   @State testVisibility: number = Visibility.Visible;
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexVisibility_Start Page";
+  private content: string = 'FlexVisibility_Start Page';
 
   onPageShow() {
     console.info('FlexVisibility_Start onPageShow');
@@ -31,7 +31,7 @@ struct FlexVisibility_Start {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'visibility') {
         this.testVisibility = message.value;
       }

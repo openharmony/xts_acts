@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexAlignSelf_Stretch {
-  private content: string = "FlexAlignSelf_Stretch Page";
+  private content: string = 'FlexAlignSelf_Stretch Page';
 
   onPageShow() {
     console.info('FlexAlignSelf_Stretch page show called');

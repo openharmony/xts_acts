@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexOffset_Baseline {
-  private content: string = "FlexOffset_Baseline Page";
+  private content: string = 'FlexOffset_Baseline Page';
 
   onPageShow() {
     console.info('FlexOffset_Baseline page show called');

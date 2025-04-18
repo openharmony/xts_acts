@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexAlignSelf_Center {
-  private content: string = "FlexAlignSelf_Center Page";
+  private content: string = 'FlexAlignSelf_Center Page';
 
   onPageShow() {
     console.info('FlexAlignSelf_Center page show called');

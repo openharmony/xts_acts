@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexOffset_Center {
-  private content: string = "FlexOffset_Center Page";
+  private content: string = 'FlexOffset_Center Page';
 
   onPageShow() {
     console.info('FlexOffset_Center page show called');

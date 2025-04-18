@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexMargin_Center {
-  private content: string = "FlexMargin_Center Page";
+  private content: string = 'FlexMargin_Center Page';
 
   onPageShow() {
     console.info('FlexMargin_Center page show called');

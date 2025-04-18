@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexOffset_Auto {
-  private content: string = "FlexOffset_Auto Page";
+  private content: string = 'FlexOffset_Auto Page';
 
   onPageShow() {
     console.info('FlexOffset_Auto page show called');

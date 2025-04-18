@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexOffset_Start {
-  private content: string = "FlexOffset_Start Page";
+  private content: string = 'FlexOffset_Start Page';
 
   onPageShow() {
     console.info('FlexOffset_Start page show called');

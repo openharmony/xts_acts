@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexAlignSelf_End {
-  private content: string = "FlexAlignSelf_End Page";
+  private content: string = 'FlexAlignSelf_End Page';
 
   onPageShow() {
     console.info('FlexAlignSelf_End page show called');

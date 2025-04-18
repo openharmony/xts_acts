@@ -22,7 +22,7 @@ import { MessageManager, Callback, Message } from '../../../../common/MessageMan
 struct FlexHeightModify_Stretch {
   @State testHeight: number = 50;
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexHeightModify_Stretch Page";
+  private content: string = 'FlexHeightModify_Stretch Page';
 
   onPageShow() {
     console.info('FlexHeightModify_Stretch onPageShow');
@@ -32,7 +32,7 @@ struct FlexHeightModify_Stretch {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
       }

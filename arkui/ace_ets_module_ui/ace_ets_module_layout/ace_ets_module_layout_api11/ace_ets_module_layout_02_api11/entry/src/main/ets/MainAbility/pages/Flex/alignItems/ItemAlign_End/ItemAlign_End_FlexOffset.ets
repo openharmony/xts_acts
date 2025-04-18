@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexOffset_End {
-  private content: string = "FlexOffset_End Page";
+  private content: string = 'FlexOffset_End Page';
 
   onPageShow() {
     console.info('FlexOffset_End page show called');

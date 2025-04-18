@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexMargin_Start {
-  private content: string = "FlexMargin_Start Page";
+  private content: string = 'FlexMargin_Start Page';
 
   onPageShow() {
     console.info('FlexMargin_Start page show called');

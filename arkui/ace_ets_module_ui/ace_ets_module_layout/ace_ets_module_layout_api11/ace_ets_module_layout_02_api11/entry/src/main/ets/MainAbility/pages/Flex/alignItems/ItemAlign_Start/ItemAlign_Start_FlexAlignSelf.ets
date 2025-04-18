@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexAlignSelf_Start {
-  private content: string = "FlexAlignSelf_Start Page";
+  private content: string = 'FlexAlignSelf_Start Page';
 
   onPageShow() {
     console.info('FlexAlignSelf_Start page show called');

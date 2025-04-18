@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct FlexOffset_Stretch {
-  private content: string = "FlexOffset_Stretch Page";
+  private content: string = 'FlexOffset_Stretch Page';
 
   onPageShow() {
     console.info('FlexOffset_Stretch page show called');

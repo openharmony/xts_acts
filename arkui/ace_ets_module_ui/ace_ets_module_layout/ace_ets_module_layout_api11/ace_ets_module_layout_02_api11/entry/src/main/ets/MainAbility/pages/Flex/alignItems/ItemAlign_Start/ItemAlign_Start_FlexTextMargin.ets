@@ -22,7 +22,7 @@ import { MessageManager, Callback, Message } from '../../../../common/MessageMan
 struct FlexTextMargin_Start {
   @State testTextMargin: number = 0;
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexTextMargin_Start Page";
+  private content: string = 'FlexTextMargin_Start Page';
 
   onPageShow() {
     console.info('FlexTextMargin_Start onPageShow');
@@ -31,7 +31,7 @@ struct FlexTextMargin_Start {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'margin') {
         this.testTextMargin = message.value;
       }

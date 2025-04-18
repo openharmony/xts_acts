@@ -22,7 +22,7 @@ import { MessageManager, Callback, Message } from '../../../../common/MessageMan
 struct FlexPadding_Stretch {
   @State testPadding: number = 0;
   messageManager: MessageManager<number> = new MessageManager();
-  private content: string = "FlexPadding_Stretch Page";
+  private content: string = 'FlexPadding_Stretch Page';
 
   onPageShow() {
     console.info('FlexPadding_Stretch onPageShow');
@@ -32,7 +32,7 @@ struct FlexPadding_Stretch {
     };
     GlobalContext.getContext().setObject('value', value);
     let callback: Callback<number> = (message: Message<number>) => {
-      console.log('message = ' + message.name + "--" + message.value);
+      console.log('message = ' + message.name + '--' + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
       }

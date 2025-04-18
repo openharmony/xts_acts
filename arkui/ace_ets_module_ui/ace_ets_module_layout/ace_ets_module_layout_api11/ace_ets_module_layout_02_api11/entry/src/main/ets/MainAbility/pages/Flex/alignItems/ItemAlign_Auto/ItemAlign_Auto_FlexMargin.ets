@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexMargin_Auto {
-  private content: string = "FlexMargin_Auto Page";
+  private content: string = 'FlexMargin_Auto Page';
 
   onPageShow() {
     console.info('FlexMargin_Center page show called');

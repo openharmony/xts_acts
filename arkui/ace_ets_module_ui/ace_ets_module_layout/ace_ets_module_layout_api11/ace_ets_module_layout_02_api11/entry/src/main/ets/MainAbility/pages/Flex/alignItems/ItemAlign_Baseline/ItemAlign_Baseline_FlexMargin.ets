@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct FlexMargin_Baseline {
-  private content: string = "FlexMargin_Baseline Page";
+  private content: string = 'FlexMargin_Baseline Page';
 
   onPageShow() {
     console.info('FlexMargin_Baseline page show called');
