@@ -133,18 +133,22 @@ export default function intelligenceTest() {
         }
         console.info(TAG + 'Delete RdbStore successfully.');
       });
-      rdbStore1 = await relationalStore.getRdbStore(context, storeConfigVector);
-      if (rdbStore1 !== undefined) {
-        let createSql = 'CREATE TABLE IF NOT EXISTS vector_table(fileid TEXT PRIMARY KEY, filename_text TEXT, filename FLOATVECTOR(128), keywords_text TEXT, keywords FLOATVECTOR(128), chapter FLOATVECTOR(128), abstract FLOATVECTOR(128));';
-        await rdbStore1.execute(createSql, 0, undefined);
-        await insertVectorDB();
-      };
-      rdbStore2 = await relationalStore.getRdbStore(context, storeConfigInvIdx);
-      if (rdbStore2 !== undefined) {
-        let createSql = 'CREATE VIRTUAL TABLE IF NOT EXISTS invidx_table USING fts5(fileid, filename, keywords, chapter, abstract, content, tokenize = "customtokenizer");';
-        await rdbStore2.executeSql(createSql);
-        await insertInvIdxDB();
-      };
+
+      let result = relationalStore.isVectorSupported();
+      if (result) {
+        rdbStore1 = await relationalStore.getRdbStore(context, storeConfigVector);
+        if (rdbStore1 !== undefined) {
+          let createSql = 'CREATE TABLE IF NOT EXISTS vector_table(fileid TEXT PRIMARY KEY, filename_text TEXT, filename FLOATVECTOR(128), keywords_text TEXT, keywords FLOATVECTOR(128), chapter FLOATVECTOR(128), abstract FLOATVECTOR(128));';
+          await rdbStore1.execute(createSql, 0, undefined);
+          await insertVectorDB();
+        };
+        rdbStore2 = await relationalStore.getRdbStore(context, storeConfigInvIdx);
+        if (rdbStore2 !== undefined) {
+          let createSql = 'CREATE VIRTUAL TABLE IF NOT EXISTS invidx_table USING fts5(fileid, filename, keywords, chapter, abstract, content, tokenize = "customtokenizer");';
+          await rdbStore2.executeSql(createSql);
+          await insertInvIdxDB();
+        };
+      }
     })
     beforeEach(async () => {
       console.info(TAG + "beforeEach");
