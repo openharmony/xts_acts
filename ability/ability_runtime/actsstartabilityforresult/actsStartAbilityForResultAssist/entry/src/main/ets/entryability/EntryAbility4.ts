@@ -26,6 +26,9 @@ export default class EntryAbility4 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onCreate');
     globalThis.abilityAssist4 = this.context
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
+    });
   }
 
   onDestroy() {
@@ -35,6 +38,9 @@ export default class EntryAbility4 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -58,6 +64,9 @@ export default class EntryAbility4 extends UIAbility {
     };
     if(backSet==0){
       try {
+        commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
+        });
         globalThis.abilityAssist4.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
           if (err.code) {
             // 处理业务逻辑错误
@@ -74,6 +83,9 @@ export default class EntryAbility4 extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
       }
     }else if(backSet==1){
+      commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
+      });
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 execute router.back!');
       try{
         router.back();
@@ -90,5 +102,8 @@ export default class EntryAbility4 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onBackground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
+    });
   }
 }

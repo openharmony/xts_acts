@@ -24,17 +24,19 @@ export default class UiAbility01 extends UIAbility {
     globalThis.uiAbilityContext1 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     if(want.action == 'abc'){
+      globalThis.testNum01++
       hilog.info(0x0000, 'testTag', '%{public}s', `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 action = abc`);
     }
   }
 
   onDestroy() {
+    globalThis.testNum01++
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onWindowStageCreate');
-
+    globalThis.testNum01++
     windowStage.loadContent('testability/pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -45,10 +47,12 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onWindowStageDestroy() {
+    globalThis.testNum01++
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onWindowStageDestroy');
   }
 
   onForeground() {
+    globalThis.testNum01++
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onForeground');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ACTS_TEST_DESTROY');
@@ -57,6 +61,7 @@ export default class UiAbility01 extends UIAbility {
 
   onBackground() {
     // Ability has back to background
+    globalThis.testNum01++
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onBackground');
   }
 }

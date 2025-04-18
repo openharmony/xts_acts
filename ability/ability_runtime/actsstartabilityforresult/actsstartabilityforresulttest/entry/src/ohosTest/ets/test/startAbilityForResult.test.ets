@@ -23,7 +23,8 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: [
     'ACTS_TEST_START',
     'ACTS_TEST_DESTROY',
-    'ACTS_TEST_BACK'
+    'ACTS_TEST_BACK',
+    'ACTS_LIFE_CYCLE'
   ]
 };
 
@@ -62,6 +63,7 @@ export default function startAbilityForResultTwoTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
       let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
+      globalThis.testNum01 = 0
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.mytest1',
@@ -73,6 +75,7 @@ export default function startAbilityForResultTwoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              expect(globalThis.testNum01).assertEqual(6)
               done();
             }, 1000);
           }
@@ -149,6 +152,7 @@ export default function startAbilityForResultTwoTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000', Level.LEVEL0, async (done: Function) => {
       let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
+      let testNum02:number = 0
       let want: Want = {
         bundleName: 'com.example.mytest1',
         abilityName:'startAbilityForResult02'
@@ -157,13 +161,18 @@ export default function startAbilityForResultTwoTest() {
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum02 is: ${testNum02}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              expect(testNum02).assertEqual(11)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum02++
+            }
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {

@@ -17,8 +17,8 @@ group("actsstartabilityforresult") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsstartabilityforresulttest:ActsStartAbilityForResultTest",
       "actsStartAbilityForResultAssist:ActsStartAbilityForResultAssist",
+      "actsstartabilityforresulttest:ActsStartAbilityForResultTest",
     ]
   }
 }
