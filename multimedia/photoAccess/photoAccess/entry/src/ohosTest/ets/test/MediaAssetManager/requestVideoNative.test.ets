@@ -17,6 +17,7 @@ import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium'
 import mediaNative from "libentry.so";
 import { BusinessError } from '@ohos.base';
+import fs from '@ohos.file.fs';
 
 import {
   photoKeys,
