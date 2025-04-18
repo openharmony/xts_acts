@@ -17,15 +17,15 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
 export default class Ability005 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onCreate');
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Ability005', (err, data) => {
@@ -37,11 +37,11 @@ export default class Ability005 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onForeground');
     let applicationContext = this.context.getApplicationContext();
     let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0500';
@@ -54,7 +54,7 @@ export default class Ability005 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability005 onBackground');
   }
 }

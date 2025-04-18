@@ -5,30 +5,30 @@ import EmbeddedUIExtensionAbility from '@ohos.app.ability.EmbeddedUIExtensionAbi
 const DOMAIN = 0x0000;
 
 export default class Ability000 extends EmbeddedUIExtensionAbility {
-  onCreate() {
+  onCreate(): void {
     hilog.info(DOMAIN, 'testTag', `Ability000 onCreate`);
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(DOMAIN, 'testTag', `Ability000 onForeground`);
   }
 
-  onBackground() {
+  onBackground(): void {
     hilog.info(DOMAIN, 'testTag', `Ability000 onBackground`);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', `Ability000 onDestroy`);
   }
 
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     const storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('session', session);
     session.loadContent('testability/pages/Ability000Page', storage);
     hilog.info(DOMAIN, 'testTag', `Ability000 onSessionCreate done`);
   }
 
-  onSessionDestroy(session: UIExtensionContentSession) {
+  onSessionDestroy(session: UIExtensionContentSession): void {
     session.terminateSelf().catch(() => {
     });
     hilog.info(DOMAIN, 'testTag', `Ability000 onSessionDestroy`);
