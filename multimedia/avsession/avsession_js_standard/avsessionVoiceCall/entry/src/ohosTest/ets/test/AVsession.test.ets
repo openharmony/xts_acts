@@ -1666,6 +1666,447 @@ export default function abilityTest() {
       done();
     })
 
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2500
+    * @tc.name      : setAVMetadata - promise - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2500', 2, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText: 
+              'start中文ハッハッBonjour|Guten Tag.*&……（@@愛愛हह안녕하세요ههههها ها ها ها' +
+              '英文环境：    Test1~ !@#$%^&()_+-{}[] .\n' +
+              '中文环境：  \\  /Test1~ !@ #$%^&()_+-{}[].~！@#￥%……&（）——-+{}【】、：“”\n' +
+              '繁体字：鸞、嵐、濫、藍、襤、臘、蠟、來、爐、盧、蘆、虜、魯、鷺、魯、鷺、葉等；\n'+
+              '其他国家语言：Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω\n' +
+              'α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ωā á ǎ à ē é ě è ī í ǐ ì ō ó ǒ ò ū ú ǔ ù ǖ ǘ ǚ ǜ üΑ Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω\n' +
+              'α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω\n' +
+              '═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬\n'
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set singleLyricText successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(false).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2600
+    * @tc.name      : setAVMetadata - promise - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2600', 2, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText: 
+              '>~·！@#￥%……&amp;【】{}’‘“”《》。、？「」『』é「」「」—…×%\n' +
+              'абвгдеёжзийклмнопрстуфхцчшщъыьэюя\n' +
+              'が ぎゃ ご ぎょ ご ぎょ ぐ ぎゅ ぐ ぎ\n' +
+              '测试~·！@#￥%……&amp;*（）——-{【}】|、：；“”’‘《，》。？、' +
+              '〒※→①' +
+              'ё !№ % : ? * () _' +
+              '(ü)[{]}[})()[]{}(_)(-).echoの⊙◇--__(paddinggg' +
+              'lgt' +
+              '&lt;测试&gt;&lt;/测试&gt;'+
+              'ç´іѳѣѵѷѕѯѱѡѫѧѭѩㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㄱ가갸거겨고교구규그기㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻㈀㈁㈂㈃㈄㈅㈆㈇㈈㈉㈊㈋㈌㈍㈎㈏㈐'+
+              '\\\'\r\n\t\b\\\f\v\\\x11\\\u1111'
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set singleLyricText successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(false).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2700
+    * @tc.name      : setAVMetadata - promise - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2700', 2, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:''
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set singleLyricText successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(false).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2800
+    * @tc.name      : setAVMetadata - promise - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2800', 2, async (done: Function) => {
+        const str = 'a'.repeat(40960)
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:str.substring(0,40959)
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set singleLyricText successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(false).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2900
+    * @tc.name      : setAVMetadata - promise - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2900', 2, async (done: Function) => {
+        const str = 'a'.repeat(40960)
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:str.substring(0,40960)
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set singleLyricText successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(401);
+            done();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.singleLyricText) === JSON.stringify(metadata.singleLyricText)) {
+                expect(false).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(true).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2100
+    * @tc.name      : setAVMetadata - callback - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2100', 0, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText: 
+              'start中文ハッハッBonjour|Guten Tag.*&……（@@愛愛हह안녕하세요ههههها ها ها ها' +
+              '英文环境：    Test1~ !@#$%^&()_+-{}[] .\n' +
+              '中文环境：  \\  /Test1~ !@ #$%^&()_+-{}[].~！@#￥%……&（）——-+{}【】、：“”\n' +
+              '繁体字：鸞、嵐、濫、藍、襤、臘、蠟、來、爐、盧、蘆、虜、魯、鷺、魯、鷺、葉等；\n'+
+              '其他国家语言：Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω\n' +
+              'α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ωā á ǎ à ē é ě è ī í ǐ ì ō ó ǒ ò ū ú ǔ ù ǖ ǘ ǚ ǜ üΑ Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω\n' +
+              'α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω\n' +
+              '═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬\n'
+        };
+        try {
+            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get singleLyricText Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2200
+    * @tc.name      : setAVMetadata - callback - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2200', 0, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText: 
+              '>~·！@#￥%……&amp;【】{}’‘“”《》。、？「」『』é「」「」—…×%\n' +
+              'абвгдеёжзийклмнопрстуфхцчшщъыьэюя\n' +
+              'が ぎゃ ご ぎょ ご ぎょ ぐ ぎゅ ぐ ぎ\n' +
+              '测试~·！@#￥%……&amp;*（）——-{【}】|、：；“”’‘《，》。？、' +
+              '〒※→①' +
+              'ё !№ % : ? * () _' +
+              '(ü)[{]}[})()[]{}(_)(-).echoの⊙◇--__(paddinggg' +
+              'lgt' +
+              '&lt;测试&gt;&lt;/测试&gt;'+
+              'ç´іѳѣѵѷѕѯѱѡѫѧѭѩㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㄱ가갸거겨고교구규그기㉠㉡㉢㉣㉤㉥㉦㉧㉨㉩㉪㉫㉬㉭㉮㉯㉰㉱㉲㉳㉴㉵㉶㉷㉸㉹㉺㉻㈀㈁㈂㈃㈄㈅㈆㈇㈈㈉㈊㈋㈌㈍㈎㈏㈐'+
+              '\\\'\r\n\t\b\\\f\v\\\x11\\\u1111'
+        };
+        try {
+            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get singleLyricText Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2300
+    * @tc.name      : setAVMetadata - callback - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2300', 0, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:''
+        };
+        try {
+            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get singleLyricText Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2400
+    * @tc.name      : setAVMetadata - callback - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2400', 0, async (done: Function) => {
+        const str = 'a'.repeat(40960)
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:str.substring(0,40959)
+        };
+        try {
+            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get singleLyricText Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2500
+    * @tc.name      : setAVMetadata - callback - set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2500', 0, async (done: Function) => {
+        const str = 'a'.repeat(40960)
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            singleLyricText:str.substring(0,40960)
+        };
+        try {
+            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(401);
+                    done();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get singleLyricText Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.singleLyricText).assertEqual(metadata.singleLyricText);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get singleLyricText error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+        }
+    })
 
   })
 }
