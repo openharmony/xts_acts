@@ -1669,7 +1669,7 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2500
     * @tc.name      : setAVMetadata - promise - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText-set singleLyricText in different languages
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level2
@@ -1713,10 +1713,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2600
     * @tc.name      : setAVMetadata - promise - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText - set singleLyricText with special characters
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.level     : Level3
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2600', 2, async (done: Function) => {
@@ -1760,10 +1760,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2700
     * @tc.name      : setAVMetadata - promise - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText - set singleLyricText to None
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.level     : Level 2
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2700', 2, async (done: Function) => {
@@ -1796,10 +1796,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2800
     * @tc.name      : setAVMetadata - promise - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText - max length
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.level     : Level 2
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2800', 2, async (done: Function) => {
@@ -1833,10 +1833,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2900
     * @tc.name      : setAVMetadata - promise - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(promise) set singleLyricText - exceed max length
     * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.type      : Fault Tolerance
+    * @tc.level     : Level 4
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2900', 2, async (done: Function) => {
@@ -1871,7 +1871,7 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2100
     * @tc.name      : setAVMetadata - callback - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText-set singleLyricText in different languages
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level2
@@ -1891,7 +1891,7 @@ export default function abilityTest() {
               '═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬\n'
         };
         try {
-            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -1923,10 +1923,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2200
     * @tc.name      : setAVMetadata - callback - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText- set singleLyricText with special characters
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.level     : Level3
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2200', 0, async (done: Function) => {
@@ -1946,7 +1946,7 @@ export default function abilityTest() {
               '\\\'\r\n\t\b\\\f\v\\\x11\\\u1111'
         };
         try {
-            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -1977,7 +1977,7 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2300
     * @tc.name      : setAVMetadata - callback - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText - set singleLyricText to None
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level2
@@ -1989,7 +1989,7 @@ export default function abilityTest() {
             singleLyricText:''
         };
         try {
-            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -2021,7 +2021,7 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2400
     * @tc.name      : setAVMetadata - callback - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText - max length
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level2
@@ -2034,7 +2034,7 @@ export default function abilityTest() {
             singleLyricText:str.substring(0,40959)
         };
         try {
-            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -2066,10 +2066,10 @@ export default function abilityTest() {
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2500
     * @tc.name      : setAVMetadata - callback - set singleLyricText
-    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText
+    * @tc.desc      : Testing call setAVMetadata(callback) set singleLyricText- exceed max length
     * @tc.size      : MediumTest
-    * @tc.type      : Function
-    * @tc.level     : Level2
+    * @tc.type      : Fault Tolerance
+    * @tc.level     : Level4
     */
 
     it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2500', 0, async (done: Function) => {
@@ -2079,7 +2079,7 @@ export default function abilityTest() {
             singleLyricText:str.substring(0,40960)
         };
         try {
-            session.setAVMetadata(metadata:avSession.AVMetadata, (err:BusinessError) => {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(err.code).assertEqual(401);
