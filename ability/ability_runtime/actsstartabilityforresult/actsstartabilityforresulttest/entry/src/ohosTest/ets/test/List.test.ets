@@ -16,5 +16,6 @@ import startAbilityForResultTest from './StartAbilityForResultTest.test'
 import startAbilityForResultTwoTest from './startAbilityForResult.test'
 
 export default function testsuite() {
-   startAbilityForResultTwoTest()
+   startAbilityForResultTwoTest();
+   startAbilityForResultTest();
 }

@@ -11,7 +11,8 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsStartAbilityForResultTest.hap"
+                "ActsStartAbilityForResultTest.hap",
+                "ActsStartAbilityForResultAssist.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
