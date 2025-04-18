@@ -22,9 +22,32 @@ import hilog from '@ohos.hilog';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import AbilityUtils from './AbilityUtils';
 import { Driver } from '@ohos.UiTest';
+import { taskpool } from '@kit.ArkTS';
 
 class testClass {
   number: Number = 0
+}
+
+@Concurrent
+function hidebugTest(): boolean {
+  try {
+    let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
+    let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
+    let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
+    let pss: bigint = hidebug.getPss();
+    let vss: bigint = hidebug.getVss();
+    let sharedDirty: bigint = hidebug.getSharedDirty();
+    let privateDirty: bigint = hidebug.getPrivateDirty();
+    let cpuUsage: number = hidebug.getCpuUsage();
+    hidebug.startJsCpuProfiling("cpu_profiling");
+    hidebug.stopJsCpuProfiling();
+    hidebug.dumpJsHeapData("heapData");
+    return true
+  } catch (error) {
+    let err: BusinessError = error as BusinessError
+    console.error(`Debug Fail. Code: ${err.code}, message: ${err.message}`);
+    return false
+  }
 }
 
 export default function developerModeTest() {
@@ -91,23 +114,8 @@ export default function developerModeTest() {
      * @tc.level: Level 0
      */
     it('testSupportDebuggingCommand0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let nativeHeapSize: bigint = hidebug.getNativeHeapSize();
-        let nativeHeapAllocatedSize: bigint = hidebug.getNativeHeapAllocatedSize();
-        let nativeHeapFreeSize: bigint = hidebug.getNativeHeapFreeSize();
-        let pss: bigint = hidebug.getPss();
-        let vss: bigint = hidebug.getVss();
-        let sharedDirty: bigint = hidebug.getSharedDirty();
-        let privateDirty: bigint = hidebug.getPrivateDirty();
-        let cpuUsage: number = hidebug.getCpuUsage();
-        hidebug.startJsCpuProfiling("cpu_profiling");
-        hidebug.stopJsCpuProfiling();
-        hidebug.dumpJsHeapData("heapData");
-      } catch (error) {
-        let err: BusinessError = error as BusinessError
-        console.error(`Debug Fail. Code: ${err.code}, message: ${err.message}`);
-        expect(false).assertTrue()
-      }
+      let res = await taskpool.execute(hidebugTest)
+      expect(res).assertTrue()
       done()
     })
 
