@@ -96,7 +96,7 @@ export default function getColumnTypeErrcodeTest() {
 
     /**
      * @tc.name getColumnTypeSync errcode is 14800032
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5000
      * @tc.desc getColumnTypeSync errcode is 14800032
      * @tc.size MediumTest
      * @tc.type Function
@@ -155,7 +155,7 @@ export default function getColumnTypeErrcodeTest() {
 
     /**
      * @tc.name getColumnTypeSync errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5100
      * @tc.desc getColumnTypeSync errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -212,7 +212,7 @@ export default function getColumnTypeErrcodeTest() {
     });
     /**
      * @tc.name getColumnTypeSync errcode is 14800027
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5200
      * @tc.desc getColumnTypeSync errcode is 14800027
      * @tc.size MediumTest
      * @tc.type Function
@@ -270,7 +270,7 @@ export default function getColumnTypeErrcodeTest() {
 
     /**
      * @tc.name getColumnType errcode is 14800032
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5300
      * @tc.desc getColumnType errcode is 14800032
      * @tc.size MediumTest
      * @tc.type Function
@@ -329,7 +329,7 @@ export default function getColumnTypeErrcodeTest() {
 
     /**
      * @tc.name getColumnType errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5400
      * @tc.desc getColumnType errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -386,7 +386,7 @@ export default function getColumnTypeErrcodeTest() {
     });
     /**
      * @tc.name getColumnType errcode is 14800027
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSet_EtsAPI16Test_0200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5500
      * @tc.desc getColumnType errcode is 14800027
      * @tc.size MediumTest
      * @tc.type Function
