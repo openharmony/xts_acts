@@ -1563,6 +1563,10 @@ export default function TextPicker() {
     * @tc.level     : Level 0
     */
     it('testPicker31', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.maxSelectNumber = 1;
       pickerOptions.singleSelectionMode = photoAccessHelper.SingleSelectionMode.BROWSER_AND_SELECT_MODE;
