@@ -50,51 +50,51 @@ export default function getSupportedPhotoFormatsTest() {
     });
 
     /**
-    * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_0000
-    * @tc.name      : get_supported_photo_formats_000
-    * @tc.desc      : get supported photo formats
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 0
-    */
+     * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_0000
+     * @tc.name      : get_supported_photo_formats_000
+     * @tc.desc      : get supported photo formats
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('get_supported_photo_formats_000', 0, async (done: Function) => {
-    const testNum = 'get_supported_photo_formats_000';
-    try {
+      const testNum = 'get_supported_photo_formats_000';
+      try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1);
         for (let element of result) {
-        expect(element.length >= 1).assertTrue();
+          expect(element.length >= 1).assertTrue();
         }
         expect(result).assertContain("jpg");
         done();
-    } catch (error) {
+      } catch (error) {
         console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
         expect(false).assertTrue();
         done();
-    }
+      }
     })
 
     /**
-    * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_1000
-    * @tc.name      : get_supported_photo_formats_001
-    * @tc.desc      : get supported photo formats
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 0
-    */
+     * @tc.number    : GET_SUPPOTTED_PHOTO_FORMATS_1000
+     * @tc.name      : get_supported_photo_formats_001
+     * @tc.desc      : get supported photo formats
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('get_supported_photo_formats_001', 0, async (done: Function) => {
-    let testNum = 'get_supported_photo_formats_001';
-    try {
+      let testNum = 'get_supported_photo_formats_001';
+      try {
         let result = await phAccessHelper.getSupportedPhotoFormats(2);
         for (let element of result) {
-        expect(element.length >= 1).assertTrue();
+          expect(element.length >= 1).assertTrue();
         }
         expect(result).assertContain("mp4");
         done();
-    } catch (error) {
+      } catch (error) {
         console.error(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
         done();
-    }
+      }
     })
 
     /**
