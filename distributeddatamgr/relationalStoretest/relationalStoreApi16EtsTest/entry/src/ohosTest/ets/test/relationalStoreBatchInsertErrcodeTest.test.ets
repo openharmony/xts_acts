@@ -60,7 +60,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800014
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5600
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800014
      * @tc.size MediumTest
      * @tc.type Function
@@ -96,7 +96,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800021
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5700
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800021
      * @tc.size MediumTest
      * @tc.type Function
@@ -132,7 +132,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800030
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5800
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800030
      * @tc.size MediumTest
      * @tc.type Function
@@ -172,7 +172,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800027
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_5900
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800027
      * @tc.size MediumTest
      * @tc.type Function
@@ -212,7 +212,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800032
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6000
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800032
      * @tc.size MediumTest
      * @tc.type Function
@@ -245,7 +245,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6100
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -281,7 +281,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolution errcode is 14800047
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6200
      * @tc.desc rdbstore.batchInsertWithConflictResolution errcode is 14800047
      * @tc.size MediumTest
      * @tc.type Function
@@ -321,7 +321,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800014
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6300
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800014
      * @tc.size MediumTest
      * @tc.type Function
@@ -357,7 +357,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800021
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6400
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800021
      * @tc.size MediumTest
      * @tc.type Function
@@ -393,7 +393,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800030
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6500
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800030
      * @tc.size MediumTest
      * @tc.type Function
@@ -433,7 +433,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800030
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6600
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800030
      * @tc.size MediumTest
      * @tc.type Function
@@ -473,7 +473,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800032
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6700
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800032
      * @tc.size MediumTest
      * @tc.type Function
@@ -506,7 +506,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6800
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -542,7 +542,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
 
     /**
      * @tc.name rdbstore.batchInsertWithConflictResolutionSync errcode is 14800047
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_6900
      * @tc.desc rdbstore.batchInsertWithConflictResolutionSync errcode is 14800047
      * @tc.size MediumTest
      * @tc.type Function
