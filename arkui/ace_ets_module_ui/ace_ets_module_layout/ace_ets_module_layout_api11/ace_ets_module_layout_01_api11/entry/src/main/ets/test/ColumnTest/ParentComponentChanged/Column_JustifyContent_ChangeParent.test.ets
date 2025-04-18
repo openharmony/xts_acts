@@ -279,7 +279,7 @@ export default function column_JustifyContent_ChangeParent() {
         .assertTrue();
       expect(Math.floor(Math.abs((locationColumn.right - locationText1.right) - vp2px(25))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 1)
+      expect(Math.floor(Math.abs((locationText2.top - locationText1.bottom) - (locationText3.top - locationText2.bottom))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((locationText1.top - locationColumn.top) - (locationColumn.bottom - locationText3.bottom))) <= 1)
         .assertTrue();

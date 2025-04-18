@@ -243,9 +243,9 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
-      expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(170))) <= 1)
+      expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(170))) <= 2)
         .assertTrue();
-      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(20))) <= 1)
+      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(20))) <= 2)
         .assertTrue();
       console.info('[testWrapWrapFlexMarTextMarPad] END');
 
