@@ -1148,6 +1148,28 @@ static napi_value NdkStartAbilityWithOptions_4200(napi_env env, napi_callback_in
     return result;
 }
 
+static napi_value NdkStartVisibility_0100(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_NdkStartVisibility_0100 begins");
+    AbilityRuntime_StartVisibility visibility = AbilityRuntime_StartVisibility::ABILITY_RUNTIME_SHOW_UPON_START;
+    AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_SetStartOptionsStartVisibility(nullptr, visibility);
+    OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_NdkStartVisibility_0100 errCode=%{public}d", errCode);
+    napi_value result;
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+static napi_value NdkStartVisibility_0200(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_NdkStartVisibility_0200 begins");
+    AbilityRuntime_StartVisibility visibility;
+    AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_GetStartOptionsStartVisibility(nullptr, visibility);
+    OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_NdkStartVisibility_0200 errCode=%{public}d", errCode);
+    napi_value result;
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
 static napi_value NdkStartAbilityWithOptions_4300(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "SUB_Ability_AbilityRuntime_StartSelfUIAbilityWithStartOptions_4300 begins");
@@ -1601,6 +1623,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ndkWantEx_2100", nullptr, NdkWantEx_2100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "startNativeChildProcess_0100", nullptr, StartNativeChildProcess_0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "startNativeChildProcess_0700", nullptr, StartNativeChildProcess_0700, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ndkStartVisibility_0100", nullptr, NdkStartVisibility_0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ndkStartVisibility_0200", nullptr, NdkStartVisibility_0200, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
