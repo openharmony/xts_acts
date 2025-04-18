@@ -273,17 +273,18 @@ export default function windowNdk() {
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName}: Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
             await subWindow.destroyWindow();
+           expect(false).assertTrue();
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
             if(err.code == 801){
               done();
             }else{
               expect(false).assertTrue();
               done();
             }
-          });
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
         });
       } catch (exception) {
         console.error(`${caseName}:Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
