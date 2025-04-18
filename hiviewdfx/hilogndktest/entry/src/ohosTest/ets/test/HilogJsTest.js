@@ -490,7 +490,7 @@ describe('HilogJsTest', function () {
       console.info('testHilogJsApi31 start');
       try{
         // @ts-ignore
-        hilog.info("����domainId", "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password")
+        hilog.info("中文domainId", "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password")
       }catch(error){
         console.log(`testHilogJsApi31 got an error: ${JSON.stringify(error)}`)
         expect().assertFail();
@@ -570,7 +570,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
       console.info('testHilogJsApi36 start');
       try{
-        hilog.info(0x3200, "HILOGTEST", "���Ĳ���:%{public}s, ��ϴ�ӡ:%{public}s", "���Ĵ�ӡ����", "for����test,.;:*_-=^(%)?#$/|\\")
+        hilog.info(0x3200, "HILOGTEST", "中文测试:%{public}s, 混合打印:%{public}s", "中文打印测试", "for中文test,.;:*_-=^(%)?#$/|\\")
       }catch(error){
         console.log(`testHilogJsApi36 got an error: ${JSON.stringify(error)}`)
         expect().assertFail();
@@ -662,7 +662,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
       console.info('testHilogJsApi43 start');
       // @ts-ignore
-      const res = hilog.isLoggable("���Ĳ���", "HILOGTEST", hilog.LogLevel.INFO);
+      const res = hilog.isLoggable("中文测试", "HILOGTEST", hilog.LogLevel.INFO);
       expect(res).assertEqual(undefined);
       console.info('testHilogJsApi43 end');
     })
@@ -694,7 +694,7 @@ describe('HilogJsTest', function () {
     /**
      * @tc.number SUB_DFX_DFT_Hilog_Redirect_0100
      * @tc.name hilog interface test
-     * @tc.desc ��֤nativie����ˮ��־��ӡ��ͨ���ص��ӿ��ض���ֱ����js��.
+     * @tc.desc 验证nativie层流水日志打印可通过回调接口重定向直自身js层.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -718,7 +718,7 @@ describe('HilogJsTest', function () {
     /**
      * @tc.number SUB_DFX_DFT_Hilog_Redirect_0200
      * @tc.name hilog interface test
-     * @tc.desc ��֤js����ˮ��־��ӡ��ͨ���ص��ӿ��ض���ֱ����js��.
+     * @tc.desc 验证js层流水日志打印可通过回调接口重定向直自身js层.
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
