@@ -44,6 +44,7 @@ import UIShowDialogCallbackBackgroundEffectTest from './UIContextTest/showDialog
 import UIShowDialogCallbackBlurStyleOptionsTest from './UIContextTest/showDialogBlurStyleOptions2.test'
 import bindMenuHapticFeedbackMode from './bindMenuTest/bindMenuHapticFeedbackMode.test';
 import bindContextMenuHapticFeedbackMode from './bindContextMenuTest/bindContextMenuHapticFeedback.test'
+import previewBorderRadius from './bindContextMenuTest/previewBorderRadius.test'
 
 export default function testsuite() {
     alertDialogBackgroundEffectTest()
@@ -78,4 +79,5 @@ export default function testsuite() {
     UIShowDialogCallbackBlurStyleOptionsTest()
     bindMenuHapticFeedbackMode()
     bindContextMenuHapticFeedbackMode()
+    previewBorderRadius()
 }
