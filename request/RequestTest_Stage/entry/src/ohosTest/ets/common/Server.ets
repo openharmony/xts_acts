@@ -34,6 +34,7 @@ let messageView: string = ''
 let contentLength: number = 0;
 let contentInfo: string = '';
 let validationCode: string = '';
+let contentArray: string[] = [];
 
 let on_connect_callback = (client: socket.TCPSocketConnection) => {
   clientInfo = client;
@@ -64,27 +65,31 @@ let on_message_callback = (value: SocketInfo) => {
     }
     if(subInfo.indexOf(`--${validationCode}`) != subInfo.indexOf(`--${validationCode}--`)){
       if(subInfo.indexOf(`--${validationCode}`) != -1){
-        contentInfo += subInfo.substring(subInfo.indexOf(`--${validationCode}`), subInfo.length);
+        contentArray = [];
+        contentArray.push(subInfo.substring(subInfo.indexOf(`--${validationCode}`), subInfo.length));
         console.info(TAG + '====>contentInfo one')
       }else{
-        contentInfo += subInfo;
+        contentArray.push(subInfo)
         console.info(TAG + '====>contentInfo two')
       }
     }else{
       if(subInfo.indexOf('content-length') === -1){
-        contentInfo += subInfo;
+        contentArray.push(subInfo)
         console.info(TAG + '====>contentInfo three')
       }
     }
     if(subInfo.indexOf(`--${validationCode}--`) != -1){
+      contentInfo = contentArray.join('')
       console.info(TAG + `====>contentLength: ${contentLength}`)
       console.info(TAG + `====>contentInfo_Length: ${contentInfo.length}`)
       console.info(TAG + `====>contentInfo: ${contentInfo}`)
       if(contentLength === contentInfo.length){
-        if(subInfo.includes('666')){
+        if(subInfo.includes('SUB_REQUEST_FileUpload_ResponseBody_0100')){
+          console.info(TAG + `====>ResponseBody_0100 contentInfo: ${contentInfo}`)
           let subInfo = ''.padEnd(1 * 1024 *  1024, '666');
           messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
-        } else if (subInfo.includes('888')) {
+        } else if (subInfo.includes('SUB_REQUEST_FileUpload_ResponseBody_0200')) {
+          console.info(TAG + `====>ResponseBody_0200 contentInfo: ${contentInfo}`)
           let subInfo = ''.padEnd(10 * 1024 *  1024, '888');
           messageView = `HTTP/1.1 200 OK\r\ncontent-length:${subInfo.length}\r\n\r\n${subInfo}`
         } else {
