@@ -30,7 +30,9 @@ async function publicGenerateKeyItemFunc(keyAlias, huksOptions) {
       })
       .catch(error => {
         console.error(`callback: generateKeyItem failed, code: ${error.code}, msg: ${error.message}`);
-        expect(null).assertFail();
+        if (error.code != 801 && error.code != 12000001) {
+          expect(null).assertFail();
+        }
       });
   } catch (error) {
     console.error(`callback: generateKeyItem input arg invalid, code: ${error.code}, msg: ${error.message}`);

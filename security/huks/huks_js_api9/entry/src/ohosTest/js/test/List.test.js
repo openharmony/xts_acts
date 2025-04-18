@@ -42,7 +42,7 @@ import SecurityHuksSignVerifyDSAPromiseJsunit from './SecurityHuksSignVerifyDSAP
 import SecurityHuksSignVerifyECCCallbackJsunit from './SecurityHuksSignVerifyECCCallbackJsunit.test.js'
 import SecurityHuksSignVerifyECCPromiseJsunit from './SecurityHuksSignVerifyECCPromiseJsunit.test.js'
 import SecurityHuksSignVerifyED25519CallbackJsunit from './SecurityHuksSignVerifyED25519CallbackJsunit.test.js'
-import SecurityHuksSignVerifyEd25519PromiseJsunit from './SecurityHuksSignVerifyEd25519PromiseJsunit.test.js'
+import SecurityHuksSignVerifyED25519PromiseJsunit from './SecurityHuksSignVerifyED25519PromiseJsunit.test.js'
 import SecurityHuksSignVerifyRSACallbackJsunit from './SecurityHuksSignVerifyRSACallbackJsunit.test.js'
 import SecurityHuksSignVerifyRSAPromiseJsunit from './SecurityHuksSignVerifyRSAPromiseJsunit.test.js'
 import SecurityHuksSignVerifySM2CallbackJsunit from './SecurityHuksSignVerifySM2CallbackJsunit.test.js'
@@ -77,7 +77,7 @@ export default function testsuite() {
     SecurityHuksSignVerifyECCCallbackJsunit()
     SecurityHuksSignVerifyECCPromiseJsunit()
     SecurityHuksSignVerifyED25519CallbackJsunit()
-    SecurityHuksSignVerifyEd25519PromiseJsunit()
+    SecurityHuksSignVerifyED25519PromiseJsunit()
     SecurityHuksSignVerifyRSACallbackJsunit()
     SecurityHuksSignVerifyRSAPromiseJsunit()
     SecurityHuksSignVerifySM2CallbackJsunit()
