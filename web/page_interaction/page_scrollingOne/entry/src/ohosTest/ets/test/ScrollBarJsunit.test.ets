@@ -18,11 +18,18 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestTy
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function scrollBarJsunit() {
   describe('TEST_ScrollBar_Keep',  () => {
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       let options: router.RouterOptions = {
         url: 'testability/pages/scrollBar',
       }
