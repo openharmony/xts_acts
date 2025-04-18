@@ -51,7 +51,7 @@ export default function TransactionBatchinsertTestErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolution errcode is 14800014
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4000
      * @tc.desc transaction.batchInsertWithConflictResolution errcode is 14800014
      * @tc.size MediumTest
      * @tc.type Function
@@ -89,7 +89,7 @@ export default function TransactionBatchinsertTestErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolution errcode is 14800027
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4100
      * @tc.desc transaction.batchInsertWithConflictResolution errcode is 14800027
      * @tc.size MediumTest
      * @tc.type Function
@@ -132,7 +132,7 @@ export default function TransactionBatchinsertTestErrcode() {
     })
     /**
      * @tc.name transaction.batchInsertWithConflictResolution errcode is 14800021
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4200
      * @tc.desc transaction.batchInsertWithConflictResolution errcode is 14800021
      * @tc.size MediumTest
      * @tc.type Function
@@ -170,7 +170,7 @@ export default function TransactionBatchinsertTestErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolution errcode is 14800033
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4300
      * @tc.desc transaction.batchInsertWithConflictResolution errcode is 14800033
      * @tc.size MediumTest
      * @tc.type Function
@@ -209,7 +209,7 @@ export default function TransactionBatchinsertTestErrcode() {
 
     /**
      * @tc.name transaction.batchInsertWithConflictResolution errcode is 14800047
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_BatchInsertWithConflictResolutionEtsAPI16Test_4400
      * @tc.desc transaction.batchInsertWithConflictResolution errcode is 14800047
      * @tc.size MediumTest
      * @tc.type Function
