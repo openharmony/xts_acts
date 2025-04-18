@@ -911,5 +911,34 @@ export default function nativeImageTest() {
       expect(result[4]).assertEqual(40001000);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2300
+     * @tc.name       : testConsumerSurfaceSetDefaultSizeAbNormal
+     * @tc.desc       : test OH_NativeImage_SetDefaultSizeAbNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testConsumerSurfaceCreateAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
+        let result: number = nativeimage.oHConsumerSurfaceCreateAbNormal();
+        expect(result).assertEqual(0);
+        done();
+      });
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2400
+     * @tc.name       : testConsumerSurfaceSetDefaultUsageSizeNormal
+     * @tc.desc       : test OHConsumerSurfaceSetDefaultUsageSizeNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testConsumerSurfaceSetDefaultUsageSizeNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+        let result: number = nativeimage.OHConsumerSurfaceSetDefaultUsageSizeNormal();
+        expect(result).assertEqual(0);
+        done();
+      });
   })
 }
