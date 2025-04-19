@@ -932,14 +932,14 @@ export default function cameraJSUnitOutput() {
     it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100', 1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100--------------");
       createPhotoSession(1);
-      if (isEmpty(captureSession)) {
+      if (isEmpty(cameraSession)) {
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 captureSession == null || undefined")
+          "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 cameraSession == null || undefined")
         expect().assertFail();
       } else {
         await addCommit(0, 1);
-        captureSession.commitConfig();
-        captureSession.stop(async (err) => {
+        cameraSession.commitConfig();
+        cameraSession.stop(async (err) => {
           if (!err) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 success");
             expect(true).assertTrue();
@@ -968,14 +968,14 @@ export default function cameraJSUnitOutput() {
     it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100', 1, async (done: Function) => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100--------------");
       createPhotoSession(1);
-      if (isEmpty(captureSession)) {
+      if (isEmpty(cameraSession)) {
         console.info(TAG +
-          "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 captureSession == null || undefined")
+          "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 cameraSession == null || undefined")
         expect().assertFail();
       } else {
         await addCommit(0, 1);
-        captureSession.commitConfig();
-        captureSession.release(async (err) => {
+        cameraSession.commitConfig();
+        cameraSession.release(async (err) => {
           if (!err) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 success");
             expect(true).assertTrue();
