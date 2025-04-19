@@ -521,6 +521,7 @@ export default function CameraVideoQualityPrioritizationTest() {
     afterAll(async () => {
       await releaseVideoReceiveSurface();
       releaseCameraSessionInstance();
+      await releaseInput();
       sleep(1000);
       console.info('afterAll case');
     })

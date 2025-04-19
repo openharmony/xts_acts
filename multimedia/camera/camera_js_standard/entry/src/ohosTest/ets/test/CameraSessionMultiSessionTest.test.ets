@@ -137,6 +137,8 @@ export default function cameraSessionMultiSessionTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100--------------");
+      let cameraInput: cameraObj.CameraInput = mCameraManager.createCameraInput(mCameraDevicesArray[0]);
+      await cameraInput.open(cameraObj.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY);
       let firstSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
       if (!firstSession) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 create first session FAILED");
@@ -171,6 +173,7 @@ export default function cameraSessionMultiSessionTest() {
 
       await firstSession.release();
       await secondSession.release();
+      await cameraInput.close();
       done();
     })
 
