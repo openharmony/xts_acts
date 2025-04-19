@@ -455,6 +455,58 @@ export default function channelCallbacktest() {
             done();
         })
 
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1700
+         * @tc.name Test closeChannels
+         * @tc.desc hasHceCapability to support a certain type of card emulation.
+		 * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1700', Level.LEVEL0, function () {
+			try{
+				if (getReader == undefined){
+					console.info("[NFC_test]17 This Function is not support because the phone NFC chip is ST chip");
+				}else{
+					let closeChannels = Session.closeChannels();
+					console.info("[NFC_test]17 Session.closeChannels success" + closeChannels);
+				}
+			}catch(error){
+					console.info("[NFC_test]17 closeChannels error" + error.code + "---" + JSON.stringify(error));
+					except(801).assertEqual(error.code)
+				}
+			})
+			
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2500
+         * @tc.name Test transmit
+         * @tc.desc createService
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_2500', Level.LEVEL0, async function (done) {
+			try{
+				await secureElemente.createService().then( (data) => {
+					console.info("[NFC_test]25 SecureElementDemo createService data ="+data);
+					Service = data;
+					let connect = Service.isConnected();
+					console.info("[NFC_test]25 SecureElementDemo createService connect = " + connect);
+					return Service;
+				})
+				.catch ((err) => {
+					console.info("[NFC_test]25 createService createService err = " + err);
+				})
+			} catch (error) {
+				console.info("[NFC_test]25 createService occurs exception:" + error.code + "---" + JSON.stringify(error));
+				if (error.code == 801){
+					expect(true).assertTrue();
+				}else{
+					expect().assertFail;
+				}
+			}
+			done();
+		})
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
