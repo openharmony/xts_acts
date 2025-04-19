@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -42,7 +42,7 @@ export default function openLinkTest() {
     * @tc.size   : MediumTest
     * @tc.level  : 0
     */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0100`;
       console.log(`${tag}, it begin`);
       let want: Want|null = null;
@@ -71,7 +71,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0200`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = undefined;
@@ -103,7 +103,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0300`;
       console.log(`${tag}, it begin`);
       let want: Want|null = null
@@ -135,7 +135,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0400`;
       console.log(`${tag}, it begin`);
       let want: Want|undefined = undefined;
@@ -167,7 +167,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0500`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = null;
@@ -197,7 +197,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0600`;
       console.log(`${tag}, it begin`);
       let want: Want|undefined = undefined
@@ -227,7 +227,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0700', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0700`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -263,7 +263,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0800`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =undefined;
@@ -299,7 +299,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_0900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_0900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_0900`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -333,7 +333,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1000`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =undefined;
@@ -367,7 +367,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1100`;
       console.log(`${tag}, it begin`);
       let link: string|null|undefined = null;
@@ -404,7 +404,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1200`;
       console.log(`${tag}, it begin`);
       let link: string|null|undefined = undefined;
@@ -441,7 +441,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1300`;
       console.log(`${tag}, it begin`);
       let link: string|null|undefined = undefined;
@@ -476,7 +476,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1400`;
       console.log(`${tag}, it begin`);
       let link: string|null|undefined = undefined;
@@ -511,7 +511,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1500`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -543,7 +543,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1600`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =undefined;
@@ -574,7 +574,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1700', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1700`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = null;
@@ -608,7 +608,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1800`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = undefined;
@@ -645,7 +645,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_1900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_1900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_1900`;
 
       console.log(`${tag}, it begin`);
@@ -683,7 +683,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2000`;
       console.log(`${tag}, it begin`);
       let want: Want|undefined = undefined;
@@ -720,7 +720,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2100`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = null;
@@ -755,7 +755,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2200`;
       console.log(`${tag}, it begin`);
       let want: Want|undefined = undefined
@@ -790,7 +790,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2300`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -821,7 +821,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2400`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =undefined;
@@ -852,7 +852,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2500`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -881,7 +881,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2600`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined =null;
@@ -910,7 +910,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2700', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2700`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = null;
@@ -944,7 +944,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2800`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = undefined;
@@ -978,7 +978,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_2900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_2900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_2900`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = null;
@@ -1009,7 +1009,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3000`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = undefined;
@@ -1040,7 +1040,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3100`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = null;
@@ -1072,7 +1072,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3200`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = undefined;
@@ -1104,7 +1104,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3300`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = null;
@@ -1136,7 +1136,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3400`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = undefined;
@@ -1168,7 +1168,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3500`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = {
@@ -1202,7 +1202,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3600`;
       console.log(`${tag}, it begin`);
       let parameter: common.AbilityResult|null|undefined = {
@@ -1236,7 +1236,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3700', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3700', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3700`;
       console.log(`${tag}, it begin`);
       let commRemote: rpc.IRemoteObject;
@@ -1275,7 +1275,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3800', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3800`;
       console.log(`${tag}, it begin`);
       let connect_num: number|null|undefined = null;
@@ -1312,7 +1312,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_3900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_3900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_3900`;
       console.log(`${tag}, it begin`);
       let label: string|null|undefined = null;
@@ -1348,7 +1348,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4000`;
       console.log(`${tag}, it begin`);
       let label: string|null|undefined = undefined;
@@ -1382,7 +1382,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4100`;
       console.log(`${tag}, it begin`);
       let label: string|null|undefined = null;
@@ -1413,7 +1413,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4200', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4200`;
       console.log(`${tag}, it begin`);
       let label: string|null|undefined = undefined;
@@ -1444,7 +1444,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4300', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4300', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4300`;
       console.log(`${tag}, it begin`);
       let state: AbilityConstant.ContinueState|null|undefined = null;
@@ -1478,7 +1478,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4400', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4400`;
       console.log(`${tag}, it begin`);
       let state: AbilityConstant.ContinueState|null|undefined = undefined;
@@ -1512,7 +1512,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4500', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4500', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4500`;
       console.log(`${tag}, it begin`);
       let state: AbilityConstant.ContinueState|null|undefined = null;
@@ -1543,7 +1543,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4600', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4600', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4600`;
       console.log(`${tag}, it begin`);
       let state: AbilityConstant.ContinueState|null|undefined = undefined;
@@ -1574,7 +1574,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_4900', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_4900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_4900`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = undefined;
@@ -1611,7 +1611,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_5000', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_5000', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_5000`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = null;
@@ -1642,7 +1642,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContext_5100', 0, (done: Function) => {
+    it('SUB_Ability_AbilityBase_UIAbilityContext_5100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_5100`;
       console.log(`${tag}, it begin`);
       let want: Want|null|undefined = undefined;

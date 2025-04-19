@@ -491,7 +491,7 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0100'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1800'){
       try{
         this.context.startAbility(undefined, (err: BusinessError) => {
           if (err.code) {
@@ -509,14 +509,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0100_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1800_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0200'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1900'){
       let options: StartOptions = {
         displayId: 0
       };
@@ -537,14 +537,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0200_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1900_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0300'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2000'){
       let options: StartOptions = {
         displayId: 0
       };
@@ -565,14 +565,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0300_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2000_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0400'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2100'){
       let openLinkOptions: OpenLinkOptions = {
         appLinkingOnly: true
       };
@@ -594,14 +594,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0400_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2100_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0500'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2200'){
       try{
         this.context.startAbilityForResult(undefined, (err: BusinessError, result: common.AbilityResult) => {
           if (err.code) {
@@ -619,14 +619,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0500_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2200_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0600'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2300'){
       let options: StartOptions = {
         displayId: 0,
       };
@@ -647,14 +647,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0600_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2300_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0700'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2400'){
       let options: StartOptions = {
         displayId: 0,
       };
@@ -675,14 +675,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0700_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2400_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0800'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2500'){
       let commRemote: rpc.IRemoteObject;
       let options: common.ConnectOptions = {
         onConnect(elementName, remote) {
@@ -706,14 +706,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0800_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2500_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_0900'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2600'){
       let connection = 1;
       let commRemote: rpc.IRemoteObject | null;
       try{
@@ -734,14 +734,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_0900_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2600_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1000'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2700'){
       let connection = 1;
       let commRemote: rpc.IRemoteObject | null;
       try{
@@ -760,14 +760,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1000_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2700_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1100'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2800'){
       try{
         this.context.terminateSelfWithResult(undefined, (err: BusinessError) => {
           if (err.code) {
@@ -785,14 +785,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1100_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2800_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1200'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_2900'){
       try{
         this.context.terminateSelfWithResult(undefined)
           .then(() => {
@@ -810,14 +810,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1200_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_2900_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1300'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3000'){
       try{
         let options: AtomicServiceOptions = {
           displayId: 0,
@@ -838,14 +838,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1300_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3000_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1400'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3100'){
       try{
         this.context.startUIServiceExtensionAbility(undefined).then(() => {
           console.log('startUIServiceExtensionAbility success');
@@ -859,14 +859,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1400_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3100_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1500'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3200'){
       try{
         const callback: common.UIServiceExtensionConnectCallback = {
           onData: (data: Record<string, Object>): void => {
@@ -890,14 +890,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1500_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3200_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1600'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3300'){
       try{
         this.context.disconnectUIServiceExtensionAbility(undefined).then(() => {
           console.log('disconnectUIServiceExtensionAbility success');
@@ -911,14 +911,14 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1600_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3300_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
-    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_1700'){
+    if(want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3400'){
       try{
         let code = this.context.setColorMode(undefined);
         console.log('setcolor mode', JSON.stringify(code));
@@ -930,13 +930,79 @@ export default class EntryEmbeddedUIExtAbility extends EmbeddedUIExtensionAbilit
             'result': err?.code,
           }
         }
-        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_1700_event', commonEventData, (result) => {
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3400_event', commonEventData, (result) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
           this.context.terminateSelf()
         });
       }
     };
 
+    if (want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3500') {
+      try {
+        let options: AtomicServiceOptions = {
+          displayId: 0,
+        };
+        this.context.openAtomicService(null)
+          .then((result: common.AbilityResult) => {
+            // 执行正常业务
+            console.info('openAtomicService succeed');
+          })
+          .catch((err: BusinessError) => {
+            // 处理业务逻辑错误
+            console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (err) {
+        console.log(TAG + `openAtomicService catch failed, code is ${err}`);
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': err?.code,
+          }
+        }
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3500_event', commonEventData, (result) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+          this.context.terminateSelf()
+        });
+      }
+    };
+
+    if (want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3600') {
+      try {
+        this.context.openLink(null).then(() => {
+          console.log(`open link success.`);
+        }).catch((err: BusinessError) => {
+          console.log(`open link failed, errCode ${JSON.stringify(err.code)}`);
+        });
+      } catch (err) {
+        console.log(TAG + `openLink catch failed, code is ${err}`);
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': err?.code,
+          }
+        }
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3600_event', commonEventData, (result) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+          this.context.terminateSelf()
+        });
+      }
+    };
+
+    if (want?.parameters?.case == 'SUB_Ability_AbilityRuntime_UIExtensionContext_3700') {
+      try {
+        session.loadContent(null);
+      } catch (err) {
+        console.log(TAG + `loadContent catch failed, code is ${err}`);
+        console.log(TAG + `loadContent catch failed, code is ${err.code}`);
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': err?.code,
+          }
+        }
+        commonEventManager.publish('SUB_Ability_AbilityRuntime_UIExtensionContext_3700_event', commonEventData, (result) => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `onConnect, 50==: ${JSON.stringify(result)}`);
+          this.context.terminateSelf()
+        });
+      }
+    };
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {

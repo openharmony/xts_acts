@@ -16,7 +16,7 @@ import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
 import rpc from "@ohos.rpc";
 
-import { describe, afterEach, it, expect } from '@ohos/hypium'
+import { describe, afterEach, it, expect, Level } from '@ohos/hypium'
 export default function ActsStServiceAbilityTest() {
     describe('ActsStServiceAbilityTest', function () {
         let bundleName = "com.amsst.stserviceabilityclient";
@@ -86,7 +86,7 @@ export default function ActsStServiceAbilityTest() {
 
         function unsubscribe(caller, subscriber) {
             commonEvent.unsubscribe(subscriber, (err, data) => {
-                console.debug("=ACTS_unsubscribe (err,data)=======>"
+                console.info("=ACTS_unsubscribe (err,data)=======>"
                 + (caller)
                 + (" , json err【") + JSON.stringify(err) + (" 】")
                 + ("json data【") + JSON.stringify(data) + (" 】")
@@ -108,23 +108,23 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0100', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_0100====<begin');
+        it('ACTS_JsServiceAbility_0100', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_0100====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0100).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0100 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0100 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0100 = data;
                     commonEvent.subscribe(subscriber0100, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0100 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0100 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         expect("ACTS_SerivceAbilityServer_onCommand_PageStartService_0100").assertEqual(
                             data.event);
                         unsubscribe("ACTS_JsServiceAbility_0100_unsubscribe", subscriber0100);
-                        console.debug('ACTS_JsServiceAbility_0100====<end');
+                        console.info('ACTS_JsServiceAbility_0100====<end');
                         done();
                     });
                 })
@@ -138,17 +138,17 @@ export default function ActsStServiceAbilityTest() {
                         },
                     }
                 ).then(data => {
-                    console.debug("=ACTS_JsServiceAbility_0100 .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0100 .then(data)=======>"
                     + ("abilityStartSetting json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 }).catch(err => {
                     expect(".catch").assertEqual(err);
-                    console.debug('ACTS_JsServiceAbility_0100====<end .catch(err):' + JSON.stringify(err));
+                    console.info('ACTS_JsServiceAbility_0100====<end .catch(err):' + JSON.stringify(err));
                     done();
                 })
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_0100==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_0100==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -158,23 +158,23 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0200', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_0200====<begin');
+        it('ACTS_JsServiceAbility_0200', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_0200====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0200).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0200 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0200 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0200 = data;
                     commonEvent.subscribe(subscriber0200, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0200 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0200 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         expect("ACTS_SerivceAbilityServer_onCommand_PageStartService_0200").assertEqual(
                             data.event);
                         unsubscribe("ACTS_JsServiceAbility_0200_unsubscribe", subscriber0200);
-                        console.debug('ACTS_JsServiceAbility_0200====<end');
+                        console.info('ACTS_JsServiceAbility_0200====<end');
                         done()
                     });
                 })
@@ -187,7 +187,7 @@ export default function ActsStServiceAbilityTest() {
                             action: "PageStartService_0200",
                         },
                     }, (err, data) => {
-                    console.debug("=ACTS_JsServiceAbility_0200 startAbility (err,data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0200 startAbility (err,data)=======>"
                     + ("abilityStartSetting json err【") + JSON.stringify(err) + (" 】")
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,err=" + err + " ,data=" + data);
@@ -195,7 +195,7 @@ export default function ActsStServiceAbilityTest() {
                 )
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_0200==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_0200==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -205,16 +205,16 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0300', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_0300====<begin');
+        it('ACTS_JsServiceAbility_0300', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_0300====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0300).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0300 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0300 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0300 = data;
                     commonEvent.subscribe(subscriber0300, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0300 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0300 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
@@ -231,19 +231,19 @@ export default function ActsStServiceAbilityTest() {
                                     },
                                 }
                             ).then(data => {
-                                console.debug("=ACTS_JsServiceAbility_0300 .then(data) 2=======>"
+                                console.info("=ACTS_JsServiceAbility_0300 .then(data) 2=======>"
                                 + ("json data【") + JSON.stringify(data) + (" 】")
                                 + " ,data=" + data);
                             }).catch(err => {
                                 expect().assertFail()
-                                console.debug('ACTS_JsServiceAbility_0300==== err: ' + JSON.stringify(err));
+                                console.info('ACTS_JsServiceAbility_0300==== err: ' + JSON.stringify(err));
                                 done();
                             })
                         } else {
                             expect("ACTS_SerivceAbilityServer_onCommand_PageStartService_0301").assertEqual(
                                 data.event);
                             unsubscribe("ACTS_JsServiceAbility_0300_unsubscribe", subscriber0300);
-                            console.debug('ACTS_JsServiceAbility_0300====<end');
+                            console.info('ACTS_JsServiceAbility_0300====<end');
                             done();
                         }
                     });
@@ -258,17 +258,17 @@ export default function ActsStServiceAbilityTest() {
                         },
                     }
                 ).then(data => {
-                    console.debug("=ACTS_JsServiceAbility_0300 .then(data) 1=======>"
+                    console.info("=ACTS_JsServiceAbility_0300 .then(data) 1=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 }).catch(err => {
                     expect(".catch").assertEqual(err);
-                    console.debug('ACTS_JsServiceAbility_0300====<end .catch(err) 1');
+                    console.info('ACTS_JsServiceAbility_0300====<end .catch(err) 1');
                     done();
                 })
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_0300==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_0300==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -278,16 +278,16 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0400', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_0400====<begin');
+        it('ACTS_JsServiceAbility_0400', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_0400====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0400).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0400 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0400 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0400 = data;
                     commonEvent.subscribe(subscriber0400, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0400 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0400 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
@@ -303,7 +303,7 @@ export default function ActsStServiceAbilityTest() {
                                         action: "PageStartService_0401",
                                     },
                                 }, (err, data) => {
-                                console.debug("=ACTS_JsServiceAbility_0400 startAbility (err,data) 2=======>"
+                                console.info("=ACTS_JsServiceAbility_0400 startAbility (err,data) 2=======>"
                                 + ("json err【") + JSON.stringify(err) + (" 】")
                                 + ("json data【") + JSON.stringify(data) + (" 】")
                                 + " ,err=" + err + " ,data=" + data);
@@ -313,7 +313,7 @@ export default function ActsStServiceAbilityTest() {
                             expect("ACTS_SerivceAbilityServer_onCommand_PageStartService_0401").assertEqual(
                                 data.event);
                             unsubscribe("ACTS_JsServiceAbility_0400_unsubscribe", subscriber0400);
-                            console.debug('ACTS_JsServiceAbility_0400====<end');
+                            console.info('ACTS_JsServiceAbility_0400====<end');
                             done();
                         }
                     });
@@ -327,7 +327,7 @@ export default function ActsStServiceAbilityTest() {
                             action: "PageStartService_0400",
                         },
                     }, (err, data) => {
-                    console.debug("=ACTS_JsServiceAbility_0400 startAbility (err,data) 1=======>"
+                    console.info("=ACTS_JsServiceAbility_0400 startAbility (err,data) 1=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】")
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,err=" + err + " ,data=" + data);
@@ -335,7 +335,7 @@ export default function ActsStServiceAbilityTest() {
                 )
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_0400==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_0400==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -345,58 +345,58 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by Promise)
         */
-        it('ACTS_JsServiceAbility_0500', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0500', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_0500====<begin');
             try {
                 let mConnIdJsPromise;
                 let subscriber0500;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0500).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0500 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0500 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0500 = data;
                     commonEvent.subscribe(subscriber0500, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0500 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0500 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         if (data.event == "ACTS_SerivceAbilityServer_onConnect_PageConnectService_0500") {
                             console.info("ACTS_JsServiceAbility_0500 disconnnectAbility start")
                             featureAbility.disconnectAbility(mConnIdJsPromise).then((err) => {
-                                console.debug("=ACTS_JsServiceAbility_0500 disconnectAbility err====>"
+                                console.info("=ACTS_JsServiceAbility_0500 disconnectAbility err====>"
                                 + ("json err=") + JSON.stringify(err));
                             }).catch(err => {
                                 expect().assertFail()
-                                console.debug('ACTS_JsServiceAbility_0500==== err: ' + JSON.stringify(err));
+                                console.info('ACTS_JsServiceAbility_0500==== err: ' + JSON.stringify(err));
                                 done()
                             })
                         } else {
                             expect("ACTS_SerivceAbilityServer_onDisConnect_PageConnectService_0500")
                                 .assertEqual(data.event);
                             unsubscribe("ACTS_JsServiceAbility_0500_unsubscribe", subscriber0500);
-                            console.debug('ACTS_JsServiceAbility_0500====<end');
+                            console.info('ACTS_JsServiceAbility_0500====<end');
                             done();
                         }
                     });
                 })
                 function onConnectCallback(element, remote) {
-                    console.debug('ACTS_JsServiceAbility_0500_onConnectCallback ====> mConnIdJsPromise='
+                    console.info('ACTS_JsServiceAbility_0500_onConnectCallback ====> mConnIdJsPromise='
                     + JSON.stringify(mConnIdJsPromise) + " , " + mConnIdJsPromise);
-                    console.debug('ACTS_JsServiceAbility_0500_onConnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_0500_onConnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
-                    console.debug('ACTS_JsServiceAbility_0500_onConnectCallback ====> remote='
+                    console.info('ACTS_JsServiceAbility_0500_onConnectCallback ====> remote='
                     + JSON.stringify(remote) + " , " + remote);
-                    console.debug('ACTS_JsServiceAbility_0500_onConnectCallback ====> remote is proxy:'
+                    console.info('ACTS_JsServiceAbility_0500_onConnectCallback ====> remote is proxy:'
                     + (remote instanceof rpc.RemoteProxy));
                 }
 
                 function onDisconnectCallback(element) {
-                    console.debug('ACTS_JsServiceAbility_0500_onDisconnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_0500_onDisconnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_0500_onFailedCallback ====> code=' +
+                    console.info('ACTS_JsServiceAbility_0500_onFailedCallback ====> code=' +
                     JSON.stringify(code) + " , " + code)
                 }
 
@@ -424,23 +424,23 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_0600', 0, async function (done) {
+        it('ACTS_JsServiceAbility_0600', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_0600====<begin');
             try {
                 let mConnIdJsAsyncCallback;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0600).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0600 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0600 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0600 = data;
                     commonEvent.subscribe(subscriber0600, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0600 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0600 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         if (data.event == "ACTS_SerivceAbilityServer_onConnect_PageConnectService_0600") {
                             featureAbility.disconnectAbility(mConnIdJsAsyncCallback, (err) => {
-                                console.debug("=ACTS_JsServiceAbility_0600 disconnectAbility err====>"
+                                console.info("=ACTS_JsServiceAbility_0600 disconnectAbility err====>"
                                 + ("json err=") + JSON.stringify(err));
                             })
                         } else {
@@ -453,23 +453,23 @@ export default function ActsStServiceAbilityTest() {
                     });
                 })
                 function onConnectCallback(element, remote) {
-                    console.debug('ACTS_JsServiceAbility_0600_onConnectCallback ====> mConnIdJsAsyncCallback='
+                    console.info('ACTS_JsServiceAbility_0600_onConnectCallback ====> mConnIdJsAsyncCallback='
                     + JSON.stringify(mConnIdJsAsyncCallback) + " , " + mConnIdJsAsyncCallback);
-                    console.debug('ACTS_JsServiceAbility_0600_onConnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_0600_onConnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
-                    console.debug('ACTS_JsServiceAbility_0600_onConnectCallback ====> remote='
+                    console.info('ACTS_JsServiceAbility_0600_onConnectCallback ====> remote='
                     + JSON.stringify(remote) + " , " + remote);
-                    console.debug('ACTS_JsServiceAbility_0600_onConnectCallback ====> remote is proxy:'
+                    console.info('ACTS_JsServiceAbility_0600_onConnectCallback ====> remote is proxy:'
                     + (remote instanceof rpc.RemoteProxy));
                 }
 
                 function onDisconnectCallback(element) {
-                    console.debug('ACTS_JsServiceAbility_0600_onDisconnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_0600_onDisconnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_0600_onFailedCallback ====> code=' +
+                    console.info('ACTS_JsServiceAbility_0600_onFailedCallback ====> code=' +
                     JSON.stringify(code) + " , " + code)
                     expect(code == featureAbility.ErrorCode.ABILITY_NOT_FOUND
                     || (code != featureAbility.ErrorCode.NO_ERROR
@@ -502,23 +502,23 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.startAbility : Use page to test startAbiltiy service.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_0900', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_0900====<begin');
+        it('ACTS_JsServiceAbility_0900', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_0900====<begin');
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo0900).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_0900 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0900 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber0900 = data;
                     commonEvent.subscribe(subscriber0900, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_0900 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_0900 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         expect("ACTS_SerivceAbilityServerSecond_onCommand_ServiceStartService_0900").assertEqual(
                             data.event);
                         unsubscribe("ACTS_JsServiceAbility_0900_unsubscribe", subscriber0900);
-                        console.debug('ACTS_JsServiceAbility_0900====<end');
+                        console.info('ACTS_JsServiceAbility_0900====<end');
                         done();
                     });
                 })
@@ -533,17 +533,17 @@ export default function ActsStServiceAbilityTest() {
                         },
                     }
                 ).then(data => {
-                    console.debug("=ACTS_JsServiceAbility_0900 .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_0900 .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 }).catch(err => {
                     expect(".catch").assertEqual(err);
-                    console.debug('ACTS_JsServiceAbility_0900====<end .catch(err)');
+                    console.info('ACTS_JsServiceAbility_0900====<end .catch(err)');
                     done();
                 })
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_0900==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_0900==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -553,24 +553,24 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: particleability.startAbility : Use page to test startAbiltiy service.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_1000', 0, async function (done) {
-            console.debug('ACTS_JsServiceAbility_1000====<begin');
+        it('ACTS_JsServiceAbility_1000', Level.LEVEL0, async function (done) {
+            console.info('ACTS_JsServiceAbility_1000====<begin');
             await sleep(2000)
             try {
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo1000).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_1000 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_1000 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber1000 = data;
                     commonEvent.subscribe(subscriber1000, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_1000 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_1000 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         expect("ACTS_SerivceAbilityServerSecond_onCommand_ServiceStartService_1000")
                             .assertEqual(data.event);
                         unsubscribe("ACTS_JsServiceAbility_1000_unsubscribe", subscriber1000);
-                        console.debug('ACTS_JsServiceAbility_1000====<end');
+                        console.info('ACTS_JsServiceAbility_1000====<end');
                         done()
                     });
                 })
@@ -584,7 +584,7 @@ export default function ActsStServiceAbilityTest() {
                             action: "ServiceStartService_1000",
                         },
                     }, (err, data) => {
-                    console.debug("=ACTS_JsServiceAbility_1000 startAbility (err,data)=======>"
+                    console.info("=ACTS_JsServiceAbility_1000 startAbility (err,data)=======>"
                     + ("json err【") + JSON.stringify(err) + (" 】")
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,err=" + err + " ,data=" + data);
@@ -592,7 +592,7 @@ export default function ActsStServiceAbilityTest() {
                 )
             } catch (err) {
                 expect().assertFail()
-                console.debug('ACTS_JsServiceAbility_1000==== err: ' + JSON.stringify(err));
+                console.info('ACTS_JsServiceAbility_1000==== err: ' + JSON.stringify(err));
                 done();
             }
         })
@@ -602,23 +602,23 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1300', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1300', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1300====<begin');
             try {
                 let mConnIdJsPromise;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo1300).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_1300 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_1300 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber1300 = data;
                     commonEvent.subscribe(subscriber1300, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_1300 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_1300 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         if (data.event == "ACTS_SerivceAbilityServerSecond_onConnect_ServiceConnectService_1300") {
                             featureAbility.disconnectAbility(mConnIdJsPromise).then((err) => {
-                                console.debug("=ACTS_JsServiceAbility_1300 disconnectAbility err====>"
+                                console.info("=ACTS_JsServiceAbility_1300 disconnectAbility err====>"
                                 + ("json err=") + JSON.stringify(err));
                             })
                         }
@@ -632,18 +632,18 @@ export default function ActsStServiceAbilityTest() {
                     });
                 })
                 function onConnectCallback(element, remote) {
-                    console.debug('ACTS_JsServiceAbility_1300_onConnectCallback ====> mConnIdJsPromise='
+                    console.info('ACTS_JsServiceAbility_1300_onConnectCallback ====> mConnIdJsPromise='
                     + JSON.stringify(mConnIdJsPromise) + " , " + mConnIdJsPromise);
-                    console.debug('ACTS_JsServiceAbility_1300_onConnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1300_onConnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
-                    console.debug('ACTS_JsServiceAbility_1300_onConnectCallback ====> remote='
+                    console.info('ACTS_JsServiceAbility_1300_onConnectCallback ====> remote='
                     + JSON.stringify(remote) + " , " + remote);
-                    console.debug('ACTS_JsServiceAbility_1300_onConnectCallback ====> remote is proxy:'
+                    console.info('ACTS_JsServiceAbility_1300_onConnectCallback ====> remote is proxy:'
                     + (remote instanceof rpc.RemoteProxy));
                 }
 
                 function onDisconnectCallback(element) {
-                    console.debug('ACTS_JsServiceAbility_1300_onDisconnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1300_onDisconnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
                     unsubscribe("ACTS_JsServiceAbility_1300_unsubscribe", subscriber1300);
                     console.log('ACTS_JsServiceAbility_1300====<end onDisconnectCallback')
@@ -651,7 +651,7 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1300_onFailedCallback ====> code=' +
+                    console.info('ACTS_JsServiceAbility_1300_onFailedCallback ====> code=' +
                     JSON.stringify(code) + " , " + code)
                 }
 
@@ -679,23 +679,23 @@ export default function ActsStServiceAbilityTest() {
         * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
         */
-        it('ACTS_JsServiceAbility_1400', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1400', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1400====<begin');
             try {
                 let mConnIdJsAsyncCallback;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo1400).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_1400 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_1400 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber1400 = data;
                     commonEvent.subscribe(subscriber1400, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_1400 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_1400 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         if (data.event == "ACTS_SerivceAbilityServerSecond_onConnect_ServiceConnectService_1400") {
                             featureAbility.disconnectAbility(mConnIdJsAsyncCallback, (err) => {
-                                console.debug("=ACTS_JsServiceAbility_1400 disconnectAbility err====>"
+                                console.info("=ACTS_JsServiceAbility_1400 disconnectAbility err====>"
                                 + ("json err=") + JSON.stringify(err));
                             })
                         } else {
@@ -708,23 +708,23 @@ export default function ActsStServiceAbilityTest() {
                     });
                 })
                 function onConnectCallback(element, remote) {
-                    console.debug('ACTS_JsServiceAbility_1400_onConnectCallback ====> mConnIdJsAsyncCallback='
+                    console.info('ACTS_JsServiceAbility_1400_onConnectCallback ====> mConnIdJsAsyncCallback='
                     + JSON.stringify(mConnIdJsAsyncCallback) + " , " + mConnIdJsAsyncCallback);
-                    console.debug('ACTS_JsServiceAbility_1400_onConnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1400_onConnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
-                    console.debug('ACTS_JsServiceAbility_1400_onConnectCallback ====> remote='
+                    console.info('ACTS_JsServiceAbility_1400_onConnectCallback ====> remote='
                     + JSON.stringify(remote) + " , " + remote);
-                    console.debug('ACTS_JsServiceAbility_1400_onConnectCallback ====> remote is proxy:'
+                    console.info('ACTS_JsServiceAbility_1400_onConnectCallback ====> remote is proxy:'
                     + (remote instanceof rpc.RemoteProxy));
                 }
 
                 function onDisconnectCallback(element) {
-                    console.debug('ACTS_JsServiceAbility_1400_onDisconnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1400_onDisconnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1400_onFailedCallback ====> code=' +
+                    console.info('ACTS_JsServiceAbility_1400_onFailedCallback ====> code=' +
                     JSON.stringify(code) + " , " + code)
                 }
 
@@ -752,27 +752,27 @@ export default function ActsStServiceAbilityTest() {
          * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
          * @tc.desc: Check the return value of the interface (by Promise)
          */
-        it('ACTS_JsServiceAbility_1500', 0, async function (done) {
+        it('ACTS_JsServiceAbility_1500', Level.LEVEL0, async function (done) {
             console.log('ACTS_JsServiceAbility_1500====<begin');
             try {
                 let mConnIdJsPromise;
                 await commonEvent.createSubscriber(CommonEventSubscribeInfo1500).then((data) => {
-                    console.debug("=ACTS_JsServiceAbility_1500 createSubscriber .then(data)=======>"
+                    console.info("=ACTS_JsServiceAbility_1500 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                     subscriber1500 = data;
                     commonEvent.subscribe(subscriber1500, (err, data) => {
-                        console.debug("=ACTS_JsServiceAbility_1500 subscribe (err,data)=======>"
+                        console.info("=ACTS_JsServiceAbility_1500 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                         if (data.event == "ACTS_SerivceAbilityServerSecond_onConnect_ServiceConnectService_1500") {
                             featureAbility.disconnectAbility(mConnIdJsPromise).then((err) => {
-                                console.debug('ACTS_JsServiceAbility_1500===disconnectAbility data:' +
+                                console.info('ACTS_JsServiceAbility_1500===disconnectAbility data:' +
                                 JSON.stringify(err));
                             }).catch(err => {
                                 expect().assertFail()
-                                console.debug('ACTS_JsServiceAbility_1500==== err: ' + JSON.stringify(err));
+                                console.info('ACTS_JsServiceAbility_1500==== err: ' + JSON.stringify(err));
                                 done();
                             })
                         } else {
@@ -785,16 +785,16 @@ export default function ActsStServiceAbilityTest() {
                     });
                 })
                 function onConnectCallback(element, remote) {
-                    console.debug('ACTS_JsServiceAbility_1500_onConnectCallback ====> mConnIdJsPromise='
+                    console.info('ACTS_JsServiceAbility_1500_onConnectCallback ====> mConnIdJsPromise='
                     + JSON.stringify(mConnIdJsPromise) + " , " + mConnIdJsPromise);
-                    console.debug('ACTS_JsServiceAbility_1500_onConnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1500_onConnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
-                    console.debug('ACTS_JsServiceAbility_1500_onConnectCallback ====> remote='
+                    console.info('ACTS_JsServiceAbility_1500_onConnectCallback ====> remote='
                     + JSON.stringify(remote) + " , " + remote);
                 }
 
                 function onDisconnectCallback(element) {
-                    console.debug('ACTS_JsServiceAbility_1500_onDisconnectCallback ====> element='
+                    console.info('ACTS_JsServiceAbility_1500_onDisconnectCallback ====> element='
                     + JSON.stringify(element) + " , " + element);
                     unsubscribe("ACTS_JsServiceAbility_1500_unsubscribe", subscriber1500);
                     console.log('ACTS_JsServiceAbility_1500====<end onDisconnectCallback')
@@ -802,7 +802,7 @@ export default function ActsStServiceAbilityTest() {
                 }
 
                 function onFailedCallback(code) {
-                    console.debug('ACTS_JsServiceAbility_1500_onFailedCallback ====> code=' +
+                    console.info('ACTS_JsServiceAbility_1500_onFailedCallback ====> code=' +
                     JSON.stringify(code) + " , " + code)
                 }
 
@@ -824,5 +824,85 @@ export default function ActsStServiceAbilityTest() {
                 done();
             }
         })
+
+        /*
+         * @tc.number: ACTS_JsServiceAbility_1600
+         * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
+         * @tc.desc: Check the return value of the interface (by Promise)
+         */
+        it('ACTS_JsServiceAbility_1600', Level.LEVEL0, async function (done) {
+          console.log('ACTS_JsServiceAbility_1600====<begin');
+          try {
+              await commonEvent.createSubscriber({ events:["ACTS_SerivceAbilityServer_FunctionCallback"] }).then((data) => {
+                  console.info("=ACTS_JsServiceAbility_1600 createSubscriber .then(data)=======>"
+                  + ("json data[") + JSON.stringify(data) + (" ]")
+                  + " ,data=" + data);
+                  subscriber1500 = data;
+                  commonEvent.subscribe(subscriber1500, (err, eventData) => {
+                      console.info("=ACTS_JsServiceAbility_1600 subscribe (err,data)=======>"
+                      + ("json err[") + JSON.stringify(err) + (" ]")
+                      + ("json data[") + JSON.stringify(eventData) + (" ]")
+                      + " ,err=" + err + " ,data=" + eventData);
+                      try{
+                        expect(eventData?.parameters?.result).asssertEqual('success get value');
+                      }catch{}
+                      done();
+                  });
+              })
+              featureAbility.startAbility({
+                  want:{
+                    bundleName: bundleName,
+                    abilityName: abilityName,
+                    action: "ACTS_JsServiceAbility_1600"
+                  }
+                },(err, code)=>{
+                  console.log('ACTS_JsServiceAbility_1600 startAbility result ' + err)
+                })
+          } catch (err) {
+              expect("catch").assertEqual(err);
+              console.log('ACTS_JsServiceAbility_1600====<end err')
+              done();
+          }
+      })
+
+        /*
+         * @tc.number: ACTS_JsServiceAbility_1700
+         * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
+         * @tc.desc: Check the return value of the interface (by Promise)
+         */
+        it('ACTS_JsServiceAbility_1700', Level.LEVEL0, async function (done) {
+          console.log('ACTS_JsServiceAbility_1700====<begin');
+          try {
+              await commonEvent.createSubscriber({ events:["ACTS_SerivceAbilityServer_FunctionCallback"] }).then((data) => {
+                  console.info("=ACTS_JsServiceAbility_1700 createSubscriber .then(data)=======>"
+                  + ("json data[") + JSON.stringify(data) + (" ]")
+                  + " ,data=" + data);
+                  subscriber1500 = data;
+                  commonEvent.subscribe(subscriber1500, (err, eventData) => {
+                      console.info("=ACTS_JsServiceAbility_1700 subscribe (err,data)=======>"
+                      + ("json err[") + JSON.stringify(err) + (" ]")
+                      + ("json data[") + JSON.stringify(eventData) + (" ]")
+                      + " ,err=" + err + " ,data=" + eventData);
+                      try{
+                        expect(eventData?.parameters?.result).asssertEqual(1);
+                      }catch{}
+                      done();
+                  });
+              })
+              featureAbility.startAbility({
+                want:{
+                  bundleName: bundleName,
+                  abilityName: abilityName,
+                  action: "ACTS_JsServiceAbility_1700"
+                }
+              },(err, code)=>{
+                    console.log('ACTS_JsServiceAbility_1700 startAbility result ' + err)
+                  })
+          } catch (err) {
+              expect("catch").assertEqual(err);
+              console.log('ACTS_JsServiceAbility_1700====<end err')
+              done();
+          }
+      })
     })
 }

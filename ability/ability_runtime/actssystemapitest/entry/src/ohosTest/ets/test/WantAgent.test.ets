@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level } from '@ohos/hypium'
 import WantAgent from '@ohos.app.ability.wantAgent'
 let ERROR_CODE = 202;
 
@@ -26,7 +26,7 @@ export default function wantAgentTest() {
      * @tc.desc: Test the third-party application call getWant will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_WantAgent_Manager_0100', 0, async (done: Function) => {
+    it('System_API_Test_WantAgent_Manager_0100', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_WantAgent_Manager_0100';
       try {
         WantAgent.getWant(undefined, (error, data) => {
@@ -45,7 +45,7 @@ export default function wantAgentTest() {
      * @tc.desc: Test the third-party application call getWant will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_QuickFix_Manager_0200', 0, async (done: Function) => {
+    it('System_API_Test_QuickFix_Manager_0200', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_QuickFix_Manager_0200';
       try {
         WantAgent.getWant(undefined).then().catch();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
@@ -35,7 +35,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test third-party applications calling startAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0100', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0100';
       let want: Want = {
         abilityName: "aaa",
@@ -57,7 +57,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test third-party applications calling startAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0200', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0200';
       let want: Want = {
         abilityName: "aaa",
@@ -82,7 +82,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test third-party applications calling startAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0300', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0300';
       let want: Want = {
         abilityName: "aaa",
@@ -105,7 +105,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test third-party applications calling startAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0400', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0400';
       let want: Want = {
         abilityName: "aaa",
@@ -131,7 +131,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startAbilityForResultWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0500', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0500';
       let want: Want = {
         abilityName: "aaa",
@@ -155,7 +155,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startAbilityForResultWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0600', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0600';
       let want: Want = {
         abilityName: "aaa",
@@ -182,7 +182,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startAbilityForResultWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0700', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0700';
       let want: Want = {
         abilityName: "aaa",
@@ -209,7 +209,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startAbilityForResultWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0800', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0800', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0800';
       let want: Want = {
         abilityName: "aaa",
@@ -239,7 +239,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startServiceExtensionAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_0900', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_0900', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_0900';
       let want: Want = {
         abilityName: "aaa",
@@ -260,7 +260,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startServiceExtensionAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1000', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1000', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1000';
       let want: Want = {
         abilityName: "aaa",
@@ -282,7 +282,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startServiceExtensionAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1100', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1100', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1100';
       let want: Want = {
         abilityName: "aaa",
@@ -304,7 +304,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call startServiceExtensionAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1200', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1200', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1200';
       let want: Want = {
         abilityName: "aaa",
@@ -327,7 +327,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call stopServiceExtensionAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1300', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1300', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1300';
       let want: Want = {
         abilityName: "aaa",
@@ -348,7 +348,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call stopServiceExtensionAbility will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1400', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1400', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1400';
       let want: Want = {
         abilityName: "aaa",
@@ -370,7 +370,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call stopServiceExtensionAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1500', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1500', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1500';
       let want: Want = {
         abilityName: "aaa",
@@ -392,7 +392,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call stopServiceExtensionAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1600', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1600', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1600';
       let want: Want = {
         abilityName: "aaa",
@@ -417,7 +417,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call connectServiceExtensionAbilityWithAccount will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1700', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1700', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1700';
       let want: Want = {
         abilityName: "aaa",
@@ -451,7 +451,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call setMissionIcon will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1800', 0, async (done: Function) => {
+    it('System_API_Test_AbilityContext_1800', Level.LEVEL0, async (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1800';
 
       const color = new ArrayBuffer(96);
@@ -481,7 +481,7 @@ export default function abilityContextTest() {
      * @tc.desc: Test the third-party application call setMissionIcon will be blocked
      * @tc.level 3
      */
-    it('System_API_Test_AbilityContext_1900', 0, (done: Function) => {
+    it('System_API_Test_AbilityContext_1900', Level.LEVEL0, (done: Function) => {
       let TAG = 'System_API_Test_AbilityContext_1900';
       const color = new ArrayBuffer(96);
       let bufferArr = new Uint8Array(color);

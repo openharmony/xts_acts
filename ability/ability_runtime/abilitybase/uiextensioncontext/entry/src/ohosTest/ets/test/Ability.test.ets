@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError, systemParameterEnhance } from '@kit.BasicServicesKit';
@@ -48,7 +48,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0100] start ');
@@ -100,7 +100,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] start ');
@@ -152,7 +152,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] start ');
@@ -204,7 +204,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0400] start ');
@@ -256,7 +256,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0500] start ');
@@ -308,7 +308,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] start ');
@@ -360,7 +360,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0700] start ');
@@ -412,7 +412,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0800";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0800] start ');
@@ -464,7 +464,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_0900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0900";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0900] start ');
@@ -516,7 +516,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1000', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1000";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] start ');
@@ -568,7 +568,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1100";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1100] start ');
@@ -620,7 +620,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1200";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] start ');
@@ -672,7 +672,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1300] start ');
@@ -724,7 +724,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1400', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1400";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] start ');
@@ -776,7 +776,7 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1500', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1500";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1500] start ');
@@ -828,7 +828,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1600', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1600";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1600] start ');
@@ -880,7 +880,7 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1700] start ');
@@ -932,12 +932,12 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1800', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0100";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1800', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1800";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0100] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1800] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0100_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1800_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0100] commonEventSubscribeInfo success: ');
@@ -962,7 +962,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0100] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1800] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -984,15 +984,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1900', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0200";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_1900', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1900";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1900] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0200_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1900_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1900] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1014,7 +1014,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0200] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1900] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1036,12 +1036,12 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2000', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0300";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2000', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2000";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2000] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0300_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2000_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] commonEventSubscribeInfo success: ');
@@ -1066,7 +1066,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0300] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2000] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1088,15 +1088,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2100', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0400";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2100', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2100";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0400] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2100] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0400_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2100_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0400] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2100] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1118,7 +1118,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0400] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2100] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1140,15 +1140,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2200', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0500";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2200', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2200";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0500] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2200] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0500_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2200_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0500] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2200] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1170,7 +1170,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0500] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2200] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1192,15 +1192,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2300', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0600";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2300', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2300";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0600_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2300_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2300] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1222,7 +1222,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0600] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2300] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1244,15 +1244,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2400', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0700";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2400', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2400";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0700] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2400] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0700_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2400_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0700] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2400] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1274,7 +1274,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0700] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2400] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1296,15 +1296,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2500', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0800";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2500', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2500";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0800] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2500] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0800_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2500_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0800] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2500] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1326,7 +1326,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0800] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2500] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1348,15 +1348,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2600', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_0900";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2600', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2600";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0900] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2600] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_0900_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2600_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0900] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2600] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1378,7 +1378,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_0900] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2600] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1400,15 +1400,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2700', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1000";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2700', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2700";
       if (mpEnable === 'true') {
         console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1000_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2700_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2700] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1430,7 +1430,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1000] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2700] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1452,15 +1452,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2800', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1100";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2800', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2800";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1100] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1100_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2800_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1100] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1482,7 +1482,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2800] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1504,15 +1504,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2900', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1200";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_2900', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_2900";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2900] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1200_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_2900_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2900] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1534,7 +1534,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_2900] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1556,15 +1556,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3000', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1300";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3000', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3000";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1300] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3000] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1300_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3000_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1200] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3000] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1586,7 +1586,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1300] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3000] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1608,15 +1608,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3100', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1400";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3100', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3100";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3100] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1400_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3100_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3100] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1638,7 +1638,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3100] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1660,15 +1660,15 @@ export default function ActsUIExtensionContextMethodTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3200', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1500";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3200', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3200";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1500] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3200] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1500_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3200_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3200] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1690,7 +1690,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1500] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3200] startAbility result ' + err?.code);
           })
         });
         
@@ -1713,12 +1713,12 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3300', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1600";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3300', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3300";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1600] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3300] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1600_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3300_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1400] commonEventSubscribeInfo success: ');
@@ -1743,7 +1743,7 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1600] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3300] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
@@ -1765,15 +1765,15 @@ export default function ActsUIExtensionContextMethodTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3400', 0, async (done: Function) => {
-      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_1700";
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3400', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3400";
       if (mpEnable === 'true') {
-        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1700] start ');
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3400] start ');
         let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_1700_event"]
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3400_event"]
         };
         await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
-          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1700] commonEventSubscribeInfo success: ');
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3400] commonEventSubscribeInfo success: ');
           sub = subscriber;
           hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
           commonEventManager.subscribe(sub, (err, commonEventData) => {
@@ -1795,7 +1795,215 @@ export default function ActsUIExtensionContextMethodTest() {
               "case":tag
             }
           },(err, data)=>{
-            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_1700] startAbility result ' + err?.code);
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3400] startAbility result ' + err?.code);
+          })
+        });
+      } else if (mpEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(mpEnable).assertEqual('false');
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+    * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionContext_3500
+    * @tc.name: When the input parameter want is null, an error code is returned(openAtomicService).
+    * @tc.desc: When the input parameter want is null, an error code is returned(openAtomicService).
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 3
+    */
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3500', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3500";
+      if (mpEnable === 'true') {
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3500] start ');
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3500_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3500] commonEventSubscribeInfo success: ');
+          sub = subscriber;
+          hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
+          commonEventManager.subscribe(sub, (err, commonEventData) => {
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback` + JSON.stringify(commonEventData));
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(401);
+            } catch {
+            }
+            commonEventManager.publish("teminate", () => { });
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          });
+          testAbilityContext.startAbility({
+            bundleName: "com.acts.uiextensioncontexttest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": tag
+            }
+          }, (err, data) => {
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3500] startAbility result ' + err?.code);
+          })
+        });
+      } else if (mpEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(mpEnable).assertEqual('false');
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+   * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionContext_3600
+   * @tc.name: When the input parameter want is null, an error code is returned(openlink).
+   * @tc.desc: When the input parameter want is null, an error code is returned(openlink).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 3
+   */
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3600', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3600";
+      if (mpEnable === 'true') {
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3600] start ');
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3600_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3600] commonEventSubscribeInfo success: ');
+          sub = subscriber;
+          hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
+          commonEventManager.subscribe(sub, (err, commonEventData) => {
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback` + JSON.stringify(commonEventData));
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(401);
+            } catch {
+            }
+            commonEventManager.publish("teminate", () => { });
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          });
+          testAbilityContext.startAbility({
+            bundleName: "com.acts.uiextensioncontexttest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": tag
+            }
+          }, (err, data) => {
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3600] startAbility result ' + err?.code);
+          })
+        });
+      } else if (mpEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(mpEnable).assertEqual('false');
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+   * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionContext_3700
+   * @tc.name: When the input parameter want is null, an error code is returned(loadcontent).
+   * @tc.desc: When the input parameter want is null, an error code is returned(loadcontent).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 3
+   */
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3700', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3700";
+      if (mpEnable === 'true') {
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3700] start ');
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3700_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3700] commonEventSubscribeInfo success: ');
+          sub = subscriber;
+          hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
+          commonEventManager.subscribe(sub, (err, commonEventData) => {
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback` + JSON.stringify(commonEventData));
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(401);
+            } catch {
+            }
+            commonEventManager.publish("teminate", () => { });
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          });
+          testAbilityContext.startAbility({
+            bundleName: "com.acts.uiextensioncontexttest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": tag
+            }
+          }, (err, data) => {
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3700] startAbility result ' + err?.code);
+          })
+        });
+      } else if (mpEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(mpEnable).assertEqual('false');
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+   * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionContext_3800
+   * @tc.name: When the input parameter want is null, an error code is returned(openAtomicService).
+   * @tc.desc: When the input parameter want is null, an error code is returned(openAtomicService).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 3
+   */
+    it('SUB_Ability_AbilityRuntime_UIExtensionContext_3800', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIExtensionContext_3800";
+      if (mpEnable === 'true') {
+        console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3800] start ');
+        let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["SUB_Ability_AbilityRuntime_UIExtensionContext_3800_event"]
+        };
+        await commonEventManager.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+          console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3800] commonEventSubscribeInfo success: ');
+          sub = subscriber;
+          hilog.info(0x0000, tag, '%{public}s', `createSubscriber ok`);
+          commonEventManager.subscribe(sub, (err, commonEventData) => {
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback` + JSON.stringify(commonEventData));
+            hilog.info(0x0000, tag, '%{public}s', `tag subscribecllback  ${JSON.stringify(commonEventData.parameters?.data)}`);
+            try {
+              expect(commonEventData.parameters?.result).assertEqual(401);
+            } catch {
+            }
+            commonEventManager.publish("teminate", () => { });
+            commonEventManager.unsubscribe(subscriber, (err, data) => {
+              done();
+            });
+          });
+          testAbilityContext.startAbility({
+            bundleName: "com.acts.uiextensioncontexttest",
+            abilityName: "EntryAbility1",
+            parameters: {
+              "case": tag
+            }
+          }, (err, data) => {
+            console.info('====> [SUB_Ability_AbilityRuntime_UIExtensionContext_3800] startAbility result ' + err?.code);
           })
         });
       } else if (mpEnable === 'false') {
