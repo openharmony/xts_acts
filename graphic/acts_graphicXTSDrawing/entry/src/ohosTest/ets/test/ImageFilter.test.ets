@@ -266,6 +266,14 @@ export default function imageFilterTest() {
         console.info(msg + ` createFromColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
+      try {
+        let colorFilter3 = drawing.ColorFilter.createSRGBGammaToLinear();
+        let imgFilter3 = drawing.ImageFilter.createFromColorFilter(colorFilter3);
+        console.info(msg + ' createFromColorFilter successed,ImageFilter:' + JSON.stringify(imgFilter3));
+      } catch( e ) {
+        console.info(msg + ` createFromColorFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
     });
 
     /**
