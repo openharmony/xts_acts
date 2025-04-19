@@ -554,7 +554,7 @@ export default function CameraSessionCameraRotationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100', Level.LEVEL2, async (done: Function) => {
       try {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_CAMERA_VIDEO_ROTATION_FUNC_0100--------------");
         createCameraSessionInstance(cameraObj.SceneMode.NORMAL_VIDEO);
