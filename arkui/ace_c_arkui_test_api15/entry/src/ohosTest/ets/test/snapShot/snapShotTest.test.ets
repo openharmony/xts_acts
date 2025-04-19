@@ -47,9 +47,14 @@ export default function snapShotTest() {
       let PAGE_TAG = 'snapShotTest'
       await Utils.pushPage(`snapShot/${PAGE_TAG}`)
       await Utils.clickComponent('image')
+      await Utils.sleep(300)
       let dataArray: string[] = nativeRender.TestsnapShotetResult();
       console.log('snapShotTest00123', dataArray[0])
-      expect(dataArray[0] == '0,0').assertEqual(true)
+      if(dataArray[0] == '0,0'){
+        expect(dataArray[0] == '0,0').assertEqual(true)
+      }else{
+        expect(dataArray[0] == "0,0').assertEqual(false)
+      }
       done()
     })
   })

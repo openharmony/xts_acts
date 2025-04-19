@@ -49,9 +49,11 @@ export default function EventInfoTest() {
       let driver = Driver.create()
       let refresh = await driver.findComponent(ON.id('image'))
       await refresh.click()
-      let dataArray: string[] = nativeRender.TestEventInfoGetResult()
-      console.log('EventInfoTest001', dataArray[0])
-      expect(dataArray[0] == '0,0').assertEqual(true)
+      await Utils.sleep(1000)
+      let dataArrayTouch: string[] = nativeRender.TestEventInfoGetResultTouch();
+      let dataArrayMove: string[] = nativeRender.TestEventInfoGetResultMove();
+      console.log('EventInfoTest001', dataArrayTouch[0])
+      expect(dataArrayTouch[0] == '0,0').assertEqual(true)
       done()
     })
 
@@ -67,9 +69,11 @@ export default function EventInfoTest() {
       let PAGE_TAG = 'EventInfoCaseTest1'
       await Utils.pushPage(`eventInfo/${PAGE_TAG}`)
       await click('image')
-      let dataArray: string[] = nativeRender.TestEventInfoGetResult();
-      console.log('EventInfoTest002', dataArray[0])
-      expect(dataArray[0] == '0,0,0,0,401').assertEqual(true)
+      await Utils.sleep(1000)
+      let dataArrayTouch: string[] = nativeRender.TestEventInfoGetResultTouch();
+      let dataArrayMove: string[] = nativeRender.TestEventInfoGetResultMove();
+      console.log('EventInfoTest002', dataArrayMove[0])
+      expect(dataArrayMove[0] == '0,0,0,0,401').assertEqual(true)
       done()
     })
   })
