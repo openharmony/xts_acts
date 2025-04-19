@@ -69,7 +69,7 @@ private:
     OHNativeWindow *_nativeWindow = nullptr;
     GLuint textureId = 0;
 public:
-    InitNativeWindow(OH_NativeImage *_image)
+    explicit InitNativeWindow(OH_NativeImage *_image)
     {
         if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
@@ -1742,6 +1742,30 @@ static napi_value oHConsumerSurfaceCreateAbNormal(napi_env env, napi_callback_in
     return result;
 }
 
+std::map<std::uint64_t, int32_t> usage_num = {
+    {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 9},
+    {NATIVEBUFFER_USAGE_CPU_WRITE, 11},
+    {NATIVEBUFFER_USAGE_HW_RENDER, 265},
+    {NATIVEBUFFER_USAGE_HW_TEXTURE, 521},
+    {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 65545},
+    {NATIVEBUFFER_USAGE_ALIGNMENT_512, 262153},
+    {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
+         NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
+     328459},
+};
+
+std::map<std::uint64_t, int32_t> usage_size = {
+    {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 10},
+    {NATIVEBUFFER_USAGE_CPU_WRITE, 100},
+    {NATIVEBUFFER_USAGE_HW_RENDER, 1000},
+    {NATIVEBUFFER_USAGE_HW_TEXTURE, 10000},
+    {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 10000},
+    {NATIVEBUFFER_USAGE_ALIGNMENT_512, 10000},
+    {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
+         NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
+     100},
+};
+
 static napi_value OHConsumerSurfaceSetDefaultUsageSizeNormal(napi_env env, napi_callback_info info)
 {
     /**
@@ -1757,28 +1781,6 @@ static napi_value OHConsumerSurfaceSetDefaultUsageSizeNormal(napi_env env, napi_
      * buffer 默认有 NATIVEBUFFER_USAGE_CPU_READ和
      * NATIVEBUFFER_USAGE_MEM_DMA两个属性，查询到的默认值为1001(与或关系)(即8+1)
      */
-    std::map<std::uint64_t, int32_t> usage_num = {
-        {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 9},
-        {NATIVEBUFFER_USAGE_CPU_WRITE, 11},
-        {NATIVEBUFFER_USAGE_HW_RENDER, 265},
-        {NATIVEBUFFER_USAGE_HW_TEXTURE, 521},
-        {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 65545},
-        {NATIVEBUFFER_USAGE_ALIGNMENT_512, 262153},
-        {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
-             NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
-         328459},
-    };
-    std::map<std::uint64_t, int32_t> usage_size = {
-        {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 10},
-        {NATIVEBUFFER_USAGE_CPU_WRITE, 100},
-        {NATIVEBUFFER_USAGE_HW_RENDER, 1000},
-        {NATIVEBUFFER_USAGE_HW_TEXTURE, 10000},
-        {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 10000},
-        {NATIVEBUFFER_USAGE_ALIGNMENT_512, 10000},
-        {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
-             NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
-         100},
-    };
     napi_value result = nullptr;
     for (const auto &pair : usage_size) {
         OHNativeWindowBuffer *windowBuffer = nullptr;
@@ -1815,7 +1817,6 @@ static napi_value OHConsumerSurfaceSetDefaultUsageSizeNormal(napi_env env, napi_
     }
     napi_create_int32(env, SUCCESS, &result);
     return result;
-
 }
 
 napi_value NativeImageInit(napi_env env, napi_value exports)
@@ -1901,8 +1902,8 @@ static napi_value NativeImageInit2(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"oHConsumerSurfaceCreateAbNormal", nullptr, oHConsumerSurfaceCreateAbNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"OHConsumerSurfaceSetDefaultUsageSizeNormal", nullptr, OHConsumerSurfaceSetDefaultUsageSizeNormal, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
+        {"OHConsumerSurfaceSetDefaultUsageSizeNormal", nullptr, OHConsumerSurfaceSetDefaultUsageSizeNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
