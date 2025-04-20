@@ -14,7 +14,7 @@
  */
 
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString, arrayEqual } from './utils/param/publicFunc';
@@ -301,7 +301,7 @@ let genHuksOptions = {
 export default function SecurityHuksCipherSM2PromiseJsunit() {
     describe('SecurityHuksCipherSM2PromiseJsunit', function () {
 
-        it('Security_HUKS_Cipher_API9_SM2_101', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // init-update-finish
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_101A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_101B';
@@ -338,7 +338,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_102', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // init - update - finish
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_102A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_102B';
@@ -401,7 +401,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_103', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_103A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_103B';
@@ -460,7 +460,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_104', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // wrong key size
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_104A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_104B';
@@ -499,7 +499,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_105', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             console.info("---------------------------------------105---------------------------------------------------------")
             const srcKeyAlies = 'Security_HUKS_Cipher_API9_SM2_105A';
@@ -566,7 +566,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_106', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -632,7 +632,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_107', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -689,7 +689,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1081', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1081', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             // indata is null
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -755,7 +755,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1082', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1082', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
 
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -811,7 +811,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1091', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1091', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             // indata is null
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -879,7 +879,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1092', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
 
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -938,7 +938,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_110', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1007,7 +1007,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_111', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const srcKeyAlies2 = srcKeyAlies + '2';
@@ -1097,7 +1097,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_112', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1173,7 +1173,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_113', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1251,7 +1251,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_114', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // HUKS_DIGEST_NONE error
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1324,7 +1324,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1151', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             // indata is null
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -1402,7 +1402,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1152', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1152', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
 
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -1476,7 +1476,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1161', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1161', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             // indata is null
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -1555,7 +1555,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_1162', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_1162', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
 
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
@@ -1629,7 +1629,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_801', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // use update and finish
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
@@ -1731,7 +1731,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_SM2_802', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_SM2_802', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             // only use finish instead of update
             const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
             const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';

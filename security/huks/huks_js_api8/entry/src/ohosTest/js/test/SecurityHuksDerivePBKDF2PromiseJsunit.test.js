@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it } from '@ohos/hypium';
+import { describe, it, TestType, Size, Level } from '@ohos/hypium';
 import Data from './utils/data.json';
 import { HuksDerivePBKDF2 } from './utils/param/derive/publicDeriveParam';
 import { stringToUint8Array } from './utils/param/publicFunc';
@@ -37,7 +37,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
   describe('SecurityHuksDerivePBKDF2PromiseJsunit', function () {
-    it('Security_HUKS_Derive_API8_PBKDF_2101', 0, async function (done) {
+    it('Security_HUKS_Derive_API8_PBKDF_2101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Finish63KBDeriveKeyAlias_01_101';
       let huksOptionsFinish = {
         properties: new Array(
@@ -60,7 +60,7 @@ export default function SecurityHuksDerivePBKDF2PromiseJsunit() {
       await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, deriveArray, 'finish');
       done();
     });
-    it('Security_HUKS_Derive_API8_PBKDF_2102', 0, async function (done) {
+    it('Security_HUKS_Derive_API8_PBKDF_2102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       const srcKeyAliesFirst = 'testDerivePBKDF2Size256SHA256Abort63KBDeriveKeyAlias_01_101';
       let huksOptionsFinish = {
         properties: new Array(

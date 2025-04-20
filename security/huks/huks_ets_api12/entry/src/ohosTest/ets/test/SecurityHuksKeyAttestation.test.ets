@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { SetParam, MergeOption } from './utils/HuksOptionUtil';
 import { GetEd25519GenerateOption, GetX25519GenerateOption } from './options/GenerateKeyOptions';
@@ -48,7 +48,7 @@ export default function SecurityHuksKeyAttestationTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0100";
       let genKeyOptions: huks.HuksOptions = GetX25519GenerateOption(256);
       let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetX25519GenerateOption(256), GetAttestKeyOption());
@@ -70,7 +70,7 @@ export default function SecurityHuksKeyAttestationTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0200";
       let genKeyOptions: huks.HuksOptions = GetX25519GenerateOption(256);
       let importPubKeyOptions: huks.HuksOptions = MergeOption(GetX25519GenerateOption(256), GetImportPubKeyOptions());
@@ -96,7 +96,7 @@ export default function SecurityHuksKeyAttestationTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0300";
       let genKeyOptions: huks.HuksOptions = GetEd25519GenerateOption(256);
       let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetEd25519GenerateOption(256), GetAttestKeyOption());
@@ -118,7 +118,7 @@ export default function SecurityHuksKeyAttestationTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0400";
       let genKeyOptions: huks.HuksOptions = GetEd25519GenerateOption(256);
       let importPubKeyOptions: huks.HuksOptions = MergeOption(GetEd25519GenerateOption(256), GetImportPubKeyOptions());

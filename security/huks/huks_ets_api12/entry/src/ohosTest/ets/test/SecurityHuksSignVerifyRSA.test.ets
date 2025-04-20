@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import huks from '@ohos.security.huks';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { huks } from '@kit.UniversalKeystoreKit';
 import { SetParam, GenParam, GetDataBySize, CheckSoftware, CheckWearable } from './utils/HuksOptionUtil';
 import { StringToUint8Array } from './utils/CommonUtil';
 import { SignVerify, SignVerifyData } from './utils/SignVerifyUtil';
@@ -69,7 +69,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0100";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -96,7 +96,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0200";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(64))],
@@ -135,7 +135,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0300";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(64)), StringToUint8Array(GetDataBySize(33))],
@@ -174,7 +174,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0400";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -202,7 +202,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0500', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0500";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -231,7 +231,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0600', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0600";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -259,7 +259,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0700', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0700";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -288,7 +288,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0800', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0800";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -316,7 +316,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0900', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_0900";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -345,7 +345,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1000', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1000";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(32))],
@@ -372,7 +372,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1100', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1100";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(1024)), StringToUint8Array(GetDataBySize(1023))],
@@ -411,7 +411,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1200', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1200";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(1024))],
@@ -450,7 +450,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1300', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1300";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(1024))],
@@ -478,7 +478,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1400', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1400";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(1024)), StringToUint8Array(GetDataBySize(1023))],
@@ -507,7 +507,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1500', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1500";
       let signVerifyData: SignVerifyData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(32))],
@@ -536,7 +536,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1600', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1600";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -561,7 +561,7 @@ export default function SecurityHuksSignVerifyRSATest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1700', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1700";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -580,13 +580,13 @@ export default function SecurityHuksSignVerifyRSATest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_Cipher_SM4_API16_Func_0100
-     * @tc.name   : test rsa 1024 noDigest/ISO_IEC_9796_2 mode signVerify, process fail
+     * @tc.name   : test rsa 1024 noDigest/ISO_IEC_9796_2 mode signVerify, wearable pass
      * @tc.desc   : generate key, sign, verify
      * @tc.size   : SmallTest
      * @tc.type   : Function
-     * @tc.level  : Level2
+     * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_SignVerify_RSA_API12_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_SignVerify_RSA_API12_Func_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API12_Func_0100";
       let signVerifyData: SignVerifyData = {
         updateDataArr: null,
@@ -595,17 +595,111 @@ export default function SecurityHuksSignVerifyRSATest() {
       }
       SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2);
       SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA1);
-      if (!isWearable) {
+      try {
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await SignVerify(testNumber, signVerifyOption, signVerifyData);
+        expect(isWearable).assertEqual(true);
+        expect(res).assertEqual(true)
+      } catch (err) {
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
+        let expectErrCode = useSoftware ? 12000001 : 12000012;
+        expect(err.code).assertEqual(expectErrCode);
+      }
+    })
 
-        try {
-          await huks.generateKeyItem(testNumber, genKeyOption);
-          let res: boolean = await SignVerify(testNumber, signVerifyOption, signVerifyData);
-          expect(null).assertFail();
-        } catch (err) {
-          console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
-          let expectErrCode = useSoftware ? 12000001 : 12000012;
-          expect(err.code).assertEqual(expectErrCode);
-        }
+    /**
+     * @tc.number : SUB_Security_HUKS_SignVerify_RSA_API16_Func_1800
+     * @tc.name   : test rsa 1032 noDigest/ISO_IEC_9796_2 mode signVerify, wearable pass
+     * @tc.desc   : generate key, sign, verify
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1800";
+      let keySize = 1032;
+      let signVerifyData: SignVerifyData = {
+        updateDataArr: null,
+        finishData: StringToUint8Array(GetDataBySize(keySize / 8 - 21)),
+        signatureData: null
+      }
+      SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA1);
+      try {
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await SignVerify(testNumber, signVerifyOption, signVerifyData);
+        expect(isWearable).assertEqual(true);
+        expect(res).assertEqual(true)
+      } catch (err) {
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
+        let expectErrCode = useSoftware ? 12000001 : 12000012;
+        expect(err.code).assertEqual(expectErrCode);
+      }
+    })
+
+    /**
+     * @tc.number : SUB_Security_HUKS_SignVerify_RSA_API16_Func_1900
+     * @tc.name   : test rsa 2040 noDigest/ISO_IEC_9796_2 mode signVerify, wearable pass
+     * @tc.desc   : generate key, sign, verify
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_1900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_1900";
+      let keySize = 2040;
+      let signVerifyData: SignVerifyData = {
+        updateDataArr: null,
+        finishData: StringToUint8Array(GetDataBySize(keySize / 8 - 21)),
+        signatureData: null
+      }
+      SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA1);
+      try {
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await SignVerify(testNumber, signVerifyOption, signVerifyData);
+        expect(isWearable).assertEqual(true);
+        expect(res).assertEqual(true)
+      } catch (err) {
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
+        let expectErrCode = useSoftware ? 12000001 : 12000012;
+        expect(err.code).assertEqual(expectErrCode);
+      }
+    })
+
+    /**
+     * @tc.number : SUB_Security_HUKS_SignVerify_RSA_API16_Func_2000
+     * @tc.name   : test rsa 2048 noDigest/ISO_IEC_9796_2 mode signVerify, wearable pass
+     * @tc.desc   : generate key, sign, verify
+     * @tc.size   : SmallTest
+     * @tc.type   : Function
+     * @tc.level  : Level3
+     */
+    it('SUB_Security_HUKS_SignVerify_RSA_API16_Func_2000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL3, async () => {
+      let testNumber: string = "SUB_Security_HUKS_SignVerify_RSA_API16_Func_2000";
+      let keySize = 2048;
+      let signVerifyData: SignVerifyData = {
+        updateDataArr: null,
+        finishData: StringToUint8Array(GetDataBySize(keySize / 8 - 21)),
+        signatureData: null
+      }
+      SetParam(genKeyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, keySize);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_ISO_IEC_9796_2);
+      SetParam(signVerifyOption, huks.HuksTag.HUKS_TAG_DIGEST, huks.HuksKeyDigest.HUKS_DIGEST_SHA1);
+      try {
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await SignVerify(testNumber, signVerifyOption, signVerifyData);
+        expect(isWearable).assertEqual(true);
+        expect(res).assertEqual(true)
+      } catch (err) {
+        console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
+        let expectErrCode = useSoftware ? 12000001 : 12000012;
+        expect(err.code).assertEqual(expectErrCode);
       }
     })
   }
