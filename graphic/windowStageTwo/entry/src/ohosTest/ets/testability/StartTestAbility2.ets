@@ -21,7 +21,6 @@ const domain = 0x0000;
 
 export default class StartTestAbility2 extends UIAbility {
   public onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(domain, 'testTag', '%{public}s', 'Ability onCreate');
     if (want.abilityName !== undefined) {
       hilog.info(domain, launchParam.launchReason.toString(), '%{public}s', 'Ability onCreate');
