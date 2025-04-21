@@ -784,11 +784,13 @@ export default function intelligenceTest() {
                   });
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest1500 catch:' + err.code);
+                expect().assertFail();
                 done();
               }
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest1500 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -848,6 +850,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest1600 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -899,6 +902,7 @@ export default function intelligenceTest() {
               try {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition);
+                expect().assertFail();
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest1700 catch:' + err.code);
                 expect(err.code).assertEqual(401);
@@ -907,6 +911,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest1700 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -958,6 +963,8 @@ export default function intelligenceTest() {
               try {
                 let query = '软件设计与建模';
                 data.retrieveRdb(query, retrievalCondition);
+                expect().assertFail();
+                done();
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest1800 retrieveRdb is fail:' + err.code);
                 expect(err.code).assertEqual(401);
@@ -966,6 +973,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest1800 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1030,6 +1038,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest1900 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1097,6 +1106,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2000 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1172,11 +1182,13 @@ export default function intelligenceTest() {
                   });
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest2100 catch:' + err.code);
+                expect().assertFail();
                 done();
               }
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2100 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1251,6 +1263,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2200 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1329,6 +1342,7 @@ export default function intelligenceTest() {
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2300 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1417,11 +1431,13 @@ export default function intelligenceTest() {
                   });
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest2400 catch:' + err.code);
+                expect().assertFail();
                 done();
               }
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2400 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
@@ -1532,11 +1548,13 @@ export default function intelligenceTest() {
                   });
               } catch (err) {
                 console.info(TAG + 'intelligenceApiTest2500 catch:' + err.code);
+                expect().assertFail();
                 done();
               }
             });
         } catch (err) {
           console.info(TAG + 'intelligenceApiTest2500 catch:' + err.code);
+          expect().assertFail();
           done();
         }
       } else {
