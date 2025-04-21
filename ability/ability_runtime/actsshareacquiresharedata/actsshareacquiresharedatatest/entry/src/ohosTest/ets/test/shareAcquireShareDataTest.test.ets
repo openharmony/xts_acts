@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 import { Driver, ON ,Component } from '@kit.TestKit';
@@ -47,7 +47,7 @@ export default function shareAcquireShareDataTest() {
      * @tc.desc    Third-party application clears itself (via Promise invocation)
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['button_onClick_event']
@@ -92,7 +92,7 @@ export default function shareAcquireShareDataTest() {
      * @tc.desc    Calling acquireShareData without required permissions
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['button_onClick_event']
@@ -137,7 +137,7 @@ export default function shareAcquireShareDataTest() {
      * @tc.desc    Third-party application terminates itself (via Promise invocation)
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['button_onClick_event']
