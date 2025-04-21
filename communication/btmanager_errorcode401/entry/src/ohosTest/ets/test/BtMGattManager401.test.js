@@ -14,7 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetoothManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let gattClient = null;
@@ -114,7 +114,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 1
          */
-        it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0200', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.setBLEMtuSize();
                 expect(true).assertFalse();
@@ -133,7 +133,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0300', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_MTUSIZE_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.setBLEMtuSize(null);
                 expect(true).assertFalse();
@@ -152,7 +152,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await gattClient.readCharacteristicValue().then((data) => {
                     if (object != null) {
@@ -182,7 +182,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await gattClient.readCharacteristicValue(null).then((data) => {
                     console.info('[bluetooth_js] readCharacValue promise data:'
@@ -208,7 +208,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0300', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -249,7 +249,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -290,7 +290,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0500', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -330,7 +330,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -371,7 +371,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0700', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -408,7 +408,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -446,7 +446,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let arrayBufferCCC = new ArrayBuffer(8);
             let cccValue = new Uint8Array(arrayBufferCCC);
             cccValue[0] = 32;
@@ -477,7 +477,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let arrayBufferCCC = new ArrayBuffer(8);
             let cccValue = new Uint8Array(arrayBufferCCC);
             cccValue[0] = 32;
@@ -509,7 +509,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -550,7 +550,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -591,7 +591,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1300', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -631,7 +631,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -672,7 +672,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1500', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
             let desValue =  new Uint8Array(arrayBuffer);
@@ -712,7 +712,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let descriptors = [];
             let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
                 characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
@@ -750,7 +750,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1700', 0, async function(done) {      
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {      
             try {
                 gattClient.readCharacteristicValue();
                 expect(true).assertFalse();
@@ -771,7 +771,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1800', 0, async function(done) {      
+        it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {      
             try {
                 function readCcc(code, BLECharacteristic) {
                     if (coderror.code != 0) {
@@ -802,7 +802,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await gattClient.readDescriptorValue().then((object) => {
                     if (object != null) {
@@ -831,7 +831,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 await gattClient.readDescriptorValue(null).then((object) => {
                     if (object != null) {
@@ -863,7 +863,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0300', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -902,7 +902,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0400', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -941,7 +941,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0500', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -979,7 +979,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0600', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1018,7 +1018,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0700', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1056,7 +1056,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0800', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1095,7 +1095,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0900', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
                         characteristicUuid: '00001830-0000-1000-8000-00805F9B34FB',
@@ -1130,7 +1130,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1000', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1169,7 +1169,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1100', 0, async function (done) {   
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {   
             try {                                                                 
                 gattClient.readDescriptorValue();
                 expect(true).assertFalse();
@@ -1190,7 +1190,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1200', 0, async function (done) {   
+        it('SUB_COMMUNICATION_BTMANAGER_READDESCRIPTOR_ERROR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {   
             try {
                 function readDesc(code, BLEDescriptor) {
                     if (code.code != 0) {
@@ -1221,7 +1221,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0100', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.writeCharacteristicValue();
                 expect(true).assertFalse();
@@ -1240,7 +1240,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0200', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.writeCharacteristicValue(null);
                 expect(true).assertFalse();
@@ -1259,7 +1259,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0300', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1292,7 +1292,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0400', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1325,7 +1325,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0500', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1357,7 +1357,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0600', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1390,7 +1390,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0700', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1420,7 +1420,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0800', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1450,7 +1450,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0900', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let arrayBufferCCC = new ArrayBuffer(8);
                 let cccValue = new Uint8Array(arrayBufferCCC);
@@ -1475,7 +1475,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1000', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let arrayBufferCCC = new ArrayBuffer(8);
                 let cccValue = new Uint8Array(arrayBufferCCC);
@@ -1500,7 +1500,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1100', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1533,7 +1533,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1200', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1566,7 +1566,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1300', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1598,7 +1598,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1400', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1631,7 +1631,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1500', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1664,7 +1664,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1600', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1697,7 +1697,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1700', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -1730,7 +1730,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1800', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let descriptor = {serviceUuid:'00001820-0000-1000-8000-00805F9B34FB',
@@ -1760,7 +1760,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0100', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.writeDescriptorValue();
                 expect(true).assertFalse();
@@ -1779,7 +1779,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0200', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.writeDescriptorValue(null);
                 expect(true).assertFalse();
@@ -1798,7 +1798,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0300', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1823,7 +1823,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0400', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1848,7 +1848,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0500', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1872,7 +1872,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0600', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1897,7 +1897,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0700', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1921,7 +1921,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0800', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let arrayBuffer = new ArrayBuffer(8);
                 let desValue =  new Uint8Array(arrayBuffer);
@@ -1946,7 +1946,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0900', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let descriptor = {serviceUuid: '00001820-0000-1000-8000-00805F9B34FB',
                         characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
@@ -1968,7 +1968,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_1000', 0,  function () {
+        it('SUB_COMMUNICATION_BTMANAGER_WRITEDESCRIPTOR_ERROR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,  function () {
             try {
                 let descriptor = {serviceUuid: '00001820-0000-1000-8000-00805F9B34FB',
                         characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
@@ -1990,7 +1990,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0100', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.setNotifyCharacteristicChanged();
                 expect(true).assertFalse();
@@ -2009,7 +2009,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0200', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 gattClient.setNotifyCharacteristicChanged(null, true);
                 expect(true).assertFalse();
@@ -2028,7 +2028,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0300', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2062,7 +2062,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0400', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2096,7 +2096,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0500', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2130,7 +2130,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0600', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2163,7 +2163,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0700', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2197,7 +2197,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0800', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2230,7 +2230,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0900', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let descriptors = [];
                 let arrayBuffer = new ArrayBuffer(8);
@@ -2261,7 +2261,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1000', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let arrayBufferCCC = new ArrayBuffer(8);
                 let cccValue = new Uint8Array(arrayBufferCCC);
@@ -2286,7 +2286,7 @@ export default function btManagerMError401Test() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1100', 0, function () {
+        it('SUB_COMMUNICATION_BTMANAGER_SETNOTIFYCHARACTERISTIC_ERROR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
             try {
                 let arrayBufferCCC = new ArrayBuffer(8);
                 let cccValue = new Uint8Array(arrayBufferCCC);
@@ -2311,7 +2311,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0100', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let gattClient = bluetooth.BLE.createGattClientDevice();
                 gattClient.close();
@@ -2333,7 +2333,7 @@ export default function btManagerMError401Test() {
          * @tc.size MediumTest
          * @tc.level Level 3
          */
-        it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0200', 0, async function (done) {
+        it('SUB_COMMUNICATION_BTMANAGER_CREATEGATTCLIDEV_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             try {
                 let gattClient = bluetooth.BLE.createGattClientDevice(null);
                 gattClient.close();
