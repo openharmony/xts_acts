@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { application, common } from '@kit.AbilityKit';
 
 let context = getContext(this) as common.UIAbilityContext;
@@ -42,15 +42,15 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0100
-     * @tc.name   : Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as -1, and
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0100
+     * @tc.name    Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as -1, and
      * return a 401 error code
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0100', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0100';
       try {
         let applicationContext = context.getApplicationContext();
@@ -63,15 +63,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0200
-     * @tc.name   : Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 0, return
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0200
+     * @tc.name    Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 0, return
      * success
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0200', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0200';
       try {
         let applicationContext = context.getApplicationContext();
@@ -84,15 +84,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0300
-     * @tc.name   : Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 2, return
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0300
+     * @tc.name    Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 2, return
      * success
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0300', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0300', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0300';
       try {
         let applicationContext = context.getApplicationContext();
@@ -105,15 +105,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0400
-     * @tc.name   : Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 9999999,
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0400
+     * @tc.name    Call context. getApplication context(). setFontSizeScale, pass parameter fontSize as 9999999,
      * return success
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0400', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0400', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0400';
       try {
         let applicationContext = context.getApplicationContext();
@@ -126,15 +126,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500
-     * @tc.name   : Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as null, and
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500
+     * @tc.name    Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as null, and
      * return a 401 error code
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500';
       try {
         let applicationContext = context.getApplicationContext();
@@ -147,15 +147,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0600
-     * @tc.name   : Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as undefined,
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0600
+     * @tc.name    Call context.getApplicationcontext().setFontSizeScale, pass the parameter fontSize as undefined,
      * and return a 401 error code
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0600', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0600', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0600';
       try {
         let applicationContext = context.getApplicationContext();
@@ -168,15 +168,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0700
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0700
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
      * when the parameter fontSize is -1
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0700', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0700', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0700';
       try {
         let applicationContext = application.getApplicationContext();
@@ -189,15 +189,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0800
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return success when
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0800
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return success when
      * the parameter fontSize is 0
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0800', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0800', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0800';
       try {
         let applicationContext = application.getApplicationContext();
@@ -210,15 +210,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_0900
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return success when
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_0900
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return success when
      * the parameter fontSize is 2
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0900', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_0900', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0900';
       try {
         let applicationContext = application.getApplicationContext();
@@ -231,15 +231,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_1000
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return success when
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_1000
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return success when
      * the parameter fontSize is 9999999
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1000', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1000', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_1000';
       try {
         let applicationContext = application.getApplicationContext();
@@ -252,15 +252,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_1100
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_1100
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
      * when the parameter fontSize is null
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1100', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1100', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_1100';
       try {
         let applicationContext = application.getApplicationContext();
@@ -274,15 +274,15 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_setFontSizeAtApp_1200
-     * @tc.name   : Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
+     * @tc.number  SUB_Ability_AbilityRuntime_setFontSizeAtApp_1200
+     * @tc.name    Call application to get the applicationcontext, call setFontSizeScale, and return 401 error code
      * when the parameter fontSize is undefined
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1200', 0, (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_setFontSizeAtApp_1200', Level.LEVEL0, (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_1200';
       try {
         let applicationContext = application.getApplicationContext();
