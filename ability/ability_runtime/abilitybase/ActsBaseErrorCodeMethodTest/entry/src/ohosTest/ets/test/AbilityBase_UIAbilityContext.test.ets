@@ -1676,13 +1676,12 @@ export default function openLinkTest() {
     it('SUB_Ability_AbilityBase_UIAbilityContext_5200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityBase_UIAbilityContext_5100`;
       console.log(`${tag}, it begin`);
-      let color: Number|null|undefined = undefined;
       try {
-        context.setColorMode(color)
+        context.setColorMode(undefined);
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.error(`${tag} RequestDialogService failed, code is ${code}, message is ${message}`);
+        console.error(`${tag} setColorMode failed, code is ${code}, message is ${message}`);
         expect(err?.code).assertEqual(401);
         done();
       }
