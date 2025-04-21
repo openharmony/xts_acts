@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level, TestType, Size } from '@ohos/hypium'
 import call from '@ohos.telephony.call'
 import radio from '@ohos.telephony.radio'
 import sim from '@ohos.telephony.sim'
@@ -25,7 +25,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface hasCallSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_call_hasCallSync_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_call_hasCallSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_call_hasCallSync_0100';
       let simState: sim.SimState = await sim.getSimStateSync(0);
       if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
@@ -50,7 +50,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getCallStateSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_call_getCallStateSync_0100', 0, async (done:Function) => {
+    it('SUB_Telephony_call_getCallStateSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Telephony_call_getCallStateSync_0100';
       let simState: sim.SimState = await sim.getSimStateSync(0);
       if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
@@ -75,7 +75,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getISOCountryCodeForNetworkSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_radio_getISOCountryCodeForNetworkSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_radio_getISOCountryCodeForNetworkSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -106,7 +106,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getSignalInformationSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_radio_getSignalInformationSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_radio_getSignalInformationSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let slotId = 0;
       radio.isRadioOn((err, data) => {
         if (err) {
@@ -138,7 +138,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getOperatorNameSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_radio_getOperatorNameSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_radio_getOperatorNameSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -170,7 +170,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface isSimActiveSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_isSimActiveSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_isSimActiveSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -204,7 +204,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getISOCountryCodeForSimSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getISOCountryCodeForSimSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getISOCountryCodeForSimSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -238,7 +238,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getSimOperatorNumericSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getSimOperatorNumericSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getSimOperatorNumericSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -272,7 +272,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getSimSpnSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getSimSpnSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getSimSpnSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         if (data) {
@@ -306,7 +306,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getSimStateSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getSimStateSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getSimStateSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         console.info((`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`));
@@ -340,7 +340,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getCardTypeSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getCardTypeSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getCardTypeSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       try {
         let slotId = 0;
         console.info("SUB_Telephony_sim_getCardTypeSync_0100 " + sim.getCardTypeSync(slotId));
@@ -358,7 +358,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface hasSimCardSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_hasSimCardSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_hasSimCardSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let slotId = 0;
       sim.hasSimCard(slotId, (err, data) => {
         console.info((`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`));
@@ -391,7 +391,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getOpKeySync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getOpKeySync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getOpKeySync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       try {
         let slotId = 0;
         console.info("SUB_Telephony_sim_getOpKeySync_0100 " + sim.getOpKeySync(slotId));
@@ -409,7 +409,7 @@ export default function telSyncTest() {
      * @tc.name    Call interface getOpNameSync
      * @tc.desc    Function test
      */
-    it('SUB_Telephony_sim_getOpNameSync_0100', 0, async (done:Function)=> {
+    it('SUB_Telephony_sim_getOpNameSync_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       try {
         let slotId = 0;
         console.info("SUB_Telephony_getOpNameSync_0100 " + sim.getOpKeySync(slotId));
