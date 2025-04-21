@@ -169,18 +169,13 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0100', 0, async (done: Function) => {
       try {
-        let para1 : ESObject = 1;
-        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent) => {
-          console.info(`Current microphone status is: ${micStateChange.mute} `);
-          });
-          .catch((error: BusinessError) => {
-            console.log(`${TagFrmwk}: micStateChange : error ${error}`);
-            expect(Number(error.code) == 401).assertTrue();
-            done();
-          });
+        let para1 : ESObject = 111;
+        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
+        expect(Number(error.code) == 401).assertTrue();
         done();
       }
     })
@@ -194,18 +189,13 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0200', 0, async (done: Function) => {
       try {
-        let para1 : ESObject = 'a';
-        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent) => {
-          console.info(`Current microphone status is: ${micStateChange.mute} `);
-          });
-          .catch((error: BusinessError) => {
-            console.log(`${TagFrmwk}: micStateChange : error ${error}`);
-            expect(Number(error.code) == 401).assertTrue();
-            done();
-          });
+        let para1 : ESObject = 'aaa';
+        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
+        expect(Number(error.code) == 6800101).assertTrue();
         done();
       }
     })
@@ -219,18 +209,13 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0100', 0, async (done: Function) => {
       try {
-        let para1 : ESObject = 1;
-        audioVolumeGroupManager.off(para1, (micStateChange: audio.MicStateChangeEvent) => {
-          console.info(`Current microphone status is: ${micStateChange.mute} `);
-          });
-          .catch((error: BusinessError) => {
-            console.log(`${TagFrmwk}: micStateChange : error ${error}`);
-            expect(Number(error.code) == 401).assertTrue();
-            done();
-          });
-      } catch (error) {
-        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        let para1 : ESObject = 111;
+        audioVolumeGroupManager.off(para1, (micStateChange: audio.MicStateChangeEvent));
         expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`OFF_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 401).assertTrue();
         done();
       }
     })
@@ -244,18 +229,13 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0200', 0, async (done: Function) => {
       try {
-        let para1 : ESObject = 'a';
-        audioVolumeGroupManager.off(para1, (micStateChange: audio.MicStateChangeEvent) => {
-          console.info(`Current microphone status is: ${micStateChange.mute} `);
-          });
-          .catch((error: BusinessError) => {
-            console.log(`${TagFrmwk}: micStateChange : error ${error}`);
-            expect(Number(error.code) == 401).assertTrue();
-            done();
-          });
-      } catch (error) {
-        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        let para1 : ESObject = 'aaa';
+        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
         expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`OFF_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 6800101).assertTrue();
         done();
       }
     })
@@ -630,14 +610,14 @@ export default function audioManagerTest() {
       }
     })
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200
      * @tc.name      : getSystemVolumeInDb - Media - Promise
      * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', 0, async (done: Function) => {
       try {
         await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((data) => {
           console.info(`getSystemVolumeInDb :SUCCESS ${data}, test fail!`);
