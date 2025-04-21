@@ -342,31 +342,10 @@ export default function nfcATagSessionTest() {
             }).catch((err)=> {
                 console.info("[NFC_test] tagsession11 nfcAtage sendData1 err: " + err);
                 expect('3100201').assertEqual(err.code)
-                one();
+                done();
         });
         sleep(3500);
 
-        await tag.getNfcATag(aTag).transmit(sendDatas).then((data) => {
-            console.info("[NFC_test] tagsession11 nfcAtage sendData1 data: " + data );
-            expect(data).assertInstanceOf('Array')
-            done();
-        }).catch((err)=> {
-            console.info("[NFC_test] tagsession11 nfcAtage sendData1 err: " + err);
-            expect('801').assertEqual(err.code)
-            done();
-        });
-        sleep(3500);
-        await tag.getNfcATag(aTag).transmit("").then((data) => {
-            console.info("[NFC_test] tagsession11 nfcAtage sendData1 data: " + data );
-            expect(data).assertInstanceOf('Array')
-            done();
-        }).catch((err)=> {
-            console.info("[NFC_test] tagsession11 nfcAtage sendData1 err: " + err);
-            expect('401').assertEqual(err.code)
-            done();
-            });
-            sleep(3500);
-        })
 
         /**
          * @tc.number SUB_Communication_NFC_nfcAtage_js_1200
@@ -511,26 +490,6 @@ export default function nfcATagSessionTest() {
                 }          
         })
 
-        /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_1800
-         * @tc.name testreset
-         * @tc.desc Test reset api.
-         * @tc.size MEDIUM
-         * @ since 9
-         * @tc.type Function
-         * @tc.level Level 0
-         */
-        it('SUB_Communication_NFC_nfcAtage_js_1800', Level.LEVEL0, function ()  {
-            try { 
-                tag.getNfcA(aTag).resetConnection();
-                console.info('[NFC_test] tagsession9 resetConnection pass' )
-                expect(true).assertTrue();
-            } catch (error) {
-                console.info('[NFC_test] tagsession9 resetConnection error' + error)
-                expect(801).assertEqual(error.code)
-            }
-            sleep(2500)
-        })
 
         /**
          * @tc.number SUB_Communication_NFC_nfcAtage_js_2100

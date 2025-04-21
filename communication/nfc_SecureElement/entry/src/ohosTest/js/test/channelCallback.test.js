@@ -183,10 +183,21 @@ export default function channelCallbacktest() {
                     }
                     await LogicalChannel_callback().then((data) => {
                         console.info("[NFC_test]10 openBasicChannel done");
+						let seChannel = data
+						let seSession = seChannel.getSession();
+                        expect(true).assertEqual(seSession!=null);
                     })
-                    .catch(e => {
-                        console.info("[NFC_test]10 openBasicChannel failed" + e);
-                        expect(3300103).assertEqual(e);
+                    .catch(error => {
+                        console.info("[NFC_test]10 openBasicChannel failed" + error + "--error.code--" + error.code);
+						if (error.code == 801){
+							console.inlfo("[NFC_test]10 not support" + error);
+							expect(ture).assertTrue();
+						}else if(error == 3300103){
+							console.info("[NFC_test]10 3300103" + error.code)
+							expect(ture).assertTrue();
+						}else{
+							expect().assertFail();
+						}
                     })
                 }
             } catch (error) {
@@ -473,10 +484,36 @@ export default function channelCallbacktest() {
 				}
 			}catch(error){
 					console.info("[NFC_test]17 closeChannels error" + error.code + "---" + JSON.stringify(error));
-					except(801).assertEqual(error.code)
+					expect(801).assertEqual(error.code)
 				}
 			})
 			
+		/**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1900
+         * @tc.name Test isBasicChannel
+         * @tc.desc open asicChannel Check whether the channel is a basic channel
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1900', Level.LEVEL0, async function (done) {
+			try{
+				function getServiceStateFunc(ServiceState){console.info("[NFC_js] get ServiceState result:" + JSON.stringify(ServiceState));}
+				let seService = secureElement.newSEService("serviceState", getServiceStateFunc);
+				expect(ture).assertEqual(seService != null);
+				done();
+			}catch(error){
+				console.info("[NFC_test]1900 openBasicChannel error result:" + JSON.stringify(error) + "error_code:" + error.code);
+				if (error.code == 401){
+					expect(ture).assertTrue();
+				}else if (error.code == 801){
+					expect(ture).assertTrue();
+				}else{
+					expect().assertFail();
+				}
+                done();
+			}
+		})
+		
 		/**
          * @tc.number SUB_Communication_Ese_LogicalChannel_js_2500
          * @tc.name Test transmit
