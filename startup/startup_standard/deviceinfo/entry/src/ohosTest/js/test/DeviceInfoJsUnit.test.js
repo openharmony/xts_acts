@@ -1932,7 +1932,7 @@ export default function DeviceInfoTest() {
             console.info('device_info_test_074 : end');
         })
 
-         /**
+        /**
          * @tc.number    SUB_STARTUP_JS_DEVCEINFO_075
          * @tc.name      testGetPerformanceClassLevel
          * @tc.desc      Get PerformanceClassLevel.
@@ -1945,8 +1945,69 @@ export default function DeviceInfoTest() {
             try {
                 let performanceClass = deviceinfo.performanceClass;
                 console.info(`${TAG} performanceClass: ${performanceClass}`);
+                console.info(`${TAG} performanceClass type: ${typeof performanceClass}`);
                 expect(performanceClass).assertLargerOrEqual(deviceinfo.performanceClass.CLASS_LEVEL_HIGH);
                 expect(performanceClass).assertLessOrEqual(deviceinfo.performanceClass.CLASS_LEVEL_LOW);
+            } catch (error) {
+                console.error(`${TAG} error: ${error.code} ${error.message}}`);
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_076
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_076', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            let TAG = 'device_info_test_076';
+            try {
+                let performanceClass = deviceinfo.performanceClass.CLASS_LEVEL_HIGH;
+                console.info(`${TAG} performanceClass: ${performanceClass}`);
+                expect(performanceClass).assertEqual(0);
+            } catch (error) {
+                console.error(`${TAG} error: ${error.code} ${error.message}}`);
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_077
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            let TAG = 'device_info_test_077';
+            try {
+                let performanceClass = deviceinfo.performanceClass.CLASS_LEVEL_MEDIUM;
+                console.info(`${TAG} performanceClass: ${performanceClass}`);
+                expect(performanceClass).assertEqual(1);
+            } catch (error) {
+                console.error(`${TAG} error: ${error.code} ${error.message}}`);
+                expect().assertFail();
+            }
+        })
+
+                /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_078
+         * @tc.name      testGetPerformanceClassLevel
+         * @tc.desc      Get PerformanceClassLevel.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('device_info_test_078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            let TAG = 'device_info_test_078';
+            try {
+                let performanceClass = deviceinfo.performanceClass.CLASS_LEVEL_MEDIUM;
+                console.info(`${TAG} performanceClass: ${performanceClass}`);
+                expect(performanceClass).assertEqual(2);
             } catch (error) {
                 console.error(`${TAG} error: ${error.code} ${error.message}}`);
                 expect().assertFail();
