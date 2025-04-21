@@ -83,6 +83,7 @@ group("ability_runtime") {
       "actsuiextensiontest:actsuiextensiontest",
       "actsuiextforresultascallertest:actsuiextforresultascallertest",
       "actsusers:actsusers",
+      "actswindowrangelimittest:actswindowrangelimittest",
       "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsdisplayIdtest:amsdisplayIdtest",
