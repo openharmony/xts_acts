@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerRefreshTest() {
 
   describe('WebViewControllerRefreshTest', () => {
@@ -42,6 +44,11 @@ export default function webViewControllerRefreshTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerRefreshTest beforeEach start");
       done();
@@ -55,7 +62,7 @@ export default function webViewControllerRefreshTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRefresh002', 0, async (done: Function) => {
+    it('testRefresh002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRefresh002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefresh002", 'second', 76700, done);
@@ -70,7 +77,7 @@ export default function webViewControllerRefreshTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRefresh003', 0, async (done: Function) => {
+    it('testRefresh003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRefresh003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefresh003", true, 76702, done);
@@ -85,7 +92,7 @@ export default function webViewControllerRefreshTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRefresh004', 0, async (done: Function) => {
+    it('testRefresh004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRefresh004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefresh004", 'second', 76704, done);

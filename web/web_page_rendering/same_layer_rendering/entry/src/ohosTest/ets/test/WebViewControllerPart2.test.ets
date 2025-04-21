@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerPart2() {
 
   describe('WebViewControllerPart2TestSuite', () => {
@@ -42,6 +44,11 @@ export default function webViewControllerPart2() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewControllerPart2 beforeEach start");
       done();
@@ -55,7 +62,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNativeEmbedStatus001', 0, async (done: Function) => {
+    it('testNativeEmbedStatus001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNativeEmbedStatus001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNativeEmbedStatus001", 3, 37021, done);
@@ -70,7 +77,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNativeEmbedStatus002', 0, async (done: Function) => {
+    it('testNativeEmbedStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testNativeEmbedStatus002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testNativeEmbedStatus002", 4, 37022, done);

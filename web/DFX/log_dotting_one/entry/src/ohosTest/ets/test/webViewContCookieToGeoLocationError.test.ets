@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitGetCookieInitErr";
 
@@ -45,6 +48,11 @@ export default function webViewContCookieToGeoLocationError() {
     )
     ;
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewContCookieToGeoLocationError beforeEach start");
       done();
@@ -74,7 +82,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetCookieInitErr
      *tc.desc test interface of getCookie with wrong format url
      */
-    it('testGetCookieInitErr', 0, async (done: Function) => {
+    it('testGetCookieInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetCookieInitErr";
       Utils.registerEvent("testGetCookieInitErr", "17100002", 752, done);
       Utils.registerEvent("testGetCookieInitErr", "Invalid url", 753, done);
@@ -85,7 +93,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testSetCookieInitErr
      *tc.desc test interface of setCookie with wrong format url
      */
-    it('testSetCookieInitErr', 0, async (done: Function) => {
+    it('testSetCookieInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetCookieValueErr";
       Utils.registerEvent("testSetCookieInitErr", "17100002", 754, done);
       Utils.registerEvent("testSetCookieInitErr", "Invalid url", 755, done);
@@ -96,7 +104,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testSetCookieValueErr
      *tc.desc test interface of setCookie with unsupported url value type
      */
-    it('testSetCookieValueErr', 0, async (done: Function) => {
+    it('testSetCookieValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteOriginValueNullErr";
       Utils.registerEvent("testSetCookieValueErr", "17100005", 756, done);
       Utils.registerEvent("testSetCookieValueErr", "Invalid cookie value", 757, done);
@@ -107,7 +115,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteOriginValueNullErr
      *tc.desc test interface of deleteOrigin with origin null
      */
-    it('testDeleteOriginValueNullErr', 0, async (done: Function) => {
+    it('testDeleteOriginValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteOriginValueIllegalErr";
       Utils.registerEvent("testDeleteOriginValueNullErr", "17100011", 758, done);
       Utils.registerEvent("testDeleteOriginValueNullErr", "Invalid origin", 759, done);
@@ -118,7 +126,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteOriginValueIllegalErr
      *tc.desc test interface of deleteOrigin with origin illegal
      */
-    it('testDeleteOriginValueIllegalErr', 0, async (done: Function) => {
+    it('testDeleteOriginValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteOriginValueErr";
       Utils.registerEvent("testDeleteOriginValueIllegalErr", "17100011", 760, done);
       Utils.registerEvent("testDeleteOriginValueIllegalErr", "Invalid origin", 761, done);
@@ -129,7 +137,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteOriginValueErr
      *tc.desc test interface of deleteOrigin with origin wrong
      */
-    it('testDeleteOriginValueErr', 0, async (done: Function) => {
+    it('testDeleteOriginValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginsCallbackUnAPIErr";
       Utils.registerEvent("testDeleteOriginValueErr", "17100011", 762, done);
       Utils.registerEvent("testDeleteOriginValueErr", "Invalid origin", 763, done);
@@ -140,7 +148,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginsCallbackUnAPIErr
      *tc.desc test interface of getOrigins (callback) with no using JS database API
      */
-    it('testGetOriginsCallbackUnAPIErr', 0, async (done: Function) => {
+    it('testGetOriginsCallbackUnAPIErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginsPromiseUnAPIErr";
       Utils.registerEvent("testGetOriginsCallbackUnAPIErr", 17100012, 764, done);
       Utils.registerEvent("testGetOriginsCallbackUnAPIErr", "Invalid web storage origin", 765, done);
@@ -151,7 +159,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginsPromiseUnAPIErr
      *tc.desc test interface of getOrigins (promise) with no using JS database API
      */
-    it('testGetOriginsPromiseUnAPIErr', 0, async (done: Function) => {
+    it('testGetOriginsPromiseUnAPIErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaCallbackValueErr";
       Utils.registerEvent("testGetOriginsPromiseUnAPIErr", 17100012, 766, done);
       Utils.registerEvent("testGetOriginsPromiseUnAPIErr", "Invalid web storage origin", 767, done);
@@ -162,7 +170,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaCallbackValueErr
      *tc.desc test interface of getOriginQuota (callback) with origin wrong
      */
-    it('testGetOriginQuotaCallbackValueErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaCallbackValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaCallbackValueIllegalErr";
       Utils.registerEvent("testGetOriginQuotaCallbackValueErr", 17100011, 768, done);
       Utils.registerEvent("testGetOriginQuotaCallbackValueErr", "Invalid origin", 769, done);
@@ -173,7 +181,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaCallbackValueIllegalErr
      *tc.desc test interface of getOriginQuota (callback) with origin illegal
      */
-    it('testGetOriginQuotaCallbackValueIllegalErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaCallbackValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaCallbackValueNullErr";
       Utils.registerEvent("testGetOriginQuotaCallbackValueIllegalErr", 17100011, 770, done);
       Utils.registerEvent("testGetOriginQuotaCallbackValueIllegalErr", "Invalid origin", 771, done);
@@ -184,7 +192,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaCallbackValueNullErr
      *tc.desc test interface of getOriginQuota (callback) with origin null
      */
-    it('testGetOriginQuotaCallbackValueNullErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaCallbackValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaPromiseValueErr";
       Utils.registerEvent("testGetOriginQuotaCallbackValueNullErr", 17100011, 772, done);
       Utils.registerEvent("testGetOriginQuotaCallbackValueNullErr", "Invalid origin", 773, done);
@@ -195,7 +203,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaPromiseValueErr
      *tc.desc test interface of getOriginQuota (promise) with origin wrong
      */
-    it('testGetOriginQuotaPromiseValueErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaPromiseValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaPromiseValueIllegalErr";
       Utils.registerEvent("testGetOriginQuotaPromiseValueErr", 17100011, 774, done);
       Utils.registerEvent("testGetOriginQuotaPromiseValueErr", "Invalid origin", 775, done);
@@ -206,7 +214,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaPromiseValueIllegalErr
      *tc.desc test interface of getOriginQuota (promise) with origin illegal
      */
-    it('testGetOriginQuotaPromiseValueIllegalErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaPromiseValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginQuotaPromiseValueNullErr";
       Utils.registerEvent("testGetOriginQuotaPromiseValueIllegalErr", 17100011, 776, done);
       Utils.registerEvent("testGetOriginQuotaPromiseValueIllegalErr", "Invalid origin", 777, done);
@@ -217,7 +225,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginQuotaPromiseValueNullErr
      *tc.desc test interface of getOriginQuota (promise) with origin null
      */
-    it('testGetOriginQuotaPromiseValueNullErr', 0, async (done: Function) => {
+    it('testGetOriginQuotaPromiseValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsageCallbackValueErr";
       Utils.registerEvent("testGetOriginQuotaPromiseValueNullErr", 17100011, 778, done);
       Utils.registerEvent("testGetOriginQuotaPromiseValueNullErr", "Invalid origin", 779, done);
@@ -228,7 +236,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsageCallbackValueErr
      *tc.desc test interface of getOriginUsage (callback) with origin wrong
      */
-    it('testGetOriginUsageCallbackValueErr', 0, async (done: Function) => {
+    it('testGetOriginUsageCallbackValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsageCallbackValueIllegalErr";
       Utils.registerEvent("testGetOriginUsageCallbackValueErr", 17100011, 780, done);
       Utils.registerEvent("testGetOriginUsageCallbackValueErr", "Invalid origin", 781, done);
@@ -239,7 +247,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsageCallbackValueIllegalErr
      *tc.desc test interface of getOriginUsage (callback) with origin illegal
      */
-    it('testGetOriginUsageCallbackValueIllegalErr', 0, async (done: Function) => {
+    it('testGetOriginUsageCallbackValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsageCallbackValueNullErr";
       Utils.registerEvent("testGetOriginUsageCallbackValueIllegalErr", 17100011, 782, done);
       Utils.registerEvent("testGetOriginUsageCallbackValueIllegalErr", "Invalid origin", 783, done);
@@ -250,7 +258,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsageCallbackValueNullErr
      *tc.desc test interface of getOriginUsage (callback) with origin null
      */
-    it('testGetOriginUsageCallbackValueNullErr', 0, async (done: Function) => {
+    it('testGetOriginUsageCallbackValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsagePromiseValueErr";
       Utils.registerEvent("testGetOriginUsageCallbackValueNullErr", 17100011, 784, done);
       Utils.registerEvent("testGetOriginUsageCallbackValueNullErr", "Invalid origin", 785, done);
@@ -261,7 +269,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsagePromiseValueErr
      *tc.desc test interface of getOriginUsage (promise) with origin wrong
      */
-    it('testGetOriginUsagePromiseValueErr', 0, async (done: Function) => {
+    it('testGetOriginUsagePromiseValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsagePromiseValueIllegalErr";
       Utils.registerEvent("testGetOriginUsagePromiseValueErr", 17100011, 786, done);
       Utils.registerEvent("testGetOriginUsagePromiseValueErr", "Invalid origin", 787, done);
@@ -272,7 +280,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsagePromiseValueIllegalErr
      *tc.desc test interface of getOriginUsage (promise) with origin illegal
      */
-    it('testGetOriginUsagePromiseValueIllegalErr', 0, async (done: Function) => {
+    it('testGetOriginUsagePromiseValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetOriginUsagePromiseValueNullErr";
       Utils.registerEvent("testGetOriginUsagePromiseValueIllegalErr", 17100011, 788, done);
       Utils.registerEvent("testGetOriginUsagePromiseValueIllegalErr", "Invalid origin", 789, done);
@@ -283,7 +291,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetOriginUsagePromiseValueNullErr
      *tc.desc test interface of getOriginUsage (promise) with origin null
      */
-    it('testGetOriginUsagePromiseValueNullErr', 0, async (done: Function) => {
+    it('testGetOriginUsagePromiseValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAllowGeolocationValueErr";
       Utils.registerEvent("testGetOriginUsagePromiseValueNullErr", 17100011, 790, done);
       Utils.registerEvent("testGetOriginUsagePromiseValueNullErr", "Invalid origin", 791, done);
@@ -294,7 +302,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testAllowGeolocationValueErr
      *tc.desc test interface of allowGeolocation with origin wrong
      */
-    it('testAllowGeolocationValueErr', 0, async (done: Function) => {
+    it('testAllowGeolocationValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAllowGeolocationValueIllegalErr";
       Utils.registerEvent("testAllowGeolocationValueErr", "17100011", 792, done);
       Utils.registerEvent("testAllowGeolocationValueErr", "Invalid origin", 793, done);
@@ -305,7 +313,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testAllowGeolocationValueIllegalErr
      *tc.desc test interface of allowGeolocation with origin illegal
      */
-    it('testAllowGeolocationValueIllegalErr', 0, async (done: Function) => {
+    it('testAllowGeolocationValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitAllowGeolocationValueNullErr";
       Utils.registerEvent("testAllowGeolocationValueIllegalErr", "17100011", 794, done);
       Utils.registerEvent("testAllowGeolocationValueIllegalErr", "Invalid origin", 795, done);
@@ -316,7 +324,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testAllowGeolocationValueNullErr
      *tc.desc test interface of allowGeolocation with origin null
      */
-    it('testAllowGeolocationValueNullErr', 0, async (done: Function) => {
+    it('testAllowGeolocationValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteGeolocationValueErr";
       Utils.registerEvent("testAllowGeolocationValueNullErr", "17100011", 796, done);
       Utils.registerEvent("testAllowGeolocationValueNullErr", "Invalid origin", 797, done);
@@ -327,7 +335,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteGeolocationValueErr
      *tc.desc test interface of deleteGeolocation with origin wrong
      */
-    it('testDeleteGeolocationValueErr', 0, async (done: Function) => {
+    it('testDeleteGeolocationValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteGeolocationValueIllegalErr";
       Utils.registerEvent("testDeleteGeolocationValueErr", "17100011", 798, done);
       Utils.registerEvent("testDeleteGeolocationValueErr", "Invalid origin", 799, done);
@@ -338,7 +346,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteGeolocationValueIllegalErr
      *tc.desc test interface of deleteGeolocation with origin illegal
      */
-    it('testDeleteGeolocationValueIllegalErr', 0, async (done: Function) => {
+    it('testDeleteGeolocationValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteGeolocationValueNullErr";
       Utils.registerEvent("testDeleteGeolocationValueIllegalErr", "17100011", 800, done);
       Utils.registerEvent("testDeleteGeolocationValueIllegalErr", "Invalid origin", 801, done);
@@ -349,7 +357,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testDeleteGeolocationValueNullErr
      *tc.desc test interface of deleteGeolocation with origin null
      */
-    it('testDeleteGeolocationValueNullErr', 0, async (done: Function) => {
+    it('testDeleteGeolocationValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationCallbackValueErr";
       Utils.registerEvent("testDeleteGeolocationValueNullErr", "17100011", 802, done);
       Utils.registerEvent("testDeleteGeolocationValueNullErr", "Invalid origin", 803, done);
@@ -360,7 +368,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationCallbackValueErr
      *tc.desc test interface of getAccessibleGeolocation (callback) with origin wrong
      */
-    it('testGetAccessibleGeolocationCallbackValueErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationCallbackValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationCallbackValueIllegalErr";
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueErr", 17100011, 804, done);
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueErr", "Invalid origin", 805, done);
@@ -371,7 +379,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationCallbackValueIllegalErr
      *tc.desc test interface of getAccessibleGeolocation (callback) with origin illegal
      */
-    it('testGetAccessibleGeolocationCallbackValueIllegalErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationCallbackValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationCallbackValueNullErr";
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueIllegalErr", 17100011, 806, done);
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueIllegalErr", "Invalid origin", 807, done);
@@ -382,7 +390,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationCallbackValueNullErr
      *tc.desc test interface of getAccessibleGeolocation (callback) with origin null
      */
-    it('testGetAccessibleGeolocationCallbackValueNullErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationCallbackValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationPromiseValueErr";
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueNullErr", 17100011, 808, done);
       Utils.registerEvent("testGetAccessibleGeolocationCallbackValueNullErr", "Invalid origin", 809, done);
@@ -393,7 +401,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationPromiseValueErr
      *tc.desc test interface of getAccessibleGeolocation (promise) with origin wrong
      */
-    it('testGetAccessibleGeolocationPromiseValueErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationPromiseValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationPromiseValueIllegalErr";
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueErr", 17100011, 810, done);
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueErr", "Invalid origin", 811, done);
@@ -404,7 +412,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationPromiseValueIllegalErr
      *tc.desc test interface of getAccessibleGeolocation (promise) with origin illegal
      */
-    it('testGetAccessibleGeolocationPromiseValueIllegalErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationPromiseValueIllegalErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationPromiseValueNullErr";
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueIllegalErr", 17100011, 812, done);
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueIllegalErr", "Invalid origin", 813, done);
@@ -415,7 +423,7 @@ export default function webViewContCookieToGeoLocationError() {
      *tc.name testGetAccessibleGeolocationPromiseValueNullErr
      *tc.desc test interface of getAccessibleGeolocation (promise) with origin null
      */
-    it('testGetAccessibleGeolocationPromiseValueNullErr', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocationPromiseValueNullErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetAccessibleGeolocationPromiseValueNullErr";
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueNullErr", 17100011, 814, done);
       Utils.registerEvent("testGetAccessibleGeolocationPromiseValueNullErr", "Invalid origin", 815, done);

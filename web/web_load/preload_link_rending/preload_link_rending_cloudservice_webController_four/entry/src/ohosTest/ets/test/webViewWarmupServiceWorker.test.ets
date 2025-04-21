@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -46,6 +49,11 @@ export default function ActsAceWebViewWarmupServiceWorker() {
     });
     
     beforeEach(async (done: Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+        })
         await Utils.sleep(1000);
         done();
     })
@@ -78,7 +86,7 @@ export default function ActsAceWebViewWarmupServiceWorker() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebViewWarmupServiceWorker', 0, async (done: Function) => {
+    it('testWebViewWarmupServiceWorker', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewWarmupServiceWorker"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewWarmupServiceWorker", true, 1342, done);

@@ -12,15 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitPostMessageInitErr";
 
 export default function webViewContMessageError() {
   describe('ActsAceWebDevWebViewContMessageErrorTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewContMessageError beforeEach start");
       done();
@@ -50,7 +58,7 @@ export default function webViewContMessageError() {
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
-    it('testPostMessageInitErr', 0, async (done: Function) => {
+    it('testPostMessageInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPostMessageEventUnPortErr";
       Utils.registerEvent("testPostMessageInitErr", "17100001", 600, done);
       Utils.registerEvent("testPostMessageInitErr", "Init error. The WebviewController must be associated with a Web component", 601, done);
@@ -61,7 +69,7 @@ export default function webViewContMessageError() {
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
-    it('testPostMessageEventPortClose', 0, async (done: Function) => {
+    it('testPostMessageEventPortClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPostMessageEventUnPortErr";
       Utils.registerEvent("testPostMessageEventPortClose", "17100010", 602, done);
       Utils.registerEvent("testPostMessageEventPortClose", "Failed to post messages through the port.", 603, done);

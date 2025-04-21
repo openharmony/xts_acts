@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import animator, { AnimatorResult } from '@ohos.animator';
@@ -32,7 +32,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetExpectedFrameRateRange', 0, async (done: Function) => {
+    it('testSetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testSetExpectedFrameRateRange===="
       console.log(msg + ' begin')
@@ -62,7 +62,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnFrame', 0, async (done: Function) => {
+    it('testOnFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testOnFrame===="
       console.log(msg + ' begin')
@@ -90,7 +90,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOffFrame', 0, async (done: Function) => {
+    it('testOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testOffFrame===="
       console.log(msg + ' begin')
@@ -118,7 +118,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testOnOffFrame', 0, async (done: Function) => {
+    it('testOnOffFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testOnOffFrame===="
       console.log(msg + ' begin')
@@ -147,7 +147,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStart', 0, async (done: Function) => {
+    it('testStart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testStart===="
       console.log(msg + ' begin')
@@ -187,7 +187,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStop', 0, async (done: Function) => {
+    it('testStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testStop===="
       console.log(msg + ' begin')
@@ -227,7 +227,7 @@ export default function graphicDisplaySyncInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartStop', 0, async (done: Function) => {
+    it('testStartStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
 
       let msg = "====testStartStop===="
       console.log(msg + ' begin')
@@ -261,6 +261,32 @@ export default function graphicDisplaySyncInterfaceTest() {
       }
     })
 
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDISPLAYSYNC_JS_API_008
+     * @tc.name      : testDisplaySyncErrprCode
+     * @tc.desc      : setExpectedFrameRateRange error code
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testDisplaySyncErrprCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msg = "====testStartStop===="
+      console.log(msg + ' begin')
+      try {
+        let backDisplaySync: displaySync.DisplaySync = displaySync.create();
+        let range : ExpectedFrameRateRange = {
+          expected: -10,
+          min:0,
+          max:120
+        };
+        backDisplaySync?.setExpectedFrameRateRange(range)
+        expect().assertFail();
+        done();     
+      } catch (err) {
+        console.error(msg + 'Failed to onoff. Cause:' + err.code);
+        expect(err.code == 401).assertTrue();
+        done();
+      }
+    })
   })
 }

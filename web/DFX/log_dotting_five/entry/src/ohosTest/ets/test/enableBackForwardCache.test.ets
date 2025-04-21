@@ -13,11 +13,14 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@ohos.UiTest'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 
 export default function EnableBackForwardCacheTest() {
@@ -44,6 +47,11 @@ export default function EnableBackForwardCacheTest() {
     })
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(300);
       done();
     });
@@ -56,7 +64,7 @@ export default function EnableBackForwardCacheTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_enableBackForwardCache00016", 0, async (done: Function) => {
+    it("testWebView_enableBackForwardCache00016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent("setBackForwardCacheOptions",
         "17100001Init error. The WebviewController must be associated with a Web component", 210, done,
         (backData: events_emitter.EventData, expected: Object) => {

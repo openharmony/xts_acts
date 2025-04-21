@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType  } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_STREAM_HTTPS = "https://cn.bing.com/rp/Q5BJPjebyYN5QiqznkcMQmLrF9U.svg";
@@ -58,9 +58,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive  send one request with httpRequest.requestInStream only one listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestOn0100', 0, async (done: Function) => {
+    it('testHttpRequestOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0100";
       console.info(`${caseName} test Start`);
       try {
@@ -127,9 +127,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive send one request with httpRequest.requestInStream one more listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testTypeHeaderReceive0200', 0, async (done: Function) => {
+    it('testTypeHeaderReceive0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0200SUB_Global_httpRequest_on_0200";
       console.info(`${caseName} test Start`);
       try {
@@ -197,9 +197,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headerReceive  send more request with httpRequest.requestInStream one more listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testOnTypeHeaderReceive0300', 0, async (done: Function) => {
+    it('testOnTypeHeaderReceive0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpRequestOn0300";
       console.info(`${caseName} test Start`);
       try {
@@ -266,9 +266,9 @@ export default function HttpRequestOnOffTest() {
      * @tc.desc:    test on with type headersReceive  send one request with httpRequest.requestInStream only one listener
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequestOn0400', 0, async (done: Function) => {
+    it('testHttpRequestOn0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0400";
       console.info(`${caseName} test Start`);
       try {
@@ -338,7 +338,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn0500', 0, async (done: Function) => {
+    it('testHttpRequestOn0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0500";
       console.info(`${caseName} test Start`);
       try {
@@ -409,7 +409,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn0600', 0, async (done: Function) => {
+    it('testHttpRequestOn0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0600";
       console.info(`${caseName} test Start`);
       try {
@@ -480,7 +480,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn0700', 0, async (done: Function) => {
+    it('testHttpRequestOn0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0700";
       console.info(`${caseName} test Start`);
       try {
@@ -550,7 +550,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn0800', 0, async (done: Function) => {
+    it('testHttpRequestOn0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0800";
       console.info(`${caseName} test Start`);
       try {
@@ -621,7 +621,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn0900', 0, async (done: Function) => {
+    it('testHttpRequestOn0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0900";
       console.info(`${caseName} test Start`);
       try {
@@ -692,7 +692,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1000', 0, async (done: Function) => {
+    it('testHttpRequestOn1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn0900";
       console.info(`${caseName} test Start`);
       try {
@@ -764,7 +764,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1100', 0, async (done: Function) => {
+    it('testHttpRequestOn1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1100";
       console.info(`${caseName} test Start`);
       try {
@@ -837,7 +837,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1200', 0, async (done: Function) => {
+    it('testHttpRequestOn1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1200";
       console.info(`${caseName} test Start`);
       try {
@@ -909,7 +909,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1300', 0, async (done: Function) => {
+    it('testHttpRequestOn1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1300";
       console.info(`${caseName} test Start`);
       try {
@@ -978,7 +978,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1400', 0, async (done: Function) => {
+    it('testHttpRequestOn1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1400";
       console.info(`${caseName} test Start`);
       try {
@@ -1048,7 +1048,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1500', 0, async (done: Function) => {
+    it('testHttpRequestOn1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1500";
       console.info(`${caseName} test Start`);
       try {
@@ -1118,7 +1118,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type  :  method
      * @tc.level :  level 2
      */
-    it('testHttpRequestOn1600', 0, async (done: Function) => {
+    it('testHttpRequestOn1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1600";
       console.info(`${caseName} test Start`);
       try {
@@ -1189,7 +1189,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1700', 0, async (done: Function) => {
+    it('testHttpRequestOn1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1700";
       console.info(`${caseName} test Start`);
       try {
@@ -1259,7 +1259,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn1800', 0, async (done: Function) => {
+    it('testHttpRequestOn1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn1800";
       console.info(`${caseName} test Start`);
       try {
@@ -1331,7 +1331,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce1900', 0, async (done: Function) => {
+    it('testHttpRequestOnce1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce1900";
       console.info(`${caseName} test Start`);
       try {
@@ -1402,7 +1402,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce2000', 0, async (done: Function) => {
+    it('testHttpRequestOnce2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce2000";
       console.info(`${caseName} test Start`);
       try {
@@ -1472,7 +1472,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce2100', 0, async (done: Function) => {
+    it('testHttpRequestOnce2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce2100";
       console.info(`${caseName} test Start`);
       try {
@@ -1543,7 +1543,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce2200', 0, async (done: Function) => {
+    it('testHttpRequestOnce2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce2200";
       console.info(`${caseName} test Start`);
       try {
@@ -1614,7 +1614,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce2300', 0, async (done: Function) => {
+    it('testHttpRequestOnce2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce2300";
       console.info(`${caseName} test Start`);
       try {
@@ -1685,7 +1685,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOnce2400', 0, async (done: Function) => {
+    it('testHttpRequestOnce2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOnce2400";
       console.info(`${caseName} test Start`);
       try {
@@ -1756,7 +1756,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn2500', 0, async (done: Function) => {
+    it('testHttpRequestOn2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn2500";
       console.info(`${caseName} test Start`);
       try {
@@ -1816,7 +1816,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn2600', 0, async (done: Function) => {
+    it('testHttpRequestOn2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn2600";
       console.info(`${caseName} test Start`);
       try {
@@ -1877,7 +1877,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn2700', 0, async (done: Function) => {
+    it('testHttpRequestOn2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn2700";
       console.info(`${caseName} test Start`);
       try {
@@ -1938,7 +1938,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn2800', 0, async (done: Function) => {
+    it('testHttpRequestOn2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn2800";
       console.info(`${caseName} test Start`);
       try {
@@ -1999,7 +1999,7 @@ export default function HttpRequestOnOffTest() {
     * @tc.type:    Function
     * @tc.level:   level 2
     */
-    it('testHttpRequestOn2900', 0, async (done: Function) => {
+    it('testHttpRequestOn2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn2900";
       console.info(`${caseName} test Start`);
       try {
@@ -2060,7 +2060,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3000', 0, async (done: Function) => {
+    it('testHttpRequestOn3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3000";
       console.info(`${caseName} test Start`);
       try {
@@ -2121,7 +2121,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3100', 0, async (done: Function) => {
+    it('testHttpRequestOn3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3100";
       console.info(`${caseName} test Start`);
       try {
@@ -2183,7 +2183,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3200', 0, async (done: Function) => {
+    it('testHttpRequestOn3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3200";
       console.info(`${caseName} test Start`);
       try {
@@ -2245,7 +2245,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3300', 0, async (done: Function) => {
+    it('testHttpRequestOn3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3300";
       console.info(`${caseName} test Start`);
       try {
@@ -2307,7 +2307,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3400', 0, async (done: Function) => {
+    it('testHttpRequestOn3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3400";
       console.info(`${caseName} test Start`);
       try {
@@ -2369,7 +2369,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3500', 0, async (done: Function) => {
+    it('testHttpRequestOn3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3500";
       console.info(`${caseName} test Start`);
       try {
@@ -2430,7 +2430,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3600', 0, async (done: Function) => {
+    it('testHttpRequestOn3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3600";
       console.info(`${caseName} test Start`);
       try {
@@ -2492,7 +2492,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3700', 0, async (done: Function) => {
+    it('testHttpRequestOn3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3700";
       console.info(`${caseName} test Start`);
       try {
@@ -2554,7 +2554,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3800', 0, async (done: Function) => {
+    it('testHttpRequestOn3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3800";
       console.info(`${caseName} test Start`);
       try {
@@ -2618,7 +2618,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn3900', 0, async (done: Function) => {
+    it('testHttpRequestOn3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn3900";
       console.info(`${caseName} test Start`);
       try {
@@ -2684,7 +2684,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4000', 0, async (done: Function) => {
+    it('testHttpRequestOn4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4000";
       console.info(`${caseName} test Start`);
       try {
@@ -2749,7 +2749,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4100', 0, async (done: Function) => {
+    it('testHttpRequestOn4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4100";
       console.info(`${caseName} test Start`);
       try {
@@ -2810,7 +2810,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4200', 0, async (done: Function) => {
+    it('testHttpRequestOn4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4200";
       console.info(`${caseName} test Start`);
       try {
@@ -2872,7 +2872,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4300', 0, async (done: Function) => {
+    it('testHttpRequestOn4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4300";
       console.info(`${caseName} test Start`);
       try {
@@ -2934,7 +2934,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type  :  method
      * @tc.level :  level 2
      */
-    it('testHttpRequestOn4400', 0, async (done: Function) => {
+    it('testHttpRequestOn4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4400";
       console.info(`${caseName} test Start`);
       try {
@@ -2995,7 +2995,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4500', 0, async (done: Function) => {
+    it('testHttpRequestOn4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4500";
       console.info(`${caseName} test Start`);
       try {
@@ -3057,7 +3057,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn4600', 0, async (done: Function) => {
+    it('testHttpRequestOn4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn4600";
       console.info(`${caseName} test Start`);
       try {
@@ -3118,7 +3118,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn5300', 0, async (done: Function) => {
+    it('testHttpRequestOn5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn5300";
       console.info(`${caseName} test Start`);
       try {
@@ -3170,7 +3170,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn5400', 0, async (done: Function) => {
+    it('testHttpRequestOn5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn5400";
       console.info(`${caseName} test Start`);
       try {
@@ -3223,7 +3223,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn5500', 0, async (done: Function) => {
+    it('testHttpRequestOn5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn5500";
       console.info(`${caseName} test Start`);
       try {
@@ -3276,7 +3276,7 @@ export default function HttpRequestOnOffTest() {
      * @tc.type:    Function
      * @tc.level:   level 2
      */
-    it('testHttpRequestOn5600', 0, async (done: Function) => {
+    it('testHttpRequestOn5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 , async (done: Function) => {
       const caseName: string = "testHttpRequestOn5600";
       console.info(`${caseName} test Start`);
       try {

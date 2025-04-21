@@ -12,10 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitdefaultFontSizeHalfAndminFontSizeHalf";
 export default function webViewDefaultFontSizeWithMinLogical() {
@@ -40,6 +43,11 @@ export default function webViewDefaultFontSizeWithMinLogical() {
       done()
     });
     beforeEach(async (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewDefaultFontSizeWithMinLogical beforeEach start");
       done();
@@ -69,7 +77,7 @@ export default function webViewDefaultFontSizeWithMinLogical() {
      *tc.name testDefaultFontSizeHalfAndMinFontSizeHalf
      *tc.desc test with defaultfontsize 0.5 , minfontsize 0.5 and minLogicalFontSize 0.5
      */
-    it('testDefaultFontSizeHalfAndMinFontSizeHalf',0,async (done: Function) =>{
+    it('testDefaultFontSizeHalfAndMinFontSizeHalf',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitdefaultFontSizeHalfAndminFontSizeHalf";
       Utils.registerEvent("testDefaultFontSizeHalfAndMinFontSizeHalf","1px",330,done);
       sendEventByKey('webViewDefaultFontSizeWithMinLogical',10,'');

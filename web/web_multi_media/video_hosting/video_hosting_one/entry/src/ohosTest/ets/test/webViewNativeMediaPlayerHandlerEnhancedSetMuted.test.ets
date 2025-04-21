@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -78,7 +78,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedSetMuted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetMutedTrue', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetMutedTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetMutedTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetMutedTrue", true, 1591,
@@ -95,7 +95,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedSetMuted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetMutedTrue_handleMutedChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetMutedTrue_handleMutedChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetMutedTrue_handleMutedChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetMutedTrue_handleMutedChange", true, 1592,
@@ -112,7 +112,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedSetMuted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetMutedFalse', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetMutedFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetMutedFalse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetMutedFalse", true, 1593,
@@ -129,7 +129,7 @@ export default function webViewNativeMediaPlayerHandlerEnhancedSetMuted() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetMutedFalse_handleMutedChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSetMutedFalse_handleMutedChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSetMutedFalse_handleMutedChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetMutedFalse_handleMutedChange", true, 1594,

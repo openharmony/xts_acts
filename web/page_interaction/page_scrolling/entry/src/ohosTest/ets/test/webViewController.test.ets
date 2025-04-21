@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewController() {
 
@@ -42,6 +45,11 @@ export default function webViewController() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewController beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnScroll001', 0, async (done: Function) => {
+    it('testOnScroll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnScroll001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnScroll001", true, 31022, done);
@@ -70,7 +78,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnScroll002', 0, async (done: Function) => {
+    it('testOnScroll002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnScroll002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnScroll002", true, 100068, done);
@@ -85,7 +93,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnScroll003', 0, async (done: Function) => {
+    it('testOnScroll003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnScroll003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnScroll002", true, 100069, done);
@@ -99,7 +107,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnOverScroll001', 0, async (done: Function) => {
+    it('testOnOverScroll001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnOverScroll001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnOverScroll001", true, 31038, done);
@@ -114,7 +122,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnOverScroll002', 0, async (done: Function) => {
+    it('testOnOverScroll002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnOverScroll002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnOverScroll002", true, 100034, done);
@@ -129,7 +137,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnOverScroll003', 0, async (done: Function) => {
+    it('testOnOverScroll003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnOverScroll003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnOverScroll003", true, 100035, done);
@@ -144,7 +152,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnOverScroll004', 0, async (done: Function) => {
+    it('testOnOverScroll004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnOverScroll004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnOverScroll004", true, 100036, done);

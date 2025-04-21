@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "optimizeParserBudget01";
 export default function webenableSmoothDragResizeTestJsunit() {
   describe('optimizeParserBudgetTest',  () =>{
@@ -41,6 +44,11 @@ export default function webenableSmoothDragResizeTestJsunit() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("optimizeParserBudget beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webenableSmoothDragResizeTestJsunit() {
      *tc.name enableSmoothDragResize01
      *tc.desic test enableSmoothDragResize01 interface when choose callback mode.
      */
-    it('optimizeParserBudget01',0,async (done: Function) =>{
+    it('optimizeParserBudget01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="optimizeParserBudget01";
       Utils.registerEvent("optimizeParserBudget01",'optimizeParserBudget',20250218,done);
       sendEventByKey('optimizeParserBudgetButton',10,'');

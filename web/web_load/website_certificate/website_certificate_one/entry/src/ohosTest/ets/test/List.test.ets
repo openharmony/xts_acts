@@ -16,10 +16,12 @@
 import webDataBase from './WebDataBase.test'
 import sslErrorHandler from './SslErrorHandler.test'
 import webAttributeTest from './WebAttributeTest.test'
+import onSslErrorEvent from './onSslErrorEvent.test'
 
 export default function testsuite() {
   webAttributeTest()
   webDataBase()
   sslErrorHandler()
+  onSslErrorEvent()
 
 }

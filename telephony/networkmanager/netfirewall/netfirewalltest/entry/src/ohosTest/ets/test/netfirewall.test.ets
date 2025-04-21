@@ -1,7 +1,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType, Size,Level} from '@ohos/hypium';
 import netFirewall from '@ohos.net.netFirewall';
 import { BusinessError } from '@kit.BasicServicesKit';
-
 const ExpectFail: () => void = () => {
   try {
     expect().assertFail();
@@ -9,7 +8,6 @@ const ExpectFail: () => void = () => {
     console.info(` exportFail failed err: ${JSON.stringify(err)}`);
   }
 };
-
 const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
     expect(n).assertTrue();
@@ -17,74 +15,77 @@ const ExpectTrue: (n: boolean) => void = (n: boolean) => {
     console.info(` exportTrue failed err: ${JSON.stringify(err)}`);
   }
 };
-let Current_Ruler_ID :number | undefined = 1;
-const userId :number = 100;
-let ruleDirection_RULE_IN : netFirewall.NetFirewallRuleDirection;
-let ruleDirection_RULE_OUT :netFirewall.NetFirewallRuleDirection;
-let ruleAction_RULE_ALLOW :netFirewall.FirewallRuleAction;
-let ruleAction_RULE_DENY :netFirewall.FirewallRuleAction
-let ruleType_RULE_IP :netFirewall.NetFirewallRuleType;
-let ruleType_RULE_DNS :netFirewall.NetFirewallRuleType;
-let ruleType_RULE_DOMAIN :netFirewall.NetFirewallRuleType;
-let orderField_ORDER_BY_RULE_NAME :netFirewall.NetFirewallOrderField;
-let orderField_ORDER_BY_RECORD_TIME :netFirewall.NetFirewallOrderField;
-let orderType_ORDER_ASC :netFirewall.NetFirewallOrderType;
-let orderType_ORDER_DESC :netFirewall.NetFirewallOrderType;
-const ruleParam: netFirewall.RequestParam = {
-  page: 1,
-  pageSize: 10,
-  orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
-  orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
-};
-
-function getNetfirewallEnum(){
-  try {
-    ruleDirection_RULE_IN = netFirewall.NetFirewallRuleDirection.RULE_IN
-    ruleDirection_RULE_OUT = netFirewall.NetFirewallRuleDirection.RULE_OUT
-    ruleAction_RULE_ALLOW = netFirewall.FirewallRuleAction.RULE_ALLOW
-    ruleAction_RULE_DENY = netFirewall.FirewallRuleAction.RULE_DENY
-    ruleType_RULE_IP = netFirewall.NetFirewallRuleType.RULE_IP
-    ruleType_RULE_DNS = netFirewall.NetFirewallRuleType.RULE_DNS
-    ruleType_RULE_DOMAIN = netFirewall.NetFirewallRuleType.RULE_DOMAIN
-    orderField_ORDER_BY_RULE_NAME = netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME
-    orderField_ORDER_BY_RECORD_TIME = netFirewall.NetFirewallOrderField.ORDER_BY_RECORD_TIME
-    orderType_ORDER_ASC = netFirewall.NetFirewallOrderType.ORDER_ASC
-    orderType_ORDER_DESC = netFirewall.NetFirewallOrderType.ORDER_DESC
-  }catch (err){
-    ruleDirection_RULE_IN = 1
-    ruleDirection_RULE_OUT = 2
-    ruleAction_RULE_ALLOW = 0
-    ruleAction_RULE_DENY = 1
-    ruleType_RULE_IP = 1
-    ruleType_RULE_DNS = 3
-    ruleType_RULE_DOMAIN = 2
-    orderField_ORDER_BY_RULE_NAME = 1
-    orderField_ORDER_BY_RECORD_TIME = 100
-    orderType_ORDER_ASC = 1
-    orderType_ORDER_DESC = 100
-  }
-}
-const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
-  await netFirewall.getNetFirewallRules(userId, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-    Current_Ruler_ID = result.data[0].id == undefined ? 1: result.data[0].id;
-  }, (error: BusinessError) => {
-    console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
-  });
-}
-const removedAll:  () => void = async ()=>{
-  let i = 0
-  while (i<200){
-    i++;
-    await updateCurrentId("remove 调用的")
-    await netFirewall.removeNetFirewallRule(userId,Current_Ruler_ID).catch((error : BusinessError) => {
-      i = 2000
-      console.error("delete firewall rule failed: " + JSON.stringify(error));
-    });
-  }
-}
-
 export default function netfirewallTest() {
   describe('netfriewallTest',  () => {
+    const updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
+      await netFirewall.getNetFirewallRules(userId, ruleParam).then((result: netFirewall.FirewallRulePage) => {
+        Current_Ruler_ID = result.data[0].id == undefined ? 1: result.data[0].id;
+      }, (error: BusinessError) => {
+        console.error(caseName, "get firewall rules failed: " + JSON.stringify(error));
+      });
+    }
+    const removedAll:  () => void = async ()=>{
+      try {
+        let i = 0
+        while (i<200){
+          i++;
+          await updateCurrentId("remove 调用的")
+          await netFirewall.removeNetFirewallRule(userId,Current_Ruler_ID).catch((error : BusinessError) => {
+            i = 2000
+            console.error("delete firewall rule failed: " + JSON.stringify(error));
+          });
+        }
+      }catch (err){
+        console.log("remove netfirewall catch err in ",JSON.stringify(err))
+      }
+
+    }
+    let Current_Ruler_ID :number | undefined = 1;
+    const userId :number = 100;
+    let ruleDirection_RULE_IN : netFirewall.NetFirewallRuleDirection;
+    let ruleDirection_RULE_OUT :netFirewall.NetFirewallRuleDirection;
+    let ruleAction_RULE_ALLOW :netFirewall.FirewallRuleAction;
+    let ruleAction_RULE_DENY :netFirewall.FirewallRuleAction
+    let ruleType_RULE_IP :netFirewall.NetFirewallRuleType;
+    let ruleType_RULE_DNS :netFirewall.NetFirewallRuleType;
+    let ruleType_RULE_DOMAIN :netFirewall.NetFirewallRuleType;
+    let orderField_ORDER_BY_RULE_NAME :netFirewall.NetFirewallOrderField;
+    let orderField_ORDER_BY_RECORD_TIME :netFirewall.NetFirewallOrderField;
+    let orderType_ORDER_ASC :netFirewall.NetFirewallOrderType;
+    let orderType_ORDER_DESC :netFirewall.NetFirewallOrderType;
+    const ruleParam: netFirewall.RequestParam = {
+      page: 1,
+      pageSize: 10,
+      orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
+      orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
+    };
+    const  getNetfirewallEnum: ()=> void = ()=>{
+      try {
+        ruleDirection_RULE_IN = netFirewall.NetFirewallRuleDirection.RULE_IN
+        ruleDirection_RULE_OUT = netFirewall.NetFirewallRuleDirection.RULE_OUT
+        ruleAction_RULE_ALLOW = netFirewall.FirewallRuleAction.RULE_ALLOW
+        ruleAction_RULE_DENY = netFirewall.FirewallRuleAction.RULE_DENY
+        ruleType_RULE_IP = netFirewall.NetFirewallRuleType.RULE_IP
+        ruleType_RULE_DNS = netFirewall.NetFirewallRuleType.RULE_DNS
+        ruleType_RULE_DOMAIN = netFirewall.NetFirewallRuleType.RULE_DOMAIN
+        orderField_ORDER_BY_RULE_NAME = netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME
+        orderField_ORDER_BY_RECORD_TIME = netFirewall.NetFirewallOrderField.ORDER_BY_RECORD_TIME
+        orderType_ORDER_ASC = netFirewall.NetFirewallOrderType.ORDER_ASC
+        orderType_ORDER_DESC = netFirewall.NetFirewallOrderType.ORDER_DESC
+      }catch (err){
+        ruleDirection_RULE_IN = 1
+        ruleDirection_RULE_OUT = 2
+        ruleAction_RULE_ALLOW = 0
+        ruleAction_RULE_DENY = 1
+        ruleType_RULE_IP = 1
+        ruleType_RULE_DNS = 3
+        ruleType_RULE_DOMAIN = 2
+        orderField_ORDER_BY_RULE_NAME = 1
+        orderField_ORDER_BY_RECORD_TIME = 100
+        orderType_ORDER_ASC = 1
+        orderType_ORDER_DESC = 100
+      }
+    }
     beforeAll(async ()=>{
       await getNetfirewallEnum();
       await removedAll();
@@ -94,11 +95,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_AddNetFirewallRule_0100
      * @tc.name   : testNetFirewallAddNetFirewallRule_0100
      * @tc.desc   : Add a NetFirewallRule
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallAddNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
+    it('testNetFirewallAddNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallAddNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -182,11 +183,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_AddNetFirewallRule_0200
      * @tc.name   : testNetFirewallAddNetFirewallRule_0200
      * @tc.desc   : Add a NetFirewallRule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallAddNetFirewallRule_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('testNetFirewallAddNetFirewallRule_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallAddNetFirewallRule_0200';
       console.info(`${caseName}---Start`);
       try{
@@ -223,11 +224,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_setNetFirewallPolicy_0100
      * @tc.name   : testNetFirewallSetNetFirewallPolicy_0100
      * @tc.desc   : Set NetFirewall Policy
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallSetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallSetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function) => {
       const caseName: string = 'testNetFirewallSetNetFirewallPolicy_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -258,11 +259,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_getNetFirewallRules_0100
      * @tc.name   : testNetFirewallGetNetFirewallRules0100
      * @tc.desc   : Get NetFirewallRules
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallGetNetFirewallRules0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallGetNetFirewallRules0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function) => {
       const caseName: string = 'testNetFirewallGetNetFirewallRules0100';
       console.info(`${caseName}---Start`);
       try{
@@ -296,12 +297,12 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_getNetFirewallRule_0100
      * @tc.name   : testNetFirewallGetNetFirewallRule_0100
      * @tc.desc   : Get NetFirewall rule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
 
-    it('testNetFirewallGetNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('testNetFirewallGetNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallGetNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -330,11 +331,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_getNetFirewallPolicy_0100
      * @tc.name   : testNetFirewallGetNetFirewallPolicy_0100
      * @tc.desc   : Get NetFirewall Policy
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallGetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallGetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function) => {
       const caseName: string = 'testNetFirewallGetNetFirewallPolicy_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -361,12 +362,12 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_updateNetFirewallRule_0100
      * @tc.name   : testNetFirewallupdateNetFirewallRule_0100
      * @tc.desc   : update NetFirewallRule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
 
-    it('testNetFirewallupdateNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('testNetFirewallupdateNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallupdateNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -406,11 +407,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_RemoveNetFirewallRule_0100
      * @tc.name   : testNetFirewallRemoveNetFirewallRule_0100
      * @tc.desc   : Remove NetFirewall Rule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallRemoveNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallRemoveNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function) => {
       const caseName: string = 'testNetFirewallRemoveNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -432,4 +433,3 @@ export default function netfirewallTest() {
     })
   })
 }
-

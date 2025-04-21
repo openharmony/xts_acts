@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPart3Test() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPart3Test() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerPart3 beforeEach start");
       done();
@@ -54,7 +62,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testJavaScriptProxy001', 0, async (done: Function) => {
+    it('testJavaScriptProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("javaScriptProxy", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJavaScriptProxy001", true, 1271, done);
@@ -69,7 +77,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRegisterJavaScriptProxy001', 0, async (done: Function) => {
+    it('testRegisterJavaScriptProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRegisterJavaScriptProxy001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRegisterJavaScriptProxy001", "backToEts", 100075, done);
@@ -84,7 +92,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDeleteJavaScriptRegister001', 0, async (done: Function) => {
+    it('testDeleteJavaScriptRegister001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeleteJavaScriptRegister001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteJavaScriptRegister001", true, 100076, done);

@@ -98,7 +98,7 @@ void NativeDrawingSurfaceTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingSurfaceTest, NativeDrawingSurfaceTest_CreateFromGpuContext, TestSize.Level1)
+HWTEST_F(NativeDrawingSurfaceTest, NativeDrawingSurfaceTest_CreateFromGpuContext, Function | MediumTest | Level1)
 {
     OH_Drawing_GpuContextOptions options {true};
     gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);
@@ -128,7 +128,7 @@ HWTEST_F(NativeDrawingSurfaceTest, NativeDrawingSurfaceTest_CreateFromGpuContext
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingSurfaceTest, NativeDrawingSurfaceTest_GetCanvas, TestSize.Level1)
+HWTEST_F(NativeDrawingSurfaceTest, NativeDrawingSurfaceTest_GetCanvas, Function | MediumTest | Level1)
 {
     OH_Drawing_GpuContextOptions options {true};
     gpuContext_ = OH_Drawing_GpuContextCreateFromGL(options);

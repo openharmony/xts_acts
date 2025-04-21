@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitOnsslerroreventreceiveWebC";
 
 export default function webOnSslError() {
@@ -41,6 +43,11 @@ export default function webOnSslError() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webOnSslError beforeEach start");
       done();
@@ -66,11 +73,14 @@ export default function webOnSslError() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBPATR4_API_0100
-     *tc.name testOnsslerroreventreceiveWebC
-     *tc.desc onsslerroreventreceive after load https://wrong.host.badssl.com
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBPATR4_API_0100
+     * @tc.name       : testOnsslerroreventreceiveWebC
+     * @tc.desc       : onsslerroreventreceive after load https://wrong.host.badssl.com
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('testOnsslerroreventreceiveWebC', 0, async (done: Function) => {
+    it('testOnsslerroreventreceiveWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnsslerroreventreceiveWebC";
       Utils.registerEvent("testOnsslerroreventreceiveWebC", "1", 420, done);
       sendEventByKey('webOnSslError', 10, '');

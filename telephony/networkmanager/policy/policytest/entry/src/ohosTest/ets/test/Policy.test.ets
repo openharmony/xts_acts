@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import policy from '@ohos.net.policy';
 import { BusinessError } from '@ohos.base';
 
@@ -148,7 +148,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0100", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0100';
       setNetworkAccessPolicyFn(caseName, done, 20001, true, true)
     })
@@ -159,9 +159,9 @@ export default function PolicyTset() {
     * @tc.desc  : Set a policy that specifies whether the uid application can access the network, using the Promise method as an asynchronous method
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testNetworkAccessPolicyPromise0200", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0200';
       setNetworkAccessPolicyFn(caseName, done, 2, false, false)
     })
@@ -174,7 +174,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0300", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0300';
       setNetworkAccessPolicyFn(caseName, done, 5, true, false)
     })
@@ -187,7 +187,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0400", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0400';
       setNetworkAccessPolicyFn(caseName, done, 6, false, true)
     })
@@ -200,7 +200,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0500", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0500';
       setNetworkAccessPolicyFn(caseName, done, null, false, true)
     })
@@ -213,7 +213,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0600", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0600';
       setNetworkAccessPolicyFn(caseName, done, undefined, false, true)
     })
@@ -226,7 +226,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkAccessPolicyPromise0700", 0, async (done: Function) => {
+    it("testNetworkAccessPolicyPromise0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkAccessPolicyPromise0700';
       setNetworkAccessPolicyFn(caseName, done, 20002, false, true)
     })
@@ -237,9 +237,9 @@ export default function PolicyTset() {
     * @tc.desc  : Gets access to the network policy for the specified uid, using the Promise method as an asynchronous method.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testUidNetworkAccessPolicyPromise0100", 0, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0100';
       await getNetworkAccessPolicyByUidFn(caseName, done, 20001)
     })
@@ -252,7 +252,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testUidNetworkAccessPolicyPromise0200", 0, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0200';
       await getNetworkAccessPolicyByUidFn(caseName, done, 20002)
     })
@@ -265,7 +265,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testUidNetworkAccessPolicyPromise0300", 0, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0300';
       await getNetworkAccessPolicyByUidFn(caseName, done, null)
     })
@@ -278,7 +278,7 @@ export default function PolicyTset() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testUidNetworkAccessPolicyPromise0400", 0, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0400';
       await getNetworkAccessPolicyByUidFn(caseName, done, undefined)
     })
@@ -289,9 +289,9 @@ export default function PolicyTset() {
     * @tc.desc  : Gets access to the network policy for the specified uid, using the Promise method as an asynchronous method.
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testUidNetworkAccessPolicyPromise0500", 0, async (done: Function) => {
+    it("testUidNetworkAccessPolicyPromise0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testUidNetworkAccessPolicyPromise0500';
       await getNetworkAccessPolicyFn(caseName, done)
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import inputMethod from '@ohos.inputMethod';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import * as env from './lib/Const';
 import { BusinessError } from '@ohos.base'
 
@@ -86,7 +86,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=0, end=5
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0100';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -120,7 +120,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=0, end=10
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0200';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -154,7 +154,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=- 1, end=5
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0300';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = -1;
@@ -188,7 +188,7 @@ export default function inputMethodTest() {
      *             test hehe', start=8, end=2
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0400';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 8;
@@ -220,7 +220,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls changeSelection interface, input parameter text=123
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0500', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0500', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0500';
       const START = 0;
       const END = 5;
@@ -253,7 +253,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls changeSelection interface, input parameter text=''
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0600', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0600', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0600';
       const START = 0;
       const END = 5;
@@ -285,7 +285,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls changeSelection interface, input parameter start='0'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0700', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0700', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0700';
       const TEXT = '输入法键盘测试嘿嘿';
       const START: ESObject = '0';
@@ -319,7 +319,7 @@ export default function inputMethodTest() {
      * @tc.name Async mode calls changeSelection interface, input parameter end='5'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_0800', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_0800', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_0800';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -353,7 +353,7 @@ export default function inputMethodTest() {
      * @tc.name The input method keyboard is not bound, and the changeSelection interface is called in Async mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Async_1100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Async_1100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Async_1100';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -398,7 +398,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=0, end=5
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0100';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -422,7 +422,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=0, end=10
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0200';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -446,7 +446,7 @@ export default function inputMethodTest() {
      *             start=- 1, end=5
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0300', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0300', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0300';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = -1;
@@ -470,7 +470,7 @@ export default function inputMethodTest() {
      *             test hey hey', start=8, end=2
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0400', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0400', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0400';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 8;
@@ -493,7 +493,7 @@ export default function inputMethodTest() {
      * @tc.name Call changeSelection interface in Promise mode, input parameter text=123
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0500', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0500', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0500';
       const START = 0;
       const END = 5;
@@ -516,7 +516,7 @@ export default function inputMethodTest() {
      * @tc.name Promise mode calls changeSelection interface, input parameter text=''
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0600', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0600', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0600';
       const START = 0;
       const END = 5;
@@ -538,7 +538,7 @@ export default function inputMethodTest() {
      * @tc.name Promise mode calls changeSelection interface, input parameter start='0'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0700', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0700', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0700';
       const TEXT = '输入法键盘测试嘿嘿';
       const START: ESObject = '0';
@@ -562,7 +562,7 @@ export default function inputMethodTest() {
      * @tc.name Call changeSelection interface in Promise mode, input parameter end='5'
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_0800', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_0800', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_0800';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -586,7 +586,7 @@ export default function inputMethodTest() {
      * @tc.name Do not bind the input method keyboard, and call the changeSelection interface in Promise mode
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_1100', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_1100', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_1100';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;
@@ -620,7 +620,7 @@ export default function inputMethodTest() {
      * @tc.name The Promise method calls the changeSelection interface, and an invalid input parameter is passed in
      * @tc.desc Function test
      */
-    it('SUB_Misc_inputMethod_changeSelection_Promise_1200', 0, async (done: Function) => {
+    it('SUB_Misc_inputMethod_changeSelection_Promise_1200', Level.LEVEL2, async (done: Function) => {
       const CASE_NAME = 'SUB_Misc_inputMethod_changeSelection_Promise_1200';
       const TEXT = '输入法键盘测试嘿嘿';
       const START = 0;

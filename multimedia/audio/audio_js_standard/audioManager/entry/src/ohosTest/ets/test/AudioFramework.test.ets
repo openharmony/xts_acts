@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
@@ -88,16 +88,36 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
     devRoleName = 'ERROR : UNKNOWN : ' + value.deviceRole;
   }
 
-  if (value.deviceType == 1) {
+  if (value.deviceType == audio.DeviceType.EARPIECE) {
     devTypeName = 'EARPIECE';
-  } else if (value.deviceType == 2) {
+  } else if (value.deviceType == audio.DeviceType.SPEAKER) {
     devTypeName = 'SPEAKER';
-  } else if (value.deviceType == 3) {
+  } else if (value.deviceType == audio.DeviceType.WIRED_HEADSET) {
     devTypeName = 'WIRED_HEADSET';
-  } else if (value.deviceType == 8) {
+  } else if (value.deviceType == audio.DeviceType.WIRED_HEADPHONES) {
+    devTypeName = 'WIRED_HEADPHONES';
+  } else if (value.deviceType == audio.DeviceType.BLUETOOTH_SCO) {
+    devTypeName = 'BLUETOOTH_SCO';
+  } else if (value.deviceType == audio.DeviceType.BLUETOOTH_A2DP) {
     devTypeName = 'BLUETOOTH_A2DP';
-  } else if (value.deviceType == 15) {
+  } else if (value.deviceType == audio.DeviceType.MIC) {
     devTypeName = 'MIC';
+  } else if (value.deviceType == audio.DeviceType.USB_HEADSET) {
+    devTypeName = 'USB_HEADSET';
+  } else if (value.deviceType == audio.DeviceType.DISPLAY_PORT) {
+    devTypeName = 'DISPLAY_PORT';
+  } else if (value.deviceType == audio.DeviceType.REMOTE_CAST) {
+    devTypeName = 'REMOTE_CAST';
+  } else if (value.deviceType == audio.DeviceType.USB_DEVICE) {
+    devTypeName = 'USB_DEVICE';
+  //} else if (value.deviceType == audio.DeviceType.HDMI) {
+  //  devTypeName = 'HDMI';
+  //} else if (value.deviceType == audio.DeviceType.LINE_DIGITAL) {
+  //  devTypeName = 'LINE_DIGITAL';
+  } else if (value.deviceType == audio.DeviceType.REMOTE_DAUDIO) {
+    devTypeName = 'REMOTE_DAUDIO';
+  } else if (value.deviceType == audio.DeviceType.DEFAULT) {
+    devTypeName = 'DEFAULT';
   } else {
     devTypeName = 'ERROR : UNKNOWN :' + value.deviceType;
   }
@@ -2233,7 +2253,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const PROMISE = audioManager.getDevices(1);
       // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
       PROMISE.then((value) => {
@@ -5227,6 +5247,34 @@ export default function audioFramework() {
       expect(audio.InterruptActionType.TYPE_INTERRUPT).assertEqual(1);
       await sleep(50);
       done();
+    }) 
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0100
+     * @tc.name      : InterruptType - INTERRUPT_TYPE_BEGIN
+     * @tc.desc      : InterruptType - INTERRUPT_TYPE_BEGIN
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptType.INTERRUPT_TYPE_BEGIN).assertEqual(1);
+      await sleep(50);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0200
+     * @tc.name      : InterruptType - INTERRUPT_TYPE_END
+     * @tc.desc      : InterruptType - INTERRUPT_TYPE_END
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTTYPE_0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptType.INTERRUPT_TYPE_END).assertEqual(2);
+      await sleep(50);
+      done();
     })
 
     /**
@@ -5258,8 +5306,18 @@ export default function audioFramework() {
       console.info("audio.DeviceType.USB_HEADSET:" + audio.DeviceType.USB_HEADSET);
       expect(audio.DeviceType.DISPLAY_PORT).assertEqual(23);
       console.info("audio.DeviceType.DISPLAY_PORT:" + audio.DeviceType.DISPLAY_PORT);
+      expect(audio.DeviceType.REMOTE_CAST).assertEqual(24);
+      console.info("audio.DeviceType.REMOTE_CAST:" + audio.DeviceType.REMOTE_CAST);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
+      //expect(audio.DeviceType.HDMI).assertEqual(27);
+      //console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
+      //expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
+      //console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
+      expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
+      console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
+      expect(audio.DeviceType.DEFAULT).assertEqual(1000);
+      console.info("audio.DeviceType.DEFAULT:" + audio.DeviceType.DEFAULT);
       await sleep(50);
       done();
     })
@@ -5680,6 +5738,41 @@ export default function audioFramework() {
         done();
       }
     })
+
+     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100
+     * @tc.name      : on_DeviceChange - ErrorCode - Null-Parameters - 401
+     * @tc.desc      : on_DeviceChange - ErrorCode - Null-Parameters - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ON_DEVICECHANGE_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+      let AudioManager = audioManager.getRoutingManager();
+      try {
+        AudioManager.on('deviceChange', null!, (deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+        AudioManager.off('deviceChange',(deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.info(`${TagFrmwk}: on('deviceChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0100
      * @tc.name      : on_DeviceChange - ErrorCode - Null-Parameters - 401
@@ -5692,6 +5785,14 @@ export default function audioFramework() {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         AudioRoutingManager.on('deviceChange', null!, (deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+        AudioRoutingManager.off('deviceChange', (deviceChanged) => {
           console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
           console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
           console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
@@ -5713,10 +5814,18 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         AudioRoutingManager.on('deviceChange', -123, (deviceChanged) => {
+          console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+          console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+          console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+          expect(false).assertTrue();
+          done();
+        });
+        AudioRoutingManager.off('deviceChange', (deviceChanged) => {
           console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
           console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
           console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
@@ -5738,10 +5847,19 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         AudioRoutingManager.on('deviceChange', 333,
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
+          AudioRoutingManager.off('deviceChange',
           (deviceChanged: audio.DeviceChangeAction) => {
             console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
             console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
@@ -5778,11 +5896,205 @@ export default function audioFramework() {
             expect(false).assertTrue();
             done();
           });
+          AudioRoutingManager.off('deviceChange',
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
       } catch (error) {
         console.info(`${TagFrmwk}: on('deviceChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
         expect(Number(error.code)).assertEqual(401);
         done();
       }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500
+     * @tc.name      : on_DeviceChange - ErrorCode - String -Parameters - 401
+     * @tc.desc      : getDevicesSync - ErrorCode - String -Parameters - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+      let AudioRoutingManager = audioManager.getRoutingManager();
+      try {
+        let deviceFlag: ESObject = '123';
+        AudioRoutingManager.on('deviceChange', deviceFlag,
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
+          AudioRoutingManager.off('deviceChange',
+          (deviceChanged: audio.DeviceChangeAction) => {
+            console.info(TagFrmwk + ':device change type : ' + deviceChanged.type);
+            console.info(TagFrmwk + ':device descriptor size : ' + deviceChanged.deviceDescriptors.length);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
+            console.info(TagFrmwk + ':device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+            expect(false).assertTrue();
+            done();
+          });
+      } catch (error) {
+        if(Number.isNaN(error.code)  || error.code == 6800301 )
+        console.info(`${TagFrmwk}: on('deviceChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(true).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0100
+     * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0100', 2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      try {
+        let para: ESObject = '123';
+        volumeManager.on('volumeChange', para);
+        volumeManager.off(para);
+      } catch (error) {
+        console.info(`on('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0200
+     * @tc.name      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 6800101
+     * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_VOLUMECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      try {
+        let para: ESObject = '123';
+        volumeManager.on(para,()=>{});
+        volumeManager.off(para);
+      } catch (error) {
+        console.info(`on('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_VOLUMECHANGE_0100
+     * @tc.name      : AudioCaptruerChange
+     * @tc.desc      : OFF_VOLUMECHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_VOLUMECHANGE_0100', 2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb1: Callback<audio.VolumeEvent> = (volumeEvent: audio.VolumeEvent) => {};
+      volumeManager.on('volumeChange', cb1);
+      try {
+        let para: ESObject = '123';
+        volumeManager.off(para);
+      } catch (error) {
+        console.info(`off('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GETSPATIALIZATIONMANAGER_0100
+     * @tc.name      : AudioCaptruerChange
+     * @tc.desc      : OFF_VOLUMECHANGE 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_GETSPATIALIZATIONMANAGER_0100', 2, (done: Function) => {
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audio.getAudioManager().getSpatializationManager();
+        let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+        console.info(`AudioSpatializationManager isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+      } catch (error) {
+        console.info(`Fail, error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(false).assertTrue();
+      }
+      expect(true).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SPATIALIZATION_MANAGER_0100
+     * @tc.name      : on_off_spatializationEnabledChangeForCurrentDevice -401
+     * @tc.desc      : on_off_spatializationEnabledChangeForCurrentDevice -401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_SPATIALIZATION_MANAGER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let para:ESObject = 123;
+      let flag:boolean = false;
+      let audioSpatializationManager: audio.AudioSpatializationManager = audio.getAudioManager().getSpatializationManager();
+      let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+      try {
+        audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice',para)
+        audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice',para)
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`on_off('spatializationEnabledChangeForCurrentDevice') Fail, error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SPATIALIZATION_MANAGER_0200
+     * @tc.name      : on_off_spatializationEnabledChangeForCurrentDevice -6800101
+     * @tc.desc      : on_off_spatializationEnabledChangeForCurrentDevice -6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_SPATIALIZATION_MANAGER_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let para:ESObject = '123';
+      let flag:boolean = false;
+      let audioSpatializationManager: audio.AudioSpatializationManager = audio.getAudioManager().getSpatializationManager();
+      let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+      try {
+        audioSpatializationManager.on(para,()=>{})
+        audioSpatializationManager.off(para,()=>{})
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`on_off('spatializationEnabledChangeForCurrentDevice') Fail, error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
     })
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType} from '@ohos/hypium';
 import http from '@ohos.net.http';
 import { BusinessError } from '@ohos.base';
 import connection from '@ohos.net.connection';
@@ -42,11 +42,11 @@ export default function HttpRequestOffTest() {
      * @tc.number : SUB_NetworkMgr_Http_HttpRequest_Off_0100
      * @tc.name   : testNetworkMgrHttpHttpRequestOff0100
      * @tc.desc   : Unsubscribe from HTTP Response Header event.
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0100';
       console.info(`${caseName}---Start`);
       try {
@@ -94,11 +94,11 @@ export default function HttpRequestOffTest() {
      * @tc.number : SUB_NetworkMgr_Http_HttpRequest_Off_0200
      * @tc.name   : testNetworkMgrHttpHttpRequestOff0200
      * @tc.desc   : Unsubscribe from HTTP Response Header event.
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0200';
       console.info(`${caseName}---Start`);
       try {
@@ -147,7 +147,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0300';
       console.info(`${caseName}---Start`);
       try {
@@ -196,7 +196,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0400';
       console.info(`${caseName}---Start`);
       try {
@@ -245,7 +245,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0500';
       console.info(`${caseName}---Start`);
       try {
@@ -294,7 +294,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0600';
       console.info(`${caseName}---Start`);
       try {
@@ -344,7 +344,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0700';
       console.info(`${caseName}---Start`);
 
@@ -399,7 +399,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0800';
       console.info(`${caseName}---Start`);
 
@@ -455,7 +455,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0900';
       console.info(`${caseName}---Start`);
 
@@ -510,7 +510,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1000';
       console.info(`${caseName}---Start`);
 
@@ -566,7 +566,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1100';
       console.info(`${caseName}---Start`);
       try {
@@ -616,7 +616,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1200';
       console.info(`${caseName}---Start`);
       try {
@@ -665,7 +665,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1300';
       console.info(`${caseName}---Start`);
       try {
@@ -714,7 +714,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1400';
       console.info(`${caseName}---Start`);
       try {
@@ -763,7 +763,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1500';
       console.info(`${caseName}---Start`);
       try {
@@ -812,7 +812,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1600';
       console.info(`${caseName}---Start`);
       try {
@@ -861,7 +861,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1700';
       console.info(`${caseName}---Start`);
 
@@ -918,7 +918,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1800';
       console.info(`${caseName}---Start`);
 
@@ -973,7 +973,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff1900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff1900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff1900';
       console.info(`${caseName}---Start`);
       try {
@@ -1024,7 +1024,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff2000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff2000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff2000';
       console.info(`${caseName}---Start`);
       try {
@@ -1074,7 +1074,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff2100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff2100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff2100';
       console.info(`${caseName}---Start`);
       try {
@@ -1124,7 +1124,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff2200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff2200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff2200';
       console.info(`${caseName}---Start`);
       try {
@@ -1175,7 +1175,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff2900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff2900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff2900';
       console.info(`${caseName}---Start`);
       try {
@@ -1226,7 +1226,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3000';
       console.info(`${caseName}---Start`);
       try {
@@ -1276,7 +1276,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3100';
       console.info(`${caseName}---Start`);
       try {
@@ -1330,7 +1330,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3200';
       console.info(`${caseName}---Start`);
       try {
@@ -1379,7 +1379,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3300';
       console.info(`${caseName}---Start`);
       try {
@@ -1425,7 +1425,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3400';
       console.info(`${caseName}---Start`);
       try {
@@ -1472,7 +1472,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3500';
       console.info(`${caseName}---Start`);
       try {
@@ -1518,7 +1518,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3600';
       console.info(`${caseName}---Start`);
       try {
@@ -1565,7 +1565,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3700';
       console.info(`${caseName}---Start`);
 
@@ -1617,7 +1617,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3800';
       console.info(`${caseName}---Start`);
 
@@ -1670,7 +1670,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff3900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff3900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff3900';
       console.info(`${caseName}---Start`);
 
@@ -1722,7 +1722,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4000';
       console.info(`${caseName}---Start`);
 
@@ -1775,7 +1775,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4100';
       console.info(`${caseName}---Start`);
       try {
@@ -1822,7 +1822,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4200';
       console.info(`${caseName}---Start`);
       try {
@@ -1868,7 +1868,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4300';
       console.info(`${caseName}---Start`);
       try {
@@ -1914,7 +1914,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4400';
       ;
       console.info(`${caseName}---Start`);
@@ -1961,7 +1961,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4500', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4500';
       ;
       console.info(`${caseName}---Start`);
@@ -2008,7 +2008,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4600', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4600';
       console.info(`${caseName}---Start`);
       try {
@@ -2054,7 +2054,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4700', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4700';
       ;
       console.info(`${caseName}---Start`);
@@ -2107,7 +2107,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4800', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4800';
       console.info(`${caseName}---Start`);
 
@@ -2159,7 +2159,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff4900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff4900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff4900';
       console.info(`${caseName}---Start`);
       try {
@@ -2207,7 +2207,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff5000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff5000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff5000';
       console.info(`${caseName}---Start`);
       try {
@@ -2254,7 +2254,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff5100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff5100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff5100';
       console.info(`${caseName}---Start`);
       try {
@@ -2300,7 +2300,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff5200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff5200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff5200';
       console.info(`${caseName}---Start`);
       try {
@@ -2348,7 +2348,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff5900', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff5900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff5900';
       console.info(`${caseName}---Start`);
       try {
@@ -2397,7 +2397,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff6000', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff6000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff6000';
       console.info(`${caseName}---Start`);
       try {
@@ -2445,7 +2445,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff6100', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff6100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff6100';
       console.info(`${caseName}---Start`);
       try {
@@ -2497,7 +2497,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff6200', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff6200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff6200';
       console.info(`${caseName}---Start`);
       try {
@@ -2545,7 +2545,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff6300', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff6300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff6300';
       console.info(`${caseName}---Start`);
       try {
@@ -2593,7 +2593,7 @@ export default function HttpRequestOffTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff6400', 0, async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff6400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff6400';
       console.info(`${caseName}---Start`);
       try {

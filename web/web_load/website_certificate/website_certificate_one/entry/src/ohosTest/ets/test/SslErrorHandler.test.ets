@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function sslErrorHandler() {
 
@@ -43,6 +45,11 @@ export default function sslErrorHandler() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("sslErrorHandler beforeEach start");
       done();
@@ -56,7 +63,7 @@ export default function sslErrorHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnSslErrorEventReceive001', 0, async (done: Function) => {
+    it('testOnSslErrorEventReceive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnSslErrorEventReceive001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnSslErrorEventReceive001", true, 30272, done);
@@ -71,7 +78,7 @@ export default function sslErrorHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSslErrorHandlerHandleCancel001', 0, async (done: Function) => {
+    it('testSslErrorHandlerHandleCancel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSslErrorHandlerHandleCancel001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSslErrorHandlerHandleCancel001", 0, 30271, done);
@@ -86,7 +93,7 @@ export default function sslErrorHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSslErrorHandlerHandleConfirm001', 0, async (done: Function) => {
+    it('testSslErrorHandlerHandleConfirm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSslErrorHandlerHandleConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSslErrorHandlerHandleConfirm001", true, 30270, done);
@@ -101,7 +108,7 @@ export default function sslErrorHandler() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearSslCache001', 0, async (done: Function) => {
+    it('testClearSslCache001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearSslCache001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testClearSslCache001", true, 100073, done);

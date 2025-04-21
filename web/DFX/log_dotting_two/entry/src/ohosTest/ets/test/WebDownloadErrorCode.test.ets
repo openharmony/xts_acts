@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webDownloadErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webDownloadErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("webDownloadErrorCode beforeEach start");
       await Utils.sleep(1000);
       done();
@@ -63,7 +71,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSetDownloadDelegate001', 0, async (done: Function) => {
+    it('testSetDownloadDelegate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetDownloadDelegate001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetDownloadDelegate001", '17100001', 60000, done);
@@ -78,7 +86,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload001', 0, async (done: Function) => {
+    it('testStartDownload001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload001", '17100001', 60010, done);
@@ -93,7 +101,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload002', 0, async (done: Function) => {
+    it('testStartDownload002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload002", '17100002', 60011, done);
@@ -108,7 +116,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload003', 0, async (done: Function) => {
+    it('testStartDownload003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload003", '17100002', 60012, done);
@@ -123,7 +131,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload004', 0, async (done: Function) => {
+    it('testStartDownload004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload004", '17100002', 60013, done);
@@ -138,7 +146,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload005', 0, async (done: Function) => {
+    it('testStartDownload005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload005", '17100002', 60014, done);
@@ -153,7 +161,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStartDownload006', 0, async (done: Function) => {
+    it('testStartDownload006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStartDownload006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStartDownload006", '17100002', 60015, done);
@@ -168,7 +176,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadPause001', 0, async (done: Function) => {
+    it('testWebDownloadPause001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadPause001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadPause001", '17100019', 60020, done);
@@ -183,7 +191,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadPause002', 0, async (done: Function) => {
+    it('testWebDownloadPause002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadPause002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadPause002", '17100019', 60022, done);
@@ -198,7 +206,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadPause003', 0, async (done: Function) => {
+    it('testWebDownloadPause003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadPause003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadPause003", '17100019', 60024, done);
@@ -213,7 +221,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadResume001', 0, async (done: Function) => {
+    it('testWebDownloadResume001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadResume001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadResume001", '17100016', 60030, done);
@@ -228,7 +236,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadResume002', 0, async (done: Function) => {
+    it('testWebDownloadResume002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadResume002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadResume002", '17100016', 60032, done);
@@ -243,7 +251,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadResume003', 0, async (done: Function) => {
+    it('testWebDownloadResume003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadResume003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadResume003", '17100016', 60034, done);
@@ -258,7 +266,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadResume004', 0, async (done: Function) => {
+    it('testWebDownloadResume004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadResume004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadResume004", '17100016', 60036, done);
@@ -273,7 +281,7 @@ export default function webDownloadErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebDownloadManagerResumeDownload001', 0, async (done: Function) => {
+    it('testWebDownloadManagerResumeDownload001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebDownloadManagerResumeDownload001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebDownloadManagerResumeDownload001", '17100018', 60040, done);

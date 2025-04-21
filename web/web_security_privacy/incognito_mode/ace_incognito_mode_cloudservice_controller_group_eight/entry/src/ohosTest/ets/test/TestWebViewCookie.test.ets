@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -82,9 +82,9 @@ export default function ActsWebViewTest1() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0015', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_existCookie0001', false, 5003, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -100,7 +100,7 @@ export default function ActsWebViewTest1() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0016', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_existCookie0002', false, 5004, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -116,7 +116,7 @@ export default function ActsWebViewTest1() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0013', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_configCookieSync0001', 'success', 5001, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -132,7 +132,7 @@ export default function ActsWebViewTest1() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_ACE_WEB_INCOGNITO_API_0014', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_INCOGNITO_API_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_configCookieSync0002', 'success', 5002, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

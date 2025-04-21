@@ -14,7 +14,7 @@
  */
 
 import webSocket from '@ohos.net.webSocket';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
 export default function NetManagerWSSupportCustomProtocol() {
@@ -44,7 +44,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0100', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0100 test start")
       try {
         let webSock = webSocket.createWebSocket();
@@ -77,7 +77,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0200', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0200 test start")
       try {
         let webSock = webSocket.createWebSocket();
@@ -113,7 +113,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0300', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0300 test start")
       try {
         let proxyConfig:webSocket.ProxyConfiguration = 'system';
@@ -148,7 +148,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0400', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0400 test start")
       try {
         let proxyConfig:webSocket.ProxyConfiguration = 'no-proxy';
@@ -186,7 +186,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0500', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0500 test start")
       try {
         let proxyConfig:webSocket.ProxyConfiguration = {
@@ -225,7 +225,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0600', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0600 test start")
       try {
         let webSock = webSocket.createWebSocket();
@@ -263,7 +263,7 @@ export default function NetManagerWSSupportCustomProtocol() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0700', 0, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSSupportCustomProtocol_0700 test start")
       try {
         let webSock = webSocket.createWebSocket();

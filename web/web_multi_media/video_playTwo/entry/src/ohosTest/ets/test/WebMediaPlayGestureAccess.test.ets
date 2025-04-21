@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webMediaPlayGestureAccess() {
   describe('WebMediaPlayGestureAccessTest', () => {
     beforeAll(async (done: Function) => {
@@ -39,6 +41,11 @@ export default function webMediaPlayGestureAccess() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -59,7 +66,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess001', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessTrue", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess001", "false_", 60504, done);
@@ -74,7 +81,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess002', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessFalsePlay", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess002", "true_true_", 60506, done);
@@ -89,7 +96,7 @@ export default function webMediaPlayGestureAccess() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testMediaPlayGestureAccess003', 0, async (done: Function) => {
+    it('testMediaPlayGestureAccess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitMediaPlayGestureAccessFalsePause", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMediaPlayGestureAccess003", "true_false_false_", 60508, done);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherAES } from './utils/param/cipher/publicCipherParam';
 import { HksTag } from './utils/param/publicParam';
@@ -216,7 +216,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             useSoftware = await checkSoftware();
             done();
         })
-        it('Security_HUKS_Cipher_API9_AES_101', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias101';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -254,7 +254,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_102', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias102';
             let HuksOptions = {
                 properties: new Array(
@@ -274,7 +274,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_103', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias103';
             let HuksOptions = {
                 properties: new Array(
@@ -309,7 +309,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_104', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias104';
             let HuksOptions = {
                 properties: new Array(
@@ -329,7 +329,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize128PADDINGPKCS7MODECBC103', 0, async function (done) {
+        it('testCipherAESSize128PADDINGPKCS7MODECBC103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGPKCS7MODECBCKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -367,7 +367,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize128PADDINGNONEMODECTR103', 0, async function (done) {
+        it('testCipherAESSize128PADDINGNONEMODECTR103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECTRKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODECTR);
@@ -405,7 +405,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize128PADDINGPKCS7MODEECB103', 0, async function (done) {
+        it('testCipherAESSize128PADDINGPKCS7MODEECB103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGPKCS7MODEECBKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODEECB);
@@ -445,7 +445,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize192PADDINGNONEMODECBC103', 0, async function (done) {
+        it('testCipherAESSize192PADDINGNONEMODECBC103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize192PADDINGNONEMODECBCKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize192);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -483,7 +483,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize192PADDINGPKCS7MODECBC103', 0, async function (done) {
+        it('testCipherAESSize192PADDINGPKCS7MODECBC103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize192PADDINGPKCS7MODECBCKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize192);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -521,7 +521,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize192PADDINGNONEMODECTR103', 0, async function (done) {
+        it('testCipherAESSize192PADDINGNONEMODECTR103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize192PADDINGNONEMODECTRKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize192);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODECTR);
@@ -559,7 +559,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize192PADDINGNONEMODEECB103', 0, async function (done) {
+        it('testCipherAESSize192PADDINGNONEMODEECB103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize192PADDINGNONEMODEECBKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize192);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODEECB);
@@ -599,7 +599,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize192PADDINGPKCS7MODEECB103', 0, async function (done) {
+        it('testCipherAESSize192PADDINGPKCS7MODEECB103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize192PADDINGPKCS7MODEECBKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize192);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODEECB);
@@ -639,7 +639,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize256PADDINGNONEMODECBC103', 0, async function (done) {
+        it('testCipherAESSize256PADDINGNONEMODECBC103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize256PADDINGNONEMODECBCKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize256);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -677,7 +677,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize256PADDINGPKCS7MODECBC103', 0, async function (done) {
+        it('testCipherAESSize256PADDINGPKCS7MODECBC103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize256PADDINGPKCS7MODECBCKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize256);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -715,7 +715,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize256PADDINGNONEMODECTR103', 0, async function (done) {
+        it('testCipherAESSize256PADDINGNONEMODECTR103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize256PADDINGNONEMODECTRKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize256);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODECTR);
@@ -753,7 +753,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize256PADDINGNONEMODEECB103', 0, async function (done) {
+        it('testCipherAESSize256PADDINGNONEMODEECB103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize256PADDINGNONEMODEECBKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize256);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODEECB);
@@ -793,7 +793,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
             done();
         });
 
-        it('testCipherAESSize256PADDINGPKCS7MODEECB103', 0, async function (done) {
+        it('testCipherAESSize256PADDINGPKCS7MODEECB103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize256PADDINGPKCS7MODEECBKeyAlias103';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize256);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODEECB);
@@ -842,7 +842,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_isPwdSet_0010', 0, async function (done) {
+        it('SUB_Security_HUKS_isPwdSet_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0010';
             let huksProperties = new Array();
             let index = 0;
@@ -899,7 +899,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_isPwdSet_0020', 0, async function (done) {
+        it('SUB_Security_HUKS_isPwdSet_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0020';
             let huksProperties = new Array();
             let index = 0;
@@ -956,7 +956,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_hasKeyItem_0010', 0, async function (done) {
+        it('SUB_Security_HUKS_hasKeyItem_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlias = 'SUB_Security_HUKS_hasKeyItem_0010';
             let huksProperties = new Array();
             let index = 0;
@@ -1007,7 +1007,7 @@ export default function SecurityHuksCipherAESPromiseJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_ECE_0010', 0, async function (done) {
+        it('SUB_Security_HUKS_ECE_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'SUB_Security_HUKS_ECE_0010';
             let huksProperties = new Array();
             let index = 0;

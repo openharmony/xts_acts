@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -46,6 +49,11 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     });
     
     beforeEach(async (done: Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+          console.info(`enable success`);
+          }).catch((err: object) => {
+          console.error(`failed to enable, ${err}`);
+        })
         await Utils.sleep(2000);
         done();
     })
@@ -79,7 +87,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
      * @tc.type        : Function
      * @tc.level       : Level 0
      */
-    it('testWebViewSdkSchemeHandlerDidFailNegative701', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative701', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative701"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative701", 'success', 11701, done);
@@ -95,7 +103,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative702', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative702', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative702"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative702", 'success', 11702, done);
@@ -110,7 +118,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative703', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative703', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative703"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative703", 'success', 11703, done);
@@ -127,7 +135,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative704', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative704', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative704"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative704", 'success', 11704, done);
@@ -142,7 +150,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative705', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative705', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative705"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative705", 'success', 11705, done);
@@ -157,7 +165,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative706', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative706', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative706"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative706", 'success', 11706, done);
@@ -172,7 +180,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative707', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative707', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative707"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative707", 'success', 11707, done);
@@ -187,7 +195,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative708', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative708', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative708"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative708", 'success', 11708, done);
@@ -202,7 +210,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative709', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative709', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative709"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative709", 'success', 11709, done);
@@ -217,7 +225,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative710', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative710', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative710"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative710", 'success', 11710, done);
@@ -232,7 +240,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative712', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative712', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative712"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative712", 'success', 11712, done);
@@ -247,7 +255,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative713', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative713', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative713"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative713", 'success', 11713, done);
@@ -262,7 +270,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative714', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative714', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative714"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative714", 'success', 11714, done);
@@ -277,7 +285,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative716', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative716', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative716"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative716", 'success', 11716, done);
@@ -292,7 +300,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative800', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative800"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative800", 'success', 11800, done);
@@ -307,7 +315,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative801', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative801"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative801", 'success', 11801, done);
@@ -322,7 +330,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative802', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative802', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative802"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative802", 'success', 11802, done);
@@ -337,7 +345,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative803', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative803', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative803"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative803", 'success', 11803, done);
@@ -352,7 +360,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative804', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative804', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative804"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative804", 'success', 11804, done);
@@ -367,7 +375,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative805', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative805', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative805"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative805", 'success', 11805, done);
@@ -382,7 +390,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative806', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative806', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative806"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative806", 'success', 11806, done);
@@ -397,7 +405,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative808', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative808', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative808"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative808", 'success', 11808, done);
@@ -412,7 +420,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative809', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative809', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative809"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative809", 'success', 11809, done);
@@ -427,7 +435,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative810', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative810', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative810"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative810", 'success', 11810, done);
@@ -442,7 +450,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegative811', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegative811', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegative811"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegative811", 'success', 11811, done);
@@ -457,7 +465,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailNegativeNull', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailNegativeNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailNegativeNull"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailNegativeNull", 'success', 11812, done);
@@ -472,7 +480,7 @@ export default function ActsAceWebViewSdkSchemeHandlerDidFailWan2() {
     * @tc.type        : Function
     * @tc.level       : Level 0
     */
-    it('testWebViewSdkSchemeHandlerDidFailMore', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandlerDidFailMore', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandlerDidFailMore"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandlerDidFailMore", 'success', 11813, done);

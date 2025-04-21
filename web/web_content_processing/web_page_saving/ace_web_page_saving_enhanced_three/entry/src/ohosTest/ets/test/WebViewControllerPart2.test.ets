@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPart2() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPart2() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewControllerPart2 beforeEach start");
       done();
@@ -54,9 +62,9 @@ export default function webViewControllerPart2() {
     * @tc.desc       : test searchAllAsync
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSearchAllAsync001', 0, async (done: Function) => {
+    it('testSearchAllAsync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSearchAllAsync001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchAllAsync001", 2, 37012, done);
@@ -71,7 +79,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSearchNext001', 0, async (done: Function) => {
+    it('testSearchNext001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSearchNext001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchNext001", true, 100080, done);
@@ -86,7 +94,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSearchNext002', 0, async (done: Function) => {
+    it('testSearchNext002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSearchNext002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSearchNext002", true, 100081, done);
@@ -101,7 +109,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStoreWebArchive001', 0, async (done: Function) => {
+    it('testStoreWebArchive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchive001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchive001", "/data/storage/el2/base/index.html.mht", 37013, done);
@@ -116,7 +124,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStoreWebArchive002', 0, async (done: Function) => {
+    it('testStoreWebArchive002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchive002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchive002", "/data/storage/el2/base/second.html.mht", 37014, done);
@@ -131,7 +139,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStoreWebArchive003', 0, async (done: Function) => {
+    it('testStoreWebArchive003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchive003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchive003", "/data/storage/el2/base/index.html.mht", 37015, done);
@@ -146,7 +154,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStoreWebArchive004', 0, async (done: Function) => {
+    it('testStoreWebArchive004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchive004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchive004", "/data/storage/el2/base/index.html.mht", 37016, done);

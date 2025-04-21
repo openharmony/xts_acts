@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -46,6 +49,11 @@ export default function ActsAceWebViewWebResourceTypeProps() {
     });
     
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
         await Utils.sleep(2000);
         done();
     })
@@ -78,7 +86,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 0
      */
-    it('testWebView_webResourceType_MAIN_FRAME', 0, async (done: Function) => {
+    it('testWebView_webResourceType_MAIN_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebView_webResourceType_MAIN_FRAME"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebView_webResourceType_MAIN_FRAME", true, 1343, done);
@@ -93,7 +101,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_SUB_FRAME', 0, async (done: Function) => {
+    it('testWebView_webResourceType_SUB_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SUB_FRAME"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_SUB_FRAME", true, 1344, done);
@@ -108,7 +116,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_STYLE_SHEET', 0, async (done: Function) => {
+    it('testWebView_webResourceType_STYLE_SHEET', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_STYLE_SHEET"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_STYLE_SHEET", true, 1345, done);
@@ -123,7 +131,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_SCRIPT', 0, async (done: Function) => {
+    it('testWebView_webResourceType_SCRIPT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SCRIPT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_SCRIPT", true, 1346, done);
@@ -138,7 +146,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_IMAGE', 0, async (done: Function) => {
+    it('testWebView_webResourceType_IMAGE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_IMAGE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_IMAGE", true, 1347, done);
@@ -153,7 +161,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_FONT_RESOURCE', 0, async (done: Function) => {
+    it('testWebView_webResourceType_FONT_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_FONT_RESOURCE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_FONT_RESOURCE", true, 1348, done);
@@ -168,7 +176,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_OBJECT', 0, async (done: Function) => {
+    it('testWebView_webResourceType_OBJECT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_OBJECT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_OBJECT", true, 1349, done);
@@ -183,7 +191,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_MEDIA', 0, async (done: Function) => {
+    it('testWebView_webResourceType_MEDIA', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_MEDIA"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_MEDIA", true, 1350, done);
@@ -198,7 +206,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebView_webResourceType_WORKER', 0, async (done: Function) => {
+    it('testWebView_webResourceType_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_WORKER"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_WORKER", true, 1351, done);
@@ -213,7 +221,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebView_webResourceType_SHARED_WORKER', 0, async (done: Function) => {
+    it('testWebView_webResourceType_SHARED_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_SHARED_WORKER"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_SHARED_WORKER", true, 1352, done);
@@ -228,7 +236,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_PREFETCH', 0, async (done: Function) => {
+    it('testWebView_webResourceType_PREFETCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_PREFETCH"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_PREFETCH", true, 1353, done);
@@ -243,7 +251,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_FAVICON', 0, async (done: Function) => {
+    it('testWebView_webResourceType_FAVICON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_FAVICON"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_FAVICON", true, 1354, done);
@@ -257,7 +265,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_XHR', 0, async (done: Function) => {
+    it('testWebView_webResourceType_XHR', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_XHR"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_XHR", true, 1355, done);
@@ -271,7 +279,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebView_webResourceType_PING', 0, async (done: Function) => {
+    it('testWebView_webResourceType_PING', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_PING"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_PING", true, 1356, done);
@@ -286,7 +294,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebView_webResourceType_CSP_REPORT', 0, async (done: Function) => {
+    it('testWebView_webResourceType_CSP_REPORT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_CSP_REPORT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_CSP_REPORT", true, 1357, done);
@@ -301,7 +309,7 @@ export default function ActsAceWebViewWebResourceTypeProps() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebView_webResourceType_Other_Props', 0, async (done: Function) => {
+    it('testWebView_webResourceType_Other_Props', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebView_webResourceType_Other_Props"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebView_webResourceType_Other_Props", true, 1358, done);

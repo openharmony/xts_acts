@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ""
 
@@ -46,6 +49,11 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
     });
     
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
         await Utils.sleep(2000);
         done();
     })
@@ -78,7 +86,7 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkTestMainFrameUrl', 0, async (done: Function) => {
+    it('testWebViewSdkTestMainFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewSdkTestMainFrameUrl"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewSdkTestMainFrameUrl", true, 1535, done);
@@ -94,7 +102,7 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkTestLoadUrlFrameUrl', 0, async (done: Function) => {
+    it('testWebViewSdkTestLoadUrlFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestLoadUrlFrameUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkTestLoadUrlFrameUrl", true, 1537, done);
@@ -110,7 +118,7 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkTestSubFrameUrl', 0, async (done: Function) => {
+    it('testWebViewSdkTestSubFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestSubFrameUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkTestSubFrameUrl", true, 1538, done);
@@ -125,7 +133,7 @@ export default function ActsAceWebViewSdkTestFrameUrl() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkTestServiceWorkerFrameUrl', 0, async (done: Function) => {
+    it('testWebViewSdkTestServiceWorkerFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkTestServiceWorkerFrameUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkTestServiceWorkerFrameUrl", true, 1536, done);

@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitJsBridgeLastJsProxyCallingFrameUrl"
 
@@ -46,8 +49,13 @@ export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
     });
     
     beforeEach(async (done: Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+            console.info(`enable success`);
+            }).catch((err: object) => {
+            console.error(`failed to enable, ${err}`);
+        })
         await Utils.sleep(1000);
-      done();
+        done();
     })
     
     afterEach(async (done: Function) => {
@@ -79,7 +87,7 @@ export default function webViewJsBridgeLastJsProxyCallingFrameUrl() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', 0, async (done: Function) => {
+    it('testJsBridgeGetLastJavascriptProxyCallingFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testJsBridgeGetLastJavascriptProxyCallingFrameUrl", "success", 1277, done);

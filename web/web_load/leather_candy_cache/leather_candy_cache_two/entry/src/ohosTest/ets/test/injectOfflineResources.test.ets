@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it, TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function injectOfflineResourcesTest() {
 
@@ -42,6 +45,11 @@ export default function injectOfflineResourcesTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(500);
       console.info("injectOfflineResourcesTest beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources001', 0, async (done: Function) => {
+    it('testInjectOfflineResources001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources001", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources001", true, 20001, done);
@@ -69,7 +77,7 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources002', 0, async (done: Function) => {
+    it('testInjectOfflineResources002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources002", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources002", '401', 20002, done);
@@ -83,10 +91,38 @@ export default function injectOfflineResourcesTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInjectOfflineResources003', 0, async (done: Function) => {
+    it('testInjectOfflineResources003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testInjectOfflineResources003", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testInjectOfflineResources003", '401', 20003, done);
+      sendEventByKey('injectOfflineResourcesTestButton', 10, '');
+    })
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_INJECTOFFLINERESOURCES_0400
+    * @tc.name       : testInjectOfflineResources004
+    * @tc.desc       : test injectOfflineResources
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testInjectOfflineResources004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("testInjectOfflineResources004", 10)
+      await Utils.sleep(500);
+      Utils.registerEvent("testInjectOfflineResources004", '17100002', 20004, done);
+      sendEventByKey('injectOfflineResourcesTestButton', 10, '');
+    })
+    /*
+    * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_INJECTOFFLINERESOURCES_0500
+    * @tc.name       : testInjectOfflineResources005
+    * @tc.desc       : test injectOfflineResources
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testInjectOfflineResources005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("testInjectOfflineResources005", 10)
+      await Utils.sleep(500);
+      Utils.registerEvent("testInjectOfflineResources005", '17100001', 20005, done);
       sendEventByKey('injectOfflineResourcesTestButton', 10, '');
     })
   })

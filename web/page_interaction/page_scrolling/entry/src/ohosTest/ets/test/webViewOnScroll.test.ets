@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitOnscroll";
 export default function webViewOnScroll() {
@@ -41,6 +44,11 @@ export default function webViewOnScroll() {
       done()
     });
     beforeEach(async (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewOnScroll beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webViewOnScroll() {
      *tc.name testOnscroll
      *tc.desc onscroll after scrollby 100,100
      */
-    it('testOnscroll',0,async (done: Function) =>{
+    it('testOnscroll',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnscrollAgain";
       Utils.registerEvent("testOnscroll",100,312,done);
       Utils.registerEvent("testOnscroll",100,314,done);
@@ -81,7 +89,7 @@ export default function webViewOnScroll() {
      *tc.name testOnscrollAgain
      *tc.desc onscroll after scrollby -100,-100
      */
-    it('testOnscrollAgain',0,async (done: Function) =>{
+    it('testOnscrollAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitpageDown";
       Utils.registerEvent("testOnscrollAgain",50,316,done);
       Utils.registerEvent("testOnscrollAgain",50,318,done);
@@ -92,7 +100,7 @@ export default function webViewOnScroll() {
      *tc.name testPageDown
      *tc.desc Go pageDown
      */
-    it('testPageDown',0,async (done: Function) =>{
+    it('testPageDown',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitpageUp";    
       Utils.registerEvent("testPageDown",true,106,done);
       sendEventByKey('webViewOnScroll',10,'');
@@ -102,7 +110,7 @@ export default function webViewOnScroll() {
      *tc.name testPageUp
      *tc.desc Go pageUp
      */
-    it('testPageUp',0,async (done: Function) =>{
+    it('testPageUp',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitpageDownAgain";    
       Utils.registerEvent("testPageUp",true,108,done);
       sendEventByKey('webViewOnScroll',10,'');
@@ -112,7 +120,7 @@ export default function webViewOnScroll() {
      *tc.name testPageDownAgain
      *tc.desc Go PageDown Again
      */
-    it('testPageDownAgain',0,async (done: Function) =>{
+    it('testPageDownAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitpageUpAgain";    
       Utils.registerEvent("testPageDownAgain",true,110,done);
       sendEventByKey('webViewOnScroll',10,'');
@@ -122,7 +130,7 @@ export default function webViewOnScroll() {
      *tc.name testPageUpAgain
      *tc.desc Go PageUp again
      */
-    it('testPageUpAgain',0,async (done: Function) =>{
+    it('testPageUpAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitpageUpAgain";    
       Utils.registerEvent("testPageUpAgain",true,112,done);
       sendEventByKey('webViewOnScroll',10,'');

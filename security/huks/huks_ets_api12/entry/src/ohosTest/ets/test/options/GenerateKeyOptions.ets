@@ -51,7 +51,7 @@ export function GetEccGenerateOption(size: number): huks.HuksOptions {
   };
   SetParam(huksOption, huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_ECC);
   SetParam(huksOption, huks.HuksTag.HUKS_TAG_KEY_SIZE, size);
-  SetParam(huksOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC);
+  SetParam(huksOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY);
   return huksOption;
 }
 

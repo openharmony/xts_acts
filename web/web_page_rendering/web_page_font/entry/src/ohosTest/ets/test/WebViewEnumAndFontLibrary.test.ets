@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function WebViewEnumAndFontLibrary() {
 
   describe('WebViewEnumAndFontLibraryTest', () => {
@@ -42,6 +44,11 @@ export default function WebViewEnumAndFontLibrary() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -62,7 +69,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDefaultFontSize001', 0, async (done: Function) => {
+    it('testDefaultFontSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitDefaultFontSize", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDefaultFontSize001", '"13px"', 1202, done);
@@ -77,7 +84,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDefaultFontSize002', 0, async (done: Function) => {
+    it('testDefaultFontSize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitDefaultFontSizeMax", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDefaultFontSize002", '"72px"', 1203, done);
@@ -92,7 +99,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDefaultFontSize003', 0, async (done: Function) => {
+    it('testDefaultFontSize003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitDefaultFontSizeMin", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDefaultFontSize003", '"13px"', 1204, done);
@@ -107,7 +114,7 @@ export default function WebViewEnumAndFontLibrary() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMinFontSize001', 0, async (done: Function) => {
+    it('testMinFontSize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitMinFontSize", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testMinFontSize001", 18, 1205, done);

@@ -18,15 +18,18 @@ import windowPromiseTest from './WindowPromise.test';
 import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
+import windowPropertiesTest2 from './WindowProperties2.test';
 import windowManageTest from './WindowManage.test';
 import windowInterface from './WindowInterface.test';
 import windowZindexTest from './WindowZindex.test';
+import windowLayoutTest from './WindowLayout.test';
 import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 import windowFocusTest from './WindowFocus.test';
 export default function testsuite() {
   windowFocusTest();
   windowInterface();
   windowTitleBarTest();
+  windowLayoutTest();
   windowZindexTest();
   windowManageTest();
   WindowLifecycle();
@@ -34,5 +37,6 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPropertiesTest();
+  windowPropertiesTest2();
   extensionWindowPropertiesTest();
 }

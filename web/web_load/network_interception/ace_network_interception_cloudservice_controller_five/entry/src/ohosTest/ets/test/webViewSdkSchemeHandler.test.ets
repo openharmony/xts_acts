@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ''
 
@@ -46,6 +49,11 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     });
     
     beforeEach(async (done: Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+          console.info(`enable success`);
+          }).catch((err: object) => {
+          console.error(`failed to enable, ${err}`);
+        })
         await Utils.sleep(2000);
         done();
     })
@@ -78,7 +86,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getHeader', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getHeader', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         emitKey = "emitWebViewSdkSchemeHandler_getHeader"
         Utils.emitEvent(emitKey, 10);
         Utils.registerEvent("testWebViewSdkSchemeHandler_getHeader", true, 1501, done);
@@ -93,7 +101,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getRequestUrl', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getRequestUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getRequestUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getRequestUrl", true, 1502, done);
@@ -107,7 +115,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getRequestMethod', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getRequestMethod', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getRequestMethod"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getRequestMethod", true, 1503, done);
@@ -123,7 +131,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getReferrer', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getReferrer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getReferrer"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getReferrer", true, 1504, done);
@@ -137,7 +145,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_isMainFrame', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_isMainFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_isMainFrame"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_isMainFrame", true, 1505, done);
@@ -152,7 +160,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_hasGesture', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_hasGesture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_hasGesture"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_hasGesture", true, 1506, done);
@@ -166,7 +174,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_constructor', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_constructor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_constructor"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_constructor", true, 1513, done);
@@ -180,7 +188,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setUrl', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setUrl", true, 1514, done);
@@ -194,7 +202,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getUrl', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getUrl", true, 1515, done);
@@ -208,7 +216,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setStatus', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setStatus"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setStatus", true, 1518, done);
@@ -223,7 +231,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getStatus', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getStatus"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getStatus", true, 1519, done);
@@ -237,7 +245,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setStatusText', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setStatusText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setStatusText"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setStatusText", true, 1520, done);
@@ -251,7 +259,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getStatusText', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getStatusText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getStatusText"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getStatusText", true, 1521, done);
@@ -265,7 +273,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setMimeType', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setMimeType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setMimeType"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setMimeType", true, 1522, done);
@@ -280,7 +288,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getMimeType', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getMimeType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getMimeType"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getMimeType", true, 1523, done);
@@ -294,7 +302,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setEncoding', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setEncoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setEncoding"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setEncoding", true, 1524, done);
@@ -309,7 +317,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getEncoding', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getEncoding', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getEncoding"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getEncoding", true, 1525, done);
@@ -323,7 +331,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_true', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setHeaderByName"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setHeaderByName", true, 1526, done);
@@ -338,7 +346,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_false', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_setHeaderByName_overwrite_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_setHeaderByName"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_setHeaderByName", true, 1527, done);
@@ -354,7 +362,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_getHeaderByName', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_getHeaderByName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_getHeaderByName"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_getHeaderByName", true, 1528, done);
@@ -368,7 +376,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_didReceiveResponse', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_didReceiveResponse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didReceiveResponse"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_didReceiveResponse", true, 1529, done);
@@ -382,7 +390,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_didReceiveResponseBody', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_didReceiveResponseBody', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didReceiveResponseBody"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_didReceiveResponseBody", true, 1530, done);
@@ -396,7 +404,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_didFinish', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_didFinish', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didFinish"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_didFinish", true, 1531, done);
@@ -410,7 +418,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_didFail', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_didFail', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_didFail"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_didFail", true, 1532, done);
@@ -425,7 +433,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_onRequestStart', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_onRequestStart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_onRequestStart"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_onRequestStart", true, 1533, done);
@@ -439,7 +447,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewSdkSchemeHandler_onRequestStop', 0, async (done: Function) => {
+    it('testWebViewSdkSchemeHandler_onRequestStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_onRequestStop"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebViewSdkSchemeHandler_onRequestStop", true, 1534, done);

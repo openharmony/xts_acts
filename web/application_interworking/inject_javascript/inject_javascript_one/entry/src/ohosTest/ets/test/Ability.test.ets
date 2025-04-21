@@ -13,12 +13,15 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { Driver } from '@ohos.UiTest'
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function abilityTest() {
   const delegator = abilityDelegatorRegistry.getAbilityDelegator()
@@ -45,6 +48,11 @@ export default function abilityTest() {
     })
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(300);
       done();
     });
@@ -57,7 +65,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_registerJavaScriptProxy_0001", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "17100001undefined", 1001, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -73,7 +81,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_registerJavaScriptProxy_0002", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "401undefined", 1002, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -89,7 +97,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it("testWebView_registerJavaScriptProxy_0003", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1003, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -105,7 +113,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testWebView_registerJavaScriptProxy_0004", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1004, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -121,7 +129,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testWebView_registerJavaScriptProxy_0005", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "401undefined", 1005, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -137,7 +145,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it("testWebView_registerJavaScriptProxy_0006", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1006, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -153,7 +161,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_registerJavaScriptProxy_0007", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1007, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -169,7 +177,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_registerJavaScriptProxy_0008", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1008, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -185,7 +193,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_registerJavaScriptProxy_0009", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1009, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -201,7 +209,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testWebView_registerJavaScriptProxy_00010", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_00010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1010, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected)
@@ -217,7 +225,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("testWebView_registerJavaScriptProxy_00011", 0, async (done: Function) => {
+    it("testWebView_registerJavaScriptProxy_00011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("registerJavaScriptProxy", "true", 1011, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

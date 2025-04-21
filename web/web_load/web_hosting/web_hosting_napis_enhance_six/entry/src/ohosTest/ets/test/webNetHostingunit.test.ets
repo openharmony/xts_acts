@@ -1,14 +1,22 @@
 /*   * Copyright (c) 2024 Huawei Device Co., Ltd.   * Licensed under the Apache License, Version 2.0 (the "License");   * you may not use this file except in compliance with the License.   * You may obtain a copy of the License at   *   *     http://www.apache.org/licenses/LICENSE-2.0   *   * Unless required by applicable law or agreed to in writing, software   * distributed under the License is distributed on an "AS IS" BASIS,   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   * See the License for the specific language governing permissions and   * limitations under the License.   */
-import { beforeEach, describe, it } from '@ohos/hypium';
+import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import Utils from './Utils';
 // import { hilog } from '@kit.PerformanceAnalysisKit';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webviewApi() {
 
   describe('webNetHostingTwo', () => {
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
@@ -22,7 +30,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_IsEof', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_IsEof', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_IsEof PASS');
 
@@ -42,7 +50,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_IsChunked', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_IsChunked', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_IsChunked PASS');
 
@@ -60,7 +68,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_IsInMemory', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_IsInMemory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_IsInMemory PASS');
       Utils.emitEvent("emitWebHttpBodyStream_IsInMemory", 10)
       await Utils.sleep(1000);
@@ -76,7 +84,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_GetPosition', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_GetPosition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_GetPosition PASS');
       Utils.emitEvent("emitWebHttpBodyStream_GetPosition", 10)
       await Utils.sleep(1000);
@@ -92,7 +100,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_GetSize', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_GetSize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_GetSize PASS');
       Utils.emitEvent("emitWebHttpBodyStream_GetSize", 10)
       await Utils.sleep(1000);
@@ -108,7 +116,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_SetReadCallback', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_SetReadCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_SetReadCallback PASS');
       Utils.emitEvent("emitWebHttpBodyStream_SetReadCallback", 10)
       await Utils.sleep(1000);
@@ -124,7 +132,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_SetUserData', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_SetUserData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_SetUserData PASS');
       Utils.emitEvent("emitWebHttpBodyStream_SetUserData", 10)
       await Utils.sleep(1000);
@@ -140,7 +148,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebHttpBodyStream_Init', 0, async (done: Function) => {
+    it('testWebHttpBodyStream_Init', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebHttpBodyStream_Init PASS');
       Utils.emitEvent("emitWebHttpBodyStream_Init", 10)
       await Utils.sleep(1000);
@@ -156,7 +164,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceHandler_Destroy', 0, async (done: Function) => {
+    it('testWebResourceHandler_Destroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_Destroy PASS');
       Utils.emitEvent("emitWebResourceHandler_Destroy", 10)
       await Utils.sleep(1000);
@@ -172,7 +180,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceHandler_DidReceiveResponse', 0, async (done: Function) => {
+    it('testWebResourceHandler_DidReceiveResponse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_DidReceiveResponse PASS');
       Utils.emitEvent("emitWebResourceHandler_DidReceiveResponse", 10)
       await Utils.sleep(1000);
@@ -188,7 +196,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceHandler_DidReceiveData', 0, async (done: Function) => {
+    it('testWebResourceHandler_DidReceiveData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_DidReceiveData PASS');
       Utils.emitEvent("emitWebResourceHandler_DidReceiveData", 10)
       await Utils.sleep(1000);
@@ -204,7 +212,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceHandler_DidFinish', 0, async (done: Function) => {
+    it('testWebResourceHandler_DidFinish', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_DidFinish PASS');
       Utils.emitEvent("emitWebResourceHandler_DidFinish", 10)
       await Utils.sleep(1000);

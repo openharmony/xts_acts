@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll,beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll,beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitLoadUrl";
 
@@ -42,6 +45,11 @@ export default function webJsunit() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -72,7 +80,7 @@ export default function webJsunit() {
      *tc.name createPdf
      *tc.desic get createPdf
      */
-    it('SavePDF', 0, async (done: Function) => {
+    it('SavePDF', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSavePDF1";
       Utils.registerEvent("emitSavePDF", true, 20241127, done);
       sendEventByKey('webSavePDF', 10, '');
@@ -84,7 +92,7 @@ export default function webJsunit() {
      *tc.name pdfArrayBuffer
      *tc.desic get pdfArrayBuffer
      */
-    it('SavePDF1', 0, async (done: Function) => {
+    it('SavePDF1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSavePDF1";
       Utils.registerEvent("emitSavePDF1", true, 20241128, done);
       sendEventByKey('webSavePDF', 10, '');

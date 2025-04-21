@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webMessageExtErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webMessageExtErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetStringError001', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetStringError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetStringError001", '17100014', 20200, done);
@@ -76,7 +84,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetStringError002', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetStringError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetStringError002", '17100014', 20201, done);
@@ -91,7 +99,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetStringError003', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetStringError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetStringError003", '17100014', 20202, done);
@@ -106,7 +114,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetStringError004', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetStringError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetStringError004", '17100014', 20203, done);
@@ -121,7 +129,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetStringError005', 0, async (done: Function) => {
+    it('testWebMessageExtGetStringError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetStringError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetStringError005", '17100014', 20204, done);
@@ -136,7 +144,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetNumberError001', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetNumberError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetNumberError001", '17100014', 20210, done);
@@ -151,7 +159,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetNumberError002', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetNumberError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetNumberError002", '17100014', 20211, done);
@@ -166,7 +174,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetNumberError003', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetNumberError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetNumberError003", '17100014', 20212, done);
@@ -181,7 +189,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetNumberError004', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetNumberError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetNumberError004", '17100014', 20213, done);
@@ -196,7 +204,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetNumberError005', 0, async (done: Function) => {
+    it('testWebMessageExtGetNumberError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetNumberError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetNumberError005", '17100014', 20214, done);
@@ -211,7 +219,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetBooleanError001', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetBooleanError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetBooleanError001", '17100014', 20220, done);
@@ -226,7 +234,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetBooleanError002', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetBooleanError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetBooleanError002", '17100014', 20221, done);
@@ -241,7 +249,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetBooleanError003', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetBooleanError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetBooleanError003", '17100014', 20222, done);
@@ -256,7 +264,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetBooleanError004', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetBooleanError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetBooleanError004", '17100014', 20223, done);
@@ -271,7 +279,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExtGetBooleanError005', 0, async (done: Function) => {
+    it('testWebMessageExtGetBooleanError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtGetBooleanError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtGetBooleanError005", '17100014', 20224, done);
@@ -286,7 +294,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayBufferError001', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayBufferError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayBufferError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayBufferError001", '17100014', 20230, done);
@@ -301,7 +309,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayBufferError002', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayBufferError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayBufferError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayBufferError002", '17100014', 20231, done);
@@ -316,7 +324,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayBufferError003', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayBufferError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayBufferError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayBufferError003", '17100014', 20232, done);
@@ -331,7 +339,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayBufferError004', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayBufferError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayBufferError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayBufferError004", '17100014', 20233, done);
@@ -346,7 +354,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayBufferError005', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayBufferError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayBufferError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayBufferError005", '17100014', 20234, done);
@@ -361,7 +369,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayError001', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayError001", '17100014', 20240, done);
@@ -376,7 +384,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayError002', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayError002", '17100014', 20241, done);
@@ -391,7 +399,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayError003', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayError003", '17100014', 20242, done);
@@ -406,7 +414,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayError004', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayError004", '17100014', 20243, done);
@@ -421,7 +429,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetArrayError005', 0, async (done: Function) => {
+    it('testWebMessageExGetArrayError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetArrayError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetArrayError005", '17100014', 20244, done);
@@ -437,7 +445,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetErrorError001', 0, async (done: Function) => {
+    it('testWebMessageExGetErrorError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetErrorError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetErrorError001", '17100014', 20250, done);
@@ -452,7 +460,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetErrorError002', 0, async (done: Function) => {
+    it('testWebMessageExGetErrorError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetErrorError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetErrorError002", '17100014', 20251, done);
@@ -467,7 +475,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetErrorError003', 0, async (done: Function) => {
+    it('testWebMessageExGetErrorError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetErrorError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetErrorError003", '17100014', 20252, done);
@@ -482,7 +490,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetErrorError004', 0, async (done: Function) => {
+    it('testWebMessageExGetErrorError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetErrorError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetErrorError004", '17100014', 20253, done);
@@ -497,7 +505,7 @@ export default function webMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testWebMessageExGetErrorError005', 0, async (done: Function) => {
+    it('testWebMessageExGetErrorError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebMessageExGetErrorError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExGetErrorError005", '17100014', 20254, done);

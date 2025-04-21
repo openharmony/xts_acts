@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPart3Test() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPart3Test() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerPart3 beforeEach start");
       done();
@@ -54,9 +62,9 @@ export default function webViewControllerPart3Test() {
     * @tc.desc       : test setNetworkAvailable
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSetNetworkAvailable001', 0, async (done: Function) => {
+    it('testSetNetworkAvailable001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailable001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailable001", 'false', 100055, done);
@@ -71,7 +79,7 @@ export default function webViewControllerPart3Test() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetNetworkAvailable002', 0, async (done: Function) => {
+    it('testSetNetworkAvailable002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailable002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailable002", 'true', 100056, done);

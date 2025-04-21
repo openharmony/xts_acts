@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webOnLargestContentfulPaint() {
   describe('WebOnLargestContentfulPaint', () => {
      beforeAll(async (done: Function) => {
@@ -39,6 +41,11 @@ export default function webOnLargestContentfulPaint() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -52,7 +59,7 @@ export default function webOnLargestContentfulPaint() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnLargestContentfulPaint0100', 0, async (done: Function) => {
+    it('OnLargestContentfulPaint0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnLargestContentfulPaint0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnLargestContentfulPaint0100", true, 801, done);
@@ -71,7 +78,7 @@ export default function webOnLargestContentfulPaint() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('OnLargestContentfulPaint0200', 0, async (done: Function) => {
+    it('OnLargestContentfulPaint0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("OnLargestContentfulPaint0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("OnLargestContentfulPaint0200", true, 802, done);

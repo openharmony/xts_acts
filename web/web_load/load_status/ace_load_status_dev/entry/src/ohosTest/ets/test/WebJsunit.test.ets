@@ -12,15 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitOnPageBegin";
 
 export default function webJsunit() {
   describe('ActsAceWebDevTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -50,7 +58,7 @@ export default function webJsunit() {
      *tc.name onPageBegin
      *tc.desic Triggered when the page loading progress changes
      */
-    it('onPageBegin', 0, async (done: Function) => {
+    it('onPageBegin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnPageEnd";
       Utils.registerContainEvent("onPageBegin", "index.html", 59, done);
       sendEventByKey('webcomponent', 10, '');
@@ -60,7 +68,7 @@ export default function webJsunit() {
      *tc.name onPageEnd
      *tc.desic Triggered at the begin of web page loading
      */
-    it('onPageEnd', 0, async (done: Function) => {
+    it('onPageEnd', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnResourceLoad";
       Utils.registerContainEvent("onPageEnd", "index.html", 60, done);
       sendEventByKey('webcomponent', 10, '');
@@ -70,7 +78,7 @@ export default function webJsunit() {
      *tc.name onResourceLoad
      *tc.desic Triggered when the url loading
      */
-    it('onResourceLoad', 0, async (done: Function) => {
+    it('onResourceLoad', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStop";
       Utils.registerContainEvent("onResourceLoad", "second.html", 108, done);
       sendEventByKey('webcomponent', 10, '');
@@ -80,7 +88,7 @@ export default function webJsunit() {
      *tc.name stop
      *tc.desic  Stops the current load
      */
-    it('stop', 0, async (done: Function) => {
+    it('stop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStop";
       Utils.registerEvent("stop", true, 83, done);
       sendEventByKey('webcomponent', 10, '');

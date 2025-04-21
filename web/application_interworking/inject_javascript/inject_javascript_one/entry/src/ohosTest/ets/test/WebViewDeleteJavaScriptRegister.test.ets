@@ -13,13 +13,15 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "";
 
@@ -47,6 +49,11 @@ export default function ActsAceDeleteJavaScriptRegister() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(500);
       done();
     });
@@ -81,7 +88,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('testWebView_deleteJavaScriptRegister_0001', 0, async (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0001", '"success"', 10072, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -102,7 +109,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_deleteJavaScriptRegister_0002', 0, async (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0002",
         '"ReferenceError: testObjName is not defined"', 10073,
         done,
@@ -126,7 +133,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_deleteJavaScriptRegister_0003', 0, (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0003",
         '17100008Failed to delete JavaScriptProxy because it does not exist.', 10074, done,
         (backData: events_emitter.EventData, expected: Object) => {
@@ -144,7 +151,7 @@ export default function ActsAceDeleteJavaScriptRegister() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_deleteJavaScriptRegister_0004', 0, (done: Function) => {
+    it('testWebView_deleteJavaScriptRegister_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_deleteJavaScriptRegister_0004",
         "401BusinessError 401: Parameter error. The type of 'name' must be string.", 10075, done,
         (backData: events_emitter.EventData, expected: Object) => {

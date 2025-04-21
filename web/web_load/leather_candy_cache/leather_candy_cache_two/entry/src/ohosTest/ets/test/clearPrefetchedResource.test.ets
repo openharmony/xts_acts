@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function clearPrefetchedResourceTest() {
 
@@ -42,6 +45,11 @@ export default function clearPrefetchedResourceTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(500);
       console.info("clearPrefetchedResourceTest beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearPrefetchedResource001', 0, async (done: Function) => {
+    it('testClearPrefetchedResource001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearPrefetchedResource001", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testClearPrefetchedResource001", true, 10112, done);
@@ -69,7 +77,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearPrefetchedResource002', 0, async (done: Function) => {
+    it('testClearPrefetchedResource002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearPrefetchedResource002", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testClearPrefetchedResource002", '401', 10113, done);
@@ -83,7 +91,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearPrefetchedResource003', 0, async (done: Function) => {
+    it('testClearPrefetchedResource003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearPrefetchedResource003", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testClearPrefetchedResource003", '401', 10114, done);
@@ -97,7 +105,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearPrefetchedResource004', 0, async (done: Function) => {
+    it('testClearPrefetchedResource004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearPrefetchedResource004", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testClearPrefetchedResource004", '401', 10115, done);
@@ -111,7 +119,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearPrefetchedResource005', 0, async (done: Function) => {
+    it('testClearPrefetchedResource005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testClearPrefetchedResource005", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testClearPrefetchedResource005", '401', 10116, done);
@@ -125,7 +133,7 @@ export default function clearPrefetchedResourceTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomizeSchemes001', 0, async (done: Function) => {
+    it('testCustomizeSchemes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemes001", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testCustomizeSchemes001", '17100020', 10117, done);

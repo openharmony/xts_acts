@@ -14,11 +14,14 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -32,6 +35,11 @@ export default function GetPercentComplete() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       flg = false;
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -56,9 +64,9 @@ export default function GetPercentComplete() {
      * @tc.desc test getPercentComplete80-90
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('testWebView_getPercentComplete1006', 0, async (done: Function) => {
+    it('testWebView_getPercentComplete1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1006 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1006 start')
@@ -88,7 +96,7 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1007', 0, async () => {
+    it('testWebView_getPercentComplete1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1007 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1007 start')
@@ -136,7 +144,7 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1008', 0, async () => {
+    it('testWebView_getPercentComplete1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1008 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1008 start')
@@ -168,7 +176,7 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1010', 0, async () => {
+    it('testWebView_getPercentComplete1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1010 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1010 start')
@@ -216,7 +224,7 @@ export default function GetPercentComplete() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getPercentComplete1011', 0, async () => {
+    it('testWebView_getPercentComplete1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getPercentComplete_1011 start')
       console.info('SUB_ACE_WEB_getPercentComplete_1011 start')

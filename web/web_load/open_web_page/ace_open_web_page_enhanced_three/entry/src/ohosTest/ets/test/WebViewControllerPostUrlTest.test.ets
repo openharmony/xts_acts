@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerPostUrlTest() {
 
   describe('WebViewControllerPostUrlTest', () => {
@@ -42,6 +44,11 @@ export default function webViewControllerPostUrlTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerPostUrlTest beforeEach start");
       done();
@@ -55,7 +62,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl001', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl001", 'http://www.example.com/', 4001, done);
@@ -70,7 +77,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl002', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl002", 'resource://rawfile/second.html', 4002, done);
@@ -85,7 +92,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl003', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl003", 'file:///data/storage/el2/base/files/index.html', 4003, done);
@@ -100,7 +107,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl004', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl004", 'http://www.example.com/', 4004, done);
@@ -115,7 +122,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl005', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl005", 'resource://rawfile/second.html', 4005, done);
@@ -130,7 +137,7 @@ export default function webViewControllerPostUrlTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerPostUrl006', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl006", 'file:///data/storage/el2/base/files/index.html', 4006, done);

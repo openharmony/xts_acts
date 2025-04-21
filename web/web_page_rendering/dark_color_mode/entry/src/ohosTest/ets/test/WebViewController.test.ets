@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewController() {
 
   describe('WebViewControllerTestSuite', () => {
@@ -42,6 +44,11 @@ export default function webViewController() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewController beforeEach start");
       done();
@@ -53,9 +60,9 @@ export default function webViewController() {
     * @tc.desc       : test darkMode
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testDarkMode001', 0, async (done: Function) => {
+    it('testDarkMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testDarkMode001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDarkMode001", "true", 31039, done);
@@ -70,7 +77,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDarkMode002', 0, async (done: Function) => {
+    it('testDarkMode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDarkMode002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDarkMode002", "false", 31040, done);
@@ -85,7 +92,7 @@ export default function webViewController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testForceDarkAccess001', 0, async (done: Function) => {
+    it('testForceDarkAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testForceDarkAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testForceDarkAccess001", "false", 31041, done);

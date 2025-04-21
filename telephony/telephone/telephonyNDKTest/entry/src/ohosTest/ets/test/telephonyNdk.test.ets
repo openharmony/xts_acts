@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import telAPI from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import data from '@ohos.telephony.data'
 import radio from '@ohos.telephony.radio';
 
@@ -58,9 +58,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the default cellular data slot id.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetDefaultCellularDataSlotId_0100', 0, async (done: Function) => {
+    it('testOHTelephonyGetDefaultCellularDataSlotId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let idNdk = telAPI.OHTelephonyGetDefaultCellularDataSlotId();
       console.info('====>testOHTelephonyGetDefaultCellularDataSlotId_0100 idNdk: ' + idNdk);
       let idTs = data.getDefaultCellularDataSlotIdSync();
@@ -77,7 +77,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0100', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_1);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0100 result: ' + result);
       expect(result).assertEqual(ERROR_CODE_401);
@@ -92,7 +92,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0200', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_2);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0200 result: ' + result);
       expect(result).assertEqual(ERROR_CODE_401);
@@ -107,7 +107,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0300', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_3);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0300 result: ' + result);
       expect(result).assertEqual(ERROR_CODE_401);
@@ -120,9 +120,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the radio network state for given slot id.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0400', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_4);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0400 result: ' + result);
       expect(result).assertEqual(TELEPHONY_OK);
@@ -137,7 +137,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0500', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_5);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0500 result: ' + result);
       expect(result).assertEqual(ERROR_CODE_401);
@@ -152,7 +152,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0600', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let slotid = data.getDefaultCellularDataSlotIdSync();
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0600 slotid: ' + slotid);
 
@@ -179,7 +179,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0700', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       for (let slotid = 0; slotid < 10; slotid++) {
         let stateNdk = telAPI.OHTelephonyGetNetworkStateForSlot(slotid);
         console.info('====>testOHTelephonyGetNetworkStateForSlot_0700 stateNdk: ', JSON.stringify(stateNdk));
@@ -204,7 +204,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkState_0100', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkState_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateParam(CASE_INDEX_1);
       console.info('====>testOHTelephonyGetNetworkState_0100 result: ' + result);
       expect(result).assertEqual(ERROR_CODE_401);
@@ -219,7 +219,7 @@ export default function telephonyNdkTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testOHTelephonyGetNetworkState_0200', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkState_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateParam(CASE_INDEX_2);
       console.info('====>testOHTelephonyGetNetworkState_0200 result: ' + result);
       expect(result).assertEqual(TELEPHONY_OK);
@@ -232,9 +232,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the radio network state.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetNetworkState_0300', 0, async (done: Function) => {
+    it('testOHTelephonyGetNetworkState_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let stateNdk = telAPI.OHTelephonyGetNetworkState();
       console.info('====>testOHTelephonyGetNetworkState_0300 stateNdk: ', JSON.stringify(stateNdk));
       

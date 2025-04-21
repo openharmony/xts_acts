@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerDownloadTest() {
   describe('WebViewControllerDownloadTest', () => {
@@ -42,6 +45,11 @@ export default function webViewControllerDownloadTest() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       await Utils.sleep(1000);
       done();
@@ -61,9 +69,9 @@ export default function webViewControllerDownloadTest() {
     * @tc.desc        : test setDownloadDelegate
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testSetDownloadDelegateGroup001', 0, async (done: Function) => {
+    it('testSetDownloadDelegateGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSetDownloadDelegate001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testSetDownloadDelegate001", true, 79520,
@@ -81,7 +89,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testStartDownloadGroup001', 0, async (done: Function) => {
+    it('testStartDownloadGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testStartDownload001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testStartDownload001", true, 79530,
@@ -99,7 +107,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadStateGroup001', 0, async (done: Function) => {
+    it('testWebDownloadStateGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadState001", webView.WebDownloadState.IN_PROGRESS, 79540,
@@ -117,7 +125,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadStateGroup002', 0, async (done: Function) => {
+    it('testWebDownloadStateGroup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState002", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadState002", webView.WebDownloadState.COMPLETED, 79542,
@@ -135,7 +143,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadStateGroup003', 0, async (done: Function) => {
+    it('testWebDownloadStateGroup003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState003", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadState003", webView.WebDownloadState.CANCELED, 79544,
@@ -153,7 +161,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadStateGroup004', 0, async (done: Function) => {
+    it('testWebDownloadStateGroup004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState004", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadState004", webView.WebDownloadState.INTERRUPTED, 79546,
@@ -171,7 +179,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadStateGroup005', 0, async (done: Function) => {
+    it('testWebDownloadStateGroup005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadState005", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadState005", webView.WebDownloadState.PENDING, 79548,
@@ -190,7 +198,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetGuidGroup001', 0, async (done: Function) => {
+    it('testGetGuidGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetGuid001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetGuid001", true, 79650,
@@ -208,7 +216,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetGuidGroup002', 0, async (done: Function) => {
+    it('testGetGuidGroup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetGuid002", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetGuid002", true, 79652,
@@ -226,7 +234,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetCurrentSpeedGroup001', 0, async (done: Function) => {
+    it('testGetCurrentSpeedGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetCurrentSpeed001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetCurrentSpeed001", true, 79654,
@@ -244,7 +252,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetPercentCompleteGroup001', 0, async (done: Function) => {
+    it('testGetPercentCompleteGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetPercentComplete001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetPercentComplete001", true, 79656,
@@ -262,7 +270,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetPercentCompleteGroup002', 0, async (done: Function) => {
+    it('testGetPercentCompleteGroup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetPercentComplete002", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetPercentComplete002", true, 79658,
@@ -280,7 +288,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetTotalBytesGroup001', 0, async (done: Function) => {
+    it('testGetTotalBytesGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetTotalBytes001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetTotalBytes001", true, 79660,
@@ -298,7 +306,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetMethodGroup001', 0, async (done: Function) => {
+    it('testGetMethodGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetMethod001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetMethod001", true, 79662,
@@ -316,7 +324,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetMimeTypeGroup001', 0, async (done: Function) => {
+    it('testGetMimeTypeGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetMimeType001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetMimeType001", true, 79664,
@@ -334,7 +342,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetMimeTypeGroup002', 0, async (done: Function) => {
+    it('testGetMimeTypeGroup002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetMimeType002", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetMimeType002", true, 79666,
@@ -352,7 +360,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetMimeTypeGroup003', 0, async (done: Function) => {
+    it('testGetMimeTypeGroup003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetMimeType003", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetMimeType003", true, 79668,
@@ -370,7 +378,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetUrlGroup001', 0, async (done: Function) => {
+    it('testGetUrlGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetUrl001", true, 79670,
@@ -388,7 +396,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetSuggestedFileNameGroup001', 0, async (done: Function) => {
+    it('testGetSuggestedFileNameGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetSuggestedFileName001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetSuggestedFileName001", true, 79672,
@@ -406,7 +414,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetReceivedBytesGroup001', 0, async (done: Function) => {
+    it('testGetReceivedBytesGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetReceivedBytes001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetReceivedBytes001", true, 79674,
@@ -424,7 +432,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testGetFullPathGroup001', 0, async (done: Function) => {
+    it('testGetFullPathGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetFullPath001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testGetFullPath001", true, 79676,
@@ -442,7 +450,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testSerializeGroup001', 0, async (done: Function) => {
+    it('testSerializeGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSerialize001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testSerialize001", true, 79678,
@@ -460,7 +468,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDeserializeGroup001', 0, async (done: Function) => {
+    it('testDeserializeGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeserialize001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testDeserialize001", true, 79680,
@@ -479,7 +487,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnBeforeDownloadGroup001', 0, async (done: Function) => {
+    it('testOnBeforeDownloadGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnBeforeDownload001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testOnBeforeDownload001", true, 79700,
@@ -497,7 +505,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnDownloadUpdatedGroup001', 0, async (done: Function) => {
+    it('testOnDownloadUpdatedGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnDownloadUpdated001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testOnDownloadUpdated001", true, 79702,
@@ -515,7 +523,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnDownloadFinishGroup001', 0, async (done: Function) => {
+    it('testOnDownloadFinishGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnDownloadFinish001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testOnDownloadFinish001", true, 79704,
@@ -533,7 +541,7 @@ export default function webViewControllerDownloadTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebDownloadManagerSetDownloadDelegateGroup001', 0, async (done: Function) => {
+    it('testWebDownloadManagerSetDownloadDelegateGroup001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebDownloadManagerSetDownloadDelegate001", 10)
       await Utils.sleep(2000);
       Utils.registerBaseEvent("testWebDownloadManagerSetDownloadDelegate001", true, 79750,

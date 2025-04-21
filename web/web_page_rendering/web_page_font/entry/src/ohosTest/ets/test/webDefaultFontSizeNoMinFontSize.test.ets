@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitdefaultFontSize7AndNominFontSizeWebC";
 
 export default function webDefaultFontSizeNoMinFontSize() {
@@ -41,6 +43,11 @@ export default function webDefaultFontSizeNoMinFontSize() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webDefaultFontSizeNoMinFontSize beforeEach start");
       done();
@@ -70,7 +77,7 @@ export default function webDefaultFontSizeNoMinFontSize() {
      *tc.name testDefaultFontSize7AndNoMinFontSizeWebC
      *tc.desc test with defaultfontsize 7 and no set minfontsize
      */
-    it('testDefaultFontSize7AndNoMinFontSizeWebC', 0, async (done: Function) => {
+    it('testDefaultFontSize7AndNoMinFontSizeWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitdefaultFontSize17AndCssFontSize9WebC";
       Utils.registerEvent("testDefaultFontSize7AndNoMinFontSizeWebC", "8px", 436, done);
       sendEventByKey('webDefaultFontSizeNoMinFontSize', 10, '');
@@ -80,7 +87,7 @@ export default function webDefaultFontSizeNoMinFontSize() {
      *tc.name testDefaultFontSize17AndCssFontSize9WebC
      *tc.desc test with defaultfontsize 17 and css font-size 9
      */
-    it('testDefaultFontSize17AndCssFontSize9WebC', 0, async (done: Function) => {
+    it('testDefaultFontSize17AndCssFontSize9WebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitdefaultFontSize17AndCssFontSize9WebC";
       Utils.registerEvent("testDefaultFontSize17AndCssFontSize9WebC", "9px", 438, done);
       sendEventByKey('webDefaultFontSizeNoMinFontSize', 10, '');

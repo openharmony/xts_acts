@@ -12,11 +12,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { router } from '@kit.ArkUI';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function lastErrorCode() {
   describe('lastErrorCode', () => {
     beforeAll(async (done: Function) => {
@@ -42,6 +44,11 @@ export default function lastErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(300);
       done();
     });
@@ -60,7 +67,7 @@ export default function lastErrorCode() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebViewGetPercentComplete", 0, async (done: Function) => {
+    it("testWebViewGetPercentComplete", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebViewGetPercentComplete', 2, 404, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -79,7 +86,7 @@ export default function lastErrorCode() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_getLastErrorCode1001", 0, async (done: Function) => {
+    it("testWebView_getLastErrorCode1001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_getLastErrorCode1001', 33, 405, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

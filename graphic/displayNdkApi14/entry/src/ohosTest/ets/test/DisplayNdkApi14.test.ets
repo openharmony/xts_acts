@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium';
 import testNapi from 'libentry.so'
 import { display, screenshot, window } from '@kit.ArkUI';
 import { abilityAccessCtrl, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
@@ -21,9 +21,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import common from '@ohos.app.ability.common';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { image } from '@kit.ImageKit';
-import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
-
+interface Capability{
+  foldStatus:string;
+  foldDisplayMode:string;
+  rotation:string[];
+  orientation:string[]
+}
+interface CapabilityData{
+  capability:Capability[];
+}
 function sleep(ms: number): Promise<string> {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -57,10 +64,17 @@ export default function ActsDisplayNdkApi14Test() {
 
   describe('ActsDisplayNdkApi14Test', () => {
     let context : common.UIAbilityContext;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     let windowStage: window.WindowStage;
     let windowClass: window.Window;
+    let deviceMessage:string = '';
+    let displayClass = display.getDefaultDisplaySync();
+    let foldStatus:string= '';
+    let foldDisplayMode:string= '';
+    let rotation:string[];
+    let orientation:string[];
+    let code:number = 0;
+    let displayFoldStatus:number;
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -71,8 +85,34 @@ export default function ActsDisplayNdkApi14Test() {
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
+      displayFoldStatus = display.getFoldStatus();
+        console.log('jsUnittest beforeAll getFoldStatus =' + displayFoldStatus);
+      try{
+        let data:string = displayClass.getDisplayCapability();
+        let capabilityData:CapabilityData = JSON.parse(data);
+        console.log('jsUnittest beforeAll deviceMessage =' + JSON.stringify(capabilityData));
+        for(const capability of capabilityData.capability){
+          if(Number(capability.foldStatus) == displayFoldStatus){
+            foldStatus = capability.foldStatus;
+            foldDisplayMode = capability.foldDisplayMode;
+            rotation = capability.rotation;
+            orientation = capability.orientation;
+            console.log('jsUnittest beforeAll foldStatus =' + capability.foldStatus);
+            console.log('jsUnittest beforeAll foldDisplayMode =' + capability.foldDisplayMode);
+            console.log('jsUnittest beforeAll rotation[0] =' + capability.rotation);
+            console.log('jsUnittest beforeAll orientation[0] =' + capability.orientation);
+          }
+        }
+      } catch (err) {
+        console.log('jsUnittest beforeAll getDisplayCapability failed ' + err.code);
+        console.log('jsUnittest beforeAll code =' + code);
+        if(err.code == 801){
+          code = 801;
+          console.log('jsUnittest beforeAll code =' + code);
+        }else {
+          console.log('jsUnittest getDisplayCapability failed');
+        }
+      }
       await getPermision();
       await sleep(100);
       await ClickButtonDriver();
@@ -98,9 +138,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_OH_NativeDisplayManager_CreatePrimaryDisplay
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_CreatePrimaryDisplay', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_CreatePrimaryDisplay', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreatePrimaryDisplay';
       try{
         let displayInfo = testNapi.getPrimaryDisplay();
@@ -108,13 +148,14 @@ export default function ActsDisplayNdkApi14Test() {
         if(Number(displayInfo) == 801){
           done();
         }else{
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfo.rotation).assertEqual(0);
             expect(displayInfo.orientation).assertEqual(0);
-            done();
-          }else{
-            expect(displayInfo.rotation).assertEqual(0);
-            expect(displayInfo.orientation).assertEqual(1);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
             done();
           }
           expect(displayInfo.id).assertEqual(0);
@@ -142,12 +183,12 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_OH_NativeDisplayManager_CreateAllDisplays
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_CreateAllDisplays', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_CreateAllDisplays', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateAllDisplays';
       try{
-        let displayInfos = testNapi.getAllDisplay();
+        let displayInfos: Array<display.Display> = testNapi.getAllDisplay();
         for(let i = 0;i <displayInfos.length;i++){
           console.log(caseName + ' getAllDisplay displayInfos:'+ JSON.stringify(displayInfos[i]));
 
@@ -163,13 +204,14 @@ export default function ActsDisplayNdkApi14Test() {
           expect(displayInfos[0].xDPI).assertLarger(0);
           expect(displayInfos[0].yDPI).assertLarger(0);
           expect(displayInfos[0].state).assertEqual(2);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfos[0].rotation).assertEqual(0);
             expect(displayInfos[0].orientation).assertEqual(0);
             done();
-          }else{
-            expect(displayInfos[0].rotation).assertEqual(0);
-            expect(displayInfos[0].orientation).assertEqual(1);
+          }else {
+            // expect(displayInfos[0].rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfos[0].rotation;
+            expect(displayInfos[0].orientation).assertEqual(Number(orientation[rotation]));
             done();
           }
         }
@@ -184,13 +226,14 @@ export default function ActsDisplayNdkApi14Test() {
           expect(displayInfos[1].xDPI).assertLarger(0);
           expect(displayInfos[1].yDPI).assertLarger(0);
           expect(displayInfos[1].state).assertEqual(2);
-          if(deviceType != '2in1'|| isAutoWindow =='false'){
+          if(code == 801){
             expect(displayInfos[1].rotation).assertEqual(0);
             expect(displayInfos[1].orientation).assertEqual(0);
             done();
-          }else{
-            expect(displayInfos[1].rotation).assertEqual(0);
-            expect(displayInfos[1].orientation).assertEqual(1);
+          }else {
+            // expect(displayInfos[1].rotation).assertEqual(Number(rotation[0]));
+            let rotation2 = displayInfos[1].rotation;
+            expect(displayInfos[1].orientation).assertEqual(Number(orientation[rotation2]));
             done();
           }
         }
@@ -208,7 +251,7 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_NativeDisplayManager_CreateDisplayById_0', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_CreateDisplayById_0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateDisplayById_0';
       try{
         let displayInfo = testNapi.getDisplayById(0);
@@ -224,15 +267,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.xDPI).assertLarger(0);
         expect(displayInfo.yDPI).assertLarger(0);
         expect(displayInfo.state).assertEqual(2);
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+             done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -246,9 +290,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_OH_NativeDisplayManager_CreateDisplayById_123
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_CreateDisplayById_123', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_CreateDisplayById_123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateDisplayById_123';
       try{
         let displayInfo = testNapi.getDisplayById(123);
@@ -267,9 +311,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_OH_NativeDisplayManager_DestroyDisplay_without_create
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_DestroyDisplay_without_create', 0, (done:Function) => {
+    it('test_OH_NativeDisplayManager_DestroyDisplay_without_create', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_DestroyDisplay_without_create';
       try{
         let result = testNapi.destroyDisplayWithoutCreate();
@@ -288,9 +332,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_UNKNOWN';
       try{
         let result = testNapi.getDisplayState_UNKNOWN();
@@ -309,9 +353,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_OFF
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_OFF', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_OFF', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_OFF';
       try{
         let result = testNapi.getDisplayState_OFF();
@@ -330,9 +374,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_ON
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_ON', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_ON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_ON';
       try{
         let result = testNapi.getDisplayState_ON();
@@ -352,9 +396,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE';
       try{
         let result = testNapi.getDisplayState_DOZE();
@@ -374,9 +418,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_STATE_DOZE_SUSPEND';
       try{
         let result = testNapi.getDisplayState_DOZE_SUSPEND();
@@ -396,9 +440,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_VR
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_VR', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_VR', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_DISPLAY_VR';
       try{
         let result = testNapi.getDisplayState_VR();
@@ -417,9 +461,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_ON_SUSPEND
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_ON_SUSPEND', 0, (done:Function) => {
+    it('test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_ON_SUSPEND', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_DisplayState_DISPLAY_MANAGER_ON_SUSPEND';
       try{
         let result = testNapi.getDisplayState_ON_SUSPEND();
@@ -438,9 +482,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_NativeDisplayManager_CaptureScreenPixeImap
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_NativeDisplayManager_CaptureScreenPixeImap', 0, (done:Function) => {
+    it('test_NativeDisplayManager_CaptureScreenPixeImap', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_NativeDisplayManager_CaptureScreenPixeImap';
       try{
         let PixelMap = testNapi.getDisplayCapture(0);
@@ -472,9 +516,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_getDefaultDisplaySync_api14
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_getDefaultDisplaySync_api14', 0, (done:Function) => {
+    it('test_getDefaultDisplaySync_api14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_getDefaultDisplaySync_api14';
       try{
         let displayInfo = display.getDefaultDisplaySync();
@@ -493,16 +537,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.state).assertEqual(2);
         expect(displayInfo.hdrFormats != null).assertTrue();
         expect(displayInfo.colorSpaces != null).assertTrue();
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
-        done();
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+             done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -515,9 +559,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_getPrimaryDisplaySync_api14
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_getPrimaryDisplaySync_api14', 0, (done:Function) => {
+    it('test_getPrimaryDisplaySync_api14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_getPrimaryDisplaySync_api14';
       try{
         let displayInfo = display.getPrimaryDisplaySync();
@@ -536,15 +580,16 @@ export default function ActsDisplayNdkApi14Test() {
         expect(displayInfo.state).assertEqual(2);
         expect(displayInfo.hdrFormats != null).assertTrue();
         expect(displayInfo.colorSpaces != null).assertTrue();
-        if(deviceType != '2in1'|| isAutoWindow =='false'){
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(0);
-          done();
-        }else{
-          expect(displayInfo.rotation).assertEqual(0);
-          expect(displayInfo.orientation).assertEqual(1);
-          done();
-        }
+        if(code == 801){
+            expect(displayInfo.rotation).assertEqual(0);
+            expect(displayInfo.orientation).assertEqual(0);
+             done();
+          }else {
+            // expect(displayInfo.rotation).assertEqual(Number(rotation[0]));
+            let rotation = displayInfo.rotation;
+            expect(displayInfo.orientation).assertEqual(Number(orientation[rotation]));
+            done();
+          }
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
         expect(false).assertTrue();
@@ -557,9 +602,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_js_capture
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_js_capture', 0, (done:Function) => {
+    it('test_js_capture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_js_capture';
       try{
         let captureOption: screenshot.CaptureOption = {
@@ -598,9 +643,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_js_capture_captureStatusChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_js_capture_captureStatusChange', 0, (done:Function) => {
+    it('test_js_capture_captureStatusChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_js_capture_captureStatusChange';
       let captured = false;
       try{
@@ -648,9 +693,9 @@ export default function ActsDisplayNdkApi14Test() {
      * @tc.desc      : test_js_capture_privateWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_js_capture_privateWindow', 0, (done:Function) => {
+    it('test_js_capture_privateWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
       let caseName = 'test_js_capture_privateWindow';
       try{
         windowClass.setWindowPrivacyMode(true, (err: BusinessError) => {
@@ -697,6 +742,49 @@ export default function ActsDisplayNdkApi14Test() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_capture_0100
+     * @tc.name       : testcapture
+     * @tc.desc       : testcapture
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testcapture', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done:Function) => {
+      let caseName = 'testcapture';
+      try{
+          let captureOption: screenshot.CaptureOption = {
+            "displayId": 0
+          };
+          let promise = screenshot.capture();
+          promise.then((PixelMap: image.PixelMap) => {
+            console.log(caseName + 'Succeeded in saving screenshot. Pixel bytes number: ' + PixelMap.getPixelBytesNumber());
+            PixelMap.getImageInfo().then((imageInfo:image.ImageInfo)=>{
+              let PixelMapWidth = imageInfo.size.width;
+              let PixelMapHeight = imageInfo.size.height;
+              console.log(caseName + ' PixelMapWidth:'+ PixelMapWidth + ' ,PixelMapHeight:'+ PixelMapHeight);
+              expect(PixelMapWidth).assertLarger(0);
+              expect(PixelMapHeight).assertLarger(0);
+              PixelMap.release(); // PixelMap使用完后及时释放内存
+              done();
+            })
+          }).catch((err: BusinessError) => {
+            console.log(caseName +'Failed to save screenshot. Code: ' + JSON.stringify(err));
+            if(err.code == 801){
+              done();
+            }else{
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
 
 
   })

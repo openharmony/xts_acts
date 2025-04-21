@@ -14,10 +14,13 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitBlockNetWorkTrue";
 export default function webViewOnWindowNewJsunit() {
   describe('ActsAceWebViewOnWindowNewJsunitTest',  () =>{
@@ -42,6 +45,11 @@ export default function webViewOnWindowNewJsunit() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -72,7 +80,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testBlockNetWorkTrue
     *tc.desc test api blockNetWork set to true by load online website
     */
-    it('testBlockNetWorkTrue',0,async (done: Function) =>{
+    it('testBlockNetWorkTrue',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitBlockNetWorkFalse";
       let url = "http://www.weibo.com/";
       Utils.registerEvent("testBlockNetWorkTrue", url, 7112, done);
@@ -83,7 +91,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testBlockNetWorkFalse
     *tc.desc test api blockNetWork set to false by load online website
     */
-   it('testBlockNetWorkFalse',0,async (done: Function) =>{
+   it('testBlockNetWorkFalse',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
      emitKey="emitGetOriginsPromiseLoadLocalHtml01";
      let title = "weibo.com";
       Utils.registerEvent("testBlockNetWorkFalse", title, 7114, done);

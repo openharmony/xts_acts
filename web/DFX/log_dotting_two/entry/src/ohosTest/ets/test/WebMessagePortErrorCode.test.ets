@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webMessagePortErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webMessagePortErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("webMessagePortErrorCode beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function webMessagePortErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testCloseError001', 0, async (done: Function) => {
+    it('testCloseError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testCloseError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCloseError001", '17100010', 20360, done);
@@ -76,7 +84,7 @@ export default function webMessagePortErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testOnMessageEventExtError001', 0, async (done: Function) => {
+    it('testOnMessageEventExtError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testOnMessageEventExtError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnMessageEventExtError001", '17100006', 20361, done);
@@ -91,7 +99,7 @@ export default function webMessagePortErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPostMessageEventExtError001', 0, async (done: Function) => {
+    it('testPostMessageEventExtError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPostMessageEventExtError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPostMessageEventExtError001", '17100010', 20362, done);
@@ -106,7 +114,7 @@ export default function webMessagePortErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testOnMessageEventError001', 0, async (done: Function) => {
+    it('testOnMessageEventError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testOnMessageEventError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnMessageEventError001", '17100006', 20363, done);

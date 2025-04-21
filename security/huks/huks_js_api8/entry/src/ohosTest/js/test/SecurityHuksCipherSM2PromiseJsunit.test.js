@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, uint8ArrayToString, arrayEqual } from './utils/param/publicFunc';
@@ -251,7 +251,7 @@ let genHuksOptions = {
 export default function SecurityHuksCipherSM2PromiseJsunit() {
     describe('SecurityHuksCipherSM2PromiseJsunit', function () {
 
-        it('Security_HUKS_Cipher_API8_SM2_101', 0, async function (done) {
+        it('Security_HUKS_Cipher_API8_SM2_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101B';
 
@@ -315,7 +315,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
 
         });
 
-        it('Security_HUKS_Cipher_API8_SM2_102', 0, async function (done) {
+        it('Security_HUKS_Cipher_API8_SM2_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101A';
             const newSrcKeyAlies = 'Security_HUKS_Cipher_API8_SM2_101B';
 
@@ -381,7 +381,7 @@ export default function SecurityHuksCipherSM2PromiseJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_Cipher_API8_SM2_0100', 0, async function (done) {
+        it('SUB_Security_HUKS_Cipher_API8_SM2_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlias = 'SUB_Security_HUKS_Cipher_API8_SM2_0100';
 
             let HuksOptions = {

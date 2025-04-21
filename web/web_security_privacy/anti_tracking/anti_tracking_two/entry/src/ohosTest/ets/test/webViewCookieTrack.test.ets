@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -74,9 +74,9 @@ export default function ActsAcewebViewCookieTrack() {
      * @tc.desc       : test enableIntelligentTrackingPrevention true
      * @tc.size_t     : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testWebViewCookieTrackEnableTrue', 0, async (done: Function) => {
+    it('testWebViewCookieTrackEnableTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableTrue";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableTrue", true, 7701, done);
@@ -92,7 +92,7 @@ export default function ActsAcewebViewCookieTrack() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebViewCookieTrackEnableFalse', 0, async (done: Function) => {
+    it('testWebViewCookieTrackEnableFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitWebViewCookieTrackEnableFalse";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewCookieTrackEnableFalse", true, 1278, done);
@@ -108,7 +108,7 @@ export default function ActsAcewebViewCookieTrack() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testCookieTrackClearTrackingPrevention', 0, async (done: Function) => {
+    it('testCookieTrackClearTrackingPrevention', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let emitKey = "emitCookieTrackClearTrackingPrevention";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testCookieTrackClearTrackingPrevention", true, 1282, done);

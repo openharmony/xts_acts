@@ -12,9 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewMenuInputFieldType() {
 
@@ -39,6 +42,11 @@ export default function webViewMenuInputFieldType() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -52,7 +60,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0100', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0100", true, 2893, done);
@@ -67,7 +75,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0200', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0200", true, 2894, done);
@@ -82,7 +90,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0300', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0300", '6', 2895, done);
@@ -97,7 +105,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0400', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0400", '2', 2896, done);
@@ -112,7 +120,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0500', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0500", '5', 2897, done);
@@ -127,7 +135,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0600', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0600", '7', 2898, done);
@@ -142,7 +150,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0700', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0700", '3', 2899, done);
@@ -157,7 +165,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0800', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0800", '4', 2880, done);
@@ -172,7 +180,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach0900', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach0900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach0900", '0', 2881, done);
@@ -187,7 +195,7 @@ export default function webViewMenuInputFieldType() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('onInterceptKeyboardAttach1000', 0, async (done: Function) => {
+    it('onInterceptKeyboardAttach1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("onInterceptKeyboardAttach1000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("onInterceptKeyboardAttach1000", 1, 2882, done);

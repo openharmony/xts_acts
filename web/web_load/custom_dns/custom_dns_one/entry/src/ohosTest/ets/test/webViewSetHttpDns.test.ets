@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitSetHttpDnsSecureOnlyExample";
 export default function webViewSetHttpDns() {
@@ -41,6 +44,11 @@ export default function webViewSetHttpDns() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewSetHttpDns beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webViewSetHttpDns() {
      *tc.name testSetHttpDnsSecureOnlyExample
      *tc.desc test interface of sethttpdns with parameter SetHttpDnsSecureOnlyExample
      */
-    it('testSetHttpDnsSecureOnlyExample',0,async (done: Function) =>{
+    it('testSetHttpDnsSecureOnlyExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetHttpDnsSecureOnlyUserDefine";
       Utils.registerEvent("testSetHttpDnsSecureOnlyExample","baidu.com",354,done);
       sendEventByKey('webViewSetHttpDns',10,'');
@@ -80,7 +88,7 @@ export default function webViewSetHttpDns() {
      *tc.name testSetHttpDnsSecureOnlyUserDefine
      *tc.desc test interface of sethttpdns with parameter SetHttpDnsSecureOnlyExample
      */
-    it('testSetHttpDnsSecureOnlyUserDefine',0,async (done: Function) =>{
+    it('testSetHttpDnsSecureOnlyUserDefine',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetHttpDnsAutoExample";
       Utils.registerEvent("testSetHttpDnsSecureOnlyUserDefine","success",356,done);
       sendEventByKey('webViewSetHttpDns',10,'');
@@ -90,7 +98,7 @@ export default function webViewSetHttpDns() {
      *tc.name testSetHttpDnsAutoExample
      *tc.desc test interface of sethttpdns with parameter SetHttpDnsSecureOnlyExample
      */
-    it('testSetHttpDnsAutoExample',0,async (done: Function) =>{
+    it('testSetHttpDnsAutoExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetHttpDnsOffExample";
       Utils.registerEvent("testSetHttpDnsAutoExample","华为 - 构建万物互联的智能世界",358,done);
       sendEventByKey('webViewSetHttpDns',10,'');
@@ -100,7 +108,7 @@ export default function webViewSetHttpDns() {
      *tc.name testSetHttpDnsOffExample
      *tc.desc test interface of sethttpdns with parameter SetHttpDnsSecureOnlyExample
      */
-    it('testSetHttpDnsOffExample',0,async (done: Function) =>{
+    it('testSetHttpDnsOffExample',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetHttpDnsOffExample";
       Utils.registerEvent("testSetHttpDnsOffExample","OpenAtom OpenHarmony",360,done);
       sendEventByKey('webViewSetHttpDns',10,'');

@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitPrefetchPageErr";
 
@@ -42,6 +45,11 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewContPageAndprepareForPageLoadErrorTwo beforeEach start");
       done();
@@ -71,7 +79,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
-    it('PrefetchPageErr', 0, async (done: Function) => {
+    it('PrefetchPageErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPrepareForPageLoadErr";
       Utils.registerEvent("PrefetchPageErr", "17100002", 903, done);
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorTwo', 10, '');
@@ -81,7 +89,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
-    it('PrepareForPageLoadErr', 0, async (done: Function) => {
+    it('PrepareForPageLoadErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPrepareForPageLoadErrTwo";
       Utils.registerEvent("PrepareForPageLoadErr", "17100002", 904, done);
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorTwo', 10, '');
@@ -91,7 +99,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
-    it('PrepareForPageLoadErrTwo', 0, async (done: Function) => {
+    it('PrepareForPageLoadErrTwo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitPrepareForPageLoadErrTwo";
       Utils.registerEvent("PrepareForPageLoadErrTwo", "171000013", 905, done);
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorTwo', 10, '');

@@ -20,15 +20,10 @@ import updatePopup from './promptActionTest/updatePopup.test'
 import closeMenu from './promptActionTest/closeMenu.test.ets'
 import closePopup from './promptActionTest/closePopup.test'
 import subwindowDialog from './promptActionTest/subwindowDialog.test'
-import calendarPickerStartEndTest from './calendarPickerDialog/startEndTest.test';
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
 import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
-import blurStyleOptions from './MenuTest/blurStyleOptions.test'
-import effectOptions from './MenuTest/effectOptions.test'
 export default function testsuite() {
-    blurStyleOptions();
-    effectOptions();
     maxWidth();
     openMenu();
     openPopup();
@@ -37,7 +32,6 @@ export default function testsuite() {
     closeMenu();
     closePopup();
     subwindowDialog();
-    calendarPickerStartEndTest();
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();

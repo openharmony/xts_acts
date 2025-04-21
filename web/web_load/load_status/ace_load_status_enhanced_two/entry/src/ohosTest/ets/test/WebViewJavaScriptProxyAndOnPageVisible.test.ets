@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function WebViewJavaScriptProxyAndOnPageVisible() {
 
@@ -40,6 +43,11 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -54,7 +62,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnPageVisible001', 0, async (done: Function) => {
+    it('testOnPageVisible001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPageVisible", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnPageVisible001", 'resource://rawfile/icon.html', 1372, done);

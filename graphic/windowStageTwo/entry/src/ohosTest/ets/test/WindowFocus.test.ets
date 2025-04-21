@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect , TestType, Size, Level} from '@ohos/hypium';
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
 import settings from '@ohos.settings';
 import window from '@ohos.window';
@@ -60,17 +59,12 @@ export default function windowFocusTest() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let windowClass: window.Window;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
       windowClass = windowStage.getMainWindowSync();
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
-      let deviceTypeInfo = deviceInfo.deviceType
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -90,7 +84,7 @@ export default function windowFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_OH_OnWindowHighlightChange_One', 0, async (done: Function) => {
+    it('test_OH_OnWindowHighlightChange_One', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msg = 'test_OH_OnWindowHighlightChange_One ';
       let count = 0;
       let cb1 = (isBool: boolean) => {
@@ -132,9 +126,9 @@ export default function windowFocusTest() {
      * @tc.desc      : test_OH_OnWindowHighlightChange_Mul
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('test_OH_OnWindowHighlightChange_Mul', 0, async (done: Function) => {
+    it('test_OH_OnWindowHighlightChange_Mul', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msg = 'test_OH_OnWindowHighlightChange_Mul ';
       let count = 0;
       let cb1 = (isBool: boolean) => {
@@ -185,9 +179,9 @@ export default function windowFocusTest() {
      * @tc.desc      : test_OH_OffWindowHighlightChange_clear_all
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_OffWindowHighlightChange_clear_all', 0, async (done: Function) => {
+    it('test_OH_OffWindowHighlightChange_clear_all', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msg = 'test_OH_OffWindowHighlightChange_clear_all '
       let count = 0
       let cb1 = (isBool: boolean) => {
@@ -237,9 +231,9 @@ export default function windowFocusTest() {
      * @tc.desc      : test_OH_OffWindowHighlightChange_one
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_OffWindowHighlightChange_one', 0, async (done: Function) => {
+    it('test_OH_OffWindowHighlightChange_one', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msg = 'test_OH_OffWindowHighlightChange_one '
       let count = 0
       let cb1 = (isBool: boolean) => {
@@ -289,9 +283,9 @@ export default function windowFocusTest() {
      * @tc.desc      : test_OH_setExclusivelyHighlighted_one
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_OH_setExclusivelyHighlighted_one', 0, async (done: Function) => {
+    it('test_OH_setExclusivelyHighlighted_one', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msg = 'test_OH_setExclusivelyHighlighted_one ';
       let support = true;
       let count = 0

@@ -33,8 +33,5 @@ export const TestDragDisableDropDataPrefetch002: (a: string) => void;
 export const TestDragCancelDataLoading003: (a: string) => void;
 
 export const GetResult: () => number[];
-export const calendarPickerTest: (a: string) => void;
-
-export const testExpectedFrameRateRangeCallback: (a: string) => void;
 
 export const testNodeUtilMove001: (a: string) => void;

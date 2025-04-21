@@ -17,7 +17,7 @@ import fs from '@ohos.file.fs';
 import account from '@ohos.account.distributedAccount'
 import account_osAccount from '@ohos.account.osAccount';
 import type Want from '@ohos.app.ability.Want';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base'
 
@@ -2108,6 +2108,37 @@ export default function dlpTest() {
       }
       console.info(curTag, "SUB_SECURITY_DLP_startDLPManagerForResult_0100 end");
       return;
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100
+     * @tc.name test startDLPManagerForResult
+     * @tc.desc test 调用startDLPManagerForResult接口，不传入uri参数，返回19100016错误码
+     * @tc.size LargeTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100: started.");
+      try {
+        let context: common.UIAbilityContext = globalThis.context; // 获取当前UIAbilityContext
+        let want: Want = {
+          "uri": "",
+          "parameters": {
+            "displayName": ""
+          }
+        }; // 请求参数
+        dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+          console.info('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 res.resultCode', res.resultCode);
+          console.info('SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 res.want', JSON.stringify(res.want));
+        })
+        expect(null).assertFail();
+      } catch (err) {
+        console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 startDLPManagerForResult failed", err.code, err.message);
+        expect(err.code).assertEqual(19100016);
+      }
+      console.info("SUB_Security_DataSecurity_DLP_errorCode_startDLPManagerForResult_16_0100 end");
+      done();
     })
 
   })

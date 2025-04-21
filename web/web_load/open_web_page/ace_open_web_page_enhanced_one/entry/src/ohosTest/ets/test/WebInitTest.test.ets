@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webInitTest() {
 
@@ -37,9 +40,9 @@ export default function webInitTest() {
     * @tc.desc        : test fetch request not in customizeSchemes
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testCustomizeSchemesFetch001', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch001", true, 202, done);
@@ -54,7 +57,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testCustomizeSchemesFetch002', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch002", true, 204, done);
@@ -69,7 +72,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testCustomizeSchemesFetch003', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch003", true, 206, done);
@@ -84,7 +87,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testCustomizeSchemesFetch004', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch004", true, 208, done);
@@ -99,7 +102,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testCustomizeSchemesFetch005', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch005", true, 210, done);
@@ -114,7 +117,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testCustomizeSchemesFetch006', 0, async (done: Function) => {
+    it('testCustomizeSchemesFetch006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testCustomizeSchemesFetch006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCustomizeSchemesFetch006", true, 212, done);

@@ -698,5 +698,148 @@ export default function sceneNodeTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0570
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to set the properties of the bloom
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBloomSettings', 0, (done:Function)=> {
+      let msg = "============================testBloomSettings";
+      console.info(msg + ' begin ');
+      try {
+        expect(cam != null).assertTrue();
+        console.info(msg + " cam is not null ");
+        expect(cam?.postProcess != null).assertTrue();
+        console.info(msg + " cam?.postProcess is not null ");
+        if (cam?.postProcess) {
+          cam.postProcess.bloom = { thresholdHard: 1.0, thresholdSoft: 1.0, scaleFactor: 0.5, scatter: 2.0 };
+          expect(cam.postProcess.bloom.thresholdHard).assertEqual(1.0);
+          console.info(msg + " Succeed in cam.postProcess.bloom.thresholdHard ");
+          expect(cam.postProcess.bloom.thresholdSoft).assertEqual(1.0);
+          console.info(msg + " Succeed in cam.postProcess.bloom.thresholdSoft ");
+          expect(cam.postProcess.bloom.scaleFactor).assertEqual(0.5);
+          console.info(msg + " Succeed in cam.postProcess.bloom.scaleFactor ");
+          expect(cam.postProcess.bloom.scatter).assertEqual(2.0);
+          console.info(msg + " Succeed in cam.postProcess.bloom.scatter ");
+        }
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testBloomSettings " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0580
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to create a cube
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateGeometryCUBE', 0, async (done:Function)=> {
+      let msg = "============================testCreateGeometryCUBE";
+      console.info(msg + ' begin ');
+      try {
+        let cubeGeom = new scene3d.CubeGeometry();
+        expect(cubeGeom != null).assertTrue();
+        console.info(msg + " cubeGeom is not null ");
+        expect(cubeGeom.geometryType).assertEqual(scene3d.GeometryType.CUBE);
+        cubeGeom.size = {x: 0.8, y: 0.4, z: 0.6}
+        let meshRes1 = await rf.createMesh({ name: "resource name not used at the moment "}, cubeGeom);
+        expect(meshRes1 != null).assertTrue();
+        console.info(msg + " Succeed in createMesh ");
+        let geometry1 = await rf.createGeometry({ name: "cuubio" }, meshRes1);
+        expect(geometry1 != null).assertTrue();
+        console.info(msg + " Succeed in createGeometry ");
+        scene?.root?.children.append(geometry1);
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCreateGeometryCUBE " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0590
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to create a plane
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateGeometryPLANE', 0, async (done:Function)=> {
+      let msg = "============================testCreateGeometryPLANE";
+      console.info(msg + ' begin ');
+      try {
+        let planeGeom = new scene3d.PlaneGeometry();
+        expect(planeGeom != null).assertTrue();
+        console.info(msg + " planeGeom is not null ");
+        expect(planeGeom.geometryType).assertEqual(scene3d.GeometryType.PLANE);
+        planeGeom.size = {x: 1, y: 1};
+        let meshRes2 = await rf.createMesh({ name: "resource name not used at the moment "}, planeGeom);
+        expect(meshRes2 != null).assertTrue();
+        console.info(msg + " Succeed in createMesh ");
+        let geometry2 = await rf.createGeometry({ name: "plaanio" }, meshRes2);
+        expect(geometry2 != null).assertTrue();
+        console.info(msg + " Succeed in createGeometry ");
+        scene?.root?.children.append(geometry2);
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCreateGeometryPLANE " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0600
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to import a node
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testImportNode', 0, (done:Function)=> {
+      let msg = "============================testImportNode";
+      console.info(msg + ' begin ');
+      try {
+        let node1 = scene1?.getNodeByPath("rootNode_/Unnamed Node 1/Cube") as Node;
+        let node2: scene3d.Node | null | undefined = null;
+        node2 = scene?.importNode("scene2", node1, scene.root);
+        expect(node2 != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testImportNode " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0610
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to import a scene
+     *
+     *
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testImportScene', 0, (done:Function)=> {
+      let msg = "============================testImportScene";
+      console.info(msg + ' begin ');
+      try {
+        let node2: scene3d.Node | null | undefined = null;
+        node2 = scene?.importScene("scene1", scene1, null);
+        expect(node2 != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testImportScene " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }

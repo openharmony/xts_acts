@@ -16,32 +16,15 @@
 
 import hilog from '@ohos.hilog';
 import common from '@ohos.app.ability.common';
-import router from '@ohos.router'
-import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
 import webview from '@ohos.web.webview';
-import MyController from './MyController'
-import { JsonUtil } from './JsonUtil'
+import MyController from './MyController';
 
 const TAG: string = 'AdTestTag';
 const Domain: number = 0x0000;
-const context: common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
-
-const multiAdRequest: advertising.AdRequestParams[] = [{
-  adId: 'testx9dtjwj8hp',
-  adType: 7,
-  adCount: 2,
-  adWidth: 100,
-  adHeight: 100,
-} as advertising.AdRequestParams,
-  {
-    adId: '123456',
-    adType: 7,
-    adCount: 2,
-    adWidth: 100,
-    adHeight: 100,
-  } as advertising.AdRequestParams
-];
+const uiContext: common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
+const context = getContext(this) as common.Context;
 
 const adOption: advertising.AdOptions = {
   adContentClassification: 'W',
@@ -49,79 +32,88 @@ const adOption: advertising.AdOptions = {
   tagForChildProtection: 1,
 };
 
-interface AdLoaderFunc {
-  onAdLoadFailure: (errorCode: number, errorMsg: string) => void,
-  onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => void
-}
-
-const adResponse =
-  "{\n" +
-    "  \"clientAdRequestId\":\"763fa78c-0d9a-4908-bab4-25a1498012\",\n" +
-    "  \"cost\":\"18,11,0,10,3,0,1,10,1\",\n" +
-    "  \"ctrlSwitchs\":\"0\",\n" +
-    "  \"multiad\":[\n" +
-    "    {\n" +
-    "      \"adtype\":12,\n" +
-    "      \"configMap\":{\n" +
-    "        \"insreCacheAdEnable\":\"0\"\n" +
-    "      },\n" +
-    "      \"content\":[\n" +
-    "      ],\n" +
-    "      \"retcode30\":200,\n" +
-    "      \"slotid\":\"testb4znbuh3n2\"\n" +
-    "    }\n" +
-    "  ],\n" +
-    "  \"retcode\":200,\n" +
-    "  \"sig\":\"\",\n" +
-    "  \"totalCacheSize\":300\n" +
-    "}";
-
-const adResponseErr = "";
 export default function adsTest1() {
   describe('ActsAdsTest1', () => {
 
     /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
-     * @tc.name: testGetAdRequestBody
-     * @tc.desc: callback data is not null.
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0100
+     * @tc.name: tesRegisterWebAdInterface_401
+     * @tc.desc: tesRegisterWebAdInterface_401.
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("tesRegisterWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
-        await advertising.getAdRequestBody(multiAdRequest, adOption).then((data: string) => {
-          hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
-          expect(data != null).assertEqual(true);
-          done();
-        })
-      } catch (error) {
-        hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
-        expect(error != null).assertEqual(true);
-        expect(error.code).assertEqual(21800001);
+        advertising.registerWebAdInterface(null, uiContext);
         done();
+      } catch (e) {
+        expect(e.code).assertEqual(401);
+        done()
       }
     })
 
     /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0600
-     * @tc.name: testParseAdResponse
-     * @tc.desc: callback data is not null.
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0200
+     * @tc.name: testRegisterWebAdInterface_21800001
+     * @tc.desc: testRegisterWebAdInterface_21800001.
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testParseAdResponse", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let adLoaderListener: AdLoaderFunc = {
+    it("testRegisterWebAdInterface_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let webController: webview.WebviewController = new MyController();
+        advertising.registerWebAdInterface(webController, uiContext);
+        done();
+      } catch (e) {
+        expect(e.code).assertEqual(21800001);
+        done()
+      }
+    })
+
+    const adResponse_21800001 = "{\n" +
+      "  \"clientAdRequestId\": \"763fa78c-0d9a-4908-bab4-25a1498012\",\n" +
+      "  \"cost\": \"18,11,0,10,3,0,1,10,1\",\n" +
+      "  \"ctrlSwitchs\": \"0\",\n" +
+      "  \"multiad\": [\n" +
+      "    {\n" +
+      "      \"adtype\": 12,\n" +
+      "      \"configMap\": {\n" +
+      "        \"insreCacheAdEnable\": \"0\"\n" +
+      "      },\n" +
+      "      \"content\": [],\n" +
+      "      \"retcode30\": 200,\n" +
+      "      \"slotid\": \"testb4znbuh3n2\"\n" +
+      "    }\n" +
+      "  ],\n" +
+      "  \"retcode\": 200,\n" +
+      "  \"sig\": \"\",\n" +
+      "  \"totalCacheSize\": 300,\n" +
+      "  \"testType\": \"21800001\"\n" +
+      "}";
+
+
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0300
+     * @tc.name: testParseAdResponse_21800001
+     * @tc.desc: testParseAdResponse_21800001.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testParseAdResponse_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
+          hilog.error(Domain, TAG, 'testParseAdResponse_21800001 Callback load ad error, error code is %{public}d, error message is %{public}s.',
             errorCode, errorMsg);
           expect(errorCode).assertLarger(0);
           expect(errorMsg).assertInstanceOf('String')
           done();
         },
         onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-          hilog.info(Domain, TAG, 'request ad success');
+          hilog.info(Domain, TAG, 'testParseAdResponse_21800001 request ad success');
           let returnAds: Array<advertising.Advertisement> = [];
           ads.forEach((adsArray) => returnAds.push(...adsArray));
           expect(returnAds[0] != null).assertEqual(true);
@@ -129,7 +121,63 @@ export default function adsTest1() {
         }
       };
       try {
-        advertising.parseAdResponse(adResponse, adLoaderListener, context);
+        advertising.parseAdResponse(adResponse_21800001, adLoaderListener, uiContext);
+      } catch (e) {
+        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
+        expect(e != null).assertTrue();
+        expect(e.code).assertEqual(21800001);
+        done();
+      }
+    })
+
+    const adResponse = "{\n" +
+      "  \"clientAdRequestId\": \"763fa78c-0d9a-4908-bab4-25a1498012\",\n" +
+      "  \"cost\": \"18,11,0,10,3,0,1,10,1\",\n" +
+      "  \"ctrlSwitchs\": \"0\",\n" +
+      "  \"multiad\": [\n" +
+      "    {\n" +
+      "      \"adtype\": 12,\n" +
+      "      \"configMap\": {\n" +
+      "        \"insreCacheAdEnable\": \"0\"\n" +
+      "      },\n" +
+      "      \"content\": [],\n" +
+      "      \"retcode30\": 200,\n" +
+      "      \"slotid\": \"testb4znbuh3n2\"\n" +
+      "    }\n" +
+      "  ],\n" +
+      "  \"retcode\": 200,\n" +
+      "  \"sig\": \"\",\n" +
+      "  \"totalCacheSize\": 300,\n" +
+      "  \"testType\": \"21800001\"\n" +
+      "}";
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0400
+     * @tc.name: testParseAdResponse
+     * @tc.desc: callback data is not null.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testParseAdResponse", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'testParseAdResponse Callback load ad error, error code is %{public}d, error message is %{public}s.',
+            errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'testParseAdResponse request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(true);
+          done();
+        }
+      };
+      try {
+        advertising.parseAdResponse(adResponse, adLoaderListener, uiContext);
       } catch (e) {
         hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
         expect(e != null).assertEqual(true);
@@ -140,179 +188,29 @@ export default function adsTest1() {
       }
     })
 
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0700
-     * @tc.name: testParseAdResponse
-     * @tc.desc: callback data is not null.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("tesRegisterWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      router.pushUrl({
-        url: 'MainAbility/pages/index/webRegister'
-      })
-      done();
-    })
+    const adResponse_21800005 = "{\n" +
+      "  \"clientAdRequestId\": \"763fa78c-0d9a-4908-bab4-25a1498012\",\n" +
+      "  \"cost\": \"18,11,0,10,3,0,1,10,1\",\n" +
+      "  \"ctrlSwitchs\": \"0\",\n" +
+      "  \"multiad\": [\n" +
+      "    {\n" +
+      "      \"adtype\": 12,\n" +
+      "      \"configMap\": {\n" +
+      "        \"insreCacheAdEnable\": \"0\"\n" +
+      "      },\n" +
+      "      \"content\": [],\n" +
+      "      \"retcode30\": 200,\n" +
+      "      \"slotid\": \"testb4znbuh3n2\"\n" +
+      "    }\n" +
+      "  ],\n" +
+      "  \"retcode\": 200,\n" +
+      "  \"sig\": \"\",\n" +
+      "  \"totalCacheSize\": 300,\n" +
+      "  \"testType\": \"21800005\"\n" +
+      "}";
 
     /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0800
-     * @tc.name: tesRegisterWebAdInterface_401
-     * @tc.desc: tesRegisterWebAdInterface_401.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("tesRegisterWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        advertising.registerWebAdInterface(null, context);
-        done();
-      } catch (e) {
-        expect(e.code).assertEqual(401);
-        done()
-      }
-    })
-
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0900
-     * @tc.name: testGetAdRequestBody_401
-     * @tc.desc: testGetAdRequestBody_401.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGetAdRequestBody_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        await advertising.getAdRequestBody(null, adOption).then((data: string) => {
-          hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
-          expect(data != null).assertEqual(true);
-          done();
-        })
-      } catch (error) {
-        hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
-        expect(error != null).assertEqual(true);
-        expect(Number(error.code)).assertEqual(401);
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1000
-     * @tc.name: testParseAdResponse_401
-     * @tc.desc: testParseAdResponse_401.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testParseAdResponse_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let adLoaderListener: AdLoaderFunc = {
-        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
-            errorCode, errorMsg);
-          expect(errorCode).assertLarger(0);
-          expect(errorMsg).assertInstanceOf('String')
-          done();
-        },
-        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-          hilog.info(Domain, TAG, 'request ad success');
-          let returnAds: Array<advertising.Advertisement> = [];
-          ads.forEach((adsArray) => returnAds.push(...adsArray));
-          expect(returnAds[0] != null).assertEqual(true);
-          done();
-        }
-      };
-      try {
-        advertising.parseAdResponse(null, adLoaderListener, context);
-      } catch (e) {
-        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
-        expect(e != null).assertEqual(true);
-        expect(e.code).assertEqual(401);
-        done();
-      }
-    })
-/**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1100
-     * @tc.name: testParseAdResponse_21800001
-     * @tc.desc: testParseAdResponse_21800001.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testParseAdResponse_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let adLoaderListener: AdLoaderFunc = {
-        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
-            errorCode, errorMsg);
-          expect(errorCode).assertLarger(0);
-          expect(errorMsg).assertInstanceOf('String')
-          done();
-        },
-        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-          hilog.info(Domain, TAG, 'request ad success');
-          let returnAds: Array<advertising.Advertisement> = [];
-          ads.forEach((adsArray) => returnAds.push(...adsArray));
-          expect(returnAds[0] != null).assertEqual(true);
-          done();
-        }
-      };
-      try {
-        advertising.parseAdResponse(adResponseErr, adLoaderListener, context);
-      } catch (e) {
-        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
-        expect(e != null).assertEqual(true);
-        expect(e.code).assertEqual(21800001);
-        done();
-      }
-    })
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1200
-     * @tc.name: testRegisterWebAdInterface_21800001
-     * @tc.desc: testRegisterWebAdInterface_21800001.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testRegisterWebAdInterface_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let webController: webview.WebviewController = new MyController();
-        advertising.registerWebAdInterface(webController, context);
-        done();
-      } catch (e) {
-        expect(e.code).assertEqual(21800001);
-        done()
-      }
-    })
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1300
-     * @tc.name: testGetAdRequestBody_801
-     * @tc.desc: testGetAdRequestBody_401.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGetAdRequestBody_801", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        await advertising.getAdRequestBody(null, adOption).then((data: string) => {
-          hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
-          expect(data != null).assertEqual(true);
-          done();
-        })
-      } catch (error) {
-        hilog.error(Domain, TAG, `testGetAdRequestBody failed, ERROR= ${error}`);
-        if(error.code == 801) {
-          done();
-        }
-        done();
-      }
-    })
-
-    const adResponse_1 = "";
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_1400
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0500
      * @tc.name: testParseAdResponse_err
      * @tc.desc: testParseAdResponse_err.
      * @tc.size: LargeTest
@@ -322,14 +220,14 @@ export default function adsTest1() {
     it("testParseAdResponse_21800005", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
+          hilog.error(Domain, TAG, 'testParseAdResponse_21800005 Callback load ad error, error code is %{public}d, error message is %{public}s.',
             errorCode, errorMsg);
-          expect(errorCode).assertLarger(0);
+          expect(errorCode).assertEqual(21800005);
           expect(errorMsg).assertInstanceOf('String')
           done();
         },
         onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-          hilog.info(Domain, TAG, 'request ad success');
+          hilog.info(Domain, TAG, 'testParseAdResponse_21800005 request ad success');
           let returnAds: Array<advertising.Advertisement> = [];
           ads.forEach((adsArray) => returnAds.push(...adsArray));
           expect(returnAds[0] != null).assertEqual(true);
@@ -337,7 +235,7 @@ export default function adsTest1() {
         }
       };
       try {
-        advertising.parseAdResponse(JsonUtil.json2line(adResponse_1), adLoaderListener, context);
+        advertising.parseAdResponse(adResponse_21800005, adLoaderListener, uiContext);
       } catch (e) {
         hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
         expect(e != null).assertEqual(true);
@@ -345,33 +243,125 @@ export default function adsTest1() {
         done();
       }
     })
-      const multiAdRequestError21800001: advertising.AdRequestParams[] = [{
-      adId: 'testx9dtjwj8hp',
-      adType: 7,
-      adCount: 2,
-      adWidth: 100,
-      adHeight: 100,
-      adSearchKeyword: 'key'
-    }];
+
 
     /**
-     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_1500
-     * @tc.name: testMultiLoadAdByCallback_21800001
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0600
+     * @tc.name: testParseAdResponse_401
+     * @tc.desc: testParseAdResponse_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testParseAdResponse_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
+        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
+          hilog.error(Domain, TAG, 'testParseAdResponse_401 Callback load ad error, error code is %{public}d, error message is %{public}s.',
+            errorCode, errorMsg);
+          expect(errorCode).assertLarger(0);
+          expect(errorMsg).assertInstanceOf('String')
+          done();
+        },
+        onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
+          hilog.info(Domain, TAG, 'testParseAdResponse_401 request ad success');
+          let returnAds: Array<advertising.Advertisement> = [];
+          ads.forEach((adsArray) => returnAds.push(...adsArray));
+          expect(returnAds[0] != null).assertEqual(true);
+          done();
+        }
+      };
+      try {
+        advertising.parseAdResponse(null, adLoaderListener, uiContext);
+      } catch (e) {
+        hilog.error(Domain, TAG, `testParseAdResponse failed, ERROR= ${e}`);
+        expect(e != null).assertEqual(true);
+        expect(e.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0700
+     * @tc.name: testGetAdRequestBody_801
+     * @tc.desc: testGetAdRequestBody_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testGetAdRequestBody_801", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        await advertising.getAdRequestBody(null, adOption).then((data: string) => {
+          hilog.info(Domain, TAG, `testGetAdRequestBody_801 result = ${JSON.stringify(JSON.parse(data))}`);
+          expect(data != null).assertEqual(true);
+          done();
+        })
+      } catch (error) {
+        hilog.error(Domain, TAG, `testGetAdRequestBody_801 failed, ERROR= ${error}`);
+        if(error.code == 801) {
+          done();
+        }
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0800
+     * @tc.name: testGetAdRequestBody_401
+     * @tc.desc: testGetAdRequestBody_401.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testGetAdRequestBody_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        await advertising.getAdRequestBody(null, adOption).then((data: string) => {
+          hilog.info(Domain, TAG, `testGetAdRequestBody_401 result = ${JSON.stringify(JSON.parse(data))}`);
+          expect(data != null).assertEqual(true);
+          done();
+        })
+      } catch (error) {
+        hilog.error(Domain, TAG, `testGetAdRequestBody_401 failed, ERROR= ${error}`);
+        expect(error != null).assertEqual(true);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
+
+    const multiAdRequestError21800003: advertising.AdRequestParams[] = [{
+      "adId": "12345",
+      "adType": 7,
+      "adCount": 2,
+      "adWidth": 100,
+      "adHeight": 100,
+      "oaid": "00000000-0000-0000-0000-000000000000",
+      "needSelfRendering": false,
+      "isPreload": "",
+      "tMax": 100,
+      "cur": "CNY",
+      "bidFloor": 12,
+      "bidFloorCur": "CNY",
+      "bpkgName": "com.test.a,com.test.a"
+    }];
+
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_0900
+     * @tc.name: testMultiLoadAdByCallback_21800003
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("testMultiLoadAdByCallback_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
+    it("testMultiLoadAdByCallback_21800003", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
+          hilog.error(Domain, TAG, 'testMultiLoadAdByCallback_21800003 Callback load ad error, error code is %{public}d, error message is %{public}s.',
             errorCode, errorMsg);
-          expect(errorCode).assertEqual(21800001);
+          expect(errorCode).assertEqual(21800003);
           done();
         },
         onAdLoadSuccess: (ads: Map<string, Array<advertising.Advertisement>>) => {
-          hilog.info(Domain, TAG, 'request ad success');
+          hilog.info(Domain, TAG, 'testMultiLoadAdByCallback_21800003 request ad success');
           let returnAds: Array<advertising.Advertisement> = [];
           ads.forEach((adsArray) => returnAds.push(...adsArray));
           expect(returnAds[0] != null).assertEqual(false);
@@ -380,52 +370,11 @@ export default function adsTest1() {
       };
       try {
         let load = new advertising.AdLoader(context);
-        load.loadAdWithMultiSlots(multiAdRequestError21800001, adOption, adLoaderListener);
-        done();
+        load.loadAdWithMultiSlots(multiAdRequestError21800003, adOption, adLoaderListener);
+        done()
       } catch (e) {
-        expect(e.code).assertEqual(21800001);
-        done();
-      }
-    })
-
-    const adRequestError: advertising.AdRequestParams = {
-      adId: 'testx9dtjwj8hp',
-      adType: 7,
-      adCount: 2,
-      adWidth: 100,
-      adHeight: 100,
-      adSearchKeyword: 'key'
-    };
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_LOAD_AD_1600
-     * @tc.name: testLoadAdByCallback_21800001
-     * @tc.desc: Load ad by callback is not null.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testLoadAdByCallback_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
-      let adLoaderListener: advertising.AdLoadListener = {
-        onAdLoadFailure: (errorCode: number, errorMsg: string) => {
-          hilog.error(Domain, TAG, 'Callback load ad error, error code is %{public}d, error message is %{public}s.',
-            errorCode, errorMsg);
-          expect(errorCode).assertEqual(21800001);
-          done();
-        },
-        onAdLoadSuccess: (ads: Array<advertising.Advertisement>) => {
-          hilog.info(Domain, TAG, 'request ad success');
-          expect(ads[0] != null).assertEqual(true);
-          done();
-        }
-      };
-      try {
-        let load = new advertising.AdLoader(context);
-        load.loadAd(adRequestError, adOption, adLoaderListener);
-        done();
-      } catch (e) {
-        expect(e.code).assertEqual(21800001);
-        done();
+        expect(e.code).assertEqual(21800003);
+        done()
       }
     })
   })

@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod'
 import { BusinessError } from '@ohos.base'
-import deviceinfo from '@ohos.deviceInfo';
 
 export default function imeAbilityTest() {
   describe('imeAbilityTest', () => {
@@ -32,28 +31,6 @@ export default function imeAbilityTest() {
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
     beforeAll((done: Function) => {
-      if(deviceinfo.deviceType === 'wearable'){
-        let inputMethodSetting = inputMethod.getSetting();
-        console.info('====> getSetting success!')
-        inputMethodSetting.listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-          let t = setTimeout(async ()=>{
-            console.info('====>Succeeded in listing inputMethod: ' + JSON.stringify(data));
-            const ATTRIBUTE: inputMethod.TextConfig = {
-              inputAttribute: {
-                textInputType: 0, enterKeyType: 0
-              }
-            }
-            try {
-              let data = await inputMethod.getController().attach(false, ATTRIBUTE);
-              console.info(`====> execution success, data: ${JSON.stringify(data)}`);
-            } catch (error) {
-              console.info(`====> catch error, error: [${error.code}, ${error.message}]`);
-            }
-            clearTimeout(t);
-            done();
-          }, 3000)
-        });
-      } else {
         let inputM = inputMethod.getCurrentInputMethod()
         console.info("====>beforeAll: switchInputMethod to: " + JSON.stringify(inputM));
         prop.packageName = inputM.packageName;
@@ -61,7 +38,6 @@ export default function imeAbilityTest() {
         prop.name = inputM.packageName;
         prop.id = inputM.methodId;
         done();
-      }
     });
 
     /**
@@ -90,9 +66,9 @@ export default function imeAbilityTest() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level2
+    * @tc.level   Level0
     */
-    it('SUB_InputMethod_IMEAbility_0001', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMEAbility_0001', Level.LEVEL0, async (done: Function) => {
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
       let imExtAbilityProperty: inputMethod.InputMethodProperty = {
         packageName: "com.acts.imeability.test",
@@ -124,7 +100,7 @@ export default function imeAbilityTest() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IMEAbility_0002', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMEAbility_0002', Level.LEVEL2, async (done: Function) => {
       console.info('====>-----------SUB_InputMethod_IMEAbility_0002 start-------------');
 
       let imExtAbilityProperty: inputMethod.InputMethodProperty = {

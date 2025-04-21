@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPart2() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPart2() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewControllerPart2 beforeEach start");
       done();
@@ -54,9 +62,9 @@ export default function webViewControllerPart2() {
     * @tc.desc       : test backOrForward
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testBackOrForward001', 0, async (done: Function) => {
+    it('testBackOrForward001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testBackOrForward001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward001", "second", 37005, done);
@@ -71,7 +79,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward002', 0, async (done: Function) => {
+    it('testBackOrForward002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward002", "index", 37006, done);
@@ -86,7 +94,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward003', 0, async (done: Function) => {
+    it('testBackOrForward003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward003", "index", 37007, done);
@@ -101,7 +109,7 @@ export default function webViewControllerPart2() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBackOrForward004', 0, async (done: Function) => {
+    it('testBackOrForward004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testBackOrForward004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testBackOrForward004", "index", 37008, done);

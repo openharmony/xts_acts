@@ -16,7 +16,7 @@
 import request from "@ohos.request";
 import fileio from '@ohos.fileio';
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestDownloadNormalJSUnit() {
   describe('requestDownloadNormalJSUnit', () => {
@@ -72,7 +72,7 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_0001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0001 is starting---------------------");
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
@@ -105,7 +105,7 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async (done: Function) => {
+    it('SUB_Misc_Request_DownloadManagement_Callback_0001', Level.LEVEL2, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
       try {
         let downloadConfig: request.DownloadConfig = {
@@ -144,9 +144,9 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 1
      */
-    it('SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010', Level.LEVEL1, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
@@ -182,9 +182,9 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010', 0, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010', Level.LEVEL0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,

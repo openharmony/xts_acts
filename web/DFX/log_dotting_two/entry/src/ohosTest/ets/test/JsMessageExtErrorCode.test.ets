@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, afterEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function jsMessageExtErrorCode() {
 
@@ -42,6 +45,11 @@ export default function jsMessageExtErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function jsMessageExtErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testJsMessageExtGetStringError001', 0, async (done: Function) => {
+    it('testJsMessageExtGetStringError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetStringError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetStringError001", '17100014', 30400, done);
@@ -76,7 +84,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetStringError002', 0, async (done: Function) => {
+    it('testJsMessageExtGetStringError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetStringError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetStringError002", '17100014', 30401, done);
@@ -91,7 +99,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetStringError003', 0, async (done: Function) => {
+    it('testJsMessageExtGetStringError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetStringError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetStringError003", '17100014', 30402, done);
@@ -106,7 +114,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetStringError004', 0, async (done: Function) => {
+    it('testJsMessageExtGetStringError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetStringError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetStringError004", '17100014', 30403, done);
@@ -121,7 +129,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetNumberError001', 0, async (done: Function) => {
+    it('testJsMessageExtGetNumberError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetNumberError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetNumberError001", '17100014', 30410, done);
@@ -136,7 +144,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetNumberError002', 0, async (done: Function) => {
+    it('testJsMessageExtGetNumberError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetNumberError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetNumberError002", '17100014', 30411, done);
@@ -151,7 +159,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetNumberError003', 0, async (done: Function) => {
+    it('testJsMessageExtGetNumberError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetNumberError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetNumberError003", '17100014', 30412, done);
@@ -166,7 +174,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetNumberError004', 0, async (done: Function) => {
+    it('testJsMessageExtGetNumberError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetNumberError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetNumberError004", '17100014', 30413, done);
@@ -181,7 +189,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetBooleanError001', 0, async (done: Function) => {
+    it('testJsMessageExtGetBooleanError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetBooleanError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetBooleanError001", '17100014', 30420, done);
@@ -196,7 +204,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetBooleanError002', 0, async (done: Function) => {
+    it('testJsMessageExtGetBooleanError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetBooleanError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetBooleanError002", '17100014', 30421, done);
@@ -211,7 +219,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetBooleanError003', 0, async (done: Function) => {
+    it('testJsMessageExtGetBooleanError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetBooleanError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetBooleanError003", '17100014', 30422, done);
@@ -226,7 +234,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetBooleanError004', 0, async (done: Function) => {
+    it('testJsMessageExtGetBooleanError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetBooleanError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetBooleanError004", '17100014', 30423, done);
@@ -241,7 +249,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayBufferError001', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayBufferError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayBufferError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayBufferError001", '17100014', 30430, done);
@@ -256,7 +264,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayBufferError002', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayBufferError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayBufferError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayBufferError002", '17100014', 30431, done);
@@ -271,7 +279,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayBufferError003', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayBufferError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayBufferError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayBufferError003", '17100014', 30432, done);
@@ -286,7 +294,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayBufferError004', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayBufferError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayBufferError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayBufferError004", '17100014', 30433, done);
@@ -301,7 +309,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayError001', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayError001", '17100014', 30440, done);
@@ -316,7 +324,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayError002', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayError002", '17100014', 30441, done);
@@ -331,7 +339,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayError003', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayError003", '17100014', 30442, done);
@@ -346,7 +354,7 @@ export default function jsMessageExtErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testJsMessageExtGetArrayError004', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testJsMessageExtGetArrayError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsMessageExtGetArrayError004", '17100014', 30443, done);

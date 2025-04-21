@@ -95,7 +95,7 @@ export class KeyboardController {
     inputMethodAbility.on('inputStart', async (keyboardController, InputClient) => {
       this.keyboardController = keyboardController;
       this.InputClient = InputClient
-      console.info(TAG + '====>inputMethodAbility inputStart into');      
+      console.info(TAG + '====>inputMethodAbility inputStart into'); 
     })
     
     let subscriberCallback = (err, data) => {
@@ -429,12 +429,43 @@ export class KeyboardController {
         case 420:
           console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_moveToPromise_0121 event:' + data.event);
           that.Sub_Misc_inputMethod_Panel_moveToPromise_0121();
+          break;
         case 430:
           console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_changeFlag_0212 event:' + data.event);
           that.Sub_Misc_inputMethod_Panel_changeFlag_0212();
+          break;
         case 440:
           console.debug(TAG + '====>Sub_InputMethod_IME_ScreenRotation_0101 event:' + data.event);
           that.Sub_InputMethod_IME_ScreenRotation_0101();
+          break;
+        case 450:
+          console.debug(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0101 event:' + data.event);
+          that.SUB_InputMethod_IsTextPreviewSupport_0101();
+          break;
+        case 460:
+          console.debug(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0201 event:' + data.event);
+          that.SUB_InputMethod_IsTextPreviewSupport_0201();
+          break;
+        case 470:
+          console.debug(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0301 event:' + data.event);
+          that.SUB_InputMethod_IsTextPreviewSupport_0301();
+          break;
+        case 480:
+          console.debug(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0401 event:' + data.event);
+          that.SUB_InputMethod_IsTextPreviewSupport_0401();
+          break;
+        case 490:
+          console.debug(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 event:' + data.event);
+          that.SUB_InputMethod_IME_SplitScreen_0101();
+          break;
+        case 500:
+          console.debug(TAG + '====>start_on_sendMessage event:' + data.event);
+          that.start_on_sendMessage(500);
+          break;
+        case 501:
+          console.debug(TAG + '====>start_on_sendMessage event:' + data.event);
+          that.start_on_sendMessage(501);
+          break;
       }
     }
 
@@ -462,6 +493,37 @@ export class KeyboardController {
     const str = decoder.decodeWithStream(new Uint8Array(buffer));
     return str;
   }
+
+  private start_on_sendMessage = (index: number): void =>{
+    let that = this;
+    console.info(`${TAG} ====>start_on_sendMessage index: ${index}`);
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let msgHandler: inputMethodEngine.MessageHandler = {
+        onTerminated(): void {
+          console.info(`${TAG} ====>start_on_sendMessage onTerminated`);
+        },
+        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
+          console.info(`${TAG} ====> onMessage msgId: ${msgId}`);
+          that.SUB_inputMethod_IMF_setPreview(msgId);
+        }
+      };
+      if (index === 500) {
+        this.InputClient.recvMessage(msgHandler);
+      } else {
+        this.InputClient.recvMessage();
+      };    
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+      commoneventmanager.publish('start_on_sendMessage', commonEventPublishData, this.publishCallback); 
+    } catch (err) {
+      console.info(TAG + '====>receive start_on_sendMessage err:' + JSON.stringify(err));
+      commoneventmanager.publish('start_on_sendMessage', commonEventPublishData, this.publishCallback);    
+    }
+  };
 
   private initWindow(): void {
     display.getDefaultDisplay().then(dis => {
@@ -496,7 +558,6 @@ export class KeyboardController {
       console.log(TAG + '====>publish');
     }
   }
-
 
   private Sub_Misc_inputMethod_Panel_createPanelCallback_0010(): void {
     let commonEventPublishData;
@@ -1447,7 +1508,7 @@ export class KeyboardController {
     let commonEventPublishData = {
         data: 'FAILED'
     };
-    try{
+    try {
         let keyboardRect: inputMethodEngine.PanelRect = {
             landscapeRect: { left: 100, top: 100, width: this.display_info.width, height: this.display_info.height * 0.4},
             portraitRect: { left: 100, top: 100, width: this.display_info.height * 0.4, height: this.display_info.width}
@@ -1552,7 +1613,7 @@ export class KeyboardController {
           timeCount += 1;
           console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 timeCount: ' + timeCount);
           if (timeCount === 2) {
-            clearInterval(t1)
+            clearInterval(t1);
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onSizeChange_0200 clearInterval success');
           };
         }, 100);
@@ -1590,12 +1651,12 @@ export class KeyboardController {
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving success');
         } catch (err) {
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving err' + JSON.stringify(err));
-          if(err.code === 12800017){
+          if (err.code === 12800017) {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
           };
-          if(err.code === 801){
+          if (err.code === 801) {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
@@ -1621,7 +1682,7 @@ export class KeyboardController {
         try {
           let num = await this.softKeyboardPanel.getDisplayId();
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_0800 typeof num: ' + typeof(num));
-          if(typeof(num) === 'number'){
+          if (typeof(num) === 'number') {
             commonEventPublishData = {
               data: 'SUCCESS'
             };
@@ -1689,12 +1750,10 @@ export class KeyboardController {
         onTerminated(): void {
           console.info(TAG +'====>Sub_InputMethod_IME_Custom_0900 onTerminated');
         },
-        onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 onMessage msgId: ' + msgId + ', msgParam: ' +
-          that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
-          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
-            that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId === 'Sub_InputMethod_IME_Custom_0900'){
+        onMessage(msgId: string): void {
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 onMessage msgId: ' + msgId );
+          console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length );
+          if (msgId === 'Sub_InputMethod_IME_Custom_0900') {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))
           }else{
@@ -1732,10 +1791,10 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
             that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId.length === 256 && msgParam?.byteLength === 131072){
+          if (msgId.length === 256 && msgParam?.byteLength === 131072) {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0200 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('SUCCESS'))
-          }else{
+          } else {
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0200', that.newArrayBuffer('FAILED'))
           }
           that.InputClient.recvMessage()
@@ -1770,7 +1829,7 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 sedMessages msgIdSize: ' + msgId.length + ', msgParamSize: ' +
             that.GetArrayBufferString(msgParam)?.length + ', ArrayBufferSize' +  msgParam?.byteLength);
-          if(msgId.length === 0 && msgParam?.byteLength === 131072){
+          if (msgId.length === 0 && msgParam?.byteLength === 131072) {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0800 start sendMessage');
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0800', that.newArrayBuffer('SUCCESS'))
           }else{
@@ -3080,4 +3139,153 @@ export class KeyboardController {
     commoneventmanager.publish('Sub_InputMethod_IME_ScreenRotation_0101', commonEventPublishData, this.publishCallback);
   }
 
+  private async SUB_InputMethod_IsTextPreviewSupport_0101(): Promise<void> {
+    console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0101 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let range: inputMethodEngine.Range = { start: 0, end: 1 };
+      await this.InputClient.setPreviewText('adc|03', range);
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0101 setPreviewText success:');
+      commonEventPublishData = {
+        data: 'FAILED'
+
+      };
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0101 setPreviewText catch err: ' +
+      JSON.stringify(err));
+      if (err.code === 12800011) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+    };
+    commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0101', commonEventPublishData,
+      this.publishCallback);
+  }
+
+  private async SUB_InputMethod_IsTextPreviewSupport_0201(): Promise<void> {
+    console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0201 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      let range: inputMethodEngine.Range = { start: 0, end: 1 };
+      await this.InputClient.setPreviewTextSync('adc|03', range);
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0201 setPreviewText success:');
+      commonEventPublishData = {
+        data: 'FAILED'
+
+      };
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0201 setPreviewText catch err: ' +
+      JSON.stringify(err));
+      if (err.code === 12800011) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+    };
+    commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0201', commonEventPublishData,
+      this.publishCallback);
+  }
+
+  private async SUB_InputMethod_IsTextPreviewSupport_0301(): Promise<void> {
+    console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0301 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      await this.InputClient.finishTextPreview();
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0301 setPreviewText success:');
+      commonEventPublishData = {
+        data: 'FAILED'
+
+      };
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0301 setPreviewText catch err: ' +
+      JSON.stringify(err));
+      if (err.code === 12800011) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+    };
+    commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0301', commonEventPublishData,
+      this.publishCallback);
+  }
+
+  private async SUB_InputMethod_IsTextPreviewSupport_0401(): Promise<void> {
+    console.info(TAG + '====>receive SUB_InputMethod_IsTextPreviewSupport_0401 data');
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      await this.InputClient.finishTextPreviewSync();
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0401 setPreviewText success:');
+      commonEventPublishData = {
+        data: 'FAILED'
+
+      };
+    } catch (err) {
+      console.info(TAG + '====>SUB_InputMethod_IsTextPreviewSupport_0401 setPreviewText catch err: ' +
+      JSON.stringify(err));
+      if (err.code === 12800011) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+    };
+    commoneventmanager.publish('SUB_InputMethod_IsTextPreviewSupport_0401', commonEventPublishData,
+      this.publishCallback);
+  }
+
+  private async SUB_InputMethod_IME_SplitScreen_0101(): Promise<void> {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 start');
+    try {
+      if (this.softKeyboardPanel !== null) {
+        await inputMethodAbility.destroyPanel(this.softKeyboardPanel);
+        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 this.softKeyboardPanel:' + this.softKeyboardPanel);
+          try {
+            let WindowInfo = await this.InputClient.getCallingWindowInfo();
+            console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 getCallingWindowInfo WindowInfo:  success');
+          } catch (err) {
+            console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 getCallingWindowInfO err: ' + JSON.stringify(err.code) + err);
+            if (err.code === 12800012) {
+              commonEventPublishData = {
+                data: 'SUCCESS'
+              };
+            }
+          };
+          commoneventmanager.publish('SUB_InputMethod_IME_SplitScreen_0101', commonEventPublishData, this.publishCallback);
+      } else {
+        console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 getCallingWindowInfo softKeyboardPanel is null ');
+      };
+    } catch (error) {
+      console.info(TAG + '====>SUB_InputMethod_IME_SplitScreen_0101 catch error: ' + JSON.stringify(error.code) + JSON.stringify(error.message));
+      commoneventmanager.publish('SUB_InputMethod_IME_SplitScreen_0101', commonEventPublishData, this.publishCallback);
+    }
+  } 
+
+  private async SUB_inputMethod_IMF_setPreview(testCaseName: string): Promise<void> {
+    let commonEventPublishData = {
+      data: 'FAILED'
+    };
+    try {
+      this.InputClient.setPreviewTextSync(`${testCaseName}`, {start:0, end: 1});
+      this.InputClient.finishTextPreviewSync();
+    } catch (err) {
+      console.info(TAG + `====>receive ${testCaseName} err: ${err.code}`);
+      if (err.code === 12800011) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
+      commoneventmanager.publish(`${testCaseName}`, commonEventPublishData, this.publishCallback);   
+    }
+  }
 }

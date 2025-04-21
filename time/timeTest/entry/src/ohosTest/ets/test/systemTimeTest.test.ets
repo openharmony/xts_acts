@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import systemTime from "@ohos.systemTime";
 import { BusinessError } from '@ohos.base';
 
@@ -27,9 +27,9 @@ export default function systemTimeJsunit() {
      * @tc.desc      Obtains the number of milliseconds that have elapsed since the Unix epoch.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it("SUB_systemTime_getCurrentTime_JS_API_0001", 0, async (done: Function) => {
+    it("SUB_systemTime_getCurrentTime_JS_API_0001", Level.LEVEL0, async (done: Function) => {
       console.info("====>----------UB_systemTime_getCurrentTime_JS_API_0001 start----------------");
       systemTime.getCurrentTime(true, (error, data) => {
         try {
@@ -57,7 +57,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getCurrentTime_JS_API_0002", 0, async (done: Function) => {
+    it("SUB_systemTime_getCurrentTime_JS_API_0002", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getCurrentTime_JS_API_0002 start----------------");
       await systemTime.getCurrentTime(true).then((data) => {
         console.info('====>SUB_systemTime_getCurrentTime_JS_API_0002 success data : ' + JSON.stringify(data));
@@ -79,7 +79,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getCurrentTime_JS_API_0003", 0, async (done: Function) => {
+    it("SUB_systemTime_getCurrentTime_JS_API_0003", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------UB_systemTime_getCurrentTime_JS_API_0001 start----------------");
       systemTime.getCurrentTime((error, data) => {
         try {
@@ -107,7 +107,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getCurrentTime_JS_API_0004", 0, async (done: Function) => {
+    it("SUB_systemTime_getCurrentTime_JS_API_0004", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getCurrentTime_JS_API_0004 start----------------");
       await systemTime.getCurrentTime().then((data) => {
         console.info('====>SUB_systemTime_getCurrentTime_JS_API_0004 success data : ' + JSON.stringify(data));
@@ -129,7 +129,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealActiveTime_JS_API_0001", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealActiveTime_JS_API_0001", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemTime_getRealActiveTime_JS_API_0001 start----------------");
       systemTime.getRealActiveTime(true, (error, data) => {
         try {
@@ -157,7 +157,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealActiveTime_JS_API_0002", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealActiveTime_JS_API_0002", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getRealActiveTime_JS_API_0002 start----------------");
       await systemTime.getRealActiveTime(true).then((data) => {
         console.log('SUB_systemTime_getRealActiveTime_JS_API_0002 success data : ' + JSON.stringify(data));
@@ -179,7 +179,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealActiveTime_JS_API_0003", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealActiveTime_JS_API_0003", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemTime_getRealActiveTime_JS_API_0003 start----------------");
       systemTime.getRealActiveTime((error, data) => {
         try {
@@ -207,7 +207,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealActiveTime_JS_API_0004", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealActiveTime_JS_API_0004", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getRealActiveTime_JS_API_0004 start----------------");
       await systemTime.getRealActiveTime().then((data) => {
         console.log('SUB_systemTime_getRealActiveTime_JS_API_0004 success data : ' + JSON.stringify(data));
@@ -229,7 +229,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealTime_JS_API_0001", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealTime_JS_API_0001", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemTime_getRealTime_JS_API_0001 start----------------");
       systemTime.getRealTime(true, (error, data) => {
         try {
@@ -257,7 +257,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealTime_JS_API_0002", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealTime_JS_API_0002", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getRealTime_JS_API_0002 start----------------");
       await systemTime.getRealTime(true).then((data) => {
         console.info('====>SUB_systemTime_getRealTime_JS_API_0002 success data : ' + JSON.stringify(data));
@@ -279,7 +279,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealTime_JS_API_0003", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealTime_JS_API_0003", Level.LEVEL2, async (done: Function) => {
       console.info("====>----------SUB_systemTime_getRealTime_JS_API_0003 start----------------");
       systemTime.getRealTime((error, data) => {
         try {
@@ -307,7 +307,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_systemTime_getRealTime_JS_API_0004", 0, async (done: Function) => {
+    it("SUB_systemTime_getRealTime_JS_API_0004", Level.LEVEL2, async (done: Function) => {
       console.info("====>-----SUB_systemTime_getRealTime_JS_API_0004 start----------------");
       await systemTime.getRealTime().then((data) => {
         console.info('====>SUB_systemTime_getRealTime_JS_API_0004 success data : ' + JSON.stringify(data));
@@ -329,7 +329,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_getDate_JS_API_0100', 0, async (done: Function) => {
+    it('SUB_systemTime_getDate_JS_API_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_getDate_JS_API_0100 start");
       systemTime.getDate((error, data) => {
         try {
@@ -357,7 +357,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_getDate_JS_API_0200', 0, async (done: Function) => {
+    it('SUB_systemTime_getDate_JS_API_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_getDate_JS_API_0200 start");
       try {
         let data = await systemTime.getDate();
@@ -380,7 +380,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_getTimezone_JS_API_0100', 0, async (done: Function) => {
+    it('SUB_systemTime_getTimezone_JS_API_0100', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_getTimezone_JS_API_0100 start");
       systemTime.getTimezone((error, data) => {
         try {
@@ -408,7 +408,7 @@ export default function systemTimeJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_systemTime_getTimezone_JS_API_0200', 0, async (done: Function) => {
+    it('SUB_systemTime_getTimezone_JS_API_0200', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_systemTime_getTimezone_JS_API_0200 start");
       try {
         let data = await systemTime.getTimezone();

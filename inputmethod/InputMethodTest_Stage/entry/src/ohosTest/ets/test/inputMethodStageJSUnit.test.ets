@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
 import { BusinessError } from '@ohos.base';
-import deviceinfo from '@ohos.deviceInfo';
 
 export default function inputMethodStageJSUnit() {
   describe('inputMethodTest', () => {
@@ -44,7 +43,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_getController_001', 0, async (done: Function) => {
+    it('inputMethod_test_getController_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_getController_001 start---------------------");
       try {
         let inputMethodControl = inputMethod.getController();
@@ -73,7 +72,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listInputMethodSubtype_001', 0, async (done: Function) => {
+    it('inputMethod_test_listInputMethodSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_001 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_listInputMethodSubtype_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -116,7 +115,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('inputMethod_test_listInputMethodSubtype_002', 0, async (done: Function) => {
+    it('inputMethod_test_listInputMethodSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_002 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_listInputMethodSubtype_002 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -171,7 +170,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.level   2
      */
 
-    it('inputMethod_test_listInputMethodSubtype_003', 0, async (done: Function) => {
+    it('inputMethod_test_listInputMethodSubtype_003', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_003 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_listInputMethodSubtype_003 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -215,7 +214,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listInputMethodSubtype_004', 0, async (done: Function) => {
+    it('inputMethod_test_listInputMethodSubtype_004', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_004 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputMethod_test_listInputMethodSubtype_004 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -267,7 +266,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('inputMethod_test_listCurrentInputMethodSubtype_001', 0, async (done: Function) => {
+    it('inputMethod_test_listCurrentInputMethodSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_001 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
@@ -298,7 +297,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listCurrentInputMethodSubtype_002', 0, async (done: Function) => {
+    it('inputMethod_test_listCurrentInputMethodSubtype_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_002 start---------------------");
       try {
         let inputMethodSetting = inputMethod.getSetting();
@@ -329,7 +328,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_getCurrentInputMethodSubtype_001', 0, async (done: Function) => {
+    it('inputMethod_test_getCurrentInputMethodSubtype_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_getCurrentInputMethodSubtype_001 start---------------------");
       try {
         let inputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
@@ -359,7 +358,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_showOptionalInputMethods_001', 0, async (done: Function) => {
+    it('inputMethod_test_showOptionalInputMethods_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_001 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_showOptionalInputMethods_001 result:" + inputMethodSetting);
@@ -392,7 +391,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_showOptionalInputMethods_002', 0, async (done: Function) => {
+    it('inputMethod_test_showOptionalInputMethods_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_002 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       try {
@@ -423,7 +422,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_stopInputSession_002', 0, async (done: Function) => {
+    it('inputMethod_test_stopInputSession_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_stopInputSession_002 start---------------------");
       try {
         let inputMethodCtrl = inputMethod.getController();
@@ -453,7 +452,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_stopInputSession_001', 0, async (done: Function) => {
+    it('inputMethod_test_stopInputSession_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_stopInputSession_001 start---------------------");
       let inputMethodCtrl = inputMethod.getController();
       console.debug("inputMethod_test_stopInputSession_001 result: " + typeof inputMethodCtrl);
@@ -483,7 +482,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_TextInputType_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_TextInputType_0100', Level.LEVEL2, async (done: Function) => {
       let none = inputMethod.TextInputType.NONE;
       console.info("====>Sub_Misc_inputMethod_TextInputType_0100 none:" + none);
       expect(none).assertEqual(-1);
@@ -525,7 +524,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_EnterKeyType_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_EnterKeyType_0100', Level.LEVEL2, async (done: Function) => {
       let unspecified = inputMethod.EnterKeyType.UNSPECIFIED;
       console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 unspecified:" + unspecified);
       expect(unspecified).assertEqual(0);
@@ -564,7 +563,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_KeyboardStatus_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_KeyboardStatus_0100', Level.LEVEL2, async (done: Function) => {
       let none = inputMethod.KeyboardStatus.NONE;
       console.info("====>Sub_Misc_inputMethod_KeyboardStatus_0100 none:" + none);
       expect(none).assertEqual(0);
@@ -585,7 +584,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_ExtendAction_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_ExtendAction_0100', Level.LEVEL2, async (done: Function) => {
       let select_all = inputMethod.ExtendAction.SELECT_ALL;
       console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 select_all:" + select_all);
       expect(select_all).assertEqual(0);
@@ -609,7 +608,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Direction_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Direction_0100', Level.LEVEL2, async (done: Function) => {
       let cursor_up = inputMethod.Direction.CURSOR_UP;
       console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_up:" + cursor_up);
       expect(cursor_up).assertEqual(1);
@@ -633,7 +632,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_ListControl_0600', 0, (done: Function) => {
+    it('SUB_InputMethod_IMF_ListControl_0600', Level.LEVEL2, (done: Function) => {
       console.info("====>SUB_InputMethod_IMF_ListControl_0600 start");
       let result: ESObject = {
         kikakeyboard: "com.example.kikakeyboard",
@@ -661,7 +660,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_Panel_0600', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMF_Panel_0600', Level.LEVEL2, async (done: Function) => {
       console.info("====>SUB_InputMethod_IMF_Panel_0600 start");
       try {
         let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();

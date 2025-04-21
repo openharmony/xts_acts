@@ -12,10 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitOnHttpErrorReceiveByExampleWebc";
 
@@ -41,6 +44,11 @@ export default function webONHttpErrorReceiveExample() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webONHttpErrorReceiveExample beforeEach start");
       done();
@@ -66,11 +74,14 @@ export default function webONHttpErrorReceiveExample() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBERRORRECV_API_0200
-     *tc.name testOnHttpErrorReceiveByExampleWebc
-     *tc.desc test interface of onHttpErrorReceive with parameter used by example
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBERRORRECV_API_0200
+     * @tc.name       : testOnHttpErrorReceiveByExampleWebc
+     * @tc.desc       : test interface of onHttpErrorReceive with parameter used by example
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('testOnHttpErrorReceiveByExampleWebc', 0, async (done: Function) => {
+    it('testOnHttpErrorReceiveByExampleWebc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnHttpErrorReceiveByExampleWebc";
       Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc", 403, 491, done);
       Utils.registerEvent("testOnHttpErrorReceiveByExampleWebc", "intercept test", 492, done);

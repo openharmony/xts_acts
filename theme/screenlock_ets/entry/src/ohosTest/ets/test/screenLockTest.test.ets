@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import screenLock from '@ohos.screenLock';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function screenLockJSUnit() {
 
@@ -34,7 +34,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0001", 0, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0001", Level.LEVEL0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0001-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {
@@ -69,7 +69,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0002", 0, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0002", Level.LEVEL2, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0002-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {
@@ -98,7 +98,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0003", 0, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0003", Level.LEVEL2, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0003-------------------");
             try {
                 screenLock.isSecureMode((err, data) => {
@@ -127,7 +127,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0004", 0, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0004", Level.LEVEL2, async (done: Function) => {
             console.info("------------------start SUB_MISC_THEME_screenLock_API_0004-------------------");
             try {
                 screenLock.unlockScreen((err) => {
@@ -162,7 +162,7 @@ export default function screenLockJSUnit() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0007", 0, async (done: Function) => {
+        it("SUB_MISC_THEME_screenLock_API_0007", Level.LEVEL2, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0007-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {

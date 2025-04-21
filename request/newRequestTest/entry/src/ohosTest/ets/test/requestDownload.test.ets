@@ -15,7 +15,7 @@
 
 import request from "@ohos.request";
 import fileio from '@ohos.fileio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 export default function requestDownloadJSUnit() {
   describe('requestDownloadJSUnit', () => {
@@ -55,9 +55,9 @@ export default function requestDownloadJSUnit() {
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010', 0, async (done: Function) => {
+    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010', Level.LEVEL0, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010 is starting-----------------------");
       try {
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_removeNormal_promise_0010 remove");
@@ -79,7 +79,7 @@ export default function requestDownloadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010', 0, async (done: Function) => {
+    it('SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010', Level.LEVEL2, async (done: Function) => {
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0010 is starting-----------------------");
       request.agent.remove("1234567", (err) => {
         try {

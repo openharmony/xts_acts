@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webHitTestTypeEnumTest() {
 
@@ -41,6 +44,11 @@ export default function webHitTestTypeEnumTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -61,7 +69,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum001', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum001", 0, 70143, done);
@@ -76,7 +84,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum002', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum002", 1, 70144, done);
@@ -91,7 +99,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum003', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum003", 2, 70145, done);
@@ -106,7 +114,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum004', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum004", 3, 70146, done);
@@ -121,7 +129,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum005', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum005", 4, 70147, done);
@@ -136,7 +144,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum006', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum006", 5, 70148, done);
@@ -151,7 +159,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum007', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum007", 6, 70149, done);
@@ -166,7 +174,7 @@ export default function webHitTestTypeEnumTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testWebHitTestTypeEnum008', 0, async (done: Function) => {
+    it('testWebHitTestTypeEnum008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebHitTestTypeEnum008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebHitTestTypeEnum008", 7, 70150, done);

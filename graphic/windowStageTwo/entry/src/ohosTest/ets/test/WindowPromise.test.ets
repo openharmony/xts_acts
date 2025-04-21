@@ -12,14 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, it, expect , TestType, Size, Level} from "@ohos/hypium";
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 import { Driver, ON } from '@ohos.UiTest';
 import settings from '@ohos.settings';
+import { image } from '@kit.ImageKit';
+import * as LoadContentByName from '../testability/pages/WindowTest/LoadContentByName';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -60,22 +61,14 @@ export default function windowPromiseTest() {
     let systemWindowTypeDic: Record<string, number> = {
       'TYPE_FLOAT': 8,
     }
-    let currentDeviceIsRk = false;
-    let currentDeviceIsPC = false;
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
+    let isPCStatus: string = '';
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -85,6 +78,11 @@ export default function windowPromiseTest() {
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
       
     })
 
@@ -96,7 +94,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise1", 0, async (done: Function) => {
+    it("testsetSubWindowModal_Function_Promise1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise1 ";
       console.log(msgStr + " begin");
       try {
@@ -148,7 +146,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise2", 0, async (done: Function) => {
+    it("testsetSubWindowModal_Function_Promise2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise2 ";
       console.log(msgStr + " begin");
       try {
@@ -200,7 +198,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testsetSubWindowModal_Function_Promise3", 0, async (done: Function) => {
+    it("testsetSubWindowModal_Function_Promise3", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testsetSubWindowModal_Function_Promise3 ";
       console.log(msgStr + " begin");
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -230,7 +228,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_SubWindow_IsModal_true", 0, async (done: Function) => {
+    it("test_SubWindow_IsModal_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_SubWindow_IsModal_true";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -319,7 +317,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_SubWindow_IsModal_false", 0, async (done: Function) => {
+    it("test_SubWindow_IsModal_false", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_SubWindow_IsModal_false";
       console.log(msgStr + "begin");
       let minWidth = 0;
@@ -408,7 +406,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_SubWindow_hide_IsModal_true", 0, async (done: Function) => {
+    it("test_SubWindow_hide_IsModal_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_SubWindow_hide_IsModal_true";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -468,7 +466,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("test_setSubWindowModal_isModal_null_401", 0, async (done: Function) => {
+    it("test_setSubWindowModal_isModal_null_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_isModal_null_401";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -518,7 +516,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_setSubWindowModal_ModalityType_TypeError_401", 0, async (done: Function) => {
+    it("test_setSubWindowModal_ModalityType_TypeError_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_ModalityType_TypeError_401";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -568,7 +566,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_setSubWindowModal_ModalityType_incorrect_401", 0, async (done: Function) => {
+    it("test_setSubWindowModal_ModalityType_incorrect_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_ModalityType_incorrect_401";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -618,7 +616,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_setSubWindowModal_ModalityType_isModal_false_401", 0, async (done: Function) => {
+    it("test_setSubWindowModal_ModalityType_isModal_false_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_ModalityType_isModal_false_401";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -668,7 +666,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_setSubWindowModal_ModalityType_null_401", 0, async (done: Function) => {
+    it("test_setSubWindowModal_ModalityType_null_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_ModalityType_null_401";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -716,9 +714,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setSubWindowModal_ModalityType_enum
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level0
          */
-    it("test_setSubWindowModal_ModalityType_enum", 0, async (done: Function) => {
+    it("test_setSubWindowModal_ModalityType_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_ModalityType_enum";
       console.log(msgStr + "begin");
       expect(ohosWindow.ModalityType.WINDOW_MODALITY).assertEqual(0);
@@ -734,7 +732,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("test_setSubWindowModal_subWindow_destory_1300002", 0, async (done: Function) => {
+    it("test_setSubWindowModal_subWindow_destory_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_subWindow_destory_1300002";
       console.log(msgStr + "begin");
       let subWindowClass: ohosWindow.Window;
@@ -784,7 +782,7 @@ export default function windowPromiseTest() {
              * @tc.type      : Function
              * @tc.level     : Level3
              */
-    it("test_setSubWindowModal_MainWindow_1300004", 0, async (done: Function) => {
+    it("test_setSubWindowModal_MainWindow_1300004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setSubWindowModal_MainWindow_1300004";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -818,7 +816,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("testCreateSubWindowWithOptions_name_is_null_401", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_name_is_null_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_name_is_null_401";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window;
@@ -856,7 +854,7 @@ export default function windowPromiseTest() {
              * @tc.type      : Function
              * @tc.level     : Level3
              */
-    it("testCreateSubWindowWithOptions_modalityType_401", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_modalityType_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_modalityType_401";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window;
@@ -895,7 +893,7 @@ export default function windowPromiseTest() {
              * @tc.type      : Function
              * @tc.level     : Level3
              */
-    it("testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_modalityType_is_INCORRECT_401";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window;
@@ -933,7 +931,7 @@ export default function windowPromiseTest() {
        * @tc.type      : Function
        * @tc.level     : Level3
       */
-    it("testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_modalityType_APPLICATION_MODALITY";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window;
@@ -983,7 +981,7 @@ export default function windowPromiseTest() {
            * @tc.type      : Function
            * @tc.level     : Level3
           */
-    it("testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY", 0, async (done: Function) => {
+    it("testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testCreateSubWindowWithOptions_modalityType_WINDOW_MODALITY";
       console.log(msgStr + " begin");
       let windowClass: ohosWindow.Window;
@@ -1025,9 +1023,9 @@ export default function windowPromiseTest() {
      * @tc.desc      : Test the function value of setDefaultDensityEnabled
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it("testSetDefaultDensityEnabled_true", 0, async (done: Function) => {
+    it("testSetDefaultDensityEnabled_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let msgStr = "testSetDefaultDensityEnabled_true";
       console.log(msgStr + "begin");
       try {
@@ -1047,9 +1045,9 @@ export default function windowPromiseTest() {
      * @tc.desc      : Test the function value of setDefaultDensityEnabled
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it("testSetDefaultDensityEnabled_false", 0, async (done: Function) => {
+    it("testSetDefaultDensityEnabled_false", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let msgStr = "testSetDefaultDensityEnabled_false";
       console.log(msgStr + "begin");
       try {
@@ -1071,7 +1069,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeOptions_on", 0, async (done: Function) => {
+    it("testRectChangeOptions_on", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_on";
       console.log(msgStr + "begin");
       try {
@@ -1110,7 +1108,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeOptions_off", 0, async (done: Function) => {
+    it("testRectChangeOptions_off", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_off";
       console.log(msgStr + "begin");
       try {
@@ -1144,9 +1142,9 @@ export default function windowPromiseTest() {
      * @tc.desc      : Test the function value of RectChangeReason
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it("testRectChangeReason_enum", 0, async (done: Function) => {
+    it("testRectChangeReason_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let msgStr = "testRectChangeReason_enum";
       console.log(msgStr + "begin");
       try {
@@ -1179,7 +1177,7 @@ export default function windowPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testRectChangeOptions_on_resize", 0, async (done: Function) => {
+    it("testRectChangeOptions_on_resize", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_on_resize";
       console.log(msgStr + "begin");
       try {
@@ -1232,7 +1230,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("testRectChangeOptions_on_moveWindowTo", 0, async (done: Function) => {
+    it("testRectChangeOptions_on_moveWindowTo", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_on_moveWindowTo";
       console.log(msgStr + "begin");
       try {
@@ -1285,7 +1283,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("testRectChangeOptions_on_TwoCallback", 0, async (done: Function) => {
+    it("testRectChangeOptions_on_TwoCallback", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_on_TwoCallback";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1346,7 +1344,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("testRectChangeOptions_off_callback1", 0, async (done: Function) => {
+    it("testRectChangeOptions_off_callback1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_off_callback1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1408,7 +1406,7 @@ export default function windowPromiseTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it("testRectChangeOptions_off_all_callback", 0, async (done: Function) => {
+    it("testRectChangeOptions_off_all_callback", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "testRectChangeOptions_off_all_callback";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1468,9 +1466,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setWindowGrayScale_0
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-    it("test_setWindowGrayScale_0", 0, async (done: Function) => {
+    it("test_setWindowGrayScale_0", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_0";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1502,9 +1500,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setWindowGrayScale_0.5
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-    it("test_setWindowGrayScale_0.5", 0, async (done: Function) => {
+    it("test_setWindowGrayScale_0.5", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_0.5";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1536,9 +1534,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setWindowGrayScale_1
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-    it("test_setWindowGrayScale_1", 0, async (done: Function) => {
+    it("test_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1571,9 +1569,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setWindowGrayScale_-1
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-    it("test_setWindowGrayScale_-1", 0, async (done: Function) => {
+    it("test_setWindowGrayScale_-1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_-1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1605,9 +1603,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_setWindowGrayScale_2
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-    it("test_setWindowGrayScale_2", 0, async (done: Function) => {
+    it("test_setWindowGrayScale_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_setWindowGrayScale_2";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1640,9 +1638,9 @@ export default function windowPromiseTest() {
          * @tc.desc      : test_subWindow_setWindowGrayScale_1
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-    it("test_subWindow_setWindowGrayScale_1", 0, async (done: Function) => {
+    it("test_subWindow_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_subWindow_setWindowGrayScale_1";
       console.log(msgStr + "begin");
       let grayScale = 1;
@@ -1692,7 +1690,7 @@ export default function windowPromiseTest() {
          * @tc.level     : Level 2
          */
 
-    it("test_on_windowRectChange", 2, async (done: Function) => {
+    it("test_on_windowRectChange", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_on_windowRectChange";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1726,7 +1724,7 @@ export default function windowPromiseTest() {
      * @tc.level     : Level 2
      */
 
-    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", 2, async (done: Function) => {
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1735,7 +1733,7 @@ export default function windowPromiseTest() {
         windowClass.setImmersiveModeEnabledState(enabled);
         let isEnabled = windowClass.getImmersiveModeEnabledState();
         console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:' + isEnabled);
-        if(deviceType != '2in1' || isAutoWindow =='false'){
+        if(isPCStatus == '' || isAutoWindow =='false'){
           expect(isEnabled).assertEqual(true);
           done();
         }else{
@@ -1759,7 +1757,7 @@ export default function windowPromiseTest() {
      * @tc.level     : Level 2
      */
 
-    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", 2, async (done: Function) => {
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1786,7 +1784,7 @@ export default function windowPromiseTest() {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_setWindowMask", 2, async (done: Function) => {
+    it("test_mainWindow_setWindowMask", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_mainWindow_setWindowMask";
       console.log(msgStr + "begin");
       let windowMask: Array<Array<number>> = new Array < Array < number >> ();
@@ -1836,7 +1834,7 @@ export default function windowPromiseTest() {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_on_noInteractionDetected", 2, async (done: Function) => {
+    it("test_mainWindow_on_noInteractionDetected", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1879,7 +1877,7 @@ export default function windowPromiseTest() {
      * @tc.level     : Level 2
      */
 
-    it("test_mainWindow_off_noInteractionDetected", 2, async (done: Function) => {
+    it("test_mainWindow_off_noInteractionDetected", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_mainWindow_off_noInteractionDetected";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -1913,10 +1911,10 @@ export default function windowPromiseTest() {
      * @tc.desc      : test_subWindow_on_noInteractionDetected
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it("test_subWindow_on_noInteractionDetected", 2, async (done: Function) => {
+    it("test_subWindow_on_noInteractionDetected", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_subWindow_on_noInteractionDetected";
       console.log(msgStr + "begin");
       let time1: number;
@@ -1975,10 +1973,10 @@ export default function windowPromiseTest() {
      * @tc.desc      : test_mainWindow_on_noInteractionDetected_two
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it("test_mainWindow_on_noInteractionDetected_two", 2, async (done: Function) => {
+    it("test_mainWindow_on_noInteractionDetected_two", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_two";
       console.log(msgStr + "begin");
       let time1: number;
@@ -2032,10 +2030,10 @@ export default function windowPromiseTest() {
      * @tc.desc      : test_mainWindow_on_noInteractionDetected_One
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it("test_mainWindow_on_noInteractionDetected_One", 2, async (done: Function) => {
+    it("test_mainWindow_on_noInteractionDetected_One", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_One";
       console.log(msgStr + "begin");
       let time1: number;
@@ -2090,10 +2088,10 @@ export default function windowPromiseTest() {
      * @tc.desc      : test_mainWindow_off_noInteractionDetected_All
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it("test_mainWindow_on_noInteractionDetected_Two", 2, async (done: Function) => {
+    it("test_mainWindow_on_noInteractionDetected_Two", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = "test_mainWindow_on_noInteractionDetected_Two";
       console.log(msgStr + "begin");
       let time1: number;
@@ -2147,10 +2145,10 @@ export default function windowPromiseTest() {
      * @tc.desc      :  test_mainWindow_on_noInteractionDetected_Not_triggered
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it(" test_mainWindow_on_noInteractionDetected_Not_triggered", 2, async (done: Function) => {
+    it(" test_mainWindow_on_noInteractionDetected_Not_triggered", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_Not_triggered";
       console.log(msgStr + "begin");
       let driver: Driver = Driver.create();
@@ -2188,10 +2186,10 @@ export default function windowPromiseTest() {
      * @tc.desc      :  test_mainWindow_on_noInteractionDetected_0.5
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it(" test_mainWindow_on_noInteractionDetected_0_5", 2, async (done: Function) => {
+    it(" test_mainWindow_on_noInteractionDetected_0_5", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_0.5";
       console.log(msgStr + "begin");
       let flag = false;
@@ -2227,10 +2225,10 @@ export default function windowPromiseTest() {
      * @tc.desc      :  test_mainWindow_on_noInteractionDetected_-1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 3
      */
 
-    it(" test_mainWindow_on_noInteractionDetected__1", 2, async (done: Function) => {
+    it(" test_mainWindow_on_noInteractionDetected__1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let msgStr = " test_mainWindow_on_noInteractionDetected_-1";
       console.log(msgStr + "begin");
       let windowClass = await windowStage.getMainWindow();
@@ -2258,5 +2256,852 @@ export default function windowPromiseTest() {
         }
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SetFollowParentWindowLayoutEnabled_0100
+     * @tc.name      : test_SetFollowParentWindowLayoutEnabled_401
+     * @tc.desc      :  test_SetFollowParentWindowLayoutEnabled_401
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_SetFollowParentWindowLayoutEnabled_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_SetFollowParentWindowLayoutEnabled_401";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_SetFollowParentWindowLayoutEnabled_401');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(null);
+          promise2.then(async () => {
+            console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+            expect(false).assertTrue();
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            console.log(msgStr + 'Failed to createSubWindow');
+            expect(false).assertTrue();
+            done();
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else if(err.code == 401){
+            expect(true).assertTrue();
+            done();
+          }else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed . Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SetFollowParentWindowLayoutEnabled_0200
+     * @tc.name      : test_SetFollowParentWindowLayoutEnabled_1300002
+     * @tc.desc      :  test_SetFollowParentWindowLayoutEnabled_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_SetFollowParentWindowLayoutEnabled_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_SetFollowParentWindowLayoutEnabled_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_SetFollowParentWindowLayoutEnabled_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(true);
+          promise2.then(async () => {
+            console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+            expect(false).assertTrue();
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(1300002);
+            done();
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SetFollowParentWindowLayoutEnabled_0300
+     * @tc.name      : test_SetFollowParentWindowLayoutEnabled_1300004
+     * @tc.desc      :  test_SetFollowParentWindowLayoutEnabled_1300004
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_SetFollowParentWindowLayoutEnabled_1300004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_SetFollowParentWindowLayoutEnabled_1300004";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+          let promise2 = windowClass.setFollowParentWindowLayoutEnabled(true);
+          promise2.then(async () => {
+            console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+            expect(false).assertTrue();
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(1300004);
+            done();
+
+          });
+      } catch (error) {
+        console.error(msgStr + `Failed to create the subwindow. Cause code: ${error.code}, message: ${error.message}`);
+        if (error.code == 801) {
+          console.log(msgStr + '此设备不支持');
+          done();
+        } else {
+          console.log(msgStr + 'Failed to setWindowMask');
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SetFollowParentWindowLayoutEnabled_0400
+     * @tc.name      : test_SetFollowParentWindowLayoutEnabled_true
+     * @tc.desc      :  test_SetFollowParentWindowLayoutEnabled_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_SetFollowParentWindowLayoutEnabled_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_SetFollowParentWindowLayoutEnabled_true";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      let mainWindow = windowStage.getMainWindowSync();
+      let mainWindowProwindowRect = mainWindow.getWindowProperties().windowRect;
+      console.info(msgStr + 'Succeeded in get mainWindow windowRect. Data: ' + JSON.stringify(mainWindowProwindowRect));
+      try {
+        let promise = windowStage.createSubWindow('test_SetFollowParentWindowLayoutEnabled_true');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index1');
+          await sleep(300);
+          await subWindowClass.showWindow();
+          let minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          let minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          subWindowClass.resizeAsync(minWidth,minHeight);
+          subWindowClass.on('windowSizeChange', async (data) => {
+            console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
+            let subWindowRect = data;
+            expect(Math.abs(subWindowRect.width-mainWindowProwindowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect.height-mainWindowProwindowRect.height)).assertLessOrEqual(1);
+            await subWindowClass.destroyWindow();
+            done();
+          });
+          let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(true);
+          promise2.then(async () => {
+            console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            await subWindowClass.destroyWindow();
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to getWindowLimits');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SetFollowParentWindowLayoutEnabled_0500
+     * @tc.name      : test_SetFollowParentWindowLayoutEnabled_false
+     * @tc.desc      :  test_SetFollowParentWindowLayoutEnabled_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_SetFollowParentWindowLayoutEnabled_false", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_SetFollowParentWindowLayoutEnabled_false";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_SetFollowParentWindowLayoutEnabled_false');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index1');
+          await sleep(300);
+          await subWindowClass.showWindow();
+          let minWidth = Number(subWindowClass.getWindowLimits().minWidth);
+          let minHeight = Number(subWindowClass.getWindowLimits().minHeight);
+          console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
+          subWindowClass.resizeAsync(minWidth,minHeight);
+          let subWindowRect1 = subWindowClass.getWindowProperties().windowRect;
+          console.info(msgStr + 'Succeeded in get  subWindowRect1. Data: ' + JSON.stringify(subWindowRect1));
+          let promise2 = subWindowClass.setFollowParentWindowLayoutEnabled(false);
+          promise2.then(async () => {
+            console.info(msgStr + 'Succeeded in setFollowParentWindowLayoutEnabled ' );
+            let subWindowRect2 = subWindowClass.getWindowProperties().windowRect;
+            console.info(msgStr + 'Succeeded in get  subWindowRect2. Data: ' + JSON.stringify(subWindowRect2));
+            expect(Math.abs(subWindowRect1.width-subWindowRect2.width)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.height-subWindowRect2.height)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.left-subWindowRect2.left)).assertLessOrEqual(1);
+            expect(Math.abs(subWindowRect1.top-subWindowRect2.top)).assertLessOrEqual(1);
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            await subWindowClass.destroyWindow();
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to getWindowLimits');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0100
+     * @tc.name      : test_snapshotIgnorePrivacy_1300002
+     * @tc.desc      :  test_snapshotIgnorePrivacy_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_snapshotIgnorePrivacy_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_snapshotIgnorePrivacy_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          let promise2 = subWindowClass.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            await subWindowClass.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else if(err.code == 1300002){
+              expect(true).assertTrue();
+              done();
+            }else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0200
+     * @tc.name      : test_snapshotIgnorePrivacy
+     * @tc.desc      :  test_snapshotIgnorePrivacy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_snapshotIgnorePrivacy", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy";
+      console.log(msgStr + "begin");
+      let mainWoindow: ohosWindow.Window = windowStage.getMainWindowSync();
+      try {
+          let promise2 = mainWoindow.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            let widthBefore: number = mainWoindow.getWindowProperties().windowRect.width;
+            let heightBefore: number = mainWoindow.getWindowProperties().windowRect.height;
+            console.info(`${msgStr} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_getWindowDecorVisible_0100
+     * @tc.name      : test_getWindowDecorVisible_1300002
+     * @tc.desc      :  test_getWindowDecorVisible_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_getWindowDecorVisible_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_getWindowDecorVisible_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_getWindowDecorVisible_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          subWindowClass.getWindowDecorVisible();
+          expect(false).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to getWindowDecorVisible. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else if(err.code == 1300002){
+            expect(true).assertTrue();
+            done();
+          }else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_401_0100
+     * @tc.name       : testOnWindowWillClose401
+     * @tc.desc       : testOnWindowWillClose401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnWindowWillClose401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testOnWindowWillClose401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.on(null, callback);
+        console.log(msgStr  + 'Succeeded on windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_401_0200
+     * @tc.name       : testOffWindowWillClose401
+     * @tc.desc       : testOffWindowWillClose401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOffWindowWillClose401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testOffWindowWillClose401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.off(null, callback);
+        console.log(msgStr  + 'Succeeded off windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_OnWindowWillClose_1300004_0300
+     * @tc.name       : testonWindowWillClose1300004
+     * @tc.desc       : testonWindowWillClose1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testonWindowWillClose1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testonWindowWillClose1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: ohosWindow.Configuration = {
+        name: "test",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await ohosWindow.createWindow(config);
+      const callback = () => {
+        return new Promise<boolean>((resolve, reject) => {
+          // 是否关闭该窗口
+          let result: boolean = true;
+          resolve(result);
+        });
+      }
+      try {
+        windowClass.on('windowWillClose', callback);
+        console.log(msgStr  + 'Succeeded on windowWillClose ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        await windowClass.destroyWindow();
+        if(e.code == 801){
+          done();
+        }else {
+          expect(e.code).assertEqual(1300004);
+          done()
+        }
+      }
+
+    })
+
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_401_0100
+     * @tc.name       : testOnwindowHighlightChange401
+     * @tc.desc       : testOnwindowHighlightChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOnwindowHighlightChange401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testOnwindowHighlightChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.on(null, (data: boolean) => {
+          console.info(`Window highlight Change: ${data}`);
+        });
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_401_0200
+     * @tc.name       : testoffwindowHighlightChange401
+     * @tc.desc       : testoffwindowHighlightChange401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffwindowHighlightChange401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testoffwindowHighlightChange401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.off(null)
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_windowHighlightChange_1300002_0300
+     * @tc.name       : testoffwindowHighlightChange1300002
+     * @tc.desc       : testoffwindowHighlightChange1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testoffwindowHighlightChange1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testoffwindowHighlightChange1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      const callback = (data: boolean) => {
+      }
+      try {
+        let windowClass = await windowStage.createSubWindow('testoffwindowHighlightChange1300002');
+        await windowClass.destroyWindow();
+        windowClass.off('windowHighlightChange',callback);
+        console.log(msgStr  + 'Succeeded on windowHighlightChange ');
+        expect(false).assertFail();
+        done()
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300002);
+          done()
+        }
+
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_401_0100
+     * @tc.name       : testsetExclusivelyHighlighted401
+     * @tc.desc       : testsetExclusivelyHighlighted401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.setExclusivelyHighlighted(null);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertFail();
+          done()
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_1300004_0200
+     * @tc.name       : testsetExclusivelyHighlighted_1300004
+     * @tc.desc       : testsetExclusivelyHighlighted_1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted_1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.setExclusivelyHighlighted(true);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect(err.code).assertEqual(1300004);
+            done()
+          }
+          
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(false).assertFail();
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setExclusivelyHighlighted_1300002_0300
+     * @tc.name       : testsetExclusivelyHighlighted_1300002
+     * @tc.desc       : testsetExclusivelyHighlighted_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testsetExclusivelyHighlighted_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testsetExclusivelyHighlighted_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let config: ohosWindow.Configuration = {
+        name: "test",
+        windowType: ohosWindow.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await ohosWindow.createWindow(config);
+      try {
+        await windowClass.destroyWindow();
+        let promise = windowClass.setExclusivelyHighlighted(true);
+        promise.then(() => {
+          console.info('Succeeded in setting the window to be exclusively highlight.');
+          expect(false).assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(`Failed to set the window to be exclusively highlight. Cause code: ${err.code}, message: ${err.message}`);
+          if(err.code == 801){
+            done();
+          }else{
+            expect(err.code).assertEqual(1300002);
+            done()
+          }
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(false).assertFail();
+        done()
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_startMoving_401_0100
+     * @tc.name       : teststartMoving401
+     * @tc.desc       : teststartMoving401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('teststartMoving401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "teststartMoving401";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let promise = windowClass.startMoving(null,null);
+        promise.then(() => {
+          console.info('Succeeded startMoving.');
+          expect(false).assertFail();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to startMoving. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertFail();
+          done()
+        });
+
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        expect(e.code).assertEqual(401);
+        done()
+      }
+
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_stopMoving_1300002_0100
+     * @tc.name       : teststopMoving1300002
+     * @tc.desc       : teststopMoving1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('teststopMoving1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "teststopMoving1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = await windowStage.createSubWindow('teststopMoving1300002');
+        await windowClass.destroyWindow();
+        windowClass.stopMoving().then(() => {
+          console.info(msgStr +'Succeeded in stopping moving window.')
+          expect(false).assertFail();
+          done();
+        }).catch((e: BusinessError) => {
+          console.error(msgStr +`Failed to stop moving. Cause code: ${e.code}, message: ${e.message}`);
+          if(e.code == 801){
+            done();
+          }else{
+            expect(e.code).assertEqual(1300002);
+            done()
+          }
+        });
+      } catch (e) {
+        console.log(msgStr + ' ' + 'catched, err: ' + JSON.stringify(e.code));
+        if(e.code == 801){
+          done();
+        }else{
+          expect(e.code).assertEqual(1300002);
+          done()
+        }
+      }
+
+    })
+    
+/**
+     * @tc.number     : SUB_BASIC_WMS_moveWindowToAsync_3_parameters_0100
+     * @tc.name       : testmoveWindowToAsync_3_parameters
+     * @tc.desc       : testmoveWindowToAsync_3_parameters
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testmoveWindowToAsync_3_parameters',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testmoveWindowToAsync_3_parameters";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let mainWindow = windowStage.getMainWindowSync();
+      let displayId = mainWindow.getWindowProperties().displayId;
+      console.info(msgStr +'windowId :'+displayId)
+      let moveConfiguration: ohosWindow.MoveConfiguration = {
+        displayId: displayId
+      };
+      let subWindow = await windowStage.createSubWindow('testmoveWindowToAsync_3_parameters');
+      await subWindow.loadContentByName(LoadContentByName.entryName);
+      await  subWindow.showWindow();
+      try {
+      let promise = subWindow.moveWindowToAsync(300, 300, moveConfiguration);
+      promise.then(async () => {
+        console.info(msgStr +'Succeeded in moving the window.');
+        let rect = subWindow.getWindowProperties().windowRect;
+        console.info(msgStr +`Get window rect: ` + JSON.stringify(rect));
+        expect(true).assertTrue();
+        await subWindow.destroyWindow();
+        done()
+      }).catch(async (err: BusinessError) => {
+        console.error(msgStr +`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+        await subWindow.destroyWindow();
+        if (err.code == 801) {
+            console.error(`${caseName}  Capability not supported. Failed to call the API due to limited device capabilities`);
+            expect(false).assertFalse();
+            done();
+        } else {
+            expect().assertFail();
+            done();
+          }
+      });
+      } catch (exception) {
+      console.error(msgStr +`Failed. Cause code: ${exception.code}, message: ${exception.message}`);
+      await subWindow.destroyWindow();
+      expect(false).assertFail();
+      done();
+      }
+
+    })
+
   })
 }

@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import inputMethod from '@ohos.inputMethod';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
-import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError } from '@ohos.base';
 
 export default function inputMethodNormalJSUnit() {
@@ -60,7 +59,7 @@ export default function inputMethodNormalJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputmethodNomal_test_switchInputMethod_001', 0, async (done: Function) => {
+    it('inputmethodNomal_test_switchInputMethod_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputmethodNomal_test_switchInputMethod_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethodNomal_test_switchInputMethod_001 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -93,7 +92,7 @@ export default function inputMethodNormalJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputmethodNomal_test_switchInputMethod_002', 0, async (done: Function) => {
+    it('inputmethodNomal_test_switchInputMethod_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>************* inputmethodNomal_test_switchInputMethod_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethodNomal_test_switchInputMethod_002 getCurrentInputMethod: " + JSON.stringify(inputM));
@@ -129,9 +128,9 @@ export default function inputMethodNormalJSUnit() {
      * @tc.desc    Function test
      * @tc.size    MediumTest
      * @tc.type    Function
-     * @tc.level   Level2
+     * @tc.level   Level0
      */
-    it('inputmethodNomal_test_showSoftKeyboard_001', 0, async (done: Function) => {
+    it('inputmethodNomal_test_showSoftKeyboard_001', Level.LEVEL0, async (done: Function) => {
       console.info("====>*************inputmethodNomal_test_showSoftKeyboard_001 start******************");
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard((err, data) => {
@@ -161,7 +160,7 @@ export default function inputMethodNormalJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputmethodNomal_test_showSoftKeyboard_002', 0, async (done: Function) => {
+    it('inputmethodNomal_test_showSoftKeyboard_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>*********inputmethodNomal_test_showSoftKeyboard_002 start************");
       let inputMethodCtrl = inputMethod.getInputMethodController();
       try {
@@ -186,7 +185,7 @@ export default function inputMethodNormalJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputmethodNomal_test_hideSoftKeyboard_001', 0, async (done: Function) => {
+    it('inputmethodNomal_test_hideSoftKeyboard_001', Level.LEVEL2, async (done: Function) => {
       console.info("====>*********inputmethodNomal_test_hideSoftKeyboard_001 start************");
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard((err, data) => {
@@ -216,7 +215,7 @@ export default function inputMethodNormalJSUnit() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('inputmethodNomal_test_hideSoftKeyboard_002', 0, async (done: Function) => {
+    it('inputmethodNomal_test_hideSoftKeyboard_002', Level.LEVEL2, async (done: Function) => {
       console.info("====>*********inputmethodNomal_test_hideSoftKeyboard_002 start************");
       let inputMethodCtrl = inputMethod.getInputMethodController()
       try {

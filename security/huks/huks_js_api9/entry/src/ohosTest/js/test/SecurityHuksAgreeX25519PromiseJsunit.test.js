@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import * as Data from './utils/data.json';
 import { stringToUint8Array } from './utils/param/publicFunc';
 import { HuksKeyAlgX25519 } from './utils/param/agree/publicAgreeParam';
@@ -34,7 +34,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksAgreeX25519PromiseJsunit() {
     describe('SecurityHuksAgreeX25519PromiseJsunit', function () {
-        it('Security_HUKS_Agree_API9_X25519_101', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_X25519_101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testAgreeX25519Size256Finish63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeX25519Size256Finish63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {
@@ -76,7 +76,7 @@ export default function SecurityHuksAgreeX25519PromiseJsunit() {
         });
 
         //abort
-        it('Security_HUKS_Agree_API9_X25519_102', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_X25519_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAliesFirst = 'testAgreeX25519Size256Abort63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeX25519Size256Abort63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {

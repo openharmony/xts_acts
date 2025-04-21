@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webOnDataResubmitted() {
   describe('WebOnDataResubmittedTest', () => {
@@ -39,6 +42,11 @@ export default function webOnDataResubmitted() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -57,9 +65,9 @@ export default function webOnDataResubmitted() {
     * @tc.desc        : test onDataResubmitted callback
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnDataResubmitted001', 0, async (done: Function) => {
+    it('testOnDataResubmitted001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnDataResubmitted", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnDataResubmitted001", true, 60425, done);
@@ -74,7 +82,7 @@ export default function webOnDataResubmitted() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDataResubmissionHandlerResend001', 0, async (done: Function) => {
+    it('testDataResubmissionHandlerResend001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitDataResubmissionHandlerResend", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDataResubmissionHandlerResend001", 'httpbin.org/posthttpbin.org/post', 60426, done);
@@ -89,7 +97,7 @@ export default function webOnDataResubmitted() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testDataResubmissionHandlerCancel001', 0, async (done: Function) => {
+    it('testDataResubmissionHandlerCancel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitDataResubmissionHandlerCancel", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDataResubmissionHandlerCancel001", 'httpbin.org/post', 60428, done);

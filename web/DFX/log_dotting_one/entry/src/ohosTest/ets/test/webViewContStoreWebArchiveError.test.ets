@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitStoreWebArchiveCallBackInitErr";
 
@@ -42,6 +45,11 @@ export default function webViewContStoreWebArchiveError() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewContStoreWebArchiveError beforeEach start");
       done();
@@ -71,7 +79,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchiveInitErr
      *tc.desc test interface of storeWebArchive with not been associated with specific Web Components
      */
-    it('teststoreWebArchiveInitErr', 0, async (done: Function) => {
+    it('teststoreWebArchiveInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchiveCallBackPathErr";
       Utils.registerEvent("teststoreWebArchiveInitErr", "17100001", 700, done);
       Utils.registerEvent("teststoreWebArchiveInitErr", "Init error. The WebviewController must be associated with a Web component", 701, done);
@@ -82,7 +90,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchiveCallBackPathErr
      *tc.desc test interface of storeWebArchive with wrong resource path
      */
-    it('testStoreWebArchiveCallBackPathErr', 0, async (done: Function) => {
+    it('testStoreWebArchiveCallBackPathErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchiveCallBackUnAccessErr";
       Utils.registerEvent("testStoreWebArchiveCallBackPathErr", 17100003, 702, done);
       Utils.registerEvent("testStoreWebArchiveCallBackPathErr", "Invalid resource path or file type", 703, done);
@@ -93,7 +101,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchiveCallBackUnAccessErr
      *tc.desc test interface of storeWebArchive with resource path cannot access
      */
-    it('testStoreWebArchiveCallBackUnAccessErr', 0, async (done: Function) => {
+    it('testStoreWebArchiveCallBackUnAccessErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchivePromiseInitErr";
       Utils.registerEvent("testStoreWebArchiveCallBackUnAccessErr", 17100003, 704, done);
       Utils.registerEvent("testStoreWebArchiveCallBackUnAccessErr", "Invalid resource path or file type", 705, done);
@@ -104,7 +112,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchivePromiseInitErr
      *tc.desc test interface of storeWebArchive promise with not been associated with specific Web Components
      */
-    it('testStoreWebArchivePromiseInitErr', 0, async (done: Function) => {
+    it('testStoreWebArchivePromiseInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchivePromisePathErr";
       Utils.registerEvent("testStoreWebArchivePromiseInitErr", "17100001", 706, done);
       Utils.registerEvent("testStoreWebArchivePromiseInitErr", "Init error. The WebviewController must be associated with a Web component", 707, done);
@@ -115,7 +123,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchivePromisePathErr
      *tc.desc test interface of storeWebArchive promise with wrong resource path
      */
-    it('testStoreWebArchivePromisePathErr', 0, async (done: Function) => {
+    it('testStoreWebArchivePromisePathErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchivePromiseUnAccessErr";
       Utils.registerEvent("testStoreWebArchivePromisePathErr", 17100003, 708, done);
       Utils.registerEvent("testStoreWebArchivePromisePathErr", "Invalid resource path or file type", 709, done);
@@ -126,7 +134,7 @@ export default function webViewContStoreWebArchiveError() {
      *tc.name testStoreWebArchivePromiseUnAccessErr
      *tc.desc test interface of storeWebArchive promise with resource path cannot access
      */
-    it('testStoreWebArchivePromiseUnAccessErr', 0, async (done: Function) => {
+    it('testStoreWebArchivePromiseUnAccessErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStoreWebArchivePromiseUnAccessErr";
       Utils.registerEvent("testStoreWebArchivePromiseUnAccessErr", 17100003, 710, done);
       Utils.registerEvent("testStoreWebArchivePromiseUnAccessErr", "Invalid resource path or file type", 711, done);

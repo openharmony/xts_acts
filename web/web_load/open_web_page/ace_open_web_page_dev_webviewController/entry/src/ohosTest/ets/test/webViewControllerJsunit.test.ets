@@ -13,13 +13,21 @@
  * limitations under the License.
  */
  
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitPostUrl";
 export default function webViewControllerJsunit() {
   describe('ActsAceWebDevWebViewControllerTest',  () => {
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -49,7 +57,7 @@ export default function webViewControllerJsunit() {
      *tc.name testPostUrl
      *tc.desc test for PostUrl 
      */
-    it('testPostUrl',0,async (done: Function) =>{
+    it('testPostUrl',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitgetUserAgent";  
       Utils.registerEvent("testPostUrl","http://www.example.com/",150,done);
       sendEventByKey('webcomponent',10,'');
@@ -59,7 +67,7 @@ export default function webViewControllerJsunit() {
      *tc.name testGetUserAgent
      *tc.desc Get the UserAgent
      */
-    it('testGetUserAgent',0,async (done: Function) =>{
+    it('testGetUserAgent',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitgetUserAgentAgain";
       let userAgent= "success";
       Utils.registerEvent("testGetUserAgent",userAgent,1020,done);
@@ -70,7 +78,7 @@ export default function webViewControllerJsunit() {
      *tc.name testGetUserAgentAgain
      *tc.desc Get the UserAgent again
      */
-    it('testGetUserAgentAgain',0,async (done: Function) =>{
+    it('testGetUserAgentAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetOriginalUrl";
       let userAgent= "success";
       Utils.registerEvent("testGetUserAgentAgain",userAgent,104,done);
@@ -81,7 +89,7 @@ export default function webViewControllerJsunit() {
      *tc.name testGetOriginalUrl
      *tc.desc test for getOriginalUrl
      */
-    it('testGetOriginalUrl',0,async (done: Function) =>{
+    it('testGetOriginalUrl',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetOriginalUrlTwo";    
       let indexUrl = "//rawfile/indexCopy.html";
       Utils.registerEvent("testGetOriginalUrl",indexUrl,118,done);
@@ -92,7 +100,7 @@ export default function webViewControllerJsunit() {
      *tc.name testGetOriginalUrlTwo
      *tc.desc test for getOriginalUrl again
      */
-    it('testGetOriginalUrlTwo',0,async (done: Function) =>{
+    it('testGetOriginalUrlTwo',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitGetOriginalUrlTwo";
       let indexUrl = "//rawfile/indexCopy.html//rawfile/indexTwo.html";
       Utils.registerEvent("testGetOriginalUrlTwo",indexUrl,120,done);

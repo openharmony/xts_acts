@@ -42,6 +42,7 @@ static uint8_t interfaceIndex = 0;
 static uint64_t interfaceHandle = 0;
 static uint8_t settingIndex = 0;
 static uint32_t timeout = 1000;
+constexpr size_t MAX_USB_DEVICE_NUM = 128;
 
 
 static bool IsInterruptInEndpoint(const UsbEndpointDescriptor &epDesc)
@@ -417,6 +418,20 @@ static napi_value UsbSendPipeRequestWithAshmem(napi_env env, napi_callback_info 
     return result;
 }
 
+static napi_value UsbGetDevices(napi_env env, napi_callback_info info)
+{
+    int32_t usbInitReturnValue = OH_Usb_Init();
+    NAPI_ASSERT(env, usbInitReturnValue == USB_DDK_NO_PERM, "OH_Usb_Init failed, no permission");
+    struct Usb_DeviceArray deviceArray;
+    deviceArray.deviceIds = new uint64_t[MAX_USB_DEVICE_NUM];
+    int32_t returnValue = OH_Usb_GetDevices(&deviceArray);
+    OH_Usb_Release();
+    delete[] deviceArray.deviceIds;
+    napi_value result = nullptr;
+    NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -443,6 +458,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"usbDestroyDeviceMemMap", nullptr, UsbDestroyDeviceMemMap, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"usbSendPipeRequestWithAshmem", nullptr, UsbSendPipeRequestWithAshmem, nullptr, nullptr, nullptr,
             napi_default, nullptr},
+        {"usbGetDevices", nullptr, UsbGetDevices, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

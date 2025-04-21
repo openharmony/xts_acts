@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import netSocket from '@ohos.net.socket';
 import socket from '@ohos.net.socket';
 import { BusinessError, Callback, ErrorCallback } from '@ohos.base';
@@ -104,7 +104,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketconstructTLSSocketServerInstance0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketconstructTLSSocketServerInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketconstructTLSSocketServerInstance0100';
       console.info(`${caseName} test start `);
       try {
@@ -126,7 +126,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0100';
       console.info(`${caseName} test start `);
       try {
@@ -152,7 +152,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0200';
       console.info(`${caseName} test start `);
       try {
@@ -183,7 +183,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0300';
       console.info(`${caseName} test start `);
       try {
@@ -211,7 +211,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0400';
       console.info(`${caseName} test start `);
       try {
@@ -237,7 +237,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0500';
       console.info(`${caseName} test start `);
       try {
@@ -263,7 +263,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0600';
       console.info(`${caseName} test start `);
       try {
@@ -315,7 +315,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0700';
       console.info(`${caseName} test start `);
       try {
@@ -367,7 +367,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0800';
       console.info(`${caseName} test start `);
       try {
@@ -419,7 +419,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen0900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen0900';
       console.info(`${caseName} test start `);
       try {
@@ -471,7 +471,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1000';
       console.info(`${caseName} test start `);
       try {
@@ -523,7 +523,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1100';
       console.info(`${caseName} test start `);
       try {
@@ -575,7 +575,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1200';
       console.info(`${caseName} test start `);
       try {
@@ -627,7 +627,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1300';
       console.info(`${caseName} test start `);
       try {
@@ -679,7 +679,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1400';
       console.info(`${caseName} test start `);
       try {
@@ -731,7 +731,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1500';
       console.info(`${caseName} test start `);
       try {
@@ -783,7 +783,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1600';
       console.info(`${caseName} test start `);
       try {
@@ -835,7 +835,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1700';
       console.info(`${caseName} test start `);
       try {
@@ -887,7 +887,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1800', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1800';
       console.info(`${caseName} test start `);
       try {
@@ -939,7 +939,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen1900', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen1900';
       console.info(`${caseName} test start `);
       try {
@@ -992,7 +992,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen2000', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen2000';
       console.info(`${caseName} test start `);
       try {
@@ -1044,7 +1044,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen2100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen2100';
       console.info(`${caseName} test start `);
       try {
@@ -1096,7 +1096,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerListen2200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerListen2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerListen2200';
       console.info(`${caseName} test start `);
       try {
@@ -1148,7 +1148,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0100';
       console.info(`${caseName} test start `);
       await tlsServer.listen(tlsConnectOptions);
@@ -1175,7 +1175,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0200';
       console.info(`${caseName} test start `);
       try {
@@ -1232,7 +1232,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0300';
       console.info(`${caseName} test start `);
       try {
@@ -1289,7 +1289,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0400';
       console.info(`${caseName} test start `);
       try {
@@ -1328,7 +1328,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0500';
       console.info(`${caseName} test start `);
       try {
@@ -1391,7 +1391,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetState0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0600';
       console.info(`${caseName} test start `);
       try {
@@ -1417,7 +1417,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0100';
       console.info(`${caseName} test start `);
       try {
@@ -1457,7 +1457,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0200';
       console.info(`${caseName} test start `);
       try {
@@ -1497,7 +1497,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0300';
       console.info(`${caseName} test start `);
       try {
@@ -1537,7 +1537,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0400';
       console.info(`${caseName} test start `);
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -1576,7 +1576,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0500';
       console.info(`${caseName} test start `);
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -1615,7 +1615,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0600';
       console.info(`${caseName} test start `);
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -1654,7 +1654,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0700', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerSetExtraOptions0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerSetExtraOptions0700';
       console.info(`${caseName} test start `);
       let tcpExtraOptions: socket.TCPExtraOptions = {
@@ -1690,7 +1690,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0100';
       console.info(`${caseName} test start `);
       try {
@@ -1716,7 +1716,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0200';
       console.info(`${caseName} test start `);
       let ca_common3: string[] = [];
@@ -1754,7 +1754,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0300';
       console.info(`${caseName} test start `);
       try {
@@ -1802,7 +1802,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0400', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0400';
       console.info(`${caseName} test start `);
       try {
@@ -1851,7 +1851,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0500', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0500';
       console.info(`${caseName} test start `);
       try {
@@ -1893,7 +1893,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetCertificate0600', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetCertificate0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0600';
       console.info(`${caseName} test start `);
       try {
@@ -1932,7 +1932,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetProtocol0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetProtocol0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetProtocol0100';
       console.info(`${caseName} test start `);
       try {
@@ -1960,7 +1960,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetProtocol0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetProtocol0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetProtocol0200';
       console.info(`${caseName} test start `);
       try {
@@ -2012,7 +2012,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerGetProtocol0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerGetProtocol0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetProtocol0300';
       console.info(`${caseName} test start `);
       try {
@@ -2064,7 +2064,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketServerOn0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOn0100';
       console.info(`${caseName} test start `);
       try {
@@ -2101,7 +2101,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testNetworkMgrSocketTLSSocketServerOn0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOn0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOn0300';
       console.info(`${caseName} test start `);
       await tlsServer.listen(tlsConnectOptions);
@@ -2149,7 +2149,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOff0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOff0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0100';
       console.info(`${caseName} test start `);
       try {
@@ -2184,7 +2184,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOff0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOff0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0200';
       console.info(`${caseName} test start `);
       try {
@@ -2219,7 +2219,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOff0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOff0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0300';
       console.info(`${caseName} test start `);
       try {
@@ -2254,7 +2254,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOnE0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOnE0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0100';
       console.info(`${caseName} test start `);
       try {
@@ -2289,7 +2289,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOnE0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOnE0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0200';
       console.info(`${caseName} test start `);
       try {
@@ -2338,7 +2338,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOnE0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOnE0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0300';
       console.info(`${caseName} test start `);
       try {
@@ -2387,7 +2387,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOffE0100', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOffE0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0100';
       console.info(`${caseName} test start `);
       try {
@@ -2419,7 +2419,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOffE0200', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOffE0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0200';
       console.info(`${caseName} test start `);
       try {
@@ -2452,7 +2452,7 @@ export default function TLSSocketServerTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testNetworkMgrSocketTLSSocketServerOffE0300', 0, async (done: Function) => {
+    it('testNetworkMgrSocketTLSSocketServerOffE0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0300';
       console.info(`${caseName} test start `);
       try {

@@ -36,7 +36,7 @@ export default function EtherNetTest() {
     * @tc.type  : Function
     * @tc.level : level 3
     */
-    it("testNetworkMgrGetMacAddress0100", 0, async (done: Function) => {
+    it("testNetworkMgrGetMacAddress0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = 'testNetworkMgrGetMacAddress0100';
       console.info(`${caseName} test start `)
       ethernet.getMacAddress().then((data:Array<ethernet.MacAddressInfo>)=>{
@@ -58,9 +58,9 @@ export default function EtherNetTest() {
     * @tc.desc  : getMacAddress
     * @tc.size  : MediumTest
     * @tc.type  : Function
-    * @tc.level : level 3
+    * @tc.level : level 0
     */
-    it("testNetworkMgrGetMacAddress0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it("testNetworkMgrGetMacAddress0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrGetMacAddress0200';
       console.info(`${caseName} test start `)
       ethernet.getMacAddress().then((data:Array<ethernet.MacAddressInfo>)=>{

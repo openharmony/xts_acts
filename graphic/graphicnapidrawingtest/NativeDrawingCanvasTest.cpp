@@ -90,7 +90,7 @@ void NativeDrawingCanvasTest::TearDown()
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR001, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR001, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(bitmap, nullptr);
@@ -119,7 +119,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR001, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind002, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind002, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(bitmap, nullptr);
@@ -134,7 +134,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind002, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_canvas003, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_canvas003, Function | MediumTest | Level1)
 {
     OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
     EXPECT_NE(pen, nullptr);
@@ -150,7 +150,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_canvas003, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawLine004, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawLine004, Function | MediumTest | Level1)
 {
     OH_Drawing_CanvasDrawLine(canvas_, 0, 0, 20, 20);
     OH_Drawing_CanvasDrawLine(canvas_, -15.2f, -1, 0, 20);
@@ -163,7 +163,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawLine004, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPath005, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPath005, Function | MediumTest | Level1)
 {
     OH_Drawing_Path* path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
@@ -198,7 +198,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPath005, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPoints006, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPoints006, Function | MediumTest | Level1)
 {
     OH_Drawing_Point2D pointOne={250, 500};
     OH_Drawing_Point2D pointTwo={200, 500};
@@ -216,7 +216,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPoints006, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawVertices007, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawVertices007, Function | MediumTest | Level1)
 {
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
@@ -253,7 +253,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawVertices007, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveAndRestore008, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveAndRestore008, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 200, 500, 300);
     EXPECT_NE(nullptr, rect);
@@ -281,7 +281,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveAndRestore008, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Clear009, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Clear009, Function | MediumTest | Level1)
 {
     OH_Drawing_CanvasClear(nullptr, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
     OH_Drawing_CanvasClear(canvas_, -100);
@@ -296,7 +296,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Clear009, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RestoreToCount010, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RestoreToCount010, Function | MediumTest | Level1)
 {
     OH_Drawing_CanvasSave(canvas_);
     OH_Drawing_CanvasTranslate(canvas_, 300, 300);
@@ -333,7 +333,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RestoreToCount010, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Scale011, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Scale011, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 20, 60, 120);
     OH_Drawing_CanvasTranslate(canvas_, 20, 20);
@@ -351,7 +351,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Scale011, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Skew012, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Skew012, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 300, 300);
     ASSERT_NE(rect, nullptr);
@@ -425,7 +425,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Skew012, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRect013, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRect013, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 90, 90);
     OH_Drawing_CanvasRotate(nullptr, 10, 0, 0);
@@ -455,7 +455,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRect013, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipPath014, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipPath014, Function | MediumTest | Level1)
 {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 100, 300);
@@ -480,7 +480,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipPath014, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_LinearGradient015, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_LinearGradient015, Function | MediumTest | Level1)
 {
     OH_Drawing_Point* startPt = OH_Drawing_PointCreate(100, 400);
     OH_Drawing_Point* endPt = OH_Drawing_PointCreate(200, 500);
@@ -507,7 +507,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_LinearGradient015, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient016, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient016, Function | MediumTest | Level1)
 {
     OH_Drawing_Point* centerPt = OH_Drawing_PointCreate(350, 450);
     uint32_t colors[] = {0xffff00ff, 0xff00ff00};
@@ -532,7 +532,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient016, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ImageShader017, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ImageShader017, Function | MediumTest | Level1)
 {
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
@@ -562,7 +562,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ImageShader017, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, Function | MediumTest | Level1)
 {
     OH_Drawing_Point* centerPt = OH_Drawing_PointCreate(350, 450);
     uint32_t colors[] = {0xffff00ff, 0xff00ff00};
@@ -588,7 +588,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter018, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter018, Function | MediumTest | Level1)
 {
     EXPECT_EQ(OH_Drawing_BrushGetColor(brush_), 0xFFFF0000);
     OH_Drawing_MaskFilter* maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
@@ -611,7 +611,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter018, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlendMode019, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlendMode019, Function | MediumTest | Level1)
 {
     EXPECT_EQ(OH_Drawing_BrushGetColor(brush_), 0xFFFF0000);
     OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateBlendMode(0xff0000ff,
@@ -673,7 +673,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlend
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateCompose020, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateCompose020, Function | MediumTest | Level1)
 {
     EXPECT_EQ(OH_Drawing_BrushGetColor(brush_), 0xFFFF0000);
     OH_Drawing_ColorFilter* outerFilter = OH_Drawing_ColorFilterCreateLuma();
@@ -702,7 +702,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateCompo
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmap021, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmap021, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -721,7 +721,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmap021, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmapRect022, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmapRect022, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(bitmap, nullptr);
@@ -752,7 +752,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmapRect022, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SetMatrix023, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SetMatrix023, Function | MediumTest | Level1)
 {
     OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -774,7 +774,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SetMatrix023, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ResetMatrix024, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ResetMatrix024, Function | MediumTest | Level1)
 {
     OH_Drawing_CanvasResetMatrix(nullptr);
     OH_Drawing_CanvasResetMatrix(canvas_);
@@ -787,7 +787,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ResetMatrix024, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawImageRect025, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawImageRect025, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
     EXPECT_NE(rect, nullptr);
@@ -822,7 +822,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawImageRect025, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixelsToBitmap026, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixelsToBitmap026, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(bitmap, nullptr);
@@ -839,7 +839,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixelsToBitmap026,
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixels027, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixels027, Function | MediumTest | Level1)
 {
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
@@ -863,7 +863,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixels027, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetWidth028, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetWidth028, Function | MediumTest | Level1)
 {
     EXPECT_TRUE(OH_Drawing_CanvasGetWidth(nullptr) == 0);
     EXPECT_TRUE(OH_Drawing_CanvasGetWidth(canvas_) >= 0);
@@ -876,7 +876,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetWidth028, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetHeight029, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetHeight029, Function | MediumTest | Level1)
 {
     EXPECT_TRUE(OH_Drawing_CanvasGetHeight(nullptr) == 0);
     EXPECT_TRUE(OH_Drawing_CanvasGetHeight(canvas_) >= 0);
@@ -889,7 +889,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetHeight029, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetLocalClipBounds030, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetLocalClipBounds030, Function | MediumTest | Level1)
 {
     OH_Drawing_CanvasGetLocalClipBounds(nullptr, nullptr);
     OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 1, 1);
@@ -906,7 +906,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetLocalClipBounds030,
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ConcatMatrix031, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ConcatMatrix031, Function | MediumTest | Level1)
 {
     OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
@@ -928,7 +928,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ConcatMatrix031, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawShadow032, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawShadow032, Function | MediumTest | Level1)
 {
     OH_Drawing_Point3D p1{0.0, 0.0, 0.0};
     OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
@@ -947,7 +947,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawShadow032, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob033, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob033, Function | MediumTest | Level1)
 {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetFakeBoldText(font, true);
@@ -1006,7 +1006,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob033, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob034, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob034, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -1036,7 +1036,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob034, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob035, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob035, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
     EXPECT_NE(rect, nullptr);
@@ -1087,7 +1087,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob035, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob036, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob036, Function | MediumTest | Level1)
 {
     size_t length = 1;
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
@@ -1128,7 +1128,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob036, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveLayer037, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveLayer037, Function | MediumTest | Level1)
 {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 500, 300, 600);
     EXPECT_NE(rect, nullptr);
@@ -1147,7 +1147,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveLayer037, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, Function | MediumTest | Level1)
 {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetTextSize(font, 20);
@@ -1163,7 +1163,7 @@ HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, Function | MediumTest | Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_EQ(canvas == nullptr, false);
@@ -1191,7 +1191,7 @@ HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetshaderEffect, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetshaderEffect, Function | MediumTest | Level1)
 {
     OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
     EXPECT_EQ(canvas == nullptr, false);
@@ -1220,7 +1220,7 @@ HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetshaderEffect, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawRegion038, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawRegion038, Function | MediumTest | Level1)
 {
     OH_Drawing_Region* region=OH_Drawing_RegionCreate();
     OH_Drawing_Rect* rect=OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
@@ -1235,7 +1235,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawRegion038, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBackground039, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBackground039, Function | MediumTest | Level1)
 {
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
     OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
@@ -1248,7 +1248,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBackground039, Tes
  * @tc.type: FUNC
  * @tc.require: SR000S9F0C
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawColor046, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawColor046, Function | MediumTest | Level1)
 {
     EXPECT_EQ(OH_Drawing_CanvasDrawColor(nullptr, 0xFFFF0000, OH_Drawing_BlendMode::BLEND_MODE_SRC),
         OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -1262,7 +1262,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawColor046, TestSize
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_IsClipEmpty042, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_IsClipEmpty042, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -1291,7 +1291,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_IsClipEmpty042, TestSi
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetImageInfo043, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetImageInfo043, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -1316,7 +1316,7 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetImageInfo043, TestS
  * @tc.type: FUNC
  * @tc.require: AR000GTO5R
  */
-HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRegion044, TestSize.Level1)
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRegion044, Function | MediumTest | Level1)
 {
     OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};

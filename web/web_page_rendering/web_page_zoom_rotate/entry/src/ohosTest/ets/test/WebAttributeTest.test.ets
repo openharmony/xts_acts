@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webAttributeTest() {
 
   describe('WebAttributeTest', () => {
@@ -42,6 +44,11 @@ export default function webAttributeTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -61,7 +68,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testInitialScale001', 0, async (done: Function) => {
+    it('testInitialScale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitInitialScale001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInitialScale001", 'oldScale=100,newScale=120', 70001, done);
@@ -76,7 +83,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testInitialScale002', 0, async (done: Function) => {
+    it('testInitialScale002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitInitialScale002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testInitialScale001", 'oldScale=100,newScale=90', 70003, done);
@@ -91,7 +98,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnScaleChange001', 0, async (done: Function) => {
+    it('testOnScaleChange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnScaleChange", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnScaleChange001", 'oldScale=100,newScale=110', 70005, done);
@@ -102,7 +109,7 @@ export default function webAttributeTest() {
      *tc.name Zoom                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('ZoomTwo', 0, async (done: Function) => {
+    it('ZoomTwo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitZoomTwo", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("ZoomTwo", "17100004", 15, done);

@@ -17,7 +17,7 @@ import { describe, it, expect } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError, Callback } from '@ohos.base';
 
-const ERR_NOT_DEBUG_APP: string = 'error: not debug app.';
+const ERR_NOT_DEBUG_APP: string = 'Cannot debug applications using a release certificate.';
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {

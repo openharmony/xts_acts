@@ -51,9 +51,24 @@ export default function AVSessionControllerJsTest() {
 		const EXTRAS = {
 			"items_author": "name"
 		};
+		const AVFileDescriptor = {
+			fd: 0X00000AC6,
+			offset: 0,
+			length: 10
+		};
+		const AVDataSrcDescriptor = {
+			fileSize: -1,
+			callback: 5
+		};
 		const QUEUE_ITEM_DESCRIPTION = {
 			mediaId: QUEUE_ITEM_KEY_WORD,
 			title: QUEUE_ITEM_KEY_WORD,
+			subtitle:'SUB_QUEUE_ITEM_RELATE',
+			mediaType: 'audio',
+			artist: 'lihua',
+			duration: 166,
+			fdSrc: AVFileDescriptor,
+			dataSrc: AVDataSrcDescriptor,
 			extras: EXTRAS,
 			iconUri: "iconUri",
 			mediaSize: 10,

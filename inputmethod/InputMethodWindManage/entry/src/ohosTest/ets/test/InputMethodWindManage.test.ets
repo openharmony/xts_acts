@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import inputMethod from '@ohos.inputMethod';
 import inputMethodEngine from '@ohos.inputMethodEngine';
 import subtype from '@ohos.InputMethodSubtype';
@@ -119,9 +119,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   2
+    * @tc.level   0
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', Level.LEVEL0, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 unSubscriberCallback start');
@@ -189,9 +189,9 @@ export default function inputMethodWindManageAbility() {
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   2
+    * @tc.level   0
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', Level.LEVEL0, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 unSubscriberCallback start');
@@ -261,7 +261,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 unSubscriberCallback start');
@@ -331,7 +331,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 unSubscriberCallback start');
@@ -401,7 +401,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 unSubscriberCallback start');
@@ -471,7 +471,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 unSubscriberCallback start');
@@ -541,7 +541,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback start');
@@ -611,7 +611,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 unSubscriberCallback start');
@@ -681,7 +681,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 unSubscriberCallback start');
@@ -751,7 +751,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_resizePromise_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0100 unSubscriberCallback start');
@@ -821,7 +821,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 unSubscriberCallback start');
@@ -891,7 +891,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 unSubscriberCallback start');
@@ -961,7 +961,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_showCallback_0130', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_showCallback_0130 unSubscriberCallback start');
@@ -1031,7 +1031,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_hideCallback_0150', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hideCallback_0150 unSubscriberCallback start');
@@ -1101,7 +1101,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_showPromise_0140', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1177,7 +1177,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_hidePromise_0160', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_hidePromise_0160 unSubscriberCallback start');
@@ -1247,7 +1247,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_onShow_0170', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1323,7 +1323,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_onHide_0180', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1399,7 +1399,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_offShow_0190', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1475,7 +1475,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_offHide_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -1551,7 +1551,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_inputWindowInfo_0201', Level.LEVEL2, async (done: Function) => {
       let inputWindowInfo: inputMethod.InputWindowInfo = {
         name: 'inputWindowInfo_0201/99',
         left: 100,
@@ -1581,7 +1581,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0210', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0210 unSubscriberCallback start');
@@ -1651,7 +1651,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0211', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 unSubscriberCallback start');
@@ -1721,7 +1721,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_panelInfo_0400', 0, async (done: Function) => {
+    it('SUB_InputMethod_IMF_panelInfo_0400', Level.LEVEL2, async (done: Function) => {
       console.info('====>SUB_InputMethod_IMF_panelInfo_0400 start');
       let panel: PanelInfo;
       panel = {
@@ -1755,9 +1755,9 @@ export default function inputMethodWindManageAbility() {
      * @tc.desc setPrivacyMode(),parameter is true
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0600', 0, async (done: Function) => {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0600', Level.LEVEL1, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0600 unSubscriberCallback start');
@@ -1825,9 +1825,9 @@ export default function inputMethodWindManageAbility() {
      * @tc.desc setPrivacyMode(),parameter is false
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0700', 0, async (done: Function) => {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0700', Level.LEVEL1, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0700 unSubscriberCallback start');
@@ -1897,7 +1897,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_SecurityKeyboard_0800', 0, async (done: Function) => {
+    it('Sub_InputMethod_IMF_SecurityKeyboard_0800', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_SecurityKeyboard_0800 unSubscriberCallback start');
@@ -1967,7 +1967,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('Sub_InputMethod_IMF_getSecurityMode_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IMF_getSecurityMode_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback start');
@@ -2037,7 +2037,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('SUB_InputMethod_IME_SplitScreen_0100', 0, async (done: Function) => {
+    it('SUB_InputMethod_IME_SplitScreen_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>SUB_InputMethod_IME_SplitScreen_0100 unSubscriberCallback start');
@@ -2108,7 +2108,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ScreenRotation_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ScreenRotation_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback start");
@@ -2179,7 +2179,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ScreenRotation_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ScreenRotation_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback start");
@@ -2250,7 +2250,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_Misc_inputMethod_Panel_onSizeChange_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_onSizeChange_0100', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_Panel_onSizeChange_0100 unSubscriberCallback start");
         if (err) {
@@ -2320,7 +2320,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_Misc_inputMethod_Panel_onSizeChange_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_onSizeChange_0200', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_Misc_inputMethod_Panel_onSizeChange_0200 unSubscriberCallback start");
         if (err) {
@@ -2390,7 +2390,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_InputMethodState_0900', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_InputMethodState_0900', Level.LEVEL2, async (done: Function) => {
       try{
         let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
         console.info("====>Sub_InputMethod_IME_InputMethodState_0900 getSetting success");
@@ -2413,7 +2413,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Dragging_1100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Dragging_1100', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Dragging_1100 unSubscriberCallback start");
         if (err) {
@@ -2483,7 +2483,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Dragging_0800', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Dragging_0800', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Dragging_0800 unSubscriberCallback start");
         if (err) {
@@ -2553,7 +2553,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Dragging_0900', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Dragging_0900', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Dragging_0900 unSubscriberCallback start");
         if (err) {
@@ -2624,7 +2624,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0700', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0700', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2656,7 +2656,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0500', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0500', Level.LEVEL2, async (done: Function) => {
       let str: string = 'a';
       let msgIdStr: string = 'b';
       let msgParam: ArrayBuffer = newArrayBuffer(str.repeat(128 * 1024));
@@ -2681,7 +2681,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0600', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0600', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2713,7 +2713,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0900', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0900', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2812,7 +2812,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -2914,7 +2914,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0800', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0800', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3014,7 +3014,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0400', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0400', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3111,7 +3111,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_0300', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3208,7 +3208,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Custom_1100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Custom_1100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3312,7 +3312,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Attach_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Attach_0100', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Attach_0100 unSubscriberCallback start");
         if (err) {
@@ -3386,7 +3386,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Attach_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Attach_0200', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Attach_0200 unSubscriberCallback start");
         if (err) {
@@ -3460,7 +3460,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Attach_0300', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Attach_0300', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Attach_0300 unSubscriberCallback start");
         if (err) {
@@ -3534,7 +3534,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Attach_0400', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Attach_0400', Level.LEVEL2, async (done: Function) => {
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Attach_0400 unSubscriberCallback start");
         if (err) {
@@ -3617,7 +3617,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ShowTextInput_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ShowTextInput_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3692,7 +3692,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ShowTextInput_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ShowTextInput_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3767,7 +3767,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ShowTextInput_0300', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ShowTextInput_0300', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3842,7 +3842,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ShowTextInput_0400', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ShowTextInput_0400', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3917,7 +3917,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0100 unSubscriberCallback start");
@@ -3989,7 +3989,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0200 unSubscriberCallback start");
@@ -4060,7 +4060,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0500', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0500', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0500 unSubscriberCallback start");
@@ -4131,7 +4131,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0400', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0400', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0400 unSubscriberCallback start");
@@ -4202,7 +4202,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0300', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0300', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0300 unSubscriberCallback start");
@@ -4273,7 +4273,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_1200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_1200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_1200 unSubscriberCallback start");
@@ -4344,7 +4344,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0700', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0700', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0700 unSubscriberCallback start");
@@ -4415,7 +4415,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0600', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0600', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0600 unSubscriberCallback start");
@@ -4486,7 +4486,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0800', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0800', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0800 unSubscriberCallback start");
@@ -4557,7 +4557,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_0900', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_0900', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_0900 unSubscriberCallback start");
@@ -4628,7 +4628,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_1000', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_1000', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_1000 unSubscriberCallback start");
@@ -4699,7 +4699,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenUR_0200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenUR_0200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenUR_0200 unSubscriberCallback start");
@@ -4770,7 +4770,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenUR_0300', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenUR_0300', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenUR_0300 unSubscriberCallback start");
@@ -4841,7 +4841,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenUR_0400', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenUR_0400', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenUR_0400 unSubscriberCallback start");
@@ -4913,7 +4913,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenAbnormal_1100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenAbnormal_1100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenAbnormal_1100 unSubscriberCallback start");
@@ -4984,7 +4984,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenUR_0100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenUR_0100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenUR_0100 unSubscriberCallback start");
@@ -5055,7 +5055,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_FullScreenUR_0700', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_FullScreenUR_0700', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_FullScreenUR_0700 unSubscriberCallback start");
@@ -5126,7 +5126,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Immersive_1200', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Immersive_1200', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Immersive_1200 unSubscriberCallback start");
@@ -5198,7 +5198,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Immersive_0900', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Immersive_0900', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Immersive_0900 unSubscriberCallback start");
@@ -5269,7 +5269,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Immersive_1000', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Immersive_1000', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Immersive_1000 unSubscriberCallback start");
@@ -5340,7 +5340,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Immersive_1100', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Immersive_1100', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Immersive_1100 unSubscriberCallback start");
@@ -5411,7 +5411,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_Immersive_0500', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_Immersive_0500', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_Immersive_0500 unSubscriberCallback start");
@@ -5482,7 +5482,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0011', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelCallback_0011', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelCallback_0011 unSubscriberCallback start');
@@ -5552,7 +5552,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0021', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_createPanelPromise_0021', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_createPanelPromise_0021 unSubscriberCallback start');
@@ -5622,7 +5622,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0031', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0031', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0031 unSubscriberCallback start');
@@ -5692,7 +5692,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0041', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0041', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0041 unSubscriberCallback start');
@@ -5762,7 +5762,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0051', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0051', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0051 unSubscriberCallback start');
@@ -5832,7 +5832,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0061', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0061', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0061 unSubscriberCallback start');
@@ -5902,7 +5902,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0071', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0071', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0071 unSubscriberCallback start');
@@ -5972,7 +5972,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0081', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0081', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0081 unSubscriberCallback start');
@@ -6042,7 +6042,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizeCallback_0091', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_resizeCallback_0091', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizeCallback_0091 unSubscriberCallback start');
@@ -6112,7 +6112,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_resizePromise_0101', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_resizePromise_0101', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_resizePromise_0101 unSubscriberCallback start');
@@ -6182,7 +6182,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToCallback_0111', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_moveToCallback_0111', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToCallback_0111 unSubscriberCallback start');
@@ -6252,7 +6252,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_moveToPromise_0121', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_moveToPromise_0121', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_moveToPromise_0121 unSubscriberCallback start');
@@ -6322,7 +6322,7 @@ export default function inputMethodWindManageAbility() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Panel_changeFlag_0212', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethod_Panel_changeFlag_0212', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0212 unSubscriberCallback start');
@@ -6392,7 +6392,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.type    Function
      * @tc.level   Level2
      */
-    it('Sub_InputMethod_IME_ScreenRotation_0101', 0, async (done: Function) => {
+    it('Sub_InputMethod_IME_ScreenRotation_0101', Level.LEVEL2, async (done: Function) => {
 
       let unSubscriberCallback = (err: BusinessError) => {
         console.info("====>Sub_InputMethod_IME_ScreenRotation_0101 unSubscriberCallback start");
@@ -6447,6 +6447,363 @@ export default function inputMethodWindManageAbility() {
           clearTimeout(t);
           let commonEventPublishData: commonEventManager.CommonEventPublishData = {
             code: 440
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0101
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0101
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0101', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        runCmd();
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0101"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0101 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 450
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0201
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0201
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0201', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0201"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0201 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 460
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0301
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0301
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0301', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0301"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0301 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 470
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IsTextPreviewSupport_0401
+     * @tc.name    SUB_InputMethod_IsTextPreviewSupport_0401
+     * @tc.desc    12800011
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IsTextPreviewSupport_0401', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IsTextPreviewSupport_0401"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IsTextPreviewSupport_0401 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 480
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err: BusinessError) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+     * @tc.number  SUB_InputMethod_IME_SplitScreen_0101
+     * @tc.name    SUB_InputMethod_IME_SplitScreen_0101
+     * @tc.desc    12800012
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('SUB_InputMethod_IME_SplitScreen_0101', Level.LEVEL2, async (done: Function) => {
+
+      let unSubscriberCallback = (err: BusinessError) => {
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 unSubscriberCallback finish");
+        }
+      }
+
+      let subscriberCallback = (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>SUB_InputMethod_IME_SplitScreen_0101 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>SUB_InputMethod_IME_SplitScreen_0101 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      let publishCallback = async (err: BusinessError) => {
+        runCmd();
+        console.info("====>SUB_InputMethod_IME_SplitScreen_0101 publishCallback start");
+        if (err) {
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["SUB_InputMethod_IME_SplitScreen_0101"]
+      }
+      let subscriber:ESObject;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_InputMethod_IME_SplitScreen_0101 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commonEventManager.CommonEventPublishData = {
+            code: 490
           }
           commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)

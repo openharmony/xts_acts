@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerSetConnectionTimeoutTest() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerSetConnectionTimeoutTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerSetConnectionTimeoutTest beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function webViewControllerSetConnectionTimeoutTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerSetConnectionTimeout001', 0, async (done: Function) => {
+    it('testWebViewControllerSetConnectionTimeout001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerSetConnectionTimeout001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerSetConnectionTimeout001", 'ERR_TIMED_OUT', 4007, done);
@@ -70,7 +78,7 @@ export default function webViewControllerSetConnectionTimeoutTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerSetConnectionTimeout002', 0, async (done: Function) => {
+    it('testWebViewControllerSetConnectionTimeout002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerSetConnectionTimeout002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerSetConnectionTimeout002", 'ERR_TIMED_OUT', 4008, done);
@@ -85,7 +93,7 @@ export default function webViewControllerSetConnectionTimeoutTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewControllerSetConnectionTimeout003', 0, async (done: Function) => {
+    it('testWebViewControllerSetConnectionTimeout003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerSetConnectionTimeout003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerSetConnectionTimeout003", 'ERR_TIMED_OUT', 4009, done);

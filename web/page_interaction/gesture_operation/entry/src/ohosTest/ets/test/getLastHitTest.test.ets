@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it, expect, afterEach } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it, expect, afterEach, TestType, Size, Level} from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import webView from '@ohos.web.webview';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 
 
@@ -44,6 +47,11 @@ export default function HitTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -63,7 +71,7 @@ export default function HitTest() {
      * @tc.type       : FunctgetLastHitTest001ion
      * @tc.level      : Level 2
      */
-    it('getLastHitTest001', 0, async (done: Function) => {
+    it('getLastHitTest001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("getLastHitTest001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("getLastHitTest001", true, 20250313, done);
