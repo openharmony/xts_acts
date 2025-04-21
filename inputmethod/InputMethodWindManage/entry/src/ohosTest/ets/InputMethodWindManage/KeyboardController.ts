@@ -1763,9 +1763,9 @@ export class KeyboardController {
           console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 sedMessages msgIdSize: ' + msgId.length );
           if (msgId === 'Sub_InputMethod_IME_Custom_0900') {
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_0900 start sendMessage');
-            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900')
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('SUCCESS'))
           }else{
-            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900')
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_0900', that.newArrayBuffer('FAILED'))
           }
           that.InputClient.recvMessage()
         }
@@ -1935,7 +1935,7 @@ export class KeyboardController {
           that.GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           if(msgId.length === 256 && msgParam?.byteLength === undefined){
             console.info(TAG + '====>Sub_InputMethod_IME_Custom_1100 start sendMessage');
-            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_1100', that.newArrayBuffer('SUCCESS'))
+            that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_1100')
           }else{
             that.InputClient.sendMessage('Sub_InputMethod_IME_Custom_1100', that.newArrayBuffer('FAILED'))
           }
