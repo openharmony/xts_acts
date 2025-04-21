@@ -18,6 +18,8 @@ import SpaceCross5AlignItemsJsunit from './Flex/SpaceCross5AlignItems.test.ets';
 import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
 import RelativeContainerStartApi from './RelativeContainerStart/RelativeContainerStartApi.test'
 import FlexSpaceTest from './Flex/FlexSpaceTest.test.ets';
+import ColumnReverseTest from './Column/ColumnReverseTest.test.ets'
+import RowReverseTest from './Row/RowReverseTest.test.ets'
 
 import APIremoveGestureByTag from './Column/APIremoveGestureByTag.test'
 import APIaccessibilityTextHint from './Column/APIaccessibilityTextHint.test'
@@ -29,6 +31,8 @@ export default function testsuite() {
   RelativeContainerApi();
   RelativeContainerStartApi();
   FlexSpaceTest();
+  ColumnReverseTest();
+  RowReverseTest();
   APIremoveGestureByTag();
   APIaccessibilityTextHint();
 }
