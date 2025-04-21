@@ -1,13 +1,13 @@
 /*
  * Copyright (C) 2025 HiHope Open Source Organization.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -22,18 +22,18 @@ export function sleep(ms: number): Promise<void> {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
 
-// 声明迭代器结果接口
+
 export interface CustomIteratorResult<T> {
   value: T;
   done: boolean;
 }
 
-// 声明迭代器接口
+
 export interface CustomIterator<T> {
   next(): CustomIteratorResult<T>;
 }
 
-// 为了解决类型转换问题，定义一个特殊的字符串迭代器
+
 export class StringIterator {
   private errorMessage: string;
 
@@ -41,13 +41,11 @@ export class StringIterator {
     this.errorMessage = errorMessage;
   }
 
-  // 实现原生Iterator接口所需的方法
   next(): IteratorResult<string> {
     throw new Error(this.errorMessage);
   }
 }
 
-// ThrowingIterable实现标准Iterable接口
 export class ThrowingIterable {
   private errorMessage: string;
 
@@ -55,13 +53,11 @@ export class ThrowingIterable {
     this.errorMessage = errorMessage;
   }
 
-  // 返回符合标准Iterator要求的迭代器
   [Symbol.iterator](): Iterator<string> {
     return new StringIterator(this.errorMessage);
   }
 }
 
-// 数组迭代器
 export class ArrayItemIterator<T> {
   private items: Array<T>;
   private index: number = 0;
@@ -70,7 +66,6 @@ export class ArrayItemIterator<T> {
     this.items = items;
   }
 
-  // 实现原生Iterator接口所需的方法
   next(): IteratorResult<T> {
     if (this.index < this.items.length) {
       return {
@@ -78,17 +73,15 @@ export class ArrayItemIterator<T> {
         done: false
       };
     } else {
-      // 对于已完成的迭代器，使用默认值
-      // 在ArkTS中，即使done为true，value也需要有正确类型的值
       return {
-        value: this.items.length > 0 ? this.items[0] : null as never, // 使用never类型替代unknown
+        value: this.items.length > 0 ? this.items[0] : null as never,
         done: true
       };
     }
   }
 }
 
-// 自定义的可迭代数组类
+
 export class CustomIterableArray<T> {
   private items: Array<T>;
 
@@ -96,7 +89,7 @@ export class CustomIterableArray<T> {
     this.items = items;
   }
 
-  // 返回符合原生Iterator要求的迭代器
+
   [Symbol.iterator](): Iterator<T> {
     return new ArrayItemIterator<T>(this.items);
   }
@@ -106,20 +99,19 @@ export function createIterableArray<T>(items: Array<T>): Iterable<T> {
   return new CustomIterableArray<T>(items);
 }
 
-// 添加以下接口和函数
+
 export interface PromiseFulfilledResult<T> {
-    status: "fulfilled";
+    status: 'fulfilled';
     value: T;
 }
 
 export interface PromiseRejectedResult {
-    status: "rejected";
-    reason: Error; // 使用Error或更具体的类型
+    status: 'rejected';
+    reason: Error;
 }
 
 export type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
 
-// 辅助函数模拟Promise.raceSettled
 export function simulateRaceSettled<T>(promises: Array<Promise<T>>): Promise<Array<PromiseSettledResult<T>>> {
   const settledPromises = promises.map((p: Promise<T>): Promise<PromiseSettledResult<T>> =>
     p.then(
@@ -155,7 +147,7 @@ export async function taskFunction1(): Promise<number> {
 export async function taskSuccess() : Promise<string>{
   return await new Promise((resolve) => {
     setTimeout(() => {
-      resolve('成功的任务');
+      resolve('success task');
     }, 1000);
   });
 }
@@ -164,7 +156,7 @@ export async function taskSuccess() : Promise<string>{
 export async function taskFail(): Promise<string> {
   return await new Promise((reject) => {
     setTimeout(() => {
-      reject('失败的任务');
+      reject('fail task');
     }, 1000);
   });
 }
