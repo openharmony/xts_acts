@@ -24,6 +24,8 @@
 #include <native_window/external_window.h>
 #include <sys/mman.h>
 #include <chrono>
+#include <iostream>
+#include <map>
 
 #define SUCCESS 0
 #define PARAM_0 0
@@ -64,13 +66,11 @@ private:
     int32_t width_ = 0x100;
     int32_t height_ = 0x100;
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
-    OH_NativeImage *_image = nullptr;
     OHNativeWindow *_nativeWindow = nullptr;
     GLuint textureId = 0;
 public:
-    InitNativeWindow()
+    explicit InitNativeWindow(OH_NativeImage *_image)
     {
-        _image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
         if (_image != nullptr) {
             _nativeWindow = OH_NativeImage_AcquireNativeWindow(_image);
             if (_nativeWindow != nullptr) {
@@ -84,11 +84,12 @@ public:
             _nativeWindow = nullptr;
         }
     }
+    
     ~InitNativeWindow()
     {
-        _image = nullptr;
         _nativeWindow = nullptr;
     }
+    
     OHNativeWindow *returnNativeWindow()
     {
         if (_nativeWindow == nullptr) {
@@ -97,14 +98,7 @@ public:
             return _nativeWindow;
         }
     };
-    OH_NativeImage *returnNativeImage()
-    {
-        if (_image == nullptr) {
-            return nullptr;
-        } else {
-            return _image;
-        }
-    }
+
     int32_t OH_FlushBuffer()
     {
         OHNativeWindowBuffer *Buffer = nullptr;
@@ -121,6 +115,26 @@ public:
         return ret;
     }
 };
+
+int32_t ConsumerSurfaceBuffer(OHNativeWindow *window, OHNativeWindowBuffer **nativeWindowBuffer, int fenceFd)
+{
+    OHNativeWindowBuffer *windowBuffer = nullptr;
+    struct Region *region = new Region();
+    struct Region::Rect *rect = new Region::Rect();
+    rect->x = 0x100;
+    rect->y = 0x100;
+    rect->w = 0x100;
+    rect->h = 0x100;
+    region->rects = rect;
+    int32_t ret1 = OH_NativeWindow_NativeWindowRequestBuffer(window, &windowBuffer, &fenceFd);
+    int32_t ret2 = OH_NativeWindow_NativeWindowFlushBuffer(window, windowBuffer, fenceFd, *region);
+    if (window != nullptr && ret1 == 0 && ret2 == 0) {
+        *nativeWindowBuffer = windowBuffer;
+        return SUCCESS;
+    } else {
+        return ret1;
+    }
+}
 
 static bool CheckEglExtension(const char *extensions, const char *extension)
 {
@@ -774,14 +788,25 @@ static napi_value OHNativeGetSurfaceIdNormal(napi_env env, napi_callback_info in
 {
     OH_NativeImage *nativeImage = getNativeImage();
     napi_value result = nullptr;
-    uint64_t surfaceId = NUMBER_99999;
-    int res = OH_NativeImage_GetSurfaceId(nativeImage, &surfaceId);
-    if (res == 0 && surfaceId != NUMBER_99999) {
+    uint64_t surfaceId1 = NUMBER_99999;
+    int res = OH_NativeImage_GetSurfaceId(nativeImage, &surfaceId1);
+    if (res == 0 && surfaceId1 != NUMBER_99999) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
+        return result;
     }
-
+    OH_NativeImage *nativeImage2 = OH_ConsumerSurface_Create();
+    uint64_t surfaceId2 = NUMBER_99999;
+    int res2 = OH_NativeImage_GetSurfaceId(nativeImage2, &surfaceId2);
+    if (res2 == 0 && surfaceId2 != NUMBER_99999) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    OH_NativeImage_Destroy(&nativeImage);
+    OH_NativeImage_Destroy(&nativeImage2);
     return result;
 }
 
@@ -1126,8 +1151,8 @@ static napi_value OHNativeImageUnsetOnFrameAvailableListenerNormal(napi_env env,
 static napi_value OHNativeImageGetBufferMatrixNormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = getNativeImage();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     initNative->OH_FlushBuffer();
     int32_t ret = OH_NativeImage_UpdateSurfaceImage(image);
     float matrix[16] = {-1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
@@ -1148,8 +1173,8 @@ static napi_value OHNativeImageGetBufferMatrixNormal01(napi_env env, napi_callba
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = getNativeImage();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     OH_OnFrameAvailableListener listener;
     listener.context = static_cast<void *>(image);
     listener.onFrameAvailable = OnFrameAvailable;
@@ -1214,8 +1239,8 @@ static napi_value OHNativeImageGetBufferMatrixAbNormal(napi_env env, napi_callba
 static napi_value OHNativeImageGetBufferMatrixCall(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = getNativeImage();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     OH_OnFrameAvailableListener listener;
     listener.context = static_cast<void *>(image);
     listener.onFrameAvailable = OnFrameAvailable;
@@ -1251,8 +1276,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferNormal(napi_env env, nap
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1281,8 +1306,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferCall(napi_env env, napi_
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1314,8 +1339,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal01(napi_env env,
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = 0;
     int fenceFd = -1;
@@ -1344,8 +1369,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal02(napi_env env,
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1374,8 +1399,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal03(napi_env env,
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1405,8 +1430,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal04(napi_env env,
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1437,8 +1462,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal05(napi_env env,
     napi_value result1 = nullptr;
     napi_value result2 = nullptr;
     napi_create_array_with_length(env, ARR_NUMBER_2, &result);
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1464,8 +1489,8 @@ static napi_value OHNativeImageAcquireNativeWindowBufferAbNormal05(napi_env env,
 static napi_value OHNativeImageReleaseNativeWindowBufferAbnormal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    InitNativeWindow *initNative = new InitNativeWindow();
-    OH_NativeImage *image = initNative->returnNativeImage();
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    InitNativeWindow *initNative = new InitNativeWindow(image);
     int32_t ret = initNative->OH_FlushBuffer();
     OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
@@ -1487,10 +1512,10 @@ static napi_value OHConsumerSurfaceSetDefaultUsageNormal(napi_env env, napi_call
     napi_value result2 = nullptr;
     napi_value result3 = nullptr;
     uint64_t num1 = 0, num2 = 1000, num3 = UINT64_MAX - 1;
-    napi_create_array_with_length(env, ARR_NUMBER_3, &result);
+    napi_create_array_with_length(env, ARR_NUMBER_4, &result);
     OH_NativeImage *image = OH_ConsumerSurface_Create();
-    int32_t ret = OH_ConsumerSurface_SetDefaultUsage(image, num1);
-    napi_create_int32(env, ret, &result1);
+    int32_t ret0 = OH_ConsumerSurface_SetDefaultUsage(image, num1);
+    napi_create_int32(env, ret0, &result1);
     napi_set_element(env, result, ARR_NUMBER_0, result1);
     int32_t ret1 = OH_ConsumerSurface_SetDefaultUsage(image, num2);
     napi_create_int32(env, ret1, &result2);
@@ -1498,7 +1523,6 @@ static napi_value OHConsumerSurfaceSetDefaultUsageNormal(napi_env env, napi_call
     int32_t ret2 = OH_ConsumerSurface_SetDefaultUsage(image, num3);
     napi_create_int32(env, ret2, &result3);
     napi_set_element(env, result, ARR_NUMBER_2, result3);
-    OH_NativeImage_Destroy(&image);
     return result;
 }
 
@@ -1677,6 +1701,124 @@ static napi_value OHConsumerSurfaceSetDefaultSizeAbNormal01(napi_env env, napi_c
     return result;
 }
 
+static napi_value oHConsumerSurfaceCreateAbNormal(napi_env env, napi_callback_info info)
+{
+    int backInfo = FAIL;
+    OH_NativeImage *image = OH_ConsumerSurface_Create();
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width = PARAM_800;
+    int32_t height = PARAM_600;
+    OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
+    OHNativeWindowBuffer *buffer = nullptr;
+    int fenceFd;
+    OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &buffer, &fenceFd);
+    BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
+    void *mappedAddr = mmap(handle->virAddr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, PARAM_0);
+    static uint32_t value = 0x00;
+    value++;
+    uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+    for (uint32_t x = PARAM_0; x < width; x++) {
+        for (uint32_t y = PARAM_0; y < height; y++) {
+            *pixel++ = value;
+        }
+    }
+    munmap(mappedAddr, handle->size);
+
+    Region region{nullptr, PARAM_0};
+    OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
+    OH_NativeImage_UpdateSurfaceImage(image);
+    OH_NativeImage_GetTimestamp(image);
+    float matrix[16];
+    OH_NativeImage_GetTransformMatrix(image, matrix);
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+    OH_NativeImage_DetachContext(image);
+    GLuint textureId2;
+    glGenTextures(PARAM_1, &textureId2);
+    backInfo = OH_NativeImage_AttachContext(image, textureId2);
+    napi_value result = nullptr;
+    napi_create_int32(env, backInfo, &result);
+    OH_NativeImage_Destroy(&image);
+    return result;
+}
+
+std::map<std::uint64_t, int32_t> usage_num = {
+    {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 9},
+    {NATIVEBUFFER_USAGE_CPU_WRITE, 11},
+    {NATIVEBUFFER_USAGE_HW_RENDER, 265},
+    {NATIVEBUFFER_USAGE_HW_TEXTURE, 521},
+    {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 65545},
+    {NATIVEBUFFER_USAGE_ALIGNMENT_512, 262153},
+    {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
+         NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
+     328459},
+};
+
+std::map<std::uint64_t, int32_t> usage_size = {
+    {NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_MEM_DMA, 10},
+    {NATIVEBUFFER_USAGE_CPU_WRITE, 100},
+    {NATIVEBUFFER_USAGE_HW_RENDER, 1000},
+    {NATIVEBUFFER_USAGE_HW_TEXTURE, 10000},
+    {NATIVEBUFFER_USAGE_CPU_READ_OFTEN, 10000},
+    {NATIVEBUFFER_USAGE_ALIGNMENT_512, 10000},
+    {NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
+         NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512,
+     100},
+};
+
+static napi_value OHConsumerSurfaceSetDefaultUsageSizeNormal(napi_env env, napi_callback_info info)
+{
+    /**
+     * usage非互斥关系，可能同时存在多个usage类型
+     * usage枚举类型通过二进制实现
+     * NATIVEBUFFER_USAGE_CPU_READ        1
+     * NATIVEBUFFER_USAGE_CPU_WRITE       10
+     * NATIVEBUFFER_USAGE_MEM_DMA         1000
+     * NATIVEBUFFER_USAGE_HW_RENDER       100000000
+     * NATIVEBUFFER_USAGE_HW_TEXTURE      1000000000
+     * NATIVEBUFFER_USAGE_CPU_READ_OFTEN  10000000000000000
+     * NATIVEBUFFER_USAGE_ALIGNMENT_512   1000000000000000000
+     * buffer 默认有 NATIVEBUFFER_USAGE_CPU_READ和
+     * NATIVEBUFFER_USAGE_MEM_DMA两个属性，查询到的默认值为1001(与或关系)(即8+1)
+     */
+    napi_value result = nullptr;
+    for (const auto &pair : usage_size) {
+        OHNativeWindowBuffer *windowBuffer = nullptr;
+        OH_NativeBuffer *buffer = nullptr;
+        OH_NativeBuffer_Config config = {
+            .width = 0,
+            .height = 0,
+            .format = 0,
+            .usage = 0,
+            .stride = 0,
+        };
+        int fenceFd;
+        OH_NativeImage *image = OH_ConsumerSurface_Create();
+        int32_t ret0 = OH_ConsumerSurface_SetDefaultUsage(image, pair.first);
+        int32_t ret1 = OH_ConsumerSurface_SetDefaultSize(image, pair.second, pair.second);
+        OHNativeWindow *window = OH_NativeImage_AcquireNativeWindow(image);
+        int32_t ret2 = ConsumerSurfaceBuffer(window, &windowBuffer, fenceFd);
+        if (ret0 != 0 || ret1 != 0 || ret2 != 0 || windowBuffer == nullptr) {
+            napi_create_int32(env, FAIL, &result);
+            return result;
+        }
+        int32_t ret3 = OH_NativeBuffer_FromNativeWindowBuffer(windowBuffer, &buffer);
+        OH_NativeBuffer_GetConfig(buffer, &config);
+        auto num_usage = usage_num.find(pair.first);
+        int32_t num = num_usage->second;
+        if (ret3 != 0 || config.width != pair.second || config.height != pair.second || config.usage != num) {
+            napi_create_int32(env, FAIL, &result);
+            return result;
+        }
+        OH_NativeImage_Destroy(&image);
+        OH_NativeWindow_DestroyNativeWindow(window);
+        OH_NativeWindow_DestroyNativeWindowBuffer(windowBuffer);
+        OH_NativeBuffer_Unreference(buffer);
+    }
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
 napi_value NativeImageInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1758,6 +1900,10 @@ static napi_value NativeImageInit2(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"oHConsumerSurfaceSetDefaultSizeAbNormal01", nullptr, OHConsumerSurfaceSetDefaultSizeAbNormal01, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"oHConsumerSurfaceCreateAbNormal", nullptr, oHConsumerSurfaceCreateAbNormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"OHConsumerSurfaceSetDefaultUsageSizeNormal", nullptr, OHConsumerSurfaceSetDefaultUsageSizeNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -69,3 +69,5 @@ export const oHConsumerSurfaceSetDefaultSizeNormal: () => Array<number>;
 export const oHConsumerSurfaceSetDefaultSizeCall: () => Array<number>;
 export const oHConsumerSurfaceSetDefaultSizeAbNormal: () => Array<number>;
 export const oHConsumerSurfaceSetDefaultSizeAbNormal01: () => Array<number>;
+export const oHConsumerSurfaceCreateAbNormal: () => number;
+export const OHConsumerSurfaceSetDefaultUsageSizeNormal: () => number;
