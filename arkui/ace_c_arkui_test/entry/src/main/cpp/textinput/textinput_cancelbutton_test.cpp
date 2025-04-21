@@ -18,7 +18,7 @@
 #define COLOR_RED 0xFFFF0000
 #define BUTTON_ICON_SIZE 16
 #define FIRST_MIDDLE_VALUE "./resources/base/media/icon.png"
-#define BUTTON_ICON_SIZE_DEFAULT 24
+#define BUTTON_ICON_SIZE_DEFAULT 16
 namespace ArkUICapiTest {
 
 static napi_value TestTextInputCancelButton001(napi_env env, napi_callback_info info)
