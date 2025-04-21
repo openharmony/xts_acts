@@ -31,8 +31,8 @@ export default function testsuite() {
   RelativeContainerApi();
   RelativeContainerStartApi();
   FlexSpaceTest();
-  APIremoveGestureByTag();
-  APIaccessibilityTextHint();
   ColumnReverseTest();
   RowReverseTest();
+  APIremoveGestureByTag();
+  APIaccessibilityTextHint();
 }
