@@ -2729,6 +2729,8 @@ export default function inputMethodWindManageAbility() {
           GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
           expect(msgId).assertEqual('Sub_InputMethod_IME_Custom_0900');
           if(msgParam !== undefined){
+            expect(GetArrayBufferString(msgParam)).assertEqual('SUCCESS')
+          }else{
             expect().assertFail();
           }
           done();
@@ -3222,11 +3224,7 @@ export default function inputMethodWindManageAbility() {
             console.info('====>Sub_InputMethod_IME_Custom_1100 onMessage msgId: ' + msgId + ', msgParam: ' +
             GetArrayBufferString(msgParam) + ', msgParamObj' + msgParam);
             expect(msgId).assertEqual('Sub_InputMethod_IME_Custom_1100');
-            if(msgParam !== undefined){
-              expect(GetArrayBufferString(msgParam)).assertEqual('SUCCESS')
-            }else{
-              expect().assertFail()
-            }
+            expect(typeof(msgParam)).assertEqual('undefined')
             done()
           }catch (err) {
             console.info(`====>Sub_InputMethod_IME_Custom_1100 catch err: ${err.message}`);
