@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 
@@ -46,7 +46,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontSync', 7, async (done:Function)=> {
+    it('testLoadFontSync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "testLoadFontSync"
       console.info(msg + ' begin ');
       try {
@@ -70,7 +70,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextStyle_2', 2, async (done:Function)=> {
+    it('testTextStyle_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "testTextStyle_2"
       console.info(msg + 'begin');
       let decoration : text.Decoration = {
@@ -141,7 +141,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetGlobalInstance', 7, async (done:Function)=> {
+    it('testGetGlobalInstance', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetGlobalInstance===="
       console.info(msg + ' begin ');
       try {
@@ -168,7 +168,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetActualTextRange', 7, async (done:Function)=> {
+    it('testGetActualTextRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetActualTextRange===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
@@ -203,7 +203,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLineMetrics_1', 7, async (done:Function)=> {
+    it('testGetLineMetrics_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetLineMetrics_1===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
@@ -239,7 +239,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLineMetrics_2', 7, async (done:Function)=> {
+    it('testGetLineMetrics_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetLineMetrics_2===="
       console.info(msg + ' begin ');
       let myTextStyle: text.TextStyle = {
@@ -274,7 +274,7 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testAddSymbol', 7, async (done:Function)=> {
+    it('testAddSymbol', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testAddSymbol===="
       let myTextStyle: text.TextStyle = {
         color: { alpha: 255, red: 255, green: 0, blue: 0 },
@@ -309,7 +309,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath01', 56, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath01"
       await loadFontByPromiseInvalidParameter(msg, "test", "", done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -326,7 +327,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath02', 57, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath02"
       await loadFontByPromiseInvalidParameter(msg, 'test', 'File://', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -343,7 +345,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath03', 58, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath03"
       await loadFontByPromiseInvalidParameter(msg, 'test', '中文无效路径', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -360,7 +363,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath04', 59, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath04"
       await loadFontByPromiseInvalidParameter(msg, 'test', 'english中文无效路径$rawfile(MiSans_VF.ttf)', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -377,7 +381,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath05', 60, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath05"
       await loadFontByPromiseInvalidParameter(msg, 'test', 'File://', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -394,7 +399,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath06', 61, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath06"
       await loadFontByPromiseInvalidParameter(msg, "test", null, done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -411,7 +417,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath07', 62, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath07"
       await loadFontByPromiseInvalidParameter(msg, "test", undefined, done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -428,7 +435,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidPath08', 63, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidPath08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidPath08"
       await loadFontByPromiseInvalidParameter(msg, "", undefined, done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -445,7 +453,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidName01', 64, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidName01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidName01"
       await loadFontByPromiseInvalidParameter(msg, null, 'File://', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);
@@ -462,7 +471,8 @@ export default function graphicTextATest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testLoadFontByPromiseInvalidName02', 65, async (done:Function)=> {
+    it('testLoadFontByPromiseInvalidName02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "testLoadFontByPromiseInvalidName02"
       await loadFontByPromiseInvalidParameter(msg, undefined, 'File://', done).catch((err: BusinessError) => {
         console.info(msg + ` failed, error: [${err.code}, ${err.message}]`);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { RenderNode, DrawContext } from "@ohos.arkui.node"
 import drawing from "@ohos.graphics.drawing"
 import common2D from "@ohos.graphics.common2D"
@@ -52,7 +52,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testRectWidthStyle', 1, async ()=> {
+    it('testRectWidthStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testRectWidthStyle"
       console.info(msg + 'begin');
       try {
@@ -71,7 +71,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testRectHeightStyle', 2, async ()=> {
+    it('testRectHeightStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testRectHeightStyle"
       console.info(msg + 'begin');
       try {
@@ -94,7 +94,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testAffinity', 3, async ()=> {
+    it('testAffinity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testAffinity"
       console.info(msg + 'begin');
       try {
@@ -113,7 +113,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextAlign', 4, async ()=> {
+    it('testTextAlign', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextAlign"
       console.info(msg + 'begin');
       try {
@@ -136,7 +136,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextDirection', 5, async ()=> {
+    it('testTextDirection', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextDirection"
       console.info(msg + 'begin');
       try {
@@ -155,7 +155,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testBreakStrategy', 6, async ()=> {
+    it('testBreakStrategy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testBreakStrategy"
       console.info(msg + 'begin');
       try {
@@ -175,7 +175,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWordBreak', 7, async ()=> {
+    it('testWordBreak', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testWordBreak"
       console.info(msg + 'begin');
       try {
@@ -195,7 +195,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextDecorationType', 8, async ()=> {
+    it('testTextDecorationType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextDecorationType"
       console.info(msg + 'begin');
       try {
@@ -216,7 +216,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextDecorationStyle', 9, async ()=> {
+    it('testTextDecorationStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextDecorationStyle"
       console.info(msg + 'begin');
       try {
@@ -238,7 +238,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testFontWeight', 10, async ()=> {
+    it('testFontWeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testFontWeight"
       console.info(msg + 'begin');
       try {
@@ -264,7 +264,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testFontStyle', 11, async ()=> {
+    it('testFontStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testFontStyle"
       console.info(msg + 'begin');
       try {
@@ -284,7 +284,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextBaseline', 12, async ()=> {
+    it('testTextBaseline', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testTextBaseline"
       console.info(msg + 'begin');
       try {
@@ -303,7 +303,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testEllipsisMode', 13, async ()=> {
+    it('testEllipsisMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testEllipsisMode"
       console.info(msg + 'begin');
       try {
@@ -323,7 +323,7 @@ export default function graphicTextEnum() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPlaceholderAlignment', 14, async ()=> {
+    it('testPlaceholderAlignment', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
       let msg = "testPlaceholderAlignment"
       console.info(msg + 'begin');
       try {

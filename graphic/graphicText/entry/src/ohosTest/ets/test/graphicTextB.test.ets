@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 import drawing from '@ohos.graphics.drawing';
@@ -33,7 +33,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testFontWidth', 7, async (done:Function)=> {
+    it('testFontWidth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testFontWidth===="
       try{
         expect(text.FontWidth.ULTRA_CONDENSED).assertEqual(1)
@@ -63,7 +63,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextHeightBehavior', 7, async (done:Function)=> {
+    it('testTextHeightBehavior', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testTextHeightBehavior===="
       try{
         expect(text.TextHeightBehavior.ALL).assertEqual(0)
@@ -89,7 +89,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextStyle_3', 2, async (done:Function)=> {
+    it('testTextStyle_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testTextStyle_3===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
@@ -182,7 +182,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testParagraphStyle_2', 2, async (done:Function)=> {
+    it('testParagraphStyle_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testParagraphStyle_2===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
@@ -284,7 +284,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPaintOnPath', 2, async (done:Function)=> {
+    it('testPaintOnPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testPaintOnPath===="
       console.info(msg + ' begin');
       try{
@@ -325,7 +325,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testClearCaches', 7, async (done:Function)=> {
+    it('testClearCaches', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testClearCaches===="
       console.info(msg + ' begin ');
       try {
@@ -352,7 +352,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextStyle_FontVariation', 2, async (done:Function)=> {
+    it('testTextStyle_FontVariation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testTextStyle_FontVariation===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
@@ -451,7 +451,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStrutStyle_leading', 2, async (done:Function)=> {
+    it('testStrutStyle_leading', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testStrutStyle_leading===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
@@ -558,7 +558,7 @@ export default function graphicTextBTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testGetLongestLineWithIndent', 2, async (done:Function)=> {
+    it('testGetLongestLineWithIndent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testGetLongestLineWithIndent===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
