@@ -137,51 +137,40 @@ export default function cameraSessionMultiSessionTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100--------------");
-      let cameraInput: cameraObj.CameraInput = mCameraManager.createCameraInput(mCameraDevicesArray[0]);
-      let cameraconcurrentinfos: Array<cameraObj.CameraConcurrentInfo> = [];
-      cameraconcurrentinfos = mCameraManager.getCameraConcurrentInfos(mCameraDevicesArray);
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 cameraconcurrentinfos = "+ JSON.stringify(cameraconcurrentinfos));
-      if (!isEmpty(cameraconcurrentinfos)) {
-        await cameraInput.open(cameraObj.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY);
-        let firstSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
-        if (!firstSession) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 create first session FAILED");
-          expect().assertFail();
-          done();
-          return;
-        }
-        try {
-          firstSession.beginConfig();
-        } catch (err) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 first session beginConfig FAILED" + err.code);
-          expect().assertFail();
-          done();
-          return;
-        }
-
-        let secondSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
-        if (!secondSession) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 create second session FAILED");
-          expect().assertFail();
-          done();
-          return;
-        }
-        try {
-          secondSession.beginConfig();
-        } catch (err) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 second session beginConfig FAILED" + err.code);
-          expect().assertFail();
-          done();
-          return;
-        }
-
-        await firstSession.release();
-        await secondSession.release();
-        await cameraInput.close();
+      let firstSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
+      if (!firstSession) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 create first session FAILED");
+        expect().assertFail();
+        done();
+        return;
       }
-      else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 get concurrent camera ability no supported ");
+      try {
+        firstSession.beginConfig();
+      } catch (err) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 first session beginConfig FAILED" + err.code);
+        expect().assertFail();
+        done();
+        return;
       }
+
+      let secondSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
+      if (!secondSession) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 create second session FAILED");
+        expect().assertFail();
+        done();
+        return;
+      }
+      try {
+        secondSession.beginConfig();
+      } catch (err) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 second session beginConfig FAILED" + err.code);
+        expect().assertFail();
+        done();
+        return;
+      }
+
+      await firstSession.release();
+      await secondSession.release();
       done();
     })
 
