@@ -292,9 +292,7 @@ Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(int useCaseCode)
 
 void PhotoOutputCaptureReadyCallback(Camera_PhotoOutput* photoOutput)
 {
-    while (g_isCaptureReady) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    };
+    while (g_isCaptureReady) {};
     g_isCaptureReady = true;
     LOG("RegisterPhotoOutputCaptureReadyCallback");
 }
@@ -1106,9 +1104,7 @@ Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting, int useCaseCode)
 {
-    while (!g_isCaptureReady) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
         g_isCaptureReady = false;
