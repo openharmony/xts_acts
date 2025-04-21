@@ -23,13 +23,13 @@ import { StartOptions } from '@kit.AbilityKit';
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
 
-async function startAbility2(key: string, caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+async function startAbility2(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
   let key1 = 'AAAABBBBtest1';
   let want: Want = {
     bundleName: AppStorage.get('bundleName'),
     abilityName: 'StartTestAbility2',
     parameters: { // 自定义信息
-      instanceKey: key,
+      instanceKey: key1,
     }
   };
   if (options) {
@@ -1281,9 +1281,6 @@ export default function windowZindexTest() {
     it('test_SubWindowZLevel_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_SubWindowZLevel_0100';
       console.log(caseName + 'begin');
-      // 1、创建三个一级子窗，分别zlevel设置10、10、11，设置合理的位置和大小保证子窗之间不能完全覆盖
-      // 2、点击第一个创建的子窗
-      // 创建三个一级子窗，zlevel分别设置为10，10，11，点击第一个创建的子窗，验证仅能在zlevel等于10的子窗范围内抬升
       let minWidth = 0;
       let minHeight = 0;
       let driver: Driver = Driver.create();
@@ -1292,47 +1289,53 @@ export default function windowZindexTest() {
         await windowClass1.setSubWindowZLevel(10);
         minWidth = Number(windowClass1.getWindowLimits().minWidth);
         minHeight = Number(windowClass1.getWindowLimits().minHeight);
-        await windowClass1.setUIContent('testability/pages/First/index1');
+        await windowClass1.setUIContent('testability/pages/First/index3');
         console.info(`${caseName} Succeeded in loading the system sub window content.`);
         await windowClass1.showWindow();
         console.info(`${caseName} Succeeded in showing the system sub window.`);
-        await windowClass1.resizeAsync(minWidth+100, minHeight+100);
-        await windowClass1.moveWindowTo(100, 100);
-        // 点击第一个创建的子窗？怎么做到？
-        await windowClass1.setRaiseByClickEnabled(true);
-        await driver.click(minWidth+150, minHeight+150);
+        await windowClass1.resizeAsync(minWidth+20, minHeight+20);
+        await windowClass1.moveWindowTo(50, 50);
 
         let windowClass2 = await windowStage.createSubWindow('test_SubWindowZLevel_0100_2');
         await windowClass2.setSubWindowZLevel(10);
         minWidth = Number(windowClass2.getWindowLimits().minWidth);
         minHeight = Number(windowClass2.getWindowLimits().minHeight);
-        await windowClass2.setUIContent('testability/pages/First/index1');
+        await windowClass2.setUIContent('testability/pages/First/index2');
         console.info(`${caseName} Succeeded in loading the system sub window content.`);
         await windowClass2.showWindow();
         console.info(`${caseName} Succeeded in showing the system sub window.`);
-        await windowClass2.resizeAsync(minWidth+100, minHeight+100);
-        await windowClass2.moveWindowTo(300, 300);
+        await windowClass2.resizeAsync(minWidth+20, minHeight+20);
+        await windowClass2.moveWindowTo(150, 150);
 
         let windowClass3 = await windowStage.createSubWindow('test_SubWindowZLevel_0100_3');
-        await windowClass3.setSubWindowZLevel(10);
+        await windowClass3.setSubWindowZLevel(11);
         minWidth = Number(windowClass3.getWindowLimits().minWidth);
         minHeight = Number(windowClass3.getWindowLimits().minHeight);
-        await windowClass3.setUIContent('testability/pages/First/index1');
+        await windowClass3.setUIContent('testability/pages/First/index2');
         console.info(`${caseName} Succeeded in loading the system sub window content.`);
         await windowClass3.showWindow();
         console.info(`${caseName} Succeeded in showing the system sub window.`);
-        await windowClass3.resizeAsync(minWidth+100, minHeight+100);
-        await windowClass3.moveWindowTo(500, 500);
+        await windowClass3.resizeAsync(minWidth+20, minHeight+20);
+        await windowClass3.moveWindowTo(250, 250);
 
-        // 1、子窗创建成功
-        // 2、第一个一级子窗抬升到第一个创建的一级子窗上，在zlevel为11的子窗下
+        let window1 = await window.getLastWindow(context);
+        let windowZLevel = window1.getSubWindowZLevel()
+        expect(windowZLevel).assertEqual(11);
+        await windowClass1.setRaiseByClickEnabled(true);
+        let subWinId = await driver.findComponent(ON.id('SubWinTestId'));
+        await subWinId.click();
+        let window2 = await window.getLastWindow(context);
+        let windowZLevel2 = window2.getSubWindowZLevel()
+        expect(windowZLevel2).assertEqual(11);
+        let windowZLevel3 = windowClass1.getSubWindowZLevel()
+        expect(windowZLevel3).assertEqual(10);
+
         console.log(`${caseName} :test_SubWindowZLevel_0100 success`);
         await windowClass1.destroyWindow();
         await windowClass2.destroyWindow();
         await windowClass3.destroyWindow();
-        expect(true).assertTrue();
         done();
-      }catch(err){
+      } catch(err) {
         console.log(`${caseName} :test_SubWindowZLevel_0100 fail:`+err.code);
         if(err.code == 801){
           done();
@@ -1745,7 +1748,7 @@ export default function windowZindexTest() {
       let caseName: string = 'test_setWindowRectAutoSave_1300002';
       console.log(caseName + 'begin');
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let windowStageStart = await startAbility2('AAAABBBBtest0', caseName, context);
+      let windowStageStart = await startAbility2(caseName, context);
       await terminateAbility2(caseName);
       try {
         await windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
@@ -1763,7 +1766,6 @@ export default function windowZindexTest() {
       }
     });
 
-
     /**
      * @tc.number    : SUB_BASIC_WMS_SetWindowRectAutoSave_0100
      * @tc.name      : test_SetWindowRectAutoSave_0100
@@ -1776,14 +1778,16 @@ export default function windowZindexTest() {
       let caseName: string = 'test_SetWindowRectAutoSave_0100';
       console.log(caseName + 'begin');
       try {
-        let windowStageStart = await startAbility2('AAAABBBBtest1',caseName, context);
+        let windowStageStart = await startAbility2(caseName, context);
         windowStageStart.setWindowRectAutoSave(true,true)
         let mainWindow = windowStageStart.getMainWindowSync();
         mainWindow.moveWindowToAsync(300, 400)
         mainWindow.resizeAsync(1000, 1200)
         let windowRect1 = mainWindow.getWindowProperties().windowRect
-        let windowStageStart2 = await startAbility2('AAAABBBBtest2',caseName, context);
-        let windowRect2 = mainWindow.getWindowProperties().windowRect
+        await terminateAbility2(caseName)
+        let windowStageStart2 = await startAbility2(caseName, context);
+        let mainWindow2 = windowStageStart2.getMainWindowSync();
+        let windowRect2 = mainWindow2.getWindowProperties().windowRect
         expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
         expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
         expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
