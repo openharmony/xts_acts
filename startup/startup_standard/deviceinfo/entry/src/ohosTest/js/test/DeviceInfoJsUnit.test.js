@@ -2005,7 +2005,7 @@ export default function DeviceInfoTest() {
         it('device_info_test_078', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
             let TAG = 'device_info_test_078';
             try {
-                let performanceClass = deviceinfo.performanceClass.CLASS_LEVEL_MEDIUM;
+                let performanceClass = deviceinfo.performanceClass.CLASS_LEVEL_LOW;
                 console.info(`${TAG} performanceClass: ${performanceClass}`);
                 expect(performanceClass).assertEqual(2);
             } catch (error) {
