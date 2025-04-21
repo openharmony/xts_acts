@@ -17205,8 +17205,9 @@ static napi_value NapiCreateFunctionTest(napi_env env, napi_callback_info info)
 static napi_value NapiCallFunctionTest(napi_env env, napi_callback_info info)
 {
     napi_status status;
+    size_t argc = 2;
     napi_value args[2];
-
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
     napi_value result = nullptr;
     //undefined
     napi_value undefined = nullptr;
