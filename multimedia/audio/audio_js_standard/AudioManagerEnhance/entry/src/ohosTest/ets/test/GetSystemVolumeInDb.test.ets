@@ -161,7 +161,7 @@ export default function audioManagerTest() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0100
-     * @tc.name      : ON_micStateChange - Media
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
      * @tc.desc      : Listen for changes in the system microphone status.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -170,7 +170,10 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0100', 0, async (done: Function) => {
       try {
         let para1 : ESObject = 111;
-        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on(para1, micStateChangeCallback);
         expect(false).assertTrue();
         done();
       } catch (error) {
@@ -181,7 +184,7 @@ export default function audioManagerTest() {
     })
      /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0200
-     * @tc.name      : ON_micStateChange - Media
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
      * @tc.desc      : Listen for changes in the system microphone status.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -190,7 +193,10 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0200', 0, async (done: Function) => {
       try {
         let para1 : ESObject = 'aaa';
-        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on(para1, micStateChangeCallback);
         expect(false).assertTrue();
         done();
       } catch (error) {
@@ -201,7 +207,7 @@ export default function audioManagerTest() {
     })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0100
-     * @tc.name      : ON_micStateChange - Media - Promise
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
      * @tc.desc      : Listen for changes in the system microphone status.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -210,7 +216,11 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0100', 0, async (done: Function) => {
       try {
         let para1 : ESObject = 111;
-        audioVolumeGroupManager.off(para1, (micStateChange: audio.MicStateChangeEvent));
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
+        audioVolumeGroupManager.off(para1, micStateChangeCallback);
         expect(false).assertTrue();
         done();
       } catch (error) {
@@ -230,7 +240,11 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0200', 0, async (done: Function) => {
       try {
         let para1 : ESObject = 'aaa';
-        audioVolumeGroupManager.on(para1, (micStateChange: audio.MicStateChangeEvent));
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
+        audioVolumeGroupManager.off(para1, micStateChangeCallback);
         expect(false).assertTrue();
         done();
       } catch (error) {
