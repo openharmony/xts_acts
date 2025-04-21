@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { font } from '@kit.ArkUI';
 import App from '@system.app';
@@ -58,7 +58,7 @@ export default function setFontTest() {
      * @tc.desc    Passing null to the setFont interface results in a 401 error code
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100';
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
@@ -79,7 +79,7 @@ export default function setFontTest() {
      * @tc.desc    Passing undefined to the setFont interface results in a 401 error code
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0200';
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
@@ -100,7 +100,7 @@ export default function setFontTest() {
      * @tc.desc    Passing a valid string parameter to the setFont interface succeeds
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0300';
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
@@ -134,7 +134,7 @@ export default function setFontTest() {
      * @tc.desc    Passing different valid string parameters to the setFont interface for 10 times, and all of them succeed
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0400';
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
@@ -172,7 +172,7 @@ export default function setFontTest() {
      * @tc.desc    Calling the setFont interface should not trigger the onConfigurationUpdate function
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0500';
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
