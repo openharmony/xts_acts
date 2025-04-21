@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, TestType, Size } from '@ohos/hypium';
 import call from '@ohos.telephony.call';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -34,7 +34,7 @@ export default function callJsunit() {
      * @tc.name Checks whether a device supports voice calls.
      * @tc.desc Return type test
      */
-    it("Telephony_Call_HasVoiceCapability_HasVoiceCapability", 0, async (done:Function)=> {
+    it("Telephony_Call_HasVoiceCapability_HasVoiceCapability", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = 'Telephony_Call_HasVoiceCapability_HasVoiceCapability';
       console.log(`==========> ${caseName} Test start ==========>`);
       let simState: sim.SimState = await sim.getSimStateSync(0);
@@ -59,7 +59,7 @@ export default function callJsunit() {
      * @tc.name Make a call.
      * @tc.desc Function test
      */
-    it("Telephony_Call_Call_MakeCall_0100", 0, async (done:Function)=> {
+    it("Telephony_Call_Call_MakeCall_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0100";
       console.log(`==========> ${caseName} Test start ==========>`);
       let simState: sim.SimState = await sim.getSimStateSync(0);
@@ -93,7 +93,7 @@ export default function callJsunit() {
      * @tc.name Makes a call.
      * @tc.desc Function test
      */
-    it("Telephony_Call_Call_MakeCall_0200", 0, async (done:Function)=> {
+    it("Telephony_Call_Call_MakeCall_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0200";
       console.log(`==========> ${caseName} Test start ==========>`);
       let simState: sim.SimState = await sim.getSimStateSync(0);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, TestType, Size } from '@ohos/hypium';
 import sms from '@ohos.telephony.sms';
 import radio from '@ohos.telephony.radio';
 import sim from '@ohos.telephony.sim';
@@ -33,7 +33,7 @@ export default function smsUiJsunit() {
    *             shortMessage Don't empty
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_createMessage_Async_0100', 0, async (done:Function) => {
+    it('Telephony_SmsMms_createMessage_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       sms.createMessage(rawArray, '3gpp', (err, shortMessage) => {
         if (err) {
           expect().assertFail();
@@ -75,7 +75,7 @@ export default function smsUiJsunit() {
      *             pass in the PDU(rawArray) in line with the coding specification, the specification is 3GPP,
      *             shortMessage Don't empty
      */
-    it('Telephony_SmsMms_createMessage_Promise_0100', 0, async (done:Function) => {
+    it('Telephony_SmsMms_createMessage_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       sms.createMessage(rawArray, '3gpp').then(shortMessage => {
         expect(shortMessage.visibleMessageBody == "Aa").assertTrue();
         expect(shortMessage.visibleRawAddress.length !== 0).assertTrue();
@@ -101,7 +101,7 @@ export default function smsUiJsunit() {
    * @tc.name
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_getSendSmsResult_Async_0100', 0, async (done:Function) => {
+    it('Telephony_SmsMms_getSendSmsResult_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       expect(sms.SendSmsResult.SEND_SMS_SUCCESS == 0).assertTrue();
       expect(sms.SendSmsResult.SEND_SMS_FAILURE_UNKNOWN == 1).assertTrue();
       expect(sms.SendSmsResult.SEND_SMS_FAILURE_RADIO_OFF == 2).assertTrue();
@@ -114,7 +114,7 @@ export default function smsUiJsunit() {
    * @tc.name
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_ShortMessageClass_Async_0100', 0, async (done:Function) => {
+    it('Telephony_SmsMms_ShortMessageClass_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       expect(sms.ShortMessageClass.UNKNOWN == 0).assertTrue();
       expect(sms.ShortMessageClass.INSTANT_MESSAGE == 1).assertTrue();
       expect(sms.ShortMessageClass.OPTIONAL_MESSAGE == 2).assertTrue();
@@ -128,7 +128,7 @@ export default function smsUiJsunit() {
      * @tc.name   Test getOpName interface
      * @tc.desc
      */
-    it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async (done:Function) => {
+    it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'Telephony_Sms_getDefaultSmsSimId_CallBack_0100';
       let simState: sim.SimState = await sim.getSimStateSync(0);
       if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
@@ -157,7 +157,7 @@ export default function smsUiJsunit() {
      * @tc.name   Test getOpName interface
      * @tc.desc
      */
-    it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', 0, async (done:Function) => {
+    it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = 'Telephony_Sms_getDefaultSmsSimId_Promise_0100';
       let simState: sim.SimState = await sim.getSimStateSync(0);
       if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
