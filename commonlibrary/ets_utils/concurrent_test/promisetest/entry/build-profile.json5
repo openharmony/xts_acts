@@ -16,14 +16,6 @@
   "apiType": "stageMode",
   "buildOption": {
     "sourceOption": {
-      "workers": [
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup1.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup2.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup3.ets',
-        './src/ohosTest/ets/testability/pages/workers/WorkerTaskGroup4.ets',
-        './src/ohosTest/ets/testability/pages/workers/ExecuteDelayWorker.ets',
-      ]
     }
   },
   "buildOptionSet": [
