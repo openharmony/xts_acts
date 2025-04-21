@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { application, common } from '@kit.AbilityKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -41,14 +41,14 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0100
-     * @tc.name   : The parameter 'abilityName' is not Uiability, and calling the RestartApp interface returns 16000063
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0100
+     * @tc.name    The parameter 'abilityName' is not Uiability, and calling the RestartApp interface returns 16000063
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0100', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
@@ -75,14 +75,14 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0200
-     * @tc.name   : The parameter 'abilityName' is "", and calling the RestartApp interface returns 401
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0200
+     * @tc.name    The parameter 'abilityName' is "", and calling the RestartApp interface returns 401
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0200', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0200';
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
@@ -109,14 +109,14 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0300
-     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0300
+     * @tc.name    The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0300', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0300', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0300';
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
@@ -143,14 +143,14 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0400
-     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0400
+     * @tc.name    The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0400', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0400';
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
@@ -177,14 +177,14 @@ export default function abilityTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0500
-     * @tc.name   : Parameter Want is empty and calling the RestartApp interface returns 401
-     * @tc.desc   : Function test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
+     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0500
+     * @tc.name    Parameter Want is empty and calling the RestartApp interface returns 401
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0500', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0500', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0500';
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
