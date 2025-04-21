@@ -15,14 +15,19 @@
                 "ActsApiCoverhapMain.hap",
                 "FaSupplement.hap",
                 "StageSupplement.hap",
-                "FormModule.hap"
+                "FormModule.hap",
+                "ActsFACoverTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         },{
           "type": "ShellKit",
           "run-command": [
-              "uitest dumpLayout"
+              "uitest dumpLayout",
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+          ],
+          "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
           ]
       }
     ]

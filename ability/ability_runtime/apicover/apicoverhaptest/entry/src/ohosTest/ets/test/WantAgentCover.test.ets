@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import wantAgent from '@ohos.app.ability.wantAgent';
 import ohosWantAgent from '@ohos.wantAgent'
 import wantConstant from '@ohos.app.ability.wantConstant'
@@ -30,7 +30,7 @@ export default function wantAgentCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_WantAgentCover_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_WantAgentCover_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_WantAgentCover_0100 ==>';
       try {
         let status: boolean = AppStorage.get<common.UIAbilityContext>("abilityContext")!.stageMode;
