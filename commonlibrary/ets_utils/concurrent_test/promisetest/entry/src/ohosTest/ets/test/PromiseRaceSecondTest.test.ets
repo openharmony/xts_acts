@@ -915,7 +915,7 @@ export default function TaskpoolPromiseRaceSecondTest() {
         expect(executionOrder.indexOf('racePromise.catch executing')).assertLess(executionOrder.indexOf('racePromise.finally executing'));
         expect(executionOrder.indexOf('racePromise.finally throwing error')).assertLess(executionOrder.indexOf('racePromise.finally.catch executing'));
         expect(executionOrder.indexOf('racePromise.finally.catch executing')).assertLess(executionOrder.indexOf('racePromise.then executing'));
-        expectedOrder.forEach(event => expect(executionOrder.includes(event)).assertTrue());
+        expectedOrder.forEach((event: string): void => expect(executionOrder.includes(event)).assertTrue());
 
       } catch (error) {
         let errorMessage = `${caseName} Test failed with unknown error type`;
@@ -1026,7 +1026,7 @@ export default function TaskpoolPromiseRaceSecondTest() {
         expect(executionOrder.indexOf('p1 rejecting')).assertLess(executionOrder.indexOf('p1.finally executing'));
         expect(executionOrder.indexOf('p1 rejecting')).assertLess(executionOrder.indexOf('racePromise.catch executing'));
         expect(executionOrder.indexOf('p1.finally throwing error')).assertLess(executionOrder.indexOf('p1.finally.catch executing'));
-        expectedOrder.forEach(event => expect(executionOrder.includes(event)).assertTrue());
+        expectedOrder.forEach((event: string): void => expect(executionOrder.includes(event)).assertTrue());
 
       } catch (error) {
         let errorMessage = `${caseName} Test failed with unknown error type`;
