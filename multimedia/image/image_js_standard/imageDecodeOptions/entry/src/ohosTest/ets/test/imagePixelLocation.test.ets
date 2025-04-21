@@ -81,7 +81,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0100", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0100' 
             try {
                 await getFd("color4.png");
@@ -212,7 +212,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0200", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0200' 
             try {
                 await getFd("color4.png");
@@ -311,7 +311,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0300", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0300' 
             try {
                 await getFd("color4.png");
@@ -410,7 +410,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0400", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0400' 
             try {
                 await getFd("color4.png");
@@ -509,7 +509,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0500", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0500' 
             try {
                 await getFd("color4.png");
@@ -608,7 +608,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0600", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0600' 
             try {
                 await getFd("color4.png");
@@ -707,7 +707,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0700", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0700' 
             try {
                 await getFd("color4.png");
@@ -806,7 +806,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0800", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0800' 
             try {
                 await getFd("color4.png");
@@ -905,7 +905,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0900", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0900", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_0900' 
             try {
                 await getFd("color4.png");
@@ -1004,7 +1004,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1000", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1000", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1000' 
             try {
                 await getFd("color4.png");
@@ -1103,7 +1103,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1100", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1100' 
             try {
                 await getFd("color4.png");
@@ -1202,7 +1202,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1200", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1200' 
             try {
                 await getFd("color4.png");
@@ -1301,7 +1301,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1300", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1300' 
             try {
                 await getFd("color4.png");
@@ -1400,7 +1400,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1400", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1400' 
             try {
                 await getFd("color4.png");
@@ -1499,7 +1499,7 @@ export default function imagePixelLocation() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1500", Level.LEVEL0, async (done: Function) => {
             let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1500' 
             try {
                 await getFd("color4.png");

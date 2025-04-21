@@ -14,7 +14,7 @@
  */
 
 import cameraObj from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import cameraObject from '@ohos.multimedia.camera';
 import { isSupportedCameras } from './common'
 
@@ -164,7 +164,7 @@ export default function ImageReceiverModuleTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_SINGLE_PHOTO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_SINGLE_PHOTO_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportedCamerasResult) {
         console.info('Failed to obtain the default camera or device object.Not support usb camera');
         expect(true).assertTrue();
