@@ -1104,7 +1104,8 @@ Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting, int useCaseCode)
 {
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    int32_t gSleepTotalTime = 500;
+    std::this_thread::sleep_for(std::chrono::milliseconds(gSleepTotalTime));
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
         g_isCaptureReady = false;
