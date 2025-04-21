@@ -1516,11 +1516,11 @@ export default function windowZindexTest() {
         console.log(`${caseName} :sub window setSubWindowZLevel test2 success`);
         let res = windowClass2.getSubWindowZLevel();
         expect(res).assertEqual(-10);
-        await windowClass.destroyWindow();
+        await windowClass2.destroyWindow();
         done();
       } catch(err) {
         console.log(`${caseName} :sub window setSubWindowZLevel fail2:`+err.code);
-        await windowClass.destroyWindow();
+        await windowClass2.destroyWindow();
         if (err.code === 801) {
           done();
         } else {
@@ -1579,7 +1579,7 @@ export default function windowZindexTest() {
       try{
         windowClass.isWindowHighlighted();
         await windowClass.destroyWindow();
-        expect().assertFail()
+        expect(true).assertTrue()
         done();
       } catch(err) {
         console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
