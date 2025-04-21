@@ -14,6 +14,7 @@
  */
 
 #include "camera_manager.h"
+#include <thread>
 
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NO_RECEIVED;
 volatile bool g_isCaptureReady = false;
@@ -291,7 +292,9 @@ Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(int useCaseCode)
 
 void PhotoOutputCaptureReadyCallback(Camera_PhotoOutput* photoOutput)
 {
-    while (g_isCaptureReady) {};
+    while (g_isCaptureReady) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    };
     g_isCaptureReady = true;
     LOG("RegisterPhotoOutputCaptureReadyCallback");
 }
@@ -1103,7 +1106,9 @@ Camera_ErrorCode NDKCamera::PhotoOutputCapture(int useCaseCode)
 }
 Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting, int useCaseCode)
 {
-    while (!g_isCaptureReady) {}
+    while (!g_isCaptureReady) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
     if (useCaseCode == PARAMETER_OK) {
         ret_ = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, photoSetting);
         g_isCaptureReady = false;
