@@ -56,13 +56,13 @@ export default function audioSessionManagerErrorTest() {
         let para2: Callback<audio.AudioSessionDeactivatedEvent> = () => {};
 
         audioSessionManager.on(para1, para2);
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         expect(Number(error.code)).assertEqual(6800101);
         console.info(`${TAG}: error.code: ${error.code}, error.message: ${error.message}`);
         done();
       }
-      expect(false).assertTrue();
-      done();
     })
 
     /* *
@@ -81,13 +81,13 @@ export default function audioSessionManagerErrorTest() {
         let para2: Callback<audio.AudioSessionDeactivatedEvent> = () => {};
 
         audioSessionManager.on(para1, para2);
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         expect(Number(error.code)).assertEqual(401);
         console.info(`${TAG}: error.code: ${error.code}, error.message: ${error.message}`);
         done();
       }
-      expect(false).assertTrue();
-      done();
     })
 
     /* *
@@ -107,13 +107,13 @@ export default function audioSessionManagerErrorTest() {
         let para2: Callback<audio.AudioSessionDeactivatedEvent> = () => {};
 
         audioSessionManager.off(para1, para2);
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         expect(Number(error.code)).assertEqual(6800101);
         console.info(`${TAG}: error.code: ${error.code}, error.message: ${error.message}`);
         done();
       }
-      expect(false).assertTrue();
-      done();
     })
 
     /* *
@@ -133,13 +133,13 @@ export default function audioSessionManagerErrorTest() {
         let para2: Callback<audio.AudioSessionDeactivatedEvent> = () => {};
 
         audioSessionManager.off(para1, para2);
+        expect(false).assertTrue();
+        done();
       } catch (error) {
         expect(Number(error.code)).assertEqual(6800101);
         console.info(`${TAG}: error.code: ${error.code}, error.message: ${error.message}`);
         done();
       }
-      expect(false).assertTrue();
-      done();
     })
 
   })
