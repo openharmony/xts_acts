@@ -2014,6 +2014,54 @@ export default function audioManagerApi9() {
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, minVolume)
       done();
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = 1;
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      };
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = '1';
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 6800101).assertTrue();
+        done();
+      };
+    })
   })
 
 }
