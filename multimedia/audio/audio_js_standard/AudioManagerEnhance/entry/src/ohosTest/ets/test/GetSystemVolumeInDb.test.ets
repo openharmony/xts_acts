@@ -273,7 +273,8 @@ export default function audioManagerTest() {
             })
             .catch((error: BusinessError) => {
               if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP' ||
-                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST'|| index == 'HDMI' || index == 'REMOTE_DAUDIO' || index == 'LINE_DIGITAL' || index == 'ACCESSORY_PORT') {
+                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO' || 
+                index == 'LINE_DIGITAL' || index == 'ACCESSORY') {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);

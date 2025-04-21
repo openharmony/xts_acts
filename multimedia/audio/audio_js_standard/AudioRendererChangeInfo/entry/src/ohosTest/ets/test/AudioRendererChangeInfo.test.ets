@@ -14,7 +14,7 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { Permissions } from '@ohos.abilityAccessCtrl';
@@ -2915,9 +2915,9 @@ export default function audioRendererChange() {
      * @tc.desc      : AudioRendererChange - ON_AUDIORENDERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIORENDERCHANGE_0100------begin`)
       let flag: boolean = false;
       try {
@@ -2967,9 +2967,9 @@ export default function audioRendererChange() {
      * @tc.desc      : OFF_AUDIORENDERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIORENDERCHANGE_0100------begin`)
       let flag = false;
       let off_para: ESObject = 1;
@@ -3022,9 +3022,9 @@ export default function audioRendererChange() {
      * @tc.desc      : AudioRendererChange - ON_AUDIOCAPTURERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_ON_AUDIOCAPTURERCHANGE_0100------begin`)
       let flag: boolean = false;
       try {
@@ -3074,9 +3074,9 @@ export default function audioRendererChange() {
      * @tc.desc      : OFF_AUDIOCAPTURERCHANGE 401
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 2
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100', 2, (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0100------begin`)
       let flag = false;
       let off_para: ESObject = 1;
