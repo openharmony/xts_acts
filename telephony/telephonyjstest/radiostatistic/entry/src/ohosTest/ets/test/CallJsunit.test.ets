@@ -15,6 +15,7 @@
 import { describe, expect, it } from '@ohos/hypium';
 import call from '@ohos.telephony.call';
 import { BusinessError } from '@ohos.base';
+import sim from '@ohos.telephony.sim';
 
 export function toString(data:object) {
   if (typeof data === 'object') {
@@ -36,14 +37,21 @@ export default function callJsunit() {
     it("Telephony_Call_HasVoiceCapability_HasVoiceCapability", 0, async (done:Function)=> {
       let caseName = 'Telephony_Call_HasVoiceCapability_HasVoiceCapability';
       console.log(`==========> ${caseName} Test start ==========>`);
-      let ret = false;
-      let voiceCapablity = call.hasVoiceCapability();
-      if (voiceCapablity === true || voiceCapablity === false) {
-        ret = true;
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        let ret = false;
+        let voiceCapablity = call.hasVoiceCapability();
+        if (voiceCapablity === true || voiceCapablity === false) {
+          ret = true;
+        }
+        expect(ret).assertTrue();
+        console.log(`==========> ${caseName} Test end ==========>`);
+        done();
       }
-      expect(ret).assertTrue();
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
     });
 
     /**
@@ -54,21 +62,28 @@ export default function callJsunit() {
     it("Telephony_Call_Call_MakeCall_0100", 0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0100";
       console.log(`==========> ${caseName} Test start ==========>`);
-      try {
-        let telNumber = "";
-        call.makeCall(telNumber, (error) => {
-          if (error) {
-            console.log("makeCall callback: err->" + JSON.stringify(error));
-            expect(false).assertTrue();
-            done();
-            return;
-          }
-          done();
-        });
-      } catch (err) {
-        console.log("makeCall callback: err->" + JSON.stringify(err));
-        expect(false).assertTrue();
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
         done();
+      } else {
+        try {
+          let telNumber = "";
+          call.makeCall(telNumber, (error) => {
+            if (error) {
+              console.log("makeCall callback: err->" + JSON.stringify(error));
+              expect(false).assertTrue();
+              done();
+              return;
+            }
+            done();
+          });
+        } catch (err) {
+          console.log("makeCall callback: err->" + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+        }
       }
       console.log(`==========> ${caseName} Test end ==========>`);
     });
@@ -81,19 +96,26 @@ export default function callJsunit() {
     it("Telephony_Call_Call_MakeCall_0200", 0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0200";
       console.log(`==========> ${caseName} Test start ==========>`);
-      let telNumber = "";
-      try {
-        call.makeCall(telNumber).then(() => {
-          done();
-        }).catch((error:BusinessError) => {
-          console.log("makeCall callback: err->" + JSON.stringify(error));
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        let telNumber = "";
+        try {
+          call.makeCall(telNumber).then(() => {
+            done();
+          }).catch((error: BusinessError) => {
+            console.log("makeCall callback: err->" + JSON.stringify(error));
+            expect(false).assertTrue();
+            done();
+          });
+        } catch (err) {
+          console.log("makeCall callback: err->" + JSON.stringify(err));
           expect(false).assertTrue();
           done();
-        });
-      } catch (err) {
-        console.log("makeCall callback: err->" + JSON.stringify(err));
-        expect(false).assertTrue();
-        done();
+        }
       }
       console.log(`==========> ${caseName} Test end ==========>`);
     });
