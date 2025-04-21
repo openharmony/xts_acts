@@ -356,23 +356,23 @@ export default function observerManagerTest() {
       let caseName: string = 'testTelephonyObserverCallStateChangeOnId0600';
       console.info(`${caseName} test start `);
       if(sim.getMaxSimCount()>1){
-      try {
-        class Value {
-          state: call.CallState = call.CallState.CALL_STATE_UNKNOWN
-          number: string = ""
-        };
-        observer.on(null, {
-          slotId: 1
-        }, (value: Value) => {
-          console.info(`${caseName} data ${JSON.stringify(value)}}`);
-          ExpectTrue(false);
+        try {
+          class Value {
+            state: call.CallState = call.CallState.CALL_STATE_UNKNOWN
+            number: string = ""
+          };
+          observer.on(null, {
+            slotId: 1
+          }, (value: Value) => {
+            console.info(`${caseName} data ${JSON.stringify(value)}}`);
+            ExpectTrue(false);
+            done();
+          });
+        } catch (error) {
+          console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
+          ExpectTrue(error.code == 401);
           done();
-        });
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(error.code == 401);
-        done();
-      }
+        }
       }else{
         console.info(`${caseName}：Not support dual SIM cards.`);
         ExpectTrue(true);
@@ -967,24 +967,31 @@ export default function observerManagerTest() {
     it('testTelephonyObserverSignalInfoChangeOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverSignalInfoChangeOn0100';
       console.info(`${caseName} test start `);
-      try {
-        let hasSim: boolean = await sim.hasSimCard(0);
-        if (hasSim) {
-          await data.setDefaultCellularDataSlotId(0);
-          observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-            console.info(`${caseName} data ${JSON.stringify(data)}`);
-            ExpectTrue(true);
-          });
-          done();
-        } else {
-          console.error(`${caseName} This test case requires an environment where cards are inserted.`);
+      let simState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        try {
+          let hasSim: boolean = await sim.hasSimCard(0);
+          if (hasSim) {
+            await data.setDefaultCellularDataSlotId(0);
+            observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
+              console.info(`${caseName} data ${JSON.stringify(data)}`);
+              ExpectTrue(true);
+            });
+            done();
+          } else {
+            console.error(`${caseName} This test case requires an environment where cards are inserted.`);
+            ExpectTrue(false);
+            done();
+          }
+        } catch (error) {
+          console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
           ExpectTrue(false);
           done();
         }
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(false);
-        done();
       }
       console.info(`${caseName} test end `);
     });
@@ -1243,21 +1250,28 @@ export default function observerManagerTest() {
     */
     it('testTelephonyObserverIccAccountInfoChangeOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverIccAccountInfoChangeOn0100';
-      await runTestCaseWithJudgeHasSimCard(caseName, done, async () => {
-        try {
-          observer.on('iccAccountInfoChange', async () => {
-            let accInfo: sim.IccAccountInfo = await sim.getSimAccountInfo(0);
-            console.info(`${caseName} data ${JSON.stringify(accInfo)}`);
-            ExpectTrue(accInfo.isActive);
+      let simState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        await runTestCaseWithJudgeHasSimCard(caseName, done, async () => {
+          try {
+            observer.on('iccAccountInfoChange', async () => {
+              let accInfo: sim.IccAccountInfo = await sim.getSimAccountInfo(0);
+              console.info(`${caseName} data ${JSON.stringify(accInfo)}`);
+              ExpectTrue(accInfo.isActive);
+              done();
+            });
+            await sim.activateSim(0);
+          } catch (error) {
+            console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
+            ExpectTrue(false);
             done();
-          });
-          await sim.activateSim(0);
-        } catch (error) {
-          console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-          ExpectTrue(false);
-          done();
-        }
-      });
+          }
+        });
+      }
     });
 
     /* *
