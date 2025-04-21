@@ -17,7 +17,7 @@ import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
-import { getPermission,driveFn ,sleep, fetchOption, photoKeys } from '../common';
+import { getPermission,driveFn ,sleep, fetchOption, photoKeys, getAssetCountByMediaSuffix } from '../common';
 
 export default function getAssetChangeRequestTest() {
   describe('getAssetChangeRequestTest', () => {
@@ -139,12 +139,13 @@ export default function getAssetChangeRequestTest() {
     it("get_asset_by_mediaSuffix_jpg_001", Level.LEVEL2, async (done: Function) => {
       const testNum: string = "get_asset_by_mediaSuffix_jpg_001";
       try {
+        let assetCountFormatJpg: number = await getAssetCountByMediaSuffix(testNum, helper, "jpg");
         const ops: photoAccessHelper.FetchOptions = fetchOption(testNum, photoAccessHelper.PhotoKeys.MEDIA_SUFFIX, "jpg");
         let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(ops);
         console.log(`${testNum} :: fetchResult is undefined ? ${fetchResult === undefined}`);
         expect(fetchResult !== undefined).assertTrue();
-        console.log(`${testNum} :: fetchResult count = ${fetchResult.getCount()}`);
-        expect(fetchResult.getCount()).assertLarger(0);
+        console.log(`${testNum} :: fetchResult count = ${fetchResult.getCount()}, assetCountFormatJpg = ${assetCountFormatJpg}`);
+        expect(fetchResult.getCount()).assertEqual(assetCountFormatJpg);
         done();
       } catch (error) {
         console.error(`${testNum} :: getAsset By jpg failed ! error = ${error}`);
@@ -169,7 +170,15 @@ export default function getAssetChangeRequestTest() {
         console.log(`${testNum} :: fetchResult is undefined ? ${fetchResult === undefined}`);
         expect(fetchResult !== undefined).assertTrue();
         console.log(`${testNum} :: fetchResult count = ${fetchResult.getCount()}`);
-        expect(fetchResult.getCount()).assertLarger(0);
+        let videoTypeList: Array<string> = await helper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.VIDEO);
+        // device not support mp4
+        if (!videoTypeList.includes("mp4")) {
+          console.log(`${testNum} :: This device not support video format mp4 !`);
+          expect(fetchResult.getCount()).assertEqual(0);
+        } else {
+          let videoCount: number = await getAssetCountByMediaSuffix(testNum, helper, "mp4");
+          expect(fetchResult.getCount()).assertEqual(videoCount);
+        }
         done();
       } catch (error) {
         console.error(`${testNum} :: getAsset By jpg failed ! error = ${error}`);
