@@ -853,7 +853,7 @@ export default function TaskpoolPromiseRaceSecondTest() {
         });
         executionOrder.push('p1 definition completed');
 
-        p1.catch((error: Error) => {
+        p1.catch((error: Error): void => {
           executionOrder.push('p1 original catch (optional)');
           console.info(`${caseName} p1 caught optional error: ${error.message}`);
           p1CatchCalled = true;
@@ -865,34 +865,34 @@ export default function TaskpoolPromiseRaceSecondTest() {
 
         executionOrder.push('racePromise handlers attaching');
 
-        racePromise.catch((error: Error) => {
+        racePromise.catch((error: Error): Promise<void> => {
           executionOrder.push('racePromise.catch executing');
           executionOrder.push(`racePromise.catch error: ${error.message}`);
           raceCatchCalled = true;
-        }).finally(() => {
+          return Promise.resolve();
+        }).finally((): Promise<void> => {
           executionOrder.push('racePromise.finally executing');
           raceFinallyCalled = true;
           executionOrder.push('racePromise.finally throwing error');
           throw new Error('Error in racePromise.finally 3500');
-        }).catch((error: Error) => {
+        }).catch((error: Error): Promise<void> => {
           executionOrder.push('racePromise.finally.catch executing');
           executionOrder.push(`racePromise.finally.catch error: ${error.message}`);
           raceFinallyCatchCalled = true;
-        }).then(() => {
+          return Promise.resolve();
+        }).then((): Promise<void> => {
           executionOrder.push('racePromise.then executing');
           raceThenCalled = true;
+          return Promise.resolve();
         });
         executionOrder.push('racePromise handlers attached');
-
         await sleep(150);
         executionOrder.push('after wait');
-
         expect(p1CatchCalled).assertTrue();
         expect(raceCatchCalled).assertTrue();
         expect(raceFinallyCalled).assertTrue();
         expect(raceFinallyCatchCalled).assertTrue();
         expect(raceThenCalled).assertTrue();
-
         const expectedOrder = [
           'p1 created',
           'p1 definition completed',
@@ -911,7 +911,6 @@ export default function TaskpoolPromiseRaceSecondTest() {
           'racePromise.then executing',
           'after wait'
         ];
-
         expect(executionOrder.indexOf('p1 rejecting')).assertLess(executionOrder.indexOf('racePromise.catch executing'));
         expect(executionOrder.indexOf('racePromise.catch executing')).assertLess(executionOrder.indexOf('racePromise.finally executing'));
         expect(executionOrder.indexOf('racePromise.finally throwing error')).assertLess(executionOrder.indexOf('racePromise.finally.catch executing'));
@@ -963,15 +962,16 @@ export default function TaskpoolPromiseRaceSecondTest() {
 
         executionOrder.push('p1.finally attaching');
 
-        p1.finally(() => {
+        p1.finally((): Promise<void> => {
           executionOrder.push('p1.finally executing');
           p1FinallyCalled = true;
           executionOrder.push('p1.finally throwing error');
           throw new Error('Error in p1.finally 3600');
-        }).catch((error: Error) => {
+        }).catch((error: Error): Promise<void> => {
           executionOrder.push('p1.finally.catch executing');
           executionOrder.push(`p1.finally.catch error: ${error.message}`);
           p1FinallyCatchCalled = true;
+          return Promise.resolve();
         });
         executionOrder.push('p1.finally attached');
 
@@ -981,14 +981,16 @@ export default function TaskpoolPromiseRaceSecondTest() {
         executionOrder.push('race promise created');
 
         executionOrder.push('racePromise handlers attaching');
-        racePromise.then(_ => {
+        racePromise.then((_: string): Promise<void> => {
           executionOrder.push('racePromise.then executing');
           raceThenCalled = true;
-        }).catch((error: Error) => {
+          return Promise.resolve();
+        }).catch((error: Error): Promise<void> => {
           executionOrder.push('racePromise.catch executing');
           executionOrder.push(`racePromise.catch error: ${error.message}`);
           raceCatchCalled = true;
           raceCaughtErrorMsg = error.message;
+          return Promise.resolve();
         });
         executionOrder.push('racePromise handlers attached');
 
