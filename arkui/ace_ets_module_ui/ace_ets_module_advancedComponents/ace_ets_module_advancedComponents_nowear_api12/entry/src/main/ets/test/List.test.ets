@@ -71,6 +71,7 @@ import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
 import localizedLabelMarginTest from './chip/localizedLabelMarginTest';
 import localizedButtonPaddingTest from './segmenButton/localizedButtonPaddingTest';
 import localizedTextPadding from './segmenButton/localizedTextPadding';
+import SegmentButtonItemOptionsArray1 from './segmenButton/SegmentButtonItemOptionsArray1';
 
 
 export default function testsuite() {
@@ -132,4 +133,5 @@ export default function testsuite() {
   localizedLabelMarginTest();
   localizedButtonPaddingTest();
   localizedTextPadding();
+  SegmentButtonItemOptionsArray1();
 }
