@@ -749,8 +749,8 @@ export default function test() {
                 console.info("!!!====>FMS_acquireForm_1600 delPublishCallBack_Temp2====>");
                 setTimeout(async () => {
                     console.info('FMS_acquireForm_1600 delPublishCallBack_Temp2 end');
+                    await sleepTime(3000);
                     console.info(`FMS_acquireForm_1600 end`);
-                    await sleepTime(3000)
                     done();
                 }, 500);
             }
@@ -766,7 +766,9 @@ export default function test() {
             let FMS_acquireForm_1600_Temp2 = async () => {
                 console.info(`FMS_acquireForm_1600_Temp2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1600_Temp2 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp2);
+                console.info(`FMS_acquireForm_1600_Temp2 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_Temp2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -812,12 +814,15 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Temp1)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Temp1);
+                console.info("!!!====>FMS_acquireForm_1600 onAcquiredCallBack_Temp1 end====>");
             }
 
             let FMS_acquireForm_1600_Temp1 = async () => {
                 console.info(`FMS_acquireForm_1600_Temp1 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1600_Temp1 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp1);
+                console.info(`FMS_acquireForm_1600_Temp1 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_Temp1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -863,12 +868,15 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Normal2)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Normal2);
+                console.info("!!!====>FMS_acquireForm_1600 onAcquiredCallBack_Normal2 end====>");
             }
 
             let FMS_acquireForm_1600_normal2 = async () => {
                 console.info(`FMS_acquireForm_1600_normal2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1600_normal2 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal2);
+                console.info(`FMS_acquireForm_1600_normal2 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1600_normal2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -912,6 +920,7 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Normal1)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Normal1);
+                console.info("!!!====>FMS_acquireForm_1600 onAcquiredCallBack_Normal1 end====>");
             }
 
             let FMS_acquireForm_1600_normal1 = async () => {
@@ -974,8 +983,8 @@ export default function test() {
                 console.info("!!!====>FMS_acquireForm_1800 delPublishCallBack_Temp2====>");
                 setTimeout(async () => {
                     console.info('FMS_acquireForm_1800 delPublishCallBack_Temp2 end');
+                    await sleepTime(3000);
                     console.info(`FMS_acquireForm_1800 end`);
-                    await sleepTime(3000)
                     done();
                 }, 500);
             }
@@ -986,12 +995,15 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Temp2)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Temp2);
+                console.info("!!!====>FMS_acquireForm_1800 onAcquiredCallBack_Temp2 end====>");
             }
 
             let FMS_acquireForm_1800_Temp2 = async () => {
                 console.info(`FMS_acquireForm_1800_Temp2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1800_Temp2 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp2);
+                console.info(`FMS_acquireForm_1800_Temp2 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_Temp2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -1036,12 +1048,15 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Temp1)
                 commonEvent.publish(deleteForm_Event, data, delPublishCallBack_Temp1);
+                console.info("!!!====>FMS_acquireForm_1800 onAcquiredCallBack_Temp1 end====>");
             }
 
             let FMS_acquireForm_1800_Temp1 = async () => {
                 console.info(`FMS_acquireForm_1800_Temp1 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1800_Temp1 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Temp1);
+                console.info(`FMS_acquireForm_1800_Temp1 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_Temp1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -1086,12 +1101,15 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Normal2)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Normal2);
+                console.info("!!!====>FMS_acquireForm_1800 onAcquiredCallBack_Normal2 end====>");
             }
 
             let FMS_acquireForm_1800_normal2 = async () => {
                 console.info(`FMS_acquireForm_1800_normal2 start`);
                 subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                console.info(`FMS_acquireForm_1800_normal2 createSubscriber`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal2);
+                console.info(`FMS_acquireForm_1800_normal2 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_normal2 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -1137,11 +1155,13 @@ export default function test() {
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack_Normal1)
                 commonEvent.publish(deleteForm_Event, delPublishCallBack_Normal1);
+                console.info("!!!====>FMS_acquireForm_1800 onAcquiredCallBack_Normal1 end====>");
             }
 
             let FMS_acquireForm_1800_normal1 = async() => {
                 console.info(`FMS_acquireForm_1800_normal1 start`);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack_Normal1);
+                console.info(`FMS_acquireForm_1800_normal1 subscribe`);
                 await sleepTime(2000);
                 console.info(`FMS_acquireForm_1800_normal1 featureAbility.startAbility start`);
                 await featureAbility.startAbility({
@@ -1668,7 +1688,14 @@ const delPublishCallBack = async (tcNumber: string, done: () => void) => {
 }
 
 function sleepTime(time: number): Promise<void> {
-    return new Promise((resolve)=>setTimeout(resolve,time));
+    return new Promise((resolve, reject) => {
+        try{
+            setTimeout(resolve,time);
+        } catch(e) {
+            console.error(`sleepTime error: ${JSON.stringify(e)}`);
+			reject();
+        }
+    });
 }
 
 const unsubscribeOnErrorCallback = (tcNumber: string) => {
