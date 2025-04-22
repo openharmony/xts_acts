@@ -821,8 +821,6 @@ export default function sceneNodeTest() {
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0610
      * @tc.name      : testSphereGeometry
      * @tc.desc      : Used to import a scene
-     *
-     *
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3

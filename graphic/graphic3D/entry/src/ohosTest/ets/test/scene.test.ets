@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene, SceneResourceType } from '@ohos.graphics.scene'
+import { Vec2, Rotation3, SceneResourceParameters, SceneNodeParameters, Scene, SceneResourceType,
+  NodeType } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
@@ -28,8 +29,8 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneLoad', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
-      let msg = "============================testSceneLoad";
+    it('testSceneLoad_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg = "============================testSceneLoad_01";
       console.info(msg + ' begin ');
       try {
         scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
@@ -248,9 +249,11 @@ export default function sceneTest() {
         sphereGeom.segmentCount = Math.floor(26);
         expect(sphereGeom.segmentCount).assertEqual(26);
         console.info(msg + " Succeed in sphereGeom.segmentCount ");
-        let meshRes3 = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
+        let meshRes3: scene3d.MeshResource = await rf.createMesh({name: "resource name not used at the moment "}, sphereGeom);
         expect(meshRes3 != null).assertTrue();
         console.info(msg + " Succeed in createMesh ");
+        expect(meshRes3.resourceType).assertEqual(SceneResourceType.MESH_RESOURCE)
+        console.info(msg + " meshRes3.resourceType is SceneResourceType.MESH_RESOURCE ");
         let geometry3 = await rf.createGeometry({name: "balluro"}, meshRes3);
         expect(geometry3 != null).assertTrue();
         console.info(msg + " Succeed in createGeometry ");
@@ -365,15 +368,59 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateScene', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
-      let msg = "============================testCreateScene";
+    it('testCreateScene_01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg = "============================testCreateScene_01";
       console.info(msg + ' begin ');
       try {
         let scene = await rf.createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
         expect(scene != null).assertTrue();
         done();
       } catch (err) {
-        console.info(msg + " Failed in testCreateScene " + JSON.stringify(err));
+        console.info(msg + " Failed in testCreateScene_01 " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0620
+     * @tc.name      : testSphereGeometry
+     * @tc.desc      : Used to create a scene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateScene_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg = "============================testCreateScene_02";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await rf.createScene();
+        expect(scene != null).assertTrue();
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCreateScene_02 " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0630
+     * @tc.name      : testSceneLoad
+     * @tc.desc      : Used to load the resource through the incoming resource path
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSceneLoad_02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let msg = "============================testSceneLoad_02";
+      console.info(msg + ' begin ');
+      try {
+        scene = await Scene.load();
+        expect(scene != null).assertTrue();
+        expect(scene != undefined).assertTrue();
+        done();
+      } catch (err) {
+        console.info(msg + 'Failed in Scene.load() ' +
+        JSON.stringify(err));
         expect().assertFail();
         done();
       }
