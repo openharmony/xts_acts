@@ -1,5 +1,5 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { common } from '@kit.AbilityKit';
@@ -32,12 +32,12 @@ export default function abilityTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    /**
+    /*
      * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100
      * @tc.name: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100
      * @tc.desc: Verify that the ability exit is abnormal, and the onWindowStageWillDestory lifecycle will not be called
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
@@ -76,7 +76,7 @@ export default function abilityTest() {
      * @tc.name: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500
      * @tc.desc: Verify that the app can exit gracefully when the lifecycle times out
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
@@ -124,7 +124,7 @@ export default function abilityTest() {
      * @tc.name: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600
      * @tc.desc: Verify that the ability exit is abnormal, and the onWindowStageWillDestory lifecycle will not be called
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
@@ -161,7 +161,7 @@ export default function abilityTest() {
      * @tc.name: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700
      * @tc.desc: restartApp does not call back the onWindowStageWillDestory lifecycle
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
@@ -198,7 +198,7 @@ export default function abilityTest() {
      * @tc.name: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400
      * @tc.desc: Verify that only the ability is closed when the callback onWindowStageWillDestory is called
      */
-    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
@@ -241,7 +241,7 @@ export default function abilityTest() {
      * @tc.name: SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100
      * @tc.desc: Verify that disabling specified capability calls back the onWindowStageWillDestory lifecycle
      */
-    it('SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100', Level.LEVEL0, async (done:Function) => {
       let TAG = "SUB_Ability_AbilityRuntime_MoveAbilityToBackground_0100"
       let startWant: Want = {
         bundleName: 'com.test.actslifecycletest',
