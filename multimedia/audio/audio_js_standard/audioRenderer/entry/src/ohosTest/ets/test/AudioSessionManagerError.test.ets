@@ -136,7 +136,7 @@ export default function audioSessionManagerErrorTest() {
         expect(false).assertTrue();
         done();
       } catch (error) {
-        expect(Number(error.code)).assertEqual(6800101);
+        expect(Number(error.code)).assertEqual(401);
         console.info(`${TAG}: error.code: ${error.code}, error.message: ${error.message}`);
         done();
       }
