@@ -4509,5 +4509,421 @@ export default function audioCapturer() {
         done();
       }
     })
+         /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_ON_MARKREACH_0100
+     * @tc.name      : AudioCapturer ON MARKREACH
+     * @tc.desc      : AudioCapturer ON MARKREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_ON_MARKREACH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = 0;
+        audioCapturer.on('markReach', para1, cb1);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_ON_MARKREACH_0200
+     * @tc.name      : AudioCapturer ON MARKREACH
+     * @tc.desc      : AudioCapturer ON MARKREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_ON_MARKREACH_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = '1';
+        audioCapturer.on('markReach', para1, cb1);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_MARKREACH_0100
+     * @tc.name      : AudioCapturer OFF MARKREACH
+     * @tc.desc      : AudioCapturer OFF MARKREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_MARKREACH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('periodReach', 1000, cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = 1;
+        let para2: ESObject = () => {return 1;};
+        audioCapturer.off(para1, para2);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_MARKREACH_0200
+     * @tc.name      : AudioCapturer OFF MARKREACH
+     * @tc.desc      : AudioCapturer OFF MARKREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_MARKREACH_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('periodReach', 1000, cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = '1';
+        let para2: ESObject = () => {return 1;};
+        audioCapturer.off(para1, para2);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_ON_PERIODREACH_0100
+     * @tc.name      : AudioCapturer ON PERIODREACH
+     * @tc.desc      : AudioCapturer ON PERIODREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_ON_PERIODREACH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = 0;
+        audioCapturer.on('periodReach', para1, cb1);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_ON_PERIODREACH_0200
+     * @tc.name      : AudioCapturer ON PERIODREACH
+     * @tc.desc      : AudioCapturer ON PERIODREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_ON_PERIODREACH_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = '1';
+        audioCapturer.on('periodReach', para1, cb1);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_PERIODREACH_0100
+     * @tc.name      : AudioCapturer OFF PERIODREACH
+     * @tc.desc      : AudioCapturer OFF PERIODREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_PERIODREACH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('periodReach', 1000, cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = 1;
+        let para2: ESObject = () => {return 1;};
+        audioCapturer.off(para1, para2);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_PERIODREACH_0200
+     * @tc.name      : AudioCapturer OFF PERIODREACH
+     * @tc.desc      : AudioCapturer OFF PERIODREACH
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_PERIODREACH_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<number> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('periodReach', 1000, cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = '1';
+        let para2: ESObject = () => {return 1;};
+        audioCapturer.off(para1, para2);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0100
+     * @tc.name      : AudioCapturer OFF STATECHANGE
+     * @tc.desc      : AudioCapturer OFF STATECHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<audio.AudioState> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('stateChange', cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = '1';
+        let stateChangeCallback = (state: audio.AudioState) => {
+          if (state == 1) {
+            console.info('audio renderer state is: STATE_PREPARED');
+          }
+          if (state == 2) {
+            console.info('audio renderer state is: STATE_RUNNING');
+          }
+        };
+        audioCapturer.off(para1, stateChangeCallback);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0200
+     * @tc.name      : AudioCapturer OFF STATECHANGE
+     * @tc.desc      : AudioCapturer OFF STATECHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+      let cb1: Callback<audio.AudioState> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioCapturer.on('stateChange', cb1);
+      let flag : boolean =false;
+      try {
+        let para1: ESObject = 1;
+        let stateChangeCallback = (state: audio.AudioState) => {
+          if (state == 1) {
+            console.info('audio renderer state is: STATE_PREPARED');
+          }
+          if (state == 2) {
+            console.info('audio renderer state is: STATE_RUNNING');
+          }
+        };
+        audioCapturer.off(para1, stateChangeCallback);
+      }catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
   })
 }
