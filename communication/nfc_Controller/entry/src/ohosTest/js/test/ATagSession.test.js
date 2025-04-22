@@ -343,9 +343,9 @@ export default function nfcATagSessionTest() {
                 console.info("[NFC_test] tagsession11 nfcAtage sendData1 err: " + err);
                 expect('3100201').assertEqual(err.code)
                 done();
-        });
-        sleep(3500);
-
+            });
+            sleep(3500);
+        })
 
         /**
          * @tc.number SUB_Communication_NFC_nfcAtage_js_1200
