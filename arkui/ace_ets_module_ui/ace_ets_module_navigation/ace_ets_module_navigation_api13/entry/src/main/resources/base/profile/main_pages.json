@@ -1,6 +1,10 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/Navigation/NavigationTitleTextModifier"
+        "MainAbility/pages/Navigation/NavigationTitleTextModifier",
+        "MainAbility/pages/Navigation/NavigationCustomTitlePage",
+		"MainAbility/pages/Navigation/TitleOptionsToolOptions",
+		"MainAbility/pages/Navigation/HideToolBarNavPage",
+		"MainAbility/pages/Navigation/BarStylePage"
     ]
 }
