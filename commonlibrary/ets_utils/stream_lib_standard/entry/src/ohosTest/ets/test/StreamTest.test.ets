@@ -3665,6 +3665,407 @@ export default function StreamTest() {
       transform.write('你好123', 'gb2312');
       transform.end();
     });
+
+    // Check the StreamEncoding.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding028
+     * @tc.desc: DoTransform method encoding.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      readable.push('test');
+      let encoding = readable.setEncoding('gb2312');
+      expect(encoding).assertEqual(false);
+    });
+
+    // Check the StreamEncoding.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding029
+     * @tc.desc: DoTransform method encoding.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      readable.push('test');
+      let encoding = readable.setEncoding('gbk');
+      expect(encoding).assertEqual(false);
+    });
+
+    // Check the StreamEncoding.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding030
+     * @tc.desc: DoTransform method encoding.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      readable.push('test');
+      let encoding = readable.setEncoding('gb18030');
+      expect(encoding).assertEqual(false);
+    });
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding031
+     * @tc.desc: DoTransform method encoding.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      expect(readable.readableFlowing).assertEqual(true);
+    });
+
+    // Check the StreamReadableEventTrigger.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding032
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      let readableTest = 0;
+      readable.on('readable',(chunk)=>{
+        readableTest++;
+      });
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      setTimeout(()=>{
+        expect(readableTest).assertEqual(3);
+      })
+    }); 
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding033
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      let readableTest = 0;
+      readable.on('readable',(chunk)=>{
+        readableTest++;
+      });
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      setTimeout(()=>{
+        expect(readableTest).assertEqual(4);
+      })
+    }); 
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamEncoding034
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+
+        }
+      }
+      let readable = new MyReadable()
+      let readableTest = 0;
+      readable.on('readable',(chunk)=>{
+        readableTest++;
+      });
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      readable.push('test');
+      setTimeout(()=>{
+        expect(readableTest).assertEqual(5);
+      })
+    }); 
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamPipe035
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+          this.push('test');
+          this.push(null)
+        }
+      }
+      class MyWritable extends stream.Writable {
+        data = ''
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback:Function) {
+          this.data = (this.data) + chunk;
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWritable();
+      src.pipe(dest);
+      setTimeout(()=>{
+        expect(dest.data).assertEqual("test");
+      })
+    });
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamPipe036
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+          this.push('abc');
+          this.push(null)
+        }
+      }
+      class MyWritable extends stream.Writable {
+        data = ''
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback:Function) {
+          this.data = (this.data) + chunk;
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWritable();
+      src.pipe(dest);
+      setTimeout(()=>{
+        expect(dest.data).assertEqual("abc");
+      })
+    });
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamPipe037
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+          this.push('123');
+          this.push(null)
+        }
+      }
+      class MyWritable extends stream.Writable {
+        data = ''
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback:Function) {
+          this.data = (this.data) + chunk;
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWritable();
+      src.pipe(dest);
+      setTimeout(()=>{
+        expect(dest.data).assertEqual("123");
+      })
+    });    
+
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamPipe038
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+          this.push('123');
+          this.push(null)
+        }
+      }
+      class MyWritable extends stream.Writable {
+        count:number
+        constructor() {
+          super()
+          this.count = 0
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback:Function) {
+          this.count++
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest1 = new MyWritable();
+      let dest2 = new MyWritable();
+      src.pipe(dest1);
+      src.pipe(dest2);
+      setTimeout(()=>{
+        expect(dest1.count + dest2.count).assertEqual(2);
+      })
+    });
+    
+    // Check the StreamReadableProperties.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_17100
+     * @tc.name: testStreamPipe039
+     * @tc.desc: The readable event triggers the check.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testStreamEncoding039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super();
+        }
+
+        doRead(size:number) {
+          this.push('123');
+          this.push(null)
+        }
+      }
+      class MyWritable extends stream.Writable {
+        count:number
+        constructor() {
+          super()
+          this.count = 0
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback:Function) {
+          this.count++
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest1 = new MyWritable();
+      let dest2 = new MyWritable();
+      let dest3 = new MyWritable();
+      src.pipe(dest1);
+      src.pipe(dest2);
+      src.pipe(dest3);
+      setTimeout(()=>{
+        expect(dest1.count + dest2.count + dest3.count).assertEqual(3);
+      })
+    });
+
   })
 }
 
