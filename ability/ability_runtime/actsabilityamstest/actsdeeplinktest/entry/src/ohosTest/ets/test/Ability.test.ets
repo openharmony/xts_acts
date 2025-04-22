@@ -103,7 +103,7 @@ export default function abilityTest() {
         let Button: Component = await driver.findComponent(ON.id('TestCase4'));
         await Button.click();
         const  driver2 =Driver.create();
-        let allowed = await driver2.findComponent(ON.text('允许', MatchPattern.CONTAINS));
+        let allowed = await driver2.findComponent(ON.text('查询', MatchPattern.CONTAINS));
         if (allowed) {
         await driver2.delayMs(1000);
         let Button2: Component = await driver2.findComponent(ON.text('允许'));
