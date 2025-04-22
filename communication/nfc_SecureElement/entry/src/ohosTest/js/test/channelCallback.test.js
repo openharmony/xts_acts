@@ -189,12 +189,12 @@ export default function channelCallbacktest() {
                     })
                     .catch(error => {
                         console.info("[NFC_test]10 openBasicChannel failed" + error + "--error.code--" + error.code);
-						if (error.code == 801){
+						if (error == 801){
 							console.inlfo("[NFC_test]10 not support" + error);
-							expect(ture).assertTrue();
+							expect(true).assertTrue();
 						}else if(error == 3300103){
-							console.info("[NFC_test]10 3300103" + error.code)
-							expect(ture).assertTrue();
+							console.info("[NFC_test]10 3300103" + error)
+							expect(true).assertTrue();
 						}else{
 							expect().assertFail();
 						}
@@ -499,14 +499,14 @@ export default function channelCallbacktest() {
 			try{
 				function getServiceStateFunc(ServiceState){console.info("[NFC_js] get ServiceState result:" + JSON.stringify(ServiceState));}
 				let seService = secureElement.newSEService("serviceState", getServiceStateFunc);
-				expect(ture).assertEqual(seService != null);
+				expect(true).assertEqual(seService != null);
 				done();
 			}catch(error){
 				console.info("[NFC_test]1900 openBasicChannel error result:" + JSON.stringify(error) + "error_code:" + error.code);
 				if (error.code == 401){
-					expect(ture).assertTrue();
+					expect(true).assertTrue();
 				}else if (error.code == 801){
-					expect(ture).assertTrue();
+					expect(true).assertTrue();
 				}else{
 					expect().assertFail();
 				}
