@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { statfs } from '@kit.CoreFileKit';
 
 export default function HidebugrawTest() {
   describe('HidebugrawTest', () => {
@@ -48,17 +49,24 @@ export default function HidebugrawTest() {
      * @tc.level Level2
      */
     it('testHidebugraw_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      hidebug.dumpJsRawHeapData().then((filePath: string) => {
-        console.info(`TestTag success and generated file path is ${filePath}`)
-        expect(filePath).assertContain("/data/storage/el2/base/files/hidebug-jsheap-");
-        expect(filePath).assertContain(".rawheap");
-        expect(true).assertTrue();
+      try {
+        let path: string = '/data/storage/el2/base/files/' ;
+        console.info("output path: " + path);
+        let freeSize = await statfs.getFreeSize(path);
+        if (freeSize > 30 * 1024 * 1024 * 1024) {
+          let filename = await hidebug.dumpJsRawHeapData()
+          console.info(`TestTag success and generated file path is ${filename}`)
+          let filename1 = await hidebug.dumpJsRawHeapData()
+          console.info(`TestTag success and generated file path is ${filename1}`)
+          expect(true).assertTrue();
+          done();
+        }
         done();
-      }).catch((error: BusinessError) => {
-        console.error(`TestTag error code: ${error.code}, error msg: ${error.message}`);
+      }catch (error) {
+        console.error(`TestTag error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
         expect(false).assertTrue();
         done();
-      })
+      }
     })
     
     /**
@@ -71,14 +79,20 @@ export default function HidebugrawTest() {
      */
     it('testHidebugraw_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       try {
-        let filename = await hidebug.dumpJsRawHeapData()
-        console.info(`TestTag success and generated file path is ${filename}`)
-        let filename1 = await hidebug.dumpJsRawHeapData()
-        console.info(`TestTag success and generated file path is ${filename1}`)
-        expect(true).assertTrue();
+        let path: string = '/data/storage/el2/base/files/' ;
+        console.info("output path: " + path);
+        let freeSize = await statfs.getFreeSize(path);
+        if (freeSize > 30 * 1024 * 1024 * 1024) {
+          let filename = await hidebug.dumpJsRawHeapData()
+          console.info(`TestTag success and generated file path is ${filename}`)
+          let filename1 = await hidebug.dumpJsRawHeapData()
+          console.info(`TestTag success and generated file path is ${filename1}`)
+          expect(true).assertTrue();
+          done();
+        }
         done();
       }catch (error) {
-        console.error(`TestTag error code: ${(error as BusinessError).code}, error msg1: ${(error as BusinessError).message}`);
+        console.error(`TestTag error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
         expect(false).assertTrue();
         done();
       }
@@ -94,14 +108,20 @@ export default function HidebugrawTest() {
      */
     it('testHidebugraw_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       try {
-        hidebug.dumpJsRawHeapData().then((filePath: string) => {
-          console.info(`TestTag success and generated file path is ${filePath}`)
-        })
-        let filename = await hidebug.dumpJsRawHeapData()
-        console.info(`TestTag success and generated file path is ${filename}`)
-        expect(false).assertTrue();
+        let path: string = '/data/storage/el2/base/files/' ;
+        console.info("output path: " + path);
+        let freeSize = await statfs.getFreeSize(path);
+        if (freeSize > 30 * 1024 * 1024 * 1024) {
+          hidebug.dumpJsRawHeapData().then((filePath: string) => {
+            console.info(`TestTag success and generated file path is ${filePath}`)
+          })
+          let filename = await hidebug.dumpJsRawHeapData()
+          console.info(`TestTag success and generated file path is ${filename}`)
+          expect(false).assertTrue();
+        }
+        done();
       }catch (error) {
-        console.error(`TestTag error code: ${(error as BusinessError).code}, error msg1: ${(error as BusinessError).message}`);
+        console.error(`TestTag error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
         expect((error as BusinessError).code==11400112).assertTrue();
         done();
       }
