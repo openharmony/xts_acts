@@ -13,7 +13,19 @@
  * limitations under the License.
  */
 import relationalStoreEtsTest from './RelationalStoreEtsTest.test';
+import relationalStoreBatchInsertTest from './relationalStoreEtsApi16Test.test';
+import relationalStoreBatchinsertTransactionTest from './relationalStoreTransaction.test';
+import rdbStoreReadOnlyEtsTest from './relationalStoreReadOnly.test';
+import MemoryDbEtsTest from './RelationalStoreMemoryDb.test';
+import rdbResultSetSyncTest from './RelationalStoreResultSetSync.test';
+import rdbResultSetSJsTest from './resultsetJsunit.test';
 
 export default function testsuite() {
   relationalStoreEtsTest()
+  relationalStoreBatchInsertTest();
+  relationalStoreBatchinsertTransactionTest();
+  rdbStoreReadOnlyEtsTest();
+  MemoryDbEtsTest();
+  rdbResultSetSyncTest();
+  rdbResultSetSJsTest();
 }
