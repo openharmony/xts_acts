@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import drawing from "@ohos.graphics.drawing"
@@ -39,7 +39,7 @@ export default function graphicDrawingFontInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testFontMetricsFlags', 1, async (done:Function)=> {
+    it('testFontMetricsFlags', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testFontMetricsFlags==== "
       try {
         console.info(msg + ' Succeeded in FontMetricsFlags.');
@@ -70,7 +70,7 @@ export default function graphicDrawingFontInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetScaleX', 1, async (done:Function)=> {
+    it('testSetScaleX', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testSetScaleX==== "
       try {
         console.log(msg + " ready go ! ")
@@ -100,7 +100,7 @@ export default function graphicDrawingFontInterfaceTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSkewX', 1, async (done:Function)=> {
+    it('testSetSkewX', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = " ====testSetSkewX==== "
       try {
         console.log(msg + " ready go ! ")

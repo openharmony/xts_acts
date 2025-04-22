@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -54,7 +54,7 @@ export default function webgl1_enum() {
          * @tc.name webgl_test_enum
          * @tc.desc Test enum.
          */
-        it('webgl_test_enum', 0, async function (done) {
+        it('webgl_test_enum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_enum] enum");
             /* ClearBufferMask */
             console.info("webgltest gl.DEPTH_BUFFER_BIT = 0x00000100");

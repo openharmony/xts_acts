@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import nativeEffectNdk from 'libnativeEffectNdk.so';
 
 export default function nativeEffectTest() {
@@ -26,7 +26,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterCreateEffect', 0, async (done: Function) => {
+    it('testOHFilterCreateEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterCreateEffect();
       expect(result).assertEqual(0);
       done();
@@ -40,7 +40,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterCreateEffect001', 0, async (done: Function) => {
+    it('testOHFilterCreateEffect001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterCreateEffect001();
       expect(result).assertEqual(0);
       done();
@@ -54,7 +54,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterInvert', 0, async (done: Function) => {
+    it('testOHFilterInvert', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterInvert();
       expect(result).assertEqual(0);
       done();
@@ -68,7 +68,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterInvert001', 0, async (done: Function) => {
+    it('testOHFilterInvert001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterInvert001();
       expect(result).assertEqual(0);
       done();
@@ -82,7 +82,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterBlur', 0, async (done: Function) => {
+    it('testOHFilterBlur', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBlur();
       expect(result).assertEqual(0);
       done();
@@ -96,7 +96,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterBlur001', 0, async (done: Function) => {
+    it('testOHFilterBlur001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBlur001();
       expect(result).assertEqual(0);
       done();
@@ -110,7 +110,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterGrayScale', 0, async (done: Function) => {
+    it('testOHFilterGrayScale', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterGrayScale();
       expect(result).assertEqual(0);
       done();
@@ -124,7 +124,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterGrayScale001', 0, async (done: Function) => {
+    it('testOHFilterGrayScale001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterGrayScale001();
       expect(result).assertEqual(0);
       done();
@@ -138,7 +138,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterBrighten', 0, async (done: Function) => {
+    it('testOHFilterBrighten', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBrighten();
       expect(result).assertEqual(0);
       done();
@@ -152,7 +152,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterBrighten001', 0, async (done: Function) => {
+    it('testOHFilterBrighten001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBrighten001();
       expect(result).assertEqual(0);
       done();
@@ -166,7 +166,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterSetColorMatrix', 0, async (done: Function) => {
+    it('testOHFilterSetColorMatrix', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterSetColorMatrix();
       expect(result).assertEqual(0);
       done();
@@ -180,7 +180,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterSetColorMatrix001', 0, async (done: Function) => {
+    it('testOHFilterSetColorMatrix001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterSetColorMatrix001();
       expect(result).assertEqual(0);
       done();
@@ -194,7 +194,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterGetEffectPixelMap', 0, async (done: Function) => {
+    it('testOHFilterGetEffectPixelMap', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterGetEffectPixelMap();
       expect(result).assertEqual(0);
       done();
@@ -208,7 +208,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterRelease', 0, async (done: Function) => {
+    it('testOHFilterRelease', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterRelease();
       expect(result).assertEqual(0);
       done();
@@ -222,7 +222,7 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterRelease001', 0, async (done: Function) => {
+    it('testOHFilterRelease001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterRelease001();
       expect(result).assertEqual(0);
       done();
@@ -236,7 +236,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHFilterBlurWithTileMode001', 0, async (done: Function) => {
+    it('testOHFilterBlurWithTileMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeEffectNdk.oHFilterBlurWithTileMode001();
       expect(result).assertEqual(0);
       done();
@@ -250,7 +251,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeCreateScaledPixelMap001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeCreateScaledPixelMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeCreateScaledPixelMap001();
       expect(result).assertEqual(0);
       done();
@@ -264,7 +266,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001();
       expect(result).assertEqual(0);
       done();
@@ -278,7 +281,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeGetByteCount001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeGetByteCount001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: Array<number> = nativeEffectNdk.oHPixelmapNativeGetByteCount001();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
@@ -294,7 +298,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeAccessPixels001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeAccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeAccessPixels001();
       expect(result).assertEqual(0);
       done();
@@ -308,7 +313,8 @@ export default function nativeEffectTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHPixelmapNativeUnaccessPixels001', 0, async (done: Function) => {
+    it('testOHPixelmapNativeUnaccessPixels001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeEffectNdk.oHPixelmapNativeUnaccessPixels001();
       expect(result).assertEqual(0);
       done();

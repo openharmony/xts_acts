@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import nativeWindow from 'libnativewindow.so'
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -32,7 +32,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindowNullptr', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowNullptr();
       expect(result).assertEqual(0);
       done();
@@ -46,7 +47,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowDestroyNativeWindowNullptr', 3, async (done: Function) => {
+    it('testNativeWindowDestroyNativeWindowNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowDestroyNativeWindowNullptr();
       expect(result).assertEqual(0);
       done();
@@ -60,7 +62,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetSurfaceIdNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetSurfaceIdNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetSurfaceIdNullptr();
       expect(result).assertEqual(0);
       done();
@@ -74,7 +77,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindowFromSurfaceIdNullptr', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowFromSurfaceIdNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowFromSurfaceIdNullptr();
       expect(result).assertEqual(0);
       done();
@@ -89,7 +93,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowCreateNativeWindowFromSurfaceIdNormal', 0, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowFromSurfaceIdNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowFromSurfaceIdNormal();
       expect(result).assertEqual(0);
       done();
@@ -104,7 +109,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeWindowCreateNativeWindowFromSurfaceIdSurfaceId', 1, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowFromSurfaceIdSurfaceId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowFromSurfaceIdSurfaceId();
       expect(result).assertEqual(0);
       done();
@@ -119,7 +125,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferNullptr',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowBufferFromNativeBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -132,7 +139,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindowBufferFromSurfaceBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowBufferFromSurfaceBufferNullptr',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowBufferFromSurfaceBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -145,7 +153,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowDestroyNativeWindowBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowDestroyNativeWindowBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowDestroyNativeWindowBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -158,7 +167,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetBufferHandleFromNativeNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetBufferHandleFromNativeNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetBufferHandleFromNativeNullptr();
       expect(result).assertEqual(0);
       done();
@@ -171,7 +181,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferNormal', 0, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowBufferFromNativeBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -184,7 +195,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferMuch', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindowBufferFromNativeBufferMuch',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindowBufferFromNativeBufferMuch();
       expect(result).assertEqual(0);
       done();
@@ -199,7 +211,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -212,7 +225,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowAbortBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowAbortBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAbortBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -225,7 +239,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestAbortBufferNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestAbortBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestAbortBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -238,7 +253,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestAbortBufferAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestAbortBufferAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestAbortBufferAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -251,7 +267,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestBufferFenceFdNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestBufferFenceFdNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestBufferFenceFdNormal();
       expect(result).assertEqual(0);
       done();
@@ -264,7 +281,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestBufferFenceFdAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestBufferFenceFdAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestBufferFenceFdAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -277,7 +295,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestAbortBufferMax', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestAbortBufferMax', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestAbortBufferMax();
       expect(result).assertEqual(0);
       done();
@@ -290,7 +309,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowRequestAbortBufferErrorCode', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowRequestAbortBufferErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowRequestAbortBufferErrorCode();
       expect(result).assertEqual(0);
       done();
@@ -305,7 +325,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowWriteToParcelErrptr', 3, async (done: Function) => {
+    it('testNativeWindowWriteToParcelErrptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowWriteToParcelErrptr();
       expect(result).assertEqual(0);
       done();
@@ -319,7 +340,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowReadFromParcelErrptr', 3, async (done: Function) => {
+    it('testNativeWindowReadFromParcelErrptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowReadFromParcelErrptr();
       expect(result).assertEqual(0);
       done();
@@ -333,7 +355,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowWRParcelNormal', 3, async (done: Function) => {
+    it('testNativeWindowWRParcelNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowWRParcelNormal();
       expect(result).assertEqual(0);
       done();
@@ -347,7 +370,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowWriteToParcelAbNormal', 3, async (done: Function) => {
+    it('testNativeWindowWriteToParcelAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowWriteToParcelAbNormal();
       expect(result).assertEqual(0);
       done();
@@ -361,7 +385,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowReadFromParcelAbNormal', 3, async (done: Function) => {
+    it('testNativeWindowReadFromParcelAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowReadFromParcelAbNormal();
       expect(result).assertEqual(0);
       done();
@@ -375,7 +400,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowWRParcelDifferent', 3, async (done: Function) => {
+    it('testNativeWindowWRParcelDifferent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowWRParcelDifferent();
       expect(result).assertEqual(0);
       done();
@@ -390,7 +416,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeWindowNativeWindowFlushBufferNullptr', 4, async (done: Function) => {
+    it('testNativeWindowNativeWindowFlushBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowFlushBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -404,7 +431,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeWindowFlushBufferNormal', 0, async (done: Function) => {
+    it('testNativeWindowNativeWindowFlushBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowFlushBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -418,7 +446,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowFlushBufferAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowFlushBufferAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowFlushBufferAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -432,7 +461,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowFlushBufferErrorCode', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowFlushBufferErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowFlushBufferErrorCode();
       expect(result).assertEqual(0);
       done();
@@ -446,7 +476,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetLastFlushedBufferV2Nullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetLastFlushedBufferV2Nullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetLastFlushedBufferV2Nullptr();
       expect(result).assertEqual(0);
       done();
@@ -461,7 +492,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetLastFlushedBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetLastFlushedBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetLastFlushedBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -476,7 +508,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowGetLastFlushedBufferV2Normal', 0, async (done: Function) => {
+    it('testNativeWindowGetLastFlushedBufferV2Normal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetLastFlushedBufferV2Normal();
       expect(result).assertEqual(0);
       done();
@@ -491,7 +524,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowGetLastFlushedBufferNormal', 0, async (done: Function) => {
+    it('testNativeWindowGetLastFlushedBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetLastFlushedBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -505,7 +539,7 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowSetBufferHold', 0, async (done: Function) => {
+    it('testNativeWindowSetBufferHold', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetBufferHold();
       expect(result).assertEqual(0);
       done();
@@ -520,7 +554,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowGetNativeObjectMagicNormal', 3, async (done: Function) => {
+    it('testNativeWindowGetNativeObjectMagicNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetNativeObjectMagicNormal();
       expect(result).assertEqual(0);
       done();
@@ -535,7 +570,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetNativeObjectMagicNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetNativeObjectMagicNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetNativeObjectMagicNullptr();
       expect(result).assertEqual(0);
       done();
@@ -551,7 +587,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeObjectReferenceNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeObjectReferenceNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeObjectReferenceNullptr();
       expect(result).assertEqual(0);
       done();
@@ -566,7 +603,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeObjectReferenceNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeObjectReferenceNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeObjectReferenceNormal();
       expect(result).assertEqual(0);
       done();
@@ -581,7 +619,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeObjectUnreferenceNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeObjectUnreferenceNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeObjectUnreferenceNullptr();
       expect(result).assertEqual(0);
       done();
@@ -596,7 +635,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeObjectUnreferenceNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeObjectUnreferenceNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeObjectUnreferenceNormal();
       expect(result).assertEqual(0);
       done();
@@ -611,7 +651,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowAttachBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowAttachBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAttachBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -626,7 +667,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowDetachBufferNullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowDetachBufferNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowDetachBufferNullptr();
       expect(result).assertEqual(0);
       done();
@@ -641,7 +683,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeWindowDetachBufferNormal', 0, async (done: Function) => {
+    it('testNativeWindowNativeWindowDetachBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowDetachBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -656,7 +699,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowAttachBufferErrorCode', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowAttachBufferErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAttachBufferErrorCode();
       expect(result).assertEqual(0);
       done();
@@ -671,7 +715,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeWindowAttachBufferNormal', 0, async (done: Function) => {
+    it('testNativeWindowNativeWindowAttachBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAttachBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -686,7 +731,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowDetachBufferErrorCode', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowDetachBufferErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowDetachBufferErrorCode();
       expect(result).assertEqual(0);
       done();
@@ -701,7 +747,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeWindowNativeWindowAtDetachDifferentBufferNormal', 1, async (done: Function) => {
+    it('testNativeWindowNativeWindowAtDetachDifferentBufferNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAtDetachDifferentBufferNormal();
       expect(result).assertEqual(0);
       done();
@@ -716,7 +763,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowAtDetachDifferentBufferAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -731,7 +779,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeWindowNativeWindowHandleOptNullptr', 4, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptNullptr();
       expect(result).assertEqual(0);
       done();
@@ -746,7 +795,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetBufferGeometryNormal', 0, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetBufferGeometryNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetBufferGeometryNormal();
       expect(result).assertEqual(0);
       done();
@@ -761,7 +811,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetBufferGeometryAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetBufferGeometryAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetBufferGeometryAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -776,7 +827,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetFormatNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetFormatNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetFormatNormal();
       expect(result).assertEqual(0);
       done();
@@ -791,7 +843,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetFormatAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -806,7 +859,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetUsageNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetUsageNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetUsageNormal();
       expect(result).assertEqual(0);
       done();
@@ -821,7 +875,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetUsageAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -836,7 +891,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetStrideNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetStrideNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetStrideNormal();
       expect(result).assertEqual(0);
       done();
@@ -851,7 +907,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetStrideAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -866,7 +923,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetSwapIntervalNormal();
       expect(result).assertEqual(0);
       done();
@@ -881,7 +939,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetSwapIntervalAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -896,7 +955,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetColorGamutNormal();
       expect(result).assertEqual(0);
       done();
@@ -911,7 +971,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetColorGamutAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -926,7 +987,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetTransformNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetTransformNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetTransformNormal();
       expect(result).assertEqual(0);
       done();
@@ -941,7 +1003,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetTransformAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -956,7 +1019,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetUiTimeStampNormal();
       expect(result).assertEqual(0);
       done();
@@ -971,7 +1035,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetUiTimeStampAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -986,7 +1051,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowHandleOptGetBufferQueueSize', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptGetBufferQueueSize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptGetBufferQueueSize();
       expect(result).assertEqual(0);
       done();
@@ -1001,7 +1067,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessNormal();
       expect(result).assertEqual(0);
       done();
@@ -1016,7 +1083,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnormal', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetHdrWhitePointBrightnessAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1031,7 +1099,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessNormal();
       expect(result).assertEqual(0);
       done();
@@ -1046,7 +1115,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnormal', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetSdrWhitePointBrightnessAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1061,7 +1131,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetSourceTypeNormal();
       expect(result).assertEqual(0);
       done();
@@ -1076,7 +1147,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetSourceTypeAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1091,7 +1163,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal', 2, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: number | string = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeNormal();
       expect(result).assertEqual(0);
       done();
@@ -1106,7 +1179,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetGetAppFrameworkTypeAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1121,7 +1195,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowSetSetScalingModeV2Nullptr', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetSetScalingModeV2Nullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetSetScalingModeV2Nullptr();
       expect(result).assertEqual(0);
       done();
@@ -1136,7 +1211,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowNativeWindowSetScalingModeV2ScalingMode', 0, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetScalingModeV2ScalingMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetScalingModeV2ScalingMode();
       expect(result).assertEqual(0);
       done();
@@ -1151,7 +1227,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetColorSpaceFirst', 3, async (done: Function) => {
+    it('testNativeWindowGetColorSpaceFirst', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetColorSpaceFirst();
       expect(result).assertEqual(0);
       done();
@@ -1166,7 +1243,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowSetColorSpaceNormal', 3, async (done: Function) => {
+    it('testNativeWindowSetColorSpaceNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetColorSpaceNormal();
       expect(result).assertEqual(0);
       done();
@@ -1181,7 +1259,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowSetColorSpaceNullptr', 3, async (done: Function) => {
+    it('testNativeWindowSetColorSpaceNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetColorSpaceNullptr();
       expect(result).assertEqual(0);
       done();
@@ -1196,7 +1275,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeWindowSetColorSpaceAbnormal', 4, async (done: Function) => {
+    it('testNativeWindowSetColorSpaceAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetColorSpaceAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1211,7 +1291,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetColorSpaceNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetColorSpaceNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetColorSpaceNullptr();
       expect(result).assertEqual(0);
       done();
@@ -1226,7 +1307,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetMetadataValueFirst', 3, async (done: Function) => {
+    it('testNativeWindowGetMetadataValueFirst', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetMetadataValueFirst();
       expect(result).assertEqual(0);
       done();
@@ -1241,7 +1323,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testNativeWindowSetDynamicMetadataValue', 0, async (done: Function) => {
+    it('testNativeWindowSetDynamicMetadataValue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetDynamicMetadataValue();
       expect(result).assertEqual(0);
       done();
@@ -1256,7 +1339,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowSetMetadataValueTimes', 3, async (done: Function) => {
+    it('testNativeWindowSetMetadataValueTimes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetMetadataValueTimes();
       expect(result).assertEqual(0);
       done();
@@ -1271,7 +1355,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeWindowSetStaticMetadataValue', 1, async (done: Function) => {
+    it('testNativeWindowSetStaticMetadataValue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetStaticMetadataValue();
       expect(result).assertEqual(0);
       done();
@@ -1286,7 +1371,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNativeWindowSetMetadataValue', 1, async (done: Function) => {
+    it('testNativeWindowSetMetadataValue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetMetadataValue();
       expect(result).assertEqual(0);
       done();
@@ -1301,7 +1387,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeWindowSetNullMetadataValue', 4, async (done: Function) => {
+    it('testNativeWindowSetNullMetadataValue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetNullMetadataValue();
       expect(result).assertEqual(0);
       done();
@@ -1316,7 +1403,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowSetMetadataValueNullptr', 3, async (done: Function) => {
+    it('testNativeWindowSetMetadataValueNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetMetadataValueNullptr();
       expect(result).assertEqual(0);
       done();
@@ -1331,7 +1419,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 4
      */
-    it('testNativeWindowGetMetadataValueAbnormal', 4, async (done: Function) => {
+    it('testNativeWindowGetMetadataValueAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetMetadataValueAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1346,7 +1435,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowGetMetadataValueNullptr', 3, async (done: Function) => {
+    it('testNativeWindowGetMetadataValueNullptr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowGetMetadataValueNullptr();
       expect(result).assertEqual(0);
       done();
@@ -1361,7 +1451,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampNormal();
       expect(result).assertEqual(0);
       done();
@@ -1376,7 +1467,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowHandleOptSetDesiredPresentTimeStampAbNormal();
       expect(result).assertEqual(0);
       done();
@@ -1391,7 +1483,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowSetMetadataValue_metadata_type', 3, async (done: Function) => {
+    it('testNativeWindowSetMetadataValue_metadata_type', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowSetMetadataValue_metadata_type();
       expect(result).assertEqual(0);
       done();
@@ -1405,7 +1498,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowCreateNativeWindow', 3, async (done: Function) => {
+    it('testNativeWindowCreateNativeWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowCreateNativeWindow();
       expect(result).assertEqual(0);
       done();
@@ -1419,7 +1513,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowSetSetScalingMode', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetSetScalingMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetSetScalingMode();
       expect(result).assertEqual(0);
       done();
@@ -1433,7 +1528,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowSetMetaData', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetMetaData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetMetaData();
       expect(result).assertEqual(0);
       done();
@@ -1447,7 +1543,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowSetMetaDataSet', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetMetaDataSet', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetMetaDataSet();
       expect(result).assertEqual(0);
       done();
@@ -1461,7 +1558,8 @@ export default function nativeWindowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testNativeWindowNativeWindowSetTunnelHandle', 3, async (done: Function) => {
+    it('testNativeWindowNativeWindowSetTunnelHandle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
       let result: number = nativeWindow.testNativeWindowNativeWindowSetTunnelHandle();
       expect(result).assertEqual(0);
       done();

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array,clear,WEBGL2_FRAGMENT_SHADER_DEMO} from './WebGL2';
 
@@ -71,7 +71,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui', 0, async function (done) {
+        it('webgl2_test_uniform1ui', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui] uniform1ui");
             let p = createProgram(gl, `#version 300 es
                 uniform uint u;
@@ -99,7 +99,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_1
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_1', 0, async function (done) {
+        it('webgl2_test_uniform1ui_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_1] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(u, null);
@@ -113,7 +113,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_2
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_2', 0, async function (done) {
+        it('webgl2_test_uniform1ui_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_2] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(u, undefined);
@@ -127,7 +127,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_3
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_3', 0, async function (done) {
+        it('webgl2_test_uniform1ui_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_3] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(u, "100");
@@ -141,7 +141,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_4
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_4', 0, async function (done) {
+        it('webgl2_test_uniform1ui_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_4] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(null, 100);
@@ -155,7 +155,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_5
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_5', 0, async function (done) {
+        it('webgl2_test_uniform1ui_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_5] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(undefined, 100);
@@ -169,7 +169,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_6
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_6', 0, async function (done) {
+        it('webgl2_test_uniform1ui_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_6] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(undefined, undefined);
@@ -183,7 +183,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1ui_7
          * @tc.desc Test uniform1ui.
          */
-        it('webgl2_test_uniform1ui_7', 0, async function (done) {
+        it('webgl2_test_uniform1ui_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1ui_7] uniform1ui");
             uniform((u) => {
                 gl.uniform1ui(null, null);
@@ -219,7 +219,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui', 0, async function (done) {
+        it('webgl2_test_uniform2ui', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui] uniform2ui");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec2 u;
@@ -250,7 +250,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_1
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_1', 0, async function (done) {
+        it('webgl2_test_uniform2ui_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_1] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(u, 1, null);
@@ -264,7 +264,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_2
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_2', 0, async function (done) {
+        it('webgl2_test_uniform2ui_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_2] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(u, 1, undefined);
@@ -278,7 +278,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_3
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_3', 0, async function (done) {
+        it('webgl2_test_uniform2ui_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_3] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(u, 1, undefined);
@@ -292,7 +292,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_4
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_4', 0, async function (done) {
+        it('webgl2_test_uniform2ui_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_4] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(u, null, null);
@@ -306,7 +306,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_5
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_5', 0, async function (done) {
+        it('webgl2_test_uniform2ui_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_5] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(u, undefined, undefined);
@@ -320,7 +320,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_6
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_6', 0, async function (done) {
+        it('webgl2_test_uniform2ui_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_6] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(null, null, null);
@@ -334,7 +334,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2ui_7
          * @tc.desc Test uniform2ui.
          */
-        it('webgl2_test_uniform2ui_7', 0, async function (done) {
+        it('webgl2_test_uniform2ui_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2ui_7] uniform2ui");
             uniform2ui((u) => {
                 gl.uniform2ui(undefined, undefined, undefined);
@@ -371,7 +371,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui', 0, async function (done) {
+        it('webgl2_test_uniform3ui', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui] uniform3ui");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec3 u;
@@ -404,7 +404,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui_1
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui_1', 0, async function (done) {
+        it('webgl2_test_uniform3ui_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui_1] uniform3ui");
             uniform3ui((u) => {
                 gl.uniform3ui(u, 0, 1, null);
@@ -418,7 +418,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui_2
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui_2', 0, async function (done) {
+        it('webgl2_test_uniform3ui_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui_2] uniform3ui");
             uniform3ui((u) => {
                 gl.uniform3ui(u, 0, 1, undefined);
@@ -432,7 +432,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui_3
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui_3', 0, async function (done) {
+        it('webgl2_test_uniform3ui_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui_3] uniform3ui");
             uniform3ui((u) => {
                 gl.uniform3ui(u, 0, null, undefined);
@@ -446,7 +446,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui_4
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui_4', 0, async function (done) {
+        it('webgl2_test_uniform3ui_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui_4] uniform3ui");
             uniform3ui((u) => {
                 gl.uniform3ui(u, null, null, undefined);
@@ -460,7 +460,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3ui_5
          * @tc.desc Test uniform3ui.
          */
-        it('webgl2_test_uniform3ui_5', 0, async function (done) {
+        it('webgl2_test_uniform3ui_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3ui_5] uniform3ui");
             uniform3ui((u) => {
                 gl.uniform3ui(null, null, null, undefined);
@@ -497,7 +497,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui', 0, async function (done) {
+        it('webgl2_test_uniform4ui', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui] uniform4ui");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec4 u;
@@ -531,7 +531,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_1
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_1', 0, async function (done) {
+        it('webgl2_test_uniform4ui_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_1] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, 1, 1, null);
@@ -545,7 +545,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_2
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_2', 0, async function (done) {
+        it('webgl2_test_uniform4ui_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_2] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, 1, null, null);
@@ -559,7 +559,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_3
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_3', 0, async function (done) {
+        it('webgl2_test_uniform4ui_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_3] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, null, null, null);
@@ -573,7 +573,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_4
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_4', 0, async function (done) {
+        it('webgl2_test_uniform4ui_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_4] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, null, null, null, null);
@@ -587,7 +587,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_5
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_5', 0, async function (done) {
+        it('webgl2_test_uniform4ui_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_5] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(null, null, null, null, null);
@@ -601,7 +601,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_6
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_6', 0, async function (done) {
+        it('webgl2_test_uniform4ui_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_6] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, 1, 1, undefined);
@@ -615,7 +615,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_7
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_7', 0, async function (done) {
+        it('webgl2_test_uniform4ui_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_7] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, 1, undefined, undefined);
@@ -629,7 +629,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_8
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_8', 0, async function (done) {
+        it('webgl2_test_uniform4ui_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_8] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, 1, undefined, undefined, undefined);
@@ -643,7 +643,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_9
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_9', 0, async function (done) {
+        it('webgl2_test_uniform4ui_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_9] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(u, undefined, undefined, undefined, undefined);
@@ -657,7 +657,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4ui_10
          * @tc.desc Test uniform4ui.
          */
-        it('webgl2_test_uniform4ui_10', 0, async function (done) {
+        it('webgl2_test_uniform4ui_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4ui_10] uniform4ui");
             uniform4ui((u) => {
                 gl.uniform4ui(undefined, undefined, undefined, undefined, undefined);
@@ -691,7 +691,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv', 0, async function (done) {
+        it('webgl2_test_uniform1uiv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv] uniform1uiv");
             let p = createProgram(gl, `#version 300 es
                 uniform uint u;
@@ -720,7 +720,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv_1
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv_1', 0, async function (done) {
+        it('webgl2_test_uniform1uiv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv_1] uniform1uiv");
             uniform1uiv((u) => {
                 gl.uniform1uiv(u, new Uint32Array([1, 0]), 1, null);
@@ -734,7 +734,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv_2
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv_2', 0, async function (done) {
+        it('webgl2_test_uniform1uiv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv_2] uniform1uiv");
             uniform1uiv((u) => {
                 gl.uniform1uiv(u, new Uint32Array([1, 0]), 1, undefined);
@@ -748,7 +748,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv_3
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv_3', 0, async function (done) {
+        it('webgl2_test_uniform1uiv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv_3] uniform1uiv");
             uniform1uiv((u) => {
                 gl.uniform1uiv(u, new Uint32Array([1, 0]), undefined, undefined);
@@ -762,7 +762,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv_4
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv_4', 0, async function (done) {
+        it('webgl2_test_uniform1uiv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv_4] uniform1uiv");
             uniform1uiv((u) => {
                 gl.uniform1uiv(u, new Uint32Array([1, 0]), null, undefined);
@@ -776,7 +776,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1uiv_5
          * @tc.desc Test uniform1uiv.
          */
-        it('webgl2_test_uniform1uiv_5', 0, async function (done) {
+        it('webgl2_test_uniform1uiv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1uiv_5] uniform1uiv");
             uniform1uiv((u) => {
                 gl.uniform1uiv(null, new Uint32Array([1, 0]), null, undefined);
@@ -811,7 +811,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv', 0, async function (done) {
+        it('webgl2_test_uniform2uiv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv] uniform2uiv");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec2 u;
@@ -842,7 +842,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv_1
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv_1', 0, async function (done) {
+        it('webgl2_test_uniform2uiv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv_1] uniform2uiv");
             uniform2uiv((u) => {
                 gl.uniform2uiv(u, new Uint32Array([0, 1, 1]), 1, null);
@@ -856,7 +856,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv_2
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv_2', 0, async function (done) {
+        it('webgl2_test_uniform2uiv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv_2] uniform2uiv");
             uniform2uiv((u) => {
                 gl.uniform2uiv(u, new Uint32Array([0, 1, 1]), 1, undefined);
@@ -870,7 +870,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv_3
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv_3', 0, async function (done) {
+        it('webgl2_test_uniform2uiv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv_3] uniform2uiv");
             uniform2uiv((u) => {
                 gl.uniform2uiv(u, new Uint32Array([0, 1, 1]), undefined, undefined);
@@ -884,7 +884,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv_4
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv_4', 0, async function (done) {
+        it('webgl2_test_uniform2uiv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv_4] uniform2uiv");
             uniform2uiv((u) => {
                 gl.uniform2uiv(u, new Uint32Array([0, 1, 1]), null, undefined);
@@ -898,7 +898,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2uiv_5
          * @tc.desc Test uniform2uiv.
          */
-        it('webgl2_test_uniform2uiv_5', 0, async function (done) {
+        it('webgl2_test_uniform2uiv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2uiv_5] uniform2uiv");
             uniform2uiv((u) => {
                 gl.uniform2uiv(null, new Uint32Array([0, 1, 1]), null, undefined);
@@ -934,7 +934,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv', 0, async function (done) {
+        it('webgl2_test_uniform3uiv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv] uniform3uiv");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec3 u;
@@ -967,7 +967,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv_1
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv_1', 0, async function (done) {
+        it('webgl2_test_uniform3uiv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv_1] uniform3uiv");
             uniform3uiv((u) => {
                 gl.uniform3uiv(u, new Uint32Array([0, 1, 1, 1]), 1, null);
@@ -981,7 +981,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv_2
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv_2', 0, async function (done) {
+        it('webgl2_test_uniform3uiv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv_2] uniform3uiv");
             uniform3uiv((u) => {
                 gl.uniform3uiv(u, new Uint32Array([0, 1, 1, 1]), 1, undefined);
@@ -995,7 +995,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv_3
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv_3', 0, async function (done) {
+        it('webgl2_test_uniform3uiv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv_3] uniform3uiv");
             uniform3uiv((u) => {
                 gl.uniform3uiv(u, new Uint32Array([0, 1, 1, 1]), undefined, undefined);
@@ -1009,7 +1009,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv_4
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv_4', 0, async function (done) {
+        it('webgl2_test_uniform3uiv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv_4] uniform3uiv");
             uniform3uiv((u) => {
                 gl.uniform3uiv(u, new Uint32Array([0, 1, 1, 1]), null, undefined);
@@ -1023,7 +1023,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3uiv_5
          * @tc.desc Test uniform3uiv.
          */
-        it('webgl2_test_uniform3uiv_5', 0, async function (done) {
+        it('webgl2_test_uniform3uiv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3uiv_5] uniform3uiv");
             uniform3uiv((u) => {
                 gl.uniform3uiv(null, new Uint32Array([0, 1, 1, 1]), null, undefined);
@@ -1059,7 +1059,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv', 0, async function (done) {
+        it('webgl2_test_uniform4uiv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv] uniform4uiv");
             let p = createProgram(gl, `#version 300 es
                 uniform uvec4 u;
@@ -1093,7 +1093,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv_1
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv_1', 0, async function (done) {
+        it('webgl2_test_uniform4uiv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv_1] uniform4uiv");
             uniform4uiv((u) => {
                 gl.uniform4uiv(u, new Uint32Array([0, 1, 1, 1, 1]), 1, null);
@@ -1107,7 +1107,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv_2
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv_2', 0, async function (done) {
+        it('webgl2_test_uniform4uiv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv_2] uniform4uiv");
             uniform4uiv((u) => {
                 gl.uniform4uiv(u, new Uint32Array([0, 1, 1, 1, 1]), 1, undefined);
@@ -1121,7 +1121,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv_3
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv_3', 0, async function (done) {
+        it('webgl2_test_uniform4uiv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv_3] uniform4uiv");
             uniform4uiv((u) => {
                 gl.uniform4uiv(u, new Uint32Array([0, 1, 1, 1, 1]), undefined, undefined);
@@ -1135,7 +1135,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv_4
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv_4', 0, async function (done) {
+        it('webgl2_test_uniform4uiv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv_4] uniform4uiv");
             uniform4uiv((u) => {
                 gl.uniform4uiv(u, new Uint32Array([0, 1, 1, 1, 1]), null, undefined);
@@ -1149,7 +1149,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4uiv_5
          * @tc.desc Test uniform4uiv.
          */
-        it('webgl2_test_uniform4uiv_5', 0, async function (done) {
+        it('webgl2_test_uniform4uiv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4uiv_5] uniform4uiv");
             uniform4uiv((u) => {
                 gl.uniform4uiv(null, new Uint32Array([0, 1, 1, 1, 1]), null, undefined);
@@ -1183,7 +1183,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv] uniformMatrix3x2fv");
             let p = createProgram(gl, `#version 300 es
                 in vec3 a_position;
@@ -1222,7 +1223,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv_1
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv_1] uniformMatrix3x2fv");
             uniformMatrix3x2fv((m32) => {
                 gl.uniformMatrix3x2fv(m32, null, new Float32Array([
@@ -1241,7 +1243,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv_2
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv_2] uniformMatrix3x2fv");
             uniformMatrix3x2fv((m32) => {
                 gl.uniformMatrix3x2fv(m32, null, new Float32Array([
@@ -1260,7 +1263,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv_3
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv_3] uniformMatrix3x2fv");
             uniformMatrix3x2fv((m32) => {
                 gl.uniformMatrix3x2fv(m32, null, new Float32Array([
@@ -1279,7 +1283,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv_4
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv_4] uniformMatrix3x2fv");
             uniformMatrix3x2fv((m32) => {
                 gl.uniformMatrix3x2fv(m32, null, new Float32Array([
@@ -1298,7 +1303,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x2fv_5
          * @tc.desc Test uniformMatrix3x2fv.
          */
-        it('webgl2_test_uniformMatrix3x2fv_5', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x2fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x2fv_5] uniformMatrix3x2fv");
             uniformMatrix3x2fv((m32) => {
                 gl.uniformMatrix3x2fv(null, null, new Float32Array([
@@ -1337,7 +1343,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x2fv
          * @tc.desc Test uniformMatrix4x2fv.
          */
-        it('webgl2_test_uniformMatrix4x2fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x2fv] uniformMatrix4x2fv");
             let p = createProgram(gl, `#version 300 es
                 in vec4 a_position;
@@ -1379,7 +1386,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x2fv_1
          * @tc.desc Test uniformMatrix4x2fv.
          */
-        it('webgl2_test_uniformMatrix4x2fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x2fv_1] uniformMatrix4x2fv");
             uniformMatrix4x2fv((m42) => {
                 gl.uniformMatrix4x2fv(m42, null, new Float32Array([
@@ -1399,7 +1407,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x2fv_2
          * @tc.desc Test uniformMatrix4x2fv.
          */
-        it('webgl2_test_uniformMatrix4x2fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x2fv_2] uniformMatrix4x2fv");
             uniformMatrix4x2fv((m42) => {
                 gl.uniformMatrix4x2fv(m42, null, new Float32Array([
@@ -1419,7 +1428,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x2fv_3
          * @tc.desc Test uniformMatrix4x2fv.
          */
-        it('webgl2_test_uniformMatrix4x2fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x2fv_3] uniformMatrix4x2fv");
             uniformMatrix4x2fv((m42) => {
                 gl.uniformMatrix4x2fv(m42, null, new Float32Array([
@@ -1439,7 +1449,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x2fv_4
          * @tc.desc Test uniformMatrix4x2fv.
          */
-        it('webgl2_test_uniformMatrix4x2fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x2fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x2fv_4] uniformMatrix4x2fv");
             uniformMatrix4x2fv((m42) => {
                 gl.uniformMatrix4x2fv(m42, null, new Float32Array([
@@ -1479,7 +1490,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x3fv
          * @tc.desc Test uniformMatrix2x3fv.
          */
-        it('webgl2_test_uniformMatrix2x3fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x3fv] uniformMatrix2x3fv");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -1517,7 +1529,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x3fv_1
          * @tc.desc Test uniformMatrix2x3fv.
          */
-        it('webgl2_test_uniformMatrix2x3fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x3fv_1] uniformMatrix2x3fv");
             uniformMatrix2x3fv((m23) => {
                 gl.uniformMatrix2x3fv(m23, null, new Float32Array([
@@ -1535,7 +1548,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x3fv_2
          * @tc.desc Test uniformMatrix2x3fv.
          */
-        it('webgl2_test_uniformMatrix2x3fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x3fv_2] uniformMatrix2x3fv");
             uniformMatrix2x3fv((m23) => {
                 gl.uniformMatrix2x3fv(m23, null, new Float32Array([
@@ -1553,7 +1567,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x3fv_3
          * @tc.desc Test uniformMatrix2x3fv.
          */
-        it('webgl2_test_uniformMatrix2x3fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x3fv_3] uniformMatrix2x3fv");
             uniformMatrix2x3fv((m23) => {
                 gl.uniformMatrix2x3fv(m23, null, new Float32Array([
@@ -1571,7 +1586,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x3fv_4
          * @tc.desc Test uniformMatrix2x3fv.
          */
-        it('webgl2_test_uniformMatrix2x3fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x3fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x3fv_4] uniformMatrix2x3fv");
             uniformMatrix2x3fv((m23) => {
                 gl.uniformMatrix2x3fv(m23, null, new Float32Array([
@@ -1609,7 +1625,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x3fv
          * @tc.desc Test uniformMatrix4x3fv.
          */
-        it('webgl2_test_uniformMatrix4x3fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x3fv] uniformMatrix4x3fv");
             let p = createProgram(gl, `#version 300 es
                 in vec4 a_position;
@@ -1655,7 +1672,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x3fv_1
          * @tc.desc Test uniformMatrix4x3fv.
          */
-        it('webgl2_test_uniformMatrix4x3fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x3fv_1] uniformMatrix4x3fv");
             uniformMatrix4x3fv((m) => {
                 gl.uniformMatrix4x3fv(m, null, new Float32Array([
@@ -1675,7 +1693,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x3fv_2
          * @tc.desc Test uniformMatrix4x3fv.
          */
-        it('webgl2_test_uniformMatrix4x3fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x3fv_2] uniformMatrix4x3fv");
             uniformMatrix4x3fv((m) => {
                 gl.uniformMatrix4x3fv(m, null, new Float32Array([
@@ -1695,7 +1714,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x3fv_3
          * @tc.desc Test uniformMatrix4x3fv.
          */
-        it('webgl2_test_uniformMatrix4x3fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x3fv_3] uniformMatrix4x3fv");
             uniformMatrix4x3fv((m) => {
                 gl.uniformMatrix4x3fv(m, null, new Float32Array([
@@ -1715,7 +1735,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4x3fv_4
          * @tc.desc Test uniformMatrix4x3fv.
          */
-        it('webgl2_test_uniformMatrix4x3fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4x3fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4x3fv_4] uniformMatrix4x3fv");
             uniformMatrix4x3fv((m) => {
                 gl.uniformMatrix4x3fv(m, null, new Float32Array([
@@ -1755,7 +1776,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x4fv
          * @tc.desc Test uniformMatrix2x4fv.
          */
-        it('webgl2_test_uniformMatrix2x4fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x4fv] uniformMatrix2x4fv");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_position;
@@ -1795,7 +1817,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x4fv_1
          * @tc.desc Test uniformMatrix2x4fv.
          */
-        it('webgl2_test_uniformMatrix2x4fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x4fv_1] uniformMatrix2x4fv");
             uniformMatrix2x4fv((m) => {
                 gl.uniformMatrix2x4fv(m, null, new Float32Array([
@@ -1813,7 +1836,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x4fv_2
          * @tc.desc Test uniformMatrix2x4fv.
          */
-        it('webgl2_test_uniformMatrix2x4fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x4fv_2] uniformMatrix2x4fv");
             uniformMatrix2x4fv((m) => {
                 gl.uniformMatrix2x4fv(m, null, new Float32Array([
@@ -1831,7 +1855,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x4fv_3
          * @tc.desc Test uniformMatrix2x4fv.
          */
-        it('webgl2_test_uniformMatrix2x4fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x4fv_3] uniformMatrix2x4fv");
             uniformMatrix2x4fv((m) => {
                 gl.uniformMatrix2x4fv(m, null, new Float32Array([
@@ -1849,7 +1874,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2x4fv_4
          * @tc.desc Test uniformMatrix2x4fv.
          */
-        it('webgl2_test_uniformMatrix2x4fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2x4fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2x4fv_4] uniformMatrix2x4fv");
             uniformMatrix2x4fv((m) => {
                 gl.uniformMatrix2x4fv(m, null, new Float32Array([
@@ -1887,7 +1913,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x4fv
          * @tc.desc Test uniformMatrix3x4fv.
          */
-        it('webgl2_test_uniformMatrix3x4fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x4fv] uniformMatrix3x4fv");
             let p = createProgram(gl, `#version 300 es
                 in vec3 a_position;
@@ -1928,7 +1955,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x4fv_1
          * @tc.desc Test uniformMatrix3x4fv.
          */
-        it('webgl2_test_uniformMatrix3x4fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x4fv_1] uniformMatrix3x4fv");
             uniformMatrix3x4fv((m) => {
                 gl.uniformMatrix3x4fv(m, null, new Float32Array([
@@ -1947,7 +1975,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x4fv_2
          * @tc.desc Test uniformMatrix3x4fv.
          */
-        it('webgl2_test_uniformMatrix3x4fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x4fv_2] uniformMatrix3x4fv");
             uniformMatrix3x4fv((m) => {
                 gl.uniformMatrix3x4fv(m, null, new Float32Array([
@@ -1966,7 +1995,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x4fv_3
          * @tc.desc Test uniformMatrix3x4fv.
          */
-        it('webgl2_test_uniformMatrix3x4fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x4fv_3] uniformMatrix3x4fv");
             uniformMatrix3x4fv((m) => {
                 gl.uniformMatrix3x4fv(m, null, new Float32Array([
@@ -1985,7 +2015,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3x4fv_4
          * @tc.desc Test uniformMatrix3x4fv.
          */
-        it('webgl2_test_uniformMatrix3x4fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3x4fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3x4fv_4] uniformMatrix3x4fv");
             uniformMatrix3x4fv((m) => {
                 gl.uniformMatrix3x4fv(m, null, new Float32Array([
@@ -2024,7 +2055,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv', 0, async function (done) {
+        it('webgl2_test_uniform1fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv] uniform1fv");
             let p = createProgram(gl, `#version 300 es
                 uniform float u;
@@ -2053,7 +2084,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv_1
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv_1', 0, async function (done) {
+        it('webgl2_test_uniform1fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv_1] uniform1fv");
             uniform1fv((u) => {
                 gl.uniform1fv(u, new Float32Array([1.0, 0.0, 1.0]), 1, null);
@@ -2067,7 +2098,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv_2
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv_2', 0, async function (done) {
+        it('webgl2_test_uniform1fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv_2] uniform1fv");
             uniform1fv((u) => {
                 gl.uniform1fv(u, new Float32Array([1.0, 0.0, 1.0]), 1, undefined);
@@ -2081,7 +2112,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv_3
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv_3', 0, async function (done) {
+        it('webgl2_test_uniform1fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv_3] uniform1fv");
             uniform1fv((u) => {
                 gl.uniform1fv(u, new Float32Array([1.0, 0.0, 1.0]), null, undefined);
@@ -2095,7 +2126,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv_4
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv_4', 0, async function (done) {
+        it('webgl2_test_uniform1fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv_4] uniform1fv");
             uniform1fv((u) => {
                 gl.uniform1fv(u, new Float32Array([1.0, 0.0, 1.0]), null, undefined);
@@ -2109,7 +2140,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1fv_5
          * @tc.desc Test uniform1fv.
          */
-        it('webgl2_test_uniform1fv_5', 0, async function (done) {
+        it('webgl2_test_uniform1fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1fv_5] uniform1fv");
             uniform1fv((u) => {
                 gl.uniform1fv(null, new Float32Array([1.0, 0.0, 1.0]), null, undefined);
@@ -2144,7 +2175,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv', 0, async function (done) {
+        it('webgl2_test_uniform2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv] uniform2fv");
             let p = createProgram(gl, `#version 300 es
                 uniform vec2 u;
@@ -2175,7 +2206,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv_1
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv_1', 0, async function (done) {
+        it('webgl2_test_uniform2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv_1] uniform2fv");
             uniform2fv((u) => {
                 gl.uniform2fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0]), 2, null);
@@ -2189,7 +2220,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv_2
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv_2', 0, async function (done) {
+        it('webgl2_test_uniform2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv_2] uniform2fv");
             uniform2fv((u) => {
                 gl.uniform2fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0]), 1, undefined);
@@ -2203,7 +2234,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv_3
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv_3', 0, async function (done) {
+        it('webgl2_test_uniform2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv_3] uniform2fv");
             uniform2fv((u) => {
                 gl.uniform2fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0]), null, undefined);
@@ -2217,7 +2248,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv_4
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv_4', 0, async function (done) {
+        it('webgl2_test_uniform2fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv_4] uniform2fv");
             uniform2fv((u) => {
                 gl.uniform2fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0]), null, undefined);
@@ -2231,7 +2262,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2fv_5
          * @tc.desc Test uniform2fv.
          */
-        it('webgl2_test_uniform2fv_5', 0, async function (done) {
+        it('webgl2_test_uniform2fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2fv_5] uniform2fv");
             uniform2fv((u) => {
                 gl.uniform2fv(null, new Float32Array([1.0, 0.0, 1.0, 1.0]), null, undefined);
@@ -2267,7 +2298,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv', 0, async function (done) {
+        it('webgl2_test_uniform3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv] uniform3fv");
             let p = createProgram(gl, `#version 300 es
                 uniform vec3 u;
@@ -2300,7 +2331,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv_1
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv_1', 0, async function (done) {
+        it('webgl2_test_uniform3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv_1] uniform3fv");
             uniform3fv((u) => {
                 gl.uniform3fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0, 1.0]), 2, null);
@@ -2314,7 +2345,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv_2
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv_2', 0, async function (done) {
+        it('webgl2_test_uniform3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv_2] uniform3fv");
             uniform3fv((u) => {
                 gl.uniform3fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0, 1.0]), 1, undefined);
@@ -2328,7 +2359,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv_3
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv_3', 0, async function (done) {
+        it('webgl2_test_uniform3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv_3] uniform3fv");
             uniform3fv((u) => {
                 gl.uniform3fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2342,7 +2373,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv_4
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv_4', 0, async function (done) {
+        it('webgl2_test_uniform3fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv_4] uniform3fv");
             uniform3fv((u) => {
                 gl.uniform3fv(u, new Float32Array([1.0, 0.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2356,7 +2387,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3fv_5
          * @tc.desc Test uniform3fv.
          */
-        it('webgl2_test_uniform3fv_5', 0, async function (done) {
+        it('webgl2_test_uniform3fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3fv_5] uniform3fv");
             uniform3fv((u) => {
                 gl.uniform3fv(null, new Float32Array([1.0, 0.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2392,7 +2423,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv', 0, async function (done) {
+        it('webgl2_test_uniform4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv] uniform4fv");
             let p = createProgram(gl, `#version 300 es
                 uniform vec4 u;
@@ -2425,7 +2456,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv_1
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv_1', 0, async function (done) {
+        it('webgl2_test_uniform4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv_1] uniform4fv");
             uniform4fv((u) => {
                 gl.uniform4fv(u, new Float32Array([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]), 4, null);
@@ -2439,7 +2470,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv_2
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv_2', 0, async function (done) {
+        it('webgl2_test_uniform4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv_2] uniform4fv");
             uniform4fv((u) => {
                 gl.uniform4fv(u, new Float32Array([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]), 4, undefined);
@@ -2453,7 +2484,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv_3
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv_3', 0, async function (done) {
+        it('webgl2_test_uniform4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv_3] uniform4fv");
             uniform4fv((u) => {
                 gl.uniform4fv(u, new Float32Array([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2467,7 +2498,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv_4
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv_4', 0, async function (done) {
+        it('webgl2_test_uniform4fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv_4] uniform4fv");
             uniform4fv((u) => {
                 gl.uniform4fv(u, new Float32Array([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2481,7 +2512,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4fv_5
          * @tc.desc Test uniform4fv.
          */
-        it('webgl2_test_uniform4fv_5', 0, async function (done) {
+        it('webgl2_test_uniform4fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4fv_5] uniform4fv");
             uniform4fv((u) => {
                 gl.uniform4fv(null, new Float32Array([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]), null, undefined);
@@ -2515,7 +2546,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv', 0, async function (done) {
+        it('webgl2_test_uniform1iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv] uniform1iv");
             let p = createProgram(gl, `#version 300 es
                 uniform int u;
@@ -2544,7 +2575,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv_1
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv_1', 0, async function (done) {
+        it('webgl2_test_uniform1iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv_1] uniform1iv");
             uniform1iv((u) => {
                 gl.uniform1iv(u, new Int32Array([0, 1, 1]), 1, null);
@@ -2558,7 +2589,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv_2
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv_2', 0, async function (done) {
+        it('webgl2_test_uniform1iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv_2] uniform1iv");
             uniform1iv((u) => {
                 gl.uniform1iv(u, new Int32Array([0, 1, 1]), 1, undefined);
@@ -2572,7 +2603,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv_3
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv_3', 0, async function (done) {
+        it('webgl2_test_uniform1iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv_3] uniform1iv");
             uniform1iv((u) => {
                 gl.uniform1iv(u, new Int32Array([0, 1, 1]), null, undefined);
@@ -2586,7 +2617,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv_4
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv_4', 0, async function (done) {
+        it('webgl2_test_uniform1iv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv_4] uniform1iv");
             uniform1iv((u) => {
                 gl.uniform1iv(u, new Int32Array([0, 1, 1]), null, undefined);
@@ -2600,7 +2631,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform1iv_5
          * @tc.desc Test uniform1iv.
          */
-        it('webgl2_test_uniform1iv_5', 0, async function (done) {
+        it('webgl2_test_uniform1iv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform1iv_5] uniform1iv");
             uniform1iv((u) => {
                 gl.uniform1iv(null, new Int32Array([0, 1, 1]), null, undefined);
@@ -2635,7 +2666,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv', 0, async function (done) {
+        it('webgl2_test_uniform2iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv] uniform2iv");
             let p = createProgram(gl, `#version 300 es
                 uniform ivec2 u;
@@ -2666,7 +2697,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv_1
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv_1', 0, async function (done) {
+        it('webgl2_test_uniform2iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv_1] uniform2iv");
             uniform2iv((u) => {
                 gl.uniform2iv(u, new Int32Array([0, 1, 1, 1]), 1, null);
@@ -2680,7 +2711,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv_2
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv_2', 0, async function (done) {
+        it('webgl2_test_uniform2iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv_2] uniform2iv");
             uniform2iv((u) => {
                 gl.uniform2iv(u, new Int32Array([0, 1, 1, 1]), 1, undefined);
@@ -2694,7 +2725,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv_3
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv_3', 0, async function (done) {
+        it('webgl2_test_uniform2iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv_3] uniform2iv");
             uniform2iv((u) => {
                 gl.uniform2iv(u, new Int32Array([0, 1, 1, 1]), null, undefined);
@@ -2708,7 +2739,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv_4
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv_4', 0, async function (done) {
+        it('webgl2_test_uniform2iv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv_4] uniform2iv");
             uniform2iv((u) => {
                 gl.uniform2iv(u, new Int32Array([0, 1, 1, 1]), null, undefined);
@@ -2722,7 +2753,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform2iv_5
          * @tc.desc Test uniform2iv.
          */
-        it('webgl2_test_uniform2iv_5', 0, async function (done) {
+        it('webgl2_test_uniform2iv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform2iv_5] uniform2iv");
             uniform2iv((u) => {
                 gl.uniform2iv(null, new Int32Array([0, 1, 1, 1]), null, undefined);
@@ -2758,7 +2789,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv', 0, async function (done) {
+        it('webgl2_test_uniform3iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv] uniform3iv");
             let p = createProgram(gl, `#version 300 es
                 uniform ivec3 u;
@@ -2791,7 +2822,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv_1
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv_1', 0, async function (done) {
+        it('webgl2_test_uniform3iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv_1] uniform3iv");
             uniform3iv((u) => {
                 gl.uniform3iv(u, new Int32Array([0, 0, 1, 1, 1, 1]), 1, null);
@@ -2805,7 +2836,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv_2
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv_2', 0, async function (done) {
+        it('webgl2_test_uniform3iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv_2] uniform3iv");
             uniform3iv((u) => {
                 gl.uniform3iv(u, new Int32Array([0, 0, 1, 1, 1, 1]), 1, undefined);
@@ -2819,7 +2850,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv_3
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv_3', 0, async function (done) {
+        it('webgl2_test_uniform3iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv_3] uniform3iv");
             uniform3iv((u) => {
                 gl.uniform3iv(u, new Int32Array([0, 0, 1, 1, 1, 1]), null, undefined);
@@ -2833,7 +2864,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv_4
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv_4', 0, async function (done) {
+        it('webgl2_test_uniform3iv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv_4] uniform3iv");
             uniform3iv((u) => {
                 gl.uniform3iv(u, new Int32Array([0, 0, 1, 1, 1, 1]), null, undefined);
@@ -2847,7 +2878,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform3iv_5
          * @tc.desc Test uniform3iv.
          */
-        it('webgl2_test_uniform3iv_5', 0, async function (done) {
+        it('webgl2_test_uniform3iv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform3iv_5] uniform3iv");
             uniform3iv((u) => {
                 gl.uniform3iv(null, new Int32Array([0, 0, 1, 1, 1, 1]), null, undefined);
@@ -2883,7 +2914,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv', 0, async function (done) {
+        it('webgl2_test_uniform4iv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv] uniform4iv");
             let p = createProgram(gl, `#version 300 es
                 uniform ivec4 u;
@@ -2920,7 +2951,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv_1
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv_1', 0, async function (done) {
+        it('webgl2_test_uniform4iv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv_1] uniform4iv");
             uniform4iv((u) => {
                 gl.uniform4iv(u, new Int32Array([
@@ -2937,7 +2968,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv_2
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv_2', 0, async function (done) {
+        it('webgl2_test_uniform4iv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv_2] uniform4iv");
             uniform4iv((u) => {
                 gl.uniform4iv(u, new Int32Array([
@@ -2954,7 +2985,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv_3
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv_3', 0, async function (done) {
+        it('webgl2_test_uniform4iv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv_3] uniform4iv");
             uniform4iv((u) => {
                 gl.uniform4iv(u, new Int32Array([
@@ -2971,7 +3002,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv_4
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv_4', 0, async function (done) {
+        it('webgl2_test_uniform4iv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv_4] uniform4iv");
             uniform4iv((u) => {
                 gl.uniform4iv(u, new Int32Array([
@@ -2988,7 +3019,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniform4iv_5
          * @tc.desc Test uniform4iv.
          */
-        it('webgl2_test_uniform4iv_5', 0, async function (done) {
+        it('webgl2_test_uniform4iv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniform4iv_5] uniform4iv");
             uniform4iv((u) => {
                 gl.uniform4iv(null, new Int32Array([
@@ -3026,7 +3057,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv] uniformMatrix2fv");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_Position;
@@ -3064,7 +3095,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv_1
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv_1] uniformMatrix2fv");
             uniformMatrix2fv((u) => {
                 gl.uniformMatrix2fv(u, null, new Float32Array([
@@ -3083,7 +3115,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv_2
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv_2] uniformMatrix2fv");
             uniformMatrix2fv((u) => {
                 gl.uniformMatrix2fv(u, null, new Float32Array([
@@ -3102,7 +3135,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv_3
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv_3] uniformMatrix2fv");
             uniformMatrix2fv((u) => {
                 gl.uniformMatrix2fv(u, null, new Float32Array([
@@ -3121,7 +3155,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv_4
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv_4] uniformMatrix2fv");
             uniformMatrix2fv((u) => {
                 gl.uniformMatrix2fv(u, null, new Float32Array([
@@ -3140,7 +3175,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix2fv_5
          * @tc.desc Test uniformMatrix2fv.
          */
-        it('webgl2_test_uniformMatrix2fv_5', 0, async function (done) {
+        it('webgl2_test_uniformMatrix2fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix2fv_5] uniformMatrix2fv");
             uniformMatrix2fv((u) => {
                 gl.uniformMatrix2fv(null, null, new Float32Array([
@@ -3180,7 +3216,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv] uniformMatrix3fv");
             let p = createProgram(gl, `#version 300 es
                 in vec2 a_Position;
@@ -3223,7 +3259,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv_1
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv_1] uniformMatrix3fv");
             uniformMatrix3fv((u) => {
                 gl.uniformMatrix3fv(u, null, new Float32Array([
@@ -3242,7 +3279,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv_2
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv_2] uniformMatrix3fv");
             uniformMatrix3fv((u) => {
                 gl.uniformMatrix3fv(u, null, new Float32Array([
@@ -3261,7 +3299,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv_3
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv_3] uniformMatrix3fv");
             uniformMatrix3fv((u) => {
                 gl.uniformMatrix3fv(u, null, new Float32Array([
@@ -3280,7 +3319,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv_4
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv_4] uniformMatrix3fv");
             uniformMatrix3fv((u) => {
                 gl.uniformMatrix3fv(u, null, new Float32Array([
@@ -3299,7 +3339,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix3fv_5
          * @tc.desc Test uniformMatrix3fv.
          */
-        it('webgl2_test_uniformMatrix3fv_5', 0, async function (done) {
+        it('webgl2_test_uniformMatrix3fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix3fv_5] uniformMatrix3fv");
             uniformMatrix3fv((u) => {
                 gl.uniformMatrix3fv(null, null, new Float32Array([
@@ -3337,7 +3378,7 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv] uniformMatrix4fv");
             let p = createProgram(gl, `#version 300 es
                 in vec4 a_Position;
@@ -3386,7 +3427,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv_1
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv_1', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv_1] uniformMatrix4fv");
             uniformMatrix4fv((u) => {
                 gl.uniformMatrix4fv(u, null, new Float32Array([
@@ -3406,7 +3448,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv_2
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv_2', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv_2] uniformMatrix4fv");
             uniformMatrix4fv((u) => {
                 gl.uniformMatrix4fv(u, null, new Float32Array([
@@ -3426,7 +3469,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv_3
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv_3', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv_3] uniformMatrix4fv");
             uniformMatrix4fv((u) => {
                 gl.uniformMatrix4fv(u, null, new Float32Array([
@@ -3446,7 +3490,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv_4
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv_4', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv_4] uniformMatrix4fv");
             uniformMatrix4fv((u) => {
                 gl.uniformMatrix4fv(u, null, new Float32Array([
@@ -3466,7 +3511,8 @@ export default function webgl2_uniform() {
          * @tc.name webgl2_test_uniformMatrix4fv_5
          * @tc.desc Test uniformMatrix4fv.
          */
-        it('webgl2_test_uniformMatrix4fv_5', 0, async function (done) {
+        it('webgl2_test_uniformMatrix4fv_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgl2test [webgl2_test_uniformMatrix4fv_5] uniformMatrix4fv");
             uniformMatrix4fv((u) => {
                 gl.uniformMatrix4fv(null, null, new Float32Array([

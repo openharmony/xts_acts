@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import ndkTest from 'libImageNdk.so'
 import image from '@ohos.multimedia.image';
 import common from '@ohos.app.ability.common';
@@ -53,7 +53,8 @@ export default function imageNdkTest() {
      * @tc.type      : FunctioXn
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelMapWithStride_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelMapWithStride_0100',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelMapWithStrideAbnormal()
       expect(result).assertEqual(0)
       done();
@@ -67,7 +68,8 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptionsSetRowStrideNormal_0200', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptionsSetRowStrideNormal_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       // Set a number 16, that is a multiple of 1 byte
       let result: number = ndkTest.testInitializationOptionsSetRowStrideNormal(16)
       expect(result).assertEqual(0)
@@ -82,7 +84,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Native_ScaleWithAntiAliasing_0400',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       // The scaling ratio is 100%
       let result: number = ndkTest.testNativeScaleWithAntiAliasingAbnormal()
       let msg = "testNativeScaleWithAntiAliasingAbNormal result: "
@@ -99,7 +102,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ScaleWithAntiAliasing_0500',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       // The scaling ratio is 100%
       let result: number = ndkTest.testScaleWithAntiAliasingAbnormal(100, 100)
       expect(result).assertEqual(0)
@@ -114,7 +118,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetNativeBuffer_0600', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetNativeBuffer_0600',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeGetNativeBufferAbnormal()
       let msg = 'testNativeGetNativeBufferAbnormal result: '
       console.info(msg + result);
@@ -130,7 +135,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMetaData_0700', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMetaData_0700',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeSetMetaDataNull()
       let msg = 'testNativeSetMetaDataNull result: '
       console.info(msg + result);
@@ -146,7 +152,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetMetaData_0800', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetMetaData_0800',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeGetMetaDataNull()
       let msg = 'testNativeGetMetaDataNull result: '
       console.info(msg + result);
@@ -162,7 +169,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetMemoryName_0900',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeSetMemoryName()
       let msg = 'testNativeSetMemoryName result: '
       console.info(msg + result);
@@ -178,7 +186,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetArgbPixels_1000', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetArgbPixels_1000',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeGetArgbPixels()
       let msg = 'testNativeGetArgbPixels result: '
       console.info(msg + result);
@@ -194,7 +203,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetColorSpaceNative_1100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeGetColorSpaceNative_1100',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeGetColorSpaceNative()
       let msg = 'testNativeGetColorSpaceNative result: '
       console.info(msg + result);
@@ -210,7 +220,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetColorSpaceNative_1200', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetColorSpaceNative_1200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeSetColorSpaceNative()
       let msg = 'testNativeSetColorSpaceNative result: '
       console.info(msg + result);
@@ -226,7 +237,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeSetGetSrcPixelFormat_1300',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeSetGetSrcPixelFormat()
       let msg = 'testNativeSetGetSrcPixelFormat result: '
       console.info(msg + result);
@@ -242,7 +254,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeCreateEmptyPixelmap_1400',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeCreateEmptyPixelmap()
       let msg = 'testNativeCreateEmptyPixelmap result: '
       console.info(msg + result);
@@ -258,7 +271,8 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_NativeConvertAlphaFormat_1500',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testNativeConvertAlphaFormat()
       let msg = 'testNativeConvertAlphaFormat result: '
       console.info(msg + result);

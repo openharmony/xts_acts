@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
 import uiEffect from "@ohos.graphics.uiEffect"
@@ -29,9 +29,9 @@ export default function graphicUiEffectInterfaceTest() {
      * @tc.desc      : Filter instances are created to add multiple filter effects to the component.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testCreateFilter', 1, async (done:Function)=> {
+    it('testCreateFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = " =====testCreateFilter==== "
       try {
         let filter : uiEffect.Filter = uiEffect.createFilter()

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
@@ -48,7 +48,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0100', 0, async (done:Function)=> {
+    it('Component3DTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -66,7 +66,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0200', 0, async (done:Function)=> {
+    it('Component3DTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -83,7 +83,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0300', 0, async (done:Function)=> {
+    it('Component3DTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -100,7 +100,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0400', 0, async (done:Function)=> {
+    it('Component3DTest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -117,7 +117,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0500', 0, async (done:Function)=> {
+    it('Component3DTest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0500 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -134,7 +134,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0600', 0, async (done:Function)=> {
+    it('Component3DTest_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0600 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
@@ -151,7 +151,7 @@ export default function Component3DTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('Component3DTest_0700', 0, async (done:Function)=> {
+    it('Component3DTest_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       console.info('Component3DTest_0700 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
