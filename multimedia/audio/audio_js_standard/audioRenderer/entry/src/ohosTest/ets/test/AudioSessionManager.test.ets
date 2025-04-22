@@ -99,6 +99,7 @@ const sessionDeactivatedEvent = (event: audio.AudioSessionDeactivatedEvent) => {
 export default function audioSessionManagerTest() {
   describe('AudioSessionManagerTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    let TAG = 'AudioSessionManagerTest';
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
@@ -151,7 +152,7 @@ export default function audioSessionManagerTest() {
       await deactivateAudioSession(done, !isDone);
       isAudioSessionActivatedFalse(done, !isDone);
       let strategy: audio.AudioSessionStrategy = {
-        concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DEFAULT
+        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
       }
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, isDone);
@@ -167,7 +168,7 @@ export default function audioSessionManagerTest() {
     */
     it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_2', 2, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
-        concurrencyMode: AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
       }
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, !isDone);
@@ -185,7 +186,7 @@ export default function audioSessionManagerTest() {
     */
     it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_3', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
-        concurrencyMode: AudioConcurrencyMode.CONCURRENCY_DUCK_OTHERS
+        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DUCK_OTHERS
       }
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, isDone);
@@ -201,7 +202,7 @@ export default function audioSessionManagerTest() {
     */
     it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_4', 3, async (done: Function) => {
       let strategy: audio.AudioSessionStrategy = {
-        concurrencyMode: AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
+        concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
       }
       await activateAudioSession(strategy, done, !isDone);
       isAudioSessionActivatedTrue(done, isDone);
@@ -298,9 +299,9 @@ export default function audioSessionManagerTest() {
     */
     it('SUB_AUDIO_AUDIOSESSIONMANAGER_API_10', 3, async (done: Function) => {
       sessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
-        if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
+        if(audioSessionDeactivatedEvent.reason === audio.AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
-        }else if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
+        }else if(audioSessionDeactivatedEvent.reason === audio.AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
         }
       });
@@ -309,9 +310,9 @@ export default function audioSessionManagerTest() {
       }
       await activateAudioSession(strategy, done, !isDone);
       sessionManager.off('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
-        if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
+        if(audioSessionDeactivatedEvent.reason === audio.AudioSessionDeactivatedReason.DEACTIVATED_LOWER_PRIORITY){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
-        }else if(audioSessionDeactivatedEvent.reason === AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
+        }else if(audioSessionDeactivatedEvent.reason === audio.AudioSessionDeactivatedReason.DEACTIVATED_TIMEOUT){
           console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
         }
       });
