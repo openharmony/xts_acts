@@ -23,27 +23,27 @@ export default function flexTextMargin_EndJsunit() {
   describe('flexItemAlignEndTest4', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexTextMargin',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/ItemAlign_End_FlexTextMargin',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexTextMargin state success " + JSON.stringify(pages));
-        if (!("FlexTextMargin" == pages.name)) {
-          console.info("get FlexTextMargin state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_End_FlexTextMargin state success " + JSON.stringify(pages));
+        if (!("ItemAlign_End_FlexTextMargin" == pages.name)) {
+          console.info("get ItemAlign_End_FlexTextMargin state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexTextMargin page success " + JSON.stringify(result));
+          console.info("push ItemAlign_End_FlexTextMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexTextMargin page error " + JSON.stringify(err));
+        console.error("push ItemAlign_End_FlexTextMargin page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexTextMargin after each called");
+      console.info("ItemAlign_End_FlexTextMargin after each called");
     });
 
     /**
@@ -57,12 +57,12 @@ export default function flexTextMargin_EndJsunit() {
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexTextMargin01');
+      let strJson1 = getInspectorByKey('ItemAlign_End_flexTextMargin01');
 
-      let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
-      let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
-      let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
-      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('flexTextMargin01');
+      let textMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin01');
+      let textMargin02: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin02');
+      let textMargin03: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin03');
+      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_End_flexTextMargin01');
       expect(Math.floor(Math.abs(textMargin01.left - flexTextMargin01.left - vp2px(10))) <= 1).assertTrue()
       expect(Math.floor(Math.abs(textMargin02.left - textMargin01.right - vp2px(10))) <= 1).assertTrue()
       expect(Math.floor(Math.abs(textMargin02.right - textMargin03.left)) <= 1).assertTrue()
@@ -95,12 +95,12 @@ export default function flexTextMargin_EndJsunit() {
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexTextMargin01');
+      let strJson1 = getInspectorByKey('ItemAlign_End_flexTextMargin01');
 
-      let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
-      let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
-      let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
-      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('flexTextMargin01');
+      let textMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin01');
+      let textMargin02: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin02');
+      let textMargin03: RectValue = CommonFunc.getComponentRect('ItemAlign_End_textMargin03');
+      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_End_flexTextMargin01');
       expect(Math.floor(Math.abs(textMargin01.left - flexTextMargin01.left - vp2px(30))) <= 1).assertTrue()
       expect(Math.floor(Math.abs(textMargin02.left - textMargin01.right - vp2px(30))) <= 1).assertTrue()
       expect(Math.floor(Math.abs(textMargin02.right - textMargin03.left)) <= 1).assertTrue()

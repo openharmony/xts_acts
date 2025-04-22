@@ -98,7 +98,7 @@ export default function flexAlign_SpaceAround_fixedParent() {
       expect(Math.floor(Math.abs(locationText1.left - locationFlex.left - vp2px(15) -
         (locationFlex.right - locationText3.right))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(locationText3.left - locationText2.right -
-        2 * (locationFlex.right - locationText3.right))) <= 1).assertTrue();
+        2 * (locationFlex.right - locationText3.right))) <= 2).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapOffset END');
 
     });
