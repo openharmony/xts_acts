@@ -2062,6 +2062,62 @@ export default function audioManagerApi9() {
         done();
       };
     })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let interAudioInterrupt: audio.AudioInterrupt = {
+        streamUsage:2,
+        contentType:0,
+        pauseWhenDucked:true
+      };
+      // 取消该事件的所有监听。
+      audioManager.off('interrupt', interAudioInterrupt);
+      // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+      let interruptCallback = (interruptAction: audio.InterruptAction) => {
+        if (interruptAction.actionType === 0) {
+          console.info('An event to gain the audio focus starts.');
+          console.info(`Focus gain event: ${interruptAction} `);
+        }
+        if (interruptAction.actionType === 1) {
+          console.info('An audio interruption event starts.');
+          console.info(`Audio interruption event: ${interruptAction} `);
+        }
+      };
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
+        audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
   })
 
 }
