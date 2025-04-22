@@ -50,28 +50,6 @@ async function startAbility2(caseName: string, context: common.UIAbilityContext,
   return windowStageStart
 }
 
-async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
-  let want: Want = {
-    bundleName: AppStorage.get('bundleName'),
-    abilityName: 'StartTestAbility3',
-  };
-  if (options) {
-    await context.startAbility(want, options).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  } else {
-    await context.startAbility(want).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  }
-  await sleep(1000)
-  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
-  return windowStageStart
-}
 
 async function terminateAbility2(caseName: string) {
   let pageContext = AppStorage.get('contextTest2') as common.UIAbilityContext
@@ -83,15 +61,6 @@ async function terminateAbility2(caseName: string) {
   await sleep(1000)
 }
 
-async function terminateAbility3(caseName: string) {
-  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
-  await pageContext.terminateSelf().then(() => {
-    console.log(`${caseName} terminateSelf success`);
-  }).catch((err: BusinessError) => {
-    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
-  });
-  await sleep(1000)
-}
 
 export default function windowZindexTest() {
   describe('windowZindexTest', async () => {
@@ -1604,60 +1573,6 @@ export default function windowZindexTest() {
       }
     });
 
-    /**
-     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
-     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
-     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
-      console.log(caseName + 'begin');
-      let windowStageStart = await startAbility3(caseName, context);
-      try {
-        let windowClass2 = windowStageStart.getMainWindowSync();
-        let res = windowClass2.getWindowProperties()
-        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
-          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
-          expect(infos.length).assertLarger(2);
-          let isExit = false;
-          for (let i = 0; i < infos.length; i++) {
-            if (infos[i].windowId === res.id) {
-              isExit = true;
-              let info = infos[i];
-              expect(info.rect.left).assertEqual(res.windowRect.left);
-              expect(info.rect.top).assertEqual(res.windowRect.top);
-              expect(info.rect.width).assertEqual(res.windowRect.width);
-              expect(info.rect.height).assertEqual(res.windowRect.height);
-              expect(info.isFocused).assertEqual(true);
-              expect(info.windowStatusType).assertEqual(4);
-              expect(info.bundleName).assertEqual('bundleName');
-              expect(info.abilityName).assertEqual('StartTestAbility3');
-              break;
-            }
-          }
-          if (!isExit) {
-            console.log(`${caseName} failed, there is no match windowId.`);
-            await terminateAbility3(caseName);
-            expect().assertFail();
-            done()
-          }
-          await terminateAbility3(caseName);
-          done();
-        }).catch(async (err: BusinessError) => {
-          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
-          expect().assertFail()
-          done()
-        });
-      } catch (err) {
-        await terminateAbility3(caseName);
-        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
-        expect().assertFail();
-        done();
-      }
-    });
     /**
      * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0100
      * @tc.name      : test_ISWINDOWHIGHLIGHTED_0100

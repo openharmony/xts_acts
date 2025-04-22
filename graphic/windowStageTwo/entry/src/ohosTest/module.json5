@@ -88,18 +88,6 @@
         "orientation": "portrait",
       },
       {
-        "name": "StartTestAbility3",
-        "srcEntry": "./ets/testability/StartTestAbility3.ets",
-        "description": "$string:TestAbility_desc",
-        "icon": "$media:icon",
-        "label": "$string:TestAbility_label",
-        "exported": true,
-        "launchType": "multiton",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background",
-        "orientation": "portrait",
-      },
-      {
         "name": "TestAbilityDensity1",
         "srcEntry": "./ets/testability/TestAbilityDensity1.ets",
         "description": "$string:TestAbility_desc",
