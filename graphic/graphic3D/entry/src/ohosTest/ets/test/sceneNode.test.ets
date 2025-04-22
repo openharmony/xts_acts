@@ -14,7 +14,7 @@
  */
 import { ToneMappingType, ToneMappingSettings, PostProcessSettings, Vec3, Vec4, Color, Quaternion, Position3,  Scale3, NodeType, Container, Node, Geometry, LightType, Light, SpotLight, DirectionalLight,
   SceneResourceFactory, Scene } from '@ohos.graphics.scene'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
 
 export default function sceneNodeTest() {
@@ -37,7 +37,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetNodeByPath', 0, async (done:Function)=> {
+    it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testGetNodeByPath";
       console.info(msg + ' begin ');
       try {
@@ -63,7 +63,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPath', 0, (done:Function)=> {
+    it('testPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testPath";
       console.info(msg + ' begin ');
       try {
@@ -85,7 +85,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testParent', 0, (done:Function)=> {
+    it('testParent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testParent";
       console.info(msg + ' begin ');
       try {
@@ -107,7 +107,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRemove', 0, (done:Function)=> {
+    it('testRemove', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testRemove";
       console.info(msg + ' begin ');
       try {
@@ -135,7 +135,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testInsertAfter', 0, (done:Function)=> {
+    it('testInsertAfter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testInsertAfter";
       console.info(msg + ' begin ');
       try {
@@ -158,7 +158,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGet', 0, (done:Function)=> {
+    it('testGet', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testGet";
       console.info(msg + ' begin ');
       try {
@@ -184,7 +184,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLayerMask', 0, (done:Function)=> {
+    it('testLayerMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testLayerMask";
       console.info(msg + ' begin ');
       try {
@@ -212,7 +212,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPosition', 0, (done:Function)=> {
+    it('testPosition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testPosition";
       console.info(msg + ' begin ');
       try {
@@ -242,7 +242,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRotation', 0, (done:Function)=> {
+    it('testRotation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testRotation";
       console.info(msg + ' begin ');
       try {
@@ -278,7 +278,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testScale', 0, (done:Function)=> {
+    it('testScale', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testScale";
       console.info(msg + ' begin ');
       try {
@@ -307,7 +307,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testVisible', 0, (done:Function)=> {
+    it('testVisible', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testVisible";
       console.info(msg + ' begin ');
       try {
@@ -333,7 +333,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFov', 0, async (done:Function)=> {
+    it('testFov', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testFov";
       console.info(msg + ' begin ');
       try {
@@ -365,7 +365,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNearPlane', 0, (done:Function)=> {
+    it('testNearPlane', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testNearPlane";
       console.info(msg + ' begin ');
       try {
@@ -391,7 +391,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFarPlane', 0, (done:Function)=> {
+    it('testFarPlane', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testFarPlane";
       console.info(msg + ' begin ');
       try {
@@ -417,7 +417,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCamEnabled', 0, (done:Function)=> {
+    it('testCamEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testCamEnabled";
       console.info(msg + ' begin ');
       try {
@@ -445,7 +445,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testClearColor', 0, (done:Function)=> {
+    it('testClearColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testClearColor";
       console.info(msg + ' begin ');
       try {
@@ -477,7 +477,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPostProcess', 0, (done:Function)=> {
+    it('testPostProcess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testPostProcess";
       console.info(msg + ' begin ');
       try {
@@ -512,7 +512,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLightColor', 0, async (done:Function)=> {
+    it('testLightColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testLightColor";
       console.info(msg + ' begin ');
       try {
@@ -539,7 +539,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testLigEnabled', 0, (done:Function)=> {
+    it('testLigEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testLigEnabled";
       console.info(msg + ' begin ');
       try {
@@ -568,7 +568,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testShadowEnabled', 0, (done:Function)=> {
+    it('testShadowEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testShadowEnabled";
       console.info(msg + ' begin ');
       try {
@@ -597,7 +597,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3g
      */
-    it('testLightType', 0, async (done:Function)=> {
+    it('testLightType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testLightType";
       console.info(msg + ' begin ');
       try {
@@ -624,7 +624,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testIntensity', 0, (done:Function)=> {
+    it('testIntensity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testIntensity";
       console.info(msg + ' begin ');
       try {
@@ -650,7 +650,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNodeType', 0, async (done:Function)=> {
+    it('testNodeType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testNodeType";
       console.info(msg + ' begin ');
       try {
@@ -684,7 +684,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testClear', 0, (done:Function)=> {
+    it('testClear', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testClear";
       console.info(msg + ' begin ');
       try {
@@ -706,7 +706,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBloomSettings', 0, (done:Function)=> {
+    it('testBloomSettings', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testBloomSettings";
       console.info(msg + ' begin ');
       try {
@@ -740,7 +740,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateGeometryCUBE', 0, async (done:Function)=> {
+    it('testCreateGeometryCUBE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testCreateGeometryCUBE";
       console.info(msg + ' begin ');
       try {
@@ -771,7 +771,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testCreateGeometryPLANE', 0, async (done:Function)=> {
+    it('testCreateGeometryPLANE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testCreateGeometryPLANE";
       console.info(msg + ' begin ');
       try {
@@ -802,7 +802,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testImportNode', 0, (done:Function)=> {
+    it('testImportNode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testImportNode";
       console.info(msg + ' begin ');
       try {
@@ -827,7 +827,7 @@ export default function sceneNodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testImportScene', 0, (done:Function)=> {
+    it('testImportScene', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
       let msg = "============================testImportScene";
       console.info(msg + ' begin ');
       try {

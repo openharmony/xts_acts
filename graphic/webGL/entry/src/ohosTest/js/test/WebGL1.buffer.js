@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 import {checkError, createProgram, getColorUint8Array} from './WebGL1';
 
@@ -56,7 +56,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_createBuffer
          * @tc.desc Test createBuffer.
          */
-        it('webgl_test_createBuffer', 0, async function (done) {
+        it('webgl_test_createBuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_createBuffer] createBuffer");
             let buffer = gl.createBuffer();
             console.info("webgltest ", buffer);
@@ -81,7 +81,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isBuffer
          * @tc.desc Test isBuffer.
          */
-        it('webgl_test_isBuffer', 0, async function (done) {
+        it('webgl_test_isBuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isBuffer] isBuffer");
             let buffer = gl.createBuffer();
             console.info("webgltest ", buffer);
@@ -103,7 +103,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isBuffer_1
          * @tc.desc Test isBuffer.
          */
-        it('webgl_test_isBuffer_1', 0, async function (done) {
+        it('webgl_test_isBuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isBuffer_1] isBuffer");
             gl.isBuffer(null);
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -116,7 +116,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isBuffer_2
          * @tc.desc Test isBuffer.
          */
-        it('webgl_test_isBuffer_2', 0, async function (done) {
+        it('webgl_test_isBuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isBuffer_2] isBuffer");
             gl.isBuffer(undefined);
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -141,7 +141,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindBuffer
          * @tc.desc Test bindBuffer.
          */
-        it('webgl_test_bindBuffer', 0, async function (done) {
+        it('webgl_test_bindBuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindBuffer] bindBuffer");
             let buffer = gl.createBuffer();
             console.info("webgltest ", buffer);
@@ -163,7 +163,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindBuffer_1
          * @tc.desc Test bindBuffer.
          */
-        it('webgl_test_bindBuffer_1', 0, async function (done) {
+        it('webgl_test_bindBuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindBuffer_1] bindBuffer");
             bindBuffer((buffer) => {
                 gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -181,7 +181,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindBuffer_2
          * @tc.desc Test bindBuffer.
          */
-        it('webgl_test_bindBuffer_2', 0, async function (done) {
+        it('webgl_test_bindBuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindBuffer_2] bindBuffer");
             bindBuffer((buffer) => {
                 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffer);
@@ -199,7 +199,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindBuffer_3
          * @tc.desc Test bindBuffer.
          */
-        it('webgl_test_bindBuffer_3', 0, async function (done) {
+        it('webgl_test_bindBuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindBuffer_3] bindBuffer");
             bindBuffer((buffer) => {
                 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
@@ -217,7 +217,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindBuffer_4
          * @tc.desc Test bindBuffer.
          */
-        it('webgl_test_bindBuffer_4', 0, async function (done) {
+        it('webgl_test_bindBuffer_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindBuffer_4] bindBuffer");
             bindBuffer((buffer) => {
                 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, undefined);
@@ -245,7 +245,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteBuffer
          * @tc.desc Test deleteBuffer.
          */
-        it('webgl_test_deleteBuffer', 0, async function (done) {
+        it('webgl_test_deleteBuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteBuffer] deleteBuffer");
             let buffer = gl.createBuffer();
             console.info("webgltest ", buffer);
@@ -270,7 +270,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteBuffer_1
          * @tc.desc Test deleteBuffer.
          */
-        it('webgl_test_deleteBuffer_1', 0, async function (done) {
+        it('webgl_test_deleteBuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteBuffer_1] deleteBuffer");
             deleteBuffer((buffer) => {
                 gl.deleteBuffer(buffer);
@@ -288,7 +288,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteBuffer_2
          * @tc.desc Test deleteBuffer.
          */
-        it('webgl_test_deleteBuffer_2', 0, async function (done) {
+        it('webgl_test_deleteBuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteBuffer_2] deleteBuffer");
             deleteBuffer((buffer) => {
                 gl.deleteBuffer(null);
@@ -306,7 +306,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteBuffer_3
          * @tc.desc Test deleteBuffer.
          */
-        it('webgl_test_deleteBuffer_3', 0, async function (done) {
+        it('webgl_test_deleteBuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteBuffer_3] deleteBuffer");
             deleteBuffer((buffer) => {
                 gl.deleteBuffer(undefined);
@@ -339,7 +339,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData', 0, async function (done) {
+        it('webgl_test_bufferData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData] bufferData - TypedArray");
             let arr = new Float32Array([
                 0.0, 0.5, -0.5, 0.5, 1.0, 0.5,
@@ -367,7 +367,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_1
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_1', 0, async function (done) {
+        it('webgl_test_bufferData_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_1] bufferData - ArrayBuffer");
             let arr = new Float32Array([
                 0.0, 0.5, -0.5, 0.5, 1.0, 0.5,
@@ -392,7 +392,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_2
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_2', 0, async function (done) {
+        it('webgl_test_bufferData_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_2] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, arr, gl.STATIC_DRAW);
@@ -410,7 +410,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_3
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_3', 0, async function (done) {
+        it('webgl_test_bufferData_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_3] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, arr, gl.STATIC_DRAW);
@@ -428,7 +428,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_4
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_4', 0, async function (done) {
+        it('webgl_test_bufferData_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_4] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, arr, gl.DYNAMIC_DRAW);
@@ -446,7 +446,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_5
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_5', 0, async function (done) {
+        it('webgl_test_bufferData_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_5] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, arr, gl.STREAM_DRAW);
@@ -464,7 +464,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_6
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_6', 0, async function (done) {
+        it('webgl_test_bufferData_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_6] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, null, gl.STREAM_DRAW);
@@ -481,7 +481,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_7
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_7', 0, async function (done) {
+        it('webgl_test_bufferData_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_7] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, undefined, gl.STREAM_DRAW);
@@ -498,7 +498,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_8
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_8', 0, async function (done) {
+        it('webgl_test_bufferData_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_8] bufferData");
             bufferData((arr) => {
                 gl.bufferData(gl.ARRAY_BUFFER, -1, gl.STREAM_DRAW);
@@ -518,7 +518,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferData_9
          * @tc.desc Test bufferData.
          */
-        it('webgl_test_bufferData_9', 0, async function (done) {
+        it('webgl_test_bufferData_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferData_9] bufferData - number");
             let buffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -553,7 +553,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getBufferParameter
          * @tc.desc Test getBufferParameter.
          */
-        it('webgl_test_getBufferParameter', 0, async function (done) {
+        it('webgl_test_getBufferParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_getBufferParameter] getBufferParameter");
             let arr = new Float32Array([
                 0.0, 0.5, -0.5, 0.5, 1.0, 0.5,
@@ -585,7 +585,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getBufferParameter_1
          * @tc.desc Test getBufferParameter.
          */
-        it('webgl_test_getBufferParameter_1', 0, async function (done) {
+        it('webgl_test_getBufferParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getBufferParameter_1] getBufferParameter");
             getBufferParameter((arr) => {
                 let bufferSize = gl.getBufferParameter(gl.ARRAY_BUFFER, gl.BUFFER_SIZE);
@@ -603,7 +604,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getBufferParameter_2
          * @tc.desc Test getBufferParameter.
          */
-        it('webgl_test_getBufferParameter_2', 0, async function (done) {
+        it('webgl_test_getBufferParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getBufferParameter_2] getBufferParameter");
             getBufferParameter((arr) => {
                 let bufferSize = gl.getBufferParameter(gl.ELEMENT_ARRAY_BUFFER, gl.BUFFER_SIZE);
@@ -620,7 +622,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getBufferParameter_3
          * @tc.desc Test getBufferParameter.
          */
-        it('webgl_test_getBufferParameter_3', 0, async function (done) {
+        it('webgl_test_getBufferParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getBufferParameter_3] getBufferParameter");
             getBufferParameter((arr) => {
                 let bufferSize = gl.getBufferParameter(gl.ARRAY_BUFFER, gl.BUFFER_USAGE);
@@ -641,7 +644,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_createRenderbuffer
          * @tc.desc Test createRenderbuffer.
          */
-        it('webgl_test_createRenderbuffer', 0, async function (done) {
+        it('webgl_test_createRenderbuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_createRenderbuffer] createRenderbuffer");
             let renderbuffer = gl.createRenderbuffer();
             console.info("webgltest  createRenderbuffer:", renderbuffer);
@@ -674,7 +677,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteRenderbuffer
          * @tc.desc Test deleteRenderbuffer.
          */
-        it('webgl_test_deleteRenderbuffer', 0, async function (done) {
+        it('webgl_test_deleteRenderbuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteRenderbuffer] deleteRenderbuffer");
             let renderbuffer = gl.createRenderbuffer();
             console.info("webgltest  createRenderbuffer:", renderbuffer);
@@ -699,7 +702,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteRenderbuffer_1
          * @tc.desc Test deleteRenderbuffer.
          */
-        it('webgl_test_deleteRenderbuffer_1', 0, async function (done) {
+        it('webgl_test_deleteRenderbuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteRenderbuffer_1] deleteRenderbuffer");
             deleteRenderbuffer((renderbuffer) => {
                 gl.deleteRenderbuffer(renderbuffer);
@@ -717,7 +721,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteRenderbuffer_2
          * @tc.desc Test deleteRenderbuffer.
          */
-        it('webgl_test_deleteRenderbuffer_2', 0, async function (done) {
+        it('webgl_test_deleteRenderbuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteRenderbuffer_2] deleteRenderbuffer");
             deleteRenderbuffer((renderbuffer) => {
                 gl.deleteRenderbuffer(null);
@@ -735,7 +740,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteRenderbuffer_3
          * @tc.desc Test deleteRenderbuffer.
          */
-        it('webgl_test_deleteRenderbuffer_3', 0, async function (done) {
+        it('webgl_test_deleteRenderbuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteRenderbuffer_3] deleteRenderbuffer");
             deleteRenderbuffer((renderbuffer) => {
                 gl.deleteRenderbuffer(undefined);
@@ -762,18 +768,23 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter] getRenderbufferParameter");
             let buf = gl.createRenderbuffer();
             gl.bindRenderbuffer(gl.RENDERBUFFER, buf);
-            console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
-            console.info("webgltest RENDERBUFFER_HEIGHT:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
+            console.info("webgltest RENDERBUFFER_WIDTH:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+            console.info("webgltest RENDERBUFFER_HEIGHT:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(0);
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT)).assertEqual(0);
             console.info("webgltest gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 256, 256);");
             gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 256, 256);
-            console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
-            console.info("webgltest RENDERBUFFER_HEIGHT:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
+            console.info("webgltest RENDERBUFFER_WIDTH:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+            console.info("webgltest RENDERBUFFER_HEIGHT:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(256);
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT)).assertEqual(256);
             gl.deleteRenderbuffer(buf);
@@ -787,10 +798,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_1
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_1', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_1] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+                console.info("webgltest RENDERBUFFER_WIDTH:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(0);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -803,10 +816,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_2
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_2', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_2] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+                console.info("webgltest RENDERBUFFER_WIDTH:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(0);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -819,11 +834,14 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_3
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_3', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_3] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_INTERNAL_FORMAT:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_INTERNAL_FORMAT));
-                expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_INTERNAL_FORMAT)).assertEqual(gl.RGBA4);
+                console.info("webgltest RENDERBUFFER_INTERNAL_FORMAT:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_INTERNAL_FORMAT));
+                expect(gl.getRenderbufferParameter(gl.RENDERBUFFER,
+                    gl.RENDERBUFFER_INTERNAL_FORMAT)).assertEqual(gl.RGBA4);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
             done();
@@ -835,10 +853,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_4
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_4', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_4] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_GREEN_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_GREEN_SIZE));
+                console.info("webgltest RENDERBUFFER_GREEN_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_GREEN_SIZE));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_GREEN_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -851,10 +871,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_5
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_5', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_5] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_BLUE_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_BLUE_SIZE));
+                console.info("webgltest RENDERBUFFER_BLUE_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_BLUE_SIZE));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_BLUE_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -867,10 +889,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_6
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_6', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_6] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_RED_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_RED_SIZE));
+                console.info("webgltest RENDERBUFFER_RED_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_RED_SIZE));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_RED_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -883,10 +907,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_7
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_7', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_7] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_ALPHA_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_ALPHA_SIZE));
+                console.info("webgltest RENDERBUFFER_ALPHA_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_ALPHA_SIZE));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_ALPHA_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -899,10 +925,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_8
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_8', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_8] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_DEPTH_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_DEPTH_SIZE));
+                console.info("webgltest RENDERBUFFER_DEPTH_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_DEPTH_SIZE));
                 expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_DEPTH_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
@@ -915,11 +943,14 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getRenderbufferParameter_9
          * @tc.desc Test getRenderbufferParameter.
          */
-        it('webgl_test_getRenderbufferParameter_9', 0, async function (done) {
+        it('webgl_test_getRenderbufferParameter_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getRenderbufferParameter_9] getRenderbufferParameter");
             getRenderbufferParameter((buf) => {
-                console.info("webgltest RENDERBUFFER_STENCIL_SIZE:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_STENCIL_SIZE));
-                expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_STENCIL_SIZE)>=0).assertEqual(true);
+                console.info("webgltest RENDERBUFFER_STENCIL_SIZE:",
+                    gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_STENCIL_SIZE));
+                expect(gl.getRenderbufferParameter(gl.RENDERBUFFER,
+                    gl.RENDERBUFFER_STENCIL_SIZE)>=0).assertEqual(true);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             });
             done();
@@ -942,7 +973,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isRenderbuffer
          * @tc.desc Test isRenderbuffer.
          */
-        it('webgl_test_isRenderbuffer', 0, async function (done) {
+        it('webgl_test_isRenderbuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isRenderbuffer] isRenderbuffer");
             let renderbuffer = gl.createRenderbuffer();
             console.info("webgltest  createRenderbuffer:", renderbuffer);
@@ -967,7 +998,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isRenderbuffer_1
          * @tc.desc Test isRenderbuffer.
          */
-        it('webgl_test_isRenderbuffer_1', 0, async function (done) {
+        it('webgl_test_isRenderbuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isRenderbuffer_1] isRenderbuffer");
             isRenderbuffer((renderbuffer) => {
                 expect(gl.isRenderbuffer(renderbuffer)).assertEqual(true);
@@ -982,7 +1013,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isRenderbuffer_2
          * @tc.desc Test isRenderbuffer.
          */
-        it('webgl_test_isRenderbuffer_2', 0, async function (done) {
+        it('webgl_test_isRenderbuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isRenderbuffer_2] isRenderbuffer");
             isRenderbuffer((renderbuffer) => {
                 expect(gl.isRenderbuffer(null)).assertEqual(false);
@@ -997,7 +1028,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isRenderbuffer_3
          * @tc.desc Test isRenderbuffer.
          */
-        it('webgl_test_isRenderbuffer_3', 0, async function (done) {
+        it('webgl_test_isRenderbuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isRenderbuffer_3] isRenderbuffer");
             isRenderbuffer((renderbuffer) => {
                 expect(gl.isRenderbuffer(undefined)).assertEqual(false);
@@ -1024,7 +1055,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindRenderbuffer
          * @tc.desc Test bindRenderbuffer.
          */
-        it('webgl_test_bindRenderbuffer', 0, async function (done) {
+        it('webgl_test_bindRenderbuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindRenderbuffer] bindRenderbuffer");
             let buf = gl.createRenderbuffer();
             let renderBufferBinding = gl.getParameter(gl.RENDERBUFFER_BINDING);
@@ -1045,7 +1076,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindRenderbuffer_1
          * @tc.desc Test bindRenderbuffer.
          */
-        it('webgl_test_bindRenderbuffer_1', 0, async function (done) {
+        it('webgl_test_bindRenderbuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindRenderbuffer_1] bindRenderbuffer");
             bindRenderbuffer((buf) => {
                 gl.bindRenderbuffer(gl.RENDERBUFFER, buf);
@@ -1063,7 +1094,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindRenderbuffer_2
          * @tc.desc Test bindRenderbuffer.
          */
-        it('webgl_test_bindRenderbuffer_2', 0, async function (done) {
+        it('webgl_test_bindRenderbuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindRenderbuffer_2] bindRenderbuffer");
             bindRenderbuffer((buf) => {
                 gl.bindRenderbuffer(gl.RENDERBUFFER, null);
@@ -1081,7 +1112,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindRenderbuffer_3
          * @tc.desc Test bindRenderbuffer.
          */
-        it('webgl_test_bindRenderbuffer_3', 0, async function (done) {
+        it('webgl_test_bindRenderbuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindRenderbuffer_3] bindRenderbuffer");
             bindRenderbuffer((buf) => {
                 gl.bindRenderbuffer(gl.RENDERBUFFER, undefined);
@@ -1109,18 +1140,23 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage', 0, async function (done) {
+        it('webgl_test_renderbufferStorage', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage] renderbufferStorage");
             let buf = gl.createRenderbuffer();
             gl.bindRenderbuffer(gl.RENDERBUFFER, buf);
-            console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
-            console.info("webgltest RENDERBUFFER_HEIGHT:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
+            console.info("webgltest RENDERBUFFER_WIDTH:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+            console.info("webgltest RENDERBUFFER_HEIGHT:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(0);
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT)).assertEqual(0);
             console.info("webgltest gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 256, 256);");
             gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 256, 256);
-            console.info("webgltest RENDERBUFFER_WIDTH:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
-            console.info("webgltest RENDERBUFFER_HEIGHT:", gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
+            console.info("webgltest RENDERBUFFER_WIDTH:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH));
+            console.info("webgltest RENDERBUFFER_HEIGHT:",
+                gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT));
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_WIDTH)).assertEqual(256);
             expect(gl.getRenderbufferParameter(gl.RENDERBUFFER, gl.RENDERBUFFER_HEIGHT)).assertEqual(256);
             gl.deleteRenderbuffer(buf);
@@ -1134,7 +1170,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_1
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_1', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_1] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 256, 256);
@@ -1153,7 +1190,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_2
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_2', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_2] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGB565, 256, 256);
@@ -1172,7 +1210,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_3
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_3', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_3] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGB5_A1, 256, 256);
@@ -1191,7 +1230,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_4
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_4', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_4] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, 256, 256);
@@ -1210,7 +1250,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_5
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_5', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_5] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.STENCIL_INDEX8, 256, 256);
@@ -1229,7 +1270,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_6
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_6', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_6] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_STENCIL, 256, 256);
@@ -1248,7 +1290,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_7
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_7', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_7] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, 0, 0);
@@ -1267,7 +1310,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_8
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_8', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_8] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, -1, -1);
@@ -1286,7 +1330,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_9
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_9', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_9', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_9] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, null, null);
@@ -1305,7 +1350,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_renderbufferStorage_10
          * @tc.desc Test renderbufferStorage.
          */
-        it('webgl_test_renderbufferStorage_10', 0, async function (done) {
+        it('webgl_test_renderbufferStorage_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_renderbufferStorage_10] renderbufferStorage");
             renderbufferStorage((buf) => {
                 gl.renderbufferStorage(gl.RENDERBUFFER, gl.RGBA4, undefined, undefined);
@@ -1328,7 +1374,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_createFramebuffer
          * @tc.desc Test createFramebuffer.
          */
-        it('webgl_test_createFramebuffer', 0, async function (done) {
+        it('webgl_test_createFramebuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_createFramebuffer] createFramebuffer");
             let buf = gl.createFramebuffer();
             console.info("webgltest newFramebuffer:", buf);
@@ -1363,7 +1409,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindFramebuffer
          * @tc.desc Test bindFramebuffer.
          */
-        it('webgl_test_bindFramebuffer', 0, async function (done) {
+        it('webgl_test_bindFramebuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindFramebuffer] bindFramebuffer");
             let buf = gl.createFramebuffer();
             console.info("webgltest newFramebuffer:", buf);
@@ -1386,7 +1432,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindFramebuffer_1
          * @tc.desc Test bindFramebuffer.
          */
-        it('webgl_test_bindFramebuffer_1', 0, async function (done) {
+        it('webgl_test_bindFramebuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindFramebuffer_1] bindFramebuffer");
             bindFramebuffer((buf) => {
                 gl.bindFramebuffer(gl.FRAMEBUFFER, buf);
@@ -1404,7 +1450,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindFramebuffer_2
          * @tc.desc Test bindFramebuffer.
          */
-        it('webgl_test_bindFramebuffer_2', 0, async function (done) {
+        it('webgl_test_bindFramebuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindFramebuffer_2] bindFramebuffer");
             bindFramebuffer((buf) => {
                 gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -1422,7 +1468,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bindFramebuffer_3
          * @tc.desc Test bindFramebuffer.
          */
-        it('webgl_test_bindFramebuffer_3', 0, async function (done) {
+        it('webgl_test_bindFramebuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bindFramebuffer_3] bindFramebuffer");
             bindFramebuffer((buf) => {
                 gl.bindFramebuffer(gl.FRAMEBUFFER, undefined);
@@ -1452,7 +1498,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteFramebuffer
          * @tc.desc Test deleteFramebuffer.
          */
-        it('webgl_test_deleteFramebuffer', 0, async function (done) {
+        it('webgl_test_deleteFramebuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_deleteFramebuffer] deleteFramebuffer");
             let buf = gl.createFramebuffer();
             console.info("webgltest newFramebuffer:", buf);
@@ -1476,7 +1522,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteFramebuffer_1
          * @tc.desc Test deleteFramebuffer.
          */
-        it('webgl_test_deleteFramebuffer_1', 0, async function (done) {
+        it('webgl_test_deleteFramebuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteFramebuffer_1] deleteFramebuffer");
             deleteFramebuffer((buf) => {
                 gl.deleteFramebuffer(buf);
@@ -1494,7 +1541,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteFramebuffer_2
          * @tc.desc Test deleteFramebuffer.
          */
-        it('webgl_test_deleteFramebuffer_2', 0, async function (done) {
+        it('webgl_test_deleteFramebuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteFramebuffer_2] deleteFramebuffer");
             deleteFramebuffer((buf) => {
                 gl.deleteFramebuffer(null);
@@ -1512,7 +1560,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_deleteFramebuffer_3
          * @tc.desc Test deleteFramebuffer.
          */
-        it('webgl_test_deleteFramebuffer_3', 0, async function (done) {
+        it('webgl_test_deleteFramebuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_deleteFramebuffer_3] deleteFramebuffer");
             deleteFramebuffer((buf) => {
                 gl.deleteFramebuffer(undefined);
@@ -1561,7 +1610,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_checkFramebufferStatus
          * @tc.desc Test checkFramebufferStatus.
          */
-        it('webgl_test_checkFramebufferStatus', 0, async function (done) {
+        it('webgl_test_checkFramebufferStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_checkFramebufferStatus] checkFramebufferStatus");
             let buf = gl.createFramebuffer();
             console.info("webgltest newFramebuffer:", buf);
@@ -1584,7 +1634,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_checkFramebufferStatus_1
          * @tc.desc Test checkFramebufferStatus.
          */
-        it('webgl_test_checkFramebufferStatus_1', 0, async function (done) {
+        it('webgl_test_checkFramebufferStatus_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_checkFramebufferStatus_1] checkFramebufferStatus");
             checkFramebufferStatus((buf) => {
                 let status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
@@ -1610,7 +1661,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isFramebuffer
          * @tc.desc Test isFramebuffer.
          */
-        it('webgl_test_isFramebuffer', 0, async function (done) {
+        it('webgl_test_isFramebuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isFramebuffer] isFramebuffer");
             let buf = gl.createFramebuffer();
             console.info("webgltest newFramebuffer:", buf);
@@ -1633,7 +1684,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isFramebuffer_1
          * @tc.desc Test isFramebuffer.
          */
-        it('webgl_test_isFramebuffer_1', 0, async function (done) {
+        it('webgl_test_isFramebuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isFramebuffer_1] isFramebuffer");
             isFramebuffer((buf) => {
                 expect(gl.isFramebuffer(buf)).assertEqual(true);
@@ -1648,7 +1699,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isFramebuffer_2
          * @tc.desc Test isFramebuffer.
          */
-        it('webgl_test_isFramebuffer_2', 0, async function (done) {
+        it('webgl_test_isFramebuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isFramebuffer_2] isFramebuffer");
             isFramebuffer((buf) => {
                 expect(gl.isFramebuffer(null)).assertEqual(false);
@@ -1663,7 +1714,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_isFramebuffer_3
          * @tc.desc Test isFramebuffer.
          */
-        it('webgl_test_isFramebuffer_3', 0, async function (done) {
+        it('webgl_test_isFramebuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_isFramebuffer_3] isFramebuffer");
             isFramebuffer((buf) => {
                 expect(gl.isFramebuffer(undefined)).assertEqual(false);
@@ -1682,7 +1733,8 @@ export default function webgl1_buffer() {
             let renderbuffer = gl.createRenderbuffer();
             gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);
             callback(framebuffer, renderbuffer);
-            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME,);
+            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME,);
             finish(object, framebuffer, renderbuffer);
             gl.deleteRenderbuffer(renderbuffer);
             gl.deleteFramebuffer(framebuffer);
@@ -1693,7 +1745,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer] framebufferRenderbuffer");
             let framebuffer = gl.createFramebuffer();
             console.info("webgltest framebuffer:", framebuffer);
@@ -1705,7 +1758,8 @@ export default function webgl1_buffer() {
             expect(gl.isRenderbuffer(renderbuffer)).assertEqual(true);
             gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, renderbuffer);
             expect(checkError(gl)).assertEqual(gl.NO_ERROR);
-            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME,);
+            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME,);
             console.info("webgltest getFramebufferAttachmentParameter:", object);
             expect(object).assertEqual(renderbuffer);
             gl.deleteRenderbuffer(renderbuffer);
@@ -1720,7 +1774,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_1
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_1', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_1] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, renderbuffer);
@@ -1738,7 +1793,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_2
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_2', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_2] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);
@@ -1756,7 +1812,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_3
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_3', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_3] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);
@@ -1774,7 +1831,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_4
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_4', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_4] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.RENDERBUFFER, renderbuffer);
@@ -1792,7 +1850,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_5
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_5', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_5] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, null);
@@ -1810,7 +1869,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_framebufferRenderbuffer_6
          * @tc.desc Test framebufferRenderbuffer.
          */
-        it('webgl_test_framebufferRenderbuffer_6', 0, async function (done) {
+        it('webgl_test_framebufferRenderbuffer_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_framebufferRenderbuffer_6] framebufferRenderbuffer");
             framebufferRenderbuffer((framebuffer, renderbuffer) => {
                 gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, undefined);
@@ -1842,7 +1902,8 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter] getFramebufferAttachmentParameter");
             let framebuffer = gl.createFramebuffer();
             console.info("webgltest framebuffer:", framebuffer);
@@ -1853,7 +1914,8 @@ export default function webgl1_buffer() {
             gl.bindRenderbuffer(gl.RENDERBUFFER, renderbuffer);
             expect(gl.isRenderbuffer(renderbuffer)).assertEqual(true);
             gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.RENDERBUFFER, renderbuffer);
-            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
+            let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
             console.info("webgltest gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME); ", object);
             expect(object).assertEqual(renderbuffer);
             gl.deleteRenderbuffer(renderbuffer);
@@ -1868,10 +1930,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_1
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_1', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_1] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
                 expect(object).assertEqual(renderbuffer);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             }, (framebuffer, renderbuffer) => {
@@ -1886,10 +1950,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_2
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_2', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_2] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE);
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1903,10 +1969,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_3
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_3', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_3] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT,
+                gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL);
                 expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1920,10 +1988,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_4
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_4', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_4] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT, gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.STENCIL_ATTACHMENT,
+                gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
                 expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1937,10 +2007,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_5
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_5', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_5] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT,
+                gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
                 expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1954,10 +2026,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_6
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_6', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_6] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL);
                 expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -1971,10 +2045,12 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_getFramebufferAttachmentParameter_7
          * @tc.desc Test getFramebufferAttachmentParameter.
          */
-        it('webgl_test_getFramebufferAttachmentParameter_7', 0, async function (done) {
+        it('webgl_test_getFramebufferAttachmentParameter_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async function (done) {
             console.info("webgltest [webgl_test_getFramebufferAttachmentParameter_7] getFramebufferAttachmentParameter");
             getFramebufferAttachmentParameter((framebuffer, renderbuffer) => {
-                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
+                let object = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+                gl.FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE);
                 expect(checkError(gl)).assertEqual(gl.INVALID_ENUM);
             }, (framebuffer, renderbuffer) => {
                 expect(checkError(gl)).assertEqual(gl.NO_ERROR);
@@ -2004,7 +2080,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferSubData
          * @tc.desc Test bufferSubData.
          */
-        it('webgl_test_bufferSubData', 0, async function (done) {
+        it('webgl_test_bufferSubData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferSubData] bufferSubData");
             let arr = new Float32Array([
                 0.0, 0.5, -0.5, 0.5, 1.0, 0.5,
@@ -2032,7 +2108,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferSubData_1
          * @tc.desc Test bufferSubData.
          */
-        it('webgl_test_bufferSubData_1', 0, async function (done) {
+        it('webgl_test_bufferSubData_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferSubData_1] bufferSubData");
             bufferSubData((arr) => {
                 gl.bufferSubData(gl.ARRAY_BUFFER, 0, arr);
@@ -2049,7 +2125,7 @@ export default function webgl1_buffer() {
          * @tc.name webgl_test_bufferSubData_2
          * @tc.desc Test bufferSubData.
          */
-        it('webgl_test_bufferSubData_2', 0, async function (done) {
+        it('webgl_test_bufferSubData_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("webgltest [webgl_test_bufferSubData_2] bufferSubData");
             bufferSubData((arr) => {
                 gl.bufferSubData(gl.ELEMENT_ARRAY_BUFFER, 0, arr);

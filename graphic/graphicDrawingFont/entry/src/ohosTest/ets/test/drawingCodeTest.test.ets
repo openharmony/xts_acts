@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import drawing from "@ohos.graphics.drawing"
 import common2D from '@ohos.graphics.common2D';
 import image from "@ohos.multimedia.image";
@@ -38,7 +38,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PathMoveTo
      * @tc.desc test the drawing of create
      */
-    it('PathMoveTo', 0, async (done: Function) => {
+    it('PathMoveTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('test PathMoveTo begin');
       try {
         let path = new drawing.Path();
@@ -62,7 +62,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PathLineTo
      * @tc.desc test the drawing of create
      */
-    it('PathLineTo', 0, async (done: Function) => {
+    it('PathLineTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let path = new drawing.Path();
         path.moveTo(10, 10);
@@ -86,7 +86,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PathArcTo
      * @tc.desc test the drawing of create
      */
-    it('PathArcTo', 0, async (done: Function) => {
+    it('PathArcTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let path = new drawing.Path();
         path.moveTo(10, 10);
@@ -110,7 +110,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PathQuadTo
      * @tc.desc test the drawing of create
      */
-    it('PathQuadTo', 0, async (done: Function) => {
+    it('PathQuadTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let path = new drawing.Path();
         path.moveTo(10, 10);
@@ -134,7 +134,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PathCubicTo
      * @tc.desc test the drawing of create
      */
-    it('PathCubicTo', 0, async (done: Function) => {
+    it('PathCubicTo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let path = new drawing.Path();
         path.moveTo(10, 10);
@@ -158,7 +158,7 @@ export default function drawingCodeTest() {
      * @tc.name Test CanvasConstruct
      * @tc.desc test the drawing of create
      */
-//    it('CanvasConstruct', 0, async (done: Function) => {
+//    it('CanvasConstruct', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 //      try {
 //        const color = new ArrayBuffer(96);
 //        let opts: image.InitializationOptions = {
@@ -191,7 +191,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontEnableSubpixel
      * @tc.desc test the drawing of create
      */
-    it('FontEnableSubpixel', 0, async (done: Function) => {
+    it('FontEnableSubpixel', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let font = new drawing.Font();
         font.enableSubpixel(null);
@@ -215,7 +215,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontEnableEmbolden
      * @tc.desc test the drawing of create
      */
-    it('FontEnableEmbolden', 0, async (done: Function) => {
+    it('FontEnableEmbolden', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let font = new drawing.Font();
         font.enableEmbolden(null);
@@ -239,7 +239,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontEnableLinearMetrics
      * @tc.desc test the drawing of create
      */
-    it('FontEnableLinearMetrics', 0, async (done: Function) => {
+    it('FontEnableLinearMetrics', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let font = new drawing.Font();
         font.enableLinearMetrics(null);
@@ -263,7 +263,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontSetSize
      * @tc.desc test the drawing of create
      */
-    it('FontSetSize', 0, async (done: Function) => {
+    it('FontSetSize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let font = new drawing.Font();
         font.setSize(null);
@@ -287,7 +287,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontSetTypeface
      * @tc.desc test the drawing of create
      */
-    it('FontSetTypeface', 0, async (done: Function) => {
+    it('FontSetTypeface', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let font = new drawing.Font();
         font.setTypeface(null);
@@ -311,7 +311,7 @@ export default function drawingCodeTest() {
      * @tc.name Test FontMeasureText
      * @tc.desc test the drawing of create
      */
-    // it('FontMeasureText', 0, async (done: Function) => {
+    // it('FontMeasureText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     let font = new drawing.Font();
     //     font.measureText();
@@ -335,7 +335,8 @@ export default function drawingCodeTest() {
      * @tc.name Test ColorFilterCreateBlendModeColorFilter
      * @tc.desc test the drawing of create
      */
-    it('ColorFilterCreateBlendModeColorFilter', 0, async (done: Function) => {
+    it('ColorFilterCreateBlendModeColorFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       try {
         const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
         let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(null, drawing.BlendMode.SRC);
@@ -359,7 +360,8 @@ export default function drawingCodeTest() {
      * @tc.name Test ColorFilterCreateComposeColorFilter
      * @tc.desc test the drawing of create
      */
-    it('ColorFilterCreateComposeColorFilter', 0, async (done: Function) => {
+    it('ColorFilterCreateComposeColorFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
       try {
         const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
         let colorFilter1 = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
@@ -385,7 +387,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetColor
      * @tc.desc test the drawing of create
      */
-    it('PenSetColor', 0, async (done: Function) => {
+    it('PenSetColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setColor(null, 255, 0, 0);
@@ -409,7 +411,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetStrokeWidth
      * @tc.desc test the drawing of create
      */
-    it('PenSetStrokeWidth', 0, async (done: Function) => {
+    it('PenSetStrokeWidth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setStrokeWidth(null);
@@ -433,7 +435,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetStrokeWidth
      * @tc.desc test the drawing of create
      */
-    it('PenSetStrokeWidth', 0, async (done: Function) => {
+    it('PenSetStrokeWidth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setStrokeWidth(null);
@@ -457,7 +459,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetAntiAlias
      * @tc.desc test the drawing of create
      */
-    it('PenSetAntiAlias', 0, async (done: Function) => {
+    it('PenSetAntiAlias', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setAntiAlias(null);
@@ -481,7 +483,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetAlpha
      * @tc.desc test the drawing of create
      */
-    // it('PenSetAlpha', 0, async (done: Function) => {
+    // it('PenSetAlpha', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     const pen = new drawing.Pen();
     //     pen.setAlpha();
@@ -505,7 +507,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetColorFilter
      * @tc.desc test the drawing of create
      */
-    // it('PenSetColorFilter', 0, async (done: Function) => {
+    // it('PenSetColorFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     const pen = new drawing.Pen();
     //     let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
@@ -530,7 +532,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetMaskFilter
      * @tc.desc test the drawing of create
      */
-    // it('PenSetMaskFilter', 0, async (done: Function) => {
+    // it('PenSetMaskFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     const pen = new drawing.Pen();
     //     pen.setStrokeWidth(5);
@@ -557,7 +559,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetPathEffect
      * @tc.desc test the drawing of create
      */
-    // it('PenSetPathEffect', 0, async (done: Function) => {
+    // it('PenSetPathEffect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     const pen = new drawing.Pen();
     //     pen.setStrokeWidth(5);
@@ -584,7 +586,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetShadowLayer
      * @tc.desc test the drawing of create
      */
-    // it('PenSetShadowLayer', 0, async (done: Function) => {
+    // it('PenSetShadowLayer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   try {
     //     const pen = new drawing.Pen();
     //     let color : common2D.Color = {alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00};
@@ -610,7 +612,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetBlendMode
      * @tc.desc test the drawing of create
      */
-    it('PenSetBlendMode', 0, async (done: Function) => {
+    it('PenSetBlendMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setBlendMode(null);
@@ -634,7 +636,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetJoinStyle
      * @tc.desc test the drawing of create
      */
-    it('PenSetJoinStyle', 0, async (done: Function) => {
+    it('PenSetJoinStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setStrokeWidth(5);
@@ -660,7 +662,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetCapStyle
      * @tc.desc test the drawing of create
      */
-    it('PenSetCapStyle', 0, async (done: Function) => {
+    it('PenSetCapStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setStrokeWidth(5);
@@ -684,7 +686,7 @@ export default function drawingCodeTest() {
      * @tc.name Test PenSetDither
      * @tc.desc test the drawing of create
      */
-    it('PenSetDither', 0, async (done: Function) => {
+    it('PenSetDither', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const pen = new drawing.Pen();
         pen.setDither(null);
@@ -706,7 +708,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetColor
      * @tc.desc test the drawing of create
      */
-    it('BrushSetColor', 0, async (done: Function) => {
+    it('BrushSetColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setColor(null, 255, 0, 0);
@@ -728,7 +730,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetAntiAlias
      * @tc.desc test the drawing of create
      */
-    it('BrushSetAntiAlias', 0, async (done: Function) => {
+    it('BrushSetAntiAlias', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setAntiAlias(null);
@@ -750,7 +752,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetAlpha
      * @tc.desc test the drawing of create
      */
-    it('BrushSetAlpha', 0, async (done: Function) => {
+    it('BrushSetAlpha', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setAlpha(null);
@@ -772,7 +774,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetColorFilter
      * @tc.desc test the drawing of create
      */
-    it('BrushSetColorFilter', 0, async (done: Function) => {
+    it('BrushSetColorFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
@@ -795,7 +797,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetMaskFilter
      * @tc.desc test the drawing of create
      */
-    it('BrushSetMaskFilter', 0, async (done: Function) => {
+    it('BrushSetMaskFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
@@ -818,7 +820,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetShadowLayer
      * @tc.desc test the drawing of create
      */
-    it('BrushSetShadowLayer', 0, async (done: Function) => {
+    it('BrushSetShadowLayer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setShadowLayer(null);
@@ -840,7 +842,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetShadowLayer
      * @tc.desc test the drawing of create
      */
-    it('BrushSetShadowLayer', 0, async (done: Function) => {
+    it('BrushSetShadowLayer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setShadowLayer(null);
@@ -862,7 +864,7 @@ export default function drawingCodeTest() {
      * @tc.name Test BrushSetBlendMode
      * @tc.desc test the drawing of create
      */
-    it('BrushSetBlendMode', 0, async (done: Function) => {
+    it('BrushSetBlendMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         const brush = new drawing.Brush();
         brush.setBlendMode(null);
@@ -884,7 +886,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionIsPointContained
      * @tc.desc test the drawing of create
      */
-    it('RegionIsPointContained', 0, async (done: Function) => {
+    it('RegionIsPointContained', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         region.setRect(100, 100, 400, 400);
@@ -908,7 +910,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionIsRegionContained
      * @tc.desc test the drawing of create
      */
-    it('RegionIsRegionContained', 0, async (done: Function) => {
+    it('RegionIsRegionContained', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         region.setRect(100, 100, 400, 400);
@@ -932,7 +934,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionOp
      * @tc.desc test the drawing of create
      */
-    it('RegionOp', 0, async (done: Function) => {
+    it('RegionOp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         region.setRect(200, 200, 400, 400);
@@ -958,7 +960,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionQuickReject
      * @tc.desc test the drawing of create
      */
-    it('RegionQuickReject', 0, async (done: Function) => {
+    it('RegionQuickReject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         region.setRect(100, 100, 400, 400);
@@ -982,7 +984,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionSetPath
      * @tc.desc test the drawing of create
      */
-    it('RegionSetPath', 0, async (done: Function) => {
+    it('RegionSetPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         let path = new drawing.Path();
@@ -1008,7 +1010,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionSetPath
      * @tc.desc test the drawing of create
      */
-    it('RegionSetPathTwo', 0, async (done: Function) => {
+    it('RegionSetPathTwo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         let path = new drawing.Path();
@@ -1034,7 +1036,7 @@ export default function drawingCodeTest() {
      * @tc.name Test RegionSetRect
      * @tc.desc test the drawing of create
      */
-    it('RegionSetRect', 0, async (done: Function) => {
+    it('RegionSetRect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let region = new drawing.Region();
         let flag: boolean = false;

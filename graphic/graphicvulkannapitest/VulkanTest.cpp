@@ -262,7 +262,7 @@ void VulkanLoaderUnitTest::TearDownTestCase()
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, LoadBaseFuncPtr, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, LoadBaseFuncPtr, Function | MediumTest | Level1)
 {
     bool opened = DLOpenLibVulkan();
     std::cout << "LibVulkan opened: " << opened << std::endl;
@@ -297,7 +297,7 @@ HWTEST_F(VulkanLoaderUnitTest, LoadBaseFuncPtr, TestSize.Level1)
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, LoadInstanceFuncPtr, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, LoadInstanceFuncPtr, Function | MediumTest | Level1)
 {
     std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
@@ -360,7 +360,7 @@ HWTEST_F(VulkanLoaderUnitTest, LoadInstanceFuncPtr, TestSize.Level1)
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, vkEnumeratePhysicalDevices_Test, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, vkEnumeratePhysicalDevices_Test, Function | MediumTest | Level1)
 {
     std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
@@ -392,7 +392,7 @@ HWTEST_F(VulkanLoaderUnitTest, vkEnumeratePhysicalDevices_Test, TestSize.Level1)
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, Function | MediumTest | Level1)
 {
     std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
@@ -435,7 +435,7 @@ HWTEST_F(VulkanLoaderUnitTest, vkCreateDevice_Test, TestSize.Level1)
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, Function | MediumTest | Level1)
 {
     std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
@@ -488,7 +488,7 @@ HWTEST_F(VulkanLoaderUnitTest, getNativeBufferPropertiesOHOS_Test, TestSize.Leve
  * @tc.type: FUNC
  * @tc.require: issueI6SKRO
  */
-HWTEST_F(VulkanLoaderUnitTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1)
+HWTEST_F(VulkanLoaderUnitTest, getMemoryNativeBufferOHOS_Test, Function | MediumTest | Level1)
 {
     std::cout << "isSupportedVulkan_: " << isSupportedVulkan_ << std::endl;
     if (isSupportedVulkan_) {
