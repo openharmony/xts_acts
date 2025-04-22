@@ -12,16 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
-import TabsOnSelected from './TabsTest/TabsOnSelected.test'
-import SwiperOnSelected from './SwiperTest/SwiperOnSelected.test'
+ 
+import preloadSwiper from './SwiperTest/preloadSwiper.test'; 
 
 export default function testsuite() {
-  ListSwipeTest();
-  ScrollEffectEdge();
-  TabBarComponentContent();
-  TabsOnSelected();
-  SwiperOnSelected();
+  preloadSwiper()
 }

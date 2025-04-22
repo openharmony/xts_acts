@@ -12,16 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ScrollEffectEdge from './ScrollTest/ScrollEffectEdge.test'
-import TabBarComponentContent from './TabsTest/TabBarComponentContent.test'
-import TabsOnSelected from './TabsTest/TabsOnSelected.test'
-import SwiperOnSelected from './SwiperTest/SwiperOnSelected.test'
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-export default function testsuite() {
-  ListSwipeTest();
-  ScrollEffectEdge();
-  TabBarComponentContent();
-  TabsOnSelected();
-  SwiperOnSelected();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }
