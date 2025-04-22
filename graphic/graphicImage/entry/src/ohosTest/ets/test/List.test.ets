@@ -21,7 +21,7 @@ import imagePixelMapTestErrorCode from './pixelMapErrorCode'
 export default function testsuite() {
   imagePixelMapTest()
   graphicSendableImageInterfaceTest()
-  // graphicImagePixelMapTest()
+  graphicImagePixelMapTest()
   graphicImageInterfaceTest()
   imagePixelMapTestErrorCode()
 }
