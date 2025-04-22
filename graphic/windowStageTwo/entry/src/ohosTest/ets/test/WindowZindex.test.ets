@@ -1633,6 +1633,7 @@ export default function windowZindexTest() {
         await windowClass.setUIContent('testability/pages/First/index1');
         console.info(`${caseName} Succeeded in loading the system sub window content.`);
         await windowClass.showWindow();
+        await sleep(300);
         let res = windowClass.isWindowHighlighted();
         await windowClass.destroyWindow();
         expect(res).assertEqual(true)
@@ -1665,11 +1666,13 @@ export default function windowZindexTest() {
       try{
         await windowClass1.setUIContent('testability/pages/First/index1');
         await windowClass1.showWindow();
+        await sleep(300);
         let res = windowClass1.isWindowHighlighted();
         expect(res).assertEqual(true)
         windowClass2.setExclusivelyHighlighted(false);
         await windowClass2.setUIContent('testability/pages/First/index1');
         await windowClass2.showWindow();
+        await sleep(300);
         res = windowClass2.isWindowHighlighted();
         expect(res).assertEqual(true)
         await windowClass1.destroyWindow();
