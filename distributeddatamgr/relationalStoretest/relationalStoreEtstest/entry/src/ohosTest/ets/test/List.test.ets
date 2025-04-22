@@ -50,6 +50,7 @@ import relationalStoreErrorCode02Test from './relationalStoreErrorCode02Test.tes
 import relationalStoreErrorCode51Test from './relationalStoreErrorCode51Test.test';
 import relationalStoreErrorCode01Test from './relationalStoreErrorCode01Test.test';
 import relationalStoreErrorCode32Test from './relationalStoreErrorCode32Test.test';
+import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test';
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -90,5 +91,6 @@ export default function testsuite() {
   relationalStoreErrorCode02Test()
   relationalStoreErrorCode51Test()
   relationalStoreErrorCode01Test()
+  RelationalStoreSetDistributedTables()
 }
 
