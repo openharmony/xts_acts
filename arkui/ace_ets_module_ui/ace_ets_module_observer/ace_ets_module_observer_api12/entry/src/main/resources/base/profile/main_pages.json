@@ -8,6 +8,8 @@
         "MainAbility/pages/observer/ObserverApi1",
         "MainAbility/pages/observer/DensityInfo",
         "MainAbility/pages/observer/tabContentState",
-        "MainAbility/pages/observer/observeTab"
+        "MainAbility/pages/observer/observeTab",
+        "MainAbility/pages/observer/idScrollEvent",
+        "MainAbility/pages/observer/indexTabs"
     ]
 }

@@ -29,10 +29,13 @@ import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
 import ScrollSourceOther from './ScrollTest/ScrollSourceOther.test';
 import ScrollSource from './ScrollTest/ScrollSource.test';
 import offsetRemain from './ScrollTest/offsetRemain.test';
+import alignItemsGrid from './GridTest/alignItemsGrid.test';
+import chainAnimationList from './ListTest/chainAnimationList.test'
 import listItemGroupNone from './ListTest/listItemGroupNone.test'
 import nestedScrollSwiper from './SwiperTest/nestedScrollSwiper.test'; 
 import finishTransSwiper from './SwiperTest/finishTransSwiper.test';
 import preloadErrorTabs from './TabsTest/preloadErrorTabs.test'; 
+import symbolTabs from './TabsTest/symbolTabs.test'; 
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
 import scrollXOffsetJsunit from './ScrollTest/scrollXOffsetJsunit.test';
@@ -140,6 +143,13 @@ export default function testsuite() {
   ScrollSourceOther()
   ScrollSource();
   offsetRemain()
+  alignItemsGrid()
+  chainAnimationList();
+  listItemGroupNone();
+  nestedScrollSwiper()
+  finishTransSwiper()
+  preloadErrorTabs()
+  symbolTabs()
   TabsAp1()
   ScrollApi1()
   scrollXOffsetJsunit();

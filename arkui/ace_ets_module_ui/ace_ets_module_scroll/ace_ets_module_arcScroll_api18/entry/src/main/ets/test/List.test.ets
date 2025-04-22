@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,14 +13,14 @@
  * limitations under the License.
  */
  
-import iconTabs from './TabsTest/iconTabs.test';
-import onSelectedTabs from './TabsTest/onSelectedTabs.test'; 
-import preloadSwiper from './SwiperTest/preloadSwiper.test'; 
-import selectedSwiper from './SwiperTest/selectedSwiper.test'; 
+import arcDotIndicator from './ArcSwiperTest/arcDotIndicator.test';
+import arcSwiperEvent from './ArcSwiperTest/arcSwiperEvent.test';
+import arcSwiperShow from './ArcSwiperTest/arcSwiperShow.test';
+import arcSwiperContent from './ArcSwiperTest/arcSwiperContent.test';
 
 export default function testsuite() {
-  iconTabs()
-  onSelectedTabs()
-  preloadSwiper()
-  selectedSwiper()
+  arcDotIndicator()
+  arcSwiperEvent()
+  arcSwiperShow()
+  arcSwiperContent()
 }
