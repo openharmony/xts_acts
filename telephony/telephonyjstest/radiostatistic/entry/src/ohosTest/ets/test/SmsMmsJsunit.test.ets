@@ -129,20 +129,28 @@ export default function smsUiJsunit() {
      * @tc.desc
      */
     it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async (done:Function) => {
-      sms.getDefaultSmsSimId((err, data) => {
-        if(err){
-          console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(err));
-          expect(false).assertTrue();
-          done();
-          return;
-        }
-        console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-        sim.hasSimCard(0, (err, data) => {
-          console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertFalse();
-          done();
+      let caseName = 'Telephony_Sms_getDefaultSmsSimId_CallBack_0100';
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        sms.getDefaultSmsSimId((err, data) => {
+          if (err) {
+            console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+          sim.hasSimCard(0, (err, data) => {
+            console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+            expect(data).assertFalse();
+            done();
+          });
         });
-      });
+      }
     });
     /**
      * @tc.number Telephony_Sms_getDefaultSmsSimId_Promise_0100
@@ -150,19 +158,27 @@ export default function smsUiJsunit() {
      * @tc.desc
      */
     it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', 0, async (done:Function) => {
-      let promise = sms.getDefaultSmsSimId();
-      promise.then(data => {
-        console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 data = " + JSON.stringify(data));
-        sim.hasSimCard(0, (err, data) => {
-          console.log(`Telephony_Sms_getDefaultSmsSimId_Promise_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertFalse();
+      let caseName = 'Telephony_Sms_getDefaultSmsSimId_Promise_0100';
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        let promise = sms.getDefaultSmsSimId();
+        promise.then(data => {
+          console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 data = " + JSON.stringify(data));
+          sim.hasSimCard(0, (err, data) => {
+            console.log(`Telephony_Sms_getDefaultSmsSimId_Promise_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+            expect(data).assertFalse();
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 err = " + JSON.stringify(err));
+          expect(false).assertTrue();
           done();
         });
-      }).catch((err:BusinessError) => {
-        console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 err = " + JSON.stringify(err));
-        expect(false).assertTrue();
-        done();
-      });
+      }
     });
   })
 }

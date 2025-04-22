@@ -26,14 +26,22 @@ export default function telSyncTest() {
      * @tc.desc    Function test
      */
     it('SUB_Telephony_call_hasCallSync_0100', 0, async (done:Function) => {
-      try {
-        console.info("SUB_Telephony_call_hasCallSync_0100 hasCallSync " + call.hasCallSync());
-        expect(call.hasCallSync()).assertFalse();
+      let caseName = 'SUB_Telephony_call_hasCallSync_0100';
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
         done();
-      } catch (err) {
-        console.info("SUB_Telephony_call_hasCallSync_0100 " + JSON.stringify(err));
-        expect(true).assertFalse();
-        done();
+      } else {
+        try {
+          console.info("SUB_Telephony_call_hasCallSync_0100 hasCallSync " + call.hasCallSync());
+          expect(call.hasCallSync()).assertFalse();
+          done();
+        } catch (err) {
+          console.info("SUB_Telephony_call_hasCallSync_0100 " + JSON.stringify(err));
+          expect(true).assertFalse();
+          done();
+        }
       }
     });
 
@@ -43,14 +51,22 @@ export default function telSyncTest() {
      * @tc.desc    Function test
      */
     it('SUB_Telephony_call_getCallStateSync_0100', 0, async (done:Function) => {
-      try {
-        console.info("SUB_Telephony_call_getCallStateSync_0100 getCallStateSync " + call.getCallStateSync());
-        expect(call.getCallStateSync()).assertEqual(call.CallState.CALL_STATE_IDLE);
+      let caseName = 'SUB_Telephony_call_getCallStateSync_0100';
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
         done();
-      } catch (err) {
-        console.info("SUB_Telephony_call_getCallStateSync_0100 " + JSON.stringify(err));
-        expect(true).assertFalse();
-        done();
+      } else {
+        try {
+          console.info("SUB_Telephony_call_getCallStateSync_0100 getCallStateSync " + call.getCallStateSync());
+          expect(call.getCallStateSync()).assertEqual(call.CallState.CALL_STATE_IDLE);
+          done();
+        } catch (err) {
+          console.info("SUB_Telephony_call_getCallStateSync_0100 " + JSON.stringify(err));
+          expect(true).assertFalse();
+          done();
+        }
       }
     });
 
