@@ -20,6 +20,42 @@ import screenshot from '@ohos.screenshot';
 import { BusinessError } from '@ohos.base';
 import { Callback } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import { StartOptions } from '@kit.AbilityKit';
+import window from "@ohos.window";
+
+let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest') as window.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility(caseName: string) {
+  let pageContext = AppStorage.get('contextTest') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
 
 export default function windowPromiseTest(context: common.UIAbilityContext) {
   describe('windowPermissionCheck_test', () => {
@@ -179,5 +215,39 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
         expect(exception.code).assertEqual(201);
       }
     })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0200
+     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0200
+     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0200
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_GET_VISIBLEWINDOWINFO_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0200 ';
+      console.log(caseName + 'begin');
+      let windowStageStart = await startAbility(caseName, context);
+      try {
+        let windowClass2 = windowStageStart.getMainWindowSync();
+        let res = windowClass2.getWindowProperties()
+        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+          expect().assertFail()
+          await terminateAbility(caseName);
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+          await terminateAbility(caseName);
+          done()
+        });
+      } catch (err) {
+        console.error(caseName + 'Failed2 to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        await terminateAbility(caseName);
+        done();
+      }
+    });
   })
 }
