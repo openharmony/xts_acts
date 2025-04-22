@@ -14,8 +14,15 @@
  */
 
 import NavigationTitleTextModifier from './Navigation/NavigationTitleTextModifier.test'
+import NavigationCustomTitlePage from './Navigation/NavigationCustomTitlePage.test'
+import TitleOptionsToolOptions from './Navigation/TitleOptionsToolOptions.test'
+import BarStylePage from './Navigation/BarStylePage.test'
+import HideToolBarNavPage from './Navigation/HideToolBarNavPage.test
 
 export default function testsuite() {
   NavigationTitleTextModifier();
-
+  NavigationCustomTitlePage();
+  TitleOptionsToolOptions();
+  BarStylePage();
+  HideToolBarNavPage();
 }
