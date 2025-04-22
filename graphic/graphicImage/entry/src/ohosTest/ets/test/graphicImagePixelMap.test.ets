@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium"
 import { BusinessError } from '@ohos.base';
 import image from '@ohos.multimedia.image';
 
@@ -36,7 +36,8 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreatePixelMapFromSurfaceSync_receiver", 0, async (done:Function)=> {
+    it("testCreatePixelMapFromSurfaceSync_receiver", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = '=====testCreatePixelMapFromSurfaceSync_receiver====='
       let size: image.Size = {
         height: 8192,
@@ -69,7 +70,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetTransferDetached_1", 0, async (done:Function)=> {
+    it("testSetTransferDetached_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = '=====testSetTransferDetached_1====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -117,7 +118,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetTransferDetached_2", 0, async (done:Function)=> {
+    it("testSetTransferDetached_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = '=====testSetTransferDetached_2====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -164,7 +165,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testHdrMetadataKey_enum", 0, async (done:Function)=>  {
+    it("testHdrMetadataKey_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testHdrMetadataKey_enum====='
       console.log(msg + " Example begin! ")
       try{
@@ -194,7 +195,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testHdrMetadataType_enum", 0, async (done:Function)=>  {
+    it("testHdrMetadataType_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testHdrMetadataType_enum====='
       console.log(msg + " Example begin! ")
       try{
@@ -225,7 +226,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMetadata_1", 0, async (done:Function)=>  {
+    it("testSetMetadata_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMetadata_1====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -300,7 +301,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMetadata_2", 0, async (done:Function)=>  {
+    it("testSetMetadata_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMetadata_2====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -388,7 +389,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testAntiAliasingLevel_enum", 0, async (done:Function)=>  {
+    it("testAntiAliasingLevel_enum", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testAntiAliasingLevel_enum====='
       console.log(msg + " Example begin! ")
       try{
@@ -418,7 +419,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testAntiAliasingLevel", 0, async (done:Function)=>  {
+    it("testAntiAliasingLevel", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testAntiAliasingLevel====='
       console.log(msg + " Example begin! ")
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
@@ -452,7 +453,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testGetMetadata", 0, async (done:Function)=>  {
+    it("testGetMetadata", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testGetMetadata====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -551,7 +552,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testGetMetadata_2", 0, async (done:Function)=>  {
+    it("testGetMetadata_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testGetMetadata_2====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -627,7 +628,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testGetMetadata_3", 0, async (done:Function)=>  {
+    it("testGetMetadata_3", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testGetMetadata_3====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -703,7 +704,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMemoryNameSync_1", 0, async (done:Function)=>  {
+    it("testSetMemoryNameSync_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMemoryNameSync_1====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -778,7 +779,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMemoryNameSync_2", 0, async (done:Function)=>  {
+    it("testSetMemoryNameSync_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMemoryNameSync_2====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -844,7 +845,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMemoryNameSync_3", 0, async (done:Function)=>  {
+    it("testSetMemoryNameSync_3", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMemoryNameSync_3====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -918,7 +919,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetMemoryNameSync_4", 0, async (done:Function)=>  {
+    it("testSetMemoryNameSync_4", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testSetMemoryNameSync_4====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -990,7 +991,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testASTC_4", 0, async (done:Function)=>  {
+    it("testASTC_4", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testASTC_4====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.ASTC_4x4, size: { height: 4, width: 6 } }
@@ -1016,7 +1017,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testARGB_8888", 0, async (done:Function)=>  {
+    it("testARGB_8888", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testARGB_8888====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.ARGB_8888 , size: { height: 4, width: 6 } }
@@ -1043,7 +1044,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreateScaledPixelMap", 0, async (done:Function)=>  {
+    it("testCreateScaledPixelMap", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testCreateScaledPixelMap====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1081,7 +1082,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreateScaledPixelMapSync", 0, async (done:Function)=>  {
+    it("testCreateScaledPixelMapSync", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testCreateScaledPixelMapSync====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
@@ -1114,7 +1115,7 @@ export default function graphicImagePixelMapTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testCreateScaledPixelMapSync", 0, async (done:Function)=>  {
+    it("testCreateScaledPixelMapSync", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=>  {
       let msg = '=====testCreateScaledPixelMapSync====='
       const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
       let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, it, expect, TestType, Level, Size } from "@ohos/hypium";
 import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 import drawing from '@ohos.graphics.drawing';
@@ -45,7 +45,7 @@ export default function graphicTextHadTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testParagraphStylePropertyFour', 2, async (done:Function)=> {
+    it('testParagraphStylePropertyFour', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = "====testParagraphStylePropertyFour===="
       console.info(msg + ' begin');
       let myTextShadow: text.TextShadow = {
@@ -151,7 +151,7 @@ export default function graphicTextHadTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextRunGetGlyphs', 23, async (done:Function)=> {
+    it('testTextRunGetGlyphs', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = '====testTextRunGetGlyphs====';
       console.info(msg + 'begin');
       let myTextStyle: text.TextStyle = {
@@ -192,7 +192,7 @@ export default function graphicTextHadTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testTextRunGetPositions', 24, async (done:Function)=> {
+    it('testTextRunGetPositions', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
       let msg = '====testTextRunGetPositions====';
       console.info(msg + 'begin');
       let myTextStyle: text.TextStyle = {
@@ -231,7 +231,8 @@ export default function graphicTextHadTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetSystemFontFullNamesByType', 2, async (done:Function)=> {
+    it('testGetSystemFontFullNamesByType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done:Function)=> {
       let msg = "====testGetSystemFontFullNamesByType===="
       console.info(msg + ' begin ');
       let fontType:text.SystemFontType = text.SystemFontType.GENERIC
