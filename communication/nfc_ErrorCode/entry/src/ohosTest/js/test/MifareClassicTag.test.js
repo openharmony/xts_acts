@@ -15,7 +15,7 @@
 
 
 import tag from '@ohos.nfc.tag';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -76,9 +76,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0100', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0100', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let sectorIndex = 1; 
                 let key = [0x04, 0x05];  
@@ -106,9 +106,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0200', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0200', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let sectorIndex = 1; 
                 let key = [0x04, 0x05];  
@@ -141,9 +141,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0300', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0300', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 (async () => {
@@ -170,9 +170,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0400', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0400', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 try {
@@ -204,9 +204,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0500', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0500', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1;
                 let rawData = [0x0a, 0x14]; 
@@ -234,9 +234,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0600', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0600', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let rawData = [0x0a, 0x14]; 
@@ -269,9 +269,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0700', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0700', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let value = 0x20;
@@ -299,9 +299,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0800', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0800', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let value = 0x20;            
@@ -334,9 +334,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0900', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_0900', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let value = 0x20;
@@ -364,9 +364,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1000', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_1000', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 let value = 0x20;            
@@ -399,9 +399,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1100', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_1100', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 (async () => {
@@ -428,9 +428,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1200', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_1200', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1;             
                 try {
@@ -462,9 +462,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1300', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_1300', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1; 
                 (async () => {
@@ -491,9 +491,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1400', 0, async function (done) {
+        it('SUB_Communication_NFC_mifareClassic_js_1400', Level.LEVEL1, async function (done) {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 let blockIndex = 1;             
                 try {
@@ -525,9 +525,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1500', 0, function ()  {
+        it('SUB_Communication_NFC_mifareClassic_js_1500', Level.LEVEL1, function ()  {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try {
                     let sectorIndex = 1;
@@ -551,9 +551,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1600', 0, function ()  {
+        it('SUB_Communication_NFC_mifareClassic_js_1600', Level.LEVEL1, function ()  {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try {
                     let sectorIndex = 1; 
@@ -577,9 +577,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1700', 0, function ()  {
+        it('SUB_Communication_NFC_mifareClassic_js_1700', Level.LEVEL1, function ()  {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try {
                     let blockIndex = 1; 
@@ -603,9 +603,9 @@ export default function MifareClassicErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-         it('SUB_Communication_NFC_mifareClassic_js_1800', 0, function ()  {
+         it('SUB_Communication_NFC_mifareClassic_js_1800', Level.LEVEL1, function ()  {
             if (MifareClassicTag != null && MifareClassicTag != undefined) {
                 try {
                     let NFCMifareClassicTag = tag.getMifareClassic("test");
