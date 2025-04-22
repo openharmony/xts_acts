@@ -29,6 +29,10 @@ export default function ApiCoverTest() {
      */
     it(`FMS_apiCoverTest_001`, 0, async (done: () => void) => {
       console.info("FMS_apiCoverTest_001 start");
+	  
+      if (FormInfo.FormParam.FORM_LOCATION_KEY) {
+        expect("ohos.extra.param.key.form_location").assertEqual(FormInfo.FormParam.FORM_LOCATION_KEY);
+      }
 
       expect("ohos.extra.param.key.form_identity").assertEqual(FormInfo.FormParam.IDENTITY_KEY);
       expect("ohos.extra.param.key.bundle_name").assertEqual(FormInfo.FormParam.BUNDLE_NAME_KEY);
