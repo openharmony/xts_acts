@@ -49,8 +49,42 @@ async function startAbility2(caseName: string, context: common.UIAbilityContext,
   let windowStageStart = AppStorage.get('windowStageStartTest2') as window.WindowStage;
   return windowStageStart
 }
+
+async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility3',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
+  return windowStageStart
+}
+
 async function terminateAbility2(caseName: string) {
   let pageContext = AppStorage.get('contextTest2') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
+
+async function terminateAbility3(caseName: string) {
+  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
   await pageContext.terminateSelf().then(() => {
     console.log(`${caseName} terminateSelf success`);
   }).catch((err: BusinessError) => {
@@ -1397,41 +1431,46 @@ export default function windowZindexTest() {
      * @tc.level     : Level 2
      */
     it('test_SubWindowZLevel_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let caseName: string = 'test_SubWindowZLevel_0300';
+      let caseName: string = 'test_SubWindowZLevel_0300 ';
       console.log(caseName + 'begin');
       let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0300');
-      try{
-        await windowClass.minimize();
-        await windowClass.setSubWindowZLevel(1);
-        console.log(`${caseName} :sub window setSubWindowZLevel test1 success`);
-        expect().assertFail();
-        done();
-      } catch(err) {
-        console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
-        if (err.code === 801) {
-          console.log(`${caseName} deviceType does not supported this Capability`);
-        } else {
-          expect(err.code).assertEqual(1300002);
-        }
+      await windowClass.destroyWindow();
+      try {
+        windowClass.setSubWindowZLevel(1).then(async () => {
+          console.info(caseName + 'Succeeded in calling setSubWindowZLevel.');
+          expect().assertFail();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call setSubWindowZLevel. Cause: ' + JSON.stringify(err));
+          expect().assertFail()
+          done()
+        });
+      } catch (err) {
+        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        expect(err.code).assertEqual(1300002);
         done()
       }
-      try{
-        await windowClass.showWindow();
-        await windowClass.setSubWindowZLevel(1);
-        let res = windowClass.getSubWindowZLevel();
-        expect(res).assertEqual(1);
-        console.log(`${caseName} :test_SubWindowZLevel_0300 success:`);
-        await windowClass.destroyWindow();
-        done();
-      } catch(err) {
-        console.log(`${caseName} :test_SubWindowZLevel_0300 fail2:`+err.code);
-        await windowClass.destroyWindow();
-        if (err.code === 801) {
-          done()
-        } else {
-          expect().assertFail();
-          done();
-        }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0700
+     * @tc.name      : test_SubWindowZLevel_0700
+     * @tc.desc      : test_SubWindowZLevel_0700
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_SubWindowZLevel_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_SubWindowZLevel_0700 ';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0700');
+      await windowClass.destroyWindow();
+      try {
+        windowClass.getSubWindowZLevel();
+      } catch (err) {
+        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        expect(err.code).assertEqual(1300002);
+        done()
       }
     });
 
@@ -1562,6 +1601,61 @@ export default function windowZindexTest() {
           expect().assertFail();
           done();
         }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+      console.log(caseName + 'begin');
+      let windowStageStart = await startAbility3(caseName, context);
+      try {
+        let windowClass2 = windowStageStart.getMainWindowSync();
+        let res = windowClass2.getWindowProperties()
+        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+          expect(infos.length).assertLarger(2);
+          let isExit = false;
+          for (let i = 0; i < infos.length; i++) {
+            if (infos[i].windowId === res.id) {
+              isExit = true;
+              let info = infos[i];
+              expect(info.rect.left).assertEqual(res.windowRect.left);
+              expect(info.rect.top).assertEqual(res.windowRect.top);
+              expect(info.rect.width).assertEqual(res.windowRect.width);
+              expect(info.rect.height).assertEqual(res.windowRect.height);
+              expect(info.isFocused).assertEqual(true);
+              expect(info.windowStatusType).assertEqual(4);
+              expect(info.bundleName).assertEqual('bundleName');
+              expect(info.abilityName).assertEqual('StartTestAbility3');
+              break;
+            }
+          }
+          if (!isExit) {
+            console.log(`${caseName} failed, there is no match windowId.`);
+            await terminateAbility3(caseName);
+            expect().assertFail();
+            done()
+          }
+          await terminateAbility3(caseName);
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+          expect().assertFail()
+          done()
+        });
+      } catch (err) {
+        await terminateAbility3(caseName);
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        expect().assertFail();
+        done();
       }
     });
     /**
@@ -1713,7 +1807,6 @@ export default function windowZindexTest() {
       }
     });
 
-
     /**
      * @tc.number    : SUB_BASIC_WMS_SetWindowRectAutoSave_ErrorCode_0200
      * @tc.name      : test_setWindowRectAutoSave_801
@@ -1726,16 +1819,22 @@ export default function windowZindexTest() {
       let caseName: string = 'test_setWindowRectAutoSave_801';
       console.log(caseName + 'begin');
       try{
-        windowStage.setWindowRectAutoSave(true,true);
-        done();
+        windowStage.setWindowRectAutoSave(true, true).then(async () => {
+          console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          if (err.code === 801) {
+            done();
+          } else {
+            expect().assertFail()
+            done()
+          }
+        });
       } catch(err) {
         console.log(`${caseName} :setWindowRectAutoSave fail1:`+err.code);
-        if (err.code === 801) {
-          done();
-        } else {
-          expect().assertFail()
-          done()
-        }
+        expect().assertFail()
+        done()
       }
     });
 
@@ -1778,26 +1877,40 @@ export default function windowZindexTest() {
      * @tc.level     : Level 0
      */
     it('test_SetWindowRectAutoSave_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let caseName: string = 'test_SetWindowRectAutoSave_0100';
+      let caseName: string = 'test_SetWindowRectAutoSave_0100 ';
       console.log(caseName + 'begin');
       try {
         let windowStageStart = await startAbility2(caseName, context);
-        windowStageStart.setWindowRectAutoSave(true,true)
-        let mainWindow = windowStageStart.getMainWindowSync();
-        mainWindow.moveWindowToAsync(300, 400)
-        mainWindow.resizeAsync(1000, 1200)
-        let windowRect1 = mainWindow.getWindowProperties().windowRect
-        await terminateAbility2(caseName)
-        let windowStageStart2 = await startAbility2(caseName, context);
-        let mainWindow2 = windowStageStart2.getMainWindowSync();
-        let windowRect2 = mainWindow2.getWindowProperties().windowRect
-        expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
-        expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
-        expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
-        expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
-        windowStageStart2.setWindowRectAutoSave(false,false)
-        await terminateAbility2(caseName)
-        done();
+        windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
+          console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
+          let mainWindow = windowStageStart.getMainWindowSync();
+          mainWindow.moveWindowToAsync(300, 400)
+          mainWindow.resizeAsync(1000, 1200);
+          await sleep(300);
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
+          await terminateAbility2(caseName)
+          let windowStageStart2 = await startAbility2(caseName, context);
+          let mainWindow2 = windowStageStart2.getMainWindowSync();
+          let windowRect2 = mainWindow2.getWindowProperties().windowRect
+          console.info(caseName + 'windowRect2: ' + JSON.stringify(windowRect2));
+          expect(Math.abs(windowRect2.left-windowRect1.left)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-windowRect1.top)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-windowRect1.width)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-windowRect1.height)).assertLessOrEqual(1);
+          await windowStageStart2.setWindowRectAutoSave(false,false);
+          await terminateAbility2(caseName)
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          if (err.code == 801) {
+            console.info(caseName + 'this deviceType does not support the Capability.');
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
         expect().assertFail()
@@ -1829,10 +1942,17 @@ export default function windowZindexTest() {
         await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
         await subWindowClass.showWindow();
         await subWindowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
-        let windowStatusType = subWindowClass.getWindowStatus()
-        expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
-        await subWindowClass.destroyWindow()
-        done()
+        let windowStatusType = subWindowClass.getWindowStatus();
+        console.info(caseName+ ' subWindowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+        if(isPCStatus == ''|| isAutoWindow =='false'){
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FLOATING)
+          await subWindowClass.destroyWindow()
+          done()
+        } else {
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
+          await subWindowClass.destroyWindow()
+          done()
+        }
       }).catch((err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
         if (err.code === 1300002) {
@@ -1868,10 +1988,17 @@ export default function windowZindexTest() {
         await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
         await subWindowClass.showWindow();
         await subWindowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-        let windowStatusType = subWindowClass.getWindowStatus()
-        expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
-        await subWindowClass.destroyWindow()
-        done()
+        let windowStatusType = subWindowClass.getWindowStatus();
+        console.info(caseName+ ' subWindowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+        if(isPCStatus == ''|| isAutoWindow =='false'){
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FLOATING)
+          await subWindowClass.destroyWindow()
+          done()
+        }else {
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          await subWindowClass.destroyWindow()
+          done()
+        }
       }).catch((err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
         if (err.code === 1300002) {
