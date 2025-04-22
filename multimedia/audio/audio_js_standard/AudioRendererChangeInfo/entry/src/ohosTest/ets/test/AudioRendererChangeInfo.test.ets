@@ -100,7 +100,152 @@ export default function audioRendererChange() {
     afterAll(() => {
       console.info(`${Tag} : afterAll: Test suite-level cleanup condition`);
     })
-
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_ON_AUDIORENDERERCHANGE_0100
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_ON_AUDIORENDERERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = 1;
+        audioStreamManager.on('audioRendererChange', para1);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 401).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIORENDERERCHANGE_0100
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIORENDERERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioStreamManager.on('audioRendererChange',cb1);
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = 1;
+        let para2 : ESObject = () => {return 1;};
+        audioStreamManager.off(para1, para2);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 401).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIORENDERERCHANGE_0100
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIORENDERERCHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioStreamManager.on('audioRendererChange',cb1);
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = '1';
+        let para2 : ESObject = () => {return 1;};
+        audioStreamManager.off(para1,para2);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 6800101).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_ON_AUDIORENDERERCHANGE_0100
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_ON_AUDIOCAPTURERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = 1;
+        audioStreamManager.on('audioCapturerChange', para1);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 401).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0100
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioStreamManager.on('audioCapturerChange',cb1);
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = 1;
+        let para2 : ESObject = () => {return 1;};
+        audioStreamManager.off(para1, para2);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 401).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0200
+     * @tc.name      : AudioRendererChange 
+     * @tc.desc      : AudioRendererChange 
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioStreamManager.on('audioCapturerChange',cb1);
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = '1';
+        let para2 : ESObject = () => {return 1;};
+        audioStreamManager.off(para1,para2);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 6800101).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - ON_STATE_PREPARED
