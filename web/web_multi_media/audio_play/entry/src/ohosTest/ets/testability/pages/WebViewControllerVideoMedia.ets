@@ -24,6 +24,7 @@ struct WebViewControllerVideoMedia {
   @State str: string = ""
   @State userAgentPC:string = "";
   controller: webView.WebviewController = new webView.WebviewController();
+  @State backStateArr:string[] = ['MediaPlaybackState.NONE','MediaPlaybackState.PLAYING','MediaPlaybackState.PAUSED','MediaPlaybackState.STOPPED']
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -70,9 +71,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77011)
+                  Utils.emitEvent(this.backStateArr[3], 77011)
                 }else{
-                  Utils.emitEvent(res, 77011)
+                  Utils.emitEvent(this.backStateArr[res], 77011)
                 }
               }, 3000)
               break;
@@ -92,9 +93,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 77012)
+                  Utils.emitEvent(this.backStateArr[0], 77012)
                 }else{
-                  Utils.emitEvent(res, 77012)
+                  Utils.emitEvent(this.backStateArr[res], 77012)
                 }
               }, 3000)
               break;
@@ -118,9 +119,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77013)
+                  Utils.emitEvent(this.backStateArr[3], 77013)
                 }else{
-                  Utils.emitEvent(res, 77013)
+                  Utils.emitEvent(this.backStateArr[res], 77013)
                 }
               }, 3000)
               break;
@@ -144,9 +145,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 77014)
+                  Utils.emitEvent(this.backStateArr[2], 77014)
                 }else{
-                  Utils.emitEvent(res, 77014)
+                  Utils.emitEvent(this.backStateArr[res], 77014)
                 }
               }, 3000)
               break;
@@ -170,9 +171,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 77015)
+                  Utils.emitEvent(this.backStateArr[2], 77015)
                 }else{
-                  Utils.emitEvent(res, 77015)
+                  Utils.emitEvent(this.backStateArr[res], 77015)
                 }
               }, 3000)
               break;
@@ -195,9 +196,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77016)
+                  Utils.emitEvent(this.backStateArr[3], 77016)
                 }else{
-                  Utils.emitEvent(res, 77016)
+                  Utils.emitEvent(this.backStateArr[res], 77016)
                 }
               }, 3000)
               break;
@@ -222,9 +223,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77017)
+                  Utils.emitEvent(this.backStateArr[3], 77017)
                 }else{
-                  Utils.emitEvent(res, 77017)
+                  Utils.emitEvent(this.backStateArr[res], 77017)
                 }
               }, 3000)
               break;
@@ -248,9 +249,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 77018)
+                  Utils.emitEvent(this.backStateArr[3], 77018)
                 }else{
-                  Utils.emitEvent(res, 77018)
+                  Utils.emitEvent(this.backStateArr[res], 77018)
                 }
               }, 3000)
               break;
@@ -274,9 +275,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78011)
+                  Utils.emitEvent(this.backStateArr[1], 78011)
                 }else{
-                  Utils.emitEvent(res, 78011)
+                  Utils.emitEvent(this.backStateArr[res], 78011)
                 }
               }, 3000)
               break;
@@ -296,9 +297,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 78012)
+                  Utils.emitEvent(this.backStateArr[0], 78012)
                 }else{
-                  Utils.emitEvent(res, 78012)
+                  Utils.emitEvent(this.backStateArr[res], 78012)
                 }
               }, 3000)
               break;
@@ -320,9 +321,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78013)
+                  Utils.emitEvent(this.backStateArr[1], 78013)
                 }else{
-                  Utils.emitEvent(res, 78013)
+                  Utils.emitEvent(this.backStateArr[res], 78013)
                 }
               }, 3000)
               break;
@@ -346,9 +347,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 78014)
+                  Utils.emitEvent(this.backStateArr[2], 78014)
                 }else{
-                  Utils.emitEvent(res, 78014)
+                  Utils.emitEvent(this.backStateArr[res], 78014)
                 }
               }, 3000)
               break;
@@ -372,9 +373,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 78015)
+                  Utils.emitEvent(this.backStateArr[3], 78015)
                 }else{
-                  Utils.emitEvent(res, 78015)
+                  Utils.emitEvent(this.backStateArr[res], 78015)
                 }
               }, 3000)
               break;
@@ -399,9 +400,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78016)
+                  Utils.emitEvent(this.backStateArr[1], 78016)
                 }else{
-                  Utils.emitEvent(res, 78016)
+                  Utils.emitEvent(this.backStateArr[res], 78016)
                 }
               }, 3000)
               break;
@@ -427,9 +428,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 78017)
+                  Utils.emitEvent(this.backStateArr[1], 78017)
                 }else{
-                  Utils.emitEvent(res, 78017)
+                  Utils.emitEvent(this.backStateArr[res], 78017)
                 }
               }, 3000)
               break;
@@ -451,9 +452,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79011)
+                  Utils.emitEvent(this.backStateArr[2], 79011)
                 }else{
-                  Utils.emitEvent(res, 79011)
+                  Utils.emitEvent(this.backStateArr[res], 79011)
                 }
               }, 3000)
               break;
@@ -473,9 +474,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79012)
+                  Utils.emitEvent(this.backStateArr[2], 79012)
                 }else{
-                  Utils.emitEvent(res, 79012)
+                  Utils.emitEvent(this.backStateArr[res], 79012)
                 }
               }, 3000)
               break;
@@ -499,9 +500,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79013)
+                  Utils.emitEvent(this.backStateArr[2], 79013)
                 }else{
-                  Utils.emitEvent(res, 79013)
+                  Utils.emitEvent(this.backStateArr[res], 79013)
                 }
               }, 3000)
               break;
@@ -525,9 +526,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79014)
+                  Utils.emitEvent(this.backStateArr[2], 79014)
                 }else{
-                  Utils.emitEvent(res, 79014)
+                  Utils.emitEvent(this.backStateArr[res], 79014)
                 }
               }, 3000)
               break;
@@ -551,9 +552,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79015)
+                  Utils.emitEvent(this.backStateArr[2], 79015)
                 }else{
-                  Utils.emitEvent(res, 79015)
+                  Utils.emitEvent(this.backStateArr[res], 79015)
                 }
               }, 3000)
               break;
@@ -576,9 +577,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79016)
+                  Utils.emitEvent(this.backStateArr[2], 79016)
                 }else{
-                  Utils.emitEvent(res, 79016)
+                  Utils.emitEvent(this.backStateArr[res], 79016)
                 }
               }, 3000)
               break;
@@ -603,9 +604,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79017)
+                  Utils.emitEvent(this.backStateArr[2], 79017)
                 }else{
-                  Utils.emitEvent(res, 79017)
+                  Utils.emitEvent(this.backStateArr[res], 79017)
                 }
               }, 3000)
               break;
@@ -629,9 +630,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 79018)
+                  Utils.emitEvent(this.backStateArr[2], 79018)
                 }else{
-                  Utils.emitEvent(res, 79018)
+                  Utils.emitEvent(this.backStateArr[res], 79018)
                 }
               }, 3000)
               break;
@@ -649,9 +650,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 8101)
+                  Utils.emitEvent(this.backStateArr[0], 8101)
                 }else{
-                  Utils.emitEvent(res, 8101)
+                  Utils.emitEvent(this.backStateArr[res], 8101)
                 }
               }, 3000)
               break;
@@ -671,9 +672,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8102)
+                  Utils.emitEvent(this.backStateArr[1], 8102)
                 }else{
-                  Utils.emitEvent(res, 8102)
+                  Utils.emitEvent(this.backStateArr[res], 8102)
                 }
               }, 3000)
               break;
@@ -695,9 +696,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8103)
+                  Utils.emitEvent(this.backStateArr[2], 8103)
                 }else{
-                  Utils.emitEvent(res, 8103)
+                  Utils.emitEvent(this.backStateArr[res], 8103)
                 }
               }, 3000)
               break;
@@ -719,9 +720,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8104)
+                  Utils.emitEvent(this.backStateArr[2], 8104)
                 }else{
-                  Utils.emitEvent(res, 8104)
+                  Utils.emitEvent(this.backStateArr[res], 8104)
                 }
               }, 3000)
               break;
@@ -743,9 +744,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(3, 8105)
+                  Utils.emitEvent(this.backStateArr[3], 8105)
                 }else{
-                  Utils.emitEvent(res, 8105)
+                  Utils.emitEvent(this.backStateArr[res], 8105)
                 }
               }, 3000)
               break;
@@ -799,9 +800,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(0, 8107)
+                  Utils.emitEvent(this.backStateArr[0], 8107)
                 }else{
-                  Utils.emitEvent(res, 8107)
+                  Utils.emitEvent(this.backStateArr[res], 8107)
                 }
               }, 3000)
               break;
@@ -821,9 +822,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8108)
+                  Utils.emitEvent(this.backStateArr[1], 8108)
                 }else{
-                  Utils.emitEvent(res, 8108)
+                  Utils.emitEvent(this.backStateArr[res], 8108)
                 }
               }, 3000)
               break;
@@ -844,9 +845,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8109)
+                  Utils.emitEvent(this.backStateArr[1], 8109)
                 }else{
-                  Utils.emitEvent(res, 8109)
+                  Utils.emitEvent(this.backStateArr[res], 8109)
                 }
               }, 3000)
               break;
@@ -869,9 +870,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(1, 8110)
+                  Utils.emitEvent(this.backStateArr[1], 8110)
                 }else{
-                  Utils.emitEvent(res, 8110)
+                  Utils.emitEvent(this.backStateArr[res], 8110)
                 }
               }, 3000)
               break;
@@ -895,9 +896,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8111)
+                  Utils.emitEvent(this.backStateArr[2], 8111)
                 }else{
-                  Utils.emitEvent(res, 8111)
+                  Utils.emitEvent(this.backStateArr[res], 8111)
                 }
               }, 3000)
               break;
@@ -920,9 +921,9 @@ struct WebViewControllerVideoMedia {
               setTimeout(() => {
                 this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 8112)
+                  Utils.emitEvent(this.backStateArr[2], 8112)
                 }else{
-                  Utils.emitEvent(res, 8112)
+                  Utils.emitEvent(this.backStateArr[res], 8112)
                 }
               }, 3000)
               break;

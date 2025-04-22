@@ -63,7 +63,7 @@ export default function webViewMenuInputFieldType() {
     it('testInputFieldTypeNumber001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeNumber001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInputFieldTypeNumber001", true, 2901, done);
+      Utils.registerEvent("testInputFieldTypeNumber001", ContextMenuInputFieldType.Number, 2901, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -78,7 +78,7 @@ export default function webViewMenuInputFieldType() {
     it('testInputFieldTypeText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeText001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInputFieldTypeText001", true, 2902, done);
+      Utils.registerEvent("testInputFieldTypeText001", ContextMenuInputFieldType.PlainText, 2902, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -93,7 +93,7 @@ export default function webViewMenuInputFieldType() {
     it('testInputFieldTypePassword001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypePassWord001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInputFieldTypePassword001", true, 2903, done);
+      Utils.registerEvent("testInputFieldTypePassword001", ContextMenuInputFieldType.Password, 2903, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -108,7 +108,7 @@ export default function webViewMenuInputFieldType() {
     it('testInputFieldTypeTelephone001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeTelephone001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInputFieldTypeTelephone001", true, 2904, done);
+      Utils.registerEvent("testInputFieldTypeTelephone001", ContextMenuInputFieldType.Telephone, 2904, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
 
@@ -123,7 +123,7 @@ export default function webViewMenuInputFieldType() {
     it('testInputFieldTypeOther001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitInputFieldTypeOther001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInputFieldTypeOther001", true, 2905, done);
+      Utils.registerEvent("testInputFieldTypeOther001", ContextMenuInputFieldType.Other, 2905, done);
       sendEventByKey('WebViewMenuInputFieldTypeTestButton', 10, '');
     })
   })
