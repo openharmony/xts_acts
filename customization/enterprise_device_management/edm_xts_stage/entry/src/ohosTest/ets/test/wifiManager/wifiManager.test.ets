@@ -19,10 +19,18 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
 import adminManager from '@ohos.enterprise.adminManager';
 import wifiManager from '@ohos.enterprise.wifiManager';
 
+const WIFI_LIST_MAX_SIZE = 200;
+
 export default function wifiManagerTest() {
   describe('wifiManager_test', () => {
     testIsWifiActiveSync();
     testSetWifiProfileSync();
+    testAddAllowedWifiList();
+    testRemoveAllowedWifiList();
+    testGetAllowedWifiList();
+    testAddDisallowedWifiList();
+    testRemoveDisallowedWifiList();
+    testGetDisallowedWifiList();
   })
 }
 
@@ -851,6 +859,998 @@ function testSetWifiProfileSync() {
       expect(error.code == 9200007).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testAddAllowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0001
+   * @tc.name      : test_add_allowed_wifi_list_0001
+   * @tc.desc      : test wifiManager addAllowedWifiList without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0002
+   * @tc.name      : test_add_allowed_wifi_list_0002
+   * @tc.desc      : test wifiManager addAllowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0003
+   * @tc.name      : test_add_allowed_wifi_list_0003
+   * @tc.desc      : test wifiManager addAllowedWifiList with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(SELFWANT);
+      expect(ret.length == wifiAccessInfos.length).assertTrue();
+      wifiManager.removeAllowedWifiList(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0004
+   * @tc.name      : test_add_allowed_wifi_list_0004
+   * @tc.desc      : test wifiManager addAllowedWifiList with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos1: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      let wifiAccessInfos2: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi3", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos1);
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos2);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(SELFWANT);
+      expect(ret.length == 3).assertTrue();
+      wifiManager.removeAllowedWifiList(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0005
+   * @tc.name      : test_add_allowed_wifi_list_0005
+   * @tc.desc      : test wifiManager addAllowedWifiList with list length > 200
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = []
+      for (let i = 0; i < WIFI_LIST_MAX_SIZE+1; i++) {
+        let temp: wifiManager.WifiAccessInfo = {
+          ssid: "wifi" + i,
+          bssid: "68:77:24:77:A6:D4"
+        };
+        wifiAccessInfos.push(temp);
+      }
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0006
+   * @tc.name      : test_add_allowed_wifi_list_0006
+   * @tc.desc      : test wifiManager addAllowedWifiList without bssid
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1"}]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0007
+   * @tc.name      : test_add_allowed_wifi_list_0007
+   * @tc.desc      : test wifiManager addAllowedWifiList ssid is empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0008
+   * @tc.name      : test_add_allowed_wifi_list_0008
+   * @tc.desc      : test wifiManager addAllowedWifiList ssid length > 32
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0008", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let ssid1 = "0123456789012345678901234567890123"
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: ssid1, bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_0009
+   * @tc.name      : test_add_allowed_wifi_list_0009
+   * @tc.desc      : test wifiManager addAllowedWifiList bssid length != 17
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_0009", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi_name", bssid: "68:77:24:77:A6"}]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_00010
+   * @tc.name      : test_add_allowed_wifi_list_00010
+   * @tc.desc      : test wifiManager addAllowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_00010", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addAllowedWifiList(null, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_00011
+   * @tc.name      : test_add_allowed_wifi_list_00011
+   * @tc.desc      : test wifiManager addAllowedWifiList with list length = 200
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_00011", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = []
+      for (let i = 0; i < WIFI_LIST_MAX_SIZE; i++) {
+        let temp: wifiManager.WifiAccessInfo = {
+          ssid: "wifi" + i,
+          bssid: "68:77:24:77:A6:D2"
+        };
+        wifiAccessInfos.push(temp);
+      }
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(SELFWANT);
+      expect(ret.length == WIFI_LIST_MAX_SIZE).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(SELFWANT);
+      wifiManager.removeAllowedWifiList(SELFWANT, ret);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testRemoveAllowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0001
+   * @tc.name      : test_remove_allowed_wifi_list_0001
+   * @tc.desc      : test wifiManager removeAllowedWifiList activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0002
+   * @tc.name      : test_remove_allowed_wifi_list_0002
+   * @tc.desc      : test wifiManager removeAllowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0003
+   * @tc.name      : test_remove_allowed_wifi_list_0003
+   * @tc.desc      : test wifiManager removeAllowedWifiList without bssid
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1"}]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0004
+   * @tc.name      : test_remove_allowed_wifi_list_0004
+   * @tc.desc      : test wifiManager removeAllowedWifiList ssid is empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0005
+   * @tc.name      : test_remove_allowed_wifi_list_0005
+   * @tc.desc      : test wifiManager removeAllowedWifiList ssid length > 32
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let ssid1 = "0123456789012345678901234567890123"
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: ssid1, bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0006
+   * @tc.name      : test_remove_allowed_wifi_list_0006
+   * @tc.desc      : test wifiManager removeAllowedWifiList bssid length != 17
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6"}]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_WIFI_LIST_JS_0007
+   * @tc.name      : test_remove_allowed_wifi_list_0007
+   * @tc.desc      : test wifiManager removeAllowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_allowed_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeAllowedWifiList(null, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+}
+
+function testGetAllowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_WIFI_LIST_JS_0001
+   * @tc.name      : test_get_allowed_wifi_list_0001
+   * @tc.desc      : test wifiManager getAllowedWifiList without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_allowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      wifiManager.getAllowedWifiList(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_WIFI_LIST_JS_0002
+   * @tc.name      : test_get_allowed_wifi_list_0002
+   * @tc.desc      : test wifiManager getAllowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_allowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      wifiManager.getAllowedWifiList(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_WIFI_LIST_JS_0003
+   * @tc.name      : test_get_allowed_wifi_list_0003
+   * @tc.desc      : test wifiManager getAllowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_allowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.getAllowedWifiList(null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+}
+
+function testAddDisallowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0001
+   * @tc.name      : test_add_disallowed_wifi_list_0001
+   * @tc.desc      : test wifiManager addDisallowedWifiList without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0002
+   * @tc.name      : test_add_disallowed_wifi_list_0002
+   * @tc.desc      : test wifiManager addDisallowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0003
+   * @tc.name      : test_add_disallowed_wifi_list_0003
+   * @tc.desc      : test wifiManager addDisallowedWifiList with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(ret.length == wifiAccessInfos.length).assertTrue();
+      wifiManager.removeDisallowedWifiList(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0004
+   * @tc.name      : test_add_disallowed_wifi_list_0004
+   * @tc.desc      : test wifiManager addDisallowedWifiList with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos1: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      let wifiAccessInfos2: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi3", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos1);
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos2);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(ret.length == 3).assertTrue();
+      wifiManager.removeDisallowedWifiList(SELFWANT, ret);
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0005
+   * @tc.name      : test_add_disallowed_wifi_list_0005
+   * @tc.desc      : test wifiManager addDisallowedWifiList with with list length > 200
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = []
+      for (let i = 0; i < WIFI_LIST_MAX_SIZE+1; i++) {
+        let temp: wifiManager.WifiAccessInfo = {
+          ssid: "wifi" + i,
+          bssid: "68:77:24:77:A6:D2"
+        };
+        wifiAccessInfos.push(temp);
+      }
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0006
+   * @tc.name      : test_add_disallowed_wifi_list_0006
+   * @tc.desc      : test wifiManager addDisallowedWifiList without bssid
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1"}]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret1: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(ret1.length == wifiAccessInfos.length).assertTrue();
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret2: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(ret2.length == 0).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0007
+   * @tc.name      : test_add_disallowed_wifi_list_0007
+   * @tc.desc      : test wifiManager addDisallowedWifiList ssid is empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0008
+   * @tc.name      : test_add_disallowed_wifi_list_0008
+   * @tc.desc      : test wifiManager addDisallowedWifiList ssid length > 32
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0008", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let ssid1 = "0123456789012345678901234567890123"
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: ssid1, bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0009
+   * @tc.name      : test_add_disallowed_wifi_list_0009
+   * @tc.desc      : test wifiManager addDisallowedWifiList bssid length != 17
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0009", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi_name", bssid: "68:77:24:77:A6"}]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_0010
+   * @tc.name      : test_add_disallowed_wifi_list_0010
+   * @tc.desc      : test wifiManager addDisallowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_0010", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.addDisallowedWifiList(null, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_00011
+   * @tc.name      : test_add_disallowed_wifi_list_00011
+   * @tc.desc      : test wifiManager addDisallowedWifiList with list length = 200
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_00011", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = []
+      for (let i = 0; i < WIFI_LIST_MAX_SIZE; i++) {
+        let temp: wifiManager.WifiAccessInfo = {
+          ssid: "wifi" + i,
+          bssid: "68:77:24:77:A6:D2"
+        };
+        wifiAccessInfos.push(temp);
+      }
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(ret.length == WIFI_LIST_MAX_SIZE).assertTrue();
+    } catch (error) {
+      expect(error == null).assertTrue();
+    } finally {
+      let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
+      wifiManager.removeDisallowedWifiList(SELFWANT, ret);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testRemoveDisallowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0001
+   * @tc.name      : test_remove_disallowed_wifi_list_0001
+   * @tc.desc      : test wifiManager removeDisallowedWifiList activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0002
+   * @tc.name      : test_remove_disallowed_wifi_list_0002
+   * @tc.desc      : test wifiManager removeDisallowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0003
+   * @tc.name      : test_remove_disallowed_wifi_list_0003
+   * @tc.desc      : test wifiManager removeDisallowedWifiList without bssid
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1"}]
+      wifiManager.removeAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0004
+   * @tc.name      : test_remove_disallowed_wifi_list_0004
+   * @tc.desc      : test wifiManager removeDisallowedWifiList ssid is empty
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0005
+   * @tc.name      : test_remove_disallowed_wifi_list_0005
+   * @tc.desc      : test wifiManager removeDisallowedWifiList ssid length > 32
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let ssid1 = "0123456789012345678901234567890123"
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: ssid1, bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0006
+   * @tc.name      : test_remove_disallowed_wifi_list_0006
+   * @tc.desc      : test wifiManager removeAllowedWifiList bssid length != 17
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6"}]
+      wifiManager.removeDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_REMOVE_DISALLOWED_WIFI_LIST_JS_0007
+   * @tc.name      : test_remove_disallowed_wifi_list_0007
+   * @tc.desc      : test wifiManager removeDisallowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_remove_disallowed_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.removeDisallowedWifiList(null, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+}
+
+function testGetDisallowedWifiList() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_WIFI_LIST_JS_0001
+   * @tc.name      : test_get_disallowed_wifi_list_0001
+   * @tc.desc      : test wifiManager getDisallowedWifiList without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_WIFI_LIST_JS_0002
+   * @tc.name      : test_get_disallowed_wifi_list_0002
+   * @tc.desc      : test wifiManager getDisallowedWifiList with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      wifiManager.getDisallowedWifiList(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_WIFI_LIST_JS_0003
+   * @tc.name      : test_get_disallowed_wifi_list_0003
+   * @tc.desc      : test wifiManager getDisallowedWifiList without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [{ssid: "wifi1", bssid: "68:77:24:77:A6:D6"}]
+      wifiManager.getDisallowedWifiList(null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
     }
     done();
   });
