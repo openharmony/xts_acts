@@ -69,6 +69,7 @@ export default function PromiseSecondTest() {
           result = res;
           console.log('resolve:' + res);
         }).catch((error: string) => {
+          arr.push(5);
           result = error
           console.log('promise error:', error);
         });
@@ -107,6 +108,7 @@ export default function PromiseSecondTest() {
         });
         arr.push(1);
         promiseTest.then((res) => {
+          arr.push(5);
           result = res;
           console.log('resolve:' + res);
         }).catch((error: BusinessError) => {
@@ -147,9 +149,11 @@ export default function PromiseSecondTest() {
             arr.push(2);
             innerPromise
               .then((result: string) => {
+                arr.push(5);
                 resolve(result);
               })
               .catch((error: Error) => {
+                arr.push(6);
                 reject(error);
               });
           });
@@ -163,6 +167,7 @@ export default function PromiseSecondTest() {
             console.log("successMessage:" + successMessage);
           })
           .catch((errorResult: Error) => {
+            arr.push(7);
             errorMessage = `Failure: ${errorResult.message}`;
             console.log("errorMessage:" + errorMessage);
           });
@@ -170,7 +175,7 @@ export default function PromiseSecondTest() {
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[1,2,4,3]');
+        expect(JSON.stringify(arr)).assertEqual('[1,2,4,5,3]');
         expect(successMessage).assertEqual('Success: Result of inner Promise');
         console.info(`${caseName} test end`);
         Done();
@@ -199,9 +204,11 @@ export default function PromiseSecondTest() {
             arr.push(2);
             innerPromise
               .then((result: string) => {
+                arr.push(6);
                 resolve(result);
               })
               .catch((error: Error) => {
+                arr.push(7);
                 reject(error);
               });
           });
@@ -223,7 +230,7 @@ export default function PromiseSecondTest() {
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[1,2,4,5]');
+        expect(JSON.stringify(arr)).assertEqual('[1,2,4,7,5]');
         expect(errorMessage).assertEqual('Failure: Failed');
         console.info(`${caseName} test end`);
         Done();
@@ -676,10 +683,12 @@ export default function PromiseSecondTest() {
             return result * 2;
           })
           .then((newResult: number) => {
+            arr.push(6)
             successMessage = `New result: ${newResult}`;
             console.log("successMessage:" + successMessage);
           })
           .catch((error: Error) => {
+            arr.push(7);
             errorMessage = `Error caught: ${error.message}`;
             console.log("errorMessage:" + errorMessage);
           })
@@ -689,14 +698,14 @@ export default function PromiseSecondTest() {
             throw new Error('An error occurred in the finally block!');
           })
           .catch((finalError: Error) => {
+            arr.push(5);
             console.log(`Final error caught: ${finalError.message}`);
           });
-
         arr.push(4);
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[1,4,2,3]');
+        expect(JSON.stringify(arr)).assertEqual('[1,4,2,7,3,5]');
         expect(errorMessage).assertEqual('Error caught: undefined');
         console.info(`${caseName} test end`);
         Done();
@@ -728,9 +737,11 @@ export default function PromiseSecondTest() {
               });
               innerPromise
                 .then((value) => {
+                  arr.push(6);
                   resolve(value);
                 })
                 .catch((err: Error) => {
+                  arr.push(7);
                   reject(err);
                 });
             }, 200);
@@ -753,7 +764,7 @@ export default function PromiseSecondTest() {
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[1,4,2,5]');
+        expect(JSON.stringify(arr)).assertEqual('[1,4,2,7,5]');
         expect(errorMessage).assertEqual('Error caught: Inner promise is rejected!');
         console.info(`${caseName} test end`);
         Done();
@@ -785,9 +796,11 @@ export default function PromiseSecondTest() {
               });
               innerPromise
                 .then((value) => {
+                  arr.push(22);
                   resolve(value);
                 })
                 .catch((err: Error) => {
+                  arr.push(23);
                   reject(err);
                 });
             }, 200);
@@ -908,7 +921,7 @@ export default function PromiseSecondTest() {
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[21,0,2,4,6,8,10,12,14,16,18,20]');
+        expect(JSON.stringify(arr)).assertEqual('[21,0,23,2,4,6,8,10,12,14,16,18,20]');
         expect(errorMessage).assertEqual('Final error caught: Inner promise is rejected!');
         console.info(`${caseName} test end`);
         Done();
@@ -940,9 +953,11 @@ export default function PromiseSecondTest() {
               });
               innerPromise
                 .then((value) => {
+                  arr.push(12);
                   resolve(value);
                 })
                 .catch((err: Error) => {
+                  arr.push(13);
                   reject(err);
                 });
             }, 200);
@@ -1013,7 +1028,7 @@ export default function PromiseSecondTest() {
         taskPromises.push(promiseResult);
         await Promise.allSettled(taskPromises);
         await sleep(200);
-        expect(JSON.stringify(arr)).assertEqual('[11,0,2,4,6,8,10]');
+        expect(JSON.stringify(arr)).assertEqual('[11,0,13,2,4,6,8,10]');
         expect(errorMessage).assertEqual('Final error caught: Inner promise is rejected!');
         console.info(`${caseName} test end`);
         Done();
