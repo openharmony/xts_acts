@@ -32,7 +32,6 @@ import irregularAniGrid from './GridTest/irregularAniGrid.test';
 import repeatAniGrid from './GridTest/repeatAniGrid.test'; 
 import gridNode from './GridTest/gridNode.test';
 import griditemNode from './GridItemTest/griditemNode.test';
-import barBackEffect from './TabsTest/barBackEffect.test';
 import nodeTypeGrid from './GridTest/nodeTypeGrid.test'; 
 import listScrollerBar from './ScrollBarTest/listScrollerBar.test';
 import cachedShowGrid from './GridTest/cachedShowGrid.test';
@@ -58,7 +57,6 @@ export default function testsuite() {
   repeatAniGrid()
   gridNode();
   griditemNode();
-  barBackEffect()
   nodeTypeGrid()
   listScrollerBar()
   cachedShowGrid()

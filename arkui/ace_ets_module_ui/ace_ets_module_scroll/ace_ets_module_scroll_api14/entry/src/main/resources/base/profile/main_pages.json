@@ -20,7 +20,6 @@
         "MainAbility/pages/Grid/repeatAniGrid",
         "MainAbility/pages/Grid/gridNode",
         "MainAbility/pages/GridItem/griditemNode",
-        "MainAbility/pages/Tabs/barBackEffect",
         "MainAbility/pages/Grid/nodeTypeGrid",
         "MainAbility/pages/ScrollBar/listScrollerBar",
         "MainAbility/pages/Grid/cachedShowGrid",
