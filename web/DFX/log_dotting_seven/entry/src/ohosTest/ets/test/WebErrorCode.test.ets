@@ -116,7 +116,7 @@ export default function webErrorCode() {
       sendEventByKey('ErrorCodeTestSuiteButton', 10, '');
     })
     /*
-    * @tc.number     : SUB_WEB_ERRORCODE_SSLERRORHANDLER_0100
+    * @tc.number     : SUB_WEB_SSLERRORHANDLER_0100
     * @tc.name       : testSslErrorHandler001
     * @tc.desc       : test sslErrorHandler
     * @tc.size       : MEDIUM
