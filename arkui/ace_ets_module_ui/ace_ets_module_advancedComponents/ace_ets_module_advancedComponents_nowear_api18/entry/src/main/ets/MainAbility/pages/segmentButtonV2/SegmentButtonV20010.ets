@@ -23,7 +23,7 @@ struct SegmentButtonV20010 {
   @Local items: SegmentButtonV2Items = new SegmentButtonV2Items([
     {
       text: '搜索',
-      icon: $r('sys.meida.ohos_ic_public_search_filled'),
+      icon: $r('sys.media.ohos_ic_public_search_filled'),
       enabled: true,
       textModifier: new TextModifier().fontColor('#FFFFFF00'),
       iconModifier: new ImageModifier().backgroundColor('#FFFFA500'),
@@ -33,7 +33,7 @@ struct SegmentButtonV20010 {
     },
     {
       text: '扫描',
-      icon: $r('sys.meida.ohos_ic_public_scan'),
+      icon: $r('sys.media.ohos_ic_public_scan'),
       enabled: false,
       accessibilityText: '扫描',
       accessibilityDescription: '扫描按钮',
@@ -41,7 +41,7 @@ struct SegmentButtonV20010 {
     },
     {
       text: '分享',
-      icon: $r('sys.meida.ohos_ic_public_share'),
+      icon: $r('sys.media.ohos_ic_public_share'),
       accessibilityText: '分享',
       accessibilityDescription: '分享按钮',
       accessibilityLevel: 'yes'
@@ -59,7 +59,7 @@ struct SegmentButtonV20010 {
   @Local segItem1: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
       text: '关闭1',
-      icon: $r('sys.meida.ohos_ic_public_close'),
+      icon: $r('sys.media.ohos_ic_public_close'),
       enabled: true,
       textModifier: new TextModifier().fontColor('#FFFFFF00'),
       iconModifier: new ImageModifier().backgroundColor('#FFFFA500'),
@@ -71,7 +71,7 @@ struct SegmentButtonV20010 {
   @Local segItem2: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
       text: '关闭2',
-      icon: $r('sys.meida.ohos_ic_public_close'),
+      icon: $r('sys.media.ohos_ic_public_close'),
       enabled: false,
       accessibilityText: '关闭2',
       accessibilityDescription: '关闭2按钮',
@@ -81,7 +81,7 @@ struct SegmentButtonV20010 {
   @Local segItem3: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
       text: '关闭3',
-      icon: $r('sys.meida.ohos_ic_public_close'),
+      icon: $r('sys.media.ohos_ic_public_close'),
       accessibilityText: '关闭3',
       accessibilityDescription: '关闭3按钮',
       accessibilityLevel: 'no'
@@ -90,7 +90,7 @@ struct SegmentButtonV20010 {
   @Local segItem4: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
       text: '关闭4',
-      icon: $r('sys.meida.ohos_ic_public_close'),
+      icon: $r('sys.media.ohos_ic_public_close'),
       accessibilityText: '关闭4',
       accessibilityDescription: '关闭4按钮',
       accessibilityLevel: 'yes'

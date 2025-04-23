@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import SegmentButtonV2Test0010 from './segmenButtonV2Test/SegmentButtonV2Test0010';
+import SegmentButtonV2Test0010 from './segmenButtonV2Test/SegmentButtonV2Test0010.test';
 
 export default function testsuite() {
   SegmentButtonV2Test0010();
