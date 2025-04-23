@@ -737,7 +737,12 @@ describe('bluetoothBleTest', () => {
             expect().assertFail();
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(Number(err.code)).assertEqual(2902050);
+            if (Number(err.code) == 801) {
+                console.info("BleScanner.startScan is not support.");
+                expect(true).assertTrue();
+            } else {
+                expect(Number(err.code)).assertEqual(2902050);
+            }
         }
         done();
     })
