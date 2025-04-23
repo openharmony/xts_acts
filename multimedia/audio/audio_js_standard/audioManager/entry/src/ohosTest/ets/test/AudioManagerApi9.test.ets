@@ -2076,8 +2076,6 @@ export default function audioManagerApi9() {
         contentType:0,
         pauseWhenDucked:true
       };
-      // 取消该事件的所有监听。
-      audioManager.off('interrupt', interAudioInterrupt);
       // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
       let interruptCallback = (interruptAction: audio.InterruptAction) => {
         if (interruptAction.actionType === 0) {
@@ -2099,6 +2097,7 @@ export default function audioManagerApi9() {
         expect(false).assertTrue();
         done();
       }
+      done();
     })
     /**
      * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200
@@ -2117,6 +2116,7 @@ export default function audioManagerApi9() {
         expect(false).assertTrue();
         done();
       }
+      done();
     })
   })
 
