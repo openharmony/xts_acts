@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { Driver, ON } from '@ohos.UiTest';
+import { Component, Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -25,27 +25,27 @@ export default function SegmentButtonItemOptionsArray1() {
     beforeEach(async (done: Function) => {
       console.info("SegmentButtonItemOptionsArray1 beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/SegmentButton/SegmentButtonItemOptionsArray1",
+        url: "MainAbility/pages/segmentButton/SegmentButtonItemOptionsArray1",
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get current pages:" + JSON.stringify(pages));
-        if (!("SegmentButtonItemOptionsArray1" == pages.name)) {
-          console.info("get SegmentButtonItemOptionsArray1 pages.name:" + JSON.stringify(pages.name));
+        if (!("ButtonItemOptionsArray1" == pages.name)) {
+          console.info("get ButtonItemOptionsArray1 pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push SegmentButtonItemOptionsArray1 page result:" + JSON.stringify(result));
+          console.info("push ButtonItemOptionsArray1 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push SegmentButtonItemOptionsArray1 page error:" + err);
+        console.error("push ButtonItemOptionsArray1 page error:" + err);
       }
-      console.info("SegmentButtonItemOptionsArray1 beforeEach end");
+      console.info("ButtonItemOptionsArray1 beforeEach end");
       done();
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("SegmentButtonItemOptionsArray1 after each called");
+      console.info("ButtonItemOptionsArray1 after each called");
     });
 
     /**
@@ -56,8 +56,167 @@ export default function SegmentButtonItemOptionsArray1() {
      * @tc.type
      * @tc.size
      */
-    it('SegmentButtonItemOptionsArray1_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_001] START');
+       it('ButtonItemOptionsArray1_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[ButtonItemOptionsArray1_001] START');
+       await CommonFunc.sleep(2000);
+       let driver: Driver = Driver.create();
+       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray101"));
+       await CommonFunc.sleep(1000);
+       await btn.click();
+       await CommonFunc.sleep(1000);
+       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[2]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0];
+       console.info("[ButtonItemOptionsArray1_001] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('2');
+       console.info('[ButtonItemOptionsArray1_001] END');
+       done();
+     });
+
+    
+     /**
+      * @tc.number    SegmentButtonItemOptionsArray1_002
+      * @tc.name      SegmentButtonItemOptionsArray1_002
+      * @tc.desc      Frequently updating and modifying the values of parent components
+      * @tc.level     Level 0
+      * @tc.type
+      * @tc.size
+      */
+           it('ButtonItemOptionsArray1_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[ButtonItemOptionsArray1_002] START');
+       await CommonFunc.sleep(2000);
+       let driver: Driver = Driver.create();
+       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray102"));
+       await CommonFunc.sleep(1000);
+       await btn.click();
+       await CommonFunc.sleep(1000);
+       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[2]
+        .$children[2]
+        .$children[0]
+        .$children[0]
+        .$children[0];
+       console.info("[ButtonItemOptionsArray1_002] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('4');
+       console.info('[ButtonItemOptionsArray1_002] END');
+       done();
+     });
+
+ /**
+      * @tc.number    SegmentButtonItemOptionsArray1_003
+      * @tc.name      SegmentButtonItemOptionsArray1_003
+      * @tc.desc      Frequently updating and modifying the values of parent components
+      * @tc.level     Level 0
+      * @tc.type
+      * @tc.size
+      */
+           it('ButtonItemOptionsArray1_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[ButtonItemOptionsArray1_003] START');
+       await CommonFunc.sleep(2000);
+       let driver: Driver = Driver.create();
+       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray103"));
+       await CommonFunc.sleep(1000);
+       await btn.click();
+       await CommonFunc.sleep(1000);
+       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[2]
+        .$children[3]
+        .$children[0]
+        .$children[0]
+        .$children[0];
+       console.info("[ButtonItemOptionsArray1_003] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('push');
+       console.info('[ButtonItemOptionsArray1_003] END');
+       done();
+     }) 
+
+ /**
+      * @tc.number    SegmentButtonItemOptionsArray1_004
+      * @tc.name      SegmentButtonItemOptionsArray1_004
+      * @tc.desc      Frequently updating and modifying the values of parent components
+      * @tc.level     Level 0
+      * @tc.type
+      * @tc.size
+      */
+      it('ButtonItemOptionsArray1_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[ButtonItemOptionsArray1_004] START');
+       await CommonFunc.sleep(2000);
+       let driver: Driver = Driver.create();
+       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray104"));
+       await CommonFunc.sleep(1000);
+       await btn.click();
+       await CommonFunc.sleep(1000);
+       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[2]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0];
+       console.info("[ButtonItemOptionsArray1_004] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('unshift');
+       console.info('[ButtonItemOptionsArray1_003] END');
+       done();
+     });
+ /**
+      * @tc.number    SegmentButtonItemOptionsArray1_005
+      * @tc.name      SegmentButtonItemOptionsArray1_005
+      * @tc.desc      Frequently updating and modifying the values of parent components
+      * @tc.level     Level 0
+      * @tc.type
+      * @tc.size
+      */
+     it('ButtonItemOptionsArray1_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[ButtonItemOptionsArray1_005] START');
+       await CommonFunc.sleep(2000);
+       let driver: Driver = Driver.create();
+       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray105"));
+       await CommonFunc.sleep(1000);
+       await btn.click();
+       await CommonFunc.sleep(1000);
+       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[0]
+        .$children[2]
+        .$children[1]
+        .$children[0]
+        .$children[0]
+        .$children[0];
+       console.info("[ButtonItemOptionsArray1_005] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('splice1');
+       console.info('[ButtonItemOptionsArray1_005] END');
+       done();
+     });
+     /**
+      * @tc.number    SegmentButtonItemOptionsArray1_006
+      * @tc.name      SegmentButtonItemOptionsArray1_006
+      * @tc.desc      Frequently updating and modifying the values of parent components
+      * @tc.level     Level 0
+      * @tc.type
+      * @tc.size
+      */
+    it('ButtonItemOptionsArray1_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[ButtonItemOptionsArray1_006] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray106"));
@@ -68,142 +227,15 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0]
-        .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_001] component obj is: " + JSON.stringify(obj));
-      console.info("[SegmentButtonItemOptionsArray1_001] component obj is: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('a');
-      console.info('[SegmentButtonItemOptionsArray1_001] END');
-      done();
-    });
-    
-    /**
-     * @tc.number    SegmentButtonItemOptionsArray1_002
-     * @tc.name      SegmentButtonItemOptionsArray1_002
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
-     * @tc.type
-     * @tc.size
-     */
-    it('SegmentButtonItemOptionsArray1_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_002] START');
-      await CommonFunc.sleep(2000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray105"));
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[0]
+        .$children[2]
         .$children[0]
         .$children[0]
         .$children[0]
         .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_002] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('splice1');
-      console.info('[SegmentButtonItemOptionsArray1_002] END');
-      done();
-    });
-/**
-     * @tc.number    SegmentButtonItemOptionsArray1_003
-     * @tc.name      SegmentButtonItemOptionsArray1_003
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
-     * @tc.type
-     * @tc.size
-     */
-    it('SegmentButtonItemOptionsArray1_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_003] START');
-      await CommonFunc.sleep(2000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray104"));
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0]
-        .$children[0]
-        .$children[0]
-        .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_003] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('unshift');
-      console.info('[SegmentButtonItemOptionsArray1_003] END');
-      done();
-    });
-/**
-     * @tc.number    SegmentButtonItemOptionsArray1_004
-     * @tc.name      SegmentButtonItemOptionsArray1_004
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
-     * @tc.type
-     * @tc.size
-     */
-    it('SegmentButtonItemOptionsArray1_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_004] START');
-      await CommonFunc.sleep(2000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray103"));
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0]
-        .$children[0]
-        .$children[0]
-        .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_004] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('unshift');
-      console.info('[SegmentButtonItemOptionsArray1_004] END');
-      done();
-    })  
-/**
-     * @tc.number    SegmentButtonItemOptionsArray1_005
-     * @tc.name      SegmentButtonItemOptionsArray1_005
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
-     * @tc.type
-     * @tc.size
-     */
-    it('SegmentButtonItemOptionsArray1_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_005] START');
-      await CommonFunc.sleep(2000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray102"));
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0]
-        .$children[0]
-        .$children[0]
-        .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_005] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('unshift');
-      console.info('[SegmentButtonItemOptionsArray1_005] END');
-      done();
-    });
-    /**
-     * @tc.number    SegmentButtonItemOptionsArray1_006
-     * @tc.name      SegmentButtonItemOptionsArray1_006
-     * @tc.desc      Frequently updating and modifying the values of parent components
-     * @tc.level     Level 0
-     * @tc.type
-     * @tc.size
-     */
-    it('SegmentButtonItemOptionsArray1_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[SegmentButtonItemOptionsArray1_006] START');
-      await CommonFunc.sleep(2000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray101"));
-      await CommonFunc.sleep(1000);
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0]
-        .$children[0]
-        .$children[0]
-        .$children[0];
-      console.info("[SegmentButtonItemOptionsArray1_006] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('a');
-      console.info('[SegmentButtonItemOptionsArray1_006] END');
+      console.info("[ButtonItemOptionsArray1_006] component obj is: " + JSON.stringify(obj));
+       expect(obj.$attrs.content).assertEqual('a');
+      console.info('[ButtonItemOptionsArray1_006] END');
       done();
     });
   })
