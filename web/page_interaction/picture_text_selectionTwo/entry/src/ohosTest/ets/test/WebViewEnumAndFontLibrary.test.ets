@@ -197,6 +197,21 @@ export default function WebViewEnumAndFontLibrary() {
     })
 
     /*
+    * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSOURCETYPE_0200
+    * @tc.name       : testWebContextMenuParamGetSourceType001
+    * @tc.desc       : test WebContextMenuParamGetSourceType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebContextMenuParamGetSourceType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("emitWebContextMenuParamGetSourceTypeNone", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testWebContextMenuParamGetSourceType002", ContextMenuSourceType.None, 20250423, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
     * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETINPUTFIELDTYPE_0100
     * @tc.name       : testWebContextMenuParamGetInputFieldType001
     * @tc.desc       : test WebContextMenuParamGetInputFieldType

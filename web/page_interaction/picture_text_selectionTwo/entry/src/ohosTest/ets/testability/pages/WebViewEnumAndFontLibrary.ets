@@ -201,6 +201,18 @@ struct WebViewEnumAndFontLibrary {
               Utils.emitEvent(this.SourceTypeArr[this.SourceType], 809)
               break;
             }
+            case "emitWebContextMenuParamGetSourceTypeNone": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(this.SourceTypeArr[ContextMenuSourceType.None], 20250423)
+                break;
+              }
+              let driver = Driver.create();
+              await driver.triggerCombineKeys(2047, 2099);
+              Utils.emitEvent(this.SourceTypeArr[this.SourceType], 20250423)
+              break;
+            }
+
             case "emitWebContextMenuParamGetInputFieldType": {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
@@ -276,6 +288,7 @@ struct WebViewEnumAndFontLibrary {
               Utils.emitEvent(Boolean(this.onContextMenuShowState), 1252);
               break;
             }
+
           }
         })
       }
