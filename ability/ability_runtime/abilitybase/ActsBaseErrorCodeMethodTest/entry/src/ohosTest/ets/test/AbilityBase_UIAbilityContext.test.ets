@@ -1665,7 +1665,27 @@ export default function openLinkTest() {
       }
     });
 
-
+    /*
+     * @tc.number : SUB_Ability_AbilityBase_UIAbilityContext_5200
+     * @tc.name   : The input parameter want is null, options is an option object with parameter
+     * @tc.desc   : Call the interface startAbility through context, return errorcode 401
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 0
+     */
+    it('SUB_Ability_AbilityBase_UIAbilityContext_5200', Level.LEVEL0, (done: Function) => {
+      let tag = `SUB_Ability_AbilityBase_UIAbilityContext_5100`;
+      console.log(`${tag}, it begin`);
+      try {
+        context.setColorMode(undefined);
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`${tag} setColorMode failed, code is ${code}, message is ${message}`);
+        expect(err?.code).assertEqual(401);
+        done();
+      }
+    });
   })
 }
 

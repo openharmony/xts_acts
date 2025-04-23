@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import AbilityConstant from "@ohos.app.ability.AbilityConstant";
 import appManager from "@ohos.application.appManager";
@@ -44,8 +44,8 @@ export default function verificationTest() {
     beforeEach(async (done: Function) => {
       TAG = 'beforeEach ==>';
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility({
-        bundleName: 'com.example.apicoverhaptest',
-        abilityName: 'com.example.apicoverhaptest.MainAbility'
+        bundleName: 'com.example.facoverhaptest',
+        abilityName: 'com.example.facoverhaptest.MainAbility'
       })
         .then((data) => {
           console.info(TAG + "startAbility com.example.apicoverhaptest.MainAbility = " + JSON.stringify(data));
@@ -70,7 +70,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_HasWindowFocus_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_HasWindowFocus_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_HasWindowFocus_0100 ==>';
       console.info(TAG + " start");
       try {
@@ -125,7 +125,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_AbilityConstant_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_AbilityConstant_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_AbilityConstant_0200 ==>';
       console.info(TAG + " start");
       try {
@@ -191,7 +191,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_AppManagerTest_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_AppManagerTest_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_AppManagerTest_0100 ==>';
       console.info(TAG + " start");
       try {
@@ -214,7 +214,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_GetScreenDensity_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_GetScreenDensity_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_GetScreenDensity_0100 ==>';
       try {
         let screenDensity: ESObject;
@@ -269,7 +269,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0100 ==>';
       console.info(TAG + " start");
       try {
@@ -330,7 +330,7 @@ export default function verificationTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_RequestPermissionsFromUser_0200 ==>';
       console.info(TAG + " start");
       try {
@@ -383,7 +383,7 @@ export default function verificationTest() {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_SetMissionLabel_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0100 ==>';
       console.info(TAG + " start");
       let label: undefined = undefined;
@@ -424,7 +424,7 @@ export default function verificationTest() {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_SetMissionLabel_0300', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0300 ==>';
       console.info(TAG + " start");
       let label = "testlabel";
@@ -449,7 +449,7 @@ export default function verificationTest() {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_SetMissionLabel_0400', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0400 ==>';
       console.info(TAG + " start");
       let label1 = "testlabel1";
@@ -501,7 +501,7 @@ export default function verificationTest() {
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_StartAbilityLife_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_StartAbilityLife_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_AA_OpenHarmony_StartAbilityLife_0100 ==>';
       console.info(TAG + " start");
 

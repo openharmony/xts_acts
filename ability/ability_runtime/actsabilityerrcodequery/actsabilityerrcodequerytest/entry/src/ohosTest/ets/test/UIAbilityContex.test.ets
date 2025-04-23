@@ -225,7 +225,11 @@ export default function UIAbilityContex() {
     it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_openAtomicService_0100', Level.LEVEL0, async (done: Function) => {
       let appId: string = '6918661953712445909';
       let options: AtomicServiceOptions = {
-        displayId: 0
+        displayId: 0,
+        flags: -1,
+        parameters: {
+          'key': 'value'
+        }
       };
       try {
         globalThis.context.openAtomicService(undefined, options)
