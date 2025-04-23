@@ -1667,6 +1667,8 @@ export default function windowZindexTest() {
         done();
       }
     });
+
+    /**
      * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0100
      * @tc.name      : test_ISWINDOWHIGHLIGHTED_0100
      * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0100
