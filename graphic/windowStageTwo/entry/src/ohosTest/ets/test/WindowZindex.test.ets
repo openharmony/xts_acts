@@ -1794,8 +1794,8 @@ export default function windowZindexTest() {
     it('test_SetWindowRectAutoSave_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_SetWindowRectAutoSave_0100 ';
       console.log(caseName + 'begin');
+      let windowStageStart = await startAbility2(caseName, context);
       try {
-        let windowStageStart = await startAbility2(caseName, context);
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           let mainWindow = windowStageStart.getMainWindowSync();
@@ -1818,6 +1818,7 @@ export default function windowZindexTest() {
           done();
         }).catch(async (err: BusinessError) => {
           console.error(caseName + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          await terminateAbility2(caseName)
           if (err.code == 801) {
             console.info(caseName + 'this deviceType does not support the Capability.');
             done()
@@ -1828,6 +1829,7 @@ export default function windowZindexTest() {
         });
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        await terminateAbility2(caseName)
         expect().assertFail()
         done()
       }
