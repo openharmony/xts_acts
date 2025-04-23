@@ -1221,9 +1221,10 @@ static napi_value testGetIntPluralStringById127(napi_env env, napi_callback_info
     char* result;
     uint32_t resId = 0;
     uint32_t resIdNext = 0;
-    uint32_t num = 1;
+    uint32_t num = 1;    
+    uint32_t numTwo = 2;
     napi_get_value_uint32(env, argv[1], &resId);
-    napi_get_value_uint32(env, argv[2], &resIdNext);
+    napi_get_value_uint32(env, argv[numTwo], &resIdNext);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, num, &result, num);
     code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resIdNext, num, &result, num);
 
@@ -1245,8 +1246,9 @@ static napi_value testGetDoublePluralStringById128(napi_env env, napi_callback_i
     uint32_t resIdNext = 0;
     float num = 1.1;
     uint32_t numTest = 1;
+    uint32_t numTwo = 2;
     napi_get_value_uint32(env, argv[1], &resId);
-    napi_get_value_uint32(env, argv[2], &resIdNext);
+    napi_get_value_uint32(env, argv[numTwo], &resIdNext);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr,
         resId, num, &result, numTest);
     code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resIdNext, num, &result, numTest);
@@ -1268,8 +1270,9 @@ static napi_value testGetIntPluralStringById129(napi_env env, napi_callback_info
     uint32_t resId = 0;
     uint32_t resIdNext = 0;
     uint32_t num = 1;
+    uint32_t numTwo = 2;
     napi_get_value_uint32(env, argv[1], &resId);
-    napi_get_value_uint32(env, argv[2], &resIdNext);
+    napi_get_value_uint32(env, argv[numTwo], &resIdNext);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resId, num, &result, num);
     code = OH_ResourceManager_GetIntPluralString(mNativeResMgr, resIdNext, num, &result, num);
 
@@ -1291,8 +1294,9 @@ static napi_value testGetDoublePluralStringById130(napi_env env, napi_callback_i
     uint32_t resIdNext = 0;
     float num = 1.1;
     uint32_t numTest = 1;
+    uint32_t numTwo = 2;
     napi_get_value_uint32(env, argv[1], &resId);
-    napi_get_value_uint32(env, argv[2], &resIdNext);
+    napi_get_value_uint32(env, argv[numTwo], &resIdNext);
     ResourceManager_ErrorCode code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr,
         resId, num, &result, numTest);
     code = OH_ResourceManager_GetDoublePluralString(mNativeResMgr, resIdNext, num, &result, numTest);
