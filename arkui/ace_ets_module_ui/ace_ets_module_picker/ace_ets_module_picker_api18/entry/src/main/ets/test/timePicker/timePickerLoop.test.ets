@@ -52,7 +52,7 @@ export default function timePickerLoopTest() {
       console.info('timePickerLoopTest_001 START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
-      let button: Component = await driver.findComponent(ON.id('trueFlag'));
+      let button = await driver.findComponent(ON.id('trueFlag'));
       await Utils.sleep(1000);
       await button.click()
       await Utils.sleep(1000);
@@ -76,7 +76,7 @@ export default function timePickerLoopTest() {
       console.info('timePickerLoopTest_002 START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
-      let button: Component = await driver.findComponent(ON.id('falseFlag'));
+      let button = await driver.findComponent(ON.id('falseFlag'));
       await Utils.sleep(1000);
       await button.click()
       await Utils.sleep(1000);
@@ -100,7 +100,7 @@ export default function timePickerLoopTest() {
       console.info('timePickerLoopTest_003 START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
-      let button: Component = await driver.findComponent(ON.id('undefinedFlag'));
+      let button = await driver.findComponent(ON.id('undefinedFlag'));
       await Utils.sleep(1000);
       await button.click()
       await Utils.sleep(1000);
