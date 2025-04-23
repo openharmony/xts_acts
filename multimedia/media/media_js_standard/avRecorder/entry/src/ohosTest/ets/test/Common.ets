@@ -761,6 +761,75 @@ export default class Commmon {
     });
   }
 
+  async avRecorderSetMetadataTest01(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
+    done: Function) {
+    avRecorder = await this.idle(avRecorder);
+    console.info('case avConfig.url is ' + avConfig.url);
+    await this.preparePromise(avRecorder, avConfig);
+    let meta : Record<string, string> = {
+      'com.openharmony.deferredvideoenhanceflag':'10',
+      'com.openharmony.videoId':'20'
+    };
+    avRecorder.setMetadata(meta);
+    await this.startPromise(avRecorder, recorderTime);
+    await this.pausePromise(avRecorder);
+    await this.resumePromise(avRecorder);
+    await this.stopPromise(avRecorder);
+    await avRecorder.reset().then(() => {
+      console.info('reset avRecorderSetMetadataTest01 success');
+      expect(avRecorder.state).assertEqual(this.AV_RECORDER_STATE.IDLE);
+    }).catch((err: BusinessError) => {
+      console.info('reset avRecorderSetMetadataTest01 failed and catch error is ' + err.message);
+    });
+    await this.releaseDone(avRecorder, done)
+  }
+
+  async avRecorderSetMetadataTest02(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
+    done: Function) {
+    avRecorder = await this.idle(avRecorder);
+    console.info('case avConfig.url is ' + avConfig.url);
+    await this.preparePromise(avRecorder, avConfig);
+    await this.startPromise(avRecorder, recorderTime);
+    let meta : Record<string, string> = {
+      'com.openharmony.deferredvideoenhanceflag':'10',
+      'com.openharmony.videoId':'20'
+    };
+    avRecorder.setMetadata(meta);
+    await this.pausePromise(avRecorder);
+    await this.resumePromise(avRecorder);
+    await this.stopPromise(avRecorder);
+    await avRecorder.reset().then(() => {
+      console.info('reset avRecorderSetMetadataTest02 success');
+      expect(avRecorder.state).assertEqual(this.AV_RECORDER_STATE.IDLE);
+    }).catch((err: BusinessError) => {
+      console.info('reset avRecorderSetMetadataTest02 failed and catch error is ' + err.message);
+    });
+    await this.releaseDone(avRecorder, done)
+  }
+
+  async avRecorderSetMetadataTest03(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
+    done: Function) {
+    avRecorder = await this.idle(avRecorder);
+    console.info('case avConfig.url is ' + avConfig.url);
+    await this.preparePromise(avRecorder, avConfig);
+    await this.startPromise(avRecorder, recorderTime);
+    await this.pausePromise(avRecorder);
+    let meta : Record<string, string> = {
+      'com.openharmony.deferredvideoenhanceflag':'10',
+      'com.openharmony.videoId':'20'
+    };
+    avRecorder.setMetadata(meta);
+    await this.resumePromise(avRecorder);
+    await this.stopPromise(avRecorder);
+    await avRecorder.reset().then(() => {
+      console.info('reset avRecorderSetMetadataTest03 success');
+      expect(avRecorder.state).assertEqual(this.AV_RECORDER_STATE.IDLE);
+    }).catch((err: BusinessError) => {
+      console.info('reset avRecorderSetMetadataTest03 failed and catch error is ' + err.message);
+    });
+    await this.releaseDone(avRecorder, done)
+  }
+
   async avRecorderReliabilitTest01(avConfig: media.AVRecorderConfig, avRecorder: media.AVRecorder, recorderTime: number,
     done: Function) {
     let result = true;
