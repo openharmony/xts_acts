@@ -46,7 +46,7 @@ struct SegmentButtonItemOptionsArray1 {
           Button('将按钮1、2替换为splice1、splice2')
           .id('SegmentButtonItemOptionsArray105')
             .onClick(() => {
-              this.singleSelectCapsuleOptions.buttons.splice(0, 1, new SegmentButtonItemOptions({
+              this.singleSelectCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
                 text: 'splice1'
               }), new SegmentButtonItemOptions({ text: 'splice2' }))
             })
