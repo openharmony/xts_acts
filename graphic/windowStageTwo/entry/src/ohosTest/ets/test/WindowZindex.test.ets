@@ -50,6 +50,28 @@ async function startAbility2(caseName: string, context: common.UIAbilityContext,
   return windowStageStart
 }
 
+async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility3',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
+  return windowStageStart
+}
 
 async function terminateAbility2(caseName: string) {
   let pageContext = AppStorage.get('contextTest2') as common.UIAbilityContext
@@ -61,6 +83,15 @@ async function terminateAbility2(caseName: string) {
   await sleep(1000)
 }
 
+async function terminateAbility3(caseName: string) {
+  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
 
 export default function windowZindexTest() {
   describe('windowZindexTest', async () => {
@@ -1574,6 +1605,68 @@ export default function windowZindexTest() {
     });
 
     /**
+     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+      console.log(caseName + 'begin');
+      let windowStageStart = await startAbility3(caseName, context);
+      try {
+        let windowClass2 = windowStageStart.getMainWindowSync();
+        let res = windowClass2.getWindowProperties()
+        console.info(caseName + 'res: ' + JSON.stringify(res));
+        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+          console.info(caseName + `infos.length: ${infos.length}`);
+          expect(infos.length).assertLargerOrEqual(1);
+          let isExit = false;
+          for (let i = 0; i < infos.length; i++) {
+            if (infos[i].windowId === res.id) {
+              isExit = true;
+              let info = infos[i];
+              console.info(caseName + 'info: ' + JSON.stringify(info));
+              expect(info.rect.left).assertEqual(res.windowRect.left);
+              expect(info.rect.top).assertEqual(res.windowRect.top);
+              expect(info.rect.width).assertEqual(res.windowRect.width);
+              expect(info.rect.height).assertEqual(res.windowRect.height);
+              expect(info.isFocused).assertEqual(true);
+              console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
+              console.info(caseName + `info.bundleName: ${info.bundleName}`);
+              console.info(caseName + `info.abilityName: ${info.abilityName}`);
+              break;
+            }
+          }
+          if (!isExit) {
+            console.error(`${caseName} failed, there is no match windowId.`);
+            await terminateAbility3(caseName);
+            expect().assertFail();
+            done()
+          }
+          await terminateAbility3(caseName);
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+          await terminateAbility3(caseName);
+          if (err.code === 801) {
+            console.log(`${caseName} deviceType does not supported this Capability`);
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (err) {
+        await terminateAbility3(caseName);
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
      * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0100
      * @tc.name      : test_ISWINDOWHIGHLIGHTED_0100
      * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0100
@@ -1794,8 +1887,8 @@ export default function windowZindexTest() {
     it('test_SetWindowRectAutoSave_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'test_SetWindowRectAutoSave_0100 ';
       console.log(caseName + 'begin');
+      let windowStageStart = await startAbility2(caseName, context);
       try {
-        let windowStageStart = await startAbility2(caseName, context);
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           let mainWindow = windowStageStart.getMainWindowSync();
@@ -1818,6 +1911,7 @@ export default function windowZindexTest() {
           done();
         }).catch(async (err: BusinessError) => {
           console.error(caseName + 'Failed to call setWindowRectAutoSave. Cause: ' + JSON.stringify(err));
+          await terminateAbility2(caseName)
           if (err.code == 801) {
             console.info(caseName + 'this deviceType does not support the Capability.');
             done()
@@ -1828,6 +1922,7 @@ export default function windowZindexTest() {
         });
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        await terminateAbility2(caseName)
         expect().assertFail()
         done()
       }
