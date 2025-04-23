@@ -2,10 +2,10 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
-    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback"
+    "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
     "MainAbility/pages/timePickerDialog/timePickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogDefaultTextStyle",
-    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation",
+    "MainAbility/pages/textPickerDialog/textPickerDialogDisableTextStyleAnimation"
   ]
 }

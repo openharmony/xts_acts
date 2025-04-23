@@ -2,7 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/datePicker/DatePickerMode",
-        "MainAbility/pages/timePicker/timePickerStartAndEnd"
+        "MainAbility/pages/timePicker/timePickerStartAndEnd",
         "MainAbility/pages/textPicker/textPickerSelectedArea",
         "MainAbility/pages/timePicker/timePickerSelectedArea"
     ]
