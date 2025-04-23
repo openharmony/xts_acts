@@ -41,6 +41,7 @@ import pathNewTest from './pathTest/path.test';
 import polygonNewJsunit from './polygonTest/polygon.test';
 import polyLineNeJsunit from './polylineTest/polyLine.test';
 import rectNeJsunit from './RectTest/rect.test';
+import RectRadiusTest from './RectTest/RectRadiusTest.test';
 
 export default function testsuite() {
   ellipseJsunit();
@@ -70,4 +71,5 @@ export default function testsuite() {
   polyLineNeJsunit()
   rectNeJsunit()
   circleNewJsunit()
+  RectRadiusTest()
 }
