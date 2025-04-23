@@ -23,34 +23,34 @@ struct SegmentButtonItemOptionsArray1 {
         Column() {
           SegmentButton({ options: this.singleSelectCapsuleOptions,
             selectedIndexes: $capsuleSelectedIndexes })
-          Button("删除第一个按钮")
+          Button('删除第一个按钮')
           .id('SegmentButtonItemOptionsArray101')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.shift()
             })
-          Button("删除最后一个按钮")
+          Button('删除最后一个按钮')
           .id('SegmentButtonItemOptionsArray102')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.pop()
             })
-          Button("末尾增加一个按钮push")
+          Button('末尾增加一个按钮push')
           .id('SegmentButtonItemOptionsArray103')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.push({ text: 'push' })
             })
-          Button("开头增加一个按钮unshift")
+          Button('开头增加一个按钮unshift')
           .id('SegmentButtonItemOptionsArray104')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.unshift(({ text: 'unshift' }))
             })
-          Button("将按钮1、2替换为splice1、splice2")
+          Button('将按钮1、2替换为splice1、splice2')
           .id('SegmentButtonItemOptionsArray105')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.splice(0, 1, new SegmentButtonItemOptions({
                 text: 'splice1'
               }), new SegmentButtonItemOptions({ text: 'splice2' }))
             })
-          Button("更改所有按钮文字")
+          Button('更改所有按钮文字')
           .id('SegmentButtonItemOptionsArray106')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons =
