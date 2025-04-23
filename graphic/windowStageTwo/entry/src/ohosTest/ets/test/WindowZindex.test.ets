@@ -19,7 +19,7 @@ import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
 import settings from '@ohos.settings';
-import { StartOptions } from '@kit.AbilityKit';
+import { StartOptions,Want } from '@kit.AbilityKit';
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
 
