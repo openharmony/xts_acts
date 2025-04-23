@@ -16,7 +16,7 @@ import cameraObj from 'libentry.so';
 import { cameraInfo } from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
 import { Camera_FocusMode, GlobalThis } from './Constants';
@@ -363,7 +363,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_001--------------");
       let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_MANUAL);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_001 finish");
@@ -384,7 +384,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_002--------------");
       cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_MANUAL);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_002 finish");
@@ -408,7 +408,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_003', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_003', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_003--------------");
       let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_003 finish");
@@ -429,7 +429,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004--------------");
       cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 finish");
@@ -453,7 +453,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_005', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_005', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_005--------------");
       let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_005 finish");
@@ -474,7 +474,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006--------------");
       cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_AUTO);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 finish");
@@ -498,7 +498,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_007', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_007', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_007--------------");
       let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_LOCKED);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FOCUS_MODE_SUPPORT_PROMISE_007 finish");
@@ -519,7 +519,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_008', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_008', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_008--------------");
       if(!cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_LOCKED)) {
         console.info(TAG + "SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_008 skip FOCUS_MODE_LOCKED is not supported");
@@ -547,7 +547,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009--------------");
       cameraObj.sessionSetFocusPoint(mFocusPoint);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009 finish");
@@ -571,7 +571,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009_1', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009_1', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009_1--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointLT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_009 finish");
@@ -595,7 +595,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_010', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_010', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_010--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointRT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_010 finish");
@@ -619,7 +619,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_011', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_011', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_011--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointLB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_011 finish");
@@ -643,7 +643,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_012', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_012', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_012--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointRB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_012 finish");
@@ -668,7 +668,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_013', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_013', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_013--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointInvalidLT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_013 finish");
@@ -692,7 +692,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_014', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_014', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_014--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointInvalidRT);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_014 finish");
@@ -716,7 +716,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_015', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_015', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_015--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointInvalidLB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_015 finish");
@@ -740,7 +740,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_016', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_016', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_016--------------");
       cameraObj.sessionSetFocusPoint(mFocusPointInvalidRB);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_POINT_PROMISE_016 finish");
@@ -764,7 +764,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_ON_FOCUSSTATECHANGE_017', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_ON_FOCUSSTATECHANGE_017', Level.LEVEL1, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ON_FOCUSSTATECHANGE_017--------------");
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_ON_FOCUSSTATECHANGE_017 to operate");
       let status = await cameraObj.getCameraCallbackCode();
@@ -786,7 +786,7 @@ export default function cameraSessionFocusTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_SESSION_ON_ERROR_018', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_SESSION_ON_ERROR_018', Level.LEVEL1, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_SESSION_ON_ERROR_018--------------");
       let status = await cameraObj.getCameraCallbackCode();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_SESSION_ON_ERROR_018 to operate");

@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function AvPlayerEnumTest() {
   describe('AvPlayerEnumTest', () => {
@@ -38,7 +38,7 @@ export default function AvPlayerEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0100', Level.LEVEL0,async (done: Function) => {
       expect(media.StateChangeReason.USER).assertEqual(1);
       done();
     });
@@ -50,7 +50,7 @@ export default function AvPlayerEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0200', Level.LEVEL0,async (done: Function) => {
       expect(media.AVErrorCode.AVERR_OK).assertEqual(0);
       expect(media.AVErrorCode.AVERR_NO_PERMISSION).assertEqual(201);
       expect(media.AVErrorCode.AVERR_INVALID_PARAMETER).assertEqual(401);
@@ -71,7 +71,7 @@ export default function AvPlayerEnumTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0300', Level.LEVEL0,async (done: Function) => {
       expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
       expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
       expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
@@ -90,7 +90,7 @@ export default function AvPlayerEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0400', Level.LEVEL0,async (done: Function) => {
       expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_DEFAULT).assertEqual(0);
       done();
     });
@@ -102,7 +102,7 @@ export default function AvPlayerEnumTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0500', Level.LEVEL0,async (done: Function) => {
       expect(media.MediaDescriptionKey.MD_KEY_LANGUAGE).assertEqual("language");
       done();
     });
@@ -114,7 +114,7 @@ export default function AvPlayerEnumTest() {
        * @tc.type      : Function test
        * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0600', Level.LEVEL0,async (done: Function) => {
       expect(media.HdrType.AV_HDR_TYPE_NONE).assertEqual(0);
       expect(media.HdrType.AV_HDR_TYPE_VIVID).assertEqual(1);
       done();
@@ -127,7 +127,7 @@ export default function AvPlayerEnumTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0700', Level.LEVEL0,async (done: Function) => {
       expect(media.PlaybackSpeed.SPEED_FORWARD_0_25_X).assertEqual(8);
       expect(media.PlaybackSpeed.SPEED_FORWARD_0_125_X).assertEqual(9);
       done();
@@ -140,7 +140,7 @@ export default function AvPlayerEnumTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0800', Level.LEVEL0,async (done: Function) => {
       expect(media.PlaybackSpeed.SPEED_FORWARD_3_00_X).assertEqual(7);
       done();
     });
@@ -152,7 +152,7 @@ export default function AvPlayerEnumTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0900', Level.LEVEL0,async (done: Function) => {
       expect(media.PlaybackInfoKey.SERVER_IP_ADDRESS).assertEqual('server_ip_address');
       expect(media.PlaybackInfoKey.AVG_DOWNLOAD_RATE).assertEqual('average_download_rate');
       expect(media.PlaybackInfoKey.DOWNLOAD_RATE).assertEqual('download_rate');
@@ -170,7 +170,7 @@ export default function AvPlayerEnumTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0910', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0910', Level.LEVEL0,async (done: Function) => {
       expect(media.AVErrorCode.AVERR_IO_HOST_NOT_FOUND).assertEqual(5411001);
       expect(media.AVErrorCode.AVERR_IO_CONNECTION_TIMEOUT).assertEqual(5411002);
       expect(media.AVErrorCode.AVERR_IO_NETWORK_ABNORMAL).assertEqual(5411003);
@@ -195,7 +195,7 @@ export default function AvPlayerEnumTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0911', Level.LEVEL0,async (done: Function) => {
       expect(media.SeekMode.SEEK_CONTINUOUS).assertEqual(3);
       expect(media.AVErrorCode.AVERR_SEEK_CONTINUOUS_UNSUPPORTED).assertEqual(5410002);
       done();

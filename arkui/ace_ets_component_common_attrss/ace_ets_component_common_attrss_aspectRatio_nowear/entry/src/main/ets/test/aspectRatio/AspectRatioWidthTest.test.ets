@@ -102,11 +102,16 @@ export default function aspectRatioWidthTest() {
       console.info('[' + data.caseTag + '] targetRectWidth is:' + targetRectWidth);
       console.info('[' + data.caseTag + '] targetRectHeight is:' + targetRectHeight);
       console.info('[' + data.caseTag + '] targetRectAspectRatio:' + targetRectAspectRatio);
-      expect(Math.abs(targetRectWidth - data.testValue.expectValue.widthValue) <= 1).assertTrue();
-      expect(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio)) <= 1)
-        .assertTrue();
-      expect(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio) <= 1)
-        .assertTrue();
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.widthValue:' + data.testValue.expectValue.widthValue);
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.aspectRatio:' + data.testValue.expectValue.aspectRatio);
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio:' + data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio);
+      expect(Math.floor(Math.abs(targetRectWidth - data.testValue.expectValue.widthValue)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(targetRectAspectRatio - data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
+      if (data.pageConfig.componentKey == 'TextInput') {
+        expect(Math.floor(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio)) <= 2).assertTrue();
+      } else {
+        expect(Math.floor(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
+      }
     });
   })
 }

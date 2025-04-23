@@ -26,7 +26,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : The setAccountCredential setting credential is called when the forwarding parameters
         *                 are correct, and then getAccountCredential is called for the credential(callback)
         */
-        it('ActsAccountCredential_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountCredential_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountCredential_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -58,7 +58,7 @@ export default function ActsAccountCredential() {
         * @tc.desc      : The setAssociatedData setting credential is called when the forwarding parameters
         *                 are correct, and then getAccountCredential is called for the credential(promise)
         */
-        it('ActsAccountCredential_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountCredential_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountCredential_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

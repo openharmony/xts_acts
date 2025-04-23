@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import ability from '@ohos.ability.ability';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest';
@@ -43,7 +43,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('startUIServiceExtensionAbility_16000019', 0, (done: Function) => {
+    it('startUIServiceExtensionAbility_16000019', Level.LEVEL0, (done: Function) => {
       let tag = 'startUIServiceExtensionAbility_16000019';
       let mpEnable = ''
       try {
@@ -107,7 +107,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('moveAbilityToBackground_16000061', 0, async (done: Function) => {
+    it('moveAbilityToBackground_16000061', Level.LEVEL0, async (done: Function) => {
       let tag = 'moveAbilityToBackground_16000061';
       let mpEnable: string = ''
       try {
@@ -160,7 +160,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_disconnectServiceExtensionAbility_01', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_disconnectServiceExtensionAbility_01', Level.LEVEL0, async (done: Function) => {
       context.disconnectServiceExtensionAbility(-1).then(() => {
         // 执行正常业务
         console.info('disconnectServiceExtensionAbility succeed');
@@ -184,7 +184,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_disconnectServiceExtensionAbility_02', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_disconnectServiceExtensionAbility_02', Level.LEVEL0, async (done: Function) => {
       context.disconnectServiceExtensionAbility(-1, (err: BusinessError) => {
         if (err.code) {
           // 处理业务逻辑错误
@@ -210,7 +210,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_requestDialogService_01', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_01', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ServiceExtAbility0',
@@ -246,7 +246,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_requestDialogService_02', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_02', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'EntryAbility2',
@@ -281,7 +281,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_requestDialogService_03', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_03', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'EntryAbility2',
@@ -317,7 +317,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_requestDialogService_04', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_04', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ServiceExtAbility0',
@@ -347,7 +347,7 @@ export default function ServiceExtensionAbility() {
 
     })
 
-    it('SUB_Ability_AbilityRuntime_requestDialogService_05', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_05', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ServiceExtAbility',
@@ -382,7 +382,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_requestDialogService_06', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_requestDialogService_06', Level.LEVEL0, async (done: Function) => {
       let want: Want = {
         bundleName: bundleName,
         abilityName: 'ServiceExtAbility0',
@@ -420,7 +420,7 @@ export default function ServiceExtensionAbility() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('SUB_Ability_AbilityRuntime_moveAbilityToBackground_01', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_moveAbilityToBackground_01', Level.LEVEL0, async (done: Function) => {
       let mpEnable: string
       try {
         mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');

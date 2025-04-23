@@ -15,7 +15,7 @@
 
 import userAuth from '@ohos.userIAM.userAuth'
 var index = require('../../../main/js/MainAbility/pages/index/index.js');
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 
 /**
  * test case
@@ -36,9 +36,9 @@ describe('userAuthTestEnum', function () {
     * @tc.number    Security_IAM_Face_JSAPI_Function_Enum_0100
     * @tc.size      MEDIUM
     * @tc.type      FUNC
-    * @tc.level     Level2
+    * @tc.level     Level0
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0100', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         expect(typeof userAuth.AuthenticationResult.NO_SUPPORT !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.NO_SUPPORT).assertEqual(-1)
     })
@@ -50,7 +50,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0200', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.SUCCESS !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.SUCCESS).assertEqual(0)
     })
@@ -62,7 +62,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0300', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.COMPARE_FAILURE !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.COMPARE_FAILURE).assertEqual(1)
     })
@@ -74,7 +74,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0400', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.CANCELED !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.CANCELED).assertEqual(2)
     })
@@ -86,7 +86,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0500', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.TIMEOUT !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.TIMEOUT).assertEqual(3)
     })
@@ -98,7 +98,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0600', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.CAMERA_FAIL !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.CAMERA_FAIL).assertEqual(4)
     })
@@ -110,7 +110,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0700', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.BUSY !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.BUSY).assertEqual(5)
     })
@@ -122,7 +122,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0800', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.INVALID_PARAMETERS !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.INVALID_PARAMETERS).assertEqual(6)
     })
@@ -134,7 +134,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0900', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.LOCKED !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.LOCKED).assertEqual(7)
     })
@@ -146,7 +146,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_1000', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.NOT_ENROLLED !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.NOT_ENROLLED).assertEqual(8)
     })
@@ -158,7 +158,7 @@ describe('userAuthTestEnum', function () {
     * @tc.type      FUNC
     * @tc.level     Level2
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_1100', 0, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         expect(typeof userAuth.AuthenticationResult.GENERAL_ERROR !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.GENERAL_ERROR).assertEqual(100)
     })

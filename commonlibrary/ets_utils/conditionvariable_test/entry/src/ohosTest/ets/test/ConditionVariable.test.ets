@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { ArkTSUtils, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import { GCFull } from './GCFull';
 
@@ -99,7 +99,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWait001', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableWait001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWait001';
       console.info(`${CASE} START`);
       try {
@@ -122,7 +122,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWait002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWait002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWait002';
       console.info(`${CASE} START`);
       try {
@@ -148,7 +148,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWait003', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableWait003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWait003';
       console.info(`${CASE} START`);
       try {
@@ -171,7 +171,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWait004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWait004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWait004';
       console.info(`${CASE} START`);
       try {
@@ -197,7 +197,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor001', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor001';
       console.info(`${CASE} START`);
       try {
@@ -222,7 +222,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor002';
       console.info(`${CASE} START`);
       try {
@@ -253,7 +253,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor003';
       console.info(`${CASE} START`);
       try {
@@ -280,7 +280,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor004';
       console.info(`${CASE} START`);
       try {
@@ -307,7 +307,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor005', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor005';
       console.info(`${CASE} START`);
       try {
@@ -342,7 +342,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor006', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor006';
       console.info(`${CASE} START`);
       try {
@@ -367,7 +367,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor007', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor007';
       console.info(`${CASE} START`);
       try {
@@ -398,7 +398,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor008', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor008';
       console.info(`${CASE} START`);
       try {
@@ -425,7 +425,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor009', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor009';
       console.info(`${CASE} START`);
       try {
@@ -452,7 +452,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableWaitFor010', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableWaitFor010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableWaitFor010';
       console.info(`${CASE} START`);
       try {
@@ -487,7 +487,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify001', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify001';
       console.info(`${CASE} START`);
       try {
@@ -510,7 +510,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify002';
       console.info(`${CASE} START`);
       try {
@@ -537,7 +537,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify003';
       console.info(`${CASE} START`);
       try {
@@ -571,7 +571,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify004';
       console.info(`${CASE} START`);
       try {
@@ -612,7 +612,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify005', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify005';
       console.info(`${CASE} START`);
       try {
@@ -642,7 +642,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify006', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify006';
       console.info(`${CASE} START`);
       try {
@@ -677,7 +677,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify007', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify007';
       console.info(`${CASE} START`);
       try {
@@ -713,7 +713,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify008', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify008';
       console.info(`${CASE} START`);
       try {
@@ -754,7 +754,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify009', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify009';
       console.info(`${CASE} START`);
       try {
@@ -789,7 +789,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify010', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify010';
       console.info(`${CASE} START`);
       try {
@@ -835,7 +835,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify011', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify011';
       console.info(`${CASE} START`);
       try {
@@ -889,7 +889,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify012', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify012';
       console.info(`${CASE} START`);
       try {
@@ -912,7 +912,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify013', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify013';
       console.info(`${CASE} START`);
       try {
@@ -939,7 +939,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify014', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify014';
       console.info(`${CASE} START`);
       try {
@@ -973,7 +973,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify015', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify015';
       console.info(`${CASE} START`);
       try {
@@ -1014,7 +1014,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify016', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify016';
       console.info(`${CASE} START`);
       try {
@@ -1044,7 +1044,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify017', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify017';
       console.info(`${CASE} START`);
       try {
@@ -1079,7 +1079,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify018', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify018';
       console.info(`${CASE} START`);
       try {
@@ -1115,7 +1115,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify019', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify019';
       console.info(`${CASE} START`);
       try {
@@ -1156,7 +1156,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify020', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify020';
       console.info(`${CASE} START`);
       try {
@@ -1191,7 +1191,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify021', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify021';
       console.info(`${CASE} START`);
       try {
@@ -1237,7 +1237,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotify022', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotify022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotify022';
       console.info(`${CASE} START`);
       try {
@@ -1291,7 +1291,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne001', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne001';
       console.info(`${CASE} START`);
       try {
@@ -1314,7 +1314,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne002';
       console.info(`${CASE} START`);
       try {
@@ -1338,7 +1338,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne003';
       console.info(`${CASE} START`);
       try {
@@ -1372,7 +1372,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne004';
       console.info(`${CASE} START`);
       try {
@@ -1414,7 +1414,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne005', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne005';
       console.info(`${CASE} START`);
       try {
@@ -1444,7 +1444,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne006', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne006';
       console.info(`${CASE} START`);
       try {
@@ -1476,7 +1476,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne007', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne007';
       console.info(`${CASE} START`);
       try {
@@ -1508,7 +1508,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne008', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne008';
       console.info(`${CASE} START`);
       try {
@@ -1550,7 +1550,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne009', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne009';
       console.info(`${CASE} START`);
       try {
@@ -1584,7 +1584,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne010', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne010';
       console.info(`${CASE} START`);
       try {
@@ -1629,7 +1629,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne011', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne011';
       console.info(`${CASE} START`);
       try {
@@ -1671,7 +1671,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne012', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne012';
       console.info(`${CASE} START`);
       try {
@@ -1728,7 +1728,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne013', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne013';
       console.info(`${CASE} START`);
       try {
@@ -1799,7 +1799,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne014', 0, (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne014';
       console.info(`${CASE} START`);
       try {
@@ -1822,7 +1822,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne015', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne015';
       console.info(`${CASE} START`);
       try {
@@ -1846,7 +1846,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne016', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne016';
       console.info(`${CASE} START`);
       try {
@@ -1878,7 +1878,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne017', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne017';
       console.info(`${CASE} START`);
       try {
@@ -1920,7 +1920,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne018', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne018';
       console.info(`${CASE} START`);
       try {
@@ -1950,7 +1950,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne019', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne019';
       console.info(`${CASE} START`);
       try {
@@ -1982,7 +1982,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne020', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne020';
       console.info(`${CASE} START`);
       try {
@@ -2014,7 +2014,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne021', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne021';
       console.info(`${CASE} START`);
       try {
@@ -2070,7 +2070,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne022', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne022';
       console.info(`${CASE} START`);
       try {
@@ -2104,7 +2104,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne023', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne023';
       console.info(`${CASE} START`);
       try {
@@ -2149,7 +2149,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne024', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne024';
       console.info(`${CASE} START`);
       try {
@@ -2191,7 +2191,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne025', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne025';
       console.info(`${CASE} START`);
       try {
@@ -2248,7 +2248,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableNotifyOne026', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableNotifyOne026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableNotifyOne026';
       console.info(`${CASE} START`);
       try {
@@ -2319,7 +2319,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableTaskPool001', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableTaskPool001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableTaskPool001';
       console.info(`${CASE} test start`);
       try {
@@ -2356,7 +2356,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableTaskPool002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableTaskPool002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableTaskPool002';
       console.info(`${CASE} test start`);
       try {
@@ -2394,7 +2394,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableTaskPool003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableTaskPool003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableTaskPool003';
       console.info(`${CASE} test start`);
       try {
@@ -2431,7 +2431,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableTaskPool004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableTaskPool004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableTaskPool004';
       console.info(`${CASE} test start`);
       try {
@@ -2468,7 +2468,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorker001', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorker001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorker001';
       try {
         let result = false;
@@ -2506,7 +2506,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorker002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorker002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorker002';
       try {
         let result = false;
@@ -2545,7 +2545,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorker003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorker003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorker003';
       try {
         let result = false;
@@ -2583,7 +2583,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorker004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorker004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorker004';
       try {
         let result = false;
@@ -2621,7 +2621,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorkerTerminate001', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorkerTerminate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorkerTerminate001';
       try {
         let result = false;
@@ -2660,7 +2660,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableThreadWorkerTerminate002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableThreadWorkerTerminate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableThreadWorkerTerminate002';
       try {
         let result = false;
@@ -2699,7 +2699,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableGCFull001', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableGCFull001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableGCFull001';
       console.info(`${CASE} START`);
       try {
@@ -2730,7 +2730,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableGCFull002', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableGCFull002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableGCFull002';
       console.info(`${CASE} START`);
       try {
@@ -2758,7 +2758,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableGCFull003', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableGCFull003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableGCFull003';
       console.info(`${CASE} START`);
       try {
@@ -2789,7 +2789,7 @@ export default function conditionVariableTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsLocksTestConditionVariableGCFull004', 0, async (done: Function) => {
+    it('ActsLocksTestConditionVariableGCFull004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const CASE: string = 'ActsLocksTestConditionVariableGCFull004';
       console.info(`${CASE} START`);
       try {
@@ -2806,6 +2806,39 @@ export default function conditionVariableTest() {
         expect().assertFail();
       }
       console.info(`${CASE} END`);
+      done();
+    });
+
+    /**
+     * @tc.number    : ActsLocksTestConditionVariableRecursive001
+     * @tc.name      : ActsLocksTestConditionVariableRecursive001
+     * @tc.desc      : check recursive wait()
+     * @tc.level     : Level 3
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     */
+    it('ActsLocksTestConditionVariableRecursive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      const CASE: string = 'ActsLocksTestConditionVariableRecursive001';
+      console.info(`${CASE} START`);
+      let cv = ArkTSUtils.locks.ConditionVariable.request(CASE);
+      let count = 0;
+      cv.wait().then(() => {
+        ++count;
+        cv.wait().then(() => {
+          ++count;
+          cv.wait().then(() => {
+            ++count;
+          })
+        });
+      })
+      let id = setInterval(() => {
+        cv.notifyAll();
+      }, 100)
+      while(count < 3) {
+        await sleep(100);
+      }
+      clearInterval(id);
+      expect(count).assertEqual(3);
       done();
     });
 

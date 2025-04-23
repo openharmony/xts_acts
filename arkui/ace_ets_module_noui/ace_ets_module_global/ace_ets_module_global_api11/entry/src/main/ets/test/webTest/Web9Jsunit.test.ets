@@ -12,16 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils'
-
 let emitKey = "emitUserAgent";
-
 export default function web9Jsunit() {
-
   describe('web9Jsunit', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
@@ -41,7 +37,6 @@ export default function web9Jsunit() {
       }
       await Utils.sleep(2000);
       console.info("web beforeEach start");
-
     })
     afterEach(async () => {
       console.info("web afterEach start:" + emitKey);
@@ -61,40 +56,34 @@ export default function web9Jsunit() {
         console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
-
     })
-
     /*
      * tc.number SUB_ACE_BASIC_ETS_API_0001
      * tc.name WebContextMenuResult
      * tc.desic webContextMenuResult
      */
-    it('webContextMenuResultTest001', 0, async () => {
+    it('webContextMenuResultTest001', Level.LEVEL0, async () => {
       emitKey = "emitwebContextMenuResult";
       Utils.registerContainEvent("webContextMenuResult", true, 1101);
     })
-
     /*
      * tc.number SUB_ACE_BASIC_ETS_API_0002
      * tc.name  HitTestValue
      * tc.desic webContextMenuResult
      */
-    it('setWebControllerTest002', 0, async () => {
+    it('setWebControllerTest002', Level.LEVEL0, async () => {
       emitKey = "emitsetWebController";
       Utils.registerContainEvent("setWebController", true, 1102);
     })
-
     /*
     * tc.number SUB_ACE_BASIC_ETS_API_0002
     * tc.name  HitTestValue
     * tc.desic webContextMenuResult
     */
-    it('setWebControllerTest003', 0, async () => {
+    it('setWebControllerTest003', Level.LEVEL0, async () => {
       emitKey = "emitHitTestValue";
       Utils.registerContainEvent("HitTestValue", true, 1103);
       sendEventByKey('web2', 10, '');
     })
-
-
   })
 }

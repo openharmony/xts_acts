@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, afterAll, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
@@ -82,7 +82,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetRadioTech0150', 0, async (done: Function) => {
+    it('testTelephonyRadioGetRadioTech0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetRadioTech0150';
       console.info(`${caseName} test start`);
       if (!isSim0Active) {
@@ -115,7 +115,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetRadioTech0250', 0, async (done: Function) => {
+    it('testTelephonyRadioGetRadioTech0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetRadioTech0250';
       console.info(`${caseName} test start`);
       if (!isSim0Active) {
@@ -147,7 +147,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetNetworkState0140', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0140';
       console.info(`${caseName} test start`);
       try {
@@ -186,7 +186,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioGetNetworkState1500', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState1500';
       console.info(`${caseName} test start`);
       try {
@@ -225,7 +225,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 3
      */
-    it('testTelephonyRadioGetNetworkState1600', 0, async (done: Function) => {
+    it('testTelephonyRadioGetNetworkState1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState1600';
       console.info(`${caseName} test start`);
       try {
@@ -262,7 +262,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioIsRadioOn0150', 0, async (done: Function) => {
+    it('testTelephonyRadioIsRadioOn0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0150';
       console.info(`${caseName} test start`);
       if (!isSim0Active) {
@@ -295,7 +295,7 @@ export default function telephonyRadioNoPermissionPublicTest() {
      * @tc.type  : Function
      * @tc.level : Level 1
      */
-    it('testTelephonyRadioIsRadioOn0250', 0, async (done: Function) => {
+    it('testTelephonyRadioIsRadioOn0250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0250';
       console.info(`${caseName} test start`);
       if (!isSim0Active) {

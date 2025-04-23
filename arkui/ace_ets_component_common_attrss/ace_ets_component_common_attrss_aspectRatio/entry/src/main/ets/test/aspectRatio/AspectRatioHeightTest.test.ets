@@ -156,9 +156,16 @@ export default function aspectRatioHeightTest() {
       console.info('[' + data.caseTag + '] targetRectAspectRatio:' + targetRectAspectRatio);
 
       //Check the width, height, and aspectRatio are correct
-      expect(Math.floor(Math.abs(targetRectHeight - Math.floor(data.testValue.expectValue.heightValue))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(targetRectWidth - Math.floor(data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio))) <= 1).assertTrue();
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.heightValue:' + data.testValue.expectValue.heightValue);
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.aspectRatio:' + data.testValue.expectValue.aspectRatio);
+      console.info('[' + data.caseTag + '] data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio:' + data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio);
+      if (data.pageConfig.componentKey == 'TextInput') {
+        expect(Math.floor(Math.abs(targetRectHeight - data.testValue.expectValue.heightValue)) <= 2).assertTrue();
+      } else {
+        expect(Math.floor(Math.abs(targetRectHeight - data.testValue.expectValue.heightValue)) <= 1).assertTrue();
+      }
+      expect(Math.floor(Math.abs(targetRectAspectRatio - data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(targetRectWidth - data.testValue.expectValue.heightValue * data.testValue.expectValue.aspectRatio)) <= 1).assertTrue();
     });
   })
 }

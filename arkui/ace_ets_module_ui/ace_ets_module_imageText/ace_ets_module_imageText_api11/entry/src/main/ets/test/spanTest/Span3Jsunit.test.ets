@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -44,7 +44,7 @@ export default function span3Jsunit() {
       console.info("span after each called");
     });
 
-    it('testSpan001', 0, async (done: Function) => {
+    it('testSpan001', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('decoration');
@@ -55,7 +55,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan002', 0, async (done: Function) => {
+    it('testSpan002', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan002] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('decoration');
@@ -66,7 +66,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan003', 0, async (done: Function) => {
+    it('testSpan003', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan003] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -92,7 +92,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan004', 0, async (done: Function) => {
+    it('testSpan004', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan004] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('fontColor');
@@ -103,7 +103,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan005', 0, async (done: Function) => {
+    it('testSpan005', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan005] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -129,7 +129,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan006', 0, async (done: Function) => {
+    it('testSpan006', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan006] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -155,7 +155,7 @@ export default function span3Jsunit() {
       done();
     });
 
-    it('testSpan007', 0, async (done: Function) => {
+    it('testSpan007', Level.LEVEL1, async (done: Function) => {
       console.info('[testSpan007] START');
       try {
         let eventData: events_emitter.EventData = {

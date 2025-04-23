@@ -198,8 +198,8 @@ export default function ConnectedTagTest() {
                     console.info("[NFC_test] ConnectedTag6 nfc state receive state ->" + result);
                     expect(result != null).assertTrue();
                 }
-                connectedTag.on('[NFC_test] ConnectedTag6 notify',recvNfcRfNotifyFunc)
-                connectedTag.off('[NFC_test] ConnectedTag6 notify',recvNfcRfNotifyFunc)
+                connectedTag.on('notify',recvNfcRfNotifyFunc)
+                connectedTag.off('notify',recvNfcRfNotifyFunc)
             }
         })
 

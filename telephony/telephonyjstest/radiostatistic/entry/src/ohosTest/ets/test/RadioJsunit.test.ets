@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, TestType, Size } from '@ohos/hypium';
 import radio from '@ohos.telephony.radio';
 
 export default function radioJsunit() {
@@ -26,7 +26,7 @@ export default function radioJsunit() {
      * @tc.name Test getPrimarySlotId(-1) to check the callback result
      * @tc.desc Function test
      */
-    it('Telephony_NetworkSearch_getPrimarySlotId_Async_0200', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_getPrimarySlotId_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       radio.getPrimarySlotId((err, data) => {
         if (err) {
           console.log("Telephony_NetworkSearch_getPrimarySlotId_Async_0200 err:" + JSON.stringify(err));
@@ -45,7 +45,7 @@ export default function radioJsunit() {
      * @tc.name testGetPrimarySlotId_0300
      * @tc.desc Test getPrimarySlotId api by promise.
      */
-    it('Telephony_NetworkSearch_getPrimarySlotId_Promise_0200', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getPrimarySlotId_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       try {
         let data = await radio.getPrimarySlotId();
         console.log("Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 data:" + JSON.stringify(data));
@@ -63,7 +63,7 @@ export default function radioJsunit() {
      * @tc.name Test The function setPrimarySlotId(0)
      * @tc.desc Function test
      */
-    it('Telephony_NetworkSearch_isNrSupported_Promise_0400', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_isNrSupported_Promise_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let CaseName = "Telephony_NetworkSearch_isNrSupported_Promise_0400 ";
       try {
         let result = radio.isNrSupported();
@@ -84,7 +84,7 @@ export default function radioJsunit() {
      * @tc.name Test The function isNRSupported(soltId)
      * @tc.desc Function test
      */
-    it('Telephony_NetworkSearch_isNRSupported_Async_0100', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_isNRSupported_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let CaseName = "Telephony_NetworkSearch_isNRSupported_Async_0100 ";
       try {
         let result = radio.isNRSupported();

@@ -60,6 +60,8 @@ async function createPixelmapTestPromise(done:Function, testNum:string, colorSpa
                 let csmn = cs.getColorSpaceName();
                 logger.log('csmn ' + csmn);
                 checkColorSpace(csmn);
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap")
                 done();
             } else {
                 logger.log('creat pixelMap failed ');
@@ -98,6 +100,8 @@ async function createPixelmapTestCb(done:Function, testNum:string, colorSpace:ES
                 let csmn = cs.getColorSpaceName();
                 logger.log('csmn ' + csmn);
                 checkColorSpace(csmn);
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap")
                 done();
             });
         } else {
@@ -131,6 +135,8 @@ async function applyColorSpacePromiseTest(done:Function, testNum:string, checkCo
                     checkColorSpace(csmn);
                     let pixelSize = pixelMap.getPixelBytesNumber();
                     logger.log(`new pixel size ${pixelSize}`);
+                    await pixelMap.release();
+                    logger.log("Success in releasing pixelMap")
                     done();
                 }).catch((error:BusinessError) => {
                     logger.log("apply colorSpace failed " + error);
@@ -178,6 +184,8 @@ async function applyColorSpaceCbTest(done:Function, testNum:string, checkColorSp
                     checkColorSpace(csmn);
                     let pixelSize = pixelMap.getPixelBytesNumber();
                     logger.log(`new pixel size ${pixelSize}`);
+                    await pixelMap.release();
+                    logger.log("Success in releasing pixelMap")
                     done();
                 })
             } else {
@@ -211,6 +219,9 @@ async function applyColorSpaceCbErrTest(done:Function, testNum:string, csmModify
                     expect(err == ERR_CODE).assertTrue();
                     done();
                 })
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap");
+                done();
             } else {
                 logger.log('creat pixelMap failed ');
                 expect(false).assertTrue();
@@ -246,6 +257,9 @@ async function applyColorSpacePromiseErrTest(done:Function, testNum:string, csmM
                     expect(error == ERR_CODE).assertTrue();
                     done();
                 }
+                await pixelMap.release();
+                logger.log("Success in releasing pixelMap");
+                done();
             } else {
                 logger.log('creat pixelMap failed ');
                 expect(false).assertTrue();

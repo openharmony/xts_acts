@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, afterEach, it, expect, beforeEach, Level } from '@ohos/hypium'
 import hilog from '@ohos.hilog';
 import { BusinessError } from '@ohos.base';
 import Want from '@ohos.app.ability.Want';
@@ -39,7 +39,7 @@ export default function BackWithResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_BackWithResult_3000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_BackWithResult_3000', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_BackWithResult_3000';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let callerRequestCode: string = '12347561890';
@@ -67,7 +67,7 @@ export default function BackWithResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_BackWithResult_2900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_BackWithResult_2900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_BackWithResult_2900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let want: Want = {};
@@ -100,7 +100,7 @@ export default function BackWithResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_BackWithResult_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_BackWithResult_2800', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_BackWithResult_2800';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start`);
       let callerRequestCode: string = '23124asjdja';

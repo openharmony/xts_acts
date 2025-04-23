@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { JSON } from '@kit.ArkTS';
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0200', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0200';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -108,7 +108,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0300', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0300';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -142,7 +142,7 @@ export default function abilityTest() {
  * @tc.size   : MediumTest
  * @tc.level  : 0
  */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0400', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0400';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -203,7 +203,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0600', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0600';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -277,7 +277,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0800', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_0800';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       hilog.info(DOMAIN, LOG_TAG, tag + " " + deviceInfo.deviceType);
@@ -312,7 +312,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1000', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1000';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -360,7 +360,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1100', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1100';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -388,7 +388,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1200', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1200';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -416,7 +416,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1300', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1300';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -444,7 +444,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1400', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1400';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -471,7 +471,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1500', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1500';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -498,7 +498,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1600', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1600';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -531,7 +531,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1700', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1700';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -562,7 +562,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1800', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_1800';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -592,7 +592,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2000', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2000';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -620,7 +620,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2100', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2100';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {
@@ -649,7 +649,7 @@ export default function abilityTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2200', Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_Ability_AbilityRuntime_SetAbilityInstanceInfo_2200';
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
       if (deviceInfo.deviceType !== '2in1') {

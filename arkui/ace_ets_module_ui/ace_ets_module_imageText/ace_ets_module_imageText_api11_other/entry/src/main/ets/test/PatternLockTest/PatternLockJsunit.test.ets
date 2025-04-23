@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function PatternLockJsunit() {
       done();
     });
 
-    it('PatternLockJsunit_0100', 0, async (done: Function) => {
+    it('PatternLockJsunit_0100', Level.LEVEL2, async (done: Function) => {
       // Get the information of the PatternLock component
       console.info('[PatternLockJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -63,7 +63,7 @@ export default function PatternLockJsunit() {
       done();
     });
 
-    it('PatternLockJsunit_0200', 0, async (done: Function) => {
+    it('PatternLockJsunit_0200', Level.LEVEL2, async (done: Function) => {
       // Verify the content of the message
       let driver1 = await UiDriver.create()
       let textComponent1 = await driver1.findComponent(BY.key('text'));
@@ -73,7 +73,7 @@ export default function PatternLockJsunit() {
       done();
     });
 
-    it('PatternLockJsunit_0300', 0, async (done: Function) => {
+    it('PatternLockJsunit_0300', Level.LEVEL2, async (done: Function) => {
       // Verify that clicking the 'Reset PatternLock' button resets
       console.info('[PatternLockJsunit_0300] START');
       // Get the component of the 'Reset PatternLock' button
@@ -90,7 +90,7 @@ export default function PatternLockJsunit() {
       done();
     });
 
-    it('PatternLockJsunit_0400', 0, async (done: Function) => {
+    it('PatternLockJsunit_0400', Level.LEVEL2, async (done: Function) => {
       // Modify the content of the message
       console.info('[PatternLockJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -105,7 +105,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_0500', 0, async (done: Function) => {
+    it('PatternLockJsunit_0500', Level.LEVEL2, async (done: Function) => {
       // Modify the sideLength value of the PatternLock component
       console.info('[PatternLockJsunit_0500] START');
       globalThis.value.message.notify({name:'sideLength',value:'400'})
@@ -119,7 +119,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_0600', 0, async (done: Function) => {
+    it('PatternLockJsunit_0600', Level.LEVEL2, async (done: Function) => {
       // Modify the circleRadius value of the PatternLock component
       console.info('[PatternLockJsunit_0600] START');
       globalThis.value.message.notify({name:'circleRadius',value:'18'})
@@ -133,7 +133,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_0700', 0, async (done: Function) => {
+    it('PatternLockJsunit_0700', Level.LEVEL2, async (done: Function) => {
       // Modify the regularColor value of the PatternLock component
       console.info('[PatternLockJsunit_0700] START');
       globalThis.value.message.notify({name:'regularColor',value:'#FF0000FF'})
@@ -147,7 +147,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_0800', 0, async (done: Function) => {
+    it('PatternLockJsunit_0800', Level.LEVEL2, async (done: Function) => {
       // Modify the selectedColor value of the PatternLock component
       console.info('[PatternLockJsunit_0800] START');
       globalThis.value.message.notify({name:'selectedColor',value:'#FFFF0000'})
@@ -161,7 +161,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_0900', 0, async (done: Function) => {
+    it('PatternLockJsunit_0900', Level.LEVEL2, async (done: Function) => {
       // Modify the activeColor value of the PatternLock component
       console.info('[PatternLockJsunit_0500] START');
       globalThis.value.message.notify({name:'activeColor',value:'#FFFF0000'})
@@ -175,7 +175,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_1000', 0, async (done: Function) => {
+    it('PatternLockJsunit_1000', Level.LEVEL2, async (done: Function) => {
       // Modify the pathColor value of the PatternLock component
       console.info('[PatternLockJsunit_1000] START');
       globalThis.value.message.notify({name:'pathColor',value:'#FF0000FF'})
@@ -189,7 +189,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_1100', 0, async (done: Function) => {
+    it('PatternLockJsunit_1100', Level.LEVEL2, async (done: Function) => {
       // Modify the pathStrokeWidth value of the PatternLock component
       console.info('[PatternLockJsunit_1100] START');
       await CommonFunc.sleep(1000);
@@ -204,7 +204,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_1200', 0, async (done: Function) => {
+    it('PatternLockJsunit_1200', Level.LEVEL2, async (done: Function) => {
       // Modify the autoReset value of the PatternLock component
       console.info('[PatternLockJsunit_1200] START');
       globalThis.value.message.notify({name:'autoReset',value:false})
@@ -219,7 +219,7 @@ export default function PatternLockJsunit() {
       done();
     }); 
 
-    it('PatternLockJsunit_1300', 0, async (done: Function) => {
+    it('PatternLockJsunit_1300', Level.LEVEL2, async (done: Function) => {
       console.info('[PatternLockJsunit_1300] START');
       let strJson = getInspectorByKey('default');
       let obj: ESObject = JSON.parse(strJson);

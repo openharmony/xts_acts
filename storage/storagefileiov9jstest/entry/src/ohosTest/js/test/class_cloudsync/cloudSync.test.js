@@ -45,7 +45,7 @@ describe('cloudSync_test', function () {
       cloudSync.unRegisterChange(uri);
     } catch (e) {
       console.log('test_ChangeData_IsDirectory_001 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900006 && e.message == 'No such device or address').assertTrue();
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
     }
   });
 
@@ -70,7 +70,7 @@ describe('cloudSync_test', function () {
       cloudSync.unRegisterChange(uri);
     } catch (e) {
       console.log('test_ChangeData_IsDirectory_002 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900006 && e.message == 'No such device or address').assertTrue();
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
     }
   });
 
@@ -100,7 +100,7 @@ describe('cloudSync_test', function () {
       cloudSync.unRegisterChange(uri);
     } catch (e) {
       console.log('test_ChangeData_IsDirectory_003 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900006 && e.message == 'No such device or address').assertTrue();
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
     }
   });
 });

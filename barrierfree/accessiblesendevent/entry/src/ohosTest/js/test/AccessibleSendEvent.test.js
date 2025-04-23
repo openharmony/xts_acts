@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
 import { Driver } from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100 starts`);
 
     let beginIndex = 1;
@@ -82,7 +82,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200 starts`);
 
     let beginIndex = 0;
@@ -116,7 +116,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300 starts`);
 
     let beginIndex = -1;
@@ -151,7 +151,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400 starts`);
 
     let localBundleName = 'com.ixaa.testfora11y';
@@ -184,7 +184,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500 starts`);
 
     let localBundleName = '';
@@ -218,7 +218,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600 starts`);
 
     let localBundleName = null;
@@ -252,7 +252,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700 starts`);
 
     let componentType = 'button';
@@ -286,7 +286,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800 starts`);
 
     let componentType = '';
@@ -320,7 +320,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900 starts`);
 
     let componentType = null;
@@ -354,7 +354,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100 starts`);
 
     let contents = ['1'];
@@ -388,7 +388,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200 starts`);
 
     let contents = [];
@@ -422,7 +422,7 @@ describe('AccessibleSendEvent', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300 starts`);
 
     let currentIndex = 1;
@@ -454,7 +454,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400 starts`);
 
     let currentIndex = 0;
@@ -488,7 +488,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500 starts`);
 
     let currentIndex = -1;
@@ -523,7 +523,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600 starts`);
 
     let description = '1';
@@ -557,7 +557,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700 starts`);
 
     let description = '';
@@ -591,7 +591,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800 starts`);
 
     let description = null;
@@ -626,7 +626,7 @@ describe('AccessibleSendEvent', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900 starts`);
 
     let endIndex = 1;
@@ -660,7 +660,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000 starts`);
 
     let endIndex = 0;
@@ -694,7 +694,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100 starts`);
 
     let endIndex = -1;
@@ -728,7 +728,7 @@ describe('AccessibleSendEvent', function () {
       * @tc.type    User
       * @tc.level   Level 1
       */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200 starts`);
 
     let itemCount = 1;
@@ -762,7 +762,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300 starts`);
 
     let itemCount = 0;
@@ -796,7 +796,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
       console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400 starts`);
   
       let itemCount = -1;
@@ -829,7 +829,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500 starts`);
 
     let lastContent = '1';
@@ -863,7 +863,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600 starts`);
 
     let lastContent = '';
@@ -897,7 +897,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700 starts`);
 
     let lastContent = null;
@@ -929,7 +929,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900');
         let event = null;
 
@@ -955,7 +955,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000 starts`);
 
     let pageId = 1;
@@ -989,7 +989,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100 starts`);
 
     let pageId = 0;
@@ -1023,7 +1023,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200 starts`);
 
     let pageId = -1;
@@ -1056,7 +1056,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300 starts`);
 
     let textMoveUnit = 'char';
@@ -1090,7 +1090,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400 starts`);
 
     let textMoveUnit = 'word';
@@ -1124,7 +1124,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500 starts`);
 
     let textMoveUnit = 'line';
@@ -1158,7 +1158,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600 starts`);
 
     let textMoveUnit = 'page';
@@ -1192,7 +1192,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700 starts`);
 
     let textMoveUnit = 'paragraph';
@@ -1226,7 +1226,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800 starts`);
 
     let textMoveUnit = '';
@@ -1260,7 +1260,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900 starts`);
 
     let textMoveUnit = null;
@@ -1293,7 +1293,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000 starts`);
 
     let triggerAction = 'accessibilityFocus';
@@ -1326,7 +1326,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
       console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100 starts`);
   
       let triggerAction = 'clearAccessibilityFocus';
@@ -1357,7 +1357,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200 starts`);
 
     let triggerAction = 'focus';
@@ -1390,7 +1390,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300 starts`);
 
     let triggerAction = 'clearFocus';
@@ -1423,7 +1423,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400 starts`);
 
     let triggerAction = 'clearSelection';
@@ -1456,7 +1456,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500 starts`);
 
     let triggerAction = 'click';
@@ -1489,7 +1489,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600 starts`);
 
     let triggerAction = 'longClick';
@@ -1522,7 +1522,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700 starts`);
 
     let triggerAction = 'cut';
@@ -1555,7 +1555,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800 starts`);
 
     let triggerAction = 'copy';
@@ -1588,7 +1588,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900 starts`);
 
     let triggerAction = 'paste';
@@ -1621,7 +1621,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000 starts`);
 
     let triggerAction = 'select';
@@ -1654,7 +1654,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100 starts`);
 
     let triggerAction = 'setText';
@@ -1687,7 +1687,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200 starts`);
 
     let triggerAction = 'delete';
@@ -1720,7 +1720,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300 starts`);
 
     let triggerAction = 'scrollForward';
@@ -1753,7 +1753,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400 starts`);
 
     let triggerAction = 'scrollBackward';
@@ -1786,7 +1786,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500 starts`);
 
     let triggerAction = 'setSelection';
@@ -1819,7 +1819,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600 starts`);
 
     let triggerAction = '';
@@ -1853,7 +1853,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700 starts`);
 
     let triggerAction = null;
@@ -1887,7 +1887,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800 starts`);
 
     let eventType = 'accessibilityFocus';
@@ -1921,7 +1921,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900 starts`);
 
     let eventType = 'accessibilityFocusClear';
@@ -1955,7 +1955,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000 starts`);
 
     let eventType = 'click';
@@ -1989,7 +1989,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100 starts`);
 
     let eventType = 'longClick';
@@ -2023,7 +2023,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200 starts`);
 
     let eventType = 'select';
@@ -2057,7 +2057,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300 starts`);
 
     let eventType = 'hoverEnter';
@@ -2091,7 +2091,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400 starts`);
 
     let eventType = 'hoverExit';
@@ -2125,7 +2125,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500 starts`);
 
     let eventType = 'textUpdate';
@@ -2159,7 +2159,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600 starts`);
 
     let eventType = 'textSelectionUpdate';
@@ -2193,7 +2193,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700 starts`);
 
     let eventType = 'scroll';
@@ -2227,7 +2227,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800 starts`);
 
     let eventType = '';
@@ -2262,7 +2262,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900 starts`);
 
     let eventType = null;
@@ -2297,7 +2297,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000', 0, async function (done) {
+   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000 starts`);
 
     let windowUpdateType = 'add';
@@ -2331,7 +2331,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100 starts`);
 
     let windowUpdateType = '';
@@ -2365,7 +2365,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200 starts`);
 
     let windowUpdateType = null;
@@ -2399,7 +2399,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300 starts`);
 
     let typy = 'requestFocusForAccessibility';
@@ -2435,7 +2435,7 @@ describe('AccessibleSendEvent', function () {
    * @tc.type    User
    * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400 starts`);
 
     let typy = 'announceForAccessibility';
@@ -2473,7 +2473,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500 starts`);
 
     let typy = 'requestFocusForAccessibility';
@@ -2512,7 +2512,7 @@ describe('AccessibleSendEvent', function () {
    * @tc.type    User
    * @tc.level   Level 1
    */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600', 0, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600 starts`);
 
     let typy = 'announceForAccessibility';

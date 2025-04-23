@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import ArrayList from '@ohos.util.ArrayList';
@@ -106,18 +106,18 @@ export default function audioManagerTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-    //it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', 0, async (done: Function) => {
-    //  try {
-    //    let data = audioVolumeGroupManager.getSystemVolumeInDbSync();
-    //    console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
-    //    expect(false).assertTrue();
-    //    done();
-    //  } catch (error) {
-    //    console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
-    //    expect(Number(error.code)).assertEqual(401);
-    //    done();
-    //  }
-    //})
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
+      try {
+       let data = audioVolumeGroupManager.getSystemVolumeInDbSync(123,null,audio.DeviceType.SPEAKER);
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
     /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300
          * @tc.name      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 6800101
@@ -135,6 +135,121 @@ export default function audioManagerTest() {
       } catch (error) {
         console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+        done();
+      }
+    })
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300
+    * @tc.name      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 401
+    * @tc.desc      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 401
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0500', 0, async (done: Function) => {
+      try {
+        let para1 : ESObject = '1';
+        let data = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, para1, audio.DeviceType.SPEAKER)
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0100
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
+     * @tc.desc      : Listen for changes in the system microphone status.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0100', 0, async (done: Function) => {
+      try {
+        let para1 : ESObject = 111;
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on(para1, micStateChangeCallback);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      }
+    })
+     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0200
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
+     * @tc.desc      : Listen for changes in the system microphone status.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_MICSTATECHANGE_0200', 0, async (done: Function) => {
+      try {
+        let para1 : ESObject = 'aaa';
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on(para1, micStateChangeCallback);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 6800101).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0100
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
+     * @tc.desc      : Listen for changes in the system microphone status.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0100', 0, async (done: Function) => {
+      try {
+        let para1 : ESObject = 111;
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
+        audioVolumeGroupManager.off(para1, micStateChangeCallback);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`OFF_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      }
+    })
+     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0200
+     * @tc.name      : ON_micStateChange - Media - VolumeGroupManager
+     * @tc.desc      : Listen for changes in the system microphone status.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_OFF_MICSTATECHANGE_0200', 0, async (done: Function) => {
+      try {
+        let para1 : ESObject = 'aaa';
+        let micStateChangeCallback = (micStateChange: audio.MicStateChangeEvent) => {
+          console.info(`Current microphone status is: ${micStateChange.mute} `);
+        };
+        audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
+        audioVolumeGroupManager.off(para1, micStateChangeCallback);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`OFF_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(Number(error.code) == 6800101).assertTrue();
         done();
       }
     })
@@ -273,7 +388,8 @@ export default function audioManagerTest() {
             })
             .catch((error: BusinessError) => {
               if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP' ||
-                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO') {
+                index == 'DISPLAY_PORT' || index == 'REMOTE_CAST' || index == 'HDMI' || index == 'REMOTE_DAUDIO' || 
+                index == 'LINE_DIGITAL' || index == 'ACCESSORY') {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
@@ -507,7 +623,31 @@ export default function audioManagerTest() {
         done();
       }
     })
-
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', 0, async (done: Function) => {
+      try {
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((data) => {
+          console.info(`getSystemVolumeInDb :SUCCESS ${data}, test fail!`);
+          expect(false).assertTrue();
+          done();
+        }).catch((error: BusinessError) => {
+          console.log(`getSystemVolumeInDb : error ${error.code}, check the error code`);
+          expect(Number(error.code) == 401).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200
      * @tc.name      : getSystemVolumeInDb - Media - Promise

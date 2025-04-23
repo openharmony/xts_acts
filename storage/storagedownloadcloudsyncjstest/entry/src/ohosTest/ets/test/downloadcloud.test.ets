@@ -302,7 +302,7 @@ describe('cloud_file_download_test', () => {
    * @tc.level Level 3
    * @tc.require
    */
-   it('test_Download_Error_001', 3,async (done: Function) => {
+   it('test_Download_Error_001', Level.LEVEL3, async (done: Function) => {
      let TAG = "test_Download_Error_001::";
      let NO_ERROR = 0;
      try {

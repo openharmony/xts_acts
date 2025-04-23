@@ -32,9 +32,9 @@ export default function PixMapTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testPixMapWriteTask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testPixMapWriteTask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await skipConditional("testPixMapWriteTask in progress", true, testPixMapWriteTask);
       expect(result).assertEqual("PASSED");
       done();

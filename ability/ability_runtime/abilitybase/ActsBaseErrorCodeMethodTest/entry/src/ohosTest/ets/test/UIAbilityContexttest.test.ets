@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import { Caller, common, OpenLinkOptions, StartOptions, Want, wantConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -60,7 +60,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0100 start');
       let want: Want = {
         deviceId: '',
@@ -90,7 +90,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0200 start');
       let want: Want = {
         deviceId: '',
@@ -119,7 +119,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0300 start');
       let want: Want = {
         deviceId: '',
@@ -157,7 +157,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0600 start');
       let want: Want = {
         deviceId: '',
@@ -195,7 +195,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0800 start');
       let want: Want = {
         deviceId: '',
@@ -232,7 +232,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0900 start');
       let want: Want = {
         deviceId: '',
@@ -269,7 +269,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1000 start');
       let want: Want = {
         deviceId: '',
@@ -301,7 +301,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1100 start');
       let want: Want = {
         deviceId: '',
@@ -334,7 +334,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1200 start');
       let want: Want = {
         deviceId: '',
@@ -366,7 +366,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1300 start');
       let want: Want = {
         deviceId: '',
@@ -406,7 +406,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1600 start');
       let want: Want = {
         deviceId: '',
@@ -446,7 +446,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1800 start');
       let want: Want = {
         deviceId: '',
@@ -487,7 +487,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1900 start');
       let want: Want = {
         deviceId: '',
@@ -528,7 +528,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2000 start');
       let want: Want = {
         deviceId: '',
@@ -563,7 +563,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2100 start');
       let want: Want = {
         deviceId: '',
@@ -602,7 +602,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2200 start');
       let want: Want = {
         deviceId: '',
@@ -640,7 +640,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2300 start');
       let want: Want = {
         deviceId: '',
@@ -686,7 +686,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2600 start');
       let want: Want = {
         deviceId: '',
@@ -732,7 +732,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2800 start');
       let want: Want = {
         deviceId: '',
@@ -779,7 +779,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2900 start');
       let want: Want = {
         deviceId: '',
@@ -826,7 +826,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3000 start');
       let want: Want = {
         deviceId: '',
@@ -867,7 +867,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3100', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3100', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3100 start');
       let caller: Caller;
       let want: Want = {
@@ -904,7 +904,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3300', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3300', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3300 start');
       let caller: Caller;
       let want: Want = {
@@ -943,7 +943,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3400 start');
       let caller: Caller;
       let want: Want = {
@@ -988,7 +988,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3500 start');
       let caller: Caller;
       let want: Want = {
@@ -1033,7 +1033,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3800 start');
       let want: Want = {
         deviceId: '',
@@ -1078,7 +1078,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_4000', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_4000', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_4000 start');
       let want: Want = {
         deviceId: '',
@@ -1124,7 +1124,7 @@ export default function UIAbilityContextTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_openLinkError_4200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_openLinkError_4200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_openLinkError_4200 start');
       let link = 'http1://www.example123123.com'
       try {

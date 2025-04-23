@@ -839,9 +839,20 @@ void Manager::SetNativeXComponent(std::string &id, OH_NativeXComponent *nativeXC
         nativeXComponentMap_[id] = nativeXComponent;
         return;
     }
+
+    if (nativeXComponentMap_[id] != nativeXComponent) {
+        OH_NativeXComponent *tmp = nativeXComponentMap_[id];
+        tmp = nullptr;
+        nativeXComponentMap_[id] = nativeXComponent;
+    }
 }
 
-OH_NativeXComponent *Manager::GetNativeXComponent(const std::string &id) { return nativeXComponentMap_[id]; }
+OH_NativeXComponent *Manager::GetNativeXComponent(const std::string &id) {
+    if (nativeXComponentMap_.find(id) == nativeXComponentMap_.end()) {
+        return nullptr;
+    }
+    return nativeXComponentMap_[id];
+}
 
 Container *Manager::GetContainer(std::string &id) {
     if (containerMap_.find(id) == containerMap_.end()) {

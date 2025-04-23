@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 import accessibility from '@ohos.accessibility'
 
 const bundleName = 'com.sample.testfora11y';
@@ -38,8 +38,9 @@ describe('AccessibleRegisterState', function () {
     * @tc.desc    on(accessibilityStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100');
       let callbackdata = (data) => {
       }
@@ -55,8 +56,9 @@ describe('AccessibleRegisterState', function () {
     * @tc.desc    on(touchGuideStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200', 0, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200');
       let callbackdata = (data) => {
       }

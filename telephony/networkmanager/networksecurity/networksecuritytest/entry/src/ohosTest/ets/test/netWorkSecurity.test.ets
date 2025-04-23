@@ -80,9 +80,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtain system preset CA certificates and user installed CA certificates from certificate management, and verify the certificate chain passed in by the application.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0100', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0100';
       console.info(`${caseName} test start`);
       try {
@@ -119,7 +119,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0200';
       console.info(`${caseName} test start`);
       try {
@@ -156,7 +156,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0300', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0300';
       console.info(`${caseName} test start`);
       try {
@@ -193,7 +193,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0400', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0400';
       console.info(`${caseName} test start`);
       try {
@@ -234,7 +234,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0500', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0500';
       console.info(`${caseName} test start`);
       try {
@@ -263,7 +263,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0600', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0600';
       console.info(`${caseName} test start`);
       try {
@@ -304,7 +304,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0700', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0700';
       console.info(`${caseName} test start`);
       try {
@@ -341,7 +341,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0800', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0800';
       console.info(`${caseName} test start`);
       try {
@@ -382,7 +382,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerification0900', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerification0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerification0900';
       console.info(`${caseName} test start`);
       try {
@@ -419,7 +419,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0100', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0100';
       console.info(`${caseName} test start`);
       try {
@@ -457,7 +457,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0200', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0200';
       console.info(`${caseName} test start`);
       try {
@@ -496,7 +496,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0300', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0300';
       console.info(`${caseName} test start`);
       try {
@@ -535,7 +535,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0400', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0400';
       console.info(`${caseName} test start`);
       try {
@@ -579,7 +579,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0500', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0500';
       console.info(`${caseName} test start`);
       try {
@@ -610,7 +610,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0600', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0600';
       console.info(`${caseName} test start`);
       try {
@@ -653,7 +653,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0700', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0700';
       console.info(`${caseName} test start`);
       try {
@@ -692,7 +692,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0800', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0800';
       console.info(`${caseName} test start`);
       try {
@@ -735,7 +735,7 @@ export default function netWorkSecurityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testNetworkMgrNetworkSecurityCertVerificationSync0900', 0, async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityCertVerificationSync0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityCertVerificationSync0900';
       console.info(`${caseName} test start`);
       try {
@@ -773,9 +773,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityIsCleartextPermitted_1000',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityIsCleartextPermitted_1000',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermitted_1000';
       console.info(`${caseName} test start`);
       try {
@@ -797,9 +797,9 @@ export default function netWorkSecurityTest() {
      * @tc.desc      : Obtains whether plaintext HTTP access is allowed. By default, plaintext HTTP access is allowed.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
+    it('testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkSecurityIsCleartextPermittedByHostName_1100';
       console.info(`${caseName} test start`);
       try {

@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import {
   sleep,
@@ -173,7 +173,7 @@ export default function handleCameraPhotoTest() {
      * @tc.type : Function
      * @tc.level : Level 0
      */
-    it('save_camera_photo_by_exist_photo_asset_001', 0, async (done: Function) => {
+    it('save_camera_photo_by_exist_photo_asset_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'save_camera_photo_by_exist_photo_asset_001';
       handleCameraPhotoByExistPhotoAsset(done, testNum, true);
     })
@@ -186,7 +186,7 @@ export default function handleCameraPhotoTest() {
      * @tc.type : Function
      * @tc.level : Level 0
      */
-    it('discard_camera_photo_by_exist_photo_asset_001', 0, async (done: Function) => {
+    it('discard_camera_photo_by_exist_photo_asset_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'discard_camera_photo_by_exist_photo_asset_001';
       handleCameraPhotoByExistPhotoAsset(done, testNum, false);
     })
@@ -199,7 +199,7 @@ export default function handleCameraPhotoTest() {
      * @tc.type : Function
      * @tc.level : Level 0
      */
-    it('save_camera_photo_by_exist_photo_asset_002', 0, async (done: Function) => {
+    it('save_camera_photo_by_exist_photo_asset_002', Level.LEVEL0, async (done: Function) => {
       let testNum: string = 'save_camera_photo_by_exist_photo_asset_002';
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'testSaveCameraPhoto02.jpg')
@@ -218,7 +218,7 @@ export default function handleCameraPhotoTest() {
      * @tc.type : Function
      * @tc.level : Level 0
      */
-    it('save_camera_photo_by_exist_photo_asset_003', 0, async (done: Function) => {
+    it('save_camera_photo_by_exist_photo_asset_003', Level.LEVEL0, async (done: Function) => {
       let testNum: string = 'save_camera_photo_by_exist_photo_asset_003';
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'testSaveCameraPhoto03.jpg')

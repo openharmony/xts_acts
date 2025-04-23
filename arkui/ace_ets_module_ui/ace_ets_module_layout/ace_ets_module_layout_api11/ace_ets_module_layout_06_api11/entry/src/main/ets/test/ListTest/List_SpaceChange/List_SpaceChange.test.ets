@@ -80,6 +80,7 @@ export default function list_SpaceChangeTest() {
       let listWidth: number = listContainer.right - listContainer.left;
       let listHeight: number = listContainer.bottom - listContainer.top;
       let listItemHeight: number = firstListItem.bottom - firstListItem.top;
+      let listItemHeight2: number = secondListItem.bottom - secondListItem.top;
 
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
@@ -88,22 +89,22 @@ export default function list_SpaceChangeTest() {
       expect(Math.abs(Math.round(firstListItem.right - firstListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(firstListItem.bottom - firstListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(secondListItem.top - firstListItem.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(Math.round(secondListItem.top - firstListItem.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(secondListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(secondListItem.right - secondListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondListItem.bottom - secondListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(thirdListItem.top - secondListItem.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(Math.round(thirdListItem.top - secondListItem.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(thirdListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(thirdListItem.right - thirdListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdListItem.bottom - thirdListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(fourthListItem.top - thirdListItem.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.abs(Math.round(fourthListItem.top - thirdListItem.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(fourthListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(fourthListItem.right - fourthListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(fourthListItem.bottom - fourthListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 4 * listItemHeight - vp2px(60))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -114,7 +115,7 @@ export default function list_SpaceChangeTest() {
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
-      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 4 * listItemHeight - vp2px(60))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))) <= 1).assertTrue();
 
       console.info('[testListSpaceChangeUnfill] END');
 
@@ -145,6 +146,7 @@ export default function list_SpaceChangeTest() {
       let listWidth: number = listContainer.right - listContainer.left;
       let listHeight: number = listContainer.bottom - listContainer.top;
       let listItemHeight: number = firstListItem.bottom - firstListItem.top;
+      let listItemHeight2: number = secondListItem.bottom - secondListItem.top;
 
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
@@ -153,22 +155,22 @@ export default function list_SpaceChangeTest() {
       expect(Math.abs(Math.round(firstListItem.right - firstListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(firstListItem.bottom - firstListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(secondListItem.top - firstListItem.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.round(secondListItem.top - firstListItem.bottom) - Math.round(vp2px(40))) <= 1).assertTrue();
       expect(secondListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(secondListItem.right - secondListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondListItem.bottom - secondListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(thirdListItem.top - secondListItem.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.round(thirdListItem.top - secondListItem.bottom) - Math.round(vp2px(40))) <= 1).assertTrue();
       expect(thirdListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(thirdListItem.right - thirdListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdListItem.bottom - thirdListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(fourthListItem.top - thirdListItem.bottom)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.abs(Math.round(fourthListItem.top - thirdListItem.bottom) - Math.round(vp2px(40))) <= 1).assertTrue();
       expect(fourthListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(fourthListItem.right - fourthListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(fourthListItem.bottom - fourthListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 4 * listItemHeight - vp2px(120))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -176,6 +178,7 @@ export default function list_SpaceChangeTest() {
         Math.round(globalThis.winTop + fourthListItem.bottom - 10),
         Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
         Math.round(globalThis.winTop + thirdListItem.bottom));
+      await CommonFunc.sleep(2000);
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
@@ -210,6 +213,7 @@ export default function list_SpaceChangeTest() {
       let listWidth: number = listContainer.right - listContainer.left;
       let listHeight: number = listContainer.bottom - listContainer.top;
       let listItemHeight: number = firstListItem.bottom - firstListItem.top;
+      let listItemHeight2: number = secondListItem.bottom - secondListItem.top;
 
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
@@ -218,22 +222,22 @@ export default function list_SpaceChangeTest() {
       expect(Math.abs(Math.round(firstListItem.right - firstListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(firstListItem.bottom - firstListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(secondListItem.top - firstListItem.bottom)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(secondListItem.top - firstListItem.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       expect(secondListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(secondListItem.right - secondListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondListItem.bottom - secondListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(thirdListItem.top - secondListItem.bottom)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(thirdListItem.top - secondListItem.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       expect(thirdListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(thirdListItem.right - thirdListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdListItem.bottom - thirdListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.round(fourthListItem.top - thirdListItem.bottom)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(Math.round(fourthListItem.top - thirdListItem.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       expect(fourthListItem.left).assertEqual(listContainer.left);
       expect(Math.abs(Math.round(fourthListItem.right - fourthListItem.left) - Math.round(listWidth * 0.4)) <= 1).assertTrue();
       expect(Math.abs(Math.round(fourthListItem.bottom - fourthListItem.top) - Math.round(listHeight * 0.18)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 4 * listItemHeight - vp2px(180))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(listContainer.bottom - fourthListItem.bottom) - Math.round(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(
         Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),

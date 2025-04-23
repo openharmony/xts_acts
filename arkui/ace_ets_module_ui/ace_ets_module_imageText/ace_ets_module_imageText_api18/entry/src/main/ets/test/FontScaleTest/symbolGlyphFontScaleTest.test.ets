@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0001', 0, async () => {
+    it('symbolGlyphFontScaleTest0001', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0001 START');
         await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0002', 0, async () => {
+    it('symbolGlyphFontScaleTest0002', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0002 START');
         await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0003', 0, async () => {
+    it('symbolGlyphFontScaleTest0003', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0003 START');
         await CommonFunc.sleep(1000);
@@ -116,7 +116,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0004', 0, async () => {
+    it('symbolGlyphFontScaleTest0004', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0004 START');
         await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0005', 0, async () => {
+    it('symbolGlyphFontScaleTest0005', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0005 START');
         await CommonFunc.sleep(1000);
@@ -158,7 +158,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0006', 0, async () => {
+    it('symbolGlyphFontScaleTest0006', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0006 START');
         await CommonFunc.sleep(1000);
@@ -179,7 +179,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0007', 0, async () => {
+    it('symbolGlyphFontScaleTest0007', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0007 START');
         await CommonFunc.sleep(1000);
@@ -200,7 +200,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0008', 0, async () => {
+    it('symbolGlyphFontScaleTest0008', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0008 START');
         await CommonFunc.sleep(1000);
@@ -221,7 +221,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0009', 0, async () => {
+    it('symbolGlyphFontScaleTest0009', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0009 START');
         await CommonFunc.sleep(1000);
@@ -234,7 +234,6 @@ export default function symbolGlyphFontScaleTest() {
         console.info("[symbolGlyphFontScaleTest0009] end");
     });
 	
-	
 	/*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0010
      * @tc.name         symbolGlyphFontScaleTest00010
@@ -243,7 +242,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0010', 0, async () => {
+    it('symbolGlyphFontScaleTest0010', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0010 START');
         await CommonFunc.sleep(1000);
@@ -264,7 +263,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0011', 0, async () => {
+    it('symbolGlyphFontScaleTest0011', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0011 START');
         await CommonFunc.sleep(1000);
@@ -277,7 +276,6 @@ export default function symbolGlyphFontScaleTest() {
         console.info("[symbolGlyphFontScaleTest0011] end");
     });
 	
-	
 	/*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0012
      * @tc.name         symbolGlyphFontScaleTest0012
@@ -286,7 +284,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0012', 0, async () => {
+    it('symbolGlyphFontScaleTest0012', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0012 START');
         await CommonFunc.sleep(1000);
@@ -299,7 +297,6 @@ export default function symbolGlyphFontScaleTest() {
         console.info("[symbolGlyphFontScaleTest0012] end");
     });
 	
-	
 	/*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0013
      * @tc.name         symbolGlyphFontScaleTest0013
@@ -308,7 +305,7 @@ export default function symbolGlyphFontScaleTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('symbolGlyphFontScaleTest0013', 0, async () => {
+    it('symbolGlyphFontScaleTest0013', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('symbolGlyphFontScaleTest symbolGlyphFontScaleTest0013 START');
         await CommonFunc.sleep(1000);
@@ -320,7 +317,5 @@ export default function symbolGlyphFontScaleTest() {
 		expect(obj.$attrs.minFontScale).assertEqual("0.850000");
         console.info("[symbolGlyphFontScaleTest0013] end");
     });
-	
-
   })
 }

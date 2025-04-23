@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { common, StartOptions, bundleManager } from '@kit.AbilityKit';
 import ohosWindow from '@ohos.window';
 import { Driver,  ON  } from '@ohos.UiTest';
@@ -21,7 +21,6 @@ import window from '@ohos.window';
 import settings from '@ohos.settings';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Want from '@ohos.app.ability.Want';
-import deviceInfo from '@ohos.deviceInfo';
 import { ColorMetrics } from '@kit.ArkUI';
 
 
@@ -108,7 +107,6 @@ export default function windowInterface() {
     let windowStage: ohosWindow.WindowStage;
     let isPCStatus: string = '';
     let mainWindowClass:ohosWindow.Window;
-    let deviceType: string = '';
     let isAutoWindow:string = '';
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -121,8 +119,6 @@ export default function windowInterface() {
       console.info(`beforeAll isPCStatus: `+ isPCStatus);
       windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
       mainWindowClass = windowStage.getMainWindowSync();
-      deviceType = deviceInfo.deviceType;
-      console.log('jsUnittest beforeAll deviceType =' + deviceType);
       isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
@@ -172,7 +168,7 @@ export default function windowInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0100', 0, async (done: Function) => {
+    it('testStartMoving_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0100';
       await sleep(1000)
       let driver = await Driver.create();
@@ -213,7 +209,7 @@ export default function windowInterface() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
+it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
   const message = 'testSetResizeByDragEnabledTrueTest_0100';
   let windowClass = windowStage.getMainWindowSync()
   let enabled = true;
@@ -262,7 +258,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0100', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0100';
       let windowClass = windowStage.getMainWindowSync();
       await windowClass.setUIContent('testability/pages/Index');
@@ -320,7 +316,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0200', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0200';
       let driver = Driver.create()
       // 拉起Ability
@@ -384,7 +380,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0300', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0300';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -442,7 +438,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0400', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0400';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -501,7 +497,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0500', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0500';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -559,7 +555,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0600', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0600';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -610,7 +606,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0700', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0700';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -664,7 +660,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveTrue_0800', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveTrue_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestTrue_0800';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -716,7 +712,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0100', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0100';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -770,7 +766,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0200', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0200';
       let driver = Driver.create()
       // 拉起Ability
@@ -832,7 +828,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0300', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0300';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -888,7 +884,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0400', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0400';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -944,7 +940,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0500', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0500';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1000,7 +996,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0600', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0600';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1049,7 +1045,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0700', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0700';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1099,7 +1095,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowRectAutoSaveFalse_0800', 0, async (done: Function) => {
+    it('testSetWindowRectAutoSaveFalse_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setWindowRectAutoSaveTestFalse_0800';
       // 拉起Ability
       let windowStageStart = await startAbility(message, context)
@@ -1149,7 +1145,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0100', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0100';
       let options: StartOptions = {
         supportWindowModes: [
@@ -1185,7 +1181,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0200', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0200';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1234,7 +1230,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0300', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0300';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1282,7 +1278,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0400', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0400';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1333,7 +1329,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0500', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0500';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1384,7 +1380,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0600', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0600';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1423,7 +1419,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartOptionsSupportWindowModes_0700', 0, async (done: Function) => {
+    it('testStartOptionsSupportWindowModes_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startOptionsSupportWindowModesTest_0700';
       let mainWindowRect = windowStage.getMainWindowSync().getWindowProperties().windowRect
       let driver = Driver.create()
@@ -1491,7 +1487,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testisWindowRectAutoSave', 0, async (done: Function) => {
+    it('testisWindowRectAutoSave', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'isWindowRectAutoSaveTest';
       windowStage.setWindowRectAutoSave(true)
       await sleep(1000);
@@ -1551,7 +1547,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0200', 0, async (done: Function) => {
+    it('testStartMoving_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0200';
       let options: window.SubWindowOptions = {
         title: 'subWindow',
@@ -1608,7 +1604,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testStartMoving_0300', 0, async (done: Function) => {
+    it('testStartMoving_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'startMovingTest_0300';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1673,13 +1669,13 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0100', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0100';
       let windowClass = windowStage.getMainWindowSync();
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      if(deviceType == '2in1'|| isAutoWindow =='true'){
+      if(isPCStatus != ''|| isAutoWindow =='true'){
         await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
       await sleep(1000)
       }
@@ -1723,13 +1719,13 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0200', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0200';
       let windowClass = windowStage.getMainWindowSync();
       let driver =  Driver.create()
       let windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-      if(deviceType == '2in1'|| isAutoWindow =='true'){
+      if(isPCStatus != ''|| isAutoWindow =='true'){
         await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
         await sleep(1000)
       }
@@ -1772,7 +1768,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0300', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0300';
       let options: window.SubWindowOptions = {
         title: 'subWindow',
@@ -1836,7 +1832,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0400', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0400';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1909,7 +1905,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowTitleMoveEnabled_0500', 0, async (done: Function) => {
+    it('testSetWindowTitleMoveEnabled_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = 'setWindowTitleMoveEnabledTest_0500';
       let windowClass = windowStage.getMainWindowSync();
       let options: window.SubWindowOptions = {
@@ -1973,7 +1969,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0100', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2026,7 +2022,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0200', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2079,7 +2075,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0300', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0400';
       let windowClass = windowStage.getMainWindowSync()
       try {
@@ -2115,7 +2111,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetSubWindowModalModalityType_0400', 0, async (done: Function) => {
+    it('testSetSubWindowModalModalityType_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'setSubWindowModalModalityTypeTest_0300';
       try {
         let subWindow = windowStage.createSubWindow("testSubWindow");
@@ -2155,7 +2151,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0100', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityType_0100';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2205,7 +2201,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0200', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityTypeTest_0200';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2260,7 +2256,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCreateSubWindowWithOptionsModalityType_0300', 0, async (done: Function) => {
+    it('testCreateSubWindowWithOptionsModalityType_0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testCreateSubWindowWithOptionsModalityTypeTest_0300';
       let options: window.SubWindowOptions = {
         title: 'title',
@@ -2303,7 +2299,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledTrue_0200', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledTrue_0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledTrueTest_0200';
       if (isPCStatus != '') {
         try {
@@ -2363,7 +2359,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledFalse_0100', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledFalse_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledFalseTest_0100';
       let windowClass = windowStage.getMainWindowSync()
       if (isPCStatus != '') {
@@ -2414,7 +2410,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetResizeByDragEnabledFalse_0200', 0, async (done: Function) => {
+    it('testSetResizeByDragEnabledFalse_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetResizeByDragEnabledFalseTest_0200';
       if (isPCStatus != '') {
         let options: window.SubWindowOptions = {
@@ -2472,7 +2468,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowModalTrue', 0, async (done: Function) => {
+    it('testSetWindowModalTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetWindowModalTrueTest';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2537,7 +2533,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testSetWindowModalFalse', 0, async (done: Function) => {
+    it('testSetWindowModalFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testSetWindowModalFalseTest';
       let windowClass = windowStage.getMainWindowSync()
       await windowClass.setUIContent('testability/pages/WindowTest/Modality')
@@ -2602,7 +2598,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_threeElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_threeElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_threeElement'
         let windowStageStart = await startAbility(message, context)
@@ -2639,7 +2635,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_fourSameElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fourSameElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_fourSameElement'
         let windowStageStart = await startAbility(message, context)
@@ -2677,7 +2673,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_fiveElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_fiveElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_fiveElement'
         let windowStageStart = await startAbility(message, context)
@@ -2715,7 +2711,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_nullElement', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_nullElement', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_nullElement'
         let windowStageStart = await startAbility(message, context)
@@ -2751,7 +2747,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_onlySplit', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_onlySplit', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_onlySplit'
         let windowStageStart = await startAbility(message, context)
@@ -2787,7 +2783,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_afterTerminateAbility', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_afterTerminateAbility', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_afterTerminateAbility'
         let windowStageStart = await startAbility(message, context)
@@ -2828,7 +2824,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setSupportedWindowModes_modeChange_isImmersive', 0, async (done: Function) => {
+    it('test_setSupportedWindowModes_modeChange_isImmersive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_setSupportedWindowModes_modeChange_isImmersive';
         let windowStageStart = await startAbility(message, context)
@@ -2906,7 +2902,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_negativeLeftTop_minWidthHeight'
         let limit = context.windowStage.getMainWindowSync().getWindowLimits()
@@ -2964,7 +2960,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_positiveLeftTop_maxWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3022,7 +3018,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_801', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_801'
         let options: window.SubWindowOptions = {
@@ -3075,7 +3071,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_floatLeftTop_floatWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3133,7 +3129,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_0LeftTop_0WidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3186,7 +3182,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_maxAboveWidthHeight';
         let limit = context.windowStage.getMainWindowSync().getWindowLimits();
@@ -3246,7 +3242,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      *
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_followMinWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_followMinWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_followMinWidthHeight';
         let subwindow0 = await windowStage.createSubWindow('subwindow0');
@@ -3307,7 +3303,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight', 0, async (done: Function) => {
+    it('test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         const message = 'test_createSubWindowWithOptions_windowRect_NaNLeftTopWidthHeight'
         let options: window.SubWindowOptions = {
@@ -3359,7 +3355,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_resolve_true', 0, async (done: Function) => {
+    it('test_on_windowWillClose_resolve_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_resolve_true'
       let result: boolean = false;
       const callback = () => {
@@ -3412,7 +3408,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_resolve_false', 0, async (done: Function) => {
+    it('test_on_windowWillClose_resolve_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_resolve_false'
       let result: boolean = true;
       let windowName: string | undefined;
@@ -3476,7 +3472,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_executeAfterOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_executeAfterOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_executeAfterOff'
       let result: boolean = true;
       const callback = async () => {
@@ -3524,9 +3520,9 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_offWithoutOn', 0, async (done: Function) => {
+    it('test_on_windowWillClose_offWithoutOn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_offWithoutOn'
-      if (deviceType != "2in1" && isAutoWindow != 'true') {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -3575,7 +3571,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_reject', 0, async (done: Function) => {
+    it('test_on_windowWillClose_reject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_reject';
       let windowName: string | undefined;
       const callback = () => {
@@ -3633,7 +3629,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_multiOn_UniqueOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_multiOn_UniqueOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_multiOn_UniqueOff';
       let windowName: string | undefined;
       let result: boolean = true;
@@ -3705,7 +3701,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_multiOn_AllOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_multiOn_AllOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_multiOn_AllOff';
       let windowName: string | undefined;
       let result: boolean = false;
@@ -3777,7 +3773,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_result_false', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_result_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_result_false'
       let result: boolean = true;
       const callback = () => {
@@ -3848,7 +3844,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_result_true', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_result_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_result_true'
       let result: boolean = false;
       const callback = () => {
@@ -3918,7 +3914,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_subWindow_reject', 0, async (done: Function) => {
+    it('test_on_windowWillClose_subWindow_reject', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_subWindow_reject'
       const callback = () => {
         return new Promise<boolean>((resolve, reject) => {
@@ -3986,7 +3982,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_on_windowWillClose_minimize_maximize_recover_beforeOff', 0, async (done: Function) => {
+    it('test_on_windowWillClose_minimize_maximize_recover_beforeOff', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_on_windowWillClose_minimize_maximize_recover_beforeOff'
       let windowName: string | undefined;
       let result: boolean = true;
@@ -4080,8 +4076,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_MoveConfiguration', 3, async (done: Function) => {
-      if (deviceType != "2in1" && isAutoWindow != 'true') {
+    it('test_MoveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4124,7 +4120,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_moveWindowToGlobal_moveConfiguration', 3, async (done: Function) => {
+    it('test_moveWindowToGlobal_moveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_moveWindowToGlobal_moveConfiguration!'
       let options: window.SubWindowOptions = {
         title: message,
@@ -4179,8 +4175,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_on_subWindowClose', 3, async (done: Function) => {
-      if (deviceType != "2in1" && isAutoWindow != 'true') {
+    it('test_on_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4251,8 +4247,8 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_off_subWindowClose', 3, async (done: Function) => {
-      if (deviceType != "2in1" && isAutoWindow != 'true') {
+    it('test_off_subWindowClose', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      if (isPCStatus == '' && isAutoWindow != 'true') {
         expect(true).assertTrue();
         done();
       } else {
@@ -4323,7 +4319,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setStatusBarColor_401', 3, async (done: Function) => {
+    it('test_setStatusBarColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setStatusBarColor_401!'
       try {
         let promise = mainWindowClass.setStatusBarColor(null);
@@ -4351,7 +4347,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setStatusBarColor_801', 3, async (done: Function) => {
+    it('test_setStatusBarColor_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setStatusBarColor_801!'
       try {
         let promise = mainWindowClass.setStatusBarColor(ColorMetrics.rgba(1, 1, 1));
@@ -4379,7 +4375,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setSystemAvoidAreaEnabled_ErrorCode_401', 3, async (done: Function) => {
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_401!'
       let config: window.Configuration = {
         name: message,
@@ -4436,7 +4432,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setSystemAvoidAreaEnabled_ErrorCode_801', 3, async (done: Function) => {
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_801!'
       let config: window.Configuration = {
         name: message,
@@ -4493,7 +4489,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300002', 3, async (done: Function) => {
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300002!'
       let config: window.Configuration = {
         name: message,
@@ -4546,7 +4542,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300004', 3, async (done: Function) => {
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300004!'
       try {
         let promise = windowStage.createSubWindow(message)
@@ -4598,7 +4594,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_setSystemAvoidAreaEnabled_dialog', 3, async (done: Function) => {
+    it('test_setSystemAvoidAreaEnabled_dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_setSystemAvoidAreaEnabled_dialog!'
       let config: window.Configuration = {
         name: message,
@@ -4657,7 +4653,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_isSystemAvoidAreaEnabled_801', 3, async (done: Function) => {
+    it('test_isSystemAvoidAreaEnabled_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_isSystemAvoidAreaEnabled_801!'
       let config: window.Configuration = {
         name: message,
@@ -4704,7 +4700,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_isSystemAvoidAreaEnabled_1300004', 3, async (done: Function) => {
+    it('test_isSystemAvoidAreaEnabled_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_isSystemAvoidAreaEnabled_1300004!'
       try {
         let promise = windowStage.createSubWindow(message)
@@ -4749,7 +4745,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('test_isSystemAvoidAreaEnabled_1300002', 3, async (done: Function) => {
+    it('test_isSystemAvoidAreaEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'test_isSystemAvoidAreaEnabled_1300002!'
       let config: window.Configuration = {
         name: message,
@@ -4795,7 +4791,7 @@ it('testSetResizeByDragEnabledTrue_0100', 0, async (done: Function) => {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testgetParentWindow', 0, async (done: Function) => {
+    it('testgetParentWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let message = "testgetParentWindow";
       let msgStr = 'jsunittest ' + message + ' ';
       console.log(msgStr + 'begin.');

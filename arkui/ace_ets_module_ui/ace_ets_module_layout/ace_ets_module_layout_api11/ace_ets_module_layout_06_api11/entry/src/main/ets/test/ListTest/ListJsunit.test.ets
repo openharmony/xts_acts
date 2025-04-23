@@ -276,7 +276,7 @@ export default function ListJsunit() {
       console.info("[ListJsunit_0400] sticky: " + JSON.stringify(obj.$attrs.sticky));
       expect(obj.$attrs.space).assertEqual('-10.00vp');
       expect(obj.$attrs.initialIndex).assertEqual('30');
-      expect(obj.$attrs.listDirection).assertEqual('Axis.Horizontal');
+      expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical');
       expect(obj.$attrs.divider.strokeWidth).assertEqual('0.00vp');
       expect(obj.$attrs.divider.color).assertEqual('#FF00000A');
       expect(obj.$attrs.divider.startMargin).assertEqual('0.00vp');

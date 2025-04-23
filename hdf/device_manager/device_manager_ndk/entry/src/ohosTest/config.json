@@ -63,6 +63,9 @@
     "reqPermissions": [
       {
         "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER"
+      },
+      {
+        "name": "ohos.permission.ACCESS_DDK_DRIVERS"
       }
     ]
   }

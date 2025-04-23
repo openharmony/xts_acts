@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import ErrorManager from "@ohos.app.ability.errorManager"
 import commonEvent from '@ohos.commonEventManager'
 
@@ -46,7 +46,7 @@ export default function abilityTest() {
      * @tc.desc: Js registers onUnhandledException callback to listen. There is a callback notification when
      *           JS is abnormal.
      */
-    it('Acts_RegisterJsErrorCallback_0100', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0100', Level.LEVEL0, async (done:Function) => {
       let flag = false;
       console.info("====>Acts_RegisterJsErrorCallback_0100 start");
       commonEvent.createSubscriber(ACTS_Register).then(async (data) => {
@@ -94,7 +94,7 @@ export default function abilityTest() {
      * @tc.desc: Js registers onUnhandledException and onException callback to listen. There is a callback
      *           notification when JS is abnormal.
      */
-    it('Acts_RegisterJsErrorCallback_0200', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0200', Level.LEVEL0, async (done:Function) => {
       let subscriber;
       let flag = false;
       console.info("====>Acts_RegisterJsErrorCallback_0200 start")
@@ -157,7 +157,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When registering JS exception listening interface parameter type is undefined, returns an error.
      */
-    it('Acts_RegisterJsErrorCallback_0300', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0300', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_RegisterJsErrorCallback_0300 start");
       try {
         ErrorManager.on(undefined, observer);
@@ -176,7 +176,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When registering JS exception listening interface parameter type is null, returns an error.
      */
-    it('Acts_RegisterJsErrorCallback_0400', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0400', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_RegisterJsErrorCallback_0400 start");
       try {
         ErrorManager.on(null, observer);
@@ -196,7 +196,7 @@ export default function abilityTest() {
      * @tc.desc: When registering JS exception listening interface parameter observer is undefined, no abnormal
      *           error in interface execution.
      */
-    it('Acts_RegisterJsErrorCallback_0500', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0500', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_RegisterJsErrorCallback_0500 start");
       try {
         const observerId = ErrorManager.on('error', undefined);
@@ -217,7 +217,7 @@ export default function abilityTest() {
      * @tc.desc: When registering JS exception listening interface parameter observer is null, no abnormal
      *           error in interface execution.
      */
-    it('Acts_RegisterJsErrorCallback_0600', 0, async (done:Function) => {
+    it('Acts_RegisterJsErrorCallback_0600', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_RegisterJsErrorCallback_0600 start");
       try {
         const observerId = ErrorManager.on('error', null);
@@ -237,7 +237,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter type is undefined, returns an error.
      */
-    it('Acts_UnregisterJsErrorCallback_0100', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0100', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0100 start");
       let observerId = ErrorManager.on("error", observer);
       try {
@@ -259,7 +259,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter type is null, returns an error.
      */
-    it('Acts_UnregisterJsErrorCallback_0200', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0200', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0200 start");
       let observerId = ErrorManager.on("error", observer);
       try {
@@ -281,7 +281,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter observerId is undefined, returns error.
      */
-    it('Acts_UnregisterJsErrorCallback_0300', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0300', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0300 start");
       ErrorManager.off("error", undefined).then(() => {
         console.info("====>Acts_UnregisterJsErrorCallback_0300 success");
@@ -299,7 +299,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter observerId is null, returns error.
      */
-    it('Acts_UnregisterJsErrorCallback_0400', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0400', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0400 start");
       ErrorManager.off("error", null).then(() => {
         console.info("====>Acts_UnregisterJsErrorCallback_0400 success");
@@ -317,7 +317,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter observerId is -1, returns error.
      */
-    it('Acts_UnregisterJsErrorCallback_0500', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0500', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0500 start");
       ErrorManager.off("error", -1).then(() => {
         console.info("====>Acts_UnregisterJsErrorCallback_0500 success");
@@ -335,7 +335,7 @@ export default function abilityTest() {
      * @tc.name: JsError callback enhancement
      * @tc.desc: When unregistering JS exception listening interface parameter observerId is 10000, returns error.
      */
-    it('Acts_UnregisterJsErrorCallback_0600', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0600', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0600 start");
       ErrorManager.off("error", 10000).then(() => {
         console.info("====>Acts_UnregisterJsErrorCallback_0600 success");
@@ -354,7 +354,7 @@ export default function abilityTest() {
      * @tc.desc: When the parameter objectId of the unregistered JS exception listening interface is the correct
      *           registered value, the interface executes correctly.
      */
-    it('Acts_UnregisterJsErrorCallback_0700', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0700', Level.LEVEL0, async (done:Function) => {
       console.info("====>Acts_UnregisterJsErrorCallback_0700 start");
       let observerId = ErrorManager.on("error", observer);
       try {
@@ -375,7 +375,7 @@ export default function abilityTest() {
      * @tc.desc: When unregistered as the correct registered value, the interface executes correctly and the JS
      *           layer does not trigger an exception error callback.
      */
-    it('Acts_UnregisterJsErrorCallback_0800', 0, async (done:Function) => {
+    it('Acts_UnregisterJsErrorCallback_0800', Level.LEVEL0, async (done:Function) => {
       let subscriber;
       let flag = false;
       console.info("====>Acts_UnregisterJsErrorCallback_0800 start")

@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 import hiTraceMeter from "@ohos.hiTraceMeter"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import hilog from '@ohos.hilog'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 export default function HitraceMeterTest() {
 describe("HitraceMeterTest", function () {
 
-    it("DFX_DFR_HitraceMeter_0100", 0, async function (done) {
+    it("DFX_DFR_HitraceMeter_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_HitraceMeter_0100 start--------");
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_HitraceMeter_0100 i = " + i)
@@ -30,7 +31,7 @@ describe("HitraceMeterTest", function () {
         done();
     })
 
-    it("DFX_DFR_HitraceMeter_0200", 0, async function (done) {
+    it("DFX_DFR_HitraceMeter_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("------DFX_DFR_HitraceMeter_0200 start------");
         // Normal condition
         let flag = false;
@@ -83,7 +84,7 @@ describe("HitraceMeterTest", function () {
         done();
     })
 
-    it("DFX_DFR_HitraceMeter_0300", 0, async function (done) {
+    it("DFX_DFR_HitraceMeter_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("------DFX_DFR_HitraceMeter_0300 start------");
         // Normal condition
         let flag = false;
@@ -136,7 +137,7 @@ describe("HitraceMeterTest", function () {
         done();
     })
 
-    it("DFX_DFR_HitraceMeter_0400", 0, async function (done) {
+    it("DFX_DFR_HitraceMeter_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_HitraceMeter_0400 start--------");
         for (var i = 0; i < 3; i++) {
             console.info("DFX_DFR_HitraceMeter_0400 :" + i);
@@ -146,7 +147,7 @@ describe("HitraceMeterTest", function () {
         done();
     })
 
-    it("DFX_DFR_HitraceMeter_0500", 0, async function (done) {
+    it("DFX_DFR_HitraceMeter_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info("-------DFX_DFR_HitraceMeter_0500 start--------");
         // Normal condition
         let flag = false;
@@ -196,6 +197,95 @@ describe("HitraceMeterTest", function () {
             expect(flag).assertTrue();
         }
         console.info("------DFX_DFR_HitraceMeter_0500 end------");
+        done();
+    })
+
+    it("DFX_DFR_HitraceMeter_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info("-------DFX_DFR_HitraceMeter_0600 start--------");
+        let flag = false;
+        let traceCount = 1;
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 1 start")
+            hiTraceMeter.startAsyncTrace(hiTraceMeter.HiTraceOutputLevel.DEBUG, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
+            hiTraceMeter.traceByValue(hiTraceMeter.HiTraceOutputLevel.DEBUG, 'myTestCountTrace', traceCount);
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1001');
+            hiTraceMeter.finishAsyncTrace(hiTraceMeter.HiTraceOutputLevel.DEBUG, 'myTestAsyncTrace', 1001);
+            expect(true).assertTrue();
+            console.info("DFX_DFR_HitraceMeter_0600 1 success");
+        } catch (err) {
+            console.info("DFX_DFR_HitraceMeter_0600 1 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 1 err = " + err);
+            expect(false).assertTrue();
+        }
+        // Abnormal condition, Pass only one parameter
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 2 start")
+            hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.INFO, 'myTestSyncTrace', 'key=value');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+            hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.INFO);
+            expect(flag).assertFalse();
+        } catch (err) {
+            flag = true;
+            console.info("DFX_DFR_HitraceMeter_0600 2 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 2 err = " + err);
+            expect(flag).assertTrue();
+        }
+        // Abnormal condition, Pass multiple parameters
+        flag = false;
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 3 start")
+            if (hiTraceMeter.isTraceEnabled()) {
+                let customArgs = 'key0=value0';
+                for(let index = 1; index < 10; index++) {
+                  customArgs += `,key${index}=value${index}`
+                }
+                hiTraceMeter.startAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
+                hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+                hiTraceMeter.finishAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003);
+              } else {
+                hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
+              }
+            expect(flag).assertFalse();
+        } catch (err) {
+            flag = true;
+            console.info("DFX_DFR_HitraceMeter_0600 3 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 3 err = " + err);
+            expect(flag).assertTrue();
+        }
+        // Abnormal condition, Parameter format mismatch
+        flag = false;
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 4 start")
+            hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'myTestSyncTrace', 'key=value');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+            hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.MAX);
+            expect(flag).assertFalse();
+        } catch (err) {
+            flag = true;
+            console.info("DFX_DFR_HitraceMeter_0600 4 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 4 err = " + err);
+            expect(flag).assertTrue();
+        }
+        console.info("------DFX_DFR_HitraceMeter_0600 end------");
+
+        flag = false;
+        try {
+            console.info("DFX_DFR_HitraceMeter_0600 5 start")
+            hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'myTestSyncTrace');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
+            hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.MAX);
+            hiTraceMeter.startAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003, 'categoryTest');
+            hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+            hiTraceMeter.finishAsyncTrace(hiTraceMeter.HiTraceOutputLevel.CRITICAL, 'myTestAsyncTrace', 1003);    
+
+            expect(flag).assertFalse();
+        } catch (err) {
+            flag = true;
+            console.info("DFX_DFR_HitraceMeter_0600 5 fail!");
+            console.info("DFX_DFR_HitraceMeter_0600 5 err = " + err);
+            expect(flag).assertTrue();
+        }
+        console.info("------DFX_DFR_HitraceMeter_0600 end------");
         done();
     })
 

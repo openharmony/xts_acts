@@ -80,6 +80,13 @@ export default function abilityTest() {
       }
       let pixelMap = await imageSourceApi.createPixelMap(decodingOptions);
       hilog.info(0x0000, 'testTag', '%{public}s', `CPF_2:${JSON.stringify(await pixelMap.getImageInfo())}`);
+      if (imageSourceApi != undefined) {
+        imageSourceApi.release().then(() => {
+          console.info('Succeeded in releasing the image source instance.');
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to release the image source instance. Error is ${error}, code is ${error.code}, message is ${error.message}`);
+        })
+      }
       return pixelMap;
     }
 
@@ -92,6 +99,16 @@ export default function abilityTest() {
       const pixelMapWidth = compareImageInfo.size.width
       const pixelFormat = compareImageInfo.pixelFormat
       return pixelMapHeight === height && pixelMapWidth === width && pixelFormat === format;
+    }
+
+    const pixelMapRelease = async (pixelMap: image.PixelMap) => {
+      if (pixelMap != undefined) {
+        pixelMap.release().then(() => {
+          console.info('Succeeded in releasing pixelmap object.');
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to release pixelmap object. Error is ${error}, code is ${error.code}, message is ${error.message}`);
+        })
+      }
     }
 
     /*
@@ -109,6 +126,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -127,6 +145,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -144,6 +163,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0300', pixelMap, 800, 500, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -161,6 +181,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0400', pixelMap, 800, 500, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -178,6 +199,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0500', pixelMap, 800, 500, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -195,6 +217,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0600', pixelMap, 800, 500, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -213,6 +236,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -232,6 +256,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -251,6 +276,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -269,6 +295,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -286,6 +313,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0300', pixelMap, 800, 500, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -303,6 +331,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0400', pixelMap, 800, 500, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -320,6 +349,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0500', pixelMap, 800, 500, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -337,6 +367,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0600', pixelMap, 800, 500, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -355,6 +386,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -374,6 +406,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -392,6 +425,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0100', pixelMap, 800, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -409,6 +443,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -427,6 +462,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -446,6 +482,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -465,6 +502,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -484,6 +522,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -503,6 +542,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -522,6 +562,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -540,6 +581,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0100', pixelMap, 800, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -557,6 +599,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -575,6 +618,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -594,6 +638,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -613,6 +658,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -632,6 +678,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -651,6 +698,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -670,6 +718,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -688,6 +737,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0100', pixelMap, 800, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -705,6 +755,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -723,6 +774,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -742,6 +794,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -761,6 +814,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -780,6 +834,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -799,6 +854,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -818,6 +874,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -837,6 +894,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0100', pixelMap, 800, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -855,6 +913,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -874,6 +933,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -894,6 +954,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -914,6 +975,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -934,6 +996,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -954,6 +1017,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -974,6 +1038,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -993,6 +1058,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0100', pixelMap, 800, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1011,6 +1077,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0200', pixelMap, 800, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue()
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1030,6 +1097,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1050,6 +1118,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1070,6 +1139,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1090,6 +1160,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1110,6 +1181,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1130,6 +1202,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1149,6 +1222,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1167,6 +1241,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1184,6 +1259,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0300', pixelMap, 801, 500, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
     /*
@@ -1200,6 +1276,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0400', pixelMap, 801, 500, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1217,6 +1294,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0500', pixelMap, 801, 500, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1234,6 +1312,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0600', pixelMap, 801, 500, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1252,6 +1331,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1271,6 +1351,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1290,6 +1371,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1308,6 +1390,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1325,6 +1408,7 @@ export default function abilityTest() {
       pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0300', pixelMap, 801, 500, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1342,6 +1426,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0400', pixelMap, 801, 500, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1359,6 +1444,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0500', pixelMap, 801, 500, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1376,6 +1462,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0600', pixelMap, 801, 500, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1394,6 +1481,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1413,6 +1501,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1431,6 +1520,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0100', pixelMap, 801, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1448,6 +1538,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1466,6 +1557,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -1485,6 +1577,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1504,6 +1597,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1523,6 +1617,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1542,6 +1637,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -1561,6 +1657,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1579,6 +1676,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0100', pixelMap, 801, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1596,6 +1694,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1614,6 +1713,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -1633,6 +1733,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1652,6 +1753,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1671,6 +1773,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1690,6 +1793,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -1709,6 +1813,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1727,6 +1832,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0100', pixelMap, 801, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1744,6 +1850,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1762,6 +1869,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1781,6 +1889,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1800,6 +1909,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1819,6 +1929,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1838,6 +1949,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1857,6 +1969,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1876,6 +1989,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0100', pixelMap, 801, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1894,6 +2008,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -1913,6 +2028,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1933,6 +2049,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1953,6 +2070,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1973,6 +2091,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -1993,6 +2112,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2013,6 +2133,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2032,6 +2153,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0100', pixelMap, 801, 500, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2050,6 +2172,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0200', pixelMap, 801, 500, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2069,6 +2192,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2089,6 +2213,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2109,6 +2234,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2129,6 +2255,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2149,6 +2276,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2169,6 +2297,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2188,6 +2317,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2223,6 +2353,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0300', pixelMap, 800, 501, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
     /*
@@ -2239,6 +2370,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0400', pixelMap, 800, 501, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2256,6 +2388,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0500', pixelMap, 800, 501, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2273,6 +2406,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0600', pixelMap, 800, 501, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2291,6 +2425,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2310,6 +2445,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2329,6 +2465,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2364,6 +2501,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0300', pixelMap, 800, 501, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2381,6 +2519,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0400', pixelMap, 800, 501, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2398,6 +2537,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0500', pixelMap, 800, 501, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2415,6 +2555,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0600', pixelMap, 800, 501, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2433,6 +2574,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2452,6 +2594,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2470,6 +2613,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0100', pixelMap, 800, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2487,6 +2631,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0200', pixelMap, 800, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2505,6 +2650,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -2524,6 +2670,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2543,6 +2690,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2562,6 +2710,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2581,6 +2730,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -2600,6 +2750,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2635,6 +2786,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0200', pixelMap, 800, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2653,6 +2805,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -2672,6 +2825,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2691,6 +2845,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2710,6 +2865,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2729,6 +2885,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -2748,6 +2905,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2766,6 +2924,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0100', pixelMap, 800, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2783,6 +2942,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0200', pixelMap, 800, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2801,6 +2961,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2820,6 +2981,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2839,6 +3001,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2858,6 +3021,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2877,6 +3041,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2896,6 +3061,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2915,6 +3081,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0100', pixelMap, 800, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2933,6 +3100,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0200', pixelMap, 800, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -2952,6 +3120,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2972,6 +3141,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -2992,6 +3162,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3012,6 +3183,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3032,6 +3204,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3052,6 +3225,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3071,6 +3245,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0100', pixelMap, 800, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3089,6 +3264,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0200', pixelMap, 800, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3108,6 +3284,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3128,6 +3305,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3148,6 +3326,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3168,6 +3347,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3188,6 +3368,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3208,6 +3389,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3227,6 +3409,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3245,6 +3428,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3262,6 +3446,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0300', pixelMap, 801, 501, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
     /*
@@ -3278,6 +3463,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0400', pixelMap, 801, 501, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3295,6 +3481,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0500', pixelMap, 801, 501, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3312,6 +3499,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0600', pixelMap, 801, 501, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3330,6 +3518,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3349,6 +3538,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3368,6 +3558,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3386,6 +3577,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.RGBA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3403,6 +3595,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0300', pixelMap, 801, 501, image.PixelMapFormat.BGRA_8888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3420,6 +3613,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0400', pixelMap, 801, 501, image.PixelMapFormat.RGB_888)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3437,6 +3631,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0500', pixelMap, 801, 501, image.PixelMapFormat.RGB_565)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3454,6 +3649,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0600', pixelMap, 801, 501, image.PixelMapFormat.RGBA_F16)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3472,6 +3668,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3491,6 +3688,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3509,6 +3707,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0100', pixelMap, 801, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3544,6 +3743,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -3563,6 +3763,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3582,6 +3783,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3601,6 +3803,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3620,6 +3823,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -3639,6 +3843,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3657,6 +3862,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0100', pixelMap, 801, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3674,6 +3880,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3692,6 +3899,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err.code).assertEqual('62980115');
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -3711,6 +3919,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3730,6 +3939,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3749,6 +3959,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3768,6 +3979,7 @@ export default function abilityTest() {
             expect(resultpixelMap).assertTrue();
             expect(err).assertEqual(62980115);
           })
+          await pixelMapRelease(pixelMap);
         })
       done();
     })
@@ -3787,6 +3999,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3805,6 +4018,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0100', pixelMap, 801, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3822,6 +4036,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3840,6 +4055,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3859,6 +4075,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3878,6 +4095,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3897,6 +4115,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3916,6 +4135,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3935,6 +4155,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -3954,6 +4175,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0100', pixelMap, 801, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3972,6 +4194,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -3991,6 +4214,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4011,6 +4235,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4031,6 +4256,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4051,6 +4277,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4071,6 +4298,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4091,6 +4319,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4110,6 +4339,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0100', pixelMap, 801, 501, image.PixelMapFormat.NV12)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -4128,6 +4358,7 @@ export default function abilityTest() {
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
       const result = await VerifyPixelMap('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0200', pixelMap, 801, 501, image.PixelMapFormat.NV21)
       expect(result && resultpixelMap).assertTrue();
+      await pixelMapRelease(pixelMap);
       done();
     })
 
@@ -4147,6 +4378,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4167,6 +4399,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4187,6 +4420,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4207,6 +4441,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err.code).assertEqual('62980115');
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4227,6 +4462,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })
@@ -4247,6 +4483,7 @@ export default function abilityTest() {
           expect(resultpixelMap).assertTrue();
           expect(err).assertEqual(62980115);
         })
+        await pixelMapRelease(pixelMap);
       })
       done();
     })

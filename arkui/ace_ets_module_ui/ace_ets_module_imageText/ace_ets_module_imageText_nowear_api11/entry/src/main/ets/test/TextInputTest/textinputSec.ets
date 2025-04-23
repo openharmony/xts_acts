@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -76,7 +76,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to true
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0100', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolTrue", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -97,7 +97,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to false
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0200', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolFalse", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -118,7 +118,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to null
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0300', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrNull", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -140,7 +140,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to undefined
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0400', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrUndefined", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -161,7 +161,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to ""
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0500', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrStr", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -182,7 +182,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Continuously set the showOutline property of the Textinput component and all are valid values
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0600', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolFalse", "");
       await forKey("BoolTrue", "");
       try {
@@ -205,7 +205,7 @@ export default function textinputSec() {
      * @tc.desc Continuously set the showOutline property of the Textinput component, with parameters
      *               first normal and then abnormal
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0700', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolTrue", "");
       await forKey("BoolErrStr", "");
       try {
@@ -228,7 +228,7 @@ export default function textinputSec() {
      * @tc.desc Continuously set the showOutline property of the Textinput component,
      *               with parameters that are abnormal first and then normal
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0800', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrStr", "");
       await forKey("BoolTrue", "");
       try {
@@ -250,7 +250,7 @@ export default function textinputSec() {
      * @tc.name Configure whether Textinput text input displays underscores
      * @tc.desc Set the ShowOutline property of the Textinput component to 1
      */
-    it('ArkUX_Stage_TextInput_ShowUnderline_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowUnderline_0900', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrNum", "1");
       await sleep(2000)
       try {
@@ -272,7 +272,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to string type 'string'
      */
-    it('ArkUX_Stage_TextInput_ShowError_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0100', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "string");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -297,7 +297,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to undefined
      */
-    it('ArkUX_Stage_TextInput_ShowError_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0200', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "undefined");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -322,7 +322,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to number type 10
      */
-    it('ArkUX_Stage_TextInput_ShowError_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0300', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "10");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -348,7 +348,7 @@ export default function textinputSec() {
      * @tc.desc Set the TextInput component ShowError property parameter to the resource reference
      *               type $r("app. string. TextInput_ShowError_test")
      */
-    it('ArkUX_Stage_TextInput_ShowError_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0400', Level.LEVEL1, async (done: Function) => {
       try {
         let strJson = getInspectorByKey('TextInputResources');
         console.info('ArkUX_Stage_TextInput_ShowError_0400 START :' + JSON.stringify(strJson));
@@ -372,7 +372,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to ''
      */
-    it('ArkUX_Stage_TextInput_ShowError_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0500', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -397,7 +397,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to null
      */
-    it('ArkUX_Stage_TextInput_ShowError_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0600', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "null");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -422,7 +422,7 @@ export default function textinputSec() {
      * @tc.name Textinput component error state style display
      * @tc.desc Set the TextInput component ShowError property parameter to -1
      */
-    it('ArkUX_Stage_TextInput_ShowError_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0700', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "-1");
       try {
         let strJson = getInspectorByKey('TextInput');
@@ -448,7 +448,7 @@ export default function textinputSec() {
      * @tc.desc Set the TextInput component ShowError property parameter to "string",
      *               and then set the parameter to "showerror" again
      */
-    it('ArkUX_Stage_TextInput_ShowError_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0800', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "string");
       await forKey("TextStr", "showError");
       try {
@@ -475,7 +475,7 @@ export default function textinputSec() {
      * @tc.desc Set the TextInput component ShowError property parameter to 'string' and
      *               set the parameter to null again
      */
-    it('ArkUX_Stage_TextInput_ShowError_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_0900', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "string");
       await forKey("TextErr", "null");
       try {
@@ -502,7 +502,7 @@ export default function textinputSec() {
      * @tc.desc Set the TextInput component ShowError property parameter to 'string' and
      *               set the parameter to null again
      */
-    it('ArkUX_Stage_TextInput_ShowError_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_ShowError_1000', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "null");
       await forKey("TextStr", "string");
       try {
@@ -529,7 +529,7 @@ export default function textinputSec() {
      * @tc.desc Set password type, image source verification, TextInput component, PasswordIcon property
      *               parameter, and separately set onIconSrc to obtain results
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0100', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r("app.media.ohos_app_bar_fa"),
       }
@@ -555,7 +555,7 @@ export default function textinputSec() {
      * @tc.desc Set password type, image source verification, TextInput component, PasswordIcon property
      *               parameter, and separately set offIconSrc to obtain results
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0200', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         offIconSrc: $r("app.media.ohos_app_bar_back"),
       }
@@ -581,7 +581,7 @@ export default function textinputSec() {
      * @tc.desc Verify the obtained results of setting the PasswordIcon property parameter of the TextInput
      *               component ({onIconSrc: $r ('app. media. ohos_correct '), offIconSrc: $r ('app. media. ohos_close')})
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0300', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r("app.media.ohos_correct"),
         offIconSrc: $r("app.media.ohos_close"),
@@ -607,7 +607,7 @@ export default function textinputSec() {
      * @tc.name Set Password Type Image Source
      * @tc.desc Validate the result of setting the PasswordIcon property parameter to null
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0400', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: null,
         offIconSrc: null,
@@ -633,7 +633,7 @@ export default function textinputSec() {
      * @tc.name Set Password Type Image Source
      * @tc.desc Validate the result of setting the PasswordIcon property parameter to undefined
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0500', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: undefined,
         offIconSrc: undefined,
@@ -659,7 +659,7 @@ export default function textinputSec() {
      * @tc.name Set Password Type Image Source
      * @tc.desc Validate the result of setting the PasswordIcon property parameter to ""
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0600', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: "",
         offIconSrc: "",
@@ -685,7 +685,7 @@ export default function textinputSec() {
      * @tc.name Set Password Type Image Source
      * @tc.desc Validate the result of setting the PasswordIcon property parameter to 123
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0700', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: 123,
         offIconSrc: 123,
@@ -712,7 +712,7 @@ export default function textinputSec() {
      * @tc.desc Verify and set the TextInput component PasswordIcon property parameter onIconSrc as normal
      *               value, and offIconSrc as outlier
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0800', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.ohos_correct'),
         offIconSrc: null
@@ -739,7 +739,7 @@ export default function textinputSec() {
      * @tc.desc Verify and set the TextInput component PasswordIcon property parameter onIconSrc as
      *               outlier and offIconSrc as normal value
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_0900', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: null, offIconSrc: $r('app.media.ohos_close')
       }
@@ -765,7 +765,7 @@ export default function textinputSec() {
      * @tc.desc Verify the obtained results of continuously setting the PasswordIcon property parameter of
      *               the TextInput component to normal values
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1000', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.ohos_correct'), offIconSrc: $r('app.media.ohos_close')
       }
@@ -796,7 +796,7 @@ export default function textinputSec() {
      * @tc.desc Verify the result of obtaining outlier after continuously setting the PasswordIcon property
      *               parameter of TextInput component to normal value
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1100', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.ohos_correct'), offIconSrc: $r('app.media.ohos_close')
       }
@@ -826,7 +826,7 @@ export default function textinputSec() {
      * @tc.desc Verify that the parameter of the PasswordIcon property of the TextInput component is
      *               set to outlier and then to the normal value
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1200', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: null, offIconSrc: null
       }
@@ -857,7 +857,7 @@ export default function textinputSec() {
      *               to the normal value continuously, and that the onIconSrc is set to the outlier, then the
      *               onIconSrc is set to the outlier, and the offIconSrc is set to the normal value
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1300', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.ohos_correct'), offIconSrc: null
       }
@@ -888,7 +888,7 @@ export default function textinputSec() {
      *               the normal value continuously, and then the result is obtained when only one parameter is passed
      *               and it is an outlier
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1400', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.ohos_correct'), offIconSrc: $r('app.media.ohos_close')
       }
@@ -917,14 +917,14 @@ export default function textinputSec() {
      * @tc.name Set Password Type Image Source
      * @tc.desc Verify the result obtained by adding new properties to the TextInput component without setting it
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1500', Level.LEVEL1, async (done: Function) => {
       try {
         let obj: ESObject = JSON.parse(getInspectorByKey('TextInputNO'));
         console.info('ArkUX_Stage_TextInput_PasswordIcon_1500 obj $attrs.passwordIcon :' + JSON.stringify(obj.$attrs.passwordIcon));
         let Icon: ESObject = JSON.parse(obj.$attrs.passwordIcon);
         console.info('ArkUX_Stage_TextInput_PasswordIcon_1500 obj Icon :' + JSON.stringify(Icon));
-        expect(Icon.onIconSrc).assertEqual("SYS_SHOW_PASSWORD_SVG");
-        expect(Icon.offIconSrc).assertEqual("SYS_HIDE_PASSWORD_SVG");
+        expect(Icon.onIconSrc).assertEqual(983328);
+        expect(Icon.offIconSrc).assertEqual(983327);
         expect(obj.$attrs.showErrorText).assertEqual(false)
         expect(obj.$attrs.errorText).assertEqual("")
         expect(obj.$attrs.showError).assertEqual("undefined")
@@ -943,7 +943,7 @@ export default function textinputSec() {
      * @tc.desc Set password type, image source verification, TextInput component, PasswordIcon property
      *               parameter, and separately set offIconSrc to obtain results
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1600', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: $r('app.media.icon'), offIconSrc: $r('app.media.icon')
       }
@@ -969,7 +969,7 @@ export default function textinputSec() {
      * @tc.desc Set password type, image source verification, TextInput component, PasswordIcon property
      *               parameter, and separately set offIconSrc to obtain results
      */
-    it('ArkUX_Stage_TextInput_PasswordIcon_1700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_PasswordIcon_1700', Level.LEVEL1, async (done: Function) => {
       let passwordIcon: ESObject = {
         onIconSrc: "../../resources/base/media/icon.png", offIconSrc: "../../resources/base/media/icon.png"
       }
@@ -994,7 +994,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to BarState.OFF
      */
-    it('ArkUX_Stage_TextInput_barState_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0100', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0100');
@@ -1014,7 +1014,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to BarState.AUTO
      */
-    it('ArkUX_Stage_TextInput_barState_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0200', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0200');
@@ -1034,7 +1034,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to BarState.ON
      */
-    it('ArkUX_Stage_TextInput_barState_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0300', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0300');
@@ -1055,7 +1055,7 @@ export default function textinputSec() {
      * @tc.desc Set the BarState property parameter of the TextInput component to BarState.OFF,
      *               and then set the parameter to BarState.AUTO again
      */
-    it('ArkUX_Stage_TextInput_barState_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0400', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0400');
@@ -1075,7 +1075,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to 0
      */
-    it('ArkUX_Stage_TextInput_barState_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0500', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0500');
@@ -1095,7 +1095,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to 10
      */
-    it('ArkUX_Stage_TextInput_barState_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0600', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0600');
@@ -1115,7 +1115,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to "sfasf"
      */
-    it('ArkUX_Stage_TextInput_barState_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0700', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0700');
@@ -1135,7 +1135,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to ""
      */
-    it('ArkUX_Stage_TextInput_barState_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0800', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0800');
@@ -1155,7 +1155,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to null
      */
-    it('ArkUX_Stage_TextInput_barState_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_0900', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0900');
@@ -1175,7 +1175,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Set the BarState property parameter of the TextInput component to undefined
      */
-    it('ArkUX_Stage_TextInput_barState_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_1000', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1000');
@@ -1196,7 +1196,7 @@ export default function textinputSec() {
      * @tc.desc Set the barState property parameter of the TextInput component to Outlier undefined,
      *               and set the parameter BarState.OFF again
      */
-    it('ArkUX_Stage_TextInput_barState_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_1100', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1100');
@@ -1217,7 +1217,7 @@ export default function textinputSec() {
      * @tc.desc Set the barState property parameter of the TextInput component to BarState.OFF,
      *               and set the parameter again to Outlier undefined
      */
-    it('ArkUX_Stage_TextInput_barState_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_1200', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1200');
@@ -1237,7 +1237,7 @@ export default function textinputSec() {
      * @tc.name Set TextInput text status
      * @tc.desc Do not set the TextInput component barState property
      */
-    it('ArkUX_Stage_TextInput_barState_1300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_1300', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextInputInlineNO');
@@ -1258,7 +1258,7 @@ export default function textinputSec() {
      * @tc.desc Set the BarState property parameter to BarState.ON
      *               when the TextInput component is not in inline mode
      */
-    it('ArkUX_Stage_TextInput_barState_1400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_barState_1400', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextInputStyleDefault');
@@ -1278,7 +1278,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to 10
      */
-    it('ArkUX_Stage_TextInput_maxLines_0100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0100', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0100');
@@ -1298,7 +1298,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to 0
      */
-    it('ArkUX_Stage_TextInput_maxLines_0200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0200', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0200');
@@ -1318,7 +1318,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to "123"
      */
-    it('ArkUX_Stage_TextInput_maxLines_0300', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0300', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0300');
@@ -1338,7 +1338,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to -5
      */
-    it('ArkUX_Stage_TextInput_maxLines_0400', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0400', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0400');
@@ -1358,7 +1358,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to ""
      */
-    it('ArkUX_Stage_TextInput_maxLines_0500', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0500', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0500');
@@ -1378,7 +1378,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to null
      */
-    it('ArkUX_Stage_TextInput_maxLines_0600', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0600', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0600');
@@ -1398,7 +1398,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the MaxLines property parameter of the TextInput component to undefined
      */
-    it('ArkUX_Stage_TextInput_maxLines_0700', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0700', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0700');
@@ -1419,7 +1419,7 @@ export default function textinputSec() {
      * @tc.desc Set the MaxLines property parameter of the TextInput component to 1,
      *               and then set the parameter to 10 again
      */
-    it('ArkUX_Stage_TextInput_maxLines_0800', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0800', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0800');
@@ -1440,7 +1440,7 @@ export default function textinputSec() {
      * @tc.desc Set the maxLines attribute parameter of TextInput component to 10,
      *               and set the parameter to Outlier again
      */
-    it('ArkUX_Stage_TextInput_maxLines_0900', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_0900', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0900');
@@ -1461,7 +1461,7 @@ export default function textinputSec() {
      * @tc.desc Set the maxLines property parameter of TextInput component to Outlier
      *               undefined, and set the parameter to 10 again
      */
-    it('ArkUX_Stage_TextInput_maxLines_1000', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_1000', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_1000');
@@ -1481,7 +1481,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Do not set the TextInput component maxLines property
      */
-    it('ArkUX_Stage_TextInput_maxLines_1100', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_1100', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextInputInlineNO');
@@ -1501,7 +1501,7 @@ export default function textinputSec() {
      * @tc.name Set the maximum number of lines in TextInput text
      * @tc.desc Set the TextInput component maxLines property in non inline mode
      */
-    it('ArkUX_Stage_TextInput_maxLines_1200', 0, (done: Function) => {
+    it('ArkUX_Stage_TextInput_maxLines_1200', Level.LEVEL1, (done: Function) => {
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('TextInputStyleDefault');

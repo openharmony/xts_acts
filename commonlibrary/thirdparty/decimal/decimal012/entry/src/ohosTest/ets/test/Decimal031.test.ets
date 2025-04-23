@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType} from "@ohos/hypium";
 import { Decimal } from '@kit.ArkTS';
 type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 function test_atan_001 (n: string, pr: number, rm: Rounding, expected: string) {
@@ -138,7 +138,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atan_Func_001", 0, () => {
+    it("Decimal_atan_Func_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -206,7 +206,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atan_Func_002", 0, () => {
+    it("Decimal_atan_Func_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -232,7 +232,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atan2_Func_003", 0, () => {
+    it("Decimal_atan2_Func_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -350,7 +350,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atan2_Func_004", 0, () => {
+    it("Decimal_atan2_Func_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -376,7 +376,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atanh_Func_005", 0, () => {
+    it("Decimal_atanh_Func_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -444,7 +444,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_atanh_Func_006", 0, () => {
+    it("Decimal_atanh_Func_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -470,7 +470,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cbrt_Func_007", 0, () => {
+    it("Decimal_cbrt_Func_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -538,7 +538,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cbrt_Func_008", 0, () => {
+    it("Decimal_cbrt_Func_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -564,7 +564,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_ceil_Func_009", 0, () => {
+    it("Decimal_ceil_Func_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -632,7 +632,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_ceil_Func_010", 0, () => {
+    it("Decimal_ceil_Func_010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,
@@ -658,7 +658,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_clamp_Func_011", 0, () => {
+    it("Decimal_clamp_Func_011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         test_clamp_007('-0', '0', '0', '-0');
         test_clamp_007('-0', '-0', '0', '-0');
         test_clamp_007('-0', '0', '-0', '-0');
@@ -697,7 +697,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_clamp_Func_012", 0, () => {
+    it("Decimal_clamp_Func_012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         try {
             test_clamp_007('e', 'e', 'e', 'e');
             expect(true).assertEqual(false);
@@ -715,7 +715,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_clamp_Func_013", 0, () => {
+    it("Decimal_clamp_Func_013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         try {
             test_clamp_008(0, 1, 0, '0');
             expect(true).assertEqual(false);
@@ -733,7 +733,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_014", 0, () => {
+    it("Decimal_comparedTo_Func_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -844,7 +844,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_015", 0, () => {
+    it("Decimal_comparedTo_Func_015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -1000,7 +1000,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_016", 0, () => {
+    it("Decimal_comparedTo_Func_016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -1256,7 +1256,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_017", 0, () => {
+    it("Decimal_comparedTo_Func_017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -1523,7 +1523,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_018", 0, () => {
+    it("Decimal_comparedTo_Func_018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -1828,7 +1828,7 @@ export default function DecimalTest031() {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it("Decimal_comparedTo_Func_019", 0, () => {
+    it("Decimal_comparedTo_Func_019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         let N = NaN, I = Infinity;
         Decimal.set ({
             precision: 20,
@@ -1855,7 +1855,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cos_Func_020", 0, () => {
+    it("Decimal_cos_Func_020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -1974,7 +1974,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cos_Func_021", 0, () => {
+    it("Decimal_cos_Func_021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2000,7 +2000,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cosh_Func_022", 0, () => {
+    it("Decimal_cosh_Func_022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2118,7 +2118,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_cosh_Func_023", 0, () => {
+    it("Decimal_cosh_Func_023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2144,7 +2144,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_constructor_Func_024", 0, () => {
+    it("Decimal_constructor_Func_024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2231,7 +2231,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_constructor_Func_025", 0, () => {
+    it("Decimal_constructor_Func_025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2259,7 +2259,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_div_Func_026", 0, () => {
+    it("Decimal_div_Func_026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 40,
             rounding: 4,
@@ -2289,7 +2289,7 @@ export default function DecimalTest031() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("Decimal_dpSd_Func_027", 0, () => {
+    it("Decimal_dpSd_Func_027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
         Decimal.set ({
             precision: 20,
             rounding: 4,

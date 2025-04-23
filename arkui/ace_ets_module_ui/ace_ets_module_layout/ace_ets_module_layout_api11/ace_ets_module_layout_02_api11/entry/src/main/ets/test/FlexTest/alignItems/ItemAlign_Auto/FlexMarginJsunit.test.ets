@@ -21,27 +21,27 @@ export default function flexMargin_AutoJsunit() {
   describe('flexItemAlignAutoTest5', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexMargin',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/ItemAlign_Auto_FlexMargin',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexMargin state success " + JSON.stringify(pages));
-        if (!("FlexMargin" == pages.name)) {
-          console.info("get FlexMargin state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Auto_FlexMargin state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Auto_FlexMargin" == pages.name)) {
+          console.info("get ItemAlign_Auto_FlexMargin state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexMargin page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Auto_FlexMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexMargin page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Auto_FlexMargin page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexMargin after each called");
+      console.info("ItemAlign_Auto_FlexMargin after each called");
     });
 
     /**
@@ -51,12 +51,12 @@ export default function flexMargin_AutoJsunit() {
      */
     it('testFlexItemAlignAutoFlexMargin', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexMargin START');
-      let strJson1 = getInspectorByKey('flexMargin');
+      let strJson1 = getInspectorByKey('ItemAlign_Auto_flexMargin');
 
-      let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
-      let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
-      let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');
-      let flexMargin: RectValue = CommonFunc.getComponentRect('flexMargin');
+      let textFlexMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_Auto_textFlexMargin01');
+      let textFlexMargin02: RectValue = CommonFunc.getComponentRect('ItemAlign_Auto_textFlexMargin02');
+      let textFlexMargin03: RectValue = CommonFunc.getComponentRect('ItemAlign_Auto_textFlexMargin03');
+      let flexMargin: RectValue = CommonFunc.getComponentRect('ItemAlign_Auto_flexMargin');
       expect(Math.abs(flexMargin.top - textFlexMargin01.top) <= 1).assertTrue();
       expect(Math.abs(textFlexMargin01.top - textFlexMargin02.top) <= 1).assertTrue();
       expect(Math.abs(textFlexMargin02.top - textFlexMargin03.top) <= 1).assertTrue();

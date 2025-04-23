@@ -199,7 +199,7 @@ export default function ApiCommponentAddJsunit() {
       console.info('apiCommponentAddJsunit_0600 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
-        url: 'MainAbility/pages/Swiper/swiperUI/swipe_add',
+        url: 'MainAbility/pages/Scroll/swipe_add',
         params: {
           data1: 'message',
           data2: {

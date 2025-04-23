@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -27,7 +27,6 @@ function sleep(time: number) {
 }
 
 export default function imageJsunit() {
-
 
   describe('imageTest', () => {
     beforeEach(async (done: Function) => {
@@ -60,7 +59,7 @@ export default function imageJsunit() {
      * @tc.name testGetImageAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetImageAttr010', 0, async (done: Function) => {
+    it('testGetImageAttr010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetImageAttr1 START');
       let strJson = getInspectorByKey('image1');
       let obj: ESObject = JSON.parse(strJson);
@@ -92,7 +91,7 @@ export default function imageJsunit() {
      * @tc.name testGetImageAttr020
      * @tc.desc aceEtsTest
      */
-    it('testGetImageAttr020', 0, async (done: Function) => {
+    it('testGetImageAttr020', Level.LEVEL1, async (done: Function) => {
       console.info('testGetImageAttr2 START');
       let strJson = getInspectorByKey('image2');
       let obj: ESObject = JSON.parse(strJson);
@@ -112,7 +111,7 @@ export default function imageJsunit() {
      * @tc.name testGetImageAttr030
      * @tc.desc aceEtsTest
      */
-    it('testGetImageAttr030', 0, async (done: Function) => {
+    it('testGetImageAttr030', Level.LEVEL1, async (done: Function) => {
       console.info('testGetImageAttr3 START');
       let strJson = getInspectorByKey('image3');
       let obj: ESObject = JSON.parse(strJson);
@@ -131,7 +130,7 @@ export default function imageJsunit() {
      * @tc.name testGetImageAttr040
      * @tc.desc aceEtsTest
      */
-    it('testGetImageAttr040', 0, async (done: Function) => {
+    it('testGetImageAttr040', Level.LEVEL1, async (done: Function) => {
       console.info('testGetImageAttr4 START');
       let strJson = getInspectorByKey('image4');
       let obj: ESObject = JSON.parse(strJson);
@@ -150,7 +149,7 @@ export default function imageJsunit() {
      * @tc.name testGetImageAttr050
      * @tc.desc aceEtsTest
      */
-    it('testGetImageAttr050', 0, async (done: Function) => {
+    it('testGetImageAttr050', Level.LEVEL1, async (done: Function) => {
       console.info('testGetImageAttr5 START');
       let strJson = getInspectorByKey('image5');
       let obj: ESObject = JSON.parse(strJson);

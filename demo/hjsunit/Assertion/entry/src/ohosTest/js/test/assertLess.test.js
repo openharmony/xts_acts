@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('assertLess', function () {
-    it('assertLessSuccess', 0, function () {
+    it('assertLessSuccess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 12;
         let b = 15;
         expect(a).assertLess(b)
     })
-    it('assertLessFail', 0, function () {
+    it('assertLessFail', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let a = 12;
         let b = 10;
         expect(a).assertLess(b);

@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit';
@@ -49,7 +49,7 @@ export default function convertToPhotoAssetTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('covert_photo_promise_000', 0, async (done: Function) => {
+    it('covert_photo_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'covert_photo_promise_000';
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();

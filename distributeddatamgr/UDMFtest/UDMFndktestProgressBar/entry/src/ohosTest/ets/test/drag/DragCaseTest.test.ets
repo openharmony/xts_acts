@@ -60,16 +60,21 @@ export default function DragTest(){
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest1';
-        await Utils.pushPage(`drag/${PAGE_TAG}`);
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest001', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+    it('UDMFCaseTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest1';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest001', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
 
     /*
@@ -81,13 +86,18 @@ export default function DragTest(){
      * @tc.level      : Level 2
      */
     it('UDMFCaseTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest2';
-        await Utils.pushPage(`drag/${PAGE_TAG}`);
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest002', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest2';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest002', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
 
     /*
@@ -99,12 +109,17 @@ export default function DragTest(){
      * @tc.level      : Level 2
      */
     it('UDMFCaseTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-        let PAGE_TAG:string = 'DragCaseTest3';
-        await panAndPinchGesture('image');
-        let dataArray: number[] = nativeRender.GetResult();
-        console.log('UDMFCaseTest003', dataArray[0]);
-        expect( dataArray[0] == 0 ).assertEqual(true);
-        done();
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest3';
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest003', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
     })
   })
 }

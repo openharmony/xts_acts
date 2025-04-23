@@ -25,8 +25,12 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
-                "power-shell timeout -o 864000000"
-            ]
+                "power-shell timeout -o 864000000",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false"
+            ],
+            "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          ]
         }
     ]
 }

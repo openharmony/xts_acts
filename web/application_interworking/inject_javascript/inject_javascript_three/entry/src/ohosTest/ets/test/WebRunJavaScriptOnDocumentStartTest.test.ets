@@ -16,6 +16,9 @@
 import { beforeAll, beforeEach,afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function ActsWebRunJavaScriptOnDocumentStartTest() {
 
@@ -42,6 +45,11 @@ export default function ActsWebRunJavaScriptOnDocumentStartTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebRunJavaScriptOnDocumentStartTest beforeEach start");
       done();
@@ -61,12 +69,27 @@ export default function ActsWebRunJavaScriptOnDocumentStartTest() {
     * @tc.desc       : test runJavaScriptOnDocumentStart
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWebRunJavaScriptOnDocumentStart001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWebRunJavaScriptOnDocumentStart001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitWebRunJavaScriptOnDocumentStart001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnDocumentStart001", '"Red"', 20250221, done);
+      sendEventByKey('WebRunJavaScriptOnDocumentStartTestButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_ACE_WEB_RUNJAVASCRIPTONDOCUMENTSTART_API_0002
+    * @tc.name       : testWebRunJavaScriptOnDocumentStart002
+    * @tc.desc       : test runJavaScriptOnDocumentStart
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testWebRunJavaScriptOnDocumentStart002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitWebRunJavaScriptOnDocumentStart002", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testWebRunJavaScriptOnDocumentStart002", true, 2025040801, done);
       sendEventByKey('WebRunJavaScriptOnDocumentStartTestButton', 10, '');
     })
 

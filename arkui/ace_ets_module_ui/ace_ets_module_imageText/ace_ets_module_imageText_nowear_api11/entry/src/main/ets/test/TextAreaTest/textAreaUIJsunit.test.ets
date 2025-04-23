@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function textAreaUIJsunit() {
       done();
     });
 
-    it('textAreaUIJsunit_0100', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0100', Level.LEVEL0, async (done: Function) => {
        console.info('textAreaUIJsunit_0100');
        await CommonFunc.sleep(1000);
        // get the textArea component and test attribute
@@ -61,7 +61,7 @@ export default function textAreaUIJsunit() {
        done();
     });
 
-   it('textAreaUIJsunit_0200', 0, async (done: Function) => {
+   it('textAreaUIJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0200 START');
       // modify the type attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'sizeT',value:20})
@@ -76,7 +76,7 @@ export default function textAreaUIJsunit() {
       done();
     });
 
-    it('textAreaUIJsunit_0300', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('marqueeJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the type attribute illegal value of textArea dynamically
@@ -92,7 +92,7 @@ export default function textAreaUIJsunit() {
       done();   
    });
    
-    it('textAreaUIJsunit_0400', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0400 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'#FFFFFF'})
@@ -108,7 +108,7 @@ export default function textAreaUIJsunit() {
       done();   
     });
 
-    it('textAreaUIJsunit_0500', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0500 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'rgb(238, 130, 238)'})
@@ -124,7 +124,7 @@ export default function textAreaUIJsunit() {
       done(); 
     });
 
-    it('textAreaUIJsunit_0600', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0600 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:Color.Green})
@@ -140,7 +140,7 @@ export default function textAreaUIJsunit() {
       done(); 
     });
     
-   it('textAreaUIJsunit_0700', 0, async (done: Function) => {
+   it('textAreaUIJsunit_0700', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0700 START');
       // modify the Color attribute illegal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'#AED'})
@@ -156,7 +156,7 @@ export default function textAreaUIJsunit() {
       done();   
    });
   
-   it('textAreaUIJsunit_0800', 0, async (done: Function) => {
+   it('textAreaUIJsunit_0800', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_0800 START');
       globalThis.value.message.notify({name:'text',value:''})
       await CommonFunc.sleep(1000);
@@ -173,7 +173,7 @@ export default function textAreaUIJsunit() {
       done();
     });
 
-    it('textAreaUIJsunit_0900', 0, async (done: Function) => {
+    it('textAreaUIJsunit_0900', Level.LEVEL0, async (done: Function) => {
       console.info('marqueeJsunit_0900 START');
       await CommonFunc.sleep(1000);
       // test the copy event
@@ -218,7 +218,7 @@ export default function textAreaUIJsunit() {
       done();     
     });
 
-    it('textAreaUIJsunit_1000', 0, async (done: Function) => {
+    it('textAreaUIJsunit_1000', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // test the cut event
@@ -252,7 +252,7 @@ export default function textAreaUIJsunit() {
       done();     
     });
 
-    it('textAreaUIJsunit_1100', 0, async (done: Function) => {
+    it('textAreaUIJsunit_1100', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_1100 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'caretColor',value:'rgba(0, 255, 0, 1)'})
@@ -265,7 +265,7 @@ export default function textAreaUIJsunit() {
       done();
     });
 
-    it('textAreaUIJsunit_1200', 0, async (done: Function) => {
+    it('textAreaUIJsunit_1200', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaUIJsunit_1200 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'caretColor',value:0xffc0cb})
@@ -278,7 +278,7 @@ export default function textAreaUIJsunit() {
       done(); 
     });
 
-    it('textAreaUIJsunit_1300', 0, async (done: Function) => {
+    it('textAreaUIJsunit_1300', Level.LEVEL0, async (done: Function) => {
       console.info("[textAreaUIJsunit_1300] start");
       let newJson = getInspectorByKey('textArea');
       console.info("[textAreaUIJsunit_1300]: " + JSON.stringify(newJson));

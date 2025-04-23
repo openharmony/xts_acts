@@ -53,9 +53,9 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('ExportFunctionTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('ExportFunctionTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       let product = multiply(3, 4);
       expect(12).assertEqual(product);
       Done();
@@ -66,7 +66,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = add(5, 4);
@@ -79,7 +79,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = subtractFun(10, 4);
@@ -92,7 +92,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = divideFunc(10, 5);
@@ -105,7 +105,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = add1(10, 5);
@@ -118,7 +118,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = subtractFun1(10, 5);
@@ -131,7 +131,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result = minus(20, 5);
@@ -144,7 +144,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result1 = addFunction(10, 2);
@@ -163,7 +163,7 @@ export default function ExportFunctionTest() {
      * @tc.desc test export function
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportFunctionTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       let result1 = mathFunc.addFunction(10, 2);

@@ -21,27 +21,27 @@ export default function flexMargin_BaselineJsunit() {
   describe('flexItemAlignBaselineTest5', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexMargin',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/ItemAlign_Baseline_FlexMargin',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexMargin state success " + JSON.stringify(pages));
-        if (!("FlexMargin" == pages.name)) {
-          console.info("get FlexMargin state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Baseline_FlexMargin state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Baseline_FlexMargin" == pages.name)) {
+          console.info("get ItemAlign_Baseline_FlexMargin state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexMargin page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Baseline_FlexMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexMargin page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Baseline_FlexMargin page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexMargin after each called");
+      console.info("ItemAlign_Baseline_FlexMargin after each called");
     });
 
     /**
@@ -51,12 +51,12 @@ export default function flexMargin_BaselineJsunit() {
      */
     it('testItemAlignBaselineParentSetMargin', 0, async () => {
       console.info('new testItemAlignBaselineParentSetMargin START');
-      let strJson1 = getInspectorByKey('flexMargin');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexMargin');
 
-      let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
-      let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
-      let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');
-      let flexMargin: RectValue = CommonFunc.getComponentRect('flexMargin');
+      let textFlexMargin01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexMargin01');
+      let textFlexMargin02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexMargin02');
+      let textFlexMargin03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textFlexMargin03');
+      let flexMargin: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexMargin');
       expect(Math.abs(textFlexMargin01.left - flexMargin.left) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin01.right - textFlexMargin02.left) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin02.right - textFlexMargin03.left) <= 1).assertTrue()

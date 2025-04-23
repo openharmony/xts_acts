@@ -42,11 +42,11 @@ export default function BatteryInfoTest() {
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0010
      * @tc.name testbattery_soc_JSTest
      * @tc.desc Battery acquisition kit
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('battery_soc_JSTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('battery_soc_JSTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       let TAG = 'battery_soc_JSTest';
       try {
         let batterySoc = batteryInfo.batterySOC;
@@ -65,11 +65,11 @@ export default function BatteryInfoTest() {
      * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0020
      * @tc.name testcharging_status_JSTest
      * @tc.desc Battery charging kit
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('charging_status_JSTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('charging_status_JSTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       let TAG = 'charging_status_JSTest';
       try {
         let chargingStatus = batteryInfo.chargingStatus;

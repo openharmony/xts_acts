@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 
 import { Driver, ON } from '@ohos.UiTest';
@@ -52,42 +52,29 @@ export default function ImageAttr() {
      * @tc.desc        Image test
      * @tc.level       Level 2
      */
-    it('ImageAttr_001', 0, async (done: Function) => {
+    it('ImageAttr_001', Level.LEVEL2, async (done: Function) => {
       console.info('[ImageAttr_001] START');
-
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
-
       let button = await driver.findComponent(ON.id('changeTop'));
       await button.click();
       await CommonFunc.sleep(1000);
-
       let button1 = await driver.findComponent(ON.id('changeBottom'));
       await button1.click();
       await CommonFunc.sleep(1000);
-
-
       let strJson1 = getInspectorByKey('top_test');
       await CommonFunc.sleep(200);
       let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('30');
-
-
       let strJson2 = getInspectorByKey('bottom_test');
       await CommonFunc.sleep(200);
       let obj2: ESObject = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('0');
-
-
       console.info('[ImageAttr_001] END');
       done();
     });
-
-
-
-
 
     /**
      * @tc.number      ImageAttr_002
@@ -95,7 +82,7 @@ export default function ImageAttr() {
      * @tc.desc        Image test
      * @tc.level       Level 2
      */
-    it('ImageAttr_002', 0, async (done: Function) => {
+    it('ImageAttr_002', Level.LEVEL2, async (done: Function) => {
       console.info('[ImageAttr_002] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -108,14 +95,11 @@ export default function ImageAttr() {
       await button3.click();
       await CommonFunc.sleep(1000);
 
-
       let strJson3 = getInspectorByKey('left_test');
       await CommonFunc.sleep(200);
       let obj3: ESObject = JSON.parse(strJson3);
       await CommonFunc.sleep(1000);
       expect(obj3.$attrs.content).assertEqual('30');
-
-
 
       let strJson4 = getInspectorByKey('right_test');
       await CommonFunc.sleep(200);
@@ -126,11 +110,6 @@ export default function ImageAttr() {
       console.info('[ImageAttr_002] END');
       done();
     });
-
-
-
-
-
   })
 }
 

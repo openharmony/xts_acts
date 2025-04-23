@@ -1,4 +1,4 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import testNapi from 'libentry.so';
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
@@ -30,7 +30,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC001', 0, async (done: Function) => {
+    it('testHiCollieC001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testHiCollieStuckC();
       expect(result).assertEqual(0);
       done();
@@ -44,7 +44,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC002', 0, async (done: Function) => {
+    it('testHiCollieC002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testHiCollieJankC();
       done();
     });
@@ -57,7 +57,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC003', 0, async (done: Function) => {
+    it('testHiCollieC003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testJankCMThread();
       expect(result).assertEqual(29800001);
       done();
@@ -71,7 +71,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC004', 0, async (done: Function) => {
+    it('testHiCollieC004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testStuckCMThread();
       expect(result).assertEqual(29800001);
       done();
@@ -85,7 +85,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC005', 0, async (done: Function) => {
+    it('testHiCollieC005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testReportCMThread();
       expect(result).assertEqual(29800001);
       done();
@@ -99,7 +99,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHiCollieC006', 0, async (done: Function) => {
+    it('testHiCollieC006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result:number = testNapi.testJankCerr401();
       expect(result).assertEqual(401);
       done();

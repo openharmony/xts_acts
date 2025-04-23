@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -46,11 +46,11 @@ export default function onDidIMEInputTest() {
     * @tc.number: onDidIMEInputTest_0010
     * @tc.name  : onDidIMEInputTest_0010
     * @tc.desc  : set RichEditor: onDidIMEInput
-    * @tc.level : Level 1
+    * @tc.level : Level 0
     * @tc.type :
     * @tc.size :
     */
-    it('onDidIMEInputTest_0010', 0, async (done: Function) => {
+    it('onDidIMEInputTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('onDidIMEInputTest_0010 START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);

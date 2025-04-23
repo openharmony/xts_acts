@@ -25,7 +25,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfAbilityPro
      * @tc.desc: Test getBundleInfoForSelf with ability flag(by promise).
      */
-    it('getBundleInfoForSelfAbilityPro', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('getBundleInfoForSelfAbilityPro', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       await bundle.getBundleInfoForSelf(
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY
       ).then(data => {

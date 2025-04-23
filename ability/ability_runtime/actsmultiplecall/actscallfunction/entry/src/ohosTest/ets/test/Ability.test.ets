@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEventManager';
 import { BusinessError } from "@ohos.base";
 
@@ -38,7 +38,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application can call other application Ability by Call (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0100', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0100', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.debug('====>Acts_SingleInstanceCallFunction_0100 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -72,7 +72,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application cannot call its own Ability by Call (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0200', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0200', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.debug('====>Acts_SingleInstanceCallFunction_0200 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -105,7 +105,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller applications can actively release AbilityCaller (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0300', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0300', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0300 start');
@@ -149,7 +149,7 @@ export default function abilityTest() {
      * @tc.desc: The caller application can passively perceive the callee death notification of the called
      *           server (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0400', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0400', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0400 start');
@@ -192,7 +192,7 @@ export default function abilityTest() {
      * @tc.name: Acts_SingleInstanceCallFunction_0500
      * @tc.desc: The Calling application can call the multi-instance Ability of other applications.
      */
-    it('Acts_SingleInstanceCallFunction_0500', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0500', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0500 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -225,7 +225,7 @@ export default function abilityTest() {
      * @tc.name: Acts_SingleInstanceCallFunction_0600
      * @tc.desc: The Calling application cannot call its own multi-instance Ability.
      */
-    it('Acts_SingleInstanceCallFunction_0600', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0600', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0600 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -258,7 +258,7 @@ export default function abilityTest() {
     * @tc.name: Acts_SingleInstanceCallFunction_0700
     * @tc.desc: The caller application can actively release the multi-instance AbilityCaller.
     */
-    it('Acts_SingleInstanceCallFunction_0700', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0700', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_SingleInstanceCallFunction_0700 start');
@@ -295,7 +295,7 @@ export default function abilityTest() {
     * @tc.desc: The caller application can passively perceive the service provider multi-instance callee death
     *           notification.
     */
-    it('Acts_SingleInstanceCallFunction_0800', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0800', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0800 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -328,7 +328,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application can call other application Ability by Call (multiple instance and single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0900', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_0900', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0900 start');
@@ -373,7 +373,7 @@ export default function abilityTest() {
      * @tc.desc: Multiple Callers Call multiple instances of the same application at the same time, which does not
      *           affect the call communication function.
      */
-    it('Acts_SingleInstanceCallFunction_1000', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_1000', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1000 start');
@@ -428,7 +428,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Indirect Call Calls multi-instance Ability, which does not affect the call communication function.
      */
-    it('Acts_SingleInstanceCallFunction_1100', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_1100', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1100 start');
@@ -470,7 +470,7 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Call calls the SPECIFIED type Ability, which can return an error message.
      */
-    it('Acts_SingleInstanceCallFunction_1200', 0, async (done: Function) => {
+    it('Acts_SingleInstanceCallFunction_1200', Level.LEVEL0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1200 start');

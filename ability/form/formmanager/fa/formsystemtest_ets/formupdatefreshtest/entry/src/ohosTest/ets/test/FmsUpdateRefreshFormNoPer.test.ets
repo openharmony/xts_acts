@@ -13,7 +13,7 @@ limitations under the License.
 */
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
@@ -93,7 +93,7 @@ export default function FmsUpdateRefreshNoPerTest() {
          * @tc.desc: 1.The form user A to invoke the intiative timed refresh interface.
          *           2.Verify the result of the intiative timed refresh interface.
          */
-        it(`FMS_hostRefreshNoPer_0100`, 0, async (done: () => void) => {
+        it(`FMS_hostRefreshNoPer_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
             console.log('FMS_hostRefreshNoPer_0100 start');
 
             let onRequestCallBack = (err:BusinessError, data: CommonEventManager.CommonEventPublishData) => {

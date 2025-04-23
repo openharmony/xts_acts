@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiSysEvent from '@ohos.hiSysEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function hiSysEventErrcodeTest() {
 describe('hiSysEventErrcodeTest', function () {
@@ -38,7 +38,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi27
 	 * @tc.desc 验证调用write接口系统事件打点，领域名称长度超16个字符，忽略事件打点，错误码11200001
 	 */
-	it('testHiSysEventApi27', 1, async function (done) {
+	it('testHiSysEventApi27', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi27 start')
 		try {
 			hiSysEvent.write({
@@ -76,7 +76,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi28
 	 * @tc.desc 验证调用write接口系统事件打点，领域名称包含特殊字符，忽略事件打点，错误码11200001
 	 */
-	it('testHiSysEventApi28', 1, async function (done) {
+	it('testHiSysEventApi28', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi28 start')
 		try {
 			hiSysEvent.write({
@@ -114,7 +114,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi29
 	 * @tc.desc 验证调用write接口系统事件打点，领域名称为空，忽略事件打点，错误码11200001。
 	 */
-	it('testHiSysEventApi29', 1, async function (done) {
+	it('testHiSysEventApi29', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi29 start')
 		try {
 			hiSysEvent.write({
@@ -152,7 +152,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi30
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件名称长度超32个字符，忽略事件打点，错误码11200002。
 	 */
-	it('testHiSysEventApi30', 1, async function (done) {
+	it('testHiSysEventApi30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi30 start')
 		try {
 			hiSysEvent.write({
@@ -190,7 +190,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi31
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件名称包含特殊字符，忽略事件打点，错误码11200002。
 	 */
-	it('testHiSysEventApi31', 1, async function (done) {
+	it('testHiSysEventApi31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi31 start')
 		try {
 			hiSysEvent.write({
@@ -228,7 +228,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi32
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件名称为空，忽略事件打点，错误码11200002。
 	 */
-	it('testHiSysEventApi32', 1, async function (done) {
+	it('testHiSysEventApi32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi32 start')
 		try {
 			hiSysEvent.write({
@@ -266,7 +266,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi35
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件总长度超过384K，忽略事件打点，错误码11200004。
 	 */
-	it('testHiSysEventApi35', 3, async function (done) {
+	it('testHiSysEventApi35', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi35 start')
 		try {
 			let params = {
@@ -308,7 +308,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi36
 	 * @tc.desc 验证调用write接口系统事件打点，领系统事件参数名称长度超32个字符，忽略事件打点，错误码11200051。
 	 */
-	it('testHiSysEventApi36', 3, async function (done) {
+	it('testHiSysEventApi36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi36 start')
 		try {
 			hiSysEvent.write({
@@ -346,7 +346,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi37
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件参数名称包含特殊字符，忽略事件打点，错误码11200051。
 	 */
-	it('testHiSysEventApi37', 3, async function (done) {
+	it('testHiSysEventApi37', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi37 start')
 		try {
 			hiSysEvent.write({
@@ -384,7 +384,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi38
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件参数名称为空，忽略事件打点，错误码11200051。
 	 */
-	it('testHiSysEventApi38', 3, async function (done) {
+	it('testHiSysEventApi38', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi38 start')
 		try {
 			hiSysEvent.write({
@@ -422,7 +422,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi39
 	 * @tc.desc 验证调用write接口系统事件打点，字符串类型的参数值的长度超过10K，忽略事件打点，错误码11200052。
 	 */
-	it('testHiSysEventApi39', 3, async function (done) {
+	it('testHiSysEventApi39', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi39 start')
 		try {
 			hiSysEvent.write({
@@ -460,7 +460,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi40
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件的参数数量超过128个，忽略事件打点，错误码11200053。
 	 */
-	it('testHiSysEventApi40', 3, async function (done) {
+	it('testHiSysEventApi40', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi40 start')
 		let largeParams = {}
 		for (let i = 0; i < 200; i++) {
@@ -496,7 +496,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi41
 	 * @tc.desc 验证调用write接口系统事件打点，系统事件中有数组类型的参数值的长度超过100，忽略事件打点，错误码11200054。
 	 */
-	it('testHiSysEventApi41', 3, async function (done) {
+	it('testHiSysEventApi41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi41 start')
 		let msgArray = []
 		for (let i = 0; i < 200; i++) {
@@ -537,7 +537,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi42
 	 * @tc.desc 验证调用addWatcher接口添加系统事件监听者，监听者数量超过限制，拒绝添加此监听者，错误码11200101。
 	 */
-	it('testHiSysEventApi42', 3, async function (done) {
+	it('testHiSysEventApi42', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi42 start')
         var watcher = []
 		try {
@@ -581,7 +581,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi43
 	 * @tc.desc 验证调用addWatcher接口添加系统事件监听者，监听规则数量超过限制，拒绝添加此监听者，错误码11200102。
 	 */
-	it('testHiSysEventApi43', 3, async function (done) {
+	it('testHiSysEventApi43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi43 start')
 		let msgArray = []
 		for (let i = 0; i < 21; i++) {
@@ -614,7 +614,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi44
 	 * @tc.desc 验证调用removeWatcher接口删除系统事件监听者，事件监听者为空，拒绝移除此监听者，错误码11200201。
 	 */
-	it('testHiSysEventApi44', 3, async function (done) {
+	it('testHiSysEventApi44', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi44 start')
 		let watcher11 = {
 			rules: [{
@@ -647,7 +647,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi45
 	 * @tc.desc 验证调用removeWatcher接口删除系统事件监听者，事件监听者不在监听队列，拒绝移除此监听者，错误码11200201。
 	 */
-	it('testHiSysEventApi45', 3, async function (done) {
+	it('testHiSysEventApi45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi45 start')
 		let watcher11 = {
 			rules: [{
@@ -680,7 +680,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi46
 	 * @tc.desc 验证调用query接口查询系统事件，查询规则个数超过100个，忽略此次系统事件的查询，错误码11200301。
 	 */
-	it('testHiSysEventApi46', 3, async function (done) {
+	it('testHiSysEventApi46', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi46 start')
 		setTimeout(() => {
 			try {
@@ -718,7 +718,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi47
 	 * @tc.desc 验证调用query接口查询系统事件，事件领域名称长度超过16个字符，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi47', 3, async function (done) {
+	it('testHiSysEventApi47', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi47 start')
 		setTimeout(() => {
 			try {
@@ -752,7 +752,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi48
 	 * @tc.desc 验证调用query接口查询系统事件，事件名称长度超过32个字符，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi48', 3, async function (done) {
+	it('testHiSysEventApi48', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi48 start')
 		setTimeout(() => {
 			try {
@@ -786,7 +786,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi49
 	 * @tc.desc 验证调用query接口查询系统事件，事件领域名称包含特殊字符，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi49', 3, async function (done) {
+	it('testHiSysEventApi49', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi49 start')
 		setTimeout(() => {
 			try {
@@ -820,7 +820,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi50
 	 * @tc.desc 验证调用query接口查询系统事件，事件名称包含特殊字符，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi50', 3, async function (done) {
+	it('testHiSysEventApi50', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi50 start')
 		setTimeout(() => {
 			try {
@@ -854,7 +854,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi51
 	 * @tc.desc 验证调用query接口查询系统事件，事件领域名称为空，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi51', 3, async function (done) {
+	it('testHiSysEventApi51', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi51 start')
 		setTimeout(() => {
 			try {
@@ -888,7 +888,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi52
 	 * @tc.desc 验证调用query接口查询系统事件，事件名称为空，忽略此次系统事件的查询，错误码11200302。
 	 */
-	it('testHiSysEventApi52', 3, async function (done) {
+	it('testHiSysEventApi52', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi52 start')
 		setTimeout(() => {
 			try {
@@ -922,7 +922,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi53
 	 * @tc.desc 验证调用write接口，缺少write参数，无法打点，错误码401。
 	 */
-	it('testHiSysEventApi53', 3, async function (done) {
+	it('testHiSysEventApi53', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi53 start')
 		try {
 			hiSysEvent.write({}, (err, val) => {
@@ -945,7 +945,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi54
 	 * @tc.desc 验证调用query接口，缺少订阅规则，错误码401。
 	 */
-	it('testHiSysEventApi54', 3, async function (done) {
+	it('testHiSysEventApi54', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi54 start')
 		setTimeout(() => {
 			try {
@@ -972,7 +972,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi55
 	 * @tc.desc 验证调用addwatcher接口，缺少watcher参数，错误码401。
 	 */
-	it('testHiSysEventApi55', 3, async function (done) {
+	it('testHiSysEventApi55', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi55 start')
 		try {
 			let watcher = {
@@ -1005,7 +1005,7 @@ describe('hiSysEventErrcodeTest', function () {
 	 * @tc.name testHiSysEventApi57
 	 * @tc.desc 验证调用query接口，查询频率超过限制，忽略此次查询，错误码11200304。。
 	 */
-	it('testHiSysEventApi57', 3, async function (done) {
+	it('testHiSysEventApi57', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
 		console.info('testHiSysEventApi57 start')
 		try {
 			for (let i = 0; i < 51; i++) {

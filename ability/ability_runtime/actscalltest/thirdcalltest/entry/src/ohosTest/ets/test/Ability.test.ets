@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import CommonEventManager from '@ohos.commonEventManager'
 import rpc from '@ohos.rpc'
 import Want from '@ohos.app.ability.Want';
@@ -93,7 +93,7 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1100', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1100 begin');
       let want:Want = {
         bundleName: thirdCallTestBundleName,
@@ -116,7 +116,7 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1500', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1500', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1500 begin');
       let want:Want = {
         bundleName: systemAppCalleeABundleName,
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.name: The thirdApp is not allowed to startAbilityByCall.
      * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
-    it('ACTS_CommonComponent_Call_1600', 0, async (done:Function) =>  {
+    it('ACTS_CommonComponent_Call_1600', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_CommonComponent_Call_1600 begin');
       let want:Want = {
         bundleName: thirdAppABundleName,

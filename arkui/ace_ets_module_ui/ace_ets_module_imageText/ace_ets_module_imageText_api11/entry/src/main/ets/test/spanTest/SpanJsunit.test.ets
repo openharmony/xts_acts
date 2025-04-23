@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function spanJsunit() {
      * @tc.name testGetSpanAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetSpanAttr010', 0, async (done: Function) => {
+    it('testGetSpanAttr010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetSpanAttr1 START');
       let strJson = getInspectorByKey('span1');
       let obj: ESObject = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function spanJsunit() {
      * @tc.name testGetSpanAttr020
      * @tc.desc aceEtsTest
      */
-    it('testGetSpanAttr020', 0, async (done: Function) => {
+    it('testGetSpanAttr020', Level.LEVEL1, async (done: Function) => {
       console.info('testGetSpanAttr2 START');
       let strJson = getInspectorByKey('span2');
       let obj: ESObject = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function spanJsunit() {
      * @tc.name testGetSpanAttr030
      * @tc.desc aceEtsTest
      */
-    it('testGetSpanAttr030', 0, async (done: Function) => {
+    it('testGetSpanAttr030', Level.LEVEL1, async (done: Function) => {
       console.info('testGetSpanAttr3 START');
       let strJson = getInspectorByKey('span3');
       let obj: ESObject = JSON.parse(strJson);

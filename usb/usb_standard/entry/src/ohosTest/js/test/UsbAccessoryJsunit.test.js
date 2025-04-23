@@ -26,6 +26,7 @@ describe("UsbAccessoryJsTest", function () {
 
     let accList;
     let isDevAccessoryFunc;
+    let isSupport = true;
 
     function devAccessoryFunc() {
         if (accList.length > 0) {
@@ -43,6 +44,9 @@ describe("UsbAccessoryJsTest", function () {
             console.info(TAG, 'beforeAll ret : ', JSON.stringify(accList));
         } catch (err) {
             console.info(TAG, 'beforeAll err : ', err);
+            if (err.code == 801) {
+                isSupport = false;
+            }
         }
         isDevAccessoryFunc = devAccessoryFunc();
     })
@@ -512,8 +516,10 @@ describe("UsbAccessoryJsTest", function () {
             expect(ret).assertFalse();
         } catch (err) {
             console.info(TAG, 'testHasAccessoryRight801Err003 err : ', err);
-            if (!isDevAccessoryFunc) {
+            if (!isSupport) {
                 expect(err.code).assertEqual(801);
+            } else if (!isDevAccessoryFunc) {
+                expect(err.code).assertEqual(401);
             } else {
                 expect(err.code).assertEqual(14401001);
             }
@@ -669,6 +675,5 @@ describe("UsbAccessoryJsTest", function () {
             }
         }
     })
-
 })
 }

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import testapi from 'libavrecorderndk.so'
 import fs from '@ohos.file.fs'
@@ -88,7 +88,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0010', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0010', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0010 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -138,7 +138,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00101', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00101', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00101 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -188,7 +188,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00102', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00102', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00102 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -234,7 +234,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00103', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00103', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00103 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -282,7 +282,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00104', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00104', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00104 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -332,7 +332,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00105', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00105', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00104 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -380,7 +380,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00106', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00106', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00106 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -432,7 +432,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00107', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00107', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00107 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -482,7 +482,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00108', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00108', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00108 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -532,7 +532,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_00109', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_00109', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_00109 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -580,7 +580,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_002', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_002 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -626,7 +626,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0021', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0021', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0021 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -674,7 +674,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0022', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0022', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0022 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -722,7 +722,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0023', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0023', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0023 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -770,7 +770,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0024', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0024', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0024 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -820,7 +820,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0025', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0025', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0025 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -868,7 +868,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0026', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0026', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0026 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -920,7 +920,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0027', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0027', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0027 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -970,7 +970,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_0028', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_0028', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_0028 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -1015,7 +1015,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_003', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_003 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -1069,7 +1069,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_004', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_004 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -1133,7 +1133,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_005', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_005 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -1199,7 +1199,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_006', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_006', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_006 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -1249,7 +1249,7 @@ export default function OhAVRecorderNDKMp3Test() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_mp3_success_007', 0, async (done: Function) => {
+    it('testOhAvRecorder_mp3_success_007', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_mp3_success_007 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceMP3Name();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-import { describe, it } from '@ohos/hypium'
+import { describe, it, Level } from '@ohos/hypium'
 
 export default function abilityTest() {
     describe('AACommandPrintOneTest', () => {
@@ -25,7 +25,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-         it('ACTS_AACommand_print_01_0100', 0, async (done: Function) => {
+         it('ACTS_AACommand_print_01_0100', Level.LEVEL0, async (done: Function) => {
             console.log("ACTS_AACommand_print_01_0100 start ====> " )
             done()
             let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
@@ -48,7 +48,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0200', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0200', Level.LEVEL0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
@@ -77,7 +77,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0300', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0300', Level.LEVEL0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -112,7 +112,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0400', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0400', Level.LEVEL0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.print(null,()=>{
                 console.log("print  test  end ========> callback " )
@@ -130,7 +130,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0500', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0500', Level.LEVEL0, async (done: Function) => {
             done()
             let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.print(msg).then(()=>{
@@ -149,7 +149,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_01_0600', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0600', Level.LEVEL0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -177,7 +177,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_01_0700', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0700', Level.LEVEL0, async (done: Function) => {
             done()
             let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -212,7 +212,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_01_0800', 0, async (done: Function) => {
+        it('ACTS_AACommand_print_01_0800', Level.LEVEL0, async (done: Function) => {
             done()
             globalThis.abilityDelegator.print("").then(()=>{
                 console.log("ACTS_AACommand_print_01_0800 print  test  end ========> callback " )

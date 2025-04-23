@@ -59,7 +59,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0100_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it(TAG_TEST_0100_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).catch((error) => {
@@ -80,7 +80,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0100_002, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it(TAG_TEST_0100_002, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, userId).catch((error) => {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, beforeAll} from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import wantConstant from '@ohos.app.ability.wantConstant';
@@ -52,7 +52,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: With the same application with the same module, test ActionExtensionAbility lifecycle.
      */
-    it('Acts_ActionExtensionAbility_0100', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0100', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let unSubscribeCallback = () =>{
         setTimeout(async () => {
@@ -125,7 +125,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: With the same application with the different module, test ActionExtensionAbility lifecycle.
      */
-    it('Acts_ActionExtensionAbility_0200', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0200', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = async (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>Acts_ActionExtensionAbility_0200 subscribeCallBack :' + JSON.stringify(data));
@@ -195,7 +195,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: With the different application, test ActionExtensionAbility lifecycle.
      */
-    it('Acts_ActionExtensionAbility_0300', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0300', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = async (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>Acts_ActionExtensionAbility_0300 subscribeCallBack :' + JSON.stringify(data));
@@ -271,7 +271,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Start the same ActionExtensionAbility with different UI components, and the test is successful.
      */
-    it('Acts_ActionExtensionAbility_0400', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0400', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let ACTS_MODULE: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_FEATURE_CREATE']
@@ -313,7 +313,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Start ActionExtensionAbility with invalid bundleName, start failed.
      */
-    it('Acts_ActionExtensionAbility_0500', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0500', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let flag = true;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
@@ -351,7 +351,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Start ActionExtensionAbility with invalid abilityName, start failed.
      */
-    it('Acts_ActionExtensionAbility_0600', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0600', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let flag = true;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
@@ -388,7 +388,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Start ActionExtensionAbility with invalid parameters, start failed.
      */
-    it('Acts_ActionExtensionAbility_0700', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0700', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let flag = true;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
@@ -427,7 +427,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test terminateSelfWithResultEvent successful.
      */
-    it('Acts_ActionExtensionAbility_0800', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0800', Level.LEVEL0, async (done:Function) => {
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let onResultEvent = 'ACTS_UIExtension_OnResult';
       let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
@@ -480,7 +480,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test sendData successful.
      */
-    it('Acts_ActionExtensionAbility_0900', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_0900', Level.LEVEL0, async (done:Function) => {
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
       let sendDataEvent = 'ACTS_UIExtension_SendData';
@@ -544,7 +544,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface in callback form.
      */
-    it('Acts_ActionExtensionAbility_1000', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1000', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1000 createSubscriber  ${data}`)
@@ -581,7 +581,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface in promiss form.
      */
-    it('Acts_ActionExtensionAbility_1100', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1100', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1100 createSubscriber  ${data}`)
@@ -618,7 +618,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbility interface with invalid want.
      */
-    it('Acts_ActionExtensionAbility_1200', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1200', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1200 createSubscriber  ${data}`);
@@ -655,7 +655,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface in callback form.
      */
-    it('Acts_ActionExtensionAbility_1300', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1300', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Acts_ActionExtensionAbility_1300 createSubscriber  ${data}`);
@@ -693,7 +693,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface in promiss form.
      */
-    it('Acts_ActionExtensionAbility_1400', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1400', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -732,7 +732,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test the startAbilityForResult interface with invalid want.
      */
-    it('Acts_ActionExtensionAbility_1500', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1500', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -771,7 +771,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test setReceiveDataCallback successful.
      */
-    it('Acts_ActionExtensionAbility_1600', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1600', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -813,7 +813,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Use ui components continuously to start two ActionExtensionAbility.
      */
-    it('Acts_ActionExtensionAbility_1700', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1700', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       context.startAbility({
         bundleName: 'com.example.actsactionextensionabilitytest',
@@ -844,7 +844,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test starts ActionExtensionAbility using startAbility interface.
      */
-    it('Acts_ActionExtensionAbility_1800', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1800', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -889,7 +889,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test hapModuleInfo in context
      */
-    it('Acts_ActionExtensionAbility_1900', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_1900', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -955,7 +955,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test config in context
      */
-    it('Acts_ActionExtensionAbility_2000', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2000', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1006,7 +1006,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test extensionAbilityInfo in context
      */
-    it('Acts_ActionExtensionAbility_2100', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2100', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1071,7 +1071,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test resourceManager in context
      */
-    it('Acts_ActionExtensionAbility_2200', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2200', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1110,7 +1110,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test applicationInfo in context
      */
-    it('Acts_ActionExtensionAbility_2300', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2300', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1165,7 +1165,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test cacheDir in context
      */
-    it('Acts_ActionExtensionAbility_2400', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2400', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1207,7 +1207,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test tempDir in context
      */
-    it('Acts_ActionExtensionAbility_2500', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2500', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1249,7 +1249,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test filesDir in context
      */
-    it('Acts_ActionExtensionAbility_2600', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2600', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1290,7 +1290,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test databaseDir in context
      */
-    it('Acts_ActionExtensionAbility_2700', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2700', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1331,7 +1331,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test preferencesDir in context
      */
-    it('Acts_ActionExtensionAbility_2800', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2800', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1373,7 +1373,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Test bundleCodeDir in context
      */
-    it('Acts_ActionExtensionAbility_2900', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_2900', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1415,7 +1415,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap1
      */
-    it('Acts_ActionExtensionAbility_3000', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3000', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1463,7 +1463,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the current application hap2
      */
-    it('Acts_ActionExtensionAbility_3100', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3100', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1511,7 +1511,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in the moduleName of the cross-application hap1
      */
-    it('Acts_ActionExtensionAbility_3200', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3200', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1558,7 +1558,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, passing in a non-existing moduleName
      */
-    it('Acts_ActionExtensionAbility_3300', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3300', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1605,7 +1605,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: Context calls createModuleContext, and the incoming moduleName is undefined
      */
-    it('Acts_ActionExtensionAbility_3400', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3400', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1652,7 +1652,7 @@ export default function abilityTest() {
      * @tc.name: Test ActionExtensionAbility basic function.
      * @tc.desc: test getApplicationContext return not empty
      */
-    it('Acts_ActionExtensionAbility_3500', 0, async (done:Function) => {
+    it('Acts_ActionExtensionAbility_3500', Level.LEVEL0, async (done:Function) => {
       await sleep(2000);
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
@@ -1702,7 +1702,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = async (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100 subscribeCallBack :' + JSON.stringify(data));
@@ -1735,7 +1735,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200 subscribeCallBack :' + JSON.stringify(data));
@@ -1768,7 +1768,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0300', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0300', Level.LEVEL0, async (done:Function) => {
       let wantParam: Record<string, Object> = {};
       wantParam[wantConstant.Params.SHOW_MODE_KEY] = wantConstant.ShowMode.EMBEDDED_FULL;
       let flag = false;
@@ -1795,7 +1795,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0400', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0400', Level.LEVEL0, async (done:Function) => {
       let wantParam: Record<string, Object> = {};
       wantParam[wantConstant.Params.SHOW_MODE_KEY] = wantConstant.ShowMode.WINDOW;
       let flag = false;
@@ -1822,7 +1822,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0500', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0500', Level.LEVEL0, async (done:Function) => {
       let ACTS_START_ABILITY_MODE_EVENT: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_START_ABILITY']
       };
@@ -1863,7 +1863,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0600', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0600', Level.LEVEL0, async (done:Function) => {
       let ACTS_START_ABILITY_MODE_EVENT: commonEvent.CommonEventSubscribeInfo = {
         events: ['ACTS_START_ABILITY']
       };
@@ -1905,7 +1905,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700 subscribeCallBack :' + JSON.stringify(data));
@@ -1940,7 +1940,7 @@ export default function abilityTest() {
      * @tc.type Function
      * @tc.level: Level3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800', Level.LEVEL0, async (done:Function) => {
       let subscriber: commonEvent.CommonEventSubscriber | undefined = undefined;
       let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
         console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800 subscribeCallBack :' + JSON.stringify(data));
@@ -1972,7 +1972,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testNativeLibraryPath003', 0, async (done:Function) => {
+    it('testNativeLibraryPath003', Level.LEVEL0, async (done:Function) => {
       try {
         let abilityContext: common.UIAbilityContext = context;
         let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;

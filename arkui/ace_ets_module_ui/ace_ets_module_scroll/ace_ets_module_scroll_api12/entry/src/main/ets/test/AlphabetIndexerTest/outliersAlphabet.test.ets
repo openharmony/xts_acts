@@ -25,6 +25,16 @@ function alphabetDefaultPopupSize(sysWidth: Resource) {
   return newPopupSize;
 }
 
+function spliceBgColor(sysColor: Resource, sysColor1: Resource) {
+  let resourceColor = getContext().resourceManager.getColorSync(sysColor.id)
+  let resourceColor1 = getContext().resourceManager.getNumber(sysColor1.id)
+  let numColor1 = Math.round(resourceColor1 * 255)
+  console.info("resourceColor is: " + JSON.stringify(resourceColor.toString(16)));
+  console.info("numColor1 is: " + JSON.stringify(numColor1));
+  let newArgb: string = '#' + numColor1.toString(16).toUpperCase() + resourceColor.toString(16).toUpperCase().slice(2)
+  return newArgb;
+}
+
 export default function outliersAlphabet() {
   describe('outliersAlphabet', () => {
     beforeEach(async (done: Function) => {
@@ -168,7 +178,8 @@ export default function outliersAlphabet() {
       console.info("[outliersAlphabet_0500] selectedColor: " + JSON.stringify(JSON.parse(strJson).$attrs.selectedColor));
       console.info("[outliersAlphabet_0500] selectedBackgroundColor: " + JSON.stringify(JSON.parse(strJson).$attrs.selectedBackgroundColor));
       expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FFFFFFFF");
-      expect(JSON.parse(strJson).$attrs.selectedBackgroundColor).assertEqual("#FFFFFFFF");
+      expect(JSON.parse(strJson).$attrs.selectedBackgroundColor)
+        .assertEqual(spliceBgColor($r('sys.color.ohos_id_color_text_highlight_bg'), $r('sys.float.ohos_id_alpha_normal_bg')));
       console.info('[outliersAlphabet_0500] END');
       done();
     });

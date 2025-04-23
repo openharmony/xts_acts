@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, TestType, Size, Level } from '@ohos/hypium';
 import { HuksCipherRSA } from './utils/param/cipher/publicCipherParam';
 import { stringToUint8Array, checkSoftware } from './utils/param/publicFunc';
 import huks from '@ohos.security.huks';
@@ -135,7 +135,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         })
         // HKS_SUPPORT_SM4_CBC_NOPADDING
-        it('Security_HUKS_Export_API9_0100', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0100";
             let HuksOptions = {
                 properties: new Array(
@@ -156,7 +156,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0200', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0200";
             let HuksOptions = {
                 properties: new Array(
@@ -177,7 +177,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0300', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0300";
             let HuksOptions = {
                 properties: new Array(
@@ -198,7 +198,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0400', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0400";
             let HuksOptions = {
                 properties: new Array(
@@ -217,7 +217,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0500', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0500";
             let HuksOptions = {
                 properties: new Array(
@@ -236,7 +236,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0600', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0600";
             let HuksOptions = {
                 properties: new Array(
@@ -255,7 +255,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0700', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0700";
             let HuksOptions = {
                 properties: new Array(
@@ -274,7 +274,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0800', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0800";
             let HuksOptions = {
                 properties: new Array(
@@ -291,7 +291,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_0900', 0, async function (done) {
+        it('Security_HUKS_Export_API9_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_0900";
             let HuksOptions = {
                 properties: new Array(
@@ -308,7 +308,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1000', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1000";
             let HuksOptions = {
                 properties: new Array(
@@ -325,7 +325,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1100', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1100";
             let HuksOptions = {
                 properties: new Array(
@@ -346,7 +346,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1200', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1200";
             let HuksOptions = {
                 properties: new Array(
@@ -365,7 +365,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1300', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1300";
             let HuksOptions = {
                 properties: new Array(
@@ -384,7 +384,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1400', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1400";
             let HuksOptions = {
                 properties: new Array(
@@ -403,7 +403,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1500', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1500";
             let HuksOptions = {
                 properties: new Array(
@@ -420,7 +420,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1600', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1600";
             let HuksOptions = {
                 properties: new Array(
@@ -439,7 +439,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1700', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1700";
             let HuksOptions = {
                 properties: new Array(
@@ -458,7 +458,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_1800', 0, async function (done) {
+        it('Security_HUKS_Export_API9_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "Security_HUKS_Export_API9_1800";
             let HuksOptions = {
                 properties: new Array(
@@ -475,7 +475,7 @@ export default function SecurityHuksExportJsunit() {
             done();
         });
 
-        it('Security_HUKS_Export_API9_2000', 0, async function (done) {
+        it('Security_HUKS_Export_API9_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = '****'
             let HuksOptions = {
                 properties: new Array(

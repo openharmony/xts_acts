@@ -26,16 +26,14 @@
 
 namespace ArkUICapiTest {
 
-std::vector<int32_t> EventInfoTest::result = {};
-std::int32_t g_dataSizeEvent = 0;
-const int EVENT_DATA_SIZE_TWO = 2;
-const int EVENT_DATA_SIZE_FIVE = 5;
+std::vector<int32_t> EventInfoTest::resultTouch = {};
+std::vector<int32_t> EventInfoTest::resultMove = {};
 
 static napi_value SetArrayNapiDataWithGesture(const std::vector<int32_t> &data, napi_env env)
 {
     napi_value array;
     napi_create_array(env, &array);
-    for (size_t i = PARAM_0; i < g_dataSizeEvent; i++) {
+    for (size_t i = PARAM_0; i < data.size(); i++) {
         napi_value num;
         napi_create_int32(env, data[i], &num);
         napi_set_element(env, array, i, num);
@@ -88,26 +86,32 @@ static auto createColumn(bool dropDataPrefetchOnNode)
 
 static void OnEventTouch(ArkUI_UIInputEvent *inputEvent)
 {
+    auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+    if (action != 1) {
+        return;
+    }
     auto displayId = OH_ArkUI_UIInputEvent_GetTargetDisplayId(inputEvent);
-    PushBackIntToData(EventInfoTest::result, displayId);
+    PushBackIntToData(EventInfoTest::resultTouch, displayId);
     auto pressedTime = OH_ArkUI_PointerEvent_GetPressedTimeByIndex(inputEvent, 0);
-    PushBackIntToData(EventInfoTest::result, pressedTime);
-    g_dataSizeEvent = EVENT_DATA_SIZE_TWO;
+    PushBackIntToData(EventInfoTest::resultTouch, pressedTime);
 }
 
 static void OnEventMouse(ArkUI_UIInputEvent *inputEvent)
 {
+    auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
+    if (action != 1) {
+        return;
+    }
     auto displayId = OH_ArkUI_UIInputEvent_GetTargetDisplayId(inputEvent);
-    PushBackIntToData(EventInfoTest::result, displayId);
+    PushBackIntToData(EventInfoTest::resultMove, displayId);
     auto pressedTime = OH_ArkUI_PointerEvent_GetPressedTimeByIndex(inputEvent, 0);
-    PushBackIntToData(EventInfoTest::result, pressedTime);
+    PushBackIntToData(EventInfoTest::resultMove, pressedTime);
     auto rawDeltaX = OH_ArkUI_MouseEvent_GetRawDeltaX(inputEvent);
     auto rawDeltaY = OH_ArkUI_MouseEvent_GetRawDeltaY(inputEvent);
-    PushBackIntToData(EventInfoTest::result, rawDeltaX);
-    PushBackIntToData(EventInfoTest::result, rawDeltaY);
+    PushBackIntToData(EventInfoTest::resultMove, rawDeltaX);
+    PushBackIntToData(EventInfoTest::resultMove, rawDeltaY);
     auto pressedButtons = OH_ArkUI_MouseEvent_GetPressedButtons(inputEvent, nullptr, nullptr);
-    PushBackIntToData(EventInfoTest::result, pressedButtons);
-    g_dataSizeEvent = EVENT_DATA_SIZE_FIVE;
+    PushBackIntToData(EventInfoTest::resultMove, pressedButtons);
 }
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
@@ -167,13 +171,23 @@ napi_value EventInfoTest::TestEventInfoGetPressedTime001(napi_env env, napi_call
     return exports;
 }
 
-napi_value EventInfoTest::GetResult(napi_env env, napi_callback_info info)
+napi_value EventInfoTest::GetResultTouch(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EventInfoTest", "GetEventInfoData");
     napi_value result;
     napi_create_array(env, &result);
-    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithGesture(EventInfoTest::result, env));
-    EventInfoTest::result.clear();
+    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithGesture(EventInfoTest::resultTouch, env));
+    EventInfoTest::resultTouch.clear();
+    return result;
+}
+
+napi_value EventInfoTest::GetResultMove(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EventInfoTest", "GetEventInfoData");
+    napi_value result;
+    napi_create_array(env, &result);
+    napi_set_element(env, result, PARAM_0, SetArrayNapiDataWithGesture(EventInfoTest::resultMove, env));
+    EventInfoTest::resultMove.clear();
     return result;
 }
 } // namespace ArkUICapiTest

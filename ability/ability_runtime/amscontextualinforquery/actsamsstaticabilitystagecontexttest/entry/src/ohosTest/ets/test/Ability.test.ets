@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import bundleManager from '@ohos.bundle.bundleManager'
 
 export default function abilityTest() {
@@ -23,7 +23,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query applicationInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getApplicationInfo_0300', 0, async (done:Function) => {
+        it('ACTS_getApplicationInfo_0300', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getApplicationInfo_0300 --- start ability=====>'+ abilityContext.applicationInfo")
             checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
@@ -35,7 +35,7 @@ export default function abilityTest() {
          * @tc.desc: Verify that the application query currentHapModuleInfo static
          *           information is the same as that in the configuration file.
          */
-        it('ACTS_getHapModuleInfo_0300', 0, async (done:Function) => {
+        it('ACTS_getHapModuleInfo_0300', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_getHapModuleInfo_0300 --- start ability=====>'+ abilityContext.currentHapModuleInfo")
             checkHapModuleInfo(globalThis.abilityStageContext.currentHapModuleInfo);
             done();

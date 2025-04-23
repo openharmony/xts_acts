@@ -18,7 +18,7 @@ import MediaUtils from './MediaUtils';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { GlobalThis } from './Constants';
 import { Context } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,7 +156,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_GET_CAMERA_MANAGER_CALLBACK_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_GET_CAMERA_MANAGER_CALLBACK_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_GET_CAMERA_MANAGER_CALLBACK_0100--------------");
       cameraManager = cameraObj.initCamera(GlobalThis.getInstance().getValue());
       if (cameraManager != 0) {
@@ -171,7 +171,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_GET_CAMERAS_CALLBACK_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_GET_CAMERAS_CALLBACK_0100', Level.LEVEL1, async () => {
       console.info(TAG + "--------------GET_CAMERAS--------------");
       let cameraInfo = cameraObj.getSupportedCameras();
       if (isEmpty(cameraInfo)) {
@@ -204,7 +204,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAMERA_INPUT_PROMISE_0100', Level.LEVEL2, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
       let ret = cameraObj.createCameraInput();
       if (ret) {
@@ -225,7 +225,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PREVIEW_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PREVIEW_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PREVIEW_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 cameraManager == null || undefined");
@@ -253,7 +253,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PHOTO_OUTPUT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PHOTO_OUTPUT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PHOTO_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CREATE_PHOTO_OUTPUT_PROMISE_0100 cameraManager == null || undefined");
@@ -280,7 +280,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_VIDEO_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_VIDEO_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_VIDEO_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CREATE_VIDEO_OUTPUT_CALLBACK_0100 cameraManager == null || undefined");
@@ -305,7 +305,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_METADATA_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_METADATA_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_METADATA_OUTPUT_CALLBACK_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CREATE_METADATA_OUTPUT_CALLBACK_0100 cameraManager == null || undefined");
@@ -332,7 +332,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAPTURE_SESSION_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAPTURE_SESSION_0100', Level.LEVEL1, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAPTURE_SESSION_CALLBACK_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CREATE_CAPTURE_SESSION_CALLBACK_0100 cameraManager == null || undefined");
@@ -355,7 +355,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_BEGIN_CONFIG_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_BEGIN_CONFIG_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_BEGIN_CONFIG_CALLBACK_0100--------------");
       let ret = cameraObj.sessionBegin();
       if (ret) {
@@ -371,7 +371,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_INPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_INPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_INPUT_CALLBACK_0100--------------");
       let ret = cameraObj.sessionAddInput();
       if (ret) {
@@ -387,7 +387,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_0100--------------");
       await cameraObj.createPreviewOutput();
       let ret = cameraObj.sessionAddPreviewOutput();
@@ -404,7 +404,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_CALLBACK_0100--------------");
       cameraObj.createPhotoOutput(surfaceId1);
       let ret = cameraObj.sessionAddPhotoOutput();
@@ -421,7 +421,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100--------------");
       cameraObj.createVideoOutput(videoSurfaceId);
       let ret = cameraObj.sessionAddVideoOutput();
@@ -438,7 +438,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100--------------");
       let ret = await cameraObj.sessionCommitConfig();
       if (ret) {
@@ -454,7 +454,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_START_PREVIEW_OUTPUT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_START_PREVIEW_OUTPUT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_START_PREVIEW_OUTPUT_PROMISE_0100--------------");
       let ret = cameraObj.previewOutputStart();
       if (ret) {
@@ -470,7 +470,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_STOP_PREVIEW_OUTPUT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_STOP_PREVIEW_OUTPUT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_STOP_PREVIEW_OUTPUT_PROMISE_0100--------------");
       let ret = cameraObj.previewOutputStop();
       if (ret) {
@@ -486,7 +486,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_START_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_START_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_START_PROMISE_0100--------------");
       let ret = cameraObj.videoOutputStart();
       if (ret) {
@@ -502,7 +502,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_STOP_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_STOP_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_STOP_PROMISE_0100--------------");
       let ret = cameraObj.videoOutputStop();
       if (ret) {
@@ -518,7 +518,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100--------------");
       let ret = cameraObj.videoOutputRelease();
       if (ret) {
@@ -534,7 +534,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100--------------");
       let ret = cameraObj.createPreviewOutput(); //test PreviewOutputRegisterCallback onFrameStart
       if (ret) {
@@ -552,7 +552,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100--------------");
       let ret = cameraObj.createPreviewOutput(); //test PreviewOutputRegisterCallback onFrameEnd
       if (ret) {
@@ -570,7 +570,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       let ret = cameraObj.createPreviewOutput(); //test PreviewOutputRegisterCallback onError
       if (ret) {
@@ -588,7 +588,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100--------------");
       let ret = cameraObj.createPreviewOutput();
       if (ret) {
@@ -607,7 +607,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100--------------");
       try {
         await cameraObj.photoOutputCapture();
@@ -626,7 +626,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100--------------");
       cameraObj.initCamera(GlobalThis.getInstance().getValue());
       cameraObj.getSupportedCameras();
@@ -652,7 +652,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100--------------");
       cameraObj.initCamera(GlobalThis.getInstance().getValue());
       cameraObj.getSupportedCameras();
@@ -678,7 +678,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100--------------");
       cameraObj.initCamera(GlobalThis.getInstance().getValue());
       cameraObj.getSupportedCameras();
@@ -704,7 +704,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100', Level.LEVEL1, async () => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100--------------");
       cameraObj.initCamera(GlobalThis.getInstance().getValue());
       cameraObj.getSupportedCameras();
@@ -730,7 +730,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_RELEASE_CALLBACK_0100--------------");
       let ret = cameraObj.photoOutputRelease();
       if (ret) {
@@ -746,7 +746,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_START_METADATA_OUTPUT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_START_METADATA_OUTPUT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_START_METADATA_OUTPUT_PROMISE_0100--------------");
       try {
         await cameraObj.metadataOutputStart();
@@ -765,7 +765,7 @@ export default function cameraJSUnitOutput() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_STOP_METADATA_OUTPUT_PROMISE_0100', 1, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_STOP_METADATA_OUTPUT_PROMISE_0100', Level.LEVEL1, async () => {
       console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_NDK_STOP_METADATA_OUTPUT_PROMISE_0100--------------");
       try {
         await cameraObj.metadataOutputStop();

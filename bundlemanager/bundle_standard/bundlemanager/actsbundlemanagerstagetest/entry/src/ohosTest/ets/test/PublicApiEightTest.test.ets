@@ -32,7 +32,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getBundleInfoTest
      * @tc.desc: Test getBundleInfo of API8 in version9 normal project
      */
-    it('getBundleInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getBundleInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getBundleInfo(BUNDLE_NAME , bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
         console.info("getBundleInfoTest" + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -54,7 +54,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getAbilityInfoTest
      * @tc.desc: Test getAbilityInfo of API8 in version9 normal project
      */
-    it('getAbilityInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getAbilityInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getAbilityInfo(BUNDLE_NAME, ABILITY_NAME).then((data) => {
         console.info('getAbilityInfoTest promise data is: ' + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -76,7 +76,7 @@ export default function PublicApiEightTest() {
      * @tc.name:  getApplicationInfoTest
      * @tc.desc: Test getApplicationInfo of API8 in version9 normal project
      */
-    it('getApplicationInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getApplicationInfoTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       await bundle.getApplicationInfo(BUNDLE_NAME, bundle.BundleFlag.GET_BUNDLE_DEFAULT).then(data => {
         console.info("getApplicationInfoTest result" + JSON.stringify(data));
         expect(data.name).assertEqual("");
@@ -97,7 +97,7 @@ export default function PublicApiEightTest() {
       * @tc.name queryAbilityByWantTest
       * @tc.desc Test queryAbilityByWant of API8 in version9 normal project
       */
-      it('queryAbilityByWantTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+      it('queryAbilityByWantTest', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
         await bundle.queryAbilityByWant(
           {
             "bundleName": BUNDLE_NAME,

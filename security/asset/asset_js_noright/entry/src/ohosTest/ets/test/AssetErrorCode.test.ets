@@ -37,10 +37,10 @@ export default function AssetErrorCodeTest() {
      * @tc.name test wraptype
      * @tc.desc 数据库允许导出字段测试
      * @tc.size MediumTest
-     * @tc.level Level3
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('SUB_Security_DataSecurity_Asset_JS_wraptype_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_JS_wraptype_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.SECRET, StringToArray('demo_pwd1'));
       attr.set(asset.Tag.ALIAS, StringToArray('demo_alias1'));

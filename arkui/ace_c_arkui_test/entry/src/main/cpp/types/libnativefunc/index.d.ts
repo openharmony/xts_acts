@@ -5285,8 +5285,6 @@ export const testSliderReverse004: () => number;
 
 export const testSliderReverse005: () => number;
 
-export const testSliderSelectedColor001: () => number;
-
 export const testSliderSelectedColor002: () => number;
 
 export const testSliderSelectedColor003: () => number;

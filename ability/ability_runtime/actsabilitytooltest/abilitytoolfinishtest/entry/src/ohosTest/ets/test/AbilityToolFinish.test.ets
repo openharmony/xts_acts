@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -62,7 +62,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -86,7 +86,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -110,7 +110,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -134,7 +134,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -158,7 +158,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000', 3, (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000', Level.LEVEL3, (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -180,7 +180,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100';
       try {
         await abilityDelegator.finishTest(null, 1)
@@ -205,7 +205,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200';
       try {
         await abilityDelegator.finishTest(undefined, 1)
@@ -230,7 +230,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -251,7 +251,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -274,7 +274,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -297,7 +297,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -320,7 +320,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {
@@ -343,7 +343,7 @@ export default function abilityToolFinishTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400';
       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test start`);
       try {

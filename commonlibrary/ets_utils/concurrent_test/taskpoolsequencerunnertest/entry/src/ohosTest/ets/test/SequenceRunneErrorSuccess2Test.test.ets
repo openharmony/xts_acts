@@ -56,9 +56,9 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task worker-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 
       let count1: number = 0
@@ -108,7 +108,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task worker-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('SequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -164,7 +164,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task task-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('SequenceRunnerErrorSuccess0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -213,7 +213,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task task-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('SequenceRunnerErrorSuccess0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -262,7 +262,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task task-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('SequenceRunnerErrorSuccess0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -311,7 +311,7 @@ export default function SequenceRunnerErrorSuccess2Test() {
      * @tc.desc Testing Task task-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('SequenceRunnerErrorSuccess0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();

@@ -26,7 +26,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise and Callback
      * @tc.desc: No default image application is set. Query and return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_0900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_0900', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE).then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_0900  successfully: ' + JSON.stringify(data));
@@ -57,7 +57,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_0650', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_0650', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication("image/").then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_0650  successfully: ' + JSON.stringify(data));
@@ -79,7 +79,7 @@ export default function isDefaultApplicationTest() {
      * @tc.name: isDefaultApplication Promise
      * @tc.desc: The parameter type is correct, the string format is incorrect, return false
      */
-    it('Sub_Bms_Framework_Status_DefaultApp_1150', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('Sub_Bms_Framework_Status_DefaultApp_1150', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) => {
       try {
         await defaultAppMgr.isDefaultApplication("abc").then((data) => {
           console.info('Sub_Bms_Framework_Status_DefaultApp_1150  successfully: ' + JSON.stringify(data));

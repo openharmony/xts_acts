@@ -15,7 +15,7 @@
 
 import commonEvent from '@ohos.commonEvent';
 import hilog from '@ohos.hilog';
-import { it, expect, describe } from '@ohos/hypium';
+import { it, expect, describe, Level } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -124,7 +124,7 @@ export default function wantSupportModuleNameTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
     */
-    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0100", 1, async (done: Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0100", Level.LEVEL1, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0100';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [onForegroundEvent_main]
@@ -155,7 +155,7 @@ export default function wantSupportModuleNameTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
     */
-    it('SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0200', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0200', Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0200';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [onForegroundEvent_main]
@@ -201,7 +201,7 @@ export default function wantSupportModuleNameTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
     */
-    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0500", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0500", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0500';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [onForegroundEvent_main]
@@ -265,7 +265,7 @@ export default function wantSupportModuleNameTest() {
     * @tc.type: Function
     */
 
-    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0400", 3, async (done: Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0400", Level.LEVEL3, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0400';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [onForegroundEvent_main]
@@ -333,7 +333,7 @@ export default function wantSupportModuleNameTest() {
     * @tc.size: MediumTest
     * @tc.type: Function
     */
-    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0300", 1, async (done: Function) => {
+    it("SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0300", Level.LEVEL1, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0300';
       let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: [onForegroundEvent_main]

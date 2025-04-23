@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import socket from '@ohos.net.socket';
 import { BusinessError, Callback } from '@ohos.base';
 
@@ -172,7 +172,7 @@ let ServerOptions: socket.TLSConnectOptions = {
   address: addr,
   secureOptions: {
     ca: client_ca,
-    key: server_ca,
+    key: server_key,
     password: '123456',
     cert: server_ca,
     protocols: [socket.Protocol.TLSv12],
@@ -232,7 +232,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendCallback0100', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendCallback0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendCallback0100';
       console.info(`${caseName} test start`);
       try {
@@ -289,7 +289,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendCallback0200', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendCallback0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendCallback0200';
       console.info(`${caseName} test start`);
       try {
@@ -346,7 +346,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendCallback0300', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendCallback0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendCallback0300';
       console.info(`${caseName} test start`);
       try {
@@ -404,7 +404,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendCallback0400', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendCallback0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendCallback0400';
       console.info(`${caseName} test start`);
       try {
@@ -476,7 +476,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendCallback0500', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -547,7 +547,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendPromise0100', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendPromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendPromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -602,7 +602,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendPromise0200', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendPromise0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendPromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -656,7 +656,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendPromise0300', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendPromise0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendPromise0300';
       console.info(`${caseName} test start`);
       try {
@@ -712,7 +712,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendPromise0400', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendPromise0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendPromise0400';
       console.info(`${caseName} test start`);
       try {
@@ -780,7 +780,7 @@ export default function TLSSocketConnectionsTest() {
      * @tc.type  :  Function
      * @tc.level :  level 3
      */
-    it('testTLSSocketConnectionSendPromise0500', 2, async (done: Function) => {
+    it('testTLSSocketConnectionSendPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
       let caseName: string = 'testTLSSocketConnectionSendPromise0500';
       console.info(`${caseName} test start`);
       try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset';
 
@@ -47,7 +47,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0100', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[0], aw.secTooLong)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[1], aw.valueEmpty)))
@@ -61,7 +61,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0200', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       expect(await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]))
         .assertEqual(0);
       expect(await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]))
@@ -93,7 +93,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0300', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await aw.addSome();
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[0], aw.secTooLong)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
@@ -109,7 +109,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0400', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await aw.addSome();
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
@@ -147,7 +147,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0500', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       expect(Number(await aw.assetAddEasy(aw.aliasTooLong, aw.secretList[0])))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       expect(Number(await aw.assetAddEasy(aw.valueEmpty, aw.secretList[0])))
@@ -162,7 +162,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0600', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -183,7 +183,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0700', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -223,7 +223,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0800', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       expect(await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]))
         .assertEqual(asset.ErrorCode.DUPLICATED);
@@ -247,7 +247,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0900', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       expect(await aw.assetQueryAll('test1', 'test2'))
@@ -265,7 +265,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1200', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       let attr2: asset.AssetMap = new Map();
@@ -290,7 +290,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1300', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       let attr2: asset.AssetMap = new Map();
@@ -315,7 +315,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1400', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       let attr2: asset.AssetMap = new Map();
@@ -355,7 +355,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1800', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let testAlias1 = aw.aliasNameList[0];
       let times = 600;
       let attr: asset.AssetMap = new Map();
@@ -375,7 +375,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1600', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       expect(await aw.assetAddAttr(attr))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
@@ -414,7 +414,7 @@ export default function AssetWriteAndQueryNewTest() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1700', 0, async () => {
+    it('Security_DataSecurity_Asset_WriteAndQuery_Func_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let attr: asset.AssetMap = new Map();
       await aw.assetAddAll(attr);
       let attr2: asset.AssetMap = new Map();

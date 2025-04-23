@@ -153,7 +153,7 @@ function testGetSecurityStatus() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_security_status_0100", 0, async (done: Function) => {
+  it("test_get_security_status_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.getSecurityStatus(SELFWANT, PATCH);
@@ -176,7 +176,7 @@ function testSetPasswordPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_password_policy_0100", 0, async (done: Function) => {
+  it("test_set_password_policy_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.setPasswordPolicy(SELFWANT, PASSWORD_POLICY);
@@ -199,7 +199,7 @@ function testGetPasswordPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_password_policy_0101", 0, async (done: Function) => {
+  it("test_get_password_policy_0101", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.getPasswordPolicy(SELFWANT);
@@ -222,7 +222,7 @@ function testInstallUserCertificate() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_install_user_certificate_0100", 0, async (done: Function) => {
+  it("test_install_user_certificate_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       await securityManager.installUserCertificate(SELFWANT, CERTIFICATE);
@@ -243,7 +243,7 @@ function testInstallUserCertificate() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_install_user_certificate_0200", 0, async (done: Function) => {
+  it("test_install_user_certificate_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.installUserCertificate(SELFWANT, CERTIFICATE, INT_VALID_ACCOUNTID);
@@ -266,7 +266,7 @@ function testGetUserCertificates() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_user_certificates_sync_0100", 0, async (done: Function) => {
+  it("test_get_user_certificates_sync_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.getUserCertificates(SELFWANT, INT_VALID_ACCOUNTID);
@@ -289,7 +289,7 @@ function testUninstallUserCertificate() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_uninstall_user_certificate_0100", 0, async (done: Function) => {
+  it("test_uninstall_user_certificate_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       await securityManager.uninstallUserCertificate(SELFWANT, 'test');
@@ -312,7 +312,7 @@ function testSetClipboardPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_clipboard_policy_0100", 0, async (done: Function) => {
+  it("test_set_clipboard_policy_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY);
@@ -335,7 +335,7 @@ function testGetClipboardPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_clipboard_policy_0100", 0, async (done: Function) => {
+  it("test_get_clipboard_policy_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
@@ -356,7 +356,7 @@ function testGetClipboardPolicy() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_get_clipboard_policy_0200", 0, async (done: Function) => {
+  it("test_get_clipboard_policy_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.getAppClipboardPolicy(SELFWANT);
@@ -439,7 +439,7 @@ function testSetWatermarkImage() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_watermark_image_0100", 0, async (done: Function) => {
+  it("test_set_watermark_image_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.setWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, PIXEL_MAP, DEFAULT_USER_ID);
@@ -462,7 +462,7 @@ function testCancelWatermarkImage() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_cancel_watermark_image_0100", 0, async (done: Function) => {
+  it("test_cancel_watermark_image_0100", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       securityManager.cancelWatermarkImage(SELFWANT, WATERMARK_BUNDLE_NAME, DEFAULT_USER_ID);

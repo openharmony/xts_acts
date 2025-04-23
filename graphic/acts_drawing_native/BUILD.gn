@@ -21,7 +21,6 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
   part_name = "graphic_2d"
-  comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
     "DrawingCanvasDrawRecordCmdTest.cpp",
@@ -76,23 +75,17 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "-Dprotected=public",
   ]
 
-  include_dirs = [
-    "$comPath/rosen/modules/2d_engine",
-    "//third_party/googletest/googletest/include",
-  ]
-  enable_text_gine = true
-  if (enable_text_gine) {
-    include_dirs += [ "$comPath/rosen/modules/2d_engine/rosen_text/export" ]
-    defines = [ "USE_GRAPHIC_TEXT_GINE" ]
-  }
-
   external_deps = [
-    "graphic_2d:2d_graphics",
     "graphic_2d:EGL",
-    "graphic_2d:GLESv3",
-    "graphic_2d:native_drawing_ndk",
-    "hilog:libhilog",
     "image_framework:pixelmap",
+  ]
+  include_dirs = [
+    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/include/native_drawing",
+    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/include/GLES3",
+  ]
+  libs = [
+    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/lib/${target_platform_triple}/libnative_drawing.so",
+    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/lib/${target_platform_triple}/libGLESv3.so",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }

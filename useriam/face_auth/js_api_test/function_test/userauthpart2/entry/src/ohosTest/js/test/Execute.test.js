@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, Level } from '@ohos/hypium'
+import { describe, it, expect, Level, TestType, Size } from '@ohos/hypium'
 import userAuth from '@ohos.userIAM.userAuth'
 import { checkSupportOrNot } from './utils/commonFunc';
 
@@ -113,9 +113,9 @@ export default function signNormalAccessBiometricExecute() {
       * @tc.name      : execute_getUserAuthInstance_params_onResult_offResult_start_cancel
       * @tc.size      : MediumTest
       * @tc.type      : Function
-      * @tc.level     : Level.LEVEL2
+      * @tc.level     : Level.LEVEL0
     */
-    it('Security_IAM_getUserAuthInstance_Func_0043', Level.LEVEL2, async function (done) {
+    it('Security_IAM_getUserAuthInstance_Func_0043', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("Security_IAM_getUserAuthInstance_Func_0043 start");
       const authParams = [
         {
@@ -240,7 +240,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_getUserAuthInstance_Func_0107', Level.LEVEL2, async function (done) {
+    it('Security_IAM_getUserAuthInstance_Func_0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_getUserAuthInstance_Func_0107 start");
       const authParamWithoutType = {
         challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
@@ -432,7 +432,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0004', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0004 start");
       const eventParams = [
         {
@@ -484,7 +484,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0005', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0005 start");
       const eventParams = [
         {
@@ -532,7 +532,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0007', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0007 start");
       const startParams = [ "aaaa", null ];
       for (let index = 0; index < startParams.length; index++) {
@@ -557,7 +557,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_UserAuthInstance_Func_0009', Level.LEVEL2, async function (done) {
+    it('Security_IAM_UserAuthInstance_Func_0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_UserAuthInstance_Func_0009 start");
       const cancelParams = [ "aaaa", null ];
       for (let index = 0; index < cancelParams.length; index++) {
@@ -583,7 +583,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_getUserAuthInstance_Func_0088', Level.LEVEL2, async function (done) {
+    it('Security_IAM_getUserAuthInstance_Func_0088', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_getUserAuthInstance_Func_0088 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);
@@ -604,7 +604,7 @@ export default function signNormalAccessBiometricExecute() {
         * @tc.type      : Function
         * @tc.level     : Level.LEVEL2
     */
-    it('Security_IAM_getUserAuthInstance_Func_0089', Level.LEVEL2, async function (done) {
+    it('Security_IAM_getUserAuthInstance_Func_0089', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
       console.info("Security_IAM_getUserAuthInstance_Func_0089 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);

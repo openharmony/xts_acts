@@ -16,6 +16,9 @@ import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, 
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitdefaultFontSize73AndminFontSize1";
 export default function webViewDefaultFontSize() {
@@ -40,6 +43,11 @@ export default function webViewDefaultFontSize() {
       done()
     });
     beforeEach(async (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewDefaultFontSize beforeEach start");
       done();

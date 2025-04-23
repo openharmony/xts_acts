@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -146,7 +146,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0100', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0100";
       let cardId: number = await addCard();
       console.info(`${caseName} test start `);
@@ -179,7 +179,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0200', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -210,7 +210,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0300', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -242,7 +242,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0500', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -273,7 +273,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0600', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -304,7 +304,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0700', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -335,7 +335,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0800', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -366,7 +366,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0900', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let cardId: number = await addCard();
       const caseName: string = "testTelephonyContactIsMyCard0900";
       console.info(`${caseName} test start `);
@@ -397,7 +397,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1000', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -428,7 +428,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1100', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -460,7 +460,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1200', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -491,7 +491,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1300', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -522,7 +522,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1400', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -553,7 +553,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1500', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -585,7 +585,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1600', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let cardId: number = await addCard();
       const caseName: string = "testTelephonyContactIsMyCard1600";
       console.info(`${caseName} test start `);
@@ -616,7 +616,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1700', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -647,7 +647,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2000', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -678,7 +678,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2100', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -709,7 +709,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2200', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -740,7 +740,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2300', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -770,7 +770,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2400', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let cardId: number = await addCard();
       const caseName: string = "testTelephonyContactIsMyCard2400";
       console.info(`${caseName} test start `);
@@ -800,7 +800,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2500', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -830,7 +830,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2600', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -859,7 +859,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2700', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -888,7 +888,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2800', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -918,7 +918,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard2900', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard2900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -948,7 +948,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard3000', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard3000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -979,7 +979,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryMyCard0100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let cardId:number = await addCard();
       const caseName: string = "testTelephonyContactQueryMyCard0100";
       console.info(`${caseName} test start `);
@@ -1013,7 +1013,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryMyCard0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryMyCard0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1045,7 +1045,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryMyCard0300', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryMyCard0300";
       console.info(`${caseName} test start `);
       try {
@@ -1076,7 +1076,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryMyCard0400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let cardId:number = await addCard();
       const caseName: string = "testTelephonyContactQueryMyCard0400";
       console.info(`${caseName} test start `);
@@ -1110,7 +1110,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryMyCard0500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryMyCard0500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1142,7 +1142,7 @@ export default function IsMyCardTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryMyCard0600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryMyCard0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryMyCard0600";
       console.info(`${caseName} test start `);
       try {

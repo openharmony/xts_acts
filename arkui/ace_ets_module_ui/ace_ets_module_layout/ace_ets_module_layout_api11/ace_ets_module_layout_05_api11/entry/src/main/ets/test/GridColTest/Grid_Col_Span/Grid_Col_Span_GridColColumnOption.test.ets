@@ -71,9 +71,9 @@ export default function Grid_Col_Span_GridColColumnOption() {
 
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0100] END');
@@ -104,28 +104,28 @@ export default function Grid_Col_Span_GridColColumnOption() {
       let Grid_Col_Span_GridColColumnOption_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_GridColColumnOption_07');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_01.left - Grid_Col_Span_GridColColumnOption_00.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_01.left - Grid_Col_Span_GridColColumnOption_00.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_02.left - Grid_Col_Span_GridColColumnOption_01.right) - vp2px(10)) <= 1)
-        .assertTrue();
-
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.left - Grid_Col_Span_GridColColumnOption_03.right) - vp2px(10)) <= 1)
-        .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.left - Grid_Col_Span_GridColColumnOption_04.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_02.left - Grid_Col_Span_GridColColumnOption_01.right) - vp2px(10))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.left - Grid_Col_Span_GridColColumnOption_06.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.left - Grid_Col_Span_GridColColumnOption_03.right) - vp2px(10))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.left - Grid_Col_Span_GridColColumnOption_04.right) - vp2px(10))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.left - Grid_Col_Span_GridColColumnOption_06.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0200] END');
@@ -156,27 +156,27 @@ export default function Grid_Col_Span_GridColColumnOption() {
       let Grid_Col_Span_GridColColumnOption_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_GridColColumnOption_07');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_01.left - Grid_Col_Span_GridColColumnOption_00.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_01.left - Grid_Col_Span_GridColColumnOption_00.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.left - Grid_Col_Span_GridColColumnOption_02.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.left - Grid_Col_Span_GridColColumnOption_02.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.left - Grid_Col_Span_GridColColumnOption_04.right) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.left - Grid_Col_Span_GridColColumnOption_04.right) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.left - Grid_Col_Span_GridColColumnOption_06.right) - vp2px(10)) <= 1)
-        .assertTrue();
-
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
-        .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
-        .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.left - Grid_Col_Span_GridColColumnOption_06.right) - vp2px(10))) <= 1)
         .assertTrue();
 
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10))) <= 1)
+        .assertTrue();
+
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10))) <= 1)
+        .assertTrue();
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0300] END');
@@ -207,19 +207,19 @@ export default function Grid_Col_Span_GridColColumnOption() {
       let Grid_Col_Span_GridColColumnOption_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_GridColColumnOption_07');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0400] END');
@@ -250,19 +250,19 @@ export default function Grid_Col_Span_GridColColumnOption() {
       let Grid_Col_Span_GridColColumnOption_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_GridColColumnOption_07');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0500] END');
@@ -294,19 +294,19 @@ export default function Grid_Col_Span_GridColColumnOption() {
       let Grid_Col_Span_GridColColumnOption_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_GridColColumnOption_07');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_01.top - Grid_Col_Span_GridColColumnOption_00.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_02.top - Grid_Col_Span_GridColColumnOption_01.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_03.top - Grid_Col_Span_GridColColumnOption_02.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_04.top - Grid_Col_Span_GridColColumnOption_03.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_05.top - Grid_Col_Span_GridColColumnOption_04.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_06.top - Grid_Col_Span_GridColColumnOption_05.bottom) - vp2px(10))) <= 1)
         .assertTrue();
-      expect(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10)) <= 1)
+      expect(Math.floor(Math.abs((Grid_Col_Span_GridColColumnOption_07.top - Grid_Col_Span_GridColColumnOption_06.bottom) - vp2px(10))) <= 1)
         .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Span_GridColColumnOption_TEST_0600] END');

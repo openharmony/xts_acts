@@ -42,7 +42,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo from one app by getBundleInfo
      * @tc.desc: get the module information of the hap with type of entry
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8500', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         async function callback(err, result) {
@@ -75,7 +75,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo from two modules by getBundleInfo
      * @tc.desc: get the module information of the hap with type of feature
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8520', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
@@ -103,7 +103,7 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.name: get hapModuleInfo one app without mainAbility by getBundleInfo
      * @tc.desc: get the module information of the hap without mainAbility
      */
-    it('Sub_Bms_Framework_Query_AppInfo_8540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_8540', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data) => {
             expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -56,7 +56,7 @@ export default function subHeaderButton() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('subHeaderButton_0100', 0, async (done: Function) => {
+    it('subHeaderButton_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[subHeaderButton_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

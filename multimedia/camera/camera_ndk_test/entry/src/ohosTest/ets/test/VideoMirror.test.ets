@@ -15,7 +15,7 @@
 
 import cameraObj from 'libentry.so';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { GlobalThis } from './Constants';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
@@ -342,7 +342,7 @@ export default function VideoMirrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHVideoOutputEnableMirror001', 2, async () => {
+    it('testOHVideoOutputEnableMirror001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------testOHVideoOutputEnableMirror001--------------");
       if (isVideoMirrorSupported()) {
         enableVideoMirror();
@@ -362,7 +362,7 @@ export default function VideoMirrorTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHVideoOutputIsMirrorSupported001', 2, async () => {
+    it('testOHVideoOutputIsMirrorSupported001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------testOHVideoOutputIsMirrorSupported001--------------");
       let isSupported = isVideoMirrorSupported();
       console.info(TAG + "testOHVideoOutputIsMirrorSupported001 isMirrorSupported:" + isSupported);

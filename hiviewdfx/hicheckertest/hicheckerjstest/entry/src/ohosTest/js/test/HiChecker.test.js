@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hichecker from '@ohos.hichecker'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function HiCheckerTest() {
 describe('HiCheckerTest', function () {
@@ -44,7 +44,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_0100
      * @tc.desc 
      */
-    it('DFX_DFR_Hichecker_Interface_0100', 0, function () {
+    it('DFX_DFR_Hichecker_Interface_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_0100 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         let tmp = hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
@@ -57,7 +57,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_0500
      * @tc.desc 
      */
-     it('DFX_DFR_Hichecker_Interface_0500', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_0500 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
@@ -75,7 +75,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_0200
      * @tc.desc 
      */
-     it('DFX_DFR_Hichecker_Interface_0200', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_0200 start');
         hichecker.addRule(-1);
         console.log('add wrong rule!');
@@ -93,7 +93,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_1200
      * @tc.desc 
      */
-     it('DFX_DFR_Hichecker_Interface_1200', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_1200 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
@@ -107,7 +107,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_0800
      * @tc.desc 
      */
-     it('DFX_DFR_Hichecker_Interface_0800', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_0800 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
@@ -124,7 +124,7 @@ describe('HiCheckerTest', function () {
      * @tc.name DFX_DFR_Hichecker_Interface_1300
      * @tc.desc 
      */
-     it('DFX_DFR_Hichecker_Interface_1300', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_1300 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
@@ -143,7 +143,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   addCheckRule with normal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2200', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2200 start');
         try {
             hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
@@ -165,7 +165,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   removeCheckRule with normal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2300', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2300 start');
         try {
             hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
@@ -188,7 +188,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   containsCheckRule with normal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2400', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2400 start');
         try {
             hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
@@ -210,7 +210,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   addCheckRule with abnormal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2500', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2500 start');
         try {
             hichecker.addCheckRule();
@@ -226,7 +226,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   removeCheckRule with abnormal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2600', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2600 start');
         try {
             hichecker.removeCheckRule();
@@ -242,7 +242,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   containsCheckRule with abnormal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2700', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2700 start');
         try {
             hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
@@ -260,7 +260,7 @@ describe('HiCheckerTest', function () {
      * @tc.name   containsCheckRule with normal parameter
      * @tc.desc
      */
-     it('DFX_DFR_Hichecker_Interface_2800', 0, function () {
+     it('DFX_DFR_Hichecker_Interface_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2800 start');
         try {
             hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_ARKUI_PERFORMANCE);

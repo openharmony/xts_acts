@@ -15,7 +15,7 @@
 
 import myaudioNdk from 'libentry.so'
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { abilityAccessCtrl, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -93,9 +93,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioStreamBuilder with AUDIOSTREAM_TYPE_CAPTURER
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = myaudioNdk.createAudioStreamBuilder();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createAudioStreamBuilder: ${result}`);
       expect(result).assertEqual(0)
@@ -107,9 +107,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioStreamBuilder_GenerateCapturer
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGenerate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100 audioCapture builder result: ${result}`);
       expect(result).assertEqual(0)
@@ -124,7 +124,7 @@ export default function audioNDK() {
         * @tc.type      : Function
         * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGenerateErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100 audioCaptureGenerateErr: ${result}`);
       expect(result).assertEqual(1)
@@ -137,9 +137,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioCapturer_Start
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureStart();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100 audioCaptureStart: ${result}`);
       expect(result).assertEqual(0)
@@ -154,7 +154,7 @@ export default function audioNDK() {
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureStartErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100 audioCaptureStartErr: ${result}`);
       expect(result).assertEqual(2)
@@ -166,9 +166,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioCapturer_Pause
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCapturePause();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100 audioCapturePause: ${result}`);
       expect(result).assertEqual(0)
@@ -182,7 +182,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCapturePauseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100 audioCapturePauseErr: ${result}`);
       expect(result).assertEqual(2)
@@ -194,9 +194,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioCapturer_Stop
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureStop();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100 audioCaptureStop: ${result}`);
       expect(result).assertEqual(0)
@@ -210,7 +210,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureStopErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100 audioCaptureStopErr: ${result}`);
       expect(result).assertEqual(2)
@@ -224,7 +224,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level1
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureFlush();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100 audioCaptureFlush: ${result}`);
       expect(result).assertEqual(0)
@@ -238,7 +238,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : FWK Layer
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureFlushErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100 audioCaptureFlushErr: ${result}`);
       expect(result).assertEqual(2)
@@ -250,9 +250,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioCapturer_Release
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureRelease();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100 audioCaptureRelease: ${result}`);
       expect(result).assertEqual(0)
@@ -266,7 +266,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureReleaseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100 audioCaptureReleaseErr: ${result}`);
       expect(result).assertEqual(1)
@@ -280,7 +280,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetParameter();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100 audioCaptureGetParameter: ${result}`);
       expect(result).assertEqual(0)
@@ -294,7 +294,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetCurrentState();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100 audioCaptureGetCurrentState: ${result}`);
       expect(result).assertEqual(0)
@@ -308,7 +308,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetStreamId();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100 audioCaptureGetStreamId: ${result}`);
       expect(result).assertEqual(0)
@@ -322,7 +322,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetSamplingRate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100 audioCaptureGetSamplingRate: ${result}`);
       expect(result).assertEqual(0)
@@ -336,7 +336,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetSampleFormat();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100 audioCaptureGetSampleFormat: ${result}`);
       expect(result).assertEqual(0)
@@ -350,7 +350,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetEncodingType();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100 audioCaptureGetEncodingType: ${result}`);
       expect(result).assertEqual(0)
@@ -364,7 +364,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetCapturerInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100 audioCaptureGetCapturerInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -378,7 +378,7 @@ export default function audioNDK() {
            * @tc.type      : Function
            * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetChannelCount();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100 audioCaptureGetChannelCount: ${result}`);
       expect(result).assertEqual(0)
@@ -392,7 +392,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetTimestamp();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100 audioCaptureGetTimestamp: ${result}`);
       expect(result).assertEqual(0)
@@ -406,7 +406,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetFramesRead();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100 audioCaptureGetFramesRead: ${result}`);
       expect(result).assertEqual(0)
@@ -420,7 +420,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCaptureGetFrameSizeInCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100 audioCaptureGetFrameSizeInCallback: ${result}`);
       expect(result).assertEqual(0)
@@ -433,9 +433,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_SetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetSpeed();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100 audioRendererSetSpeed: ${result}`);
       expect(result).assertEqual(0)
@@ -448,9 +448,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererGetSpeed();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100 audioRendererGetSpeed: ${result}`);
       expect(result).assertEqual(0)
@@ -463,9 +463,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetSpeed
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetGetSpeed();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100 audioRendererSetGetSpeed: ${result}`);
       expect(result).assertEqual(1.5)
@@ -478,9 +478,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioSetRendererOutputDeviceChangeCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100 audioCaptureGetCapturerInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -493,9 +493,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetFramesWritten();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100 audioRenderGetFramesWritten: ${result}`);
       expect(result).assertEqual(0)
@@ -507,9 +507,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetTimestamp();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100 audioRenderGetTimestamp: ${result}`);
       expect(result).assertEqual(0)
@@ -521,9 +521,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfo
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMP_0100 audioRenderGetAudioTimestampInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -535,9 +535,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetAudioTimestampInfoInterval
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetAudioTimestampInfoInterval();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMEAUDIOSTAMPINFOINTERVAL_0100 audioRenderGetAudioTimestampInfoInterval: ${result}`);
       expect(result).assertEqual(0)
@@ -549,9 +549,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetFrameSizeInCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100 audioRenderGetFrameSizeInCallback: ${result}`);
       expect(result).assertEqual(0)
@@ -563,9 +563,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioStreamBuilder_GenerateRenderer
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGenerate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_0100 audioCaptureGetCapturerInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -579,7 +579,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGenerateErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_RENDERER_ERR_0100 audioRenderGenerateErr: ${result}`);
       expect(result).assertEqual(1)
@@ -591,9 +591,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_Start
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderStart();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100 audioRenderStart: ${result}`);
       expect(result).assertEqual(0)
@@ -607,7 +607,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderStartErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100 audioRenderStartErr: ${result}`);
       expect(result).assertEqual(2)
@@ -619,9 +619,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_Pause
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderPause();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100 audioRenderPause: ${result}`);
       expect(result).assertEqual(0)
@@ -635,7 +635,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderPauseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100 audioRenderPauseErr: ${result}`);
       expect(result).assertEqual(2)
@@ -647,9 +647,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_Stop
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderStop();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100 audioRenderStop: ${result}`);
       expect(result).assertEqual(0)
@@ -663,7 +663,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderStopErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100 audioRenderStopErr: ${result}`);
       expect(result).assertEqual(2)
@@ -675,9 +675,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_Flush
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderFlush();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100 audioRenderFlush: ${result}`);
       expect(result).assertEqual(0)
@@ -691,7 +691,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderFlushErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100 audioRenderFlushErr: ${result}`);
       expect(result).assertEqual(2)
@@ -703,9 +703,9 @@ export default function audioNDK() {
        * @tc.desc      : test OH_AudioRenderer_Release
        * @tc.size      : MediumTest
        * @tc.type      : Function
-       * @tc.level     : Level0
+       * @tc.level     : Level 0
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderRelease();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100 audioRenderRelease: ${result}`);
       expect(result).assertEqual(0)
@@ -719,7 +719,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderReleaseErr();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100 audioRenderReleaseErr: ${result}`);
       expect(result).assertEqual(1)
@@ -733,7 +733,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetCurrentState();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100 audioRenderGetCurrentState: ${result}`);
       expect(result).assertEqual(0)
@@ -747,7 +747,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetParameter();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100 audioRenderGetParameter: ${result}`);
       expect(result).assertEqual(0)
@@ -761,7 +761,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetStreamId();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100 audioRenderGetStreamId: ${result}`);
       expect(result).assertEqual(0)
@@ -775,7 +775,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetSamplingRate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100 audioRenderGetSamplingRate: ${result}`);
       expect(result).assertEqual(0)
@@ -789,7 +789,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetSampleFormat();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100 audioRenderGetSampleFormat: ${result}`);
       expect(result).assertEqual(0)
@@ -803,7 +803,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetEncodingType();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100 audioRenderGetEncodingType: ${result}`);
       expect(result).assertEqual(0)
@@ -817,7 +817,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetRendererInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100 audioRenderGetRendererInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -831,7 +831,7 @@ export default function audioNDK() {
            * @tc.type      : Function
            * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRenderGetChannelCount();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100 audioRenderGetChannelCount: ${result}`);
       expect(result).assertEqual(0)
@@ -845,7 +845,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetSamplingRate();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100 aSetSamplingRate: ${result}`);
       expect(result).assertEqual(0)
@@ -859,7 +859,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetChannelCount();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100 aSetChannelCount: ${result}`);
       expect(result).assertEqual(0)
@@ -873,7 +873,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetSampleFormat();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100 aSetSampleFormat: ${result}`);
       expect(result).assertEqual(0)
@@ -887,7 +887,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetEncodingType();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100 aSetEncodingType: ${result}`);
       expect(result).assertEqual(0)
@@ -901,7 +901,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetLatencyMode();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100 aSetLatencyMode: ${result}`);
       expect(result).assertEqual(0)
@@ -915,7 +915,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetRendererInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100 aSetRendererInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -929,7 +929,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetCapturerInfo();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100 aSetCapturerInfo: ${result}`);
       expect(result).assertEqual(0)
@@ -943,7 +943,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetRendererCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100 aSetRendererCallback: ${result}`);
       expect(result).assertEqual(0)
@@ -957,7 +957,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetCapturerCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100 aSetCapturerCallback: ${result}`);
       expect(result).assertEqual(0)
@@ -973,7 +973,7 @@ export default function audioNDK() {
        * @tc.type      : Function
        * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetFrameSizeInCallback();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100 aSetFrameSizeInCallback: ${result}`);
       expect(result).assertEqual(0)
@@ -986,9 +986,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_GetVolume
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GETVOLUME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GETVOLUME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererGetVolume_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GETVOLUME_0100 audioRendererGetVolume: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1001,9 +1001,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0100 audioRendererSetVolume: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1016,9 +1016,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0200 audioRendererSetVolume: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1031,9 +1031,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0300 audioRendererSetVolume: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1046,9 +1046,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_04();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0400 audioRendererSetVolume fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1061,9 +1061,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_05();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0500 audioRendererSetVolume fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1076,9 +1076,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolume_06();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUME_0600 audioRendererSetVolume fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1091,9 +1091,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0100 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1106,9 +1106,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0200 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1121,9 +1121,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0300 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1136,9 +1136,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_04();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0400 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1151,9 +1151,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_05();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0500 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1166,9 +1166,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_06();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0600 audioRendererSetVolumeWithRamp: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1181,9 +1181,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_07();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0700 audioRendererSetVolumeWithRamp fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1196,9 +1196,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_08();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0800 audioRendererSetVolumeWithRamp fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1211,9 +1211,9 @@ export default function audioNDK() {
      * @tc.desc      : Validates the functionality of OH_AudioRenderer_SetVolume with AUDIOSTREAM_TYPE_RENDERER.WithRamp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetVolumeWithRamp_09();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETVOLUMEWITHRAMP_0900 audioRendererSetVolumeWithRamp fail: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1226,9 +1226,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0100 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1241,9 +1241,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0200 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1256,9 +1256,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0300 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1271,9 +1271,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_04();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0400 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1286,9 +1286,9 @@ export default function audioNDK() {
             * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
             * @tc.size      : MediumTest
             * @tc.type      : Function
-            * @tc.level     : Level0
+            * @tc.level     : Level 0
         */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_05();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0500 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1301,9 +1301,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_07();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1316,9 +1316,9 @@ export default function audioNDK() {
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetOnMarkReached_08();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0800 audioRendererSetOnMarkReached: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1331,9 +1331,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_CancelMark
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererCancelMark_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0100 audioRendererCancelMark: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1346,9 +1346,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_CancelMark
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererCancelMark_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0200 audioRendererCancelMark: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1361,9 +1361,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_CancelMark
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererCancelMark_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_MARKCANCAL_0300 audioRendererCancelMark: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1376,9 +1376,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetInterruptMode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetInterruptMode_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0100 audioRendererSetInterruptMode: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1391,9 +1391,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetInterruptMode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetInterruptMode_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0200 audioRendererSetInterruptMode: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1406,9 +1406,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetInterruptMode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetInterruptMode_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0300 audioRendererSetInterruptMode: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1421,9 +1421,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetInterruptMode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetInterruptMode_04();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETINTERRUPTMODE_0400 audioRendererSetInterruptMode: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1436,9 +1436,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioManager_GetAudioRoutingManager
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOROUTINGMANAGER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOROUTINGMANAGER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioManagerGetAudioRoutingManager_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOROUTINGMANAGER_0100 audioManagerGetAudioRoutingManager: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1451,9 +1451,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0100 audioRoutingManagerDevices result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1466,9 +1466,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0200 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1481,9 +1481,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_03();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0300 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1496,9 +1496,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_04();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0400 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1511,9 +1511,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_05();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0500 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1526,9 +1526,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_06();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0600 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1541,9 +1541,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_GetDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetDevices_07();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETDEVICES_0700 audioRoutingManagerDevice result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1558,7 +1558,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioManagerGetManager_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0001 audioManager result: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1573,7 +1573,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioManagerGetManager_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETMANAGER_0002 audioManagerGetManager_02: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1588,7 +1588,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioManagerGetAudioScene_01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0001 audioManagerGetAudioScene_01: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1603,7 +1603,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioManagerGetAudioScene_02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_GETAUDIOSCENE_0002 audioManagerGetAudioScene_02: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1618,7 +1618,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetAvailableDevices001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001 audioRoutingManagerGetAvailableDevices001: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1633,7 +1633,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetPreferredOutputDevice001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDOUTPUTDEVICE_0001 audioRoutingManagerGetPreferredOutputDevice001: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1648,7 +1648,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerGetPreferredInputDevice001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETPREFERREDINPUTDEVICE_0001 audioRoutingManagerGetPreferredInputDevice001: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1661,9 +1661,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0100 audioRoutingManagerSetMicBlockStatusCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1676,9 +1676,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_SetMicBlockStatusCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerSetMicBlockStatusCallback_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SET_MIC_BLOCK_STATUS_CALLBACK_0200 audioRoutingManagerSetMicBlockStatusCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1691,9 +1691,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0100 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1706,9 +1706,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0200 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1721,9 +1721,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0300 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1736,9 +1736,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_004();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0400 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1751,9 +1751,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_005();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0500 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1766,9 +1766,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_006();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0600 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1781,9 +1781,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_007();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0700 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1796,9 +1796,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_RegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerRegisterDeviceChangeCallback_008();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_REGISTERDEVICECHANGECALLBACK_0800 audioRoutingManagerRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1811,9 +1811,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_UnRegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerUnregisterDeviceChangeCallback_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0100 audioRoutingManagerUnRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1826,9 +1826,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_UnRegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerUnregisterDeviceChangeCallback_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0200 audioRoutingManagerUnRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1841,9 +1841,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_UnRegisterDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerUnregisterDeviceChangeCallback_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_UNREGISTERDEVICECHANGECALLBACK_0300 audioRoutingManagerUnRegisterDeviceChangeCallback: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1856,9 +1856,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_ReleaseDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerReleaseDevices_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0100 audioRoutingManagerReleaseDevices: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1871,9 +1871,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRoutingManager_ReleaseDevices
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRoutingManagerReleaseDevices_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_RELEASEDEVICES_0200 audioRoutingManagerReleaseDevices: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1886,9 +1886,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceType
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceType_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0100 audioAudioDeviceDescriptorGetDeviceType: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1901,9 +1901,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceType
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceType_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0200 audioAudioDeviceDescriptorGetDeviceType: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1916,9 +1916,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceType
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceType_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICETYPE_0300 audioAudioDeviceDescriptorGetDeviceType: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1931,9 +1931,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceRole
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceRole_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0100 audioAudioDeviceDescriptorGetDeviceRole: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1946,9 +1946,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceRole
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceRole_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0200 audioAudioDeviceDescriptorGetDeviceRole: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1961,9 +1961,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceRole
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceRole_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEROLE_0300 audioAudioDeviceDescriptorGetDeviceRole: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1976,9 +1976,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceId
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceId_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0100 audioAudioDeviceDescriptorGetDeviceId: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -1991,9 +1991,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceId
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceId_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0200 audioAudioDeviceDescriptorGetDeviceId: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2006,9 +2006,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceId
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceId_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEID_0300 audioAudioDeviceDescriptorGetDeviceId: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2021,9 +2021,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceName_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0100 audioAudioDeviceDescriptorGetDeviceName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2036,9 +2036,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceName_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0200 audioAudioDeviceDescriptorGetDeviceName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2051,9 +2051,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceName_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICENAME_0300 audioAudioDeviceDescriptorGetDeviceName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2066,9 +2066,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceAddress
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceAddress_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0100 audioAudioDeviceDescriptorGetDeviceAddress: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2081,9 +2081,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceAddress
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceAddress_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0200 audioAudioDeviceDescriptorGetDeviceAddress: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2096,9 +2096,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceAddress
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceAddress_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEADDRESS_0300 audioAudioDeviceDescriptorGetDeviceAddress: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2111,9 +2111,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceSampleRates
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceSampleRates_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0100 audioAudioDeviceDescriptorGetDeviceSampleRates: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2126,9 +2126,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceSampleRates
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceSampleRates_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0200 audioAudioDeviceDescriptorGetDeviceSampleRates: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2141,9 +2141,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceSampleRates
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceSampleRates_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0300 audioAudioDeviceDescriptorGetDeviceSampleRates: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2156,9 +2156,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceSampleRates
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceSampleRates_004();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICESAMPLERATES_0400 audioAudioDeviceDescriptorGetDeviceSampleRates: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2171,9 +2171,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceChannelCounts
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceChannelCounts_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0100 audioAudioDeviceDescriptorGetDeviceChannelCounts: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2186,9 +2186,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceChannelCounts
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceChannelCounts_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0200 audioAudioDeviceDescriptorGetDeviceChannelCounts: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2201,9 +2201,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceChannelCounts
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceChannelCounts_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0300 audioAudioDeviceDescriptorGetDeviceChannelCounts: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2216,9 +2216,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceChannelCounts
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceChannelCounts_004();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICECHANNELCOUNTS_0400 audioAudioDeviceDescriptorGetDeviceChannelCounts: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2231,9 +2231,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceDisplayName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceDisplayName_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0100 audioAudioDeviceDescriptorGetDeviceDisplayName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2246,9 +2246,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceDisplayName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceDisplayName_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0200 audioAudioDeviceDescriptorGetDeviceDisplayName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2261,9 +2261,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceDisplayName
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceDisplayName_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEDISPLAYNAME_0300 audioAudioDeviceDescriptorGetDeviceDisplayName: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2276,9 +2276,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceEncodingTypes
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceEncodingTypes_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0100 audioAudioDeviceDescriptorGetDeviceEncodingTypes: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2291,9 +2291,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceEncodingTypes
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceEncodingTypes_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0200 audioAudioDeviceDescriptorGetDeviceEncodingTypes: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2306,9 +2306,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceEncodingTypes
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceEncodingTypes_003();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0300 audioAudioDeviceDescriptorGetDeviceEncodingTypes: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2321,9 +2321,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioDeviceDescriptor_GetDeviceEncodingTypes
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioDeviceDescriptorGetDeviceEncodingTypes_004();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETDEVICEENCODINGTYPES_0400 audioAudioDeviceDescriptorGetDeviceEncodingTypes: ${result}`);
       expect(result).assertEqual(TEST_PASS)
@@ -2336,9 +2336,9 @@ export default function audioNDK() {
      * @tc.desc      : test Renderer Privacy with Internal Recording
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0003', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioInternalRecordingSuccess01();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0003 audioAudioInternalRecordingSuccess: ${result}`);
       expect(result).assertEqual(0)
@@ -2350,9 +2350,9 @@ export default function audioNDK() {
      * @tc.desc      : test Renderer Privacy with Internal Recording
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioInternalRecordingSuccess02();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004 audioAudioInternalRecordingSuccess: ${result}`);
       expect(result).assertEqual(0)
@@ -2365,9 +2365,9 @@ export default function audioNDK() {
      * @tc.desc      : test Renderer Privacy with Internal Recording
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioAudioInternalRecordingFalse();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005 audioAudioInternalRecordingFalse: ${result}`);
       expect(result).assertEqual(1)
@@ -2382,7 +2382,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_001();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100`,
         `audioStreamBuilderSetRendererWriteDataCallback_001: ${result}`);
@@ -2398,7 +2398,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_002();
       console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200`,
         `audioStreamBuilderSetRendererWriteDataCallback_002: ${result}`);
@@ -2407,98 +2407,120 @@ export default function audioNDK() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0100
      * @tc.name      : set rendererInterruptCallback with INVALID result after create a
      * @tc.desc      : test OH_AudioStreamBuilder_SetRendererInterruptCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetRendererInterruptCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK`,
-        `audioStreamBuilderSetRendererInterruptCallback: ${result}`);
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0100',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetRendererInterruptCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0100`,
+        `audioStreamBuilderSetRendererInterruptCallback_001: ${result}`);
       expect(result).assertEqual(0)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0200
+     * @tc.name      : set rendererInterruptCallback with INVALID result after create a
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererInterruptCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetRendererInterruptCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_INTERRUPT_CALLBACK_0200`,
+        `audioStreamBuilderSetRendererInterruptCallback_002: ${result}`);
+      expect(result).assertEqual(1)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK_0200
      * @tc.name      : set rendererErrorCallback with INVALID result after create a
      * @tc.desc      : test OH_AudioStreamBuilder_SetRendererErrorCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetRendererErrorCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK`,
-        `audioStreamBuilderSetRendererErrorCallback: ${result}`);
-      expect(result).assertEqual(0)
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetRendererErrorCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_RENDERER_ERROR_CALLBACK_0200`,
+        `audioStreamBuilderSetRendererErrorCallback_002: ${result}`);
+      expect(result).assertEqual(1)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK_0200
      * @tc.name      : set captureCallback after create audioStreamBuilder
      * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerReadDataCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetCapturerReadDataCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK`,
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerReadDataCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_READ_DATA_CALLBACK_0200`,
         `aSetCapturerReadDataCallback: ${result}`);
-      expect(result).assertEqual(0)
+      expect(result).assertEqual(1)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK_0200
      * @tc.name      : set captureDeviceChangeCallback after create audioStreamBuilder
      * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetCapturerDeviceChangeCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK`,
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerDeviceChangeCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_DEVICE_CHANGE_CALLBACK_0200`,
         `aSetCapturerCallback: ${result}`);
-      expect(result).assertEqual(0)
+      expect(result).assertEqual(1)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK_0200
      * @tc.name      : set captureInterruptCallback after create audioStreamBuilder
      * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
    */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetCapturerInterruptCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK`,
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK_0200',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerInterruptCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK_0200`,
         `aSetCapturerInterruptCallback: ${result}`);
-      expect(result).assertEqual(0)
+      expect(result).assertEqual(1)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_ERROR_CALLBACK_0200
      * @tc.name      : set captureErrorCallback after create audioStreamBuilder
      * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerErrorCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK', 0, async (done: Function) => {
-      let result = myaudioNdk.audioStreamBuilderSetCapturerErrorCallback();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_INTERRUPT_CALLBACK`,
+    it('SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_ERROR_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioStreamBuilderSetCapturerErrorCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_OH_STREAM_BUILDER_SET_CAPTURER_ERROR_CALLBACK_0200`,
         `aSetCapturerErrorCallback: ${result}`);
-      expect(result).assertEqual(0)
+      expect(result).assertEqual(1)
       done()
     })
 
@@ -2508,9 +2530,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioCapturerGetOverflowCount_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
         `audioCapturerGetOverflowCount_001: ${result}`);
@@ -2524,9 +2546,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStrategy_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0100`,
         `AudioSessionManagerStrategy_001: ${result}`);
@@ -2540,9 +2562,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStrategy_002();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0200`,
         `AudioSessionManagerStrategy_002: ${result}`);
@@ -2556,9 +2578,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStrategy_003();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0300`,
         `AudioSessionManagerStrategy_003: ${result}`);
@@ -2572,9 +2594,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStrategy_004();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategy_0400`,
         `AudioSessionManagerStrategy_004: ${result}`);
@@ -2588,9 +2610,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStrategyError_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStrategyError_0100`,
         `AudioSessionManagerStrategyError_001: ${result}`);
@@ -2605,9 +2627,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerActivatedError_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerActivatedError_0100`,
         `AudioSessionManagerActivatedError_001: ${result}`);
@@ -2621,9 +2643,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStopError_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0100`,
         `AudioSessionManagerStopError_001: ${result}`);
@@ -2637,9 +2659,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerStopError_002();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerStopError_0200`,
         `AudioSessionManagerStopError_002: ${result}`);
@@ -2653,9 +2675,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerRegisterError_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0100`,
         `AudioSessionManagerRegisterError_001: ${result}`);
@@ -2669,9 +2691,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerRegisterError_002();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerRegisterError_0200`,
         `AudioSessionManagerRegisterError_002: ${result}`);
@@ -2685,9 +2707,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerUnregisterError_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0100`,
         `AudioSessionManagerUnregisterError_001: ${result}`);
@@ -2702,9 +2724,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerUnregisterError_002();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerUnregisterError_0200`,
         `AudioSessionManagerUnregisterError_002: ${result}`);
@@ -2718,9 +2740,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerReason_001();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0100`,
         `AudioSessionManagerReason_001: ${result}`);
@@ -2734,9 +2756,9 @@ export default function audioNDK() {
      * @tc.desc      : test AudioSessionManagerStrategy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.AudioSessionManagerReason_002();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioSessionManagerReason_0200`,
         `AudioSessionManagerReason_002: ${result}`);
@@ -2750,9 +2772,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetDefaultOutputDevice_01();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0100`,
         `audioRendererSetDefaultOutputDevice_01: ${result}`);
@@ -2766,9 +2788,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetDefaultOutputDevice_02();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0200`,
         `audioRendererSetDefaultOutputDevice_02: ${result}`);
@@ -2782,9 +2804,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_AudioRenderer_SetDefaultOutputDevice
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300', 0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = myaudioNdk.audioRendererSetDefaultOutputDevice_03();
       console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_SetDefaultOutputDevice_0300`,
         `audioRendererSetDefaultOutputDevice_03: ${result}`);
@@ -2798,9 +2820,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_Audio format f32 normal
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let streamRendererUsageNum = 1; //AUDIOSTREAM_USAGE_MUSIC
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -2859,9 +2881,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_Audio format f32 normal
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200', Level.LEVEL0, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 32000;
@@ -2922,7 +2944,7 @@ export default function audioNDK() {
      * @tc.type      : Function
      * @tc.level     : Level1
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', Level.LEVEL1, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0300', 1, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;
@@ -2981,9 +3003,9 @@ export default function audioNDK() {
      * @tc.desc      : test OH_Audio format f32 latency mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 2
      */
-    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', Level.LEVEL2, async (done: Function) => {
+    it('SUM_MULTIMEDIA_AUDIO_OH_Audio_Format_F32_TEST_0400', 2, async (done: Function) => {
       let streamRendererUsageNum = 2; //AUDIOSTREAM_USAGE_VOICE_COMMUNICATION
       let streamSampleFormatNum = 4; //F32LE
       let streamSamplingRateNum = 48000;

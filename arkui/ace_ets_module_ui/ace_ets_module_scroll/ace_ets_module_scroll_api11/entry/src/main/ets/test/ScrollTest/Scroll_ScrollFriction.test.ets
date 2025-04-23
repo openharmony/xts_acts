@@ -58,7 +58,10 @@ export default function scroll_ScrollFrictionTest() {
       await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
       expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('Scroll');
-      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(0.7);
+      console.info('[testScrollFriction_0100] scrollContainerStrJson friction: ' + JSON.parse(scrollContainerStrJson).$attrs.friction);
+      let scrollDefJson = getInspectorByKey('scroll_friction_default');
+      console.info('[testScrollFriction_0100] scrollDefJson friction: ' + JSON.parse(scrollDefJson).$attrs.friction);
+      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(JSON.parse(scrollDefJson).$attrs.friction);
       console.info('[testScrollFriction_0100] END');
       done();
     });

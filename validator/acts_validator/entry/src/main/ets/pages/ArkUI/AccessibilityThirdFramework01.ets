@@ -17,15 +17,13 @@ let params = LocalStorage.getShared();
 struct AccessibilityThirdFramework {
   @State FillColor: string = '#FF000000';
   @State name: string = 'AccessibilityThirdFramework01';
-  @State StepTips: string = '设备支持屏幕朗读时\n' + '操作步骤:\n' + '1、从SubWind组件开始依次从上到下滑动观察屏幕朗读情况\n'+'\n'+
-    '预期结果：1、绿框绘制在组件上，屏幕朗读朗读”button1xcomponentId1“\n' +
-    '2、绿框绘制在组件上，屏幕朗读朗读“button2xcomponentId1”\n' +
-    '3、绿框绘制在组件上，屏幕朗读朗读“button3xcomponentId1”\n' +
-    '4、绿框绘制在组件上，屏幕朗读朗读“text1xcomponentId1”\n' +
-    '5、绿框绘制在组件上，屏幕朗读朗读“text2xcomponentId1”\n' +
-    '6、绿框绘制在组件上，屏幕朗读朗读“text3xcomponentId1”\n' +
-    '6、绿框绘制在组件上，屏幕朗读朗读“button1xcomponentId2”';
-  @State Vue: boolean = false;
+  @State StepTips: string = '测试目的：验证ArkUI无障碍支持多实例\n' +
+    '\n' +
+    '操作步骤：开启屏幕朗读，点击SubWind按钮，单指连续下滑到end按钮结束。\n' +
+    '\n' +
+    '预期结果：\n' +
+    '若支持屏幕朗读，则下滑期间绿框会在两个灰色区域中绘制。若不支持屏幕朗读，直接按照失败处理走豁免。';
+  @State Vue: boolean = true;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
@@ -156,40 +154,11 @@ struct AccessibilityThirdFramework {
       .justifyContent(FlexAlign.SpaceBetween)
 
       Column({ space: 12 }) {
-        Row() {
-          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({ top: 20 })
-        }
-
-        Row() {
-          Column() {
-            Button(`不支持`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('30%')
-              .enabled(!this.yesEnable)
-              .opacity(!this.yesEnable ? 1 : 0.4)
-              .onClick(async () => {
-                this.Vue = true
-              })
-          }
-
-          Column() {
-            Button(`支持`)
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .width('30%')
-              .onClick(async () => {
-                this.yesEnable = true
-                this.onAccessibilityHoverEnable = true
-                this.Vue = true
-              })
-          }
-        }
-
         // 业务代码
         Column() {
-          Button('SubWnd').onClick(()=>{
-            this.mainWindow?.createSubWindowWithOptions('Modal', {title: 'SubWindow', decorEnabled:true, isModal:true});
+          Button('SubWnd').onClick(() => {
+            this.mainWindow?.createSubWindowWithOptions('Modal',
+              { title: 'SubWindow', decorEnabled: true, isModal: true });
           })
           XComponent({
             id: 'xcomponentId1',
@@ -203,9 +172,10 @@ struct AccessibilityThirdFramework {
             .focusable(true)
             .focusOnTouch(true)
             .backgroundColor(Color.Gray)
-
             .width('100%')
-            .height('50%')
+            .height('30%')
+            .margin({ bottom: 10 })
+
           XComponent({
             id: 'xcomponentId2',
             type: XComponentType.SURFACE,
@@ -220,7 +190,9 @@ struct AccessibilityThirdFramework {
             .backgroundColor(Color.Gray)
 
             .width('100%')
-            .height('50%')
+            .height('30%')
+
+          Button('end')
         }
         .focusable(true)
         .defaultFocus(true)

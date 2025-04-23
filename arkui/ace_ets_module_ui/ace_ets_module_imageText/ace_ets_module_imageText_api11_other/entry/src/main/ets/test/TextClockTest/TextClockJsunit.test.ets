@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function TextClockJsunit() {
       done();
     });
 
-    it('TextClock_0100', 0, async (done: Function) => {
+    it('TextClock_0100', Level.LEVEL2, async (done: Function) => {
       // Get the information of TextClock component
       console.info('[TextClock_0100] START');
       let strJson = getInspectorByKey('textClock');
@@ -65,7 +65,7 @@ export default function TextClockJsunit() {
       done();
     });
 
-    it('TextClock_0200', 0, async (done: Function) => {
+    it('TextClock_0200', Level.LEVEL2, async (done: Function) => {
       // Modify the attribute of TextClock component
       console.info('[TextClock_0200] START');
       globalThis.value.message.notify({name:'timeZoneOffset',value:8})
@@ -83,7 +83,7 @@ export default function TextClockJsunit() {
       done();
     });
 
-    it('TextClock_0300', 0, async (done: Function) => {
+    it('TextClock_0300', Level.LEVEL2, async (done: Function) => {
       // Verify the functions of the button of start
       console.info('[TextClock_0300] START');
 
