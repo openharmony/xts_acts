@@ -14,8 +14,12 @@
  */
 import datePickerMode from './datePicker/DatePickerMode.test';
 import TimePickerStartAndEnd from './timePicker/timePickerStartAndEnd.test';
+import textPickerSelectedAreaTest from './textPicker/textPickerSelectedArea.test';
+import timePickerSelectedAreaTest from './timePicker/timePickerSelectedArea.test';
 
 export default function testsuite() {
     datePickerMode()
     TimePickerStartAndEnd();
+    textPickerSelectedAreaTest();
+    timePickerSelectedAreaTest();
 }
