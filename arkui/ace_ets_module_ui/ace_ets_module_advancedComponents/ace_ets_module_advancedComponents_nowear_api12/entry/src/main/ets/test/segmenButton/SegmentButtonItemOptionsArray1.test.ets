@@ -31,21 +31,21 @@ export default function SegmentButtonItemOptionsArray1() {
         router.clear();
         let pages = router.getState();
         console.info("get current pages:" + JSON.stringify(pages));
-        if (!("ButtonItemOptionsArray1" == pages.name)) {
-          console.info("get ButtonItemOptionsArray1 pages.name:" + JSON.stringify(pages.name));
+        if (!("SegmentButtonItemOptionsArray1" == pages.name)) {
+          console.info("get SegmentButtonItemOptionsArray1 pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push ButtonItemOptionsArray1 page result:" + JSON.stringify(result));
+          console.info("push SegmentButtonItemOptionsArray1 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ButtonItemOptionsArray1 page error:" + err);
+        console.error("push SegmentButtonItemOptionsArray1 page error:" + err);
       }
-      console.info("ButtonItemOptionsArray1 beforeEach end");
+      console.info("SegmentButtonItemOptionsArray1 beforeEach end");
       done();
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("ButtonItemOptionsArray1 after each called");
+      console.info("SegmentButtonItemOptionsArray1 after each called");
     });
 
     /**
@@ -56,8 +56,8 @@ export default function SegmentButtonItemOptionsArray1() {
      * @tc.type
      * @tc.size
      */
-       it('ButtonItemOptionsArray1_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-       console.info('[ButtonItemOptionsArray1_001] START');
+       it('SegmentButtonItemOptionsArray1_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[SegmentButtonItemOptionsArray1_001] START');
        await CommonFunc.sleep(2000);
        let driver: Driver = Driver.create();
        let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray101"));
@@ -74,9 +74,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-       console.info("[ButtonItemOptionsArray1_001] component obj is: " + JSON.stringify(obj));
+       console.info("[SegmentButtonItemOptionsArray1_001] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('2');
-       console.info('[ButtonItemOptionsArray1_001] END');
+       console.info('[SegmentButtonItemOptionsArray1_001] END');
        done();
      });
 
@@ -89,8 +89,8 @@ export default function SegmentButtonItemOptionsArray1() {
       * @tc.type
       * @tc.size
       */
-           it('ButtonItemOptionsArray1_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-       console.info('[ButtonItemOptionsArray1_002] START');
+           it('SegmentButtonItemOptionsArray1_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[SegmentButtonItemOptionsArray1_002] START');
        await CommonFunc.sleep(2000);
        let driver: Driver = Driver.create();
        let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray102"));
@@ -107,9 +107,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-       console.info("[ButtonItemOptionsArray1_002] component obj is: " + JSON.stringify(obj));
+       console.info("[SegmentButtonItemOptionsArray1_002] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('4');
-       console.info('[ButtonItemOptionsArray1_002] END');
+       console.info('[SegmentButtonItemOptionsArray1_002] END');
        done();
      });
 
@@ -121,8 +121,8 @@ export default function SegmentButtonItemOptionsArray1() {
       * @tc.type
       * @tc.size
       */
-           it('ButtonItemOptionsArray1_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-       console.info('[ButtonItemOptionsArray1_003] START');
+           it('SegmentButtonItemOptionsArray1_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[SegmentButtonItemOptionsArray1_003] START');
        await CommonFunc.sleep(2000);
        let driver: Driver = Driver.create();
        let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray103"));
@@ -139,9 +139,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-       console.info("[ButtonItemOptionsArray1_003] component obj is: " + JSON.stringify(obj));
+       console.info("[SegmentButtonItemOptionsArray1_003] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('push');
-       console.info('[ButtonItemOptionsArray1_003] END');
+       console.info('[SegmentButtonItemOptionsArray1_003] END');
        done();
      }) 
 
@@ -153,8 +153,8 @@ export default function SegmentButtonItemOptionsArray1() {
       * @tc.type
       * @tc.size
       */
-      it('ButtonItemOptionsArray1_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-       console.info('[ButtonItemOptionsArray1_004] START');
+      it('SegmentButtonItemOptionsArray1_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[SegmentButtonItemOptionsArray1_004] START');
        await CommonFunc.sleep(2000);
        let driver: Driver = Driver.create();
        let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray104"));
@@ -171,9 +171,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-       console.info("[ButtonItemOptionsArray1_004] component obj is: " + JSON.stringify(obj));
+       console.info("[SegmentButtonItemOptionsArray1_004] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('unshift');
-       console.info('[ButtonItemOptionsArray1_003] END');
+       console.info('[SegmentButtonItemOptionsArray1_003] END');
        done();
      });
  /**
@@ -184,8 +184,8 @@ export default function SegmentButtonItemOptionsArray1() {
       * @tc.type
       * @tc.size
       */
-     it('ButtonItemOptionsArray1_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-       console.info('[ButtonItemOptionsArray1_005] START');
+     it('SegmentButtonItemOptionsArray1_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+       console.info('[SegmentButtonItemOptionsArray1_005] START');
        await CommonFunc.sleep(2000);
        let driver: Driver = Driver.create();
        let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray105"));
@@ -202,9 +202,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-       console.info("[ButtonItemOptionsArray1_005] component obj is: " + JSON.stringify(obj));
+       console.info("[SegmentButtonItemOptionsArray1_005] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('splice1');
-       console.info('[ButtonItemOptionsArray1_005] END');
+       console.info('[SegmentButtonItemOptionsArray1_005] END');
        done();
      });
      /**
@@ -215,8 +215,8 @@ export default function SegmentButtonItemOptionsArray1() {
       * @tc.type
       * @tc.size
       */
-    it('ButtonItemOptionsArray1_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[ButtonItemOptionsArray1_006] START');
+    it('SegmentButtonItemOptionsArray1_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[SegmentButtonItemOptionsArray1_006] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id("SegmentButtonItemOptionsArray106"));
@@ -233,9 +233,9 @@ export default function SegmentButtonItemOptionsArray1() {
         .$children[0]
         .$children[0]
         .$children[0];
-      console.info("[ButtonItemOptionsArray1_006] component obj is: " + JSON.stringify(obj));
+      console.info("[SegmentButtonItemOptionsArray1_006] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.content).assertEqual('a');
-      console.info('[ButtonItemOptionsArray1_006] END');
+      console.info('[SegmentButtonItemOptionsArray1_006] END');
       done();
     });
   })
