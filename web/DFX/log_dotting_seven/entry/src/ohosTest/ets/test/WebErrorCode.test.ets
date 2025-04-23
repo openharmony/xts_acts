@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -113,6 +113,20 @@ export default function webErrorCode() {
       Utils.emitEvent('testLoadUrlWithHeadersError003', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testLoadUrlWithHeadersError003', '17100003', 2025042209, done);
+      sendEventByKey('ErrorCodeTestSuiteButton', 10, '');
+    })
+    /*
+    * @tc.number     : SUB_WEB_ERRORCODE_SSLERRORHANDLER_0100
+    * @tc.name       : testSslErrorHandler001
+    * @tc.desc       : test sslErrorHandler
+    * @tc.size       : MEDIUM
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testSslErrorHandler001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      Utils.emitEvent('testSslErrorHandler001', 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent('testSslErrorHandler001', 1, 2025042210, done);
       sendEventByKey('ErrorCodeTestSuiteButton', 10, '');
     })
 

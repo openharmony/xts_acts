@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -52,7 +52,8 @@ struct Index {
   @State ports: webView.WebMessagePort[] = [];
   @State testObj: testObj = new testObj();
   @State errorCode: string = '0';
-  no_error: string = "no error happened"
+  @State isSslErrorHandlerComplete: number = 0;
+  no_error: string = 'no error happened';
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -163,6 +164,20 @@ struct Index {
               }
               break;
             }
+            case 'testSslErrorHandler001': {
+              try {
+                this.controller.loadUrl('https://expired.badssl.com');
+                await waitForExist(()=>this.isSslErrorHandlerComplete, this.str, 1);
+                let check = (v1:number, v2:number): boolean => {
+                  return v1 == v2 ? true:false;
+                }
+                await waitForAssert(()=>this.isSslErrorHandlerComplete, check, 1, 2025042210, this.str);
+              } catch (error) {
+                let e: business_error.BusinessError = error as business_error.BusinessError;
+                console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+              }
+              break;
+            }
 
           }
         })
@@ -171,6 +186,20 @@ struct Index {
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .javaScriptAccess(this.javaScriptAccess)
         .zoomAccess(false)
+        .onSslErrorEvent((event: SslErrorEvent) => {
+          if (event) {
+            console.log('onSslErrorEvent url: ' + event.url);
+            console.log('onSslErrorEvent error: ' + event.error);
+            console.log('onSslErrorEvent originalUrl: ' + event.originalUrl);
+            console.log('onSslErrorEvent referrer: ' + event.referrer);
+            console.log('onSslErrorEvent isFatalError: ' + event.isFatalError);
+            console.log('onSslErrorEvent isMainFrame: ' + event.isMainFrame);
+            console.log('onSslErrorEvent handler: ' + event.handler);
+            if (event.handler) {
+              this.isSslErrorHandlerComplete = 1;
+            }
+          }
+        })
     }
   }
 }
