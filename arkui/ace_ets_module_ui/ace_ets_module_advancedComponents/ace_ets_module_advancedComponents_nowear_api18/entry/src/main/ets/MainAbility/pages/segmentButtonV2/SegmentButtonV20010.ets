@@ -19,7 +19,8 @@ import { ImageModifier, TextModifier, SymbolGlyphModifier } from '@ohos.arkui.mo
 @Entry
 @ComponentV2
 struct SegmentButtonV20010 {
-  @Local selectedIndex: number = 0
+  @Local selectedIndex0: number = 0
+  @Local selectedIndex1: number = 0
   @Local items: SegmentButtonV2Items = new SegmentButtonV2Items([
     {
       text: '搜索',
@@ -90,7 +91,8 @@ struct SegmentButtonV20010 {
   @Local segItem4: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
       text: '关闭4',
-      icon: $r('sys.media.ohos_ic_public_close'),
+      symbol: $r('sys.symbol.fade'),
+      symbolModifier: new SymbolGlyphModifier().fontWeight(FontWeight.Bolder),
       accessibilityText: '关闭4',
       accessibilityDescription: '关闭4按钮',
       accessibilityLevel: 'yes'
@@ -106,20 +108,24 @@ struct SegmentButtonV20010 {
 
   build() {
     Column() {
+      Text(this.selectedIndex0.toString())
+        .id('tvIndex0')
+      Text(this.selectedIndex1.toString())
+        .id('tvIndex1')
       TabSegmentButtonV2({
         items: this.items,
-        selectedIndex: this.selectedIndex,
+        selectedIndex: this.selectedIndex0,
         $selectedIndex: (selectedIndex) => {
-          this.selectedIndex = this.selectedIndex
+          this.selectedIndex0 = selectedIndex
         },
         itemMinFontScale: 0.1,
         itemMaxFontScale: 1
       })
       TabSegmentButtonV2({
         items: this.segItems,
-        selectedIndex: this.selectedIndex,
+        selectedIndex: this.selectedIndex1,
         onItemClicked: (index: number) => {
-          this.selectedIndex = index
+          this.selectedIndex1 = index
         }
       })
     }
