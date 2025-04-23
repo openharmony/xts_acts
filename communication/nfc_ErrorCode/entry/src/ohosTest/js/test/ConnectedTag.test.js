@@ -64,8 +64,10 @@ export default function ConnectedTagErrorTest() {
                     console.error(`initialize failed, code is ${error.code}, message is ${error.message}`)
                     if(error.code==801){
                         expect(true).assertTrue();
+                    }else{
+                        expect(error.code).assertEqual(201);
                     }
-                    expect(error.code).assertEqual(201);
+                    
                 }
             }
         })
@@ -92,8 +94,9 @@ export default function ConnectedTagErrorTest() {
                     console.error(`uninitialize failed, code is ${error.code}, message is ${error.message}`)
                     if(error.code==801){
                         expect(true).assertTrue();
+                    }else{
+                        expect(error.code).assertEqual(201);
                     }
-                    expect(error.code).assertEqual(201);
                 }
             }
         })
@@ -123,8 +126,9 @@ export default function ConnectedTagErrorTest() {
                         console.error(`read promise failed,code is ${error.code}, message is ${error.message}`)
                         if(error.code==801){
                             expect(true).assertTrue();
+                        }else{
+                            expect(error.code).assertEqual(201);
                         }
-                        expect(error.code).assertEqual(201);
                     }
                 })()
             }
@@ -154,9 +158,10 @@ export default function ConnectedTagErrorTest() {
                             if (error) {
                                 console.error(`read callback failed,code is ${error.code}, message is ${error.message}`)
                                 if(error.code==801){
-                                    expect(true).assertEqual(801);
+                                    expect(true).assertTrue();
+                                }else{
+                                    expect(error.code).assertEqual(201);
                                 }
-                                expect(error.code).assertEqual(201);
                                 return;
                             } 
                             console.info("[connectedTag read callback successful:]"+JSON.stringify(data))
@@ -166,8 +171,9 @@ export default function ConnectedTagErrorTest() {
                     console.error(`read callback failed,code is ${error.code}, message is ${error.message}`)
                     if(error.code==801){
                         expect(true).assertTrue();
+                    }else{
+                        expect(error.code).assertEqual(201);
                     }
-                    expect(error.code).assertEqual(201);
                 }
             }
             done();
@@ -199,8 +205,9 @@ export default function ConnectedTagErrorTest() {
                         console.error(`write promise failed,code is ${error.code}, message is ${error.message}`)
                         if(error.code==801){
                             expect(true).assertTrue();
+                        }else{
+                            expect(error.code).assertEqual(201);
                         }
-                        expect(error.code).assertEqual(201);
                     }
                 })()
             }
@@ -230,9 +237,10 @@ export default function ConnectedTagErrorTest() {
                             if (error) {
                                 console.error(`write callback failed,code is ${error.code}, message is ${error.message}`)
                                 if(error.code==801){
-                                    expect(true).assertEqual(801);
+                                    expect(true).assertTrue();
+                                }else{
+                                    expect(error.code).assertEqual(201);
                                 }
-                                expect(error.code).assertEqual(201);
                                 return;
                             } 
                             console.info("[connectedTag write callback successful:]"+JSON.stringify(data))
@@ -242,8 +250,9 @@ export default function ConnectedTagErrorTest() {
                     console.error(`write callback failed,code is ${error.code}, message is ${error.message}`)
                     if(error.code==801){
                         expect(true).assertTrue();
+                    }else{
+                        expect(error.code).assertEqual(201);
                     }
-                    expect(error.code).assertEqual(201);
                 }
             }
             done();
@@ -273,6 +282,8 @@ export default function ConnectedTagErrorTest() {
                     console.error(`write promise failed,code is ${error.code}, message is ${error.message}`);
                     if(error.code==401){
                         expect(true).assertTrue();
+                    }else{
+                        expect().assertFail();
                     }
                 });
             }
@@ -300,6 +311,8 @@ export default function ConnectedTagErrorTest() {
                         console.info("[connectedTag write callback error]" + err);
                         if(err.code==401){
                             expect(true).assertTrue();
+                        }else{
+                            expect().assertFail();
                         }
                         done();
                     } else {
