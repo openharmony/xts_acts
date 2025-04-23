@@ -65,7 +65,7 @@ let connOpt: socket.TLSConnectOptions = {
   },
   ALPNProtocols: ["spdy/1", "http/1.1"],
   proxy: {
-    type: 0,
+    type: socket.ProxyTypes.NONE,
     username: 'name1',
     password: 'password1',
     address: {
@@ -940,7 +940,7 @@ export default function SocketErrorCodeTest01() {
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           proxy: {
-            type: 1,
+            type: socket.ProxyTypes.SOCKS5,
             address: {
               address: '127.0.0.1',
               port: 12346
