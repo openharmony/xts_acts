@@ -19,7 +19,6 @@ import type common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import certManagerDialog from '@ohos.security.certManagerDialog';
 import * as commonParameter from './utils/common/common_parameter';
-import deviceInfo from '@ohos.deviceInfo';
 
 export default function certManagerPubCertJsAPIFunctionTestUnitThree() {
   describe('certManagerPubCertJsAPIFunctionTestUnitThree', () => {
