@@ -884,6 +884,9 @@ struct WebComponent {
           <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
           <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
+            <video id='video10' muted controls onplay="handlePlay(10);" onended="handleEnded(10);">
+          <source src="https://www.w3cschool.cn/statics/demosource/movie.mp4" type='video/mp4'>
+          <p>Your user agent does not support the HTML5 Video element.</p>
       </body>
       </html>`;
 
@@ -1033,6 +1036,8 @@ struct WebComponent {
               this.controller.runJavaScript('playById("video8")')
               await Utils.sleep(1000)
               this.controller.runJavaScript('playById("video9")')
+              await Utils.sleep(1000)
+              this.controller.runJavaScript('playById("video10")')
               await Utils.sleep(1000)
               break;
             }
