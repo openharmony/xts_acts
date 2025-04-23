@@ -203,7 +203,7 @@ export default function audioRendererChange() {
      * @tc.level     : Level 0
      */
     it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+      let cb1: Callback<audio.AudioCapturerChangeInfoArray> =() =>{
         console.info('Current callback is cb1');
       }
       audioStreamManager.on('audioCapturerChange',cb1);
@@ -229,7 +229,7 @@ export default function audioRendererChange() {
      * @tc.level     : Level 0
      */
     it('SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let cb1: Callback<audio.AudioRendererChangeInfoArray> =() =>{
+      let cb1: Callback<audio.AudioCapturerChangeInfoArray> =() =>{
         console.info('Current callback is cb1');
       }
       audioStreamManager.on('audioCapturerChange',cb1);
