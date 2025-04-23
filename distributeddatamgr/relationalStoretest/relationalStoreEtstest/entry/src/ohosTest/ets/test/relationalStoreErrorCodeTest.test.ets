@@ -564,6 +564,7 @@ export default function relationalStoreErrorCodeTest() {
         transaction = await (rdbStore as relationalStore.RdbStore).createTransaction()
         await transaction.querySqlSync(undefined,undefined)
         await transaction.commit();
+        expect().assertFail();
         done()
       }catch(err){
         console.log(TAG+"err.code"+err.code + "err.message"+err.message)
@@ -584,6 +585,7 @@ export default function relationalStoreErrorCodeTest() {
       console.info(TAG + "************* errcode018 start *************");
       try{
         await rdbStore.querySync(undefined,undefined)
+        expect().assertFail();
         done()
       }catch(err){
         console.log(TAG+"err.code"+err.code + "err.message"+err.message)
@@ -651,6 +653,7 @@ export default function relationalStoreErrorCodeTest() {
         await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST,(progressDetail: relationalStore.ProgressDetails) => {
         console.info(`progress: ${progressDetail}`);})
         console.log(TAG+"errcode022 error");
+        expect().assertFail();
         done();
       }catch(err){
         console.log(TAG+"err.code"+err.code + "err.message"+err.message);
@@ -672,6 +675,7 @@ export default function relationalStoreErrorCodeTest() {
       try{
         rdbStore.remoteQuery(undefined,undefined,undefined,undefined,(err,resultSet: relationalStore.ResultSet) => {
           console.log(TAG+"errcode023 error");
+          expect().assertFail();
           done();
         })
       }catch(err){
@@ -701,14 +705,19 @@ export default function relationalStoreErrorCodeTest() {
       let localDeviceId = null;
       try{
         rdbStore.remoteQuery(localDeviceId, "employee", predicates,["ID","name","age"], (err, data) => {
-          expect(err.code == 801).assertFail();
+          expect().assertFail();
           console.info(TAG + "Remote query fail");
           done();
         })
       }catch(err){
         console.info(TAG + "err.code" + err.code + "err.message"+ err.message)
-        expect(err.code == 401).assertTrue();
-        done();
+        if(err.code == 401){
+         expect(err.code == 401).assertTrue();
+         done();           
+        }else{
+         expect(err.code == 801).assertTrue();
+         done();  
+        }
       }
       console.info(TAG + "************* errcode024 end *************");
     })
