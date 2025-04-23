@@ -102,7 +102,8 @@ struct WebViewEnumAndFontLibrary {
   WebResult: WebContextMenuResult = new WebContextMenuResult;
   @State SourceTypeArr:ContextMenuSourceType[] = [ContextMenuSourceType.None,ContextMenuSourceType.Mouse,ContextMenuSourceType.LongPress]
   @State MediaTypeArr:ContextMenuMediaType[] = [ContextMenuMediaType.None,ContextMenuMediaType.Image]
-  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other	]
+  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,
+  ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other	]
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
