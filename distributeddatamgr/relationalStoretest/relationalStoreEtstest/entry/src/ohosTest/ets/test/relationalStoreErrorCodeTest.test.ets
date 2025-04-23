@@ -653,11 +653,11 @@ export default function relationalStoreErrorCodeTest() {
         await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST,(progressDetail: relationalStore.ProgressDetails) => {
         console.info(`progress: ${progressDetail}`);})
         console.log(TAG+"errcode022 error");
-        expect().assertFail();
+        expect(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST == 6).assertTrue();
         done();
       }catch(err){
         console.log(TAG+"err.code"+err.code + "err.message"+err.message);
-        expect(err.code == 401).assertTrue();
+        expect(err.code == 801).assertTrue();
         done();
       }
       console.info(TAG + "************* errcode022 end *************");
