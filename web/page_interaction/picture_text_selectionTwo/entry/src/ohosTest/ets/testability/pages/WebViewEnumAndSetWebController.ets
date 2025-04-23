@@ -64,6 +64,7 @@ struct WebViewEnumAndSetWebController {
   dialogController: CustomDialogController | null = null
   popController: webView.WebviewController | null = null;
   controller: webView.WebviewController = new webView.WebviewController();
+  @State SourceTypeArr:ContextMenuSourceType[] = [ContextMenuSourceType.None,ContextMenuSourceType.Mouse,ContextMenuSourceType.LongPress]
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -164,7 +165,7 @@ struct WebViewEnumAndSetWebController {
             event.result.closeContextMenu()
             if (this.mouse) {
               console.info("onContextMenuShow getSourceType = " + event.param.getSourceType())
-              Utils.emitEvent(event.param.getSourceType(), 1981)
+              Utils.emitEvent(this.SourceTypeArr[event.param.getSourceType()], 1981)
             } else {
               Utils.emitEvent(event.param.getMediaType(), 882)
             }
