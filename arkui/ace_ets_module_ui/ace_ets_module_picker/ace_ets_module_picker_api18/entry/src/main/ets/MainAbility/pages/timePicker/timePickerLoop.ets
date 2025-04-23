@@ -1,7 +1,7 @@
 @Entry
 @Component
 struct TimePickerLoopExample {
-  @State isLoop: boolean = true
+  @State isLoop: boolean | undefined = true
   private selectedTime: Date = new Date('2022-07-22T12:00:00')
 
   build() {

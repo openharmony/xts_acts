@@ -58,7 +58,7 @@ export default function timePickerLoopTest() {
       await Utils.sleep(1000);
 
       let timePicker = await driver.findComponent(ON.id('timePicker'));
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(timePicker);
       console.info('timePickerLoopTest_001 component obj is: ' + obj.$attrs.loop);
       expect(obj.$attrs.loop).assertEqual('true');
       console.info('[timePickerLoopTest_001] END');
@@ -82,7 +82,7 @@ export default function timePickerLoopTest() {
       await Utils.sleep(1000);
 
       let timePicker = await driver.findComponent(ON.id('timePicker'));
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(timePicker);
       console.info('timePickerLoopTest_002 component obj is: ' + obj.$attrs.loop);
       expect(obj.$attrs.loop).assertEqual('false');
       console.info('[timePickerLoopTest_002] END');
@@ -106,7 +106,7 @@ export default function timePickerLoopTest() {
       await Utils.sleep(1000);
 
       let timePicker = await driver.findComponent(ON.id('timePicker'));
-      let obj: ESObject = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(timePicker);
       console.info('timePickerLoopTest_003 component obj is: ' + obj.$attrs.loop);
       expect(obj.$attrs.loop).assertEqual('true');
       console.info('[timePickerLoopTest_003] END');
