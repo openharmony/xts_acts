@@ -80,7 +80,7 @@ export default function startAbilityForResultTwoTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -169,7 +169,7 @@ export default function startAbilityForResultTwoTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_LIFE_CYCLE') {
               testNum02++
             }
