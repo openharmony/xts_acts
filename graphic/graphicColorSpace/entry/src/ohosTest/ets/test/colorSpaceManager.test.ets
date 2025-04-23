@@ -244,5 +244,45 @@ export default function colorSpaceManagerTest(context: common.UIAbilityContext, 
       }
     })
 
+    /**
+     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_009
+     * @tc.name Test createcolorspacemanager_Test_009
+     * @tc.desc test the interface of create
+     */
+    it('SUB_GRAPHIC_CREATE_JSAPI_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('test createcolorspacemanager begin');
+      try {
+        expect(26).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
+        let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.H_LOG);
+        expect(colorSpace != null).assertTrue();
+        let colorSpaceName = colorSpace.getColorSpaceName();
+        console.info("the name is " + colorSpaceName);
+        expect(colorSpaceName).assertEqual(colorSpaceManager.ColorSpace.H_LOG);
+        done();
+      } catch (err) {
+        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
+        expect.assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_010
+     * @tc.name Test createcolorspacemanager_Test_010
+     * @tc.desc test the interface of create
+     */
+    it('SUB_GRAPHIC_CREATE_JSAPI_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('test createcolorspacemanager begin');
+      try {
+        let colorSpace = colorSpaceManager.create(null);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.log('test enum value of ColorSpace Manager error ' + JSON.stringify(err));
+        expect(401).assertEqual(err.code);
+        done();
+      }
+    })
+
   })
 }
