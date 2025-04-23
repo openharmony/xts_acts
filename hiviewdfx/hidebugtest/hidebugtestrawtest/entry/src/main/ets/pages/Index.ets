@@ -12,21 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
     }
-  },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
+    .height('100%')
+  }
 }

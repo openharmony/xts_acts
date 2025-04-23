@@ -13,20 +13,12 @@
  * limitations under the License.
  */
 {
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
-    }
-  },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "entry",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }

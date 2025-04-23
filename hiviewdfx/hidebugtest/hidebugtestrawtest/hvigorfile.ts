@@ -12,21 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
-    }
-  },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { appTasks } from '@ohos/hvigor-ohos-plugin';

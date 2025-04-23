@@ -13,20 +13,30 @@
  * limitations under the License.
  */
 {
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
-    }
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 18,
+        "compatibleSdkVersion": 12,
+      }
+    ]
   },
-  "targets": [
+  "modules": [
     {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }
