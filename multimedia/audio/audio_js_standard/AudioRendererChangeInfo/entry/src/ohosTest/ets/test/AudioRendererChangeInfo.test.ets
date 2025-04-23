@@ -101,14 +101,6 @@ export default function audioRendererChange() {
       console.info(`${Tag} : afterAll: Test suite-level cleanup condition`);
     })
     /**
-     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_ON_AUDIORENDERERCHANGE_0100
-     * @tc.name      : AudioRendererChange 
-     * @tc.desc      : AudioRendererChange
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - ON_STATE_PREPARED
      * @tc.desc      : AudioRendererChange - ON_STATE_PREPARED
