@@ -52,6 +52,9 @@ struct ArkUI_Node {
     void* altDrawableDescriptor = nullptr;
     ArkUI_AttributeItem* areaChangeRadio = nullptr;
     void* transitionOption = nullptr;
+    void* progressLinearStyle = nullptr;
+    void* visibleAreaEventOptions = nullptr;
+    bool isBindNative = false;
 };
 
 struct ArkUI_Context {
