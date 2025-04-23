@@ -16,7 +16,7 @@
 
 import tag from '@ohos.nfc.tag';
 import controller from '@ohos.nfc.controller';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -50,9 +50,9 @@ export default function nfcControllerTest() {
          * @tc.desc Register the NFC switch status event and enable the NFC switch.
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_COMMUNICATION_NFC_Cont_0100', 0, function () {
+        it('SUB_COMMUNICATION_NFC_Cont_0100', Level.LEVEL0, function () {
             let NFC_STATE_NOTIFY = "nfcStateChange";
             let recvNfcStateNotifyFunc = result => {
                 console.info("[NFC_test] controller1 nfc state receive state ->" + result);
@@ -68,9 +68,9 @@ export default function nfcControllerTest() {
          * @tc.desc Check whether the NFC function is enabled.
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_COMMUNICATION_NFC_Cont_0200', 0, function ()  {
+        it('SUB_COMMUNICATION_NFC_Cont_0200', Level.LEVEL0, function ()  {
             let nfcisAvailable = controller.isNfcAvailable();
             console.info('[NFC_test] controller2 Nfc Available ->' + JSON.stringify(nfcisAvailable));
             expect(nfcisAvailable).assertTrue();
@@ -82,9 +82,9 @@ export default function nfcControllerTest() {
          * @tc.desc Check whether the NFC function is enabled.
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
         */
-        it('SUB_COMMUNICATION_NFC_Cont_0300', 0, function ()  {
+        it('SUB_COMMUNICATION_NFC_Cont_0300', Level.LEVEL0, function ()  {
             let nfcswitchis = controller.isNfcOpen();
             console.info('[NFC_test] controller3 Nfc isopen state is ->' + JSON.stringify(nfcswitchis));
             expect(nfcswitchis).assertTrue();
@@ -96,9 +96,9 @@ export default function nfcControllerTest() {
          * @tc.desc Check whether the NFC function is enabled on the device.
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
         */
-        it('SUB_COMMUNICATION_NFC_Cont_0400', 0, function ()  {
+        it('SUB_COMMUNICATION_NFC_Cont_0400', Level.LEVEL0, function ()  {
             let nfcisAvailable1 = controller.isNfcAvailable();
             console.info('[NFC_test] controller4 NfcAvailable 1 ->' + JSON.stringify(nfcisAvailable1));
             expect(nfcisAvailable1).assertTrue();
@@ -113,9 +113,9 @@ export default function nfcControllerTest() {
          * @tc.desc Querying the Status When NFC Is Enabled
          * @tc.size since 7
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('SUB_COMMUNICATION_NFC_Cont_0500', 0, function ()  {
+        it('SUB_COMMUNICATION_NFC_Cont_0500', Level.LEVEL0, function ()  {
             let checkopennfc = controller.getNfcState();
             console.info("[NFC_test] controller5 checkopen the state of nfc-> " + JSON.stringify(checkopennfc));
             expect(checkopennfc).assertEqual(NfcState.STATE_ON);

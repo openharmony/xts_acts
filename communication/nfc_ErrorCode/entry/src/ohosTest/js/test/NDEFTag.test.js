@@ -16,7 +16,7 @@
 
 import tag from '@ohos.nfc.tag';
 import cardEmulation from '@ohos.nfc.cardEmulation';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
@@ -119,9 +119,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Creates an ndef message using the original bytes. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0100', 0, function ()  {
+        it('SUB_Communication_NFC_nfcNDEF_js_0100', Level.LEVEL1, function ()  {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [
                     0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
@@ -148,9 +148,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Creates an ndef message using the original bytes. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0200', 0, function ()  {
+        it('SUB_Communication_NFC_nfcNDEF_js_0200', Level.LEVEL1, function ()  {
             if (NdefTag != null && NdefTag != undefined) {
                 let ndefRecords = [
                     {tnf: 0x01, rtdType: [0x54], id: [0x01, 0x02], payload: [0x00, 0xa4, 0x04]},
@@ -183,9 +183,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Read the ndef message on the tag promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0300', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_0300', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 (async () => {
                     try {
@@ -210,9 +210,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Read the ndef message on the tag callback .The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0400', 0, async function (done) {     
+        it('SUB_Communication_NFC_nfcNDEF_js_0400', Level.LEVEL1, async function (done) {     
             if (NdefTag != null && NdefTag != undefined) {             
                 try {
                     NdefTag.readNdef('test')((err, data)=> {
@@ -242,9 +242,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Write ndef messages to this tag promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0500', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_0500', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [
                     0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
@@ -273,9 +273,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Write ndef messages to this tag callback. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0600', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_0600', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [
                     0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
@@ -309,9 +309,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Set the Ndef label to read-only Promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0700', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_0700', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 (async () => {
                     try {
@@ -336,9 +336,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Set the Ndef label to read-only callback. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_0800', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_0800', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {               
                 try {
                     NdefTag.setReadOnly('test')((err, data)=> {
@@ -369,9 +369,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-         it('SUB_Communication_NFC_nfcNDEF_js_0900', 0, function ()  {
+         it('SUB_Communication_NFC_nfcNDEF_js_0900', Level.LEVEL1, function ()  {
             if (NdefTag != null && NdefTag != undefined) {
                 try {
                     let nfcNdefTag= tag.getNdef("test");
@@ -392,9 +392,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Converts the Nfc forum type to the byte array defined in the Nfc forum. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1000', 0, function ()  {
+        it('SUB_Communication_NFC_nfcNDEF_js_1000', Level.LEVEL1, function ()  {
             if (NdefTag != null && NdefTag != undefined) {
                 try {
                     let ndefTypeString = NdefTag.getNdefTagTypeString('test');
@@ -416,9 +416,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Formats the tag as an NDEF tag and writes the NDEF message to the NDEF tag Promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1100', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_1100', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; 
                 let ndefmessage = tag.ndef.createNdefMessage(rawData);
@@ -446,9 +446,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Formats the tag as an NDEF tag and writes the NDEF message to the NDEF tag callback. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1200', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_1200', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; 
                 let ndefmessage = tag.ndef.createNdefMessage(rawData);
@@ -480,9 +480,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Format as NDEF and set the NDEF message write label to read-only Promise. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1300', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_1300', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [
                     0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
@@ -512,9 +512,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Format as NDEF and set the NDEF message write label to read-only callback. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1400', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcNDEF_js_1400', Level.LEVEL1, async function (done) {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [
                     0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
@@ -547,9 +547,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Obtains all records of ndef makeUriRecord. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-         it('SUB_Communication_NFC_nfcNDEF_js_1500', 0, function () {
+         it('SUB_Communication_NFC_nfcNDEF_js_1500', Level.LEVEL1, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
                 try{
@@ -579,9 +579,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Obtains all records of createNdefMessage NDEF. The error code is 401 
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1600', 0, function () {
+        it('SUB_Communication_NFC_nfcNDEF_js_1600', Level.LEVEL1, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
                 try{
@@ -611,9 +611,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Obtains all records of ndef makeMimeRecord. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1700', 0, function () {
+        it('SUB_Communication_NFC_nfcNDEF_js_1700', Level.LEVEL1, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
                 try{
@@ -644,9 +644,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Obtains all records of ndef makeExternalRecord. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1800', 0, function () {
+        it('SUB_Communication_NFC_nfcNDEF_js_1800', Level.LEVEL1, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
                     try{
@@ -676,9 +676,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.desc Obtains all records of ndef messageToBytes. The error code is 401
          * @tc.size since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_1900', 0, function () {
+        it('SUB_Communication_NFC_nfcNDEF_js_1900', Level.LEVEL1, function () {
             if (NdefTag != null && NdefTag != undefined) {
                 let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43];
                 try{
@@ -709,9 +709,9 @@ export default function nfcNDEFErrorTest() {
          * @tc.size MEDIUM
          * @ since 9
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 1
          */
-        it('SUB_Communication_NFC_nfcNDEF_js_2000', 0, function ()  {
+        it('SUB_Communication_NFC_nfcNDEF_js_2000', Level.LEVEL1, function ()  {
             if (NdefTag != null && NdefTag != undefined) {
                 try {
                     let nfcNdefFormatable = tag.getNdefFormatable("test");
@@ -722,6 +722,38 @@ export default function nfcNDEFErrorTest() {
                 }
             } else {
                 console.info("[NFC_test]NdefTag20 = null & = undefined: ");
+                expect(true).assertFalse();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfcNDEF_js_2100
+         * @tc.name Test makeApplicationRecord NDEF
+         * @tc.desc Test makeApplicationRecord api. The error code is 401
+         * @tc.size MEDIUM
+         * @ since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfcNDEF_js_2100', Level.LEVEL2, function () {
+            if (NdefTag != null && NdefTag != undefined) {
+                try{
+                    let ndefMessage = tag.ndef.createNdefMessage('test');
+                    console.info("[NFC_test]ndef21 createNdefMessage result: " + JSON.stringify(ndefMessage));
+                }catch(error){
+                    console.info("[NFC_test]ndef21 createNdefMessage errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+                try{
+                    let makeERecords = tag.ndef.makeApplicationRecord('test');
+                    console.info("[NFC_test]ndef21 makeApplicationRecord result: " + JSON.stringify(makeERecords));
+                    expect(makeERecords instanceof Object).assertTrue()
+                }catch(error){
+                    console.info("[NFC_test]ndef21 makeApplicationRecord errorcode: " + error.code);
+                    expect(401).assertEqual(error.code);
+                }
+            } else {
+                console.info("[NFC_test]NdefTag21 = null & = undefined: ");
                 expect(true).assertFalse();
             }
         })
