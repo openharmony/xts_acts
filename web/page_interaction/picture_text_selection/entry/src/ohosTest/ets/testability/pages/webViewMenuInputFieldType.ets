@@ -151,20 +151,20 @@ struct WebViewMenuInputFieldType {
         .key("WebViewMenuInputFieldTypeTestWebView")
         .onContextMenuShow((event) => {
           if (event) {
-            if (event.param.getInputFieldType() == 3) {
-              Utils.emitEvent(this.FieldTypeArr[ContextMenuInputFieldType.Number], 2901)
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Number) {
+              Utils.emitEvent(true, 2901)
             }
-            if (event.param.getInputFieldType() == 1) {
-              Utils.emitEvent(this.FieldTypeArr[ContextMenuInputFieldType.PlainText], 2902)
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.PlainText) {
+              Utils.emitEvent(true, 2902)
             }
-            if (event.param.getInputFieldType() == 2) {
-              Utils.emitEvent(this.FieldTypeArr[ContextMenuInputFieldType.Password], 2903)
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Password) {
+              Utils.emitEvent(true, 2903)
             }
-            if (event.param.getInputFieldType() == 4) {
-              Utils.emitEvent(this.FieldTypeArr[ContextMenuInputFieldType.Telephone], 2904)
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Telephone) {
+              Utils.emitEvent(true, 2904)
             }
-            if (event.param.getInputFieldType() == 5) {
-              Utils.emitEvent(this.FieldTypeArr[ContextMenuInputFieldType.Other], 2905)
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Other) {
+              Utils.emitEvent(true, 2905)
             }
             event.result.closeContextMenu()
           }
