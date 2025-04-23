@@ -657,7 +657,7 @@ export default function relationalStoreErrorCodeTest() {
         done();
       }catch(err){
         console.log(TAG+"err.code"+err.code + "err.message"+err.message);
-        expect(err.code == 801).assertTrue();
+        expect(err.code == 801).assertFail();
         done();
       }
       console.info(TAG + "************* errcode022 end *************");
