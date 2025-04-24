@@ -3,6 +3,7 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/progress/ProgressCapsuleRadius",
         "MainAbility/pages/progress/ProgressPrivacySensitive",
-        "MainAbility/pages/gauge/GaugePrivacySensitive"
+        "MainAbility/pages/gauge/GaugePrivacySensitive",
+        "MainAbility/pages/textClock/TextClockDateTimeOptions"
     ]
 }
