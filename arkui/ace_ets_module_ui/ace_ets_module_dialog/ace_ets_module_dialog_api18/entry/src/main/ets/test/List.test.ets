@@ -13,6 +13,32 @@
  * limitations under the License.
  */
 import buttonType from './buttonType/buttonTypeApi.test';
+
+import blurStyleOptions from './MenuTest/blurStyleOptions.test'
+import effectOptions from './MenuTest/effectOptions.test'
+import bindContextMenuHapticFeedbackMode from './bindContextMenuTest/bindContextMenuHapticFeedback.test'
+import bindMenuHapticFeedbackMode from './bindMenuTest/bindMenuHapticFeedbackMode.test'
+import closeToastTest from './promptActionTest/closeToastTest.test'
+import alertDialogLevelOrder from './dialog/alertDialogLevelOrder.test'
+import openMenu from './promptActionTest/openMenu.test.ets'
+import updateMenu from './promptActionTest/updateMenu.test.ets'
+import closeMenu from './promptActionTest/closeMenu.test.ets'
+import overlayManagerTest from './overlayManager/overlayManagerTest.test'
+import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
+
 export default function testsuite() {
     buttonType()
+
+    blurStyleOptions()
+    effectOptions()
+    bindContextMenuHapticFeedbackMode()
+    bindMenuHapticFeedbackMode()
+    closeToastTest()
+    alertDialogLevelOrder()
+    openMenu()
+    updateMenu()
+    closeMenu()
+    overlayManagerTest()
+    showDialogLevelOrder()
+
 }
