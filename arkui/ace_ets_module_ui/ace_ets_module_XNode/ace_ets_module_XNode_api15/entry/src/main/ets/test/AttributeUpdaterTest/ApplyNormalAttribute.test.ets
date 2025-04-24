@@ -22,7 +22,7 @@ export default function ApplyNormalAttributeTest() {
     beforeEach(async (done: Function) => {
       console.info("ApplyNormalAttributeTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/FrameNode/ApplyNormalAttributeTest',
+        url: 'MainAbility/pages/AttributeUpdater/ApplyNormalAttributeTest',
       }
       try {
         router.clear();
