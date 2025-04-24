@@ -1073,7 +1073,7 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
 static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
 {
     int resultEnd = 0;
-	ffrt_rwlock_t rwlock;
+    ffrt_rwlock_t rwlock;
     int x = 0;
     int ret = ffrt_rwlock_init(&rwlock, nullptr);
     if (ret != ffrt_success) {
