@@ -1077,7 +1077,7 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     int x = 0;
     int ret = ffrt_rwlock_init(&rwlock, nullptr);
     if (ret != ffrt_success) {
-        resultEnd = 1;
+        resultEnd = ERR_CODE_1;
     }
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun0 resultEnd is %{public}d", resultEnd);
 
@@ -1085,34 +1085,34 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 start resultEnd is %{public}d", resultEnd);
         int res = ffrt_rwlock_wrlock(&rwlock);
         if (res != ffrt_success) {
-            resultEnd = 2;
+            resultEnd = ERR_CODE_2;
         }
-        usleep(10 * 1000);
+        usleep(MULTIPLE_RADIO * TASK_DELAY_TIME);
         x++;
         res = ffrt_rwlock_unlock(&rwlock);
         if (res != ffrt_success) {
-            resultEnd = 3;
+            resultEnd = ERR_CODE_3;
         }
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 end resultEnd is %{public}d", resultEnd);
     };
 
     std::function<void()>&& func2 = [&]() {
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 start resultEnd is %{public}d", resultEnd);
-        usleep(2 * 1000);
+        usleep(SLEEP_TIME);
         int res1 = ffrt_rwlock_rdlock(&rwlock);
         if (res1 != ffrt_success) {
-            resultEnd = 4;
+            resultEnd = ERR_CODE_4;
         }
         res1 = ffrt_rwlock_unlock(&rwlock);
         if (res1 != ffrt_success) {
-            resultEnd = 5;
+            resultEnd = ERR_CODE_5;
         }
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 end resultEnd is %{public}d", resultEnd);
     };
 
     std::function<void()>&& func3 = [&]() {
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun3 start resultEnd is %{public}d", resultEnd);
-        usleep(2 * 1000);
+        usleep(SLEEP_TIME);
         int res2 = ffrt_rwlock_trywrlock(&rwlock);
         if (res2 == ffrt_success) {
             x++;
@@ -1122,7 +1122,7 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
 
     std::function<void()>&& func4 = [&]() {
         OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun4 start resultEnd is %{public}d", resultEnd);
-        usleep(2 * 1000);
+        usleep(SLEEP_TIME);
         int res3 = ffrt_rwlock_tryrdlock(&rwlock);
         if (res3 == ffrt_success) {
             ffrt_rwlock_unlock(&rwlock);
@@ -1135,10 +1135,10 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     ffrt_wait();
     ffrt_rwlock_destroy(&rwlock);
     if (x != 1) {
-        resultEnd = 6;
+        resultEnd = ERR_CODE_6;
     }
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "wait after resultEnd is %{public}d", resultEnd);
-	napi_value flag = nullptr;
+    napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
     return flag;
 }
