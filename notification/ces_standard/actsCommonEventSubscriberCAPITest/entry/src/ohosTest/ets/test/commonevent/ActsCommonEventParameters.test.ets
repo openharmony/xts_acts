@@ -337,7 +337,7 @@ export default function ActsCommonEventParametersTest() {
      * @tc.type      : Function test
      * @tc.level     : Level 1
      */
-    it('Sub_Notification_Ces_CommonEvent_Parameters026', 0, async (done: Function) => {
+    it('Sub_Notification_Ces_CommonEvent_Parameters026', Level.LEVEL1, async (done: Function) => {
       expect(subscribe.testCommonEventSetBoolArrayToParameters004()).assertEqual(0)
       done()
     })

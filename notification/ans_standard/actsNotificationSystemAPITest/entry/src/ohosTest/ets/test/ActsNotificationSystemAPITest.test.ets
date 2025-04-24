@@ -686,7 +686,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setDistributedEnable
      * @tc.desc: test function setDistributedEnable
      */
-    it('Sub_Notification_Ans_Distributed_Enable_4300', Level.LEVEL3, async (done: Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4300', Level.LEVEL1, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4300 START`);
 
       notificationManager.setDistributedEnable(true, (err) => {
