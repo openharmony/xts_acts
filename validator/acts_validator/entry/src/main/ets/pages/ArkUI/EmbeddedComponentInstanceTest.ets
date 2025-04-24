@@ -20,7 +20,7 @@ struct EmbeddedComponentInstanceTest {
   @State name: string = 'EmbeddedComponentInstanceTest';
   @State StepTips: string = '测试目的：验证EmbeddedComponentInstance。\n' +
     '\n' +    '操作步骤：将当前窗口最小化\n' +
-    '\n' +	'预期结果：若为PC环境，则页面依次输出"Termination: code = 0, want = undefined"、"EmbeddedUIExtAbility"、"Error: code = 100018";若不为PC环境，直接按照失败处理走豁免。';;
+    '\n' +	'预期结果：若为PC环境，则页面依次输出"Termination: code = 0, want = undefined"、"EmbeddedUIExtAbility"、"Error: code = 100018";若不为PC环境，则页面输出"Error: code = 100018"、"Error: code = 100018"。';;
   @State Vue: boolean = true;
   @State active: boolean = false;
   @State intervalNum: number = 0;
