@@ -21,7 +21,6 @@
 #include "database/preferences/oh_preferences_value.h"
 #include "common.h"
 #include <iostream>
-#include <map>
 #include <ctime>
 #include <condition_variable>
 #include <cstdint>
@@ -34,6 +33,8 @@
 #include <vector>
 #include <random>
 #include <chrono>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 const char *TAG = "testLog";
 
