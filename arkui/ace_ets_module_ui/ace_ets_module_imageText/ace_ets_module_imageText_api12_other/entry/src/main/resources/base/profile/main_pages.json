@@ -11,6 +11,8 @@
   "MainAbility/pages/Modifier/ImageSpanModifier",
   "MainAbility/pages/Modifier/MarqueeModifier",
   "MainAbility/pages/Modifier/RichEditorModifier",
-  "MainAbility/pages/Modifier/RichTextModifier"
+  "MainAbility/pages/Modifier/RichTextModifier",
+  "MainAbility/pages/RichEditor/RichEditorEKeyboardTest",
+  "MainAbility/pages/RichEditor/RichEditorSymbolSpanStyleTest"
   ]
 }
