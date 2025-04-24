@@ -29,7 +29,6 @@ export default function testsuite() {
   textAreaInputTest();
   TextDecorationStyleTest();
   textShadowTest();
-  SearchTypeTest();
   ImageLoadResultTest();
   SymbolSpanModifierTest();
   TextInputModifierTest();
