@@ -20,6 +20,7 @@ import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoS
 import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
 import enableEdgeAutoScroll from './DragInteractionOptions/enableEdgeAutoScroll.test';
 import nextFocus from './nextFocus/nextFocus.test';
+import nextFocus2 from './nextFocus2/nextFocus2.test';
 
 export default function testsuite() {
   onVisiable();
@@ -29,4 +30,5 @@ export default function testsuite() {
   enableEdgeAutoScroll_true();
   enableEdgeAutoScroll();
   nextFocus();
+  nextFocus2();
 }
