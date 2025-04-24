@@ -191,3 +191,33 @@ TEST(test_delete_private_with_non_private)
     auto status = OH_JSVM_DeletePrivate(env, obj, key);
     CHECK(status == JSVM_INVALID_ARG);
 }
+
+TEST(test_GetReferenceData_create_get_checkresult) {
+    // create obj
+    JSVM_Value obj;
+    OH_JSVM_CreateObject(env, &obj);
+
+    // create private
+    JSVM_Data key = nullptr;
+    JSVMTEST_CALL(OH_JSVM_CreatePrivate(env, jsvm::Str("a"), &key));
+
+    // set private
+    JSVM_Status status = OH_JSVM_SetPrivate(env, obj, key, jsvm::Str("hello"));
+    CHECK(status == JSVM_OK);
+
+    // create ref
+    JSVM_Ref ref = nullptr;
+    status = OH_JSVM_CreateDataReference(env, key, 1, &ref);
+    CHECK(status == JSVM_OK);
+
+    // get ref
+    JSVM_Data refResult = nullptr;
+    status = OH_JSVM_GetReferenceData(env, ref, &refResult);
+    CHECK(status == JSVM_OK);
+
+    // use ref result check data
+    JSVM_Value result = nullptr;
+    status = OH_JSVM_GetPrivate(env, obj, refResult, &result);
+    CHECK(status == JSVM_OK);
+    CHECK(jsvm::ToString(result) == "hello");
+}
