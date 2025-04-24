@@ -1382,15 +1382,15 @@ export default function ffrtTest() {
 
     /**
      * @tc.number : SUB_KERNEL_DISPATCH_entry_9700
-     * @tc.name   : SharedMutexTest001
+     * @tc.name   : sharedMutexTest001
      * @tc.desc   : Test mutex api
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it('SharedMutexTest001', Level.LEVEL0, () => {
+    it('sharedMutexTest001', Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let flag = entry.SharedMutexTest001();
+      let flag = entry.sharedMutexTest001();
       expect(flag).assertEqual(0);
     })
   })

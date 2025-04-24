@@ -1134,9 +1134,9 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     ffrt_submit_base(create_function_wrapper(func4), nullptr, nullptr, nullptr);
     ffrt_wait();
     ffrt_rwlock_destroy(&rwlock);
-    // if (x != 1) {
-    //     resultEnd = 6;       
-    // }
+    if (x != 1) {
+        resultEnd = 6;
+    }
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "wait after resultEnd is %{public}d", resultEnd);
 	napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
@@ -3952,7 +3952,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ffrt_task_handle_ref_0001", nullptr, ffrt_task_handle_ref_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "ffrtThisTaskGetId", nullptr, FfrtThisTaskGetId, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "sharedMutexTest001", nullptr, SharedMutexTest001, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
