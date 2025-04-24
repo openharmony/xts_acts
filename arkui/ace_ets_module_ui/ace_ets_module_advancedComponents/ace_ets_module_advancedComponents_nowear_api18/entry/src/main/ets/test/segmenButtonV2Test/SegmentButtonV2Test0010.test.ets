@@ -69,7 +69,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -81,7 +81,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[1]
@@ -91,7 +91,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[2]
@@ -100,7 +100,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn3: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[3]
@@ -109,7 +109,7 @@ export default function SegmentButtonV2Test0010() {
       expect(btn3.$attrs.accessibilityLevel).assertEqual('no-hide-descendants');
       let text0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -122,7 +122,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let text2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[2]
@@ -135,7 +135,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -148,7 +148,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let icon1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[1]
@@ -161,7 +161,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let symbol3: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[1]
+        .$children[2]
         .$children[0]
         .$children[5]
         .$children[3]
@@ -197,7 +197,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -209,7 +209,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[1]
@@ -219,7 +219,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[2]
@@ -228,7 +228,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let btn3: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[3]
@@ -237,7 +237,7 @@ export default function SegmentButtonV2Test0010() {
       expect(btn3.$attrs.accessibilityLevel).assertEqual('yes');
       let text0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -250,7 +250,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let text2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[2]
@@ -263,7 +263,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[0]
@@ -276,7 +276,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let icon1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[1]
@@ -289,7 +289,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(500);
       let symbol3: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
-        .$children[2]
+        .$children[3]
         .$children[0]
         .$children[5]
         .$children[3]
