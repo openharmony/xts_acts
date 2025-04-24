@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -97,6 +97,103 @@ export default function publishReminderNopTest() {
       });
       console.info('--------publishReminderNop002----after----');
     })
+
+    /*
+     * @tc.number:SUB_getAllValidReminders001
+     * @tc.name: SUB_getAllValidReminders001
+     * @tc.desc:Using the publishReminder then method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("SUB_getAllValidReminders001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------SUB_getAllValidReminders001----before----');
+      reminderAgentManager.getAllValidReminders().then((reminders: Array<reminderAgentManager.ReminderInfo>) => {
+      console.log("promise, getAllValidReminders length = " + reminders.length);
+      for (let i = 0; i < reminders.length; i++) {
+        console.log("getAllValidReminders, reminderId = " + reminders[i].reminderId);
+        console.log("getAllValidReminders, reminderType = " + reminders[i].reminderReq.reminderType);
+        const actionButton = reminders[i].reminderReq.actionButton || [];
+        for (let j = 0; j < actionButton.length; j++) {
+          console.log("getAllValidReminders, actionButton.title = " + actionButton[j]?.title);
+          console.log("getAllValidReminders, actionButton.type = " + actionButton[j]?.type);
+        }
+      }
+      }).catch((err: BusinessError) => {
+        console.error("SUB_getAllValidReminders001 promise err code:" + err.code + " message:" + err.message);
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+        });
+        console.info('--------SUB_getAllValidReminders001----after----');
+    })
+
+    /*
+     * @tc.number:SUB_addExcludeDate001
+     * @tc.name: SUB_addExcludeDate001
+     * @tc.desc:Using the publishReminder then method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("SUB_addExcludeDate001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------SUB_getAllValidSUB_addExcludeDate001Reminders001----before----');
+      let reminderId: number = 1;
+      let date = new Date();
+      reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
+        console.log("SUB_addExcludeDate001 addExcludeDate promise");
+      }).catch((err: BusinessError) => {
+        console.error("SUB_addExcludeDate001 promise err code:" + err.code + " message:" + err.message);
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+      });
+        console.info('--------SUB_addExcludeDate001----after----');
+    })
+
+    /*
+     * @tc.number:SUB_getExcludeDates001
+     * @tc.name: SUB_getExcludeDates001
+     * @tc.desc:Using the publishReminder then method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("SUB_getExcludeDates001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------SUB_getAllValidSUB_getExcludeDatese001Reminders001----before----');
+      let reminderId: number = 1;
+      reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
+      console.log("SUB_getExcludeDates001 getExcludeDates promise length: " + dates.length);
+      for (let i = 0; i < dates.length; i++) {
+	      console.log("SUB_getExcludeDates001 getExcludeDates promise date is: " + dates[i].toString());
+      }
+      }).catch((err: BusinessError) => {
+        console.error("SUB_getExcludeDates001 promise err code:" + err.code + " message:" + err.message);
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+      });
+        console.info('--------SUB_getExcludeDates001----after----');
+    })
+
+    /*
+     * @tc.number:SUB_deleteExcludeDates001
+     * @tc.name: SUB_deleteExcludeDates001
+     * @tc.desc:Using the deleteExcludeDates then method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("SUB_deleteExcludeDates001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------SUB_deleteExcludeDates001----before----');
+      let reminderId: number = 1;
+      reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
+        console.log("SUB_deleteExcludeDates001 deleteExcludeDates promise");
+      }).catch((err: BusinessError) => {
+        console.error("SUB_deleteExcludeDates001 promise err code:" + err.code + " message:" + err.message);
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+      });
+        console.info('--------SUB_deleteExcludeDates001----after----');
+    })
+    
   })
 }
 

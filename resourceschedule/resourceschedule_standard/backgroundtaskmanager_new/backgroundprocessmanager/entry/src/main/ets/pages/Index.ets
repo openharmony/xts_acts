@@ -12,10 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ActsLongTimeTaskManagerTest from './ActsLongTimeTaskManagerTest.test';
-import ActsLongTimeTaskManagerErrorCodeTest from './ActsLongTimeTaskManagerErrorCodeTest.test';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
 
-export default function testsuite() {
-  ActsLongTimeTaskManagerTest();
-  ActsLongTimeTaskManagerErrorCodeTest();
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

@@ -12,10 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ActsLongTimeTaskManagerTest from './ActsLongTimeTaskManagerTest.test';
-import ActsLongTimeTaskManagerErrorCodeTest from './ActsLongTimeTaskManagerErrorCodeTest.test';
-
-export default function testsuite() {
-  ActsLongTimeTaskManagerTest();
-  ActsLongTimeTaskManagerErrorCodeTest();
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';
