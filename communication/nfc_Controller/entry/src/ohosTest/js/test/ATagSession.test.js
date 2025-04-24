@@ -389,8 +389,8 @@ export default function nfcATagSessionTest() {
                 console.info("[NFC_test] tagsession13 getMaxTransmitSize:" +mazSendLen);
                 expect(mazSendLen).assertInstanceOf('Number')
             } catch (error) {
-                console.info('[NFC_test] tagsession13 getMaxTransmitSize error' + JSON.stringify(error))
-                expect('801').assertEqual(error.code)
+                console.info('[NFC_test] tagsession13 getMaxTransmitSize error' + error)
+                expect().assertFail();
             }
         })
 
@@ -439,13 +439,12 @@ export default function nfcATagSessionTest() {
                 } catch (error) {
                     console.info('[NFC_test] tagsession15 isConnected error' + error)
                     console.info('[NFC_test] tagsession15 isConnected errorcode' + error.code)
-                    expect(801).assertEqual(error.code)
+                    expect().assertFail();
                 }
             } else {
                 console.info("[NFC_test]getAtag14 = null & = undefined: ");
                 expect().assertFail();
             }
-            sleep(2000)
         })
 
         /**
