@@ -1221,7 +1221,7 @@ static napi_value testGetIntPluralStringById127(napi_env env, napi_callback_info
     char* result;
     uint32_t resId = 0;
     uint32_t resIdNext = 0;
-    uint32_t num = 1;    
+    uint32_t num = 1;
     uint32_t numTwo = 2;
     napi_get_value_uint32(env, argv[1], &resId);
     napi_get_value_uint32(env, argv[numTwo], &resIdNext);
