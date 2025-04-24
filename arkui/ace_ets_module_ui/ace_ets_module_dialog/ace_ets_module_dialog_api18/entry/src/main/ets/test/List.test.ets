@@ -13,6 +13,12 @@
  * limitations under the License.
  */
 import buttonType from './buttonType/buttonTypeApi.test';
+import isVisible from './popup/isVisible.test';
+import getDialogControllerTest from './dialog/getDialogControllerTest.test';
+import DialogOptions from './promptAction/DialogOptions.test';
 export default function testsuite() {
     buttonType()
+    isVisible()
+    getDialogControllerTest()
+    DialogOptions()
 }

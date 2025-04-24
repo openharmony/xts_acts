@@ -1,6 +1,9 @@
 {
   "src": [
     "MainAbility/pages/index/index",
-    "MainAbility/pages/buttonType/buttonTypeApi"
+    "MainAbility/pages/buttonType/buttonTypeApi",
+    "MainAbility/pages/popup/isVisible",
+    "MainAbility/pages/dialog/getDialogControllerTest",
+    "MainAbility/pages/promptAction/DialogOptions"
   ]
 }
