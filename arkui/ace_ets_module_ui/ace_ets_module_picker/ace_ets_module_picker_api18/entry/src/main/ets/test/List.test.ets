@@ -14,12 +14,16 @@
  */
 import datePickerMode from './datePicker/DatePickerMode.test';
 import TimePickerStartAndEnd from './timePicker/timePickerStartAndEnd.test';
+import EnableHapticFeedbackTest from './datePicker/datePickerEnableHapticFeedback.test';
+import EnableHapticFeedbackModifierTest from './datePicker/datePickerEnableHapticFeedbackModifier.test';
 import textPickerSelectedAreaTest from './textPicker/textPickerSelectedArea.test';
 import timePickerSelectedAreaTest from './timePicker/timePickerSelectedArea.test';
 
 export default function testsuite() {
     datePickerMode()
     TimePickerStartAndEnd();
+    EnableHapticFeedbackTest()
+    EnableHapticFeedbackModifierTest()
     textPickerSelectedAreaTest();
     timePickerSelectedAreaTest();
 }
