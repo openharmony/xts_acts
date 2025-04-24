@@ -14,8 +14,16 @@
  */
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
+import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
+import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
+import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
+import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
 
 export default function testsuite() {
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
+    textPickerDialogSelectedAreaTest();
+    timePickerDialogSelectedAreaTest();
+    textPickerDialogDefaultTextStyleTest();
+    textPickerDialogDisableTextStyleAnimationTest();
 }
