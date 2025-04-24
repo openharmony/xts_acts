@@ -181,6 +181,13 @@
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest21",
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest22",
         "MainAbility/pages/Navigation/NavigationLevel/NavigationLevelTest23",
-        "MainAbility/pages/Navigation/NavPathInfoIsEntry"
+        "MainAbility/pages/Navigation/NavPathInfoIsEntry",
+        "MainAbility/pages/UIObserver/GetStateByIndexPage",
+        "MainAbility/pages/UIObserver/UIObserverObserver4Page",
+        "MainAbility/pages/UIObserver/UIObserverContext2Page",
+        "MainAbility/pages/UIObserver/UIObserverContext3Page",
+        "MainAbility/pages/UIObserver/UIObserverUpdateContextPage",
+        "MainAbility/pages/UIObserver/PushNameRouterPage",
+        "MainAbility/pages/UIObserver/RouterPageUpdatePage"
     ]
 }
