@@ -18,22 +18,22 @@ struct TextClockDateTimeOptions {
   build() {
     Column({ space: 8 }) {
       Row() {
-        Text("24小时制去除前导0：")
+        Text('24小时制去除前导0：')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("HH:mm:ss")
-          .dateTimeOptions({ hour: "numeric" })
+          .format('HH:mm:ss')
+          .dateTimeOptions({ hour: 'numeric' })
           .id('numeric')
       }
 
       Row() {
-        Text("12小时制增加前导0：")
+        Text('12小时制增加前导0：')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("aa hh:mm:ss")
-          .dateTimeOptions({ hour: "2-digit" })
+          .format('aa hh:mm:ss')
+          .dateTimeOptions({ hour: '2-digit' })
           .id('digit')
       }
     }
