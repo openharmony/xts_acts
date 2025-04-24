@@ -33,8 +33,10 @@
         "MainAbility/pages/polyline/polyLine3",
         "MainAbility/pages/Rect/rect",
         "MainAbility/pages/Rect/RectPage",
+        "MainAbility/pages/Rect/RectCommonShapeMethodPage",
         "MainAbility/pages/Shape/shape",
         "MainAbility/pages/Circle/circle",
-        "MainAbility/pages/common"
+        "MainAbility/pages/common",
+        "MainAbility/pages/Matrix2D/Matrix2DPage"
     ]
 }

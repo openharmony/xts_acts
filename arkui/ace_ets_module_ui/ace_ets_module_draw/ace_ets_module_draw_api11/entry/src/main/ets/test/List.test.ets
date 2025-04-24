@@ -42,6 +42,8 @@ import polygonNewJsunit from './polygonTest/polygon.test';
 import polyLineNeJsunit from './polylineTest/polyLine.test';
 import rectNeJsunit from './RectTest/rect.test';
 import RectRadiusTest from './RectTest/RectRadiusTest.test';
+import RectCommonShapeMethodTest from './RectTest/RectCommonShapeMethodTest.test';
+import Matrix2DTest from './Matrix2D/Matrix2DTest.test';
 
 export default function testsuite() {
   ellipseJsunit();
@@ -70,6 +72,8 @@ export default function testsuite() {
   polygonNewJsunit()
   polyLineNeJsunit()
   rectNeJsunit()
-  circleNewJsunit()
   RectRadiusTest()
+  RectCommonShapeMethodTest()
+  Matrix2DTest()
+  circleNewJsunit()
 }
