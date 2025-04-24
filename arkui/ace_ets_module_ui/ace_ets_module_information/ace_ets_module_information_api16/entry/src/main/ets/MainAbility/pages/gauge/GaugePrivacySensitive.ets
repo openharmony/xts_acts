@@ -37,10 +37,10 @@ struct GaugePrivacySensitive {
           Gauge({ value: 50, min: 1, max: 100 }) {
             Column() {
               Text('60')
-                .maxFontSize("180sp")
-                .minFontSize("160.0vp")
+                .maxFontSize('180sp')
+                .minFontSize('160.0vp')
                 .fontWeight(FontWeight.Medium)
-                .fontColor("#ff182431")
+                .fontColor('#ff182431')
                 .width('40%')
                 .height('30%')
                 .textAlign(TextAlign.Center)
