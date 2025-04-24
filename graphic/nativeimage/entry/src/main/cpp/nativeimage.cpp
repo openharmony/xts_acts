@@ -26,11 +26,14 @@
 #include <chrono>
 #include <iostream>
 #include <map>
+#include <native_image/graphic_error_code.h>
 
 #define SUCCESS 0
 #define PARAM_0 0
 #define PARAM_8 8
 #define PARAM_1 1
+#define PARAM_2 2
+#define PARAM_3 3
 #define PARAM_16 16
 #define PARAM_800 800
 #define PARAM_600 600
@@ -63,8 +66,8 @@ static inline EGLConfig config_;
 
 class InitNativeWindow {
 private:
-    int32_t width_ = 0x100;
-    int32_t height_ = 0x100;
+    int32_t width_ = 0x800;
+    int32_t height_ = 0x600;
     int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
     OHNativeWindow *_nativeWindow = nullptr;
     GLuint textureId = 0;
@@ -84,12 +87,12 @@ public:
             _nativeWindow = nullptr;
         }
     }
-    
+
     ~InitNativeWindow()
     {
         _nativeWindow = nullptr;
     }
-    
+
     OHNativeWindow *returnNativeWindow()
     {
         if (_nativeWindow == nullptr) {
@@ -113,7 +116,7 @@ public:
         int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(_nativeWindow, &Buffer, &fenceFd);
         ret = OH_NativeWindow_NativeWindowFlushBuffer(_nativeWindow, Buffer, fenceFd, *region);
         return ret;
-    }
+    };
 };
 
 int32_t ConsumerSurfaceBuffer(OHNativeWindow *window, OHNativeWindowBuffer **nativeWindowBuffer, int fenceFd)
@@ -1819,6 +1822,109 @@ static napi_value OHConsumerSurfaceSetDefaultUsageSizeNormal(napi_env env, napi_
     return result;
 }
 
+static napi_value OHNativeWindowDropBufferModeSetTrueNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    OH_NativeImage *image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    int32_t ret1 = OH_NativeImage_SetDropBufferMode(image, false);
+    int32_t ret2 = OH_NativeImage_SetDropBufferMode(image, true);
+    if (ret1 != NATIVE_ERROR_OK || ret2 != NATIVE_ERROR_OK) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    InitNativeWindow *InitNative = new InitNativeWindow(image);
+    int produce_buffer = 0;
+    int consumer_buffer = 0;
+    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produce_buffer++;
+    }
+    while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
+        consumer_buffer++;
+    }
+    if (consumer_buffer != PARAM_1 || produce_buffer != PARAM_3) {
+        napi_create_int32(env, FAIL * PARAM_8, &result);
+        return result;
+    }
+    produce_buffer = 0;
+    consumer_buffer = 0;
+    ret1 = OH_NativeImage_SetDropBufferMode(image, false);
+    // produce_buffer = 2,
+    // 是因为UpdateSurfaceImage消费完释放的是上一个buffer。由于上一次UpdateSurfaceImage失败导致其中一个buffer未释放
+    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produce_buffer++;
+    }
+    while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
+        consumer_buffer++;
+    }
+    if (produce_buffer != PARAM_2 || consumer_buffer != PARAM_2) {
+        napi_create_int32(env, FAIL * PARAM_16, &result);
+        return result;
+    }
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value OHNativeWindowDropBufferModeSetTrueNormal2(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    OH_NativeImage *image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    int32_t ret1 = OH_NativeImage_SetDropBufferMode(image, false);
+    if (ret1 != NATIVE_ERROR_OK) {
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    InitNativeWindow *InitNative = new InitNativeWindow(image);
+    int produce_buffer = 0;
+    int consumer_buffer = 0;
+    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produce_buffer++;
+    }
+    while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
+        consumer_buffer++;
+    }
+    if (consumer_buffer != PARAM_3 || produce_buffer != PARAM_3) {
+        napi_create_int32(env, FAIL * PARAM_8, &result);
+        return result;
+    }
+    produce_buffer = 0;
+    consumer_buffer = 0;
+    ret1 = OH_NativeImage_SetDropBufferMode(image, true);
+    // produce_buffer = 2,
+    // 是因为UpdateSurfaceImage消费完释放的是上一个buffer。由于上一次UpdateSurfaceImage失败导致其中一个buffer未释放
+    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produce_buffer++;
+    }
+    while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
+        consumer_buffer++;
+    }
+    if (consumer_buffer != PARAM_1 || produce_buffer != PARAM_2) {
+        napi_create_int32(env, FAIL * PARAM_16, &result);
+        return result;
+    }
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value OHNativeWindowDropBufferModeSetAbNormal(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeImage *image = nullptr;
+    bool isOpen = true;
+    int32_t ret = OH_NativeImage_SetDropBufferMode(image, isOpen);
+    if (ret == NATIVE_ERROR_INVALID_ARGUMENTS) {
+        napi_create_int32(env, SUCCESS, &result);
+        return result;
+    }
+    napi_create_int32(env, FAIL, &result);
+    return result;
+}
+
 napi_value NativeImageInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1903,6 +2009,12 @@ static napi_value NativeImageInit2(napi_env env, napi_value exports)
         {"oHConsumerSurfaceCreateAbNormal", nullptr, oHConsumerSurfaceCreateAbNormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"OHConsumerSurfaceSetDefaultUsageSizeNormal", nullptr, OHConsumerSurfaceSetDefaultUsageSizeNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeWindowDropBufferModeSetTrueNormal", nullptr, OHNativeWindowDropBufferModeSetTrueNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeWindowDropBufferModeSetTrueNormal2", nullptr, OHNativeWindowDropBufferModeSetTrueNormal2,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeWindowDropBufferModeSetAbNormal", nullptr, OHNativeWindowDropBufferModeSetAbNormal,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

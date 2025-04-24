@@ -71,3 +71,6 @@ export const oHConsumerSurfaceSetDefaultSizeAbNormal: () => Array<number>;
 export const oHConsumerSurfaceSetDefaultSizeAbNormal01: () => Array<number>;
 export const oHConsumerSurfaceCreateAbNormal: () => number;
 export const OHConsumerSurfaceSetDefaultUsageSizeNormal: () => number;
+export const oHNativeWindowDropBufferModeSetTrueNormal: () => number;
+export const oHNativeWindowDropBufferModeSetAbNormal: () => number;
+export const oHNativeWindowDropBufferModeSetTrueNormal2: () => number;

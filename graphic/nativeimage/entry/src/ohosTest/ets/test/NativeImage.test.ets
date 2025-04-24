@@ -940,5 +940,47 @@ export default function nativeImageTest() {
         expect(result).assertEqual(0);
         done();
       });
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2500
+     * @tc.name       : TestNativeWindowDropBufferModeSetTrueNormal
+     * @tc.desc       : test testNativeWindowDropBufferModeSetTrueNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testNativeWindowDropBufferModeSetTrueNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+        let result: number = nativeimage.oHNativeWindowDropBufferModeSetTrueNormal();
+        expect(result).assertEqual(0);
+        done();
+      });
+      /**
+       * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2600
+       * @tc.name       : testNativeWindowDropBufferModeSetTrueNormal2
+       * @tc.desc       : test testNativeWindowDropBufferModeSetTrueNormal2
+       * @tc.size       : MediumTest
+       * @tc.type       : Function
+       * @tc.level      : Level 1
+       */
+      it('testNativeWindowDropBufferModeSetTrueNormal2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+        async (done: Function) => {
+          let result: number = nativeimage.oHNativeWindowDropBufferModeSetTrueNormal2();
+          expect(result).assertEqual(0);
+          done();
+        });
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_IMAGE_2700
+     * @tc.name       : testNativeWindowDropBufferModeSetAbNormal
+     * @tc.desc       : test testNativeWindowDropBufferModeSetAbNormal
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testNativeWindowDropBufferModeSetAbNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: Function) => {
+        let result: number = nativeimage.oHNativeWindowDropBufferModeSetAbNormal();
+        expect(result).assertEqual(0);
+        done();
+      });
   })
 }
