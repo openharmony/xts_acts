@@ -58,7 +58,7 @@ export default function GaugePrivacySensitiveTest() {
       await Utils.sleep(1000);
 
       let gauge = await driver.findComponent(ON.id('gauge'));
-      let obj: ESObject = JSON.parse(gauge);
+      let obj: Record<string, ESObject> = JSON.parse(gauge);
       console.info('GaugePrivacySensitiveTest_001 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[GaugePrivacySensitiveTest_001] END');
@@ -82,7 +82,7 @@ export default function GaugePrivacySensitiveTest() {
       await Utils.sleep(1000);
 
       let gauge = await driver.findComponent(ON.id('gauge'));
-      let obj: ESObject = JSON.parse(gauge);
+      let obj: Record<string, ESObject> = JSON.parse(gauge);
       console.info('GaugePrivacySensitiveTest_002 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[GaugePrivacySensitiveTest_002] END');
@@ -106,7 +106,7 @@ export default function GaugePrivacySensitiveTest() {
       await Utils.sleep(1000);
 
       let gauge = await driver.findComponent(ON.id('gauge'));
-      let obj: ESObject = JSON.parse(gauge);
+      let obj: Record<string, ESObject> = JSON.parse(gauge);
       console.info('GaugePrivacySensitiveTest_003 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[GaugePrivacySensitiveTest_003] END');
@@ -130,7 +130,7 @@ export default function GaugePrivacySensitiveTest() {
       await Utils.sleep(1000);
 
       let gauge = await driver.findComponent(ON.id('gauge'));
-      let obj: ESObject = JSON.parse(gauge);
+      let obj: Record<string, ESObject> = JSON.parse(gauge);
       console.info('GaugePrivacySensitiveTest_004 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[GaugePrivacySensitiveTest_004] END');
