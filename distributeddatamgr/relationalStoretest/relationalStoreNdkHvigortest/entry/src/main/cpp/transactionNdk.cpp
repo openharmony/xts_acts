@@ -663,8 +663,6 @@ static napi_value OH_Cursor_GetFloatVectorCount0100(napi_env env, napi_callback_
     return result;
 }
 
-
-
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {

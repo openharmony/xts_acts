@@ -39,6 +39,11 @@ const char *TAG = "testLog";
 
 static std::vector< OH_PreferencesPair *> changedData;
 static OH_PreferencesPair *g_pairs = nullptr;
+static bool IsFileExist(const std::string &path)
+{
+    struct stat buffer;
+    return (stat(path.c_str(), &buffer) == 0);
+}
 
 int g_changeNum = 0;
 void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count) {
@@ -1186,16 +1191,13 @@ static napi_value OH_Preferences_IsStorageTypeSupported0500(napi_env env, napi_c
     OH_PreferencesOption *option = OH_PreferencesOption_Create();
     const char *fileName = "CStorageTypeTest005";
     NAPI_ASSERT(env, OH_PreferencesOption_SetFileName(option, fileName) == PREFERENCES_OK, "OH_PreferencesOption_Create is fail.");
-
     bool isEnhance = false;
     int errCode = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isEnhance);
     NAPI_ASSERT(env, errCode == PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
     if (isEnhance) {
-        NAPI_ASSERT(env, OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV) == 
-        PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
-        
+        NAPI_ASSERT(env, OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV) ==
+         PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
         OH_Preferences *pref = OH_Preferences_Open(option, &errCode);
-        
         NAPI_ASSERT(env, errCode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
         NAPI_ASSERT(env, OH_Preferences_SetInt(pref, "key", 2) == PREFERENCES_OK, "OH_Preferences_Open is fail.");
         NAPI_ASSERT(env, OH_Preferences_Close(pref) == PREFERENCES_OK, "OH_Preferences_Open  dropTableSql is fail.");
