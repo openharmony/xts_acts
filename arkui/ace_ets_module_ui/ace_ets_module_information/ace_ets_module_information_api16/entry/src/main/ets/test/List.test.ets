@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 import ProgressCapsuleRadius from './progressTest/ProgressCapsuleRadius.test';
+import ProgressPrivacySensitive from './progressTest/ProgressPrivacySensitive.test';
+import GaugePrivacySensitive from './gaugeTest/GaugePrivacySensitive.test';
+import TextClockDateTimeOptions from './gaugeTest/TextClockDateTimeOptions.test';
 
 export default function testsuite() {
     ProgressCapsuleRadius()
+    ProgressPrivacySensitive()
+    GaugePrivacySensitive()
+    TextClockDateTimeOptions()
 }
