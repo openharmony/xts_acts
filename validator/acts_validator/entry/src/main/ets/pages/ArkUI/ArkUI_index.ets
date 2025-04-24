@@ -106,7 +106,11 @@ struct IndexPage {
     { title: 'Taphand', uri: 'pages/ArkUI/Taphand' },
     { title: 'Touchhand', uri: 'pages/ArkUI/Touchhand' },
     { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
-	{ title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' }
+	{ title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' },
+	{ title: 'EmbeddedComponentInstanceTest', uri: 'pages/ArkUI/EmbeddedComponentInstanceTest' },
+    { title: 'AccessibilityNextFocusIdPage', uri: 'pages/ArkUI/AccessibilityNextFocusIdPage' },
+    { title: 'AccessibilityDefaultFocusPage', uri: 'pages/ArkUI/AccessibilityDefaultFocusPage' },
+    { title: 'AccessibilityScrollTriggerablePage', uri: 'pages/ArkUI/AccessibilityScrollTriggerablePage' },
     
     
   ]

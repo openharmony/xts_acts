@@ -132,6 +132,10 @@
     "pages/ArkUI/Touchhand",
     "pages/ArkUI/HoverSpen",
 	"pages/ArkUI/AccessibilityRoleTypeTest"
+	"entryembeddeduiextability/pages/EntryEmbeddedUIExtAbilityPage",
+    "pages/ArkUI/AccessibilityNextFocusIdPage",
+    "pages/ArkUI/AccessibilityDefaultFocusPage",
+    "pages/ArkUI/AccessibilityScrollTriggerablePage"
   ]
 }
 
