@@ -3,6 +3,10 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/onVisiable/onVisiable",
         "MainAbility/pages/PanGesture/panGestureOnOff",
-        "MainAbility/pages/Drag/PreDrag"
+        "MainAbility/pages/Drag/PreDrag",
+        "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_false",
+        "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_true",
+        "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll",
+        "MainAbility/pages/nextFocus/nextFocus"
     ]
 }

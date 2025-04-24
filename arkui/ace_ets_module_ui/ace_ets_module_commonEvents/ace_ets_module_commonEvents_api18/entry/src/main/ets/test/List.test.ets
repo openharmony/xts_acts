@@ -16,9 +16,17 @@
 import onVisiable from './onVisiable/onVisiable.test';
 import panGestureOnOffTest from './PanGesture/panGestureOnOff.test';
 import PreDrag from './Drag/PreDrag.test';
+import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoScroll_false.test';
+import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
+import enableEdgeAutoScroll from './DragInteractionOptions/enableEdgeAutoScroll.test';
+import nextFocus from './nextFocus/nextFocus.test';
 
 export default function testsuite() {
   onVisiable();
   panGestureOnOffTest();
   PreDrag();
+  enableEdgeAutoScroll_false();
+  enableEdgeAutoScroll_true();
+  enableEdgeAutoScroll();
+  nextFocus();
 }
