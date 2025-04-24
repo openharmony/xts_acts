@@ -150,7 +150,9 @@ struct styled_string_imageAttachment {
                 this.mutableStr = new MutableStyledString(new ImageAttachment({
                   resourceValue: $r('app.media.icon'), //建议使用自定义的本地图片
                   size: { width: 50, height: 50 },
-                  layoutStyle: { borderRadius: LengthMetrics.vp(10), margin: {top: undefined, right: undefined, bottom: undefined, left: undefined}, padding: {top: undefined, right: undefined, bottom: undefined, left: undefined} },
+                  layoutStyle: { borderRadius: LengthMetrics.vp(10), margin: {top: undefined, right: undefined, bottom: undefined, left: undefined}, padding: 
+				    {top: undefined, right: undefined, bottom: undefined, left: undefined}
+				  },
                   verticalAlign: ImageSpanAlignment.BASELINE,
                   objectFit: ImageFit.Contain,
                   syncLoad: true

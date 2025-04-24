@@ -43,7 +43,7 @@ struct Index {
     pixelMap: this.leadingMarkCreatorInstance.genSquareMark(24),
     size:[15, 15]
   }
-  titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center, paragraphSpacing: LengthMetrics.px(10)});
+  titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center});
   //第一段落首行缩进15vp
   paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(15), maxLines: undefined, leadingMargin: undefined });
   //第二段落缩进15vp且首行有placeholder占位显示
@@ -134,7 +134,6 @@ struct Index {
                   }
                   console.info(i + '  paragraphStyledString1 overflow:' + paraAttr.overflow)
                   AppStorage.setOrCreate('StyledString1_' + i + '_overflow', paraAttr.overflow);
-                  console.info(i + '  paragraphStyledString1 paragraphSpacing:' + paraAttr.paragraphSpacing)
                 }
               }
             }

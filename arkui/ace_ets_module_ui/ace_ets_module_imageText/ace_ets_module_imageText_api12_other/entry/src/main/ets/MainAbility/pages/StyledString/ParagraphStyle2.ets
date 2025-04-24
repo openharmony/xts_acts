@@ -130,7 +130,6 @@ struct Index {
                   AppStorage.setOrCreate('StyledString2_leadingMargin', paraAttr.leadingMargin);
                   console.info(i + '  paragraphStyledString2 overflow:' + paraAttr.overflow)
                   AppStorage.setOrCreate('StyledString2_overflow', paraAttr.overflow);
-                  console.info(i + '  paragraphStyledString2 paragraphSpacing:' + paraAttr.paragraphSpacing)
                 }
               }
             }
@@ -155,7 +154,6 @@ struct Index {
                   AppStorage.setOrCreate('StyledString3_leadingMargin', paraAttr.leadingMargin);
                   console.info(i + '  paragraphStyledString3 overflow:' + paraAttr.overflow)
                   AppStorage.setOrCreate('StyledString3_overflow', paraAttr.overflow);
-                  console.info(i + '  paragraphStyledString3 paragraphSpacing:' + paraAttr.paragraphSpacing)
                 }
               }
             }
@@ -180,7 +178,6 @@ struct Index {
                   AppStorage.setOrCreate('StyledString4_leadingMargin', paraAttr.leadingMargin);
                   console.info(i + '  paragraphStyledString4 overflow:' + paraAttr.overflow)
                   AppStorage.setOrCreate('StyledString4_overflow', paraAttr.overflow);
-                  console.info(i + '  paragraphStyledString4 paragraphSpacing:' + paraAttr.paragraphSpacing)
                 }
               }
             }

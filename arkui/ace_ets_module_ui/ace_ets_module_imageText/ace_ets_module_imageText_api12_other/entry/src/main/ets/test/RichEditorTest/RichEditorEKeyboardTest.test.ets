@@ -18,159 +18,103 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
-export default function TextDeleteDirectionTest() {
-  describe('TextDeleteDirectionTest', () => {
+export default function RichEditorEKeyboardTest() {
+  describe('RichEditorEKeyboardTest', () => {
     beforeEach(async (done: Function) => {
-      console.info("TextDeleteDirectionTest beforeEach start");
+      console.info("RichEditorEKeyboardTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/TextArea/TextDeleteDirectionTest',
+        url: 'MainAbility/pages/RichEditor/RichEditorEKeyboardTest',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get TextDeleteDirectionTest state success " + JSON.stringify(pages));
+        console.info("get RichEditorEKeyboardTest state success " + JSON.stringify(pages));
         let result = await router.replaceUrl(options);
-        if (!("TextDeleteDirectionTest" == pages.name)) {
-          console.info("get TextDeleteDirectionTest state success " + JSON.stringify(pages.name));
+        if (!("RichEditorEKeyboardTest" == pages.name)) {
+          console.info("get RichEditorEKeyboardTest state success " + JSON.stringify(pages.name));
           await CommonFunc.sleep(2000);
-          console.info("push TextDeleteDirectionTest page success " + JSON.stringify(result));
+          console.info("push RichEditorEKeyboardTest page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push TextDeleteDirectionTest page error: " + err);
+        console.error("push RichEditorEKeyboardTest page error: " + err);
       }
       done();
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("TextDeleteDirectionTest after each called");
+      console.info("RichEditorEKeyboardTest after each called");
     });
 
     /*
     * @tc.number       SUB_ACE_BASIC_ETS_API_0001
-    * @tc.name         TextDeleteDirectionTest0001
-    * @tc.desic        test  FORWARD
+    * @tc.name         RichEditorEKeyboardTest0001
+    * @tc.desic        test default
     * @tc.size         MediumTest
     * @tc.type         Function
     * @tc.level        1
      */
-    it('TextDeleteDirectionTest0001', Level.LEVEL1, async (done: Function) => {
+    it('RichEditorEKeyboardTest0001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
-      console.info('TextDeleteDirectionTest0001 START');
-      await CommonFunc.sleep(1000);
-      let TextArea = await driver.findComponent(ON.id('TextAreaDeleteDirection'))
-      await CommonFunc.sleep(500);
-      await TextArea.click()
-      await CommonFunc.sleep(500);
-      let caretPosition = await driver.findComponent(ON.id('caretPosition0'))
-      await CommonFunc.sleep(500);
-      await caretPosition.click()
-      await CommonFunc.sleep(500);
-      await driver.triggerKey(2071)
-      await CommonFunc.sleep(500);
-      expect(''+AppStorage.get('deleteValue')).assertEqual('这');
-      expect(''+AppStorage.get('deleteOffset')).assertEqual('0');
-      expect(''+AppStorage.get('direction')).assertEqual('1');
-      AppStorage.delete('deleteValue')
-      AppStorage.delete('deleteOffset')
-      AppStorage.delete('direction')
-      console.info("[TextDeleteDirectionTest0001] end");
+      console.info('RichEditorEKeyboardTest0001 START');
+      let strJson = getInspectorByKey('RichEditor');
+      let obj: ESObject = JSON.parse(strJson);
+      console.log('RichEditorEKeyboardTest-----' + obj.$attrs.enableKeyboardOnFocus);
+      expect(obj.$attrs.enableKeyboardOnFocus+'').assertEqual('true');
+      console.info("[RichEditorEKeyboardTest0001] end");
       done();
     });
-
     /*
     * @tc.number       SUB_ACE_BASIC_ETS_API_0002
-    * @tc.name         TextDeleteDirectionTest0002
-    * @tc.desic        test  FORWARD
+    * @tc.name         RichEditorEKeyboardTest0002
+    * @tc.desic        test null
     * @tc.size         MediumTest
     * @tc.type         Function
-    * @tc.level        3
+    * @tc.level        1
      */
-    it('TextDeleteDirectionTest0002', Level.LEVEL3, async (done: Function) => {
+    it('RichEditorEKeyboardTest0002', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
-      console.info('TextDeleteDirectionTest0002 START');
-      await CommonFunc.sleep(1000);
-      let TextArea = await driver.findComponent(ON.id('TextAreaDeleteDirection'))
-      await CommonFunc.sleep(500);
-      await TextArea.longClick()
-      await CommonFunc.sleep(500);
-      let allSelect = await driver.findComponent(ON.text('全选'))
-      await CommonFunc.sleep(500);
-      await allSelect.click()
-      await CommonFunc.sleep(500);
-      await driver.triggerKey(2071)
-      await CommonFunc.sleep(500);
-      expect(''+AppStorage.get('deleteValue')).assertEqual('这是测试删除回调文本');
-      expect(''+AppStorage.get('deleteOffset')).assertEqual('0');
-      expect(''+AppStorage.get('direction')).assertEqual('1');
-      AppStorage.delete('deleteValue')
-      AppStorage.delete('deleteOffset')
-      AppStorage.delete('direction')
-      console.info("[TextDeleteDirectionTest0002] end");
+      console.info('RichEditorEKeyboardTest0002 START');
+      let strJson = getInspectorByKey('RichEditor1');
+      let obj: ESObject = JSON.parse(strJson);
+      console.log('RichEditorEKeyboardTest-----' + obj.$attrs.enableKeyboardOnFocus);
+      expect(obj.$attrs.enableKeyboardOnFocus+'').assertEqual('true');
+      console.info("[RichEditorEKeyboardTest0002] end");
       done();
     });
-
     /*
    * @tc.number       SUB_ACE_BASIC_ETS_API_0003
-   * @tc.name         TextDeleteDirectionTest0003
-   * @tc.desic        test  BACKWARD
+   * @tc.name         RichEditorEKeyboardTest0003
+   * @tc.desic        test false
    * @tc.size         MediumTest
    * @tc.type         Function
    * @tc.level        1
     */
-    it('TextDeleteDirectionTest0003', Level.LEVEL1, async (done: Function) => {
+    it('RichEditorEKeyboardTest0003', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
-      console.info(' TextDeleteDirectionTest0003 START');
-      await CommonFunc.sleep(1000);
-      let TextArea = await driver.findComponent(ON.id('TextAreaDeleteDirection'))
-      await CommonFunc.sleep(500);
-      await TextArea.click()
-      await CommonFunc.sleep(500);
-      let caretPosition = await driver.findComponent(ON.id('caretPosition6'))
-      await CommonFunc.sleep(500);
-      await caretPosition.click()
-      await CommonFunc.sleep(500);
-      await driver.triggerKey(2055)
-      await CommonFunc.sleep(500);
-      expect(''+AppStorage.get('deleteValue')).assertEqual('除');
-      expect(''+AppStorage.get('deleteOffset')).assertEqual('5');
-      expect(''+AppStorage.get('direction')).assertEqual('0');
-      AppStorage.delete('deleteValue')
-      AppStorage.delete('deleteOffset')
-      AppStorage.delete('direction')
-      console.info("[TextDeleteDirectionTest0003] end");
+      console.info(' RichEditorEKeyboardTest0003 START');
+      let strJson = getInspectorByKey('RichEditor2');
+      let obj: ESObject = JSON.parse(strJson);
+      console.log('RichEditorEKeyboardTest-----' + obj.$attrs.enableKeyboardOnFocus);
+      expect(obj.$attrs.enableKeyboardOnFocus+'').assertEqual('false');
+      console.info("[RichEditorEKeyboardTest0003] end");
       done();
     });
-
     /*
    * @tc.number       SUB_ACE_BASIC_ETS_API_0004
-   * @tc.name         TextDeleteDirectionTest0004
-   * @tc.desic        test  BACKWARD
+   * @tc.name         RichEditorEKeyboardTest0004
+   * @tc.desic        test true
    * @tc.size         MediumTest
    * @tc.type         Function
-   * @tc.level        3
+   * @tc.level        1
     */
-    it('TextDeleteDirectionTest0004', Level.LEVEL3, async (done: Function) => {
+    it('RichEditorEKeyboardTest0004', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
-      console.info(' TextDeleteDirectionTest0004 START');
-      await CommonFunc.sleep(1000);
-      let TextArea = await driver.findComponent(ON.id('TextAreaDeleteDirection'))
-      await CommonFunc.sleep(500);
-      await TextArea.longClick()
-      await CommonFunc.sleep(500);
-      let allSelect = await driver.findComponent(ON.text('全选'))
-      await CommonFunc.sleep(500);
-      await allSelect.click()
-      await CommonFunc.sleep(500);
-      await driver.triggerKey(2055)
-      await CommonFunc.sleep(500);
-      expect(''+AppStorage.get('deleteValue')).assertEqual('这是测试删除回调文本');
-      expect(''+AppStorage.get('deleteOffset')).assertEqual('0');
-      expect(''+AppStorage.get('direction')).assertEqual('0');
-      AppStorage.delete('deleteValue')
-      AppStorage.delete('deleteOffset')
-      AppStorage.delete('direction')
-      console.info("[TextDeleteDirectionTest0004] end");
+      console.info(' RichEditorEKeyboardTest0004 START');
+      let strJson = getInspectorByKey('RichEditor3');
+      let obj: ESObject = JSON.parse(strJson);
+      console.log('RichEditorEKeyboardTest-----' + obj.$attrs.enableKeyboardOnFocus);
+      expect(obj.$attrs.enableKeyboardOnFocus+'').assertEqual('true');
+      console.info("[RichEditorEKeyboardTest0004] end");
       done();
     });
   })
