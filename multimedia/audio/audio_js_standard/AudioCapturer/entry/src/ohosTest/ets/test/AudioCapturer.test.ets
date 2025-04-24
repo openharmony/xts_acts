@@ -4877,6 +4877,7 @@ export default function audioCapturer() {
       expect(flag).assertTrue();
       done();
     })
+
     /**
      * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0200
      * @tc.name      : AudioCapturer OFF STATECHANGE
@@ -4925,5 +4926,41 @@ export default function audioCapturer() {
       expect(flag).assertTrue();
       done();
     })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_SOURCETYPE_UNPROCESSED_0100
+     * @tc.name      : SOURCETYPE_UNPROCESSED
+     * @tc.desc      : SOURCETYPE_UNPROCESSED
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_SOURCETYPE_UNPROCESSED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_UNPROCESSED,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+
+      try {
+        let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+        expect(true).assertTrue();
+        done();
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
   })
 }
