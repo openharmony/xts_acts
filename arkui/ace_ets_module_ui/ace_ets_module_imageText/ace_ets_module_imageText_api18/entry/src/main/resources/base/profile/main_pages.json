@@ -11,6 +11,8 @@
     "MainAbility/pages/TextArea/TextAreaGetText",
     "MainAbility/pages/TextInput/TextInputGetText",
     "MainAbility/pages/StyledString/ParagraphSpacing",
-    "MainAbility/pages/RichEditor/HapticFeedbackMode"
+    "MainAbility/pages/RichEditor/HapticFeedbackMode",
+    "MainAbility/pages/RichEditor/RichEditorMaxLinesTest",
+    "MainAbility/pages/TextArea/WordBreakTest"
   ]
 }
