@@ -7,6 +7,7 @@
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_false",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_true",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll",
-        "MainAbility/pages/nextFocus/nextFocus"
+        "MainAbility/pages/nextFocus/nextFocus",
+        "MainAbility/pages/nextFocus2/nextFocus2"
     ]
 }
