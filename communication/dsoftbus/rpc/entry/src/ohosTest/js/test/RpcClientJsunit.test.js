@@ -6371,10 +6371,10 @@ export default function ActsRpcClientJsTest() {
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageParceSUB_DSoftbus_IPC_API_MessageSequence_1670l_1670", 0, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageSequence_1670", 0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1670---------------------------");
             try {
-                let data = rpc.MessageSequence.create();
+                var data = rpc.MessageSequence.create();
                 let listeners = [new TestRemoteObject("rpcListener"),
                 new TestRemoteObject("rpcListener2"),
                 new TestRemoteObject("rpcListener3")];
@@ -6402,7 +6402,7 @@ export default function ActsRpcClientJsTest() {
         it("SUB_DSoftbus_IPC_API_MessageSequence_1680", 0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1680---------------------------");
             try {
-                let data = rpc.MessageSequence.create();
+                var data = rpc.MessageSequence.create();
                 let listeners = [new TestRemoteObject("rpcListener"),
                 new TestRemoteObject("rpcListener2"),
                 new TestRemoteObject("rpcListener3")];
@@ -11861,7 +11861,7 @@ export default function ActsRpcClientJsTest() {
         it("SUB_DSoftbus_IPC_API_MessageParcel_1670", 0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1670---------------------------");
             try {
-                let data = rpc.MessageParcel.create();
+                var data = rpc.MessageParcel.create();
                 let listeners = [new TestRemoteObject("rpcListener"),
                 new TestRemoteObject("rpcListener2"),
                 new TestRemoteObject("rpcListener3")];
@@ -11890,7 +11890,7 @@ export default function ActsRpcClientJsTest() {
         it("SUB_DSoftbus_IPC_API_MessageParcel_1680", 0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1680---------------------------");
             try {
-                let data = rpc.MessageParcel.create();
+                var data = rpc.MessageParcel.create();
                 let listeners = [new TestRemoteObject("rpcListener"),
                 new TestRemoteObject("rpcListener2"),
                 new TestRemoteObject("rpcListener3")];
