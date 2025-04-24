@@ -13,32 +13,33 @@
  * limitations under the License.
  */
 
-class SymbolSpanModifier implements AttributeModifier<SymbolSpanAttribute> {
-  applyNormalAttribute(SymbolSpanInstance: SymbolSpanAttribute): void {
-    SymbolSpanInstance.fontSize(100);
+class ContainerSpanModifier implements AttributeModifier<ContainerSpanAttribute> {
+  applyNormalAttribute(ContainerSpanInstance: ContainerSpanAttribute): void {
+    ContainerSpanInstance.textBackgroundStyle({ color: "#7F007DFF", radius: "12vp" })
   }
 }
 
 @Entry
 @Component
-struct SymbolSpanModifier1 {
+struct ContainerSpanModifier1 {
   @State value: string = 'init'
-  @State modifier: SymbolSpanModifier = new SymbolSpanModifier();
+  @State modifier: ContainerSpanModifier = new ContainerSpanModifier();
 
   aboutToAppear(): void {
-    this.value = (typeof SymbolSpanInstance).toString()
+    this.value = typeof ContainerSpanInstance
   }
 
   build() {
     Column({ space: 5 }) {
-      Text() {
-        SymbolSpan($r('sys.symbol.ohos_wifi')).attributeModifier(this.modifier)
-          .id('SymbolSpanModifier_get_fontSize')
-          .height('20%')
-      }
+      Text(){
+        ContainerSpan() {
+          ImageSpan($r('app.media.icon'))
+            .id('ContainerSpanModifier_get_radius')
+        }.attributeModifier(this.modifier)
+      }.height('20%')
 
       TextArea({ text: this.value })
-        .id('SymbolSpanModifier_get_type')
+        .id('ContainerSpanModifier_get_type')
         .height('10%')
     }
   }
