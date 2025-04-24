@@ -102,7 +102,8 @@ struct WebViewEnumAndFontLibrary {
   WebResult: WebContextMenuResult = new WebContextMenuResult;
   @State SourceTypeArr:ContextMenuSourceType[] = [ContextMenuSourceType.None,ContextMenuSourceType.Mouse,ContextMenuSourceType.LongPress]
   @State MediaTypeArr:ContextMenuMediaType[] = [ContextMenuMediaType.None,ContextMenuMediaType.Image]
-  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other	]
+  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,
+  ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other	]
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -201,6 +202,18 @@ struct WebViewEnumAndFontLibrary {
               Utils.emitEvent(this.SourceTypeArr[this.SourceType], 809)
               break;
             }
+            case "emitWebContextMenuParamGetSourceTypeNone": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(this.SourceTypeArr[ContextMenuSourceType.None], 20250423)
+                break;
+              }
+              let driver = Driver.create();
+              await driver.triggerCombineKeys(2047, 2099);
+              Utils.emitEvent(this.SourceTypeArr[this.SourceType], 20250423)
+              break;
+            }
+
             case "emitWebContextMenuParamGetInputFieldType": {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
@@ -276,6 +289,7 @@ struct WebViewEnumAndFontLibrary {
               Utils.emitEvent(Boolean(this.onContextMenuShowState), 1252);
               break;
             }
+
           }
         })
       }
