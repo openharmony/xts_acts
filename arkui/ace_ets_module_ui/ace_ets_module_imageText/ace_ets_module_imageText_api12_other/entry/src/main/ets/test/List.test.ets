@@ -30,6 +30,8 @@ import ParagraphStyle1 from "./StyledString/ParagraphStyle1.test";
 import ImageAttachment from "./StyledString/ImageAttachment.test";
 import ParagraphStyle2 from "./StyledString/ParagraphStyle2.test";
 import ParagraphStyle3 from "./StyledString/ParagraphStyle3.test";
+import RichEditorEKeyboardTest from './RichEditorTest/RichEditorEKeyboardTest.test'
+import RichEditorSymbolSpanStyleTest from './RichEditorTest/RichEditorSymbolSpanStyleTest.test'
 
 export default function testsuite() {
   textAreaInputTest();
@@ -49,4 +51,6 @@ export default function testsuite() {
   ParagraphStyle1();
   ParagraphStyle2();
   ParagraphStyle3();
+  RichEditorEKeyboardTest();
+  RichEditorSymbolSpanStyleTest();
 }
