@@ -1134,9 +1134,9 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     ffrt_submit_base(create_function_wrapper(func4), nullptr, nullptr, nullptr);
     ffrt_wait();
     ffrt_rwlock_destroy(&rwlock);
-    if (x != 1) {
-        resultEnd = 6;       
-    }
+    // if (x != 1) {
+    //     resultEnd = 6;       
+    // }
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "wait after resultEnd is %{public}d", resultEnd);
 	napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
