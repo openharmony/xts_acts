@@ -23,78 +23,78 @@ struct SegmentButtonV20010 {
   @Local selectedIndex1: number = 0
   @Local items: SegmentButtonV2Items = new SegmentButtonV2Items([
     {
-      text: '搜索',
+      text: 'search',
       icon: $r('sys.media.ohos_ic_public_search_filled'),
       enabled: true,
       textModifier: new TextModifier().fontColor('#FFFFFF00'),
       iconModifier: new ImageModifier().backgroundColor('#FFFFA500'),
-      accessibilityText: '搜索',
-      accessibilityDescription: '搜索按钮',
+      accessibilityText: 'search',
+      accessibilityDescription: 'ButtonSearch',
       accessibilityLevel: 'auto'
     },
     {
-      text: '扫描',
+      text: 'scan',
       icon: $r('sys.media.ohos_ic_public_scan'),
       enabled: false,
-      accessibilityText: '扫描',
-      accessibilityDescription: '扫描按钮',
+      accessibilityText: 'scan',
+      accessibilityDescription: 'ButtonScan',
       accessibilityLevel: 'no'
     },
     {
-      text: '分享',
+      text: 'share',
       icon: $r('sys.media.ohos_ic_public_share'),
-      accessibilityText: '分享',
-      accessibilityDescription: '分享按钮',
+      accessibilityText: 'share',
+      accessibilityDescription: 'ButtonShare',
       accessibilityLevel: 'yes'
     },
     {
-      text: '反馈',
+      text: 'feedback',
       symbol: $r('sys.symbol.fade'),
       symbolModifier: new SymbolGlyphModifier().fontWeight(FontWeight.Bolder),
-      accessibilityText: '反馈',
-      accessibilityDescription: '反馈按钮',
+      accessibilityText: 'feedback',
+      accessibilityDescription: 'ButtonFeedback',
       accessibilityLevel: 'no-hide-descendants'
     }
   ])
   @Local segItems: SegmentButtonV2Items = new SegmentButtonV2Items([])
   @Local segItem1: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
-      text: '关闭1',
+      text: 'close1',
       icon: $r('sys.media.ohos_ic_public_close'),
       enabled: true,
       textModifier: new TextModifier().fontColor('#FFFFFF00'),
       iconModifier: new ImageModifier().backgroundColor('#FFFFA500'),
-      accessibilityText: '关闭1',
-      accessibilityDescription: '关闭1按钮',
+      accessibilityText: 'close1',
+      accessibilityDescription: 'ButtonClose1',
       accessibilityLevel: 'auto'
     }
   )
   @Local segItem2: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
-      text: '关闭2',
+      text: 'close2',
       icon: $r('sys.media.ohos_ic_public_close'),
       enabled: false,
-      accessibilityText: '关闭2',
-      accessibilityDescription: '关闭2按钮',
+      accessibilityText: 'close2',
+      accessibilityDescription: 'ButtonClose2',
       accessibilityLevel: 'no-hide-descendants'
     }
   )
   @Local segItem3: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
-      text: '关闭3',
+      text: 'close3',
       icon: $r('sys.media.ohos_ic_public_close'),
-      accessibilityText: '关闭3',
-      accessibilityDescription: '关闭3按钮',
+      accessibilityText: 'close3',
+      accessibilityDescription: 'ButtonClose3',
       accessibilityLevel: 'no'
     }
   )
   @Local segItem4: SegmentButtonV2Item = new SegmentButtonV2Item(
     {
-      text: '关闭4',
+      text: 'close4',
       symbol: $r('sys.symbol.fade'),
       symbolModifier: new SymbolGlyphModifier().fontWeight(FontWeight.Bolder),
-      accessibilityText: '关闭4',
-      accessibilityDescription: '关闭4按钮',
+      accessibilityText: 'close4',
+      accessibilityDescription: 'ButtonClose4',
       accessibilityLevel: 'yes'
     }
   )

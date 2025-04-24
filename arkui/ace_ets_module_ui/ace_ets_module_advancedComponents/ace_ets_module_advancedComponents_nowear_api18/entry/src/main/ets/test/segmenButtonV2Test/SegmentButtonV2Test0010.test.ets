@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, 
+import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation,
   ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -59,7 +59,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
-      let textClick: Component = await driver.findComponent(ON.text("分享"));
+      let textClick: Component = await driver.findComponent(ON.text("share"));
       await CommonFunc.sleep(500);
       await textClick.click();
       await CommonFunc.sleep(500);
@@ -74,9 +74,9 @@ export default function SegmentButtonV2Test0010() {
         .$children[5]
         .$children[0]
       console.info("[SegmentButtonV2Test0010_001] component btn0 is: " + JSON.stringify(btn0));
-      expect(btn0.$attrs.accessibilityText).assertEqual('搜索');
+      expect(btn0.$attrs.accessibilityText).assertEqual('search');
       expect(btn0.$attrs.accessibilityLevel).assertEqual('auto');
-      expect(btn0.$attrs.accessibilityDescription).assertEqual('搜索按钮');
+      expect(btn0.$attrs.accessibilityDescription).assertEqual('ButtonSearch');
       expect(btn0.$attrs.enabled).assertEqual('true');
       await CommonFunc.sleep(500);
       let btn1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -117,7 +117,7 @@ export default function SegmentButtonV2Test0010() {
         .$children[0]
         .$children[1]
       console.info("[SegmentButtonV2Test0010_001] component text0 is: " + JSON.stringify(text0));
-      expect(text0.$attrs.content).assertEqual('搜索');
+      expect(text0.$attrs.content).assertEqual('search');
       expect(text0.$attrs.fontColor).assertEqual('#FFFFFF00');
       await CommonFunc.sleep(500);
       let text2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -130,7 +130,7 @@ export default function SegmentButtonV2Test0010() {
         .$children[0]
         .$children[1]
       console.info("[SegmentButtonV2Test0010_001] component text2 is: " + JSON.stringify(text2));
-      expect(text2.$attrs.content).assertEqual('分享');
+      expect(text2.$attrs.content).assertEqual('share');
       expect(text2.$attrs.fontColor).assertEqual('#99000000');
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -187,7 +187,7 @@ export default function SegmentButtonV2Test0010() {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
-      let textClick: Component = await driver.findComponent(ON.text("关闭3"));
+      let textClick: Component = await driver.findComponent(ON.text("close3"));
       await CommonFunc.sleep(500);
       await textClick.click();
       await CommonFunc.sleep(500);
@@ -202,9 +202,9 @@ export default function SegmentButtonV2Test0010() {
         .$children[5]
         .$children[0]
       console.info("[SegmentButtonV2Test0010_002] component btn0 is: " + JSON.stringify(btn0));
-      expect(btn0.$attrs.accessibilityText).assertEqual('关闭1');
+      expect(btn0.$attrs.accessibilityText).assertEqual('close1');
       expect(btn0.$attrs.accessibilityLevel).assertEqual('auto');
-      expect(btn0.$attrs.accessibilityDescription).assertEqual('关闭1按钮');
+      expect(btn0.$attrs.accessibilityDescription).assertEqual('ButtonClose1');
       expect(btn0.$attrs.enabled).assertEqual('true');
       await CommonFunc.sleep(500);
       let btn1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -245,7 +245,7 @@ export default function SegmentButtonV2Test0010() {
         .$children[0]
         .$children[1]
       console.info("[SegmentButtonV2Test0010_002] component text0 is: " + JSON.stringify(text0));
-      expect(text0.$attrs.content).assertEqual('关闭1');
+      expect(text0.$attrs.content).assertEqual('close1');
       expect(text0.$attrs.fontColor).assertEqual('#FFFFFF00');
       await CommonFunc.sleep(500);
       let text2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -258,7 +258,7 @@ export default function SegmentButtonV2Test0010() {
         .$children[0]
         .$children[1]
       console.info("[SegmentButtonV2Test0010_002] component text2 is: " + JSON.stringify(text2));
-      expect(text2.$attrs.content).assertEqual('关闭2');
+      expect(text2.$attrs.content).assertEqual('close2');
       expect(text2.$attrs.fontColor).assertEqual('#99000000');
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
