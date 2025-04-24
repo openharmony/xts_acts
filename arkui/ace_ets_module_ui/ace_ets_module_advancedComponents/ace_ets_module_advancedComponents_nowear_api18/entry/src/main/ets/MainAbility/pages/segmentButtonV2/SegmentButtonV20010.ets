@@ -18,7 +18,7 @@ import { ImageModifier, TextModifier, SymbolGlyphModifier } from '@ohos.arkui.mo
 
 @Entry
 @ComponentV2
-struct SegmentButtonV20010 {
+struct localizedTextPadding {
   @Local selectedIndex0: number = 0
   @Local selectedIndex1: number = 0
   @Local items: SegmentButtonV2Items = new SegmentButtonV2Items([
