@@ -3121,5 +3121,66 @@ export default function audioRendererChange() {
       console.info(`-------SUB_MULTIMEDIA_AUDIO_OFF_AUDIOCAPTURECHANGE_0200------end`)
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOCAPTURERCHANGE_AUDIODEVICEDESCRIPTOR_0100
+     * @tc.name      : AUDIODEVICEDESCRIPTOR
+     * @tc.desc      : AUDIODEVICEDESCRIPTOR
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_AUDIOCAPTURERCHANGE_AUDIODEVICEDESCRIPTOR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let AudioStreamInfo: AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo: AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions: AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+
+      let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(AudioRendererOptions);
+      audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.AudioDeviceDescriptors) => {
+        if (err) {
+          console.error(`getCurrentOutputDevices Fail: ${err}`);
+          expect().assertFail();
+        } else {
+          for (let i = 0; i < deviceInfo.length; i++) {
+            console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
+            expect(deviceInfo[i].id).assertLargerOrEqual(0);
+            console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
+            expect(deviceInfo[i].deviceType).assertLargerOrEqual(0);
+            console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
+            expect(deviceInfo[i].deviceRole).assertLargerOrEqual(0);
+            console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
+            expect(deviceInfo[i].name).assertInstanceOf('String');
+            console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
+            expect(deviceInfo[i].address).assertInstanceOf('String');
+            console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
+            expect(deviceInfo[i].sampleRates[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
+            expect(deviceInfo[i].channelCounts[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo channelMasks: ${deviceInfo[i].channelMasks[0]}`);
+            expect(deviceInfo[i].channelMasks[0]).assertLargerOrEqual(0);
+            console.info(`DeviceInfo displayName: ${deviceInfo[i].displayName}`);
+            expect(deviceInfo[i].displayName).assertInstanceOf('String');
+            // console.info(`DeviceInfo channelmask: ${deviceInfo[i].encodingTypes[0]}`);
+            console.info(`DeviceInfo spatializationSupported: ${deviceInfo[i].spatializationSupported}`);
+            expect(deviceInfo[i].spatializationSupported).assertInstanceOf('Boolean');
+          }
+        }
+      });
+      done();
+    })
   })
 }
