@@ -15,7 +15,7 @@
 import ProgressCapsuleRadius from './progressTest/ProgressCapsuleRadius.test';
 import ProgressPrivacySensitive from './progressTest/ProgressPrivacySensitive.test';
 import GaugePrivacySensitive from './gaugeTest/GaugePrivacySensitive.test';
-import TextClockDateTimeOptions from './gaugeTest/TextClockDateTimeOptions.test';
+import TextClockDateTimeOptions from './textClockTest/TextClockDateTimeOptions.test';
 
 export default function testsuite() {
     ProgressCapsuleRadius()
