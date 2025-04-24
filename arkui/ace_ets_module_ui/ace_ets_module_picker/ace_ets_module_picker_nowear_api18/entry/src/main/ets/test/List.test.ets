@@ -17,7 +17,7 @@ import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerD
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
 import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
-import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
+import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
 import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
 import calendarPickerDialogBackgroundColorTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundColor.test';
 import calendarPickerDialogBackgroundShadowTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundShadow.test';
