@@ -1943,16 +1943,16 @@ export default function audioManagerApi9() {
           console.info(`Audio interruption event: ${interruptAction} `);
         }
       };
+      let flag = false;
       try {
         let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
         audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
         audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
-        done();
+        flag = true;
       } catch (error) {
         console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
       }
+      expect(flag).assertTrue();
       done();
     })
     /**
@@ -1964,14 +1964,14 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 0
      */
     it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let flag = false;
       try {
         let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
-        done();
+        flag = true;
       } catch (error) {
         console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
       }
+      expect(flag).assertTrue();
       done();
     })
   })
