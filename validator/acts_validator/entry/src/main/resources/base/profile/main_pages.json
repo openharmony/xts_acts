@@ -134,7 +134,11 @@
     "pages/ArkUI/stopSwiper",
     "pages/ArkUI/AccessibilityRoleTypeTest",
     "pages/ArkUI/StylusPen",
-    "pages/ArkUI/AccessibilityFocusDrawLevel"
+    "pages/ArkUI/AccessibilityFocusDrawLevel",
+	"entryembeddeduiextability/pages/EntryEmbeddedUIExtAbilityPage",
+    "pages/ArkUI/AccessibilityNextFocusIdPage",
+    "pages/ArkUI/AccessibilityDefaultFocusPage",
+    "pages/ArkUI/AccessibilityScrollTriggerablePage"
   ]
 }
 
