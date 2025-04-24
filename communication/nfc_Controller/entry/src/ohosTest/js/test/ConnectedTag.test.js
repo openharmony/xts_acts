@@ -389,7 +389,20 @@ export default function ConnectedTagTest() {
                 });
             }
         })
-
+        /**
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1400
+         * @tc.name Test NfcRfType value
+         * @tc.desc NfcRfType value.
+         * @tc.size since 8
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1400', Level.LEVEL0,function ()  {
+            console.info('[nfc_test]1 NfcRfType value test ')
+            expect(NfcRfType.NFC_RF_ENTER).assertEqual(1);
+            console.info('[nfc_test]2 NfcRfType value test ' )
+            expect(NfcRfType.NFC_RF_LEAVE).assertEqual(0);
+        })  
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
