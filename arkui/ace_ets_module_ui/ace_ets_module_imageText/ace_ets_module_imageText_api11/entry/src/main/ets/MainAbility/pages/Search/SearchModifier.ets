@@ -13,33 +13,32 @@
  * limitations under the License.
  */
 
-class SymbolSpanModifier implements AttributeModifier<SymbolSpanAttribute> {
-  applyNormalAttribute(SymbolSpanInstance: SymbolSpanAttribute): void {
-    SymbolSpanInstance.fontSize(100);
+class SearchModifier implements AttributeModifier<SearchAttribute> {
+  applyNormalAttribute(SearchInstance: SearchAttribute): void {
+    SearchInstance.textFont({ size: 15 });
   }
 }
 
 @Entry
 @Component
-struct SymbolSpanModifier1 {
+struct SearchModifier1 {
   @State value: string = 'init'
-  @State modifier: SymbolSpanModifier = new SymbolSpanModifier();
+  @State modifier: SearchModifier = new SearchModifier();
 
   aboutToAppear(): void {
-    this.value = (typeof SymbolSpanInstance).toString()
+    this.value = typeof SearchInstance
   }
 
   build() {
     Column({ space: 5 }) {
-      Text() {
-        SymbolSpan($r('sys.symbol.ohos_wifi')).attributeModifier(this.modifier)
-          .id('SymbolSpanModifier_get_fontSize')
-          .height('20%')
-      }
+      Search({ value: 'SearchModifier' })
+        .attributeModifier(this.modifier)
+        .id('SearchModifier_get_value')
+        .height('20%')
 
-      TextArea({ text: this.value })
-        .id('SymbolSpanModifier_get_type')
+      Text(this.value)
+        .id('SearchModifier_get_type')
         .height('10%')
-    }
+    }.width("90%")
   }
 }

@@ -13,6 +13,9 @@
   "MainAbility/pages/Modifier/ImageSpanModifier",
   "MainAbility/pages/Modifier/MarqueeModifier",
   "MainAbility/pages/Modifier/RichEditorModifier",
-  "MainAbility/pages/Modifier/RichTextModifier"
+  "MainAbility/pages/Modifier/RichTextModifier",
+  "MainAbility/pages/Search/SearchEnterKeyType",
+  "MainAbility/pages/Search/SearchFontFeature",
+  "MainAbility/pages/SymbolGlyph/BounceSymbolEffect"
   ]
 }
