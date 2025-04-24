@@ -58,7 +58,7 @@ struct Index {
             .onClick(() => {
               this.singleSelectIconCapsuleSelectedIndexes = [0]
             })
-          Button('点击选中第一个')
+          Button('点击选中第四个和四五个')
             .id('SegmentButtonIconTextItem102')
             .onClick(() => {
               this.multiplySelectIconTextCapsuleSelectedIndexes = [3,4]
