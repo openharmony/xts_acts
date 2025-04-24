@@ -23,7 +23,7 @@ export default function SegmentButtonV2Test0010() {
     beforeEach(async (done: Function) => {
       console.info("SegmentButtonV2Test0010 beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/segmenButtonV2/SegmentButtonV20010",
+        url: "MainAbility/pages/segmentButtonV2/SegmentButtonV20010",
       }
       try {
         router.clear();
