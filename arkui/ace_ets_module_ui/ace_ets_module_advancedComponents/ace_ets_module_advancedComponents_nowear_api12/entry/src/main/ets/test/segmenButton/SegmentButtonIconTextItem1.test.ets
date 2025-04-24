@@ -68,9 +68,9 @@ export default function SegmentButtonIconTextItem1() {
         .$children[0]
         .$children[0]
         .$children[0]
-        .$children[0]//第一行
+        .$children[0]
         .$children[2]
-        .$children[3]//button位置
+        .$children[3]
         .$children[0]
         .$children[0]
         .$children[0];
