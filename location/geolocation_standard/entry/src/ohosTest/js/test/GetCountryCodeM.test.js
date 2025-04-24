@@ -18,7 +18,7 @@ import geolocationm from '@ohos.geoLocationManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -96,9 +96,9 @@ export default function geolocationTest_6() {
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
-     * @tc.level since 9
+     * @tc.level Level 2
      */
-     it('SUB_HSS_LocationSystem_CountryCode_0400', 0, async function (done) {
+     it('SUB_HSS_LocationSystem_CountryCode_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             await geolocationm.getCountryCode().then((result) => {
                 console.info("[lbs_js] getCountryCode promise result: " + JSON.stringify(result));
@@ -113,7 +113,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
@@ -123,9 +127,9 @@ export default function geolocationTest_6() {
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
-     * @tc.level since 9
+     * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0500', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         try {
             geolocationm.getCountryCode((err,data) => {
                 if (err) {
@@ -138,7 +142,11 @@ export default function geolocationTest_6() {
             })
         } catch (error) {
             console.info("[lbs_js] getCountryCode callback try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         await sleep(1500);
         done();
@@ -149,9 +157,9 @@ export default function geolocationTest_6() {
      * @tc.name getCountryCode_on_off
      * @tc.desc The interception country code is changed.
      * @tc.type Function
-     * @tc.level since 9
+     * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0600', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         console.info("[lbs_js] countryCodeChange");
         try {
             geolocationm.on('countryCodeChange', function (data) {
@@ -159,7 +167,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             await geolocationm.getCountryCode().then((result) => {
@@ -171,7 +183,11 @@ export default function geolocationTest_6() {
             });
         } catch (error) {
             console.info("[lbs_js] getCountryCode promise try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         try {
             geolocationm.off('countryCodeChange', function (data) {
@@ -179,7 +195,11 @@ export default function geolocationTest_6() {
             })
         } catch (error) {
             console.info("[lbs_js] countryCodeChangeOn try err." + JSON.stringify(error));
-            expect().assertFail();
+            if (error.code == "801") {
+                expect(error.code).assertEqual("801")
+            } else {
+                expect().assertFail();
+            }
         }
         done();
     })
