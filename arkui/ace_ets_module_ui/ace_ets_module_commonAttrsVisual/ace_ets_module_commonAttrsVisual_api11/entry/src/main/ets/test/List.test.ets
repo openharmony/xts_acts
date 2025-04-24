@@ -28,6 +28,10 @@ import hoverEffectJsunit from './imageEffectsTest/hoverEffect.test';
 import hitTestModeJsunit from './imageEffectsTest/hitTestMode.test';
 import commonBackgroundBlurStyleJsunit from './imageEffectsTest/common.test3';
 import common_ts_ets_apiStaticClearJsunit from './imageEffectsTest/common_ts_ets_api.test';
+import transformPointTest from './imageEffectsTest/transformPointTest.test';
+import rotateTest from './imageEffectsTest/rotateTest.test';
+import shapeTest from './imageEffectsTest/shapeTest.test';
+
 export default function testsuite() {
   imageEffectsJsunit();
   backgroundEffectJsunit();
@@ -43,4 +47,7 @@ export default function testsuite() {
   hitTestModeJsunit()
   commonBackgroundBlurStyleJsunit()
   common_ts_ets_apiStaticClearJsunit()
+  transformPointTest()
+  rotateTest()
+  shapeTest()
 }
