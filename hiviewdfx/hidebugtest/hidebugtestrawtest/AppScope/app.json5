@@ -13,20 +13,19 @@
  * limitations under the License.
  */
 {
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
+  "app": {
+    "bundleName": "com.hidebugraw.test",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    "distributedNotificationEnabled": true,
+    "keepAlive": true,
+    "minAPIVersion": 10,
+    "targetAPIVersion": 10,
+    "car": {
+      "minAPIVersion": 10
     }
-  },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
+  }
 }

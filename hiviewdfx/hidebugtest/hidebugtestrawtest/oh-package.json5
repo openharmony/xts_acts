@@ -13,20 +13,14 @@
  * limitations under the License.
  */
 {
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/worker/worker1.ets",
-      ],
-    }
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
   },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
+  "author": "",
+  "name": "com.hidebugraw.test",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }
