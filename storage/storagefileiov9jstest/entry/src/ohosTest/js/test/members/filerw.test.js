@@ -16,6 +16,7 @@
 import {
     fileIO, FILE_CONTENT, prepareFile, prepare200MFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 const RAND_READ_BASELINE = 3.5;
 const RAND_WRITE_BASELINE = 0.5;
@@ -91,7 +92,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_read_random_promise_000', 0, async function (done) {
+        it('fileIO_test_read_random_promise_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_read_random_promise_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -120,7 +121,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_write_random_promise_000', 0, async function (done) {
+        it('fileIO_test_write_random_promise_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_write_random_promise_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -149,7 +150,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_read_sequence_promise_000', 0, async function (done) {
+        it('fileIO_test_read_sequence_promise_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_read_sequence_promise_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -178,7 +179,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_write_sequence_promise_000', 0, async function (done) {
+        it('fileIO_test_write_sequence_promise_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_write_sequence_promise_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -207,7 +208,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_read_random_callback_000', 0, async function (done) {
+        it('fileIO_test_read_random_callback_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_read_random_callback_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -236,7 +237,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_write_random_callback_000', 0, async function (done) {
+        it('fileIO_test_write_random_callback_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_write_random_callback_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -265,7 +266,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_read_sequence_callback_000', 0, async function (done) {
+        it('fileIO_test_read_sequence_callback_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_read_sequence_callback_000');
             expect(prepare200MFile(fpath)).assertTrue;
 
@@ -294,7 +295,7 @@ export default function FileIOFilerw_test() {
          * @tc.level Level 3
          * @tc.require
          */
-        it('fileIO_test_write_sequence_callback_000', 0, async function (done) {
+        it('fileIO_test_write_sequence_callback_000', Level.LEVEL0, async function (done) {
             let fpath = await nextFileName('fileIO_test_write_sequence_callback_000');
             expect(prepare200MFile(fpath)).assertTrue;
 

@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
   
 export default function fileIOUtimes() {
   describe('fileIO_fileIO_utimes', function () {
@@ -30,7 +31,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_utimes_async_001', 0, async function () {
+  it('fileIO_test_utimes_async_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_001');
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
 
@@ -57,7 +58,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_utimes_async_002', 3, async function () {
+  it('fileIO_test_utimes_async_002', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_002');
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
     
@@ -84,7 +85,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_utimes_async_003', 0, async function () {
+  it('fileIO_test_utimes_async_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_003');
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
 
@@ -111,7 +112,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_utimes_async_004', 3, async function () {
+  it('fileIO_test_utimes_async_004', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_004');
 
     try {
@@ -133,7 +134,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_utimes_async_005', 3, async function () {
+  it('fileIO_test_utimes_async_005', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_005');
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
 
@@ -156,7 +157,7 @@ export default function fileIOUtimes() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_utimes_async_006', 3, async function () {
+  it('fileIO_test_utimes_async_006', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_utimes_async_006');
     expect(prepareFile(fpath,FILE_CONTENT)).assertTrue();
 

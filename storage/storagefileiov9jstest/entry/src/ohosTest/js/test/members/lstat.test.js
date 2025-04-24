@@ -17,6 +17,7 @@ import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBigInt,
   describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOLstat() {
 describe('fileIO_fs_lstat', function () {
@@ -31,7 +32,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_lstat_sync_000', 0, async function () {
+  it('fileIO_lstat_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -55,7 +56,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_sync_001', 0, async function () {
+  it('fileIO_lstat_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_sync_001');
 
     try {
@@ -77,7 +78,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_sync_002', 0, async function () {
+  it('fileIO_lstat_sync_002', Level.LEVEL0, async function () {
 
     try {
       fileIO.lstatSync();
@@ -97,7 +98,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_ino_000', 0, async function () {
+  it('fileIO_lstat_ino_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -120,7 +121,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_mode_000', 0, async function () {
+  it('fileIO_lstat_mode_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_mode_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -144,7 +145,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_uid_000', 0, async function () {
+  it('fileIO_lstat_uid_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_uid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -168,7 +169,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_gid_000', 0, async function () {
+  it('fileIO_lstat_gid_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_gid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -192,7 +193,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_size_000', 0, async function () {
+  it('fileIO_lstat_size_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_size_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -216,7 +217,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_atime_000', 0, async function () {
+  it('fileIO_lstat_atime_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_atime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -240,7 +241,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_mtime_000', 0, async function () {
+  it('fileIO_lstat_mtime_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_mtime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -264,7 +265,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_ctime_000', 0, async function () {
+  it('fileIO_lstat_ctime_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_ctime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -288,7 +289,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_block_device_000', 0, async function () {
+  it('fileIO_lstat_is_block_device_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_block_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -312,7 +313,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lstat_is_block_device_001', 0, async function () {
+  it('fileIO_test_lstat_is_block_device_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lstat_is_block_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -336,7 +337,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_character_device_000', 0, async function () {
+  it('fileIO_lstat_is_character_device_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_character_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -360,7 +361,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lstat_is_character_device_001', 0, async function () {
+  it('fileIO_test_lstat_is_character_device_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lstat_is_character_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -384,7 +385,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_directory_000', 0, async function () {
+  it('fileIO_lstat_is_directory_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_directory_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -408,7 +409,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_directory_001', 0, async function () {
+  it('fileIO_lstat_is_directory_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_lstat_is_directory_001') + 'd';
 
     try {
@@ -432,7 +433,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_directory_002', 0, async function () {
+  it('fileIO_lstat_is_directory_002', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_lstat_is_directory_002') + 'd';
 
     try {
@@ -456,7 +457,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_fifo_000', 0, async function () {
+  it('fileIO_lstat_is_fifo_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_fifo_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -480,7 +481,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lstat_is_fifo_002', 0, async function () {
+  it('fileIO_test_lstat_is_fifo_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_lstat_is_fifo_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -504,7 +505,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_file_000', 0, async function () {
+  it('fileIO_lstat_is_file_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_file_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -528,7 +529,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_file_001', 0, async function () {
+  it('fileIO_lstat_is_file_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_lstat_is_file_001');
 
     try {
@@ -552,7 +553,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_lstat_is_file_002', 0, async function () {
+  it('fileIO_test_lstat_is_file_002', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_lstat_is_file_002');
 
     try {
@@ -576,7 +577,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_socket_000', 0, async function () {
+  it('fileIO_lstat_is_socket_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_socket_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -600,7 +601,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_socket_001', 0, async function () {
+  it('fileIO_lstat_is_socket_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_socket_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -624,7 +625,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_symbolic_link_000', 0, async function () {
+  it('fileIO_lstat_is_symbolic_link_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_symbolic_link_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -648,7 +649,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_is_symbolic_link_001', 0, async function () {
+  it('fileIO_lstat_is_symbolic_link_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_lstat_is_symbolic_link_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -672,7 +673,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_lstat_async_000', 0, async function (done) {
+  it('fileIO_lstat_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -701,7 +702,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_001', 0, async function (done) {
+  it('fileIO_lstat_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -730,7 +731,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_002', 0, async function (done) {
+  it('fileIO_lstat_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -755,7 +756,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_003', 0, async function (done) {
+  it('fileIO_lstat_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_003');
 
     try {
@@ -782,7 +783,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_004', 0, async function (done) {
+  it('fileIO_lstat_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_004');
 
     try {
@@ -805,7 +806,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_ino_000', 0, async function (done) {
+  it('fileIO_lstat_async_ino_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -830,7 +831,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_ino_001', 0, async function (done) {
+  it('fileIO_lstat_async_ino_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_ino_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -860,7 +861,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_mode_000', 0, async function (done) {
+  it('fileIO_lstat_async_mode_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_mode_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -885,7 +886,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_mode_001', 0, async function (done) {
+  it('fileIO_lstat_async_mode_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_mode_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -915,7 +916,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_uid_000', 0, async function (done) {
+  it('fileIO_lstat_async_uid_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_uid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -940,7 +941,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_uid_001', 0, async function (done) {
+  it('fileIO_lstat_async_uid_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_uid_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -970,7 +971,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_gid_000', 0, async function (done) {
+  it('fileIO_lstat_async_gid_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_gid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -995,7 +996,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_gid_001', 0, async function (done) {
+  it('fileIO_lstat_async_gid_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_gid_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1025,7 +1026,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_size_000', 0, async function (done) {
+  it('fileIO_lstat_async_size_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_size_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1050,7 +1051,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_size_001', 0, async function (done) {
+  it('fileIO_lstat_async_size_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_size_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1080,7 +1081,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_atime_000', 0, async function (done) {
+  it('fileIO_lstat_async_atime_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_atime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1105,7 +1106,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_atime_001', 0, async function (done) {
+  it('fileIO_lstat_async_atime_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_atime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1135,7 +1136,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_mtime_000', 0, async function (done) {
+  it('fileIO_lstat_async_mtime_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_mtime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1160,7 +1161,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_mtime_001', 0, async function (done) {
+  it('fileIO_lstat_async_mtime_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_mtime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1190,7 +1191,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_ctime_000', 0, async function (done) {
+  it('fileIO_lstat_async_ctime_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_ctime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1215,7 +1216,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_ctime_001', 0, async function (done) {
+  it('fileIO_lstat_async_ctime_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_ctime_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1245,7 +1246,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_block_device_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_block_device_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_block_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1270,7 +1271,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_block_device_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_block_device_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_block_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1300,7 +1301,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_character_device_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_character_device_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_character_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1325,7 +1326,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_character_device_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_character_device_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_character_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1355,7 +1356,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_directory_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_directory_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_directory_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1380,7 +1381,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_directory_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_directory_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_lstat_async_is_directory_001') + 'd';
 
 
@@ -1406,7 +1407,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_directory_002', 0, async function (done) {
+  it('fileIO_lstat_async_is_directory_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_lstat_async_is_directory_002') + 'd';
 
     try {
@@ -1436,7 +1437,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_fifo_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_fifo_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_fifo_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1461,7 +1462,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_fifo_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_fifo_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_fifo_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1491,7 +1492,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_file_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_file_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_file_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1516,7 +1517,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_file_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_file_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_file_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1546,7 +1547,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_file_002', 0, async function (done) {
+  it('fileIO_lstat_async_is_file_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_lstat_async_is_file_002');
 
     try {
@@ -1571,7 +1572,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_socket_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_socket_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_socket_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1596,7 +1597,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_socket_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_socket_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_socket_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1626,7 +1627,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_symbolic_link_000', 0, async function (done) {
+  it('fileIO_lstat_async_is_symbolic_link_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_symbolic_link_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1651,7 +1652,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_lstat_async_is_symbolic_link_001', 0, async function (done) {
+  it('fileIO_lstat_async_is_symbolic_link_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_lstat_async_is_symbolic_link_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1681,7 +1682,7 @@ describe('fileIO_fs_lstat', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_append_file_sync_000', 0, async function () {
+  it('fileIO_test_append_file_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_append_file_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

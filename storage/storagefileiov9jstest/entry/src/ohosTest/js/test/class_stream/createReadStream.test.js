@@ -369,5 +369,159 @@ export default function fscreateReadStream() {
         expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       }
     });
+
+    /**
+     * @tc.number SUB_DF_FILEIO_CREATE_READSTREAM_1300
+     * @tc.name fileIO_test_create_ReadStream_013
+     * @tc.desc Test the createWriteStream() interface of class Stream.
+     * ReadStream reads files.bytesWritten, path
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_create_ReadStream_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+      let fpath = await nextFileName('fileIO_test_create_ReadStream_013');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+      try {
+        let WriteStream = fs.createWriteStream(fpath);
+        let wb = WriteStream.bytesWritten;
+        let wpath = WriteStream.path;
+        expect(isIntNum(wb)).assertTrue();
+        expect(wpath == fpath).assertTrue();
+        fs.unlinkSync(fpath);
+      } catch (e) {
+        console.log('fileIO_test_create_ReadStream_013 has failed for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_FILEIO_CREATE_READSTREAM_1400
+     * @tc.name fileIO_test_create_ReadStream_014
+     * @tc.desc Test the createWriteStream() interface of class Stream.
+     * ReadStream reads files.Seek
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_create_ReadStream_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+      let fpath = await nextFileName('fileIO_test_create_ReadStream_014');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+      try {
+        let WriteStream = fs.createWriteStream(fpath);
+        let curOff = WriteStream.seek(5, fs.WhenceType.SEEK_SET);
+        console.log('fileIO_test_create_ReadStream_014 has failed for ' + curOff);
+        expect(true).assertTrue();
+        fs.unlinkSync(fpath);
+      } catch (e) {
+        console.log('fileIO_test_create_ReadStream_014 has failed for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_FILEIO_CREATE_READSTREAM_1400
+     * @tc.name fileIO_test_create_ReadStream_014
+     * @tc.desc Test the createWriteStream() interface of class Stream.
+     * ReadStream reads files.Seek, Invalid argument
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_create_ReadStream_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+      let fpath = await nextFileName('fileIO_test_create_ReadStream_014');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+      try {
+        let WriteStream = fs.createWriteStream(fpath);
+        let curOff = WriteStream.seek();
+        expect(false).assertTrue();
+      } catch (e) {
+        fs.unlinkSync(fpath);
+        console.log('fileIO_test_create_ReadStream_014 has failed for ' + e.message + ', code: ' + e.code);
+        expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_FILEIO_CREATE_READSTREAM_1500
+     * @tc.name fileIO_test_create_ReadStream_015
+     * @tc.desc Test the createReadStream() interface of class Stream.
+     * Copy files on Stream and use close to release resources at the end, start=0.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_create_ReadStream_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+      let fpath = await nextFileName('fileIO_test_create_ReadStream_015');
+      let wpath = await nextFileName('fileIO_test_create_ReadStream_015');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      expect(prepareFile(wpath, '')).assertTrue();
+
+      try {
+        let rs = fs.createReadStream(fpath);
+        let ws = fs.createWriteStream(wpath, 0);
+        let rsSize = 0;
+        rs.on('data', (emitData) => {
+          let data = emitData?.data;
+          ws.write(data);
+          rsSize = rsSize + data?.length;
+          console.log('fileIO_test_create_ReadStream_015 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+          let filesize = fs.lstatSycn(wpath).size;
+          console.log('fileIO_test_create_ReadStream_015 rsSize ' + rsSize + ', filesize: ' + filesize);
+          expect(rsSize == filesize).assertTrue();
+          rs.close();
+          ws.close();
+        });
+        fs.unlinkSync(fpath);
+      } catch (e) {
+        console.log('fileIO_test_create_ReadStream_015 has failed for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
+     * @tc.number SUB_DF_FILEIO_CREATE_READSTREAM_1600
+     * @tc.name fileIO_test_create_ReadStream_016
+     * @tc.desc Test the createReadStream() interface of class Stream.
+     * Copy files on Stream and use close to release resources at the end, mode=0.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_create_ReadStream_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+      let fpath = await nextFileName('fileIO_test_create_ReadStream_016');
+      let wpath = await nextFileName('fileIO_test_create_ReadStream_016');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      expect(prepareFile(wpath, '')).assertTrue();
+
+      try {
+        let rs = fs.createReadStream(fpath);
+        let ws = fs.createWriteStream(wpath, 0o2);
+        let rsSize = 0;
+        rs.on('data', (emitData) => {
+          let data = emitData?.data;
+          ws.write(data);
+          rsSize = rsSize + data?.length;
+          console.log('fileIO_test_create_ReadStream_016 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+          let filesize = fs.lstatSycn(wpath).size;
+          console.log('fileIO_test_create_ReadStream_016 rsSize ' + rsSize + ', filesize: ' + filesize);
+          expect(rsSize == filesize).assertTrue();
+          rs.close();
+          ws.close();
+        });
+        fs.unlinkSync(fpath);
+      } catch (e) {
+        console.log('fileIO_test_create_ReadStream_016 has failed for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+      }
+    });
   })
 }

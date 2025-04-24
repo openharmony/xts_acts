@@ -16,6 +16,7 @@
 import {
     fileIO,prepareFile, nextFileName, describe, it, expect,
   } from '../Common';
+  import { Level } from '@ohos/hypium';
 
 const FILE_CONTENTS = 'hello world\nhello js\nhello world1';
   
@@ -32,7 +33,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_001', 0, async function () {
+    it('fileIO_test_readLines_sync_001', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_001');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -60,7 +61,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_002', 0, async function () {
+    it('fileIO_test_readLines_sync_002', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_002');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -91,7 +92,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_003', 3, async function () {
+    it('fileIO_test_readLines_sync_003', Level.LEVEL3, async function () {
 
         try {
             fileIO.readLinesSync();
@@ -112,7 +113,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_004', 3, async function () {
+    it('fileIO_test_readLines_sync_004', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_004');
 
         try {
@@ -134,7 +135,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_005', 3, async function () {
+    it('fileIO_test_readLines_sync_005', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_005');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -162,7 +163,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_006', 3, async function () {
+    it('fileIO_test_readLines_sync_006', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_006');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -192,7 +193,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_007', 0, async function () {
+    it('fileIO_test_readLines_sync_007', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_007');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
 
@@ -218,7 +219,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_sync_008', 0, async function () {
+    it('fileIO_test_readLines_sync_008', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_008');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -247,7 +248,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_async_001', 0, async function (done) {
+    it('fileIO_test_readLines_async_001', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_001');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -276,7 +277,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_async_002', 0, async function (done) {
+    it('fileIO_test_readLines_async_002', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_002');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -310,7 +311,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_003', 3, async function (done) {
+    it('fileIO_test_readLines_async_003', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_003');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -341,7 +342,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_004', 3, async function (done) {
+    it('fileIO_test_readLines_async_004', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_004');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -377,7 +378,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_005', 3, async function (done) {
+    it('fileIO_test_readLines_async_005', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_005');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -412,7 +413,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_006', 3, async function (done) {
+    it('fileIO_test_readLines_async_006', Level.LEVEL3, async function (done) {
 
         try {
             await fileIO.readLines();
@@ -434,7 +435,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_007', 3, async function (done) {
+    it('fileIO_test_readLines_async_007', Level.LEVEL3, async function (done) {
 
         try {
             fileIO.readLines((err, readerIterator)  => {
@@ -457,7 +458,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_008', 3, async function (done) {
+    it('fileIO_test_readLines_async_008', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_008');
 
         try {
@@ -480,7 +481,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_009', 3, async function (done) {
+    it('fileIO_test_readLines_async_009', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_009');
 
         try {
@@ -507,7 +508,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_010', 3, async function (done) {
+    it('fileIO_test_readLines_async_010', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_010');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -536,7 +537,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_011', 3, async function (done) {
+    it('fileIO_test_readLines_async_011', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_011');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -570,7 +571,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_012', 3, async function (done) {
+    it('fileIO_test_readLines_async_012', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_012');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -601,7 +602,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_013', 3, async function (done) {
+    it('fileIO_test_readLines_async_013', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_013');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -637,7 +638,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_014', 3, async function (done) {
+    it('fileIO_test_readLines_async_014', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_014');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
 
@@ -664,7 +665,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_readLines_async_015', 3, async function (done) {
+    it('fileIO_test_readLines_async_015', Level.LEVEL3, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_015');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
 
@@ -692,7 +693,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_async_016', 0, async function (done) {
+    it('fileIO_test_readLines_async_016', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_016');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
@@ -722,7 +723,7 @@ describe('fileIO_fs_readLines', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_test_readLines_async_017', 0, async function (done) {
+    it('fileIO_test_readLines_async_017', Level.LEVEL0, async function (done) {
         let fpath = await nextFileName('fileIO_test_readLines_async_017');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
         let arr = FILE_CONTENTS.split("\n");
