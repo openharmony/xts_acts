@@ -46,7 +46,7 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.CAPTURE_SCREEN"
+        "name": "ohos.permission.ACCESS_VIRTUAL_SCREEN"
       }
     ]
   }
