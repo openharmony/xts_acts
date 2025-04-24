@@ -23,6 +23,7 @@ import { BusinessError } from '@ohos.base';
 let filePath: ESObject;
 let fdNumber: number;
 let globalpixelmap: PixelMap;
+let globalimageSource: image.ImageSource;
 
 async function getFd(fileName:string) {
   let context: ESObject = await AppStorage.get('thisContext');
@@ -44,6 +45,33 @@ async function getFd(fileName:string) {
     });
 }
 
+async function checkImageInfo(testNum: string, pixelMap: image.PixelMap, width: number, height: number) {
+    let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+    let imageWidth: number = imageInfo.size.width;
+    console.info(testNum + 'imageWidth is ' + imageWidth);
+    expect(imageWidth == width).assertTrue();
+    let imageHeight: number = imageInfo.size.height;
+    console.info(testNum + 'imageHeight is ' + imageHeight);
+    expect(imageHeight == height).assertTrue();
+}
+
+async function checkPixelValues(done: Function , testNum: string, x: number, y: number, rowOffset: number, bufferArr: Uint8Array, Red: number | undefined, Green: number | undefined, Blue: number | undefined, Alpha: number | undefined) {
+    let index = (y * rowOffset + x) * 4;
+    console.info('index is ' + bufferArr[index]);
+    console.info('index + 1 is ' + bufferArr[index + 1]);
+    console.info('index + 2 is ' + bufferArr[index + 2]);
+    console.info('index + 3 is ' + bufferArr[index + 3]);
+    if (bufferArr[index] == Red && bufferArr[index + 1] == Green && bufferArr[index + 2] == Blue && bufferArr[index + 3] == Alpha) {
+        console.info(testNum + ' Successed in checking pixel values');
+        expect(true).assertTrue();
+        done();
+    } else {
+        console.info(testNum + ' Failed to check pixel values');
+        expect().assertFail();
+        done();
+    }
+}
+
 export default function imagePixelLocation() {
     describe("imagePixelLocation", () => {
 
@@ -63,6 +91,14 @@ export default function imagePixelLocation() {
                     await globalpixelmap.release();
                 } catch (error) {
                     console.info("globalpixelmap release fail");
+                }
+            }
+            if (globalimageSource != undefined) {
+                console.info('globalimageSource release start');
+                try {
+                    await globalimageSource.release();
+                } catch (error) {
+                    console.info('globalimageSource release fail');
                 }
             }
             console.info("afterEach case");
@@ -87,12 +123,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -104,94 +139,23 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 256).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 256).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 256, 256);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 60;
-                            let y = 60;
-                            let index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 255 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is red');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not red');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 60;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 255 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is green');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not green');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 60;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 255 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is blue');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not blue');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 120 && bufferArr[index + 1] == 120 && bufferArr[index + 2] == 120 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is grey');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not grey');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 60, 60, 256, bufferArr, 255, 0, 0, 255);
+                            checkPixelValues(done, tag, 200, 60, 256, bufferArr, 0, 255, 0, 255);
+                            checkPixelValues(done, tag, 60, 200, 256, bufferArr, 0, 0, 255, 255);
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, 120, 120, 120, 255);
+                            done();
                         }
                     });
                 }
@@ -218,12 +182,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -235,62 +198,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 128).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 128).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 128, 128);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 125;
-                            let y = 125;
-                            let index = (y * 128 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 255 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is red');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not red');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 125, 125, 128, bufferArr, 255, 0, 0, 255);
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -317,12 +239,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -334,62 +255,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 128).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 128).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 128, 128);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 125;
-                            let y = 125;
-                            let index = (y * 128 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 255 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is green');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not green');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 125, 125, 128, bufferArr, 0, 255, 0, 255);
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -416,12 +296,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -433,62 +312,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 128).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 128).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 128, 128);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 125;
-                            let y = 125;
-                            let index = (y * 128 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 255 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is blue');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not blue');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 125, 125, 128, bufferArr, 0, 0, 255, 255);
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -515,12 +353,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -541,53 +378,15 @@ export default function imagePixelLocation() {
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 128).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 128).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 128, 128);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 125;
-                            let y = 125;
-                            let index = (y * 128 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 120 && bufferArr[index + 1] == 120 && bufferArr[index + 2] == 120 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is grey');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not grey');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 200;
-                            y = 200;
-                            index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 125, 125, 128, bufferArr, 120, 120, 120, 255);
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -614,12 +413,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -640,53 +438,15 @@ export default function imagePixelLocation() {
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 512).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 512).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 512, 512);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 500;
-                            let y = 500;
-                            let index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 255 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The red area is zoomed in proportionally successfully.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The red area fails to be zoomed in proportionally.');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 550;
-                            y = 550;
-                            index = (y * 1024 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 500, 500, 512, bufferArr, 255, 0, 0, 255);
+                            checkPixelValues(done, tag, 550, 550, 1024, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -713,12 +473,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -739,53 +498,15 @@ export default function imagePixelLocation() {
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 512).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 512).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 512, 512);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 500;
-                            let y = 500;
-                            let index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 255 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The green area is zoomed in proportionally successfully.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The green area fails to be zoomed in proportionally.');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 550;
-                            y = 550;
-                            index = (y * 1024 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 500, 500, 512, bufferArr, 0, 255, 0, 255);
+                            checkPixelValues(done, tag, 550, 550, 1024, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -812,12 +533,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -829,62 +549,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 512).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 512).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 512, 512);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 500;
-                            let y = 500;
-                            let index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 255 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The blue area is zoomed in proportionally successfully.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The blue area fails to be zoomed in proportionally.');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 550;
-                            y = 550;
-                            index = (y * 1024 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 500, 500, 512, bufferArr, 0, 0, 255, 255);
+                            checkPixelValues(done, tag, 550, 550, 1024, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -911,12 +590,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -928,62 +606,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 512).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 512).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 512, 512);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 500;
-                            let y = 500;
-                            let index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 120 && bufferArr[index + 1] == 120 && bufferArr[index + 2] == 120 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The grey area is zoomed in proportionally successfully.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The grey area fails to be zoomed in proportionally.');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 550;
-                            y = 550;
-                            index = (y * 1024 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 500, 500, 512, bufferArr, 120, 120, 120, 255);
+                            checkPixelValues(done, tag, 550, 550, 1024, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -1010,12 +647,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1027,62 +663,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 256).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 256).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 256, 256);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 255 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The red part is the original image scale.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The red part is not the original image scale.');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 300;
-                            y = 300;
-                            index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, 255, 0, 0, 255);
+                            checkPixelValues(done, tag, 300, 300, 512, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -1109,12 +704,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1126,62 +720,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 256).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 256).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 256, 256);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 255 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is green');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not green');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 300;
-                            y = 300;
-                            index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, 0, 255, 0, 255);
+                            checkPixelValues(done, tag, 300, 300, 512, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -1208,12 +761,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1225,62 +777,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 256).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 256).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 256, 256);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 255 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is blue');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not blue');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 300;
-                            y = 300;
-                            index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, 0, 0, 255, 255);
+                            checkPixelValues(done, tag, 300, 300, 512, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -1307,12 +818,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1324,62 +834,21 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 256).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 256).assertTrue();
-
+                            checkImageInfo(tag, pixelmap, 256, 256);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 256 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 120 && bufferArr[index + 1] == 120 && bufferArr[index + 2] == 120 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' The top left corner is grey');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The top left corner is not grey');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 300;
-                            y = 300;
-                            index = (y * 512 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == undefined && bufferArr[index + 1] == undefined && bufferArr[index + 2] == undefined && bufferArr[index + 3] == undefined) {
-                                console.info(tag + ' The other corners have been cut.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' The other corners have not been cut.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 200, 200, 256, bufferArr, 120, 120, 120, 255);
+                            checkPixelValues(done, tag, 300, 300, 512, bufferArr, undefined, undefined, undefined, undefined);
+                            done();
                         }
                     });
                 }
@@ -1406,12 +875,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1423,62 +891,23 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 362).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 362).assertTrue();
-
+                            // 像素地图始终保持矩形，解码、旋转后，像素地图拉伸，计算得出为像素宽高为原图对角线长度
+                            checkImageInfo(tag, pixelmap, 362, 362);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
-
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 362 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 255 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' Rotated pixels are red');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' Rotated pixels are not red');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 1;
-                            y = 1;
-                            index = (y * 362 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 0) {
-                                console.info(tag + ' Rotated blank pixels are transparent.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' Rotated blank pixels are not transparent.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+                            checkPixelValues(done, tag, 200, 200, 362, bufferArr, 255, 0, 0, 255);
+                            // 像素地图始终保持矩形，解码、旋转后，像素地图拉伸，但原图比像素地图小，像素地图存在空白，空白处RGBA为0000
+                            checkPixelValues(done, tag, 1, 1, 362, bufferArr, 0, 0, 0, 0);
+                            done();
                         }
                     });
                 }
@@ -1505,12 +934,11 @@ export default function imagePixelLocation() {
                 await getFd("color4.png");
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info(
-                        tag + " create image source failed"
-                    );
+                    console.info(tag + " create image source failed");
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     let decodingOptions: image.DecodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -1522,62 +950,79 @@ export default function imagePixelLocation() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         if (err) {
-                            console.info(
-                                tag + " createPixelMap error  " +
-                                    JSON.stringify(err)
-                            );
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
                             expect(false).assertTrue();
                             done();
                         } else {
                             globalpixelmap = pixelmap;
                             expect(pixelmap != undefined).assertTrue();
-                            let imageInfo: image.ImageInfo = pixelmap.getImageInfoSync();
-                            let imageWidth: number = imageInfo.size.width;
-                            console.info(tag + 'imageWidth is ' + imageWidth);
-                            expect(imageWidth == 362).assertTrue();
-                            let imageHeight: number = imageInfo.size.height;
-                            console.info(tag + 'imageHeight is ' + imageHeight);
-                            expect(imageHeight == 362).assertTrue();
-
+                            // 像素地图始终保持矩形，解码、旋转后，像素地图拉伸，计算得出为像素宽高为原图对角线长度
+                            checkImageInfo(tag, pixelmap, 362, 362);
                             let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
                             console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
                             let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
                             pixelmap.readPixelsToBufferSync(colorsBuffer);
                             let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
+                            checkPixelValues(done, tag, 200, 200, 362, bufferArr, 120, 120, 120, 255);
+                            // 像素地图始终保持矩形，解码、旋转后，像素地图拉伸，但原图比像素地图小，像素地图存在空白，空白处RGBA为0000
+                            checkPixelValues(done, tag, 1, 1, 362, bufferArr, 0, 0, 0, 0);
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.info(tag + " error: " + error);
+                expect(false).assertTrue();
+                done();
+            }
+        });
 
-                            let x = 200;
-                            let y = 200;
-                            let index = (y * 362 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 120 && bufferArr[index + 1] == 120 && bufferArr[index + 2] == 120 && bufferArr[index + 3] == 255) {
-                                console.info(tag + ' Rotated pixels are grey');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' Rotated pixels are not grey');
-                                expect().assertFail();
-                                done();
-                            }
-                            x = 1;
-                            y = 1;
-                            index = (y * 362 + x) * 4;
-                            console.info('index is ' + bufferArr[index]);
-                            console.info('index + 1 is ' + bufferArr[index + 1]);
-                            console.info('index + 2 is ' + bufferArr[index + 2]);
-                            console.info('index + 3 is ' + bufferArr[index + 3]);
-                            if (bufferArr[index] == 0 && bufferArr[index + 1] == 0 && bufferArr[index + 2] == 0 && bufferArr[index + 3] == 0) {
-                                console.info(tag + ' Rotated blank pixels are transparent.');
-                                expect(true).assertTrue();
-                                done();
-                            } else {
-                                console.info(tag + ' Rotated blank pixels are not transparent.');
-                                expect().assertFail();
-                                done();
-                            }
-                        done();
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1600
+         * @tc.name      : check pixel locations
+         * @tc.desc      : 1、Decode all part, rotate 45
+         *                 2、Check that the green area turns red.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1600", 0, async (done: Function) => {
+            let tag = 'SUB_MULTIMEDIA_IMAGE_CHECK_PIXEL_LOCATIONS_1600' 
+            try {
+                await getFd("color4.png");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(tag + " create image source failed");
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    globalimageSource = imageSourceApi;
+                    let decodingOptions: image.DecodingOptions = {
+                        sampleSize: 1,
+                        editable: true,
+                        desiredSize: { width: 256, height: 256 },
+                        rotate: 45,
+                        desiredPixelFormat: 3,
+                        desiredRegion: { size: { height: 256, width: 256 }, x: 0, y: 0 },
+                        index: 0,
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(tag + " createPixelMap error  " + JSON.stringify(err));
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            expect(pixelmap != undefined).assertTrue();
+                            checkImageInfo(tag, pixelmap, 256, 256);
+                            let pixelBytesNumber: number = pixelmap.getPixelBytesNumber();
+                            console.info(tag + ' input pixel Bytes Number is' + pixelBytesNumber);
+                            let colorsBuffer: ArrayBuffer = new ArrayBuffer(pixelBytesNumber);
+                            pixelmap.readPixelsToBufferSync(colorsBuffer);
+                            let bufferArr: Uint8Array = new Uint8Array(colorsBuffer);
+                            // 旋转45度后，原坐标由绿色变成红色
+                            checkPixelValues(done, tag, 135, 60, 362, bufferArr, 255, 0, 0, 255);
+                            done();
                         }
                     });
                 }
