@@ -53,7 +53,7 @@ export default function snapShotTest() {
       if(dataArray[0] == '0,0'){
         expect(dataArray[0] == '0,0').assertEqual(true)
       }else{
-        expect(dataArray[0] == "0,0').assertEqual(false)
+        expect(dataArray[0] == '0,0').assertEqual(false)
       }
       done()
     })
