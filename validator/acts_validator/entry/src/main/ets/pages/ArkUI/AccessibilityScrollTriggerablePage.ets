@@ -20,7 +20,7 @@ struct AccessibilityScrollTriggerablePage {
   @State FillColor: string = '#FF000000';
   @State name: string = 'AccessibilityScrollTriggerablePage';
   @State StepTips: string = '测试目的：验证无障碍接口AccessibilityScrollTriggerable。\n' +
-    '\n' +    '操作步骤：开启屏幕朗读。(1)点击按钮"true",双击按钮"true",点击下方数字0,连续单指下滑,直至出现数字9;(2)将滚动条复原至数字0,点击按钮"false",双击按钮"false",点击下方数字0,连续单指下滑。\n' +
+    '\n' +    '操作步骤：开启屏幕朗读。(1)单机按钮"true",使绿框选中按钮"true",双击按钮"true",点击下方数字0,连续单指下滑,直至出现数字9;(2)将滚动条复原至数字0,单击按钮"false",使绿框选中按钮"false",双击按钮"false",点击下方数字0,连续单指下滑。\n' +
     '\n' +	'预期结果：若支持屏幕朗读，则步骤(1)绿框可以滑到滚动条最下方,并出现数字9、步骤(2)绿框滑动到滚动条中间数字会跳出滚动条;若不支持屏幕朗读，直接按照失败处理走豁免。';;
   @State Vue: boolean = true;
   @State active: boolean = false;
