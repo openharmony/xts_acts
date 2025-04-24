@@ -18,18 +18,18 @@ import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayR
   ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
-export default function localizedTextPadding() {
-  describe('localizedTextPadding', () => {
+export default function SegmentButtonV2Test0010() {
+  describe('SegmentButtonV2Test0010', () => {
     beforeEach(async (done: Function) => {
       console.info("SegmentButtonV2Test0010 beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/segmentButton/localizedTextPadding",
+        url: "MainAbility/pages/segmenButtonV2/SegmentButtonV20010",
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get current pages:" + JSON.stringify(pages));
-        if (!("localizedTextPadding" == pages.name)) {
+        if (!("SegmentButtonV20010" == pages.name)) {
           console.info("get SegmentButtonV2Test0010 pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
