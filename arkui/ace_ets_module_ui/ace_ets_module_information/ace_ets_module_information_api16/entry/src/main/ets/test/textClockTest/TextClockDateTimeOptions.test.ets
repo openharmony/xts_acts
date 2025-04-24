@@ -51,8 +51,8 @@ export default function TextClockDateTimeOptionsTest() {
     it('TextClockDateTimeOptionsTest_001', Level.LEVEL0, async (done: Function) => {
       console.info('TextClockDateTimeOptionsTest_001 START');
       await Utils.sleep(1000);
-      let textclock = await driver.findComponent(ON.id('numeric'));
-      let obj: Record<string, ESObject> = JSON.parse(textclock);
+      let strJson = getInspectorByKey('numeric');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('TextClockDateTimeOptionsTest_001 component obj is: ' + obj.$attrs.dateTimeOptions);
       expect(obj.$attrs.dateTimeOptions.hour).assertEqual('numeric');
       console.info('[TextClockDateTimeOptionsTest_001] END');
@@ -69,8 +69,8 @@ export default function TextClockDateTimeOptionsTest() {
     it('TextClockDateTimeOptionsTest_002', Level.LEVEL0, async (done: Function) => {
       console.info('TextClockDateTimeOptionsTest_002 START');
       await Utils.sleep(1000);
-      let textclock = await driver.findComponent(ON.id('digit'));
-      let obj: Record<string, ESObject> = JSON.parse(textclock);
+      let strJson = getInspectorByKey('digit');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('TextClockDateTimeOptionsTest_002 component obj is: ' + obj.$attrs.dateTimeOptions);
       expect(obj.$attrs.dateTimeOptions.hour).assertEqual('2-digit');
       console.info('[TextClockDateTimeOptionsTest_002] END');

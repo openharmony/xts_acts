@@ -57,8 +57,8 @@ export default function ProgressPrivacySensitiveTest() {
       await button.click()
       await Utils.sleep(1000);
 
-      let progress = await driver.findComponent(ON.id('progress'));
-      let obj: Record<string, ESObject> = JSON.parse(progress);
+      let strJson = getInspectorByKey('progress');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('ProgressPrivacySensitiveTest_001 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[ProgressPrivacySensitiveTest_001] END');
@@ -81,8 +81,8 @@ export default function ProgressPrivacySensitiveTest() {
       await button.click()
       await Utils.sleep(1000);
 
-      let progress = await driver.findComponent(ON.id('progress'));
-      let obj: Record<string, ESObject> = JSON.parse(progress);
+      let strJson = getInspectorByKey('progress');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('ProgressPrivacySensitiveTest_002 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[ProgressPrivacySensitiveTest_002] END');
@@ -105,8 +105,8 @@ export default function ProgressPrivacySensitiveTest() {
       await button.click()
       await Utils.sleep(1000);
 
-      let progress = await driver.findComponent(ON.id('progress'));
-      let obj: Record<string, ESObject> = JSON.parse(progress);
+      let strJson = getInspectorByKey('progress');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('ProgressPrivacySensitiveTest_003 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[ProgressPrivacySensitiveTest_003] END');
@@ -129,8 +129,8 @@ export default function ProgressPrivacySensitiveTest() {
       await button.click()
       await Utils.sleep(1000);
 
-      let progress = await driver.findComponent(ON.id('progress'));
-      let obj: Record<string, ESObject> = JSON.parse(progress);
+      let strJson = getInspectorByKey('progress');
+      let obj: ESObject = JSON.parse(strJson);
       console.info('ProgressPrivacySensitiveTest_004 component obj is: ' + obj.$attrs.privacySensitive);
       expect(obj.$attrs.privacySensitive).assertEqual('false');
       console.info('[ProgressPrivacySensitiveTest_004] END');
