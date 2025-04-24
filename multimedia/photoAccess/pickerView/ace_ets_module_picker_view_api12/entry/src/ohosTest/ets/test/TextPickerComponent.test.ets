@@ -1585,5 +1585,267 @@ export default function TextPicker() {
       console.info("testPicker31 finish");
       done();
     });
+
+    /* *
+       * @tc.number    : testPicker32
+       * @tc.name      : testPicker32
+       * @tc.desc      : Testing mimeTypeFilter fileSizeFilter videoDurationFilter
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker32',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png', 'image/jpeg', 'video/*']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.MORE_THAN,
+        fileSize: 1
+      }
+      pickerOptions.videoDurationFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.BETWEEN,
+        videoDuration: 1,
+        extraVideoDuration: 10000
+      }
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker32, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker32, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker32 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker33
+       * @tc.name      : testPicker33
+       * @tc.desc      : Testing FilterOperator.BETWEEN
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker33',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.BETWEEN,
+        fileSize: 1,
+        extraFileSize:1000000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker33, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker33, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker33 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker34
+       * @tc.name      : testPicker34
+       * @tc.desc      : Testing FilterOperator.LESS_THAN
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker34',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.LESS_THAN,
+        fileSize: 100000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker34, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker34, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker34 finish");
+      done();
+    });
+    /* *
+       * @tc.number    : testPicker35
+       * @tc.name      : testPicker35
+       * @tc.desc      : Testing FilterOperator.EQUAL_TO
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker35',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.EQUAL_TO,
+        fileSize: 10000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker35, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker35, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker35 finish");
+      done();
+    });
+    /* *
+       * @tc.number    : testPicker36
+       * @tc.name      : testPicker36
+       * @tc.desc      : Testing FilterOperator.NOT_EQUAL_TO
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker36',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.NOT_EQUAL_TO,
+        fileSize: 10000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker36, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker36, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker36 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker37
+       * @tc.name      : testPicker37
+       * @tc.desc      : Testing FilterOperator.MORE_THAN_OR_EQUAL_TO
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker37',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.MORE_THAN_OR_EQUAL_TO,
+        fileSize: 1000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker37, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker37, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker37 finish");
+      done();
+    });
+
+    /* *
+       * @tc.number    : testPicker38
+       * @tc.name      : testPicker38
+       * @tc.desc      : Testing FilterOperator.LESS_THAN_OR_EQUAL_TO
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+    it('testPicker38',Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.mimeTypeFilter = {
+        mimeTypeArray: ['image/png']
+      }
+      pickerOptions.fileSizeFilter = {
+        filterOperator: photoAccessHelper.FilterOperator.LESS_THAN_OR_EQUAL_TO,
+        fileSize: 100000
+      }
+
+      try{
+        let photoPicker = new photoAccessHelper.PhotoViewPicker();
+        photoPicker.select(pickerOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+          console.info('testPicker38, PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+          JSON.stringify(PhotoSelectResult));
+          expect(true).assertTrue();
+        })
+      } catch(err) {
+        expect(false).assertTrue();
+        console.error(`testPicker38, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
+      }
+      console.info("testPicker38 finish");
+      done();
+    });
   })
 }
