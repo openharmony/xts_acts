@@ -100,7 +100,6 @@ export default function audioRendererChange() {
     afterAll(() => {
       console.info(`${Tag} : afterAll: Test suite-level cleanup condition`);
     })
-
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - ON_STATE_PREPARED
