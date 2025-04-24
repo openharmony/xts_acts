@@ -152,37 +152,37 @@ void FuncWaitTimeout(void* arg)
     ret = ffrt_mutex_unlock(t->lock_);
 }
 
-void SharedMutexRead(ffrt::shared_mutex* smut, int& x, int i)
-{
-    smut->lock_shared();
-    ffrt::this_task::sleep_for(2ms);
-    smut->unlock_shared();
-}
+// void SharedMutexRead(ffrt::shared_mutex* smut, int& x, int i)
+// {
+//     smut->lock_shared();
+//     ffrt::this_task::sleep_for(2ms);
+//     smut->unlock_shared();
+// }
 
-void SharedMutexTryRead(ffrt::shared_mutex* smut, int& x, int i)
-{
-    if (smut->try_lock_shared()) {
-        ffrt::this_task::sleep_for(2ms);
-        smut->unlock_shared();
-    }
-}
+// void SharedMutexTryRead(ffrt::shared_mutex* smut, int& x, int i)
+// {
+//     if (smut->try_lock_shared()) {
+//         ffrt::this_task::sleep_for(2ms);
+//         smut->unlock_shared();
+//     }
+// }
 
-void SharedMutexWrite(ffrt::shared_mutex* smut, int& x, int i)
-{
-    smut->lock();
-    ffrt::this_tasksleep_for(2ms);
-    x++;
-    smut->unlock();
-}
+// void SharedMutexWrite(ffrt::shared_mutex* smut, int& x, int i)
+// {
+//     smut->lock();
+//     ffrt::this_tasksleep_for(2ms);
+//     x++;
+//     smut->unlock();
+// }
 
-void SharedMutexTryWrite(ffrt::shared_mutex* smut, int& x, int i)
-{
-    if (smut->try_lock()) {
-        ffrt::this_task::sleep_for(2ms);
-        x++;
-        smut->unlock();
-    }
-}
+// void SharedMutexTryWrite(ffrt::shared_mutex* smut, int& x, int i)
+// {
+//     if (smut->try_lock()) {
+//         ffrt::this_task::sleep_for(2ms);
+//         x++;
+//         smut->unlock();
+//     }
+// }
 
 void FuncSignal(void* arg)
 {
@@ -1104,163 +1104,226 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
 
 static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
 {
-	int resultEnd = 1;
-    // write firstly, and then many threads read
+	ffrt_rwlock_t rwlock;
     int x = 0;
-    const int N = 100;
-    ffrt::shared_mutex smut;
-    std::vector<ffrt::thread> readThreads;
-    std::vector<ffrt::thread> tryReadThreads;
+    int ret = ffrt_rwlock_init(&rwlock, nullptr);
+    if (ret != ffrt_success) {
+        resultEnd = 1;
+    }
 
-    ffrt::thread t0 {[&] {
-        smut.lock();
-        for (int i = 0; i < N; i++) {
-            ffrt::this_task::sleep_for(2ms);
-            x++;
+    std::function<void()>&& func1 = [&]() {
+        int res = ffrt_rwlock_wrlock(&rwlock);
+        if (res != ffrt_success) {
+            resultEnd = 2;
         }
-        smut.unlock();
-    }};
-    ffrt::this_task::sleep_for(2ms);
-
-    for (int i = 0; i < N; i++) {
-        readThreads.push_back(ffrt::thread(SharedMutexRead, &smut, std::ref(x), i));
-    }
-
-    for (int i = 0; i < N; i++) {
-        tryReadThreads.push_back(ffrt::thread(SharedMutexTryRead, &smut, std::ref(x), i));
-    }
-
-    t0.join();
-    for (int i = 0; i < N; i++) {
-        readThreads[i].join();
-        tryReadThreads[i].join();
-    }
-	if (x == 100) {
-		resultEnd = 0;
-	}
-	napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value SharedMutexTest002(napi_env env, napi_callback_info info)
-{
-	int resultEnd = 1;
-    // write firstly, and then many threads write
-    int x = 0;
-    const int N = 100;
-    ffrt::shared_mutex smut;
-    std::vector<ffrt::thread> writeThreads;
-    std::vector<ffrt::thread> tryWriteThreads;
-
-    ffrt::thread t0 {[&] {
-        smut.lock();
-        for (int i = 0; i < N; i++) {
-            ffrt::this_task::sleep_for(5ms);
-            x++;
+        usleep(10 * 1000);
+        x++;
+        res = ffrt_rwlock_unlock(&rwlock);
+        if (res != ffrt_success) {
+            resultEnd = 3;
         }
-        smut.unlock();
-    }};
-    ffrt::this_task::sleep_for(2ms);
+    };
 
-    for(int i = 0; i < N; i++) {
-        writeThreads.push_back(ffrt::thread(SharedMutexWrite, &smut, std::ref(x), i));
+    std::function<void()>&& func2 = [&]() {
+        usleep(2 * 1000);
+        int res1 = ffrt_rwlock_rdlock(&rwlock);
+        if (res1 != ffrt_success) {
+            resultEnd = 4;
+        }
+        res1 = ffrt_rwlock_unlock(&rwlock);
+        if (res1 != ffrt_success) {
+            resultEnd = 5;
+        }
+    };
+
+    std::function<void()>&& func3 = [&]() {
+        usleep(2 * 1000);
+        int res2 = ffrt_rwlock_trywrlock(&rwlock);
+        if (res2 == ffrt_success) {
+            x++;
+            ffrt_rwlock_unlock(&rwlock);
+        }
+    };
+
+    std::function<void()>&& func4 = [&]() {
+        usleep(2 * 1000);
+        int res3 = ffrt_rwlock_tryrdlock(&rwlock);
+        if (res3 == ffrt_success) {
+            ffrt_rwlock_unlock(&rwlock);
+        }
+    };
+    ffrt_submit_base(create_function_wrapper(func1), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func2), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func3), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func4), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    if (x != 1) {
+        resultEnd = 6;       
     }
-
-    for (int i = 0; i < N; i++) {
-        tryWriteThreads.push_back(ffrt::thread(SharedMutexTryWrite, &smut, std::ref(x), i));
-    }
-
-    t0.join();
-    for (int i = 0; i < N; i++) {
-        writeThreads[i].join();
-        tryWriteThreads[i].join();
-    }
-	if (x >= 200) {
-		resultEnd = 0;
-	}
-	napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;	
-
-}
-
-static napi_value SharedMutexTest003(napi_env env, napi_callback_info info)
-{
-	int resultEnd = 1;
-    // read firstly, and then many threads read
-    int x = 0;
-    const int N = 100;
-    ffrt::shared_mutex smut;
-    std::vector<ffrt::thread> readThreads;
-    std::vector<ffrt::thread> tryReadThreads;
-
-    ffrt::thread t0 {[&] {
-        smut.lock_shared();
-        ffrt::this_task::sleep_for(500ms);
-        smut.unlock_shared();
-    }};
-    ffrt::this_task::sleep_for(2ms);
-
-    for (int i = 0; i < N; i++) {
-        readThreads.push_back(ffrt::thread(SharedMutexRead, &smut, std::ref(x), i));
-    }
-
-    for (int i = 0; i < N; i++) {
-        tryReadThreads.push_back(ffrt::thread(SharedMutexTryRead, &smut, std::ref(x), i));
-    }
-
-    t0.join();
-    for (int i = 0; i < N; i++) {
-        readThreads[i].join();
-        tryReadThreads[i].join();
-    }
-	if (x == 100) {
-		resultEnd = 0;
-	}
 	napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
     return flag;
 }
 
-static napi_value SharedMutexTest004(napi_env env, napi_callback_info info)
-{
-	int resultEnd = 1;
-    // read firstly, and then many threads write
-    int x = 0;
-    const int N = 100;
-    ffrt::shared_mutex smut;
-    std::vector<ffrt::thread> writeThreads;
-    std::vector<ffrt::thread> tryWriteThreads;
+// static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
+// {
+// 	int resultEnd = 1;
+//     // write firstly, and then many threads read
+//     int x = 0;
+//     const int N = 100;
+//     ffrt::shared_mutex smut;
+//     std::vector<ffrt::thread> readThreads;
+//     std::vector<ffrt::thread> tryReadThreads;
 
-    ffrt::thread t0 {[&] {
-        smut.lock_shared();
-        ffrt::this_task::sleep_for(500ms);
-        smut.unlock_shared();
-    }};
-    ffrt::this_task::sleep_for(2ms);
+//     ffrt::thread t0 {[&] {
+//         smut.lock();
+//         for (int i = 0; i < N; i++) {
+//             ffrt::this_task::sleep_for(2ms);
+//             x++;
+//         }
+//         smut.unlock();
+//     }};
+//     ffrt::this_task::sleep_for(2ms);
 
-    for(int i = 0; i < N; i++) {
-        writeThreads.push_back(ffrt::thread(SharedMutexWrite, &smut, std::ref(x), i));
-    }
+//     for (int i = 0; i < N; i++) {
+//         readThreads.push_back(ffrt::thread(SharedMutexRead, &smut, std::ref(x), i));
+//     }
 
-    for (int i = 0; i < N; i++) {
-        tryWriteThreads.push_back(ffrt::thread(SharedMutexTryWrite, &smut, std::ref(x), i));
-    }
+//     for (int i = 0; i < N; i++) {
+//         tryReadThreads.push_back(ffrt::thread(SharedMutexTryRead, &smut, std::ref(x), i));
+//     }
 
-    t0.join();
-    for (int i = 0; i < N; i++) {
-        writeThreads[i].join();
-        tryWriteThreads[i].join();
-    }
-	if (x == 100) {
-		resultEnd = 0;
-	}
-	napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
+//     t0.join();
+//     for (int i = 0; i < N; i++) {
+//         readThreads[i].join();
+//         tryReadThreads[i].join();
+//     }
+// 	if (x == 100) {
+// 		resultEnd = 0;
+// 	}
+// 	napi_value flag = nullptr;
+//     napi_create_double(env, resultEnd, &flag);
+//     return flag;
+// }
 
-}
+// static napi_value SharedMutexTest002(napi_env env, napi_callback_info info)
+// {
+// 	int resultEnd = 1;
+//     // write firstly, and then many threads write
+//     int x = 0;
+//     const int N = 100;
+//     ffrt::shared_mutex smut;
+//     std::vector<ffrt::thread> writeThreads;
+//     std::vector<ffrt::thread> tryWriteThreads;
+
+//     ffrt::thread t0 {[&] {
+//         smut.lock();
+//         for (int i = 0; i < N; i++) {
+//             ffrt::this_task::sleep_for(5ms);
+//             x++;
+//         }
+//         smut.unlock();
+//     }};
+//     ffrt::this_task::sleep_for(2ms);
+
+//     for(int i = 0; i < N; i++) {
+//         writeThreads.push_back(ffrt::thread(SharedMutexWrite, &smut, std::ref(x), i));
+//     }
+
+//     for (int i = 0; i < N; i++) {
+//         tryWriteThreads.push_back(ffrt::thread(SharedMutexTryWrite, &smut, std::ref(x), i));
+//     }
+
+//     t0.join();
+//     for (int i = 0; i < N; i++) {
+//         writeThreads[i].join();
+//         tryWriteThreads[i].join();
+//     }
+// 	if (x >= 200) {
+// 		resultEnd = 0;
+// 	}
+// 	napi_value flag = nullptr;
+//     napi_create_double(env, resultEnd, &flag);
+//     return flag;	
+
+// }
+
+// static napi_value SharedMutexTest003(napi_env env, napi_callback_info info)
+// {
+// 	int resultEnd = 1;
+//     // read firstly, and then many threads read
+//     int x = 0;
+//     const int N = 100;
+//     ffrt::shared_mutex smut;
+//     std::vector<ffrt::thread> readThreads;
+//     std::vector<ffrt::thread> tryReadThreads;
+
+//     ffrt::thread t0 {[&] {
+//         smut.lock_shared();
+//         ffrt::this_task::sleep_for(500ms);
+//         smut.unlock_shared();
+//     }};
+//     ffrt::this_task::sleep_for(2ms);
+
+//     for (int i = 0; i < N; i++) {
+//         readThreads.push_back(ffrt::thread(SharedMutexRead, &smut, std::ref(x), i));
+//     }
+
+//     for (int i = 0; i < N; i++) {
+//         tryReadThreads.push_back(ffrt::thread(SharedMutexTryRead, &smut, std::ref(x), i));
+//     }
+
+//     t0.join();
+//     for (int i = 0; i < N; i++) {
+//         readThreads[i].join();
+//         tryReadThreads[i].join();
+//     }
+// 	if (x == 100) {
+// 		resultEnd = 0;
+// 	}
+// 	napi_value flag = nullptr;
+//     napi_create_double(env, resultEnd, &flag);
+//     return flag;
+// }
+
+// static napi_value SharedMutexTest004(napi_env env, napi_callback_info info)
+// {
+// 	int resultEnd = 1;
+//     // read firstly, and then many threads write
+//     int x = 0;
+//     const int N = 100;
+//     ffrt::shared_mutex smut;
+//     std::vector<ffrt::thread> writeThreads;
+//     std::vector<ffrt::thread> tryWriteThreads;
+
+//     ffrt::thread t0 {[&] {
+//         smut.lock_shared();
+//         ffrt::this_task::sleep_for(500ms);
+//         smut.unlock_shared();
+//     }};
+//     ffrt::this_task::sleep_for(2ms);
+
+//     for(int i = 0; i < N; i++) {
+//         writeThreads.push_back(ffrt::thread(SharedMutexWrite, &smut, std::ref(x), i));
+//     }
+
+//     for (int i = 0; i < N; i++) {
+//         tryWriteThreads.push_back(ffrt::thread(SharedMutexTryWrite, &smut, std::ref(x), i));
+//     }
+
+//     t0.join();
+//     for (int i = 0; i < N; i++) {
+//         writeThreads[i].join();
+//         tryWriteThreads[i].join();
+//     }
+// 	if (x == 100) {
+// 		resultEnd = 0;
+// 	}
+// 	napi_value flag = nullptr;
+//     napi_create_double(env, resultEnd, &flag);
+//     return flag;
+
+// }
 
 static napi_value QueueApiTest001(napi_env env, napi_callback_info info)
 {

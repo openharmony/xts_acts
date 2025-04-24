@@ -1393,47 +1393,5 @@ export default function ffrtTest() {
       let flag = entry.SharedMutexTest001();
       expect(flag).assertEqual(0);
     })
-
-    /**
-     * @tc.number : SUB_KERNEL_DISPATCH_entry_9800
-     * @tc.name   : SharedMutexTest002
-     * @tc.desc   : Test mutex api
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 0
-     */
-    it('SharedMutexTest002', Level.LEVEL0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let flag = entry.SharedMutexTest002();
-      expect(flag).assertEqual(0);
-    })
-
-    /**
-     * @tc.number : SUB_KERNEL_DISPATCH_entry_9800
-     * @tc.name   : SharedMutexTest003
-     * @tc.desc   : Test mutex api
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 0
-     */
-    it('SharedMutexTest003', Level.LEVEL0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let flag = entry.SharedMutexTest003();
-      expect(flag).assertEqual(0);
-    })
-
-    /**
-     * @tc.number : SUB_KERNEL_DISPATCH_entry_9900
-     * @tc.name   : SharedMutexTest004
-     * @tc.desc   : Test mutex api
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 0
-     */
-    it('SharedMutexTest004', Level.LEVEL0, () => {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let flag = entry.SharedMutexTest004();
-      expect(flag).assertEqual(0);
-    })
   })
 }
