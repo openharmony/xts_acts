@@ -26,6 +26,8 @@ import MarqueeModifierTest from "./ModifierTest/MarqueeModifier.test";
 import RichEditorModifierTest from "./ModifierTest/RichEditorModifier.test";
 import RichTextModifierTest from "./ModifierTest/RichTextModifier.test";
 import fontFeatureTest from './TextInputTest/fontFeature.test';
+import ParagraphStyle1 from "./StyledString/ParagraphStyle1.test";
+import ImageAttachment from "./StyledString/ImageAttachment.test";
 
 export default function testsuite() {
   textAreaInputTest();
@@ -41,4 +43,6 @@ export default function testsuite() {
   RichEditorModifierTest();
   RichTextModifierTest();
   fontFeatureTest();
+  ImageAttachment();
+  ParagraphStyle1();
 }

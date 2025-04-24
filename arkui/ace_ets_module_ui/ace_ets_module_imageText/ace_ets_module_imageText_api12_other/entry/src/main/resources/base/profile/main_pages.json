@@ -13,6 +13,8 @@
   "MainAbility/pages/Modifier/ImageSpanModifier",
   "MainAbility/pages/Modifier/MarqueeModifier",
   "MainAbility/pages/Modifier/RichEditorModifier",
-  "MainAbility/pages/Modifier/RichTextModifier"
+  "MainAbility/pages/Modifier/RichTextModifier",
+  "MainAbility/pages/StyledString/ParagraphStyle1",
+  "MainAbility/pages/StyledString/ImageAttachment"
   ]
 }
