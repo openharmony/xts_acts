@@ -805,5 +805,52 @@ export default function audioManagerTest() {
         }
       })
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0500
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = '123';
+      let flag: boolean = false;
+      try {
+        audioVolumeGroupManager.on('ringerModeChange',para);
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOSTREAMMANAGER_OFF_AUDIOCAPTURERCHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb1: Callback<audio.AudioRingMode> =() =>{
+        console.info('Current callback is cb1');
+      }
+      audioVolumeGroupManager.on('ringerModeChange',cb1);
+      let flag : boolean =false;
+      try{
+        let para1 : ESObject = 1;
+        let para2 : ESObject = () => {return 1;};
+        audioVolumeGroupManager.off('ringerModeChange',para1);
+      } catch (err) {
+        console.log(`err : ${err.message},Code:${err.code}`);
+        expect(Number(err.code) == 401).assertTrue();
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
   })
 }
