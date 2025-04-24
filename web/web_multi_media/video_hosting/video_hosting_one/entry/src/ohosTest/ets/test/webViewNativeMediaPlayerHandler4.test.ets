@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -77,7 +77,7 @@ export default function webViewNativeMediaPlayerHandler4() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerHandleVideoSizeChange', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandleVideoSizeChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerHandleVideoSizeChange"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerHandleVideoSizeChange", true, 1808,
@@ -95,7 +95,7 @@ export default function webViewNativeMediaPlayerHandler4() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerBufferedEndTime', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerBufferedEndTime', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerBufferedEndTime"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerBufferedEndTime", true, 1814,
@@ -113,7 +113,7 @@ export default function webViewNativeMediaPlayerHandler4() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSeek500', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSeek500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSeek500"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSeek500", true, 1809,
@@ -131,7 +131,7 @@ export default function webViewNativeMediaPlayerHandler4() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSeek20', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSeek20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSeek20"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSeek20", true, 1811,
@@ -149,7 +149,7 @@ export default function webViewNativeMediaPlayerHandler4() {
          *@tc.type Function
          *@tc.level Level 1
          */
-    it('testWebViewNativeMediaPlayerSeekNegative1', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerSeekNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerSeekNegative1"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerSeekNegative1", true, 1810,

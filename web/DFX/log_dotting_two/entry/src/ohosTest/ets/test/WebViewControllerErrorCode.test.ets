@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("webViewControllerErrorCode beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRunJavaScriptError001', 0, async (done: Function) => {
+    it('testRunJavaScriptError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptError001", '17100001', 20305, done);
@@ -76,7 +84,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRunJavaScriptError002', 0, async (done: Function) => {
+    it('testRunJavaScriptError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptError002", '17100001', 20306, done);
@@ -91,7 +99,7 @@ export default function webViewControllerErrorCode() {
    * @tc.type       : Function
    * @tc.level      : Level 2
    */
-    it('testGetUrlError001', 0, async (done: Function) => {
+    it('testGetUrlError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetUrlError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetUrlError001", '17100001', 20260, done);
@@ -106,7 +114,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPageUpError001', 0, async (done: Function) => {
+    it('testPageUpError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPageUpError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageUpError001", '17100001', 20265, done);
@@ -121,7 +129,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPageUpError002', 0, async (done: Function) => {
+    it('testPageUpError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPageUpError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageUpError002", '17100001', 20266, done);
@@ -136,7 +144,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPageDownError001', 0, async (done: Function) => {
+    it('testPageDownError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPageDownError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageDownError001", '17100001', 20270, done);
@@ -151,7 +159,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testPageDownError002', 0, async (done: Function) => {
+    it('testPageDownError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testPageDownError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testPageDownError002", '17100001', 20271, done);
@@ -166,7 +174,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginalUrlError001', 0, async (done: Function) => {
+    it('testGetOriginalUrlError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginalUrlError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginalUrlError001", '17100001', 20275, done);
@@ -181,7 +189,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetFaviconError001', 0, async (done: Function) => {
+    it('testGetFaviconError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetFaviconError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetFaviconError001", '17100001', 20280, done);
@@ -196,7 +204,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetNetworkAvailableError001', 0, async (done: Function) => {
+    it('testSetNetworkAvailableError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailableError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailableError001", '17100001', 20285, done);
@@ -211,7 +219,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testSetNetworkAvailableError002', 0, async (done: Function) => {
+    it('testSetNetworkAvailableError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testSetNetworkAvailableError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetNetworkAvailableError002", '17100001', 20286, done);
@@ -226,7 +234,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testHasImageError001', 0, async (done: Function) => {
+    it('testHasImageError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testHasImageError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHasImageError001", '17100001', 20290, done);
@@ -241,7 +249,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testHasImageError002', 0, async (done: Function) => {
+    it('testHasImageError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testHasImageError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testHasImageError002", '17100001', 20291, done);
@@ -256,7 +264,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetBackForwardEntriesError001', 0, async (done: Function) => {
+    it('testGetBackForwardEntriesError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetBackForwardEntriesError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetBackForwardEntriesError001", '17100001', 20295, done);
@@ -271,7 +279,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testScrollToError001', 0, async (done: Function) => {
+    it('testScrollToError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testScrollToError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testScrollToError001", '17100001', 20300, done);
@@ -286,7 +294,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRunJavaScriptExtError001', 0, async (done: Function) => {
+    it('testRunJavaScriptExtError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExtError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExtError001", '17100001', 20310, done);
@@ -301,7 +309,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRunJavaScriptExtError002', 0, async (done: Function) => {
+    it('testRunJavaScriptExtError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testRunJavaScriptExtError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRunJavaScriptExtError002", '17100001', 20311, done);
@@ -316,7 +324,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError001', 0, async (done: Function) => {
+    it('testStoreWebArchiveError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError001", '17100001', 20350, done);
@@ -331,7 +339,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError002', 0, async (done: Function) => {
+    it('testStoreWebArchiveError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError002", '17100001', 20351, done);
@@ -346,7 +354,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError003', 0, async (done: Function) => {
+    it('testStoreWebArchiveError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError003", '17100003', 20352, done);
@@ -361,7 +369,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError004', 0, async (done: Function) => {
+    it('testStoreWebArchiveError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError004", '17100003', 20353, done);
@@ -376,7 +384,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError005', 0, async (done: Function) => {
+    it('testStoreWebArchiveError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError005", '17100001', 20354, done);
@@ -391,7 +399,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError006', 0, async (done: Function) => {
+    it('testStoreWebArchiveError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError006", '17100001', 20355, done);
@@ -406,7 +414,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError007', 0, async (done: Function) => {
+    it('testStoreWebArchiveError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError007", '17100003', 20356, done);
@@ -421,7 +429,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testStoreWebArchiveError008', 0, async (done: Function) => {
+    it('testStoreWebArchiveError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testStoreWebArchiveError008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testStoreWebArchiveError008", '17100003', 20357, done);
@@ -436,7 +444,7 @@ export default function webViewControllerErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testRemoveCacheError001', 0, async (done: Function) => {
+    it('testRemoveCacheError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testRemoveCacheError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRemoveCacheError001", '17100001', 20358, done);

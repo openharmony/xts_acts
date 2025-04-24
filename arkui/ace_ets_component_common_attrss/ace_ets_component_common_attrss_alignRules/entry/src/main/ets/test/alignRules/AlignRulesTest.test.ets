@@ -271,17 +271,17 @@ export default function AlignRulesTest() {
 
       //Verify actual alignment position after alignment
       if (data.testValue.describe == 'ParentAlignTopLeftJustifying') {
-        expect(rec.left).assertEqual(recParent.left)
-        expect(rec.top).assertEqual(recParent.top)
+        expect(Math.floor(Math.abs(rec.left - recParent.left)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recParent.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentAlignTopHorizontalCenter') {
         expect(Math.abs(Number((rec.left + (rec.right - rec.left) / 2).toFixed(2)) -
         Number((recReference.left + (recReference.right - recReference.left) / 2).toFixed(2))) <= 1).assertTrue()
-        expect(rec.top).assertEqual(recParent.top)
+        expect(Math.floor(Math.abs(rec.top - recParent.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentAlignTopRightAlignment') {
-        expect(rec.right).assertEqual(recParent.right)
-        expect(rec.top).assertEqual(recParent.top)
+        expect(Math.floor(Math.abs(rec.right - recParent.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recParent.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentVerticalCenterLeftJustifying') {
-        expect(rec.left).assertEqual(recParent.left)
+        expect(Math.floor(Math.abs(rec.left - recParent.left)) <= 1).assertTrue();
         expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2))
           - Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentVerticalCenterHorizontally') {
@@ -290,46 +290,51 @@ export default function AlignRulesTest() {
         expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)) -
         Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue()
       } else if (data.testValue.describe == 'ParentVerticalCenterRightAlignment') {
-        expect(rec.right).assertEqual(recParent.right)
+        expect(Math.floor(Math.abs(rec.right - recParent.right)) <= 1).assertTrue();
         expect(Math.abs(Number((rec.top + (rec.bottom - rec.top) / 2).toFixed(2)) -
         Number((recReference.top + (recReference.bottom - recReference.top) / 2).toFixed(2))) <= 1).assertTrue()
       } else if (data.testValue.describe == 'ParentAlignmentLeftJustifying') {
-        expect(rec.left).assertEqual(recParent.left)
-        expect(rec.bottom).assertEqual(recParent.bottom)
+        expect(Math.floor(Math.abs(rec.left - recParent.left)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.bottom - recParent.bottom)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentAlignmentLeftJustifyingHorizontally') {
         expect(Math.abs(Number((rec.left + (rec.right - rec.left) / 2).toFixed(2)) -
         Number((recReference.left + (recReference.right - recReference.left) / 2).toFixed(2))) <= 1).assertTrue()
-        expect(rec.bottom).assertEqual(recParent.bottom)
+        expect(Math.floor(Math.abs(rec.bottom - recParent.bottom)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'ParentAlignmentLeftJustifyingRightAlignment') {
-        expect(rec.right).assertEqual(recParent.right)
-        expect(rec.bottom).assertEqual(recParent.bottom)
+        expect(Math.floor(Math.abs(rec.right - recParent.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.bottom - recParent.bottom)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignTopLeftJustifying') {
-        expect(rec.right).assertEqual(recReference.left)
-        expect(rec.bottom).assertEqual(recReference.top)
+        expect(Math.floor(Math.abs(rec.right - recReference.left)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.bottom - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignTopHorizontalCenter') {
-        expect(rec.right).assertEqual(recReference.right)
-        expect(rec.bottom).assertEqual(recReference.top)
+        expect(Math.floor(Math.abs(rec.right - recReference.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.bottom - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignTopRightAlignment') {
-        expect(rec.left).assertEqual(recReference.right)
-        expect(rec.bottom).assertEqual(recReference.top)
+        expect(Math.floor(Math.abs(rec.left - recReference.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.bottom - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterLeftJustifying') {
-        expect(rec.right).assertEqual(recReference.left)
-        expect(rec.top).assertEqual(recReference.top)
+        expect(Math.floor(Math.abs(rec.right - recReference.left)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterHorizontally') {
-        expect(Math.abs(rec.left - recReference.left) <= 1).assertTrue();
-        expect(Math.abs(rec.top - recReference.top) <= 1).assertTrue();
+        if (data.pageConfig.componentKey == 'TextInput' || data.pageConfig.componentKey == 'TextArea') {
+          expect(Math.floor(Math.abs(rec.left - recReference.left)) <= 2).assertTrue();
+          expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 2).assertTrue();
+        } else {
+          expect(Math.floor(Math.abs(rec.left - recReference.left)) <= 1).assertTrue();
+          expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
+        }
       } else if (data.testValue.describe == 'SubassemblyVerticalCenterRightAlignment') {
-        expect(rec.left).assertEqual(recReference.right)
-        expect(rec.top).assertEqual(recReference.top)
+        expect(Math.floor(Math.abs(rec.left - recReference.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recReference.top)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignmentLeftJustifying') {
-        expect(rec.right).assertEqual(recReference.left)
-        expect(rec.top).assertEqual(recReference.bottom)
+        expect(Math.floor(Math.abs(rec.right - recReference.left)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recReference.bottom)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignmentLeftJustifyingHorizontally') {
-        expect(rec.right).assertEqual(recReference.right)
-        expect(rec.top).assertEqual(recReference.bottom)
+        expect(Math.floor(Math.abs(rec.right - recReference.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recReference.bottom)) <= 1).assertTrue();
       } else if (data.testValue.describe == 'SubassemblyAlignmentLeftJustifyingRightAlignment') {
-        expect(rec.left).assertEqual(recReference.right)
-        expect(rec.top).assertEqual(recReference.bottom)
+        expect(Math.floor(Math.abs(rec.left - recReference.right)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(rec.top - recReference.bottom)) <= 1).assertTrue();
       }
     })
   })

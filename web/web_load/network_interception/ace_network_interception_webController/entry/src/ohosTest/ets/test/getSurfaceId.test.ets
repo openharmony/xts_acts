@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitSetUrlTrustList0100";
 
@@ -42,6 +45,11 @@ export default function getSurfaceId() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("getSurfaceId beforeEach start");
       done();
@@ -72,7 +80,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0100', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0200";
       Utils.registerEvent("emitSetUrlTrustList0100", 1, 28931, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -83,7 +91,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0200', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0300";
       Utils.registerEvent("emitSetUrlTrustList0200", 1, 28932, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -94,7 +102,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0300', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0400";
       Utils.registerEvent("emitSetUrlTrustList0300", 1, 28933, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -105,7 +113,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0400', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0500";
       Utils.registerEvent("emitSetUrlTrustList0400", 1, 28934, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -116,7 +124,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0500', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0600";
       Utils.registerEvent("emitSetUrlTrustList0500", 1, 28935, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -127,7 +135,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0600', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0700";
       Utils.registerEvent("emitSetUrlTrustList0600", 1, 28936, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -138,7 +146,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0700', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0800";
       Utils.registerEvent("emitSetUrlTrustList0700", 1, 28937, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -150,7 +158,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0800', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList0900";
       Utils.registerEvent("emitSetUrlTrustList0800", "17100001", 28940, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -161,7 +169,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList0900', 0, async (done: Function) => {
+    it('emitSetUrlTrustList0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1000";
       Utils.registerEvent("emitSetUrlTrustList0900", "Init error. The WebviewController must be associated with a Web component", 28941, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -172,7 +180,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList1000', 0, async (done: Function) => {
+    it('emitSetUrlTrustList1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1100";
       Utils.registerEvent("emitSetUrlTrustList1000", "401", 28942, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -183,7 +191,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList1100', 0, async (done: Function) => {
+    it('emitSetUrlTrustList1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1200";
       Utils.registerEvent("emitSetUrlTrustList1100", 1, 28943, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -194,7 +202,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList1200', 0, async (done: Function) => {
+    it('emitSetUrlTrustList1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1300";
       Utils.registerEvent("emitSetUrlTrustList1200", 1, 28944, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -205,7 +213,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList1300', 0, async (done: Function) => {
+    it('emitSetUrlTrustList1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1400";
       Utils.registerEvent("emitSetUrlTrustList1300", 3, 28945, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
@@ -216,7 +224,7 @@ export default function getSurfaceId() {
      *tc.name testSetUrlTrustList
      *tc.desc SetUrlTrustList
      */
-    it('emitSetUrlTrustList1400', 0, async (done: Function) => {
+    it('emitSetUrlTrustList1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetUrlTrustList1400";
       Utils.registerEvent("emitSetUrlTrustList1400", 3, 28946, done);
       sendEventByKey('getSurfaceIdButton', 10, '');

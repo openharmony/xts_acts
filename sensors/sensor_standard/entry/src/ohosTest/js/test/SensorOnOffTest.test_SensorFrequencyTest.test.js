@@ -71,11 +71,11 @@ describe("SensorJsTest_sensor_63", function () {
      * @tc.desc:verify app info is not null
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 3
      * @tc.require: Issue Number
      * @tc.number:SUB_SensorsSystem_NewFrequency_JSTest_0010
      */
-    it("SUB_SensorsSystem_NewFrequency_JSTest_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("SUB_SensorsSystem_NewFrequency_JSTest_0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SUB_SensorsSystem_NewFrequency_JSTest_0010---------------------------');
         try {
             sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER, (error, data) => {

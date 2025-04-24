@@ -1411,6 +1411,33 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
     return result;
 }
 
+static napi_value AsssertImageSize(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+    uint32_t width, height;
+    napi_get_value_uint32(env, argValue[0], &width);
+    napi_get_value_uint32(env, argValue[1], &height);
+    
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    uint32_t iwidth, iheight;
+    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
+    OH_PixelmapNative_GetImageInfo(TEST_PIXELMAP, imageInfo);
+    OH_PixelmapImageInfo_GetWidth(imageInfo, &iwidth);
+    OH_PixelmapImageInfo_GetHeight(imageInfo, &iheight);
+    OH_LOG_INFO(LOG_APP, "resPixMap imageInfo.width is %{public}d", iwidth);
+    OH_LOG_INFO(LOG_APP, "resPixMap imageInfo.height is %{public}d", iheight);
+
+    if (iwidth == width && iheight == height) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
 static napi_value CreatePixelMapList(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_value argValue[NUM_2] = {0};
@@ -2430,6 +2457,7 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"CreateFromFd", nullptr, CreateFromFd, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateFromData", nullptr, CreateFromData, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMap", nullptr, CreatePixelMap, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AsssertImageSize", nullptr, AsssertImageSize, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMapList", nullptr, CreatePixelMapList, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageInfo", nullptr, GetImageInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageProperty", nullptr, GetImageProperty, nullptr, nullptr, nullptr, napi_default, nullptr},

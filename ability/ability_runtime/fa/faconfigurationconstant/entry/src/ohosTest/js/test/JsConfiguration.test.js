@@ -14,7 +14,7 @@
  */
 
 import ConfigurationConstant from '@ohos.application.ConfigurationConstant'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 export default function ConfigurationTest() {
 describe('ConfigurationTest', function () {
 
@@ -24,7 +24,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0100', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0100', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0100-------------");
         expect(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT).assertEqual(1);
         done();
@@ -37,7 +37,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0200', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0200', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0200-------------");
         expect(ConfigurationConstant.ColorMode.COLOR_MODE_DARK).assertEqual(0);
         done();
@@ -50,7 +50,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0300', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0300', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0300-------------");
         expect(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET).assertEqual(-1);
         done();
@@ -63,7 +63,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0100', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0100', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0100-------------");
         expect(ConfigurationConstant.Direction.DIRECTION_VERTICAL).assertEqual(0);
         done();
@@ -76,7 +76,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0200', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0200', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0200-------------");
         expect(ConfigurationConstant.Direction.DIRECTION_HORIZONTAL).assertEqual(1);
         done();
@@ -89,7 +89,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0300', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0300', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_Direction_0300-------------");
         expect(ConfigurationConstant.Direction.DIRECTION_NOT_SET).assertEqual(-1);
         done();
@@ -102,7 +102,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0100', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0100', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0100-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI).assertEqual(120);
         done();
@@ -115,7 +115,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0200', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0200', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0200-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_MDPI).assertEqual(160);
         done();
@@ -128,7 +128,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0300', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0300', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0300-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_LDPI).assertEqual(240);
         done();
@@ -141,7 +141,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0400', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0400', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0400-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_XLDPI).assertEqual(320);
         done();
@@ -154,7 +154,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0500', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0500', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0500-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_XXLDPI).assertEqual(480);
         done();
@@ -167,7 +167,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0600', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0600', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0600-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_XXXLDPI).assertEqual(640);
         done();
@@ -180,7 +180,7 @@ describe('ConfigurationTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0700', 0, async function (done) {
+    it('SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0700', Level.LEVEL0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_ConfigurationConstant_ScreenDensity_0700-------------");
         expect(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_NOT_SET).assertEqual(0);
         done();

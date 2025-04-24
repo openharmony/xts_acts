@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import appManager from '@ohos.application.appManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { BusinessError } from '@ohos.base';
@@ -26,7 +26,7 @@ export default function abilityTest() {
          * @tc.name: Execute a shell command without arguments (AsyncCallback).
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0100', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Callback_0100 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -48,7 +48,7 @@ export default function abilityTest() {
          * @tc.name: Execute shell command with timeout parameter (AsyncCallback)
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0200', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0200', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Callback_0200 --- start")
             let cmd = 'aa start -a MainAbility -b com.example.actskillprocesswithaccountclosetest'
             globalThis.abilityDelegator.executeShellCommand(cmd, 1,(err:BusinessError, data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -73,7 +73,7 @@ export default function abilityTest() {
          * @tc.name: Execute non-existing shell command (AsyncCallback).
          * @tc.desc: Failed to execute shell command on authentication interface.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0300', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0300', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Callback_0300 --- start")
             let cmd = 'ppwd -L'
             globalThis.abilityDelegator.executeShellCommand(cmd, 1,(err:BusinessError, data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -94,7 +94,7 @@ export default function abilityTest() {
          * @tc.name: Execute shell command timeout (AsyncCallback)
          * @tc.desc: The authentication interface executes the shell command timed out.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0400', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0400', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Callback_0400 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -116,7 +116,7 @@ export default function abilityTest() {
          * @tc.name: Invalid timeout parameter for executing shell command (AsyncCallback)
          * @tc.desc: The timeout parameter for executing shell commands on the authentication interface is invalid.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0500', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0500', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Callback_0500 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -138,7 +138,7 @@ export default function abilityTest() {
          * @tc.name: The executed shell command parameter is null (AsyncCallback)
          * @tc.desc: Failed to execute shell command on authentication interface.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0600', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0600', Level.LEVEL0, async (done:Function) => {
             let flag=true;
             console.log("ACTS_ExecuteShellCommand_Callback_0600 --- start")
             globalThis.abilityDelegator.executeShellCommand("",1,(err:BusinessError, data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -164,7 +164,7 @@ export default function abilityTest() {
          * @tc.name: The timeout parameter of the execution is null (AsyncCallback)
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Callback_0700', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Callback_0700', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_0700 --- start")
             let cmd = 'aa help'
             let code = null
@@ -186,7 +186,7 @@ export default function abilityTest() {
          * @tc.name: Execute a shell command without arguments (Promise).
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0100', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0100', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0100 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -207,7 +207,7 @@ export default function abilityTest() {
          * @tc.name: Execute shell command with timeout parameter (Promise)
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0200', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0200', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0200 --- start")
             let cmd = 'aa start -d 0 -a MainAbility -b com.example.actskillprocesswithaccountclosetest'
             globalThis.abilityDelegator.executeShellCommand(cmd, 1).then((data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -233,7 +233,7 @@ export default function abilityTest() {
          * @tc.name: Execute non-existing shell command (Promise).
          * @tc.desc: Failed to execute shell command on authentication interface.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0300', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0300', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0300 --- start")
             let cmd = 'ppwd -L'
             globalThis.abilityDelegator.executeShellCommand(cmd, 1).then((data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -254,7 +254,7 @@ export default function abilityTest() {
          * @tc.name: Execute shell command timeout (Promise)
          * @tc.desc: The authentication interface executes the shell command timed out.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0400', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0400', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0400 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -274,7 +274,7 @@ export default function abilityTest() {
          * @tc.name: Invalid timeout parameter for executing shell command (Promise)
          * @tc.desc: The timeout parameter for executing shell commands on the authentication interface is invalid.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0500', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0500', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0500 --- start")
             let cmd = 'aa help'
             let escresult = 'usage: aa <command> <options>'
@@ -294,7 +294,7 @@ export default function abilityTest() {
          * @tc.name: The executed shell command parameter is null (Promise)
          * @tc.desc: Failed to execute shell command on authentication interface.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0600', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0600', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0600 --- start")
             let flag = true;
             globalThis.abilityDelegator.executeShellCommand("",1).then((data:AbilityDelegatorRegistry.ShellCmdResult) => {
@@ -328,7 +328,7 @@ export default function abilityTest() {
          * @tc.name: The timeout parameter of the execution is null (Promise)
          * @tc.desc: Verify that the interface executes the Shell command successfully.
          */
-        it('ACTS_ExecuteShellCommand_Promise_0700', 0, async (done:Function) => {
+        it('ACTS_ExecuteShellCommand_Promise_0700', Level.LEVEL0, async (done:Function) => {
             console.log("ACTS_ExecuteShellCommand_Promise_0700 --- start")
             let cmd = 'aa help'
             let code = null

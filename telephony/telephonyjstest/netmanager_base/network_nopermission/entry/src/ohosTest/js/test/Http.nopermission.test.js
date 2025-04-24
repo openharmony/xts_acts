@@ -14,7 +14,7 @@
  */
 
 import network from '@system.network';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 export default function Telephony_NetManager_NetWorkTest() {
 
 describe("Telephony_NetManager_NetWorkTest", function () {
@@ -24,7 +24,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
      * @tc.name Whether GetType method is called successfully without permission
      * @tc.desc Function test
      */
-    it("Telephony_NetManager_NetWorkTest_GetType_NoPermission_0100", 0, function (done) {
+    it("Telephony_NetManager_NetWorkTest_GetType_NoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         network.getType({
             success : function(data){
                 expect().assertFail()
@@ -45,7 +45,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
      * @tc.name Whether to call GetType method again without permission
      * @tc.desc Function test
      */
-    it("Telephony_NetManager_NetWorkTest_GetType_NoPermission_0200", 0, function (done) {
+    it("Telephony_NetManager_NetWorkTest_GetType_NoPermission_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         network.getType({
             success : function(data){
                 expect().assertFail();
@@ -66,7 +66,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
      * @tc.name Whether the subscribe method is called successfully without permission
      * @tc.desc Function test
      */
-    it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0100", 0, function (done) {
+    it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         network.subscribe({
             success : function(data){
                 expect().assertFail();
@@ -85,7 +85,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
      * @tc.name Whether to call the subscribe method again without permission
      * @tc.desc Function test
      */
-    it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0200", 0, function (done) {
+    it("Telephony_NetManager_NetWorkTest_Subscribe_NoPermission_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
         network.subscribe({
             success : function(data){
                 expect().assertFail();

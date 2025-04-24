@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -52,7 +52,7 @@ export default function richEditorApi3() {
      * @tc.type
     * @tc.size
      */
-    it('richEditorApi3_0100', 0, async (done: Function) => {
+    it('richEditorApi3_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[richEditorApi3_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -65,11 +65,12 @@ export default function richEditorApi3() {
       let btn2 = await driver.findComponent(ON.id('richEditorApi3_btn2'));
       await btn2.click();
       await CommonFunc.sleep(1000);
-
-      let text1 = getInspectorByKey('richEditorApi3_text1');
-      let Obj1: ESObject = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"textAlign":0,"leadingMargin":{"size":["16.00vp","0.00vp"]}}');
-
+      console.log('spanParagraphs'+AppStorage.get('getParagraphs_textAlign'))
+      console.log('spanParagraphs'+JSON.stringify(AppStorage.get('getParagraphs_size')))
+      expect(AppStorage.get('getParagraphs_textAlign')).assertEqual(0)
+      expect(JSON.stringify(AppStorage.get('getParagraphs_size'))).assertEqual('{"size":["16.00vp","0.00vp"]}')
+      AppStorage.delete('getParagraphs_textAlign')
+      AppStorage.delete('getParagraphs_size')
       console.info('[testRichEditor_0100] END');
       done();
     });

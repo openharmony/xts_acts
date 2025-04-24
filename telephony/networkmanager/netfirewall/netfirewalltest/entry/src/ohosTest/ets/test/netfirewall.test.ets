@@ -95,11 +95,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_AddNetFirewallRule_0100
      * @tc.name   : testNetFirewallAddNetFirewallRule_0100
      * @tc.desc   : Add a NetFirewallRule
-     * @tc.level  : Level 1
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallAddNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
+    it('testNetFirewallAddNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallAddNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -224,11 +224,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_setNetFirewallPolicy_0100
      * @tc.name   : testNetFirewallSetNetFirewallPolicy_0100
      * @tc.desc   : Set NetFirewall Policy
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallSetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallSetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function) => {
       const caseName: string = 'testNetFirewallSetNetFirewallPolicy_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -259,11 +259,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_getNetFirewallRules_0100
      * @tc.name   : testNetFirewallGetNetFirewallRules0100
      * @tc.desc   : Get NetFirewallRules
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallGetNetFirewallRules0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallGetNetFirewallRules0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallGetNetFirewallRules0100';
       console.info(`${caseName}---Start`);
       try{
@@ -331,11 +331,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_getNetFirewallPolicy_0100
      * @tc.name   : testNetFirewallGetNetFirewallPolicy_0100
      * @tc.desc   : Get NetFirewall Policy
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallGetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallGetNetFirewallPolicy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallGetNetFirewallPolicy_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -362,12 +362,12 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_updateNetFirewallRule_0100
      * @tc.name   : testNetFirewallupdateNetFirewallRule_0100
      * @tc.desc   : update NetFirewallRule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
 
-    it('testNetFirewallupdateNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('testNetFirewallupdateNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallupdateNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{
@@ -407,11 +407,11 @@ export default function netfirewallTest() {
      * @tc.number : SUB_Network_NetFirewall_RemoveNetFirewallRule_0100
      * @tc.name   : testNetFirewallRemoveNetFirewallRule_0100
      * @tc.desc   : Remove NetFirewall Rule
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetFirewallRemoveNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done:Function) => {
+    it('testNetFirewallRemoveNetFirewallRule_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       const caseName: string = 'testNetFirewallRemoveNetFirewallRule_0100';
       console.info(`${caseName}---Start`);
       try{

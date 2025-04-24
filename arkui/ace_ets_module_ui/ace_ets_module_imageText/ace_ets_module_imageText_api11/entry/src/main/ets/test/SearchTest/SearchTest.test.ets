@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
@@ -21,6 +21,11 @@ import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let emitKey = "emitUserAgent";
+function spliceColor(sysColor: Resource) {
+  let resourceColor = getContext().resourceManager.getColorSync(sysColor.id)
+  let newArgb: string = '#' + resourceColor.toString(16).toUpperCase()
+  return newArgb;
+}
 
 export default function search() {
   describe('ActsAceSearchTest', () => {
@@ -142,7 +147,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Get the default value of caretStyle.width
      */
-    it('ArkUI_Stage_Search_CaretStyle_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0100] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CaretStyle_0100]: " + JSON.stringify(newJson));
@@ -160,7 +165,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 10
      */
-    it('ArkUI_Stage_Search_CaretStyle_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0200]: " + JSON.stringify(newJson));
@@ -198,7 +203,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 15px
      */
-    it('ArkUI_Stage_Search_CaretStyle_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0300] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0300]: " + JSON.stringify(newJson));
@@ -236,7 +241,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 10fp
      */
-    it('ArkUI_Stage_Search_CaretStyle_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0400] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0400]: " + JSON.stringify(newJson));
@@ -274,7 +279,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 15lpx
      */
-    it('ArkUI_Stage_Search_CaretStyle_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0500] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_0500]: " + JSON.stringify(newJson));
@@ -312,7 +317,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as sys.float.ohos_id_text_margin_vertical
      */
-    it('ArkUI_Stage_Search_CaretStyle_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0600] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CaretStyle_0600]: " + JSON.stringify(newJson));
@@ -338,7 +343,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 0
      */
-    it('ArkUI_Stage_Search_CaretStyle_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0700]: " + JSON.stringify(newJson));
@@ -376,7 +381,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as -1.5
      */
-    it('ArkUI_Stage_Search_CaretStyle_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0800]: " + JSON.stringify(newJson));
@@ -414,7 +419,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as 100000
      */
-    it('ArkUI_Stage_Search_CaretStyle_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_0900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_0900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_0900]: " + JSON.stringify(newJson));
@@ -452,7 +457,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as null
      */
-    it('ArkUI_Stage_Search_CaretStyle_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1000]: " + JSON.stringify(newJson));
@@ -490,7 +495,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.width as undefined
      */
-    it('ArkUI_Stage_Search_CaretStyle_1100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1100] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1100]: " + JSON.stringify(newJson));
@@ -528,7 +533,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Get the default value of caretStyle.color
      */
-    it('ArkUI_Stage_Search_CaretStyle_1200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1200] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CaretStyle_1200]: " + JSON.stringify(newJson));
@@ -548,7 +553,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as 0xff0000
      */
-    it('ArkUI_Stage_Search_CaretStyle_1300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1300] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1300]: " + JSON.stringify(newJson));
@@ -586,7 +591,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as Color.Red
      */
-    it('ArkUI_Stage_Search_CaretStyle_1400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1400] start");
       let newJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_CaretStyle_1400]: " + JSON.stringify(newJson));
@@ -624,7 +629,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as #ff9a35
      */
-    it('ArkUI_Stage_Search_CaretStyle_1500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1500] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_1500]: " + JSON.stringify(newJson));
@@ -662,7 +667,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as $r('sys.color.ohos_id_color_connected')
      */
-    it('ArkUI_Stage_Search_CaretStyle_1600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1600] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CaretStyle_1600]: " + JSON.stringify(newJson));
@@ -690,7 +695,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as abcdefghijk
      */
-    it('ArkUI_Stage_Search_CaretStyle_1700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1700] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_1700]: " + JSON.stringify(newJson));
@@ -730,7 +735,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as null
      */
-    it('ArkUI_Stage_Search_CaretStyle_1800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1800]: " + JSON.stringify(newJson));
@@ -770,7 +775,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as undefined
      */
-    it('ArkUI_Stage_Search_CaretStyle_1900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_1900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_1900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_1900]: " + JSON.stringify(newJson));
@@ -811,7 +816,7 @@ export default function search() {
      * @tc.desc Set the value of caretStyle.width as 10
      *               Set the value of caretStyle.color as 0xff0000
      */
-    it('ArkUI_Stage_Search_CaretStyle_2000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_2000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CaretStyle_2000]: " + JSON.stringify(newJson));
@@ -854,7 +859,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as rgb(0, 0, 255)
      */
-    it('ArkUI_Stage_Search_CaretStyle_2100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_2100] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_2100]: " + JSON.stringify(newJson));
@@ -892,7 +897,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as rgba(0, 255, 0, 0)
      */
-    it('ArkUI_Stage_Search_CaretStyle_2200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_2200] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CaretStyle_2200]: " + JSON.stringify(newJson));
@@ -930,7 +935,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as $r('app.color.Caretcolor')
      */
-    it('ArkUI_Stage_Search_CaretStyle_2300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUI_Stage_Search_CaretStyle_2300 START');
       let strJson = getInspectorByKey('searchTestDefaultapp');
       console.info("[ArkUI_Stage_Search_CaretStyle_2300]: " + JSON.stringify(strJson))
@@ -947,7 +952,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as $r('app.float.Caretwidth')
      */
-    it('ArkUI_Stage_Search_CaretStyle_2400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUI_Stage_Search_CaretStyle_2400 START');
       let strJson = getInspectorByKey('searchTestDefaultapp');
       console.info("[ArkUI_Stage_Search_CaretStyle_2400]: " + JSON.stringify(strJson))
@@ -964,7 +969,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as $r('app.string.Caretwidth001')
      */
-    it('ArkUI_Stage_Search_CaretStyle_2500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUI_Stage_Search_CaretStyle_2500 START');
       let strJson = getInspectorByKey('searchTestDefaultapp001');
       console.info("[ArkUI_Stage_Search_CaretStyle_2500]: " + JSON.stringify(strJson))
@@ -981,7 +986,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of caretStyle.color as $r('app.integer.Caretwidth')
      */
-    it('ArkUI_Stage_Search_CaretStyle_2600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUI_Stage_Search_CaretStyle_2600 START');
       let strJson = getInspectorByKey('searchTestDefaultapp002');
       console.info("[ArkUI_Stage_Search_CaretStyle_2600]: " + JSON.stringify(strJson))
@@ -998,7 +1003,7 @@ export default function search() {
      * @tc.name Tests the caretStyle property of the search component
      * @tc.desc Set the value of fontcolor as 0xff0000, assert caretStyle.caretColor
      */
-    it('ArkUI_Stage_Search_CaretStyle_2700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CaretStyle_2700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CaretStyle_2700] start");
       let newJson = getInspectorByKey('searchTestfontcaretcolor');
       console.info("[ArkUI_Stage_Search_CaretStyle_2700]: " + JSON.stringify(newJson));
@@ -1042,7 +1047,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Get the default value of searchIcon.size
      */
-    it('ArkUI_Stage_Search_SearchIcon_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0100] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_SearchIcon_0100]: " + JSON.stringify(newJson));
@@ -1062,7 +1067,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 26
      */
-    it('ArkUI_Stage_Search_SearchIcon_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0200]: " + JSON.stringify(newJson));
@@ -1102,7 +1107,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 50px
      */
-    it('ArkUI_Stage_Search_SearchIcon_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0300] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0300]: " + JSON.stringify(newJson));
@@ -1142,7 +1147,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 50fp
      */
-    it('ArkUI_Stage_Search_SearchIcon_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0400] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0400]: " + JSON.stringify(newJson));
@@ -1182,7 +1187,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 50lpx
      */
-    it('ArkUI_Stage_Search_SearchIcon_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0500] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(newJson));
@@ -1223,7 +1228,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as $r('sys.float.ohos_id_text_paragraph_margin_m')
      */
-    it('ArkUI_Stage_Search_SearchIcon_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0600] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchIcon_0600]: " + JSON.stringify(newJson));
@@ -1263,7 +1268,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 40
      */
-    it('ArkUI_Stage_Search_SearchIcon_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0700]: " + JSON.stringify(newJson));
@@ -1303,7 +1308,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 0
      */
-    it('ArkUI_Stage_Search_SearchIcon_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0800]: " + JSON.stringify(newJson));
@@ -1343,7 +1348,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as -16
      */
-    it('ArkUI_Stage_Search_SearchIcon_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_0900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_0900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_0900]: " + JSON.stringify(newJson));
@@ -1383,7 +1388,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as 10000
      */
-    it('ArkUI_Stage_Search_SearchIcon_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1000]: " + JSON.stringify(newJson));
@@ -1423,7 +1428,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as null
      */
-    it('ArkUI_Stage_Search_SearchIcon_1100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1100] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1100]: " + JSON.stringify(newJson));
@@ -1463,7 +1468,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.size as undefined
      */
-    it('ArkUI_Stage_Search_SearchIcon_1200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1200]: " + JSON.stringify(newJson));
@@ -1503,7 +1508,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Get the default value of searchIcon.color
      */
-    it('ArkUI_Stage_Search_SearchIcon_1300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1300] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_SearchIcon_1300]: " + JSON.stringify(newJson));
@@ -1513,7 +1518,7 @@ export default function search() {
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Search_SearchIcon_1300]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_1300]: " + JSON.stringify(obj.$attrs.searchIcon.color));
-      expect(obj.$attrs.searchIcon.color).assertEqual(objDefault.$attrs.searchIcon.color);
+      expect(''+obj.$attrs.searchIcon.color).assertContain(spliceColor($r('sys.color.search_symbol_icon_color')));
       console.info("[ArkUI_Stage_Search_SearchIcon_1300] end");
       done();
     });
@@ -1523,7 +1528,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as 0x00ff00
      */
-    it('ArkUI_Stage_Search_SearchIcon_1400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1400]: " + JSON.stringify(newJson));
@@ -1561,7 +1566,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as Color.Red
      */
-    it('ArkUI_Stage_Search_SearchIcon_1500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1500] start");
       let newJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_SearchIcon_1500]: " + JSON.stringify(newJson));
@@ -1599,7 +1604,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as #ff9a35
      */
-    it('ArkUI_Stage_Search_SearchIcon_1600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1600] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_1600]: " + JSON.stringify(newJson));
@@ -1637,7 +1642,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as $r('sys.color.ohos_id_color_connected')
      */
-    it('ArkUI_Stage_Search_SearchIcon_1700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1700] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchIcon_1700]: " + JSON.stringify(newJson));
@@ -1665,7 +1670,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as abcdefghijk
      */
-    it('ArkUI_Stage_Search_SearchIcon_1800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1800] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchIcon_1800]: " + JSON.stringify(newJson));
@@ -1705,7 +1710,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as null
      */
-    it('ArkUI_Stage_Search_SearchIcon_1900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_1900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_1900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_1900]: " + JSON.stringify(newJson));
@@ -1745,7 +1750,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.color as undefined
      */
-    it('ArkUI_Stage_Search_SearchIcon_2000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2000]: " + JSON.stringify(newJson));
@@ -1786,7 +1791,7 @@ export default function search() {
      * @tc.desc Set the value of searchIcon.size as 26
      *               Set the value of searchIcon.color as 0x00ff00
      */
-    it('ArkUI_Stage_Search_SearchIcon_2100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2100] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2100]: " + JSON.stringify(newJson));
@@ -1831,7 +1836,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Get the default value of searchIcon.src
      */
-    it('ArkUI_Stage_Search_SearchIcon_2200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2200] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_SearchIcon_2200]: " + JSON.stringify(newJson));
@@ -1839,7 +1844,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Search_SearchIcon_2200]: " + JSON.stringify(obj.$attrs.searchIcon));
       console.info("[ArkUI_Stage_Search_SearchIcon_2200]: " + JSON.stringify(obj.$attrs.searchIcon.src));
-      expect(obj.$attrs.searchIcon.src).assertEqual('resource:///ohos_search.svg');
+      expect(obj.$attrs.searchIcon.src).assertEqual(983081);
       console.info("[ArkUI_Stage_Search_SearchIcon_2200] end");
       done();
     });
@@ -1849,7 +1854,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as common/icon2.svg
      */
-    it('ArkUI_Stage_Search_SearchIcon_2300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2300] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2300]: " + JSON.stringify(newJson));
@@ -1887,7 +1892,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as common/icon2.jpg
      */
-    it('ArkUI_Stage_Search_SearchIcon_2400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2400]: " + JSON.stringify(newJson));
@@ -1925,7 +1930,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as common/icon2.png
      */
-    it('ArkUI_Stage_Search_SearchIcon_2500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2500] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2500]: " + JSON.stringify(newJson));
@@ -1963,7 +1968,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as $r('sys.media.ohos_app_icon')
      */
-    it('ArkUI_Stage_Search_SearchIcon_2600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2600] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchIcon_2600]: " + JSON.stringify(newJson));
@@ -1989,7 +1994,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as abc/def/ghi.jkl
      */
-    it('ArkUI_Stage_Search_SearchIcon_2700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2700]: " + JSON.stringify(newJson));
@@ -2027,7 +2032,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as ''
      */
-    it('ArkUI_Stage_Search_SearchIcon_2800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2800]: " + JSON.stringify(newJson));
@@ -2065,7 +2070,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as null
      */
-    it('ArkUI_Stage_Search_SearchIcon_2900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_2900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_2900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_2900]: " + JSON.stringify(newJson));
@@ -2103,7 +2108,7 @@ export default function search() {
      * @tc.name Tests the searchIcon property of the search component
      * @tc.desc Set the value of searchIcon.src as undefined
      */
-    it('ArkUI_Stage_Search_SearchIcon_3000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchIcon_3000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchIcon_3000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchIcon_3000]: " + JSON.stringify(newJson));
@@ -2141,7 +2146,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Get the default value of cancelButton.style
      */
-    it('ArkUI_Stage_Search_CancelButton_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0100] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CancelButton_0100]: " + JSON.stringify(newJson));
@@ -2159,7 +2164,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.style as CancelButtonStyle.CONSTANT
      */
-    it('ArkUI_Stage_Search_CancelButton_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0200]: " + JSON.stringify(newJson));
@@ -2197,7 +2202,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.style as CancelButtonStyle.INVISIBLE
      */
-    it('ArkUI_Stage_Search_CancelButton_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0300] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0300]: " + JSON.stringify(newJson));
@@ -2235,7 +2240,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.style as null
      */
-    it('ArkUI_Stage_Search_CancelButton_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0400]: " + JSON.stringify(newJson));
@@ -2273,7 +2278,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.style as undefined
      */
-    it('ArkUI_Stage_Search_CancelButton_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0500] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0500]: " + JSON.stringify(newJson));
@@ -2311,7 +2316,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Get the default value of cancelButton.icon.size
      */
-    it('ArkUI_Stage_Search_CancelButton_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0600] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CancelButton_0600]: " + JSON.stringify(newJson));
@@ -2331,7 +2336,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 26
      */
-    it('ArkUI_Stage_Search_CancelButton_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_0700]: " + JSON.stringify(newJson));
@@ -2371,7 +2376,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 50px
      */
-    it('ArkUI_Stage_Search_CancelButton_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0800] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_0800]: " + JSON.stringify(newJson));
@@ -2411,7 +2416,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 50fp
      */
-    it('ArkUI_Stage_Search_CancelButton_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_0900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_0900] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_0900]: " + JSON.stringify(newJson));
@@ -2451,7 +2456,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 50lpx
      */
-    it('ArkUI_Stage_Search_CancelButton_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1000] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(newJson));
@@ -2492,7 +2497,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as $r('sys.float.ohos_id_text_paragraph_margin_m')
      */
-    it('ArkUI_Stage_Search_CancelButton_1100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1100] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CancelButton_1100]: " + JSON.stringify(newJson));
@@ -2532,7 +2537,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 40
      */
-    it('ArkUI_Stage_Search_CancelButton_1200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1200]: " + JSON.stringify(newJson));
@@ -2572,7 +2577,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 0
      */
-    it('ArkUI_Stage_Search_CancelButton_1300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1300] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + JSON.stringify(newJson));
@@ -2612,7 +2617,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as -16
      */
-    it('ArkUI_Stage_Search_CancelButton_1400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1400]: " + JSON.stringify(newJson));
@@ -2652,7 +2657,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as 10000
      */
-    it('ArkUI_Stage_Search_CancelButton_1500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1500] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1500]: " + JSON.stringify(newJson));
@@ -2692,7 +2697,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as null
      */
-    it('ArkUI_Stage_Search_CancelButton_1600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1600] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1600]: " + JSON.stringify(newJson));
@@ -2732,7 +2737,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.size as undefined
      */
-    it('ArkUI_Stage_Search_CancelButton_1700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1700]: " + JSON.stringify(newJson));
@@ -2772,7 +2777,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Get the default value of cancelButton.icon.color
      */
-    it('ArkUI_Stage_Search_CancelButton_1800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1800] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CancelButton_1800]: " + JSON.stringify(newJson));
@@ -2782,7 +2787,7 @@ export default function search() {
       let objDefault: ESObject = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Search_CancelButton_1800]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1800]: " + JSON.stringify(obj.$attrs.cancelButton.icon.color));
-      expect(obj.$attrs.cancelButton.icon.color).assertEqual(objDefault.$attrs.cancelButton.icon.color);
+      expect(''+obj.$attrs.cancelButton.icon.color).assertContain(spliceColor($r('sys.color.search_symbol_icon_color')));
       console.info("[ArkUI_Stage_Search_CancelButton_1800] end");
       done();
     });
@@ -2792,7 +2797,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as 0x00ff00
      */
-    it('ArkUI_Stage_Search_CancelButton_1900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_1900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_1900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_1900]: " + JSON.stringify(newJson));
@@ -2830,7 +2835,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as Color.Red
      */
-    it('ArkUI_Stage_Search_CancelButton_2000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2000] start");
       let newJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_CancelButton_2000]: " + JSON.stringify(newJson));
@@ -2868,7 +2873,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as #ff9a35
      */
-    it('ArkUI_Stage_Search_CancelButton_2100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2100] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_2100]: " + JSON.stringify(newJson));
@@ -2906,7 +2911,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as $r('sys.color.ohos_id_color_connected')
      */
-    it('ArkUI_Stage_Search_CancelButton_2200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2200] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CancelButton_2200]: " + JSON.stringify(newJson));
@@ -2934,7 +2939,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as abcdefghijk
      */
-    it('ArkUI_Stage_Search_CancelButton_2300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2300] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_CancelButton_2300]: " + JSON.stringify(newJson));
@@ -2974,7 +2979,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as null
      */
-    it('ArkUI_Stage_Search_CancelButton_2400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2400]: " + JSON.stringify(newJson));
@@ -3014,7 +3019,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.color as undefined
      */
-    it('ArkUI_Stage_Search_CancelButton_2500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2500] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2500]: " + JSON.stringify(newJson));
@@ -3055,7 +3060,7 @@ export default function search() {
      * @tc.desc Set the value of cancelButton.icon.size as 26
      *               Set the value of cancelButton.icon.color as 0x00ff00
      */
-    it('ArkUI_Stage_Search_CancelButton_2600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2600] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2600]: " + JSON.stringify(newJson));
@@ -3100,7 +3105,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Get the default value of cancelButton.icon.src
      */
-    it('ArkUI_Stage_Search_CancelButton_2700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2700] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_CancelButton_2700]: " + JSON.stringify(newJson));
@@ -3108,7 +3113,7 @@ export default function search() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_Stage_Search_CancelButton_2700]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_2700]: " + JSON.stringify(obj.$attrs.cancelButton.icon.src));
-      expect(obj.$attrs.cancelButton.icon.src).assertEqual('resource:///ohos_close.svg');
+      expect(obj.$attrs.cancelButton.icon.src).assertEqual(983126);
       console.info("[ArkUI_Stage_Search_CancelButton_2700] end");
       done();
     });
@@ -3118,7 +3123,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as common/icon2.svg
      */
-    it('ArkUI_Stage_Search_CancelButton_2800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2800]: " + JSON.stringify(newJson));
@@ -3156,7 +3161,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as common/icon2.jpg
      */
-    it('ArkUI_Stage_Search_CancelButton_2900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_2900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_2900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_2900]: " + JSON.stringify(newJson));
@@ -3194,7 +3199,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as common/icon2.png
      */
-    it('ArkUI_Stage_Search_CancelButton_3000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3000]: " + JSON.stringify(newJson));
@@ -3232,7 +3237,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as $r('sys.media.ohos_app_icon')
      */
-    it('ArkUI_Stage_Search_CancelButton_3100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3100] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_CancelButton_3100]: " + JSON.stringify(newJson));
@@ -3258,7 +3263,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as abc/def/ghi.jkl
      */
-    it('ArkUI_Stage_Search_CancelButton_3200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3200]: " + JSON.stringify(newJson));
@@ -3296,7 +3301,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as ''
      */
-    it('ArkUI_Stage_Search_CancelButton_3300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3300] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3300]: " + JSON.stringify(newJson));
@@ -3334,7 +3339,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as null
      */
-    it('ArkUI_Stage_Search_CancelButton_3400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3400]: " + JSON.stringify(newJson));
@@ -3372,7 +3377,7 @@ export default function search() {
      * @tc.name Tests the cancelButton property of the search component
      * @tc.desc Set the value of cancelButton.icon.src as undefined
      */
-    it('ArkUI_Stage_Search_CancelButton_3500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_CancelButton_3500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_CancelButton_3500] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_CancelButton_3500]: " + JSON.stringify(newJson));
@@ -3410,7 +3415,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Get the default value of searchButton.fontSize
      */
-    it('ArkUI_Stage_Search_SearchButton_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0100] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_SearchButton_0100]: " + JSON.stringify(newJson));
@@ -3430,7 +3435,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 20vp
      */
-    it('ArkUI_Stage_Search_SearchButton_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0200] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0200]: " + JSON.stringify(newJson));
@@ -3468,7 +3473,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 40vp
      */
-    it('ArkUI_Stage_Search_SearchButton_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0300] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0300]: " + JSON.stringify(newJson));
@@ -3506,7 +3511,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 20
      */
-    it('ArkUI_Stage_Search_SearchButton_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_0400]: " + JSON.stringify(newJson));
@@ -3544,7 +3549,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 40fp
      */
-    it('ArkUI_Stage_Search_SearchButton_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0500] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0500]: " + JSON.stringify(newJson));
@@ -3582,7 +3587,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 40lpx
      */
-    it('ArkUI_Stage_Search_SearchButton_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0600] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0600]: " + JSON.stringify(newJson));
@@ -3620,7 +3625,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as $r('sys.float.ohos_id_text_paragraph_margin_m')
      */
-    it('ArkUI_Stage_Search_SearchButton_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0700] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchButton_0700]: " + JSON.stringify(newJson));
@@ -3646,7 +3651,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 0vp
      */
-    it('ArkUI_Stage_Search_SearchButton_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0800] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0800]: " + JSON.stringify(newJson));
@@ -3684,7 +3689,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as 800vp
      */
-    it('ArkUI_Stage_Search_SearchButton_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_0900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_0900] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_0900]: " + JSON.stringify(newJson));
@@ -3722,7 +3727,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as -14vp
      */
-    it('ArkUI_Stage_Search_SearchButton_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1000] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(newJson));
@@ -3750,9 +3755,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1000]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' +Math.round(px2fp(resourceSize))+ '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1000] end");
       done();
     });
@@ -3762,7 +3767,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as null
      */
-    it('ArkUI_Stage_Search_SearchButton_1100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1100] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(newJson));
@@ -3790,9 +3795,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1100]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + Math.round(px2fp(resourceSize)) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1100] end");
       done();
     });
@@ -3802,7 +3807,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontSize as undefined
      */
-    it('ArkUI_Stage_Search_SearchButton_1200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1200] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(newJson));
@@ -3830,9 +3835,9 @@ export default function search() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButton));
       console.info("[ArkUI_Stage_Search_SearchButton_1200]: " + JSON.stringify(obj.$attrs.searchButtonOption.fontSize));
-      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_size_body1').id)
+      let resourceSize = getContext().resourceManager.getNumber($r('sys.float.Body_M').id)
 	    console.info("[TextInputPageJsunit_0200] size: " +px2fp(resourceSize));
-      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + px2fp(resourceSize) + '.00fp');
+      expect(obj.$attrs.searchButtonOption.fontSize).assertEqual('' + Math.round(px2fp(resourceSize)) + '.00fp');
       console.info("[ArkUI_Stage_Search_SearchButton_1200] end");
       done();
     });
@@ -3842,7 +3847,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Get the default value of searchButton.fontColor
      */
-    it('ArkUI_Stage_Search_SearchButton_1300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1300] start");
       let newJson = getInspectorByKey('searchTestDefault');
       console.info("[ArkUI_Stage_Search_SearchButton_1300]: " + JSON.stringify(newJson));
@@ -3862,7 +3867,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as 0xff0000
      */
-    it('ArkUI_Stage_Search_SearchButton_1400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1400] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_1400]: " + JSON.stringify(newJson));
@@ -3900,7 +3905,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as Color.Blue
      */
-    it('ArkUI_Stage_Search_SearchButton_1500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1500] start");
       let newJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_SearchButton_1500]: " + JSON.stringify(newJson));
@@ -3938,7 +3943,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as #ff9a35
      */
-    it('ArkUI_Stage_Search_SearchButton_1600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1600] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1600]: " + JSON.stringify(newJson));
@@ -3976,7 +3981,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as $r('sys.color.ohos_id_color_connected')
      */
-    it('ArkUI_Stage_Search_SearchButton_1700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1700] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_SearchButton_1700]: " + JSON.stringify(newJson));
@@ -4004,7 +4009,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as abcdefghijk
      */
-    it('ArkUI_Stage_Search_SearchButton_1800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1800] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_SearchButton_1800]: " + JSON.stringify(newJson));
@@ -4044,7 +4049,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as null
      */
-    it('ArkUI_Stage_Search_SearchButton_1900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_1900', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_1900] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_1900]: " + JSON.stringify(newJson));
@@ -4084,7 +4089,7 @@ export default function search() {
      * @tc.name Tests the searchButton property of the search component
      * @tc.desc Set the value of searchButton.fontColor as undefined
      */
-    it('ArkUI_Stage_Search_SearchButton_2000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_2000', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_2000] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_2000]: " + JSON.stringify(newJson));
@@ -4125,7 +4130,7 @@ export default function search() {
      * @tc.desc Set the value of searchButton.fontSize as 20
      *               Set the value of searchButton.fontColor as 0xff0000
      */
-    it('ArkUI_Stage_Search_SearchButton_2100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_SearchButton_2100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_SearchButton_2100] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_SearchButton_2100]: " + JSON.stringify(newJson));
@@ -4168,7 +4173,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Get the default value of fontColor
      */
-    it('ArkUI_Stage_Search_FontColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0100] start");
       let newJson = getInspectorByKey('searchTestDefault');
       let newJson2 = getInspectorByKey('searchTestDefaultValue');
@@ -4187,7 +4192,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as 0xff0000
      */
-    it('ArkUI_Stage_Search_FontColor_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0200] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_FontColor_0200]: " + JSON.stringify(newJson));
@@ -4224,7 +4229,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as Color.Red
      */
-    it('ArkUI_Stage_Search_FontColor_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0300] start");
       let newJson = getInspectorByKey('searchTestColor');
       console.info("[ArkUI_Stage_Search_FontColor_0300]: " + JSON.stringify(newJson));
@@ -4261,7 +4266,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as #ff9a35
      */
-    it('ArkUI_Stage_Search_FontColor_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0400] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_FontColor_0400]: " + JSON.stringify(newJson));
@@ -4298,7 +4303,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as $r('sys.color.ohos_id_color_connected')
      */
-    it('ArkUI_Stage_Search_FontColor_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0500] start");
       let newJson = getInspectorByKey('searchTestResource');
       console.info("[ArkUI_Stage_Search_FontColor_0500]: " + JSON.stringify(newJson));
@@ -4325,7 +4330,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as abcdefghijk
      */
-    it('ArkUI_Stage_Search_FontColor_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0600] start");
       let newJson = getInspectorByKey('searchTestString');
       console.info("[ArkUI_Stage_Search_FontColor_0600]: " + JSON.stringify(newJson));
@@ -4364,7 +4369,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as null
      */
-    it('ArkUI_Stage_Search_FontColor_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0700] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_FontColor_0700]: " + JSON.stringify(newJson));
@@ -4403,7 +4408,7 @@ export default function search() {
      * @tc.name Tests the fontColor property of the search component
      * @tc.desc Set the value of fontColor as undefined
      */
-    it('ArkUI_Stage_Search_FontColor_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Search_FontColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info("[ArkUI_Stage_Search_FontColor_0800] start");
       let newJson = getInspectorByKey('searchTestNumber');
       console.info("[ArkUI_Stage_Search_FontColor_0800]: " + JSON.stringify(newJson));

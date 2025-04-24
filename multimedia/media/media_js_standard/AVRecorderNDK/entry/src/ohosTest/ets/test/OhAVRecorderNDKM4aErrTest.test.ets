@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import testapi from 'libavrecorderndk.so'
 import fs from '@ohos.file.fs'
@@ -80,7 +80,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0011', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0011', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0011 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -106,7 +106,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         //2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
         //release recorder
@@ -126,7 +125,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0012', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0012', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0012 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -147,7 +146,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         //2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //pause recorder
         avRecorderNdkTestBase.PAUSE_RECORDER_EVENT,
@@ -170,7 +168,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0013', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0013', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0013 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -215,7 +213,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0014', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0014', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0014 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -258,7 +256,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0015', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0015', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0015 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -301,7 +299,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0016', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0016', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0016 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -363,7 +361,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0021', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0021', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0021 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -400,7 +398,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0022', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0022', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0022 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -439,7 +437,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0023', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0023', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0023 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -480,7 +478,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0024', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0024', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0024 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -523,7 +521,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0025', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0025', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0025 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -560,7 +558,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0026', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0026', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0026 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -600,7 +598,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0027', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0027', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0027 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -639,7 +637,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0031', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0031', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0031 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -663,7 +661,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         //2s
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,
         //release recorder
@@ -683,7 +680,7 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvRecorder_m4a_errorevent_0041', 0, async (done: Function) => {
+    it('testOhAvRecorder_m4a_errorevent_0041', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvRecorder_m4a_errorevent_0041 test start `);
       let fileName: string = avRecorderNdkTestBase.resourceM4AName();
       fdObject = await avRecorderNdkTestBase.getFd(fileName);
@@ -706,7 +703,6 @@ export default function OhAVRecorderNDKM4aErrTest() { // L2
         //start recorder
         avRecorderNdkTestBase.START_RECORDER_EVENT,
         //2s
-        avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         avRecorderNdkTestBase.WAIT_RECORDER_EVENT,
         //stop recorder
         avRecorderNdkTestBase.STOP_RECORDER_EVENT,

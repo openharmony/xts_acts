@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitJsMessageExtGetStringError";
 
@@ -42,6 +45,11 @@ export default function webViewContJsMessageExtReturnError() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewContJsMessageExtReturnError beforeEach start");
       done();
@@ -71,7 +79,7 @@ export default function webViewContJsMessageExtReturnError() {
      *tc.name testJsMessageExtGetStringError
      *tc.desc test interface of JsMessageExt getString with unmatched type
      */
-    it('testJsMessageExtGetStringError', 0, async (done: Function) => {
+    it('testJsMessageExtGetStringError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitJsMessageExtGetNumberError";
       Utils.registerEvent("testJsMessageExtGetStringError", "17100014", 816, done);
       Utils.registerEvent("testJsMessageExtGetStringError", "The type and value of the message do not match.", 817, done);
@@ -82,7 +90,7 @@ export default function webViewContJsMessageExtReturnError() {
      *tc.name testJsMessageExtGetNumberError
      *tc.desc test interface of JsMessageExt getNumber with unmatched type
      */
-    it('testJsMessageExtGetNumberError', 0, async (done: Function) => {
+    it('testJsMessageExtGetNumberError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitJsMessageExtGetBooleanError";
       Utils.registerEvent("testJsMessageExtGetNumberError", "17100014", 818, done);
       Utils.registerEvent("testJsMessageExtGetNumberError", "The type and value of the message do not match.", 819, done);
@@ -93,7 +101,7 @@ export default function webViewContJsMessageExtReturnError() {
      *tc.name testJsMessageExtGetBooleanError
      *tc.desc test interface of JsMessageExt getBoolean with unmatched type
      */
-    it('testJsMessageExtGetBooleanError', 0, async (done: Function) => {
+    it('testJsMessageExtGetBooleanError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitJsMessageExtGetArrayBufferError";
       Utils.registerEvent("testJsMessageExtGetBooleanError", "17100014", 820, done);
       Utils.registerEvent("testJsMessageExtGetBooleanError", "The type and value of the message do not match.", 821, done);
@@ -104,7 +112,7 @@ export default function webViewContJsMessageExtReturnError() {
      *tc.name testJsMessageExtGetArrayBufferError
      *tc.desc test interface of JsMessageExt getArrayBuffer with unmatched type
      */
-    it('testJsMessageExtGetArrayBufferError', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayBufferError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitJsMessageExtGetArrayError";
       Utils.registerEvent("testJsMessageExtGetArrayBufferError", "17100014", 822, done);
       Utils.registerEvent("testJsMessageExtGetArrayBufferError", "The type and value of the message do not match.", 823, done);
@@ -115,7 +123,7 @@ export default function webViewContJsMessageExtReturnError() {
      *tc.name testJsMessageExtGetArrayError
      *tc.desc test interface of JsMessageExt getArray with unmatched type
      */
-    it('testJsMessageExtGetArrayError', 0, async (done: Function) => {
+    it('testJsMessageExtGetArrayError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitJsMessageExtGetArrayError";
       Utils.registerEvent("testJsMessageExtGetArrayError", "17100014", 824, done);
       Utils.registerEvent("testJsMessageExtGetArrayError", "The type and value of the message do not match.", 825, done);

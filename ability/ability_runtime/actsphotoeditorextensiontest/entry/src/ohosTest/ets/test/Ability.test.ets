@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager'
 import router from '@ohos.router'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -69,7 +69,7 @@ export default function abilityTest() {
         * @tc.level Level0
         * @tc.type Function
         */
-        it('ACTS_PhotoEditorExtension_0100', 0, async () => {
+        it('ACTS_PhotoEditorExtension_0100', Level.LEVEL0, async () => {
             // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
             const newTag = 'ACTS_PhotoEditorExtension_0100 == ';
 

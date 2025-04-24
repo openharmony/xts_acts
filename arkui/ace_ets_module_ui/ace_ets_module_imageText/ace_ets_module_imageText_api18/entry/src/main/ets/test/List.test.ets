@@ -19,6 +19,13 @@ import ContentTypeTest2 from './TextInputTest/ContentType2.test';
 import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.test';
 import monitorInvisibleArea from './ImageAnimator/monitorInvisibleArea.test';
 import textBackgroundStyleTest from './RichEditorTest/textBackgroundStyleTest.test';
+import SearchGetTextTest from './SearchTest/SearchGetText.test';
+import TextAreaGetTextTest from './TextAreaTest/TextAreaGetText.test';
+import TextInputGetTextTest from './TextInputTest/TextInputGetText.test';
+import ParagraphSpacingTest from './StyledStringTest/ParagraphSpacing.test';
+import HapticFeedbackModeTest from './RichEditorTest/HapticFeedbackMode.test';
+import RichEditorMaxLinesTest from './RichEditorTest/RichEditorMaxLinesTest.test';
+import WordBreakTest from './TextAreaTest/WordBreakTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -27,4 +34,11 @@ export default function testsuite() {
   symbolGlyphFontScaleTest();
   monitorInvisibleArea();
   textBackgroundStyleTest();
+  SearchGetTextTest();
+  TextAreaGetTextTest();
+  TextInputGetTextTest();
+  ParagraphSpacingTest();
+  HapticFeedbackModeTest();
+  RichEditorMaxLinesTest();
+  WordBreakTest();
 }

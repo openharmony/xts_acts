@@ -37,9 +37,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOff0100', 0, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOff0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOff0100';
       console.info(`${caseName} test start `);
       try {
@@ -75,9 +75,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOff0200', 0, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOff0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOff0200';
       console.info(`${caseName} test start `);
       try {
@@ -114,9 +114,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOff0400', 0, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOff0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOff0400';
       console.info(`${caseName} test start `);
       try {
@@ -154,9 +154,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOn0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOn0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOn0500';
       console.info(`${caseName} test start `);
       try {
@@ -178,9 +178,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOn0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOn0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOn0600';
       console.info(`${caseName} test start `);
       try {
@@ -205,9 +205,9 @@ export default function observerManagerCallStateTest() {
      * @tc.desc  : Unsubscribe to call status change event
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testTelephonyObserverCallStateChangeOff0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testTelephonyObserverCallStateChangeOff0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyObserverCallStateChangeOff0700';
       console.info(`${caseName} test start `);
       try {

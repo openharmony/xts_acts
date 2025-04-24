@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -55,7 +55,7 @@ export default function stageFontTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('Stage_Font_0100', 0, async (done: Function) => {
+    it('Stage_Font_0100', Level.LEVEL2, async (done: Function) => {
       console.info('Stage_Font_0100 START');
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function stageFontTest() {
         done();
       }, 500)
     });
-    it('Stage_Font_0200', 0, async (done: Function) => {
+    it('Stage_Font_0200', Level.LEVEL2, async (done: Function) => {
       console.info('Stage_Font_0200 START');
       setTimeout(() => {
         try {
@@ -94,7 +94,7 @@ export default function stageFontTest() {
       }, 500)
     });
 
-    it('Stage_Font_0300', 0, async (done: Function) => {
+    it('Stage_Font_0300', Level.LEVEL2, async (done: Function) => {
       console.info('Stage_Font_0300 START');
       setTimeout(() => {
         try {
@@ -113,7 +113,7 @@ export default function stageFontTest() {
       }, 500)
     });
 
-    it('Stage_Font_0400', 0, async (done: Function) => {
+    it('Stage_Font_0400', Level.LEVEL2, async (done: Function) => {
       console.info('Stage_Font_0400 START');
       setTimeout(() => {
         try {
@@ -132,7 +132,7 @@ export default function stageFontTest() {
       }, 500)
     });
 
-    it('Stage_Font_0500', 0, async (done: Function) => {
+    it('Stage_Font_0500', Level.LEVEL2, async (done: Function) => {
       console.info('Stage_Font_0500 START');
       setTimeout(() => {
         try {
@@ -151,7 +151,7 @@ export default function stageFontTest() {
       }, 500)
     });
 
-    it('Stage_Font_0600', 0, async (done: Function) => {
+    it('Stage_Font_0600', Level.LEVEL2, async (done: Function) => {
       let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0600 START');
       try {
@@ -164,7 +164,7 @@ export default function stageFontTest() {
       done();
     });
 
-    it('Stage_Font_0700', 0, async (done: Function) => {
+    it('Stage_Font_0700', Level.LEVEL2, async (done: Function) => {
       let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0700 START');
       try {
@@ -177,7 +177,7 @@ export default function stageFontTest() {
       done();
     });
 
-    it('Stage_Font_0800', 0, async (done: Function) => {
+    it('Stage_Font_0800', Level.LEVEL2, async (done: Function) => {
       let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0800 START');
       try {

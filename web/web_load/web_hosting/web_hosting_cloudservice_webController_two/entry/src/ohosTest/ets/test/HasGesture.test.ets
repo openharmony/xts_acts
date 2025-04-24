@@ -14,7 +14,7 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
@@ -56,7 +56,7 @@ export default function hasGesture() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_getHttpBodyStream0100', 0, async () => {
+    it('testWebView_getHttpBodyStream0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getHttpBodyStream_0100 start')
       console.info('SUB_ACE_WEB_getHttpBodyStream_0100 start')
@@ -83,7 +83,7 @@ export default function hasGesture() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_setStatus0100', 0, async () => {
+    it('testWebView_setStatus0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0100 start')
       console.info('SUB_ACE_WEB_setStatus_0100 start')
@@ -110,7 +110,7 @@ export default function hasGesture() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_setStatus0200', 0, async () => {
+    it('testWebView_setStatus0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0200 start')
       console.info('SUB_ACE_WEB_setStatus_0200 start')
@@ -137,7 +137,7 @@ export default function hasGesture() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_setStatus0300', 0, async () => {
+    it('testWebView_setStatus0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_setStatus_0300 start')
       console.info('SUB_ACE_WEB_setStatus_0300 start')

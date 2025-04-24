@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -25,14 +25,18 @@ const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 
 export default function BackgroundPromise() {
   describe("BackgroundPromise", () => {
-    beforeEach(() => {
+    beforeEach((done: Function) => {
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.crossplatformpromise",
         moduleName: "entry_test",
       });
+      setTimeout(() => {
+        done();
+      }, START_ABILITY_TIMEOUT_TWO_THOUSAND);
     });
+
 
     /**
      * @tc.number ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001
@@ -42,7 +46,7 @@ export default function BackgroundPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001", Level.LEVEL0, async (done: Function) => {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001 start"
       );
@@ -152,7 +156,7 @@ export default function BackgroundPromise() {
                   (err: BusinessError, ability2: UIAbility) => {
                     try {
                       abilityDelegator
-                        .doAbilityBackground(ability2)
+                        .doAbilityBackground(undefined)
                         .then(() => {
                           abilityDelegator.printSync(
                             "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0002 fail"
@@ -291,7 +295,7 @@ export default function BackgroundPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_BACKGROUND_PROMISE_0004", 0, async (done: Function) => {
+    it("ACTS_DO_ABILITY_BACKGROUND_PROMISE_0004", Level.LEVEL0, async (done: Function) => {
 
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_PROMISE_0004 start"

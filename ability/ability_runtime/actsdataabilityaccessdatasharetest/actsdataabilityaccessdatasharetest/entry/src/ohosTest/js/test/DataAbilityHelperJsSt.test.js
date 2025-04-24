@@ -14,7 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import ohosDataAbility from '@ohos.data.dataAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 export default function ActsDataAbilityHelperTest() {
 describe('ActsDataAbilityHelperTest', function () {
@@ -61,7 +61,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: insert : insert data to DataShare by DataAbilityHelper
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_Inset_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Inset_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Inset_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -89,7 +89,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: insert : insert data to DataShare by DataAbilityHelper
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_Inset_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Inset_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Inset_0200';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -122,7 +122,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_Query_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Query_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Query_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -153,7 +153,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_Query_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Query_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Query_0200';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -183,7 +183,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Updates one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_Update_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Update_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Update_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -218,7 +218,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Queries one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_Update_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Update_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Update_0200';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -259,7 +259,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records in the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_Delete_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Delete_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Delete_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -289,7 +289,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Deletes one or more data records in the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_Delete_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_Delete_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_Delete_0200';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -325,7 +325,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert one or more data records to the database
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_BatchInsert_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_BatchInsert_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_BatchInsert_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -355,7 +355,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Insert one or more data records to the database
     * @tc.desc: Check the return value of the interface (by Promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_BatchInsert_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_BatchInsert_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_BatchInsert_0200';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -391,7 +391,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface ()
     */
-    it('ACTS_DataAbilityAccessDataShare_OnOff_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_OnOff_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_OnOff_0100';
         console.log(TAG + '====<begin');
         gSetTimeout = 2000;
@@ -434,7 +434,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: On/Off : Registers an observer to observe data specified by the given Uri
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_OnOff_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_OnOff_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_OnOff_0200';
         console.log(TAG + '====<begin');
         gSetTimeout = 2000;
@@ -485,7 +485,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_GetType_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_GetType_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetType_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -514,7 +514,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type matching the data specified by the URI of the Data ability.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_GetType_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_GetType_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetType_0200';
         console.log(TAG + '====<begin');
         try {
@@ -549,7 +549,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
 
-    it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetFileTypes_0100';
         console.log(TAG + '====<begin');
         expect(typeof (DAHelper)).assertEqual("object");
@@ -593,7 +593,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.desc: Check the return value of the interface (by promise)
     */
 
-    it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetFileTypes_0200';
         console.log(TAG + '====<begin');
         let mimeTypeFilter = 'image/*';
@@ -640,7 +640,7 @@ describe('ActsDataAbilityHelperTest', function () {
    * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
    * @tc.desc: Check the return value of the interface (by AsyncCallback)
    */
-    it('ACTS_DataAbilityAccessDataShare_NormalizeUri_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_NormalizeUri_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_NormalizeUri_0100';
         console.log(TAG + '====<begin');
         let ret = false;
@@ -670,7 +670,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_NormalizeUri_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_NormalizeUri_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_NormalizeUri_0200';
         console.log(TAG + '====<begin');
         let ret = false;
@@ -704,7 +704,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_DataAbilityAccessDataShare_DenormalizeUri_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_DenormalizeUri_0100', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_DenormalizeUri_0100';
         console.log(TAG + '====<begin');
         let ret = false;
@@ -733,7 +733,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given normalized uri generated by normalizeUri into a denormalized one.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_DataAbilityAccessDataShare_DenormalizeUri_0200', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_DenormalizeUri_0200', Level.LEVEL0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_DenormalizeUri_0200';
         console.log(TAG + '====<begin');
         let ret = false;

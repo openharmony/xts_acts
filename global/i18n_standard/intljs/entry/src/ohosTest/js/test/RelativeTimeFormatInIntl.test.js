@@ -15,7 +15,7 @@
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
 import deviceInfo from '@ohos.deviceInfo'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function RelativeTimeFormatInIntlTest() {
 describe('RelativeTimeFormatInIntlTest', function () {
@@ -63,7 +63,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0100', 0, function () {
+    it('i18n_test_relativetimeformat_0100', Level.LEVEL0, function () {
         console.log('i18n_test_relativetimeformat_0100 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat();
         let value = relativetimefmt.format(100,'second');
@@ -76,7 +76,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second in en
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0200', 0, function () {
+    it('i18n_test_relativetimeformat_0200', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0200 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.format(100,'second');
@@ -89,7 +89,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second in en and undefined options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0220', 0, function () {
+    it('i18n_test_relativetimeformat_0220', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0220 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en', undefined);
         let value = relativetimefmt.format(100,'second');
@@ -102,7 +102,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second in en and null options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0240', 0, function () {
+    it('i18n_test_relativetimeformat_0240', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0240 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en', null);
         let value = relativetimefmt.format(100,'second');
@@ -115,7 +115,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second in narrow style
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0300', 0, function () {
+    it('i18n_test_relativetimeformat_0300', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0300 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
         let value = relativetimefmt.format(100,'second');
@@ -128,7 +128,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with 100 second, get the formatToParts value
     * @tc.desc    check the formatToParts value
     */
-    it('i18n_test_relativetimeformat_0400', 0, function () {
+    it('i18n_test_relativetimeformat_0400', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0400 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.formatToParts(100,'second');
@@ -141,7 +141,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime, get the locale options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0500', 0, function () {
+    it('i18n_test_relativetimeformat_0500', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0500 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.resolvedOptions();
@@ -154,7 +154,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime, get the style options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0600', 0, function () {
+    it('i18n_test_relativetimeformat_0600', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0600 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.resolvedOptions();
@@ -167,7 +167,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime, get the numeric options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0700', 0, function () {
+    it('i18n_test_relativetimeformat_0700', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0700 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.resolvedOptions();
@@ -180,7 +180,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime, get the numberingSystem options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0800', 0, function () {
+    it('i18n_test_relativetimeformat_0800', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0800 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en');
         let value = relativetimefmt.resolvedOptions();
@@ -193,7 +193,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
     * @tc.name    format the relativetime with localeMatcher options
     * @tc.desc    check the relativetime
     */
-    it('i18n_test_relativetimeformat_0900', 0, function () {
+    it('i18n_test_relativetimeformat_0900', Level.LEVEL2, function () {
         console.log('i18n_test_relativetimeformat_0900 ' + 'start');
         let relativetimefmt = new Intl.RelativeTimeFormat('en', { localeMatcher: 'best fit', numeric: 'auto', style: 'narrow' });
         let value = relativetimefmt.resolvedOptions();

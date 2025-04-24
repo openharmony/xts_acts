@@ -43,10 +43,10 @@ export default function dlpErrorCodeTest() {
      * @tc.name test setSandboxAppConfig
      * @tc.desc 普通应用调用setSandboxAppConfig接口，不传入参数，返回19100001
      * @tc.size MediumTest
-     * @tc.level Level3
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('SUB_Security_DataSecurity_DLP_setSandboxAppConfig_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_Security_DataSecurity_DLP_setSandboxAppConfig_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await dlpPermission.setSandboxAppConfig('');
         console.info(`SUB_Security_DataSecurity_DLP_setSandboxAppConfig_0100 setSandboxAppConfig SUCCESS`);

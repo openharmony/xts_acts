@@ -26,7 +26,6 @@
 #include "drawing_rect.h"
 #include "drawing_region.h"
 #include "drawing_round_rect.h"
-#include "utils/scalar.h"
 #include "gtest/gtest.h"
 
 using namespace testing;

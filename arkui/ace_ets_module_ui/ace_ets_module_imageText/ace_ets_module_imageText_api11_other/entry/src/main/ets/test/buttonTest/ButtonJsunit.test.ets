@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function buttonJsunit() {
       done();
     });
 
-    it('buttonJsunit_0100', 0, async (done: Function) => {
+    it('buttonJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('buttonJsunitUITest_0100 START');
       await CommonFunc.sleep(1000);
       // 获取button组件的信息
@@ -60,7 +60,7 @@ export default function buttonJsunit() {
       done();
     });
 
-    it('buttonJsunit_0200', 0, async (done: Function) => {
+    it('buttonJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('buttonJsunitUITest_0200 START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'stateEffect', value:false});
@@ -72,7 +72,7 @@ export default function buttonJsunit() {
       done();
     });
 
-    it('buttonJsunit_0300', 0, async (done: Function) => {
+    it('buttonJsunit_0300', Level.LEVEL1, async (done: Function) => {
        console.info('buttonJsunitUITest_0300 START');
        await CommonFunc.sleep(1000);
        // 动态修改Button组件的属性,设置为非法值
@@ -81,11 +81,11 @@ export default function buttonJsunit() {
        let strJson = getInspectorByKey('btok');
        let obj: ESObject = JSON.parse(strJson);
        console.info("[buttonJsunit_0300'] component obj is: " + obj.$attrs.type);
-       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+       expect(obj.$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
        done();
     });
 
-    it('buttonJsunit_0400', 0, async (done: Function) => {
+    it('buttonJsunit_0400', Level.LEVEL1, async (done: Function) => {
        console.info('buttonJsunitUITest_0400 START');
        // check the button is click
        let driver = Driver.create();
@@ -97,7 +97,7 @@ export default function buttonJsunit() {
        done();
     });
 
-     it('buttonJsunit_0500', 0, async (done: Function) => {
+     it('buttonJsunit_0500', Level.LEVEL1, async (done: Function) => {
        console.info('buttonJsunitUITest_0500 START');
        // 判断按钮的点击事件,通过按钮的文本可以判断
        let driver = Driver.create();
@@ -112,7 +112,7 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0600', 0, async (done: Function) => {
+    it('buttonJsunit_0600', Level.LEVEL1, async (done: Function) => {
       // buton 通用字体属性判断
        console.info('buttonJsunitUITest_0600 START');
        await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0700', 0, async (done: Function) => {
+    it('buttonJsunit_0700', Level.LEVEL1, async (done: Function) => {
       // buton 通用字体非法属性判断
        console.info('buttonJsunitUITest_0700 START');
        await CommonFunc.sleep(1000);
@@ -164,7 +164,7 @@ export default function buttonJsunit() {
        done();
     });
 
-    it('buttonJsunit_0800', 0, async (done: Function) => {
+    it('buttonJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('buttonJsunitUITest_0800 START');
       await CommonFunc.sleep(1000);
       // 动态修改Button组件的属性

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import ConfigurationConstant from '@ohos.app.ability.ConfigurationConstant';
 
@@ -34,7 +34,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0100', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0100', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0100 begin');
       try {
@@ -58,7 +58,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0200', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0200', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0200 begin');
       try {
@@ -92,7 +92,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0100', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0100', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0100 begin');
       try {
@@ -116,7 +116,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0200', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0200', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguage0200 begin');
       try {
@@ -150,7 +150,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguageMode0300', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguageMode0300', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetLanguageMode0300 begin');
       try {
@@ -174,7 +174,7 @@ export default function applicationContextTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0300', 0, async (done: Function) => {
+    it('TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0300', Level.LEVEL0, async (done: Function) => {
       hilog.info(0x0000, 'applicationContextTag', '%{public}s',
         'TestAbilityAbilityRuntimeConfigrationApplicationContextSetColorMode0300 begin');
       try {

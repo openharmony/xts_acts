@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import bundleMgr from '@ohos.bundle.bundleManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 const BUNDLENAME = "com.open.harmony.packagemag";
 const ABILITYNAME = "com.open.harmony.packagemag.MainAbility";
@@ -29,7 +29,7 @@ export default function getLaunchWant() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWant', 0, async function (done) {
+        it('testGetLaunchWant', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             let want = bundleMgr.getLaunchWant();
             expect(want.abilityName).assertEqual(ABILITYNAME);
             expect(want.bundleName).assertEqual(BUNDLENAME);
@@ -44,7 +44,7 @@ export default function getLaunchWant() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testRepeatGetLaunchWant', 0, async function (done) {
+        it('testRepeatGetLaunchWant', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
             let want = bundleMgr.getLaunchWant();
             expect(want.abilityName).assertEqual(ABILITYNAME);
             expect(want.bundleName).assertEqual(BUNDLENAME);

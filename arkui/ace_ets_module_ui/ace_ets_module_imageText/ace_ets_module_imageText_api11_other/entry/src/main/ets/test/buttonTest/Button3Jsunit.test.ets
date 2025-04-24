@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function button3Jsunit() {
       console.info("button after each called");
     })
 
-    it('testButton01', 0, async (done: Function) => {
+    it('testButton01', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton01] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('button');
@@ -60,7 +60,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton02', 0, async (done: Function) => {
+    it('testButton02', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton02] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('button1');
@@ -70,7 +70,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton03', 0, async (done: Function) => {
+    it('testButton03', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton03] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('button2');
@@ -79,7 +79,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton04', 0, async (done: Function) => {
+    it('testButton04', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton04] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('button3');
@@ -88,7 +88,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton05', 0, async (done: Function) => {
+    it('testButton05', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton05] START');
       await CommonFunc.sleep(1000);
       try {
@@ -110,11 +110,11 @@ export default function button3Jsunit() {
       let strJsonNew = getInspectorByKey('button');
 
       console.info("[testButton05] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       done();
     });
 
-    it('testButton06', 0, async (done: Function) => {
+    it('testButton06', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton06] START');
       await CommonFunc.sleep(1000);
       try {
@@ -140,7 +140,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton07', 0, async (done: Function) => {
+    it('testButton07', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton07] START');
       await CommonFunc.sleep(1000);
       try {
@@ -168,7 +168,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton08', 0, async (done: Function) => {
+    it('testButton08', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton08] START');
       await CommonFunc.sleep(1000);
       try {
@@ -194,7 +194,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton09', 0, async (done: Function) => {
+    it('testButton09', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton09] START');
       await CommonFunc.sleep(1000);
       try {
@@ -220,7 +220,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton10', 0, async (done: Function) => {
+    it('testButton10', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton10] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -257,7 +257,7 @@ export default function button3Jsunit() {
       console.info('[testButton10] END');
     });
 
-    it('testButton11', 0, async (done: Function) => {
+    it('testButton11', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton11] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -294,7 +294,7 @@ export default function button3Jsunit() {
       console.info('[testButton11] END');
     });
 
-    it('testButton12', 0, async (done: Function) => {
+    it('testButton12', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
 
       await CommonFunc.sleep(500);
@@ -342,7 +342,7 @@ export default function button3Jsunit() {
       console.info('[testButton12] testSendTouchEvent END');
     });
 
-    it('testButton13', 0, async (done: Function) => {
+    it('testButton13', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton13] START');
       await CommonFunc.sleep(1000);
       try {
@@ -366,11 +366,11 @@ export default function button3Jsunit() {
       console.info("[testButton13] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
         .$attrs
         .type));
-      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(JSON.parse(strJsonNew).$attrs.type).assertEqual('ButtonType.ROUNDED_RECTANGLE');
       done();
     });
 
-    it('testButton14', 0, async (done: Function) => {
+    it('testButton14', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton14] START');
       await CommonFunc.sleep(1000);
       try {
@@ -398,7 +398,7 @@ export default function button3Jsunit() {
       done();
     });
 
-    it('testButton15', 0, async (done: Function) => {
+    it('testButton15', Level.LEVEL1, async (done: Function) => {
       console.info('[testButton15] START');
       try {
         let eventData: events_emitter.EventData = {

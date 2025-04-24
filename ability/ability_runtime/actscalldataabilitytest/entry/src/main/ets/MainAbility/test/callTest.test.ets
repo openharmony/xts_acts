@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
 import Utils from './Utils';
@@ -56,7 +56,7 @@ export default function callTest() {
     }
   }
 
-  describe('callTest',  () => {
+  describe('callTest', Level.LEVEL0, () => {
     /*
      * @tc.number  CallTest_0100
      * @tc.name    The deviceid passed in is null, so the installation free process is implemented

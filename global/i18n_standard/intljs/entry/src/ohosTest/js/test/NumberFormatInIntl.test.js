@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function NumberFormatInIntlTest() {
 describe('NumberFormatInIntlTest', function () {
@@ -62,7 +62,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh
     * @tc.desc    check the number in zh
     */
-    it('formatNumber_test_0100', 0, function () {
+    it('formatNumber_test_0100', Level.LEVEL0, function () {
         let numfmt = new Intl.NumberFormat('zh');
         console.log('formatNumber_test_0100 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -73,7 +73,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with default locale
     * @tc.desc    check the number with default locale
     */
-    it('formatNumber_test_0120', 0, function () {
+    it('formatNumber_test_0120', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat();
         expect(numfmt !== null).assertTrue();
     })
@@ -83,7 +83,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh and undefined options
     * @tc.desc    check the number in zh
     */
-    it('formatNumber_test_0140', 0, function () {
+    it('formatNumber_test_0140', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh', undefined);
         console.log('formatNumber_test_0140 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -94,7 +94,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh and null options
     * @tc.desc    check the number in zh
     */
-    it('formatNumber_test_0160', 0, function () {
+    it('formatNumber_test_0160', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh', null);
         console.log('formatNumber_test_0160 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -105,7 +105,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh-u-nu-latn
     * @tc.desc    check the number in zh-u-nu-latn
     */
-    it('formatNumber_test_0200', 0, function () {
+    it('formatNumber_test_0200', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-u-nu-latn');
         console.log('formatNumber_test_0200 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -116,7 +116,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh-u-nu-arab
     * @tc.desc    check the number in zh-u-nu-arab
     */
-    it('formatNumber_test_0300', 0, function () {
+    it('formatNumber_test_0300', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-u-nu-arab');
         console.log('formatNumber_test_0300 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('١٢٣٬٤٥٦٫٧٨٩');
@@ -127,7 +127,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en
     * @tc.desc    check the number in en
     */
-    it('formatNumber_test_0400', 0, function () {
+    it('formatNumber_test_0400', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en');
         console.log('formatNumber_test_0400 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -138,7 +138,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en-u-nu-thai
     * @tc.desc    check the number in en-u-nu-thai
     */
-    it('formatNumber_test_0500', 0, function () {
+    it('formatNumber_test_0500', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-u-nu-thai');
         console.log('formatNumber_test_0500 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('๑๒๓,๔๕๖.๗๘๙');
@@ -149,7 +149,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en-GB
     * @tc.desc    check the number in en-GB
     */
-    it('formatNumber_test_0600', 0, function () {
+    it('formatNumber_test_0600', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-GB');
         console.log('formatNumber_test_0600 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -160,7 +160,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en-US
     * @tc.desc    check the number in en-US
     */
-    it('formatNumber_test_0700', 0, function () {
+    it('formatNumber_test_0700', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-US');
         console.log('formatNumber_test_0700 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -171,7 +171,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in aa
     * @tc.desc    check the number in aa
     */
-    it('formatNumber_test_0800', 0, function () {
+    it('formatNumber_test_0800', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('aa');
         console.log('formatNumber_test_0800 ' + numfmt.format(123456.789));
         let lang = I18n.getSystemLanguage();
@@ -185,7 +185,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in zh and en list
     * @tc.desc    check the number in zh and en list
     */
-    it('formatNumber_test_0900', 0, function () {
+    it('formatNumber_test_0900', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['zh','en']);
         console.log('formatNumber_test_0900 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -196,7 +196,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en and zh list
     * @tc.desc    check the number in en and zh list
     */
-    it('formatNumber_test_1000', 0, function () {
+    it('formatNumber_test_1000', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['en','zh']);
         console.log('formatNumber_test_1000 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -207,7 +207,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in en and aa list
     * @tc.desc    check the number in en and aa list
     */
-    it('formatNumber_test_1100', 0, function () {
+    it('formatNumber_test_1100', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['en','aa']);
         console.log('formatNumber_test_1100 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -218,7 +218,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in aa and zh list
     * @tc.desc    check the number in aa and zh list
     */
-    it('formatNumber_test_1200', 0, function () {
+    it('formatNumber_test_1200', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['aa','zh']);
         console.log('formatNumber_test_1200 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123,456.789');
@@ -229,7 +229,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in aa and bb list
     * @tc.desc    check the number in aa and bb list
     */
-    it('formatNumber_test_1300', 0, function () {
+    it('formatNumber_test_1300', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['aa','bb']);
         console.log('formatNumber_test_1300 ' + numfmt.format(123456.789));
         let lang = I18n.getSystemLanguage();
@@ -243,7 +243,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in aa bb and es list
     * @tc.desc    check the number in aa  bb and es list
     */
-    it('formatNumber_test_1400', 0, function () {
+    it('formatNumber_test_1400', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['aa','bb','es']);
         console.log('formatNumber_test_1400 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123.456,789');
@@ -254,7 +254,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number in aa it and bb list
     * @tc.desc    check the number in aa it and bb list
     */
-    it('formatNumber_test_1500', 0, function () {
+    it('formatNumber_test_1500', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat(['aa','it','bb']);
         console.log('formatNumber_test_1500 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('123.456,789');
@@ -265,7 +265,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with scientific
     * @tc.desc    check the number with scientific
     */
-    it('formatNumber_test_1600', 0, function () {
+    it('formatNumber_test_1600', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
         console.log('formatNumber_test_1600 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('1.234568E5');
@@ -278,7 +278,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with currency EUR
     * @tc.desc    check the number with currency EUR
     */
-    it('formatNumber_test_1700', 0, function () {
+    it('formatNumber_test_1700', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR',
             currencyDisplay: 'name', currencySign: 'accounting', signDisplay: 'always' });
         console.log('formatNumber_test_1700 ' + numfmt.format(123456.789));
@@ -296,7 +296,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with currency USD
     * @tc.desc    check the number with currency USD
     */
-    it('formatNumber_test_1800', 0, function () {
+    it('formatNumber_test_1800', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD',
             currencyDisplay: 'code', currencySign: 'accounting', signDisplay: 'always' });
         console.log('formatNumber_test_1800 ' + numfmt.format(123456.789));
@@ -309,7 +309,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with currency CNY
     * @tc.desc    check the number with currency CNY
     */
-    it('formatNumber_test_1900', 0, function () {
+    it('formatNumber_test_1900', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'currency', currency: 'CNY',
             currencyDisplay: 'symbol', currencySign: 'accounting', signDisplay: 'always' });
         console.log('formatNumber_test_1900 ' + numfmt.format(123456.789));
@@ -321,7 +321,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with currency JPY
     * @tc.desc    check the number with currency JPY
     */
-    it('formatNumber_test_2000', 0, function () {
+    it('formatNumber_test_2000', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY',
             currencyDisplay: 'narrowSymbol', currencySign: 'accounting', signDisplay: 'always' });
         console.log('formatNumber_test_2000 ' + numfmt.format(123456.789));
@@ -333,7 +333,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with signDisplay
     * @tc.desc    check the number with signDisplay
     */
-    it('formatNumber_test_2100', 0, function () {
+    it('formatNumber_test_2100', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR',
             currencyDisplay: 'name', currencySign: 'accounting', signDisplay: 'always',
             notation: 'compact', compactDisplay: 'long', localeMatcher: 'lookup' });
@@ -354,7 +354,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with  meter unit
     * @tc.desc    check the number with meter unit
     */
-    it('formatNumber_test_2200', 0, function () {
+    it('formatNumber_test_2200', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'long', maximumFractionDigits: 2, minimumIntegerDigits: 7 });
         console.log('formatNumber_test_2200 ' + numfmt.format(123456.789));
@@ -369,7 +369,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with unitUsage
     * @tc.desc    check the number with unitUsage
     */
-    it('formatNumber_test_2250', 0, function () {
+    it('formatNumber_test_2250', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'long', unitUsage: 'length-road' });
         console.log('formatNumber_test_2250 ' + numfmt.format(123456.789));
@@ -382,7 +382,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with narrow value in unitUsage param
     * @tc.desc    check the number with unitUsage
     */
-    it('formatNumber_test_2260', 0, function () {
+    it('formatNumber_test_2260', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'narrow', unitUsage: 'length-road' });
         console.log('formatNumber_test_2260 ' + numfmt.format(123456.789));
@@ -395,7 +395,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with short value in unitUsage param
     * @tc.desc    check the number with unitUsage
     */
-    it('formatNumber_test_2270', 0, function () {
+    it('formatNumber_test_2270', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
             unitDisplay: 'short', unitUsage: 'length-road' });
         console.log('formatNumber_test_2270 ' + numfmt.format(123456.789));
@@ -408,7 +408,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with narrow value in unitUsage param
     * @tc.desc    check the number with unitUsage
     */
-    it('formatNumber_test_2280', 0, function () {
+    it('formatNumber_test_2280', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-US', { style: 'unit', unit: 'meter',
             unitDisplay: 'narrow', unitUsage: 'length-road' });
         console.log('formatNumber_test_2280 ' + numfmt.format(123456.789));
@@ -421,7 +421,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with short value in unitUsage param
     * @tc.desc    check the number with unitUsage
     */
-    it('formatNumber_test_2290', 0, function () {
+    it('formatNumber_test_2290', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-US', { style: 'unit', unit: 'meter',
             unitDisplay: 'short', unitUsage: 'length-road' });
         console.log('formatNumber_test_2290 ' + numfmt.format(123456.789));
@@ -434,7 +434,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with percetn style
     * @tc.desc    check the number with percetn style
     */
-    it('formatNumber_test_2300', 0, function () {
+    it('formatNumber_test_2300', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('en-CN', { style: 'percent', maximumFractionDigits: 2,
             minimumIntegerDigits: 7 });
         console.log('formatNumber_test_2300 ' + numfmt.format(123456.789));
@@ -446,7 +446,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with numberingSystem
     * @tc.desc    check the number with numberingSystem
     */
-    it('formatNumber_test_2400', 0, function () {
+    it('formatNumber_test_2400', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('ar-EG', { numberingSystem: 'arab' });
         console.log('formatNumber_test_2400 ' + numfmt.format(123456.789));
         expect(numfmt.format(123456.789)).assertEqual('١٢٣٬٤٥٦٫٧٨٩');
@@ -458,7 +458,7 @@ describe('NumberFormatInIntlTest', function () {
     * @tc.name    format the number with style
     * @tc.desc    check the number with style
     */
-    it('formatNumber_test_2500', 0, function () {
+    it('formatNumber_test_2500', Level.LEVEL2, function () {
         let numfmt = new Intl.NumberFormat('ar', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 2,
             minimumIntegerDigits: 7, minimumSignificantDigits: 5, maximumSignificantDigits: 10, useGrouping: true  });
         console.log('formatNumber_test_2500 ' + numfmt.resolvedOptions().style);

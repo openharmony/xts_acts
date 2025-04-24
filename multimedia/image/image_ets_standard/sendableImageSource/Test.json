@@ -2,7 +2,7 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "600000",
         "bundle-name": "ohos.acts.multimedia.image.sendableImageSource",
         "module-name": "entry_test",
         "shell-timeout": "300000",

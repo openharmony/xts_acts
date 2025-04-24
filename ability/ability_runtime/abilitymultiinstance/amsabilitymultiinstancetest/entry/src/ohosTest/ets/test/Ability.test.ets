@@ -17,7 +17,7 @@ import commonEventManager from '@ohos.commonEventManager';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
@@ -128,7 +128,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0100', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0100====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
@@ -192,7 +192,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0200', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0200', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0200====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
@@ -257,7 +257,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0300', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0300', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0300====<begin');
       if (deviceType === '2in1') {
         done();
@@ -316,7 +316,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0400', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0400', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0400====<begin');
       if (deviceType === '2in1') {
         done();
@@ -375,7 +375,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0600', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0600', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0600====<begin');
       if (deviceType === '2in1') {
         done();
@@ -434,7 +434,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0700', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0700', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0700====<begin');
       if (deviceType === '2in1') {
         done();
@@ -493,7 +493,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0800', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0800', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0800====<begin');
       if (deviceType === '2in1') {
         done();
@@ -552,7 +552,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_0900', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_0900', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0900====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       if (deviceType === '2in1') {
@@ -612,7 +612,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1000', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1000', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1000====<begin');
       if (deviceType === '2in1') {
         done();
@@ -672,7 +672,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1100', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1100====<begin');
       if (deviceType === '2in1') {
         done();
@@ -731,7 +731,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1200', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1200', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1200====<begin');
       if (deviceType === '2in1') {
         done();
@@ -790,7 +790,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1300', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1300', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1300====<begin');
       if (deviceType === '2in1') {
         done();
@@ -848,7 +848,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1400', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1400', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1400====<begin');
       if (deviceType === '2in1') {
         done();
@@ -907,7 +907,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
             * @tc.name: Connects a service ability, which is used to start a cloned page ability.
             * @tc.desc: Check the event data of executor page ability publishes
             */
-    it('ACTS_AbilityMultiInstance_Single_1500', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1500', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1500====<begin');
       if (deviceType === '2in1') {
         done();
@@ -965,7 +965,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1600', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1600', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1600====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;
@@ -1017,7 +1017,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes
     */
-    it('ACTS_AbilityMultiInstance_Single_1700', 0, async (done: Function) => {
+    it('ACTS_AbilityMultiInstance_Single_1700', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1700====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
       let id: number;

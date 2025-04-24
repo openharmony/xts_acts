@@ -15,7 +15,7 @@
 
 import cameraObj from '@ohos.multimedia.camera';
 import display from '@ohos.display';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
@@ -183,7 +183,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_IS_AUTO_DEVICE_SWITCH_SUPPORTED_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_IS_AUTO_DEVICE_SWITCH_SUPPORTED_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_IS_AUTO_DEVICE_SWITCH_SUPPORTED_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_IS_AUTO_DEVICE_SWITCH_SUPPORTED_0100 FAILED with NoCamera");
@@ -241,7 +241,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ENABLE_AUTO_DEVICE_SWITCH_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ENABLE_AUTO_DEVICE_SWITCH_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ENABLE_AUTO_DEVICE_SWITCH_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG +
@@ -304,7 +304,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ON_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ON_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_ON_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG +
@@ -375,7 +375,7 @@ export default function cameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_OFF_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_OFF_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_OFF_0100--------------");
       if (mCameraNum == 0) {
         console.info(TAG +
@@ -430,6 +430,71 @@ export default function cameraSessionAutoDeviceSwitchTest() {
             i + "]");
         }
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_AUTO_DEVICE_SWITCH_OFF_0100 ends here");
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100
+     * @tc.name      : Check enableAutoDeviceSwitch method errorcode 7400102
+     * @tc.desc      : Check enableAutoDeviceSwitch method errorcode 7400102
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100--------------");
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        for (let i = 0; i < mCameraNum; i++) {
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 start for camera[" + i + "]");
+                    await createInput(i);
+          createOutput(i);
+          try {
+            mCameraSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
+          } catch {
+            console.info('createCaptureSession FAILED');
+            expect().assertFail();
+            done();
+          }
+          mCameraSession.beginConfig();
+          if (isEmpty(mCameraInput)) {
+            console.info(TAG + "cameraInput is null.");
+            expect().assertFail();
+            done();
+          }
+          mCameraSession.addInput(mCameraInput);
+          if (isEmpty(mPreviewOutput)) {
+            console.info(TAG + "Start to addOutput mPreviewOutput");
+            expect().assertFail();
+            done();
+          }
+          mCameraSession.addOutput(mPreviewOutput);
+          await mCameraSession.commitConfig();
+          let isSupported: boolean = mCameraSession.isAutoDeviceSwitchSupported();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 end for camera[" +
+          i + "] isSupported == "+ isSupported);
+          if (!isSupported) {
+            try {
+              mCameraSession.enableAutoDeviceSwitch(true);
+            } catch (err) {
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 end for camera[" +
+              i + "] err.code == "+ err.code);
+              expect(err.code == cameraObj.CameraErrorCode.OPERATION_NOT_ALLOWED).assertTrue();
+            }
+          }
+          await mCameraSession.start();
+          await mCameraSession.stop();
+          await mCameraInput.close();
+          await mCameraSession.release();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 end for camera[" +
+            i + "]");
+        }
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_AUTO_DEVICE_SWITCH_ERRORCODE_0100 ends here");
         done();
       }
     })

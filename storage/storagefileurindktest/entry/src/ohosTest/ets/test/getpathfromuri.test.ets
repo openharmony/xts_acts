@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, Level } from '@ohos/hypium';
 import fileuri from 'libfileuri.so';
 import { fileUri } from '@kit.CoreFileKit';
 import fs from '@ohos.file.fs';
@@ -30,7 +30,7 @@ export default function ActsStorageFileUriNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('geturifrompath_ndktest_001', 0, async (done: Function) => {
+    it('geturifrompath_ndktest_001', Level.LEVEL0, async (done: Function) => {
       try{
         let ret = fileuri.GetUriFromPath();
         console.info("geturifrompath_ndktest_001 test napi ret = " + JSON.stringify(ret));
@@ -52,7 +52,7 @@ export default function ActsStorageFileUriNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('getpathfromuri_ndktest_001', 0, async (done: Function) => {
+    it('getpathfromuri_ndktest_001', Level.LEVEL0, async (done: Function) => {
       try{
         let ret = fileuri.GetPathFromUri();
         console.info("getpathfromuri_ndktest_001 test napi ret = " + JSON.stringify(ret));
@@ -74,7 +74,7 @@ export default function ActsStorageFileUriNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('getfulldirectory_ndktest_001', 0, async (done: Function) => {
+    it('getfulldirectory_ndktest_001', Level.LEVEL0, async (done: Function) => {
       try{
         let filepath = "/data/storage/el2/base/files/test3.txt";
         fs.openSync(filepath,0o102);
@@ -100,7 +100,7 @@ export default function ActsStorageFileUriNdkTest(){
      * @tc.level Level 0
      * @tc.require
      */
-    it('isvaliduri_ndktest_001', 0, async (done: Function) => {
+    it('isvaliduri_ndktest_001', Level.LEVEL0, async (done: Function) => {
       try{
         let filepath = "/data/storage/el2/base/files/test4.txt";
         fs.openSync(filepath,0o102);
@@ -126,7 +126,7 @@ export default function ActsStorageFileUriNdkTest(){
        * @tc.level Level 0
        * @tc.require
        */
-      it('getfilename_ndktest_001', 0, async (done: Function) => {
+      it('getfilename_ndktest_001', Level.LEVEL0, async (done: Function) => {
          try{
             let filepath = "/data/storage/el2/base/files/test5.txt";
             fs.openSync(filepath,0o102);

@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webAttributeTest() {
 
@@ -42,6 +45,11 @@ export default function webAttributeTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnAlert001', 0, async (done: Function) => {
+    it('testOnAlert001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnAlert001", 10)
       await Utils.sleep(2000);
       Utils.registerContainEvent("testOnAlert001", "alert test", 70017, done);
@@ -76,7 +84,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnConfirm001', 0, async (done: Function) => {
+    it('testOnConfirm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerContainEvent("testOnConfirm001", "confirm test", 70018, done);
@@ -91,7 +99,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnPrompt001', 0, async (done: Function) => {
+    it('testOnPrompt001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitOnPrompt001", 10)
       await Utils.sleep(2000);
       Utils.registerContainEvent("testOnPrompt001", "prompt test", 70019, done);
@@ -106,7 +114,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testJsResultHandleCancel001', 0, async (done: Function) => {
+    it('testJsResultHandleCancel001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitJsResultHandleCancel001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsResultHandleCancel001", "false", 70021, done);
@@ -121,7 +129,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testJsResultHandleConfirm001', 0, async (done: Function) => {
+    it('testJsResultHandleConfirm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitJsResultHandleConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsResultHandleConfirm001", "true", 70023, done);
@@ -136,7 +144,7 @@ export default function webAttributeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testJsResultHandlePromptConfirm001', 0, async (done: Function) => {
+    it('testJsResultHandlePromptConfirm001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitJsResultHandlePromptConfirm001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testJsResultHandlePromptConfirm001", "\"handlePromptConfirm\"", 70025, done);

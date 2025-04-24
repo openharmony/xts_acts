@@ -28,7 +28,7 @@ export default function budnleNdkNativeTest() {
       * @tc.name      budnleNdkNativeTest001
       * @tc.desc      budnleNdkNativeTest
       */
-      it('BundleNdkTest001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+      it('BundleNdkTest001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
           let data = bundlendk.getCurrentApplicationInfo();
           console.info("Test NAPI data= " + JSON.stringify(data));
           expect(data.bundleName).assertEqual(BUNDLE_NAME);

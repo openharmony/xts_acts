@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
-
 export default function attachNodeAdapterTest() {
   describe('attachNodeAdapterTest', () => {
     beforeEach(async (done: Function) => {
@@ -41,7 +39,6 @@ export default function attachNodeAdapterTest() {
       }
       done();
     });
-
     /**
      * @tc.number    onCreateChildTest_0010
      * @tc.name      onCreateChildTest_0010
@@ -50,7 +47,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onCreateChildTest_0010', 0, async (done: Function) => {
+    it('onCreateChildTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('onCreateChildTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -64,7 +61,6 @@ export default function attachNodeAdapterTest() {
       console.info('[onCreateChildTest_0010] END');
       done();
     });
-
     /**
      * @tc.number    onDisposeChildTest_0020
      * @tc.name      onDisposeChildTest_0020
@@ -73,7 +69,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onDisposeChildTest_0020', 0, async (done: Function) => {
+    it('onDisposeChildTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('onDisposeChildTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -90,7 +86,6 @@ export default function attachNodeAdapterTest() {
       console.info('[onDisposeChildTest_0020] END');
       done();
     });
-
     /**
      * @tc.number    onUpdateChildTest_0030
      * @tc.name      onUpdateChildTest_0030
@@ -99,7 +94,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('onUpdateChildTest_0030', 0, async (done: Function) => {
+    it('onUpdateChildTest_0030', Level.LEVEL0, async (done: Function) => {
       console.info('onUpdateChildTest_0030 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -116,7 +111,6 @@ export default function attachNodeAdapterTest() {
       console.info('[onUpdateChildTest_0030] END');
       done();
     });
-
     /**
      * @tc.number    attachNodeAdapterTest_0040
      * @tc.name      attachNodeAdapterTest_0040
@@ -125,7 +119,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('attachNodeAdapterTest_0040', 0, async (done: Function) => {
+    it('attachNodeAdapterTest_0040', Level.LEVEL0, async (done: Function) => {
       console.info('attachNodeAdapterTest_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -139,7 +133,6 @@ export default function attachNodeAdapterTest() {
       console.info('[attachNodeAdapterTest_0040] END');
       done();
     });
-
     /**
      * @tc.number    detachNodeAdapterTest_0050
      * @tc.name      detachNodeAdapterTest_0050
@@ -148,7 +141,7 @@ export default function attachNodeAdapterTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('detachNodeAdapterTest_0050', 0, async (done: Function) => {
+    it('detachNodeAdapterTest_0050', Level.LEVEL0, async (done: Function) => {
       console.info('detachNodeAdapterTest_0050 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -164,4 +157,3 @@ export default function attachNodeAdapterTest() {
     });
   })
 }
-

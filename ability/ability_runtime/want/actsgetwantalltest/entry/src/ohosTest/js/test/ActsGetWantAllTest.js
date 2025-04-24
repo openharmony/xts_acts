@@ -15,7 +15,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import wantConstant from '@ohos.ability.wantConstant';
 import rpc from '@ohos.rpc';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 class WantRemoteObject extends rpc.RemoteObject {
     constructor(descriptor) {
@@ -32,7 +32,7 @@ describe('ActsGetWantTest', function () {
         }, 1500);
     });
 
-    it('ACTS_RemoteObject_0100', 0, async function(done) {
+    it('ACTS_RemoteObject_0100', Level.LEVEL0, async function(done) {
         let wantRemoteOjbect = new WantRemoteObject("wantRemoteObject");
 
         featureAbility.startAbilityForResult({
@@ -66,7 +66,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_0100', 0, async function (done) {
+    it('ACTS_GetWant_0100', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want: {
                 deviceId: "",
@@ -119,7 +119,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_0200', 0, async function (done) {
+    it('ACTS_GetWant_0200', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want: {
                 deviceId: "",
@@ -165,7 +165,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_0300', 0, async function (done) {
+    it('ACTS_GetWant_0300', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -225,7 +225,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_0500', 0, async function (done) {
+    it('ACTS_GetWant_0500', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -284,7 +284,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_0600', 0, async function (done) {
+    it('ACTS_GetWant_0600', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -340,7 +340,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_0700', 0, async function (done) {
+    it('ACTS_GetWant_0700', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -399,7 +399,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_0800', 0, async function (done) {
+    it('ACTS_GetWant_0800', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -455,7 +455,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_0900', 0, async function (done) {
+    it('ACTS_GetWant_0900', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -514,7 +514,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_1000', 0, async function (done) {
+    it('ACTS_GetWant_1000', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -570,7 +570,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_1100', 0, async function (done) {
+    it('ACTS_GetWant_1100', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -627,7 +627,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_1200', 0, async function (done) {
+    it('ACTS_GetWant_1200', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -681,7 +681,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_1300', 0, async function (done) {
+    it('ACTS_GetWant_1300', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -740,7 +740,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_1400', 0, async function (done) {
+    it('ACTS_GetWant_1400', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -796,7 +796,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_1500', 0, async function (done) {
+    it('ACTS_GetWant_1500', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -855,7 +855,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_1600', 0, async function (done) {
+    it('ACTS_GetWant_1600', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -911,7 +911,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_1700', 0, async function (done) {
+    it('ACTS_GetWant_1700', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -970,7 +970,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_1900', 0, async function (done) {
+    it('ACTS_GetWant_1900', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -1029,7 +1029,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_2100', 0, async function (done) {
+    it('ACTS_GetWant_2100', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -1088,7 +1088,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_2200', 0, async function (done) {
+    it('ACTS_GetWant_2200', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -1144,7 +1144,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by promise)
-    it('ACTS_GetWant_2300', 0, async function (done) {
+    it('ACTS_GetWant_2300', Level.LEVEL0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -1203,7 +1203,7 @@ describe('ActsGetWantTest', function () {
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
     //           and then use terminateselfwithresult to return the data (by callback)
-    it('ACTS_GetWant_2400', 0, async function (done) {
+    it('ACTS_GetWant_2400', Level.LEVEL0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -1261,7 +1261,7 @@ describe('ActsGetWantTest', function () {
      * @tc.desc    Function test (by promise)
      * @tc.level   0
      */
-    it("ACTS_GetWant_2500",0, async function(done){
+    it("ACTS_GetWant_2500", Level.LEVEL0, async function(done){
         featureAbility.startAbilityForResult({
             want:
             {
@@ -1322,7 +1322,7 @@ describe('ActsGetWantTest', function () {
      * @tc.desc    Function test (by callback)
      * @tc.level   0
      */
-    it("ACTS_GetWant_2600",0, async function(done){
+    it("ACTS_GetWant_2600", Level.LEVEL0, async function(done){
         featureAbility.startAbilityForResult({
             want:
             {
@@ -1379,7 +1379,7 @@ describe('ActsGetWantTest', function () {
      * @tc.name: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
      * @tc.desc: Check the enumerated value ACTION_IMAGE_CAPTURE of wantConstant.
      */
-     it('SUB_AA_OpenHarmony_wantConstantEnumeration_0100',0, async function (done) {
+     it('SUB_AA_OpenHarmony_wantConstantEnumeration_0100', Level.LEVEL0, async function (done) {
         console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0100 --- start")
         let image = wantConstant.Action.ACTION_IMAGE_CAPTURE
         expect(image).assertEqual("ohos.want.action.imageCapture")
@@ -1387,30 +1387,30 @@ describe('ActsGetWantTest', function () {
         done()
         })
 
-        /**
-         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0200
-         * @tc.name: Check the enumerated value ACTION_VIDEO_CAPTURE of wantConstant.
-         * @tc.desc: Check the enumerated value ACTION_VIDEO_CAPTURE of wantCconstant.
-         */
-        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0200',0, async function (done) {
-            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- start")
-            let video = wantConstant.Action.ACTION_VIDEO_CAPTURE
-            expect(video).assertEqual("ohos.want.action.videoCapture")
-            console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- end")
-            done()
-        })
-
-        /**
-         * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0300
-         * @tc.name: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
-         * @tc.desc: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
-         */
-        it('SUB_AA_OpenHarmony_wantConstantEnumeration_0300',0, async function (done) {
-        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- start")
-        let app = wantConstant.Action.ACTION_APP_ACCOUNT_OAUTH
-        expect(app).assertEqual("ohos.account.appAccount.action.oauth")
-        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
+    /**
+     * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0200
+     * @tc.name: Check the enumerated value ACTION_VIDEO_CAPTURE of wantConstant.
+     * @tc.desc: Check the enumerated value ACTION_VIDEO_CAPTURE of wantCconstant.
+     */
+    it('SUB_AA_OpenHarmony_wantConstantEnumeration_0200', Level.LEVEL0, async function (done) {
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- start")
+        let video = wantConstant.Action.ACTION_VIDEO_CAPTURE
+        expect(video).assertEqual("ohos.want.action.videoCapture")
+        console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0200 --- end")
         done()
-        })
+    })
+
+    /**
+     * @tc.number: SUB_AA_OpenHarmony_wantConstantEnumeration_0300
+     * @tc.name: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+     * @tc.desc: Check the enumerated value ACTION_APP_ACCOUNT_OAUTH of wantConstant.
+     */
+    it('SUB_AA_OpenHarmony_wantConstantEnumeration_0300', Level.LEVEL0, async function (done) {
+    console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- start")
+    let app = wantConstant.Action.ACTION_APP_ACCOUNT_OAUTH
+    expect(app).assertEqual("ohos.account.appAccount.action.oauth")
+    console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
+    done()
+    })
 })
 }

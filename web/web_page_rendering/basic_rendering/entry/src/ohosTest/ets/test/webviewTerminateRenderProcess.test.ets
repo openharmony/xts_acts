@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitTerminateRenderProcess0100";
 
 export default function webviewTerminateRenderProcess() {
@@ -42,6 +44,11 @@ export default function webviewTerminateRenderProcess() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webviewTerminateRenderProcess beforeEach start");
       done();
@@ -71,7 +78,7 @@ export default function webviewTerminateRenderProcess() {
      *tc.name testTerminateRenderProcess
      *tc.desc terminateRenderProcess
      */
-    it('emitTerminateRenderProcess0100', 0, async (done: Function) => {
+    it('emitTerminateRenderProcess0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitTerminateRenderProcess0200";
       Utils.registerEvent("emitTerminateRenderProcess0100", true, 5300, done);
       sendEventByKey('TerminateRenderProcess', 10, '');
@@ -81,7 +88,7 @@ export default function webviewTerminateRenderProcess() {
      *tc.name testTerminateRenderProcess
      *tc.desc terminateRenderProcess
      */
-    it('emitTerminateRenderProcess0200', 0, async (done: Function) => {
+    it('emitTerminateRenderProcess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitTerminateRenderProcess0300";
       Utils.registerEvent("emitTerminateRenderProcess0200", true, 5302, done);
       sendEventByKey('TerminateRenderProcess', 10, '');
@@ -91,7 +98,7 @@ export default function webviewTerminateRenderProcess() {
      *tc.name testTerminateRenderProcess
      *tc.desc terminateRenderProcess
      */
-    it('emitTerminateRenderProcess0300', 0, async (done: Function) => {
+    it('emitTerminateRenderProcess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitTerminateRenderProcess0400";
       Utils.registerEvent("emitTerminateRenderProcess0300", true, 5304, done);
       sendEventByKey('TerminateRenderProcess', 10, '');
@@ -101,7 +108,7 @@ export default function webviewTerminateRenderProcess() {
      *tc.name testTerminateRenderProcess
      *tc.desc terminateRenderProcess
      */
-    it('emitTerminateRenderProcess0400', 0, async (done: Function) => {
+    it('emitTerminateRenderProcess0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitTerminateRenderProcess0400";
       Utils.registerEvent("emitTerminateRenderProcess0400", true, 5306, done);
       sendEventByKey('TerminateRenderProcess', 10, '');

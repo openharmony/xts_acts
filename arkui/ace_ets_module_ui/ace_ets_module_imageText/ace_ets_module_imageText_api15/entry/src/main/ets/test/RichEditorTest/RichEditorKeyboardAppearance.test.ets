@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -49,7 +49,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type : 
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0010', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0010] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_NONE_IMMERSIVE');
@@ -68,7 +68,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0020', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0020] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_IMMERSIVE');
@@ -87,7 +87,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0030', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0030] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_LIGHT_IMMERSIVE');
@@ -106,7 +106,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0040', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0040] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_DARK_IMMERSIVE');
@@ -125,7 +125,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0050', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0050', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0050] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_DEFAULT');
@@ -144,7 +144,7 @@ export default function RichEditorKeyboardAppearanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RichEditorKeyboardAppearanceTest_0060', 0, async (done: Function) => {
+    it('RichEditorKeyboardAppearanceTest_0060', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorKeyboardAppearanceTest_0060] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_KeyboardAppearance_UNDEFINED');

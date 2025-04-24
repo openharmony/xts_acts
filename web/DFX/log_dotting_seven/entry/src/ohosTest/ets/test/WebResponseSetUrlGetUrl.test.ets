@@ -13,15 +13,22 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = '';
 
 export default function webviewNApi() {
   describe('OH_ArkWebRequestHeader', async () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(500);
       done();
     });
@@ -32,9 +39,9 @@ export default function webviewNApi() {
      * @tc.desc test Arguments
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('SUB_ACE_WEB_WEBHOST_NSDK_4951', 0, async (done: Function) => {
+    it('SUB_ACE_WEB_WEBHOST_NSDK_4951', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent('testWebResponse_SetError_Fail_ParamIsString', 10);
       await Utils.sleep(1000);
       Utils.registerBaseEvent('testWebResponse_SetError_Fail_ParamIsString', 17100101, 5109, done,

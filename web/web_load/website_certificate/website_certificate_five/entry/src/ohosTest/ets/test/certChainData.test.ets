@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "certChainData01";
 export default function certChainDataTest() {
   describe('certChainDataTest',  () =>{
@@ -41,6 +44,11 @@ export default function certChainDataTest() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("certChainData beforeEach start");
       done();
@@ -71,7 +79,7 @@ export default function certChainDataTest() {
      *tc.name certChainData01
      *tc.desic test certChainData01 interface when choose callback mode.
      */
-    it('certChainData01',0,async  (done: Function) =>{
+    it('certChainData01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="certChainData01";
       Utils.registerEvent("certChainData01",true,202412099,done);
       sendEventByKey('certChainDataWeb',10,'');

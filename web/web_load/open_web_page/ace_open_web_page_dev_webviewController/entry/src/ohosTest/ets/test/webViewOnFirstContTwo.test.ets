@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitNoneOnfirstcontentfulpaint";
 export default function webViewOnFirstContTwo() {
@@ -41,6 +44,11 @@ export default function webViewOnFirstContTwo() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewOnFirstContTwo beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webViewOnFirstContTwo() {
      *tc.name testOnfirstcontentfulpaintvisibilitynone
      *tc.desc onfirstcontentfulpaint with web visibility none
      */
-    it('testOnfirstcontentfulpaintvisibilitynone',0, async (done: Function) =>{
+    it('testOnfirstcontentfulpaintvisibilitynone',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) =>{
       emitKey="emitNoneOnfirstcontentfulpaint";
       Utils.registerEvent("testOnfirstcontentfulpaintvisibilitynone","VisibilityNoneTest",324,done);
       sendEventByKey('webViewOnFirstContTwo',10,'');

@@ -20,7 +20,7 @@ import {
   photoKeys, getPermission, driveFn, sleep
 } from '../common'
 import common from '@ohos.app.ability.common';
-import { beforeAll, expect } from '@ohos/hypium';
+import { beforeAll, expect, Level } from '@ohos/hypium';
 import { describe } from '@ohos/hypium';
 import { it } from '@ohos/hypium';
 
@@ -58,7 +58,7 @@ export default function assetGetCountTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getCount_callback_000', 0, async (done:Function)=> {
+    it('getCount_callback_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getCount_callback_000';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
       await getCountCallbackTest(done, testNum, fetchOps);
@@ -73,7 +73,7 @@ export default function assetGetCountTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getCount_callback_001', 0, async (done:Function)=> {
+    it('getCount_callback_001', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getCount_callback_001';
       const fetchOps:ESObject = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
       await getCountCallbackTest(done, testNum, fetchOps);

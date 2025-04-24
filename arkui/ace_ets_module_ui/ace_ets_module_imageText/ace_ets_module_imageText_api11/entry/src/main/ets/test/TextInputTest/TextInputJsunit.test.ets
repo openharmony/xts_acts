@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -67,7 +67,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput010
      * @tc.desc aceEtsTest
      */
-    it('testTextInput010', 0, async (done: Function) => {
+    it('testTextInput010', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput010 START');
       let strJson = getInspectorByKey('textInput1');
       let obj: ESObject = JSON.parse(strJson);
@@ -99,7 +99,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput020
      * @tc.desc aceEtsTest
      */
-    it('testTextInput020', 0, async (done: Function) => {
+    it('testTextInput020', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput020 START');
       let strJson = getInspectorByKey('textInput2');
       let obj: ESObject = JSON.parse(strJson);
@@ -115,7 +115,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput030
      * @tc.desc aceEtsTest
      */
-    it('testTextInput030', 0, async (done: Function) => {
+    it('testTextInput030', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput030 START');
       let strJson = getInspectorByKey('textInput3');
       let obj: ESObject = JSON.parse(strJson);
@@ -131,7 +131,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput040
      * @tc.desc aceEtsTest
      */
-    it('testTextInput040', 0, async (done: Function) => {
+    it('testTextInput040', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput040 START');
       let strJson = getInspectorByKey('textInput4');
       let obj: ESObject = JSON.parse(strJson);
@@ -147,7 +147,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput050
      * @tc.desc aceEtsTest
      */
-    it('testTextInput050', 0, async (done: Function) => {
+    it('testTextInput050', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput050 START');
       let strJson = getInspectorByKey('textInput5');
       let obj: ESObject = JSON.parse(strJson);
@@ -163,7 +163,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput060
      * @tc.desc aceEtsTest
      */
-    it('testTextInput060', 0, async (done: Function) => {
+    it('testTextInput060', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput060 START');
       let strJson = getInspectorByKey('textInput6');
       let obj: ESObject = JSON.parse(strJson);
@@ -179,7 +179,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput070
      * @tc.desc aceEtsTest
      */
-    it('testTextInput070', 0, async (done: Function) => {
+    it('testTextInput070', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput070 START');
       let strJson = getInspectorByKey('textInput7');
       let obj: ESObject = JSON.parse(strJson);
@@ -195,7 +195,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput080
      * @tc.desc aceEtsTest
      */
-    it('testTextInput080', 0, async (done: Function) => {
+    it('testTextInput080', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput080 START');
       let strJson = getInspectorByKey('textInput8');
       let obj: ESObject = JSON.parse(strJson);
@@ -211,7 +211,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput090
      * @tc.desc aceEtsTest
      */
-    it('testTextInput090', 0, async (done: Function) => {
+    it('testTextInput090', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput090 START');
       let strJson = getInspectorByKey('textInput9');
       let obj: ESObject = JSON.parse(strJson);
@@ -227,7 +227,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput100
      * @tc.desc aceEtsTest
      */
-    it('testTextInput100', 0, async (done: Function) => {
+    it('testTextInput100', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput100 START');
       let strJson = getInspectorByKey('textInput10');
       let obj: ESObject = JSON.parse(strJson);
@@ -243,7 +243,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput110
      * @tc.desc aceEtsTest
      */
-    it('testTextInput110', 0, async (done: Function) => {
+    it('testTextInput110', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput110 START');
       let strJson = getInspectorByKey('textInput11');
       let obj: ESObject = JSON.parse(strJson);
@@ -259,7 +259,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput120
      * @tc.desc aceEtsTest
      */
-    it('testTextInput120', 0, async (done: Function) => {
+    it('testTextInput120', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput120 START');
       let strJson = getInspectorByKey('textInput12');
       let obj: ESObject = JSON.parse(strJson);
@@ -275,7 +275,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput130
      * @tc.desc aceEtsTest
      */
-    it('testTextInput130', 0, async (done: Function) => {
+    it('testTextInput130', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput130 START');
       let strJson = getInspectorByKey('textInput13');
       let obj: ESObject = JSON.parse(strJson);
@@ -291,7 +291,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput140
      * @tc.desc aceEtsTest
      */
-    it('testTextInput140', 0, async (done: Function) => {
+    it('testTextInput140', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput140 START');
       let strJson = getInspectorByKey('textInput14');
       let obj: ESObject = JSON.parse(strJson);
@@ -307,7 +307,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput150
      * @tc.desc aceEtsTest
      */
-    it('testTextInput150', 0, async (done: Function) => {
+    it('testTextInput150', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput150 START');
       let strJson = getInspectorByKey('textInput15');
       let obj: ESObject = JSON.parse(strJson);
@@ -323,7 +323,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput160
      * @tc.desc aceEtsTest
      */
-    it('testTextInput160', 0, async (done: Function) => {
+    it('testTextInput160', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput160 START');
       let strJson = getInspectorByKey('textInput16');
       let obj: ESObject = JSON.parse(strJson);
@@ -339,7 +339,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput170
      * @tc.desc aceEtsTest
      */
-    it('testTextInput170', 0, async (done: Function) => {
+    it('testTextInput170', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput170 START');
       let strJson = getInspectorByKey('textInput17');
       let obj: ESObject = JSON.parse(strJson);
@@ -355,7 +355,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput180
      * @tc.desc aceEtsTest
      */
-    it('testTextInput180', 0, async (done: Function) => {
+    it('testTextInput180', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput180 START');
       let strJson = getInspectorByKey('textInput18');
       let obj: ESObject = JSON.parse(strJson);
@@ -371,7 +371,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput190
      * @tc.desc aceEtsTest
      */
-    it('testTextInput190', 0, async (done: Function) => {
+    it('testTextInput190', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput190 START');
       let strJson = getInspectorByKey('textInput19');
       let obj: ESObject = JSON.parse(strJson);
@@ -387,7 +387,7 @@ export default function textInputJsunit() {
      * @tc.name testTextInput190
      * @tc.desc aceEtsTest
      */
-    it('testTextInput200', 0, async (done: Function) => {
+    it('testTextInput200', Level.LEVEL1, async (done: Function) => {
       console.info('testTextInput200 START');
       let strJson = getInspectorByKey('textInput20');
       let obj: ESObject = JSON.parse(strJson);

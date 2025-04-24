@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function TextAreaNodeTest() {
      * @tc.level 0
      */
 
-    it('textAreaNode0100', 0, async (done: Function) => {
+    it('textAreaNode0100', Level.LEVEL0, async (done: Function) => {
 
       let tagName = 'textAreaNode0100';
       console.info('[' + tagName + '] START============================');
@@ -80,7 +80,7 @@ export default function TextAreaNodeTest() {
      * @tc.level 0
      */
   
-    it('textAreaNode0200', 0, async (done: Function) => {
+    it('textAreaNode0200', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textAreaNode0200';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_Node_001');
@@ -101,7 +101,7 @@ export default function TextAreaNodeTest() {
      * @tc.level 0
      */
     
-    it('textAreaNode0300', 0, async (done: Function) => {
+    it('textAreaNode0300', Level.LEVEL0, async (done: Function) => {
       let tagName = 'textAreaNode0300';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_textArea_Node_001');

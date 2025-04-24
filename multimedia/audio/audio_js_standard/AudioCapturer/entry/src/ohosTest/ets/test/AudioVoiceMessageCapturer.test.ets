@@ -15,7 +15,7 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -435,9 +435,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_CALL
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_12000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_12000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -511,9 +511,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -546,9 +546,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT RINGTONE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -581,9 +581,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT MUSIC
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -614,9 +614,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT MOVIE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -648,9 +648,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT GAME
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -681,9 +681,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT SPEECH
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -714,9 +714,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT NAVIGATION
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -747,9 +747,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT ALARM
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -781,9 +781,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT NOTIFICATION
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -815,9 +815,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_ASSISTANT
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -848,9 +848,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT ACCESSIBILITY
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -881,9 +881,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -916,9 +916,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer RINGTONE INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -949,9 +949,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer MUSIC INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -982,9 +982,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer MOVIE INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -1017,9 +1017,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer GAME INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -1050,9 +1050,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer SPEECH INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.VOICE_MESSAGE, streamInfo.A16000, done)
@@ -1081,9 +1081,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer NAVIGATION INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -1113,9 +1113,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer ALARM INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.VOICE_MESSAGE, streamInfo.A16000, done)
@@ -1144,9 +1144,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer NOTIFICATION INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.VOICE_MESSAGE, streamInfo.A16000, done)
@@ -1175,9 +1175,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_ASSISTANT INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.VOICE_MESSAGE, streamInfo.A16000, done)
@@ -1206,9 +1206,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer ACCESSIBILITY INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_11900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
 
@@ -1238,9 +1238,9 @@ export default function audioCapturerVoiceMessage() {
      * @tc.desc      : AudioCapturer VOICE_CALL INTERRUPT VOICE_MESSAGE
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_10800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.VOICE_MESSAGE, streamInfo.A16000, done)

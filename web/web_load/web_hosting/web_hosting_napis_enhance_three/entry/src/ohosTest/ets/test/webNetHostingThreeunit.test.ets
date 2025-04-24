@@ -12,10 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import hilog from '@ohos.hilog';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 
 
@@ -23,6 +26,11 @@ export default function webviewApi() {
 
   describe('webNetHostingThree', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
@@ -36,7 +44,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
-    it('testWebResourceHandler_DidFailWithError', 0, async (done: Function) => {
+    it('testWebResourceHandler_DidFailWithError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceHandler_DidFailWithError PASS');
 

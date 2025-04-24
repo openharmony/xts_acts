@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitGetCertificateCallback";
 export default function webViewGetCertificate() {
@@ -41,6 +44,11 @@ export default function webViewGetCertificate() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewGetCertificate beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webViewGetCertificate() {
      *tc.name testGetCertificateCallback
      *tc.desc test interface of getCertificate with callback
      */
-    it('testGetCertificateCallback',0,async (done:Function) =>{
+    it('testGetCertificateCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function) =>{
       emitKey="emitGetCertificatePromise";
       Utils.registerEvent("testGetCertificateCallback",true,403,done);
       sendEventByKey('webViewGetCertificate',10,'');
@@ -80,7 +88,7 @@ export default function webViewGetCertificate() {
      *tc.name testGetCertificatePromise
      *tc.desc test interface of getCertificate with promise
      */
-    it('testGetCertificatePromise',0,async (done:Function) =>{
+    it('testGetCertificatePromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done:Function) =>{
       emitKey="emitGetCertificatePromise";
       Utils.registerEvent("testGetCertificatePromise",true,404,done);
       sendEventByKey('webViewGetCertificate',10,'');

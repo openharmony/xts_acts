@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "blurMode01";
 export default function webViewSrollableJsunit() {
   describe('blurOnKeyboardHideModeTest',  () =>{
@@ -41,6 +44,11 @@ export default function webViewSrollableJsunit() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("blurMode beforeEach start");
       done();
@@ -71,7 +79,7 @@ export default function webViewSrollableJsunit() {
      *tc.name blurMode01
      *tc.desic test blurMode01 interface when choose callback mode.
      */
-    it('blurMode01',0,async  (done: Function) =>{
+    it('blurMode01',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="blurMode02";
       Utils.registerEvent("blurMode01",true,20241133,done);
       sendEventByKey('blurOnKeyboardHideMode01',10,'');
@@ -82,7 +90,7 @@ export default function webViewSrollableJsunit() {
    *tc.name blurMode02
    *tc.desic test blurMode02 interface when choose callback mode.
    */
-    it('blurMode02',0,async  (done: Function) =>{
+    it('blurMode02',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async  (done: Function) =>{
       emitKey="blurMode02";
       Utils.registerEvent("blurMode02",true,20241134,done);
       sendEventByKey('blurOnKeyboardHideMode01',10,'');

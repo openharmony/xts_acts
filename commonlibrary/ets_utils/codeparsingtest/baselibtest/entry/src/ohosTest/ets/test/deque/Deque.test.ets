@@ -48,9 +48,9 @@ export default function DequeTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInsertFront0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInsertFront0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInsertFront0001";
       try {
         let deque: Deque<string> = new Deque();
@@ -71,9 +71,9 @@ export default function DequeTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInsertFront0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInsertFront0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInsertFront0002";
       try {
         let deque: Deque<number> = new Deque();
@@ -94,9 +94,9 @@ export default function DequeTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInsertFront0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInsertFront0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInsertFront0003";
       try {
         let deque: Deque<object> = new Deque();
@@ -126,9 +126,9 @@ export default function DequeTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testInsertFront0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testInsertFront0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testInsertFront0004";
       try {
         let deque: Deque<number | string | object> = new Deque();

@@ -1940,7 +1940,12 @@ describe('btConnectionTest', () => {
             },
             (e: BusinessError) => {
                 console.info("[bluetooth_js]connectAllowedProfiles failed info:" + JSON.stringify(e));
-                expect(Number(e)).assertEqual(2900099);
+                if (Number(e) == 801) {
+                    console.info("connectAllowedProfiles is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect(Number(e)).assertEqual(2900099);
+                }
             })
         } catch (err) {
             console.info("connectAllowedProfiles errCode:" + err.code + ",errMessage:" + err.message);

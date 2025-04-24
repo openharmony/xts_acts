@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import common from '@ohos.app.ability.common';
@@ -62,7 +62,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(callback)
      */
-    it('ACTS_DoAbilityForeground_0100', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0100', Level.LEVEL0, async (done:Function) => {
       console.log("====>in ACTS_DoAbilityForeground_0100====>");
       let Subscriber:CommonEventManager.CommonEventSubscriber
       let flag = true
@@ -130,7 +130,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(callback)
      */
-    it('ACTS_DoAbilityForeground_0200', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0200', Level.LEVEL0, async (done:Function) => {
       let ability:UIAbility
       globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
         ability = data
@@ -156,7 +156,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(promise)
      */
-    it('ACTS_DoAbilityForeground_0400', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0400', Level.LEVEL0, async (done:Function) => {
       let Subscriber:CommonEventManager.CommonEventSubscriber
       let flag = true
       let ability:UIAbility
@@ -218,7 +218,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to foreground
      * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground.(promise)
      */
-    it('ACTS_DoAbilityForeground_0500', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0500', Level.LEVEL0, async (done:Function) => {
       let ability:UIAbility
       setTimeout(() => {
         globalThis.abilitydelegator.getCurrentTopAbility().then((data:UIAbility) => {
@@ -249,7 +249,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(callback)
      */
-    it('ACTS_DoAbilityBackground_0100', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0100', Level.LEVEL0, async (done:Function) => {
       let Subscriber:CommonEventManager.CommonEventSubscriber
       let flag = true
       let UnSubscribeCallback = ():void => {
@@ -317,7 +317,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
-    it('ACTS_DoAbilityBackground_0500', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0500', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -381,7 +381,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
-    it('ACTS_DoAbilityBackground_0700', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0700', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -477,7 +477,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
      */
-    it('ACTS_DoAbilityBackground_0800', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0800', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -573,7 +573,7 @@ export default function abilityTest() {
    * @tc.name    : change abilitystage to foreground
    * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(callback)
    */
-    it('ACTS_DoAbilityForeground_0300', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0300', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -634,7 +634,7 @@ export default function abilityTest() {
  * @tc.name    : change abilitystage to foreground
  * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(promise)
  */
-    it('ACTS_DoAbilityForeground_0600', 0, async (done:Function) => {
+    it('ACTS_DoAbilityForeground_0600', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -690,7 +690,7 @@ export default function abilityTest() {
      * @tc.name    : change abilitystage to background
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(callback)
      */
-    it('ACTS_DoAbilityBackground_0300', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0300', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;
@@ -749,7 +749,7 @@ export default function abilityTest() {
  * @tc.name    : change abilitystage to background
  * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
  */
-    it('ACTS_DoAbilityBackground_0600', 0, async (done:Function) => {
+    it('ACTS_DoAbilityBackground_0600', Level.LEVEL0, async (done:Function) => {
       if (deviceType === '2in1') {
         done();
         return;

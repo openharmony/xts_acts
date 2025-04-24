@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, it, expect, Level } from '@ohos/hypium';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import systemDateTime from '@ohos.systemDateTime';
 import common from '@ohos.app.ability.common';
@@ -52,7 +52,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_image_001", 0, async (done: Function) => {
+    it("test_clone_image_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_image_001";
       let title: string = "";
       try {
@@ -94,7 +94,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_video_001", 0, async (done: Function) => {
+    it("test_clone_video_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_video_001";
       let title: string = "";
       try {
@@ -136,7 +136,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_moving_photo_001", 0, async (done: Function) => {
+    it("test_clone_moving_photo_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_clone_moving_photo_001";
       let cloneTitle: string = "";
       try {
@@ -179,7 +179,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_long_title_001", 0, async (done: Function) => {
+    it("test_clone_long_title_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_001";
       let title: string = "1".repeat(251);
       try {
@@ -221,7 +221,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_long_title_002", 0, async (done: Function) => {
+    it("test_clone_long_title_002", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_long_title_002";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");
@@ -253,7 +253,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_with_suffix_001", 0, async (done: Function) => {
+    it("test_clone_with_suffix_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_with_suffix_001";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");
@@ -285,7 +285,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_with_illegal_str_001", 0, async (done: Function) => {
+    it("test_clone_with_illegal_str_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_with_illegal_str_001";
       try {
         let count = 0;
@@ -328,7 +328,7 @@ export default function cloneAssetTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("test_clone_with_empty_str_001", 0, async (done: Function) => {
+    it("test_clone_with_empty_str_001", Level.LEVEL0, async (done: Function) => {
       let testNum: string = "test_clone_with_empty_str_001";
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "cloneTest.jpg");

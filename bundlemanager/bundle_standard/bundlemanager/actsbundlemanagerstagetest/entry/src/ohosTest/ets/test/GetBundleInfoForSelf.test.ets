@@ -36,7 +36,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfPro
      * @tc.desc: Test getBundleInfoForSelf with default flag(by promise).
      */
-    it('getBundleInfoForSelfPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).then(data => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data));
         expect(bundle.CompatiblePolicy.BACKWARD_COMPATIBILITY).assertEqual(1);
@@ -45,7 +45,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(18);
+        expect(data.targetVersion).assertLarger(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.firstInstallTime).assertLarger(0);
@@ -67,7 +67,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfCal
      * @tc.desc: Test getBundleInfoForSelf with default flag(by callback).
      */
-    it('getBundleInfoForSelfCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT, (err, data) => {
         console.info("getBundleInfoForSelfCal" + JSON.stringify(data));
         expect(data.name).assertEqual(BUNDLE_NAME);
@@ -75,7 +75,7 @@ export default function getBundleInfoForSelf() {
         expect(data.versionCode).assertEqual(1000000);
         expect(data.versionName).assertEqual("1.0.0");
         expect(data.minCompatibleVersionCode).assertEqual(1000000);
-        expect(data.targetVersion).assertEqual(18);
+        expect(data.targetVersion).assertLarger(16);
         expect(data.installTime).assertLarger(0);
         expect(data.updateTime).assertLarger(0);
         expect(data.firstInstallTime).assertLarger(0);
@@ -94,7 +94,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfApplicationPro
      * @tc.desc: Test getBundleInfoForSelf with application flag(by promise).
      */
-    it('getBundleInfoForSelfApplicationPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfApplicationPro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then(data => {
         console.info("getBundleInfoForSelfApplicationPro" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
@@ -149,7 +149,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfApplicationCal
      * @tc.desc: Test getBundleInfoForSelf with application flag(by callback).
      */
-    it('getBundleInfoForSelfApplicationCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfApplicationCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION, (err, data) => {
         console.info("ApplicationCal" + JSON.stringify(data.appInfo));
         checkCommonBundleInfo(data);
@@ -194,7 +194,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfMetadata
      * @tc.desc: Test getBundleInfoForSelf with application and metadata flag(by callback).
      */
-    it('getBundleInfoForSelfMetadata', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfMetadata', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
         | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA, (err, data) => {
         console.info("ApplicationInfo" + JSON.stringify(data.appInfo));
@@ -220,7 +220,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfModulePro
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by promise).
      */
-    it('getBundleInfoForSelfModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfModulePro', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE).then(data => {
         console.info("ModulePro" + JSON.stringify(data.hapModulesInfo[0]));
         checkCommonBundleInfo(data);
@@ -256,7 +256,7 @@ export default function getBundleInfoForSelf() {
      * @tc.name: getBundleInfoForSelfModuleCal
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by callback).
      */
-    it('getBundleInfoForSelfModuleCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) =>  {
+    it('getBundleInfoForSelfModuleCal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE, (err, data) => {
         console.info("getBundleInfoForSelfPro" + JSON.stringify(data.hapModulesInfo));
         checkCommonBundleInfo(data);
@@ -497,7 +497,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo).assertEqual(null);
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
         let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-        expect(extensionList.length).assertEqual(21);
+        expect(extensionList.length).assertEqual(23);
         let count = 0;
         for (let i = 0;i < 21; i++) {
           switch (extensionList[i].name) {
@@ -628,10 +628,20 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ASSET_ACCELERATION)
               count = count + 22;
               break;
+            case 'formEdit':
+              console.info("formEdit" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM_EDIT)
+              count = count + 23;
+              break;
+            case 'fence':
+              console.info("fence" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
+              count = count + 24;
+              break;
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(218);
+        expect(count).assertEqual(252);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -659,7 +669,7 @@ export default function getBundleInfoForSelf() {
           expect(data.appInfo).assertEqual(null);
           expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
           let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-          expect(extensionList.length).assertEqual(21);
+          expect(extensionList.length).assertEqual(23);
           let count = 0;
           for (let i = 0;i < 21; i++) {
             switch (extensionList[i].name) {
@@ -790,10 +800,20 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ASSET_ACCELERATION)
                 count = count + 22;
                 break;
+              case 'formEdit':
+                console.info("formEdit" + JSON.stringify(extensionList[i].extensionAbilityType));
+                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM_EDIT)
+                count = count + 23;
+                break;
+            case 'fence':
+              console.info("fence" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
+              count = count + 24;
+              break;
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(218);
+          expect(count).assertEqual(252);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1139,7 +1159,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(18);
+      expect(data.targetVersion).assertLarger(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.firstInstallTime).assertLarger(0);
@@ -1336,7 +1356,7 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-      expect(extensionList.length).assertEqual(21);
+      expect(extensionList.length).assertEqual(23);
       let count = 0;
       for (let i = 0;i < 21; i++) {
         switch (extensionList[i].name) {
@@ -1469,10 +1489,20 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ASSET_ACCELERATION)
             count = count + 22;
             break;
+          case 'formEdit':
+            console.info("formEdit" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FORM_EDIT)
+            count = count + 23;
+            break;
+          case 'fence':
+            console.info("fence" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
+            count = count + 24;
+            break;
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(218);
+      expect(count).assertEqual(252);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1642,7 +1672,7 @@ export default function getBundleInfoForSelf() {
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       expect(data.minCompatibleVersionCode).assertEqual(1000000);
-      expect(data.targetVersion).assertEqual(18);
+      expect(data.targetVersion).assertLarger(16);
       expect(data.installTime).assertLarger(0);
       expect(data.updateTime).assertLarger(0);
       expect(data.firstInstallTime).assertLarger(0);

@@ -369,7 +369,7 @@ export default function sidebar() {
       let obj: ESObject = JSON.parse(newJson);
       console.info("[ArkUI_SideBarContainer_Divider_1000] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject: ESObject = JSON.parse(obj.$attrs.divider);
-      expect(dividerObject.strokeWidth).assertEqual("0.00vp");
+      expect(dividerObject.strokeWidth).assertEqual("1.00vp");
       done();
     });
 

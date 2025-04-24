@@ -43,9 +43,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0001";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -68,9 +68,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0002";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -93,9 +93,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \n
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0003";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -118,9 +118,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \r
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0004";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -143,9 +143,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \t
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0005";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -168,9 +168,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \v
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0006";
       try {
         let arrayBuffer = new ArrayBuffer(25);
@@ -193,9 +193,9 @@ export default function EscapeXmlTest() {
      * @tc.desc       : Testing the XML interface setAttributes with input escape \x24
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlSetAttributesEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  () => {
+    it('testXmlSetAttributesEscape0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  () => {
       const TAG = "testXmlSetAttributesEscape0007";
       try {
         let arrayBuffer = new ArrayBuffer(25);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import commonEvent from '@ohos.commonEventManager';
@@ -83,7 +83,7 @@ export default function connectAbilityTest_PA() {
     * @tc.desc    Function test
     * @tc.level   0
     */
-    it("FreeInstall_FA_ConnectAbility_PA_0100", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0100", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0100";
       let cmdmyapp7 = "cp data/test/ConnectFaMyApplication7.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +
@@ -112,7 +112,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0200", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0200", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0200-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0200";
       let cmdapp9 = "bm install -p data/test/ConnectFaMyApplication9.hap";
@@ -140,7 +140,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0300", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0300", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0300-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0300";
       timeoutId = setTimeout(async () => {
@@ -164,7 +164,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0400", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0400", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0400-------------");
       timeoutId = setTimeout(async () => {
         TAG = "FreeInstall_FA_ConnectAbility_PA_0400";
@@ -188,7 +188,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0500", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0500", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0500-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0500";
       let cmdin = "bm install -p data/test/ConnectDifferentApplication.hap";
@@ -216,7 +216,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0600", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0600", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0600";
       timeoutId = setTimeout(async () => {
@@ -240,7 +240,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0700", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0700", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0700";
 
@@ -265,7 +265,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0800", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0800", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0800";
 
@@ -290,7 +290,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_0900", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_0900", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_0900-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_0900";
       let cmdrm = "rm -r /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/*";
@@ -320,7 +320,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   1
      */
-    it("FreeInstall_FA_ConnectAbility_PA_1000", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_1000", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1000";
 
@@ -345,7 +345,7 @@ export default function connectAbilityTest_PA() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_ConnectAbility_PA_1100", 0, async (done:Function) => {
+    it("FreeInstall_FA_ConnectAbility_PA_1100", Level.LEVEL0, async (done:Function) => {
       console.log("------------start FreeInstall_FA_ConnectAbility_PA_1100-------------");
       TAG = "FreeInstall_FA_ConnectAbility_PA_1100";
       let cmdmyapp8 = "cp data/test/ConnectFaMyApplication8.hap /data/app/el2/100/base/com.ohos.hag.famanager/" +

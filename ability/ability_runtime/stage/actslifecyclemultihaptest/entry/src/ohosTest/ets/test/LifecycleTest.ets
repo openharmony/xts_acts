@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import ability from '@ohos.ability.ability';
@@ -166,7 +166,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_001", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_001", Level.LEVEL0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_001 is start---------------")
       TAG = "Multihap_LifecycleTest_001";
       let isSecondOnForegroundCount:boolean = false;
@@ -220,7 +220,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_002", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_002", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_002 start-------------");
       TAG = "Multihap_LifecycleTest_002";
       let isSecondOnForegroundCount:boolean = false;
@@ -278,7 +278,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_003", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_003", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_003 start-------------");
       TAG = "Multihap_LifecycleTest_003";
       let isSecondOnForegroundCount:boolean = false;
@@ -341,7 +341,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_004", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_004", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_004 start-------------");
       TAG = "Multihap_LifecycleTest_004";
       let isStartedHap2MainAbility6:boolean = false;
@@ -412,7 +412,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_005", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_005", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_005 start-------------");
       TAG = "Multihap_LifecycleTest_005";
       let isStartedHap2MainAbility6:boolean = false;
@@ -485,7 +485,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_006", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_006", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_006 start-------------");
       TAG = "Multihap_LifecycleTest_006";
       let isOneStartedHap2MainAbility8:boolean = false;
@@ -556,7 +556,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_007", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_007", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_007 start-------------");
       TAG = "Multihap_LifecycleTest_007";
       let isMainAbility6SecondOnForeground:boolean = false;
@@ -650,7 +650,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_008", 0, async (done:Function) => {
+    it("Multihap_LifecycleTest_008", Level.LEVEL0, async (done:Function) => {
       console.log("------------Multihap_LifecycleTest_008 start-------------");
       TAG = "Multihap_LifecycleTest_008";
 
@@ -713,7 +713,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_LifecycleTest_010', 0, async (done:Function) => {
+    it('Multihap_LifecycleTest_010', Level.LEVEL0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_010 is start---------------")
       TAG = "Multihap_LifecycleTest_010";
       let hap3MainAbility3onForegroundCount:number = 0;
@@ -801,7 +801,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('Multihap_LifecycleTest_011', 0, async (done:Function) => {
+    it('Multihap_LifecycleTest_011', Level.LEVEL0, async (done:Function) => {
       console.info("---------------Multihap_LifecycleTest_011 is start---------------")
       TAG = "Multihap_LifecycleTest_011";
       let listKeyTemp: Array<string> = [];

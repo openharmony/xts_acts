@@ -12,10 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webFantasyFont() {
 
   describe('webFantasyFont', () => {
@@ -39,6 +41,11 @@ export default function webFantasyFont() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -52,7 +59,7 @@ export default function webFantasyFont() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitWebFantasyFont001', 0, async (done: Function) => {
+    it('emitWebFantasyFont001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebFantasyFont001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitWebFantasyFont001", 0, 20253322, done);

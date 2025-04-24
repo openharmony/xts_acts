@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
 
@@ -38,7 +38,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Callback_000", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_000";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -53,7 +53,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Callback_001", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_001";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.VIDEO_TYPE;
@@ -68,7 +68,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Callback_002", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_002", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_002";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -83,7 +83,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Photopicker_Select_Callback_003", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_003", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_003";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -99,7 +99,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Photopicker_Select_Callback_004", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_004", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_004";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -115,7 +115,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Callback_005", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_005", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_005";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -131,7 +131,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Callback_006", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Callback_006", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Callback_006";
       let expectSelectNum = 2;
       let isSelectOriginal = true;
@@ -145,7 +145,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Photopicker_Save_Callback_000", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Callback_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Callback_000";
       let option = new picker.PhotoSaveOptions();
       option.newFileNames = ["PhotoViewPicker01.jpg"];
@@ -160,7 +160,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Save_Callback_001", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Callback_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Callback_001";
       let option = new picker.PhotoSaveOptions();
       option.newFileNames = ["PhotoViewPicker01.mp4"];
@@ -175,7 +175,7 @@ export default function photoPickerCallback(abilityContexts: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Save_Callback_002", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Callback_002", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Callback_002";
       await saveWithoutSelect(testNum, done);
     });

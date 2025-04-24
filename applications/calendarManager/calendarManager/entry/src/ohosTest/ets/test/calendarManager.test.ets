@@ -152,6 +152,36 @@ export default function CalendarManagerTest() {
       expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
     });
 
+  /*
+   * @tc.number  SUB_Application_CalendarManagerApi_test_0500
+   * @tc.name    Test Enumeration of AttendeeType types.
+   * @tc.desc    Function test
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 2
+   */
+    it("SUB_Application_CalendarManagerApi_test_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      expect(calendarManager.AttendeeType.REQUIRED  == 1).assertTrue();
+      expect(calendarManager.AttendeeType.OPTIONAL  == 2).assertTrue();
+      expect(calendarManager.AttendeeType.RESOURCE  == 3).assertTrue();
+    });
+
+  /*
+   * @tc.number  SUB_Application_CalendarManagerApi_test_0600
+   * @tc.name    Test Enumeration of AttendeeStatus types.
+   * @tc.desc    Function test
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 2
+   */
+    it("SUB_Application_CalendarManagerApi_test_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      expect(calendarManager.AttendeeStatus.UNKNOWN == 0).assertTrue();
+      expect(calendarManager.AttendeeStatus.TENTATIVE == 1).assertTrue();
+      expect(calendarManager.AttendeeStatus.ACCEPTED == 2).assertTrue();
+      expect(calendarManager.AttendeeStatus.DECLINED == 3).assertTrue();
+      expect(calendarManager.AttendeeStatus.UNRESPONSIVE == 4).assertTrue();
+    });
+
     /*
    * @tc.number  SUB_Application_CalendarManagerApi_CreateCalendar_AsyncNoPermission_0100
    * @tc.name    Create a Calendar object based on the calendar account information type entry as LOCAL.
@@ -1526,16 +1556,22 @@ export default function CalendarManagerTest() {
             name: '小王',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.ORGANIZER,
+            type: calendarManager.AttendeeType.REQUIRED,
+            status: calendarManager.AttendeeStatus.TENTATIVE
           },
           {
             name: '小李',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT,
+            type: calendarManager.AttendeeType.OPTIONAL,
+            status: calendarManager.AttendeeStatus.ACCEPTED
           },
           {
             name: '老李',
             email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT,
+            type: calendarManager.AttendeeType.REQUIRED,
+            status: calendarManager.AttendeeStatus.DECLINED
           }
         ],
         timeZone: '',
@@ -2894,6 +2930,157 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.queryEventInstances(new Date().getTime(), new Date().getTime() + 60 * 60 * 3000,
           undefined, columns).then((data) => {
+          console.info(CaseName + "Succeeded in getting event instances" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get event instances, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+ * @tc.number  SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKey_0100
+ * @tc.name    Example Query all events in Calendar.
+ * @tc.desc    Function test
+ * @tc.size    SmallTest
+ * @tc.type    User
+ * @tc.level   Level 2
+ */
+    it("SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKey_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKey_0100';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      let Schedule: calendarManager.Event = {
+        id: 100,
+        title: '',
+        location: {
+          location: 'xx大礼堂',
+          longitude: 116.3,
+          latitude: 39.9,
+        },
+        isAllDay: false,
+        attendee: [
+          {
+            name: '小王',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
+          },
+          {
+            name: '小李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          },
+          {
+            name: '老李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          }
+        ],
+        timeZone: 'UTC',
+        reminderTime: [1],
+        description: '',
+        service: {
+          type: calendarManager.ServiceType.MEETING,
+          uri: '',
+          description: ''
+        },
+        type: calendarManager.EventType.IMPORTANT,
+        startTime: new Date().getTime(),
+        endTime: new Date().getTime() + 60 * 60 * 3000,
+        instanceStartTime: new Date().getTime(),
+        instanceEndTime: new Date().getTime() + 60 * 60 * 3000
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.queryEventInstances(new Date().getTime(), new Date().getTime() + 60 * 60 * 3000,
+          undefined).then((data) => {
+          console.info(CaseName + "Succeeded in getting event instances" + JSON.stringify(data));
+          expect(data != null).assertTrue();
+          return;
+        }).catch((err: BusinessError) => {
+          console.error(CaseName + `Failed to get event instances, Code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+        });
+      }).catch((err: BusinessError) => {
+        console.info(CaseName + `Failed to create calendar, Code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+      });
+    });
+
+    /*
+  * @tc.number  SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKeyNoId_0100
+  * @tc.name    Example Query all events in Calendar.
+  * @tc.desc    Function test
+  * @tc.size    SmallTest
+  * @tc.type    User
+  * @tc.level   Level 2
+  */
+    it("SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKeyNoId_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      let CaseName = 'SUB_2Application_CalendarManagerApi_QueryEventInstances_PromiseNoKeyNoId_0100';
+      const filter = calendarManager.EventFilter.filterById([0, 1]);
+
+      let CalendarAccounts: calendarManager.CalendarAccount = {
+        name: '本地帐户',
+        type: calendarManager.CalendarType.LOCAL,
+        displayName: '本地帐户'
+      }
+
+      let Schedule: calendarManager.Event = {
+        id: 100,
+        title: '',
+        location: {
+          location: 'xx大礼堂',
+          longitude: 116.3,
+          latitude: 39.9,
+        },
+        isAllDay: false,
+        attendee: [
+          {
+            name: '小王',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
+          },
+          {
+            name: '小李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          },
+          {
+            name: '老李',
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
+          }
+        ],
+        timeZone: 'UTC',
+        reminderTime: [1],
+        description: '',
+        service: {
+          type: calendarManager.ServiceType.MEETING,
+          uri: '',
+          description: ''
+        },
+        type: calendarManager.EventType.IMPORTANT,
+        startTime: new Date().getTime(),
+        endTime: new Date().getTime() + 60 * 60 * 3000,
+        instanceStartTime: new Date().getTime(),
+        instanceEndTime: new Date().getTime() + 60 * 60 * 3000
+      }
+
+      calendarMgr?.createCalendar(CalendarAccounts).then((Calendar) => {
+        console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
+        Calendar.queryEventInstances(new Date().getTime(), new Date().getTime() + 60 * 60 * 3000).then((data) => {
           console.info(CaseName + "Succeeded in getting event instances" + JSON.stringify(data));
           expect(data != null).assertTrue();
           return;

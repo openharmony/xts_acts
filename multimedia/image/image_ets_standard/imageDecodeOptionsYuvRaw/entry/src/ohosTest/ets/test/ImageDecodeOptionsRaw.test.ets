@@ -114,6 +114,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
+      await imageSourceApi.release();
     }
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -135,6 +136,7 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
+      await imageSourceApi.release();
     }
 
     const getResult_F16 = async (TAG: string, index: number, sampleSize: number, rotate: number, editable:boolean,
@@ -187,6 +189,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
+      await imageSourceApi.release();
     }
 
     const callBackCreate_F16 = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -208,8 +211,9 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
+      await imageSourceApi.release();
     }
-
+    
     beforeAll(() => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'beforeAll case');
     })

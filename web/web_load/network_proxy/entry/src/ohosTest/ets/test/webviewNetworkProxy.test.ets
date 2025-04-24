@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webviewNetworkProxy() {
 
   describe('webviewNetworkProxyTest', () => {
@@ -42,6 +44,11 @@ export default function webviewNetworkProxy() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info('webviewNetworkProxy beforeEach start');
       done();
@@ -54,9 +61,9 @@ export default function webviewNetworkProxy() {
     * @tc.desc       : test ProxySchemeFilter MATCH_ALL_SCHEMES
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testNetworkProxySchemeFilterMatchAllSchemes', 0, async (done: Function) => {
+    it('testNetworkProxySchemeFilterMatchAllSchemes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent('testNetworkProxySchemeFilterMatchAllSchemes', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testNetworkProxySchemeFilterMatchAllSchemes', true, 202502181, done);
@@ -70,7 +77,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNetworkProxySchemeFilterMatchHttp', 0, async (done: Function) => {
+    it('testNetworkProxySchemeFilterMatchHttp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testNetworkProxySchemeFilterMatchHttp', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testNetworkProxySchemeFilterMatchHttp', true, 202502182, done);
@@ -84,7 +91,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testNetworkProxySchemeFilterMatchHttps', 0, async (done: Function) => {
+    it('testNetworkProxySchemeFilterMatchHttps', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testNetworkProxySchemeFilterMatchHttps', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testNetworkProxySchemeFilterMatchHttps', true, 202502183, done);
@@ -98,7 +105,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInsertProxyRule', 0, async (done: Function) => {
+    it('testInsertProxyRule', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testInsertProxyRule', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testInsertProxyRule', true, 202502184, done);
@@ -112,7 +119,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInsertDirectRule', 0, async (done: Function) => {
+    it('testInsertDirectRule', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testInsertDirectRule', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testInsertDirectRule', true, 202502185, done);
@@ -126,7 +133,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testInsertBypassRule', 0, async (done: Function) => {
+    it('testInsertBypassRule', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testInsertBypassRule', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testInsertBypassRule', true, 202502186, done);
@@ -140,7 +147,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testBypassHostnamesWithoutPeriod', 0, async (done: Function) => {
+    it('testBypassHostnamesWithoutPeriod', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testBypassHostnamesWithoutPeriod', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testBypassHostnamesWithoutPeriod', true, 202502187, done);
@@ -154,7 +161,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testClearImplicitRules', 0, async (done: Function) => {
+    it('testClearImplicitRules', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testClearImplicitRules', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testClearImplicitRules', true, 202502188, done);
@@ -168,7 +175,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testEnableReverseBypass', 0, async (done: Function) => {
+    it('testEnableReverseBypass', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testEnableReverseBypass', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testEnableReverseBypass', true, 202502189, done);
@@ -182,7 +189,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetBypassRules', 0, async (done: Function) => {
+    it('testGetBypassRules', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testGetBypassRules', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testGetBypassRules', true, 202502190, done);
@@ -196,7 +203,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetProxyRules', 0, async (done: Function) => {
+    it('testGetProxyRules', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testGetProxyRules', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testGetProxyRules', true, 202502191, done);
@@ -210,7 +217,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testIsReverseBypassEnabled', 0, async (done: Function) => {
+    it('testIsReverseBypassEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testIsReverseBypassEnabled', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testIsReverseBypassEnabled', false, 202502192, done);
@@ -224,7 +231,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetSchemeFilter', 0, async (done: Function) => {
+    it('testGetSchemeFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testGetSchemeFilter', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testGetSchemeFilter', true, 202502193, done);
@@ -238,7 +245,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testProxyGetUrl', 0, async (done: Function) => {
+    it('testProxyGetUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testProxyGetUrl', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testProxyGetUrl', true, 202502194, done);
@@ -252,7 +259,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testApplyProxyOverride', 0, async (done: Function) => {
+    it('testApplyProxyOverride', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testApplyProxyOverride', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testApplyProxyOverride', true, 202502195, done);
@@ -266,7 +273,7 @@ export default function webviewNetworkProxy() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRemoveProxyOverride', 0, async (done: Function) => {
+    it('testRemoveProxyOverride', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent('testRemoveProxyOverride', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testRemoveProxyOverride', true, 202502196, done);

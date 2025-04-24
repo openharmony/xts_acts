@@ -158,33 +158,10 @@ struct WebZoomAccessTest {
                   }
                   await Utils.sleep(2000)
                   this.flag = false;
-                  if ((this.userAgentPC).includes("PC")) {
-                    await Utils.pinchInComponent('WebZoomAccessTestWebView')
-                  }else if((this.userAgentPC).includes("Wearable")){
-                    let driver: Driver = Driver.create();
-                    let pointers: PointerMatrix = PointerMatrix.create(2, 3);
-                    pointers.setPoint(0, 0, {
-                      x: 200, y: 110
-                    });
-                    pointers.setPoint(0, 1, {
-                      x: 200, y: 150
-                    });
-                    pointers.setPoint(0, 2, {
-                      x: 200, y: 170
-                    });
-                    pointers.setPoint(1, 0, {
-                      x: 200, y: 340
-                    });
-                    pointers.setPoint(1, 1, {
-                      x: 200, y: 300
-                    });
-                    pointers.setPoint(1, 2, {
-                      x: 200, y: 280
-                    });
-                    await driver.injectMultiPointerAction(pointers);
-                  } else {
-                    await Utils.fingerZoom('WebZoomAccessTestWebView', false);
-                  }
+                  
+              
+                  await Utils.fingerZoom('WebZoomAccessTestWebView', false);
+
                   await Utils.sleep(2000)
                   Utils.emitEvent(this.oldScale > 0 && this.newScale > 0 && this.newScale < this.compareScale, 6506)
                 } catch (error) {
@@ -198,6 +175,7 @@ struct WebZoomAccessTest {
 
       Web({ src: $rawfile('second.html'), controller: this.controller })
         .width('80%')
+        .height('70%')
         .onControllerAttached(() => {
           this.controller.setCustomUserAgent('');
         })

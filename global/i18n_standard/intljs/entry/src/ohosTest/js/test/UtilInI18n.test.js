@@ -62,7 +62,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with long style
      * @tc.desc    get the unitConvert value
      */
-     it('i18n_util_test_0100', 0, function () {
+     it('i18n_util_test_0100', Level.LEVEL0, function () {
         console.log('i18n_util_test_0100 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -79,7 +79,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with undefined style
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0200', 0, function () {
+    it('i18n_util_test_0200', Level.LEVEL2, function () {
         console.log('i18n_util_test_0200 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -101,7 +101,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with null style
      * @tc.desc    get the unitConvert value
      */
-     it('i18n_util_test_0300', 0, function () {
+     it('i18n_util_test_0300', Level.LEVEL2, function () {
         console.log('i18n_util_test_0300 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -123,7 +123,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with medium style
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0400', 0, function () {
+    it('i18n_util_test_0400', Level.LEVEL2, function () {
         console.log('i18n_util_test_0400 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -145,7 +145,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with narrow style
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0500', 0, function () {
+    it('i18n_util_test_0500', Level.LEVEL2, function () {
         console.log('i18n_util_test_0500 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -162,7 +162,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from cup to liter unit with short style
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0600', 0, function () {
+    it('i18n_util_test_0600', Level.LEVEL2, function () {
         console.log('i18n_util_test_0600 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'cup', measureSystem: 'US'},
@@ -179,7 +179,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from meter to mile unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0700', 0, function () {
+    it('i18n_util_test_0700', Level.LEVEL2, function () {
         console.log('i18n_util_test_0700 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},
@@ -196,7 +196,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from hour to second unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0800', 0, function () {
+    it('i18n_util_test_0800', Level.LEVEL2, function () {
         console.log('i18n_util_test_0800 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'hour', measureSystem: 'SI'},
@@ -218,7 +218,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from celsius to fahrenheit unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_0900', 0, function () {
+    it('i18n_util_test_0900', Level.LEVEL2, function () {
         console.log('i18n_util_test_0900 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'celsius', measureSystem: 'SI'},
@@ -235,7 +235,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from acre to hectare unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1000', 0, function () {
+    it('i18n_util_test_1000', Level.LEVEL2, function () {
         console.log('i18n_util_test_1000 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'acre', measureSystem: 'SI'},
@@ -252,7 +252,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from acre to square-meter unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1100', 0, function () {
+    it('i18n_util_test_1100', Level.LEVEL2, function () {
         console.log('i18n_util_test_1100 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'acre', measureSystem: 'SI'},
@@ -269,7 +269,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from kilometer-per-hour to knot unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1200', 0, function () {
+    it('i18n_util_test_1200', Level.LEVEL2, function () {
         console.log('i18n_util_test_1200 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'},
@@ -286,7 +286,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from kilometer-per-hour to meter-per-second unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1300', 0, function () {
+    it('i18n_util_test_1300', Level.LEVEL2, function () {
         console.log('i18n_util_test_1300 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'},
@@ -303,7 +303,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from meter to kilometer unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1400', 0, function () {
+    it('i18n_util_test_1400', Level.LEVEL2, function () {
         console.log('i18n_util_test_1400 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},
@@ -320,7 +320,7 @@ describe('UtilInI18nTest', function () {
      * @tc.name    test unitConvert interface from meter to meter-per-second unit
      * @tc.desc    get the unitConvert value
      */
-    it('i18n_util_test_1500', 0, function () {
+    it('i18n_util_test_1500', Level.LEVEL2, function () {
         console.log('i18n_util_test_1500 ' + 'start');
         let util = new I18n.Util();
         let value = util.unitConvert({unit: 'meter', measureSystem: 'SI'},

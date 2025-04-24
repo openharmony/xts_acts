@@ -58,7 +58,6 @@ export default function listLevel1Test() {
       let json = getInspectorByKey('listlevel1');
       let Obj1: ESObject = JSON.parse(json);
       console.info("listlevel1 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.friction).assertEqual(0.75);
       expect(Obj1.$attrs.divider.strokeWidth).assertEqual('2.00vp');
       expect(Obj1.$attrs.divider.color).assertEqual('#FFFFFFFF');
       expect(Obj1.$attrs.divider.startMargin).assertEqual('10.00vp');

@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { common } from '@kit.AbilityKit'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import {
   sleep,
@@ -67,7 +67,7 @@ export default function getAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_promise_000', 0, async (done: Function) => {
+    it('getAllObjects_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAllObjects_promise_000';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.PHOTO_TYPE, sendablePhotoAccessHelper.PhotoType.IMAGE);
       await getAllObjectsPromiseTest(done, testNum, fetchOps);
@@ -81,7 +81,7 @@ export default function getAllObjectTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAllObjects_promise_001', 0, async (done: Function) => {
+    it('getAllObjects_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getAllObjects_promise_001';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.PHOTO_TYPE, sendablePhotoAccessHelper.PhotoType.VIDEO);
       await getAllObjectsPromiseTest(done, testNum, fetchOps);

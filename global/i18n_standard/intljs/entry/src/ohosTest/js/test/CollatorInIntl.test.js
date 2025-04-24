@@ -14,7 +14,7 @@
  */
 import I18n from '@ohos.i18n'
 import Intl from '@ohos.intl'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function CollatorInIntlTest() {
 describe('CollatorInIntlTest', function () {
@@ -62,7 +62,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings
     * @tc.desc    check the compare result
     */
-    it('collator_test_3500', 0, function () {
+    it('collator_test_3500', Level.LEVEL0, function () {
         let coll = new Intl.Collator();
         let value = coll.compare('a', 'b');
         console.log('collator_test_3500 ' + value);
@@ -74,7 +74,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare the same strings
     * @tc.desc    check the compare result
     */
-    it('collator_test_3510', 0, function () {
+    it('collator_test_3510', Level.LEVEL2, function () {
         let coll = new Intl.Collator();
         let value = coll.compare('a', 'a');
         console.log('collator_test_3100 ' + value);
@@ -86,7 +86,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings and return positive value
     * @tc.desc    check the compare result
     */
-    it('collator_test_3520', 0, function () {
+    it('collator_test_3520', Level.LEVEL2, function () {
         let coll = new Intl.Collator();
         let value = coll.compare('b', 'a');
         console.log('collator_test_3200 ' + value);
@@ -98,7 +98,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale
     * @tc.desc    check the compare result
     */
-    it('collator_test_3600', 0, function () {
+    it('collator_test_3600', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh');
         let value = coll.compare('a', 'b');
         console.log('collator_test_3600 ' + value);
@@ -110,7 +110,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and undefined options
     * @tc.desc    check the compare result
     */
-    it('collator_test_3620', 0, function () {
+    it('collator_test_3620', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', undefined);
         let value = coll.compare('a', 'b');
         console.log('collator_test_3620 ' + value);
@@ -122,7 +122,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and null options
     * @tc.desc    check the compare result
     */
-    it('collator_test_3640', 0, function () {
+    it('collator_test_3640', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', null);
         let value = coll.compare('a', 'b');
         console.log('collator_test_3640 ' + value);
@@ -134,7 +134,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and eor collation
     * @tc.desc    check the compare result
     */
-    it('collator_test_3700', 0, function () {
+    it('collator_test_3700', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'collation': 'eor'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_3700 ' + value);
@@ -147,7 +147,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and base sensitivity
     * @tc.desc    check the compare result
     */
-    it('collator_test_3800', 0, function () {
+    it('collator_test_3800', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'sensitivity': 'base'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_3800 ' + value);
@@ -160,7 +160,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and upper caseFirst
     * @tc.desc    check the compare result
     */
-    it('collator_test_3900', 0, function () {
+    it('collator_test_3900', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'caseFirst': 'upper'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_3900 ' + value);
@@ -173,7 +173,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and true numeric
     * @tc.desc    check the compare result
     */
-    it('collator_test_4000', 0, function () {
+    it('collator_test_4000', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'numeric': true});
         let value = coll.compare('a', 'b');
         console.log('collator_test_4000 ' + value);
@@ -186,7 +186,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and true ignorePunctuation
     * @tc.desc    check the compare result
     */
-    it('collator_test_4100', 0, function () {
+    it('collator_test_4100', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'ignorePunctuation': true});
         let value = coll.compare('a', 'b');
         console.log('collator_test_4100 ' + value);
@@ -199,7 +199,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare two different strings with zh locale and sort usage
     * @tc.desc    check the compare result
     */
-    it('collator_test_4200', 0, function () {
+    it('collator_test_4200', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'usage': 'sort'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_4200 ' + value);
@@ -212,7 +212,7 @@ describe('CollatorInIntlTest', function () {
     * @tc.name    compare the string with localeMatcher options
     * @tc.desc    check the compare result
     */
-    it('collator_test_4300', 0, function () {
+    it('collator_test_4300', Level.LEVEL2, function () {
         let coll = new Intl.Collator('zh', {'localeMatcher': 'lookup'});
         let value = coll.compare('a', 'b');
         console.log('collator_test_4300 ' + value);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0100', 0, async (done: Function) => {
+    it('TextTimerJsunit_0100', Level.LEVEL2, async (done: Function) => {
       // Get the information of TextTimer component
       console.info('[TextTimerJsunit_0100] START');
       let strJson = getInspectorByKey('textTimer');
@@ -72,7 +72,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0200', 0, async (done: Function) => {
+    it('TextTimerJsunit_0200', Level.LEVEL2, async (done: Function) => {
       // Modify the attribute of TextTimer component
       console.info('[TextTimerJsunit_0200] START');
       globalThis.value.message.notify({name:'isCountDown',value:'false'})
@@ -97,7 +97,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0300', 0, async (done: Function) => {
+    it('TextTimerJsunit_0300', Level.LEVEL2, async (done: Function) => {
       // Verify start function of TextTimer component
       console.info('[TextTimerJsunit_0300] START');
       let driver = await UiDriver.create()
@@ -125,7 +125,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0400', 0, async (done: Function) => {
+    it('TextTimerJsunit_0400', Level.LEVEL2, async (done: Function) => {
       // Verify pause function of TextTimer component
       console.info('[TextTimerJsunit_0400] START');
       let driver = await UiDriver.create()
@@ -166,7 +166,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0500', 0, async (done: Function) => {
+    it('TextTimerJsunit_0500', Level.LEVEL2, async (done: Function) => {
       // Verify reset function of TextTimer component
       console.info('[TextTimerJsunit_0500] START');
       let driver = await UiDriver.create()
@@ -202,7 +202,7 @@ export default function TextTimerJsunit() {
       done();
     });
 
-    it('TextTimerJsunit_0600', 0, async (done: Function) => {
+    it('TextTimerJsunit_0600', Level.LEVEL2, async (done: Function) => {
       // Illegal modification of properties of TextTimer component
       console.info('[TextTimerJsunit_0600] START');
       globalThis.value.message.notify({name:'isCountDown',value:123})

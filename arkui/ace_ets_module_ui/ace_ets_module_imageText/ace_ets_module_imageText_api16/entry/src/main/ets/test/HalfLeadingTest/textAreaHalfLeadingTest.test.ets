@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function textAreaHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaHalfLeadingTest0001', 0, async () => {
+    it('textAreaHalfLeadingTest0001', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaHalfLeadingTest textAreaHalfLeadingTest0001 START');
         await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function textAreaHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaHalfLeadingTest0002', 0, async () => {
+    it('textAreaHalfLeadingTest0002', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaHalfLeadingTest textAreaHalfLeadingTest0002 START');
         await CommonFunc.sleep(1000);
@@ -91,7 +91,7 @@ export default function textAreaHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaHalfLeadingTest0003', 0, async () => {
+    it('textAreaHalfLeadingTest0003', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaHalfLeadingTest textAreaHalfLeadingTest0003 START');
         await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function textAreaHalfLeadingTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaHalfLeadingTest0004', 0, async () => {
+    it('textAreaHalfLeadingTest0004', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaHalfLeadingTest textAreaHalfLeadingTest0004 START');
         await CommonFunc.sleep(1000);

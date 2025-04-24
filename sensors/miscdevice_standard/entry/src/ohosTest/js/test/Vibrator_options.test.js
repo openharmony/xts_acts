@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -75,17 +75,17 @@ describe("VibratorJsTest_misc_7", function () {
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
     let TAG = ""
-    let INVALID = -1;    
-    
+    let INVALID = -1;
+
     /*
     * @tc.name:VibratorJsTest076
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0860
-    * @tc.level:Level 0
+    * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest076", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest076", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest076"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -1439,7 +1439,7 @@ describe("VibratorJsTest_misc_7", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest101"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -1470,7 +1470,7 @@ describe("VibratorJsTest_misc_7", function () {
                     console.info(TAG + " startVibration success");
                     expect(true).assertTrue();
                 }
-            });        
+            });
             setTimeout(() => {
                 try {
                     vibrator.stopVibrationSync();
@@ -1481,14 +1481,14 @@ describe("VibratorJsTest_misc_7", function () {
                     console.info(TAG + " stopVibrationSync error: " + JSON.stringify(error));
                     expect(false).assertTrue();
                     done()
-                } 
-            }, 200);                
+                }
+            }, 200);
         } else {
             console.log(TAG + ' is not supported on this device.');
             done();
         }
-    }) 
-    
+    })
+
     /*
     * @tc.name:VibratorJsTest102
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1568,7 +1568,7 @@ describe("VibratorJsTest_misc_7", function () {
             done();
         }
     })
-    
+
     /*
     * @tc.name:VibratorJsTest105
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1596,7 +1596,7 @@ describe("VibratorJsTest_misc_7", function () {
             done();
         }
     })
-    
+
     /*
     * @tc.name:VibratorJsTest106
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1653,7 +1653,7 @@ describe("VibratorJsTest_misc_7", function () {
             done();
         }
     })
-    
+
     /*
     * @tc.name:VibratorJsTest108
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1662,7 +1662,7 @@ describe("VibratorJsTest_misc_7", function () {
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest108", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest108", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest108"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -1682,7 +1682,7 @@ describe("VibratorJsTest_misc_7", function () {
             done();
         }
     })
-    
+
     /*
     * @tc.name:VibratorJsTest109
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -1718,12 +1718,12 @@ describe("VibratorJsTest_misc_7", function () {
                     console.info(TAG + " stopVibrationSync error: " + JSON.stringify(error));
                     expect(false).assertTrue();
                     done()
-                } 
-            }, 200);    
+                }
+            }, 200);
             console.info(TAG + " end");
         } else {
             console.log(TAG + ' is not supported on this device.');
             done();
         }
-    })    
+    })
 })}

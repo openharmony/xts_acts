@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it} from 'deccjsunit/index'
+import {describe, it, Level, Size, TestType } from 'deccjsunit/index'
 
 describe('callback', function () {
-    it('callbackDemo', 0, async function (done) {
+    it('callbackDemo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         await a()
     })
 })

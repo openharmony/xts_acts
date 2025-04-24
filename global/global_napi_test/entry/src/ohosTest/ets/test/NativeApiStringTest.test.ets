@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import nativeTest from 'libentry.so'
 import { GlobalContext } from '../test/global';
 
@@ -29,9 +29,9 @@ export default function abilityTest() {
     * @tc.desc      : getResourceManager with folder
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getResourceManager_nativeTest_0100', 0, () => {
+    it('getResourceManager_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getResourceManager_nativeTest_0100 1");
       let value = nativeTest.getFileList(resManager.resourceManager, "test");
       console.log("getResourceManager_nativeTest_0100 3");
@@ -46,9 +46,9 @@ export default function abilityTest() {
     * @tc.desc      : getRawFileContent with file path
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getResourceManager_nativeTest_0200', 0, () => {
+    it('getResourceManager_nativeTest_0200', Level.LEVEL0, () => {
       console.log("getResourceManager_nativeTest_0200 1");
       let value = nativeTest.getRawFileContent(resManager.resourceManager, "test/aa.xml");
       console.log("getResourceManager_nativeTest_0200 3");
@@ -62,9 +62,9 @@ export default function abilityTest() {
     * @tc.desc      : getRawFileDescriptor with file path
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getResourceManager_nativeTest_0300', 0, () => {
+    it('getResourceManager_nativeTest_0300', Level.LEVEL0, () => {
       console.log("getResourceManager_nativeTest_0300 1");
       let value = nativeTest.getRawFileDescriptor(resManager.resourceManager, "test/aa.xml");
       console.log("getResourceManager_nativeTest_0300 3");
@@ -80,9 +80,9 @@ export default function abilityTest() {
     * @tc.desc      : getRawFileDescriptor64 with file path
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getResourceManager_nativeTest_0400', 0, () => {
+    it('getResourceManager_nativeTest_0400', Level.LEVEL0, () => {
       console.log("getResourceManager_nativeTest_0400 1");
       let value = nativeTest.getRawFileDescriptor64(resManager.resourceManager, "test/aa.xml");
       console.log("getResourceManager_nativeTest_0400 3");
@@ -98,7 +98,7 @@ export default function abilityTest() {
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('getResourceManager_nativeTest_0500', 0, () => {
+    it('getResourceManager_nativeTest_0500', Level.LEVEL2, () => {
       console.log("getResourceManager_nativeTest_0500 1");
       let value = nativeTest.getRawFileDescriptor64(resManager.resourceManager, "test/aa.xml");
       console.log("getResourceManager_nativeTest_0500 3");
@@ -114,9 +114,9 @@ export default function abilityTest() {
     * @tc.desc      : isRawDir with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('isRawDir_nativeTest_0100', 0, () => {
+    it('isRawDir_nativeTest_0100', Level.LEVEL0, () => {
       console.log("isRawDir_nativeTest_0100 1");
       let value = nativeTest.isRawDir(resManager.resourceManager, '');
       console.log("isRawDir_nativeTest_0100" + value);
@@ -129,9 +129,9 @@ export default function abilityTest() {
     * @tc.desc      : getDrawableDescriptor with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getDrawableDescriptor_nativeTest_0100', 0, () => {
+    it('getDrawableDescriptor_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getDrawableDescriptor_nativeTest_0100 1");
       let value = nativeTest.getDrawableDescriptor(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getDrawableDescriptor_nativeTest_0100" + value);
@@ -144,9 +144,9 @@ export default function abilityTest() {
     * @tc.desc      : getDrawableDescriptorByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getDrawableDescriptorByName_nativeTest_0100', 0, () => {
+    it('getDrawableDescriptorByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getDrawableDescriptorByName_nativeTest_0100 1");
       let value = nativeTest.getDrawableDescriptorByName(resManager.resourceManager);
       console.log("getDrawableDescriptorByName_nativeTest_0100" + value);
@@ -159,9 +159,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaBase64 with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaBase64_nativeTest_0100', 0, () => {
+    it('getMediaBase64_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaBase64_nativeTest_0100 1");
       let value = nativeTest.getMediaBase64(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getMediaBase64_nativeTest_0100" + value);
@@ -174,9 +174,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaBase64ByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaBase64ByName_nativeTest_0100', 0, () => {
+    it('getMediaBase64ByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaBase64ByName_nativeTest_0100 1");
       let value = nativeTest.getMediaBase64ByName(resManager.resourceManager);
       console.log("getMediaBase64ByName_nativeTest_0100" + value);
@@ -189,9 +189,9 @@ export default function abilityTest() {
     * @tc.desc      : getMedia with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMedia_nativeTest_0100', 0, () => {
+    it('getMedia_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMedia_nativeTest_0100 1");
       let value = nativeTest.getMedia(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getMedia_nativeTest_0100" + value);
@@ -204,9 +204,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaByName_nativeTest_0100', 0, () => {
+    it('getMediaByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaByName_nativeTest_0100 1");
       let value = nativeTest.getMediaByName(resManager.resourceManager);
       console.log("getMediaByName_nativeTest_0100" + value);
@@ -219,9 +219,9 @@ export default function abilityTest() {
     * @tc.desc      : getSymbolByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getSymbolByName_nativeTest_0100', 0, () => {
+    it('getSymbolByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getSymbolByName_nativeTest_0100 1");
       let value = nativeTest.getSymbolByName(resManager.resourceManager);
       console.log("getSymbolByName_nativeTest_0100" + value);
@@ -234,9 +234,9 @@ export default function abilityTest() {
     * @tc.desc      : getSymbol with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getSymbol_nativeTest_0100', 0, () => {
+    it('getSymbol_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getSymbol_nativeTest_0100 1");
       let value = nativeTest.getSymbol(resManager.resourceManager, $r('app.symbol.symbol_test').id);
       console.log("getSymbol_nativeTest_0100" + value);
@@ -249,9 +249,9 @@ export default function abilityTest() {
     * @tc.desc      : getBoolByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getBoolByName_nativeTest_0100', 0, () => {
+    it('getBoolByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getBoolByName_nativeTest_0100 1");
       let value = nativeTest.getBoolByName(resManager.resourceManager);
       console.log("getBoolByName_nativeTest_0100" + value);
@@ -264,9 +264,9 @@ export default function abilityTest() {
     * @tc.desc      : getBool with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getBool_nativeTest_0100', 0, () => {
+    it('getBool_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getBool_nativeTest_0100 1");
       let value = nativeTest.getBool(resManager.resourceManager, $r('app.boolean.boolean_one').id);
       console.log("getBool_nativeTest_0100" + value);
@@ -279,9 +279,9 @@ export default function abilityTest() {
     * @tc.desc      : getPluralStringByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 3
     */
-    it('getPluralStringByName_nativeTest_0100', 0, () => {
+    it('getPluralStringByName_nativeTest_0100', Level.LEVEL3, () => {
       console.log("getPluralStringByName_nativeTest_0100 1");
       let value = nativeTest.getPluralStringByName(resManager.resourceManager);
       console.log("getPluralStringByName_nativeTest_0100" + value);
@@ -294,9 +294,9 @@ export default function abilityTest() {
     * @tc.desc      : getPluralString with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 3
     */
-    it('getPluralString_nativeTest_0100', 0, () => {
+    it('getPluralString_nativeTest_0100', Level.LEVEL3, () => {
       console.log("getPluralString_nativeTest_0100 1");
       let value = nativeTest.getPluralString(resManager.resourceManager, $r('app.plural.eat_apple').id, 1);
       console.log("getPluralString_nativeTest_0100" + value);
@@ -309,9 +309,9 @@ export default function abilityTest() {
     * @tc.desc      : getColorByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getColorByName_nativeTest_0100', 0, () => {
+    it('getColorByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getColorByName_nativeTest_0100 1");
       let value = nativeTest.getColorByName(resManager.resourceManager);
       console.log("getColorByName_nativeTest_0100" + value);
@@ -324,9 +324,9 @@ export default function abilityTest() {
     * @tc.desc      : getColor with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getColor_nativeTest_0100', 0, () => {
+    it('getColor_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getColor_nativeTest_0100 1");
       let value = nativeTest.getColor(resManager.resourceManager, $r('app.color.start_window_background_test').id);
       console.log("getColor_nativeTest_0100" + value);
@@ -339,9 +339,9 @@ export default function abilityTest() {
     * @tc.desc      : getIntByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getIntByName_nativeTest_0100', 0, () => {
+    it('getIntByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getIntByName_nativeTest_0100 1");
       let value = nativeTest.getIntByName(resManager.resourceManager);
       console.log("getIntByName_nativeTest_0100" + value);
@@ -354,9 +354,9 @@ export default function abilityTest() {
     * @tc.desc      : getInt with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getInt_nativeTest_0100', 0, () => {
+    it('getInt_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getInt_nativeTest_0100 1");
       let value = nativeTest.getInt(resManager.resourceManager, $r('app.integer.integer_one').id);
       console.log("getInt_nativeTest_0100" + value);
@@ -369,9 +369,9 @@ export default function abilityTest() {
     * @tc.desc      : getFloatByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getFloatByName_nativeTest_0100', 0, () => {
+    it('getFloatByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getFloatByName_nativeTest_0100 1");
       let value = nativeTest.getFloatByName(resManager.resourceManager);
       console.log("getFloatByName_nativeTest_0100" + value);
@@ -384,9 +384,9 @@ export default function abilityTest() {
     * @tc.desc      : getFloat with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getFloat_nativeTest_0100', 0, () => {
+    it('getFloat_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getFloat_nativeTest_0100 1");
       let value = nativeTest.getFloat(resManager.resourceManager, $r('app.float.float_one').id);
       console.log("getFloat_nativeTest_0100" + value);
@@ -401,7 +401,7 @@ export default function abilityTest() {
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('getLocales_nativeTest_0100', 0, () => {
+    it('getLocales_nativeTest_0100', Level.LEVEL2, () => {
       console.log("getLocales_nativeTest_0100 1");
       let value = nativeTest.getLocales(resManager.resourceManager);
       console.log("getLocales_nativeTest_0100" + value);
@@ -414,9 +414,9 @@ export default function abilityTest() {
     * @tc.desc      : getConfiguration with object
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getConfiguration_nativeTest_0100', 0, () => {
+    it('getConfiguration_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getConfiguration_nativeTest_0100 1");
       let value = nativeTest.getConfiguration(resManager.resourceManager);
       console.log("getConfiguration_nativeTest_0100" + value);
@@ -429,9 +429,9 @@ export default function abilityTest() {
     * @tc.desc      : getStringArray with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getStringArray_nativeTest_0100', 0, () => {
+    it('getStringArray_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getStringArray_nativeTest_0100 1");
       let value = nativeTest.getStringArray(resManager.resourceManager, $r('app.strarray.size').id);
       console.log("getStringArray_nativeTest_0100" + value);
@@ -444,9 +444,9 @@ export default function abilityTest() {
     * @tc.desc      : getStringArrayByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getStringArrayByName_nativeTest_0100', 0, () => {
+    it('getStringArrayByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getStringArrayByName_nativeTest_0100 1");
       let value = nativeTest.getStringArrayByName(resManager.resourceManager);
       console.log("getStringArrayByName_nativeTest_0100" + value);
@@ -459,9 +459,9 @@ export default function abilityTest() {
     * @tc.desc      : releaseStringArray with object
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('releaseStringArray_nativeTest_0100', 0, () => {
+    it('releaseStringArray_nativeTest_0100', Level.LEVEL0, () => {
       console.log("releaseStringArray_nativeTest_0100 1");
       let value = nativeTest.releaseStringArray(resManager.resourceManager);
       console.log("releaseStringArray_nativeTest_0100" + value);
@@ -474,9 +474,9 @@ export default function abilityTest() {
     * @tc.desc      : releaseConfiguration with object
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('releaseConfiguration_nativeTest_0100', 0, () => {
+    it('releaseConfiguration_nativeTest_0100', Level.LEVEL0, () => {
       console.log("releaseConfiguration_nativeTest_0100 1");
       let value = nativeTest.releaseConfiguration(resManager.resourceManager);
       console.log("releaseConfiguration_nativeTest_0100" + value);
@@ -489,9 +489,9 @@ export default function abilityTest() {
     * @tc.desc      : getStringByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getStringByName_nativeTest_0100', 0, () => {
+    it('getStringByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getStringByName_nativeTest_0100 1");
       let value = nativeTest.getStringByName(resManager.resourceManager);
       console.log("getStringByName_nativeTest_0100" + value);
@@ -504,9 +504,9 @@ export default function abilityTest() {
     * @tc.desc      : getString with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getString_nativeTest_0100', 0, () => {
+    it('getString_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getString_nativeTest_0100 1");
       let value = nativeTest.getString(resManager.resourceManager, $r('app.string.entry_MainAbility').id);
       console.log("getString_nativeTest_0100" + value);
@@ -519,9 +519,9 @@ export default function abilityTest() {
     * @tc.desc      : getRawFileDescriptorData with normal xml
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getRawFileDescriptorData_nativeTest_0100', 0, () => {
+    it('getRawFileDescriptorData_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getRawFileDescriptorData_nativeTest_0100 1");
       let value = nativeTest.getRawFileDescriptorData(resManager.resourceManager, "test/aa.xml");
       console.log("getRawFileDescriptorData_nativeTest_0100" + value);
@@ -534,9 +534,9 @@ export default function abilityTest() {
     * @tc.desc      : getLocalesData with object
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getLocalesData_nativeTest_0100', 0, () => {
+    it('getLocalesData_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getLocalesData_nativeTest_0100 1");
       let value = nativeTest.getLocalesData(resManager.resourceManager);
       console.log("getLocalesData_nativeTest_0100" + value);
@@ -549,9 +549,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaBase64DataByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaBase64DataByName_nativeTest_0100', 0, () => {
+    it('getMediaBase64DataByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaBase64DataByName_nativeTest_0100 1");
       let value = nativeTest.getMediaBase64DataByName(resManager.resourceManager, "icon");
       console.log("getMediaBase64DataByName_nativeTest_0100" + value);
@@ -564,9 +564,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaBase64Data with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaBase64Data_nativeTest_0100', 0, () => {
+    it('getMediaBase64Data_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaBase64Data_nativeTest_0100 1");
       let value = nativeTest.getMediaBase64Data(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getMediaBase64Data_nativeTest_0100" + value);
@@ -579,9 +579,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaData with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaData_nativeTest_0100', 0, () => {
+    it('getMediaData_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaData_nativeTest_0100 1");
       let value = nativeTest.getMediaData(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getMediaData_nativeTest_0100" + value);
@@ -594,9 +594,9 @@ export default function abilityTest() {
     * @tc.desc      : getMediaDataByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getMediaDataByName_nativeTest_0100', 0, () => {
+    it('getMediaDataByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getMediaDataByName_nativeTest_0100 1");
       let value = nativeTest.getMediaDataByName(resManager.resourceManager, "icon");
       console.log("getMediaDataByName_nativeTest_0100" + value);
@@ -609,9 +609,9 @@ export default function abilityTest() {
     * @tc.desc      : getDrawableDescriptorData with normal id
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getDrawableDescriptorData_nativeTest_0100', 0, () => {
+    it('getDrawableDescriptorData_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getDrawableDescriptorData_nativeTest_0100 1");
       let value = nativeTest.getDrawableDescriptorData(resManager.resourceManager, $r('app.media.icon').id);
       console.log("getDrawableDescriptorData_nativeTest_0100" + value);
@@ -624,9 +624,9 @@ export default function abilityTest() {
     * @tc.desc      : getDrawableDescriptorDataByName with normal name
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getDrawableDescriptorDataByName_nativeTest_0100', 0, () => {
+    it('getDrawableDescriptorDataByName_nativeTest_0100', Level.LEVEL0, () => {
       console.log("getDrawableDescriptorDataByName_nativeTest_0100 1");
       let value = nativeTest.getDrawableDescriptorDataByName(resManager.resourceManager, "icon");
       console.log("getDrawableDescriptorDataByName_nativeTest_0100" + value);
@@ -639,9 +639,9 @@ export default function abilityTest() {
     * @tc.desc      : addResource with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 3
     */
-    it('addResource_nativeTest_0100', 0, () => {
+    it('addResource_nativeTest_0100', Level.LEVEL3, () => {
       console.log("addResource_nativeTest_0100 1");
       let value = nativeTest.addResource(resManager.resourceManager);
       console.log("addResource_nativeTest_0100" + value);
@@ -654,9 +654,9 @@ export default function abilityTest() {
     * @tc.desc      : removeResource with null
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 3
     */
-    it('removeResource_nativeTest_0100', 0, () => {
+    it('removeResource_nativeTest_0100', Level.LEVEL3, () => {
       console.log("removeResource_nativeTest_0100 1");
       let value = nativeTest.removeResource(resManager.resourceManager);
       console.log("removeResource_nativeTest_0100" + value);
@@ -669,9 +669,9 @@ export default function abilityTest() {
     * @tc.desc      : getRawFileContent support seek
     * @tc.size      : MediumTest
     * @tc.type      : Function
-    * @tc.level     : Level 2
+    * @tc.level     : Level 0
     */
-    it('getRawFileContent_nativeTest_0020', 0, () => {
+    it('getRawFileContent_nativeTest_0020', Level.LEVEL0, () => {
       console.log("getRawFileContent_nativeTest_0020 1");
       let value = nativeTest.getRawFileContentTwo(resManager.resourceManager, 'rawfileTest.txt');
       console.log("getRawFileContent_nativeTest_0020 3");
@@ -682,6 +682,282 @@ export default function abilityTest() {
       console.log("getRawFileContent_nativeTest_0020 value:" + value);
       console.log("getRawFileContent_nativeTest_0020 dataString:" + dataString);
       expect(dataString == 'qwem7890weasd123').assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetIntPluralStringById0790_082
+    * @tc.desc      : OH_ResourceManager_GetIntPluralString with resID
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetIntPluralStringById0790_082', Level.LEVEL0, () => {
+      console.log("testGetIntPluralStringById0790_082 start");
+      let value = nativeTest.testGetIntPluralStringById0790_082(resManager.resourceManager, $r('app.plural.p_str7').id);
+      console.log("testGetIntPluralStringById0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetIntPluralStringByName0790_082
+    * @tc.desc      : OH_ResourceManager_GetIntPluralStringByName with resName
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetIntPluralStringByName0790_082', Level.LEVEL0, () => {
+      console.log("testGetIntPluralStringByName0790_082 start");
+      let value = nativeTest.testGetIntPluralStringByName0790_082(resManager.resourceManager, 'p_str7');
+      console.log("testGetIntPluralStringByName0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetDoublePluralStringById0790_082
+    * @tc.desc      : OH_ResourceManager_GetDoublePluralString with resID
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetDoublePluralStringById0790_082', Level.LEVEL0, () => {
+      console.log("testGetDoublePluralStringById0790_082 start");
+      let value =
+        nativeTest.testGetDoublePluralStringById0790_082(resManager.resourceManager, $r('app.plural.p_str7').id);
+      console.log("testGetDoublePluralStringById0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetDoublePluralStringByName0790_082
+    * @tc.desc      : OH_ResourceManager_GetDoublePluralStringByName with resName
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetDoublePluralStringByName0790_082', Level.LEVEL0, () => {
+      console.log("testGetDoublePluralStringByName0790_082 start");
+      let value =
+        nativeTest.testGetDoublePluralStringByName0790_082(resManager.resourceManager, 'p_str7');
+      console.log("testGetDoublePluralStringByName0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1190
+    * @tc.name      : testGetIntPluralStringById119
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById119', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById119 start");
+      let value = nativeTest.testGetIntPluralStringById119(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetIntPluralStringById119" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1210
+    * @tc.name      : testGetDoublePluralStringById120
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById120', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById120 start");
+      let value = nativeTest.testGetDoublePluralStringById120(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetDoublePluralStringById120" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1310
+    * @tc.name      : testGetIntPluralStringById125
+    * @tc.desc      : error code 9001001
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById125', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById125 start");
+      let value = nativeTest.testGetIntPluralStringById125(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetIntPluralStringById125" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1330
+    * @tc.name      : testGetDoublePluralStringById126
+    * @tc.desc      : error code 9001001
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById126', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById126 start");
+      let value = nativeTest.testGetDoublePluralStringById126(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetDoublePluralStringById126" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1350
+    * @tc.name      : testGetIntPluralStringById127
+    * @tc.desc      : error code 9001002
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById127', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById127 start");
+      let value = nativeTest.testGetIntPluralStringById127(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.media.icon').id);
+      console.log("testGetIntPluralStringById127" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1370
+    * @tc.name      : testGetDoublePluralStringById128
+    * @tc.desc      : error code 9001002
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById128', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById128 start");
+      let value = nativeTest.testGetDoublePluralStringById128(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.media.icon').id);
+      console.log("testGetDoublePluralStringById128" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1390
+    * @tc.name      : testGetIntPluralStringById129
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById129', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById129 start");
+      let value = nativeTest.testGetIntPluralStringById129(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.plural.test_cyc').id);
+      console.log("testGetIntPluralStringById129" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1410
+    * @tc.name      : testGetDoublePluralStringById130
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById130', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById130 start");
+      let value = nativeTest.testGetDoublePluralStringById130(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.plural.test_cyc').id);
+      console.log("testGetDoublePluralStringById130" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1470
+    * @tc.name      : testGetIntPluralStringByName133
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName133', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName133 start");
+      let value = nativeTest.testGetIntPluralStringByName133(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName133" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1480
+    * @tc.name      : testGetDoublePluralStringByName134
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName134', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName134 start");
+      let value = nativeTest.testGetDoublePluralStringByName134(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName134" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1530
+    * @tc.name      : testGetIntPluralStringByName139
+    * @tc.desc      : error code 9001003
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName139', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName139 start");
+      let value = nativeTest.testGetIntPluralStringByName139(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName139" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1540
+    * @tc.name      : testGetDoublePluralStringByName140
+    * @tc.desc      : error code 9001003
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName140', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName140 start");
+      let value = nativeTest.testGetDoublePluralStringByName140(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName140" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1550
+    * @tc.name      : testGetIntPluralStringByName141
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName141', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName141 start");
+      let value = nativeTest.testGetIntPluralStringByName141(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName141" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1560
+    * @tc.name      : testGetDoublePluralStringByName142
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName142', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName142 start");
+      let value = nativeTest.testGetDoublePluralStringByName142(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName142" + value);
+      expect(value).assertTrue();
     })
   })
 }

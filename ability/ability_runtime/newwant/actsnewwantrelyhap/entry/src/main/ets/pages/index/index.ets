@@ -13,11 +13,6 @@
  * limitations under the License.
  */
 
-import file from '@system.file';
-
-//import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "@ohos/hypium"
-//import testsuite from "../../test/List.test.ets"
-
 @Entry
 @Component
 struct Index {

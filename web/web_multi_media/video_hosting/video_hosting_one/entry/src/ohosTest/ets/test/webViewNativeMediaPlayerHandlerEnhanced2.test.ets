@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -80,7 +80,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerEnableTrueShouldOverlayTrue", true, 1561,
@@ -97,7 +97,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerAudio', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerAudio', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerAudio"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerAudio", true, 1562,
@@ -114,7 +114,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerMediaSrcUrl', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerMediaSrcUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerMediaSrcUrl"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerMediaSrcUrl", true, 1563,
@@ -131,7 +131,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerHandleStatusChangedPause', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandleStatusChangedPause', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerHandleStatusChangedPause"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerHandleStatusChangedPause", true, 15642, done, (backData: events_emitter.EventData, expected: Object) => {
@@ -147,7 +147,7 @@ export default function webViewNativeMediaPlayerHandlerEnhanced2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerHandleStatusChangedPlaying', 0, async (done: Function) => {
+    it('testWebViewNativeMediaPlayerHandleStatusChangedPlaying', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebViewNativeMediaPlayerHandleStatusChangedPause"
       Utils.emitEvent(emitKey, 10);
       Utils.registerBaseEvent("testWebViewNativeMediaPlayerHandleStatusChangedPlaying", true, 15643, done, (backData: events_emitter.EventData, expected: Object) => {

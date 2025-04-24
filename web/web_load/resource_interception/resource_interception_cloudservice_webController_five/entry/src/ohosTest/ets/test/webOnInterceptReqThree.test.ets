@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitOnInterceptRequestThirdWebC";
 
 export default function webOnInterceptReqThree() {
@@ -41,6 +43,11 @@ export default function webOnInterceptReqThree() {
       done();
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webOnInterceptReqThree beforeEach start");
       done();
@@ -66,11 +73,14 @@ export default function webOnInterceptReqThree() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBPATR2_API_0300
-     *tc.name testOnInterceptRequestThirdWebC
-     *tc.desc onInterceptRequest with setting setresponsecede 404
+     * @tc.number     : SUB_ACE_BASIC_ETS_WEBPATR2_API_0300
+     * @tc.name       : testOnInterceptRequestThirdWebC
+     * @tc.desc       : onInterceptRequest with setting setresponsecede 404
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('testOnInterceptRequestThirdWebC', 0, async (done: Function) => {
+    it('testOnInterceptRequestThirdWebC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnInterceptRequestThirdWebC";
       Utils.registerEvent("testOnInterceptRequestThirdWebC", 404, 410, done);
       sendEventByKey('webOnInterceptReqThree', 10, '');

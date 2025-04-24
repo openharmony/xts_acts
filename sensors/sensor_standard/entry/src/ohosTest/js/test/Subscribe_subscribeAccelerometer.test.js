@@ -62,11 +62,11 @@ describe("SensorJsTest_sensor_25", function () {
      * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0010
      * @tc.name:subscribeAccelerometer_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeAccelerometer_SensorJsTest001---------------------------');
         TAG = 'subscribeAccelerometer_SensorJsTest001';
         try{
@@ -389,7 +389,7 @@ describe("SensorJsTest_sensor_25", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("subscribeAccelerometer_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("subscribeAccelerometer_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeAccelerometer_SensorJsTest008---------------------------');
         TAG = 'subscribeAccelerometer_SensorJsTest008';
         try{

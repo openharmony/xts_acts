@@ -12,9 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function geolocationPermissions() {
 
@@ -41,6 +44,11 @@ export default function geolocationPermissions() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("geolocationPermissions beforeEach start");
       done();
@@ -54,7 +62,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testDeleteAllGeolocation001', 0, async (done: Function) => {
+    it('testDeleteAllGeolocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testDeleteAllGeolocation001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteAllGeolocation001", "", 30055, done);
@@ -69,7 +77,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetStoredGeolocation003', 0, async (done: Function) => {
+    it('testGetStoredGeolocation003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetStoredGeolocation003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetStoredGeolocation003", '', 100011, done);
@@ -84,7 +92,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetStoredGeolocation004', 0, async (done: Function) => {
+    it('testGetStoredGeolocation004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetStoredGeolocation004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetStoredGeolocation004", '', 100012, done);
@@ -99,7 +107,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetStoredGeolocation001', 0, async (done: Function) => {
+    it('testGetStoredGeolocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetStoredGeolocation001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetStoredGeolocation001", "file:///", 30060, done);
@@ -114,7 +122,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetStoredGeolocation002', 0, async (done: Function) => {
+    it('testGetStoredGeolocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetStoredGeolocation002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetStoredGeolocation002", "file:///", 30061, done);
@@ -130,7 +138,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetAccessibleGeolocation001', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocation001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocation001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocation001", true, 100008, done);
@@ -145,7 +153,7 @@ export default function geolocationPermissions() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testGetAccessibleGeolocation002', 0, async (done: Function) => {
+    it('testGetAccessibleGeolocation002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocation002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocation002", true, 100009, done);

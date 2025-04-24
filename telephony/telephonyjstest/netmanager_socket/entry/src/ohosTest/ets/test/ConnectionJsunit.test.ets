@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it, afterEach, afterAll, beforeAll } from '@ohos/hypium';
+import { describe, expect, it, afterEach, afterAll, beforeAll , Level, Size, TestType} from '@ohos/hypium';
 import connection from '@ohos.net.connection'
 import http from "@ohos.net.http";
 import socket from "@ohos.net.socket";
@@ -40,7 +40,16 @@ export default function connectionJsunit() {
 
 
     console.log("************* connection Test start*************");
-    it('Telephony_Connection_Request_Socket_0100', 0, (done: Function) => {
+    
+    /*
+     * @tc.number:SUB_Telephony_Connection_Request_Socket_0100
+     * @tc.name: testTelephonyConnectionRequestSocket_0100
+     * @tc.desc:Create  TCPSocket and UDPSocket success
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testTelephonyConnectionRequestSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -57,12 +66,16 @@ export default function connectionJsunit() {
       udpSocket.close();
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0100
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0100
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0100
+     * @tc.desc:Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0100', 0, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -78,12 +91,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0100 Test end*************");
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0200
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0200
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0200
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0200', 0, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -99,12 +116,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0200 Test end*************");
       done();
     });
+    
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0300
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0300
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0300
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0300', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_createNetConnection_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -120,12 +141,16 @@ export default function connectionJsunit() {
       console.log("************* Telephony_Connection_Connection_createNetConnection_0300 Test end*************");
       done();
     });
+
     /*
-     * @tc.number    : Telephony_Connection_Connection_createNetConnection_0400
-     * @tc.name      : createNetConnection
-     * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
+     * @tc.number:SUB_Telephony_Connection_Connection_createNetConnection_0400
+     * @tc.name: testTelephonyConnectionConnectioncreateNetConnection0400
+     * @tc.desc: Create a network connection with optional netSpefifier and timeout.
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
      */
-    it('Telephony_Connection_Connection_createNetConnection_0400', 0, (done: Function) => {
+    it('testTelephonyConnectionConnectioncreateNetConnection0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -154,7 +179,7 @@ export default function connectionJsunit() {
      * @tc.name      : createNetConnection
      * @tc.desc      : Create a network connection with optional netSpefifier and timeout.
      */
-    it('Telephony_Connection_Connection_createNetConnection_0500', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_createNetConnection_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -183,7 +208,7 @@ export default function connectionJsunit() {
      * @tc.name      : getDefaultNet
      * @tc.desc      : Obtains the data network that is activated by default.
      */
-    it('Telephony_Connection_Connection_getDefaultNet_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getDefaultNet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -203,7 +228,7 @@ export default function connectionJsunit() {
      * @tc.name      : getDefaultNet
      * @tc.desc      : Obtains the data network that is activated by default.
      */
-    it('Telephony_Connection_Connection_getDefaultNet_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getDefaultNet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -225,7 +250,7 @@ export default function connectionJsunit() {
      * @tc.name      : getAllNets
      * @tc.desc      : Obtains the list of data networks that are activated.
      */
-    it('Telephony_Connection_Connection_getAllNets_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getAllNets_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -247,7 +272,7 @@ export default function connectionJsunit() {
      * @tc.name      : getAllNets
      * @tc.desc      : Obtains the list of data networks that are activated.
      */
-    it('Telephony_Connection_Connection_getAllNets_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getAllNets_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -268,7 +293,7 @@ export default function connectionJsunit() {
      * @tc.name      : getConnectionProperties
      * @tc.desc      : Queries the connection properties of a network.
      */
-    it('Telephony_Connection_Connection_getConnectionProperties_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getConnectionProperties_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const caseName: string = "Telephony_Connection_Connection_getConnectionProperties_0100"
       if (!envReady) {
         console.info("The environment was not ready");
@@ -307,7 +332,7 @@ export default function connectionJsunit() {
      * @tc.name      : getConnectionProperties
      * @tc.desc      : Queries the connection properties of a network.
      */
-    it('Telephony_Connection_Connection_getConnectionProperties_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getConnectionProperties_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -335,7 +360,7 @@ export default function connectionJsunit() {
      * @tc.name      : getConnectionProperties
      * @tc.desc      : Queries the connection properties of a network.
      */
-    it('Telephony_Connection_Connection_getConnectionProperties_0300', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getConnectionProperties_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -361,7 +386,7 @@ export default function connectionJsunit() {
      * @tc.name      : getConnectionProperties
      * @tc.desc      : Queries the connection properties of a network.
      */
-    it('Telephony_Connection_Connection_getConnectionProperties_0400', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getConnectionProperties_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -390,7 +415,7 @@ export default function connectionJsunit() {
      * @tc.name      : getNetCapabilities
      * @tc.desc      : Obtains {@link NetCapabilities} of a {@link NetHandle} object.
      */
-    it('Telephony_Connection_Connection_getNetCapabilities_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getNetCapabilities_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -416,7 +441,7 @@ export default function connectionJsunit() {
      * @tc.name      : getNetCapabilities
      * @tc.desc      : Obtains {@link NetCapabilities} of a {@link NetHandle} object.
      */
-    it('Telephony_Connection_Connection_getNetCapabilities_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getNetCapabilities_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -440,7 +465,7 @@ export default function connectionJsunit() {
      * @tc.name      : getNetCapabilities
      * @tc.desc      : Obtains {@link NetCapabilities} of a {@link NetHandle} object.
      */
-    it('Telephony_Connection_Connection_getNetCapabilities_0300', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getNetCapabilities_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       const caseName: string = "Telephony_Connection_Connection_getNetCapabilities_0300"
       if (!envReady) {
         console.info("The environment was not ready");
@@ -477,7 +502,7 @@ export default function connectionJsunit() {
      * @tc.name      : getNetCapabilities
      * @tc.desc      : Obtains {@link NetCapabilities} of a {@link NetHandle} object.
      */
-    it('Telephony_Connection_Connection_getNetCapabilities_0400', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getNetCapabilities_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -515,7 +540,7 @@ export default function connectionJsunit() {
          * @tc.name      : hasDefaultNet
          * @tc.desc      : Checks whether the default data network is activated.
          */
-    it('Telephony_Connection_Connection_hasDefaultNet_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_hasDefaultNet_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -539,7 +564,7 @@ export default function connectionJsunit() {
          * @tc.name      : hasDefaultNet
          * @tc.desc      : Checks whether the default data network is activated.
          */
-    it('Telephony_Connection_Connection_hasDefaultNet_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_hasDefaultNet_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -560,7 +585,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetConnected
          * @tc.desc      : Reports the network state is connected.
          */
-    it('Telephony_Connection_Connection_reportNetConnected_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetConnected_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_reportNetConnected_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -596,7 +621,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetConnected
          * @tc.desc      : Reports the network state is connected.
          */
-    it('Telephony_Connection_Connection_reportNetConnected_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetConnected_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -624,7 +649,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetConnected
          * @tc.desc      : Reports the network state is connected.
          */
-    it('Telephony_Connection_Connection_reportNetConnected_0300', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetConnected_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -648,7 +673,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetConnected
          * @tc.desc      : Reports the network state is connected.
          */
-    it('Telephony_Connection_Connection_reportNetConnected_0400', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetConnected_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -672,7 +697,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetDisconnected
          * @tc.desc      : Reports the network state is disconnected.
          */
-    it('Telephony_Connection_Connection_reportNetDisconnected_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetDisconnected_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -697,7 +722,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetDisconnected
          * @tc.desc      : Reports the network state is disconnected.
          */
-    it('Telephony_Connection_Connection_reportNetDisconnected_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetDisconnected_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -725,7 +750,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetDisconnected
          * @tc.desc      : Reports the network state is disconnected.
          */
-    it('Telephony_Connection_Connection_reportNetDisconnected_0300', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetDisconnected_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -751,7 +776,7 @@ export default function connectionJsunit() {
          * @tc.name      : reportNetDisconnected
          * @tc.desc      : Reports the network state is disconnected.
          */
-    it('Telephony_Connection_Connection_reportNetDisconnected_0400', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_reportNetDisconnected_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -777,7 +802,7 @@ export default function connectionJsunit() {
          * @tc.name      : getAddressesByName
          * @tc.desc      : Resolves the host name to obtain all IP addresses based on the default data network.
          */
-    it('Telephony_Connection_Connection_getAddressesByName_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getAddressesByName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -802,7 +827,7 @@ export default function connectionJsunit() {
          * @tc.name      : getAddressesByName
          * @tc.desc      : Resolves the host name to obtain all IP addresses based on the default data network.
          */
-    it('Telephony_Connection_Connection_getAddressesByName_0200', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getAddressesByName_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -825,7 +850,7 @@ export default function connectionJsunit() {
      * @tc.name netAvailable
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netAvailable_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netAvailable_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netAvailable_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -853,7 +878,7 @@ export default function connectionJsunit() {
      * @tc.name netBlockStatusChange
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netBlockStatusChange_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netBlockStatusChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netBlockStatusChange_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -880,7 +905,7 @@ export default function connectionJsunit() {
      * @tc.name netCapabilitiesChange
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netCapabilitiesChange_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netCapabilitiesChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netCapabilitiesChange_0100"
       if (!envReady) {
         console.info("The environment was not ready");
@@ -907,7 +932,7 @@ export default function connectionJsunit() {
      * @tc.name netConnectionPropertiesChange
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netConnectionPropertiesChange_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netConnectionPropertiesChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netConnectionPropertiesChange_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -936,7 +961,7 @@ export default function connectionJsunit() {
      * @tc.name netLost
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netLost_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netLost_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netLost_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -963,7 +988,7 @@ export default function connectionJsunit() {
      * @tc.name netUnavailable
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_netUnavailable_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netUnavailable_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       let caseName = "Telephony_Connection_Connection_netUnavailable_0100";
       if (!envReady) {
         console.info("The environment was not ready");
@@ -988,7 +1013,7 @@ export default function connectionJsunit() {
      * @tc.name NetSpecifier
      * @tc.desc netCapabilities bearerPrivateIdentifier test
      */
-    it('Telephony_Connection_Connection_NetSpecifier_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_NetSpecifier_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1017,7 +1042,7 @@ export default function connectionJsunit() {
      * @tc.name bindSocket
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_bindSocket_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_bindSocket_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1042,7 +1067,7 @@ export default function connectionJsunit() {
      * @tc.name getAddressesByName
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_NetHandle_getAddressesByName_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_NetHandle_getAddressesByName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1068,7 +1093,7 @@ export default function connectionJsunit() {
      * @tc.name getAddressByName
      * @tc.desc Function test
      */
-    it('Telephony_Connection_Connection_getAddressByName_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_getAddressByName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1094,7 +1119,7 @@ export default function connectionJsunit() {
      * @tc.name linkUpBandwidthKbps
      * @tc.desc linkUpBandwidthKbps test
      */
-    it('Telephony_Connection_Connection_linkUpBandwidthKbps_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_linkUpBandwidthKbps_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1123,7 +1148,7 @@ export default function connectionJsunit() {
      * @tc.name linkDownBandwidthKbps
      * @tc.desc nlinkDownBandwidthKbps test
      */
-    it('Telephony_Connection_Connection_linkDownBandwidthKbps_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_linkDownBandwidthKbps_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1152,7 +1177,7 @@ export default function connectionJsunit() {
      * @tc.name networkCap
      * @tc.desc networkCap test
      */
-    it('Telephony_Connection_Connection_networkCap_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_networkCap_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1181,7 +1206,7 @@ export default function connectionJsunit() {
      * @tc.name bearerTypes
      * @tc.desc bearerTypes test
      */
-    it('Telephony_Connection_Connection_bearerTypes_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_bearerTypes_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1210,7 +1235,7 @@ export default function connectionJsunit() {
      * @tc.name register
      * @tc.desc Receives status change notifications of a specified network.
      */
-    it('Telephony_Connection_Connection_register_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_register_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1251,7 +1276,7 @@ export default function connectionJsunit() {
      * @tc.name unregister
      * @tc.desc Cancels listening for network status changes. test
      */
-    it('Telephony_Connection_Connection_unregister_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_unregister_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1292,7 +1317,7 @@ export default function connectionJsunit() {
          * @tc.name      : netId
          * @tc.desc      : netId test.
          */
-    it('Telephony_Connection_Connection_netId_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_netId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1314,7 +1339,7 @@ export default function connectionJsunit() {
          * @tc.name      : domains
          * @tc.desc      : domains test.
          */
-    it('Telephony_Connection_Connection_domains_0100', 0, (done: Function) => {
+    it('Telephony_Connection_Connection_domains_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
@@ -1339,7 +1364,7 @@ export default function connectionJsunit() {
          * @tc.name      : Telephony_Connection_setAppNet_callback_0100
          * @tc.desc      : Telephony_Connection_setAppNet_callback_0100
          */
-    it('Telephony_Connection_setAppNet_callback_0100', 0, (done: Function) => {
+    it('Telephony_Connection_setAppNet_callback_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       connection.getDefaultNet((error, netHandle) => {
         if (error) {
           console.log("getDefaultNet error " + JSON.stringify(error));
@@ -1375,7 +1400,7 @@ export default function connectionJsunit() {
          * @tc.name      : Telephony_Connection_setAppNet_promise_0100
          * @tc.desc      : Telephony_Connection_setAppNet_promise_0100
          */
-    it('Telephony_Connection_setAppNet_promise_0100', 0, (done: Function) => {
+    it('Telephony_Connection_setAppNet_promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
       connection.getDefaultNet((error, netHandle) => {
         if (error) {
           console.log("getDefaultNet error " + JSON.stringify(error));
@@ -1407,7 +1432,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0100";
       statistics.getSockfdTxBytes(sockfd1, (err, data) => {
         if (err) {
@@ -1426,7 +1451,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0200";
       statistics.getSockfdTxBytes(sockfd2, (err, data) => {
         if (err) {
@@ -1445,7 +1470,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0300";
       try {
         statistics.getSockfdTxBytes(undefined, (err, data) => {
@@ -1470,7 +1495,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Async_0400";
       try {
         statistics.getSockfdTxBytes(null, (err, data) => {
@@ -1495,7 +1520,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0100";
       statistics.getSockfdTxBytes(sockfd1).then((data) => {
         console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
@@ -1512,7 +1537,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0200";
       statistics.getSockfdTxBytes(sockfd2).then((data) => {
         console.log(`${caseName} getSockTxBytes success, data: ${JSON.stringify(data)}`);
@@ -1529,7 +1554,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0300";
       try {
         statistics.getSockfdTxBytes(undefined).then((data) => {
@@ -1552,7 +1577,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockTxBytes
      * @tc.desc Test getSockTxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockTxBytes_Promise_0400";
       try {
         statistics.getSockfdTxBytes(null).then((data) => {
@@ -1575,7 +1600,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0100";
       statistics.getSockfdRxBytes(sockfd1, (err, data) => {
         if (err) {
@@ -1594,7 +1619,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0200";
       statistics.getSockfdRxBytes(sockfd2, (err, data) => {
         if (err) {
@@ -1613,7 +1638,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0300";
       try {
         statistics.getSockfdRxBytes(undefined, (err, data) => {
@@ -1638,7 +1663,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Async_0400";
       try {
         statistics.getSockfdRxBytes(null, (err, data) => {
@@ -1663,7 +1688,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0100";
       statistics.getSockfdRxBytes(sockfd1).then((data) => {
         console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
@@ -1680,7 +1705,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0200";
       statistics.getSockfdRxBytes(sockfd2).then((data) => {
         console.log(`${caseName} getSockRxBytes success, data: ${JSON.stringify(data)}`);
@@ -1697,7 +1722,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0300";
       try {
         statistics.getSockfdRxBytes(undefined).then((data) => {
@@ -1720,7 +1745,7 @@ export default function connectionJsunit() {
      * @tc.name Statistics::getSockRxBytes
      * @tc.desc Test getSockRxBytes property
      */
-    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400", 0, async (done: Function) => {
+    it("NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = "NetworkManager_StatisticsSocket_getSockRxBytes_Promise_0400";
       try {
         statistics.getSockfdRxBytes(null).then((data) => {

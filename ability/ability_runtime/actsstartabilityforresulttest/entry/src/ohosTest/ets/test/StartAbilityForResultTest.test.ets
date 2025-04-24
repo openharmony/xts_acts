@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterEach, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, afterEach, beforeAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
 import { Driver, ON } from '@ohos.UiTest';
@@ -60,7 +60,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2400', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_2400', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400';
@@ -75,7 +75,7 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          if (targetVersion >= 18) {
+          if (targetVersion >= 20) {
             expect(error.code).assertEqual(16000001);
           } else {
             expect(error.code).assertEqual(2097152);
@@ -97,7 +97,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2600', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_2600', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600';
@@ -112,7 +112,7 @@ export default function StartAbilityForResultTest() {
         }).catch((error:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${error}`);
           expect(error.code == undefined).assertFalse();
-          if (targetVersion >= 18) {
+          if (targetVersion >= 20) {
             expect(error.code).assertEqual(16000001);
           } else {
             expect(error.code).assertEqual(2097152);
@@ -135,7 +135,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2700', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_2700', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700';
@@ -209,7 +209,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2800', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800';
@@ -227,7 +227,7 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          if (targetVersion >= 18) {
+          if (targetVersion >= 20) {
             expect(err.code).assertEqual(16000001);
           } else {
             expect(err.code).assertEqual(2097152);
@@ -252,7 +252,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2900', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900';
@@ -270,7 +270,7 @@ export default function StartAbilityForResultTest() {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability successful`);
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
-          if (targetVersion >= 18) {
+          if (targetVersion >= 20) {
             expect(err.code).assertEqual(16000001);
           } else {
             expect(err.code).assertEqual(2097152);
@@ -297,7 +297,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3000', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -371,7 +371,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3100', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_3100', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100';
@@ -450,7 +450,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3200', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_3200', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -525,7 +525,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3300', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_3300', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -606,7 +606,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3400', 3, async (done:Function) => {
+    it('AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';

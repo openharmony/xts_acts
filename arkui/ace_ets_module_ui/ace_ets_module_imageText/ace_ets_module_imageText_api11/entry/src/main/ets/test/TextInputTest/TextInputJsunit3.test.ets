@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import { UiDriver, BY } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -46,7 +46,7 @@ export default function textInputJsunit3() {
       console.info("textInput after each called");
     });
 
-    it('textInputTest01', 0, async (done: Function) => {
+    it('textInputTest01', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest01] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
@@ -58,7 +58,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest02', 0, async (done: Function) => {
+    it('textInputTest02', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -83,7 +83,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest03', 0, async (done: Function) => {
+    it('textInputTest03', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest03] START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('TextInput');
@@ -94,7 +94,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest04', 0, async (done: Function) => {
+    it('textInputTest04', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -119,7 +119,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest05', 0, async (done: Function) => {
+    it('textInputTest05', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest05] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
@@ -130,7 +130,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest06', 0, async (done: Function) => {
+    it('textInputTest06', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -155,7 +155,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest07', 0, async (done: Function) => {
+    it('textInputTest07', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest07] START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('TextInput');
@@ -166,7 +166,7 @@ export default function textInputJsunit3() {
       done();
     });
 
-    it('textInputTest08', 0, async (done: Function) => {
+    it('textInputTest08', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest08] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -196,7 +196,7 @@ export default function textInputJsunit3() {
      * @tc.name   :test getCaretOffset when iput text is null
      * @tc.desc   :expect caretOffset index 0 when input text is null
      */
-    it('textInputTest09', 0, async (done: Function) => {
+    it('textInputTest09', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest09] START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -215,7 +215,7 @@ export default function textInputJsunit3() {
      * @tc.name   :test getCaretOffset when iput text length less than maxLength
      * @tc.desc   :expect caretOffset index equal input text length
      */
-    it('textInputTest10', 0, async (done: Function) => {
+    it('textInputTest10', Level.LEVEL1, async (done: Function) => {
       console.info('[textInputTest10] START');
       await CommonFunc.sleep(1000);
       try {
@@ -250,7 +250,7 @@ export default function textInputJsunit3() {
      * @tc.name   :test getCaretOffset when iput text length exceed maxLength
      * @tc.desc   :expect caretOffset index equal maxLength
      */
-    it('textInputTest11', 0, async (done: Function) => {
+    it('textInputTest11', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest13] START');
       await CommonFunc.sleep(1000);
       try {

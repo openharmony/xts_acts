@@ -13,12 +13,14 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import { abilityDelegatorRegistry } from '@kit.TestKit';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "";
 
@@ -51,6 +53,11 @@ export default function ActsAceRegisterJavaScriptProxy() {
     });
 
     afterEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(800);
       done();
     })
@@ -68,7 +75,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0013', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0013", '"Error: Jsb Permission Denied"', 10058, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -84,7 +91,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0014', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0014", '"Error: Jsb Permission Denied"', 10059, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -100,7 +107,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0015', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0015", '"Error: Jsb Permission Denied"', 10060, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -116,7 +123,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_registerJavaScriptProxy_0016', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0016", '"Error: Jsb Permission Denied"', 10061, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -132,7 +139,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_registerJavaScriptProxy_0017', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0017", '"success"', 10062, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -148,7 +155,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0018', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0018", '"Error: Jsb Permission Denied"', 10063, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -164,7 +171,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_registerJavaScriptProxy_0019', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0019", '"success"', 10064, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -180,7 +187,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_registerJavaScriptProxy_0020', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0020", '"Error: Jsb Permission Denied"', 10065, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -197,7 +204,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0021', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0021", '"success"', 10066, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -213,7 +220,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0022', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0022", '"Error: Jsb Permission Denied"', 10067, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -229,7 +236,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0023', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0023", '"Error: Jsb Permission Denied"', 10068, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -245,7 +252,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testWebView_registerJavaScriptProxy_0024', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0024", '"success"', 10069, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -261,7 +268,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_registerJavaScriptProxy_0025', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0025", '"success"', 10070, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -277,7 +284,7 @@ export default function ActsAceRegisterJavaScriptProxy() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('testWebView_registerJavaScriptProxy_0026', 0, (done: Function) => {
+    it('testWebView_registerJavaScriptProxy_0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       Utils.registerBaseEvent("testWebView_registerJavaScriptProxy_0026", '"success"', 10071, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

@@ -36,7 +36,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_000", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_000", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_000";
       let option = new picker.DocumentSelectOptions();
       await selectWithOption(testNum, done, option);
@@ -50,7 +50,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_001", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_001", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_001";
       await select(testNum, done);
     });
@@ -63,7 +63,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_002", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_002", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_002";
       let option = new picker.DocumentSelectOptions();
       option.maxSelectNumber = 3;
@@ -78,7 +78,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_003", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_003", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_003";
       let option = new picker.DocumentSelectOptions();
       option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
@@ -93,7 +93,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_004", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_004", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_004";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.png', '.jpg'];
@@ -108,7 +108,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_005", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_005", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_005";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.pptx', '.docx', '.xlsx', '.txt'];
@@ -123,7 +123,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_006", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_006", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_006";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.mp4'];
@@ -138,7 +138,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_007", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_007", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_007";
       let option = new picker.DocumentSelectOptions();
       option.fileSuffixFilters = ['.mp3'];
@@ -153,7 +153,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_008", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_008", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_008";
       let option = new picker.DocumentSelectOptions();
       option.selectMode = picker.DocumentSelectMode.FILE;
@@ -168,7 +168,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_009", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_009", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_009";
       let option = new picker.DocumentSelectOptions();
       option.selectMode = picker.DocumentSelectMode.FOLDER;
@@ -183,7 +183,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Select_Promise_010", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_010", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_010";
       let option = new picker.DocumentSelectOptions();
       option.selectMode = picker.DocumentSelectMode.MIXED;
@@ -198,7 +198,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_011", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_011", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_011";
       let option = new picker.DocumentSelectOptions();
       option.authMode = false;
@@ -213,7 +213,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_012", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_012", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_012";
       let option = new picker.DocumentSelectOptions();
       await selectWithOption(testNum, done, option);
@@ -227,7 +227,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_013", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_013", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_013";
       let option1 = new picker.DocumentSelectOptions();
       option1.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
@@ -243,7 +243,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_014", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_014", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_014";
       let option = new picker.DocumentSelectOptions();
       option.multiAuthMode = true;
@@ -259,7 +259,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_015", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_015", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_015";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DEFAULT;
@@ -274,7 +274,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_016", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_016", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_016";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.AUDIO;
@@ -289,7 +289,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_017", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_017", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_017";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.VIDEO;
@@ -304,7 +304,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_018", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_018", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_018";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.DOCUMENT;
@@ -319,7 +319,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("test_Documentpicker_Select_Promise_019", 1, async (done: Function) => {
+    it("test_Documentpicker_Select_Promise_019", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Select_Promise_019";
       let option = new picker.DocumentSelectOptions();
       option.mergeMode = picker.MergeTypeMode.PICTURE;
@@ -364,7 +364,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Documentpicker_Save_Promise_000", 0, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_000";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.jpg"];
@@ -379,7 +379,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_001", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_001", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_001";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.dat"];
@@ -394,7 +394,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Documentpicker_Save_Promise_002", 3, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_002", Level.LEVEL3, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_002";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.mp4"];
@@ -409,7 +409,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Documentpicker_Save_Promise_003", 3, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_003", Level.LEVEL3, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_003";
       let option = new picker.DocumentSaveOptions();
       option.newFileNames = ["DocumentViewPicker01.mp3"];
@@ -424,7 +424,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_004", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_004", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_004";
       let option = new picker.DocumentSaveOptions();
       option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
@@ -439,7 +439,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_005", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_005", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_005";
       let option = new picker.DocumentSaveOptions();
       option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1/202308171505.png";
@@ -454,7 +454,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_006", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_006", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_006";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.png', '.jpg'];
@@ -469,7 +469,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_007", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_007", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_007";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.pptx', '.docx', '.xlsx', '.txt'];
@@ -484,7 +484,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_008", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_008", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_008";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.mp4'];
@@ -499,7 +499,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_009", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_009", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_009";
       let option = new picker.DocumentSaveOptions();
       option.fileSuffixChoices = ['.mp3'];
@@ -513,7 +513,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_010", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_010", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_010";
       let option = new picker.DocumentSaveOptions();
       option.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
@@ -527,7 +527,7 @@ export default function documentPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Documentpicker_Save_Promise_011", 1, async (done: Function) => {
+    it("test_Documentpicker_Save_Promise_011", Level.LEVEL1, async (done: Function) => {
       let testNum = "test_Documentpicker_Save_Promise_011";
       let option = new picker.DocumentSaveOptions();
       option.pickerMode = picker.DocumentPickerMode.DEFAULT;

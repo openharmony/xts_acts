@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webStorageErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webStorageErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("webStorageErrorCode beforeEach start");
       done();
     })
@@ -61,7 +69,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteOriginError001', 0, async (done: Function) => {
+    it('testDeleteOriginError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteOriginError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteOriginError001", '17100011', 20030, done);
@@ -76,7 +84,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteOriginError002', 0, async (done: Function) => {
+    it('testDeleteOriginError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteOriginError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteOriginError002", '17100011', 20031, done);
@@ -91,7 +99,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteOriginError003', 0, async (done: Function) => {
+    it('testDeleteOriginError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteOriginError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteOriginError003", '17100011', 20032, done);
@@ -106,7 +114,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testDeleteOriginError004', 0, async (done: Function) => {
+    it('testDeleteOriginError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteOriginError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testDeleteOriginError004", '17100011', 20033, done);
@@ -121,7 +129,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError001', 0, async (done: Function) => {
+    it('testGetOriginQuotaError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError001", '17100011', 20050, done);
@@ -136,7 +144,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError002', 0, async (done: Function) => {
+    it('testGetOriginQuotaError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError002", '17100011', 20051, done);
@@ -151,7 +159,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError003', 0, async (done: Function) => {
+    it('testGetOriginQuotaError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError003", '17100011', 20052, done);
@@ -166,7 +174,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError004', 0, async (done: Function) => {
+    it('testGetOriginQuotaError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError004", '17100011', 20053, done);
@@ -181,7 +189,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError005', 0, async (done: Function) => {
+    it('testGetOriginQuotaError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError005", '17100011', 20054, done);
@@ -196,7 +204,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError006', 0, async (done: Function) => {
+    it('testGetOriginQuotaError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError006", '17100011', 20055, done);
@@ -211,7 +219,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError007', 0, async (done: Function) => {
+    it('testGetOriginQuotaError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError007", '17100011', 20056, done);
@@ -226,7 +234,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginQuotaError008', 0, async (done: Function) => {
+    it('testGetOriginQuotaError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginQuotaError008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginQuotaError008", '17100011', 20057, done);
@@ -241,7 +249,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError001', 0, async (done: Function) => {
+    it('testGetOriginUsageError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError001", '17100011', 20060, done);
@@ -256,7 +264,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError002', 0, async (done: Function) => {
+    it('testGetOriginUsageError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError002", '17100011', 20061, done);
@@ -271,7 +279,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError003', 0, async (done: Function) => {
+    it('testGetOriginUsageError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError003", '17100011', 20062, done);
@@ -286,7 +294,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError004', 0, async (done: Function) => {
+    it('testGetOriginUsageError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError004", '17100011', 20063, done);
@@ -301,7 +309,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError005', 0, async (done: Function) => {
+    it('testGetOriginUsageError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError005", '17100011', 20064, done);
@@ -316,7 +324,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError006', 0, async (done: Function) => {
+    it('testGetOriginUsageError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError006", '17100011', 20065, done);
@@ -331,7 +339,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError007', 0, async (done: Function) => {
+    it('testGetOriginUsageError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError007", '17100011', 20066, done);
@@ -346,7 +354,7 @@ export default function webStorageErrorCode() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testGetOriginUsageError008', 0, async (done: Function) => {
+    it('testGetOriginUsageError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetOriginUsageError008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetOriginUsageError008", '17100011', 20067, done);

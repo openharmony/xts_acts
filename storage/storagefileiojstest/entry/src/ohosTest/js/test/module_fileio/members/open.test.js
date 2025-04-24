@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioOpen() {
 describe('fileio_open', function () {
@@ -30,7 +31,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_sync_000', 0, function () {
+  it('fileio_test_open_sync_000', Level.LEVEL0, function () {
     try {
       fileio.openSync('/', 0o102, 0o666);
       expect(null).assertFail();
@@ -48,7 +49,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_000', 0, async function (done) {
+  it('fileio_test_open_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -78,7 +79,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_001', 0, async function (done) {
+  it('fileio_test_open_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -106,7 +107,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_002', 0, async function (done) {
+  it('fileio_test_open_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -134,7 +135,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_003', 0, async function (done) {
+  it('fileio_test_open_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -162,7 +163,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_004', 0, async function (done) {
+  it('fileio_test_open_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -194,7 +195,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_005', 0, async function (done) {
+  it('fileio_test_open_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -225,7 +226,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_006', 0, async function (done) {
+  it('fileio_test_open_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -256,7 +257,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_007', 0, async function (done) {
+  it('fileio_test_open_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_007');
     try {
       fileio.open(fpath, 0o0101, 0o0222, function (err, fd) {
@@ -284,7 +285,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_008', 0, async function (done) {
+  it('fileio_test_open_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_008');
     try {
       fileio.open(fpath, 0o100, 0o0444, function (err, fd) {
@@ -307,7 +308,7 @@ describe('fileio_open', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_open_async_009', 0, async function (done) {
+  it('fileio_test_open_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_009');
     try {
       fileio.open(fpath, 0o2101, 0o0222, function (err, fd) {
@@ -343,7 +344,7 @@ describe('fileio_open', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_open_async_010', 3, async function (done) {
+  it('fileio_test_open_async_010', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -384,7 +385,7 @@ describe('fileio_open', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_open_async_011', 3, async function (done) {
+  it('fileio_test_open_async_011', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_open_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd;

@@ -19,7 +19,7 @@ import audio from '@ohos.multimedia.audio';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs'
 import featureAbility from '@ohos.ability.featureAbility';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let TAG = "[soundPoolTest]";
@@ -170,7 +170,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise createSoundPool test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0100 in`);
       try {
         await media.createSoundPool(maxStreams, audioRendererInfo).then((soundPool_) => {
@@ -195,7 +195,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise createSoundPool test --Optional input maxStream is invalid
       * @tc.desc      : Function test. Error code: 5400101
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0200 in`);
       try {
         await media.createSoundPool(-1, audioRendererInfo).then((soundPool_) => {
@@ -219,7 +219,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise createSoundPool test --Optional input audioRendererInfo is invalid
       * @tc.desc      : Function test. Error code: 5400101
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_0300 in`);
       let invalidInfo: audio.AudioRendererInfo = {
         content: -1,
@@ -248,7 +248,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async createSoundPool test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100 in`);
       try {
         media.createSoundPool(maxStreams, audioRendererInfo, (error, soundPool_) => {
@@ -280,7 +280,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async createSoundPool test --Optional input maxStream is invalid
       * @tc.desc      : Function test. Error code: 5400101
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200 in`);
       try {
         media.createSoundPool(-1, audioRendererInfo, (error, soundPool_) => {
@@ -311,7 +311,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async createSoundPool test --Optional input audioRendererInfo is invalid
       * @tc.desc      : Function test. Error code: 5400101
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300 in`);
       let invalidInfo: audio.AudioRendererInfo = {
         content: -1,
@@ -347,7 +347,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise load(uri) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0100 in`);
       try {
         await createSoundPool();
@@ -387,7 +387,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise load(uri) test --Optional input uri is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0200 in`);
       try {
         await createSoundPool();
@@ -425,7 +425,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise load(fd, offset, length) test --0 offset
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0300 in`);
       try {
         await createSoundPool();
@@ -464,7 +464,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Promise load(fd, offset, length) test --1/3 length
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0400 in`);
       try {
         await createSoundPool();
@@ -503,7 +503,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Promise load(fd, offset, length) test --length < fileSize
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0500 in`);
       try {
         let streamId = -1;
@@ -560,7 +560,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Promise load(fd, offset, length) test --length > fileSize
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0600 in`);
       try {
         let streamId = -1;
@@ -617,7 +617,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Promise load(fd, offset, length) test --Optional input fd is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0700 in`);
       try {
         await createSoundPool();
@@ -655,7 +655,7 @@ export default function soundPoolTest() {
       * @tc.name      : 008.test Promise load(fd, offset, length) test --Optional input offset is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0800', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0800 in`);
       try {
         await createSoundPool();
@@ -693,7 +693,7 @@ export default function soundPoolTest() {
       * @tc.name      : 009.test Promise load(fd, offset, length) test --Optional input length is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0900', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_0900 in`);
       try {
         await createSoundPool();
@@ -731,7 +731,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async load(uri) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100 in`);
       try {
         await createSoundPool();
@@ -776,7 +776,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async load(uri) test --Optional input uri is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200 in`);
       try {
         await createSoundPool();
@@ -820,7 +820,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async load(fd, offset, length) test --0 offset
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300 in`);
       try {
         await createSoundPool();
@@ -865,7 +865,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async load(fd, offset, length) test --1/3 offset
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400 in`);
       try {
         await createSoundPool();
@@ -910,7 +910,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Async load(fd, offset, length) test --length < fileSize
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500 in`);
       try {
         let streamId = -1;
@@ -973,7 +973,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Async load(fd, offset, length) test --length > fileSize
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600 in`);
       try {
         let streamId = -1;
@@ -1036,7 +1036,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Async load(fd, offset, length) test --Optional input fd is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700 in`);
       try {
         await createSoundPool();
@@ -1080,7 +1080,7 @@ export default function soundPoolTest() {
       * @tc.name      : 008.test Async load(fd, offset, length) test --Optional input offset is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800 in`);
       try {
         await createSoundPool();
@@ -1124,7 +1124,7 @@ export default function soundPoolTest() {
       * @tc.name      : 009.test Async load(fd, offset, length) test --Optional input length is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900 in`);
       try {
         await createSoundPool();
@@ -1168,7 +1168,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise unload test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0100 in`);
       try {
         await createSoundPool();
@@ -1204,7 +1204,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise unload test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0200 in`);
       try {
         await createSoundPool();
@@ -1244,7 +1244,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise unload test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_0300 in`);
       try {
         await createSoundPool();
@@ -1285,7 +1285,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async unload test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100 in`);
       try {
         await createSoundPool();
@@ -1327,7 +1327,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async unload test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 5400103
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200 in`);
       try {
         await createSoundPool();
@@ -1373,7 +1373,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async unload test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300 in`);
       try {
         await createSoundPool();
@@ -1420,7 +1420,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise play(soundID) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0100 in`);
       try {
         await createSoundPool();
@@ -1466,7 +1466,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise play(soundID) test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0200 in`);
       try {
         await createSoundPool();
@@ -1506,7 +1506,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise play(soundID) test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0300 in`);
       try {
         await createSoundPool();
@@ -1546,7 +1546,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Promise play(soundID, params) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0400 in`);
       try {
         await createSoundPool();
@@ -1592,7 +1592,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Promise play(soundID, params) test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0500 in`);
       try {
         await createSoundPool();
@@ -1632,7 +1632,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Promise play(soundID, params) test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0600 in`);
       try {
         await createSoundPool();
@@ -1672,7 +1672,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Promise play(soundID, params) test --Optional param.loop
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0700 in`);
       try {
         await createSoundPool();
@@ -1720,7 +1720,7 @@ export default function soundPoolTest() {
       * @tc.name      : 008.test Promise play(soundID, params) test --Optional param.rate
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0800', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0800 in`);
       try {
         await createSoundPool();
@@ -1768,7 +1768,7 @@ export default function soundPoolTest() {
       * @tc.name      : 009.test Promise play(soundID, params) test --Optional param.leftVolume
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0900', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_0900 in`);
       try {
         await createSoundPool();
@@ -1816,7 +1816,7 @@ export default function soundPoolTest() {
       * @tc.name      : 010.test Promise play(soundID, params) test --Optional param.rightVolume
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1000', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1000 in`);
       try {
         await createSoundPool();
@@ -1864,7 +1864,7 @@ export default function soundPoolTest() {
       * @tc.name      : 011.test Promise play(soundID, params) test --Optional param.priority
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1100 in`);
       try {
         await createSoundPool();
@@ -1912,7 +1912,7 @@ export default function soundPoolTest() {
       * @tc.name      : 012.test Promise play(soundID, params) test --Optional param.parallelPlayFlag
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_1200 in`);
       try {
         await createSoundPool();
@@ -1960,7 +1960,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async play(soundID) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100 in`);
       try {
         await createSoundPool();
@@ -2013,7 +2013,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async play(soundID) test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200 in`);
       try {
         await createSoundPool();
@@ -2059,7 +2059,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async play(soundID) test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300 in`);
       try {
         await createSoundPool();
@@ -2105,7 +2105,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async play(soundID, params) test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400 in`);
       try {
         await createSoundPool();
@@ -2158,7 +2158,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Async play(soundID, params) test --Optional input soundId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500 in`);
       try {
         await createSoundPool();
@@ -2204,7 +2204,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Async play(soundID, params) test --Optional input soundId is unloaded
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600 in`);
       try {
         await createSoundPool();
@@ -2250,7 +2250,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Async play(soundID, params) test --Optional param.loop
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700 in`);
       try {
         await createSoundPool();
@@ -2305,7 +2305,7 @@ export default function soundPoolTest() {
       * @tc.name      : 008.test Async play(soundID, params) test --Optional param.rate
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800 in`);
       try {
         await createSoundPool();
@@ -2360,7 +2360,7 @@ export default function soundPoolTest() {
       * @tc.name      : 009.test Async play(soundID, params) test --Optional param.leftVolume
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900 in`);
       try {
         await createSoundPool();
@@ -2415,7 +2415,7 @@ export default function soundPoolTest() {
       * @tc.name      : 010.test Async play(soundID, params) test --Optional param.rightVolume
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000 in`);
       try {
         await createSoundPool();
@@ -2470,7 +2470,7 @@ export default function soundPoolTest() {
       * @tc.name      : 011.test Async play(soundID, params) test --Optional param.priority
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100 in`);
       try {
         await createSoundPool();
@@ -2525,7 +2525,7 @@ export default function soundPoolTest() {
       * @tc.name      : 012.test Async play(soundID, params) test --Optional param.parallelPlayFlag
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200 in`);
       try {
         await createSoundPool();
@@ -2580,7 +2580,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise stop test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0100 in`);
       try {
         let streamId = 0;
@@ -2618,7 +2618,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise stop test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0200 in`);
       try {
         let streamId = 0;
@@ -2661,7 +2661,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise stop test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_0300 in`);
       try {
         let streamId = 0;
@@ -2704,7 +2704,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async stop test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100 in`);
       try {
         let streamId = 0;
@@ -2748,7 +2748,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async stop test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200 in`);
       try {
         let streamId = 0;
@@ -2797,7 +2797,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async stop test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300 in`);
       try {
         let streamId = 0;
@@ -2847,7 +2847,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise setLoop test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0100 in`);
       try {
         let streamId = 0;
@@ -2888,7 +2888,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise setLoop test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0200 in`);
       try {
         let streamId = 0;
@@ -2934,7 +2934,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise setLoop test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_0300 in`);
       try {
         let streamId = 0;
@@ -2981,7 +2981,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async setLoop test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100 in`);
       try {
         let streamId = 0;
@@ -3028,7 +3028,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async setLoop test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200 in`);
       try {
         let streamId = 0;
@@ -3080,7 +3080,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async setLoop test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300 in`);
       try {
         let streamId = 0;
@@ -3133,7 +3133,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise setPriority test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0100 in`);
       try {
         let streamId = 0;
@@ -3174,7 +3174,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise setPriority test --Optional input priority is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0200 in`);
       try {
         let streamId = 0;
@@ -3219,7 +3219,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise setPriority test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0300 in`);
       try {
         let streamId = 0;
@@ -3265,7 +3265,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Promise setPriority test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_0400 in`);
       try {
         let streamId = 0;
@@ -3312,7 +3312,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async setPriority test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100 in`);
       try {
         let streamId = 0;
@@ -3359,7 +3359,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async setPriority test --Optional input priority is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200 in`);
       try {
         let streamId = 0;
@@ -3410,7 +3410,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async setPriority test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300 in`);
       try {
         let streamId = 0;
@@ -3462,7 +3462,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async setPriority test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400 in`);
       try {
         let streamId = 0;
@@ -3514,7 +3514,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise setRate test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0100 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3558,7 +3558,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0200 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3602,7 +3602,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0300 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3646,7 +3646,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Promise setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0400 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3690,7 +3690,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Promise setRate test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0500 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3739,7 +3739,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Promise setRate test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_0600 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3789,7 +3789,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async setRate test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3841,7 +3841,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3893,7 +3893,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3945,7 +3945,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async setRate test --Optional input rate is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -3997,7 +3997,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Async setRate test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -4054,7 +4054,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Async setRate test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600 in`);
       if (deviceInfo.deviceType === 'default') {
         try {
@@ -4112,7 +4112,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise setVolume test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0100 in`);
       try {
         let streamId = 0;
@@ -4154,7 +4154,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Promise setVolume test --Optional input left volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0200 in`);
       try {
         let streamId = 0;
@@ -4195,7 +4195,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise setVolume test --Optional input left volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0300 in`);
       try {
         let streamId = 0;
@@ -4236,7 +4236,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Promise setVolume test --Optional input right volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0400 in`);
       try {
         let streamId = 0;
@@ -4277,7 +4277,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Promise setVolume test --Optional input right volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0500 in`);
       try {
         let streamId = 0;
@@ -4318,7 +4318,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Promise setVolume test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0600 in`);
       try {
         let streamId = 0;
@@ -4365,7 +4365,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Promise setVolume test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_0700 in`);
       try {
         let streamId = 0;
@@ -4413,7 +4413,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Async setVolume test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100 in`);
       try {
         let streamId = 0;
@@ -4461,7 +4461,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async setVolume test --Optional input left volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200 in`);
       try {
         let streamId = 0;
@@ -4508,7 +4508,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Async setVolume test --Optional input left volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300 in`);
       try {
         let streamId = 0;
@@ -4555,7 +4555,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async setVolume test --Optional input right volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400 in`);
       try {
         let streamId = 0;
@@ -4602,7 +4602,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Async setVolume test --Optional input right volume is invalid
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500 in`);
       try {
         let streamId = 0;
@@ -4649,7 +4649,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Async setVolume test --Optional input streamId is invalid
       * @tc.desc      : Function test. Error code: 401
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600 in`);
       try {
         let streamId = 0;
@@ -4702,7 +4702,7 @@ export default function soundPoolTest() {
       * @tc.name      : 007.test Async setVolume test --Optional input streamId is unplayed
       * @tc.desc      : Function test. Error code: 5400102
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700 in`);
       try {
         let streamId = 0;
@@ -4756,7 +4756,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test on('loadComplete') test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0100 in`);
       try {
         await createSoundPool();
@@ -4791,7 +4791,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test on('playFinished') test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0200', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0200 in`);
       try {
         let streamId = 0;
@@ -4831,7 +4831,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test off('loadComplete') test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0300', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0300 in`);
       let flag = false;
       try {
@@ -4883,7 +4883,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test off('playFinished') test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0400', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ON_0400 in`);
       let flag = false;
       let streamId = 0;
@@ -4940,7 +4940,7 @@ export default function soundPoolTest() {
       * @tc.name      : 001.test Promise play without load test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100 in`);
       try {
         let soundId_ = 1;
@@ -4979,7 +4979,7 @@ export default function soundPoolTest() {
       * @tc.name      : 002.test Async play after unload the soundId test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100 in`);
       try {
         await createSoundPool();
@@ -5028,7 +5028,7 @@ export default function soundPoolTest() {
       * @tc.name      : 003.test Promise stop without play test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100 in`);
       try {
         let streamId_ = 1;
@@ -5069,7 +5069,7 @@ export default function soundPoolTest() {
       * @tc.name      : 004.test Async create-load-play-stop-play-unload-release
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100 in`);
       try {
         let streamId_ = -1;
@@ -5120,7 +5120,7 @@ export default function soundPoolTest() {
       * @tc.name      : 005.test Promise play three sounds test
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100 in`);
       try {
         let streamId_: Array<number> = [];
@@ -5161,7 +5161,7 @@ export default function soundPoolTest() {
       * @tc.name      : 006.test Promise play four sounds, but maxstreams = 3
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100 in`);
       try {
         let streamId_: Array<number> = [];
@@ -5229,7 +5229,7 @@ export default function soundPoolTest() {
       * @tc.name      : test play finish with streamId
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_STREAMID_0100 in`);
       try {
         let streamId_: Array<number> = [];
@@ -5297,7 +5297,7 @@ export default function soundPoolTest() {
       * @tc.name      : test play finish with streamId
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_FINISH_WITH_TWO_CALLBACK_0100 in`);
       try {
         let streamId_: Array<number> = [];
@@ -5377,7 +5377,7 @@ export default function soundPoolTest() {
       * @tc.name      : play four sounds, use two instances
       * @tc.desc      : Function test
     */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100', Level.LEVEL0,async (done: Function) => {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_MULTI_INSTANCE_0100 in`);
       try {
         let streamId_: Array<number> = [];

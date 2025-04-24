@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium';
 import window from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import windowNdkTest from 'libentry.so';
 import { BusinessError } from '@ohos.base';
-import deviceInfo from '@ohos.deviceInfo';
 import { image } from '@kit.ImageKit';
+import settings from '@ohos.settings';
 
 function sleep(ms: number): Promise<string> {
   return new Promise((resolve) => {
@@ -35,7 +35,8 @@ export default function windowNdk() {
     let WindowClass:window.Window;
     let windowId:number;
     let context : common.UIAbilityContext;
-    let deviceType: string = '';
+    let isAutoWindow:string = '';
+    let isPCStatus: string = '';
     beforeAll(async() => {
       windowStage = AppStorage.get("windowStage") as window.WindowStage;
       console.log(`${Tag}:beforeAll start... `);
@@ -43,8 +44,16 @@ export default function windowNdk() {
       windowId = WindowClass.getWindowProperties().id;
       console.log(`${Tag}:windowId:${windowId} `);
       context = AppStorage.get("context") as common.UIAbilityContext;
-      deviceType = deviceInfo.deviceType;
-      console.log('windowNdk beforeAll deviceType =' + deviceType);
+      isAutoWindow = settings.getValueSync(context,'window_pcmode_switch_status','',settings.domainName.DEVICE_SHARED);
+      //isAutoWindow == '' 非PAD设备
+      //isAutoWindow == 'true' PAD设备自由多窗模式
+      //isAutoWindow == 'false' PAD设备非自由多窗模式
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      //isPCStatus == '' 非PC设备
+      //isPCStatus == '1' PC设备状态栏dock未融合
+      //isPCStatus == '0' PC设备状态栏dock融合
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     })
     beforeEach(() => {
       console.log(`${Tag}:beforeEach start... `);
@@ -65,7 +74,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_OH_NativeWindowManager_RegisterKeyEventFilter', 0, async (done:Function) => {
+    it('test_OH_NativeWindowManager_RegisterKeyEventFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
         console.info(`${Tag}: test_OH_NativeWindowManager_RegisterKeyEventFilter RegisterKeyEventFilter windowId: ${windowId}`);
         let a = windowNdkTest.filterKeyCode(windowId,2070);
         console.info(`${Tag}: test_OH_NativeWindowManager_RegisterKeyEventFilter RegisterKeyEventFilter: ${a}`);
@@ -91,7 +100,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_OH_NativeWindowManager_UnregisterKeyEventFilter', 0, async (done:Function) => {
+    it('test_OH_NativeWindowManager_UnregisterKeyEventFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let a = windowNdkTest.unFilterKeyCode(windowId);
       console.info(`${Tag}: test_OH_NativeWindowManager_UnregisterKeyEventFilter unRegisterKeyEventFilter windowId: ${windowId}`);
       console.info(`${Tag}: test_OH_NativeWindowManager_UnregisterKeyEventFilter unRegisterKeyEventFilter: ${a}`);
@@ -115,9 +124,9 @@ export default function windowNdk() {
      * @tc.desc      : test_OH_WindowManager_ShowWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('test_OH_WindowManager_ShowWindow', 0, async (done:Function) => {
+    it('test_OH_WindowManager_ShowWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let result1 = windowNdkTest.showWindow(windowId);
       console.info(`${Tag}: test_OH_WindowManager_ShowWindow result: ${JSON.stringify(result1)}`);
       expect(result1.resultCode).assertEqual(0);
@@ -136,7 +145,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_show_subWindow', 0, async (done:Function) => {
+    it('test_NDK_show_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow";
       try {
         let promise = windowStage.createSubWindow('test_NDK_show_subWindow');
@@ -181,7 +190,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_show_subWindow_JS_isShowWindow', 0, async (done:Function) => {
+    it('test_NDK_show_subWindow_JS_isShowWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow_JS_isShowWindow";
       try {
         let promise = windowStage.createSubWindow('test_NDK_show_subWindow_JS_isShowWindow');
@@ -224,12 +233,13 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_show_subWindow_Minimize_window', 0, async (done:Function) => {
+    it('test_NDK_show_subWindow_Minimize_window', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow_Minimize_window";
       try {
+        let subWindow:window.Window;
         let promise = windowStage.createSubWindow('test_NDK_show_subWindow_Minimize_window');
         promise.then(async (data) => {
-          let subWindow = data;
+          subWindow = data;
           console.info(`${caseName}: Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowId = subWindow.getWindowProperties().id;
           console.info(`${caseName}: Succeeded in get the subwindow id: ` + subWindowId);
@@ -264,17 +274,18 @@ export default function windowNdk() {
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName}: Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
             await subWindow.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
             if(err.code == 801){
               done();
             }else{
               expect(false).assertTrue();
               done();
             }
-          });
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
         });
       } catch (exception) {
         console.error(`${caseName}:Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -291,7 +302,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_Show_DialogWindow', 0, async (done:Function) => {
+    it('test_NDK_Show_DialogWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_NDK_Show_DialogWindow";
       try {
         let config: window.Configuration = {
@@ -341,7 +352,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_OH_WindowManager_ShowWindow_1300002', 0, async (done:Function) => {
+    it('test_OH_WindowManager_ShowWindow_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let result = windowNdkTest.showWindow(-1);
       console.info(`${Tag}: test_OH_WindowManager_ShowWindow_1300002 result: ${JSON.stringify(result)}`);
       expect(result.resultCode).assertEqual(1300002);
@@ -356,7 +367,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_OH_WindowManager_IsShowWindown_1300002', 0, async (done:Function) => {
+    it('test_OH_WindowManager_IsShowWindown_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let result = windowNdkTest.isWindowShown(-1);
       console.info(`${Tag}: test_OH_WindowManager_IsShowWindown_1300002 result: ${JSON.stringify(result)}`);
       expect(result.resultCode).assertEqual(1300002);
@@ -371,7 +382,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowStatusBarEnabled_1300002', 0, async (done:Function) => {
+    it('test_SetWindowStatusBarEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowStatusBarEnabled_1300002";
       let result = windowNdkTest.setWindowStatusBarEnabled(-1,true,true);
       console.info(`${caseName}: result: ${result}`);
@@ -385,13 +396,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_SetWindowStatusBarEnabled
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level1
      */
-    it('test_mainWindow_SetWindowStatusBarEnabled', 0, async (done:Function) => {
+    it('test_mainWindow_SetWindowStatusBarEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -407,13 +418,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_SetWindowStatusBarEnabled_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('test_mainWindow_SetWindowStatusBarEnabled_false', 0, async (done:Function) => {
+    it('test_mainWindow_SetWindowStatusBarEnabled_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled_false";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,false,false);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -428,13 +439,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true', 0, async (done:Function) => {
+    it('test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true";
       let result = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -451,7 +462,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('test_subWindow_SetWindowStatusBarEnabled', 0, async (done:Function) => {
+     it('test_subWindow_SetWindowStatusBarEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_subWindow_SetWindowStatusBarEnabled";
       try {
         let promise = windowStage.createSubWindow('test_subWindow_SetWindowStatusBarEnabled');
@@ -466,7 +477,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowStatusBarEnabled(subWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await subWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -495,7 +506,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('test_dialogWindow_SetWindowStatusBarEnabled_1300002', 0, async (done:Function) => {
+     it('test_dialogWindow_SetWindowStatusBarEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_dialogWindow_SetWindowStatusBarEnabled_1300002";
       try {
         let config: window.Configuration = {
@@ -515,7 +526,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowStatusBarEnabled(dialogWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await dialogWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -544,7 +555,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowNavigationBarEnabled_1300002', 0, async (done:Function) => {
+    it('test_SetWindowNavigationBarEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowNavigationBarEnabled_1300002";
       let result = windowNdkTest.setWindowNavigationBarEnabled(-1,true,true);
       console.info(`${caseName}: result: ${result}`);
@@ -559,13 +570,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_setWindowNavigationBarEnabled
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_mainWindow_setWindowNavigationBarEnabled', 0, async (done:Function) => {
+    it('test_mainWindow_setWindowNavigationBarEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,true,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -580,13 +591,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_setWindowNavigationBarEnabled_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_mainWindow_setWindowNavigationBarEnabled_false', 0, async (done:Function) => {
+    it('test_mainWindow_setWindowNavigationBarEnabled_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled_false";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,false,false);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -601,13 +612,13 @@ export default function windowNdk() {
      * @tc.desc      : test_mainWindow_SetWindowStatusBarEnabled_false_enableAnimation_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_mainWindow_setWindowNavigationBarEnabled_false_enableAnimation_true', 0, async (done:Function) => {
+    it('test_mainWindow_setWindowNavigationBarEnabled_false_enableAnimation_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_mainWindow_setWindowNavigationBarEnabled_false_enableAnimation_true";
       let result = windowNdkTest.setWindowNavigationBarEnabled(windowId,false,true);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -624,7 +635,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_subWindow_SetWindowNavigationBarEnabled', 0, async (done:Function) => {
+    it('test_subWindow_SetWindowNavigationBarEnabled', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_subWindow_SetWindowNavigationBarEnabled";
       try {
         let promise = windowStage.createSubWindow('test_subWindow_SetWindowNavigationBarEnabled');
@@ -639,7 +650,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowNavigationBarEnabled(subWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await subWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -668,7 +679,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('test_dialogWindow_SetWindowNavigationBarEnabled_1300002', 0, async (done:Function) => {
+     it('test_dialogWindow_SetWindowNavigationBarEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_dialogWindow_SetWindowNavigationBarEnabled_1300002";
       try {
         let config: window.Configuration = {
@@ -688,7 +699,7 @@ export default function windowNdk() {
           
           let result = windowNdkTest.setWindowNavigationBarEnabled(dialogWindowId,true,true);
           console.info(`${caseName}: result: ${result}`);
-          if(deviceType == '2in1'){
+          if(isPCStatus != ''){
             await dialogWindow.destroyWindow();
             expect(result).assertEqual(801);
             done();
@@ -717,7 +728,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowStatusBarColor_1300002', 0, async (done:Function) => {
+    it('test_SetWindowStatusBarColor_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowStatusBarColor_1300002";
       let result = windowNdkTest.setWindowStatusBarColor(-1,0XFF00FF00);
       console.info(`${caseName}: result: ${result}`);
@@ -734,11 +745,11 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowStatusBarColor_0xFF00FF00', 0, async (done:Function) => {
+    it('test_SetWindowStatusBarColor_0xFF00FF00', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowStatusBarColor_0xFF00FF00";
       let result = windowNdkTest.setWindowStatusBarColor(windowId,0XFF00FF00);
       console.info(`${caseName}: result: ${result}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result).assertEqual(801);
         done();
       }else{
@@ -758,11 +769,11 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowStatusBarColor_0xFF000000', 0, async (done:Function) => {
+    it('test_SetWindowStatusBarColor_0xFF000000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowStatusBarColor_0xFF000000";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -787,7 +798,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_getAvoidAreaByType_1300002', 0, async (done:Function) => {
+    it('test_getAvoidAreaByType_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_1300002";
       let result1 = windowNdkTest.getAvoidAreaByType(-1,0);
       console.info(`${caseName}: result: ${JSON.stringify(result1)}`);
@@ -803,11 +814,11 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_getAvoidAreaByType_statusBar_show', 0, async (done:Function) => {
+    it('test_getAvoidAreaByType_statusBar_show', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_statusBar_show";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -828,12 +839,12 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_getAvoidAreaByType_statusBar_hide', 0, async (done:Function) => {
+    it('test_getAvoidAreaByType_statusBar_hide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_statusBar_hide";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,false,true);
       console.info(`${caseName}: result1: ${result1}`);
       await sleep(500);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -853,11 +864,11 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_getAvoidAreaByType_setLayoutFullScreen', 0, async (done:Function) => {
+    it('test_getAvoidAreaByType_setLayoutFullScreen', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_setLayoutFullScreen";
       let result1 = windowNdkTest.setWindowStatusBarEnabled(windowId,true,true);
       console.info(`${caseName}: result1: ${result1}`);
-      if(deviceType == '2in1'){
+      if(isPCStatus != ''){
         expect(result1).assertEqual(801);
         done();
       }else{
@@ -880,7 +891,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_getAvoidAreaByType_setPreferredOrientation', 0, async (done:Function) => {
+    it('test_getAvoidAreaByType_setPreferredOrientation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_getAvoidAreaByType_setPreferredOrientation";
       await WindowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
       await sleep(2000);
@@ -901,7 +912,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setBackgroundColor_401', 0, async (done:Function) => {
+    it('test_setBackgroundColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_setBackgroundColor_401";
       let result = windowNdkTest.setBackgroundColor(windowId,null);
       console.info(`${caseName}: setBackgroundColor result: ${JSON.stringify(result)}`);
@@ -915,9 +926,9 @@ export default function windowNdk() {
      * @tc.desc      : test_setBackgroundColor_#FF00FF00
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_setBackgroundColor_#FF00FF00', 0, async (done:Function) => {
+    it('test_setBackgroundColor_#FF00FF00', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_setBackgroundColor_#FF00FF00";
       let result = windowNdkTest.setBackgroundColor(windowId,'#FF00FF00');
       console.info(`${caseName}: setBackgroundColor result: ${JSON.stringify(result)}`);
@@ -933,7 +944,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_setBackgroundColor_1300002', 0, async (done:Function) => {
+    it('test_setBackgroundColor_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_setBackgroundColor_1300002";
       let result = windowNdkTest.setBackgroundColor(-1,'#FF00FF00');
       console.info(`${caseName}: setBackgroundColor result: ${JSON.stringify(result)}`);
@@ -949,7 +960,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetBrightness_401', 0, async (done:Function) => {
+    it('test_SetBrightness_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetBrightness_401";
       let result = windowNdkTest.setBrightness(windowId,-5);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -965,7 +976,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetBrightness_1300002', 0, async (done:Function) => {
+    it('test_SetBrightness_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetBrightness_1300002";
       let result = windowNdkTest.setBrightness(-1,1);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -981,7 +992,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetBrightness_-2', 0, async (done:Function) => {
+    it('test_SetBrightness_-2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetBrightness_-2";
       let result = windowNdkTest.setBrightness(windowId,-2);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -997,7 +1008,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetBrightness_2', 0, async (done:Function) => {
+    it('test_SetBrightness_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetBrightness_2";
       let result = windowNdkTest.setBrightness(windowId,2);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -1011,9 +1022,9 @@ export default function windowNdk() {
      * @tc.desc      : test_SetBrightness_1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_SetBrightness_1', 0, async (done:Function) => {
+    it('test_SetBrightness_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetBrightness_1";
       let result = windowNdkTest.setBrightness(windowId,1.0);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -1030,9 +1041,9 @@ export default function windowNdk() {
      * @tc.desc      : test_SetBrightness_0.0
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_SetBrightness_0.0', 0, async (done:Function) => {
+    it('test_SetBrightness_0.0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetBrightness_0.0";
       let result = windowNdkTest.setBrightness(windowId,0.0);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -1049,9 +1060,9 @@ export default function windowNdk() {
      * @tc.desc      : test_SetBrightness_-1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_SetBrightness_-1', 0, async (done:Function) => {
+    it('test_SetBrightness_-1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetBrightness_-1";
       let result = windowNdkTest.setBrightness(windowId,-1);
       console.info(`${caseName}: setBrightness result: ${JSON.stringify(result)}`);
@@ -1071,7 +1082,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetKeepScreenOn_1300002', 0, async (done:Function) => {
+    it('test_SetKeepScreenOn_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetKeepScreenOn_1300002";
       let result = windowNdkTest.setKeepScreenOn(-1,true);
       console.info(`${caseName}: setKeepScreenOn result: ${JSON.stringify(result)}`);
@@ -1085,9 +1096,9 @@ export default function windowNdk() {
      * @tc.desc      : test_SetKeepScreenOn_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_SetKeepScreenOn_false', 0, async (done:Function) => {
+    it('test_SetKeepScreenOn_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetKeepScreenOn_false";
       let result = windowNdkTest.setKeepScreenOn(windowId,false);
       console.info(`${caseName}: setKeepScreenOn result: ${JSON.stringify(result)}`);
@@ -1104,9 +1115,9 @@ export default function windowNdk() {
      * @tc.desc      : test_SetKeepScreenOn_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('test_SetKeepScreenOn_true', 0, async (done:Function) => {
+    it('test_SetKeepScreenOn_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetKeepScreenOn_true";
       let result = windowNdkTest.setKeepScreenOn(windowId,true);
       console.info(`${caseName}: setKeepScreenOn result: ${result}`);
@@ -1126,7 +1137,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowPrivacyMode_1300002', 0, async (done:Function) => {
+    it('test_SetWindowPrivacyMode_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowPrivacyMode_1300002";
       let result = windowNdkTest.setWindowPrivacyMode(-1,true);
       console.info(`${caseName}: setWindowPrivacyMode result: ${result}`);
@@ -1142,7 +1153,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowPrivacyMode_true', 0, async (done:Function) => {
+    it('test_SetWindowPrivacyMode_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowPrivacyMode_true";
       let result = windowNdkTest.setWindowPrivacyMode(windowId,true);
       console.info(`${caseName}: setWindowPrivacyMode result: ${result}`);
@@ -1176,7 +1187,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_SetWindowPrivacyMode_false', 0, async (done:Function) => {
+    it('test_SetWindowPrivacyMode_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowPrivacyMode_false";
       let result = windowNdkTest.setWindowPrivacyMode(windowId,false);
       console.info(`${caseName}: setWindowPrivacyMode result: ${result}`);
@@ -1210,7 +1221,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_snapshot_1300002', 0, async (done:Function) => {
+    it('test_snapshot_1300002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_snapshot_1300002";
       let PixelMap = windowNdkTest.snapshot(-1);
         console.log(caseName + ' snapshot result:'+ JSON.stringify(PixelMap));
@@ -1231,7 +1242,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_SetWindowFocusable_1300002', 0, async (done:Function) => {
+    it('test_SetWindowFocusable_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowFocusable_1300002";
       let result = windowNdkTest.setWindowFocusable(-1,true);
         console.log(caseName + ' setWindowFocusable result:'+ JSON.stringify(result));
@@ -1244,9 +1255,9 @@ export default function windowNdk() {
          * @tc.desc      : test_SetWindowFocusable_false
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-    it('test_SetWindowFocusable_true', 0, async (done:Function) => {
+    it('test_SetWindowFocusable_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetWindowFocusable_true";
       let result = windowNdkTest.setWindowFocusable(windowId,false);
         console.log(caseName + ' setWindowFocusable result:'+ JSON.stringify(result));
@@ -1262,9 +1273,9 @@ export default function windowNdk() {
          * @tc.desc      : test_SetWindowFocusable_true
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-    it('test_SetWindowFocusable_true', 0, async (done:Function) => {
+    it('test_SetWindowFocusable_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetWindowFocusable_true";
       let result = windowNdkTest.setWindowFocusable(windowId,true);
         console.log(caseName + ' setWindowFocusable result:'+ JSON.stringify(result));
@@ -1283,7 +1294,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_SetWindowTouchable_1300002', 0, async (done:Function) => {
+    it('test_SetWindowTouchable_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_SetWindowTouchable_1300002";
       let result = windowNdkTest.setWindowTouchable(-1,true);
         console.log(caseName + ' SetWindowTouchable result:'+ JSON.stringify(result));
@@ -1296,9 +1307,9 @@ export default function windowNdk() {
          * @tc.desc      : test_SetWindowTouchable_false
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-    it('test_SetWindowTouchable_false', 0, async (done:Function) => {
+    it('test_SetWindowTouchable_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetWindowTouchable_false";
       let result = windowNdkTest.setWindowTouchable(windowId,false);
         console.log(caseName + ' SetWindowTouchable result:'+ JSON.stringify(result));
@@ -1314,9 +1325,9 @@ export default function windowNdk() {
          * @tc.desc      : test_SetWindowTouchable_true
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-    it('test_SetWindowTouchable_true', 0, async (done:Function) => {
+    it('test_SetWindowTouchable_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_SetWindowTouchable_true";
       let result = windowNdkTest.setWindowTouchable(windowId,true);
         console.log(caseName + ' SetWindowTouchable result:'+ JSON.stringify(result));
@@ -1335,7 +1346,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_GetWindowPorperties_1300002', 0, async (done:Function) => {
+    it('test_GetWindowPorperties_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_GetWindowPorperties_1300002";
       let result = windowNdkTest.getWindowPorperties(-1);
         console.log(caseName + ' getWindowPorperties result:'+ JSON.stringify(Number(result)));
@@ -1349,9 +1360,9 @@ export default function windowNdk() {
          * @tc.desc      : test_GetWindowPorperties
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-    it('test_GetWindowPorperties', 0, async (done:Function) => {
+    it('test_GetWindowPorperties', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = "test_GetWindowPorperties";
       let windowProperties = windowNdkTest.getWindowPorperties(windowId);
         console.log(caseName + ' getWindowPorperties result:'+ JSON.stringify(windowProperties));
@@ -1368,7 +1379,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_registerMouseFilter_1300002', 0, async (done:Function) => {
+    it('test_registerMouseFilter_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_registerMouseFilter_1300002";
       let result = windowNdkTest.registerMouseFilter(-1);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1384,7 +1395,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_registerMouseFilter_MouseRightButton', 0, async (done:Function) => {
+    it('test_registerMouseFilter_MouseRightButton', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_registerMouseFilter_MouseRightButton";
       let result = windowNdkTest.registerMouseFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1410,7 +1421,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_unRegisterMouseFilter_1300002', 0, async (done:Function) => {
+    it('test_unRegisterMouseFilter_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_unRegisterMouseFilter_1300002";
       let result = windowNdkTest.clearMouseFilter(-1);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1427,7 +1438,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_UnRegisterMouseFilter_MouseRightButton', 0, async (done:Function) => {
+    it('test_UnRegisterMouseFilter_MouseRightButton', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_UnRegisterMouseFilter_MouseRightButton";
       let result = windowNdkTest.clearMouseFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1452,7 +1463,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_registerTouchFilter_1300002', 0, async (done:Function) => {
+    it('test_registerTouchFilter_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_registerTouchFilter_1300002";
       let result = windowNdkTest.registerTouchFilter(-1);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1468,7 +1479,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_registerTouchFilter_TouchMove', 0, async (done:Function) => {
+    it('test_registerTouchFilter_TouchMove', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_registerTouchFilter_TouchMove";
       let result = windowNdkTest.registerTouchFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1494,7 +1505,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_unRegisterTouchFilter_1300002', 0, async (done:Function) => {
+    it('test_unRegisterTouchFilter_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_unRegisterTouchFilter_1300002";
       let result = windowNdkTest.clearTouchFilter(-1);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1510,7 +1521,7 @@ export default function windowNdk() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-    it('test_unRegisterTouchFilter_TouchMove', 0, async (done:Function) => {
+    it('test_unRegisterTouchFilter_TouchMove', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let caseName = "test_unRegisterTouchFilter_TouchMove";
       let result = windowNdkTest.clearTouchFilter(windowId);
         console.log(caseName + '  result:'+ JSON.stringify(result));
@@ -1526,6 +1537,94 @@ export default function windowNdk() {
           expect(false).assertTrue();
           done();
         }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6200
+         * @tc.name      : test_getAllWIndowLayOutInfo_401
+         * @tc.desc      : test_getAllWIndowLayOutInfo_401
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo_401";
+      console.log(caseName + '  start');
+      let result = windowNdkTest.getAllWIndowLayOutInfo(-1);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        if(Number(result)==801){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          done();
+        }else{
+          expect(Number(result)).assertEqual(401);
+          done();
+        }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6300
+         * @tc.name      : test_getAllWIndowLayOutInfo_mainWIndow
+         * @tc.desc      : test_getAllWIndowLayOutInfo_mainWIndow
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+    it('test_getAllWIndowLayOutInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo";
+      console.log(caseName + '  start');
+      let mainWindow = windowStage.getMainWindowSync();
+      let diaplayId = mainWindow.getWindowProperties().displayId;
+      console.log(caseName + '  diaplayId:'+diaplayId);
+      let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        if(Number(result)==801){
+          console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+          done();
+        }else{
+          expect(result.length).assertLargerOrEqual(1);
+          done();
+        }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_WINDOW_MANAGER_NDK_6400
+         * @tc.name      : test_getAllWIndowLayOutInfo_subWIndow
+         * @tc.desc      : test_getAllWIndowLayOutInfo_subWIndow
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
+    it('test_getAllWIndowLayOutInfo_subWIndow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = "test_getAllWIndowLayOutInfo_subWIndow";
+      console.log(caseName + '  start');
+      let subWindow = await windowStage.createSubWindow('test_getAllWIndowLayOutInfo_subWIndow');
+      await subWindow.setUIContent('testability/pages/subWindow');
+      try{
+        let windowlimitsWidth = subWindow.getWindowLimits().minWidth;
+        let windowlimitsHeight = subWindow.getWindowLimits().minHeight;
+        console.log(caseName + '  windowlimitsWidth:'+windowlimitsWidth+',windowlimitsHeight:'+windowlimitsHeight);
+        subWindow.resizeAsync(windowlimitsWidth,windowlimitsHeight);
+        await subWindow.showWindow();
+        let diaplayId = subWindow.getWindowProperties().displayId;
+        console.log(caseName + '  diaplayId:'+diaplayId);
+        let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
+        console.log(caseName + '  result:'+ JSON.stringify(result));
+        await subWindow.destroyWindow();
+          if(Number(result)==801){
+            console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+            done();
+          }else{
+            expect(result.length).assertLargerOrEqual(2);
+            done();
+          }
+      }catch(err){
+        await subWindow.destroyWindow();
+        if(err.code==801){
+            console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
+            done();
+          }else{
+            expect(false).assertTrue();
+            done();
+          }
+      }
+      
     })
 
   })

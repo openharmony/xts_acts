@@ -36,7 +36,7 @@ export default function timeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslTimeSetitimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      let a:number = time.setitimer(0, 100000, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 100000);
+      let a:number = time.setitimer(0, 100000, 0, 100000);
       expect(a).assertEqual(0);
       done()
     });
@@ -49,7 +49,7 @@ export default function timeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslTimeSetitimer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      let a:number = time.setitimer(0, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 0, 100000);
+      let a:number = time.setitimer(0, 0, 0, 100000);
       expect(a).assertEqual(0);
       done()
     });
@@ -62,7 +62,7 @@ export default function timeNdkTest() {
      * @tc.level      : Level 1
      */
     it('testMuslTimeSetitimer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      let a:number = time.setitimer(0, 100000, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, 0);
+      let a:number = time.setitimer(0, 100000, 0, 0);
       expect(a).assertEqual(0);
       done()
     });

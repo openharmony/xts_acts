@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
-
 export default function WorkerUseCurvesTest() {
   describe('WorkerUseCurvesTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,13 +39,11 @@ export default function WorkerUseCurvesTest() {
       }
       done()
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info('WorkerUseCurves after each called');
     });
-
-    it('WorkerUseCurves_0100', 0, async (done: Function) => {
+    it('WorkerUseCurves_0100', Level.LEVEL0, async (done: Function) => {
       console.info('WorkerUseCurves_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

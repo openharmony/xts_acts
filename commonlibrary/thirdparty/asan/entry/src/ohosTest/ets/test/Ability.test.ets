@@ -25,9 +25,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackBufferOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testStackBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.stackBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -39,9 +39,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackBufferUnderflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testStackBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.stackBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -53,9 +53,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapBufferOverflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHeapBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHeapBufferOverflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.heapBufferOverflow();
       expect(result).assertEqual(1);
       done()
@@ -67,9 +67,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapBufferUnderflow
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHeapBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHeapBufferUnderflow001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.heapBufferUnderflow();
       expect(result).assertEqual(1);
       done()
@@ -81,9 +81,9 @@ export default function abilityTest() {
      * @tc.desc       : test heapUseAfterFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testHeapUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHeapUseAfterFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.heapUseAfterFree();
       expect(result).assertEqual(1);
       done()
@@ -95,9 +95,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackUseAfterScope
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackUseAfterScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testStackUseAfterScope001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.stackUseAfterScope();
       expect(result).assertEqual(1);
       done()
@@ -109,9 +109,9 @@ export default function abilityTest() {
      * @tc.desc       : test stackUseAfterReturn
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackUseAfterReturn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testStackUseAfterReturn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.stackUseAfterReturn();
       expect(result).assertEqual(1);
       done()
@@ -123,9 +123,9 @@ export default function abilityTest() {
      * @tc.desc       : test doubleFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testDoubleFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testDoubleFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.doubleFree();
       expect(result).assertEqual(1);
       done()
@@ -137,9 +137,9 @@ export default function abilityTest() {
      * @tc.desc       : test wildFree
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testWildFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWildFree001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: number = asan.wildFree();
       expect(result).assertEqual(1);
       done()

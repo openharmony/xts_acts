@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON } from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import autoFillManager from '@ohos.app.ability.autoFillManager';
@@ -30,7 +30,7 @@ export default function abilityTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('SUB_Ability_AbilityRuntime_AutoSave_0100', 0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_AutoSave_0100', Level.LEVEL0, async (done:Function) => {
       const TAG = 'SUB_Ability_AbilityRuntime_AutoSave_0100_TAG';
       let isSuccess = false;
       let isFailure = false;

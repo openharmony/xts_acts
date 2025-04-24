@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webResourceResponseSet() {
 
@@ -43,6 +45,11 @@ export default function webResourceResponseSet() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webResourceResponseSet beforeEach start");
       done();
@@ -54,9 +61,9 @@ export default function webResourceResponseSet() {
     * @tc.desc       : test setResponseData
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testSetResponseData001', 0, async (done: Function) => {
+    it('testSetResponseData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testSetResponseData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseData001", true, 36010, done);
@@ -71,7 +78,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseEncoding001', 0, async (done: Function) => {
+    it('testSetResponseEncoding001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseEncoding001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseEncoding001", '', 36011, done);
@@ -86,7 +93,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseMimeType001', 0, async (done: Function) => {
+    it('testSetResponseMimeType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseMimeType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseMimeType001", "text/html", 36012, done);
@@ -101,7 +108,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetReasonMessage001', 0, async (done: Function) => {
+    it('testSetReasonMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetReasonMessage001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetReasonMessage001", "OK", 36013, done);
@@ -116,7 +123,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseHeader001', 0, async (done: Function) => {
+    it('testSetResponseHeader001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseHeader001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseHeader001", true, 36014, done);
@@ -131,7 +138,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseCode001', 0, async (done: Function) => {
+    it('testSetResponseCode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseCode001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseCode001", 403, 36015, done);
@@ -146,7 +153,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseIsReady001', 0, async (done: Function) => {
+    it('testSetResponseIsReady001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseIsReady001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseIsReady001", 'test', 36016, done);
@@ -161,7 +168,7 @@ export default function webResourceResponseSet() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testSetResponseIsReady002', 0, async (done: Function) => {
+    it('testSetResponseIsReady002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testSetResponseIsReady002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testSetResponseIsReady002", "intercept test", 36017, done);

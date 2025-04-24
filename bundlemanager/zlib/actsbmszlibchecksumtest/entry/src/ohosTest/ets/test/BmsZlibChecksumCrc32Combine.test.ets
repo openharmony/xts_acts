@@ -70,7 +70,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
         try {
           len2 = 123;
@@ -93,7 +93,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
         try {
           crc1 = -1;
@@ -116,7 +116,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
         try {
           crc1 = 9223372036854775808;
@@ -139,7 +139,7 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level2
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it("Sub_Bms_Zlib_Checksum_Check_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (done: Function) => {
         try {
           crc2 = -1;

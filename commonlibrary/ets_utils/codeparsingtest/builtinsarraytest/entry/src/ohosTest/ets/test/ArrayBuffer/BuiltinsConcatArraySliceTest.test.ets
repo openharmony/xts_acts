@@ -45,9 +45,9 @@ export default function builtinsConcatArraySliceTest() {
      * @tc.desc Test basic slice with start and end
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsConcatArraySliceTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
+    it('builtinsConcatArraySliceTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
       let arr = new ConcatArrayTest<number>([1, 2, 3, 4, 5])
       expect(arr.slice(1, 3)).assertDeepEquals([2, 3]);
     });

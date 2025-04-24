@@ -42,7 +42,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_CreateAxisEvent_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_CreateAxisEvent_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_CreateAxisEvent_0100';
       console.info(`${caseName} start to test OH_Input_CreateAxisEvent`);
       try {
@@ -66,7 +66,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventAction`);
       try {
@@ -90,7 +90,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAction`);
       try {
@@ -114,7 +114,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventDisplayX`);
       try {
@@ -138,7 +138,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayX`);
       try {
@@ -162,7 +162,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventDisplayY`);
       try {
@@ -186,7 +186,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayY`);
       try {
@@ -210,7 +210,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventAxisValue`);
       try {
@@ -234,7 +234,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAxisValue`);
       try {
@@ -258,7 +258,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventActionTime`);
       try {
@@ -282,7 +282,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventActionTime`);
       try {
@@ -306,7 +306,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventType`);
       try {
@@ -330,7 +330,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventType`);
       try {
@@ -354,7 +354,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0100';
       console.info(`${caseName} start to test OH_Input_SetAxisEventSourceType`);
       try {
@@ -378,7 +378,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0100';
       console.info(`${caseName} start to test OH_Input_GetAxisEventSourceType`);
       try {
@@ -402,7 +402,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0100';
       console.info(`${caseName} start to test OH_Input_DestroyAxisEvent`);
       try {
@@ -426,7 +426,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_DestroyAxisEvent_0200';
       console.info(`${caseName} start to test OH_Input_DestroyAxisEvent`);
       try {
@@ -450,7 +450,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventAction_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventAction`);
       try {
@@ -474,7 +474,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAction`);
       try {
@@ -498,7 +498,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAction_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAction`);
       try {
@@ -522,7 +522,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayX_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventDisplayX`);
       try {
@@ -546,7 +546,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayX`);
       try {
@@ -570,7 +570,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayX_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayX`);
       try {
@@ -594,7 +594,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventDisplayY_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventDisplayY`);
       try {
@@ -618,7 +618,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayY`);
       try {
@@ -642,7 +642,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayY`);
       try {
@@ -666,7 +666,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventDisplayY_0400';
       console.info(`${caseName} start to test OH_Input_GetAxisEventDisplayY`);
       try {
@@ -690,7 +690,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventAxisValue_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventAxisValue`);
       try {
@@ -714,7 +714,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAxisValue`);
       try {
@@ -738,7 +738,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAxisValue`);
       try {
@@ -762,7 +762,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0400';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAxisValue`);
       try {
@@ -786,7 +786,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0500', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventAxisValue_0500';
       console.info(`${caseName} start to test OH_Input_GetAxisEventAxisValue`);
       try {
@@ -810,7 +810,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventActionTime_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventActionTime`);
       try {
@@ -834,7 +834,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventActionTime`);
       try {
@@ -858,7 +858,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventActionTime`);
       try {
@@ -882,7 +882,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventActionTime_0400';
       console.info(`${caseName} start to test OH_Input_GetAxisEventActionTime`);
       try {
@@ -906,7 +906,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventType_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventType`);
       try {
@@ -930,7 +930,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventType`);
       try {
@@ -954,7 +954,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventType`);
       try {
@@ -978,7 +978,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventType_0400';
       console.info(`${caseName} start to test OH_Input_GetAxisEventType`);
       try {
@@ -1002,7 +1002,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_SetAxisEventSourceType_0200';
       console.info(`${caseName} start to test OH_Input_SetAxisEventSourceType`);
       try {
@@ -1026,7 +1026,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0200';
       console.info(`${caseName} start to test OH_Input_GetAxisEventSourceType`);
       try {
@@ -1050,7 +1050,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0300';
       console.info(`${caseName} start to test OH_Input_GetAxisEventSourceType`);
       try {
@@ -1074,7 +1074,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_GetAxisEventSourceType_0400';
       console.info(`${caseName} start to test OH_Input_GetAxisEventSourceType`);
       try {
@@ -1098,7 +1098,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_AddKeyEventMonitor`);
       try {
@@ -1122,7 +1122,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventMonitor`);
       try {
@@ -1146,7 +1146,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_AddKeyEventMonitor`);
       try {
@@ -1170,7 +1170,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventMonitor`);
       try {
@@ -1194,7 +1194,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventMonitor`);
       try {
@@ -1218,7 +1218,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_AddKeyEventMonitor`);
       try {
@@ -1242,7 +1242,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventMonitor_0400';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventMonitor`);
       try {
@@ -1266,7 +1266,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_AddMouseEventMonitor`);
       try {
@@ -1290,7 +1290,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
       try {
@@ -1314,7 +1314,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_AddMouseEventMonitor`);
       try {
@@ -1338,7 +1338,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
       try {
@@ -1362,7 +1362,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
       try {
@@ -1386,7 +1386,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddMouseEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_AddMouseEventMonitor`);
       try {
@@ -1410,7 +1410,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveMouseEventMonitor_0400';
       console.info(`${caseName} start to test OH_Input_RemoveMouseEventMonitor`);
       try {
@@ -1434,7 +1434,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_AddTouchEventMonitor`);
       try {
@@ -1458,7 +1458,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveTouchEventMonitor`);
       try {
@@ -1482,7 +1482,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_AddTouchEventMonitor`);
       try {
@@ -1506,7 +1506,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveTouchEventMonitor`);
       try {
@@ -1530,7 +1530,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveTouchEventMonitor`);
       try {
@@ -1554,7 +1554,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddTouchEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_AddTouchEventMonitor`);
       try {
@@ -1578,7 +1578,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveTouchEventMonitor_0400';
       console.info(`${caseName} start to test OH_Input_RemoveTouchEventMonitor`);
       try {
@@ -1602,7 +1602,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0100';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitorForAll`);
       try {
@@ -1626,7 +1626,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0100';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitorForAll`);
       try {
@@ -1650,7 +1650,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0200';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitorForAll`);
       try {
@@ -1674,7 +1674,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0200';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitorForAll`);
       try {
@@ -1698,7 +1698,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0300';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitorForAll`);
       try {
@@ -1722,7 +1722,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitorForAll_0300';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitorForAll`);
       try {
@@ -1746,7 +1746,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitorForAll_0400';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitorForAll`);
       try {
@@ -1770,7 +1770,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitor`);
       try {
@@ -1794,7 +1794,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitor`);
       try {
@@ -1818,7 +1818,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitor`);
       try {
@@ -1842,7 +1842,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitor`);
       try {
@@ -1866,7 +1866,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitor`);
       try {
@@ -1890,7 +1890,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddAxisEventMonitor_0300';
       console.info(`${caseName} start to test OH_Input_AddAxisEventMonitor`);
       try {
@@ -1914,7 +1914,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0400';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitor`);
       try {
@@ -1938,7 +1938,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0500', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveAxisEventMonitor_0500';
       console.info(`${caseName} start to test OH_Input_RemoveAxisEventMonitor`);
       try {
@@ -1962,7 +1962,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0100';
       console.info(`${caseName} start to test OH_Input_AddKeyEventInterceptor`);
       try {
@@ -1986,7 +1986,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0200';
       console.info(`${caseName} start to test OH_Input_AddKeyEventInterceptor`);
       try {
@@ -2010,7 +2010,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0300';
       console.info(`${caseName} start to test OH_Input_AddKeyEventInterceptor`);
       try {
@@ -2034,7 +2034,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventInterceptor`);
       try {
@@ -2058,7 +2058,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventInterceptor`);
       try {
@@ -2082,7 +2082,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddKeyEventInterceptor_0400';
       console.info(`${caseName} start to test OH_Input_AddKeyEventInterceptor`);
       try {
@@ -2106,7 +2106,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveKeyEventInterceptor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveKeyEventInterceptor`);
       try {
@@ -2130,7 +2130,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0100';
       console.info(`${caseName} start to test OH_Input_AddInputEventInterceptor`);
       try {
@@ -2154,7 +2154,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0200';
       console.info(`${caseName} start to test OH_Input_AddInputEventInterceptor`);
       try {
@@ -2178,7 +2178,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0300';
       console.info(`${caseName} start to test OH_Input_AddInputEventInterceptor`);
       try {
@@ -2202,7 +2202,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0100', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0100';
       console.info(`${caseName} start to test OH_Input_RemoveInputEventInterceptor`);
       try {
@@ -2226,7 +2226,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0200', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0200';
       console.info(`${caseName} start to test OH_Input_RemoveInputEventInterceptor`);
       try {
@@ -2250,7 +2250,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0400', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_AddInputEventInterceptor_0400';
       console.info(`${caseName} start to test OH_Input_AddInputEventInterceptor`);
       try {
@@ -2274,7 +2274,7 @@ export default function MultimodalInputNdkSysTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0300', 0, async (done: Function) => {
+    it('SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'SUB_MMI_Input_Api_NdkSys_RemoveInputEventInterceptor_0300';
       console.info(`${caseName} start to test OH_Input_RemoveInputEventInterceptor`);
       try {

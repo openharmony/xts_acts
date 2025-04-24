@@ -91,14 +91,14 @@ export default function httpFetchTest() {
 
     /* *
      * @tc.number: SUB_NetworkMgr_Http_FetchRequestURL_0100
-     * @tc.name  : testHttpFetchRequestURL0100
+     * @tc.name  : testNetworkMgrHttpFetchRequestURL0100
      * @tc.desc  : Test fetch api with useful url.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 2
+     * @tc.level : level 0
      */
-    it('testHttpFetchRequestURL0100', 0, async (done: Function) => {
-      let caseName: string = 'testHttpFetchRequestURL0100';
+    it('testNetworkMgrHttpFetchRequestURL0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done: Function) => {
+      let caseName: string = 'testNetworkMgrHttpFetchRequestURL0100';
       runFetchTestCase(caseName, {
         url: TEST_URL
       }, done, () => {
@@ -116,7 +116,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testHttpFetchRequestURLIsNull0200', 0, async (done: Function) => {
+    it('testHttpFetchRequestURLIsNull0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       let caseName: string = 'testHttpFetchRequestURLIsNull0200';
       runFetchTestCase(caseName, {
         url: ''
@@ -135,7 +135,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchRequestURLIsInvalid0300', 0, (done: Function) => {
+    it('testHttpFetchRequestURLIsInvalid0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , (done: Function) => {
       let caseName: string = 'testHttpFetchRequestURLIsInvalid0300';
       runFetchTestCase(caseName, {
         url: 'hello'
@@ -154,7 +154,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchRequestParamsIsInvalid0400', 0, (done: Function) => {
+    it('testHttpFetchRequestParamsIsInvalid0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , (done: Function) => {
       let caseName: string = 'testHttpFetchRequestParamsIsInvalid0400';
       runFetchTestCase(caseName, {
         url: TEST_URL, method: 'ME'
@@ -173,7 +173,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testHttpFetchCode2000500', 0, async (done: Function) => {
+    it('testHttpFetchCode2000500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       let caseName: string = 'testHttpFetchCode2000500';
       runFetchTestCase(caseName, {
         url: TEST_URL
@@ -192,7 +192,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchCode4040600', 0, async (done: Function) => {
+    it('testHttpFetchCode4040600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 , async (done: Function) => {
       let caseName: string = 'testHttpFetchCode4040600';
       runFetchTestCase(caseName, {
         url: `${TEST_URL_FOR_FETCH}/view`
@@ -211,7 +211,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchCode4000700', 0, async (done: Function) => {
+    it('testHttpFetchCode4000700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchCode4000700';
       runFetchTestCase(caseName, {
         url: 'http://www.kuaidi100.com/query'
@@ -231,7 +231,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchResponseDataType0800', 0, async (done: Function) => {
+    it('testHttpFetchResponseDataType0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchResponseDataType0800';
       runFetchTestCase(caseName, {
         url: TEST_URL, responseType: 'text'
@@ -250,7 +250,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchResponseDataType0900', 0, async (done: Function) => {
+    it('testHttpFetchResponseDataType0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchResponseDataType0900';
       runFetchTestCase(caseName, {
         url: TEST_URL, responseType: 'json'
@@ -269,7 +269,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchResponseDataType01000', 0, async (done: Function) => {
+    it('testHttpFetchResponseDataType01000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchResponseDataType01000';
       runFetchTestCase(caseName, {
         url: TEST_URL
@@ -288,7 +288,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchResponseDataType01100', 0, async (done: Function) => {
+    it('testHttpFetchResponseDataType01100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchResponseDataType01100';
       runFetchTestCase(caseName, {
         url: TEST_URL, responseType: 'hello'
@@ -301,14 +301,14 @@ export default function httpFetchTest() {
 
     /* *
      * @tc.number: SUB_NetworkMgr_Http_FetchRequestMethod_01200
-     * @tc.name  : testHttpFetchRequestMethod01200
+     * @tc.name  : testNetworkMgrHttpFetchRequestMethod01200
      * @tc.desc  : Test fetch api with param that method is POST.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testHttpFetchRequestMethod01200', 0, async (done: Function) => {
-      let caseName: string = 'testHttpFetchRequestMethod01200';
+    it('testNetworkMgrHttpFetchRequestMethod01200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrHttpFetchRequestMethod01200';
       runFetchTestCase(caseName, {
         url: TEST_URL, method: 'POST', responseType: 'json'
       }, done, (data: FetchResponse) => {
@@ -326,7 +326,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchRequestMethod01300', 0, async (done: Function) => {
+    it('testHttpFetchRequestMethod01300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchRequestMethod01300';
       runFetchTestCase(caseName, {
         url: TEST_URL, method: 'DELETE'
@@ -346,7 +346,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchRequestData01400', 0, async (done: Function) => {
+    it('testHttpFetchRequestData01400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchRequestData01400';
       runFetchTestCase(caseName, {
         url: TEST_URL, data: [123]
@@ -365,7 +365,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testHttpFetchRequestData01500', 0, async (done: Function) => {
+    it('testHttpFetchRequestData01500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testHttpFetchRequestData01500';
       runFetchTestCase(caseName, {
         url: TEST_URL, data: ''
@@ -384,7 +384,7 @@ export default function httpFetchTest() {
      * @tc.type  : Function
      * @tc.level : level 2
      */
-    it('testHttpFetchRequestComplete01600', 0, async (done: Function) => {
+    it('testHttpFetchRequestComplete01600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testHttpFetchRequestComplete01600';
       console.info(`${caseName} test start `);
       try {

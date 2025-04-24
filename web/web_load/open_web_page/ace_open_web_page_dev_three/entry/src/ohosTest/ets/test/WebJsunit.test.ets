@@ -13,15 +13,22 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitLoadUrl";
 
 export default function webJsunit() {
   describe('ActsAceWebDevTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -51,7 +58,7 @@ export default function webJsunit() {
      *tc.name LoadUrl                                                                                                                                                                                                                
      *tc.desic load contents from url
      */
-    it('LoadUrl', 0, async (done: Function) => {
+    it('LoadUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRefresh";
       Utils.registerContainEvent("LoadUrl", "index", 1, done);
       sendEventByKey('webcomponent', 10, '');
@@ -61,7 +68,7 @@ export default function webJsunit() {
      *tc.name Refresh
      *tc.desic refresh current page
      */
-    it('Refresh', 0, async (done: Function) => {
+    it('Refresh', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitLoadData";
       Utils.registerEvent("Refresh", "index", 9, done);
       sendEventByKey('webcomponent', 10, '');
@@ -71,7 +78,7 @@ export default function webJsunit() {
      *tc.name LoadData                                                                                                                                                                                                                
      *tc.desic load contents from data
      */
-    it('LoadData', 0, async (done: Function) => {
+    it('LoadData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitLoadData";
       Utils.registerEvent("LoadData", "baidu", 2, done);
       sendEventByKey('webcomponent', 10, '');

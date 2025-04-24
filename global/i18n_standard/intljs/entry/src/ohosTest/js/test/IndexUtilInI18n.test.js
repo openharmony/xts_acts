@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function IndexUtilInI18nTest() {
 describe('IndexUtilInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('IndexUtilInI18nTest', function () {
     * @tc.name    test getIndex interface
     * @tc.desc    check the getIndex interface
     */
-    it('i18n_test_indexutil_0100', 0, function () {
+    it('i18n_test_indexutil_0100', Level.LEVEL0, function () {
         console.log('i18n_test_indexutil_0100 ' + 'start');
         let index = I18n.getInstance();
         let value = index.getIndex('a');
@@ -74,7 +74,7 @@ describe('IndexUtilInI18nTest', function () {
     * @tc.name    test getIndexList interface
     * @tc.desc    check the getIndexList interface
     */
-    it('i18n_test_indexutil_0200', 0, function () {
+    it('i18n_test_indexutil_0200', Level.LEVEL0, function () {
         console.log('i18n_test_indexutil_0200 ' + 'start');
         let index = I18n.getInstance();
         let value = index.getIndexList();
@@ -88,7 +88,7 @@ describe('IndexUtilInI18nTest', function () {
     * @tc.name    test addLocale interface
     * @tc.desc    check the addLocale interface
     */
-    it('i18n_test_indexutil_0300', 0, function () {
+    it('i18n_test_indexutil_0300', Level.LEVEL2, function () {
         console.log('i18n_test_indexutil_0300 ' + 'start');
         let index = I18n.getInstance();
         index.addLocale('en');
@@ -102,7 +102,7 @@ describe('IndexUtilInI18nTest', function () {
     * @tc.name    test getInstance interface with zh locale
     * @tc.desc    check the getInstance interface with zh locale
     */
-    it('i18n_test_indexutil_0400', 0, function () {
+    it('i18n_test_indexutil_0400', Level.LEVEL2, function () {
         console.log('i18n_test_indexutil_0400 ' + 'start');
         let index = I18n.getInstance('zh');
         let value = index.getIndex('z');

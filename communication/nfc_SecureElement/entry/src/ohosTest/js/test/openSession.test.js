@@ -111,7 +111,12 @@ export default function openSessionTest() {
                 }
             } catch (error) {
                 console.info("[NFC_test]6 The reader result of the session is abnormal:" + error);
-                expect().assertFail();
+				if (error.code == 801){
+					console.info("[NFC_test]6 getReader is not support");
+					except(true).assertTrue();
+				}else{
+					expect().assertFail();
+				}
             }
         })
 

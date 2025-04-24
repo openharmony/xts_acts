@@ -15,7 +15,7 @@
 
 import camera from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { surfaceIds } from '../testability/pages/Index';
@@ -310,6 +310,7 @@ export default function cameraPreconfigTest() {
     afterEach(async () => {
       console.info('afterEach case');
       await sleep(100);
+      await releaseCameraSessionInstance();
     })
 
     afterAll(async () => {
@@ -326,7 +327,7 @@ export default function cameraPreconfigTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_0100--------------");
 
       if (mCameraNum == 0) {
@@ -350,7 +351,7 @@ export default function cameraPreconfigTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_PRECONFIG_0100--------------");
 
       if (mCameraNum == 0) {
@@ -396,7 +397,7 @@ export default function cameraPreconfigTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_PRECONFIG_0100--------------");
 
       if (mCameraNum == 0) {
@@ -442,8 +443,9 @@ export default function cameraPreconfigTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100--------------");
+      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_CANPRECONFIG_ERROR_CODE_0100 SUCCESS");
         let canPreconfig = mCameraSession.canPreconfig(null);
@@ -465,8 +467,9 @@ export default function cameraPreconfigTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100--------------");
+      createCameraSessionInstance(camera.SceneMode.NORMAL_PHOTO);
       try {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CREATE_PHTOT_SESSION_PRECONFIG_ERROR_CODE_0100 SUCCESS");
         mCameraSession.preconfig(null);

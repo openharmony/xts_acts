@@ -38,7 +38,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_001
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js")
         let isTerminate = false
 
@@ -59,7 +59,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_002
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {name:"1st worker", shared: false})
         let isTerminate = false
 
@@ -80,7 +80,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_003
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                          {type:"classic", name:"2st worker", shared: false})
         let isTerminate = false
@@ -102,7 +102,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_004
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                          {type:"classic", name:"3st worker", shared: true})
         let isTerminate = false
@@ -124,7 +124,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_005
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {type:"other", name:"worker"})
         } catch (error) {
@@ -139,7 +139,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_006
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js",
                                              {type:1, name:"new worker", shared: true})
@@ -155,7 +155,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_007
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-    it('threadWorker_constructor_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker.js", {type:"classic", name:1, shared: true})
         } catch (error) {
@@ -170,7 +170,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_008
      * @tc.desc: worker constructor to Creates a worker instance when throw error.
      */
-     it('threadWorker_constructor_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+     it('threadWorker_constructor_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let ss = new worker.ThreadWorker()
         } catch (error) {
@@ -185,7 +185,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_009
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("/entry_test/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -203,7 +203,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_constructor_test_010
      * @tc.desc: worker constructor to Creates a worker instance.
      */
-    it('threadWorker_constructor_test_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_constructor_test_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("@bundle:com.example.threadWorkertest/entry_test/ets/workers/newworker.js");
         let isTerminate = false
         ss.onexit = function () {
@@ -223,7 +223,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_001
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_002.js")
 
         let res = undefined
@@ -258,7 +258,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_002
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_003.js")
 
         let res = undefined
@@ -292,7 +292,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_003
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_004.js")
 
         let res = undefined
@@ -326,7 +326,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_004
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_005.js", {name: "zhangsan"})
 
         let res = undefined
@@ -362,7 +362,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_005
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_006.js")
         let isTerminate = false
 
@@ -402,7 +402,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_006
      * @tc.desc: Sends a message to the worker thread.
      */
-    it('threadWorker_postMessage_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         const ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js")
 
         let res = undefined
@@ -435,7 +435,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_007
      * @tc.desc: Sends a message to the worker thread when throw error.
      */
-     it('threadWorker_postMessage_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+     it('threadWorker_postMessage_test_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let isTerminate = false;
         ss.onexit = function () {
@@ -460,7 +460,7 @@ describe('threadWorkerTest', function () {
      * @tc.name: threadWorker_postMessage_test_008
      * @tc.desc: Sends a message to the worker thread when throw error.
      */
-    it('threadWorker_postMessage_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('threadWorker_postMessage_test_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         let ss = new worker.ThreadWorker("entry_test/ets/workers/newworker_007.js");
         let isTerminate = false;
         ss.onexit = function () {

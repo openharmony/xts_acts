@@ -131,7 +131,14 @@
     "pages/ArkUI/Taphand",
     "pages/ArkUI/Touchhand",
     "pages/ArkUI/HoverSpen",
-    "pages/ArkUI/stopSwiper"
+    "pages/ArkUI/stopSwiper",
+    "pages/ArkUI/AccessibilityRoleTypeTest",
+    "pages/ArkUI/StylusPen",
+    "pages/ArkUI/AccessibilityFocusDrawLevel",
+	"entryembeddeduiextability/pages/EntryEmbeddedUIExtAbilityPage",
+    "pages/ArkUI/AccessibilityNextFocusIdPage",
+    "pages/ArkUI/AccessibilityDefaultFocusPage",
+    "pages/ArkUI/AccessibilityScrollTriggerablePage"
   ]
 }
 

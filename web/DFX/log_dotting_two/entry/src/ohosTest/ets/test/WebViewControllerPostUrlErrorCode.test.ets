@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPostUrlErrorCode() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPostUrlErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info(`${pageName} beforeEach start`);
       done();
     })
@@ -61,7 +69,7 @@ export default function webViewControllerPostUrlErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebViewControllerPostUrl001', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl001", '17100001', 30001, done);
@@ -76,7 +84,7 @@ export default function webViewControllerPostUrlErrorCode() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testWebViewControllerPostUrl002', 0, async (done: Function) => {
+    it('testWebViewControllerPostUrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testWebViewControllerPostUrl002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebViewControllerPostUrl002", '17100002', 30002, done);

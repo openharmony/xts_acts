@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 export default function CharacterInI18nTest() {
 describe('CharacterInI18nTest', function () {
@@ -61,7 +61,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isDigit interface
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_1100', 0, function () {
+    it('i18n_test_character_1100', Level.LEVEL0, function () {
         console.log('i18n_test_character_1100 ' + 'start');
         let character = new I18n.Character();
         let value = character.isDigit('abc');
@@ -74,7 +74,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isDigit interface with 123 param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_1120', 0, function () {
+    it('i18n_test_character_1120', Level.LEVEL2, function () {
         console.log('i18n_test_character_1120 ' + 'start');
         let character = new I18n.Character();
         let value = character.isDigit('123');
@@ -87,7 +87,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isDigit interface with 123abc param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_1140', 0, function () {
+    it('i18n_test_character_1140', Level.LEVEL2, function () {
         console.log('i18n_test_character_1140 ' + 'start');
         let character = new I18n.Character();
         let value = character.isDigit('123abc');
@@ -100,7 +100,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isDigit interface with abc123 param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_1150', 0, function () {
+    it('i18n_test_character_1150', Level.LEVEL2, function () {
         console.log('i18n_test_character_1150 ' + 'start');
         let character = new I18n.Character();
         let value = character.isDigit('abc123');
@@ -113,7 +113,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isDigit interface with null param
     * @tc.desc    check the isDigit interface
     */
-    it('i18n_test_character_1160', 0, function () {
+    it('i18n_test_character_1160', Level.LEVEL2, function () {
         console.log('i18n_test_character_1160 ' + 'start');
         let character = new I18n.Character();
         let value = character.isDigit('');
@@ -126,7 +126,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with abc param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_1200', 0, function () {
+    it('i18n_test_character_1200', Level.LEVEL0, function () {
         console.log('i18n_test_character_1200 ' + 'start');
         let character = new I18n.Character();
         let value = character.isSpaceChar('abc');
@@ -139,7 +139,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with one space param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_1220', 0, function () {
+    it('i18n_test_character_1220', Level.LEVEL2, function () {
         console.log('i18n_test_character_1220 ' + 'start');
         let character = new I18n.Character();
         let value = character.isSpaceChar(' ');
@@ -152,7 +152,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isSpaceChar interface with multi space param
     * @tc.desc    check the isSpaceChar interface
     */
-    it('i18n_test_character_1240', 0, function () {
+    it('i18n_test_character_1240', Level.LEVEL2, function () {
         console.log('i18n_test_character_1240 ' + 'start');
         let character = new I18n.Character();
         let value = character.isSpaceChar('   ');
@@ -165,7 +165,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isWhitespace interface with abc param
     * @tc.desc    check the isWhitespace interface
     */
-    it('i18n_test_character_1300', 0, function () {
+    it('i18n_test_character_1300', Level.LEVEL0, function () {
         console.log('i18n_test_character_1300 ' + 'start');
         let character = new I18n.Character();
         let value = character.isWhitespace('abc');
@@ -178,7 +178,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isWhitespace interface with \u0009 param
     * @tc.desc    check the isWhitespace interface
     */
-    it('i18n_test_character_1320', 0, function () {
+    it('i18n_test_character_1320', Level.LEVEL2, function () {
         console.log('i18n_test_character_1320 ' + 'start');
         let character = new I18n.Character();
         let value = character.isWhitespace('\u0009');
@@ -191,7 +191,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isRTL interface with abc param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_1400', 0, function () {
+    it('i18n_test_character_1400', Level.LEVEL0, function () {
         console.log('i18n_test_character_1400 ' + 'start');
         let character = new I18n.Character();
         let value = character.isRTL('abc');
@@ -204,7 +204,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isRTL interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_1420', 0, function () {
+    it('i18n_test_character_1420', Level.LEVEL2, function () {
         console.log('i18n_test_character_1420 ' + 'start');
         let character = new I18n.Character();
         let value = character.isRTL('١٢٣٤٥٦٧');
@@ -217,7 +217,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isRTL interface with 我是小明 param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_1440', 0, function () {
+    it('i18n_test_character_1440', Level.LEVEL2, function () {
         console.log('i18n_test_character_1440 ' + 'start');
         let character = new I18n.Character();
         let value = character.isRTL('我是小明');
@@ -230,7 +230,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isRTL interface with نحن param
     * @tc.desc    check the isRTL interface
     */
-    it('i18n_test_character_1460', 0, function () {
+    it('i18n_test_character_1460', Level.LEVEL2, function () {
         console.log('i18n_test_character_1460 ' + 'start');
         let character = new I18n.Character();
         let value = character.isRTL('نحن');
@@ -243,7 +243,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isIdeograph interface with abc param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_1500', 0, function () {
+    it('i18n_test_character_1500', Level.LEVEL2, function () {
         console.log('i18n_test_character_1500 ' + 'start');
         let character = new I18n.Character();
         let value = character.isIdeograph('abc');
@@ -256,7 +256,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '我' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_1520', 0, function () {
+    it('i18n_test_character_1520', Level.LEVEL2, function () {
         console.log('i18n_test_character_1520 ' + 'start');
         let character = new I18n.Character();
         let value = character.isIdeograph('我');
@@ -269,7 +269,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '우리' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_1540', 0, function () {
+    it('i18n_test_character_1540', Level.LEVEL2, function () {
         console.log('i18n_test_character_1540 ' + 'start');
         let character = new I18n.Character();
         let value = character.isIdeograph('우리');
@@ -282,7 +282,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isIdeograph interface with '私た' param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_1560', 0, function () {
+    it('i18n_test_character_1560', Level.LEVEL2, function () {
         console.log('i18n_test_character_1560 ' + 'start');
         let character = new I18n.Character();
         let value = character.isIdeograph('私たち');
@@ -295,7 +295,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLetter interface with abc param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_1600', 0, function () {
+    it('i18n_test_character_1600', Level.LEVEL0, function () {
         console.log('i18n_test_character_1600 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLetter('abc');
@@ -308,7 +308,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLetter interface with 123 param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_1620', 0, function () {
+    it('i18n_test_character_1620', Level.LEVEL2, function () {
         console.log('i18n_test_character_1620 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLetter('123');
@@ -321,7 +321,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLetter interface with abc123 param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_1640', 0, function () {
+    it('i18n_test_character_1640', Level.LEVEL2, function () {
         console.log('i18n_test_character_1640 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLetter('abc123');
@@ -334,7 +334,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLetter interface with 123abc param
     * @tc.desc    check the isLetter interface
     */
-    it('i18n_test_character_1660', 0, function () {
+    it('i18n_test_character_1660', Level.LEVEL2, function () {
         console.log('i18n_test_character_1660 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLetter('123abc');
@@ -347,7 +347,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLowerCase interface with abc param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_1700', 0, function () {
+    it('i18n_test_character_1700', Level.LEVEL0, function () {
         console.log('i18n_test_character_1700 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLowerCase('abc');
@@ -360,7 +360,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    ftest isLowerCase interface with ABC param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_1720', 0, function () {
+    it('i18n_test_character_1720', Level.LEVEL2, function () {
         console.log('i18n_test_character_1720 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLowerCase('ABC');
@@ -373,7 +373,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLowerCase interface with abcDEF param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_1740', 0, function () {
+    it('i18n_test_character_1740', Level.LEVEL2, function () {
         console.log('i18n_test_character_1740 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLowerCase('abcDEF');
@@ -386,7 +386,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isLowerCase interface with ABCdef param
     * @tc.desc    check the isLowerCase interface
     */
-    it('i18n_test_character_1760', 0, function () {
+    it('i18n_test_character_1760', Level.LEVEL2, function () {
         console.log('i18n_test_character_1760 ' + 'start');
         let character = new I18n.Character();
         let value = character.isLowerCase('ABCdef');
@@ -399,7 +399,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isUpperCase interface with ABC param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_1800', 0, function () {
+    it('i18n_test_character_1800', Level.LEVEL0, function () {
         console.log('i18n_test_character_1800 ' + 'start');
         let character = new I18n.Character();
         let value = character.isUpperCase('ABC');
@@ -412,7 +412,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isUpperCase interface with abc param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_1820', 0, function () {
+    it('i18n_test_character_1820', Level.LEVEL2, function () {
         console.log('i18n_test_character_1820 ' + 'start');
         let character = new I18n.Character();
         let value = character.isUpperCase('abc');
@@ -425,7 +425,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isUpperCase interface with ABCdef param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_1840', 0, function () {
+    it('i18n_test_character_1840', Level.LEVEL2, function () {
         console.log('i18n_test_character_1840 ' + 'start');
         let character = new I18n.Character();
         let value = character.isUpperCase('ABCdef');
@@ -438,7 +438,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isUpperCase interface with abcDEF param
     * @tc.desc    check the isUpperCase interface
     */
-    it('i18n_test_character_1860', 0, function () {
+    it('i18n_test_character_1860', Level.LEVEL2, function () {
         console.log('i18n_test_character_1860 ' + 'start');
         let character = new I18n.Character();
         let value = character.isUpperCase('abcDEF');
@@ -451,7 +451,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with a param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1900', 0, function () {
+    it('i18n_test_character_1900', Level.LEVEL0, function () {
         console.log('i18n_test_character_1900 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('a');
@@ -464,7 +464,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    ftest getType interface with ABC param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1920', 0, function () {
+    it('i18n_test_character_1920', Level.LEVEL2, function () {
         console.log('i18n_test_character_1920 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('ABC');
@@ -477,7 +477,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with ABCdef param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1940', 0, function () {
+    it('i18n_test_character_1940', Level.LEVEL2, function () {
         console.log('i18n_test_character_1940 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('ABCdef');
@@ -490,7 +490,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with 123 param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1960', 0, function () {
+    it('i18n_test_character_1960', Level.LEVEL2, function () {
         console.log('i18n_test_character_1960 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('123');
@@ -503,7 +503,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with 123abc param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1970', 0, function () {
+    it('i18n_test_character_1970', Level.LEVEL2, function () {
         console.log('i18n_test_character_1970 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('123abc');
@@ -516,7 +516,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1980', 0, function () {
+    it('i18n_test_character_1980', Level.LEVEL2, function () {
         console.log('i18n_test_character_1980 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('١٢٣٤٥٦٧');
@@ -529,7 +529,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test getType interface with multi space param
     * @tc.desc    check the getType interface
     */
-    it('i18n_test_character_1990', 0, function () {
+    it('i18n_test_character_1990', Level.LEVEL2, function () {
         console.log('i18n_test_character_1990 ' + 'start');
         let character = new I18n.Character();
         let value = character.getType('   ');

@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect} from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import events_emitter from '@ohos.events.emitter'
-
 export default function AnimationJsunit() {
   describe('AnimationJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -41,19 +40,16 @@ export default function AnimationJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
-
      /**
      * @tc.number: SUB_ACE_TS_COMPONENT_AR000IGJGH_01
      * @tc.name : AnimationJsunit_0100
      * @tc.desc : Does the component size change after playback
      */
-
-    it('AnimationJsunit_0100', 0, async (done: Function) => {
+    it('AnimationJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -77,14 +73,13 @@ export default function AnimationJsunit() {
       console.info('[AnimationJsunit_0100] END');
       done();
     });
-
 	 /**
      * @tc.number: SUB_ACE_TS_COMPONENT_AR000IGJGH_02
      * @tc.name : AnimationJsunit_0200
      * @tc.desc : Does the component size reach the set value after animation cancellation
      */
 	 
-	 it('AnimationJsunit_0200', 0, async (done: Function) => {
+	 it('AnimationJsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0200] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -115,7 +110,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Is there no change in component size after animation pause
      */
 	
-	it('AnimationJsunit_0300', 0, async (done: Function) => {
+	it('AnimationJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0300] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -150,7 +145,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Is the component size at the set value after the animation ends
      */
 	
-	it('AnimationJsunit_0400', 0, async (done: Function) => {
+	it('AnimationJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0400] START');
       let driver2 = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -181,7 +176,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Does the animation setting parameters take effect
      */
 	
-	it('AnimationJsunit_0500', 0, async (done: Function) => {
+	it('AnimationJsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0500] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -215,7 +210,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Print callback after animation cancellation
      */
 	
-	it('AnimationJsunit_0600', 0, async (done: Function) => {
+	it('AnimationJsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0600] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);
@@ -246,7 +241,7 @@ export default function AnimationJsunit() {
      * @tc.desc : Whether to print the callback after the animation ends
      */
 	
-	it('AnimationJsunit_0700', 0, async (done: Function) => {
+	it('AnimationJsunit_0700', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimationJsunit_0700] START');
       let driver = await Driver.create()
 	  await CommonFunc.sleep(1000);

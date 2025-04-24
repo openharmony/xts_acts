@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 // 加载js测试框架
 import { Caller, common, sendableContextManager, WantAgent, wantAgent, wantConstant, StartOptions, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -51,7 +51,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0200', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0200', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
       if(mpEnable == 'true'){
         try {
@@ -85,7 +85,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
       if(mpEnable == 'true'){
         try {
@@ -120,7 +120,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
       if(mpEnable == 'true'){
         try {
@@ -158,7 +158,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_0900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_0900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
       if(mpEnable == 'true'){
         try {
@@ -196,7 +196,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1800', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1800', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1800 start');
       let tag = 'SUB_Ability_AbilityBase_StartAbilityError_1800';
       if(mpEnable == 'true'){
@@ -252,7 +252,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_StartAbilityError_1900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_StartAbilityError_1900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_1900 start');
       let tag = 'SUB_Ability_AbilityBase_StartAbilityError_1900';
       if(mpEnable == 'true'){
@@ -312,7 +312,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_0500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_0500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_0500 start');
       let want: Want = {
         deviceId: '',
@@ -369,7 +369,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_1500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_1500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_1500 start');
       let want: Want = {
         deviceId: '',
@@ -429,7 +429,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_2500', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_2500', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_2500 start');
       let want: Want = {
         deviceId: '',
@@ -499,7 +499,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_3700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_3700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 start');
       let caller: Caller;
       let want: Want = {
@@ -575,7 +575,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0400 start');
       let want: Want = {
         deviceId: '',
@@ -613,7 +613,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1400 start');
       let want: Want = {
         deviceId: '',
@@ -653,7 +653,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2400', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2400', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2400 start');
       let want: Want = {
         deviceId: '',
@@ -699,7 +699,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3600', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3600', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3600 start');
       let caller: Caller;
       let want: Want = {
@@ -744,7 +744,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_0700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_0700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_0700 start');
       let want: Want = {
         deviceId: '',
@@ -783,7 +783,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_1700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_1700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_1700 start');
       let want: Want = {
         deviceId: '',
@@ -825,7 +825,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_2700', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_2700', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_2700 start');
       let want: Want = {
         deviceId: '',
@@ -873,7 +873,7 @@ export default function openLinkTest() {
      * @tc.size   : MediumTest
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityBase_UIAbilityContextError_3900', 0, async (done: Function)=> {
+    it('SUB_Ability_AbilityBase_UIAbilityContextError_3900', Level.LEVEL0, async (done: Function)=> {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_UIAbilityContextError_3900 start');
       let want: Want = {
         deviceId: '',

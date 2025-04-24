@@ -48,6 +48,9 @@
     ],
     "requestPermissions": [
       {
+        "name": "ohos.permission.POWER_MANAGER"
+      },
+      {
         "name": "ohos.permission.CAPTURE_SCREEN"
       },
       {
@@ -154,6 +157,15 @@
       },
       {
         "name": "ohos.permission.ACCESS_BIOMETRIC"
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "EntryEmbeddedUIExtAbility",
+        "srcEntry": "./ets/entryembeddeduiextability/EntryEmbeddedUIExtAbility.ets",
+        "description": "$string:EntryEmbeddedUIExtAbility_desc",
+        "label": "$string:EntryEmbeddedUIExtAbility_label",
+        "type": "embeddedUI"
       }
     ]
   }

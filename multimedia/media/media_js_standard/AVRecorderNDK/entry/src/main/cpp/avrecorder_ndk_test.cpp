@@ -35,7 +35,6 @@
 #include <multimedia/player_framework/native_averrors.h>
 #include "native_image/native_image.h"
 #include "native_window/external_window.h"
-#include "camera_manager.h"
 #include "GLES3/gl32.h"
 #include <typeinfo>
 #include <fcntl.h>
@@ -49,8 +48,6 @@
 #include <thread>
 
 using namespace std;
-using namespace OHOS_CAMERA_SAMPLE;
-static NDKCamera *gndkCamera = nullptr;
 
 static OH_AVRecorder_Config *config;
 // 设置状态回调
@@ -87,22 +84,6 @@ void OnError(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, v
     (void)userData;
 }
 
-// 设置生成媒体文件回调(媒体库尚未提供接口）
-void OnUri(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userDate)
-{
-    (void)recorder;
-    (void)userDate;
-    if (asset != nullptr) {
-        auto changeRequest = OH_MediaAssetChangeRequest_Create(asset);
-        if (changeRequest == nullptr) {
-            return;
-        }
-        MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_IMAGE_JPEG;
-        uint32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-        OH_MediaAsset_Release(asset);
-        OH_MediaAssetChangeRequest_Release(changeRequest);
-    }
-}
 static napi_value createAVRecorder(napi_env env, napi_callback_info info)
 {
     (void)info;
@@ -337,7 +318,6 @@ static napi_value prepareAVRecorder(napi_env env, napi_callback_info info)
                 config->profile.videoFrameHeight);
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
-    OH_AVErrCode ret = OH_AVRecorder_SetUriCallback(g_avRecorder, OnUri, nullptr);
 
     int result = AV_ERR_OK;
     result = OH_AVRecorder_Prepare(g_avRecorder, config);
@@ -363,7 +343,6 @@ static napi_value createPrepareAVRecorder(napi_env env, napi_callback_info info)
 
     OH_AVRecorder_SetStateCallback(g_avRecorder, OnStateChange, nullptr);
     OH_AVRecorder_SetErrorCallback(g_avRecorder, OnError, nullptr);
-    OH_AVErrCode ret = OH_AVRecorder_SetUriCallback(g_avRecorder, OnUri, nullptr);
     int result1 = OH_AVRecorder_Prepare(g_avRecorder, config1);
     if (result1 != AV_ERR_OK || result != AV_ERR_OK) {
         result = AV_ERR_UNKNOWN;
@@ -558,7 +537,6 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameWidth : %{public}d", videoFrameWidth);
     OH_LOG_INFO(LOG_APP, "init Camera videoFrameHeight : %{public}d", videoFrameHeight);
 
-    gndkCamera = new NDKCamera(previewId, videoFrameWidth, videoFrameHeight);
     int result = 6;
     napi_value res;
     napi_create_int32(env, result, &res);

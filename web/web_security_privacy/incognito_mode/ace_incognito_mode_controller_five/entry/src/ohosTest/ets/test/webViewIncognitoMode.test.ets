@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -57,9 +57,9 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.desc test isIncognitoMode true
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebViewIncognitoMode01', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode01'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode01', 'success', 8019, done);
@@ -73,7 +73,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode02', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode02'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode02', 'success', 8020, done);
@@ -87,7 +87,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode03', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode03'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode03', 'success', 8021, done);
@@ -101,7 +101,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode04', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode04'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode04', 'success', 8022, done);
@@ -116,7 +116,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode07', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode07'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode07', 'success', 8025, done);
@@ -130,7 +130,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode08', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode08'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode08', 'success', 8026, done);
@@ -144,7 +144,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode09', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode09'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode09', 'success', 8027, done);
@@ -158,7 +158,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode10', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode10'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode10', 'success', 8028, done);
@@ -172,7 +172,7 @@ export default function ActsAceWebViewIncognitoMode() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewIncognitoMode11', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode11'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode11', 'success', 8029, done);
@@ -186,7 +186,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode12', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode12'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode12', 'success', 8030, done);
@@ -200,7 +200,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode13', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode13'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode13', 'success', 8031, done);
@@ -214,7 +214,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode14', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode14'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode14', 'success', 8032, done);
@@ -228,7 +228,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode15', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode15'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode15', 'success', 8033, done);
@@ -242,7 +242,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode16', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode16'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode16', 'success', 8034, done);
@@ -256,7 +256,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode17', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode17'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode17', 'success', 8035, done);
@@ -270,7 +270,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode18', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode18'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode18', 'success', 8036, done);
@@ -284,7 +284,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode19', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode19'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode19', 'success', 8037, done);
@@ -298,7 +298,7 @@ export default function ActsAceWebViewIncognitoMode() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewIncognitoMode20', 0, async (done: Function) => {
+    it('testWebViewIncognitoMode20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = 'emitWebViewIncognitoMode20'
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent('testWebViewIncognitoMode20', 'success', 8038, done);

@@ -16,7 +16,6 @@ import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
 import("//foundation/graphic/graphic_2d/graphic_config.gni")
 import("//test/xts/tools/build/suite.gni")
-import("$graphic_2d_root/rosen/modules/2d_engine/rosen_text/config.gni")
 
 ohos_app_assist_suite("ActsGraphicGles3v2Test_main") {
   testonly = true

@@ -14,7 +14,7 @@
  */
 
 import { testVideoSeek } from './VideoPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import MediaTestBase from './MediaTestBase';
 
 export default function videoPlayerHLSSeekTest() {
@@ -50,7 +50,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/720p_1m_index.m3u8', 247300, PLAY_TIME, done);
       done();
     })
@@ -63,7 +63,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_Separate_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_Separate_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/HLS/separates/sep.m3u8', 245500, PLAY_TIME, done);
       done();
     })
@@ -76,7 +76,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_AudioOnly_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_AudioOnly_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/audioOnly/output.m3u8', 40030, PLAY_TIME, done);
       done();
     })
@@ -89,7 +89,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_Variant_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_Variant_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/a-variant/output.m3u8', 40030, PLAY_TIME, done);
       done();
     })
@@ -102,7 +102,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_AudioOff_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_AudioOff_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/a-variant/output.m3u8', 40030, PLAY_TIME, done);
       done();
     })
@@ -115,7 +115,7 @@ export default function videoPlayerHLSSeekTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_CodecChange_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_CodecChange_0100', Level.LEVEL0,async (done: Function) => {
       await testVideoSeek(HTTP_PATH + 'videotest/a-variant/output.m3u8', 40030, PLAY_TIME, done);
       done();
     })

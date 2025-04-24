@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioFdOpenStream() {
 describe('fileio_FdOpenStream', async function () {
@@ -30,7 +31,7 @@ describe('fileio_FdOpenStream', async function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fdopenstream_sync_000', 0, async function () {
+  it('fileio_test_fdopenstream_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_fdopenstream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -58,7 +59,7 @@ describe('fileio_FdOpenStream', async function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fdopenstream_sync_001', 0, function () {
+  it('fileio_test_fdopenstream_sync_001', Level.LEVEL0, function () {
     try {
       let fd = -1;
       let mode = 'r+';
@@ -78,7 +79,7 @@ describe('fileio_FdOpenStream', async function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fdopenstream_async_000', 0, async function (done) {
+  it('fileio_test_fdopenstream_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_fdopenstream_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -108,7 +109,7 @@ describe('fileio_FdOpenStream', async function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_fdopenstream_async_001', 0, async function (done) {
+  it('fileio_test_fdopenstream_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_fdopenstream_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {

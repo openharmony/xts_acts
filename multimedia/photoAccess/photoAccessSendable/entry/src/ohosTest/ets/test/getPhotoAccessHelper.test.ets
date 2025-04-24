@@ -14,7 +14,7 @@
  */
 
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { common } from '@kit.AbilityKit'
 import {
   sleep,
@@ -42,7 +42,7 @@ export default function getPhotoAccessHelperTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getPhotoAccessHelper_000', 0, async (done: Function) => {
+    it('getPhotoAccessHelper_000', Level.LEVEL0, async (done: Function) => {
       try {
         let sendablePhAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper = sendablePhotoAccessHelper.getPhotoAccessHelper(globalContext);
         expect(sendablePhAccessHelper !== undefined).assertTrue();

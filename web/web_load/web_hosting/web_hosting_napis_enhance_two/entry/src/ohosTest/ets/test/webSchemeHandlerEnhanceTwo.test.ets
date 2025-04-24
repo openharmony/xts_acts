@@ -12,17 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import hilog from '@ohos.hilog';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 
 export default function webviewApi() {
 
   describe('webResourceType', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
@@ -34,9 +41,9 @@ export default function webviewApi() {
     * @tc.desc       : testWeb_ResourceType_MAIN_FRAME
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWeb_ResourceType_MAIN_FRAME', 0, async (done: Function) => {
+    it('testWeb_ResourceType_MAIN_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_MAIN_FRAME PASS');
 
@@ -54,7 +61,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_SUB_FRAME', 0, async (done: Function) => {
+    it('testWeb_ResourceType_SUB_FRAME', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_SUB_FRAME PASS');
 
@@ -72,7 +79,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_STYLE_SHEET', 0, async (done: Function) => {
+    it('testWeb_ResourceType_STYLE_SHEET', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_STYLE_SHEET PASS');
 
@@ -90,7 +97,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_SCRIPT', 0, async (done: Function) => {
+    it('testWeb_ResourceType_SCRIPT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_SCRIPT PASS');
 
@@ -108,7 +115,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_IMAGE', 0, async (done: Function) => {
+    it('testWeb_ResourceType_IMAGE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_IMAGE PASS');
 
@@ -126,7 +133,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_FONT_RESOURCE', 0, async (done: Function) => {
+    it('testWeb_ResourceType_FONT_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_FONT_RESOURCE PASS');
 
@@ -144,7 +151,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_SUB_RESOURCE', 0, async (done: Function) => {
+    it('testWeb_ResourceType_SUB_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_SUB_RESOURCE PASS');
 
@@ -162,7 +169,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_OBJECT', 0, async (done: Function) => {
+    it('testWeb_ResourceType_OBJECT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_OBJECT PASS');
 
@@ -180,7 +187,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_MEDIA', 0, async (done: Function) => {
+    it('testWeb_ResourceType_MEDIA', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_MEDIA PASS');
 
@@ -198,7 +205,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_WORKER', 0, async (done: Function) => {
+    it('testWeb_ResourceType_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_WORKER PASS');
 
@@ -216,7 +223,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_SHARED_WORKER', 0, async (done: Function) => {
+    it('testWeb_ResourceType_SHARED_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_SHARED_WORKER PASS');
 
@@ -234,7 +241,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_PREFETCH', 0, async (done: Function) => {
+    it('testWeb_ResourceType_PREFETCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_PREFETCH PASS');
 
@@ -252,7 +259,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_FAVICON', 0, async (done: Function) => {
+    it('testWeb_ResourceType_FAVICON', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_FAVICON PASS');
 
@@ -270,7 +277,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_XHR', 0, async (done: Function) => {
+    it('testWeb_ResourceType_XHR', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_XHR PASS');
 
@@ -288,7 +295,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_PING', 0, async (done: Function) => {
+    it('testWeb_ResourceType_PING', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_PING PASS');
 
@@ -306,7 +313,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_SERVICE_WORKER', 0, async (done: Function) => {
+    it('testWeb_ResourceType_SERVICE_WORKER', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_SERVICE_WORKER PASS');
 
@@ -324,7 +331,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_CSP_REPORT', 0, async (done: Function) => {
+    it('testWeb_ResourceType_CSP_REPORT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_CSP_REPORT PASS');
 
@@ -342,7 +349,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_PLUGIN_RESOURCE', 0, async (done: Function) => {
+    it('testWeb_ResourceType_PLUGIN_RESOURCE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_PLUGIN_RESOURCE PASS');
 
@@ -360,7 +367,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_PRELOAD_MAIN', 0, async (done: Function) => {
+    it('testWeb_ResourceType_PRELOAD_MAIN', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_PRELOAD_MAIN PASS');
 
@@ -378,7 +385,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWeb_ResourceType_PRELOAD_SUB', 0, async (done: Function) => {
+    it('testWeb_ResourceType_PRELOAD_SUB', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ResourceType_PRELOAD_SUB PASS');
 
@@ -396,7 +403,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewFrameUrl', 0, async (done: Function) => {
+    it('testWebViewFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewFrameUrl PASS');
 
@@ -414,7 +421,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewServiceWorkerFrameUrl', 0, async (done: Function) => {
+    it('testWebViewServiceWorkerFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewServiceWorkerFrameUrl PASS');
 
@@ -432,7 +439,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewLoadUrlFrameUrl', 0, async (done: Function) => {
+    it('testWebViewLoadUrlFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewLoadUrlFrameUrl PASS');
 
@@ -450,7 +457,7 @@ export default function webviewApi() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebViewSubFrameUrl', 0, async (done: Function) => {
+    it('testWebViewSubFrameUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
       hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewSubFrameUrl PASS');
 

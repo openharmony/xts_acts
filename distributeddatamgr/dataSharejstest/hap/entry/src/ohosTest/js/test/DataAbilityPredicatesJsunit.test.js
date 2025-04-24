@@ -136,9 +136,9 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEqualTo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -159,9 +159,9 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEqualTo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
@@ -182,9 +182,9 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 0
      */
-    it('testEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('testEqualTo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info(TAG + "************* testEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();

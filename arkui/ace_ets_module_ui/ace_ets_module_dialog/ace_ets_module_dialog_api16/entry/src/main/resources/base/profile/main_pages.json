@@ -9,6 +9,7 @@
     "MainAbility/pages/promptAction/updatePopup",
     "MainAbility/pages/promptAction/closeMenu",
     "MainAbility/pages/promptAction/closePopup",
+    "MainAbility/pages/promptAction/openDialogTransition",
     "MainAbility/pages/Menu/menuFontsizeModifier",
     "MainAbility/pages/Menu/menuitemOnChangeModifier",
     "MainAbility/pages/Menu/menuBindMenuModifier",
@@ -16,6 +17,7 @@
     "MainAbility/pages/Menu/EffectOptions",
     "MainAbility/pages/dialogLife/ActionSheetLife",
     "MainAbility/pages/dialogLife/AlertDialogLife",
-    "MainAbility/pages/dialogLife/CustomDialogLife"
+    "MainAbility/pages/dialogLife/CustomDialogLife",
+    "MainAbility/pages/bindSheet/showInSubWindowBindSheet"
   ]
 }

@@ -59,3 +59,4 @@ export const registerMouseFilter: (windowId: number) => number;
 export const clearMouseFilter: (windowId: number) => number;
 export const registerTouchFilter: (windowId: number) => number;
 export const clearTouchFilter: (windowId: number) => number;
+export const getAllWIndowLayOutInfo: (displayId:number) => WindowManager_Rect[];

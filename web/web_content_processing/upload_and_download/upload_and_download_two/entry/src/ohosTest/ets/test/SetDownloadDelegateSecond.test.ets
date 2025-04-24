@@ -14,11 +14,14 @@
 */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import { Driver } from '@kit.TestKit';
 import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let driver: Driver = Driver.create();
 let flg: boolean = false
@@ -32,6 +35,11 @@ export default function SetDownloadDelegateSecond() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       flg = false;
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -58,7 +66,7 @@ export default function SetDownloadDelegateSecond() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_onDownloadFailed1001', 0, async (done: Function) => {
+    it('testWebView_onDownloadFailed1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_onDownloadFailed_1001 start')
       console.info('SUB_ACE_WEB_onDownloadFailed_1001 start')
@@ -88,7 +96,7 @@ export default function SetDownloadDelegateSecond() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getUrl1000', 0, async () => {
+    it('testWebView_getUrl1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2000 start')
       console.info('SUB_ACE_WEB_getUrl_2000 start')
@@ -121,7 +129,7 @@ export default function SetDownloadDelegateSecond() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getUrl1001', 0, async () => {
+    it('testWebView_getUrl1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2001 start')
       console.info('SUB_ACE_WEB_getUrl_2001 start')
@@ -154,7 +162,7 @@ export default function SetDownloadDelegateSecond() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('testWebView_getUrl1002', 0, async () => {
+    it('testWebView_getUrl1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_ACE_WEB_getUrl_2002 start')
       console.info('SUB_ACE_WEB_getUrl_2002 start')

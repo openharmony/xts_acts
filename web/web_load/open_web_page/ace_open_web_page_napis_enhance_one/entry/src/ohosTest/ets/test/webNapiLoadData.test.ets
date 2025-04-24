@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function ActsWebNapiLoadDataTest() {
 
   describe('ActsWebNapiLoadDataTest', () => {
@@ -41,6 +43,11 @@ export default function ActsWebNapiLoadDataTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebNapiLoadDataTest beforeEach start");
       done();
@@ -59,9 +66,9 @@ export default function ActsWebNapiLoadDataTest() {
     * @tc.desc       : test napi loadData
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testWebNapiLoadData001', 0 , async (done:Function)=>{
+    it('testWebNapiLoadData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 , async (done:Function)=>{
       Utils.emitEvent("emitWebNapiLoadData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebNapiLoadData001",0,2025022401,done);

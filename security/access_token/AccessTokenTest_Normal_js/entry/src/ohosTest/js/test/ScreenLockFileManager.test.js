@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 
 export default function ScreenLockFileManagerJsTest() {
@@ -54,8 +54,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_001
          * @tc.name: AcquireAccessJsTest001
          * @tc.desc: screenLockFileManager acquireAccess AccessStatus.
+         * @tc.level: Level3
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("AcquireAccessJsTest001", 0, async function (done) {
+        it("AcquireAccessJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             try {
                 let AccessStatus = screenLockFileManager.acquireAccess();
                 console.info('AcquireAccessJsTest001 AccessStatus is: ' + AccessStatus);
@@ -76,8 +79,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_002
          * @tc.name: AcquireAccessJsTest002
          * @tc.desc: acquireAccess AccessStatus ACCESS_DENIED
+         * @tc.level: Level1
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("AcquireAccessJsTest002", 0, function (done) {
+        it("AcquireAccessJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------AcquireAccessJsTest002---------------------------');
             let value = screenLockFileManager.AccessStatus.ACCESS_DENIED;
             expect(value).assertEqual(-1);
@@ -88,8 +94,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_003
          * @tc.name: AcquireAccessJsTest003
          * @tc.desc: acquireAccess AccessStatus ACCESS_GRANTED
+         * @tc.level: Level1
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("AcquireAccessJsTest003", 0, function (done) {
+        it("AcquireAccessJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------AcquireAccessJsTest003---------------------------');
             let value = screenLockFileManager.AccessStatus.ACCESS_GRANTED;
             expect(value).assertEqual(0);
@@ -100,8 +109,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_004
          * @tc.name: ReleaseAccessJsTest001
          * @tc.desc: screenLockFileManager releaseAccess ReleaseStatus.
+         * @tc.level: Level3
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("ReleaseAccessJsTest001", 0, async function (done) {
+        it("ReleaseAccessJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             try {
                 let ReleaseStatus = screenLockFileManager.releaseAccess();
                 console.info('ReleaseAccessJsTest001 ReleaseStatus is: ' + ReleaseStatus);
@@ -122,8 +134,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_005
          * @tc.name: ReleaseAccessJsTest002
          * @tc.desc: acquireAccess ReleaseStatus RELEASE_DENIED
+         * @tc.level: Level1
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("ReleaseAccessJsTest002", 0, function (done) {
+        it("ReleaseAccessJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------ReleaseAccessJsTest002---------------------------');
             let value = screenLockFileManager.ReleaseStatus.RELEASE_DENIED;
             expect(value).assertEqual(-1);
@@ -134,8 +149,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_006
          * @tc.name: ReleaseAccessJsTest003
          * @tc.desc: acquireAccess ReleaseStatus RELEASE_GRANTED
+         * @tc.level: Level1
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("ReleaseAccessJsTest003", 0, function (done) {
+        it("ReleaseAccessJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------ReleaseAccessJsTest003---------------------------');
             let value = screenLockFileManager.ReleaseStatus.RELEASE_GRANTED;
             expect(value).assertEqual(0);
@@ -146,8 +164,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_007
          * @tc.name: AcquireAccessJsTest004
          * @tc.desc: acquireAccess DataType MEDIA_DATA
+         * @tc.level: Level3
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("AcquireAccessJsTest004", 0, function (done) {
+        it("AcquireAccessJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.info('----------------------AcquireAccessJsTest004---------------------------');
             let value = screenLockFileManager.DataType.MEDIA_DATA;
             console.info('AcquireAccessJsTest004 value is: ' + value);
@@ -159,8 +180,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_SECURITY_SCREEN_LOCK_XTS_008
          * @tc.name: AcquireAccessJsTest005
          * @tc.desc: acquireAccess DataType ALL_DATA
+         * @tc.level: Level3
+         * @tc.size: MediumTest
+         * @tc.type: Function
          */
-        it("AcquireAccessJsTest005", 0, function (done) {
+        it("AcquireAccessJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
             console.info('----------------------AcquireAccessJsTest005---------------------------');
             let value = screenLockFileManager.DataType.ALL_DATA;
             console.info('AcquireAccessJsTest005 value is: ' + value);
@@ -172,11 +196,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_Security_EL5_QueryAppKeyState_0100
          * @tc.name: Test EL5 queryAppKeyState scene
          * @tc.desc: Query access permissions for sensitive data of applications under lock screen
-         * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.level: Level3
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_EL5_QueryAppKeyState_0100", 0, async function (done) {
+        it("SUB_Security_EL5_QueryAppKeyState_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             try {
                 let keyStatus = screenLockFileManager.queryAppKeyState();
                 console.info('SUB_Security_EL5_QueryAppKeyState_0100 keyStatus is: ' + keyStatus);
@@ -195,10 +219,10 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.name: Test EL5 KeyStatus Const Attribute
          * @tc.desc: Test screenLockFileManager KeyStatus const KEY_NOT_EXIST
          * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_EL5_KeyStatusConst_0100", 0, function (done) {
+        it("SUB_Security_EL5_KeyStatusConst_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------SUB_Security_EL5_KeyStatusConst_0100---------------------------');
             let value = screenLockFileManager.KeyStatus.KEY_NOT_EXIST;
             console.info('SUB_Security_EL5_KeyStatusConst_0100 value is: ' + value);
@@ -211,10 +235,10 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.name: Test EL5 KeyStatus Const Attribute
          * @tc.desc: Test screenLockFileManager KeyStatus const KEY_RELEASED
          * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_EL5_KeyStatusConst_0200", 0, function (done) {
+        it("SUB_Security_EL5_KeyStatusConst_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
             console.info('----------------------SUB_Security_EL5_KeyStatusConst_0200---------------------------');
             let value = screenLockFileManager.KeyStatus.KEY_RELEASED;
             console.info('SUB_Security_EL5_KeyStatusConst_0200 value is: ' + value);
@@ -226,11 +250,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_Security_EL5_KeyStatusConst_0300
          * @tc.name: Test EL5 KeyStatus Const Attribute
          * @tc.desc: Test screenLockFileManager KeyStatus const KEY_EXIST
-         * @tc.level: Level1
-         * @tc.size: Medium
+         * @tc.level: Level0
+         * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_EL5_KeyStatusConst_0300", 0, function (done) {
+        it("SUB_Security_EL5_KeyStatusConst_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------SUB_Security_EL5_KeyStatusConst_0300---------------------------');
             let value = screenLockFileManager.KeyStatus.KEY_EXIST;
             console.info('SUB_Security_EL5_KeyStatusConst_0300 value is: ' + value);

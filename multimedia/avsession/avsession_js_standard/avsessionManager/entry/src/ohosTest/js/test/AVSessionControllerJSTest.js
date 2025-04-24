@@ -64,7 +64,7 @@ export default function AVSessionControllerJsTest() {
 			mediaId: QUEUE_ITEM_KEY_WORD,
 			title: QUEUE_ITEM_KEY_WORD,
 			subtitle:'SUB_QUEUE_ITEM_RELATE',
-			meidiaType: 'audio',
+			mediaType: 'audio',
 			artist: 'lihua',
 			duration: 166,
 			fdSrc: AVFileDescriptor,

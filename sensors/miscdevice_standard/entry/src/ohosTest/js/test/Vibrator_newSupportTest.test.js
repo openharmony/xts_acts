@@ -17,8 +17,8 @@ import deviceInfo from '@ohos.deviceInfo'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function VibratorJsTest_misc_6() {
-let isAvailable; 
-const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');       
+let isAvailable;
+const ABILITYJUDGMENT = canIUse('SystemCapability.Sensors.MiscDevice');
 describe("VibratorJsTest_misc_6", function () {
     var g_execute = true;
     let EFFECT_ID = "haptic.clock.timer";
@@ -27,23 +27,23 @@ describe("VibratorJsTest_misc_6", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll called')   
-        console.info('VibratorJsTest_misc_6 Device type = ' + deviceInfo.deviceType);    
-        console.info('VibratorJsTest_misc_6 isAvailable = ' + isAvailable);    
+        console.info('beforeAll called')
+        console.info('VibratorJsTest_misc_6 Device type = ' + deviceInfo.deviceType);
+        console.info('VibratorJsTest_misc_6 isAvailable = ' + isAvailable);
         try {
             if (deviceInfo.deviceType === '2in1' || ABILITYJUDGMENT === false) {
                 isAvailable = false;
                 console.info('VibratorJsTest_misc_6 isAvailable ' + isAvailable);
-                done() 
+                done()
             }else {
                 isAvailable = true;
                 console.info('VibratorJsTest_misc_6 isAvailable ' + isAvailable);
-                done() 
+                done()
             }
         } catch(error) {
             console.error('VibratorJsTest_misc_6 exception :' + JSON.stringify(error))
-            done() 
-        }        
+            done()
+        }
     })
 
     afterAll(function () {
@@ -83,11 +83,11 @@ describe("VibratorJsTest_misc_6", function () {
      * @tc.name:VibratorJsTest069
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0790
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("VibratorJsTest069", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("VibratorJsTest069", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest069"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {
@@ -343,7 +343,8 @@ describe("VibratorJsTest_misc_6", function () {
             try {
                 vibrator.isSupportEffect(123).then((state) => {
                     expect(false).assertTrue();
-                    done();
+
+    done();
                 }, (error) => {
                     expect(false).assertTrue();
                     done();

@@ -12,15 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitFileAccessTrue";
 
 export default function webJsunit() {
   describe('ActsAceWebDevTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -51,7 +58,7 @@ export default function webJsunit() {
      *tc.name fileAccessTrue
      *tc.desic Sets  enable local file system access in Web
      */
-    it('fileAccessTrue', 0, async (done: Function) => {
+    it('fileAccessTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnInactive";
       Utils.registerContainEvent("fileAccessTrue", "index", 190, done);
       sendEventByKey('webcomponent', 10, '');
@@ -62,7 +69,7 @@ export default function webJsunit() {
      *tc.name onInactive
      *tc.desic Let the Web inactive.
      */
-    it('onInactive', 0, async (done: Function) => {
+    it('onInactive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnActive";
       Utils.registerEvent("onInactive", true, 84, done);
       sendEventByKey('webcomponent', 10, '');
@@ -72,7 +79,7 @@ export default function webJsunit() {
      *tc.name onActive
      *tc.desic Let the Web active
      */
-    it('onActive', 0, async (done: Function) => {
+    it('onActive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRegisterJavaScriptProxy";
       Utils.registerContainEvent("onActive", "index.html", 85, done);
       sendEventByKey('webcomponent', 10, '');

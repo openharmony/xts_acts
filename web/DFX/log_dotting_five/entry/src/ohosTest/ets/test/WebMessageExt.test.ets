@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webMessageExt() {
 
   describe('webMessageExtTestSuite', () => {
@@ -42,6 +44,11 @@ export default function webMessageExt() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webMessageExt beforeEach start");
       done();
@@ -55,7 +62,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType001', 0, async (done: Function) => {
+    it('testWebMessageExtSetType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType001", '17100014', 36000, done);
@@ -70,7 +77,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType002', 0, async (done: Function) => {
+    it('testWebMessageExtSetType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType002", 1, 36001, done);
@@ -85,7 +92,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType003', 0, async (done: Function) => {
+    it('testWebMessageExtSetType003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType003", 2, 36002, done);
@@ -100,7 +107,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType004', 0, async (done: Function) => {
+    it('testWebMessageExtSetType004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType004", 3, 36003, done);
@@ -115,7 +122,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType005', 0, async (done: Function) => {
+    it('testWebMessageExtSetType005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType005", 4, 36004, done);
@@ -130,7 +137,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType006', 0, async (done: Function) => {
+    it('testWebMessageExtSetType006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("`testWebMessageExtSetType006`", 5, 36005, done);
@@ -145,7 +152,7 @@ export default function webMessageExt() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWebMessageExtSetType007', 0, async (done: Function) => {
+    it('testWebMessageExtSetType007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testWebMessageExtSetType007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebMessageExtSetType007", 6, 36006, done);

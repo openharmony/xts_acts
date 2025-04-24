@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { On, Driver, ON, Component} from "@ohos.UiTest";
 
 export default function ActsAccessTokenNDKTest() {
@@ -43,11 +43,11 @@ export default function ActsAccessTokenNDKTest() {
      * @tc.number SUB_Access_Token_CheckPermission_0100.
      * @tc.name test OH_AT_CheckSelfPermission Test Normal Scene.
      * @tc.desc Checks whether this application has been granted the given permission.
+     * @tc.level Level0
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
      */
-    it('SUB_Access_Token_CheckPermission_0100', 0, async (done: Function) => {
+    it('SUB_Access_Token_CheckPermission_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       demo();
       
       try{

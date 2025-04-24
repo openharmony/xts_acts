@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function WebkeyboardAvoidMode() {
 
@@ -41,6 +44,11 @@ export default function WebkeyboardAvoidMode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -53,7 +61,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0100', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0100", 'true', 171701, done);
@@ -68,7 +76,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0200', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0200", 'true', 171702, done);
@@ -83,7 +91,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0300', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0300", 'true', 171703, done);
@@ -98,7 +106,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0400', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0400", 'true', 171704, done);
@@ -113,7 +121,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0500', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0500", 'true', 171705, done);
@@ -128,7 +136,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0600', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0600", 'true', 171706, done);
@@ -143,7 +151,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0700', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0700", 'false', 171707, done);
@@ -158,7 +166,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0800', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0800", 'false', 171708, done);
@@ -173,7 +181,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode0900', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode0900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode0900", 'false', 171709, done);
@@ -188,7 +196,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1000', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1000", 'false', 171710, done);
@@ -203,7 +211,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1100', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1100", 'false', 171711, done);
@@ -218,7 +226,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1200', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1200", 'false', 171712, done);
@@ -233,7 +241,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1300', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1300", 'true', 171713, done);
@@ -248,7 +256,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1400', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1400", 'true', 171714, done);
@@ -263,7 +271,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1500', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1500", 'true', 171715, done);
@@ -278,7 +286,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1600', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1600", 'true', 171716, done);
@@ -293,7 +301,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1700', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1700", 'true', 171717, done);
@@ -308,7 +316,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1800', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1800", 'true', 171718, done);
@@ -323,7 +331,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode1900', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode1900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode1900", 'true', 171719, done);
@@ -338,7 +346,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2000', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2000", 'true', 171720, done);
@@ -353,7 +361,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2100', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2100", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2100", 'true', 171721, done);
@@ -368,7 +376,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2200', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2200", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2200", 'true', 171722, done);
@@ -383,7 +391,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2300', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2300", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2300", 'true', 171723, done);
@@ -398,7 +406,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2400', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2400", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2400", 'true', 171724, done);
@@ -413,7 +421,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2500', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2500", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2500", 'false', 171725, done);
@@ -428,7 +436,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2600', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2600", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2600", 'false', 171726, done);
@@ -443,7 +451,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2700', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2700", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2700", 'false', 171727, done);
@@ -458,7 +466,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2800', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2800", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2800", 'false', 171728, done);
@@ -473,7 +481,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode2900', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode2900", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode2900", 'false', 171729, done);
@@ -488,7 +496,7 @@ export default function WebkeyboardAvoidMode() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('emitKeyboardAvoidMode3000', 0, async (done: Function) => {
+    it('emitKeyboardAvoidMode3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitKeyboardAvoidMode3000", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("emitKeyboardAvoidMode3000", 'false', 171730, done);

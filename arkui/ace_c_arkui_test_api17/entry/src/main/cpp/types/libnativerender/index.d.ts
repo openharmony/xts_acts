@@ -13,3 +13,7 @@
  * limitations under the License.
  */
 export const buttonOnHoverEventTest: (a: string) => void;
+
+export const buttonAxisEventTest: (a: string) => void;
+
+export const buttonRollAngleTest: (a: string) => void;

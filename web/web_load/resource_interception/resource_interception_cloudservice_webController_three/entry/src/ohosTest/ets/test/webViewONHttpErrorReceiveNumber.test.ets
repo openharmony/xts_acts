@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll, TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = "emitOnHttpErrorReceiveByNumber";
 export default function webViewONHttpErrorReceiveNumber() {
@@ -41,6 +44,11 @@ export default function webViewONHttpErrorReceiveNumber() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webViewONHttpErrorReceiveNumber beforeEach start");
       done();
@@ -70,7 +78,7 @@ export default function webViewONHttpErrorReceiveNumber() {
      *tc.name testOnHttpErrorReceiveByNumber
      *tc.desc test interface of onHttpErrorReceive with parameter used by number handle
      */
-    it('testOnHttpErrorReceiveByNumber',0,async (done: Function) =>{
+    it('testOnHttpErrorReceiveByNumber',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnHttpErrorReceiveByNumber";
       Utils.registerEvent("testOnHttpErrorReceiveByNumber",403,401,done);
       Utils.registerEvent("testOnHttpErrorReceiveByNumber","1.1.1.123/index.html",402,done);

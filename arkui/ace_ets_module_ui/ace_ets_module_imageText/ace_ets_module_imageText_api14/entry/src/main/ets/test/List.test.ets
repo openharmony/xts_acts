@@ -29,6 +29,7 @@ import SymbolGlyphNodeTest from "./SymbolGlyphTest/SymbolGlyphNode.test";
 import ImageOrientationTest from './ImageOrientation/ImageOrientation.test';
 import RichEditorOnWillChangeTest from './RichEditorTest/onWillChange.test';
 import RichEditorOnDoubleClickTest from './RichEditorTest/onDoubleClickOnHover.test';
+import MarqueeDynamicSyncSceneTest from './Marquee/MarqueeDynamicSyncSceneType.test';
 
 
 export default function testsuite() {
@@ -48,4 +49,5 @@ export default function testsuite() {
   ImageOrientationTest();
   RichEditorOnWillChangeTest();
   RichEditorOnDoubleClickTest();
+  MarqueeDynamicSyncSceneTest();
 }

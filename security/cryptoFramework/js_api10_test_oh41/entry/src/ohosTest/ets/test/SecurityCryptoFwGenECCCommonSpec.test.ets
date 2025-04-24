@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import { BusinessError } from '@ohos.base';
 import { compareECCParams, comparePairParams, } from './utils/keyGenerate/genECCSpecFunc';
@@ -57,7 +57,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0100: started.`);
       let curveName: string = "NID_brainpoolP160r1";
       try {
@@ -80,7 +80,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0200: started.`);
       let curveName: string = "NID_brainpoolP160t1";
       try {
@@ -103,7 +103,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0300: started.`);
       let curveName: string = "NID_brainpoolP192r1";
       try {
@@ -126,7 +126,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0400: started.`);
       let curveName: string = "NID_brainpoolP192t1";
       try {
@@ -149,7 +149,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0500: started.`);
       let curveName: string = "NID_brainpoolP224r1";
       try {
@@ -172,7 +172,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0600: started.`);
       let curveName: string = "NID_brainpoolP224t1";
       try {
@@ -195,7 +195,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0700: started.`);
       let curveName: string = "NID_brainpoolP256r1";
       try {
@@ -218,7 +218,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0800: started.`);
       let curveName: string = "NID_brainpoolP256t1";
       try {
@@ -241,7 +241,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_0900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_0900: started.`);
       let curveName: string = "NID_brainpoolP320r1";
       try {
@@ -264,7 +264,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1000: started.`);
       let curveName: string = "NID_brainpoolP320t1";
       try {
@@ -287,7 +287,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1100: started.`);
       let curveName: string = "NID_brainpoolP384r1";
       try {
@@ -310,7 +310,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1200: started.`);
       let curveName: string = "NID_brainpoolP384t1";
       try {
@@ -333,7 +333,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1300: started.`);
       let curveName: string = "NID_brainpoolP512r1";
       try {
@@ -356,7 +356,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1400: started.`);
       let curveName: string = "NID_brainpoolP512t1";
       try {
@@ -379,7 +379,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1500: started.`);
       let curveName: string = "NID_secp224r1";
       try {
@@ -402,7 +402,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1600: started.`);
       let curveName: string = "NID_secp384r1";
       try {
@@ -425,7 +425,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1700 started.`);
       let curveName: string = "NID_secp521r1";
       try {
@@ -448,7 +448,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_1800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_1800 started.`);
       let curveName: string = "RSA512";
       try {
@@ -472,7 +472,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2000 started.`);
       let curveName: string = "NID_sm2";
       let cipherAlgName: string = "SM2_256|SHA224";
@@ -497,7 +497,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2100 started.`);
       let curveName: string = "NID_sm2";
       let signVerifyAlgName: string = "SM2_256|SM3";
@@ -522,7 +522,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2200: started.`);
       let curveName: string = "NID_brainpoolP256t1";
       let signVerifyAlgName: string = "ECC_BrainPoolP256t1|SHA224";
@@ -547,7 +547,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2300 started.`);
       let curveName: string = "NID_brainpoolP512t1";
       let agreementAlgName: string = "ECC_BrainPoolP512t1";
@@ -572,7 +572,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2400 started.`);
       let curveName: string = "NID_X9_62_prime256v1";
       let agreementAlgName: string = "ECC256";
@@ -598,7 +598,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2500 started.`);
       let curveName: string = "NID_sm2";
       let agreementAlgName: string = "SM2_256";
@@ -624,7 +624,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2600 started.`);
       let curveName: string = "NID_secp384r1";
       let agreementAlgName: string = "ECC384";
@@ -649,7 +649,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2700 started.`);
       let curveName: string = "NID_brainpoolP160r1";
       let agreementAlgName: string = "ECC_BrainPoolP160r1";
@@ -675,7 +675,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2800 started.`);
       let curveName: string = "NID_brainpoolP192t1";
       let agreementAlgName: string = "ECC_BrainPoolP192t1";
@@ -701,7 +701,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_2900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_2900 started.`);
       let curveName: string = "NID_brainpoolP224r1";
       let agreementAlgName: string = "ECC_BrainPoolP224r1";
@@ -727,7 +727,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3000 started.`);
       let curveName: string = "NID_brainpoolP256t1";
       let agreementAlgName: string = "ECC_BrainPoolP256t1";
@@ -753,7 +753,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3100 started.`);
       let curveName: string = "NID_brainpoolP320r1";
       let agreementAlgName: string = "ECC_BrainPoolP320r1";
@@ -779,7 +779,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3200 started.`);
       let curveName: string = "NID_brainpoolP384t1";
       let agreementAlgName: string = "ECC_BrainPoolP384t1";
@@ -805,7 +805,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3300 started.`);
       let curveName: string = "NID_brainpoolP512r1";
       let agreementAlgName: string = "ECC_BrainPoolP512r1";
@@ -831,7 +831,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level2
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3400", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3400 started.`);
       let curveName: string = "NID_brainpoolP160t1";
       let agreementAlgName: string = "ECC_BrainPoolP160t1";
@@ -857,7 +857,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3500", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3500 started.`);
       let curveName: string = "NID_brainpoolP192r1";
       let agreementAlgName: string = "ECC_BrainPoolP192r1";
@@ -883,7 +883,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3600", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3600 started.`);
       let curveName: string = "NID_brainpoolP224t1";
       let agreementAlgName: string = "ECC_BrainPoolP224t1";
@@ -909,7 +909,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3700", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3700 started.`);
       let curveName: string = "NID_brainpoolP256r1";
       let agreementAlgName: string = "ECC_BrainPoolP256r1";
@@ -935,7 +935,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3800", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3800 started.`);
       let curveName: string = "NID_brainpoolP320t1";
       let agreementAlgName: string = "ECC_BrainPoolP320t1";
@@ -961,7 +961,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_3900", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_3900 started.`);
       let curveName: string = "NID_brainpoolP384r1";
       let agreementAlgName: string = "ECC_BrainPoolP384r1";
@@ -987,7 +987,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_4000", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_4000 started.`);
       let curveName: string = "NID_brainpoolP512t1";
       let agreementAlgName: string = "ECC_BrainPoolP512t1";
@@ -1013,7 +1013,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_4100", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_4100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_4100 started.`);
       let curveName: string = "NID_brainpoolP160r1";
       try {
@@ -1038,7 +1038,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_4200", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_4200 started.`);
       let curveName: string = "NID_secp224r1";
       try {
@@ -1063,7 +1063,7 @@ export default function SecurityCryptoFwGenECCCommonSpecTestUnit() {
      * @tc.type Func
      * @tc.level Level4
      */
-    it("Security_CryptoFramework_genECCCommonSpec_Func_4300", 0, async (done: Function) => {
+    it("Security_CryptoFramework_genECCCommonSpec_Func_4300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       console.log(`>>Security_CryptoFramework_genECCCommonSpec_Func_4300 started.`);
       let curveName: string = "NID_sm2";
       try {

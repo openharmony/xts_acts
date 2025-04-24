@@ -14,7 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import { describe,it,expect}from '@ohos/hypium'
+import { describe, it, expect, Level }from '@ohos/hypium'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -32,7 +32,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_stat_sync_000
    * @tc.desc Function of API, statSync. Gets information about the file in the specified path.
    */
-  it('fileio_test_stat_stat_sync_000', 0, async function () {
+  it('fileio_test_stat_stat_sync_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_stat_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -51,7 +51,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_stat_sync_001
    * @tc.desc Function of API, statSync. The specified file does not exist.
    */
-  it('fileio_test_stat_stat_sync_001', 0, async function () {
+  it('fileio_test_stat_stat_sync_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_stat_sync_001');
     try {
       fileio.statSync(fpath);
@@ -68,7 +68,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_stat_sync_002
    * @tc.desc Function of API, statSync. The parameter is the directory path.
    */
-  it('fileio_test_stat_stat_sync_002', 0, async function () {
+  it('fileio_test_stat_stat_sync_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_stat_sync_002') + 'd';
     fileio.mkdirSync(dpath);
     try {
@@ -87,7 +87,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_stat_sync_003
    * @tc.desc Function of API, statSync. The file path is greater than 4096.
    */
-  it('fileio_test_stat_stat_sync_003', 0, async function () {
+  it('fileio_test_stat_stat_sync_003', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_stat_sync_003');
     fileio.mkdirSync(dpath);
     try {
@@ -113,7 +113,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_dev_000
    * @tc.desc Function of API. Get the device number used by the file.
    */
-  it('fileio_test_stat_dev_000', 0, async function () {
+  it('fileio_test_stat_dev_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_dev_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -132,7 +132,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_ino_000
    * @tc.desc Function of API. Get inode bigint.
    */
-  it('fileio_test_stat_ino_000', 0, async function () {
+  it('fileio_test_stat_ino_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_ino_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -151,7 +151,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_mode_000
    * @tc.desc Function of API. Get file type and access rights.
    */
-  it('fileio_test_stat_mode_000', 0, async function () {
+  it('fileio_test_stat_mode_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_mode_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -170,7 +170,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_nlink_000
    * @tc.desc Function of API. Gets the number of hard connections to the file.
    */
-  it('fileio_test_stat_nlink_000', 0, async function () {
+  it('fileio_test_stat_nlink_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_nlink_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -189,7 +189,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_uid_000
    * @tc.desc Function of API. Get file owner user ID.
    */
-  it('fileio_test_stat_uid_000', 0, async function () {
+  it('fileio_test_stat_uid_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_uid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -208,7 +208,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_gid_000
    * @tc.desc Function of API. Get group ID.
    */
-  it('fileio_test_stat_gid_000', 0, async function () {
+  it('fileio_test_stat_gid_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_gid_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -227,7 +227,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_rdev_000
    * @tc.desc Function of API. Get the device number of the device file.
    */
-  it('fileio_test_stat_rdev_000', 0, async function () {
+  it('fileio_test_stat_rdev_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_rdev_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -246,7 +246,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_size_000
    * @tc.desc Function of API. Gets the file capacity in bytes.
    */
-  it('fileio_test_stat_size_000', 0, async function () {
+  it('fileio_test_stat_size_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_size_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -265,7 +265,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_blocks_000
    * @tc.desc Function of API. Gets the disk block occupied by the file.
    */
-  it('fileio_test_stat_blocks_000', 0, async function () {
+  it('fileio_test_stat_blocks_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_blocks_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -284,7 +284,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_atime_000
    * @tc.desc Function of API. Gets the time when a file was last accessed.
    */
-  it('fileio_test_stat_atime_000', 0, async function () {
+  it('fileio_test_stat_atime_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_atime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -303,7 +303,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_mtime_000
    * @tc.desc Function of API. Gets the time when a file was last modified
    */
-  it('fileio_test_stat_mtime_000', 0, async function () {
+  it('fileio_test_stat_mtime_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_mtime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -322,7 +322,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_ctime_000
    * @tc.desc Function of API. Gets the time when a file last changed state
    */
-  it('fileio_test_stat_ctime_000', 0, async function () {
+  it('fileio_test_stat_ctime_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_ctime_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -341,7 +341,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_block_device_000
    * @tc.desc Function of API, isBlockDevice. Determine whether it is a block device. The return value is Boolean.
    */
-  it('fileio_test_stat_is_block_device_000', 0, async function () {
+  it('fileio_test_stat_is_block_device_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_block_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -360,7 +360,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_block_device_001
    * @tc.desc Function of API, isBlockDevice. Determine whether it is a block device. The return value is false.
    */
-  it('fileio_test_stat_is_block_device_001', 0, async function () {
+  it('fileio_test_stat_is_block_device_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_block_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -379,7 +379,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_block_device_002
    * @tc.desc Function of API, isBlockDevice. The parameter is - 1
    */
-  it('fileio_test_stat_is_block_device_002', 0, async function () {
+  it('fileio_test_stat_is_block_device_002', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_block_device_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -400,7 +400,7 @@ describe('fileIOTestStat', function () {
    * @tc.desc Function of API, isCharacterDevice.
    * Determine whether it is a character device. The return value is Boolean.
    */
-  it('fileio_test_stat_is_character_device_000', 0, async function () {
+  it('fileio_test_stat_is_character_device_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_character_device_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -420,7 +420,7 @@ describe('fileIOTestStat', function () {
    * @tc.desc Function of API, isCharacterDevice.
    * Determine whether it is a character device. The return value is false.
    */
-  it('fileio_test_stat_is_character_device_001', 0, async function () {
+  it('fileio_test_stat_is_character_device_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_character_device_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -439,7 +439,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_character_device_002
    * @tc.desc Function of API, isCharacterDevice. The parameter is - 1
    */
-  it('fileio_test_stat_is_character_device_002', 0, async function () {
+  it('fileio_test_stat_is_character_device_002', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_character_device_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -459,7 +459,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_directory_000
    * @tc.desc Function of API, isDirectory. Determine whether it is a directory. The return value is Boolean.
    */
-  it('fileio_test_stat_is_directory_000', 0, async function () {
+  it('fileio_test_stat_is_directory_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_directory_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -478,7 +478,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_directory_001
    * @tc.desc Function of API, isDirectory. Determine whether it is a directory. The return value is false.
    */
-  it('fileio_test_stat_is_directory_001', 0, async function () {
+  it('fileio_test_stat_is_directory_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_directory_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -497,7 +497,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_directory_002
    * @tc.desc Function of API, isDirectory. Determine whether it is a directory. The return value is true.
    */
-  it('fileio_test_stat_is_directory_002', 0, async function () {
+  it('fileio_test_stat_is_directory_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_is_directory_002') + 'd'
       try {
         fileio.mkdirSync(dpath);
@@ -516,7 +516,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_directory_003
    * @tc.desc Function of API, isDirectory. The parameter is - 1
    */
-  it('fileio_test_stat_is_directory_003', 0, async function () {
+  it('fileio_test_stat_is_directory_003', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_is_directory_003') + 'd'
     try {
       fileio.mkdirSync(dpath);
@@ -536,7 +536,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_fifo_000
    * @tc.desc Function of API, isFIFO. Determine whether it is a fifo. The return value is Boolean.
    */
-  it('fileio_test_stat_is_fifo_000', 0, async function () {
+  it('fileio_test_stat_is_fifo_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_fifo_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -555,7 +555,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_fifo_001
    * @tc.desc Function of API, isFIFO. Determine whether it is a fifo. The return value is false.
    */
-  it('fileio_test_stat_is_fifo_001', 0, async function () {
+  it('fileio_test_stat_is_fifo_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_fifo_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -574,7 +574,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_fifo_002
    * @tc.desc Function of API, isFIFO. The parameter is - 1
    */
-  it('fileio_test_stat_is_fifo_002', 0, async function () {
+  it('fileio_test_stat_is_fifo_002', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_fifo_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -594,7 +594,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_file_000
    * @tc.desc Function of API, isFile. Determine whether it is a file. The return value is Boolean.
    */
-  it('fileio_test_stat_is_file_000', 0, async function () {
+  it('fileio_test_stat_is_file_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_file_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -613,7 +613,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_file_001
    * @tc.desc Function of API, isFile. Determine whether it is a file. The return value is true.
    */
-  it('fileio_test_stat_is_file_001', 0, async function () {
+  it('fileio_test_stat_is_file_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_file_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -633,7 +633,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_file_002
    * @tc.desc Function of API, isFile. Determine whether it is a file. The return value is false.
    */
-  it('fileio_test_stat_is_file_002', 0, async function () {
+  it('fileio_test_stat_is_file_002', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_is_file_002');
     try {
       fileio.mkdirSync(dpath);
@@ -652,7 +652,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_file_003
    * @tc.desc Function of API, isFile. The parameter is - 1
    */
-  it('fileio_test_stat_is_file_003', 0, async function () {
+  it('fileio_test_stat_is_file_003', Level.LEVEL1, async function () {
     let dpath = await nextFileName('fileio_test_stat_is_file_003');
     try {
       fileio.mkdirSync(dpath);
@@ -672,7 +672,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_socket_000
    * @tc.desc Function of API, isSocket. Determine whether it is a socket. The return value is Boolean.
    */
-  it('fileio_test_stat_is_socket_000', 0, async function () {
+  it('fileio_test_stat_is_socket_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_socket_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -691,7 +691,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_socket_001
    * @tc.desc Function of API, isSocket. Determine whether it is a socket. The return value is false.
    */
-  it('fileio_test_stat_is_socket_001', 0, async function () {
+  it('fileio_test_stat_is_socket_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_socket_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -710,7 +710,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_socket_002
    * @tc.desc Function of API, isSocket. The parameter is - 1
    */
-  it('fileio_test_stat_is_socket_002', 0, async function () {
+  it('fileio_test_stat_is_socket_002', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_socket_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -730,7 +730,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_symbolic_link_000
    * @tc.desc Function of API, isSymbolicLink. Determine whether it is a symbolic link. The return value is Boolean.
    */
-  it('fileio_test_stat_is_symbolic_link_000', 0, async function () {
+  it('fileio_test_stat_is_symbolic_link_000', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_symbolic_link_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -749,7 +749,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_symbolic_link_001
    * @tc.desc Function of API, isSymbolicLink. Determine whether it is a symbolic link. The return value is false.
    */
-  it('fileio_test_stat_is_symbolic_link_001', 0, async function () {
+  it('fileio_test_stat_is_symbolic_link_001', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_symbolic_link_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -768,7 +768,7 @@ describe('fileIOTestStat', function () {
    * @tc.name fileio_test_stat_is_symbolic_link_002
    * @tc.desc Function of API, isSymbolicLink. The parameter is - 1
    */
-  it('fileio_test_stat_is_symbolic_link_002', 0, async function () {
+  it('fileio_test_stat_is_symbolic_link_002', Level.LEVEL1, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_symbolic_link_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {

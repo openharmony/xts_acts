@@ -13,13 +13,21 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webInitTest() {
 
   describe('WebInitTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -37,7 +45,7 @@ export default function webInitTest() {
      *tc.name SearchAllAsync                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('SearchAllAsync', 0, async (done: Function) => {
+    it('SearchAllAsync', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitSearchAllAsync", 10)
       Utils.registerEvent("SearchAllAsync", "01", 16, done);
       sendEventByKey('WebInitTestButton', 10, '');
@@ -47,7 +55,7 @@ export default function webInitTest() {
      *tc.name ContextMenuMediaType                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('ContextMenuMediaType', 0, async (done: Function) => {
+    it('ContextMenuMediaType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitContextMenuMediaType", 10)
       Utils.registerEvent("ContextMenuMediaType", 1, 33, done);
       sendEventByKey('WebInitTestButton', 10, '');
@@ -57,7 +65,7 @@ export default function webInitTest() {
      *tc.name ContextMenuInputFieldType                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('ContextMenuInputFieldType', 0, async (done: Function) => {
+    it('ContextMenuInputFieldType', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitContextMenuInputFieldType", 10)
       Utils.registerEvent("ContextMenuInputFieldType", 1, 34, done);
       Utils.registerEvent("ContextMenuInputFieldType", 4, 35, done);
@@ -69,7 +77,7 @@ export default function webInitTest() {
      *tc.name ContextMenuEditStateFlags                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('ContextMenuEditStateFlags', 0, async (done: Function) => {
+    it('ContextMenuEditStateFlags', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitContextMenuEditStateFlags", 10)
       Utils.registerEvent("ContextMenuEditStateFlags", 0, 37, done);
       Utils.registerEvent("ContextMenuEditStateFlags", 1, 38, done);
@@ -83,7 +91,7 @@ export default function webInitTest() {
      *tc.name testGetFavicon
      *tc.desc test for getFavicon
      */
-    it('testGetFavicon',0,async (done: Function) =>{
+    it('testGetFavicon',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       await Utils.emitEvent("emitGetFavicon", 10)  
       Utils.registerEvent("testGetFavicon",null,114,done);
       sendEventByKey('WebInitTestButton',10,'');
@@ -93,7 +101,7 @@ export default function webInitTest() {
      *tc.name testGetFaviconAgain
      *tc.desc test for getFavicon again
      */
-    it('testGetFaviconAgain',0,async (done: Function) =>{
+    it('testGetFaviconAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       await Utils.emitEvent("emitGetFaviconAgain", 10)
       Utils.registerEvent("testGetFaviconAgain",true,116,done);
       sendEventByKey('WebInitTestButton',10,'');
@@ -106,7 +114,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnSearchResultReceive001', 0, async (done: Function) => {
+    it('testOnSearchResultReceive001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitOnSearchResultReceive001", 10)
       Utils.registerEvent("testOnSearchResultReceive001", 3, 60414, done);
       sendEventByKey('WebInitTestButton', 10, '');
@@ -120,7 +128,7 @@ export default function webInitTest() {
     * @tc.type        : Function
     * @tc.level       : Level 1
     */
-    it('testOnSearchResultReceive002', 0, async (done: Function) => {
+    it('testOnSearchResultReceive002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await Utils.emitEvent("emitOnSearchResultReceive002", 10)
       Utils.registerEvent("testOnSearchResultReceive002", 0, 60416, done);
       sendEventByKey('WebInitTestButton', 10, '');

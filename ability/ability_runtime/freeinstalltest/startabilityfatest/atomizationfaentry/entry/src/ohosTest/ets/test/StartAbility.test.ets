@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import featureAbility from "@ohos.ability.featureAbility";
 import wantConstant from '@ohos.ability.wantConstant';
@@ -77,7 +77,7 @@ export default function StartAbilityTest() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_StartAbility_2600", 0, async (done: Function) => {
+    it("FreeInstall_FA_StartAbility_2600", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_StartAbility_2600-------------");
       TAG = "FreeInstall_FA_StartAbility_2600";
       setTimeout(async () => {
@@ -108,7 +108,7 @@ export default function StartAbilityTest() {
      * @tc.desc: Function test
      * @tc.level   0
      */
-    it("FreeInstall_FA_StartAbility_2700", 0, async (done: Function) => {
+    it("FreeInstall_FA_StartAbility_2700", Level.LEVEL0, async (done: Function) => {
       console.log("------------start FreeInstall_FA_StartAbility_2700-------------");
       TAG = "FreeInstall_FA_StartAbility_2700";
       let cmd6 = "bm install -p data/test/AtomizationFaEntry.hap";

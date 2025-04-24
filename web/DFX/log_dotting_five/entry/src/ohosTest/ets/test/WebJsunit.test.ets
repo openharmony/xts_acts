@@ -13,15 +13,23 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitClearMatches";
 
 export default function webJsunit() {
   describe('ActsAceWebDevTest', () => {
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -51,7 +59,7 @@ export default function webJsunit() {
      *tc.name ClearMatches                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('ClearMatches', 0, async (done: Function) => {
+    it('ClearMatches', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSearchNext";
       Utils.registerEvent("ClearMatches", "17100001", 17, done);
       sendEventByKey('webcomponent', 10, '');
@@ -61,7 +69,7 @@ export default function webJsunit() {
      *tc.name SearchNext                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('SearchNext', 0, async (done: Function) => {
+    it('SearchNext', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitClearSslCache";
       Utils.registerEvent("SearchNext", "17100001", 18, done);
       sendEventByKey('webcomponent', 10, '');
@@ -71,7 +79,7 @@ export default function webJsunit() {
      *tc.name ClearSslCache                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('ClearSslCache', 0, async (done: Function) => {
+    it('ClearSslCache', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitClearClientAuthenticationCache";
       Utils.registerEvent("ClearSslCache", "17100001", 19, done);
       sendEventByKey('webcomponent', 10, '');
@@ -81,7 +89,7 @@ export default function webJsunit() {
     *tc.name ClearClientAuthenticationCache
     *tc.desic zoom the current page
     */
-    it('ClearClientAuthenticationCache', 0, async (done: Function) => {
+    it('ClearClientAuthenticationCache', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitStop";
       Utils.registerEvent("ClearClientAuthenticationCache", "17100001", 20, done);
       sendEventByKey('webcomponent', 10, '');
@@ -91,7 +99,7 @@ export default function webJsunit() {
      *tc.name Stop                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('Stop', 0, async (done: Function) => {
+    it('Stop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRequestFocus";
       Utils.registerEvent("Stop", "17100001", 21, done);
       sendEventByKey('webcomponent', 10, '');
@@ -101,7 +109,7 @@ export default function webJsunit() {
      *tc.name RequestFocus                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('RequestFocus', 0, async (done: Function) => {
+    it('RequestFocus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitZoomIn";
       Utils.registerEvent("RequestFocus", "17100001", 22, done);
       sendEventByKey('webcomponent', 10, '');
@@ -111,7 +119,7 @@ export default function webJsunit() {
      *tc.name ZoomIn                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('ZoomIn', 0, async (done: Function) => {
+    it('ZoomIn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitZoomOut";
       Utils.registerEvent("ZoomIn", "17100001", 23, done);
       sendEventByKey('webcomponent', 10, '');
@@ -121,7 +129,7 @@ export default function webJsunit() {
      *tc.name ZoomOut                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('ZoomOut', 0, async (done: Function) => {
+    it('ZoomOut', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetWebId";
       Utils.registerEvent("ZoomOut", "17100001", 24, done);
       sendEventByKey('webcomponent', 10, '');
@@ -131,7 +139,7 @@ export default function webJsunit() {
      *tc.name GetWebId                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('GetWebId', 0, async (done: Function) => {
+    it('GetWebId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetUserAgent";
       Utils.registerEvent("GetWebId", "17100001", 25, done);
       sendEventByKey('webcomponent', 10, '');
@@ -141,7 +149,7 @@ export default function webJsunit() {
      *tc.name GetUserAgent                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('GetUserAgent', 0, async (done: Function) => {
+    it('GetUserAgent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetPageHeigth";
       Utils.registerEvent("GetUserAgent", "17100001", 26, done);
       sendEventByKey('webcomponent', 10, '');
@@ -151,7 +159,7 @@ export default function webJsunit() {
      *tc.name GetPageHeigth                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('GetPageHeigth', 0, async (done: Function) => {
+    it('GetPageHeigth', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitBackOrForward";
       Utils.registerEvent("GetPageHeigth", "17100001", 27, done);
       sendEventByKey('webcomponent', 10, '');
@@ -161,7 +169,7 @@ export default function webJsunit() {
      *tc.name BackOrForward                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
-    it('BackOrForward', 0, async (done: Function) => {
+    it('BackOrForward', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitGetUrl";
       Utils.registerEvent("BackOrForward", "17100001", 28, done);
       sendEventByKey('webcomponent', 10, '');
@@ -171,7 +179,7 @@ export default function webJsunit() {
      *tc.name GetUrl                                                                                                                                                                                                                
      *tc.desic Save current page
      */
-    it('GetUrl', 0, async (done: Function) => {
+    it('GetUrl', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitOnce";
       Utils.registerContainEvent("GetUrl", "17100001", 30, done);
       sendEventByKey('webcomponent', 10, '');

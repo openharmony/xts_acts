@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {
@@ -29,7 +29,6 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-
 export default function AnimatorResultTest() {
   describe('AnimatorResultTest', () => {
     beforeEach(async (done: Function) => {
@@ -57,7 +56,6 @@ export default function AnimatorResultTest() {
       await CommonFunc.sleep(1000);
       console.info("AnimatorResultTest after each called");
     });
-
     /**
      * @tc.number AnimatorResultTest_001
      * @tc.name testBack
@@ -66,7 +64,7 @@ export default function AnimatorResultTest() {
      * @tc.type
      * @tc.size
      */
-    it('AnimatorResultTest_001', 0, async (done: Function) => {
+    it('AnimatorResultTest_001', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimatorResultTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -83,7 +81,7 @@ export default function AnimatorResultTest() {
       console.info('[AnimatorResultTest_001] END');
       done();
     });
-    it('AnimatorResultTest_002', 0, async (done: Function) => {
+    it('AnimatorResultTest_002', Level.LEVEL0, async (done: Function) => {
       console.info('[AnimatorResultTest_002] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 let emitKey = "emitonDownloadFailed";
 
@@ -42,6 +45,11 @@ export default function webTwoJsunit() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -72,7 +80,7 @@ export default function webTwoJsunit() {
      *tc.name onDownloadFailed                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('onDownloadFailed', 0, async (done: Function) => {
+    it('onDownloadFailed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitsetDownloadDelegate";
       Utils.registerEvent("onDownloadFailed", true, 6, done);
       sendEventByKey('webcomponenttwo', 10, '');
@@ -82,7 +90,7 @@ export default function webTwoJsunit() {
      *tc.name setDownloadDelegate                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('setDownloadDelegate', 0, async (done: Function) => {
+    it('setDownloadDelegate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitresumeDownload";
       Utils.registerEvent("setDownloadDelegate", true, 8, done);
       sendEventByKey('webcomponenttwo', 10, '');
@@ -92,7 +100,7 @@ export default function webTwoJsunit() {
      *tc.name resumeDownload                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
-    it('resumeDownload', 0, async (done: Function) => {
+    it('resumeDownload', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitRegisterJavaScriptProxy";
       Utils.registerEvent("resumeDownload", true, 12, done);
       sendEventByKey('webcomponenttwo', 10, '');

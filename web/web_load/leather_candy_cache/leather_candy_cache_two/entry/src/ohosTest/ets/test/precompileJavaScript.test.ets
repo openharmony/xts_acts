@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function precompileJavaScriptTest() {
 
@@ -42,6 +45,11 @@ export default function precompileJavaScriptTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(500);
       console.info("precompileJavaScriptTest beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function precompileJavaScriptTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPrecompileJavaScript001', 0, async (done: Function) => {
+    it('testPrecompileJavaScript001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript001", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testPrecompileJavaScript001", 0, 10092, done);
@@ -70,7 +78,7 @@ export default function precompileJavaScriptTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPrecompileJavaScript005', 0, async (done: Function) => {
+    it('testPrecompileJavaScript005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript005", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testPrecompileJavaScript005", "401", 10096, done);
@@ -84,7 +92,7 @@ export default function precompileJavaScriptTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPrecompileJavaScript006', 0, async (done: Function) => {
+    it('testPrecompileJavaScript006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript006", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testPrecompileJavaScript006", "401", 10097, done);
@@ -99,7 +107,7 @@ export default function precompileJavaScriptTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testPrecompileJavaScript011', 0, async (done: Function) => {
+    it('testPrecompileJavaScript011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testPrecompileJavaScript011", 10)
       await Utils.sleep(500);
       Utils.registerEvent("testPrecompileJavaScript011", 0, 10102, done);

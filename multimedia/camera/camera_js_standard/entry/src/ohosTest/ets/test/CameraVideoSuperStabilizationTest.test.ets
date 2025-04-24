@@ -15,7 +15,7 @@
 
 
 import cameraObj from '@ohos.multimedia.camera';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { surfaceIds } from '../testability/pages/Index';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import Want from '@ohos.app.ability.Want';
@@ -212,7 +212,7 @@ export default function CameraVideoSuperStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_SUPER_STABILIZATION_MODE_SUPPORT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_SUPER_STABILIZATION_MODE_SUPPORT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_SUPER_STABILIZATION_MODE_SUPPORT_PROMISE_0100--------------");
 
       if (mCameraDevicesArray.length == 0) {

@@ -18,7 +18,7 @@ import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
@@ -537,7 +537,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100--------------");
 
       if (mCameraNum == 0) {
@@ -590,7 +590,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100--------------");
 
       if (mCameraNum == 0) {
@@ -654,7 +654,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200--------------");
 
       if (mCameraNum == 0) {
@@ -707,7 +707,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200--------------");
 
       if (mCameraNum == 0) {
@@ -771,7 +771,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300--------------");
 
       if (mCameraNum == 0) {
@@ -824,7 +824,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300--------------");
 
       if (mCameraNum == 0) {
@@ -888,7 +888,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400--------------");
 
       if (mCameraNum == 0) {
@@ -941,7 +941,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400--------------");
 
       if (mCameraNum == 0) {
@@ -1005,7 +1005,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500--------------");
 
       if (mCameraNum == 0) {
@@ -1058,7 +1058,7 @@ export default function cameraSessionVideoStabilizationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500--------------");
 
       if (mCameraNum == 0) {
@@ -1112,6 +1112,122 @@ export default function cameraSessionVideoStabilizationTest() {
         done();
       }
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100
+     * @tc.name      : Check capture session support video stabilization errorcode
+     * @tc.desc      : Check capture session support video stabilization errorcode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100--------------");
 
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        for (let i = 0; i < mCameraNum; i++) {
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 start for camera[" +
+            i + "]");
+          try {
+            let isVideoStabilizationModeSupported =
+              mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.OFF);
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 finish isVideoStabilizationModeSupported =="
+              + isVideoStabilizationModeSupported);
+          }catch(err){
+            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+          }
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 end for camera[" +
+            i + "]");
+        }
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_ERRORCODE_0100 ends here");
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100
+     * @tc.name      : Check capture session  getActiveVideoStabilizationMode errorcode
+     * @tc.desc      : Check capture session  getActiveVideoStabilizationMode errorcode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100--------------");
+
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        for (let i = 0; i < mCameraNum; i++) {
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 start for camera[" +
+            i + "]");
+          try {
+            let vsMode: cameraObj.VideoStabilizationMode = mCameraSession.getActiveVideoStabilizationMode();
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 finish vsMode =="
+              + vsMode);
+          }catch(err){
+            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+          }
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 end for camera[" +
+            i + "]");
+        }
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ACTIVE_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 ends here");
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100
+     * @tc.name      : Check capture session  setVideoStabilizationMode errorcode
+     * @tc.desc      : Check capture session  setVideoStabilizationMode errorcode
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100--------------");
+
+      if (mCameraNum == 0) {
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 FAILED with NoCamera");
+        expect().assertFail();
+        done();
+      } else {
+        for (let i = 0; i < mCameraNum; i++) {
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 start for camera[" +
+            i + "]");
+          try {
+            mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF);
+            console.info(TAG +
+              "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 finish ");
+          }catch(err){
+            console.info(TAG + " SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 FAILED" + err.code);
+            expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_CONFIG).assertTrue();
+          }
+          console.info(TAG +
+            "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 end for camera[" +
+            i + "]");
+        }
+        console.info(TAG +
+          "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_VIDEO_STABILIZATIONMODE_ERRORCODE_0100 ends here");
+        done();
+      }
+    })
   })
 }

@@ -445,7 +445,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_011', 3, async function () {
+  it('fileIO_test_listfile_sync_011', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_011');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_010.txt';
@@ -489,7 +489,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_012', 3, async function () {
+  it('fileIO_test_listfile_sync_012', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_012');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_011.txt';
@@ -1477,7 +1477,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_020', 3, async function () {
+  it('fileIO_test_listfile_async_020', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_020');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_020.txt';
@@ -1526,7 +1526,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_021', 3, async function () {
+  it('fileIO_test_listfile_async_021', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_021');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_021.txt';
@@ -1567,7 +1567,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_022', 3, async function (done) {
+  it('fileIO_test_listfile_async_022', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_022');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_022.txt';
@@ -1612,7 +1612,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_023', 3, async function (done) {
+  it('fileIO_test_listfile_async_023', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_023');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_023.txt';

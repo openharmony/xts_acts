@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import commonEvent from '@ohos.commonEventManager';
@@ -181,7 +181,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0900', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0900';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -232,7 +232,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0600';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -290,7 +290,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0700', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0700';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
 
@@ -358,7 +358,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_AbilityStage_OnDestroy_0500';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
 
@@ -420,7 +420,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0100', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0100';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);
@@ -479,7 +479,7 @@ export default function actsterminateselfwithresulttest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0300', Level.LEVEL0, async (done: Function) => {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_AsynchronousCallback_0300';
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test begin`);
       subscriber = await commonEvent.createSubscriber(subscribeInfo);

@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webAttributeTest() {
 
   describe('WebAttributeTest', () => {
@@ -42,6 +44,11 @@ export default function webAttributeTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -52,9 +59,9 @@ export default function webAttributeTest() {
     * @tc.desc        : test onRenderExited RenderExitReason.ProcessCrashed
     * @tc.size        : MediumTest
     * @tc.type        : Function
-    * @tc.level       : Level 1
+    * @tc.level       : Level 0
     */
-    it('testOnRenderExited001', 0, async (done: Function) => {
+    it('testOnRenderExited001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitOnRenderExited", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnRenderExited001", RenderExitReason.ProcessCrashed, 60106, done);
@@ -68,7 +75,7 @@ export default function webAttributeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRenderExitReasonProcessCrashed001', 0, async (done: Function) => {
+    it('testRenderExitReasonProcessCrashed001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitRenderExitReasonProcessCrashed", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRenderExitReasonProcessCrashed001", 2, 901, done);

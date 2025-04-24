@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll,it, expect } from '@ohos/hypium';
+import { describe, beforeAll,it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import statistics from '@ohos.net.statistics';
 import data from '@ohos.telephony.data';
@@ -64,7 +64,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetCellularRxBytes0500', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetCellularRxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetCellularRxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -98,7 +98,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetCellularRxBytes0600', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetCellularRxBytes0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetCellularRxBytes0600';
       console.info(`${caseName} test start`);
       try {
@@ -132,7 +132,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetCellularTxBytes0500', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetCellularTxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetCellularTxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -166,7 +166,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetCellularTxBytes0600', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetCellularTxBytes0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetCellularTxBytes0600';
       console.info(`${caseName} test start`);
       try {
@@ -198,9 +198,9 @@ export default function   netStatisticsNoDataTest() {
      * @tc.desc  : Obtain real-time downlink traffic of all network adapters without Ethernet access;callback.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrStatisticsGetAllRxBytes0500', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllRxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -233,7 +233,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetAllRxBytes0600', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllRxBytes0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllRxBytes0600';
       console.info(`${caseName} test start`);
       try {
@@ -264,9 +264,9 @@ export default function   netStatisticsNoDataTest() {
      * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access;callback.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrStatisticsGetAllTxBytes0500', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllTxBytes0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0500';
       console.info(`${caseName} test start`);
       try {
@@ -294,12 +294,12 @@ export default function   netStatisticsNoDataTest() {
     /* *
      * @tc.number: SUB_NetworkMgr_Statistics_GetAllTxBytes_0600
      * @tc.name  : testNetworkMgrStatisticsGetAllTxBytes0600
-     * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access;promise
+     * @tc.desc  : Obtain real-time upstream traffic of all nics without Ethernet access
      * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetAllTxBytes0600', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetAllTxBytes0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetAllTxBytes0600';
       console.info(`${caseName} test start`);
       try {
@@ -332,7 +332,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetUidRxBytes0700', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetUidRxBytes0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0700';
       console.info(`${caseName} test start`);
       try {
@@ -366,7 +366,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetUidRxBytes0800', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetUidRxBytes0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetUidRxBytes0800';
       console.info(`${caseName} test start`);
       try {
@@ -398,7 +398,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetUidTxBytes0700', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetUidTxBytes0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0700';
       console.info(`${caseName} test start`);
       try {
@@ -432,7 +432,7 @@ export default function   netStatisticsNoDataTest() {
      * @tc.type  : Function
      * @tc.level : level 3
      */
-    it('testNetworkMgrStatisticsGetUidTxBytes0800', 0, async (done: Function) => {
+    it('testNetworkMgrStatisticsGetUidTxBytes0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testNetworkMgrStatisticsGetUidTxBytes0800';
       console.info(`${caseName} test start`);
       try {

@@ -93,11 +93,11 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.number:SUB_SensorsSystem_NEWORIENTATION_JSTest_0010
      * @tc.name: newOrientating_SensorJsTest001
      * @tc.desc: Functional Use Cases
-     * @tc.level:Level 0
+     * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newOrientating_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newOrientating_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest001--------------');
         TAG = 'newOrientating_SensorJsTest001';
         try{
@@ -546,7 +546,7 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newOrientating_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newOrientating_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = 'newOrientating_SensorJsTest012';
         try{
            sensor.getSingleSensor(sensor.SensorId.ORIENTATION,(error, data) => {
@@ -916,7 +916,7 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newOrientating_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newOrientating_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest020--------------');
         TAG = 'newOrientating_SensorJsTest020';
         try{
@@ -948,7 +948,7 @@ describe("SensorJsTest_sensor_48", function () {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newOrientating_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+    it("newOrientating_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newOrientating_SensorJsTest021--------------');
         TAG = 'newOrientating_SensorJsTest021';
         try{

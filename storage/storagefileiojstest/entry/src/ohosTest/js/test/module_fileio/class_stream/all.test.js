@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioStream() {
 describe('fileio_stream_1', function () {
@@ -30,7 +31,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_000', 0, async function () {
+  it('fileio_test_stream_create_stream_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_create_stream_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -54,7 +55,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_001', 0, async function () {
+  it('fileio_test_stream_create_stream_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_create_stream_sync_001');
 
     try {
@@ -74,7 +75,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_create_stream_sync_002', 0, async function () {
+  it('fileio_test_stream_create_stream_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_create_stream_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -96,7 +97,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_000', 0, async function () {
+  it('fileio_test_stream_read_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -122,7 +123,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_001', 0, async function () {
+  it('fileio_test_stream_read_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -149,7 +150,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_002', 0, async function () {
+  it('fileio_test_stream_read_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -176,7 +177,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_003', 0, async function () {
+  it('fileio_test_stream_read_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -203,7 +204,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_004', 0, async function () {
+  it('fileio_test_stream_read_sync_004', Level.LEVEL0, async function () {
     let ss;
     let fpath = await nextFileName('fileio_test_stream_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -230,7 +231,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_005', 0, async function () {
+  it('fileio_test_stream_read_sync_005', Level.LEVEL0, async function () {
     let ss;
     let fpath = await nextFileName('fileio_test_stream_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -258,7 +259,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_read_sync_006', 0, async function () {
+  it('fileio_test_stream_read_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -286,7 +287,7 @@ describe('fileio_stream_1', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_write_sync_000', 0, async function () {
+  it('fileio_test_stream_write_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_stream_write_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, TestType, Size, Level, expect } from '@ohos/hypium';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as commonUtils from './utils/common/commonUtils';
 import * as signVerifySyncUtils from './utils/signVerify/signVerifySyncUtils';
@@ -48,7 +48,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -80,7 +80,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0101", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -112,7 +112,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -144,7 +144,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -176,7 +176,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -208,7 +208,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -240,7 +240,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -272,7 +272,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -304,7 +304,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -336,7 +336,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -368,7 +368,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -401,7 +401,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -432,7 +432,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1101", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -463,7 +463,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -494,7 +494,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -525,7 +525,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -549,7 +549,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -574,7 +574,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1501", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1501", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -599,7 +599,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -625,7 +625,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -651,7 +651,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -677,7 +677,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_1900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -703,7 +703,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -728,7 +728,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2001", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -753,7 +753,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 16384;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -779,7 +779,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -806,7 +806,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2201", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2201", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -833,7 +833,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2301", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2301", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -861,7 +861,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -889,7 +889,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2401", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "RSA1024";
         let signAlgName: string = "RSA1024|PSS|SHA384|MGF1_SHA256";
@@ -916,7 +916,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -943,7 +943,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2501", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2501", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -970,7 +970,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2502", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2502", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let algName: string = "DSA1024";
         let signAlgName: string = "DSA1024|SHA512";
@@ -994,7 +994,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -1021,7 +1021,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -1048,7 +1048,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2701", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2701", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -1075,7 +1075,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -1102,7 +1102,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2801", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2801", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let data: string = "";
         let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
@@ -1129,7 +1129,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1155,7 +1155,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2901", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_2901", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1181,7 +1181,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1207,7 +1207,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3001", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1234,7 +1234,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let signAlgName: string = "RSA2048|PKCS7|SHA512";
       let verifyAlgName: string = "RSA2048|PKCS7|SHA512";
       let algNameNoHash: string = "RSA2048|PKCS7";
@@ -1307,7 +1307,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1333,7 +1333,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3201", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3201", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1359,7 +1359,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3300", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1385,7 +1385,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3301", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3301", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1411,7 +1411,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3400", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1437,7 +1437,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3401", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1463,7 +1463,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3500", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1489,7 +1489,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3501", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3501", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1515,7 +1515,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3600", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1541,7 +1541,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3601", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3601", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1567,7 +1567,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3700", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1593,7 +1593,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3701", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3701", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let msgLen: number = 64;
         let msg: cryptoFramework.DataBlob = await commonUtils.createData(msgLen);
@@ -1619,7 +1619,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3800", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let signAlgName: string = "SM2_256|NoHash";
         let verifyAlgName: string = "SM2_256|SHA256";
@@ -1667,7 +1667,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3900", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_3900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let signAlgName: string = "Ed25519|SHA256";
         let verifyAlgName: string = "Ed25519|NoHash|SHA";
@@ -1700,7 +1700,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4000", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let signAlgName: string = "ECC256|SM3";
         let verifyAlgName: string = "ECC256|NoHash";
@@ -1749,7 +1749,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4100", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let signAlgName: string = "DSA1024|SM4";
         let verifyAlgName: string = "DSA1024";
@@ -1784,7 +1784,7 @@ export default function SecurityCryptoFwSignVerifySyncTestUnit() {
      * @tc.type Func
      * @tc.level Level3
      */
-    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4200", 0, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_SignVerifySync_Func_4200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let signAlgName: string = "SM9|SM3";
         let verifyAlgName: string = "SM9";

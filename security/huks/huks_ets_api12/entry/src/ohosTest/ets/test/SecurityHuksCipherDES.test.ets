@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { SetParam, GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
 import { StringToUint8Array } from './utils/CommonUtil';
@@ -65,7 +65,7 @@ export default function SecurityHuksCipherDESTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0100', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_DES_API16_Func_0100";
       let cipherData: CipherData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(64))],
@@ -89,7 +89,7 @@ export default function SecurityHuksCipherDESTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0200', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_DES_API16_Func_0200";
       let cipherData: CipherData = {
         updateDataArr: [StringToUint8Array(GetDataBySize(64))],
@@ -115,7 +115,7 @@ export default function SecurityHuksCipherDESTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0300', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_DES_API16_Func_0300";
       let cipherData: CipherData = {
         updateDataArr: null,
@@ -140,7 +140,7 @@ export default function SecurityHuksCipherDESTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0400', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_DES_API16_Func_0400";
       let cipherData: CipherData = {
         updateDataArr: null,
@@ -166,7 +166,7 @@ export default function SecurityHuksCipherDESTest() {
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0500', 0, async () => {
+    it('SUB_Security_HUKS_Cipher_DES_API16_Func_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_DES_API16_Func_0500";
       let cipherData: CipherData = {
         updateDataArr: null,

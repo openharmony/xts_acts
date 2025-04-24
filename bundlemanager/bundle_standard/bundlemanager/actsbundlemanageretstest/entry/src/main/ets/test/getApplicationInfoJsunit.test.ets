@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe,beforeAll, it, expect } from '@ohos/hypium';
+import { describe,beforeAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
@@ -59,7 +59,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0100_001, 0, async function (done) {
+        it(TAG_TEST_0100_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).catch((error) => {
@@ -80,7 +80,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0100_002, 0, async function (done) {
+        it(TAG_TEST_0100_002, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, userId).catch((error) => {
@@ -101,7 +101,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0100_003, 0, async function (done) {
+        it(TAG_TEST_0100_003, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, userId).catch((error) => {
@@ -123,7 +123,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0200_001, 0, async function (done) {
+        it(TAG_TEST_0200_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION).catch((error) => {
@@ -144,7 +144,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0200_002, 0, async function (done) {
+        it(TAG_TEST_0200_002, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_ALL_APPLICATION_INFO).catch((error) => {
@@ -165,7 +165,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0200_003, 0, async function (done) {
+        it(TAG_TEST_0200_003, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE).catch((error) => {
@@ -186,7 +186,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level 0
          */
-        it(TAG_TEST_0300_001, 0, async function (done) {
+        it(TAG_TEST_0300_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let errors;
             let datas;
             let startTime = await Utils.getNowTime();
@@ -215,7 +215,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level 0
          */
-        it(TAG_TEST_0400_001, 0, async function (done) {
+        it(TAG_TEST_0400_001, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let errors;
             let datas;
             let startTime = await Utils.getNowTime();
@@ -244,7 +244,7 @@ export default function applicationBundleJsunit() {
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
          */
-        it(TAG_TEST_0600_002, 0, async function (done) {
+        it(TAG_TEST_0600_002, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let startTime = await Utils.getNowTime();
             let errors
             await Bundle.getApplicationInfo(BUNDLE_NOTEXIST,
@@ -266,7 +266,7 @@ export default function applicationBundleJsunit() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_0440', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0440', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let startTime = await Utils.getNowTime();
             await Bundle.getApplicationInfo(BUNDLE_NAME, FLAG_DEFAULT).then((data) => {
                 let endTime = Utils.getNowTime();
@@ -294,7 +294,7 @@ export default function applicationBundleJsunit() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_0460', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0460', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
           await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT).then((data) => {
               console.info('noUserId promise data is: ' + data);
               getApplicationInfoSuccessOther(data);
@@ -314,7 +314,7 @@ export default function applicationBundleJsunit() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_0480', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0480', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             let startTime = await Utils.getNowTime();
             await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
@@ -338,7 +338,7 @@ export default function applicationBundleJsunit() {
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('Sub_Bms_Framework_Query_AppInfo_0520', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0520', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             await Bundle.getApplicationInfo('', FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -372,7 +372,7 @@ export default function applicationBundleJsunit() {
         * @tc.name: getApplicationInfoNoMetaData
         * @tc.desc: Check the return value of the interface
         */
-        it('getApplicationInfoNoMetaData', 0, async function (done) {
+        it('getApplicationInfoNoMetaData', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT ,userId).then((data) => {
                 getApplicationInfoSuccessOther_METADATA(data);
                 expect(JSON.stringify(data.metaData)).assertEqual("{}");
@@ -392,7 +392,7 @@ export default function applicationBundleJsunit() {
          * @tc.name: getApplicationInfoNotExistBundleName
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfoNotExistBundleName', 0, async function (done) {
+        it('getApplicationInfoNotExistBundleName', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
           await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, userId).then((data) => {
             expect(data).assertFail();
           }).catch((error) => {

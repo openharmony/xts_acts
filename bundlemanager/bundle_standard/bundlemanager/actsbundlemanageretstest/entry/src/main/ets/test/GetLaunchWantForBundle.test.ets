@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import bundleMgr from '@ohos.bundle';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 const NAME1 = "com.example.third1";
 const NAME2 = "com.example.l3jsdemo";
@@ -32,7 +32,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWantForBundle', 0, async function (done) {
+        it('testGetLaunchWantForBundle', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
             await bundleMgr.getLaunchWantForBundle(NAME1).then(res => {
                 expect(res.bundleName).assertEqual(NAME1);
                 expect(res.abilityName).assertEqual(ABILITYNAME1);
@@ -61,7 +61,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 1
         */
-        it('testGetLaunchWantForBundleWithManyHaps', 0, async function (done) {
+        it('testGetLaunchWantForBundleWithManyHaps', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
             await bundleMgr.getLaunchWantForBundle(NAME2).then(res => {
                 expect(res.bundleName).assertEqual(NAME2);
                 expect(res.abilityName).assertEqual(ABILITYNAME2);
@@ -89,7 +89,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 2
         */
-        it('testGetLaunchWantForBundleWithNotExist', 0, async function (done) {
+        it('testGetLaunchWantForBundleWithNotExist', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundleMgr.getLaunchWantForBundle(NAME3).then(res => {
                 expect().assertFail();
             }).catch(err => {
@@ -114,7 +114,7 @@ export default function getLaunchWantForBundle() {
         * @tc.type Function
         * @tc.level Level 3
         */
-        it('testGetLaunchWantForBundleWithInvalidParam', 0, async function (done) {
+        it('testGetLaunchWantForBundleWithInvalidParam', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async function (done) {
             await bundleMgr.getLaunchWantForBundle(null).then(res => {
                 expect().assertFail();
             }).catch(err => {

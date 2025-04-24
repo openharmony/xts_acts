@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherAES } from './utils/param/cipher/publicCipherParam';
 import { HksTag } from './utils/param/publicParam';
@@ -288,7 +288,7 @@ async function publicCipherFunc(srcKeyAlies, genHuksOptionsNONECBC, HuksOptions,
 
 export default function SecurityHuksCipherAESCallbackJsunit() {
     describe('SecurityHuksCipherAESCallbackJsunit', function () {
-        it('Security_HUKS_Cipher_API9_AES_001', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias001';
             genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
             genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -326,7 +326,7 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_002', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias002';
             let HuksOptions = {
                 properties: new Array(
@@ -346,7 +346,7 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_003', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias003';
             let HuksOptions = {
                 properties: new Array(
@@ -381,7 +381,7 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
             done();
         });
 
-        it('Security_HUKS_Cipher_API9_AES_004', 0, async function (done) {
+        it('Security_HUKS_Cipher_API9_AES_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias002';
             let HuksOptions = {
                 properties: new Array(
@@ -410,7 +410,7 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_isPwdSet_0060', 0, async function (done) {
+        it('SUB_Security_HUKS_isPwdSet_0060', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = 'SUB_Security_HUKS_isPwdSet_0060';
             let huksProperties = new Array();
             let index = 0;
@@ -465,7 +465,7 @@ export default function SecurityHuksCipherAESCallbackJsunit() {
          * @tc.type Func
          * @tc.level Level2
          */
-        it('SUB_Security_HUKS_hasKeyItem_0020', 0, async function (done) {
+        it('SUB_Security_HUKS_hasKeyItem_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlias = 'SUB_Security_HUKS_hasKeyItem_0020';
             let huksProperties = new Array();
             let index = 0;

@@ -19,7 +19,7 @@ import formHostNew from '@ohos.app.form.formHost';
 import formInfo from '@ohos.app.form.formInfo';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -141,7 +141,7 @@ export default function test() {
          * @tc.name: Create form test.
          * @tc.desc: OnCreate form interface working well.
          */
-        it(`FMS_stressTest_0100`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_0100`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_0100`;
             subscribeDeletedEvent(tcNumber, 1, done);
 
@@ -202,7 +202,7 @@ export default function test() {
          * @tc.name: Host release form test.
          * @tc.desc: releaseForm method working well.
          */
-        it(`FMS_stressTest_0200`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_0200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_0200`;
 
             subscribeDeletedEvent(tcNumber, 1, done);
@@ -278,7 +278,7 @@ export default function test() {
          * @tc.name: Host cast temp form test.
          * @tc.desc: castTempForm method working well.
          */
-        it(`FMS_stressTest_0300`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_0300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_0300`;
 
             subscribeDeletedEvent(tcNumber, 1, done);
@@ -353,7 +353,7 @@ export default function test() {
          * @tc.name: Host request form test.
          * @tc.desc: requestForm method working well.
          */
-        it(`FMS_stressTest_0700`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_0700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_0700`;
 
             subscribeDeletedEvent(tcNumber, 1, done);
@@ -418,7 +418,7 @@ export default function test() {
          * @tc.name: Get forms info test.
          * @tc.desc: getAllFormsInfo and getFormsInfo method working well.
          */
-        it(`FMS_stressTest_1700`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_1700`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber: string = `FMS_stressTest_1700`;
             let allFormsInfo: allFormsInfoType[] | null = null;
             try {
@@ -463,7 +463,7 @@ export default function test() {
          * @tc.name: Form system ready test.
          * @tc.desc: isSystemReady method working well.
          */
-        it(`FMS_stressTest_1800`, 0, async (done: ()=> void) => {
+        it(`FMS_stressTest_1800`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_1800`;
 
             const systemstatus = await formHost.isSystemReady();

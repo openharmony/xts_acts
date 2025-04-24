@@ -1458,7 +1458,7 @@ export default function workerErrorCodeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testThreadWorkerErrorCode0010', 0, async (done: Function) => {
+    it('testThreadWorkerErrorCode0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = "testThreadWorkerErrorCode0010";
       try {
         let bool = false;

@@ -38,10 +38,6 @@ export default function ListAddApi() {
       console.info("ListAddApi foreEach end");
       done();
     });
-    afterEach(async (done: Function) => {
-      await CommonFunc.sleep(1000);
-      console.info("ListAddApi after each called");
-    });
 
     /*
      * @tc.number     : SUB_ACE_UI_COMPONENT_List_0010
@@ -68,12 +64,6 @@ export default function ListAddApi() {
       console.info('[ListAddApi_001] END');
       done();
     });
-
-
-
-
-
-
 
   })
 }

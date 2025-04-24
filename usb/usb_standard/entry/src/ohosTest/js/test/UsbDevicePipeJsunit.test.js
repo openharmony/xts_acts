@@ -193,9 +193,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc     : Positive test: bulk transfer, receive data
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 3
+   * @tc.level    : Level 0
    */
-  it('testBulkTransfer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+  it('testBulkTransfer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     console.info(TAG, 'usb testBulkTransfer001 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();
@@ -233,9 +233,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.desc     : Positive test: bulk transfer, send data
    * @tc.size     : MediumTest
    * @tc.type     : Function
-   * @tc.level    : Level 3
+   * @tc.level    : Level 0
    */
-  it('testBulkTransfer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function () {
+  it('testBulkTransfer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
     console.info(TAG, 'usb testBulkTransfer002 begin');
     if (!isDeviceConnected) {
       expect(isDeviceConnected).assertFalse();

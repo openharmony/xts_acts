@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import ndkTest from 'libentry.so'
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -380,7 +380,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             try {
                 let pixelmap = await getPixelMap();
                 if (pixelmap == undefined) {
@@ -404,7 +405,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done: Function) => {
             const checkResult = (result: number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0200', 'initNativePixelMap', checkResult);
         });
@@ -417,7 +419,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done: Function) => {
             const checkResult = (result: number) => result != undefined;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0300', 'createAlphaPixelMap', checkResult);
         });
@@ -430,7 +433,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == BYTESNUMBER;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0400', 'getBytesNumberPerRow', checkResult);
         });
@@ -443,7 +447,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == opts.editable;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0500', 'getIsEditable', checkResult);
         });
@@ -456,7 +461,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == 1;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0600', 'isSupportAlpha', checkResult);
         });
@@ -469,7 +475,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0700', 'setAlphaAble', checkResult, 0);
         });
@@ -482,7 +489,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0800', 'setDensity', checkResult, 360);
         });
@@ -495,7 +503,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_0900', 'getDensity', checkResult);
         });
@@ -508,7 +517,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1000', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1000', 'setOpacity', checkResult, 0.5);
         });
@@ -521,7 +531,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1100', 'scale', checkResult, 1.5, 1.5);
         });
@@ -534,7 +545,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1200', 'translate', checkResult, 2.0, 3.0);
         });
@@ -547,7 +559,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1300', 'rotate', checkResult, 90);
         });
@@ -560,7 +573,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1400', 'flip', checkResult, 1, 0);
         });
@@ -573,7 +587,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1500', 'crop', checkResult, 0, 1, 3, 2);
         });
@@ -586,7 +601,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result != undefined;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1600', 'getImageInfo', checkResult);
         });
@@ -599,7 +615,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1700', 'accessPixels', checkResult);
         });
@@ -612,7 +629,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == RESULT_SUCCESS;
             await pixelMapTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_1800', 'unAccessPixels', checkResult);
         });
@@ -625,7 +643,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0100', 'setAlphaAble', checkResult, 'a');
         });
@@ -638,7 +657,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == -1;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0200', 'setAlphaAble', checkResult, 66);
         });
@@ -651,7 +671,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0300', 'setAlphaAble', checkResult, {
                 a: 1
@@ -666,7 +687,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0400', 'setDensity', checkResult, {
                 a: 1
@@ -681,7 +703,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0500', 'setDensity', checkResult,
                 'density');
@@ -695,7 +718,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0600', 'setDensity', checkResult, true);
         });
@@ -708,7 +732,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0700', 'setOpacity', checkResult, true);
         });
@@ -721,7 +746,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == -1;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0800', 'setOpacity', checkResult, 2);
         });
@@ -734,7 +760,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_0900', 'setOpacity', checkResult, {
                 a: 1
@@ -749,7 +776,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1000', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1000', 'scale', checkResult, {
                 a: 10
@@ -764,7 +792,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1100', 'scale', checkResult, 1.0, null);
         });
@@ -777,7 +806,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1200', 'scale', checkResult, true, 1.0);
         });
@@ -790,7 +820,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1300', 'translate', checkResult, {
                 a: 10
@@ -805,7 +836,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1400', 'translate', checkResult, 1.0,
                 null);
@@ -819,7 +851,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1500', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1500', 'translate', checkResult, true,
                 1.0);
@@ -833,7 +866,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1600', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1600', 'rotate', checkResult, true);
         });
@@ -846,7 +880,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1700', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1700', 'rotate', checkResult, null);
         });
@@ -859,7 +894,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1800', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1800', 'rotate', checkResult, 'a');
         });
@@ -872,7 +908,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1900', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_1900', 'flip', checkResult, {
                 a: 10
@@ -887,7 +924,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2000', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2000', 'flip', checkResult, null);
         });
@@ -900,7 +938,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2100', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2100', 'flip', checkResult, 'a');
         });
@@ -913,7 +952,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2200', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2200', 'crop', checkResult, 'a', 1, 3, 2);
         });
@@ -926,7 +966,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2300', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2300', 'crop', checkResult, 0, {
                 a: 1
@@ -941,7 +982,8 @@ export default function ImagePixelMapNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2400', 0, async (done:Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+            async (done:Function) => {
             const checkResult = (result:number) => result == undefined;
             await pixelMapErrTest(done, 'SUB_MULTIMEDIA_IMAGE_PIXELMAPNDK_ERR_2400', 'crop', checkResult, 0, 1, true,
                 2);

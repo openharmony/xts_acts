@@ -12,10 +12,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Util';
 import events_emitter from '@ohos.events.emitter';
 import { router } from '@kit.ArkUI';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function Download() {
   describe('Download', () => {
@@ -42,6 +45,11 @@ export default function Download() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(300);
       done();
     });
@@ -61,7 +69,7 @@ export default function Download() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_setDownloadDelegate1000", 0, (done: Function) => {
+    it("testWebView_setDownloadDelegate1000", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       Utils.registerBaseEvent('testWebView_setDownloadDelegate1000', '17100019The download task is not started yet.',
         400, done,
         (backData: events_emitter.EventData, expected: Object) => {
@@ -78,7 +86,7 @@ export default function Download() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_setDownloadDelegate1001", 0, async (done: Function) => {
+    it("testWebView_setDownloadDelegate1001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_setDownloadDelegate1001', '4', 401, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -101,7 +109,7 @@ export default function Download() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_setDownloadDelegate1002", 0, async (done: Function) => {
+    it("testWebView_setDownloadDelegate1002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_setDownloadDelegate1002', '4', 401, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -127,7 +135,7 @@ export default function Download() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_setDownloadDelegate1003", 0, async (done: Function) => {
+    it("testWebView_setDownloadDelegate1003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_setDownloadDelegate1003', '17100001Init error. The WebviewController must be associated with a Web component', 402, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -143,7 +151,7 @@ export default function Download() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("testWebView_setDownloadDelegate1004", 0, async (done: Function) => {
+    it("testWebView_setDownloadDelegate1004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.registerBaseEvent('testWebView_setDownloadDelegate1004', '17100002Invalid url', 403, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);

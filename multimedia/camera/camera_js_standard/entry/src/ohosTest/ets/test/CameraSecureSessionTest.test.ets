@@ -16,7 +16,7 @@
 import cameraObj from '@ohos.multimedia.camera';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { surfaceIds } from '../testability/pages/Index';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
 import Want from '@ohos.app.ability.Want';
@@ -365,7 +365,7 @@ export default function cameraSecureSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_OPEN_SECURE_CAMERA_0100--------------");
 
       if (mCameraNum == 0) {
@@ -409,7 +409,7 @@ export default function cameraSecureSessionTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100', Level.LEVEL2, async (done: Function) => {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100--------------");
 
       if (mCameraNum == 0) {
@@ -441,5 +441,233 @@ export default function cameraSecureSessionTest() {
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100 ends here");
       done();
     })
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_ERROR_0100
+     * @tc.name      : Test secure session on callback error
+     * @tc.desc      : Test secure session on callback error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_ERROR_0100', Level.LEVEL1, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_ERROR_0100--------------");
+      createSecureSessionInstance();
+      try {
+        mCameraSession.on('error', (err) => {
+          if (err) {
+            console.error(`Secure session error code: ${err.code}`)
+          } else {
+            console.info(`Secure session success to listen on error`)
+          }
+        })
+        expect(true).assertTrue()
+      } catch (err) {
+        console.error(`Secure session failed to listen on error: ${err.code}`)
+        expect().assertFail()
+      }
+      console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_ERROR_0100--------------");
+      await releaseCameraSessionInstance()
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_ERROR_0100
+     * @tc.name      : Test secure session off callback error
+     * @tc.desc      : Test secure session off callback error
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_ERROR_0100', Level.LEVEL1, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_ERROR_0100--------------");
+      createSecureSessionInstance();
+
+      // 打开监听
+      mCameraSession.on('error', (err) => {
+          console.error(`Secure session error code: ${err.code}`)
+      })
+
+      // 关闭监听
+      try {
+        mCameraSession.off('error', (err) => {
+          if (err) {
+            console.error(`Secure session error code: ${err.code}`)
+          } else {
+            console.info(`Secure session success to turn off listen on error`)
+          }
+        })
+        expect(true).assertTrue()
+      } catch (err) {
+        console.error(`Secure session failed to turn off listen on error: ${err.code}`)
+        expect().assertFail()
+      }
+      console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_ERROR_0100--------------");
+      await releaseCameraSessionInstance()
+      done()
+    })
+
+
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_FOCUS_STATE_CHANGE_0100
+     * @tc.name      : Test secure session on callback focusStateChange
+     * @tc.desc      : Test secure session on callback focusStateChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_FOCUS_STATE_CHANGE_0100', Level.LEVEL1, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_FOCUS_STATE_CHANGE_0100--------------");
+      createSecureSessionInstance();
+      try {
+        mCameraSession.on('focusStateChange', (err) => {
+          if (err) {
+            console.error(`Secure session error code: ${err.code}`)
+          } else {
+            console.info(`Secure session success to listen on error`)
+          }
+        })
+        expect(true).assertTrue()
+      } catch (err) {
+        console.error(`Secure session failed to listen on error: ${err.code}`)
+        expect().assertFail()
+      }
+      console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ON_CALLBACK_FOCUS_STATE_CHANGE_0100--------------");
+      await releaseCameraSessionInstance()
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_FOCUS_STATE_CHANGE_0100
+     * @tc.name      : Test secure session off callback focusStateChange
+     * @tc.desc      : Test secure session off callback focusStateChange
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_FOCUS_STATE_CHANGE_0100', Level.LEVEL1, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_FOCUS_STATE_CHANGE_0100--------------");
+      createSecureSessionInstance();
+
+      // 打开监听
+      mCameraSession.on('focusStateChange', (err) => {
+          console.error(`Secure session error code: ${err.code}`)
+      })
+
+      // 关闭监听
+      try {
+        mCameraSession.off('focusStateChange', (err) => {
+          if (err) {
+            console.error(`Secure session error code: ${err.code}`)
+          } else {
+            console.info(`Secure session success to turn off listen on error`)
+          }
+        })
+        expect(true).assertTrue()
+      } catch (err) {
+        console.error(`Secure session failed to turn off listen on error: ${err.code}`)
+        expect().assertFail()
+      }
+      console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_OFF_CALLBACK_FOCUS_STATE_CHANGE_0100--------------");
+      await releaseCameraSessionInstance()
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0100
+     * @tc.name      : Test secure session addSecureOutput
+     * @tc.desc      : Test secure session addSecureOutput
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0100', Level.LEVEL1, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0100--------------");
+      if (mCameraNum < 2) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100 Pass with NoCamera Support Secure Session");
+        expect(true).assertTrue();
+        done();
+      } else {
+        createSecureSessionInstance();
+        await createInput(1);
+        await createOutput(1);
+    
+        if (!isEmpty(mCameraInput)) {
+          console.info(TAG + "Start to addInput");
+          mCameraSession.addInput(mCameraInput);
+        }
+
+        if (!isEmpty(mPreviewOutput)) {
+          console.info(TAG + "Start to addOutput mPreviewOutput");
+          mCameraSession.addOutput(mPreviewOutput);
+        }
+
+        console.info(TAG + "Start to addSecureOutput");
+        try {
+          mCameraSession.addSecureOutput(mPreviewOutput);
+          console.info(TAG + "Success to addSecureOutput mPreviewOutput");
+          expect(true).assertTrue()
+        } catch (err) {
+          console.info(TAG + "Failed to addSecureOutput mPreviewOutput, error code: " + err.code);
+          expect().assertFail()
+        }
+        await mCameraSession.commitConfig();
+        console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0100--------------");
+        await sleep(1000);
+        await releaseCameraSessionInstance()
+      }
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0200
+     * @tc.name      : Test secure session addSecureOutput with errorCode 7400101
+     * @tc.desc      : Test secure session addSecureOutput with errorCode 7400101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("--------------Enter SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0200--------------");
+      if (mCameraNum < 2) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_SECURE_CAMERA_0100 Pass with NoCamera Support Secure Session");
+        expect(true).assertTrue();
+        done();
+      } else {
+        createSecureSessionInstance();
+        await createInput(1);
+        await createOutput(1);
+    
+        if (!isEmpty(mCameraInput)) {
+          console.info(TAG + "Start to addInput");
+          mCameraSession.addInput(mCameraInput);
+        }
+
+        if (!isEmpty(mPreviewOutput)) {
+          console.info(TAG + "Start to addOutput mPreviewOutput");
+          mCameraSession.addOutput(mPreviewOutput);
+        }
+
+        console.info(TAG + "Start to addSecureOutput");
+        try {
+          mCameraSession.addSecureOutput(null);
+          console.info(TAG + "Success to addSecureOutput mPreviewOutput");
+          expect().assertFail()
+        } catch (err) {
+          console.info(TAG + "Failed to addSecureOutput mPreviewOutput, error code: " + err.code);
+          expect(err.code == 7400101 ).assertTrue();
+          // expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
+        }
+        await mCameraSession.commitConfig();
+        console.info("--------------Exit SUB_MULTIMEDIA_CAMERA_SECURE_SESSION_ADD_SECURE_OUTPUT_0200--------------");
+        await sleep(1000);
+        await releaseCameraSessionInstance()
+      }
+      done()
+    })
+
+
   })
 }

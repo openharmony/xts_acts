@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import { wantConstant } from '@kit.AbilityKit';
 import { appManager } from '@kit.AbilityKit';
@@ -60,7 +60,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -147,7 +147,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0300";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability === true) {
@@ -185,7 +185,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_WantConstant_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_WantConstant_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_WantConstant_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_WantConstant_0100] start');
       expect(wantConstant.Params.APP_INSTANCE_KEY).assertEqual("ohos.extra.param.key.appInstance")
@@ -203,7 +203,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_getAllRunningInstanceKeys_0100] start');
       try {
@@ -226,7 +226,7 @@ export default function abilityTest() {
     * @tc.type: Function
     * @tc.level: Level 3
     */
-    it('SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_getCurrentInstanceKey_0100] start');
       try {
@@ -249,7 +249,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0100] start');
       appManager.isAppRunning("com.acts.startuiserviceextensiontest").then((data: boolean) => {
@@ -271,7 +271,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0200] start');
       appManager.isAppRunning("com.acts.startuiserviceextensiontest", 1001).then((data: boolean) => {
@@ -293,7 +293,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0300', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0300";
       console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0300] start');
       try{
@@ -322,7 +322,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_fontId_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_fontId_0100', Level.LEVEL0, async (done: Function) => {
       console.info('====> [SUB_Ability_AbilityRuntime_fontId_0100] start');
       if(testAbilityContext.config?.fontId != undefined){
         expect(typeof(testAbilityContext.config.fontId)).assertEqual("string");
@@ -345,7 +345,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_0200', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AppManager_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_AppManager_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_AppManager_0200] start');
       let pid = 0;
@@ -438,7 +438,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0700', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0700";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0700] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {
@@ -491,7 +491,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0800', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0800";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {
@@ -544,7 +544,7 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level: Level 3
      */
-    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_0900', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0900";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0900] isSupportCapability: ' + isSupportCapability);
       if (isSupportCapability && mpEnable) {

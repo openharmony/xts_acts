@@ -12,17 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { beforeEach, describe, it } from '@ohos/hypium';
+import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
-
-
+import { accessibility, config } from '@kit.AccessibilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
+
+
 
 export default function webviewApi() {
 
   describe('webRegisterCustomsTwo', () => {
       
     beforeEach(async (done:Function) => {
+        config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();
@@ -38,7 +46,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebSchemeHandler_SetOnRequestStart', 0, async (done: Function) => {
+    it('testWebSchemeHandler_SetOnRequestStart', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebSchemeHandler_SetOnRequestStart PASS');
         
@@ -56,7 +64,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebSchemeHandler_SetOnRequestStop', 0, async (done: Function) => {
+    it('testWebSchemeHandler_SetOnRequestStop', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebSchemeHandler_SetOnRequestStop PASS');
         
@@ -74,7 +82,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWeb_ReleaseByteArray', 0, async (done: Function) => {
+    it('testWeb_ReleaseByteArray', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ReleaseByteArray PASS');
         
@@ -93,7 +101,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWeb_ReleaseString', 0, async (done: Function) => {
+    it('testWeb_ReleaseString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_ReleaseString PASS');
         
@@ -111,7 +119,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWeb_DestroyResponse', 0, async (done: Function) => {
+    it('testWeb_DestroyResponse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_DestroyResponse PASS');
         
@@ -129,7 +137,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWeb_CreateSchemeHandler', 0, async (done: Function) => {
+    it('testWeb_CreateSchemeHandler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWeb_CreateSchemeHandler PASS');
         
@@ -147,7 +155,7 @@ export default function webviewApi() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testWebResourceRequest_GetRequestHeaders', 0, async (done: Function) => {
+    it('testWebResourceRequest_GetRequestHeaders', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         
         hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetRequestHeaders PASS');
         

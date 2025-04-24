@@ -116,6 +116,7 @@ export function photoFetchOption(testNum: string, key: string, value: string | n
       photoKeys.THM_SIZE,
       photoKeys.DETAIL_TIME,
       photoKeys.DATE_TAKEN_MS,
+      photoKeys.MEDIA_SUFFIX,
       'all_exif',
     ],
     predicates: predicates
@@ -470,6 +471,32 @@ export async function createVideoBySandBoxUri(testNum: string, testContext: comm
     console.log(`${testNum} :: createVideoBySandBoxUri failed ! error is ${error}`);
   }
   return uri;
+}
+
+export async function getAssetCountByMediaSuffix(testNum:string, helper: photoAccessHelper.PhotoAccessHelper,mediaSuffix: string) {
+  let count: number = 0;
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOptions: photoAccessHelper.FetchOptions = {
+      fetchColumns: [
+        photoKeys.DISPLAY_NAME
+      ],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
+    let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+    for (let photoAsset of photoAssetList) {
+      let suffix: string = (photoAsset.displayName).substring(((photoAsset.displayName).lastIndexOf(".") + 1), photoAsset.displayName.length);
+      if (mediaSuffix === suffix) {
+        count++;
+      }
+    }
+    console.log(`${testNum} :: get assetCount By mediaSuffix success, count = ${count}`);
+  } catch (error) {
+    console.error(`${testNum} :: get assetCount By mediaSuffix failed ! error = ${error}`);
+    count = -1;
+  }
+  return count;
 }
 
 export {

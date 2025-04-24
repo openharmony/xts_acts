@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // @ts-nocheck
 let emitKey = ''
 
@@ -46,6 +49,11 @@ export default function ActsAceWebSetNetErrorCode2() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       done();
     })
@@ -76,9 +84,9 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.desc test WebSetNetErrorCode_NET_OK (0)
      *@tc.size MediumTest
      *@tc.type Function
-     *@tc.level Level 1
+     *@tc.level Level 0
      */
-    it('testWebSetNetErrorCode_NET_OK', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_NET_OK', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_NET_OK"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_NET_OK", true, 3000, done);
@@ -93,7 +101,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_IO_PENDING', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_IO_PENDING', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_IO_PENDING"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_IO_PENDING", true, 3001, done);
@@ -107,7 +115,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FAILED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FAILED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FAILED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FAILED", true, 3002, done);
@@ -122,7 +130,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_ABORTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_ABORTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ABORTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_ABORTED", true, 3003, done);
@@ -137,7 +145,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INVALID_ARGUMENT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INVALID_ARGUMENT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_ARGUMENT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INVALID_ARGUMENT", true, 3004, done);
@@ -152,7 +160,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INVALID_HANDLE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INVALID_HANDLE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INVALID_HANDLE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INVALID_HANDLE", true, 3005, done);
@@ -166,7 +174,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_NOT_FOUND', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_NOT_FOUND', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_NOT_FOUND"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_NOT_FOUND", true, 3006, done);
@@ -180,7 +188,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_TIMED_OUT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_TIMED_OUT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_TIMED_OUT"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_TIMED_OUT", true, 3007, done);
@@ -194,7 +202,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_TOO_LARGE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_TOO_LARGE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_TOO_LARGE"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_TOO_LARGE", true, 3008, done);
@@ -208,7 +216,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UNEXPECTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UNEXPECTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UNEXPECTED"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UNEXPECTED", true, 3009, done);
@@ -222,7 +230,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_ACCESS_DENIED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_ACCESS_DENIED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ACCESS_DENIED"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_ACCESS_DENIED", true, 3010, done);
@@ -236,7 +244,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_NOT_IMPLEMENTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_NOT_IMPLEMENTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NOT_IMPLEMENTED"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_NOT_IMPLEMENTED", true, 3011, done);
@@ -250,7 +258,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INSUFFICIENT_RESOURCES', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INSUFFICIENT_RESOURCES', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INSUFFICIENT_RESOURCES"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INSUFFICIENT_RESOURCES", true, 3012, done);
@@ -264,7 +272,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_OUT_OF_MEMORY', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_OUT_OF_MEMORY', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_OUT_OF_MEMORY"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_OUT_OF_MEMORY", true, 3013, done);
@@ -278,7 +286,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UPLOAD_FILE_CHANGED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UPLOAD_FILE_CHANGED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UPLOAD_FILE_CHANGED"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UPLOAD_FILE_CHANGED", true, 3014, done);
@@ -292,7 +300,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_SOCKET_NOT_CONNECTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SOCKET_NOT_CONNECTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKET_NOT_CONNECTED"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SOCKET_NOT_CONNECTED", true, 3015, done);
@@ -306,7 +314,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_EXISTS', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_EXISTS', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_EXISTS"
      Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_EXISTS", true, 3016, done);
@@ -322,7 +330,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_PATH_TOO_LONG', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_PATH_TOO_LONG', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_PATH_TOO_LONG"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_PATH_TOO_LONG", true, 3017, done);
@@ -338,7 +346,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_NO_SPACE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_NO_SPACE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_NO_SPACE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_NO_SPACE", true, 3018, done);
@@ -352,7 +360,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_FILE_VIRUS_INFECTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_FILE_VIRUS_INFECTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_FILE_VIRUS_INFECTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_FILE_VIRUS_INFECTED", true, 3019, done);
@@ -367,7 +375,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_CLIENT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_CLIENT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BLOCKED_BY_CLIENT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BLOCKED_BY_CLIENT", true, 3020, done);
@@ -381,7 +389,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_NETWORK_CHANGED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_NETWORK_CHANGED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NETWORK_CHANGED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_NETWORK_CHANGED", true, 3021, done);
@@ -396,7 +404,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_ADMINISTRATOR', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_ADMINISTRATOR', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BLOCKED_BY_ADMINISTRATOR"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BLOCKED_BY_ADMINISTRATOR", true, 3022, done);
@@ -411,7 +419,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_SOCKET_CONNECTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SOCKET_CONNECTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SOCKET_CONNECTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SOCKET_CONNECTED", true, 3023, done);
@@ -426,7 +434,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED", true, 3024, done);
@@ -440,7 +448,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONTEXT_SHUT_DOWN', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONTEXT_SHUT_DOWN', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONTEXT_SHUT_DOWN"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONTEXT_SHUT_DOWN", true, 3025, done);
@@ -454,7 +462,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_RESPONSE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_RESPONSE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BLOCKED_BY_RESPONSE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BLOCKED_BY_RESPONSE", true, 3026, done);
@@ -468,7 +476,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CLEARTEXT_NOT_PERMITTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CLEARTEXT_NOT_PERMITTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CLEARTEXT_NOT_PERMITTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CLEARTEXT_NOT_PERMITTED", true, 3027, done);
@@ -483,7 +491,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_CSP', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_CSP', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BLOCKED_BY_CSP"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BLOCKED_BY_CSP", true, 3028, done);
@@ -497,7 +505,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_H2_OR_QUIC_REQUIRED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_H2_OR_QUIC_REQUIRED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_H2_OR_QUIC_REQUIRED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_H2_OR_QUIC_REQUIRED", true, 3029, done);
@@ -512,7 +520,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_ORB', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BLOCKED_BY_ORB', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BLOCKED_BY_ORB"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BLOCKED_BY_ORB", true, 3030, done);
@@ -526,7 +534,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_CLOSED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_CLOSED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_CLOSED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_CLOSED", true, 3031  , done);
@@ -540,7 +548,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_RESET', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_RESET', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_RESET"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_RESET", true, 3032  , done);
@@ -554,7 +562,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_REFUSED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_REFUSED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_REFUSED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_REFUSED", true, 3033, done);
@@ -569,7 +577,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_ABORTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_ABORTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_ABORTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_ABORTED", true, 3034, done);
@@ -583,7 +591,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_FAILED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_FAILED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_FAILED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_FAILED", true, 3035, done);
@@ -597,7 +605,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_NAME_NOT_RESOLVED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_NAME_NOT_RESOLVED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NAME_NOT_RESOLVED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_NAME_NOT_RESOLVED", true, 3036, done);
@@ -611,7 +619,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_INTERNET_DISCONNECTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_INTERNET_DISCONNECTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_INTERNET_DISCONNECTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_INTERNET_DISCONNECTED", true, 3037, done);
@@ -625,7 +633,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_SSL_PROTOCOL_ERROR', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SSL_PROTOCOL_ERROR', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_PROTOCOL_ERROR"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SSL_PROTOCOL_ERROR", true, 3038, done);
@@ -639,7 +647,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_ADDRESS_INVALID', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_ADDRESS_INVALID', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ADDRESS_INVALID"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_ADDRESS_INVALID", true, 3039, done);
@@ -653,7 +661,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_ADDRESS_UNREACHABLE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_ADDRESS_UNREACHABLE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_ADDRESS_UNREACHABLE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_ADDRESS_UNREACHABLE", true, 3040, done);
@@ -667,7 +675,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NEEDED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NEEDED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NEEDED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SSL_CLIENT_AUTH_CERT_NEEDED", true, 3041, done);
@@ -681,7 +689,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_TUNNEL_CONNECTION_FAILED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_TUNNEL_CONNECTION_FAILED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_TUNNEL_CONNECTION_FAILED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_TUNNEL_CONNECTION_FAILED", true, 3042, done);
@@ -696,7 +704,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_NO_SSL_VERSIONS_ENABLED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_NO_SSL_VERSIONS_ENABLED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_NO_SSL_VERSIONS_ENABLED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_NO_SSL_VERSIONS_ENABLED", true, 3043, done);
@@ -711,7 +719,7 @@ export default function ActsAceWebSetNetErrorCode2() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebSetNetErrorCode_ERR_SSL_VERSION_OR_CIPHER_MISMATCH', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SSL_VERSION_OR_CIPHER_MISMATCH', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_VERSION_OR_CIPHER_MISMATCH"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SSL_VERSION_OR_CIPHER_MISMATCH", true, 3044, done);
@@ -726,7 +734,7 @@ export default function ActsAceWebSetNetErrorCode2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebSetNetErrorCode_ERR_SSL_RENEGOTIATION_REQUESTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_SSL_RENEGOTIATION_REQUESTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_SSL_RENEGOTIATION_REQUESTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_SSL_RENEGOTIATION_REQUESTED", true, 3045, done);
@@ -741,7 +749,7 @@ export default function ActsAceWebSetNetErrorCode2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebSetNetErrorCode_ERR_PROXY_AUTH_UNSUPPORTED', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_PROXY_AUTH_UNSUPPORTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_PROXY_AUTH_UNSUPPORTED"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_PROXY_AUTH_UNSUPPORTED", true, 3046, done);
@@ -756,7 +764,7 @@ export default function ActsAceWebSetNetErrorCode2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebSetNetErrorCode_ERR_BAD_SSL_CLIENT_AUTH_CERT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_BAD_SSL_CLIENT_AUTH_CERT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_BAD_SSL_CLIENT_AUTH_CERT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_BAD_SSL_CLIENT_AUTH_CERT", true, 3047, done);
@@ -771,7 +779,7 @@ export default function ActsAceWebSetNetErrorCode2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebSetNetErrorCode_ERR_CONNECTION_TIMED_OUT', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_CONNECTION_TIMED_OUT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_CONNECTION_TIMED_OUT"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_CONNECTION_TIMED_OUT", true, 3048, done);
@@ -786,7 +794,7 @@ export default function ActsAceWebSetNetErrorCode2() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebSetNetErrorCode_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE', 0, async (done: Function) => {
+    it('testWebSetNetErrorCode_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       emitKey = "emitWebSetNetErrorCode_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE"
       Utils.emitEvent(emitKey, 10);
       Utils.registerEvent("testWebSetNetErrorCode_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE", true, 3049, done);

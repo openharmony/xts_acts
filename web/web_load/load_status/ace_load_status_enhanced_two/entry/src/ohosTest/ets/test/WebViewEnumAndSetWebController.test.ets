@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function WebViewEnumAndSetWebController() {
 
@@ -40,6 +43,11 @@ export default function WebViewEnumAndSetWebController() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -59,9 +67,9 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.desc       : test cacheMode
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testCacheMode002', 0, async (done: Function) => {
+    it('testCacheMode002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitCacheModeOnly", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode002", "cacheError", 1401, done);
@@ -76,7 +84,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode001', 0, async (done: Function) => {
+    it('testCacheMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeDefault", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode001", '"index"', 1402, done);
@@ -91,7 +99,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode003', 0, async (done: Function) => {
+    it('testCacheMode003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeOnline", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode003", true, 1405, done);
@@ -106,7 +114,7 @@ export default function WebViewEnumAndSetWebController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCacheMode004', 0, async (done: Function) => {
+    it('testCacheMode004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitCacheModeNone", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testCacheMode004", "华为 - 构建万物互联的智能世界", 1406, done);

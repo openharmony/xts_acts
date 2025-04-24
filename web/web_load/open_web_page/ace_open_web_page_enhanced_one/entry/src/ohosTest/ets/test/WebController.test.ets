@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webController() {
 
@@ -42,6 +45,11 @@ export default function webController() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webController beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRefresh001', 0, async (done: Function) => {
+    it('testRefresh001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testRefresh001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRefresh001", "\"index\"", 31006, done);
@@ -70,7 +78,7 @@ export default function webController() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadData001', 0, async (done: Function) => {
+    it('testLoadData001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadData001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadData001", "\"LoadData\"", 31005, done);
@@ -85,7 +93,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl001', 0, async (done: Function) => {
+    it('testLoadUrl001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl001", true, 31018, done);
@@ -100,7 +108,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl002', 0, async (done: Function) => {
+    it('testLoadUrl002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl002", 'OpenAtom OpenHarmony', 76000, done);
@@ -115,7 +123,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl003', 0, async (done: Function) => {
+    it('testLoadUrl003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl003", 'second', 76002, done);
@@ -130,7 +138,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testLoadUrl004', 0, async (done: Function) => {
+    it('testLoadUrl004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testLoadUrl004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testLoadUrl004", 'second', 76004, done);

@@ -14,7 +14,7 @@
  */
 import { BusinessError } from '@ohos.base';
 import http from '@ohos.net.http';
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 
 export const ADDR_TEST_DOMAIN_HTTPS: string = "https://httpbin.org/anything";
@@ -43,10 +43,10 @@ export default function HttpHttpDataTypeTest() {
      * @tc.desc  :  test httpDataType.STRING
      * @tc.size  :  smallTest
      * @tc.type  :  Function
-     * @tc.level :  level 2
+     * @tc.level :  level 0
      */
 
-    it('testHttpDataTypeSTRING0100', 0, async (done: Function) => {
+    it('testHttpDataTypeSTRING0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpDataTypeSTRING0100";
       console.info(`${caseName} test Start`);
       try {
@@ -89,10 +89,10 @@ export default function HttpHttpDataTypeTest() {
      * @tc.desc  :  test httpDataType.STRING
      * @tc.size  :  smallTest
      * @tc.type  :  Function
-     * @tc.level :  level 2
+     * @tc.level :  level 0
      */
 
-    it('testHttpDataTypeSTRING0200', 0, async (done: Function) => {
+    it('testHttpDataTypeSTRING0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpDataTypeSTRING0200";
       console.info(`${caseName} test Start`);
       try {
@@ -137,7 +137,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.level :  level 2
      */
 
-    it('testHttpDataTypeARRAY_BUFFER0300', 0, async (done: Function) => {
+    it('testHttpDataTypeARRAY_BUFFER0300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeARRAY_BUFFER0300";
       console.info(`${caseName} test Start`);
       try {
@@ -183,7 +183,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.level :  level 2
      */
 
-    it('testHttpDataTypeARRAY_BUFFER0400', 0, async (done: Function) => {
+    it('testHttpDataTypeARRAY_BUFFER0400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeARRAY_BUFFER0400";
       console.info(`${caseName} test Start`);
       try {
@@ -228,7 +228,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.level :  level 2
      */
 
-    it('testHttpDataTypeOBJECT0500', 0, async (done: Function) => {
+    it('testHttpDataTypeOBJECT0500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeOBJECT0500";
       console.info(`${caseName} test Start`);
       try {
@@ -273,7 +273,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.level :  level 2
      */
 
-    it('testHttpDataTypeOBJECT0600', 0, async (done: Function) => {
+    it('testHttpDataTypeOBJECT0600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeOBJECT0600";
       console.info(`${caseName} test Start`);
       try {
@@ -317,7 +317,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpDataTypeDefault0700', 0, async (done: Function) => {
+    it('testHttpDataTypeDefault0700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeDefault0700";
       console.info(`${caseName} test Start`);
       try {
@@ -359,7 +359,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpDataTypeDefault0800', 0, async (done: Function) => {
+    it('testHttpDataTypeDefault0800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeDefault0800";
       console.info(`${caseName} test Start`);
       try {
@@ -401,7 +401,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpDataTypeIllegal0900', 0, async (done: Function) => {
+    it('testHttpDataTypeIllegal0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeIllegal0900";
       console.info(`${caseName} test Start`);
       try {
@@ -445,7 +445,7 @@ export default function HttpHttpDataTypeTest() {
      * @tc.type  :  Function
      * @tc.level :  level 2
      */
-    it('testHttpDataTypeIllegal1000', 0, async (done: Function) => {
+    it('testHttpDataTypeIllegal1000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testHttpDataTypeIllegal1000";
       console.info(`${caseName} test Start`);
       try {

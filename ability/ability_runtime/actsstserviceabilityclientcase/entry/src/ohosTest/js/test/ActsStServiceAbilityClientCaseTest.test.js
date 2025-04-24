@@ -14,7 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 
 
 const errCode = 1;
@@ -70,7 +70,7 @@ describe('ActsStServiceAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_AAbilityStartSetting_0100",0, async function(done){
+    it("ACTS_AAbilityStartSetting_0100", Level.LEVEL0, async function(done){
         console.info("ACTS_AlogMessage 1 ACTS_AAbilityStartSetting_0100-------------------");
         try{
             let Want = {
@@ -108,7 +108,7 @@ describe('ActsStServiceAbilityTest', function () {
      * @tc.desc    Function test
      * @tc.level   0
      */
-   it("ACTS_AAbilityStartSettingNew_0200",0, async function(done){
+   it("ACTS_AAbilityStartSettingNew_0200", Level.LEVEL0, async function(done){
     console.info("ACTS_logMessage 1 ACTS_AAbilityStartSettingNew_0200-------------------");
     try{
         let Want = {
@@ -146,7 +146,7 @@ describe('ActsStServiceAbilityTest', function () {
  * @tc.desc    Function test
  * @tc.level   0
  */
-it("ACTS_AAbilityStartSettingNew_0300",0, async function(done){
+it("ACTS_AAbilityStartSettingNew_0300", Level.LEVEL0, async function(done){
     console.info("ACTS_logMessage 1 ACTS_AAbilityStartSettingNew_0300-------------------");
     try{
         let Want = {
@@ -184,7 +184,7 @@ it("ACTS_AAbilityStartSettingNew_0300",0, async function(done){
  * @tc.desc    Function test
  * @tc.level   0
  */
-it("ACTS_AAbilityStartSettingNew_0400",0, async function(done){
+it("ACTS_AAbilityStartSettingNew_0400", Level.LEVEL0, async function(done){
     console.info("ACTS_logMessage 1 ACTS_AAbilityStartSettingNew_0400-------------------");
     try{
         let Want = {
@@ -222,7 +222,7 @@ it("ACTS_AAbilityStartSettingNew_0400",0, async function(done){
  * @tc.desc    Function test
  * @tc.level   0
  */
-it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
+it("ACTS_AAbilityStartSettingNew_0500", Level.LEVEL0, async function(done){
     console.info("ACTS_--------ACTS_AAbilityStartSettingNew_0500------");
     try{
         let Want = {
@@ -260,7 +260,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_AAbilityStartSettingNew_0600",0, async function(done){
+    it("ACTS_AAbilityStartSettingNew_0600", Level.LEVEL0, async function(done){
         console.info("ACTS_AlogMessage 1 ACTS_AAbilityStartSettingNew_0600-------------------");
         try{
             let Want = {
@@ -298,7 +298,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("ACTS_AAbilityStartSettingNew_0700",0, async function(done){
+    it("ACTS_AAbilityStartSettingNew_0700", Level.LEVEL0, async function(done){
         console.info("ACTS_AlogMessage 1 ACTS_AAbilityStartSettingNew_0700-------------------");
         try{
             let Want = {
@@ -336,7 +336,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
     * @tc.name: featureAbility.ConnectAbility : Connects an ability to a Service ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_AJsServiceAbility_0600', 0, async function (done) {
+    it('ACTS_AJsServiceAbility_0600', Level.LEVEL0, async function (done) {
         console.log('ACTS_AJsServiceAbility_0600====<begin');
         try {
             var mConnIdJsAsyncCallback;
@@ -423,7 +423,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
     * @tc.name: particleability.ConnectAbility : Connects an ability to a Service ability.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
-    it('ACTS_AJsServiceAbility_1400', 0, async function (done) {
+    it('ACTS_AJsServiceAbility_1400', Level.LEVEL0, async function (done) {
         console.log('ACTS_AJsServiceAbility_1400====<begin');
         try {
             var mConnIdJsAsyncCallback;

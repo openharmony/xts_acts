@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webController() {
 
   describe('WebControllerTestSuite', () => {
@@ -42,6 +44,11 @@ export default function webController() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("webController beforeEach start");
       done();
@@ -55,9 +62,9 @@ export default function webController() {
     * @tc.desc       : test imageAccess
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testImageAccess001', 0, async (done: Function) => {
+    it('testImageAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testImageAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testImageAccess001", "null", 33023, done);
@@ -72,7 +79,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAccess002', 0, async (done: Function) => {
+    it('testImageAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testImageAccess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testImageAccess002", "\"load complete\"", 33024, done);
@@ -89,7 +96,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnlineImageAccess001', 0, async (done: Function) => {
+    it('testOnlineImageAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnlineImageAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnlineImageAccess001", "null", 33027, done);
@@ -104,7 +111,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testOnlineImageAccess002', 0, async (done: Function) => {
+    it('testOnlineImageAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testOnlineImageAccess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testImageAccess002", "\"load image complete\"", 33028, done);
@@ -119,7 +126,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileAccess001', 0, async (done: Function) => {
+    it('testFileAccess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileAccess001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileAccess001", "\"second\"", 33029, done);
@@ -134,7 +141,7 @@ export default function webController() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testFileAccess002', 0, async (done: Function) => {
+    it('testFileAccess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testFileAccess002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testFileAccess002", "\"second\"", 100070, done);

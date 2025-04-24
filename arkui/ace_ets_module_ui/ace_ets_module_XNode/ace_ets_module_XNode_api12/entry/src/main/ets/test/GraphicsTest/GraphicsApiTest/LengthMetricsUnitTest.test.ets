@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from "../../../MainAbility/utils/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
-
 export default function LengthMetricsUnitTest() {
   describe("LengthMetricsUnitTest", () => {
     beforeEach(async (done: Function) => {
@@ -44,7 +43,6 @@ export default function LengthMetricsUnitTest() {
       await CommonFunc.sleep(1000);
       console.info("LengthMetricsUnitTest after each called");
     });
-
     /**
      * @tc.number    LengthMetricsUnitTest
      * @tc.name      testBack
@@ -53,7 +51,7 @@ export default function LengthMetricsUnitTest() {
      * @tc.type
     * @tc.size
      */
-    it("LengthMetricsUnitTest_001", 0, async (done: Function) => {
+    it("LengthMetricsUnitTest_001", Level.LEVEL0, async (done: Function) => {
       console.info("[LengthMetricsUnitTest_001] START");
       await CommonFunc.sleep(1000);
       let LengthMetricsUnit = getInspectorByKey("LengthMetricsUnit");

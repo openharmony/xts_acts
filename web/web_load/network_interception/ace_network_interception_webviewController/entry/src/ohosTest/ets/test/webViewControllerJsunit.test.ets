@@ -13,13 +13,21 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect , TestType, Size, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
 let emitKey = "emitpageDown";
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webViewControllerJsunit() {
   describe('ActsAceWebDevWebViewControllerTest',  () => {
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(6000);
       console.info("web beforeEach start");
       done();
@@ -49,7 +57,7 @@ export default function webViewControllerJsunit() {
      *tc.name testPageDown
      *tc.desc Go pageDown
      */
-    it('testPageDown',0,async (done: Function) =>{
+    it('testPageDown',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetNetworkAvailable";
       Utils.registerEvent("testPageDown",true,106,done);
       sendEventByKey('webcomponent',10,'');
@@ -59,7 +67,7 @@ export default function webViewControllerJsunit() {
      *tc.name testSetNetworkAvailable
      *tc.desc test for setNetworkAvailable
      */
-    it('testSetNetworkAvailable',0,async (done: Function) =>{
+    it('testSetNetworkAvailable',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetNetworkAvailableAgain";
       Utils.registerEvent("testSetNetworkAvailable",false,122,done);
       sendEventByKey('webcomponent',10,'');
@@ -69,7 +77,7 @@ export default function webViewControllerJsunit() {
      *tc.name testSetNetworkAvailableAgain
      *tc.desc test for setNetworkAvailable again
      */
-    it('testSetNetworkAvailableAgain',0,async (done: Function) =>{
+    it('testSetNetworkAvailableAgain',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitSetNetworkAvailableAgain";
       Utils.registerEvent("testSetNetworkAvailableAgain",true,124,done);
       sendEventByKey('webcomponent',10,'');

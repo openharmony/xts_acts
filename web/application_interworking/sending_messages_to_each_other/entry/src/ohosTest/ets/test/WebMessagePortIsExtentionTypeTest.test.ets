@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import Utils from './Utils';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webMessagePortIsExtentionTypeTest() {
 
@@ -42,6 +45,11 @@ export default function webMessagePortIsExtentionTypeTest() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info(`${pageName} beforeEach start`);
       done();
     })
@@ -61,7 +69,7 @@ export default function webMessagePortIsExtentionTypeTest() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testIsExtentionType001', 0, async (done: Function) => {
+    it('testIsExtentionType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testIsExtentionType001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testIsExtentionType001", "401", 100100, done);

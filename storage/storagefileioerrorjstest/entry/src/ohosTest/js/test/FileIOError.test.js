@@ -17,7 +17,8 @@ import fileio from '@ohos.fileio'
 import {
   describe,
   it,
-  expect
+  expect,
+  Level
 }
 from '@ohos/hypium'
 import {
@@ -42,7 +43,7 @@ describe('FileIOError', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_error_000', 0, async function (done) {
+  it('fileio_test_error_000', Level.LEVEL0, async function (done) {
     let fpath = await fileName('fileio_test_error_000f');
     expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
@@ -67,7 +68,7 @@ describe('FileIOError', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_error_001', 0, async function (done) {
+  it('fileio_test_error_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_error_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -90,7 +91,7 @@ describe('FileIOError', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_error_002', 0, async function (done) {
+  it('fileio_test_error_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_error_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -113,7 +114,7 @@ describe('FileIOError', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_error_004', 0, async function (done) {
+  it('fileio_test_error_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_error_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {

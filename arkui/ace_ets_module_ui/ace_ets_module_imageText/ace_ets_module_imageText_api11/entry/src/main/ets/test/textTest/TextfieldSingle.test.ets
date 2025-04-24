@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 
 export default function TextfieldSingleTest() {
   describe('TextfieldSingleTest', () => {
@@ -43,7 +43,7 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to true
      */
-    it('ArkUX_Text_Visual_0040', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0040', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0040 START');
       setTimeout(() => {
         try {
@@ -67,7 +67,7 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to false
      */
-    it('ArkUX_Text_Visual_0050', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0050', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0050 START');
       setTimeout(() => {
         try {
@@ -91,7 +91,7 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to default value
      */
-    it('ArkUX_Text_Visual_0060', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0060', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0060 START');
       setTimeout(() => {
         try {

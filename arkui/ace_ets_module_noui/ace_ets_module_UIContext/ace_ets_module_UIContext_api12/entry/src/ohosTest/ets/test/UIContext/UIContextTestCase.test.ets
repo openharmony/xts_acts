@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-
 export default function UIContextTestCase() {
   describe('UIContextTestCase', () => {
     beforeEach(async (done: Function) => {
@@ -51,7 +49,7 @@ export default function UIContextTestCase() {
      * @tc.type :
      * @tc.size :
      */
-    it('UIContextTestCase_0100', 0, async (done: Function) => {
+    it('UIContextTestCase_0100', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextTestCase_0100');
       await CommonFunc.sleep(1000);
       // to get the getHostContext object
@@ -70,7 +68,7 @@ export default function UIContextTestCase() {
      * @tc.type :
      * @tc.size :
      */
-    it('UIContextTestCase_0200', 0, async (done: Function) => {
+    it('UIContextTestCase_0200', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextTestCase_0200');
       await CommonFunc.sleep(1000);
       // to get the getHostContext object

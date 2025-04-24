@@ -46,6 +46,7 @@ import requestImageNativeTest from './MediaAssetManager/requestImageNative.test'
 import requestCancelNativeTest from './MediaAssetManager/requestCancelNative.test';
 import requestVideoTest from './MediaAssetManager/requestVideo.test';
 import getMovingPhotoTest from './PhotoAccessHelper/getMovingPhoto.test';
+import getMovingPhotoTranscodeTest from './PhotoAccessHelper/getMovingPhotoTranscode.test';
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test';
 import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative.test';
 import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test';
@@ -84,6 +85,7 @@ import cloneAssetTest from './PhotoAsset/cloneAsset.test';
 import getSupportedPhotoFormatsTest from './PhotoAccessHelper/getSupportedPhotoFormats';
 import setTest from './PhotoAsset/set.test.ets';
 import mediaAssetChangeRequestErrorTest from './MediaAssetChangeRequest/mediaAssetChangeRequestError.test.ets';
+import positionTypeTest from './PhotoAccessHelper/positionType.test'
 
 export default function testsuite() {
   provisionResourcesTest();
@@ -121,6 +123,7 @@ export default function testsuite() {
   requestCancelNativeTest();
   requestVideoTest();
   getMovingPhotoTest();
+  getMovingPhotoTranscodeTest();
   showAssetsCreationDialogTest();
   PhotoAccessHelperNativeTest();
   getBurstAssetsTest();
@@ -158,4 +161,5 @@ export default function testsuite() {
   cloneAssetTest();
   getSupportedPhotoFormatsTest();
   setTest();
+  positionTypeTest();
 }

@@ -66,7 +66,7 @@ export default function ActsAccountAuthenticator() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-        it('ActsAccountCheckAccountLabels_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsAccountCheckAccountLabels_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");

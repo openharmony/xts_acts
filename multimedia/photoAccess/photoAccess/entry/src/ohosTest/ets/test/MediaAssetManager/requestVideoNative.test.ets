@@ -14,9 +14,10 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterAll, Level } from '@ohos/hypium'
 import mediaNative from "libentry.so";
 import { BusinessError } from '@ohos.base';
+import fs from '@ohos.file.fs';
 
 import {
   photoKeys,
@@ -34,6 +35,21 @@ export default function requestVideoNativeTest() {
       await getPermission();
       await driveFn();
       await sleep(1000);
+    });
+
+    afterAll(async () => {
+      console.info('afterAll case');
+      try {
+        let files: string[] = fs.listFileSync(testContext.filesDir);
+        for (let i = 0; i < files.length; i++) {
+          if (files[i].includes('test')) {
+            console.info(`requestVideoNativeTest listFiles need to delete:${JSON.stringify(files[i])}}`)
+            fs.unlinkSync(`${testContext.filesDir}/${files[i]}`);
+          }
+        }
+      } catch (error) {
+        console.error(`requestVideoNativeTest listFiles failed; error: ${error.code}  ${error.message}`)
+      }
     });
     
     const ERROR_REQUEST_ID = "00000000-0000-0000-0000-000000000000";
@@ -117,7 +133,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_fast_mode', 0, async (done: Function) => {
+    it('request_video_native_request_option_fast_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_request_option_fast_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -134,7 +150,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_high_quality_mode', 0, async (done: Function) => {
+    it('request_video_native_request_option_high_quality_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_request_option_high_quality_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
@@ -151,7 +167,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_request_option_balance_mode', 0, async (done: Function) => {
+    it('request_video_native_request_option_balance_mode', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_request_option_balance_mode';
       let requestOptions: photoAccessHelper.RequestOptions = {
         deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE,
@@ -167,7 +183,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_null', 0, async (done: Function) => {
+    it('request_video_native_src_uri_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_null';
       let srcUri = null
       await requestVideoPhotoAssetError (testNum, done, srcUri)
@@ -181,7 +197,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_undefined', 0, async (done: Function) => {
+    it('request_video_native_src_uri_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_undefined';
       let srcUri = undefined
       await requestVideoPhotoAssetError(testNum, done, srcUri)
@@ -195,7 +211,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_test', 0, async (done: Function) => {
+    it('request_video_native_src_uri_test', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_test';
       let srcUri = ''
       for (let i = 0; i < 380; i++) {
@@ -213,7 +229,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_true', 0, async (done: Function) => {
+    it('request_video_native_src_uri_true', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_true';
       let srcUri = true
       await requestVideoPhotoAssetError(testNum, done, srcUri)
@@ -227,7 +243,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_special_string', 0, async (done: Function) => {
+    it('request_video_native_src_uri_special_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_special_string';
       let srcUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
       await requestVideoPhotoAssetError(testNum, done, srcUri)
@@ -241,7 +257,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_empty_string', 0, async (done: Function) => {
+    it('request_video_native_src_uri_empty_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_empty_string';
       let srcUri = ''
       await requestVideoPhotoAssetError(testNum, done, srcUri)
@@ -255,7 +271,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_uri_extr_long_string', 0, async (done: Function) => {
+    it('request_video_native_src_uri_extr_long_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_uri_extr_long_string';
       let srcUri = ''
       for (let i = 0; i < 385; i++) {
@@ -272,7 +288,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_null', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_null', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_null';
       let destUri = null
       await requestVideodestUriError(testNum, done, destUri)
@@ -286,7 +302,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_undefined', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_undefined', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_undefined';
       let destUri = undefined
       await requestVideodestUriError(testNum, done, destUri)
@@ -300,7 +316,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_true', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_true', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_true';
       let destUri = true
       await requestVideodestUriError(testNum, done, destUri)
@@ -314,7 +330,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_test', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_test', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_test';
       let destUri = ''
       for (let i = 0; i < 380; i++) {
@@ -332,7 +348,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_special_string', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_special_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_special_string';
       let destUri = '⛰ * ⛪ ⛩ ⛲ ⛺ ♨ ⛽ ⚓ '
       await requestVideodestUriError(testNum, done, destUri)
@@ -346,7 +362,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_empty_string', 0, async (done: Function) => {
+    it('request_video_native_dest_empty_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_empty_string';
       let destUri = ''
       await requestVideodestUriError (testNum, done, destUri)
@@ -360,7 +376,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_dest_uri_extra_long_string', 0, async (done: Function) => {
+    it('request_video_native_dest_uri_extra_long_string', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_dest_uri_extra_long_string';
       let destUri = ''
       for (let i = 0; i < 385; i++) {
@@ -377,7 +393,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_image_dest_photo', 0, async (done: Function) => {
+    it('request_video_native_src_image_dest_photo', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_image_dest_photo';
 
       try {
@@ -412,7 +428,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_video_dest_image', 0, async (done: Function) => {
+    it('request_video_native_src_video_dest_image', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_video_dest_image';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_video_native.mp4");
@@ -447,7 +463,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_src_image_dest_image', 0, async (done: Function) => {
+    it('request_video_native_src_image_dest_image', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_src_image_dest_image';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "request_image_native.jpg");
@@ -483,7 +499,7 @@ export default function requestVideoNativeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_video_native_error_assrt_uri', 0, async (done: Function) => {
+    it('request_video_native_error_assrt_uri', Level.LEVEL0, async (done: Function) => {
       let testNum = 'request_video_native_error_assrt_uri';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, "native_request_error_mp4.mp4");

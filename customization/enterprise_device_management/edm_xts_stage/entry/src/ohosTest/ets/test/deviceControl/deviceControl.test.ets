@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import { ENTINFO1, SELFWANT, SELFHAPNAME } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
@@ -37,7 +37,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0001", 0, async (done: Function) => {
+  it("test_operate_device_0001", Level.LEVEL2, async (done: Function) => {
     try {
       deviceControl.operateDevice(SELFWANT, LOCK_SCREEN);
       expect(false).assertTrue();
@@ -55,7 +55,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0002", 0, async (done: Function) => {
+  it("test_operate_device_0002", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       deviceControl.operateDevice(SELFWANT, LOCK_SCREEN);
@@ -76,7 +76,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0003", 0, async (done: Function) => {
+  it("test_operate_device_0003", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       deviceControl.operateDevice(SELFWANT, LOCK_SCREEN);
@@ -97,7 +97,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0004", 0, async (done: Function) => {
+  it("test_operate_device_0004", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       deviceControl.operateDevice(null, LOCK_SCREEN);
@@ -118,7 +118,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0005", 0, async (done: Function) => {
+  it("test_operate_device_0005", Level.LEVEL2, async (done: Function) => {
     try {
       deviceControl.operateDevice(SELFWANT, LOCK_SCREEN, OPERATE_DEVICE);
       expect(false).assertTrue();
@@ -136,7 +136,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0006", 0, async (done: Function) => {
+  it("test_operate_device_0006", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       deviceControl.operateDevice(SELFWANT, LOCK_SCREEN, OPERATE_DEVICE);
@@ -157,7 +157,7 @@ function testOperateDevice() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_operate_device_0007", 0, async (done: Function) => {
+  it("test_operate_device_0007", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       deviceControl.operateDevice(null, LOCK_SCREEN, OPERATE_DEVICE);

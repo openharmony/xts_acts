@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -75,11 +75,11 @@ export default function webViewOnFullScreenEnterInfo() {
     * @tc.number     : SUB_ACE_WEB_BASIC_ETS_FullscreenEnterEvent_videoWidth_videoHeight_API_0001
     * @tc.name       : testOnFullScreenEnterVideoInfo
     * @tc.desc       : test FullScreenEnterEvent videowidth videoHeight
-    * @tc.size_t     : MediumTest
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testOnFullScreenEnterVideoInfo', 0, async (done: Function) => {
+    it('testOnFullScreenEnterVideoInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
         sendEventByKey('TestwebViewOnFullScreenEnterInfo', 10, '');
         let emitKey="emitOnfullscreenenterInfo";
         Utils.emitEvent(emitKey,10)

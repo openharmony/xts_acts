@@ -14,7 +14,8 @@
  */
 
 import openLinkTest from './OpenLink.test'
-
+import startAbilityOpenLink from './startAbilityOpenLink.test'
 export default function testsuite() {
   openLinkTest();
+  startAbilityOpenLink();
 }

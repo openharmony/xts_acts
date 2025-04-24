@@ -13,7 +13,7 @@
 //  * limitations under the License.
 //  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -57,7 +57,7 @@ export default function MarqueeNodeTest() {
      * @tc.level 0
      */
 
-    it('marqueeNode0100', 0, async (done: Function) => {
+    it('marqueeNode0100', Level.LEVEL0, async (done: Function) => {
       console.log('marqueeNode0100: test' + new Date().getTime())
         let tagName = 'marqueeNode0100';
         console.info('[' + tagName + '] START============================');
@@ -72,8 +72,6 @@ export default function MarqueeNodeTest() {
         expect(JSON.parse(strJsonNew).$attrs.fontWeight).assertEqual('700');
         console.info('[' + tagName + '] END ===========================');
         done();
-      
-      
     });
 
     /**
@@ -85,7 +83,7 @@ export default function MarqueeNodeTest() {
      * @tc.level 0
      */
 
-    it('marqueeNode0200', 0, async (done: Function) => {
+    it('marqueeNode0200', Level.LEVEL0, async (done: Function) => {
       let tagName = 'marqueeNode0200';
       console.info('[' + tagName + '] START============================');
       let strJsonNew = getInspectorByKey('key_marquee_Node_001');

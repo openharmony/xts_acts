@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import testNapi from 'libentry.so';
 
@@ -50,7 +50,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0100', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0100`;
       console.log(`${tag}, it begin`);
 
@@ -94,7 +94,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0200', Level.LEVEL0, () => {
       let tag = `ACTS_NativeStartChildProcess_0200`;
       console.log(`${tag}, it begin`);
 
@@ -113,7 +113,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300', 0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0300', Level.LEVEL0, () => {
       let tag = `ACTS_NativeStartChildProcess_0300`;
       console.log(`${tag}, it begin`);
 
@@ -132,7 +132,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0400', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0400`;
       console.log(`${tag}, it begin`);
 
@@ -159,7 +159,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0500', 0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0500', Level.LEVEL0, () => {
       let tag = `ACTS_NativeStartChildProcess_0500`;
       console.log(`${tag}, it begin`);
 
@@ -178,7 +178,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0600', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0600', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0600`;
       console.log(`${tag}, it begin`);
 
@@ -207,7 +207,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0700', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0700', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0700`;
       console.log(`${tag}, it begin`);
 
@@ -234,7 +234,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0800', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0800`;
       console.log(`${tag}, it begin`);
 
@@ -267,7 +267,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0900', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_0900', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_0900`;
       console.log(`${tag}, it begin`);
 
@@ -295,7 +295,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1000', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1000', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_1000`;
       console.log(`${tag}, it begin`);
 
@@ -324,7 +324,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1100', 0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1100', Level.LEVEL0, () => {
       let tag = `ACTS_NativeStartChildProcess_1100`;
       console.log(`${tag}, it begin`);
 
@@ -343,7 +343,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1200', 0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1200', Level.LEVEL0, () => {
       let tag = `ACTS_NativeStartChildProcess_1200`;
       console.log(`${tag}, it begin`);
 
@@ -362,7 +362,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1300', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1300', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_1300`;
       console.log(`${tag}, it begin`);
 
@@ -391,7 +391,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1400', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_1400`;
       console.log(`${tag}, it begin`);
 
@@ -424,7 +424,7 @@ export default function nativeChildProcessTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1500', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_NativeStartChildProcess_1500', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeStartChildProcess_1500`;
       console.log(`${tag}, it begin`);
 

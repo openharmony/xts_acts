@@ -68,15 +68,34 @@ export default function ListBackToTopTest() {
       );
       await sleep(2000);
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+      let stopJson = getInspectorByKey('listBackToTop');
+      expect(JSON.parse(stopJson).$attrs.content !== 'onDidListBackToTop').assertTrue();
+      
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+
+      await driverList.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+
+      await driverList.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();

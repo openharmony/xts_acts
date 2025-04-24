@@ -17,6 +17,7 @@ import {
     fileIO, nextFileName,
     describe, it, expect
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIORandomAccessFileClose() {
 describe('fileIO_randomAccessFile_close', function () {
@@ -30,7 +31,7 @@ describe('fileIO_randomAccessFile_close', function () {
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileIO_randomaccessfile_close_sync_000', 0, async function () {
+    it('fileIO_randomaccessfile_close_sync_000', Level.LEVEL0, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_close_sync_000');
 
         try {
@@ -52,7 +53,7 @@ describe('fileIO_randomAccessFile_close', function () {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_randomaccessfile_close_sync_001', 3, async function () {
+    it('fileIO_randomaccessfile_close_sync_001', Level.LEVEL3, async function () {
         let fpath = await nextFileName('fileIO_randomaccessfile_close_sync_001');
         let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 

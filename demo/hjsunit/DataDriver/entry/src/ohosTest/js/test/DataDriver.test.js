@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect, Level, Size, TestType} from 'deccjsunit/index'
 
 describe('testSuite01', function () {
-    it('testSpec01', function (data) {
+    it('testSpec01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (data) {
         console.info('testSpec01......' + JSON.stringify(data))
     })
-    it('testSpec02', function (data) {
+    it('testSpec02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (data) {
         console.info('testSpec02......' + JSON.stringify(data))
     })
 })

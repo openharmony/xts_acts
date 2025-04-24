@@ -60,7 +60,7 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.name: GetTargetOverlayModuleInfosModuleNameNotInstall
      * @tc.desc: The query fails when the incoming moduleName is not installed
      */
-    it('GetTargetOverlayModuleInfosModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
+    it('GetTargetOverlayModuleInfosModuleNameNotInstall', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async () => {
       try {
         await overlay.getTargetOverlayModuleInfos(MODULE_NAME1).then(data => {
           console.info("GetTargetOverlayModuleInfosModuleNameNotInstall result" + JSON.stringify(data));
@@ -88,7 +88,7 @@ export default function getTargetOverlayModuleInfos() {
      * @tc.name: GetTargetOverlayModuleInfosModuleNameNotOverlay
      * @tc.desc: The query fails when the incoming moduleName is not overlay
      */
-    it('GetTargetOverlayModuleInfosModuleNameNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async () => {
+    it('GetTargetOverlayModuleInfosModuleNameNotOverlay', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async () => {
       try {
         await overlay.getTargetOverlayModuleInfos(MODULE_NAME2).then(data => {
           console.info("GetTargetOverlayModuleInfosModuleNameNotOverlay result" + JSON.stringify(data));

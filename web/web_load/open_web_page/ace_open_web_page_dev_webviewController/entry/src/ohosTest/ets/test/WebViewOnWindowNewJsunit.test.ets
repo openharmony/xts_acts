@@ -14,11 +14,14 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "emitOnPageVisibleLoadUrl";
 export default function webViewOnWindowNewJsunit() {
   describe('ActsAceWebViewOnWindowNewJsunitTest',  () =>{
@@ -43,6 +46,11 @@ export default function webViewOnWindowNewJsunit() {
       done()
     });
     beforeEach(async  (done: Function) =>{
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("web beforeEach start");
       done();
     })
@@ -72,7 +80,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testOnPageVisibleLoadUrl
     *tc.desc test api onPageVisible by load new url
     */
-    it('testOnPageVisibleLoadUrl',0,async (done: Function) =>{
+    it('testOnPageVisibleLoadUrl',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnPageVisibleRefresh";
       let url = 'resource://rawfile/index.html';
       Utils.registerEvent("testOnPageVisibleLoadUrl", url, 7108, done);
@@ -83,7 +91,7 @@ export default function webViewOnWindowNewJsunit() {
     *tc.name testOnPageVisibleRefresh
     *tc.desc test api onPageVisible by refresh
     */
-    it('testOnPageVisibleRefresh',0,async (done: Function) =>{
+    it('testOnPageVisibleRefresh',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) =>{
       emitKey="emitOnPageVisibleRefresh";
       let url = 'resource://rawfile/index.html';
       Utils.registerEvent("testOnPageVisibleRefresh", url, 7110, done);

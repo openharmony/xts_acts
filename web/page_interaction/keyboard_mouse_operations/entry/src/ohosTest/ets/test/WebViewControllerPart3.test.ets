@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerPart3Test() {
 
@@ -42,6 +45,11 @@ export default function webViewControllerPart3Test() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebViewControllerPart3 beforeEach start");
       done();
@@ -52,7 +60,7 @@ export default function webViewControllerPart3Test() {
      *tc.name getHitTest
      *tc.desic Gets the type of HitTest
      */
-    it('getHitTest', 0, async (done: Function) => {
+    it('getHitTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitGetHitTest", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("getHitTest", "7", 118, done);

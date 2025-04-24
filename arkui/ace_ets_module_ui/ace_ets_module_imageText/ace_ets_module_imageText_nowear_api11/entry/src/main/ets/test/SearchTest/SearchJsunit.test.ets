@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0100', 0, async (done: Function) => {
+    it('SearchJsunit_0100', Level.LEVEL0, async (done: Function) => {
       // Get the information of the Search component
       console.info('[SearchJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function SearchJsunit() {
       console.info("[SearchJsunit_0100] textFont: " + JSON.stringify(obj.$attrs.textFont));
       console.info("[SearchJsunit_0100] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       console.info("[SearchJsunit_0100] copyOption: " + JSON.stringify(obj.$attrs.copyOption));
-      expect(obj.$attrs.icon).assertEqual('resource:///ohos_search.svg');
+      expect(obj.$attrs.icon).assertEqual(983081);
       expect(obj.$attrs.searchButton).assertEqual('SEARCH');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF808080');
       expect(obj.$attrs.value).assertEqual('');
@@ -72,7 +72,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0200', 0, async (done: Function) => {
+    it('SearchJsunit_0200', Level.LEVEL0, async (done: Function) => {
       // Modify the properties of component Search
       console.info('[SearchJsunit_0200] START');
       await CommonFunc.sleep(500);      
@@ -114,7 +114,7 @@ export default function SearchJsunit() {
       expect(obj.$attrs.searchButton).assertEqual('search');
       expect(obj.$attrs.value).assertEqual('hello');
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
-      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"400","fontFamily":"HarmonyOS Sans"}');
+      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"16.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.Normal","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       expect(obj.$attrs.copyOption).assertEqual('CopyOptions.Local');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF008000');
@@ -123,7 +123,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0300', 0, async (done: Function) => {
+    it('SearchJsunit_0300', Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the Search component
       console.info('[SearchJsunit_0300] START');
       globalThis.value.message.notify({name:'changeValue',value:''})
@@ -226,7 +226,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0400', 0, async (done: Function) => {
+    it('SearchJsunit_0400', Level.LEVEL0, async (done: Function) => {
       // Illegal modification of properties of component Search
       console.info('[SearchJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -262,12 +262,12 @@ export default function SearchJsunit() {
       console.info("[SearchJsunit_0400] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       console.info("[SearchJsunit_0400] copyOption: " + JSON.stringify(obj.$attrs.copyOption));
       console.info("[SearchJsunit_0400] placeholder: " + JSON.stringify(obj.$attrs.placeholder));
-      expect(obj.$attrs.icon).assertEqual('resource:///ohos_search.svg');
-      expect(obj.$attrs.searchButton).assertEqual('search');
+      expect(obj.$attrs.icon).assertEqual(983081);
+      expect(obj.$attrs.searchButton).assertEqual('');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF00000A');
       expect(obj.$attrs.value).assertEqual('hello');
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
-      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"400","fontFamily":"HarmonyOS Sans"}');
+      expect(obj.$attrs.textFont).assertEqual('{"fontSize":"16.00fp","fontStyle":"FontStyle.Normal","fontWeight":"FontWeight.Normal","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
       expect(obj.$attrs.copyOption).assertEqual('');
       expect(obj.$attrs.placeholder).assertEqual('Type to search...');

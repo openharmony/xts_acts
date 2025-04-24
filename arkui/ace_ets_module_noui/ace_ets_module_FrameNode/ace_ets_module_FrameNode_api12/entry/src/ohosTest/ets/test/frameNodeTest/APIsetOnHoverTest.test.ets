@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -29,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function APIsetOnHoverTest() {
   describe('APIsetOnHoverTest', () => {
     beforeEach(async (done: Function) => {
@@ -61,9 +60,8 @@ export default function APIsetOnHoverTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnHoverTest_0100', 0, async (done: Function) => {
+    it('APIsetOnHoverTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnHoverTest_0100 START');
-
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('setOnHover_1'));
       await CommonFunc.sleep(500);
@@ -72,7 +70,6 @@ export default function APIsetOnHoverTest() {
         x: point.x, y: point.y
       })
       await CommonFunc.sleep(1000);
-
       let strJson = getInspectorByKey('setOnHover_1');
       let obj:ESObject = JSON.parse(strJson);
       console.info("[APIsetOnHoverTest_0100] component obj is: " + JSON.stringify(obj));
@@ -83,6 +80,5 @@ export default function APIsetOnHoverTest() {
       console.info('[APIsetOnHoverTest_0100] END');
       done();
     });
-
   })
 }

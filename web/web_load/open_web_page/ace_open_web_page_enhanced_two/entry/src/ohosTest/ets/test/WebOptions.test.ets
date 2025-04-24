@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webOptions() {
   describe('WebOptionsTest', () => {
@@ -39,6 +42,11 @@ export default function webOptions() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -59,7 +67,7 @@ export default function webOptions() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebOptionsSrc001', 0, async (done: Function) => {
+    it('testWebOptionsSrc001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebOptions001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebOptions001", 'index', 430, done);
@@ -74,7 +82,7 @@ export default function webOptions() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebOptionsSrc002', 0, async (done: Function) => {
+    it('testWebOptionsSrc002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebOptions002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebOptions002", 'second', 432, done);
@@ -89,7 +97,7 @@ export default function webOptions() {
     * @tc.type        : Function
     * @tc.level       : Level 2
     */
-    it('testWebOptionsSrc003', 0, async (done: Function) => {
+    it('testWebOptionsSrc003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("emitWebOptions003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebOptions003", 'OpenAtom OpenHarmony', 434, done);

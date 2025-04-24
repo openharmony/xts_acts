@@ -14,7 +14,7 @@
  */
 
 import common from '@ohos.app.ability.common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 
 export default function AbilityStageContext() {
@@ -45,7 +45,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testAbilityStageContextCurrentHapModuleInfo001', 0, async (done: Function) => {
+    it('testAbilityStageContextCurrentHapModuleInfo001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         expect(context != null).assertTrue();
@@ -88,7 +88,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testAbilityStageContextConfig001', 0, async (done: Function) => {
+    it('testAbilityStageContextConfig001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         expect(context != null).assertTrue();
@@ -117,7 +117,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testStageMode001', 0, async (done: Function) => {
+    it('testStageMode001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         expect(context.stageMode).assertTrue();
@@ -138,7 +138,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResourceManager001', 0, async (done: Function) => {
+    it('testResourceManager001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         expect(context.resourceManager != null).assertTrue();
@@ -159,7 +159,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testApplicationInfo001', 0, async (done: Function) => {
+    it('testApplicationInfo001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         expect(context != null).assertTrue();
@@ -200,7 +200,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testCacheDir001', 0, async (done: Function) => {
+    it('testCacheDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testCacheDir001 cacheDir:` + context.cacheDir);
@@ -222,7 +222,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testTempDir001', 0, async (done: Function) => {
+    it('testTempDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testTempDir001 tempDir:` + context.tempDir);
@@ -244,7 +244,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testResourceDir001', 0, async (done: Function) => {
+    it('testResourceDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testResourceDir001 resourceDir:` + context.resourceDir);
@@ -266,7 +266,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testFilesDir001', 0, async (done: Function) => {
+    it('testFilesDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testFilesDir001 filesDir:` + context.filesDir);
@@ -288,7 +288,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDatabaseDir001', 0, async (done: Function) => {
+    it('testDatabaseDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testDatabaseDir001 databaseDir:` + context.databaseDir);
@@ -310,7 +310,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testPreferencesDir001', 0, async (done: Function) => {
+    it('testPreferencesDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testPreferencesDir001 preferencesDir:` + context.preferencesDir);
@@ -332,7 +332,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testBundleCodeDir001', 0, async (done: Function) => {
+    it('testBundleCodeDir001', Level.LEVEL0, async (done: Function) => {
       try {
         let context: common.AbilityStageContext = globalThis.stageContext;
         console.log(`testBundleCodeDir001 bundleCodeDir:` + context.bundleCodeDir);
@@ -354,7 +354,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext001", 0, async (done: Function) => {
+    it("testCreateModuleContext001", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext001 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;
@@ -380,7 +380,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext002", 0, async (done: Function) => {
+    it("testCreateModuleContext002", Level.LEVEL0, async (done: Function) => {
       try {
         console.log("testCreateModuleContext002 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;
@@ -406,7 +406,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext003", 0, async (done: Function) => {
+    it("testCreateModuleContext003", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext003 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;
@@ -429,7 +429,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext004", 0, async (done: Function) => {
+    it("testCreateModuleContext004", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext004 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;
@@ -452,7 +452,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testCreateModuleContext005", 0, async (done: Function) => {
+    it("testCreateModuleContext005", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext005 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;
@@ -475,7 +475,7 @@ export default function AbilityStageContext() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("testGetApplicationContext001", 0, async (done: Function) => {
+    it("testGetApplicationContext001", Level.LEVEL0, async (done: Function) => {
       try {
         console.info("testGetApplicationContext001 begin");
         let context: common.AbilityStageContext = globalThis.stageContext;

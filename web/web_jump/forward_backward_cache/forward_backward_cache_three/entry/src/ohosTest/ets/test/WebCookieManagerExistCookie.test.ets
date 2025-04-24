@@ -13,9 +13,12 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webCookieManagerExistCookie() {
 
@@ -42,6 +45,11 @@ export default function webCookieManagerExistCookie() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("WebCookieManagerExistCookie beforeEach start");
       done();
@@ -55,7 +63,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie002', 0, async (done: Function) => {
+    it('testExistCookie002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie002", true, 100302, done);
@@ -70,7 +78,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie003', 0, async (done: Function) => {
+    it('testExistCookie003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie003", true, 100303, done);
@@ -85,7 +93,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie004', 0, async (done: Function) => {
+    it('testExistCookie004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie004", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie004", true, 100304, done);
@@ -100,7 +108,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie005', 0, async (done: Function) => {
+    it('testExistCookie005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie005", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie005", false, 100305, done);
@@ -115,7 +123,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie006', 0, async (done: Function) => {
+    it('testExistCookie006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie006", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie006", false, 100306, done);
@@ -130,7 +138,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie007', 0, async (done: Function) => {
+    it('testExistCookie007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie007", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie007", false, 100307, done);
@@ -145,7 +153,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie008', 0, async (done: Function) => {
+    it('testExistCookie008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie008", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie008", false, 100308, done);
@@ -160,7 +168,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie009', 0, async (done: Function) => {
+    it('testExistCookie009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie009", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie009", false, 100309, done);
@@ -175,7 +183,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie010', 0, async (done: Function) => {
+    it('testExistCookie010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie010", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie010", false, 100310, done);
@@ -190,7 +198,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie011', 0, async (done: Function) => {
+    it('testExistCookie011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie011", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie011", false, 100311, done);
@@ -206,7 +214,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie012', 0, async (done: Function) => {
+    it('testExistCookie012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie012", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie012", false, 100312, done);
@@ -221,7 +229,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie013', 0, async (done: Function) => {
+    it('testExistCookie013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie013", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie013", false, 100313, done);
@@ -236,7 +244,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie014', 0, async (done: Function) => {
+    it('testExistCookie014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie014", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie014", false, 100314, done);
@@ -251,7 +259,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie015', 0, async (done: Function) => {
+    it('testExistCookie015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie015", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie015", false, 100315, done);
@@ -266,7 +274,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie016', 0, async (done: Function) => {
+    it('testExistCookie016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie016", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie016", false, 100316, done);
@@ -281,7 +289,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie017', 0, async (done: Function) => {
+    it('testExistCookie017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie017", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie017", false, 100317, done);
@@ -296,7 +304,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie018', 0, async (done: Function) => {
+    it('testExistCookie018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie018", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie018", false, 100318, done);
@@ -311,7 +319,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie019', 0, async (done: Function) => {
+    it('testExistCookie019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie019", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie019", false, 100319, done);
@@ -326,7 +334,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie020', 0, async (done: Function) => {
+    it('testExistCookie020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie020", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie020", false, 100320, done);
@@ -341,7 +349,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie021', 0, async (done: Function) => {
+    it('testExistCookie021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie021", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie021", false, 100321, done);
@@ -356,7 +364,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie022', 0, async (done: Function) => {
+    it('testExistCookie022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie022", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie022", false, 100322, done);
@@ -371,7 +379,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie023', 0, async (done: Function) => {
+    it('testExistCookie023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie023", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie023", false, 100323, done);
@@ -386,7 +394,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie024', 0, async (done: Function) => {
+    it('testExistCookie024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie024", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie024", false, 100324, done);
@@ -401,7 +409,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie025', 0, async (done: Function) => {
+    it('testExistCookie025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie025", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie025", false, 100325, done);
@@ -416,7 +424,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie026', 0, async (done: Function) => {
+    it('testExistCookie026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie026", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie026", false, 100326, done);
@@ -431,7 +439,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie027', 0, async (done: Function) => {
+    it('testExistCookie027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie027", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie027", false, 100327, done);
@@ -446,7 +454,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie028', 0, async (done: Function) => {
+    it('testExistCookie028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie028", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie028", false, 100328, done);
@@ -461,7 +469,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie029', 0, async (done: Function) => {
+    it('testExistCookie029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie029", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie029", false, 100329, done);
@@ -476,7 +484,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie030', 0, async (done: Function) => {
+    it('testExistCookie030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie030", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie030", false, 100330, done);
@@ -491,7 +499,7 @@ export default function webCookieManagerExistCookie() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testExistCookie031', 0, async (done: Function) => {
+    it('testExistCookie031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("testExistCookie031", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testExistCookie031", false, 100331, done);

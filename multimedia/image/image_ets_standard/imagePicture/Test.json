@@ -44,7 +44,8 @@
                 "./resource/image/GainMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files",
                 "./resource/image/UnrefocusMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files",
                 "./resource/image/FragmentMap.dat ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files",
-                "./resource/image/dog.astc ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files"
+                "./resource/image/dog.astc ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files",
+                "./resource/image/test_code116.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePicture/haps/entry_test/files"
             ]
         },
         {
