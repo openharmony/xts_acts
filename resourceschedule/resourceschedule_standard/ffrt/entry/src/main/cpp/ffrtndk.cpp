@@ -1079,8 +1079,10 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     if (ret != ffrt_success) {
         resultEnd = 1;
     }
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun0 resultEnd is %{public}d", resultEnd);
 
     std::function<void()>&& func1 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 start resultEnd is %{public}d", resultEnd);
         int res = ffrt_rwlock_wrlock(&rwlock);
         if (res != ffrt_success) {
             resultEnd = 2;
@@ -1091,9 +1093,11 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
         if (res != ffrt_success) {
             resultEnd = 3;
         }
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 end resultEnd is %{public}d", resultEnd);
     };
 
     std::function<void()>&& func2 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 start resultEnd is %{public}d", resultEnd);
         usleep(2 * 1000);
         int res1 = ffrt_rwlock_rdlock(&rwlock);
         if (res1 != ffrt_success) {
@@ -1103,9 +1107,11 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
         if (res1 != ffrt_success) {
             resultEnd = 5;
         }
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 end resultEnd is %{public}d", resultEnd);
     };
 
     std::function<void()>&& func3 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun3 start resultEnd is %{public}d", resultEnd);
         usleep(2 * 1000);
         int res2 = ffrt_rwlock_trywrlock(&rwlock);
         if (res2 == ffrt_success) {
@@ -1115,6 +1121,7 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     };
 
     std::function<void()>&& func4 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun4 start resultEnd is %{public}d", resultEnd);
         usleep(2 * 1000);
         int res3 = ffrt_rwlock_tryrdlock(&rwlock);
         if (res3 == ffrt_success) {
@@ -1130,6 +1137,7 @@ static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
     if (x != 1) {
         resultEnd = 6;       
     }
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "wait after resultEnd is %{public}d", resultEnd);
 	napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
     return flag;
