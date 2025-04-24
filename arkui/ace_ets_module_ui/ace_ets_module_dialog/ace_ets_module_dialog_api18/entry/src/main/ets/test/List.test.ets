@@ -45,8 +45,14 @@ import UIShowDialogCallbackBlurStyleOptionsTest from './UIContextTest/showDialog
 import bindMenuHapticFeedbackMode from './bindMenuTest/bindMenuHapticFeedbackMode.test';
 import bindContextMenuHapticFeedbackMode from './bindContextMenuTest/bindContextMenuHapticFeedback.test'
 import previewBorderRadius from './bindContextMenuTest/previewBorderRadius.test'
+import isVisible from './popup/isVisible.test';
+import getDialogControllerTest from './dialog/getDialogControllerTest.test';
+import DialogOptions from './promptActionTest/DialogOptions.test';
 
 export default function testsuite() {
+    isVisible()
+    getDialogControllerTest()
+    DialogOptions()
     alertDialogBackgroundEffectTest()
     alertDialogBlurStyleOptionsTest()
     buttonType()
