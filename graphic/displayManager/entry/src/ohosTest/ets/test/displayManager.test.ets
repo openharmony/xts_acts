@@ -1548,6 +1548,23 @@ export default function displayTest() {
     });
 
     /**
+     * @tc.number    : SUB_BASIC_WMS_DisplaySourceMode_0200
+     * @tc.name      : test_display_DisplaySourceMode
+     * @tc.desc      : test_display_DisplaySourceMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_display_DisplaySourceMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'test_display_DisplaySourceMode';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let displayClass = display.getDefaultDisplaySync();
+      console.info(msgStr + 'getDefaultDisplaySync ScreenShape: ' + JSON.stringify(displayClass.screenShape));
+      expect(displayClass.screenShape == 0 || displayClass.screenShape == 1).assertTrue()
+      done();
+    });
+    /**
      * @tc.number     : SUB_BASIC_WMS_ON_add_401_0100
      * @tc.name       : testOnaddErrCode401_0100
      * @tc.desc       : testOnaddErrCode401_0100
