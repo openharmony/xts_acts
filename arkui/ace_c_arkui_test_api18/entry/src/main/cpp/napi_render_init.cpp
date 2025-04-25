@@ -39,8 +39,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "textPickerEnableHapticFeedback", nullptr, TextPickerEnableHapticFeedbackTest::TextPickerEnableHapticFeedback,
          nullptr, nullptr, nullptr, napi_default, nullptr },
         
-        {"DragEndPendingTest_001", nullptr, VisibleAreaEventOptionsTest::DragEndPendingTest_001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
+        
         {"VisibleAreaEventOptionsTest_a", nullptr, VisibleAreaEventOptionsTest::VisibleAreaEventOptionsTest_a, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"VisibleAreaEventOptionsTest_b", nullptr, VisibleAreaEventOptionsTest::VisibleAreaEventOptionsTest_b, nullptr,
