@@ -26,6 +26,8 @@
         "MainAbility/pages/Scroll/offsetRemain",
         "MainAbility/pages/Swiper/finishTransSwiper",
         "MainAbility/pages/Tabs/preloadErrorTabs",
+        "MainAbility/pages/List/childrenSizeError",
+        "MainAbility/pages/List/flingError",
         "MainAbility/pages/Tabs/symbolTabs",
         "MainAbility/pages/Swiper/SwiperApi",
         "MainAbility/pages/Tabs/TabsAp1",
