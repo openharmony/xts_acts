@@ -7,6 +7,7 @@
         "MainAbility/pages/datePicker/datePickerEnableHapticFeedbackModifier",
         "MainAbility/pages/textPicker/textPickerSelectedArea",
         "MainAbility/pages/timePicker/timePickerSelectedArea",
+        "MainAbility/pages/timePicker/timePickerLoop",
         "MainAbility/pages/textPicker/enableHapticFeedback"
     ]
 }
