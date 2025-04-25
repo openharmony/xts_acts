@@ -18,54 +18,53 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
-export default function toolBarV2ItemStateTest() {
-  describe('toolBarV2ItemState', () => {
+export default function selectTitleBarSymbolTest() {
+  describe('selectTitleBarSymbolPage', () => {
     beforeEach(async (done: Function) => {
-      console.info('toolBarV2ItemState beforeEach start');
+      console.info('selectTitleBarSymbolPage beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/toolBarV2/toolBarV2ItemState',
+        url: 'MainAbility/pages/selectTitleBar/selectTitleBarSymbolPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get toolBarV2ItemState state pages: ' + JSON.stringify(pages));
-        if ('toolBarV2ItemState' !== pages.name) {
-          console.info('get toolBarV2ItemState pages.name: ' + JSON.stringify(pages.name));
+        console.info('get selectTitleBarSymbolPage state pages: ' + JSON.stringify(pages));
+        if (!('selectTitleBarSymbolPage' == pages.name)) {
+          console.info('get selectTitleBarSymbolPage pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push toolBarV2ItemState Test result successful');
+          console.info('push selectTitleBarSymbolPage page result successful');
         }
       } catch (err) {
-        console.error('push toolBarV2ItemStateTest  error: ' + err);
+        console.error('push selectTitleBarSymbolPage page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest beforeEach end');
+      console.info('selectTitleBarSymbolPage beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest after each called');
+      console.info('selectTitleBarSymbolPage after each called');
     })
 
     /**
-     * @tc.number toolBarV2ItemStateTest
-     * @tc.name   toolBarV2ItemStateTest_0100
-     * @tc.desc   Test toolBarV2ItemState
+     * @tc.number selectTitleBarSymbolPage
+     * @tc.name   selectTitleBarSymbolPage_0100
+     * @tc.desc   Test selectTitleBarSymbolPage
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarV2ItemStateTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[toolBarV2ItemStateTest_0100] START');
+    it('selectTitleBarSymbolPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      console.info('[selectTitleBarSymbolPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      let disableItem = await driver.findComponent(ON.text('Copy'));
-      let enableItem = await driver.findComponent(ON.text('Share'));
-      expect(disableItem !== null).assertTrue();
-      expect(enableItem !== null).assertTrue();
-      console.info('[toolBarV2ItemStateTest_0100] END');
+      // 查看selectTitleBarSymbolPage是否存在以下入口。
+      let itemText = await driver.findComponent(ON.text('所有照片'));
+      expect(itemText !== null).assertTrue();
+      console.info('[selectTitleBarSymbolPage_0100] END');
       done();
     });
   })

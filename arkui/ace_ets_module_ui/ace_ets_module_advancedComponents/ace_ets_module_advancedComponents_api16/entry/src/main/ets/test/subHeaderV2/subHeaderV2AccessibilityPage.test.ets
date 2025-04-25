@@ -13,58 +13,58 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect, Level, Size, TestType } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
-export default function subHeaderV2PageTest() {
-  describe('subHeaderV2Page', () => {
+export default function subHeaderV2AccessibilityPageTest() {
+  describe('subHeaderV2AccessibilityPageTest', () => {
     beforeEach(async (done: Function) => {
-      console.info('subHeaderV2Page beforeEach start');
+      console.info('subHeaderV2AccessibilityPageTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/subHeaderV2/subHeaderV2Page',
+        url: 'MainAbility/pages/subHeaderV2/subHeaderV2AccessibilityPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get subHeaderV2Page state pages: ' + JSON.stringify(pages));
-        if (!('subHeaderV2Page' == pages.name)) {
-          console.info('get subHeaderV2Page pages.name: ' + JSON.stringify(pages.name));
+        console.info('get subHeaderV2AccessibilityPageTest state pages: ' + JSON.stringify(pages));
+        if (!('subHeaderV2AccessibilityPageTest' == pages.name)) {
+          console.info('get subHeaderV2AccessibilityPageTest pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push subHeaderV2Page page result successful');
+          console.info('push subHeaderV2AccessibilityPageTest page result successful');
         }
       } catch (err) {
-        console.error('push subHeaderV2Page page error: ' + err);
+        console.error('push subHeaderV2AccessibilityPageTest page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('subHeaderV2Page beforeEach end');
+      console.info('subHeaderV2AccessibilityPageTest beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('subHeaderV2Page after each called');
+      console.info('subHeaderV2AccessibilityPageTest after each called');
     })
 
     /**
-     * @tc.number subHeaderV2PageTest
-     * @tc.name   subHeaderV2PageTest_0100
-     * @tc.desc   Test subHeaderV2Page
+     * @tc.number subHeaderV2AccessibilityPageTest
+     * @tc.name   subHeaderV2AccessibilityPage_0100
+     * @tc.desc   Test subHeaderV2AccessibilityPage
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('subHeaderV2PageTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[subHeaderV2PageTest_0100] START');
+    it('subHeaderV2AccessibilityPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[subHeaderV2AccessibilityPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      // 查看subHeaderV2Page是否存在以下入口。
+      // 查看subHeaderV2AccessibilityPage是否存在以下入口。
       let itemText = await driver.findComponent(ON.text('操作'));
       expect(itemText !== null).assertTrue();
-      console.info('[subHeaderV2PageTest_0100] END');
+      console.info('[subHeaderV2AccessibilityPage_0100] END');
       done();
     });
   })

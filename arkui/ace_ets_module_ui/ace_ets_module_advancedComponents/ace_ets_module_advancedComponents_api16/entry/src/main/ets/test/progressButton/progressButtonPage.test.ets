@@ -18,54 +18,53 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
-export default function toolBarV2ItemStateTest() {
-  describe('toolBarV2ItemState', () => {
+export default function progressButtonPageTest() {
+  describe('progressButtonPage', () => {
     beforeEach(async (done: Function) => {
-      console.info('toolBarV2ItemState beforeEach start');
+      console.info('progressButtonPage beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/toolBarV2/toolBarV2ItemState',
+        url: 'MainAbility/pages/progressButton/progressButtonPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get toolBarV2ItemState state pages: ' + JSON.stringify(pages));
-        if ('toolBarV2ItemState' !== pages.name) {
-          console.info('get toolBarV2ItemState pages.name: ' + JSON.stringify(pages.name));
+        console.info('get progressButtonPage state pages: ' + JSON.stringify(pages));
+        if (!('progressButtonPage' == pages.name)) {
+          console.info('get progressButtonPage pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push toolBarV2ItemState Test result successful');
+          console.info('push progressButtonPage page result successful');
         }
       } catch (err) {
-        console.error('push toolBarV2ItemStateTest  error: ' + err);
+        console.error('push progressButtonPage page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest beforeEach end');
+      console.info('progressButtonPage beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest after each called');
+      console.info('progressButtonPage after each called');
     })
 
     /**
-     * @tc.number toolBarV2ItemStateTest
-     * @tc.name   toolBarV2ItemStateTest_0100
-     * @tc.desc   Test toolBarV2ItemState
+     * @tc.number progressButtonPageTest
+     * @tc.name   progressButtonPageTest_0100
+     * @tc.desc   Test progressButtonPage
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarV2ItemStateTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[toolBarV2ItemStateTest_0100] START');
+    it('progressButtonPageTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      console.info('[progressButtonPageTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      let disableItem = await driver.findComponent(ON.text('Copy'));
-      let enableItem = await driver.findComponent(ON.text('Share'));
-      expect(disableItem !== null).assertTrue();
-      expect(enableItem !== null).assertTrue();
-      console.info('[toolBarV2ItemStateTest_0100] END');
+      // 查看progressButtonPage是否存在以下入口。
+      let itemText = await driver.findComponent(ON.text('下载'));
+      expect(itemText !== null).assertTrue();
+      console.info('[progressButtonPageTest_0100] END');
       done();
     });
   })

@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,33 +13,24 @@
  * limitations under the License.
  */
 
-{
-  "app": {
-    "signingConfigs": [
+import { ExceptionPrompt, MarginType, SymbolGlyphModifier } from '@kit.ArkUI'
 
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": 18,
-        "compatibleSdkVersion": 16,
-        "runtimeOS": "OpenHarmony"
-      }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
-        {
-          "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
-        }
-      ]
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      ExceptionPrompt({
+        options: {
+          icon: $r('sys.symbol.house'),
+          symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Red]),
+          tip: '异常提示',
+          marginType: MarginType.DEFAULT_MARGIN,
+          actionText: '设置网络',
+          marginTop: 80,
+          isShown: true,
+        },
+      })
     }
-  ]
+  }
 }

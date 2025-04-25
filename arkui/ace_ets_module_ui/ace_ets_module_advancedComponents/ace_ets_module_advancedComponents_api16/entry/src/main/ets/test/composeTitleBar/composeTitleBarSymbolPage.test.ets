@@ -18,54 +18,53 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
-export default function toolBarV2ItemStateTest() {
-  describe('toolBarV2ItemState', () => {
+export default function composeTitleBarSymbolTest() {
+  describe('composeTitleBarSymbolPage', () => {
     beforeEach(async (done: Function) => {
-      console.info('toolBarV2ItemState beforeEach start');
+      console.info('composeTitleBarSymbolPage beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/toolBarV2/toolBarV2ItemState',
+        url: 'MainAbility/pages/composeTitleBar/composeTitleBarSymbolPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get toolBarV2ItemState state pages: ' + JSON.stringify(pages));
-        if ('toolBarV2ItemState' !== pages.name) {
-          console.info('get toolBarV2ItemState pages.name: ' + JSON.stringify(pages.name));
+        console.info('get composeTitleBarSymbolPage state pages: ' + JSON.stringify(pages));
+        if (!('composeTitleBarSymbolPage' == pages.name)) {
+          console.info('get composeTitleBarSymbolPage pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push toolBarV2ItemState Test result successful');
+          console.info('push composeTitleBarSymbolPage page result successful');
         }
       } catch (err) {
-        console.error('push toolBarV2ItemStateTest  error: ' + err);
+        console.error('push composeTitleBarSymbolPage page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest beforeEach end');
+      console.info('composeTitleBarSymbolPage beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('toolBarV2ItemStateTest after each called');
+      console.info('composeTitleBarSymbolPage after each called');
     })
 
     /**
-     * @tc.number toolBarV2ItemStateTest
-     * @tc.name   toolBarV2ItemStateTest_0100
-     * @tc.desc   Test toolBarV2ItemState
+     * @tc.number composeTitleBarSymbolPage
+     * @tc.name   composeTitleBarSymbolPage_0100
+     * @tc.desc   Test composeTitleBarSymbolPage
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarV2ItemStateTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[toolBarV2ItemStateTest_0100] START');
+    it('composeTitleBarSymbolPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      console.info('[composeTitleBarSymbolPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      let disableItem = await driver.findComponent(ON.text('Copy'));
-      let enableItem = await driver.findComponent(ON.text('Share'));
-      expect(disableItem !== null).assertTrue();
-      expect(enableItem !== null).assertTrue();
-      console.info('[toolBarV2ItemStateTest_0100] END');
+      // 查看composeTitleBarSymbolPage是否存在以下入口。
+      let itemText = await driver.findComponent(ON.text('标题'));
+      expect(itemText !== null).assertTrue();
+      console.info('[composeTitleBarSymbolPage_0100] END');
       done();
     });
   })
