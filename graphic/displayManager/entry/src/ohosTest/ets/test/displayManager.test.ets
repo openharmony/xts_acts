@@ -1561,7 +1561,7 @@ export default function displayTest() {
       console.log(msgStr + 'begin');
       let displayClass = display.getDefaultDisplaySync();
       console.info(msgStr + 'getDefaultDisplaySync ScreenShape: ' + JSON.stringify(displayClass.screenShape));
-      expect(displayClass.screenShape == 0 || displayClass.screenShape == 1)
+      expect(displayClass.screenShape == 0 || displayClass.screenShape == 1).assertTrue()
       done();
     });
     /**
