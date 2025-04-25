@@ -50,7 +50,7 @@ export default function systemAPITestAppManagerTest() {
         appManager.getProcessMemoryByPid(pid, getProcessMemoryByPidCallback);
       } catch (err) {
         console.error(`${tag} appManager.getProcessMemoryByPid error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
@@ -77,7 +77,7 @@ export default function systemAPITestAppManagerTest() {
         });
       } catch (err) {
         console.error(`${tag} appManager.getProcessMemoryByPid error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
@@ -108,7 +108,7 @@ export default function systemAPITestAppManagerTest() {
         console.log(`${tag} appManager.getRunningProcessInfoByBundleName success`);
       } catch (err) {
         console.error(`${tag} appManager.getRunningProcessInfoByBundleName error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
@@ -135,7 +135,7 @@ export default function systemAPITestAppManagerTest() {
         });
       } catch (err) {
         console.error(`${tag} appManager.getRunningProcessInfoByBundleName error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
@@ -168,7 +168,7 @@ export default function systemAPITestAppManagerTest() {
         console.log(`${tag} appManager.getRunningProcessInfoByBundleName success`);
       } catch (err) {
         console.error(`${tag} appManager.getRunningProcessInfoByBundleName error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
@@ -196,7 +196,7 @@ export default function systemAPITestAppManagerTest() {
         });
       } catch (err) {
         console.error(`${tag} appManager.getRunningProcessInfoByBundleName error: ${err.code}, ${err.message} `);
-        expect(err.code).assertEqual(202)
+        expect().assertFail();
         done();
       }
     });
