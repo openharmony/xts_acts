@@ -27,7 +27,6 @@ export default function DeviceInfoTest() {
         const CLASS_LEVEL_MEDIUM = 1;
         const CLASS_LEVEL_LOW = 2;
 
-
         beforeAll(function () {
             console.info('beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.');
 
