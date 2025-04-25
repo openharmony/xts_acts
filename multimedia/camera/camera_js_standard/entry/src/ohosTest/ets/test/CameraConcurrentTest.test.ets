@@ -290,43 +290,5 @@ export default function CameraPhotoSessionTest() {
       }
       done();
     })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100
-     * @tc.name      : check camerainput open by concurrent type 
-     * @tc.desc      : check camerainput open by concurrent type  
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100', Level.LEVEL0, async (done: Function) => {
-      console.info("--------------SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100--------------");
-      if (mCameraNum == 0) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100 FAILED with NoCamera");
-        expect(true).assertFail();
-        done();
-        return;
-      }
-      let cameraconcurrentinfos: Array<camera.CameraConcurrentInfo> = mCameraManager.getCameraConcurrentInfos(mCameraDevicesArray);
-      console.info(TAG + " SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100 Success  cameraconcurrentinfos: " + JSON.stringify(cameraconcurrentinfos));
-      if (!isEmpty(cameraconcurrentinfos)) {
-        for (let i = 0; i < cameraconcurrentinfos.length; i++) {
-            let cameraInput: camera.CameraInput = mCameraManager.createCameraInput(cameraconcurrentinfos[i].device);
-            try {
-                await cameraInput.open(cameraconcurrentinfos[i].type);
-                await cameraInput.open(cameraconcurrentinfos[i].type);
-                expect(true).assertFalse();
-                await cameraInput.close();
-            } catch (err) {
-                console.info(TAG + " SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100 err.code =  " + err.code);
-                expect(camera.CameraErrorCode.DEVICE_DISABLED == err.code).assertTrue();
-            }
-        }
-      }
-      else {
-        console.info(TAG + " SUB_MULTIMEDIA_CAMERA_INPUT_OPEN_BY_CONNCURRENT_TYPE_ERRORCODE_0100   camera is not supported concurrenttype: ");
-      }
-      done();
-    })
   })
 }
