@@ -122,10 +122,6 @@ export default function CameraPhotoSessionTest() {
     return true;
   }
 
-
-
-
-
   describe('CameraConcurrentTest', () => {
     console.info(TAG + '----------CameraConcurrentTest--------------')
 
