@@ -18,6 +18,7 @@
 #include "ffrt/type_def.h"
 #include "ffrt/condition_variable.h"
 #include "ffrt/mutex.h"
+#include "ffrt/shared_mutex.h"
 #include "ffrt/queue.h"
 #include "ffrt/sleep.h"
 #include "ffrt/loop.h"
@@ -1064,6 +1065,79 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
         resultEnd = 6;
     }
     ffrt_mutex_destroy(&lock);
+    napi_value flag = nullptr;
+    napi_create_double(env, resultEnd, &flag);
+    return flag;
+}
+
+static napi_value SharedMutexTest001(napi_env env, napi_callback_info info)
+{
+    int resultEnd = 0;
+    ffrt_rwlock_t rwlock;
+    int x = 0;
+    int ret = ffrt_rwlock_init(&rwlock, nullptr);
+    if (ret != ffrt_success) {
+        resultEnd = ERR_CODE_1;
+    }
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun0 resultEnd is %{public}d", resultEnd);
+
+    std::function<void()>&& func1 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 start resultEnd is %{public}d", resultEnd);
+        int res = ffrt_rwlock_wrlock(&rwlock);
+        if (res != ffrt_success) {
+            resultEnd = ERR_CODE_2;
+        }
+        usleep(MULTIPLE_RADIO * TASK_DELAY_TIME);
+        x++;
+        res = ffrt_rwlock_unlock(&rwlock);
+        if (res != ffrt_success) {
+            resultEnd = ERR_CODE_3;
+        }
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun1 end resultEnd is %{public}d", resultEnd);
+    };
+
+    std::function<void()>&& func2 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 start resultEnd is %{public}d", resultEnd);
+        usleep(SLEEP_TIME);
+        int res1 = ffrt_rwlock_rdlock(&rwlock);
+        if (res1 != ffrt_success) {
+            resultEnd = ERR_CODE_4;
+        }
+        res1 = ffrt_rwlock_unlock(&rwlock);
+        if (res1 != ffrt_success) {
+            resultEnd = ERR_CODE_5;
+        }
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun2 end resultEnd is %{public}d", resultEnd);
+    };
+
+    std::function<void()>&& func3 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun3 start resultEnd is %{public}d", resultEnd);
+        usleep(SLEEP_TIME);
+        int res2 = ffrt_rwlock_trywrlock(&rwlock);
+        if (res2 == ffrt_success) {
+            x++;
+            ffrt_rwlock_unlock(&rwlock);
+        }
+    };
+
+    std::function<void()>&& func4 = [&]() {
+        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "fun4 start resultEnd is %{public}d", resultEnd);
+        usleep(SLEEP_TIME);
+        int res3 = ffrt_rwlock_tryrdlock(&rwlock);
+        if (res3 == ffrt_success) {
+            ffrt_rwlock_unlock(&rwlock);
+        }
+    };
+    ffrt_submit_base(create_function_wrapper(func1), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func2), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func3), nullptr, nullptr, nullptr);
+    ffrt_submit_base(create_function_wrapper(func4), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    ffrt_rwlock_destroy(&rwlock);
+    if (x != 1) {
+        resultEnd = ERR_CODE_6;
+    }
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "FFRT SHARED_MUTEX", "wait after resultEnd is %{public}d", resultEnd);
     napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
     return flag;
@@ -3878,7 +3952,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ffrt_task_handle_ref_0001", nullptr, ffrt_task_handle_ref_0001, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "ffrtThisTaskGetId", nullptr, FfrtThisTaskGetId, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "ffrtThisTaskUpdateQos", nullptr, FfrtThisTaskUpdateQos, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "sharedMutexTest001", nullptr, SharedMutexTest001, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

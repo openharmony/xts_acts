@@ -1379,5 +1379,19 @@ export default function ffrtTest() {
       let flag = entry.ffrtThisTaskUpdateQos();
       expect(flag).assertEqual(100);
     })
+
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_9700
+     * @tc.name   : sharedMutexTest001
+     * @tc.desc   : Test mutex api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 0
+     */
+    it('sharedMutexTest001', 0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.sharedMutexTest001();
+      expect(flag).assertEqual(0);
+    })
   })
 }
