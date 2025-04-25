@@ -17,6 +17,7 @@ import web_webview from '@ohos.web.webview'
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import testsuite from '../../test/List.test';
+import {waitForAssert, waitForExist} from '../../test/WaitTest';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testNapi from 'libentry.so';
@@ -25,8 +26,8 @@ import testNapi from 'libentry.so';
 @Entry
 @Component
 struct webRegisterCustomsComponent {
-  controller: web_webview.WebviewController = new web_webview.WebviewController("scheme-handler");
-  @State str: string = ""
+  controller: web_webview.WebviewController = new web_webview.WebviewController('scheme-handler');
+  @State str: string = ''
   @State interceptUrl: string = ''
   heads: Header[] = new Array()
   @State consoleCorsError: boolean = false
@@ -34,18 +35,19 @@ struct webRegisterCustomsComponent {
   @State consoleMsg: string = ''
   @State isRegister: number = -1;
   @State isSet: number = -1;
+  @State isComplete: number = -1;
 
   aboutToAppear() {
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-    console.error("aboutToAppear registerCustomSchemes")
+    console.error('aboutToAppear registerCustomSchemes')
     testNapi.registerCustomSchemes()
     web_webview.WebviewController.initializeWebEngine();
     testNapi.setSchemeHandler();
-    console.error("aboutToAppear setSchemeHandler" + this.isSet)
-    console.error("aboutToAppear registerCustomSchemes End")
+    console.error('aboutToAppear setSchemeHandler' + this.isSet)
+    console.error('aboutToAppear registerCustomSchemes End')
     
     testNapi.initResourceManager(getContext().resourceManager);
   }
@@ -63,9 +65,9 @@ struct webRegisterCustomsComponent {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -75,22 +77,23 @@ struct webRegisterCustomsComponent {
   build() {
     Column() {
       Row() {
-        Button("webHostingButton").key('webHostingButton').onClick(async () => {
-          console.info("key==>" + this.str)
+        Button('webHostingButton').key('webHostingButton').onClick(async () => {
+          console.info('key==>' + this.str)
           switch (this.str) {
-            case "emitWebHttpBodyStream_IsEof": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_IsEof': {
+              await waitForExist(()=>this.isComplete, this.str,0)
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(4000);
-              console.log("emitWebHttpBodyStream_IsEof ==>");
+              console.log('emitWebHttpBodyStream_IsEof ==>');
               let result: number = testNapi.httpBodyStreamIsEof();
               await Utils.sleep(1000);
               if (result == 0) {
@@ -100,19 +103,19 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_IsChunked": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_IsChunked': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_IsChunked ==>");
+              console.log('emitWebHttpBodyStream_IsChunked ==>');
               let result: number = testNapi.httpBodyStreamIsChunked();
               await Utils.sleep(1000);
               if (result == 0) {
@@ -122,21 +125,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_IsInMemory": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_IsInMemory': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_IsInMemory ==>");
+              console.log('emitWebHttpBodyStream_IsInMemory ==>');
               let result: number = testNapi.httpBodyStreamIsInMemory();
-              console.log("emitWebHttpBodyStream_IsInMemory ==>" + result);
+              console.log('emitWebHttpBodyStream_IsInMemory ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7745);
@@ -145,21 +148,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_GetPosition": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_GetPosition': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_GetPosition ==>");
+              console.log('emitWebHttpBodyStream_GetPosition ==>');
               let result: number = testNapi.httpBodyStreamGetPosition();
-              console.log("emitWebHttpBodyStream_GetPosition ==>" + result);
+              console.log('emitWebHttpBodyStream_GetPosition ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7746);
@@ -168,21 +171,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_GetSize": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_GetSize': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_GetSize ==>");
+              console.log('emitWebHttpBodyStream_GetSize ==>');
               let result: number = testNapi.httpBodyStreamGetSize();
-              console.log("emitWebHttpBodyStream_GetSize ==>" + result);
+              console.log('emitWebHttpBodyStream_GetSize ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7747);
@@ -191,21 +194,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_SetReadCallback": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_SetReadCallback': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_SetReadCallback ==>");
+              console.log('emitWebHttpBodyStream_SetReadCallback ==>');
               let result: number = testNapi.httpBodyStreamSetReadCallBack();
-              console.log("emitWebHttpBodyStream_SetReadCallback ==>" + result);
+              console.log('emitWebHttpBodyStream_SetReadCallback ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7748);
@@ -214,21 +217,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_SetUserData": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_SetUserData': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_SetUserData ==>");
+              console.log('emitWebHttpBodyStream_SetUserData ==>');
               let result: number = testNapi.httpBodyStreamSetUserData();
-              console.log("emitWebHttpBodyStream_SetUserData ==>" + result);
+              console.log('emitWebHttpBodyStream_SetUserData ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7749);
@@ -237,21 +240,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebHttpBodyStream_Init": {
-              console.log("runJavaScript test()");
+            case 'emitWebHttpBodyStream_Init': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebHttpBodyStream_Init ==>");
+              console.log('emitWebHttpBodyStream_Init ==>');
               let result: number = testNapi.httpBodyStreamInit();
-              console.log("emitWebHttpBodyStream_Init ==>" + result);
+              console.log('emitWebHttpBodyStream_Init ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7750);
@@ -260,21 +263,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebResourceHandler_Destroy": {
-              console.log("runJavaScript test()");
+            case 'emitWebResourceHandler_Destroy': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebResourceHandler_Destroy ==>");
+              console.log('emitWebResourceHandler_Destroy ==>');
               let result: number = testNapi.resourceHandlerDestroy();
-              console.log("emitWebResourceHandler_Destroy ==>" + result);
+              console.log('emitWebResourceHandler_Destroy ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7751);
@@ -283,21 +286,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebResourceHandler_DidReceiveResponse": {
-              console.log("runJavaScript test()");
+            case 'emitWebResourceHandler_DidReceiveResponse': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebResourceHandler_DidReceiveResponse ==>");
+              console.log('emitWebResourceHandler_DidReceiveResponse ==>');
               let result: number = testNapi.resourceHandlerDidReceiveResponse();
-              console.log("emitWebResourceHandler_DidReceiveResponse ==>" + result);
+              console.log('emitWebResourceHandler_DidReceiveResponse ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7752);
@@ -306,21 +309,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebResourceHandler_DidReceiveData": {
-              console.log("runJavaScript test()");
+            case 'emitWebResourceHandler_DidReceiveData': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebResourceHandler_DidReceiveData ==>");
+              console.log('emitWebResourceHandler_DidReceiveData ==>');
               let result: number = testNapi.resourceHandlerDidReceiveData();
-              console.log("emitWebResourceHandler_DidReceiveData ==>" + result);
+              console.log('emitWebResourceHandler_DidReceiveData ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7753);
@@ -329,21 +332,21 @@ struct webRegisterCustomsComponent {
               }
               break;
             }
-            case "emitWebResourceHandler_DidFinish": {
-              console.log("runJavaScript test()");
+            case 'emitWebResourceHandler_DidFinish': {
+              console.log('runJavaScript test()');
               this.controller.runJavaScript('test()', (error, result) => {
                 if (error) {
-                  console.info(" run JavaScript error:" + JSON.stringify(error));
+                  console.info(' run JavaScript error:' + JSON.stringify(error));
                   return;
                 }
                 if (result) {
-                  console.info(" run JavaScript return value is:" + result);
+                  console.info(' run JavaScript return value is:' + result);
                 }
               })
               await Utils.sleep(1000);
-              console.log("emitWebResourceHandler_DidFinish ==>");
+              console.log('emitWebResourceHandler_DidFinish ==>');
               let result: number = testNapi.resourceHandlerDidFinish();
-              console.log("emitWebResourceHandler_DidFinish ==>" + result);
+              console.log('emitWebResourceHandler_DidFinish ==>' + result);
               await Utils.sleep(1000);
               if (result == 0) {
                 Utils.emitEvent(true, 7754);
@@ -356,7 +359,7 @@ struct webRegisterCustomsComponent {
         })
       }
 
-      Web({ src: $rawfile("chunked_post_stream.html"), controller: this.controller })
+      Web({ src: $rawfile('chunked_post_stream.html'), controller: this.controller })
         .javaScriptAccess(true)
         .width('100%')
         .height('100%')
@@ -364,6 +367,13 @@ struct webRegisterCustomsComponent {
         .fileAccess(false)
         .domStorageAccess(true)
         .cacheMode(CacheMode.Default)
+        .onPageBegin((event) => {
+            console.log('onPageBegin ==>' + event.url);
+        })
+        .onPageEnd((event) => {
+            console.log('onPageEnd ==>' + event.url);
+            this.isComplete = 0
+        })
     }
     .height('100%')
   }
