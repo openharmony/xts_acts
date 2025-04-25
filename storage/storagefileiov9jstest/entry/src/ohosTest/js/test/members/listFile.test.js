@@ -445,7 +445,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_011', 3, async function () {
+  it('fileIO_test_listfile_sync_011', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_011');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_010.txt';
@@ -489,7 +489,7 @@ export default function fileIOListfile() {
   * @tc.level Level 3
   * @tc.require
   */
-  it('fileIO_test_listfile_sync_012', 3, async function () {
+  it('fileIO_test_listfile_sync_012', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_sync_012');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_sync_011.txt';
@@ -603,6 +603,33 @@ export default function fileIOListfile() {
       expect(false).assertTrue();
     } catch (err) {
       console.log('fileIO_test_listfile_sync_015 has failed for ' + err.message + ', code:' + err.code);
+      expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1600
+   * @tc.name fileIO_test_listfile_sync_016
+   * @tc.desc Test listFileSync() interfaces.
+   * Not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_listfile_sync_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    let dpath = await nextFileName('fileIO_test_listfile_sync_016');
+    expect(prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let dirents = fileIO.listFileSync(dpath, {
+        listNum: 2,
+        recursion: false,
+        mimeType: [".txt"],
+      });
+      expect(false).assertTrue();
+    } catch (err) {
+      console.log('fileIO_test_listfile_sync_016 has failed for ' + err.message + ', code:' + err.code);
       expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
     }
   });
@@ -1450,7 +1477,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_020', 3, async function () {
+  it('fileIO_test_listfile_async_020', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_020');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_020.txt';
@@ -1499,7 +1526,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_021', 3, async function () {
+  it('fileIO_test_listfile_async_021', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_listfile_async_021');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_021.txt';
@@ -1540,7 +1567,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_022', 3, async function (done) {
+  it('fileIO_test_listfile_async_022', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_022');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_022.txt';
@@ -1585,7 +1612,7 @@ export default function fileIOListfile() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_listfile_async_023', 3, async function (done) {
+  it('fileIO_test_listfile_async_023', Level.LEVEL3, async function (done) {
     let dpath = await nextFileName('fileIO_test_listfile_async_023');
     let ddpath = dpath + '/second_dir';
     let fpath1 = dpath + '/listfile_async_023.txt';

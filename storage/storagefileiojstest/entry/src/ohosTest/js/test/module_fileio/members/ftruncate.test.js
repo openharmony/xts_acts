@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioFtruncate() {
 describe('fileio_ftruncate', function () {
@@ -30,7 +31,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_ftruncate_async_000', 0, async function (done) {
+  it('fileio_test_ftruncate_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd = fileio.openSync(fpath, 0o2);
@@ -59,7 +60,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_ftruncate_async_001', 0, async function (done) {
+  it('fileio_test_ftruncate_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_async_001');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
     let fd = fileio.openSync(fpath, 0o2);
@@ -93,7 +94,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_ftruncate_async_002', 0, async function (done) {
+  it('fileio_test_ftruncate_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_async_002');
     let truncateLen = 2;
     try {
@@ -117,7 +118,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_ftruncate_async_003', 3, async function (done) {
+  it('fileio_test_ftruncate_async_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -146,7 +147,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_ftruncate_async_004', 3, async function (done) {
+  it('fileio_test_ftruncate_async_004', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -172,6 +173,35 @@ describe('fileio_ftruncate', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_FTRUNCATE_ASYNC_0400
+   * @tc.name fileio_test_ftruncate_async_004
+   * @tc.desc Test ftruncate() interfaces. Promise.
+   * Undefined option arguments
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_ftruncate_async_004', Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('fileio_test_ftruncate_async_004');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      await fileio.ftruncate(fd);
+      let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(readLen == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileio_test_ftruncate_async_004 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_FTRUNCATE_SYNC_0000
    * @tc.name fileio_test_ftruncate_sync_000
    * @tc.desc Test ftruncateSync() interfaces.
@@ -180,7 +210,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-   it('fileio_test_ftruncate_sync_000', 0, async function () {
+   it('fileio_test_ftruncate_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_ftruncate_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd = fileio.openSync(fpath, 0o2);
@@ -207,7 +237,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_ftruncate_sync_001', 0, async function () {
+  it('fileio_test_ftruncate_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_ftruncate_sync_001');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
     let fd = fileio.openSync(fpath, 0o2);
@@ -234,7 +264,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_ftruncate_sync_002', 0, async function () {
+  it('fileio_test_ftruncate_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_ftruncate_sync_002');
     let truncateLen = 2;
     try {
@@ -255,7 +285,7 @@ describe('fileio_ftruncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_ftruncate_sync_003', 3, async function (done) {
+  it('fileio_test_ftruncate_sync_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_test_ftruncate_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

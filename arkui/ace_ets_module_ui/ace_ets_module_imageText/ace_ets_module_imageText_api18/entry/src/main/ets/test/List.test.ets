@@ -20,6 +20,10 @@ import symbolGlyphFontScaleTest from './FontScaleTest/symbolGlyphFontScaleTest.t
 import SearchGetTextTest from './SearchTest/SearchGetText.test';
 import TextAreaGetTextTest from './TextAreaTest/TextAreaGetText.test';
 import TextInputGetTextTest from './TextInputTest/TextInputGetText.test';
+import RichEditorMaxLinesTest from './RichEditorTest/RichEditorMaxLinesTest.test';
+import HapticFeedbackModeTest from './RichEditorTest/HapticFeedbackMode.test';
+import WordBreakTest from './TextAreaTest/WordBreakTest.test';
+import textBackgroundStyleTest from './RichEditorTest/textBackgroundStyleTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -29,4 +33,8 @@ export default function testsuite() {
   SearchGetTextTest();
   TextAreaGetTextTest();
   TextInputGetTextTest();
+  RichEditorMaxLinesTest();
+  HapticFeedbackModeTest();
+  WordBreakTest();
+  textBackgroundStyleTest();
 }

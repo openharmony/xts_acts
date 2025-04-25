@@ -805,5 +805,26 @@ export default function audioManagerTest() {
         }
       })
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0500
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = '123';
+      let flag: boolean = false;
+      try {
+        audioVolumeGroupManager.on('ringerModeChange',para);
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
   })
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common';
 import picker from '@ohos.file.picker';
 
@@ -37,7 +37,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_000", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_000";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -53,7 +53,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_001", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_001";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.VIDEO_TYPE;
@@ -69,7 +69,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_002", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_002", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_002";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -85,7 +85,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Photopicker_Select_Promise_003", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_003", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_003";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -102,7 +102,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 1
      */
-    it("test_Photopicker_Select_Promise_004", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_004", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_004";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -119,7 +119,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_005", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_005", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_005";
       let option = new picker.PhotoSelectOptions();
       option.MIMEType = picker.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
@@ -136,7 +136,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_006", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_006", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Select_Promise_006";
       let expectSelectNum = 2;
       let isSelectOriginal = true;
@@ -151,15 +151,16 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Select_Promise_007", 0, async (done: Function) => {
+    it("test_Photopicker_Select_Promise_007", Level.LEVEL0, async (done: Function) => {
       try {
         let options = new picker.PhotoSelectOptions();
         options.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE;
         options.maxSelectNumber = 5;
         let photoPicker = new picker.PhotoViewPicker();
-        photoPicker.select(options).then((result) => {
-          console.info('photopicker_select_promise_007 successfully, photoSelectResult uri: ' + JSON.stringify(result));
-          console.info('isOriginalPhoto: ' + result.isOriginalPhoto);
+        photoPicker.select(options).then((PhotoSelectResult) => {
+          console.info('photopicker_select_promise_007 successfully, photoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+          console.info('isOriginalPhoto: ' + PhotoSelectResult.isOriginalPhoto);
+          console.info('photoUris: ' + PhotoSelectResult.photoUris);
           done();
         }).catch((err: Error) => {
           console.info('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
@@ -183,7 +184,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Photopicker_Save_Promise_000", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Promise_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Promise_000";
       let option = new picker.PhotoSaveOptions();
       option.newFileNames = ["PhotoViewPicker01.jpg"];
@@ -199,7 +200,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Save_Promise_001", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Promise_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Promise_001";
       let option = new picker.PhotoSaveOptions();
       option.newFileNames = ["PhotoViewPicker01.mp4"];
@@ -215,7 +216,7 @@ export default function photoPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Photopicker_Save_Promise_002", 0, async (done: Function) => {
+    it("test_Photopicker_Save_Promise_002", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Photopicker_Save_Promise_002";
       await saveWithoutSelect(testNum, done);
     });

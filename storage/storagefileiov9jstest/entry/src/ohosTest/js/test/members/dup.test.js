@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIODup() {
   describe('fileIO_fs_dup', function () {
@@ -30,7 +31,7 @@ export default function fileIODup() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_dup_sync_000', 0, async function () {
+  it('fileIO_test_dup_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_dup_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -61,7 +62,7 @@ export default function fileIODup() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_dup_sync_001', 3, async function () {
+  it('fileIO_test_dup_sync_001', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_dup_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let newFile;
@@ -93,7 +94,7 @@ export default function fileIODup() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_dup_sync_002', 3, async function () {
+  it('fileIO_test_dup_sync_002', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_dup_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let newFile;
@@ -124,7 +125,7 @@ export default function fileIODup() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_dup_sync_003', 3, function () {
+  it('fileIO_test_dup_sync_003', Level.LEVEL3, function () {
     try {
       fileIO.dup();
       expect(false).assertTrue();
@@ -144,7 +145,7 @@ export default function fileIODup() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_dup_sync_004', 3, async function () {
+  it('fileIO_test_dup_sync_004', Level.LEVEL3, async function () {
 
     try {
       fileIO.dup(-1);
@@ -165,7 +166,7 @@ export default function fileIODup() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_dup_sync_005', 3, async function () {
+  it('fileIO_test_dup_sync_005', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_dup_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

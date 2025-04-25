@@ -14,6 +14,7 @@
  */
 
 import { fileIO, nextFileName, describe, it, expect } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOMkdtemp() {
 describe('fileIO_fs_mkdtemp', function () {
@@ -28,7 +29,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_sync_000', 0, async function () {
+  it('fileIO_test_mkdtemp_sync_000', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_mkdtemp_sync_000');
 
     try {
@@ -52,7 +53,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_sync_001', 0, async function () {
+  it('fileIO_test_mkdtemp_sync_001', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_mkdtemp_sync_000');
 
     try {
@@ -74,7 +75,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_sync_002', 0, async function () {
+  it('fileIO_test_mkdtemp_sync_002', Level.LEVEL0, async function () {
 
     try {
       fileIO.mkdtempSync();
@@ -95,7 +96,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_async_000', 0, async function (done) {
+  it('fileIO_test_mkdtemp_async_000', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdtemp_async_000');
 
     try {
@@ -120,7 +121,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_async_001', 0, async function (done) {
+  it('fileIO_test_mkdtemp_async_001', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdtemp_async_001');
 
     try {
@@ -150,7 +151,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_async_002', 0, async function (done) {
+  it('fileIO_test_mkdtemp_async_002', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdtemp_async_002');
 
     try {
@@ -173,7 +174,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_async_003', 0, async function (done) {
+  it('fileIO_test_mkdtemp_async_003', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_mkdtemp_async_003');
 
     try {
@@ -200,7 +201,7 @@ describe('fileIO_fs_mkdtemp', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_mkdtemp_async_004', 0, async function (done) {
+  it('fileIO_test_mkdtemp_async_004', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.mkdtemp();
