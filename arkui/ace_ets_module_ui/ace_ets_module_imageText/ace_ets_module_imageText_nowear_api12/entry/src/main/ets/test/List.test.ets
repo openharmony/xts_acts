@@ -37,6 +37,7 @@ import RichEditor11 from './RichEditorEnhance/RichEditor11.test'
 import onDidIMEInputTest from './RichEditor/onDidIMEInput.test';
 import editMeunOptionsTest from './Text/editMeunOptions.test'
 import RichEditorApi1 from './RichEditor/RichEditorApi1.test'
+import TextDeleteDirectionTest from "./TextArea/TextDeleteDirectionTest.test";
 
 export default function testsuite() {
   textAreaInputTest();
@@ -64,4 +65,5 @@ export default function testsuite() {
   onDidIMEInputTest();
   editMeunOptionsTest();
   RichEditorApi1();
+  TextDeleteDirectionTest();
 }

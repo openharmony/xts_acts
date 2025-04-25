@@ -18,6 +18,7 @@ import {
   fileIO, FILE_CONTENT, prepareFile, sleep, nextFileName,
   describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
   const WAIT_HALF_SECOND = 500;
   const watcherEvent = {
@@ -69,7 +70,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_000', 3, async function (done) {
+  it('fileIO_test_watcher_000', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_000';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_000';
@@ -121,7 +122,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_001', 0, async function (done) {
+  it('fileIO_test_watcher_001', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_001';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_001.txt';
@@ -154,7 +155,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_002', 0, async function (done) {
+  it('fileIO_test_watcher_002', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_002';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_002.txt';
@@ -187,7 +188,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_003', 0, async function (done) {
+  it('fileIO_test_watcher_003', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_003';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_003.txt';
@@ -219,7 +220,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_004', 0, async function (done) {
+  it('fileIO_test_watcher_004', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_004';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_004.txt';
@@ -251,7 +252,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_005', 0, async function (done) {
+  it('fileIO_test_watcher_005', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_005';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_005.txt';
@@ -283,7 +284,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_006', 0, async function (done) {
+  it('fileIO_test_watcher_006', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_006';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_006.txt';
@@ -325,7 +326,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_007', 0, async function (done) {
+  it('fileIO_test_watcher_007', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_007';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_007.txt';
@@ -356,7 +357,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_008', 0, async function (done) {
+  it('fileIO_test_watcher_008', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_008';
     let dpath = await nextFileName(testNum);
     let ddpath = dpath + '/dir_008';
@@ -386,7 +387,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_009', 0, async function (done) {
+  it('fileIO_test_watcher_009', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_009';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_009.txt';
@@ -417,7 +418,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_010', 0, async function (done) {
+  it('fileIO_test_watcher_010', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_010';
     let dpath = await nextFileName(testNum);
     let ddpath = dpath + '/dir_010';
@@ -448,7 +449,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_011', 0, async function (done) {
+  it('fileIO_test_watcher_011', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_011';
     let dpath = await nextFileName(testNum);
     fileIO.mkdirSync(dpath);
@@ -476,7 +477,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_012', 0, async function (done) {
+  it('fileIO_test_watcher_012', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_012';
     let dpath = await nextFileName(testNum);
     fileIO.mkdirSync(dpath);
@@ -505,7 +506,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_013', 3, async function (done) {
+  it('fileIO_test_watcher_013', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_013';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -535,7 +536,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_014', 0, async function (done) {
+  it('fileIO_test_watcher_014', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_014';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_014.txt';
@@ -566,7 +567,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_watcher_015', 0, async function (done) {
+  it('fileIO_test_watcher_015', Level.LEVEL0, async function (done) {
     let testNum = 'fileIO_test_watcher_015';
     let dpath = await nextFileName(testNum);
     let fpath1 = dpath + '/file_015.txt';
@@ -611,7 +612,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_016', 3, async function (done) {
+  it('fileIO_test_watcher_016', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_016';
     let dpath = await nextFileName(testNum);
     let fpath = dpath + '/file_005.txt';
@@ -649,7 +650,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_017', 3, async function (done) {
+  it('fileIO_test_watcher_017', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_017';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -678,7 +679,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_018', 3, async function (done) {
+  it('fileIO_test_watcher_018', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_018';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -704,7 +705,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_019', 3, async function (done) {
+  it('fileIO_test_watcher_019', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_019';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -730,7 +731,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_020', 3, async function (done) {
+  it('fileIO_test_watcher_020', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_020';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -759,7 +760,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_021', 3, async function (done) {
+  it('fileIO_test_watcher_021', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_021';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -785,7 +786,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_022', 3, async function (done) {
+  it('fileIO_test_watcher_022', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_022';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -811,7 +812,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_023', 3, async function (done) {
+  it('fileIO_test_watcher_023', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_023';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -838,7 +839,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_024', 3, async function (done) {
+  it('fileIO_test_watcher_024', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_024';
     let fpath = await nextFileName(testNum);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -863,7 +864,7 @@ export default function fileIOWatcher() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_watcher_025', 3, async function (done) {
+  it('fileIO_test_watcher_025', Level.LEVEL3, async function (done) {
     let testNum = 'fileIO_test_watcher_025';
     let fpath = await nextFileName(testNum);
 
