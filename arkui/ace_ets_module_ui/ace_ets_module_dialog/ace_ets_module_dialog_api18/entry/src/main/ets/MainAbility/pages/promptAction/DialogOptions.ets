@@ -1,438 +1,683 @@
-/**
- * Copyright (c) 2025 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the 'License');
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS,
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@ComponentV2
-struct DialogOptions0 {
-  private customDialogComponentId: number = 0
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,Level,Size,TestType } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
 
-  @Builder
-  customDialogComponent() {
-    Column({ space: 8 }) {
-      Text('弹窗')
-      Button('确认').onClick(() => {
-        try {
-          promptAction.closeCustomDialog(this.customDialogComponentId)
-        } catch (error) {
-          let message = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+export default function DialogOptions() {
+  describe('DialogOptions', () => {
+
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/promptAction/DialogOptions',
+      }
+      try {
+        router.clear();
+        let pages = router.getState();
+        console.info('get DialogOptions state success ' + JSON.stringify(pages));
+        if (!('DialogOptions' == pages.name)) {
+          console.info('get DialogOptions state success ' + JSON.stringify(pages.name));
+          let result = await router.pushUrl(options)
+          await CommonFunc.sleep(2000);
+          console.info('push DialogOptions page success ' + JSON.stringify(result));
         }
-      })
-    }.padding(5).justifyContent(FlexAlign.SpaceBetween)
-  }
-
-  build() {
-    Column({ space: 10 }) {
-      Row(){
-        Button('c1')
-          .id('click1')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.Thin,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-        Button('c2')
-          .id('click2')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundColor: $r('app.color.color2'),
-              cornerRadius: {
-                topLeft: '20vp',
-                topRight: '20px',
-                bottomLeft: 0,
-                bottomRight: undefined
-              },
-              borderWidth: 1,
-              borderColor: Color.Pink,
-              borderStyle: BorderStyle.Dotted,
-              width: 200,
-              height: 80,
-              shadow: ShadowStyle.OUTER_DEFAULT_XS,
-              backgroundBlurStyle: BlurStyle.NONE,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-        Button('cl13')
-          .id('click13')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.COMPONENT_THICK,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      } catch (err) {
+        console.error('push DialogOptions page error ' + JSON.stringify(err));
       }
-      Row(){
-        Button('click3')
-          .id('click3')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundColor: undefined,
-              cornerRadius: undefined,
-              borderWidth: undefined,
-              borderColor: undefined,
-              borderStyle: undefined,
-              width: undefined,
-              height: undefined,
-              shadow: ShadowStyle.OUTER_DEFAULT_SM,
-              backgroundBlurStyle:BlurStyle.Regular,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      done()
+    });
 
-        Button('click4')
-          .id('click4')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundColor: null,
-              cornerRadius: null,
-              borderWidth: null,
-              borderColor: null,
-              borderStyle: null,
-              width: null,
-              height: null,
-              shadow: ShadowStyle.OUTER_FLOATING_SM,
-              backgroundBlurStyle:BlurStyle.Thick,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-      }
-      Row(){
-        Button('click5')
-          .id('click5')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              shadow: {
-                radius: 10,
-                type: ShadowType.BLUR,
-                color: '#FF94A0F0',
-                offsetX: 2,
-                offsetY: 3,
-                fill: true
-              },
-              backgroundBlurStyle:BlurStyle.BACKGROUND_THIN,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0100
+     * @tc.name DialogOptions_0100
+     * @tc.desc To test default  DialogOptions
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0100 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click1'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
 
-        Button('click6')
-          .id('click6')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.BACKGROUND_REGULAR,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundColor:string = column.backgroundColor
+      let topLeft:string = column.borderRadius.topLeft
+      let topRight:string = column.borderRadius.topRight
+      let bottomLeft:string = column.borderRadius.bottomLeft
+      let bottomRight:string = column.borderRadius.bottomRight
+      let borderWidth:string = column.borderWidth
+      let borderColor:string = column.borderColor
+      let borderStyle:string = column.borderStyle
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      console.info('[DialogOptions_0100] column $attrs'+ JSON.stringify(column))
 
-      }
-      Row(){
-        Button('click7')
-          .id('click7')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.BACKGROUND_THICK,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-        Button('click8')
-          .id('click8')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.BACKGROUND_ULTRA_THICK,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      console.info('[DialogOptions_0100] topLeft'+ topLeft)
+      expect(topLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0100] topRight'+ topRight)
+      expect(topRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0100] bottomLeft'+ bottomLeft)
+      expect(bottomLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0100] bottomRight'+ bottomRight)
+      expect(bottomRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0100] borderWidth'+ borderWidth)
+      expect(borderWidth).assertEqual('0.00vp')
+
+      console.info('[DialogOptions_0100] borderColor'+ borderColor)
+      expect(borderColor).assertEqual('#FF000000')
+
+      console.info('[DialogOptions_0100] borderStyle'+ borderStyle)
+      expect(borderStyle).assertEqual('BorderStyle.Solid')
+      console.info('[DialogOptions_0100] backgroundBlurStyle'+ backgroundBlurStyle)
+      
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      console.info('[DialogOptions_0100] uniRenderFlag'+ uniRenderFlag)
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+    
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.Thin');
       }
 
-      Row(){
-        Button('click9')
-          .id('click9')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.COMPONENT_ULTRA_THIN,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-        Button('click10')
-          .id('click10')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.COMPONENT_THIN,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0100 END');
+      done();
+    });
 
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0200
+     * @tc.name DialogOptions_0200
+     * @tc.desc To test  DialogOptions
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0200 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click2'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundColor:string = column.backgroundColor
+      let topLeft:string = column.borderRadius.topLeft
+      let topRight:string = column.borderRadius.topRight
+      let bottomLeft:string = column.borderRadius.bottomLeft
+      let bottomRight:string = column.borderRadius.bottomRight
+      let borderWidth:string = column.borderWidth
+      let borderColor:string = column.borderColor
+      let borderStyle:string = column.borderStyle
+      let width:string = column.size?.width
+      let height:string = column.size?.height
+      let shadow:string = column.shadow
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      console.info('[DialogOptions_0200] backgroundColor'+ backgroundColor)
+      expect(column.backgroundColor).assertEqual('#FF6582F8')
+
+      console.info('[DialogOptions_0200] topLeft'+ topLeft)
+      expect(topLeft).assertEqual('20.00vp')
+
+      console.info('[DialogOptions_0200] topRight'+ topRight)
+      expect(topRight).assertEqual('20.00px')
+
+      console.info('[DialogOptions_0200] bottomLeft'+ bottomLeft)
+      expect(bottomLeft).assertEqual('0.00vp')
+
+      console.info('[DialogOptions_0200] bottomRight'+ bottomRight)
+      expect(bottomRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0200] borderWidth'+ borderWidth)
+      expect(borderWidth).assertEqual('1.00vp')
+
+      console.info('[DialogOptions_0200] borderColor'+ borderColor)
+      expect(borderColor).assertEqual('#FFFFC0CB')
+
+      console.info('[DialogOptions_0200] borderStyle'+ borderStyle)
+      expect(borderStyle).assertEqual('BorderStyle.Dotted')
+
+      console.info('[DialogOptions_0200] width'+ width)
+      expect(width).assertEqual('200.00vp')
+      console.info('[DialogOptions_0200] height'+ height)
+      expect(height).assertEqual('80.00vp')
+      console.info('[DialogOptions_0200] shadow'+ shadow)
+      expect(shadow).assertEqual('ShadowStyle.OuterDefaultXS')
+      console.info('[DialogOptions_0200] backgroundBlurStyle'+ backgroundBlurStyle)
+      
+      expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE')
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0200 END');
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0300
+     * @tc.name DialogOptions_0300
+     * @tc.desc To test  DialogOptions undefined
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0300', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0300 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click3'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundColor:string = column.backgroundColor
+      let topLeft:string = column.borderRadius.topLeft
+      let topRight:string = column.borderRadius.topRight
+      let bottomLeft:string = column.borderRadius.bottomLeft
+      let bottomRight:string = column.borderRadius.bottomRight
+      let borderWidth:string = column.borderWidth
+      let borderColor:string = column.borderColor
+      let borderStyle:string = column.borderStyle
+      let width:string = column.size?.width
+      let height:string = column.size?.height
+      let shadow:string = column.shadow
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0300] topLeft'+ topLeft)
+      expect(topLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0300] topRight'+ topRight)
+      expect(topRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0300] bottomLeft'+ bottomLeft)
+      expect(bottomLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0300] bottomRight'+ bottomRight)
+      expect(bottomRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0300] borderWidth'+ borderWidth)
+      expect(borderWidth).assertEqual('0.00vp')
+
+      console.info('[DialogOptions_0300] borderColor'+ borderColor)
+      expect(borderColor).assertEqual('#FF000000')
+
+      console.info('[DialogOptions_0300] borderStyle'+ borderStyle)
+      expect(borderStyle).assertEqual('BorderStyle.Solid')
+
+      console.info('[DialogOptions_0300] height'+ shadow)
+      expect(shadow).assertEqual('ShadowStyle.OuterDefaultSM')
+
+      console.info('[DialogOptions_0300] height'+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      console.info('[DialogOptions_0300] uniRenderFlag'+ uniRenderFlag)
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.Regular');
       }
-      Row(){
-        Button('click11')
-          .id('click11')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.COMPONENT_REGULAR,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
-        Button('click12')
-          .id('click12')
-          .height('8%')
-          .onClick(() => {
-            promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              backgroundBlurStyle:BlurStyle.COMPONENT_ULTRA_THICK,
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info('reason' + JSON.stringify(dismissDialogAction.reason))
-                console.log('dialog onWillDismiss')
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss()
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss()
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0300 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0400
+     * @tc.name DialogOptions_0400
+     * @tc.desc To test  DialogOptions null
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0400', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0400 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click4'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundColor:string = column.backgroundColor
+      let topLeft:string = column.borderRadius.topLeft
+      let topRight:string = column.borderRadius.topRight
+      let bottomLeft:string = column.borderRadius.bottomLeft
+      let bottomRight:string = column.borderRadius.bottomRight
+      let borderWidth:string = column.borderWidth
+      let borderColor:string = column.borderColor
+      let borderStyle:string = column.borderStyle
+      let width:string = column.size?.width
+      let height:string = column.size?.height
+      let shadow:string = column.shadow
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0400] topLeft'+ topLeft)
+      expect(topLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0400] topRight'+ topRight)
+      expect(topRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0400] bottomLeft'+ bottomLeft)
+      expect(bottomLeft).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0400] bottomRight'+ bottomRight)
+      expect(bottomRight).assertEqual('32.00vp')
+
+      console.info('[DialogOptions_0400] borderWidth'+ borderWidth)
+      expect(borderWidth).assertEqual('0.00vp')
+
+      console.info('[DialogOptions_0400] borderColor'+ borderColor)
+      expect(borderColor).assertEqual('#FF000000')
+
+      console.info('[DialogOptions_0400] borderStyle'+ borderStyle)
+      expect(borderStyle).assertEqual('BorderStyle.Solid')
+
+      console.info('[DialogOptions_0400] shadow'+ shadow)
+      expect(shadow).assertEqual('ShadowStyle.OuterFloatingSM')
+      console.info('[DialogOptions_0400] backgroundBlurStyle'+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      console.info('[DialogOptions_0400] uniRenderFlag'+ uniRenderFlag)
+      
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('ShadowStyle.OUTER_FLOATING_SM');
       }
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0400 END');
+      done();
+    });
+
+    
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0500
+     * @tc.name DialogOptions_0500
+     * @tc.desc To test  DialogOptions shadow backgroundBlurStyle
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0500', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0500 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click5'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let radius:string = column.shadow?.radius
+      let type:string = column.shadow?.type
+      let color:string = column.shadow?.color
+      let offsetX:string = column.shadow?.offsetX
+      let offsetY:string = column.shadow?.offsetY
+      let fill:string = column.shadow?.fill
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0500] radius '+ radius)
+      console.info('[DialogOptions_0500] type '+ type)
+      console.info('[DialogOptions_0500] color '+ color)
+      console.info('[DialogOptions_0500] offsetX '+ offsetX)
+      console.info('[DialogOptions_0500] offsetY '+ offsetY)
+      console.info('[DialogOptions_0500] fill '+ fill)
+      console.info('[DialogOptions_0500] backgroundBlurStyle '+ backgroundBlurStyle)
+
+      expect(radius).assertEqual('10.000000')
+      expect(type).assertEqual('1')
+      expect(color).assertEqual('#FF94A0F0')
+      expect(offsetX).assertEqual('2.000000')
+      expect(offsetY).assertEqual('3.000000')
+      expect(fill).assertEqual('1')
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THIN');
+      }
+
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0500 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0600
+     * @tc.name DialogOptions_0600
+     * @tc.desc To test  DialogOptions backgroundBlurStyle
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0600', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0600 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click6'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0600] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_REGULAR');
+      }
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0600 END');
+      done();
+    });
+
+
+     /**
+     * @tc.number SUB_ACE_DialogOptions_0700
+     * @tc.name DialogOptions_0700
+     * @tc.desc To test  DialogOptions backgroundBlurStyle
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0700', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0700 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click7'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0700] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_THICK');
+      }
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0700 END');
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0800
+     * @tc.name DialogOptions_0800
+     * @tc.desc To test  DialogOptions backgroundBlurStyle
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0800', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0800 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click8'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0800] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.BACKGROUND_ULTRA_THICK')
+      }
+      
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0800 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_0900
+     * @tc.name DialogOptions_0900
+     * @tc.desc To test  DialogOptions backgroundBlurStyle 
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_0900', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_0900 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click9'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_0900] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THIN')
+      }
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_0900 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_1000
+     * @tc.name DialogOptions_1000
+     * @tc.desc To test  DialogOptions backgroundBlurStyle 
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_1000', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_1000 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click10'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_1000] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THIN')
+      }
+      
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_1000 END');
+      done();
+    });
+    /**
+     * @tc.number SUB_ACE_DialogOptions_1100
+     * @tc.name DialogOptions_1100
+     * @tc.desc To test  DialogOptions backgroundBlurStyle 
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_1100', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_1100 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click11'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_1100] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_REGULAR')
+      }
+      
+
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_1100 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_1200
+     * @tc.name DialogOptions_1200
+     * @tc.desc To test  DialogOptions backgroundBlurStyle 
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_1200', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_1200 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click12'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_1200] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_ULTRA_THICK')
+      }
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_1200 END');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_ACE_DialogOptions_1300
+     * @tc.name DialogOptions_1300
+     * @tc.desc To test  DialogOptions backgroundBlurStyle 
+     * @tc.level: Level 0
+     * @tc.type : Function
+     * @tc.size : MEDIUMTEST
+    */
+    it('DialogOptions_1300', TestType.Function | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('DialogOptions_1300 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.id('click13'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
+      await CommonFunc.sleep(2000);
+
+      let column: ESObject = obj.$children[1].$children[0].$attrs
+      let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
+      
+      console.info('[DialogOptions_1300] backgroundBlurStyle '+ backgroundBlurStyle)
+       let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
+      if (uniRenderFlag == 'false') {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
+      } else {
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.COMPONENT_THICK')
+      }
+      let button1 = await driver.findComponent(ON.text('确认'));
+      await button1.click();
+      await CommonFunc.sleep(1000);
+      console.info('DialogOptions_1300 END');
+      done();
+    });
+  })
 }
