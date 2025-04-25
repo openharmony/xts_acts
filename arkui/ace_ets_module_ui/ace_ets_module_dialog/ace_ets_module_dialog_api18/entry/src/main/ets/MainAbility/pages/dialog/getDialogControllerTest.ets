@@ -15,7 +15,7 @@
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent } from '@kit.ArkUI';
 class Params {
-  text: string = ''
+  public text: string = ''
   constructor(text: string) {
     this.text = text;
   }
