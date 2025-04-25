@@ -528,6 +528,19 @@ export default function ApiCoverTest() {
     })
 
     /*
+     * @tc.number  SUB_Ability_AbilityBase_wantConstant_1300
+     * @tc.name    Test wantConstant Params.APP_LAUNCH_TRUSTLIST.
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_Ability_AbilityBase_wantConstant_1300', Level.LEVEL3, async (done: Function) => {
+      expect('ohos.params.appLaunchTrustList').assertEqual(wantConstant.Params.APP_LAUNCH_TRUSTLIST);
+      done();
+    })
+
+    /*
      * @tc.number  SUB_Ability_AbilityBase_WantAgent_0100
      * @tc.name    Test wantAgent OperationType.UNKNOWN_TYPE.
      * @tc.size:   MediumTest
