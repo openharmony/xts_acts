@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent';
-import {describe,beforeAll,beforeEach,afterEach,afterAll,it,expect,} from "@ohos/hypium";
+import {describe,beforeAll,beforeEach,afterEach,afterAll,it,expect, Level} from "@ohos/hypium";
 
 export default function ActsSubscriberTestUnorder() {
   describe('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST', function () {
@@ -36,7 +36,7 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_2700', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_2700', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2700 START`)
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
@@ -72,7 +72,7 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_2800', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_2800', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2800 START`)
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
@@ -105,7 +105,7 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_2900', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_2900', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_2900 START`)
       CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
@@ -142,7 +142,7 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface (by Promise)
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_3000', 0, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_3000', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_3000 START`)
       CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
       let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
@@ -176,8 +176,9 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_0900', 0, async function (done) {
+    it('Sub_Notification_Ces_Subscriber_Subscribe_0900', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0900 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0500'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0500'
       CommonEventSubscriberInfo.priority = 10
@@ -240,7 +241,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0900 END`)
     })
 
@@ -249,8 +249,9 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : isOrderedCommonEvent(): Promise<boolean>
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_8350', 0, async function (done) {
+    it('Sub_Notification_Ces_Publish_CommonEvent_8350', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8350 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0600'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0600'
       CommonEventSubscriberInfo.priority = 10
@@ -313,7 +314,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8350 END`)
     })
 
@@ -322,8 +322,9 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : iisStickyCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_8250', 0, async function (done) {
+    it('Sub_Notification_Ces_Publish_CommonEvent_8250', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8250 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0700'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0700'
       CommonEventSubscriberInfo.priority = 10
@@ -386,7 +387,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8250 END`)
     })
 
@@ -395,8 +395,9 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check
      * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_8300', 0, async function (done) {
+    it('Sub_Notification_Ces_Publish_CommonEvent_8300', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8300 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0800'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0800'
       CommonEventSubscriberInfo.priority = 10
@@ -456,7 +457,6 @@ export default function ActsSubscriberTestUnorder() {
           done()
         }
       })
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8300 END`)
     })
 
@@ -465,8 +465,9 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : check properties
      * @tc.desc      : CommonEventPublishData
      */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_0800', 0, async function (done) {
+    it('Sub_Notification_Ces_Subscriber_Subscribe_0800', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0800 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
       CommonEventSubscriberInfo.priority = 10
@@ -514,7 +515,7 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
+      await sleep(2000)
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0800 END`)
     })     
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST END`)
