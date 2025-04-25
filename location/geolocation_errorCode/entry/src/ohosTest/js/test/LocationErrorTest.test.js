@@ -82,6 +82,10 @@ let source_type_RTK = geolocationm.LocationSourceType.RTK
 let coordinate_WGS84 = geolocationm.CoordinateSystemType.WGS84
 let coordinate_GCJ02 = geolocationm.CoordinateSystemType.GCJ02
 
+let request_RUNNING = geolocationm.SportsType.RUNNING
+let request_WALKING = geolocationm.SportsType.WALKING
+let request_CYCLING = geolocationm.SportsType.CYCLING
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -404,20 +408,20 @@ export default function geolocationTest_LocErr(){
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_ENTER == 1)
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_EXIT == 2)
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_DWELL == 4)
-
             expect(true).assertEqual(LOCATING_FAILED_DEFAULT == -1)
             expect(true).assertEqual(LOCATING_FAILED_LOCATION_PERMISSION_DENIED == -2)
             expect(true).assertEqual(LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED == -3)
             expect(true).assertEqual(LOCATING_FAILED_LOCATION_SWITCH_OFF == -4)
             expect(true).assertEqual(LOCATING_FAILED_INTERNET_ACCESS_FAILURE == -5)
-
             expect(true).assertEqual(source_type_GNSS == 1)
             expect(true).assertEqual(source_type_NETWORK == 2)
             expect(true).assertEqual(source_type_INDOOR == 3)
             expect(true).assertEqual(source_type_RTK == 4)
-
             expect(true).assertEqual(coordinate_WGS84 == 1)
             expect(true).assertEqual(coordinate_GCJ02 == 2)
+            expect(true).assertEqual(request_RUNNING == 1)
+            expect(true).assertEqual(request_WALKING == 2)
+            expect(true).assertEqual(request_CYCLING == 3)
             done();
         })
 
