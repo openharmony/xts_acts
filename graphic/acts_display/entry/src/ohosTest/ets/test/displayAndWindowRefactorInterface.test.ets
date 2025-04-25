@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from "@ohos/hypium"
 import display from '@ohos.display';
 import displaySync from '@ohos.graphics.displaySync'
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -32,9 +32,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : Gets all current display objects
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('tesGetAllDisplays_Promise', 0, async (done:Function) => {
+    it('tesGetAllDisplays_Promise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'tesGetAllDisplays_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -66,9 +66,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : Gets all current display objects
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level2
      */
-    it('tesGetAllDisplays_Callback', 0, async (done:Function) => {
+    it('tesGetAllDisplays_Callback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = 'tesGetAllDisplays_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -96,6 +96,7 @@ export default function displayAndWindowRefactorInterfaceTest() {
         expect(data[0].scaledDensity != null).assertTrue();
         expect(data[0].xDPI != null).assertTrue();
         expect(data[0].yDPI != null).assertTrue();
+        expect(data[0].screenShape == 0 || data[0].screenShape == 1).assertTrue();
         done();
         console.log(msgStr + 'done ');
       });
@@ -106,9 +107,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : test the enum value of hdrFormats
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level1
      */
-    it('testSetExpectedFrameRateRange', 0, async (done:Function) => {
+    it('testSetExpectedFrameRateRange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       let msg = "testSetExpectedFrameRateRange";
       let backDisplaySyncBigger = displaySync.create();
       console.log(msg + ' www data ' + backDisplaySyncBigger);
@@ -138,9 +139,9 @@ export default function displayAndWindowRefactorInterfaceTest() {
      * @tc.desc      : test the enum value of IntervalInfo
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level2
      */
-    it('testTargetTimestamp', 0, async (done:Function) => {
+    it('testTargetTimestamp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let msg = "testTargetTimestamp";
       let backDisplaySyncBigger = displaySync.create();
       console.log(msg + ' www data ' + backDisplaySyncBigger);
@@ -157,6 +158,48 @@ export default function displayAndWindowRefactorInterfaceTest() {
           expect().assertFail();
         } else {
           expect(true).assertTrue();
+        }
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_CREATE_VIRTUALSCREEN_ERRORCODE_0200
+     * @tc.name      : test_CreateVirtualScreen_ErrorCode201
+     * @tc.desc      : test_CreateVirtualScreen_ErrorCode201 when without permissions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('test_CreateVirtualScreen_ErrorCode201', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_CreateVirtualScreen_ErrorCode201 ';
+      class VirtualScreenOptions {
+        name: string = '';
+        width: number = 0;
+        height: number = 0;
+        density: number = 0;
+        surfaceId: string = '';
+      }
+      let option: VirtualScreenOptions = {
+        name: 'screen01',
+        width: 1,
+        height: 2340,
+        density: 2,
+        surfaceId: ''
+      }
+      try {
+        display.createVirtualScreen(option).then((screenId: number) => {
+          console.info(caseName + 'succeeded in create virtual screen, data : ' + JSON.stringify(screenId));
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(caseName + 'failed to create the virtual screen, err : ' + JSON.stringify(err));
+          expect(err.code == 201).assertTrue();
+          done();
+        })
+      } catch (err) {
+        console.log(caseName + 'error in createVirtualScreen, err : ' + JSON.stringify(err));
+        if (err.code != 801) {
+          expect().assertFail();
         }
         done();
       }
