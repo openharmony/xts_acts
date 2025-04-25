@@ -1637,7 +1637,7 @@ export default function windowZindexTest() {
      * @tc.level     : Level 2
      */
     it('test_subWindowWithOptions_zlevel', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let caseName: string = 'test_subWindowWithOptions_zlevel!';
+      let caseName: string = 'test_subWindowWithOptions_zlevel';
       console.log(caseName + 'begin');
       try {
         let options : window.SubWindowOptions = {
@@ -1674,9 +1674,9 @@ export default function windowZindexTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0900
-     * @tc.name      : test_subWindowWithOptions_zlevel
-     * @tc.desc      : test_subWindowWithOptions_zlevel
+     * @tc.number    : SUB_BASIC_WMS_createWindow_typeMain_0100
+     * @tc.name      : test_create_window_typeMain
+     * @tc.desc      : test_create_window_typeMain
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
