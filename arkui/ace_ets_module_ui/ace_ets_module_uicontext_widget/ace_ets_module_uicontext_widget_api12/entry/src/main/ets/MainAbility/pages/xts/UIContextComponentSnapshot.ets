@@ -52,13 +52,29 @@ struct UIContextComponentSnapshot {
                 this.pixmap_2 = pixmap
                 console.info('UIContextComponentSnapshot pixmap_text_1 start')
                 this.pixmap_text_1 = 'snapshot'
+              }, {
+                scale: 1, waitUntilRenderFinished: true,
+                region: {
+                  left: 100,
+                  right: 200,
+                  top: 100,
+                  bottom: 200
+                }
               })
           }).width('90%').margin(10).id('getComponentSnapshot_01').height('5%')
 
 
           Button('新增Promise').onClick(() => { // 这里
             this.uiContext.getComponentSnapshot()
-              .get('snapshot_4')
+              .get('snapshot_4',{
+                scale: 1, waitUntilRenderFinished: true,
+                region: {
+                  left: 100,
+                  right: 200,
+                  top: 100,
+                  bottom: 200
+                }
+              })
               .then((pixmap: image.PixelMap) => {
                 this.pixmap_2 = pixmap
                 console.info('UIContextComponentSnapshot pixmap_text_2 start')
