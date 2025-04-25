@@ -74,7 +74,7 @@ export default function abilityTest() {
         })
       }catch(err){
         if(err?.code === 801){
-          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
           expect(err?.code).assertEqual(ERR_CODE);
         }
@@ -119,7 +119,7 @@ export default function abilityTest() {
       })
       }catch(err){
         if(err?.code === 801){
-          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
           expect(err?.code).assertEqual(ERR_CODE);
         }
@@ -153,7 +153,7 @@ export default function abilityTest() {
         })
       }catch(err){
         if(err?.code === 801){
-          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
           expect(err?.code).assertEqual(ERR_CODE);
         }
@@ -202,7 +202,7 @@ export default function abilityTest() {
       })
       }catch(err){
         if(err?.code === 801){
-          console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+          console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
           expect().assertFail();
         }
