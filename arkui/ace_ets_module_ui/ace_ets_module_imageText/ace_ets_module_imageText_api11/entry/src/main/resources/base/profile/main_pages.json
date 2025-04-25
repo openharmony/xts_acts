@@ -97,6 +97,10 @@
         "MainAbility/pages/text/textDecoration",
         "MainAbility/pages/Search/searchPage1",
         "MainAbility/pages/TextArea/TextAreaType",
-        "MainAbility/pages/Search/SearchType"
+        "MainAbility/pages/Search/SearchType",
+        "MainAbility/pages/ContainerSpan/ContainerSpanModifier",
+        "MainAbility/pages/Search/SearchModifier",
+        "MainAbility/pages/SymbolGlyph/fontWeight",
+        "MainAbility/pages/text/SpanTextShadowTest"
     ]
 }

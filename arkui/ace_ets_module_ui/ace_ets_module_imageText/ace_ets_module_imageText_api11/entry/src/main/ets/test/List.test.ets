@@ -109,6 +109,10 @@ import textTextDecorationTest from './textTest/textTextDecoration.test';
 import searchTest from './SearchTest/SearchJsunit1.test';
 import TextAreaTypeTest from "./TextAreaTest/TextAreaType.test";
 import SearchTypeTest from "./SearchTest/SearchType.test";
+import ContainerSpanModifierTest from './ContainerSpanTest/ContainerSpanModifier.test'
+import SearchModifierTest from "./SearchTest/SearchModifier.test";
+import SymbolGlyphFontWeightTest from "./SymbolGlyphTest/fontWeight.test";
+import SpanTextShadowTest from './textTest/SpanTextShadowTest.test'
 
 
 export default function testsuite() {
@@ -209,4 +213,8 @@ export default function testsuite() {
   textInputTest()
   TextAreaTypeTest();
   SearchTypeTest();
+  ContainerSpanModifierTest();
+  SearchModifierTest();
+  SymbolGlyphFontWeightTest();
+  SpanTextShadowTest();
 }

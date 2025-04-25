@@ -24,6 +24,7 @@ import ImageSpanModifierTest from "./ModifierTest/ImageSpanModifier.test";
 import MarqueeModifierTest from "./ModifierTest/MarqueeModifier.test";
 import RichEditorModifierTest from "./ModifierTest/RichEditorModifier.test";
 import RichTextModifierTest from "./ModifierTest/RichTextModifier.test";
+import BounceSymbolEffectTest from "./SymbolGlyphTest/BounceSymbolEffect.test";
 import ParagraphStyle1 from "./StyledString/ParagraphStyle1.test";
 import ImageAttachment from "./StyledString/ImageAttachment.test";
 import ParagraphStyle2 from "./StyledString/ParagraphStyle2.test";
@@ -42,6 +43,7 @@ export default function testsuite() {
   MarqueeModifierTest();
   RichEditorModifierTest();
   RichTextModifierTest();
+  BounceSymbolEffectTest();
   ImageAttachment();
   ParagraphStyle1();
   ParagraphStyle2();
