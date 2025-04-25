@@ -167,7 +167,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
             });
             const reminderId = 1231
             try {
-                reminderAgentManager.cancelReminder(reminderId).then(() => {
+                reminderAgent.cancelReminder(reminderId).then(() => {
                     console.log("reminderErrorCode_0300 cancelReminder promise");
                   }).catch((err) => {
                     console.error("reminderErrorCode_0300 promise err code:" + err.code + " message:" + err.message);
@@ -196,7 +196,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
             });
             const reminderId = 1231
             try {
-                reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
+                reminderAgent.addExcludeDate(reminderId, date).then(() => {
                     console.log("reminderErrorCode_0400 addExcludeDate promise");
                   }).catch((err) => {
                     console.error("reminderErrorCode_0400 promise err code:" + err.code + " message:" + err.message);
@@ -225,7 +225,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
             });
             const reminderId = 1231
             try {
-                reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
+                reminderAgent.deleteExcludeDates(reminderId).then(() => {
                     console.log("reminderErrorCode_0500 addExcludeDate promise");
                   }).catch((err) => {
                     console.error("reminderErrorCode_0500 promise err code:" + err.code + " message:" + err.message);
@@ -254,7 +254,7 @@ export default function ReminderAgentManagerErrorCodeTest() {
             });
             const reminderId = 1231
             try {
-                reminderAgentManager.getExcludeDates(reminderId).then(() => {
+                reminderAgent.getExcludeDates(reminderId).then(() => {
                     console.log("reminderErrorCode_0600 getExcludeDates promise");
                   }).catch((err) => {
                     console.error("reminderErrorCode_0600 promise err code:" + err.code + " message:" + err.message);
