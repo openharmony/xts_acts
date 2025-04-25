@@ -15,7 +15,7 @@
 import buttonType from './buttonType/buttonTypeApi.test';
 import isVisible from './popup/isVisible.test';
 import getDialogControllerTest from './dialog/getDialogControllerTest.test';
-import DialogOptions from './promptAction/DialogOptions.test';
+import DialogOptions from './promptActionTest/DialogOptions.test';
 export default function testsuite() {
     buttonType()
     isVisible()
