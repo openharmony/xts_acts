@@ -8,6 +8,8 @@
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_true",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll",
         "MainAbility/pages/nextFocus/nextFocus",
-        "MainAbility/pages/nextFocus2/nextFocus2"
+        "MainAbility/pages/nextFocus2/nextFocus2",
+        "MainAbility/pages/Drag/notifyDragStartRequest",
+        "MainAbility/pages/ListeningEvent/UIObserverEvent"
     ]
 }
