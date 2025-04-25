@@ -19,7 +19,6 @@ namespace ArkUICapiTest {
 class VisibleAreaEventOptionsTest {
 public:
     ~VisibleAreaEventOptionsTest();
-    static napi_value DragEndPendingTest_001(napi_env env, napi_callback_info info);
     static napi_value VisibleAreaEventOptionsTest_a(napi_env env, napi_callback_info info);
     static napi_value VisibleAreaEventOptionsTest_b(napi_env env, napi_callback_info info);
     static napi_value VisibleAreaEventOptionsTest_c(napi_env env, napi_callback_info info);
