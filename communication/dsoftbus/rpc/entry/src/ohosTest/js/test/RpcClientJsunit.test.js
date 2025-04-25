@@ -16,7 +16,7 @@
 import rpc from '@ohos.rpc';
 import fileio from '@ohos.fileio';
 import FA from '@ohos.ability.featureAbility';
-import { describe, expect, beforeAll, it } from '@ohos/hypium';
+import { describe, expect, beforeAll, it, TestType, Size, Level } from '@ohos/hypium';
 import assertDeepEquals from './assertDeepEquals'
 let gIRemoteObject = null;
 
@@ -6371,7 +6371,7 @@ export default function ActsRpcClientJsTest() {
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageSequence_1670", 0, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageSequence_1670", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1670---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
@@ -6399,7 +6399,7 @@ export default function ActsRpcClientJsTest() {
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageSequence_1680", 0, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageSequence_1680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1680---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
@@ -11858,7 +11858,7 @@ export default function ActsRpcClientJsTest() {
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageParcel_1670", 0, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageParcel_1670", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1670---------------------------");
             try {
                 var data = rpc.MessageParcel.create();
@@ -11887,7 +11887,7 @@ export default function ActsRpcClientJsTest() {
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageParcel_1680", 0, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageParcel_1680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1680---------------------------");
             try {
                 var data = rpc.MessageParcel.create();
