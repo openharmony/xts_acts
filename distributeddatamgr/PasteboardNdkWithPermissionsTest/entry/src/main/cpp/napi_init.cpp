@@ -975,6 +975,69 @@ static napi_value OH_Pasteboard_GetDataWithProgress021(napi_env env, napi_callba
     return result;
 }
 
+static napi_value OH_Pasteboard_GetChangeCount0100(napi_env env, napi_callback_info info)
+{
+    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+    uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    OH_Pasteboard_ClearData(pasteboard);
+    uint32_t newCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    NAPI_ASSERT(env, newCount == changeCount, "OH_Pasteboard_GetChangeCount is fail.");
+    OH_Pasteboard_Destroy(pasteboard);
+    int errcode = 0;
+    napi_value result;
+    napi_create_double(env, errcode, &result);
+    return result;
+}
+
+static napi_value OH_Pasteboard_GetChangeCount0200(napi_env env, napi_callback_info info)
+{
+    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+    uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    OH_UdmfData* setData = OH_UdmfData_Create();
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
+    char content[] = "hello world";
+    OH_UdsPlainText_SetContent(plainText, content);
+    OH_UdmfRecord_AddPlainText(record, plainText);
+    OH_UdmfData_AddRecord(setData, record);
+    OH_Pasteboard_SetData(pasteboard, setData);
+    uint32_t newCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    NAPI_ASSERT(env, newCount == changeCount + 1, "OH_Pasteboard_GetChangeCount is fail.");
+    OH_Pasteboard_Destroy(pasteboard);
+    int errcode = 0;
+    napi_value result;
+    napi_create_double(env, errcode, &result);
+    return result;
+}
+
+static napi_value OH_Pasteboard_GetChangeCount0300(napi_env env, napi_callback_info info)
+{
+    OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+    uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    OH_UdmfData* setData = OH_UdmfData_Create();
+    OH_UdmfRecord* record = OH_UdmfRecord_Create();
+    OH_UdsPlainText* plainText = OH_UdsPlainText_Create();
+    char content[] = "hello world";
+    OH_UdsPlainText_SetContent(plainText, content);
+    OH_UdmfRecord_AddPlainText(record, plainText);
+    OH_UdmfData_AddRecord(setData, record);
+    OH_Pasteboard_SetData(pasteboard, setData);
+    OH_UdmfRecord* record2 = OH_UdmfRecord_Create();
+    OH_UdsHtml* htmlText = OH_UdsHtml_Create();
+    char html[] = "<div class='disabled'>hello</div>";
+    OH_UdsHtml_SetContent(htmlText, html);
+    OH_UdmfRecord_AddHtml(record2, htmlText);
+    OH_UdmfData_AddRecord(setData, record2);
+    OH_Pasteboard_SetData(pasteboard, setData);
+    uint32_t newCount = OH_Pasteboard_GetChangeCount(pasteboard);
+    NAPI_ASSERT(env, newCount == changeCount + 2, "OH_Pasteboard_GetChangeCount is fail.");
+    OH_Pasteboard_Destroy(pasteboard);
+    int errcode = 0;
+    napi_value result;
+    napi_create_double(env, errcode, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1020,6 +1083,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OH_Pasteboard_GetDataWithProgress020", nullptr, OH_Pasteboard_GetDataWithProgress020,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Pasteboard_GetDataWithProgress021", nullptr, OH_Pasteboard_GetDataWithProgress021,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Pasteboard_GetChangeCount0100", nullptr, OH_Pasteboard_GetChangeCount0100,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Pasteboard_GetChangeCount0200", nullptr, OH_Pasteboard_GetChangeCount0200,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Pasteboard_GetChangeCount0300", nullptr, OH_Pasteboard_GetChangeCount0300,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

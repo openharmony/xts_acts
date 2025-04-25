@@ -42,4 +42,4 @@ export const OH_Preferences_UnregisterDataObserver_0100: () => number;
 export const OH_PreferencesPair_0200: () => number;
 export const OH_Preferences_ErrCode_0100: () => number;
 
-
+export const OH_Preferences_IsStorageTypeSupported0500: () => number;
