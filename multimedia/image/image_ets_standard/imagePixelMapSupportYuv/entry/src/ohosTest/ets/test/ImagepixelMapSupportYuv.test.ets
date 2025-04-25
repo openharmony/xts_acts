@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterEach } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import hilog from '@ohos.hilog';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
@@ -693,7 +693,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0100"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","buffer", true);
@@ -723,7 +723,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0200"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg","fd", false);
@@ -753,7 +753,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0300"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","fd", true);
@@ -783,7 +783,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0400"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg","fd", true);
@@ -813,7 +813,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0500', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0500', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELS_0500"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","fd", true);
@@ -843,7 +843,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0100"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","uri", true);
@@ -873,7 +873,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
@@ -903,7 +903,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg", "fd", true);
@@ -933,7 +933,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEPIXELS_0400"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg","fd", true);
@@ -964,7 +964,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","fd", true);
@@ -988,7 +988,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","fd", false);
@@ -1012,7 +1012,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","fd", true);
@@ -1039,7 +1039,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0400"
       try{
         let imageSourceApi = await getImageSource("yuv_test_ete.jpg", "fd");
@@ -1067,7 +1067,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0500', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0500', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ISEDITABLE_0500"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","fd", false);
@@ -1094,7 +1094,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "buffer", true);
@@ -1116,7 +1116,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1138,7 +1138,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_GETIMAGEINFO_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg","uri", true);
@@ -1160,7 +1160,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0100"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1184,7 +1184,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0200"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1208,7 +1208,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0300"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg","fd", true);
@@ -1232,7 +1232,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_APPLYCOLORSPACE_0400"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","fd", true);
@@ -1256,7 +1256,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0100"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1278,7 +1278,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0200"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1300,7 +1300,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_SCALE_0300"
       try{
         let pixelMap_NV12 : image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","fd", true);
@@ -1322,7 +1322,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1346,7 +1346,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg","uri", true);
@@ -1370,7 +1370,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_FLIP_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "buffer", true);
@@ -1395,7 +1395,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1419,7 +1419,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1443,7 +1443,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_TRANSLATE_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg", "fd", true);
@@ -1467,7 +1467,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1489,7 +1489,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg", "fd", true);
@@ -1512,7 +1512,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_ROTATE_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
@@ -1534,7 +1534,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_CROP_0100"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -1558,7 +1558,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0200'
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -1581,7 +1581,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0300'
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
@@ -1604,7 +1604,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0400'
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
@@ -1627,7 +1627,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0500', Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0500'
       try{
         let region : image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
@@ -1650,7 +1650,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0600', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0600', Level.LEVEL0, async (done:Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0600'
       try{
         let region : image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
@@ -1673,7 +1673,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_CROP_0700', Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_CROP_0700'
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -1695,7 +1695,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "buffer", true);
@@ -1718,7 +1718,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0200', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0200', Level.LEVEL0,  async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_PACKING_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_eto.jpg", "rawfile",  true);
@@ -1742,7 +1742,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "uri", true);
@@ -1765,7 +1765,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0200', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0200', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV12_PACKTOFILE_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg", "fd", true);
@@ -1791,7 +1791,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_COLORSPACE_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_COLORSPACE_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV12_COLORSPACE_0100'
       try {
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
@@ -1817,7 +1817,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_MARSHALLING_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_MARSHALLING_0100', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV12_MARSHALLING_0100"
       try {
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1839,7 +1839,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0100', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0100"
       try {
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -1863,7 +1863,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV12_RELEASE_0200"
       try {
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -1887,7 +1887,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","buffer", true);
@@ -1912,7 +1912,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","uri", true);
@@ -1937,7 +1937,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1962,7 +1962,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0100"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg", "fd", true);
@@ -1986,7 +1986,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0200"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","uri", true);
@@ -2010,7 +2010,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_WRITEBUFFERTOPIXELS_0300"
       try{
         let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
@@ -2034,7 +2034,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0100"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","uri", true);
@@ -2064,7 +2064,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -2094,7 +2094,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg", "fd", true);
@@ -2124,7 +2124,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEPIXELS_0400"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2154,7 +2154,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0100"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","uri", true);
@@ -2184,7 +2184,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0200"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2214,7 +2214,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0300"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","fd", true);
@@ -2244,7 +2244,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0400"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg","rawfile", true);
@@ -2274,7 +2274,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0500', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0500', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELS_0500"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg", "fd", true);
@@ -2304,7 +2304,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg","uri", true);
@@ -2326,7 +2326,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","uri", true);
@@ -2348,7 +2348,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_GETIMAGEINFO_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","uri", true);
@@ -2370,7 +2370,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0100"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg", "buffer", true);
@@ -2395,7 +2395,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0200"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -2419,7 +2419,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0300"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2443,7 +2443,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_APPLYCOLORSPACE_0400"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","fd", true);
@@ -2467,7 +2467,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0100"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2489,7 +2489,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0200', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0200"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2511,7 +2511,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_SCALE_0300"
       try{
         let pixelMap_NV21 : image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -2533,7 +2533,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "rawfile", true);
@@ -2557,7 +2557,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2582,7 +2582,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0300', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_FLIP_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","uri", true);
@@ -2606,7 +2606,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","fd", true);
@@ -2630,7 +2630,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2654,7 +2654,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_TRANSLATE_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg","fd", true);
@@ -2678,7 +2678,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","fd", true);
@@ -2700,7 +2700,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0200', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2722,7 +2722,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0300', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_ROTATE_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_eto.jpg","fd", true);
@@ -2744,7 +2744,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_CROP_0100"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -2767,7 +2767,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0200', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_CROP_0200"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -2790,7 +2790,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0300', Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_CROP_0300"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
@@ -2812,7 +2812,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0400', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0400', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_CROP_0400"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
@@ -2835,7 +2835,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0500', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_CROP_0500"
       try{
         let region: image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
@@ -2858,7 +2858,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0600', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0600', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_CROP_0600"
       try{
         let region : image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
@@ -2881,7 +2881,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_CROP_0700', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_CROP_0700"
       try{
         let region : image.Region = { x: 0, y: 0, size: { height: 2, width: 3 } };
@@ -2903,7 +2903,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -2926,7 +2926,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0200', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0200', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_PACKING_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -2949,7 +2949,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -2972,7 +2972,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0200', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0200', Level.LEVEL0,  async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_PACKTOFILE_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -2996,7 +2996,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_COLORSPACE_0100', 0,  async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_COLORSPACE_0100', Level.LEVEL0,  async (done:Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NV21_COLORSPACE_0100'
       try {
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ote.jpg", "fd", true);
@@ -3022,7 +3022,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_MARSHALLING_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_MARSHALLING_0100', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_MARSHALLING_0100"
       try {
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -3043,7 +3043,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0100', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0100"
       try {
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -3066,7 +3066,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0200', Level.LEVEL0, async (done:Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NV21_RELEASE_0200"
       try {
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg", "fd", true);
@@ -3090,7 +3090,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg","fd", true);
@@ -3115,7 +3115,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg","uri", true);
@@ -3140,7 +3140,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg", "fd", true);
@@ -3165,7 +3165,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0100"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg", "fd", true);
@@ -3189,7 +3189,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0200"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","uri", true);
@@ -3213,7 +3213,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_WRITEBUFFERTOPIXELS_0300"
       try{
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
@@ -3237,7 +3237,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_ete.jpg", 9, 0, 0, false)
@@ -3261,7 +3261,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_eto.jpg", 9, 120, 240, true)
@@ -3285,7 +3285,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_oto.jpeg", 9, 0, 0, true)
@@ -3309,7 +3309,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_ote.jpg", 8, 0, 0, false)
@@ -3333,7 +3333,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_ete.jpg", 8, 120, 240, true)
@@ -3357,7 +3357,7 @@ export default function imagepixelMapSupportYuv() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300', 0, async (done:Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300', Level.LEVEL0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300"
       try{
         const pixelMap = await getDensityOptionPixelMap("yuv_test_oto.jpeg", 8, 0, 0, true)

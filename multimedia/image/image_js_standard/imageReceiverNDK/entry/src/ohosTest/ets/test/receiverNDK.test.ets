@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import ndkTest from 'libentry.so'
 import { camera } from '@kit.CameraKit';
 import { common } from '@kit.AbilityKit';
@@ -85,7 +85,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0100', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -113,7 +113,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0100', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -132,7 +132,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0200', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -152,7 +152,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0300', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -170,7 +170,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_ERR_0400', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -189,7 +189,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0200', Level.LEVEL0, async (done: Function) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -223,7 +223,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0300', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -253,7 +253,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0400', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -284,7 +284,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0500', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -315,7 +315,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0600', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -348,7 +348,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0700', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -398,7 +398,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0800', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -448,7 +448,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_0900', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();
@@ -491,7 +491,7 @@ export default function ImageReceiverNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000', 0, async (done: ESObject) => {
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_1000', Level.LEVEL0, async (done: ESObject) => {
             if (!isSupportedCamerasResult) {
               console.info('Failed to obtain the default camera or device object.Not support usb camera');
               expect(true).assertTrue();

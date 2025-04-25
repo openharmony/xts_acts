@@ -14,7 +14,7 @@
  */
 
 import image from '@ohos.multimedia.image'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg.test'
 import colorSpaceManager from "@ohos.graphics.colorSpaceManager"
 import common from '@ohos.app.ability.common'
@@ -261,7 +261,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100", "test.jpg", 1446, 1476, "image/jpeg",
                 0);
         });
@@ -275,7 +275,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200", "test.bmp", 1399, 1042, "image/bmp",
                 0);
         });
@@ -289,7 +289,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300", "test.png", 6016, 3384, "image/png",
                 0);
         });
@@ -303,7 +303,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400", "test.gif", 6016, 3384, "image/gif",
                 0);
         });
@@ -317,7 +317,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 5976, 3992, "image/raw",
                 0);
         });
@@ -331,7 +331,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600", "test_large.webp", 1212, 681,
                 "image/webp", 0);
         });
@@ -345,7 +345,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700", "test_large.svg", 2136, 1968,
                 "image/svg+xml", 0);
         });
@@ -359,7 +359,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800", "test.ico", 64, 64, "image/x-ico", 0);
         });
         /**
@@ -372,7 +372,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900", "test.123", 6016, 3384, "image/bmp",
                 0);
         });
@@ -386,7 +386,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0100', Level.LEVEL0, async (done: Function) => {
             getImageInfoInvaildIndex(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0100", "test.gif", 1);
         });
         /**
@@ -399,7 +399,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0200', Level.LEVEL0, async (done: Function) => {
             getImageInfoInvaildIndex(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0200", "test.gif", -1);
         });
         /**
@@ -412,7 +412,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300", "moving_test.gif", 198, 202,
                 "image/gif", 1);
         });
@@ -426,7 +426,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0400', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0400', Level.LEVEL0, async (done: Function) => {
             getImageInfoInvaildIndex(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0400", "test_large.webp", 1);
         });
         /**
@@ -439,7 +439,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500", "moving_test.webp", 658, 494,
                 "image/webp", 1);
         });
@@ -453,7 +453,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600', Level.LEVEL0, async (done: Function) => {
             testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600", "test.jpg", 1446, 1476,
                 "image/jpeg", null);
         });
@@ -467,7 +467,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100', Level.LEVEL0, async (done: Function) => {
             testCreateIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100", testPng);
         });
         /**
@@ -480,7 +480,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200', Level.LEVEL0, async (done: Function) => {
             testCreateIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200", testJpg);
         });
         /**
@@ -494,7 +494,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0300', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998, 2.3);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998)
             let decodingOptions: image.DecodingOptions = {
@@ -528,7 +528,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0400', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0400', Level.LEVEL0, async (done: Function) => {
             let decodingOptions: image.DecodingOptions = {
                 index: -1,
                 sampleSize: 1,
@@ -558,7 +558,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0500', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0500', Level.LEVEL0, async (done: Function) => {
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3);
             let decodingOptions: image.DecodingOptions = {
                 index: 0,
@@ -590,7 +590,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0600', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0600', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3, 2.4);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3);
             let decodingOptions: image.DecodingOptions = {
@@ -623,7 +623,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0700', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0700', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB, 1.9);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
             let decodingOptions: image.DecodingOptions = {
@@ -656,7 +656,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0800', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0800', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB, 2.4);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
             let decodingOptions: image.DecodingOptions = {
@@ -689,7 +689,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0900', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0900', Level.LEVEL0, async (done: Function) => {
             let primaries: colorSpaceManager.ColorSpacePrimaries = {
                 redX: 0.64,
                 redY: 0.33,
@@ -731,7 +731,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1000', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1000', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT, undefined);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT);
             let decodingOptions: image.DecodingOptions = {
@@ -764,7 +764,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1100', Level.LEVEL0, async (done: Function) => {
             // let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB, undefined);
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB);
             let decodingOptions: image.DecodingOptions = {
@@ -797,7 +797,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1200', Level.LEVEL0, async (done: Function) => {
             let csm = colorSpaceManager.create(colorSpaceManager.ColorSpace.LINEAR_SRGB);
             let decodingOptions: image.DecodingOptions = {
                 index: 0,
@@ -820,7 +820,7 @@ export default function imageSync() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300', Level.LEVEL0, async (done: Function) => {
             testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300", "test.jpg", null);
         });
     })

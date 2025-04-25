@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll,beforeEach,afterEach, afterAll,it, expect, DEFAULT } from '@ohos/hypium'
+import { describe, beforeAll,beforeEach,afterEach, afterAll,it, expect, DEFAULT, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
@@ -59,7 +59,7 @@ export default function imageHDR() {
       });
     };
 
-    it("CASE01", 0, async (done: Function) => {
+    it("CASE01", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -97,7 +97,7 @@ export default function imageHDR() {
       }
     });
 
-    it("CASE02", 0, async (done: Function) => {
+    it("CASE02", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -135,7 +135,7 @@ export default function imageHDR() {
       }
     });
 
-    it("CASE03", 0, async (done: Function) => {
+    it("CASE03", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("JPEGVividSingle.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
