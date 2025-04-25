@@ -4877,6 +4877,7 @@ export default function audioCapturer() {
       expect(flag).assertTrue();
       done();
     })
+
     /**
      * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_OFF_STATECHANGE_0200
      * @tc.name      : AudioCapturer OFF STATECHANGE
@@ -4925,61 +4926,49 @@ export default function audioCapturer() {
       expect(flag).assertTrue();
       done();
     })
-    /**
-     * @tc.number    : SUB_AUDIO_AUDIOCAPTURER_ON_AUDIOINTERRUPT_0100
-     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
-     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_AUDIO_AUDIOCAPTURER_ON_AUDIOINTERRUPT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let audioStreamInfo: audio.AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-        channels: audio.AudioChannel.CHANNEL_2, // 通道。
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-      };
 
-      let audioCapturerInfo: audio.AudioCapturerInfo = {
-        source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
-        capturerFlags: 0 // 音频采集器标志。
-      };
-
-      let audioCapturerOptions: audio.AudioCapturerOptions = {
-        streamInfo: audioStreamInfo,
-        capturerInfo: audioCapturerInfo
-      };
-      let flag : boolean =false;
-      audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
-        if (err) {
-          console.error(`AudioCapturer Created : Error: ${err}`);
-        } else {
-          console.info('AudioCapturer Created : Success : SUCCESS');
-          let audioCapturer = data;
-          try {
-            let para1: ESObject = '1';
-            let para2: ESObject = () => {return 1;};
-            audioCapturer.on('audioInterrupt', para1);
-            done();
-          }catch (err) {
-            console.log(`err : ${err.message},Code:${err.code}`);
-            expect(Number(err.code)).assertEqual(6800101);
-            flag = true;
-          }
-          expect(flag).assertTrue();
-          done();
-        }
-        done();
-      });
-    })
     /**
-     * @tc.number    : SUB_AUDIO_AUDIOCAPTURER_OFF_AUDIOINTERRUPT_0100
-     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
-     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURE_SOURCETYPE_UNPROCESSED_0100
+     * @tc.name      : SOURCETYPE_UNPROCESSED
+     * @tc.desc      : SOURCETYPE_UNPROCESSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIOCAPTURE_SOURCETYPE_UNPROCESSED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let AudioStreamInfo: audio.AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo: audio.AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_UNPROCESSED,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions: audio.AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+
+      try {
+        let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(AudioCapturerOptions);
+        expect(true).assertTrue();
+        done();
+      } catch(error){
+        console.log(`error : ${error.message},Code:${error.code}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIOCAPTURER_OFF_AUDIOINTERRUPT_0100
+     * @tc.name      : OFF_AUDIOINTERRUPT
+     * @tc.desc      : OFF_AUDIOINTERRUPT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
     it('SUB_AUDIO_AUDIOCAPTURER_OFF_AUDIOINTERRUPT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioStreamInfo: audio.AudioStreamInfo = {
@@ -5117,7 +5106,7 @@ export default function audioCapturer() {
             done();
           }catch (err) {
             console.log(`err : ${err.message},Code:${err.code}`);
-            expect(Number(err.code)).assertEqual(6800101);
+            expect(Number(err.code)).assertEqual(401);
             flag = true;
           }
           expect(flag).assertTrue();

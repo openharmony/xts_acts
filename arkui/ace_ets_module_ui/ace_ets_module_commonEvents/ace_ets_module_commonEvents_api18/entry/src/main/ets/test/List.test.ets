@@ -21,6 +21,8 @@ import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoSc
 import enableEdgeAutoScroll from './DragInteractionOptions/enableEdgeAutoScroll.test';
 import nextFocus from './nextFocus/nextFocus.test';
 import nextFocus2 from './nextFocus2/nextFocus2.test';
+import notifyDragStartRequest from './Drag/notifyDragStartRequest.test';
+import UIObserverEvent from './ListeningEvent/UIObserverEvent.test';
 
 export default function testsuite() {
   onVisiable();
@@ -31,4 +33,6 @@ export default function testsuite() {
   enableEdgeAutoScroll();
   nextFocus();
   nextFocus2();
+  notifyDragStartRequest()
+  UIObserverEvent()
 }

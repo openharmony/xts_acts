@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { getPropertyBuf } from "./getPropertyBuf";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@ohos.base';
@@ -397,7 +397,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0100", "picture", key);
     });
@@ -412,7 +412,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0200", "picture", key);
     });
@@ -427,7 +427,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0300", "picture", key);
     });
@@ -442,7 +442,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0400", "picture", key);
     });
@@ -457,7 +457,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_0500", "picture", key);
     });
@@ -471,7 +471,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0100", "picture", key);
     });
@@ -485,7 +485,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0200", "picture", key);
     });
@@ -499,7 +499,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0300", "picture", key);
     });
@@ -513,7 +513,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0400", "picture", key);
     });
@@ -527,7 +527,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0500", "picture", key);
     });
@@ -542,7 +542,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0600", "picture", key);
     });
@@ -557,7 +557,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0700", "picture", key);
     });
@@ -572,7 +572,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0800", "picture", key);
     });
@@ -587,7 +587,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_0900", "picture", key);
     });
@@ -602,7 +602,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_1000", "picture", key);
     });
@@ -617,7 +617,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0100", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0100", "buf", key);
     });
@@ -632,7 +632,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0200", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0200", "buf", key);
     });
@@ -647,7 +647,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0300", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0300", "buf", key);
     });
@@ -662,7 +662,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0400", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0400", "buf", key);
     });
@@ -677,7 +677,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0500", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_0500", "buf", key);
     });
@@ -691,7 +691,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0100", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0100", "buf", key);
     });
@@ -705,7 +705,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0200", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0200", "buf", key);
     });
@@ -719,7 +719,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0300", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0300", "buf", key);
     });
@@ -733,7 +733,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0400", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0400", "buf", key);
     });
@@ -747,7 +747,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0500", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0500", "buf", key);
     });
@@ -762,7 +762,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0600", Level.LEVEL0, async (done: Function) => {
       let key = DATE_TIME_ORIGINAL;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0600", "buf", key);
     });
@@ -777,7 +777,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0700", Level.LEVEL0, async (done: Function) => {
       let key = EXPOSURE_TIME;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0700", "buf", key);
     });
@@ -792,7 +792,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0800", Level.LEVEL0, async (done: Function) => {
       let key = F_NUMBER;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0800", "buf", key);
     });
@@ -807,7 +807,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0900", Level.LEVEL0, async (done: Function) => {
       let key = ISO_SPEED_RATINGS;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_0900", "buf", key);
     });
@@ -822,7 +822,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_1000", Level.LEVEL0, async (done: Function) => {
       let key = SCENE_TYPE;
       testGetImagePropertyOptCb(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBAK_BUFFER_1000", "buf", key);
     });
@@ -836,7 +836,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0100", "picture", key,
         false);
@@ -851,7 +851,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let key = null;
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0200", "picture", key,
         true);
@@ -866,7 +866,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0300", "picture", key,
         true);
@@ -881,7 +881,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         w: 12
       };
@@ -898,7 +898,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0100", "picture", key,
         false);
@@ -913,7 +913,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let key = null;
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0200", "picture", key,
         true);
@@ -928,7 +928,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0300", "picture", key,
         true);
@@ -943,7 +943,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         w: 12
       };
@@ -960,7 +960,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0500", "picture", key,
         false);
@@ -975,7 +975,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       let key = null;
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0600", "picture", key,
         true);
@@ -990,7 +990,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0700", "picture", key,
         true);
@@ -1005,7 +1005,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         a: 12
       };
@@ -1021,7 +1021,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0100", "buf",
         key, false);
@@ -1036,7 +1036,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let key = null;
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0200", "buf",
         key, true);
@@ -1051,7 +1051,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       testGetImagePropertyPromiseErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0300", "buf",
         key, true);
@@ -1066,7 +1066,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_PROMISE_BUFFER_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         w: 12
       };
@@ -1083,7 +1083,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0100", "buf",
         key, false);
@@ -1098,7 +1098,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let key = null;
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0200", "buf",
         key, true);
@@ -1113,7 +1113,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       await testGetImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0300", "buf",
         key, true);
@@ -1128,7 +1128,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         w: 12
       };
@@ -1145,7 +1145,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       let key = "Date";
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0500", "buf", key,
         false);
@@ -1160,7 +1160,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       let key = null;
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0600", "buf", key,
         true);
@@ -1175,7 +1175,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       let key = 12;
       testGetImagePropertyOptCbErr(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0700", "buf", key,
         true);
@@ -1190,7 +1190,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_CALLBACK_BUFFER_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       let key: ESObject = {
         a: 12
       };
@@ -1207,7 +1207,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let key = [
         IMAGE_LENGTH,
         IMAGE_WIDTH
@@ -1224,7 +1224,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let key = [
         ORIENTATION,
         DATE_TIME
@@ -1241,7 +1241,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let key = [
         IMAGE_WIDTH
       ];
@@ -1257,7 +1257,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let key = [
         ORIENTATION
       ];
@@ -1273,7 +1273,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let key = [
         "ErrorKey",
         IMAGE_WIDTH
@@ -1290,7 +1290,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0600", Level.LEVEL0, async (done: Function) => {
       let key = [
         "ErrorKey",
         ORIENTATION
@@ -1307,7 +1307,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0700", Level.LEVEL0, async (done: Function) => {
       let key = [
         GPS_DATE_STAMP,
         IMAGE_DESCRIPTION,
@@ -1325,7 +1325,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0800", Level.LEVEL0, async (done: Function) => {
       let key = [
         GPS_DATE_STAMP,
         IMAGE_DESCRIPTION,
@@ -1343,7 +1343,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_0900", Level.LEVEL0, async (done: Function) => {
       let key = [
         SCENE_FLOWERS_CONF,
         SCENE_NIGHT_CONF
@@ -1360,7 +1360,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_1000", Level.LEVEL0, async (done: Function) => {
       let key = [
         SCENE_FLOWERS_CONF,
         SCENE_NIGHT_CONF
@@ -1377,7 +1377,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let key = [
         "ErrorKey1",
         "ErrorKey2"
@@ -1394,7 +1394,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let key = [
         "ErrorKey1",
         "ErrorKey2"
@@ -1411,7 +1411,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_PROMISE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let key = [
         IMAGE_LENGTH,
         IMAGE_WIDTH
@@ -1428,7 +1428,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let key = GIF_LOOP_COUNT;
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE,
@@ -1443,7 +1443,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let key = GIF_LOOP_COUNT;
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE,
@@ -1458,7 +1458,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let key = GIF_LOOP_COUNT;
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO,
@@ -1473,7 +1473,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let key = GIF_LOOP_COUNT;
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO, false,
@@ -1488,7 +1488,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let key = [GIF_LOOP_COUNT];
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0100", LOOPCASE.LOOP_FIVE,
@@ -1503,7 +1503,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0200", LOOPCASE.LOOP_ONE,
@@ -1518,7 +1518,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0300", LOOPCASE.LOOP_ZERO,
@@ -1533,7 +1533,7 @@ export default function imageGetImageProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let key = [IMAGE_WIDTH, GIF_LOOP_COUNT];
       console.info(`SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400 start`);
       testGetGifLoopCount(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEPROPERTIES_LOOPCOUNT_PROMISE_0400", LOOPCASE.LOOP_NO,

@@ -19,7 +19,6 @@
 #include "openssl/crypto.h"
 #include "openssl/sha.h"
 #include "native_buffer_inner.h"
-#include "display_type.h"
 #include "videoenc_sample.h"
 using namespace OHOS;
 using namespace OHOS::Media;

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import hilog from '@ohos.hilog';
@@ -320,7 +320,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0100", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult('SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0100',
           240, 180, 8, 'promiseCreate', "test_tree_444.jpg", "buffer",
@@ -347,7 +347,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0200", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0200",
           241, 181, 8, 'promiseCreate', "test_treeodd_440.jpg", "uri",
@@ -374,7 +374,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0300", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0300",
           240, 150, 8, 'syncCreate', "test_tree_422.jpg", "rawfile",
@@ -401,7 +401,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0400", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0400",
           241, 151, 8, 'callBackCreate', "test_treeodd_420.jpg", "buffer",
@@ -428,7 +428,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0500", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0500",
           241, 181, 8, 'callBackCreate', "test_tree_411.jpg", "fd",
@@ -455,7 +455,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0600", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0600",
           240, 180, 8, 'syncCreate', "test_treeodd_400.jpg", "buffer",
@@ -482,7 +482,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0700", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0700",
           481, 181, 9, 'syncCreate', "test_tree_444.jpg", "buffer",
@@ -509,7 +509,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0800", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0800",
           480, 180, 9, 'promiseCreate', "test_treeodd_440.jpg", "uri",
@@ -536,7 +536,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0900", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0900",
           480, 150, 9, 'promiseCreate', "test_tree_422.jpg", "rawfile",
@@ -563,7 +563,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1000", Level.LEVEL0, async (done: Function) => {
       try{
         //TODO incremental创建ImageSource目前功能有问题用buffer替代后续替换
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1000",
@@ -591,7 +591,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1100", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1100",
           480, 180, 9, 'callBackCreate', "test_tree_411.jpg", "fd",
@@ -618,7 +618,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1200", Level.LEVEL0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1200",
           480, 180, 9, 'callBackCreate', "test_treeodd_400.jpg", "buffer",
@@ -645,7 +645,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100',
           480, 360, 8, 'promiseCreate', "JPG-480360-YUV311.jpg", "buffer",
@@ -672,7 +672,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200",
           480, 360, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "rawfile",
@@ -699,7 +699,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300',
           480, 361, 8, 'syncCreate', "JPG-480361-YUV311.jpg", "buffer",
@@ -726,7 +726,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400",
           480, 361, 9, 'promiseCreate', "JPG-480361-YUV311.jpg", "fd",
@@ -753,7 +753,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500',
           481, 360, 8, 'callBackCreate', "JPG-481360-YUV311.jpg", "buffer",
@@ -780,7 +780,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600",
           481, 360, 9, 'syncCreate', "JPG-481360-YUV311.jpg", "uri",
@@ -807,7 +807,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700',
           481, 361, 8, 'promiseCreate', "JPG-480360-YUV311.jpg", "rawfile",
@@ -834,7 +834,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800",
           481, 361, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "fd",
@@ -861,7 +861,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900",
           'VerifyPixelMap', 480, 360, "JPG-480360-YUV311.jpg", "buffer");
@@ -887,7 +887,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000",
           'VerifyPixelMap', 480, 361, "JPG-480361-YUV311.jpg", "uri");
@@ -913,7 +913,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100",
           'VerifyPixelMap', 481, 360, "JPG-481360-YUV311.jpg", "rawfile");
@@ -939,7 +939,7 @@ export default function imageDecodeOptionsYuvTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200", Level.LEVEL0, async (done: Function) => {
       try {
         await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200",
           'VerifyPixelMap', 481, 361, "JPG-481361-YUV311.jpg", "fd");

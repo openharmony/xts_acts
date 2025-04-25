@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import fileio from "@ohos.fileio";
 import resourceManager from '@ohos.resourceManager';
@@ -256,7 +256,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0100", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -285,7 +285,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0200", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -314,7 +314,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_IMAGE_SOURCE_0300", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -343,7 +343,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0100", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -372,7 +372,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0200", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -401,7 +401,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_IMAGE_SOURCE_0300", Level.LEVEL0, async function (done) {
             await getImageSourceData("test.png")
             expect(globalImagesource != undefined).assertTrue();
             let writeFd = undefined;
@@ -430,7 +430,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0100", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -459,7 +459,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0200", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -488,7 +488,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_PIXEL_MAP_0300", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -517,7 +517,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0100", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -546,7 +546,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0200", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -575,7 +575,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_PIXEL_MAP_0300", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -604,7 +604,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0100", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -628,7 +628,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0200", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -653,7 +653,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0300", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -677,7 +677,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0100", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -701,7 +701,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0200", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;
@@ -726,7 +726,7 @@ export default function imagePackToFile() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0300", Level.LEVEL0, async function (done) {
             await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let writeFd = undefined;

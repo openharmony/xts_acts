@@ -15,7 +15,7 @@
 
 
 import hilog from '@ohos.hilog';
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import fileIo from '@ohos.file.fs';
 import fs from '@ohos.file.fs';
@@ -356,7 +356,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100"
       try {
         let compResult = true
@@ -386,7 +386,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200"
       try {
         let compResult = true
@@ -416,7 +416,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300"
       try {
         let compResult = true
@@ -446,7 +446,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0100"
       try {
         let compResult = true
@@ -476,7 +476,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0200"
       try {
         let compResult = true
@@ -506,7 +506,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_PROMISE_0300"
       try {
         let compResult = true
@@ -536,7 +536,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0100"
       try {
         let compResult = true
@@ -566,7 +566,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0200"
       try {
         let compResult = true
@@ -596,7 +596,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0300"
       try {
         let compResult = true
@@ -626,7 +626,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0100"
       try {
         let compResult = true
@@ -657,7 +657,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0200"
       try {
         let compResult = true
@@ -688,7 +688,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0300"
       try {
         let compResult = true
@@ -718,7 +718,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0100"
       try {
         let compResult = true
@@ -748,7 +748,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0200"
       try {
         let compResult = true
@@ -778,7 +778,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAP_CALLBACK_0300"
       try {
         let compResult = true
@@ -808,7 +808,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100"
       try {
         let compResult = true
@@ -838,7 +838,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200"
       try {
         let compResult = true
@@ -868,7 +868,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300"
       try {
         let compResult = true
@@ -898,7 +898,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0100"
       try {
         let compResult = true
@@ -928,7 +928,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0200"
       try {
         let compResult = true
@@ -958,7 +958,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = "SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0300"
       try {
         let compResult = true
@@ -988,7 +988,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0100'
       try {
         let compResult = true
@@ -1018,7 +1018,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0200'
       try {
         let compResult = true
@@ -1048,7 +1048,7 @@ export default function imagePackerExifTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       const tag: string = 'SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACK_0300'
       try {
         let compResult = true

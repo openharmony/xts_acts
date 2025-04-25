@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, beforeAll, expect } from '@ohos/hypium'
+import { describe, it, beforeAll, expect, Level } from '@ohos/hypium'
 import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import common from '@ohos.app.ability.common';
@@ -119,7 +119,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21).catch((err: BusinessError) => {
@@ -139,7 +139,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -157,7 +157,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -175,7 +175,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -193,7 +193,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -211,7 +211,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -229,7 +229,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -249,7 +249,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -269,7 +269,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12).catch((err: BusinessError) => {
@@ -289,7 +289,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -307,7 +307,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -325,7 +325,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -343,7 +343,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -361,7 +361,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -379,7 +379,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -399,7 +399,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -419,7 +419,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -437,7 +437,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -455,7 +455,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -475,7 +475,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -495,7 +495,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -515,7 +515,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -535,7 +535,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -555,7 +555,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -575,7 +575,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -593,7 +593,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -611,7 +611,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -631,7 +631,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -651,7 +651,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -671,7 +671,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -691,7 +691,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -711,7 +711,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -731,7 +731,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -749,7 +749,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -767,7 +767,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -787,7 +787,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -807,7 +807,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -827,7 +827,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -847,7 +847,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -867,7 +867,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -887,7 +887,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -906,7 +906,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -925,7 +925,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -946,7 +946,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -967,7 +967,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -988,7 +988,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -1009,7 +1009,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -1030,7 +1030,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -1051,7 +1051,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1070,7 +1070,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1089,7 +1089,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1110,7 +1110,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1131,7 +1131,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'buffer', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1152,7 +1152,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'uri', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1173,7 +1173,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'rawfile', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1194,7 +1194,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800500.jpg', 'fd', 800, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1215,7 +1215,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21).catch((err: BusinessError) => {
@@ -1235,7 +1235,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -1253,7 +1253,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -1270,7 +1270,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -1288,7 +1288,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -1306,7 +1306,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1324,7 +1324,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -1344,7 +1344,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -1364,7 +1364,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12).catch((err: BusinessError) => {
@@ -1384,7 +1384,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -1402,7 +1402,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -1420,7 +1420,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -1438,7 +1438,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -1456,7 +1456,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -1474,7 +1474,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -1494,7 +1494,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -1514,7 +1514,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -1532,7 +1532,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -1550,7 +1550,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -1570,7 +1570,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -1590,7 +1590,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -1610,7 +1610,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -1630,7 +1630,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -1650,7 +1650,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -1670,7 +1670,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -1688,7 +1688,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -1706,7 +1706,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -1726,7 +1726,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -1746,7 +1746,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -1766,7 +1766,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -1786,7 +1786,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -1806,7 +1806,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -1826,7 +1826,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -1844,7 +1844,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -1862,7 +1862,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -1882,7 +1882,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -1902,7 +1902,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -1922,7 +1922,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -1942,7 +1942,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -1962,7 +1962,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -1982,7 +1982,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2001,7 +2001,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2020,7 +2020,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2041,7 +2041,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2062,7 +2062,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2083,7 +2083,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2104,7 +2104,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2125,7 +2125,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2146,7 +2146,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2165,7 +2165,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2184,7 +2184,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2205,7 +2205,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2226,7 +2226,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'buffer', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2247,7 +2247,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'uri', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2268,7 +2268,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'rawfile', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2289,7 +2289,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_I_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801500.jpg', 'fd', 801, 500, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2310,7 +2310,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21).catch((err: BusinessError) => {
@@ -2330,7 +2330,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -2347,7 +2347,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -2364,7 +2364,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2382,7 +2382,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -2400,7 +2400,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2418,7 +2418,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -2438,7 +2438,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -2458,7 +2458,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12).catch((err: BusinessError) => {
@@ -2478,7 +2478,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -2495,7 +2495,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -2513,7 +2513,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -2531,7 +2531,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -2549,7 +2549,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -2567,7 +2567,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -2587,7 +2587,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -2607,7 +2607,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -2625,7 +2625,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -2643,7 +2643,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -2663,7 +2663,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -2683,7 +2683,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -2703,7 +2703,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -2723,7 +2723,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -2743,7 +2743,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -2763,7 +2763,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -2780,7 +2780,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -2798,7 +2798,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -2818,7 +2818,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -2838,7 +2838,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -2858,7 +2858,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -2878,7 +2878,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -2898,7 +2898,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -2918,7 +2918,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -2936,7 +2936,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -2954,7 +2954,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -2974,7 +2974,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -2994,7 +2994,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -3014,7 +3014,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -3034,7 +3034,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -3054,7 +3054,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -3074,7 +3074,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3093,7 +3093,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3112,7 +3112,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3133,7 +3133,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3154,7 +3154,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3175,7 +3175,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3196,7 +3196,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3217,7 +3217,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3238,7 +3238,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3257,7 +3257,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3276,7 +3276,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3297,7 +3297,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3318,7 +3318,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'buffer', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3339,7 +3339,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'uri', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3360,7 +3360,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'rawfile', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3381,7 +3381,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_I_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_800501.jpg', 'fd', 800, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3402,7 +3402,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21).catch((err: BusinessError) => {
@@ -3422,7 +3422,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -3440,7 +3440,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -3457,7 +3457,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3475,7 +3475,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -3493,7 +3493,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3511,7 +3511,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -3531,7 +3531,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV12_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -3551,7 +3551,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12).catch((err: BusinessError) => {
@@ -3571,7 +3571,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888)
@@ -3589,7 +3589,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888)
@@ -3607,7 +3607,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -3625,7 +3625,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565)
@@ -3643,7 +3643,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV21)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -3661,7 +3661,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -3681,7 +3681,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NV21_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV21).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV21
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -3701,7 +3701,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -3719,7 +3719,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.RGBA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -3736,7 +3736,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -3756,7 +3756,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -3776,7 +3776,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -3796,7 +3796,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -3816,7 +3816,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -3836,7 +3836,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBA8888_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.RGBA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGBA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -3856,7 +3856,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -3874,7 +3874,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.BGRA_8888)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -3892,7 +3892,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -3912,7 +3912,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -3932,7 +3932,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_565).catch((err: BusinessError) => {
@@ -3952,7 +3952,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -3972,7 +3972,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
           await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -3992,7 +3992,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_BGRA8888_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.BGRA_8888).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.BGRA_8888
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -4012,7 +4012,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV12)
@@ -4030,7 +4030,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.RGB_565)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
       await pixelMap.convertPixelFormat(image.PixelMapFormat.NV21)
@@ -4048,7 +4048,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_8888).catch((err: BusinessError) => {
@@ -4068,7 +4068,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.BGRA_8888).catch((err: BusinessError) => {
@@ -4088,7 +4088,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888).catch((err: BusinessError) => {
@@ -4108,7 +4108,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16).catch((err: BusinessError) => {
@@ -4128,7 +4128,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.UNKNOWN).catch((err: BusinessError) => {
@@ -4148,7 +4148,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB565_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.RGB_565).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.RGB_565
         await pixelMap.convertPixelFormat(image.PixelMapFormat.ALPHA_8).catch((err: BusinessError) => {
@@ -4168,7 +4168,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4187,7 +4187,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4206,7 +4206,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4227,7 +4227,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4248,7 +4248,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4269,7 +4269,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4290,7 +4290,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4311,7 +4311,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGB888_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGB_888)
@@ -4332,7 +4332,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0100', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4351,7 +4351,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0200', Level.LEVEL0, async (done: Function) => {
       const pixelMap: image.PixelMap = await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12)
       const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
       await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4370,7 +4370,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0300', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4391,7 +4391,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0400', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4412,7 +4412,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0500', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'buffer', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4433,7 +4433,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0600', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'uri', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4454,7 +4454,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0700', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'rawfile', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)
@@ -4475,7 +4475,7 @@ export default function abilityTest() {
   * @tc.type      : Function
   * @tc.level     : Level 2
   */
-    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RGBAF16_odd_odd_TS_0800', Level.LEVEL0, async (done: Function) => {
       await getPixelMap('JPG_801501.jpg', 'fd', 801, 501, image.PixelMapFormat.NV12).then(async (pixelMap) => {
         const resultpixelMap = pixelMap.getImageInfoSync().pixelFormat == image.PixelMapFormat.NV12
         await pixelMap.convertPixelFormat(image.PixelMapFormat.RGBA_F16)

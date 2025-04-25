@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fileio from "@ohos.fileio";
 import ndkTest from 'libentry.so';
 import mdkTest from 'libentryMDK.so';
@@ -348,7 +348,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0100', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0100", "moving_test.gif",
                 "fd");
             done();
@@ -362,7 +362,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0200', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0200", "test.jpg", "fd");
             done();
         });
@@ -375,7 +375,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0300', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0300", "test.bmp", "fd");
             done();
         });
@@ -388,7 +388,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0400', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0400", "test.png", "fd");
             done();
         });
@@ -401,7 +401,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0500', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0500', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0500", "test_large.webp",
                 "fd");
             done();
@@ -415,7 +415,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0600', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0600', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0600", "test_large.svg",
                 "fd");
             done();
@@ -429,7 +429,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0700', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0700', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0700", "test_dng.dng", "fd");
             done();
         });
@@ -442,7 +442,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0800', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0800', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0800", "test.nrw", "fd");
             done();
         });
@@ -455,7 +455,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0900', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0900', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_0900", "test.cr2", "fd");
             done();
         });
@@ -468,7 +468,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1000', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1000', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1000", "test.arw", "fd");
             done();
         });
@@ -481,7 +481,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1100', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1100", "test.pef", "fd");
             done();
         });
@@ -494,7 +494,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1200', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1200", "test.raf", "fd");
             done();
         });
@@ -507,7 +507,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1300', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_FD_1300", "test.rw2", "fd");
             done();
         });
@@ -520,7 +520,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateFromFdTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_FD_0100", "test.jpg");
             done();
         });
@@ -533,7 +533,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_BUFFER', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_BUFFER', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_BUFFER", "test.jpg", "buffer");
             done();
         });
@@ -546,7 +546,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateFromDataTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_DATA");
             done();
         });
@@ -559,7 +559,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_BY_PATH", "moving_test.gif",
                 "path");
             done();
@@ -573,7 +573,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateFromUriTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_URI",
                 "moving_test.gif");
             done();
@@ -587,7 +587,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE', Level.LEVEL0, async (done :Function) => {
             await imageSourceCreateFromRawFileTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_FROM_RAWFILE");
             done();
         });
@@ -600,7 +600,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL");
                 let imageSourceOps: ESObject = {
@@ -626,7 +626,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_INCREMENTAL_FROM_DATA");
                 let imageSourceOps: ESObject = {
@@ -652,7 +652,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_INITNATIVE', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_INITNATIVE', Level.LEVEL0, async (done :Function) => {
             try {
                 let res: ndkTest.resImageSource = await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_INITNATIVE", "moving_test.gif", "fd");
                 let initRes: ndkTest.resValue = ndkTest.initNative(res.result);
@@ -673,7 +673,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_GIF_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_GIF_0100', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_GIF_0100", "moving_test.gif");
             done();
         });
@@ -686,7 +686,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_BMP_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_BMP_0200', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_BMP_0200", "test.bmp");
             done();
         });
@@ -699,7 +699,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_JPG_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_JPG_0300', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_JPG_0300", "test.jpg");
             done();
         });
@@ -712,7 +712,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_WEBP_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_WEBP_0400', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_WEBP_0400", "test_large.webp");
             done();
         });
@@ -725,7 +725,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_PNG_0500', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_PNG_0500', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_PNG_0500", "test.png");
             done();
         });
@@ -738,7 +738,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_SVG_0600', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_SVG_0600', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_SVG_0600", "test_large.svg");
             done();
         });
@@ -751,7 +751,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0700', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0700', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0700", "test_dng.dng");
             done();
         });
@@ -764,7 +764,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0800', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0800', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0800", "test.nrw");
             done();
         });
@@ -777,7 +777,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0900', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0900', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_0900", "test.cr2");
             done();
         });
@@ -790,7 +790,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1000', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1000', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1000", "test.arw");
             done();
         });
@@ -803,7 +803,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1100', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1100", "test.pef");
             done();
         });
@@ -816,7 +816,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1200', Level.LEVEL0, async (done :Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1200", "test.raf");
             done();
         });
@@ -829,7 +829,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1300', Level.LEVEL0, async (done: Function) => {
             await createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATEPIXELMAP_RAW_1300", "test.rw2");
             done();
         });
@@ -842,7 +842,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_PIXEL_MAP_LIST', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_PIXEL_MAP_LIST', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_PIXEL_MAP_LIST");
                 let res: ndkTest.resImageSource = await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_PIXEL_MAP_LIST",
@@ -875,7 +875,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_DELAY_TIME', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_DELAY_TIME', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_DELAY_TIME");
                 let res: ndkTest.resImageSource = await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_DELAY_TIME",
@@ -906,7 +906,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_FRAME_COUNT', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_FRAME_COUNT', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_FRAME_COUNT");
                 let res: ndkTest.resImageSource = await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_FRAME_COUNT",
@@ -931,7 +931,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_SUPPORTED_FORMATS', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_SUPPORTED_FORMATS', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_SUPPORTED_FORMATS");
                 let supportedFormatListRes: ndkTest.resSupportedFormatList = ndkTest.getSupportedFormats();
@@ -958,7 +958,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_INFO', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_INFO', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_INFO");
                 let res: ndkTest.resImageSource = await imageSourceCreateTest(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_INFO",
@@ -983,7 +983,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0100', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0100", "moving_test.gif");
         });
         /**
@@ -995,7 +995,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0200', Level.LEVEL0, async (done: Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0200", "test.bmp");
         });
         /**
@@ -1007,7 +1007,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0300', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0300", "test.png");
         });
         /**
@@ -1019,7 +1019,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0400', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0400", "test.jpg");
         });
         /**
@@ -1031,7 +1031,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0500', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0500', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0500", "test_large.webp");
         });
         /**
@@ -1043,7 +1043,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0600', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0600', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0600", "test_large.svg");
         });
         /**
@@ -1055,7 +1055,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0700', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0700', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0700", "test_dng.dng");
         });
         /**
@@ -1067,7 +1067,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0800', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0800', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0800", "test.nrw");
         });
         /**
@@ -1079,7 +1079,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0900', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0900', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_0900", "test.cr2");
         });
         /**
@@ -1091,7 +1091,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1000', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1000', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1000", "test.arw");
         });
         /**
@@ -1103,7 +1103,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1100', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1100", "test.pef");
         });
         /**
@@ -1115,7 +1115,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1200', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1200", "test.raf");
         });
         /**
@@ -1127,7 +1127,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1300', Level.LEVEL0, async (done :Function) => {
             release(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_IMAGE_RELEASE_1300", "test.rw2");
         });
         /**
@@ -1140,7 +1140,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_UPDATE_DATA', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_UPDATE_DATA', Level.LEVEL0, async (done :Function) => {
             try {
                 let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_UPDATE_DATA");
                 let imageSourceOps: ESObject = {
@@ -1183,7 +1183,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0100', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "8, 8, 8").assertTrue();
@@ -1201,7 +1201,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0200', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "Top-right").assertTrue();
@@ -1218,7 +1218,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0300', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "4608").assertTrue();
@@ -1235,7 +1235,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0400', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "3456").assertTrue();
@@ -1252,7 +1252,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0500', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0500', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result.search("38") != -1).assertTrue();
@@ -1269,7 +1269,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0600', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0600', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result.search("9") != -1).assertTrue();
@@ -1286,7 +1286,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0700', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0700', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "N").assertTrue();
@@ -1304,7 +1304,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0800', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0800', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "W").assertTrue();
@@ -1322,7 +1322,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0900', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_0900', Level.LEVEL0, async (done :Function) => {
 
             let checkProps = (result: string) => {
                 expect(result == "2022:06:02 15:51:35").assertTrue();
@@ -1340,7 +1340,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0100', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.ORIENTATION,
                 value: "4"
@@ -1361,7 +1361,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0200', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.BITS_PER_SAMPLE, value: "4, 4, 4"
             };
@@ -1381,7 +1381,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0300', Level.LEVEL0, async (done :Function) => {
             let prop:ESObject = {
                 key: image.PropertyKey.GPS_LATITUDE, value: "114,57"
             };
@@ -1401,7 +1401,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0400', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.GPS_LONGITUDE, value: "116,58"
             };
@@ -1421,7 +1421,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0500', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0500', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.GPS_LATITUDE_REF, value: "N"
             };
@@ -1441,7 +1441,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0600', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0600', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.GPS_LONGITUDE_REF, value: "W"
             };
@@ -1461,7 +1461,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0700', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0700', Level.LEVEL0, async (done :Function) => {
             let prop:ESObject = {
                 key: image.PropertyKey.IMAGE_WIDTH, value: "500"
             };
@@ -1481,7 +1481,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0800', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_0800', Level.LEVEL0, async (done :Function) => {
             let prop: ESObject = {
                 key: image.PropertyKey.IMAGE_LENGTH, value: "800"
             };
@@ -1501,7 +1501,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0100', Level.LEVEL0, async (done :Function) => {
             await modifyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0100", "null", "100");
         });
         /**
@@ -1513,7 +1513,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0200', Level.LEVEL0, async (done :Function) => {
             await modifyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0200", " GPSLongitudeRef",
                 "12345");
         });
@@ -1526,7 +1526,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0300', Level.LEVEL0, async (done :Function) => {
             await modifyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0300", "GPSLatitude",
                 "{a:3}");
         });
@@ -1539,7 +1539,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0400', Level.LEVEL0, async (done :Function) => {
             await modifyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_IMAGE_PROPERTY_ERR_0400", "1000",
                 "ImageLength");
         });
@@ -1552,7 +1552,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0100', Level.LEVEL0, async (done :Function) => {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0100", "aa");
         });
         /**
@@ -1564,7 +1564,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0200', Level.LEVEL0, async (done :Function) => {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0200", "12");
         });
         /**
@@ -1576,7 +1576,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0300', Level.LEVEL0, async (done :Function) => {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0300", "true");
         });
         /**
@@ -1588,7 +1588,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0400', Level.LEVEL0, async (done :Function) => {
             getImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_IMAGE_PROPERTY_ERR_0400", "abc,123");
         });
         /**
@@ -1600,7 +1600,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0100', Level.LEVEL0, async (done :Function) => {
             createImageSourceErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0100", '-1');
         });
         /**
@@ -1612,7 +1612,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0200', Level.LEVEL0, async (done :Function) => {
             createImageSourceErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0200", "file:///multimedia/test.jpg");
         });
         /**
@@ -1624,7 +1624,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0300', Level.LEVEL0, async (done :Function) => {
             createImageSourceErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_CREATE_ERR_0300", "fd");
         });
         /**
@@ -1636,7 +1636,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', Level.LEVEL0, async (done :Function) => {
             let mlg:ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start');
             let fdResult = await getFd('moving_test_loop5.gif');
@@ -1665,7 +1665,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', Level.LEVEL0, async (done :Function) => {
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start');
             let fdResult = await getFd('moving_test_loop1.gif');
@@ -1694,7 +1694,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', Level.LEVEL0, async (done :Function) => {
             let mlg:ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start');
             let fdResult = await getFd('moving_test_loop0.gif');
@@ -1723,7 +1723,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', Level.LEVEL0, async (done :Function) => {
             let mlg:ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_GETIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start');
             let fdResult = await getFd('text.jpg');
@@ -1752,7 +1752,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100', Level.LEVEL0, async (done :Function) => {
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0100 start');
             let fdResult = await getFd('moving_test_loop5.gif');
@@ -1772,7 +1772,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200', Level.LEVEL0, async (done :Function) => {
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0200 start');
             let fdResult = await getFd('moving_test_loop1.gif');
@@ -1792,7 +1792,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300', Level.LEVEL0, async (done :Function) => {
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0300 start');
             let fdResult = await getFd('moving_test_loop0.gif');
@@ -1812,7 +1812,7 @@ export default function ImageSourceNDKTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', 0, async (done :Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400', Level.LEVEL0, async (done :Function) => {
             let mlg: ESObject = logger("SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400");
             mlg.log('SUB_MULTIMEDIA_IMAGE_NATIVE_MODIFYIMAGEPROPERTY_LOOPCOUNT_PROMISE_0400 start');
             let fdResult = await getFd('text.jpg');

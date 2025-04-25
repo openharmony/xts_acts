@@ -2,6 +2,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let disable = false;
 
@@ -29,7 +30,7 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityRuntime_HookAbility_0700', Level.LEVEL1, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_HookAbility_0700', Level.LEVEL3, (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_HookAbility_0700';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
       if (disable) {
@@ -53,10 +54,13 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_Ability_AbilityRuntime_HookAbility_0800', Level.LEVEL1, (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_HookAbility_0800', Level.LEVEL3, (done: Function) => {
       let TAG = 'SUB_Ability_AbilityRuntime_HookAbility_0800';
       hilog.info(0x0000, TAG, '%{public}s', '--start');
-      if (disable) {
+      let mpEnable: string =
+        systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
+      console.log(TAG + `get system parameter mpEnable is ${mpEnable}`);
+      if (disable || mpEnable === 'false') {
         done();
         return;
       }

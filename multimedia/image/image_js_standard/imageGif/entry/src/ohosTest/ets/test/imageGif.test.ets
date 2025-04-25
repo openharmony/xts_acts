@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@ohos.base';
 
@@ -415,7 +415,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", Level.LEVEL0, async (done:Function)=>{
       getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", "test.gif");
     });
 
@@ -428,7 +428,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200", Level.LEVEL0, async (done:Function)=>{
       getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200", "moving_test.gif");
     });
 
@@ -441,7 +441,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", Level.LEVEL0, async (done:Function)=>{
       getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", "test.gif");
     });
 
@@ -454,7 +454,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200", Level.LEVEL0, async (done:Function)=>{
       getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200", "moving_test.gif");
     });
 
@@ -467,7 +467,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100", Level.LEVEL0, async (done:Function)=>{
       testGetDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100", "moving_test.gif");
     });
 
@@ -480,7 +480,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200", Level.LEVEL0, async (done:Function)=>{
       testGetDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200", "test.gif");
     });
 
@@ -493,7 +493,7 @@ export default function imageGif() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300", Level.LEVEL0, async (done:Function)=>{
       testGetDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300", "test.jpg");
     });
 
@@ -506,7 +506,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", Level.LEVEL0, async (done:Function)=>{
       getFrameCountPromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_PROMISE_0100", "moving_test.gif");
     });
 
@@ -519,7 +519,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", Level.LEVEL0, async (done:Function)=>{
       getFrameCountCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETFRAMECOUNT_CALLBACK_0100", "moving_test.gif");
     });
 
@@ -534,7 +534,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_PROMISE_0100", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -559,7 +559,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0100", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: -1,
         editable: true,
@@ -589,7 +589,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0200", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -619,7 +619,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0300", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -649,7 +649,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_PROMISE_0400", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -680,7 +680,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_CALLBACK_0100", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -705,7 +705,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0100", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: -1,
         editable: true,
@@ -735,7 +735,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0200", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -765,7 +765,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0300", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,
@@ -795,7 +795,7 @@ export default function imageGif() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400", 0, async (done:Function)=>{
+    it("SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400", Level.LEVEL0, async (done:Function)=>{
       let decodeOpts:Options = {
         sampleSize: 1,
         editable: true,

@@ -16,7 +16,7 @@
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
 import colorSpaceManager from "@ohos.graphics.colorSpaceManager";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { testImg } from "./testImg";
 import { testP3 } from "./testImg2";
 import featureAbility from "@ohos.ability.featureAbility";
@@ -138,7 +138,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100", 0, async (done:Function)=> {
+        it("SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100", Level.LEVEL0, async (done:Function)=> {
             let logger:ESObject = Logger("SUB_MULTIMEDIA_IMAGE_GETCOLORSPACE_0100");
             try {
                 let imageSource = GenPicSource(testImg);
@@ -175,7 +175,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100", 0, (done:Function)=> {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0100", Level.LEVEL0, (done:Function)=> {
             let imageSource = image.createImageSource(testP3.buffer);
             setColor(
                 done,
@@ -196,7 +196,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200", 1, (done:Function)=> {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0200", Level.LEVEL1, (done:Function)=> {
             let imageSource = image.createImageSource(testImg.buffer);
             setColor(
                 done,
@@ -217,7 +217,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300", 1, async (done:Function)=> {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0300", Level.LEVEL1, async (done:Function)=> {
             await getFd("colorspace.jpg");
             let imageSource = image.createImageSource(fdNumber);
             setColor(
@@ -239,7 +239,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400", 1, async (done:Function)=> {
+        it("SUB_MULTIMEDIA_IMAGE_SETCOLORSPACE_0400", Level.LEVEL1, async (done:Function)=> {
             await getFd("DisplayP3.png");
             let imageSource = image.createImageSource(fdNumber);
             setColor(
