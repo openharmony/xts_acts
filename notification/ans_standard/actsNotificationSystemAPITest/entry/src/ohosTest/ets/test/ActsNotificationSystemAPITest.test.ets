@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
 import notification from '@ohos.notification'
 import notificationSubscribe from '@ohos.notificationSubscribe';
@@ -29,7 +29,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: publish
      * @tc.desc: test function publish takes userId
      */
-    it('Sub_Notification_Ans_Publish_Publish_4100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4100 START`);
 
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -46,7 +46,7 @@ export default function ActsNotificationSystemAPITest() {
 
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4100 PUBLISH`);
       try {
-        notificationManager.publish(notificationRequest, 0, (err) => {
+        notificationManager.publish(notificationRequest,0, (err) => {
           if (err) {
             console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -71,7 +71,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: publishAsBundle 
      * @tc.desc: test function publishAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Publish_4200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4200 START`);
 
       let notificationRequest: notificationManager.NotificationRequest = {
@@ -86,7 +86,7 @@ export default function ActsNotificationSystemAPITest() {
         }
       }
 
-      notificationManager.publishAsBundle(notificationRequest, "example.bundleName", 0, (err) => {
+      notificationManager.publishAsBundle(notificationRequest, "example.bundleName", 0 , (err) => {
         if (err) {
           console.info(`${TAG} publishAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
           expect(err.code).assertEqual(202);
@@ -106,7 +106,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: publishAsBundle
      * @tc.desc: test function publishAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Publish_4300', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4300', Level.LEVEL2, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4300 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
@@ -143,10 +143,10 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: cancelAsBundle
      * @tc.desc: test function cancelAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Cancel_0150', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Cancel_0150', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0150 START`);
 
-      notificationManager.cancelAsBundle(1, "example.bundleName", 0, (err) => {
+      notificationManager.cancelAsBundle(1, "example.bundleName", 0 , (err) => {
         if (err) {
           console.info(`${TAG} cancelAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
           expect(err.code).assertEqual(202);
@@ -166,7 +166,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: cancelAsBundle
      * @tc.desc: test function cancelAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Cancel_0160', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Cancel_0160', Level.LEVEL2, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0160 START`);
 
         let bundleOpt : notificationManager.BundleOption = {
@@ -191,7 +191,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: addSlot
      * @tc.desc: test function addSlot
      */
-    it('Sub_Notification_Ans_Slot_CreateSlot_3550', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Slot_CreateSlot_3550', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3550 START`);
 
       let slot: notificationManager.NotificationSlot = {
@@ -219,7 +219,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setNotificationEnable
      * @tc.desc: test function setNotificationEnable
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_0700', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_0700', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0700 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -246,7 +246,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled
      */
-    it('Sub_Notification_Ans_Enable_Query_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_Query_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0100 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -273,7 +273,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled no parameter
      */
-    it('Sub_Notification_Ans_Enable_Query_0200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_Query_0200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0200 START`);
 
       notificationManager.isNotificationEnabled((err, data) => {
@@ -295,7 +295,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isNotificationEnabled
      * @tc.desc: test function isNotificationEnabled take userId
      */
-    it('Sub_Notification_Ans_Enable_Query_0300', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_Query_0300', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_Query_0300 START`);
 
       notificationManager.isNotificationEnabled(0, (err, data) => {
@@ -318,7 +318,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: displayBadge
      * @tc.desc: test function displayBadge
      */
-    it('Sub_Notification_Ans_Corner_Query_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Corner_Query_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Corner_Query_0100 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -350,7 +350,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isBadgeDisplayed
      * @tc.desc: test function isBadgeDisplayed
      */
-    it('Sub_Notification_Ans_Slot_CreateSlot_3700', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Slot_CreateSlot_3700', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3700 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -382,7 +382,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setSlotByBundle
      * @tc.desc: test function setSlotByBundle
      */
-    it('Sub_Notification_Ans_Slot_CreateSlot_3850', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Slot_CreateSlot_3850', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3850 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -420,7 +420,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getSlotsByBundle
      * @tc.desc: test function getSlotsByBundle
      */
-    it('Sub_Notification_Ans_Slot_GetSlot_0900', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Slot_GetSlot_0900', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_0900 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -453,7 +453,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getSlotNumByBundle
      * @tc.desc: test function getSlotNumByBundle
      */
-    it('Sub_Notification_Ans_Slot_GetSlot_1000', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Slot_GetSlot_1000', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_1000 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -486,7 +486,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getAllActiveNotifications
      * @tc.desc: test function getAllActiveNotifications
      */
-    it('Sub_Notification_Ans_Distributed_Search_2000', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Distributed_Search_2000', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_2000 START`);
 
       notificationManager.getAllActiveNotifications((err, data) => {
@@ -509,7 +509,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: removeGroupByBundle
      * @tc.desc: test function removeGroupByBundle
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0100 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -536,7 +536,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setDoNotDisturbDate
      * @tc.desc: test function setDoNotDisturbDate
      */
-    it('Sub_Notification_Ans_NoDistrub_SetTime_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_NoDistrub_SetTime_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0100 START`);
 
       let date: notificationManager.DoNotDisturbDate = {
@@ -569,7 +569,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setDoNotDisturbDate
      * @tc.desc: test function setDoNotDisturbDate take userId
      */
-    it('Sub_Notification_Ans_NoDistrub_SetTime_0200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_NoDistrub_SetTime_0200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_0200 START`);
 
       let date: notificationManager.DoNotDisturbDate = {
@@ -577,7 +577,7 @@ export default function ActsNotificationSystemAPITest() {
         begin: new Date(2023, 2, 24, 15, 53),
         end: new Date(2024, 2, 24, 15, 53)
       }
-      notificationManager.setDoNotDisturbDate(date, 0, (err) => {
+      notificationManager.setDoNotDisturbDate(date, 0 , (err) => {
         if (err) {
           console.info(`${TAG} setDoNotDisturbDate AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
           if (err.code == 801) {
@@ -602,7 +602,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getDoNotDisturbDate
      * @tc.desc: test function getDoNotDisturbDate
      */
-    it('Sub_Notification_Ans_NoDistrub_GetTime_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_NoDistrub_GetTime_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0100 START`);
 
       notificationManager.getDoNotDisturbDate((err, data) => {
@@ -630,7 +630,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getDoNotDisturbDate
      * @tc.desc: test function getDoNotDisturbDate take userId
      */
-    it('Sub_Notification_Ans_NoDistrub_GetTime_0200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_NoDistrub_GetTime_0200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_0200 START`);
 
       notificationManager.getDoNotDisturbDate(0, (err, data) => {
@@ -658,7 +658,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isSupportDoNotDisturbMode
      * @tc.desc: test function isSupportDoNotDisturbMode
      */
-    it('Sub_Notification_Ans_NoDistrub_Query_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_NoDistrub_Query_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_0100 START`);
 
       notificationManager.isSupportDoNotDisturbMode((err, data) => {
@@ -686,7 +686,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setDistributedEnable
      * @tc.desc: test function setDistributedEnable
      */
-    it('Sub_Notification_Ans_Distributed_Enable_4300', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4300', Level.LEVEL1, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4300 START`);
 
       notificationManager.setDistributedEnable(true, (err) => {
@@ -714,7 +714,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setDistributedEnableByBundle
      * @tc.desc: test function setDistributedEnableByBundle
      */
-    it('Sub_Notification_Ans_Distributed_Enable_4400', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4400', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4400 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -746,7 +746,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isDistributedEnabledByBundle
      * @tc.desc: test function isDistributedEnabledByBundle
      */
-    it('Sub_Notification_Ans_Distributed_Enable_4500', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Distributed_Enable_4500', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4500 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -778,7 +778,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getDeviceRemindType
      * @tc.desc: test function getDeviceRemindType
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_9500', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_9500', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9500 START`);
 
       notificationManager.getDeviceRemindType((err, data) => {
@@ -806,7 +806,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setNotificationEnableSlot
      * @tc.desc: test function setNotificationEnableSlot
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_9600', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_9600', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9600 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -839,7 +839,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: isNotificationSlotEnabled
      * @tc.desc: test function isNotificationSlotEnabled
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_9700', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_9700', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9700 START`);
 
       let bundleOpt: notificationManager.BundleOption = {
@@ -872,7 +872,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: setSyncNotificationEnabledWithoutApp
      * @tc.desc: test function setSyncNotificationEnabledWithoutApp
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_0800', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_0800', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_0800 START`);
 
       notificationManager.setSyncNotificationEnabledWithoutApp(0, true, (err) => {
@@ -900,7 +900,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: getSyncNotificationEnabledWithoutApp
      * @tc.desc: test function getSyncNotificationEnabledWithoutApp
      */
-    it('Sub_Notification_Ans_Enable_SetEnable_9800', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Enable_SetEnable_9800', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_9800 START`);
 
       notificationManager.getSyncNotificationEnabledWithoutApp(0, (err, data) => {
@@ -930,7 +930,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: subscribe
      * @tc.desc: test function subscribe
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0100 START`);
 
       notificationSubscribe.subscribe(subscriber, (err) => {
@@ -953,7 +953,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: subscribe
      * @tc.desc: test function subscribe take NotificationSubscribeInfo
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_0200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0200 START`);
 
       let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
@@ -980,7 +980,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: subscribe
      * @tc.desc: test function subscribe take NotificationSubscribeInfo
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_0300', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0300', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0300 START`);
 
       let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
@@ -1006,7 +1006,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: unsubscribe
      * @tc.desc: test function unsubscribe
      */
-    it('Sub_Notification_Ans_Subscriber_Unsubscribe_0100', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Subscriber_Unsubscribe_0100', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_0100 START`);
 
       notificationSubscribe.unsubscribe(subscriber, (err) => {
@@ -1029,7 +1029,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: remove
      * @tc.desc: test function remove
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0200', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0200', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0200 START`);
 
       let bundleOpt: notificationSubscribe.BundleOption = {
@@ -1060,7 +1060,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: remove
      * @tc.desc: test function remove
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0300', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0300', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0300 START`);
 
       notificationSubscribe.remove("device_0_1", notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE, (err) => {
@@ -1083,7 +1083,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: removeAll
      * @tc.desc: test function removeAll take bundle
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0400', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0400', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0400 START`);
 
       let bundleOpt: notificationSubscribe.BundleOption = {
@@ -1110,7 +1110,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: removeAll
      * @tc.desc: test function removeAll
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0500', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0500', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0500 START`);
 
       notificationSubscribe.removeAll((err) => {
@@ -1133,7 +1133,7 @@ export default function ActsNotificationSystemAPITest() {
      * @tc.name: removeAll
      * @tc.desc: test function removeAll take userId
      */
-    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0600', 0, async (done: Function) => {
+    it('Sub_Notification_Ans_Delete_SpecifiedGroup_0600', Level.LEVEL3, async (done: Function) => {
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0600 START`);
 
       notificationSubscribe.removeAll(0, (err) => {
@@ -1149,6 +1149,338 @@ export default function ActsNotificationSystemAPITest() {
       });
 
       console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_0600 END`);
+    });
+
+        /*
+     * @tc.number: Sub_Notification_Ans_NoDistrub_GetTime_Promise_0100
+     * @tc.name: getDoNotDisturbDate
+     * @tc.desc: test function getDoNotDisturbDate
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_NoDistrub_GetTime_Promise_0100', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Promise_0100 START`);
+
+      await notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
+        console.info("getDoNotDisturbDate success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Promise_0100 END`);
+    });
+
+
+    /*
+     * @tc.number: Sub_Notification_Ans_NoDistrub_GetTime_Promise_0200
+     * @tc.name: getDoNotDisturbDate
+     * @tc.desc: test function getDoNotDisturbDate take userId
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_NoDistrub_GetTime_Promise_0200', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Promise_0200 START`);
+
+      // 用户ID，使用时需替换为真实的userId。
+      let userId: number = 1;
+
+      await notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
+        console.info("getDoNotDisturbDate success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_GetTime_Promise_0200 END`);
+    });
+
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Slot_GetSlot_Promise_1000
+     * @tc.name: getSlotNumByBundle
+     * @tc.desc: test function getSlotNumByBundle
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_Slot_GetSlot_Promise_1000', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_Promise_1000 START`);
+
+      let bundleOpt: notificationManager.BundleOption = {
+        bundle: "com.example.actsemitterandcomeventtest",
+        uid: 0
+      }
+
+      await notificationManager.getSlotNumByBundle(bundleOpt).then((data: number) => {
+        console.info("getSlotNumByBundle success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.info(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Slot_GetSlot_Promise_1000 END`);
+    });
+
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Slot_CreateSlot_Promise_3700
+     * @tc.name: isBadgeDisplayed
+     * @tc.desc: test function isBadgeDisplayed
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_Slot_CreateSlot_Promise_3700', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_Promise_3700 START`);
+
+      let bundleOpt: notificationManager.BundleOption = {
+        bundle: "example.bundleName",
+        uid: 0
+      }
+
+      await notificationManager.isBadgeDisplayed(bundleOpt).then((data: boolean) => {
+        console.info("isBadgeDisplayed success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_Promise_3700 END`);
+    });
+
+
+    /*
+    * @tc.number: Sub_Notification_Ans_Enable_SetEnable_Promise_9700
+    * @tc.name: isNotificationSlotEnabled
+    * @tc.desc: test function isNotificationSlotEnabled
+    * @tc.size: LargeTest
+    * @tc.type: Function
+    * @tc.level LEVEL3
+    */
+    it('Sub_Notification_Ans_Enable_SetEnable_Promise_9700', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_Promise_9700 START`);
+
+      let bundleOpt: notificationManager.BundleOption = {
+        bundle: "example.bundleName",
+        uid: 0
+      }
+      // isNotificationSlotEnabled
+      await notificationManager.isNotificationSlotEnabled(bundleOpt,
+        notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
+        console.info("isNotificationSlotEnabled success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`isNotificationSlotEnabled failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done();
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_Promise_9700 END`);
+    });
+
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Distributed_Enable_Promise_4300
+     * @tc.name: setDistributedEnable
+     * @tc.desc: test function setDistributedEnable
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_Distributed_Enable_Promise_4300', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_Promise_4300 START`);
+      let enable: boolean = true;
+      notificationManager.setDistributedEnable(enable).then(() => {
+        console.info("setDistributedEnable success");
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_Promise_4300 END`);
+    });
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Distributed_Enable_Promise_4400
+     * @tc.name: setDistributedEnableByBundle
+     * @tc.desc: test function setDistributedEnableByBundle
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_Distributed_Enable_Promise_4400', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_Promise_4400 START`);
+
+      let bundleOpt: notificationManager.BundleOption = {
+        bundle: "example.bundleName",
+        uid: 0
+      }
+
+      let enable: boolean = true;
+      notificationManager.setDistributedEnableByBundle(bundleOpt, enable).then(() => {
+        console.info("setDistributedEnableByBundle success");
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_Promise_4400 END`);
+    });
+
+    /*
+     * @tc.number: Sub_Notification_Ans_NoDistrub_SetTime_Promise_0200
+     * @tc.name: setDoNotDisturbDate
+     * @tc.desc: test function setDoNotDisturbDate take userId
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_NoDistrub_SetTime_Promise_0200', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_Promise_0200 START`);
+
+      let date: notificationManager.DoNotDisturbDate = {
+        type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+        begin: new Date(2023, 2, 24, 15, 53),
+        end: new Date(2024, 2, 24, 15, 53)
+      }
+      let userId: number = 1;
+      notificationManager.setDoNotDisturbDate(date, userId).then(() => {
+        console.info("setDoNotDisturbDate success");
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_SetTime_Promise_0200 END`);
+    });
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Enable_SetEnable_Promise_9600
+     * @tc.name: setNotificationEnableSlot
+     * @tc.desc: test function setNotificationEnableSlot
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_Enable_SetEnable_Promise_9600', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_Promise_9600 START`);
+
+      let bundleOpt: notificationManager.BundleOption = {
+        bundle: "example.bundleName",
+        uid: 0
+      }
+      notificationManager.setNotificationEnableSlot(
+        bundleOpt,
+        notificationManager.SlotType.SOCIAL_COMMUNICATION,
+        true, true).then(() => {
+        console.info("setNotificationEnableSlot success");
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_Promise_9600 END`);
+    });
+
+    /*
+     * @tc.number: Sub_Notification_Ans_NoDistrub_Query_Promise_0100
+     * @tc.name: isSupportDoNotDisturbMode
+     * @tc.desc: test function isSupportDoNotDisturbMode
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level LEVEL3
+     */
+    it('Sub_Notification_Ans_NoDistrub_Query_Promise_0100', Level.LEVEL3, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_Promise_0100 START`);
+
+      notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
+        console.info("isSupportDoNotDisturbMode success, data: " + JSON.stringify(data));
+        expect(false).assertTrue()
+        done()
+      }).catch((err: BusinessError) => {
+        console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
+        if (err.code == 801) {
+          expect(err.code).assertEqual(801)
+          done();
+        } else {
+          expect(err.code).assertEqual(202);
+          done()
+        }
+      });
+
+      console.info(`${TAG} Sub_Notification_Ans_NoDistrub_Query_Promise_0100 END`);
     });
 
   })
