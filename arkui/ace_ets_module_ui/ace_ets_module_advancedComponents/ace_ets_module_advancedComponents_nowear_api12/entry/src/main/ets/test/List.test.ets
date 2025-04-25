@@ -69,7 +69,7 @@ import localizedButtonPaddingTest from './segmenButton/localizedButtonPaddingTes
 import localizedTextPadding from './segmenButton/localizedTextPadding';
 import SegmentButtonItemOptionsArray1 from './segmenButton/SegmentButtonItemOptionsArray1.test';
 import SegmentButtonIconTextItem1 from './segmenButton/SegmentButtonIconTextItem1.test';
-
+import SegmentButtonTextItem001 from './segmenButton/SegmentButtonTextItemTest.test';
 
 export default function testsuite() {
   chipDirectionTest();
@@ -127,5 +127,6 @@ export default function testsuite() {
   localizedButtonPaddingTest();
   localizedTextPadding();
   SegmentButtonItemOptionsArray1();
-  SegmentButtonIconTextItem1()
+  SegmentButtonIconTextItem1();
+  SegmentButtonTextItem001();
 }
