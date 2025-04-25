@@ -15,10 +15,10 @@
 // xxx.ets
 @Entry
 @Component
-struct CustomLayoutOnLayout {
+struct CustomLayoutOnLayoutPage {
   build() {
     Column() {
-      CustomLayout() {
+      CustomLayoutOnLayout() {
         ForEach([1, 2, 3], (index: number) => {
           Text('Sub' + index)
             .fontSize(30)
@@ -32,7 +32,7 @@ struct CustomLayoutOnLayout {
 
 
 @Component
-struct CustomLayout {
+struct CustomLayoutOnLayout {
   @Builder
   doNothingBuilder() {
   };
