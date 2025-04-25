@@ -26,7 +26,7 @@ struct VisibleAreaEventOptionsTest {
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.DragEndPendingTest_001();
+        render.VisibleAreaEventOptionsTest_a();
       })
     }
   }
