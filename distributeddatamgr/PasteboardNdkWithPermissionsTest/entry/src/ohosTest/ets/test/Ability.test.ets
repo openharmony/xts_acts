@@ -536,5 +536,56 @@ export default function pasteboardTestNdkPermissionTest() {
       expect(data).assertEqual(0);
       done();
     });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Pasteboard_SDK_GetChangeCount_NdkApiTest_0100
+     * @tc.name OH_Pasteboard_GetChangeCount0100
+     * @tc.desc changeCount should not change after clear pasteboard
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+
+    it('OH_Pasteboard_GetChangeCount0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testndk.OH_Pasteboard_GetChangeCount0100();
+      console.info(TAG + "OH_Pasteboard_GetChangeCount0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Pasteboard_SDK_GetChangeCount_NdkApiTest_0200
+     * @tc.name OH_Pasteboard_GetChangeCount0200
+     * @tc.desc changeCount should add 1 after setData
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    
+    it('OH_Pasteboard_GetChangeCount0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testndk.OH_Pasteboard_GetChangeCount0200();
+      console.info(TAG + "OH_Pasteboard_GetChangeCount0200 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
+
+    /**
+     * @tc.number SUB_DistributedData_Pasteboard_SDK_GetChangeCount_NdkApiTest_0300
+     * @tc.name OH_Pasteboard_GetChangeCount0300
+     * @tc.desc changeCount should add 2 after setData twice
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+
+    it('OH_Pasteboard_GetChangeCount0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testndk.OH_Pasteboard_GetChangeCount0300();
+      console.info(TAG + "OH_Pasteboard_GetChangeCount0300 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
   })
 }

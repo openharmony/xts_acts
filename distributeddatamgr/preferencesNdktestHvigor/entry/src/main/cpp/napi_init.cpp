@@ -21,7 +21,6 @@
 #include "database/preferences/oh_preferences_value.h"
 #include "common.h"
 #include <iostream>
-#include <map>
 #include <ctime>
 #include <condition_variable>
 #include <cstdint>
@@ -34,11 +33,18 @@
 #include <vector>
 #include <random>
 #include <chrono>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 const char *TAG = "testLog";
-
+const std::string TEST_PATH = "/data/test/";
 static std::vector< OH_PreferencesPair *> changedData;
 static OH_PreferencesPair *g_pairs = nullptr;
+static bool IsFileExist(const std::string &path)
+{
+    struct stat buffer;
+    return (stat(path.c_str(), &buffer) == 0);
+}
 
 int g_changeNum = 0;
 void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count) {
@@ -1181,6 +1187,39 @@ static napi_value OH_Preferences_ErrCode_0100(napi_env env, napi_callback_info i
     return ret;
 }
 
+static napi_value OH_Preferences_IsStorageTypeSupported0500(napi_env env, napi_callback_info info)
+{
+    OH_PreferencesOption *option = OH_PreferencesOption_Create();
+    const char *fileName = "CStorageTypeTest005";
+    NAPI_ASSERT(env, OH_PreferencesOption_SetFileName(option, fileName) == PREFERENCES_OK, "OH_PreferencesOption_Create is fail.");
+    bool isEnhance = false;
+    int errCode = OH_Preferences_IsStorageTypeSupported(Preferences_StorageType::PREFERENCES_STORAGE_GSKV, &isEnhance);
+    NAPI_ASSERT(env, errCode == PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
+    if (isEnhance) {
+        NAPI_ASSERT(env, OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV) ==
+         PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
+        OH_Preferences *pref = OH_Preferences_Open(option, &errCode);
+        NAPI_ASSERT(env, errCode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, OH_Preferences_SetInt(pref, "key", 2) == PREFERENCES_OK, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, OH_Preferences_Close(pref) == PREFERENCES_OK, "OH_Preferences_Open  dropTableSql is fail.");
+        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName) + ".db") == true, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName)) == false, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, OH_PreferencesOption_SetFileName(option, fileName) == PREFERENCES_OK, "OH_Preferences_Open is fail.");
+    } else {
+        NAPI_ASSERT(env, OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV) ==
+         PREFERENCES_OK, "OH_Preferences_IsStorageTypeSupported is fail.");
+        (void)OH_Preferences_Open(option, &errCode);
+        NAPI_ASSERT(env, errCode == PREFERENCES_ERROR_NOT_SUPPORTED, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName) + ".db") == false, "OH_Preferences_Open is fail.");
+        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName)) == false, "OH_Preferences_Open is fail.");
+    }
+    (void)OH_PreferencesOption_Destroy(option);
+    int returnCode = 0;
+    napi_value result;
+    napi_create_int32(env, returnCode, &result);
+    return result;
+}
+
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) 
@@ -1240,9 +1279,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"OH_Preferences_UnregisterDataObserver_0100", nullptr, OH_Preferences_UnregisterDataObserver_0100, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_PreferencesPair_0200", nullptr, OH_PreferencesPair_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OH_Preferences_ErrCode_0100", nullptr, OH_Preferences_ErrCode_0100, nullptr, nullptr, nullptr, napi_default,
-         nullptr}
-
+        {"OH_Preferences_ErrCode_0100", nullptr, OH_Preferences_ErrCode_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_Preferences_IsStorageTypeSupported0500", nullptr, OH_Preferences_IsStorageTypeSupported0500, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
