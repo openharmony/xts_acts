@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOFsync() {
 describe('fileIO_fs_fsync', function () {
@@ -30,7 +31,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_fsync_sync_000', 0, async function () {
+  it('fileIO_test_fsync_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fsync_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -54,7 +55,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_sync_001', 0, function () {
+  it('fileIO_test_fsync_sync_001', Level.LEVEL0, function () {
 
     try {
       fileIO.fsyncSync(-1);
@@ -74,7 +75,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_sync_002', 0, function () {
+  it('fileIO_test_fsync_sync_002', Level.LEVEL0, function () {
 
     try {
       fileIO.fsyncSync();
@@ -95,7 +96,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_fsync_async_000', 0, async function (done) {
+  it('fileIO_test_fsync_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fsync_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -121,7 +122,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_001', 0, async function (done) {
+  it('fileIO_test_fsync_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fsync_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -151,7 +152,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_002', 0, async function (done) {
+  it('fileIO_test_fsync_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fsync_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -182,7 +183,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_003', 0, async function (done) {
+  it('fileIO_test_fsync_async_003', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.fsync(-1);
@@ -204,7 +205,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_004', 0, async function (done) {
+  it('fileIO_test_fsync_async_004', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fsync(-1, (err) => {
@@ -230,7 +231,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_005', 0, async function (done) {
+  it('fileIO_test_fsync_async_005', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fsync(-1).then(() => {
@@ -256,7 +257,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_006', 0, async function (done) {
+  it('fileIO_test_fsync_async_006', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.fsync();
@@ -278,7 +279,7 @@ describe('fileIO_fs_fsync', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fsync_async_007', 0, async function (done) {
+  it('fileIO_test_fsync_async_007', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fsync((err) => {

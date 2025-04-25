@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOWrite() {
   describe('fileIO_fs_write', function () {
@@ -30,7 +31,7 @@ export default function fileIOWrite() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_write_sync_000', 0, async function () {
+  it('fileIO_test_write_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -61,7 +62,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_001', 0, async function () {
+  it('fileIO_test_write_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -90,7 +91,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_002', 0, async function () {
+  it('fileIO_test_write_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -119,7 +120,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_003', 0, async function () {
+  it('fileIO_test_write_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -148,7 +149,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_sync_004', 0, async function () {
+   it('fileIO_test_write_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -177,7 +178,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_sync_005', 0, async function () {
+   it('fileIO_test_write_sync_005', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -207,7 +208,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_006', 0, async function () {
+  it('fileIO_test_write_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -235,7 +236,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_007', 0, function () {
+  it('fileIO_test_write_sync_007', Level.LEVEL0, function () {
 
     try {
       fileIO.writeSync(-1, FILE_CONTENT);
@@ -256,7 +257,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_008', 0, async function () {
+  it('fileIO_test_write_sync_008', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -283,7 +284,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_009', 0, async function () {
+  it('fileIO_test_write_sync_009', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -311,7 +312,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_010', 0, async function () {
+  it('fileIO_test_write_sync_010', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -339,7 +340,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_011', 3, async function () {
+  it('fileIO_test_write_sync_011', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -370,7 +371,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_sync_012', 3, async function () {
+  it('fileIO_test_write_sync_012', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_write_sync_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
@@ -408,7 +409,7 @@ export default function fileIOWrite() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_write_async_000', 0, async function (done) {
+  it('fileIO_test_write_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -440,7 +441,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_001', 0, async function (done) {
+  it('fileIO_test_write_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -482,7 +483,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_002', 0, async function (done) {
+  it('fileIO_test_write_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -510,7 +511,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_003', 0, async function (done) {
+  it('fileIO_test_write_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
@@ -542,7 +543,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_004', 0, async function (done) {
+  it('fileIO_test_write_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -572,7 +573,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_005', 0, async function (done) {
+   it('fileIO_test_write_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -607,7 +608,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_006', 0, async function (done) {
+   it('fileIO_test_write_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -637,7 +638,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_007', 0, async function (done) {
+   it('fileIO_test_write_async_007', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -672,7 +673,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_008', 0, async function (done) {
+  it('fileIO_test_write_async_008', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -703,7 +704,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_009', 0, async function (done) {
+  it('fileIO_test_write_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -739,7 +740,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_010', 0, async function (done) {
+   it('fileIO_test_write_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -771,7 +772,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_011', 0, async function (done) {
+   it('fileIO_test_write_async_011', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_011');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -808,7 +809,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_012', 0, async function (done) {
+   it('fileIO_test_write_async_012', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -836,7 +837,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_013', 0, async function (done) {
+  it('fileIO_test_write_async_013', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -869,7 +870,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_014', 0, async function (done) {
+  it('fileIO_test_write_async_014', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -897,7 +898,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_015', 0, async function (done) {
+  it('fileIO_test_write_async_015', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -931,7 +932,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_test_write_async_016', 0, async function (done) {
+   it('fileIO_test_write_async_016', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -956,7 +957,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_017', 0, async function (done) {
+  it('fileIO_test_write_async_017', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -982,7 +983,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_018', 0, async function (done) {
+  it('fileIO_test_write_async_018', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -1014,7 +1015,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_019', 0, async function (done) {
+  it('fileIO_test_write_async_019', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_019');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -1046,7 +1047,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_020', 0, async function (done) {
+  it('fileIO_test_write_async_020', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_020');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
@@ -1078,7 +1079,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_021', 3, async function (done) {
+  it('fileIO_test_write_async_021', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_021');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1110,7 +1111,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_022', 3, async function (done) {
+  it('fileIO_test_write_async_022', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_022');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1152,7 +1153,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_023', 3, async function (done) {
+  it('fileIO_test_write_async_023', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_023');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -1192,7 +1193,7 @@ export default function fileIOWrite() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_write_async_024', 3, async function (done) {
+  it('fileIO_test_write_async_024', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_write_async_024');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
