@@ -546,7 +546,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetChangeCount0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Pasteboard_GetChangeCount0100', 0, async (done: Function) => {
       let res = testndk.OH_Pasteboard_GetChangeCount0100();
       console.info(TAG + "OH_Pasteboard_GetChangeCount0100 res=" + res );
       expect(res).assertEqual(0);
@@ -563,7 +563,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
     
-    it('OH_Pasteboard_GetChangeCount0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Pasteboard_GetChangeCount0200', 0, async (done: Function) => {
       let res = testndk.OH_Pasteboard_GetChangeCount0200();
       console.info(TAG + "OH_Pasteboard_GetChangeCount0200 res=" + res );
       expect(res).assertEqual(0);
@@ -580,7 +580,7 @@ export default function pasteboardTestNdkPermissionTest() {
      * @tc.size: MediumTest
      */
 
-    it('OH_Pasteboard_GetChangeCount0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Pasteboard_GetChangeCount0300', 0, async (done: Function) => {
       let res = testndk.OH_Pasteboard_GetChangeCount0300();
       console.info(TAG + "OH_Pasteboard_GetChangeCount0300 res=" + res );
       expect(res).assertEqual(0);
