@@ -27,10 +27,10 @@ struct rotatePage {
 
   build() {
     Column() {
-      Image($r("app.media.icon")).transform(this.matrix1)
-        .width("40%")
+      Image($r('app.media.icon')).transform(this.matrix1)
+        .width('40%')
         .height(100)
         .id('rotatePage_image')
-    }.width("100%").margin({ top: 50 })
+    }.width('100%').margin({ top: 50 })
   }
 }

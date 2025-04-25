@@ -41,8 +41,8 @@ struct PushNameRouterPage {
   }
 
   aboutToAppear(): void {
-    let my_params = this.getUIContext().getRouter().getParams()
-    if (my_params){
+    let myParams = this.getUIContext().getRouter().getParams()
+    if (myParams){
       console.info('getParams success');
       AppStorage.setOrCreate('PushNameRouterPage_aboutToAppear', 'success')
     }

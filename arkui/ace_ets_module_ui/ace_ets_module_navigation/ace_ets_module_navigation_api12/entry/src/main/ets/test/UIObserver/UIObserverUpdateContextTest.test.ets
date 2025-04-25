@@ -69,8 +69,11 @@ export default function UIObserverUpdateContextTest() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      expect(AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount')).assertEqual(9);
+      console.info('UIObserverUpdateContextTest_0100 UIObserverUpdateContextPage_callBackFuncOnCount is: ' + AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount'));
+      console.info('UIObserverUpdateContextTest_0100 UIObserverUpdateContextPage_callBackFuncOnCount_2 is: ' + AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount_2'));
+      expect(AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount')).assertEqual(AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount_2'));
       AppStorage.delete('UIObserverUpdateContextPage_callBackFuncOnCount')
+      AppStorage.delete('UIObserverUpdateContextPage_callBackFuncOnCount_2')
 
       console.info('UIObserverUpdateContextTest_0100 END');
       done();

@@ -19,9 +19,9 @@ import { EllipseShape, matrix4, RectShape } from '@kit.ArkUI';
 struct shapePage {
   build() {
     Column() {
-      Image($r("app.media.icon"))
+      Image($r('app.media.icon'))
         .clipShape(new RectShape({radius:10}).offset({ x: '10px', y: '10px' }))
         .width('500px').height('280px').id('shapePage_image')
-    }.width("100%").margin({ top: 50 })
+    }.width('100%').margin({ top: 50 })
   }
 }

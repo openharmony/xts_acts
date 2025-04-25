@@ -15,13 +15,14 @@
 import { uiObserver } from '@kit.ArkUI';
 
 AppStorage.setOrCreate('UIObserverUpdateContextPage_callBackFuncOnCount', 0)
+AppStorage.setOrCreate('UIObserverUpdateContextPage_callBackFuncOnCount_2', 0)
 
 @Component
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 function callBackFunc(info: uiObserver.NavDestinationInfo) {
@@ -42,25 +43,31 @@ struct UIObserverUpdateContextPage {
   }
 
   aboutToAppear() {
-    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: "testId" }, callBackFunc);
+    this.getUIContext().getUIObserver().on('navDestinationUpdate', { navigationId: 'testId' }, callBackFunc);
   }
 
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
-          this.stack.pushPath({ name: "pageOne" });
+        Button('push').onClick(() => {
+          this.stack.pushPath({ name: 'pageOne' });
         })
           .id('UIObserverUpdateContext_btn_push')
-        Button("off observer").onClick(() => {
+        Button('off observer').onClick(() => {
           let obs = this.getUIContext().getUIObserver();
           obs.off('navDestinationUpdate', { navigationId: "testId" }, callBackFunc)
+
+          console.info(`get UIObserverUpdateContextPage_callBackFuncOnCount is: ${AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount')}`)
+          console.info(`get UIObserverUpdateContextPage_callBackFuncOnCount_2 is: ${AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount_2')}`)
+          AppStorage.setOrCreate('UIObserverUpdateContextPage_callBackFuncOnCount_2', AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount'))
+          console.info(`set UIObserverUpdateContextPage_callBackFuncOnCount_2 is: ${AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount')}`)
         })
           .id('UIObserverUpdateContext_btn_off')
       }
-      .id("testId")
-      .title("Navigation")
+      .id('testId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
+      .mode(NavigationMode.Stack)
     }
     .width('100%')
     .height('100%')

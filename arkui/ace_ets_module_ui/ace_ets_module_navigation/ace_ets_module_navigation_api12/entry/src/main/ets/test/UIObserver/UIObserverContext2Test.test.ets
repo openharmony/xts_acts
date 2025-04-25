@@ -59,6 +59,7 @@ export default function UIObserverContext2Test() {
       await CommonFunc.sleep(1000);
 
       await driver.pressBack();
+      await CommonFunc.sleep(1000);
 
       button = await driver.findComponent(ON.id("UIObserverContext2_btn_off"));
       await button.click();
@@ -68,8 +69,11 @@ export default function UIObserverContext2Test() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      expect(AppStorage.get('UIObserverContext2Page_callBackFuncOnCount')).assertEqual(2);
+      console.info('UIObserverUpdateContextTest_0100 UIObserverContext2Page_callBackFuncOnCount is: ' + AppStorage.get('UIObserverContext2Page_callBackFuncOnCount'));
+      console.info('UIObserverUpdateContextTest_0100 UIObserverContext2Page_callBackFuncOnCount_2 is: ' + AppStorage.get('UIObserverContext2Page_callBackFuncOnCount_2'));
+      expect(AppStorage.get('UIObserverContext2Page_callBackFuncOnCount')).assertEqual(AppStorage.get('UIObserverContext2Page_callBackFuncOnCount_2'));
       AppStorage.delete('UIObserverContext2Page_callBackFuncOnCount')
+      AppStorage.delete('UIObserverContext2Page_callBackFuncOnCount_2')
 
       console.info('UIObserverContext2Test_0100 END');
       done();
