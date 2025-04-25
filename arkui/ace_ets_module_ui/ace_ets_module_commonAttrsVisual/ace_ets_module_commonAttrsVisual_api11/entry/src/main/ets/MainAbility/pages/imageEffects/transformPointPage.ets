@@ -35,18 +35,18 @@ struct Test {
 
       Text(`矩阵变换前的坐标：[${this.originPoint}]`)
         .fontSize(16)
-      Image($r("app.media.icon"))
+      Image($r('app.media.icon'))
         .width('600px')
         .height('300px')
         .margin({ top: 50 })
       Text(`矩阵变换后的坐标：[${this.transformPoint}]`)
         .fontSize(16)
         .margin({ top: 100 })
-      Image($r("app.media.icon"))
+      Image($r('app.media.icon'))
         .width('600px')
         .height('300px')
         .margin({ top: 50 })
         .transform(this.matrix_2)
-    }.width("100%").padding(50)
+    }.width('100%').padding(50)
   }
 }

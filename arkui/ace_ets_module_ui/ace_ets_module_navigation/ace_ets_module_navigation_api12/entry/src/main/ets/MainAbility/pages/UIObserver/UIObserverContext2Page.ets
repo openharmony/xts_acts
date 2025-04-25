@@ -15,13 +15,14 @@
 import { uiObserver } from '@kit.ArkUI';
 
 AppStorage.setOrCreate('UIObserverContext2Page_callBackFuncOnCount', 0)
+AppStorage.setOrCreate('UIObserverContext2Page_callBackFuncOnCount_2', 0)
 
 @Component
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -50,18 +51,24 @@ struct UIObserverContext2Page {
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
-          this.stack.pushPath({name: "pageOne"});
+        Button('push').onClick(() => {
+          this.stack.pushPath({name: 'pageOne'});
         })
           .id('UIObserverContext2_btn_push')
-        Button("off observer").onClick(() => {
+        Button('off observer').onClick(() => {
           let obs = this.getUIContext().getUIObserver();
           obs.off('navDestinationSwitch', callBackFunc)
+
+          console.info(`get UIObserverContext2Page_callBackFuncOnCount is: ${AppStorage.get('UIObserverContext2Page_callBackFuncOnCount')}`)
+          console.info(`get UIObserverContext2Page_callBackFuncOnCount_2 is: ${AppStorage.get('UIObserverContext2Page_callBackFuncOnCount_2')}`)
+          AppStorage.setOrCreate('UIObserverContext2Page_callBackFuncOnCount_2', AppStorage.get('UIObserverContext2Page_callBackFuncOnCount'))
+          console.info(`set UIObserverContext2Page_callBackFuncOnCount_2 is: ${AppStorage.get('UIObserverContext2Page_callBackFuncOnCount')}`)
         })
           .id('UIObserverContext2_btn_off')
       }
-      .title("Navigation")
+      .title('Navigation')
       .navDestination(this.PageBuilder)
+      .mode(NavigationMode.Stack)
     }
     .width('100%')
     .height('100%')

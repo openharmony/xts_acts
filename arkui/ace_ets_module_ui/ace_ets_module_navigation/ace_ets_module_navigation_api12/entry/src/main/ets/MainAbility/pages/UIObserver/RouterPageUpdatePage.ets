@@ -43,7 +43,7 @@ struct RouterPageUpdatePage {
             url:'pages/index/index'
           })
         }).id('RouterPageUpdate_btn_push')
-        Button("off observer").onClick(() => {
+        Button('off observer').onClick(() => {
           let observer:UIObserver = this.getUIContext().getUIObserver();
           observer.off('routerPageUpdate',callBackFunc);
         }).id('RouterPageUpdate_btn_off')

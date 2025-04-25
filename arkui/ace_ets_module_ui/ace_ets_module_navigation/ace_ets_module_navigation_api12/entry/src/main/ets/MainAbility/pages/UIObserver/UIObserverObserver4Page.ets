@@ -20,8 +20,8 @@ AppStorage.setOrCreate('UIObserverObserver4Page_callBackFuncOnCount', 0)
 struct PageOne {
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+    }.title('pageOne')
   }
 }
 
@@ -44,7 +44,7 @@ struct UIObserverObserver4Page {
 
   aboutToAppear() {
     if (this.firstTime == false) {
-      uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFuncOn)
+      uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: 'myNavId' }, callBackFuncOn)
       this.firstTime = true
     }
   }
@@ -52,18 +52,19 @@ struct UIObserverObserver4Page {
   build() {
     Column() {
       Navigation(this.stack) {
-        Button("push").onClick(() => {
-          this.stack.pushPath({ name: "pageOne" });
+        Button('push').onClick(() => {
+          this.stack.pushPath({ name: 'pageOne' });
         })
           .id('UIObserverObserver4_btn_push')
-        Button("off observer").onClick(() => {
-          uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFuncOn)
+        Button('off observer').onClick(() => {
+          uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: 'myNavId' }, callBackFuncOn)
         })
           .id('UIObserverObserver4_btn_off')
       }
-      .id("myNavId")
-      .title("Navigation")
+      .id('myNavId')
+      .title('Navigation')
       .navDestination(this.PageBuilder)
+      .mode(NavigationMode.Stack)
     }
     .width('100%')
     .height('100%')
