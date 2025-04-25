@@ -1458,7 +1458,106 @@ export default function windowZindexTest() {
         }
       }
     });
+/**
+     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0800
+     * @tc.name      : test_getSubWindowZLevel_1300004
+     * @tc.desc      : 验证getSubWindowZLevel的1300004错误码
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_getSubWindowZLevel_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_getSubWindowZLevel_1300004!';
+      console.log(caseName + 'begin');
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        windowClass.getSubWindowZLevel()
+        console.error(`${caseName} : mainwindow succeed getSubWindowZLevel`);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        expect(err.code == 1300004 || err.code == 801).assertTrue();
+        done();
+      }
+    });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0900
+     * @tc.name      : test_subWindowWithOptions_zlevel
+     * @tc.desc      : test_subWindowWithOptions_zlevel
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_subWindowWithOptions_zlevel', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_subWindowWithOptions_zlevel';
+      console.log(caseName + 'begin');
+      try {
+        let options : window.SubWindowOptions = {
+          title: caseName,
+          decorEnabled: true,
+          zLevel:10
+        };
+        let promise = windowStage.createSubWindowWithOptions(caseName, options);
+        promise.then(async (data) => {
+          let subWindowClass = data;
+          console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
+          let get_zLevel = subWindowClass.getSubWindowZLevel();
+          await subWindowClass.destroyWindow();
+          await sleep(1000);
+          console.info(`${caseName }  get_zLevel:${get_zLevel}`);
+          expect(get_zLevel == 10).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(`${caseName} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          try{
+            let windowFindClass = window.findWindow(caseName);
+            await windowFindClass?.destroyWindow();
+            await sleep(1000);
+          }catch (e) {
+            console.error(`${caseName} Failed to destroyWindow. Cause code: ${e.code}, message: ${e.message}`);
+          }
+          expect(err.code == 1300002 || err.code == 801).assertTrue();
+          done();
+        });
+      } catch (err) {
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_createWindow_typeMain_0100
+     * @tc.name      : test_create_window_typeMain
+     * @tc.desc      : test_create_window_typeMain
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_create_window_typeMain', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_create_window_typeMain ';
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_MAIN,
+        ctx: context
+      };
+      try {
+        window.createWindow(config).then((value:window.Window) => {
+          console.info(caseName+' Succeeded in creating the window. Data: ' + JSON.stringify(value));
+          expect(false).assertTrue();
+          done();
+        }).catch((err:BusinessError)=> {
+          console.error(caseName+` Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (exception) {
+        console.error(caseName+` Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect(exception.code).assertEqual(401);
+        done();
+      }
+    });
     /**
      * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
      * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
