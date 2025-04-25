@@ -184,6 +184,8 @@ export default function File_Nopermission_test() {
       console.info('FileShare_NoPermission_004 has failed for ' + e.message + ", err code: " + e.code);
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
+      }else{
+        expect(false).assertTrue();
       }
       done();
     }
