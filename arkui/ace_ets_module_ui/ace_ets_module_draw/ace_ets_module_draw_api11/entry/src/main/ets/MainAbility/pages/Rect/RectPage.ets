@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,14 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import CustomLayoutUniqueidTest from './CustomLayout/CustomLayoutUniqueidTest.test'
-import ColumnSpaceResourceTest from './Column/ColumnSpaceResourceTest.test.ets'
-import RowSpaceResourceTest from './Row/RowSpaceResourceTest.test.ets'
-import FlexSpaceResourceTest from './Flex/FlexSpaceResourceTest.test.ets'
+@Entry
+@Component
+struct RectPage {
+  build() {
+    Column({ space: 2 }) {
+      Rect({ width: '90%', height: "30%", radius: 20 })
+        .id("RectRadius_1")
 
-export default function testsuite() {
-  CustomLayoutUniqueidTest();
-  ColumnSpaceResourceTest();
-  RowSpaceResourceTest();
-  FlexSpaceResourceTest();
+      Rect({ width: '90%', height: "30%" })
+        .id("RectRadius_2")
+        .radius(20)
+    }
+    .width("100%").height("100%")
+  }
 }
+

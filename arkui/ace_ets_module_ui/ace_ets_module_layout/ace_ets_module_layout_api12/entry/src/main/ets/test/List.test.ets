@@ -16,6 +16,7 @@ import SpaceMainNumberJsunit from './Flex/SpaceMainNumber.test.ets';
 import SpaceMain5JustifyContentJsunit from './Flex/SpaceMain5JustifyContent.test.ets';
 import SpaceCross5AlignItemsJsunit from './Flex/SpaceCross5AlignItems.test.ets';
 import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
+import RelativeContainerLocalizedDirectionStartTest from './RelativeContainer/RelativeContainerLocalizedDirectionStartTest.test'
 import RelativeContainerStartApi from './RelativeContainerStart/RelativeContainerStartApi.test'
 import FlexSpaceTest from './Flex/FlexSpaceTest.test.ets';
 import ColumnReverseTest from './Column/ColumnReverseTest.test.ets'
@@ -29,6 +30,7 @@ export default function testsuite() {
   SpaceMain5JustifyContentJsunit();
   SpaceCross5AlignItemsJsunit();
   RelativeContainerApi();
+  RelativeContainerLocalizedDirectionStartTest();
   RelativeContainerStartApi();
   FlexSpaceTest();
   APIremoveGestureByTag();

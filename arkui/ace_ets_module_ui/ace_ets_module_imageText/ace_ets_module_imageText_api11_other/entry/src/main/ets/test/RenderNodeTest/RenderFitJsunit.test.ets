@@ -198,5 +198,17 @@ export default function RenderFitJsunit() {
       console.info('[RenderFitJsunit_1300] END');
       done();
     });
+
+    it('RenderFitJsunit_1400', Level.LEVEL2, async (done: Function) => {
+      // Get the information of the RenderFit
+      console.info('[RenderFitJsunit_1400] START');
+      let strJson = getInspectorByKey('RenderFit_TOP');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[RenderFitJsunit_1400] TOP: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+      expect(obj.$attrs.renderFit).assertEqual('RenderFit.TOP');
+      console.info('[RenderFitJsunit_1400] END');
+      done();
+    });
   })
 }

@@ -14,12 +14,12 @@
         "MainAbility/pages/Particle/ParticleProperty",
         "MainAbility/pages/Canvas/CanvasRenderer",
         "MainAbility/pages/Canvas/drwableAdd",
-	"MainAbility/pages/Canvas/canvas2",
+        "MainAbility/pages/Canvas/canvas2",
         "MainAbility/pages/Shape/shape3",
         "MainAbility/pages/Circle/circle3",
         "MainAbility/pages/Canvas/canvas3",
         "MainAbility/pages/line/line3",
-	 "MainAbility/pages/path/path",
+        "MainAbility/pages/path/path",
         "MainAbility/pages/polygon/polygon",
         "MainAbility/pages/polyline/polyline",
         "MainAbility/pages/Canvas/canvas",
@@ -32,8 +32,11 @@
         "MainAbility/pages/polygon/polygon2",
         "MainAbility/pages/polyline/polyLine3",
         "MainAbility/pages/Rect/rect",
+        "MainAbility/pages/Rect/RectPage",
+        "MainAbility/pages/Rect/RectCommonShapeMethodPage",
         "MainAbility/pages/Shape/shape",
         "MainAbility/pages/Circle/circle",
-        "MainAbility/pages/common"
+        "MainAbility/pages/common",
+        "MainAbility/pages/Matrix2D/Matrix2DPage"
     ]
 }
