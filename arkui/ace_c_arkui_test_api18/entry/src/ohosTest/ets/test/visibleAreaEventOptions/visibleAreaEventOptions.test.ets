@@ -30,13 +30,6 @@ export default function VisibleAreaEventOptionsTest(){
       done()
     })
 
-    it('VisibleAreaEventOptionsTest', 0, async (done: Function) => {
-      console.info("push VisibleAreaEventOptionsTest page success: ")
-      let ret = nativeRender.DragEndPendingTest_001()
-      console.log('VisibleAreaEventOptionsTest will drag and check:: ', ret)
-      done()
-    })
-
     it('VisibleAreaEventOptionsTest_a', 0, async (done: Function) => {
       expect(nativeRender.VisibleAreaEventOptionsTest_a()).assertEqual(0)
       await Utils.sleep(100)
