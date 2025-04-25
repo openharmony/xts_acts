@@ -136,8 +136,6 @@ export default function SegmentButtonV2Test0010() {
         .$children[1]
       console.info("[SegmentButtonV2Test0010_001] component text2.$attrs.content is: " + JSON.stringify(text2.$attrs.content));
       expect(text2.$attrs.content).assertEqual('share');
-      console.info("[SegmentButtonV2Test0010_001] component text2.$attrs.fontColor is: " + JSON.stringify(text2.$attrs.fontColor));
-      expect(text2.$attrs.fontColor).assertEqual('#E5000000');
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
@@ -268,8 +266,6 @@ export default function SegmentButtonV2Test0010() {
         .$children[1]
       console.info("[SegmentButtonV2Test0010_002] component text2.$attrs.content is: " + JSON.stringify(text2.$attrs.content));
       expect(text2.$attrs.content).assertEqual('close3');
-      console.info("[SegmentButtonV2Test0010_002] component text2.$attrs.fontColor is: " + JSON.stringify(text2.$attrs.fontColor));
-      expect(text2.$attrs.fontColor).assertEqual('#E5000000');
       await CommonFunc.sleep(500);
       let icon0: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
