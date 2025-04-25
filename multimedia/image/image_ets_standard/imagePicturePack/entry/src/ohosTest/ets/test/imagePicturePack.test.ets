@@ -542,7 +542,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -574,7 +574,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -606,7 +606,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -635,7 +635,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -667,7 +667,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -700,7 +700,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -733,7 +733,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -763,7 +763,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -796,7 +796,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -828,7 +828,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -860,7 +860,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -892,7 +892,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -921,7 +921,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -953,7 +953,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -986,7 +986,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1019,7 +1019,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1052,7 +1052,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1082,7 +1082,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1115,7 +1115,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1147,7 +1147,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1179,7 +1179,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1211,7 +1211,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1240,7 +1240,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1272,7 +1272,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1305,7 +1305,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1338,7 +1338,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1371,7 +1371,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1401,7 +1401,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1434,7 +1434,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1466,7 +1466,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1498,7 +1498,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1530,7 +1530,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1559,7 +1559,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1591,7 +1591,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1624,7 +1624,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1657,7 +1657,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1690,7 +1690,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1720,7 +1720,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1753,7 +1753,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1785,7 +1785,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1817,7 +1817,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1849,7 +1849,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1878,7 +1878,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1910,7 +1910,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1943,7 +1943,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1976,7 +1976,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2009,7 +2009,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2039,7 +2039,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_JPEG_0500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2072,7 +2072,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2106,7 +2106,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2140,7 +2140,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0300");
       if (!isSupportHEICEncode) {
         logger.log("device is not support heif encode");
@@ -2170,7 +2170,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKING_HEIF_0400");
       if (!isSupportHEICEncode) {
         logger.log("device is not support heif encode");
@@ -2198,7 +2198,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2233,7 +2233,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2268,7 +2268,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0300");
       if (!isSupportHEICEncode) {
         logger.log("device is not support heif encode");
@@ -2299,7 +2299,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_GAINMAP_PACKTOFILE_HEIF_0400");
       if (!isSupportHEICEncode) {
         logger.log("device is not support heif encode");
@@ -2328,7 +2328,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2362,7 +2362,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2396,7 +2396,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2430,7 +2430,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2464,7 +2464,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKING_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2496,7 +2496,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2531,7 +2531,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2566,7 +2566,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2601,7 +2601,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2636,7 +2636,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_DEPTHMAP_PACKTOFILE_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2669,7 +2669,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2703,7 +2703,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2737,7 +2737,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKING_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2769,7 +2769,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2804,7 +2804,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2839,7 +2839,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_UNREFOCUSMAP_PACKTOFILE_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2872,7 +2872,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2906,7 +2906,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2940,7 +2940,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -2974,7 +2974,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3008,7 +3008,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKING_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3040,7 +3040,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3075,7 +3075,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3110,7 +3110,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3145,7 +3145,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3180,7 +3180,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_LINEARMAP_PACKTOFILE_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3213,7 +3213,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3247,7 +3247,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3281,7 +3281,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3315,7 +3315,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3349,7 +3349,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKING_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3381,7 +3381,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0100");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3416,7 +3416,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0200");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3451,7 +3451,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0300");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3486,7 +3486,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0400");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {
@@ -3521,7 +3521,7 @@ export default function imagePicturePack() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_PICTURE_FRAGMENTMAP_PACKTOFILE_HEIF_0500");
       if (!isSupportHEIFDecode || !isSupportHEICEncode) {
         if (!isSupportHEIFDecode) {

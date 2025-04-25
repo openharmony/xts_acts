@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import ndkTest from 'libPictureNdk.so';
 import image from "@ohos.multimedia.image";
 import fs from '@ohos.file.fs';
@@ -487,7 +487,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTUREDECODINGOPTIONS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTUREDECODINGOPTIONS_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTUREDECODINGOPTIONS_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -512,7 +512,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTURE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTURE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_CREATEPICTURE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -537,7 +537,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -562,7 +562,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_GETDESIREDAUXILIARYPICTURES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_GETDESIREDAUXILIARYPICTURES_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_GETDESIREDAUXILIARYPICTURES_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -589,7 +589,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_IMAGESOURCE_RELEASE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -617,7 +617,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAuxiliaryPicture(done, image.AuxiliaryPictureType.GAINMAP, 
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0100`)
@@ -631,7 +631,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAuxiliaryPicture(done, image.AuxiliaryPictureType.DEPTH_MAP, 
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0200`)
@@ -645,7 +645,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAuxiliaryPicture(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, 
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0300`)
@@ -659,7 +659,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAuxiliaryPicture(done, image.AuxiliaryPictureType.LINEAR_MAP, 
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0400`)
@@ -673,7 +673,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAuxiliaryPicture(done, image.AuxiliaryPictureType.FRAGMENT_MAP, 
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_0500`)
@@ -687,7 +687,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0600`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -715,7 +715,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETAUXILIARYPICTURE_ERROR_0700`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -741,7 +741,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -772,7 +772,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0400`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -803,7 +803,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_0500`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -832,7 +832,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETAUXILIARYPICTURE_ERROR_0600`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -857,7 +857,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -879,7 +879,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_CREATE_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -901,7 +901,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -927,7 +927,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -956,7 +956,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0300`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -985,7 +985,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0400`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1014,7 +1014,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0500`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1043,7 +1043,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0600`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1072,7 +1072,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0700`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1103,7 +1103,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_SETPROPERTY_ERROR_0800`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1133,7 +1133,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_GETPROPERTY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_GETPROPERTY_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_GETPROPERTY_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1158,7 +1158,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1185,7 +1185,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_SETMETADATA_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1212,7 +1212,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1243,7 +1243,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMETADATA_ERROR_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1273,7 +1273,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMAINPIXELMAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMAINPIXELMAP_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETMAINPIXELMAP_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1305,7 +1305,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETGAINMAPPIXELMAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETGAINMAPPIXELMAP_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_GETGAINMAPPIXELMAP_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1339,7 +1339,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_RELEASE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1363,7 +1363,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1387,7 +1387,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_METADATA_RELEASE_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1411,7 +1411,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testCasesOfCreateAuxiliaryPicture(done, image.AuxiliaryPictureType.GAINMAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0100')
@@ -1425,7 +1425,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testCasesOfCreateAuxiliaryPicture(done, image.AuxiliaryPictureType.DEPTH_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0200')
@@ -1439,7 +1439,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testCasesOfCreateAuxiliaryPicture(done, image.AuxiliaryPictureType.UNREFOCUS_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0300')
@@ -1453,7 +1453,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testCasesOfCreateAuxiliaryPicture(done, image.AuxiliaryPictureType.LINEAR_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0400')
@@ -1467,7 +1467,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testCasesOfCreateAuxiliaryPicture(done, image.AuxiliaryPictureType.FRAGMENT_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_0500')
@@ -1481,7 +1481,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_CREATE_ERROR_0600`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1508,7 +1508,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETMETADATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETMETADATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETMETADATA_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1536,7 +1536,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1565,7 +1565,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETMETADATA_ERROR_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1595,7 +1595,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1621,7 +1621,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_WRITEPIXELS_ERROR_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1647,7 +1647,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1677,7 +1677,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1709,7 +1709,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0300`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1741,7 +1741,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_READPIXELS_0400`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1774,7 +1774,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -1818,7 +1818,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -1862,7 +1862,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -1905,7 +1905,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -1947,7 +1947,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_SETINFO_0500`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -1978,7 +1978,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETINFO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETINFO_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_GETINFO_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2015,7 +2015,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2056,7 +2056,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTURE_RELEASE_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2099,7 +2099,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_CREATE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_CREATE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2121,7 +2121,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testAuxiliaryPictureInfoSetTypeAndGetType(done, image.AuxiliaryPictureType.GAINMAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0100');
@@ -2135,7 +2135,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testAuxiliaryPictureInfoSetTypeAndGetType(done, image.AuxiliaryPictureType.DEPTH_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0200');
@@ -2149,7 +2149,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testAuxiliaryPictureInfoSetTypeAndGetType(done, image.AuxiliaryPictureType.UNREFOCUS_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0300');
@@ -2163,7 +2163,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testAuxiliaryPictureInfoSetTypeAndGetType(done, image.AuxiliaryPictureType.LINEAR_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0400');
@@ -2177,7 +2177,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testAuxiliaryPictureInfoSetTypeAndGetType(done, image.AuxiliaryPictureType.FRAGMENT_MAP,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_GETTYPE_0500');
@@ -2192,7 +2192,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETTYPE_ERROR_0600`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2217,7 +2217,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETSIZE_GETSIZE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETSIZE_GETSIZE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETSIZE_GETSIZE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2245,7 +2245,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETROWSTRIDE_GETROWSTRIDE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETROWSTRIDE_GETROWSTRIDE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETROWSTRIDE_GETROWSTRIDE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2271,7 +2271,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_RELEASE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2295,7 +2295,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Reliability
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2326,7 +2326,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Reliability
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0200`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2359,7 +2359,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Reliability
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_0300`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2395,7 +2395,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Reliability
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_GETPROPERTY_ERROR_0400`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2433,7 +2433,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_CLONE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_CLONE_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NDK_PICTUREMETADATA_CLONE_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -2461,7 +2461,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0100', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0100', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.UNKNOWN,
@@ -2476,7 +2476,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0200', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0200', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.RGB_565,
@@ -2491,7 +2491,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0300', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0300', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.RGBA_8888,
@@ -2506,7 +2506,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0400', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0400', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.BGRA_8888,
@@ -2521,7 +2521,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0500', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0500', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.RGB_888,
@@ -2536,7 +2536,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0600', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0600', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.ALPHA_8,
@@ -2551,7 +2551,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0700', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0700', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.RGBA_F16,
@@ -2566,7 +2566,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0800', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0800', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.NV21,
@@ -2581,7 +2581,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0900', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_0900', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.NV12,
@@ -2596,7 +2596,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1000', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1000', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.RGBA_1010102,
@@ -2611,7 +2611,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1100', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1100', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.YCBCR_P010,
@@ -2626,7 +2626,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1200', 0,
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1200', Level.LEVEL0,
       async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormatByCreateAuxInfo(done, image.PixelMapFormat.YCRCB_P010,
@@ -2641,7 +2641,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.NV12,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1300')
@@ -2655,7 +2655,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.RGB_565,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1400')
@@ -2669,7 +2669,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.RGBA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1500')
@@ -2683,7 +2683,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.BGRA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1600')
@@ -2697,7 +2697,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.RGB_888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1700')
@@ -2711,7 +2711,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.RGBA_F16,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1800')
@@ -2725,7 +2725,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.RGBA_1010102,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_1900')
@@ -2739,7 +2739,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.YCBCR_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2000')
@@ -2753,7 +2753,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.YCRCB_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2100')
@@ -2767,7 +2767,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.NV21,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2200')
@@ -2781,7 +2781,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.GAINMAP, image.PixelMapFormat.NV12,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2300')
@@ -2795,7 +2795,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.RGB_565,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2400')
@@ -2809,7 +2809,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.RGBA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2500')
@@ -2823,7 +2823,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.BGRA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2600')
@@ -2837,7 +2837,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.RGB_888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2700')
@@ -2851,7 +2851,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.RGBA_F16,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2800')
@@ -2865,7 +2865,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.RGBA_1010102,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_2900')
@@ -2879,7 +2879,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.YCBCR_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3000')
@@ -2893,7 +2893,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.YCRCB_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3100')
@@ -2907,7 +2907,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.NV21,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3200')
@@ -2921,7 +2921,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.DEPTH_MAP, image.PixelMapFormat.NV12,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3300')
@@ -2935,7 +2935,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.RGB_565,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3400')
@@ -2949,7 +2949,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.RGBA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3500')
@@ -2963,7 +2963,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.BGRA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3600')
@@ -2977,7 +2977,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.RGB_888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3700')
@@ -2991,7 +2991,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.RGBA_F16,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3800')
@@ -3005,7 +3005,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.RGBA_1010102,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_3900')
@@ -3019,7 +3019,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.YCBCR_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4000')
@@ -3033,7 +3033,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.YCRCB_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4100')
@@ -3047,7 +3047,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.NV21,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4200')
@@ -3061,7 +3061,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.UNREFOCUS_MAP, image.PixelMapFormat.NV12,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4300')
@@ -3075,7 +3075,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.RGB_565,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4400')
@@ -3089,7 +3089,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.RGBA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4500')
@@ -3103,7 +3103,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.BGRA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4600')
@@ -3117,7 +3117,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.RGB_888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4700')
@@ -3131,7 +3131,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.RGBA_F16,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4800')
@@ -3145,7 +3145,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.RGBA_1010102,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_4900')
@@ -3159,7 +3159,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.YCBCR_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5000')
@@ -3173,7 +3173,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.YCRCB_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5100')
@@ -3187,7 +3187,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.NV21,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5200')
@@ -3201,7 +3201,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.LINEAR_MAP, image.PixelMapFormat.NV12,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5300')
@@ -3215,7 +3215,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.RGB_565,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5400')
@@ -3229,7 +3229,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.RGBA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5500')
@@ -3243,7 +3243,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.BGRA_8888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5600')
@@ -3257,7 +3257,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.RGB_888,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5700')
@@ -3271,7 +3271,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.RGBA_F16,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5800')
@@ -3285,7 +3285,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.RGBA_1010102,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_5900')
@@ -3299,7 +3299,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.YCBCR_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6000')
@@ -3313,7 +3313,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.YCRCB_P010,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6100')
@@ -3327,7 +3327,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testSetAndGetPixelFormat(done, image.AuxiliaryPictureType.FRAGMENT_MAP, image.PixelMapFormat.NV21,
         'SUB_MULTIMEDIA_PICTURE_NDK_AUXILIARYPICTUREINFO_SETPIXELFORMAT_GETPIXELFORMAT_6200')
@@ -3341,7 +3341,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testPixelMapFormatInPicture(done, testFileJpg, image.PixelMapFormat.NV21,
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0100`);
@@ -3355,7 +3355,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3375,7 +3375,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testPixelMapFormatInPicture(done, testFileJpg, image.PixelMapFormat.RGB_565,
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0300`);
@@ -3389,7 +3389,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3409,7 +3409,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testPixelMapFormatInPicture(done, testFileJpg, image.PixelMapFormat.RGBA_8888,
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0500`);
@@ -3423,7 +3423,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3443,7 +3443,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testPixelMapFormatInPicture(done, testFileJpg, image.PixelMapFormat.BGRA_8888,
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0700`);
@@ -3457,7 +3457,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_0800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3477,7 +3477,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_1900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       testPixelMapFormatInPicture(done, testFileJpg, image.PixelMapFormat.NV12,
         `SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_1900`);
@@ -3491,7 +3491,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NDK_PICTURE_CREATEPICTUREBYPIXELMAP_2000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3512,7 +3512,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NATIVE_IMAGESOURCE_SETDESIREDAUXILIARYPICTURES_ERROR_0100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -3536,7 +3536,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_0900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_0900`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -3562,7 +3562,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_1000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NATIVE_METADATA_SETPROPERTY_ERROR_1000`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -3588,7 +3588,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3622,7 +3622,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0200', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3656,7 +3656,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0300', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3690,7 +3690,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0400', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3724,7 +3724,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0500', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3755,7 +3755,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0600', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3792,7 +3792,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0700', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3831,7 +3831,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0800', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3868,7 +3868,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_0900', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       if (!isSupportHdr) {
         hilog.info(domain, testTag, 'device is not support hdr');
@@ -3907,7 +3907,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1000', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1000`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -3930,7 +3930,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1100', Level.LEVEL0, async (done: Function) => {
       await sleep(1000);
       let caseName: string = `SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_JPG_ERROR_1100`;
       hilog.info(domain, testTag, caseName + ` begin`);
@@ -3954,7 +3954,7 @@ export default function pictureNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0100', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -3989,7 +3989,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0200', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4024,7 +4024,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0300', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4059,7 +4059,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0400', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0400', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4094,7 +4094,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0500', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0500', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4129,7 +4129,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0600', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0600', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4166,7 +4166,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0700', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_0700', Level.LEVEL0, async (done: Function) => {
           await sleep(1000);
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
@@ -4205,7 +4205,7 @@ export default function pictureNdkTest() {
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
-        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_ERROR_0800', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_PICTURE_NATIVE_PICTURE_DECODE_HEIF_ERROR_0800', Level.LEVEL0, async (done: Function) => {
           if (!isSupportHdr) {
             hilog.info(domain, testTag, 'device is not support hdr');
             expect(true).assertTrue();

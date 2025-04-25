@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium'
 import ndkTest, { IImageInfo } from 'libImageNdk.so'
 import image from "@ohos.multimedia.image";
 import hilog from '@ohos.hilog';
@@ -1028,6 +1028,39 @@ export default function imageNdkTest() {
       }
     }
 
+    const NATIVE_RegionDecode = async (TAG: string, RegionX: number, RegionY: number,
+                                          RegionWidth: number, RegionHeight: number, desiredWidth: number, desiredHeight: number,
+                                          filename: string, done: Function, cropStrategy?: number) => {
+      await getFd(filename);
+      const imageSourceApi: image.ImageSource = ndkTest.CreateFromFd(fileFd);
+      if (typeof imageSourceApi === "object") {
+        hilog.info(0x0000, 'Native_RegionDecodeTest', '%{public}s', TAG + `create image source success:${imageSourceApi}`)
+        let options: image.DecodingOptions = ndkTest.CreateDecodingOptions();
+        ndkTest.DecodingOptionsSetDesiredSize(options, desiredWidth, desiredHeight);
+        ndkTest.DecodingOptionsSetDesiredRegion(options, RegionX, RegionY, RegionWidth, RegionHeight);
+        if (cropStrategy != undefined) {
+          ndkTest.DecodingOptionsGetIndex(options);
+          ndkTest.DecodingOptionsSetCropAndScaleStrategy(options, cropStrategy);
+          const targetCropStrategy: number = ndkTest.DecodingOptionsGetCropAndScaleStrategy(options);
+          expect(targetCropStrategy == cropStrategy).assertTrue();
+        }
+      const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
+      if (typeof pixelMap === "object") {
+        expect(true).assertTrue();
+        ndkTest.SourceRelease(imageSourceApi)
+        ndkTest.PixelMapRelease(pixelMap);
+        done()
+      } else {
+        ndkTest.SourceRelease(imageSourceApi);
+        expect(false).assertTrue();
+        done()
+      }
+    } else {
+        expect(false).assertTrue();
+        done()
+    }
+  }
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100
      * @tc.name      : testInitializationOptions
@@ -1036,7 +1069,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testInitializationOptions(6, 4, 3, 0)
       expect(result).assertEqual(0)
       done();
@@ -1050,7 +1083,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0200', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0200', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testInitializationOptions(6, 4, 3, 1)
       expect(result).assertEqual(0)
       done();
@@ -1064,7 +1097,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0300', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0300', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testInitializationOptions(6, 4, 3, 2)
       expect(result).assertEqual(0)
       done();
@@ -1078,7 +1111,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0400', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0400', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testInitializationOptions(6, 4, 3, 3)
       expect(result).assertEqual(0)
       done();
@@ -1092,7 +1125,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0100', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 3, 0)
       expect(result).assertEqual(0)
       done();
@@ -1106,7 +1139,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0200', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0200', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(result).assertEqual(0)
       done();
@@ -1120,7 +1153,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0300', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0300', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 3, 2)
       expect(result).assertEqual(0)
       done();
@@ -1134,7 +1167,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0400', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0400', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 3, 3)
       expect(result).assertEqual(0)
       done();
@@ -1148,7 +1181,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0500', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0500', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 4, 0)
       expect(result).assertEqual(0)
       done();
@@ -1162,7 +1195,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0600', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0600', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 4, 1)
       expect(result).assertEqual(0)
       done();
@@ -1176,7 +1209,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0700', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0700', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 4, 2)
       expect(result).assertEqual(0)
       done();
@@ -1190,7 +1223,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0800', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_CreatePixelmap_0800', Level.LEVEL0, (done: Function) => {
       let result: number = ndkTest.testCreatePixelmap(6, 4, 4, 3)
       expect(result).assertEqual(0)
       done();
@@ -1204,7 +1237,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ReadPixels_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_ReadPixels_0100', Level.LEVEL0, (done: Function) => {
       let pixelmapResult: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(pixelmapResult).assertEqual(0)
       let readBuffer = new ArrayBuffer(96);
@@ -1221,7 +1254,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_WritePixels_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_WritePixels_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let color = new ArrayBuffer(96);
@@ -1242,7 +1275,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_GetImageInfo_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_GetImageInfo_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let imageInfo: IImageInfo = ndkTest.testGetImageInfo()
@@ -1259,7 +1292,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Opacity_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Opacity_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testOpacity(90)
@@ -1275,7 +1308,7 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 3
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Scale_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Scale_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testScale(100, 100)
@@ -1291,7 +1324,7 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 3
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Translate_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Translate_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testTranslate(100, 100)
@@ -1307,7 +1340,7 @@ export default function imageNdkTest() {
     * @tc.type      : Function
     * @tc.level     : Level 3
     */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Rotate_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Rotate_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testRotate(90.0)
@@ -1323,7 +1356,7 @@ export default function imageNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Flip_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Flip_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testFlip(true, true)
@@ -1339,7 +1372,7 @@ export default function imageNdkTest() {
    * @tc.type      : Function
    * @tc.level     : Level 3
    */
-    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Crop_0100', 0, (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAPCAPI_Crop_0100', Level.LEVEL0, (done: Function) => {
       let resultPixelmap: number = ndkTest.testCreatePixelmap(6, 4, 3, 1)
       expect(resultPixelmap).assertEqual(0)
       let result: number = ndkTest.testCrop(100, 100, 100, 100)
@@ -1356,7 +1389,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0100"
       try {
         await NDK_CreateFromUri(testTag, "test5.jpg", done);
@@ -1376,7 +1409,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0200'
       try {
         await NDK_CreateFromUri(testTag, "test7.png", done);
@@ -1396,7 +1429,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0300'
       try {
         await NDK_CreateFromUri(testTag, "test6.gif", done);
@@ -1416,7 +1449,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0400"
       try {
         await NDK_CreateFromUri(testTag, "test8.bmp", done);
@@ -1436,7 +1469,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0500'
       try {
         await NDK_CreateFromUri(testTag, "test.webp", done);
@@ -1456,7 +1489,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0600'
       try {
         await NDK_CreateFromUri(testTag, "test.arw", done);
@@ -1476,7 +1509,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0700'
       try {
         await NDK_CreateFromUri(testTag, "docx.ico", done);
@@ -1496,7 +1529,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_URI_0800'
       try {
         await NDK_CreateFromUri(testTag, "SVG.svg", done);
@@ -1516,7 +1549,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0100'
       try {
         await NDK_CreateFromFd(testTag, "test5.jpg", done);
@@ -1536,7 +1569,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0200'
       try {
         await NDK_CreateFromFd(testTag, "test7.png", done);
@@ -1556,7 +1589,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0300'
       try {
         await NDK_CreateFromFd(testTag, "test6.gif", done);
@@ -1576,7 +1609,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0400'
       try {
         await NDK_CreateFromFd(testTag, "test8.bmp", done);
@@ -1596,7 +1629,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0500'
       try {
         await NDK_CreateFromFd(testTag, "test.webp", done);
@@ -1616,7 +1649,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0600'
       try {
         await NDK_CreateFromFd(testTag, "test.arw", done);
@@ -1636,7 +1669,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0700'
       try {
         await NDK_CreateFromFd(testTag, "docx.ico", done);
@@ -1657,7 +1690,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_FD_0800'
       try {
         await NDK_CreateFromFd(testTag, "SVG.svg", done);
@@ -1677,7 +1710,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0100'
       try {
         await NDK_CreateFromData(testTag, "test5.jpg", done);
@@ -1697,7 +1730,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0200'
       try {
         await NDK_CreateFromData(testTag, "test7.png", done);
@@ -1717,7 +1750,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0300"
       try {
         await NDK_CreateFromData(testTag, "test6.gif", done);
@@ -1737,7 +1770,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0400'
       try {
         await NDK_CreateFromData(testTag, "test8.bmp", done);
@@ -1757,7 +1790,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0500'
       try {
         await NDK_CreateFromData(testTag, "test.webp", done);
@@ -1777,7 +1810,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0600'
       try {
         await NDK_CreateFromData(testTag, "test.arw", done);
@@ -1797,7 +1830,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0700"
       try {
         await NDK_CreateFromData(testTag, "docx.ico", done);
@@ -1817,7 +1850,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_BUFFER_0800'
       try {
         await NDK_CreateFromData(testTag, "SVG.svg", done);
@@ -1838,7 +1871,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0100'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1860,7 +1893,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0200'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1882,7 +1915,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0300'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1904,7 +1937,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0400'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1926,7 +1959,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0500'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1948,7 +1981,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0600'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1970,7 +2003,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0700'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -1992,7 +2025,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYURI_0800'
       try {
         await NDK_CreatePixelMapByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2012,7 +2045,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900', "uri", "test5.jpg", 480, 360, done);
     });
 
@@ -2024,7 +2057,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000', "uri", "test7.png", 550, 550, done);
     });
 
@@ -2038,7 +2071,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0100'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2060,7 +2093,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0200'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2082,7 +2115,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0300'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2104,7 +2137,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0400'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2126,7 +2159,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0500'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2148,7 +2181,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0600'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2170,7 +2203,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0700'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2192,7 +2225,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYFD_0800'
       try {
         await NDK_CreatePixelMapByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2212,7 +2245,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900', "Fd", "test6.gif", 480, 270, done);
     });
 
@@ -2224,7 +2257,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000', "Fd", "test8.bmp", 959, 959, done);
     });
 
@@ -2238,7 +2271,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0100'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2260,7 +2293,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0200'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2282,7 +2315,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0300'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2304,7 +2337,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0400'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2326,7 +2359,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0500'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2348,7 +2381,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0600'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2370,7 +2403,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0700'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2392,7 +2425,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUNDK_SOURCENDK_CREATE_BYDATA_0800'
       try {
         await NDK_CreatePixelMapByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2412,7 +2445,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900', "Buffer", "test.webp", 1212, 681, done);
     });
 
@@ -2424,7 +2457,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000', "Buffer", "test.arw", 3074, 2728, done);
     });
 
@@ -2438,7 +2471,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYURI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYURI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'GIF_CREATE_RGBA8888LIST_BYURI_0100'
       try {
         await NDK_CreatePixelMapListByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2460,7 +2493,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYURI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYURI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'WEBP_CREATE_RGBA8888LIST_BYURI_0100'
       try {
         await NDK_CreatePixelMapListByUri(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2482,7 +2515,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYFD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYFD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'GIF_CREATE_RGBA8888LIST_BYFD_0100'
       try {
         await NDK_CreatePixelMapListByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2504,7 +2537,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYFD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYFD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'WEBP_CREATE_RGBA8888LIST_BYFD_0100'
       try {
         await NDK_CreatePixelMapListByFd(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2526,7 +2559,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYDATA_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYDATA_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'GIF_CREATE_RGBA8888LIST_BYDATA_0100'
       try {
         await NDK_CreatePixelMapListByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2548,7 +2581,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYDATA_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYDATA_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'WEBP_CREATE_RGBA8888LIST_BYDATA_0100'
       try {
         await NDK_CreatePixelMapListByData(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3,
@@ -2570,7 +2603,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0100'
       try {
         await NDK_GetDelayTime(testTag, "test6.gif", "Uri", done);
@@ -2591,7 +2624,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0200'
       try {
         await NDK_GetDelayTime(testTag, "test6.gif", "Fd", done);
@@ -2612,7 +2645,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_DELAY_TIME_0300'
       try {
         await NDK_GetDelayTime(testTag, "test6.gif", "Buffer", done);
@@ -2633,7 +2666,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0100'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test5.jpg", done);
@@ -2654,7 +2687,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0200'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test7.png", done);
@@ -2675,7 +2708,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0300'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test6.gif", done);
@@ -2696,7 +2729,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0400'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test8.bmp", done);
@@ -2717,7 +2750,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0500'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test.webp", done);
@@ -2738,7 +2771,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0600'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "test.arw", done);
@@ -2759,7 +2792,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0700'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "docx.ico", done);
@@ -2780,7 +2813,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_URI_0800'
       try {
         await NDK_GetImageInfoByUri(testTag, 0, "SVG.svg", done);
@@ -2801,7 +2834,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0100'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test5.jpg", done);
@@ -2822,7 +2855,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0200'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test7.png", done);
@@ -2843,7 +2876,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0300'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test6.gif", done);
@@ -2864,7 +2897,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0400'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test8.bmp", done);
@@ -2885,7 +2918,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0500'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test.webp", done);
@@ -2906,7 +2939,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0600'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "test.arw", done);
@@ -2927,7 +2960,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0700'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "docx.ico", done);
@@ -2948,7 +2981,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_FD_0800'
       try {
         await NDK_GetImageInfoByFd(testTag, 0, "SVG.svg", done);
@@ -2969,7 +3002,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0100'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test5.jpg", done);
@@ -2990,7 +3023,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0200'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test7.png", done);
@@ -3011,7 +3044,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0300'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test6.gif", done);
@@ -3032,7 +3065,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0400'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test8.bmp", done);
@@ -3053,7 +3086,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0500'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test.webp", done);
@@ -3074,7 +3107,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0600'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "test.arw", done);
@@ -3095,7 +3128,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0700'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "docx.ico", done);
@@ -3116,7 +3149,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_INFO_DATA_0800'
       try {
         await NDK_GetImageInfoByData(testTag, 0, "SVG.svg", done);
@@ -3137,7 +3170,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0100'
       try {
         await NDK_GetImageProperty(testTag, "test_exif_v2.jpg", "Uri", done);
@@ -3158,7 +3191,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_IMAGE_PROPERTY_0200'
       try {
         await NDK_GetImageProperty(testTag, "test_exif_v2.jpg", "Fd", done);
@@ -3179,7 +3212,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_MODIFY_IMAGE_PROPERTY_URI_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_MODIFY_IMAGE_PROPERTY_URI_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'MODIFY_IMAGE_PROPERTY_URI_0100'
       try {
         await NDK_ModifyImagePropertyByUri(testTag, "test5.jpg", done);
@@ -3200,7 +3233,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_MODIFY_IMAGE_PROPERTY_FD_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_MODIFY_IMAGE_PROPERTY_FD_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'MODIFY_IMAGE_PROPERTY_FD_0100'
       try {
         await NDK_ModifyImagePropertyByFd(testTag, "test5.jpg", done);
@@ -3221,7 +3254,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0100'
       try {
         await NDK_GetFrameCount(testTag, "test6.gif", "Uri", done);
@@ -3242,7 +3275,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GET_FRAME_COUNT_0200'
       try {
         await NDK_GetFrameCount(testTag, "test6.gif", "Fd", done);
@@ -3263,7 +3296,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0100'
       try {
         await NDK_SourceRelease(testTag, "test5.jpg", "Uri", done);
@@ -3284,7 +3317,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0200'
       try {
         await NDK_SourceRelease(testTag, "test5.jpg", "Fd", done);
@@ -3305,7 +3338,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCERELEASE_0300'
       try {
         await NDK_SourceRelease(testTag, "test5.jpg", "Buffer", done);
@@ -3327,7 +3360,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_GETIMAGEINFOBYOPTION_TO_RGBA8888_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_GETIMAGEINFOBYOPTION_TO_RGBA8888_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_GETIMAGEINFOBYOPTION_TO_RGBA8888_0100'
       try {
         await NDK_GetImageInfoByOption('SUB_MULTIMEDIA_IMAGE_NDK_GETIMAGEINFOBYOPTION_TO_RGBA8888_0100', 0, 90, 0, 0, 100,
@@ -3347,7 +3380,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_CREATE_0100', Level.LEVEL0, async (done: Function) => {
       try {
         const parker: image.ImagePacker = ndkTest.PackerCreate()
         if (parker) {
@@ -3373,7 +3406,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       try {
         const parker: image.ImagePacker = ndkTest.PackerCreate()
         if (parker) {
@@ -3406,7 +3439,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0100"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "imageSource", 100,
@@ -3426,7 +3459,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0200"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "pixelMap", 100,
@@ -3446,7 +3479,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0300"
       try {
         await NDK_Packer("SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0300", "test5.jpg", done, "packing", "imageSource", 10,
@@ -3467,7 +3500,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0400', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0400"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "pixelMap", 10, "image/jpeg", true)
@@ -3486,7 +3519,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0500', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0500"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "imageSource", 100, "image/webp", false)
@@ -3505,7 +3538,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0600', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0600"
       try {
         await NDK_Packer("SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0600", "test5.jpg", done, "packing", "pixelMap", 100,
@@ -3526,7 +3559,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0700', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0700"
       try {
         await NDK_Packer("SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0700", "test5.jpg", done, "packing", "imageSource", 10,
@@ -3547,7 +3580,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0800', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0800"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "pixelMap", 10,
@@ -3567,7 +3600,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0900', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0900"
       try {
         await NDK_Packer("SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_0900", "test5.jpg", done, "packing", "imageSource", 100,
@@ -3587,7 +3620,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01000', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01000"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "imageSource", 100,
@@ -3607,7 +3640,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01100"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "pixelMap", 10,
@@ -3627,7 +3660,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACKING_JPG_01200"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packing", "imageSource", 10,
@@ -3648,7 +3681,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0100"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "imageSource",
@@ -3668,7 +3701,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0200"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3689,7 +3722,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0300', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0300"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile",
@@ -3709,7 +3742,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0400', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0400"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3730,7 +3763,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0500', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0500"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "imageSource",
@@ -3750,7 +3783,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0600', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0600"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3770,7 +3803,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0700', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0700"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "imageSource",
@@ -3790,7 +3823,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0800', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0800"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3810,7 +3843,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0900', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_0900"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "imageSource",
@@ -3830,7 +3863,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01000', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01000"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3850,7 +3883,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01100"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile",
@@ -3870,7 +3903,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01200', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_PACK_TO_FILE_JPG_01200"
       try {
         await NDK_Packer(testTag, "test5.jpg", done, "packToFile", "pixelMap",
@@ -3891,7 +3924,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0100'
       try {
         await NDK_CreateFromRawFile(testTag, "test5.jpg", done);
@@ -3911,7 +3944,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0200'
       try {
         await NDK_CreateFromRawFile(testTag, "test7.png", done);
@@ -3931,7 +3964,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0300'
       try {
         await NDK_CreateFromRawFile(testTag, "test6.gif", done);
@@ -3951,7 +3984,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0400'
       try {
         await NDK_CreateFromRawFile(testTag, "test8.bmp", done);
@@ -3971,7 +4004,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0500'
       try {
         await NDK_CreateFromRawFile(testTag, "test.webp", done);
@@ -3991,7 +4024,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0600", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0600'
       try {
         await NDK_CreateFromRawFile(testTag, "test.arw", done);
@@ -4011,7 +4044,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0700'
       try {
         await NDK_CreateFromRawFile(testTag, "docx.ico", done);
@@ -4031,7 +4064,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BY_RAWFILE_0800'
       try {
         await NDK_CreateFromRawFile(testTag, "SVG.svg", done);
@@ -4052,7 +4085,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0100"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test5.jpg", done);
@@ -4073,7 +4106,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0200", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0200"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test7.png", done);
@@ -4094,7 +4127,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0300", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0300"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test6.gif", done);
@@ -4115,7 +4148,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0400", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0400"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test8.bmp", done);
@@ -4136,7 +4169,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0500", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0500"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test.webp", done);
@@ -4157,7 +4190,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0600", Level.LEVEL0, async (done: Function) => {
       const testTag ="SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0600"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test.arw", done);
@@ -4178,7 +4211,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0700", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0700"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "docx.ico", done);
@@ -4199,7 +4232,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0800", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0800"
       try {
         await NDK_CreatePixelMapByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "SVG.svg", done);
@@ -4218,7 +4251,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900', "RawFile", "docx.ico", 512, 512, done);
     });
 
@@ -4230,7 +4263,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000", Level.LEVEL0, async (done: Function) => {
       await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000', "RawFile", "SVG.svg", 1593, 1594, done);
     });
 
@@ -4244,7 +4277,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYRAWFILE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYRAWFILE_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYRAWFILE_0100"
       try {
         await NDK_CreatePixelMapListByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test6.gif", done);
@@ -4265,7 +4298,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYRAWFILE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYRAWFILE_0100", Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYRAWFILE_0100"
       try {
         await NDK_CreatePixelMapListByRawFile(testTag, 0, 90, 0, 0, 100, 200, 400, 600, 3, "test.webp", done);
@@ -4284,7 +4317,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_CREATE_HDR_0100"
       try {
         await CreatePixelMapByHdr(testTag, done)
@@ -4303,7 +4336,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_PIXELMAP_TOSDR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_PIXELMAP_TOSDR_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_PIXELMAP_TOSDR_0100"
       try {
         await PixelMapToSdr(testTag, done)
@@ -4322,7 +4355,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_GET_DECODINGOPTIONS_DYNAMICRANGE_0100"
       try {
         await DecodingOptionsDesiredDynamic(testTag, 1, done)
@@ -4341,7 +4374,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_DYNAMICRANGE_0100"
       try {
         await PackingOptionsDesiredDynamic(testTag, 1, done)
@@ -4360,7 +4393,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100"
       try {
         await CheckImageSourceDynamicRange(testTag, done)
@@ -4379,7 +4412,7 @@ export default function imageNdkTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100', Level.LEVEL0, async (done: Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100"
       try {
         await PackingOptionsNeedsPackProperties(testTag, 1, done)
@@ -4389,5 +4422,78 @@ export default function imageNdkTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0100'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0200'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done, image.CropAndScaleStrategy.SCALE_FIRST);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
+
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize,
+                      5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300", 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_REGIONDECODE_0300'
+      try {
+        let desiredSize: image.Size = { width: 960, height: 1440 };
+        let desiredRegionSize: image.Size = { width: 800, height: 800 };
+        let desiredRegion: image.Region = { size: desiredRegionSize, x: 0, y: 0 };
+        await NATIVE_RegionDecode(testTag, desiredRegion.x, desiredRegion.y, desiredRegionSize.width, desiredRegionSize.height,
+        desiredSize.width, desiredSize.height, "jpeg_test_1440x1920.jpg", done, image.CropAndScaleStrategy.CROP_FIRST);
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }

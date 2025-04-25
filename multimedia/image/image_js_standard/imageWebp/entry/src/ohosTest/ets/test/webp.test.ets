@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function imageWebp() {
@@ -599,7 +599,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       try {
         getFd("test_large.webp");
         console.log(`filePath ${filePath}`)
@@ -659,7 +659,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("test_large.webp");
         let imageSourceApi = image.createImageSource(filePath);
@@ -715,7 +715,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("test_large.webp");
         let imageSourceApi = image.createImageSource(filePath);
@@ -755,7 +755,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("test_large.webp");
         let imageSourceApi = image.createImageSource(filePath);
@@ -788,7 +788,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -818,7 +818,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0400", 0, async (done: ESObject) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0400", Level.LEVEL0, async (done: ESObject) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -848,7 +848,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -878,7 +878,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -908,7 +908,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: false,
@@ -938,7 +938,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -968,7 +968,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -998,7 +998,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -1028,7 +1028,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1100", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -1058,7 +1058,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1200", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 2,
         editable: true,
@@ -1087,7 +1087,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1300", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -1117,7 +1117,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1400", Level.LEVEL0, async (done: Function) => {
       let decodingOptions: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -1146,7 +1146,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/webp"], quality: 90
       };
@@ -1163,7 +1163,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/webp"], quality: 100
       };
@@ -1180,7 +1180,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/webp"], quality: 123
       };
@@ -1197,7 +1197,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       if (isSupportGifEncode) {
         console.info("SUB_MULTIMEDIA_IMAGE_COLORSPACE_ENCODE_PROMISE_0200 The device support gif encode")
         expect(true).assertTrue();
@@ -1220,7 +1220,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         quality: 90
       };
@@ -1237,7 +1237,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"]
       };
@@ -1254,7 +1254,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       if (isSupportGifEncode) {
         expect(true).assertTrue();
         done();
@@ -1277,7 +1277,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"], quality: 112
       };
@@ -1294,7 +1294,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"]
       };
@@ -1311,7 +1311,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         quality: 90
       };
@@ -1328,7 +1328,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"], quality: -1
       };
@@ -1345,7 +1345,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"], quality: -1
       };
@@ -1362,7 +1362,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"], quality: 0
       };
@@ -1379,7 +1379,7 @@ export default function imageWebp() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: ESObject = {
         format: ["image/jpeg"], quality: 0
       };
@@ -1395,7 +1395,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100", "test_large.webp");
     });
 
@@ -1408,7 +1408,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200", "moving_test.webp");
     });
 
@@ -1421,7 +1421,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300", "test.jpg");
     });
 
@@ -1434,7 +1434,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100", "test_large.webp");
     });
 
@@ -1447,7 +1447,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200", "moving_test.webp");
     });
 
@@ -1460,7 +1460,7 @@ export default function imageWebp() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       testGetDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300", "test.jpg");
     });
   });

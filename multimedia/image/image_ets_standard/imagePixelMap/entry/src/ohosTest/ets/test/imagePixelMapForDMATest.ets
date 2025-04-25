@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, afterEach, it, expect, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
@@ -204,7 +204,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0100");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -233,7 +233,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0200");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -262,7 +262,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0300");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -291,7 +291,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0400");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -320,7 +320,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0500");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -349,7 +349,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0600");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -378,7 +378,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0700");
       let buffer: ESObject = await getBuffer(test_DMA_HDR);
       let decodingOptions: image.DecodingOptions = {
@@ -407,7 +407,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0800");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -436,7 +436,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_0900");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -465,7 +465,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1000");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -494,7 +494,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1100");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -523,7 +523,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1200");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -552,7 +552,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1300");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -581,7 +581,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1301', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1301', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1301");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -610,7 +610,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1400");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -639,7 +639,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1500");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -668,7 +668,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1600");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -697,7 +697,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1601', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1601', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1601");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -724,7 +724,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1700");
       let buffer: ESObject = await getBuffer(test_DMA_33_77);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "default");
@@ -746,7 +746,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1800");
       let buffer: ESObject = await getBuffer(test_DMA_128_256);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "default");
@@ -768,7 +768,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_1900");
       let buffer: ESObject = await getBuffer(test_DMA_512_512);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "default");
@@ -790,7 +790,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2000");
       let buffer: ESObject = await getBuffer(test_DMA_2999_3742);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "default");
@@ -812,7 +812,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2100");
       let buffer: ESObject = await getBuffer(test_DMA_3072_4096);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "default");
@@ -836,7 +836,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2200");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -865,7 +865,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2300");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -894,7 +894,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2400");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -923,7 +923,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2500");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -952,7 +952,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2600");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -981,7 +981,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2700");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1010,7 +1010,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2800");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1039,7 +1039,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_2900");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1068,7 +1068,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3000");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1097,7 +1097,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3100");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1126,7 +1126,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3200");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1155,7 +1155,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3300");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1184,7 +1184,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3400");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1213,7 +1213,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3401', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3401', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3401");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1242,7 +1242,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3500");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1271,7 +1271,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3600");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1300,7 +1300,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3700");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1329,7 +1329,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3701', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3701', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3701");
       let buffer: ESObject = await getBuffer(test_DMA_1801_4041);
       let decodingOptions: image.DecodingOptions = {
@@ -1356,7 +1356,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3800");
       let buffer: ESObject = await getBuffer(test_DMA_33_77);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "sync");
@@ -1378,7 +1378,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_3900");
       let buffer: ESObject = await getBuffer(test_DMA_128_256);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "sync");
@@ -1400,7 +1400,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4000");
       let buffer: ESObject = await getBuffer(test_DMA_512_512);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "sync");
@@ -1422,7 +1422,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4100");
       let buffer: ESObject = await getBuffer(test_DMA_2999_3742);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "sync");
@@ -1444,7 +1444,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4200");
       let buffer: ESObject = await getBuffer(test_DMA_3072_4096);
       let pixelMap = await getPixelmapFromAllocator(logger, buffer, "sync");
@@ -1469,7 +1469,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1505,7 +1505,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1541,7 +1541,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1577,7 +1577,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4600");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1613,7 +1613,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4700");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1649,7 +1649,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4800");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1682,7 +1682,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4900");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1710,7 +1710,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4901', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4901', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_4901");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1741,7 +1741,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5000");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1777,7 +1777,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1813,7 +1813,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1849,7 +1849,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1885,7 +1885,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5400");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1921,7 +1921,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5500");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1954,7 +1954,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5600");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -1982,7 +1982,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_SYNC_JPEG_5700");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2012,7 +2012,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0100");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2040,7 +2040,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0200");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2068,7 +2068,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_0300");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2096,7 +2096,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0100");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2124,7 +2124,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0200");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2152,7 +2152,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_0300");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2180,7 +2180,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0100");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2208,7 +2208,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0200");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2236,7 +2236,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_0300");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2264,7 +2264,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0100");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2292,7 +2292,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2320,7 +2320,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_0200");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2349,7 +2349,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2383,7 +2383,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2417,7 +2417,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -2451,7 +2451,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0100");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -2479,7 +2479,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0200");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -2507,7 +2507,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_0300");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -2535,7 +2535,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0100");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -2569,7 +2569,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0200");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -2603,7 +2603,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_0300");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -2637,7 +2637,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0100");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2665,7 +2665,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0200");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2693,7 +2693,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_PNG_SYNC_0300");
       let buffer: ESObject = await getBuffer("test.png");
       let decodingOptions: image.DecodingOptions = {
@@ -2721,7 +2721,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0100");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2749,7 +2749,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0200");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2777,7 +2777,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_BMP_SYNC_0300");
       let buffer: ESObject = await getBuffer("test.bmp");
       let decodingOptions: image.DecodingOptions = {
@@ -2805,7 +2805,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0100");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2833,7 +2833,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0200");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2861,7 +2861,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_GIF_SYNC_0300");
       let buffer: ESObject = await getBuffer("test.gif");
       let decodingOptions: image.DecodingOptions = {
@@ -2889,7 +2889,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0100");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2917,7 +2917,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0200");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2945,7 +2945,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_WEBP_SYNC_0300");
       let buffer: ESObject = await getBuffer("test.webp");
       let decodingOptions: image.DecodingOptions = {
@@ -2973,7 +2973,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0100");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -3001,7 +3001,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0200");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -3029,7 +3029,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_ICO_SYNC_0300");
       let buffer: ESObject = await getBuffer("test.ico");
       let decodingOptions: image.DecodingOptions = {
@@ -3057,7 +3057,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0100");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -3091,7 +3091,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0200");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -3125,7 +3125,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_DNG_SYNC_0300");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -3159,7 +3159,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0100");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -3193,7 +3193,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0200");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -3227,7 +3227,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_HEIF_SYNC_0300");
       if (!isSupportHEIFDecode) {
         logger.log("device is not support heif decode");
@@ -3259,7 +3259,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0100");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3289,7 +3289,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0200");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3319,7 +3319,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0300', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0300");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3349,7 +3349,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0400', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0400");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3379,7 +3379,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0500', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0500");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3409,7 +3409,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0600', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0600");
       try {
         let buffer: ESObject = await getBuffer("test_DMA.jpg");
@@ -3442,7 +3442,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0700', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0700");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -3486,7 +3486,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0800', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0800");
       if (!isSupportHdr) {
         logger.log("device is not support hdr");
@@ -3526,7 +3526,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0900', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_0900");
       try {
         let buffer: ESObject = await getBuffer("SIZE_0_0.jpg");
@@ -3555,7 +3555,7 @@ export default function imagePixelmap() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_1000', Level.LEVEL0, async (done: Function) => {
       let logger = new Logger("SUB_MULTIMEDIA_IMAGE_CREATE_PIXELMAP_JPEG_ERROR_1000");
       try {
         let buffer: ESObject = await getBuffer("SIZE_0_0.jpg");
