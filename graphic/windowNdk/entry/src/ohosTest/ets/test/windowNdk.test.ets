@@ -224,7 +224,7 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_show_subWindow_Minimize_window', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it('test_NDK_show_subWindow_Minimize_window', 3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow_Minimize_window";
       try {
         let subWindow:window.Window;
