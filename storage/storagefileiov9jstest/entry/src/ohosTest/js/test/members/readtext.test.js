@@ -253,7 +253,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_009', 3, async function () {
+  it('fileIO_test_readtext_sync_009', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_009');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -277,7 +277,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
   */
-  it('fileIO_test_readtext_sync_010', 3, async function () {
+  it('fileIO_test_readtext_sync_010', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_readtext_sync_010');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -781,7 +781,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_016', 3, async function (done) {
+  it('fileIO_test_readtext_async_016', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -806,7 +806,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_017', 3, async function (done) {
+  it('fileIO_test_readtext_async_017', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -836,7 +836,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_018', 3, async function (done) {
+  it('fileIO_test_readtext_async_018', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -865,7 +865,7 @@ describe('fileIO_fs_readtext', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_readtext_async_019', 3, async function (done) {
+  it('fileIO_test_readtext_async_019', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_test_readtext_async_019');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

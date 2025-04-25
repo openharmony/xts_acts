@@ -20,6 +20,7 @@ import geolocationTest_4 from './GetCountryCode.test.js'
 import geolocationTest_6 from './GetCountryCodeM.test.js'
 import geolocationTest_geo3 from './LocationTest.test.js'
 import geolocationTest_geo7 from './LocationMTest.test.js'
+import geolocationTest_geo8 from './LocationMTest02.test.js'
 import geolocationTest_geo2 from './SystemLocation.test.js'
 export default function testsuite() {
    geolocationTest_geo5()
@@ -29,4 +30,5 @@ export default function testsuite() {
    geolocationTest_geo3()
    geolocationTest_geo7()
    geolocationTest_geo2()
+   geolocationTest_geo8()
 }

@@ -17,6 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import {
     fileIO, FILE_CONTENT, prepareFile, describe, it, expect, randomString, nextFileName
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOCopyDir() {
   describe('fileIO_fs_copyDir', function () {
@@ -84,7 +85,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_000', 3, async function () {
+  it('fileIO_test_copyDir_sync_000', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_sync_000';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -129,7 +130,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_001', 3, async function () {
+  it('fileIO_test_copyDir_sync_001', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_sync_001';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -180,7 +181,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_002', 0, async function () {
+  it('fileIO_test_copyDir_sync_002', Level.LEVEL0, async function () {
     let dpath = await readyFiles('fileIO_test_copyDir_sync_002');
 
     try {
@@ -222,7 +223,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_003', 0, async function () {
+  it('fileIO_test_copyDir_sync_003', Level.LEVEL0, async function () {
     let dpath = await readyFiles('fileIO_test_copyDir_sync_003');
 
     try {
@@ -262,7 +263,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_004', 3, async function () {
+  it('fileIO_test_copyDir_sync_004', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_sync_004';
     let ddpath1 = dpath + '/srcDir';
     let ddpath2 = dpath + '/destDir';
@@ -295,7 +296,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_005', 3, async function () {
+  it('fileIO_test_copyDir_sync_005', Level.LEVEL3, async function () {
     let dpath = await nextFileName('fileIO_test_copyDir_sync_005');
     let fpath = dpath + '/file_000.txt';
     let ddpath = dpath + '/dir_000';
@@ -324,7 +325,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_006', 3, async function () {
+  it('fileIO_test_copyDir_sync_006', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_sync_006';
     let ddpath1 = dpath + '/srcDir';
     let ddpath2 = dpath + '/destDir';
@@ -356,7 +357,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_007', 3, async function () {
+  it('fileIO_test_copyDir_sync_007', Level.LEVEL3, async function () {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_sync_007';
     let ddpath1 = dpath + '/srcDir';
     let dddpath1 = ddpath1 + '/srcDir_first';
@@ -392,7 +393,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_sync_008', 3, async function () {
+  it('fileIO_test_copyDir_sync_008', Level.LEVEL3, async function () {
     let dpath = await readyFiles('fileIO_test_copyDir_sync_008');
 
     try {
@@ -434,7 +435,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_000', 3, async function (done) {
+  it('fileIO_test_copyDir_async_000', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_000';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -480,7 +481,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_001', 3, async function (done) {
+  it('fileIO_test_copyDir_async_001', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_001';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -531,7 +532,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_002', 3, async function (done) {
+  it('fileIO_test_copyDir_async_002', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_002';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -583,7 +584,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_003', 3, async function (done) {
+  it('fileIO_test_copyDir_async_003', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_003';
     let ddpath = dpath + '/srcDir_first';
     let ffpath = ddpath + '/srcFile_first_01';
@@ -640,7 +641,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_004', 0, async function (done) {
+  it('fileIO_test_copyDir_async_004', Level.LEVEL0, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_004');
 
     try {
@@ -683,7 +684,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_005', 0, async function (done) {
+  it('fileIO_test_copyDir_async_005', Level.LEVEL0, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_005');
 
     try {
@@ -730,7 +731,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_006', 0, async function (done) {
+  it('fileIO_test_copyDir_async_006', Level.LEVEL0, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_006');
 
     try {
@@ -771,7 +772,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_007', 0, async function (done) {
+  it('fileIO_test_copyDir_async_007', Level.LEVEL0, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_007');
 
     try {
@@ -817,7 +818,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_008', 3, async function (done) {
+  it('fileIO_test_copyDir_async_008', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_008');
 
     try {
@@ -842,7 +843,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_009', 3, async function (done) {
+  it('fileIO_test_copyDir_async_009', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_009');
 
     try {
@@ -871,7 +872,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_010', 3, async function (done) {
+  it('fileIO_test_copyDir_async_010', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_010');
 
     try {
@@ -895,7 +896,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_011', 3, async function (done) {
+  it('fileIO_test_copyDir_async_011', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_011');
 
     try {
@@ -923,7 +924,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_012', 3, async function (done) {
+  it('fileIO_test_copyDir_async_012', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_012');
   
     try {
@@ -947,7 +948,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_013', 3, async function (done) {
+  it('fileIO_test_copyDir_async_013', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_013');
   
     try {
@@ -975,7 +976,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_014', 3, async function (done) {
+  it('fileIO_test_copyDir_async_014', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_014';
     let ddpath = dpath + '/srcDir_first';
     let dddpath = ddpath + '/srcDir_second';
@@ -1010,7 +1011,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_015', 3, async function (done) {
+  it('fileIO_test_copyDir_async_015', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_copyDir_async_015';
     let ddpath = dpath + '/srcDir_first';
     let dddpath = ddpath + '/srcDir_second';
@@ -1049,7 +1050,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_016', 3, async function (done) {
+  it('fileIO_test_copyDir_async_016', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_016');
 
     try {
@@ -1092,7 +1093,7 @@ export default function fileIOCopyDir() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_copyDir_async_017', 3, async function (done) {
+  it('fileIO_test_copyDir_async_017', Level.LEVEL3, async function (done) {
     let dpath = await readyFiles('fileIO_test_copyDir_async_017');
 
     try {
@@ -1129,5 +1130,35 @@ export default function fileIOCopyDir() {
     }
   });
 
+  /**
+   * @tc.number SUB_DF_FILEIO_COPYDIR_ASYNC_1800
+   * @tc.name fileIO_test_copyDir_async_018
+   * @tc.desc Test copyDir() interface.Callback.
+   * There is no target folder(src) under path dest. ConflictFiles.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_copyDir_async_018', Level.LEVEL3, async function (done) {
+    let dpath = await readyFiles('fileIO_test_copyDir_async_018');
+
+    try {
+      let dirnet1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirnet1.length == 4).assertTrue();
+      fileIO.copyDir(dpath.srcDir, dpath.destDir, undefined, (ConflictFiles) => {
+        if (ConflictFiles && ConflictFiles.code == 13900015 && ConflictFiles.data?.length !== undefined) {
+          for (let i = 0; i < ConflictFiles.data.length; i++) {
+            console.error("copy directory failed with conflicting files: " + ConflictFiles.data[i].srcFile + " " + ConflictFiles.data[i].destFile);
+          }
+          expect(true).assertTrue();
+          done();
+        }
+      });
+    } catch (e) {
+      console.log('fileIO_test_copyDir_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
   });
   }

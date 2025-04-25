@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level} from '@ohos/hypium';
 import { sleep, startAbility, stopAbility } from './Common'
 import picker from '@ohos.file.picker';
 
@@ -37,7 +37,7 @@ export default function audioPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Select_Promise_000", 0, async (done: Function) => {
+    it("test_Audiopicker_Select_Promise_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Select_Promise_000";
       let option = new picker.AudioSelectOptions();
       let dirName = "Audios";
@@ -52,11 +52,27 @@ export default function audioPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 3
      */
-    it("test_Audiopicker_Select_Promise_001", 0, async (done: Function) => {
+    it("test_Audiopicker_Select_Promise_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Select_Promise_001";
       let dirName = "Audios";
       let fileName = "01.mp3";
       await select(testNum, done, dirName, fileName);
+    });
+    /**
+     * @tc.number   : SUB_STORAGE_AUDIOPICKER_SELECT_PROMISE_0200
+     * @tc.name   : test_Audiopicker_Select_Promise_002
+     * @tc.desc   : select without option
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level   : Level 3
+     */
+    it("test_Audiopicker_Select_Promise_002", Level.LEVEL0, async (done: Function) => {
+      let testNum = "test_Audiopicker_Select_Promise_002";
+      let option = new picker.AudioSelectOptions();
+      option.maxSelectNumber = 3;
+      let dirName = "Audios";
+      let fileName = "01.mp3";
+      await selectWithOption(testNum, done, option, dirName, fileName);
     });
     /**
      * @tc.number   : SUB_STORAGE_AUDIOPICKER_SAVE_PROMISE_0000
@@ -66,7 +82,7 @@ export default function audioPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Save_Promise_000", 0, async (done: Function) => {
+    it("test_Audiopicker_Save_Promise_000", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Save_Promise_000";
       let option = new picker.AudioSaveOptions();
       option.newFileNames = ["AudioViewPicker01.mp3"];
@@ -81,7 +97,7 @@ export default function audioPickerPromise(abilityContext: Context) {
      * @tc.type   : Function
      * @tc.level   : Level 0
      */
-    it("test_Audiopicker_Save_Promise_001", 0, async (done: Function) => {
+    it("test_Audiopicker_Save_Promise_001", Level.LEVEL0, async (done: Function) => {
       let testNum = "test_Audiopicker_Save_Promise_001";
       await saveWithoutSelect(testNum, done);
     });

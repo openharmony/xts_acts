@@ -125,7 +125,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_003', 3, async function (done) {
+  it('fileIO_copy_async_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_003');
     let fpathTarget = fpath + 'dst';
     let srcDirUriLocal = fileUri.getUriFromPath(fpath);
@@ -158,7 +158,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_004', 3, async function (done) {
+  it('fileIO_copy_async_004', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_004');
     let fpathTarget = fpath + 'dst';
     let srcDirUriLocal = fileUri.getUriFromPath(fpath);
@@ -184,7 +184,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-   it('fileIO_copy_async_005', 3, async function (done) {
+   it('fileIO_copy_async_005', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_005');
     let fpathTarget = fpath + 'dst';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -216,7 +216,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */  
-  it('fileIO_copy_async_006', 3, async function (done) {
+  it('fileIO_copy_async_006', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_006');
     let fpathTarget = fpath + 'dst';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -321,7 +321,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_009', 3, async function (done) {
+  it('fileIO_copy_async_009', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_009');
     let destpath = fpath + 'dest';
     let srcDirUri = fileUri.getUriFromPath(fpath);
@@ -357,7 +357,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_010', 3, async function (done) {
+  it('fileIO_copy_async_010', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileIO_copy_async_010');
     let destpath = fpath + 'dest';
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -391,7 +391,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_011', 3, async function (done) {
+  it('fileIO_copy_async_011', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_011';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -436,7 +436,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_012', 3, async function (done) {
+  it('fileIO_copy_async_012', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_012';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -475,7 +475,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-   it('fileIO_copy_async_013', 3, async function (done) {
+   it('fileIO_copy_async_013', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_013';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -515,7 +515,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_014', 3, async function (done) {
+  it('fileIO_copy_async_014', Level.LEVEL3, async function (done) {
     let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_014';
     let ddpath = dpath + '/srcDir_first';
     let dmpath = dpath + '/srcDir_second';
@@ -548,7 +548,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_015', 3, async function (done) {
+  it('fileIO_copy_async_015', Level.LEVEL3, async function (done) {
    let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_015';
    let destpath = fpath + 'dest';
    expect(prepare2GFile(fpath)).assertTrue();
@@ -593,7 +593,7 @@ describe('fileIO_fs_copy', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_016', 3, async function (done) {
+  it('fileIO_copy_async_016', Level.LEVEL3, async function (done) {
     let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_016';
     let destpath = fpath + 'dest';
     expect(prepare2GFile(fpath)).assertTrue();

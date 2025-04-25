@@ -17,6 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, randomString
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIORename() {
 describe('fileIO_fs_rename', function () {
@@ -31,7 +32,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_rename_sync_000', 0, async function () {
+  it('fileIO_test_rename_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -56,7 +57,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_001', 0, async function () {
+  it('fileIO_test_rename_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_001');
 
     try {
@@ -78,7 +79,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_002', 0, async function () {
+  it('fileIO_test_rename_sync_002', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -102,7 +103,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_003', 0, async function () {
+  it('fileIO_test_rename_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -126,7 +127,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_004', 0, async function () {
+  it('fileIO_test_rename_sync_004', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -150,7 +151,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_005', 0, async function () {
+  it('fileIO_test_rename_sync_005', Level.LEVEL0, async function () {
     let dpath = await nextFileName('fileIO_test_rename_sync_005');
     let fpath = dpath + '/file_000';
     fileIO.mkdirSync(dpath);
@@ -177,7 +178,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_006', 0, async function () {
+  it('fileIO_test_rename_sync_006', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_rename_sync_006');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -202,7 +203,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_007', 0, async function () {
+  it('fileIO_test_rename_sync_007', Level.LEVEL0, async function () {
 
     try {
       fileIO.renameSync('/data', '/data_new');
@@ -223,7 +224,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_sync_008', 0, async function () {
+  it('fileIO_test_rename_sync_008', Level.LEVEL0, async function () {
     let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
     let fpath = await nextFileName('fileIO_test_rename_sync_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -248,7 +249,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_000', 0, async function (done) {
+  it('fileIO_test_rename_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let newf = fpath + '123';
@@ -274,7 +275,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_001', 0, async function (done) {
+  it('fileIO_test_rename_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let newf = fpath + 'aaa';
@@ -305,7 +306,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_002', 0, async function (done) {
+  it('fileIO_test_rename_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_002');
 
     try {
@@ -328,7 +329,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_003', 0, async function (done) {
+  it('fileIO_test_rename_async_003', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_003');
 
     try {
@@ -355,7 +356,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_004', 0, async function (done) {
+  it('fileIO_test_rename_async_004', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -380,7 +381,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_005', 0, async function (done) {
+  it('fileIO_test_rename_async_005', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -405,7 +406,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_006', 0, async function (done) {
+  it('fileIO_test_rename_async_006', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -430,7 +431,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_007', 0, async function (done) {
+  it('fileIO_test_rename_async_007', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rename_async_007');
     let fpath = dpath + '/file_001';
     fileIO.mkdirSync(dpath);
@@ -458,7 +459,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_008', 0, async function (done) {
+  it('fileIO_test_rename_async_008', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('fileIO_test_rename_async_008');
     let fpath = dpath + '/file_002';
     fileIO.mkdirSync(dpath);
@@ -491,7 +492,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_009', 0, async function (done) {
+  it('fileIO_test_rename_async_009', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_009');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -517,7 +518,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_010', 0, async function (done) {
+  it('fileIO_test_rename_async_010', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_rename_async_010');
     let fpathTarget = fpath + randomString(250);
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -547,7 +548,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_011', 0, async function (done) {
+  it('fileIO_test_rename_async_011', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.rename('/data', '/data_new');
@@ -569,7 +570,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_012', 0, async function (done) {
+  it('fileIO_test_rename_async_012', Level.LEVEL0, async function (done) {
     let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
     let fpath = await nextFileName('fileIO_test_rename_async_012');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -595,7 +596,7 @@ describe('fileIO_fs_rename', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_rename_async_013', 0, async function (done) {
+  it('fileIO_test_rename_async_013', Level.LEVEL0, async function (done) {
     let dstDir = await featureAbility.getContext().getOrCreateDistributedDir();
     let fpath = await nextFileName('fileIO_test_rename_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();

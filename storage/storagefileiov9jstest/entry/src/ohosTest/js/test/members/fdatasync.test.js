@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileIOFdatasync() {
   describe('fileIO_fs_fdatasync', async function () {
@@ -30,7 +31,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_fdatasync_sync_000', 0, async function () {
+  it('fileIO_test_fdatasync_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileIO_test_fdatasync_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -54,7 +55,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_sync_001', 0, async function () {
+  it('fileIO_test_fdatasync_sync_001', Level.LEVEL0, async function () {
 
     try {
       fileIO.fdatasyncSync(-1);
@@ -74,7 +75,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_sync_002', 0, async function () {
+  it('fileIO_test_fdatasync_sync_002', Level.LEVEL0, async function () {
 
     try {
       fileIO.fdatasyncSync();
@@ -95,7 +96,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_000', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdatasync_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -126,7 +127,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_001', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdatasync_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -156,7 +157,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_002', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileIO_test_fdatasync_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -182,7 +183,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_003', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_003', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.fdatasync(-1);
@@ -204,7 +205,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_004', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_004', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fdatasync(-1, (err) => {
@@ -230,7 +231,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_005', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_005', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fdatasync(-1).then(() => {
@@ -256,7 +257,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_006', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_006', Level.LEVEL0, async function (done) {
 
     try {
       await fileIO.fdatasync();
@@ -278,7 +279,7 @@ export default function fileIOFdatasync() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_fdatasync_async_007', 0, async function (done) {
+  it('fileIO_test_fdatasync_async_007', Level.LEVEL0, async function (done) {
 
     try {
       fileIO.fdatasync((err) => {

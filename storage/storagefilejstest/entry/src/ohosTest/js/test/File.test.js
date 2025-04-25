@@ -19,7 +19,8 @@ import document from '@ohos.document';
 import {
   describe,
   it,
-  expect
+  expect,
+  Level
 }
 from '@ohos/hypium'
 import {
@@ -42,7 +43,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_001
    * @tc.desc Function of API, delete file.The test file is exist.
    */
-  it('File_Delete_001', 0, async function (done) {
+  it('File_Delete_001', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_Delete_001');
     expect(prepareFile(fpath, 'hello')).assertTrue();
     file.delete({
@@ -64,7 +65,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_002
    * @tc.desc Function of API, delete dir.The dir is empty.
    */
-  it('File_Delete_002', 0, async function (done) {
+  it('File_Delete_002', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_Delete_002',
       success: function () {
@@ -93,7 +94,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_003
    * @tc.desc Function of API, error code: 202 The test file or dir are exist.
    */
-  it('File_Delete_003', 0, async function (done) {
+  it('File_Delete_003', Level.LEVEL0, async function (done) {
     file.delete({
       uri: 'internal://ohos/workspace/text.txt',
       success: function () {
@@ -114,7 +115,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_004
    * @tc.desc Function of API, error code: 300 The dir is exist with files.
    */
-  it('File_Delete_004', 0, async function (done) {
+  it('File_Delete_004', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_Delete_004');
     let fpath = dpath + '/File_Delete_004';
     fileio.mkdirSync(dpath);
@@ -138,7 +139,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_005
    * @tc.desc Function of API, error code: 301 The file and dir are not exist.
    */
-  it('File_Delete_005', 0, async function (done) {
+  it('File_Delete_005', Level.LEVEL0, async function (done) {
     file.delete({
       uri: 'internal://app/File_Delete_005',
       success: function () {
@@ -158,7 +159,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_006
    * @tc.desc uri address length more than 4096 The test file is exist.
    */
-  it('File_Delete_006', 0, async function (done) {
+  it('File_Delete_006', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://cache/' + firstPath;
@@ -187,7 +188,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_007
    * @tc.desc Function of API, delete file from cache.The test file on cache.
    */
-  it('File_Delete_007', 0, async function (done) {
+  it('File_Delete_007', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_Delete_007',
       text: 'test',
@@ -217,7 +218,7 @@ describe('fileTest', function () {
    * @tc.name File_Delete_008.
    * @tc.desc Function of API, delete file from Virtual path.The test file is exist.
    */
-  it('File_Delete_008', 0, async function (done) {
+  it('File_Delete_008', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/../cache/File_Delete_008',
       text: 'Text that just for test.',
@@ -250,7 +251,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_001
    * @tc.desc Function of API, write to file(app path).The test file is not exist.
    */
-  it('File_writeText_001', 0, async function (done) {
+  it('File_writeText_001', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_001',
       text: 'sawyerwang.',
@@ -290,7 +291,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_002
    * @tc.desc Function of API, write to file.The test file is exist, it can be edited.
    */
-  it('File_writeText_002', 0, async function (done) {
+  it('File_writeText_002', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_002',
       text: 'Text1.',
@@ -342,7 +343,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_003
    * @tc.desc Different types of strings for text.
    */
-  it('File_writeText_003', 0, async function (done) {
+  it('File_writeText_003', Level.LEVEL0, async function (done) {
     let txt = 'hello 你好 ????? こんにちは ?????.'
     file.writeText({
       uri: 'internal://cache/File_writeText_003',
@@ -383,7 +384,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_004
    * @tc.desc Defferent encoding(UTF-8).
    */
-  it('File_writeText_004', 0, async function (done) {
+  it('File_writeText_004', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_004',
       text: 'hello',
@@ -425,7 +426,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_005
    * @tc.desc Function of API, append mode.The test file is exist and it can be edited.
    */
-  it('File_writeText_005', 0, async function (done) {
+  it('File_writeText_005', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_005',
       text: 'hello,world',
@@ -477,7 +478,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_006
    * @tc.desc Function of API, non-append mode.The test file is exist and it can be edited.
    */
-  it('File_writeText_006', 0, async function (done) {
+  it('File_writeText_006', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_006',
       text: 'hello',
@@ -517,7 +518,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_007
    * @tc.desc Function of API, error code: 202 The test file and dir are exist.
    */
-  it('File_writeText_007', 0, async function (done) {
+  it('File_writeText_007', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: '/data/accounts/account_0/appdata',
       text: 'hello',
@@ -538,7 +539,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_008
    * @tc.desc Function of API, error code: 300 The uri path is dir path.
    */
-  it('File_writeText_008', 0, async function (done) {
+  it('File_writeText_008', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('File_writeText_008d');
     fileio.mkdirSync(dpath);
     file.writeText({
@@ -561,7 +562,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_009
    * @tc.desc Function of API, error code: 300.The file path is not exist.
    */
-  it('File_writeText_009', 0, async function (done) {
+  it('File_writeText_009', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://app/File_writeText_009d/File_writeText_009',
       text: 'test',
@@ -582,7 +583,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_010
    * @tc.desc Function of API, write to file(cache path).The test file is not exist.
    */
-  it('File_writeText_010', 0, async function (done) {
+  it('File_writeText_010', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_writeText_010',
       text: 'test',
@@ -612,7 +613,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_011
    * @tc.desc Function of API, Virtual path.The test file is exist.
    */
-  it('File_writeText_011', 0, async function (done) {
+  it('File_writeText_011', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/../cache/File_writeText_011',
       text: 'sawyerwang',
@@ -652,7 +653,7 @@ describe('fileTest', function () {
    * @tc.name File_writeText_013
    * @tc.desc Function of API, write file out of package, Virtual path, save the dir authority.The test file is exist.
    */
-  it('File_writeText_013', 0, async function (done) {
+  it('File_writeText_013', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://app/notdir/File_writeText_013',
       text: 'sawyerwang',
@@ -676,7 +677,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_001
    * @tc.desc Write the buffer content to file.(cache path, append mode) The file path is not exist.
    */
-  it('File_writeArrayBuffer_001', 0, async function (done) {
+  it('File_writeArrayBuffer_001', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_001',
@@ -718,7 +719,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_002
    * @tc.desc Write the buffer content to file.(cache path, non-append mode) The file path is not exist.
    */
-  it('File_writeArrayBuffer_002', 0, async function (done) {
+  it('File_writeArrayBuffer_002', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_002',
@@ -759,7 +760,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_003
    * @tc.desc Write the buffer content to file.(cache path, append mode) The file path is not exist.
    */
-  it('File_writeArrayBuffer_003', 0, async function (done) {
+  it('File_writeArrayBuffer_003', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33, 48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_003',
@@ -802,7 +803,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_004
    * @tc.desc Write the buffer content to file.(cache path, non-append mode) The file path is exist.
    */
-  it('File_writeArrayBuffer_004', 0, async function (done) {
+  it('File_writeArrayBuffer_004', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_004',
@@ -856,7 +857,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_005
    * @tc.desc Function of API, set value for position.The file path is exist.
    */
-  it('File_writeArrayBuffer_005', 0, async function (done) {
+  it('File_writeArrayBuffer_005', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33, 44, 55, 66, 77]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_005',
@@ -909,7 +910,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_006
    * @tc.desc Function of API, not set value for position & append.The file path is exist.
    */
-  it('File_writeArrayBuffer_006', 0, async function (done) {
+  it('File_writeArrayBuffer_006', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_006',
@@ -951,7 +952,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_007
    * @tc.desc Function of API, error code: 202
    */
-  it('File_writeArrayBuffer_007', 0, async function (done) {
+  it('File_writeArrayBuffer_007', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: '',
@@ -973,7 +974,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_008
    * @tc.desc Function of API, error code: 300
    */
-  it('File_writeArrayBuffer_008', 0, async function (done) {
+  it('File_writeArrayBuffer_008', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.mkdir({
       uri: 'internal://app/File_writeArrayBuffer_008',
@@ -1005,7 +1006,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_009
    * @tc.desc Function of API, error code: 300
    */
-  it('File_writeArrayBuffer_009', 0, async function (done) {
+  it('File_writeArrayBuffer_009', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_009',
@@ -1046,7 +1047,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_010
    * @tc.desc Function of API, path = cache, virtual path The test file is exist.
    */
-  it('File_writeArrayBuffer_010', 0, async function (done) {
+  it('File_writeArrayBuffer_010', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/../cache/File_writeArrayBuffer_010',
@@ -1078,7 +1079,7 @@ describe('fileTest', function () {
    * @tc.name File_writeArrayBuffer_012
    * @tc.desc Function of API, out of package, Virtual path, save the dir authority.The test file is exist.
    */
-  it('File_writeArrayBuffer_012', 0, async function (done) {
+  it('File_writeArrayBuffer_012', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://app/notdir/File_writeArrayBuffer_012',
@@ -1104,7 +1105,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_001
    * @tc.desc Function of API, readText, app path.
    */
-  it('File_readText_001', 0, async function (done) {
+  it('File_readText_001', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_readText_001',
       text: 'Text that just for test.',
@@ -1134,7 +1135,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_002
    * @tc.desc Function of API, encoding = UTF-8.The test file is exist.
    */
-  it('File_readText_002', 0, async function (done) {
+  it('File_readText_002', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_readText_002',
       text: 'Text that just for test.',
@@ -1166,7 +1167,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_003
    * @tc.desc Function of API, error code: 202.The test file and dir is exist.
    */
-  it('File_readText_003', 0, async function (done) {
+  it('File_readText_003', Level.LEVEL0, async function (done) {
     file.readText({
       uri: '',
       success: function (data) {
@@ -1186,7 +1187,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_004
    * @tc.desc Function of API, error code: 300.The test dir is exist.
    */
-  it('File_readText_004', 0, async function (done) {
+  it('File_readText_004', Level.LEVEL0, async function (done) {
     file.readText({
       uri: 'internal://cache/',
       success: function (data) {
@@ -1206,7 +1207,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_005
    * @tc.desc Function of API, error code: 301.The test file and dir is exist.
    */
-  it('File_readText_005', 0, async function (done) {
+  it('File_readText_005', Level.LEVEL0, async function (done) {
     file.readText({
       uri: 'internal://cache/workspace/text.txt',
       success: function (data) {
@@ -1226,7 +1227,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_006
    * @tc.desc Function of API, readText, cache path.
    */
-  it('File_readText_006', 0, async function (done) {
+  it('File_readText_006', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_readText_006',
       text: 'test',
@@ -1266,7 +1267,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_007
    * @tc.desc Function of API, virtual path.The test file is exist.
    */
-  it('File_readText_007', 0, async function (done) {
+  it('File_readText_007', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/../files/../files/File_readText_007',
       text: 'Text that just for test.',
@@ -1306,7 +1307,7 @@ describe('fileTest', function () {
    * @tc.name File_readText_008
    * @tc.desc Function of API, virtual path.Test whether the files returned are equal.
    */
-  it("File_readText_008", 0, async function (done) {
+  it("File_readText_008", Level.LEVEL0, async function (done) {
     let fpath = await nextFileName("File_readText_008");
     let text = "0123456789abcdefg";
     expect(prepareFile(fpath, text)).assertTrue();
@@ -1339,7 +1340,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_001
    * @tc.desc Function of API, readArrayBuffer, cache path.position = 0, length = 10.
    */
-  it('File_read_array_buffer_001', 0, async function (done) {
+  it('File_read_array_buffer_001', Level.LEVEL0, async function (done) {
     var buffer = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_001',
@@ -1382,7 +1383,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_002
    * @tc.desc Function of API, readArrayBuffer,
    */
-  it('File_read_array_buffer_002', 0, async function (done) {
+  it('File_read_array_buffer_002', Level.LEVEL0, async function (done) {
     var buffer = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_002',
@@ -1413,7 +1414,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_003
    * @tc.desc Function of API, readArrayBuffer, wrong uri.
    */
-  it('File_read_array_buffer_003', 0, async function (done) {
+  it('File_read_array_buffer_003', Level.LEVEL0, async function (done) {
     file.readArrayBuffer({
       uri: '',
       success: function (data) {
@@ -1433,7 +1434,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_004
    * @tc.desc Function of API, readArrayBuffer, wrong position.
    */
-  it('File_read_array_buffer_004', 0, async function (done) {
+  it('File_read_array_buffer_004', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_read_array_buffer_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.readArrayBuffer({
@@ -1456,7 +1457,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_005
    * @tc.desc Function of API, readArrayBuffer, wrong length.
    */
-  it('File_read_array_buffer_005', 0, async function (done) {
+  it('File_read_array_buffer_005', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_read_array_buffer_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.readArrayBuffer({
@@ -1479,7 +1480,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_006
    * @tc.desc Function of API, error code: 202 Set uri is dir path.
    */
-  it('File_read_array_buffer_006', 0, async function (done) {
+  it('File_read_array_buffer_006', Level.LEVEL0, async function (done) {
     file.readArrayBuffer({
       uri: 'internal://app',
       success: function (data) {
@@ -1499,7 +1500,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_007
    * @tc.desc Function of API, error code: 301
    */
-  it('File_read_array_buffer_007', 0, async function (done) {
+  it('File_read_array_buffer_007', Level.LEVEL0, async function (done) {
     file.readArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_007',
       success: function (data) {
@@ -1519,7 +1520,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_008
    * @tc.desc Function of API, cache path.The test file is exist.
    */
-  it('File_read_array_buffer_008', 0, async function (done) {
+  it('File_read_array_buffer_008', Level.LEVEL0, async function (done) {
     let buf = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
     file.writeArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_008',
@@ -1560,7 +1561,7 @@ describe('fileTest', function () {
    * @tc.name File_read_array_buffer_009
    * @tc.desc Function of API, virtual path.The test file is exist.
    */
-  it('File_read_array_buffer_009', 0, async function (done) {
+  it('File_read_array_buffer_009', Level.LEVEL0, async function (done) {
     var buffer = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
       uri: 'internal://cache/../cache/File_read_array_buffer_009',
@@ -1606,7 +1607,7 @@ describe('fileTest', function () {
    * @tc.name File_access_001
    * @tc.desc Function of API, access, cache path.The test file is exist.
    */
-  it('File_access_001', 0, async function (done) {
+  it('File_access_001', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_access_001',
       text: 'Text that just for test.',
@@ -1646,7 +1647,7 @@ describe('fileTest', function () {
    * @tc.name File_access_002
    * @tc.desc Function of API, access, app path.The test file is exist.
    */
-  it('File_access_002', 0, async function (done) {
+  it('File_access_002', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_access_002',
       success: function () {
@@ -1685,7 +1686,7 @@ describe('fileTest', function () {
    * @tc.name File_access_003
    * @tc.desc Function of API, error code: 202 The test file and dir are exist.
    */
-  it('File_access_003', 0, async function (done) {
+  it('File_access_003', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_access_003');
     file.access({
       uri: fpath,
@@ -1706,7 +1707,7 @@ describe('fileTest', function () {
    * @tc.name File_access_004
    * @tc.desc Function of API, error code: 301
    */
-  it('File_access_004', 0, async function (done) {
+  it('File_access_004', Level.LEVEL0, async function (done) {
     file.access({
       uri: 'internal://app/File_access_004.txt',
       success: function () {
@@ -1726,7 +1727,7 @@ describe('fileTest', function () {
    * @tc.name File_access_005
    * @tc.desc Function of API, error code: 301
    */
-  it('File_access_005', 0, async function (done) {
+  it('File_access_005', Level.LEVEL0, async function (done) {
     file.access({
       uri: 'internal://app/File_access_005',
       success: function () {
@@ -1746,7 +1747,7 @@ describe('fileTest', function () {
    * @tc.name File_access_006
    * @tc.desc Function of API, parameter more than 4096.The test file and dir are exist.
    */
-  it('File_access_006', 0, async function (done) {
+  it('File_access_006', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://cache/' + firstPath;
@@ -1777,7 +1778,7 @@ describe('fileTest', function () {
    * @tc.name File_access_007
    * @tc.desc Function of API, app path.The test file is exist.
    */
-  it('File_access_007', 0, async function (done) {
+  it('File_access_007', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_access_007',
       text: 'hello',
@@ -1817,7 +1818,7 @@ describe('fileTest', function () {
    * @tc.name File_access_008
    * @tc.desc Function of API, virtual path.The test file is exist.
    */
-  it('File_access_008', 0, async function (done) {
+  it('File_access_008', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/../cache/File_access_008',
       text: 'Text that just for test.',
@@ -1860,7 +1861,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_001
    * @tc.desc Function of API, mkdir, app path.
    */
-  it('File_mkdir_001', 0, async function (done) {
+  it('File_mkdir_001', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_mkdir_001',
       success: function () {
@@ -1889,7 +1890,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_002
    * @tc.desc Function of API, mkdir, recursive not set value.
    */
-  it('File_mkdir_002', 0, async function (done) {
+  it('File_mkdir_002', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://app/test/File_mkdir_002',
       success: function () {
@@ -1909,7 +1910,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_003
    * @tc.desc Function of API, mkdir, recursive.
    */
-  it('File_mkdir_003', 0, async function (done) {
+  it('File_mkdir_003', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/test/File_mkdir_003d',
       recursive: true,
@@ -1929,7 +1930,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_004
    * @tc.desc Function of API, error code: 202
    */
-  it('File_mkdir_004', 0, async function (done) {
+  it('File_mkdir_004', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://files/test/File_mkdir_002d',
       success: function () {
@@ -1949,7 +1950,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_005
    * @tc.desc Function of API, special characters.
    */
-  it('File_mkdir_005', 0, async function (done) {
+  it('File_mkdir_005', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/！@/<>',
       success: function () {
@@ -1969,7 +1970,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_006
    * @tc.desc Function of API, parameter too long.
    */
-  it('File_mkdir_006', 0, async function (done) {
+  it('File_mkdir_006', Level.LEVEL0, async function (done) {
     let fileName = randomString(257);
     file.mkdir({
       uri: 'internal://cache/' + fileName,
@@ -1990,7 +1991,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_007
    * @tc.desc Function of API, cache path.
    */
-  it('File_mkdir_007', 0, async function (done) {
+  it('File_mkdir_007', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_mkdir_007d',
       success: function () {
@@ -2019,7 +2020,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_008
    * @tc.desc Function of API, virtual path.
    */
-  it('File_mkdir_008', 0, async function (done) {
+  it('File_mkdir_008', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/../files/File_mkdir_008',
       success: function () {
@@ -2048,7 +2049,7 @@ describe('fileTest', function () {
    * @tc.name File_mkdir_010
    * @tc.desc Function of API, out of package, out of package, Virtual path, save the dir authority.
    */
-  it('File_mkdir_010', 0, async function (done) {
+  it('File_mkdir_010', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://app/notdir/File_mkdir_010',
       success: function () {
@@ -2071,7 +2072,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_001
    * @tc.desc Function of API, rmdir, app path.The test dir is exist, and it can be delete, the dir is empty.
    */
-  it('File_rmdir_001', 0, async function (done) {
+  it('File_rmdir_001', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_rmdir_001',
       success: function () {
@@ -2100,7 +2101,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_002
    * @tc.desc Function of API, recursive not set value.The test dir is exist, and it not empty.
    */
-  it('File_rmdir_002', 0, async function (done) {
+  it('File_rmdir_002', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://app/test/File_rmdir_002',
       recursive: true,
@@ -2132,7 +2133,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_003
    * @tc.desc Function of API, recursive = ture.The test dir is exist, and it not empty.
    */
-  it('File_rmdir_003', 0, async function (done) {
+  it('File_rmdir_003', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/test/File_rmdir_003/File_rmdir_003_1/File_rmdir_003_2',
       recursive: true,
@@ -2185,7 +2186,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_004
    * @tc.desc Function of API, error code: 202
    */
-  it('File_rmdir_004', 0, async function (done) {
+  it('File_rmdir_004', Level.LEVEL0, async function (done) {
     file.rmdir({
       uri: '/data/accounts/account_0/appdata/ohos.acts.distributeddatamgr.distributedfile/cache/',
       success: function () {
@@ -2205,7 +2206,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_005
    * @tc.desc Function of API, error code: 301
    */
-  it('File_rmdir_005', 0, async function (done) {
+  it('File_rmdir_005', Level.LEVEL0, async function (done) {
     file.rmdir({
       uri: 'internal://app/123',
       success: function () {
@@ -2225,7 +2226,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_006
    * @tc.desc Function of API, too long path.
    */
-  it('File_rmdir_006', 0, async function (done) {
+  it('File_rmdir_006', Level.LEVEL0, async function (done) {
     let firstPath = randomString(255);
     let uri = 'internal://cache/' + firstPath;
     file.mkdir({
@@ -2256,7 +2257,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_007
    * @tc.desc Function of API, cache path.The test dir is exist, and it can be delete, it is empty.
    */
-  it('File_rmdir_007', 0, async function (done) {
+  it('File_rmdir_007', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_rmdir_007d',
       success: function () {
@@ -2285,7 +2286,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_008
    * @tc.desc Function of API, virtual path.The test dir is exist.
    */
-  it('File_rmdir_008', 0, async function (done) {
+  it('File_rmdir_008', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/../files/File_rmdir_008',
       success: function () {
@@ -2314,7 +2315,7 @@ describe('fileTest', function () {
    * @tc.name File_rmdir_010
    * @tc.desc Function of API, out of package, Virtual path, save the dir authority.The test dir is exist.
    */
-  it('File_rmdir_010', 0, async function (done) {
+  it('File_rmdir_010', Level.LEVEL0, async function (done) {
     file.rmdir({
       uri: 'internal://app/../../com.ohos.systemui',
       success: function () {
@@ -2337,7 +2338,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_001
    * @tc.desc Function of API, move.The test file is exist.
    */
-  it('File_Move_001', 0, async function (done) {
+  it('File_Move_001', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_Move_001',
       text: 'Text that just for test.',
@@ -2368,7 +2369,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_002
    * @tc.desc Function of API, document integrity.The test file is exist.
    */
-  it('File_Move_002', 0, async function (done) {
+  it('File_Move_002', Level.LEVEL0, async function (done) {
     let typeArray = new Array('.txt', '.ppt', '.flac', '.mp4', '.so', '.zip');
     let dpath = await fileName('cache');
     fileio.mkdirSync(dpath);
@@ -2396,7 +2397,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_003
    * @tc.desc Function of API, different size file.The test file is exist.
    */
-  it('File_Move_003', 0, async function (done) {
+  it('File_Move_003', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_003');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     let dstFpath = await cacheFileName('File_Move_003');
@@ -2421,7 +2422,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_004
    * @tc.desc Function of API, error code: 202.The test file is exist.
    */
-  it('File_Move_004', 0, async function (done) {
+  it('File_Move_004', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_004');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
@@ -2444,7 +2445,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_005
    * @tc.desc Function of API, error code: 300.The test file is exist.
    */
-  it('File_Move_005', 0, async function (done) {
+  it('File_Move_005', Level.LEVEL0, async function (done) {
     let srcDpath = await fileName('File_Move_005d');
     fileio.mkdirSync(srcDpath);
     file.move({
@@ -2466,7 +2467,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_006
    * @tc.desc Function of API, error code: 301.The test file is not exist.
    */
-  it('File_Move_006', 0, async function (done) {
+  it('File_Move_006', Level.LEVEL0, async function (done) {
     let dstUri = await fileName('File_Move_006');
     expect(prepareFile(dstUri, FILE_CONTENT)).assertTrue();
     file.move({
@@ -2489,7 +2490,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_007
    * @tc.desc Function of API, uri more too long.
    */
-  it('File_Move_007', 0, async function (done) {
+  it('File_Move_007', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://app/' + firstPath;
@@ -2520,7 +2521,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_008
    * @tc.desc Function of API, cache path.The test file is exist.
    */
-  it('File_Move_008', 0, async function (done) {
+  it('File_Move_008', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_Move_008',
       text: 'sss',
@@ -2561,7 +2562,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_009
    * @tc.desc Function of API, same path.
    */
-  it('File_Move_009', 0, async function (done) {
+  it('File_Move_009', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_009');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
@@ -2583,7 +2584,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_010
    * @tc.desc Function of API, dstFpath has same file.
    */
-  it('File_Move_010', 0, async function (done) {
+  it('File_Move_010', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_010');
     let dstFpath = await cacheFileName('File_Move_010');
     expect(prepareFile(srcFpath, 'aaa')).assertTrue();
@@ -2608,7 +2609,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_011
    * @tc.desc Function of API, move app path file to cache path.
    */
-  it('File_Move_011', 0, async function (done) {
+  it('File_Move_011', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_011');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
@@ -2630,7 +2631,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_012
    * @tc.desc Function of API, out of package, Virtual path(create and give 777 authority).
    */
-  it('File_Move_012', 0, async function (done) {
+  it('File_Move_012', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_012');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
@@ -2653,7 +2654,7 @@ describe('fileTest', function () {
    * @tc.name File_Move_014
    * @tc.desc Function of API, check back value.
    */
-  it('File_Move_014', 0, async function (done) {
+  it('File_Move_014', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Move_014');
     let dstFpath = await cacheFileName('File_Move_014');
     expect(prepareFile(srcFpath, 'test')).assertTrue();
@@ -2680,7 +2681,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_001
    * @tc.desc Function of API, copy, app path.The test file is exist.
    */
-  it('File_Copy_001', 0, async function (done) {
+  it('File_Copy_001', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_001');
     let dstFpath = await cacheFileName('File_Copy_001');
     expect(prepareFile(srcFpath, 'test.')).assertTrue();
@@ -2715,7 +2716,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_002
    * @tc.desc Function of API, document integrity.The test file is exist.
    */
-  it('File_Copy_002', 0, async function (done) {
+  it('File_Copy_002', Level.LEVEL0, async function (done) {
     let typeArray = new Array('.txt', '.ppt', '.flac', '.mp4', '.so', '.zip');
     for (let i = 0; i < typeArray.length; i++) {
       let srcFpath = await fileName('File_Copy_002') + typeArray[i];
@@ -2743,7 +2744,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_003
    * @tc.desc Function of API, different size of files. The test file is exist.
    */
-  it('File_Copy_003', 0, async function (done) {
+  it('File_Copy_003', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_003');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     let dstFpath = await cacheFileName('File_Copy_003');
@@ -2778,7 +2779,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_004
    * @tc.desc Function of API, error code: 202 The test file is exist.
    */
-  it('File_Copy_004', 0, async function (done) {
+  it('File_Copy_004', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_004');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.copy({
@@ -2803,7 +2804,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 300
    */
 
-  it('File_Copy_005', 0, async function (done) {
+  it('File_Copy_005', Level.LEVEL0, async function (done) {
     file.mkdir({
       uri: 'internal://cache/File_Copy_005d',
       success: function () {
@@ -2833,7 +2834,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_006
    * @tc.desc Function of API, error code: 301
    */
-  it('File_Copy_006', 0, async function (done) {
+  it('File_Copy_006', Level.LEVEL0, async function (done) {
     file.copy({
       srcUri: 'internal://app/fakepath',
       dstUri: 'internal://app/fakepath1',
@@ -2854,7 +2855,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_007
    * @tc.desc Function of API, uri too long.
    */
-  it('File_Copy_007', 0, async function (done) {
+  it('File_Copy_007', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://cache/' + firstPath;
@@ -2885,7 +2886,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_008
    * @tc.desc Function of API, cache path.
    */
-  it('File_Copy_008', 0, async function (done) {
+  it('File_Copy_008', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_Copy_008',
       text: 'test',
@@ -2936,7 +2937,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_009
    * @tc.desc Function of API, same path.
    */
-  it('File_Copy_009', 0, async function (done) {
+  it('File_Copy_009', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_009');
     expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.copy({
@@ -2959,7 +2960,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_010
    * @tc.desc Function of API, dstFpath path has same file.
    */
-  it('File_Copy_010', 0, async function (done) {
+  it('File_Copy_010', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_010');
     let dstFpath = await cacheFileName('File_Copy_010');
     expect(prepareFile(srcFpath, 'aaa')).assertTrue();
@@ -2987,7 +2988,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_011
    * @tc.desc Function of API, copy file to cache path.The test file is exist.
    */
-  it('File_Copy_011', 0, async function (done) {
+  it('File_Copy_011', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_011');
     expect(prepareFile(srcFpath, 'test.')).assertTrue();
     file.copy({
@@ -3019,7 +3020,7 @@ describe('fileTest', function () {
    * @tc.name File_Copy_012
    * @tc.desc Function of API, out of package, Virtual path(create and give 777 authority).The test file is exist.
    */
-  it('File_Copy_012', 0, async function (done) {
+  it('File_Copy_012', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_012');
     expect(prepareFile(srcFpath, 'test')).assertTrue();
     file.copy({
@@ -3044,7 +3045,7 @@ describe('fileTest', function () {
    * @tc.desc Function of API, check back value.The test file is exist.
    */
 
-  it('File_Copy_014', 0, async function (done) {
+  it('File_Copy_014', Level.LEVEL0, async function (done) {
     let srcFpath = await fileName('File_Copy_014');
     let dstFpath = await cacheFileName('File_Copy_014');
     expect(prepareFile(srcFpath, 'test')).assertTrue();
@@ -3071,7 +3072,7 @@ describe('fileTest', function () {
    * @tc.name File_List_001
    * @tc.desc Function of API, list.The test file and dir are exist.
    */
-  it('File_List_001', 0, async function (done) {
+  it('File_List_001', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_001') + 'd';
     let fpath = dpath + '/File_List_001';
     let ddpath = dpath + '/File_List_001_1d';
@@ -3099,7 +3100,7 @@ describe('fileTest', function () {
    * @tc.name File_List_002
    * @tc.desc Function of API, set value of uri.The test file and dir are exist.
    */
-  it('File_List_002', 0, async function (done) {
+  it('File_List_002', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_002') + 'd';
     let fpath = dpath + '/File_List_002';
     let ddpath = dpath + '/File_List_002_1d';
@@ -3127,7 +3128,7 @@ describe('fileTest', function () {
    * @tc.name File_List_003
    * @tc.desc Function of API, check lastModifiedTime.The test file and dir are exist.
    */
-  it('File_List_003', 0, async function (done) {
+  it('File_List_003', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_003') + 'd';
     let fpath = dpath + '/File_List_003';
     let ddpath = dpath + '/File_List_003_1d';
@@ -3178,7 +3179,7 @@ describe('fileTest', function () {
    * @tc.name File_List_004
    * @tc.desc Function of API, check length.The test file and dir are exist.
    */
-  it('File_List_004', 0, async function (done) {
+  it('File_List_004', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_004') + 'd';
     let fpath = dpath + '/File_List_004';
     let ddpath = dpath + '/File_List_004_1d';
@@ -3203,7 +3204,7 @@ describe('fileTest', function () {
    * @tc.name File_List_005
    * @tc.desc Function of API, check type.The test file and dir are exist.
    */
-  it('File_List_005', 0, async function (done) {
+  it('File_List_005', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_005') + 'd';
     let fpath = dpath + '/File_List_005';
     let ddpath = dpath + '/File_List_005_1d';
@@ -3228,7 +3229,7 @@ describe('fileTest', function () {
    * @tc.name File_List_006
    * @tc.desc Function of API, error code:202
    */
-  it('File_List_006', 0, async function (done) {
+  it('File_List_006', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_006') + 'd'
     file.list({
       uri: dpath,
@@ -3249,7 +3250,7 @@ describe('fileTest', function () {
    * @tc.name File_List_007
    * @tc.desc Function of API, uri set value of file.
    */
-  it('File_List_007', 0, async function (done) {
+  it('File_List_007', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_List_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
@@ -3271,7 +3272,7 @@ describe('fileTest', function () {
    * @tc.name File_List_008
    * @tc.desc Function of API, error code: 301
    */
-  it('File_List_008', 0, async function (done) {
+  it('File_List_008', Level.LEVEL0, async function (done) {
     file.list({
       uri: 'internal://app/fakepath',
       success: function (data) {
@@ -3291,7 +3292,7 @@ describe('fileTest', function () {
    * @tc.name File_List_009
    * @tc.desc Function of API, uri too long.
    */
-  it('File_List_009', 0, async function (done) {
+  it('File_List_009', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://app/' + firstPath;
@@ -3321,7 +3322,7 @@ describe('fileTest', function () {
    * @tc.name File_List_010
    * @tc.desc Function of API, cache path.The test file and dir are exist.
    */
-  it('File_List_010', 0, async function (done) {
+  it('File_List_010', Level.LEVEL0, async function (done) {
     let dpath = await nextFileName('File_List_010d');
     let fpath = dpath + '/File_List_010';
     let ffpath = dpath + '/File_List_010_1';
@@ -3361,7 +3362,7 @@ describe('fileTest', function () {
    * @tc.name File_List_011
    * @tc.desc Function of API, virtual path.The test dir are exist.
    */
-  it('File_List_011', 0, async function (done) {
+  it('File_List_011', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_List_011') + 'd';
     let fpath = dpath + '/File_List_011';
     let ddpath = dpath + '/File_List_011_1d';
@@ -3389,7 +3390,7 @@ describe('fileTest', function () {
    * @tc.name Function of API, out of package, Virtual path(create and give 777 authority).
    * @tc.desc The test dir are exist.
    */
-  it('File_List_012', 0, async function (done) {
+  it('File_List_012', Level.LEVEL0, async function (done) {
     file.list({
       uri: 'internal://cache/../files/../../',
       success: function (data) {
@@ -3411,7 +3412,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_001
    * @tc.desc Function of API, Get.The test file is exist.
    */
-  it('File_Get_001', 0, async function (done) {
+  it('File_Get_001', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_Get_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
@@ -3434,7 +3435,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_002
    * @tc.desc Function of API, recursive = false.The test file is exist.
    */
-  it('File_Get_002', 0, async function (done) {
+  it('File_Get_002', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_Get_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
@@ -3462,7 +3463,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_003
    * @tc.desc Function of API, not input recursive.The test file is exist.
    */
-  it('File_Get_003', 0, async function (done) {
+  it('File_Get_003', Level.LEVEL0, async function (done) {
     let fpath = await fileName('File_Get_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
@@ -3490,7 +3491,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_004
    * @tc.desc Function of API, recursive = ture.The test file is exist.
    */
-  it('File_Get_004', 0, async function (done) {
+  it('File_Get_004', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_Get_004d');
     let ddpath = dpath + '/File_Get_004dd'
     let fpath = dpath + '/File_Get_004f'
@@ -3528,7 +3529,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_005
    * @tc.desc Function of API, recursive = false.The test file is exist.
    */
-  it('File_Get_005', 0, async function (done) {
+  it('File_Get_005', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_Get_005d');
     let ddpath = dpath + '/File_Get_005dd';
     let fpath = dpath + '/File_Get_005f';
@@ -3566,7 +3567,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_006
    * @tc.desc Function of API, not input recursive.The test file is exist.
    */
-  it('File_Get_006', 0, async function (done) {
+  it('File_Get_006', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_Get_006d');
     let ddpath = dpath + '/File_Get_006dd';
     let fpath = dpath + '/File_Get_006f';
@@ -3603,7 +3604,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_007
    * @tc.desc Function of API, not input uri.The test file is exist.
    */
-  it('File_Get_007', 0, async function (done) {
+  it('File_Get_007', Level.LEVEL0, async function (done) {
     file.get({
       recursive: true,
       success: function (data) {
@@ -3623,7 +3624,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_008
    * @tc.desc Function of API, not input parameter.The test file is exist.
    */
-  it('File_Get_008', 0, async function (done) {
+  it('File_Get_008', Level.LEVEL0, async function (done) {
     file.get({
       success: function (data) {
         console.info(data);
@@ -3642,7 +3643,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_009
    * @tc.desc Function of API, error parameter.The test file and dir are not exist.
    */
-  it('File_Get_009', 0, async function (done) {
+  it('File_Get_009', Level.LEVEL0, async function (done) {
     file.get({
       uri: 'internal://app/File_Get_009',
       success: function (data) {
@@ -3662,7 +3663,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_010
    * @tc.desc Function of API, uri = -1.
    */
-  it('File_Get_010', 0, async function (done) {
+  it('File_Get_010', Level.LEVEL0, async function (done) {
     file.get({
       uri: -1,
       success: function (data) {
@@ -3682,7 +3683,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_011
    * @tc.desc Function of API, cacahe path.
    */
-  it('File_Get_011', 0, async function (done) {
+  it('File_Get_011', Level.LEVEL0, async function (done) {
     file.writeText({
       uri: 'internal://cache/File_Get_011',
       text: 'test',
@@ -3728,7 +3729,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_012
    * @tc.desc Function of API, uri too long.
    */
-  it('File_Get_012', 0, async function (done) {
+  it('File_Get_012', Level.LEVEL0, async function (done) {
     let firstPath = randomString(32);
     let dpath = await fileName(firstPath);
     let uri = 'internal://cache/' + firstPath;
@@ -3764,7 +3765,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_013
    * @tc.desc Function of API, virtual path.
    */
-  it('File_Get_013', 0, async function (done) {
+  it('File_Get_013', Level.LEVEL0, async function (done) {
     let dpath = await fileName('File_Get_013d');
     let ddpath = dpath + '/File_Get_013dd';
     let fpath = dpath + '/File_Get_013f';
@@ -3802,7 +3803,7 @@ describe('fileTest', function () {
    * @tc.name File_Get_014
    * @tc.desc Function of API, out of package, Virtual path, save the dir authority.
    */
-  it('File_Get_014', 0, async function (done) {
+  it('File_Get_014', Level.LEVEL0, async function (done) {
     file.get({
       uri: 'internal://cache/../files/../../',
       success: function (data) {
@@ -3829,7 +3830,7 @@ describe('fileTest', function () {
    * @tc.name Document_Choose_001
    * @tc.desc Function of API, choose file.The test file is exist.
    */
-   it('File_Document_Choose_001', 0, async function (done) {
+   it('File_Document_Choose_001', Level.LEVEL0, async function (done) {
     try {
       let types = [];
       let code = await document.choose(types);
@@ -3850,7 +3851,7 @@ describe('fileTest', function () {
    * @tc.name Document_Choose_002
    * @tc.desc Function of API, choose file.The test file is  exist.
    */
-   it('File_Document_Choose_002', 0, async function (done) {
+   it('File_Document_Choose_002', Level.LEVEL0, async function (done) {
     try {
       let uri = "";
       let code = await document.choose(function(err,uri){
@@ -3872,7 +3873,7 @@ describe('fileTest', function () {
    * @tc.name Document_Choose_003
    * @tc.desc Function of API, choose file.The test file is exist.
    */
-   it('File_Document_Choose_003', 0, async function (done) {
+   it('File_Document_Choose_003', Level.LEVEL0, async function (done) {
     try {
       let types = [];
       let uri = "";
@@ -3891,11 +3892,36 @@ describe('fileTest', function () {
   });
 
   /**
+   * @tc.number SUB_STORAGE_Document_Choose_0400
+   * @tc.name Document_Choose_004
+   * @tc.desc Function of API, choose file.The test file is exist.
+   * Test choose.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('File_Document_Choose_001', Level.LEVEL0, async function (done) {
+    try {
+      let code = await document.choose();
+      let str = 'Error';
+      console.info("getFileUri===>" + code);
+      expect(str).assertTrue();
+      done();
+    } 
+    catch (e) {
+      console.info('File_Document_Choose_001 has failed for ' + e.message);
+      expect(e.message == "error").assertTrue();
+      done();
+    }
+  });
+
+  /**
    * @tc.number SUB_STORAGE_Document_Show_0100
    * @tc.name Document_Show_001
    * @tc.desc Function of API, show file.The test file is exist.
    */
-   it('File_Document_Show_001', 0, async function (done) {
+   it('File_Document_Show_001', Level.LEVEL0, async function (done) {
     try {
       let type = "";
       let uri = "";
@@ -3916,7 +3942,7 @@ describe('fileTest', function () {
    * @tc.name Document_Show_002
    * @tc.desc Function of API, show file.The test file is exist.
    */
-   it('File_Document_Show_002', 0, async function (done) {
+   it('File_Document_Show_002', Level.LEVEL0, async function (done) {
     try {
       let type = "";
       let uri ="";
