@@ -80,6 +80,25 @@ export default function SymbolGlyphFontWeightTest() {
     });
 
     /**
+     * @tc.number    SUB_ACE_SymbolGlyphFontWeightTest_0030
+     * @tc.name      SymbolGlyphFontWeightTest_0030
+     * @tc.desc      test SymbolGlyph fontWeight: 500
+     * @tc.level:    Level 1
+     * @tc.type :
+     * @tc.size :
+     */
+    it('SymbolGlyphFontWeightTest_0030', Level.LEVEL1, async (done: Function) => {
+      console.info('SymbolGlyphFontWeightTest_0030 START');
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyph_FontWeight_500');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[SymbolGlyphFontWeightTest_0030] fontWeight: " + JSON.stringify(obj.$attrs.fontWeight));
+      expect(obj.$attrs.fontWeight).assertEqual('500');
+      console.info('[SymbolGlyphFontWeightTest_0030] END');
+      done();
+    });
+
+    /**
      * @tc.number    SUB_ACE_SymbolGlyphFontWeightTest_0040
      * @tc.name      SymbolGlyphFontWeightTest_0040
      * @tc.desc      test SymbolGlyph fontWeight: Lighter
@@ -98,7 +117,7 @@ export default function SymbolGlyphFontWeightTest() {
       done();
     });
 
-    /**
+        /**
      * @tc.number    SUB_ACE_SymbolGlyphFontWeightTest_0050
      * @tc.name      SymbolGlyphFontWeightTest_0050
      * @tc.desc      test SymbolGlyph fontWeight: Normal
@@ -136,7 +155,7 @@ export default function SymbolGlyphFontWeightTest() {
       done();
     });
 
-    /**
+        /**
      * @tc.number    SUB_ACE_SymbolGlyphFontWeightTest_0070
      * @tc.name      SymbolGlyphFontWeightTest_0070
      * @tc.desc      test SymbolGlyph fontWeight: Medium
@@ -190,6 +209,25 @@ export default function SymbolGlyphFontWeightTest() {
       console.info("[SymbolGlyphFontWeightTest_0090] fontWeight: " + JSON.stringify(obj.$attrs.fontWeight));
       expect(obj.$attrs.fontWeight).assertEqual('FontWeight.Bolder');
       console.info('[SymbolGlyphFontWeightTest_0090] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_SymbolGlyphFontWeightTest_0100
+     * @tc.name      SymbolGlyphFontWeightTest_0100
+     * @tc.desc      test SymbolGlyph fontWeight: '30'
+     * @tc.level:    Level 1
+     * @tc.type :
+     * @tc.size :
+     */
+    it('SymbolGlyphFontWeightTest_0100', Level.LEVEL1, async (done: Function) => {
+      console.info('SymbolGlyphFontWeightTest_0100 START');
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyph_FontWeight_30');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[SymbolGlyphFontWeightTest_0100] fontWeight: " + JSON.stringify(obj.$attrs.fontWeight));
+      expect(obj.$attrs.fontWeight).assertEqual('900');
+      console.info('[SymbolGlyphFontWeightTest_0100] END');
       done();
     });
   })
