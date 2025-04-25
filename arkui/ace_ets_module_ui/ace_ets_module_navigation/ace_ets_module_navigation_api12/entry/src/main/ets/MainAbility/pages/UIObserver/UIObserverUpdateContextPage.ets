@@ -55,7 +55,7 @@ struct UIObserverUpdateContextPage {
           .id('UIObserverUpdateContext_btn_push')
         Button('off observer').onClick(() => {
           let obs = this.getUIContext().getUIObserver();
-          obs.off('navDestinationUpdate', { navigationId: "testId" }, callBackFunc)
+          obs.off('navDestinationUpdate', { navigationId: 'testId' }, callBackFunc)
 
           console.info(`get UIObserverUpdateContextPage_callBackFuncOnCount is: ${AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount')}`)
           console.info(`get UIObserverUpdateContextPage_callBackFuncOnCount_2 is: ${AppStorage.get('UIObserverUpdateContextPage_callBackFuncOnCount_2')}`)
