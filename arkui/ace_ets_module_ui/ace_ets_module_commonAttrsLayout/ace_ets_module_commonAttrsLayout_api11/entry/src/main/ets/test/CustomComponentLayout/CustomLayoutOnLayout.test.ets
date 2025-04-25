@@ -54,9 +54,9 @@ export default function CustomLayoutOnLayoutTest() {
       await CommonFunc.sleep(1000);
 
 
-      let text_1 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_0');
-      let text_2 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_1');
-      let text_3 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_2');
+      let text_1 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_1');
+      let text_2 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_2');
+      let text_3 = CommonFunc.getComponentRect('CustomLayoutOnLayoutText_3');
 
       expect(Math.abs(text_2.left - text_1.left - vp2px(20)) <= 1).assertTrue();
       expect(Math.abs(text_3.left - text_2.left - vp2px(20)) <= 1).assertTrue();
