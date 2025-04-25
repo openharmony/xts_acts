@@ -175,7 +175,7 @@ describe('ActsGetWantTest', function () {
                 action: "action2",
                 entities: ["entity1", "entity2"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
                 parameters:
                 {
@@ -197,7 +197,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.entities[0]).assertEqual("entity1");
                 expect(data.want.entities[1]).assertEqual("entity2");
                 expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                 expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT);
                 expect(data.want.parameters.mykey0).assertEqual(0.1);
                 expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -235,7 +235,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED,
                 parameters:
                 {
@@ -256,7 +256,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.action).assertEqual("action1");
                 expect(data.want.entities[0]).assertEqual("entity1");
                 expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                 expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
                 expect(data.want.parameters.mykey0).assertEqual(0.1);
                 expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -294,7 +294,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED,
                 parameters:
                 {
@@ -316,7 +316,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -350,7 +350,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
                 parameters:
                 {
@@ -371,7 +371,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.action).assertEqual("action1");
                 expect(data.want.entities[0]).assertEqual("entity1");
                 expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                 expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
                 expect(data.want.parameters.mykey0).assertEqual(0.1);
                 expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -409,7 +409,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
                     parameters:
                     {
@@ -431,7 +431,7 @@ describe('ActsGetWantTest', function () {
                         expect(data.want.action).assertEqual("action1");
                         expect(data.want.entities[0]).assertEqual("entity1");
                         expect(data.want.type).assertEqual("MIMETYPE");
-                        expect(data.want.uri).assertEqual("key={true,true,false}");
+                        expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                         expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
                         expect(data.want.parameters.mykey0).assertEqual(0.1);
                         expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -465,7 +465,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION,
                     parameters:
                     {
@@ -486,7 +486,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -524,7 +524,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION,
                 parameters:
                 {
@@ -546,7 +546,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.action).assertEqual("action1");
                 expect(data.want.entities[0]).assertEqual("entity1");
                 expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                 expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
                 expect(data.want.parameters.mykey0).assertEqual(0.1);
                 expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -580,7 +580,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     parameters:
                     {
                         mykey0: 0.1,
@@ -600,7 +600,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
@@ -637,7 +637,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 parameters:
                 {
                     mykey0: 0.1,
@@ -658,7 +658,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
@@ -691,7 +691,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT,
                     parameters:
                     {
@@ -712,7 +712,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -750,7 +750,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT,
                 parameters:
                 {
@@ -772,7 +772,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -806,7 +806,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE,
                     parameters:
                     {
@@ -827,7 +827,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -865,7 +865,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE,
                 parameters:
                 {
@@ -887,7 +887,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -921,7 +921,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY,
                     parameters:
                     {
@@ -942,7 +942,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -980,7 +980,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE,
                     parameters:
                     {
@@ -1001,7 +1001,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1039,7 +1039,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION,
                     parameters:
                     {
@@ -1060,7 +1060,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1098,7 +1098,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION,
                 parameters:
                 {
@@ -1120,7 +1120,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1154,7 +1154,7 @@ describe('ActsGetWantTest', function () {
                     action: "action1",
                     entities: ["entity1"],
                     type: "MIMETYPE",
-                    uri: "key={true,true,false}",
+                    uri: "test://temp/key={true,true,false}",
                     flags: wantConstant.Flags.FLAG_ABILITY_NEW_MISSION,
                     parameters:
                     {
@@ -1175,7 +1175,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1213,7 +1213,7 @@ describe('ActsGetWantTest', function () {
                 action: "action1",
                 entities: ["entity1"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_NEW_MISSION,
                 parameters:
                 {
@@ -1235,7 +1235,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action1");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1271,7 +1271,7 @@ describe('ActsGetWantTest', function () {
                 action: "action2",
                 entities: ["entity1", "entity2"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
                 parameters:
                 {
@@ -1292,7 +1292,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.action).assertEqual("action2");
                 expect(data.want.entities[0]).assertEqual("entity1");
                 expect(data.want.type).assertEqual("MIMETYPE");
-                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                 expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
                 expect(data.want.parameters.mykey0).assertEqual(0.1);
                 expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
@@ -1332,7 +1332,7 @@ describe('ActsGetWantTest', function () {
                 action: "action2",
                 entities: ["entity1", "entity2"],
                 type: "MIMETYPE",
-                uri: "key={true,true,false}",
+                uri: "test://temp/key={true,true,false}",
                 flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
                 parameters:
                 {
@@ -1354,7 +1354,7 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.action).assertEqual("action2");
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
+                    expect(data.want.uri).assertEqual("test://temp/key={true,true,false}");
                     expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
