@@ -37,7 +37,7 @@
 #include <sys/types.h>
 
 const char *TAG = "testLog";
-
+const std::string TEST_PATH = "/data/test/";
 static std::vector< OH_PreferencesPair *> changedData;
 static OH_PreferencesPair *g_pairs = nullptr;
 static bool IsFileExist(const std::string &path)
