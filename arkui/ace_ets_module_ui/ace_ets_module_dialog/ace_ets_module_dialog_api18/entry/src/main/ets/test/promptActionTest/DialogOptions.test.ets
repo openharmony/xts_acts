@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,Level,Size,TestType } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,Level,Size,TestType } from '@ohos/hypium'
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -81,7 +81,8 @@ export default function DialogOptions() {
       let borderColor:string = column.borderColor
       let borderStyle:string = column.borderStyle
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
-     
+      console.info('[DialogOptions_0100] column $attrs'+ JSON.stringify(column))
+
       console.info('[DialogOptions_0100] topLeft'+ topLeft)
       expect(topLeft).assertEqual('32.00vp')
 
@@ -104,7 +105,7 @@ export default function DialogOptions() {
       expect(borderStyle).assertEqual('BorderStyle.Solid')
       console.info('[DialogOptions_0100] backgroundBlurStyle'+ backgroundBlurStyle)
       
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       console.info('[DialogOptions_0100] uniRenderFlag'+ uniRenderFlag)
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
@@ -249,7 +250,7 @@ export default function DialogOptions() {
       expect(shadow).assertEqual('ShadowStyle.OuterDefaultSM')
 
       console.info('[DialogOptions_0300] height'+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       console.info('[DialogOptions_0300] uniRenderFlag'+ uniRenderFlag)
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
@@ -319,7 +320,7 @@ export default function DialogOptions() {
       console.info('[DialogOptions_0400] shadow'+ shadow)
       expect(shadow).assertEqual('ShadowStyle.OuterFloatingSM')
       console.info('[DialogOptions_0400] backgroundBlurStyle'+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       console.info('[DialogOptions_0400] uniRenderFlag'+ uniRenderFlag)
       
       if (uniRenderFlag == 'false') {
@@ -377,7 +378,7 @@ export default function DialogOptions() {
       expect(offsetX).assertEqual('2.000000')
       expect(offsetY).assertEqual('3.000000')
       expect(fill).assertEqual('1')
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -413,7 +414,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_0600] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -450,7 +451,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_0700] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -485,7 +486,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_0800] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -522,7 +523,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_0900] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -558,7 +559,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_1000] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -594,7 +595,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_1100] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -631,7 +632,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_1200] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -666,7 +667,7 @@ export default function DialogOptions() {
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       
       console.info('[DialogOptions_1300] backgroundBlurStyle '+ backgroundBlurStyle)
-      let uniRenderFlag: string = column.uniRender;
+      let uniRenderFlag: string = obj.$children[1].$attrs?.uniRender;
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
@@ -678,7 +679,5 @@ export default function DialogOptions() {
       console.info('DialogOptions_1300 END');
       done();
     });
-
-
   })
 }
