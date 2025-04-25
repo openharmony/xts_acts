@@ -30,7 +30,11 @@ import { DividerModifier, SymbolGlyphModifier } from '@ohos.arkui.modifier';
 struct ToolBarV2Example {
   @Local toolBarList: ToolBarV2Item[] = [];
   @Local toolBarModifier: ToolBarV2Modifier =
-  new ToolBarV2Modifier().height(LengthMetrics.vp(52)).backgroundColor(ColorMetrics.resourceColor(Color.Transparent));
+    new ToolBarV2Modifier()
+      .height(LengthMetrics.vp(52))
+      .backgroundColor(ColorMetrics.resourceColor(Color.Transparent))
+      .padding(LengthMetrics.vp(0))
+      .stateEffect(false);
   @Local dividerModifier: DividerModifier = new DividerModifier().height(0);
   @Local activatedIndex: number = 0;
 

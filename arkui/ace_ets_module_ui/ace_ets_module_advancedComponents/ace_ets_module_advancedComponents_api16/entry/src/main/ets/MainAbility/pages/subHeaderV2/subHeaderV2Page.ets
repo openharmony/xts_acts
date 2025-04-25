@@ -51,6 +51,8 @@ struct SubHeaderV2Example {
     this.title = new SubHeaderV2Title({
       primaryTitle: this.primaryTitle,
       secondaryTitle: this.secondaryTitle,
+      primaryTitleModifier: this.primaryModifier,
+      secondaryTitleModifier: this.secondaryModifier,
     });
     this.operationItems = [new SubHeaderV2OperationItem({
       content: '操作',
