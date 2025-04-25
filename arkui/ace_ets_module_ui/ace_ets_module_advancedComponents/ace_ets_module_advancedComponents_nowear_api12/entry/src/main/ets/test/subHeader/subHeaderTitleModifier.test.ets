@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,56 +17,56 @@ import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
 
-export default function subHeaderTitleBuilder() {
-  describe('subHeaderTitleBuilder', () => {
+export default function subHeaderTitleModifier() {
+  describe('subHeaderTitleModifier', () => {
     beforeEach(async (done: Function) => {
-      console.info('subHeaderTitleBuilder beforeEach start');
+      console.info('subHeaderTitleModifier beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/subHeader/subHeaderTitleBuilder',
+        url: 'MainAbility/pages/subHeader/subHeaderTitleModifier',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info('get subHeaderTitleBuilder state pages: ' + JSON.stringify(pages));
-        if (!('subHeaderTitleBuilder' == pages.name)) {
-          console.info('get subHeaderTitleBuilder pages.name: ' + JSON.stringify(pages.name));
+        console.info('get subHeaderTitleModifier state pages: ' + JSON.stringify(pages));
+        if (!('subHeaderTitleModifier' == pages.name)) {
+          console.info('get subHeaderTitleModifier pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info('push subHeaderTitleBuilder page result successful');
+          console.info('push subHeaderTitleModifier page result successful');
         }
       } catch (err) {
-        console.error('push subHeaderTitleBuilder page error: ' + err);
+        console.error('push subHeaderTitleModifier page error: ' + err);
       }
 
       await Utils.sleep(1000);
-      console.info('subHeaderTitleBuilder beforeEach end');
+      console.info('subHeaderTitleModifier beforeEach end');
       done();
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('subHeaderTitleBuilder after each called');
+      console.info('subHeaderTitleModifier after each called');
     })
 
     /**
-     * @tc.number subHeaderTitleBuilder
-     * @tc.name   subHeaderTitleBuilder_0100
-     * @tc.desc   Test subHeader titleBuilder
+     * @tc.number subHeaderTitleModifier
+     * @tc.name   subHeaderTitleModifier_0100
+     * @tc.desc   Test subHeaderTitleModifier
      * @tc.size   MediumTest
      * @tc.type   Function
      * @tc.level  0
      */
-    it('subHeaderTitleBuilder_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      console.info('[subHeaderTitleBuilder_0100] START');
+    it('subHeaderTitleModifier_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('[subHeaderTitleModifier_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
-      // subHeaderTitleBuilder是否存在以下入口。
-      let primaryTitle = await driver.findComponent(ON.text('主标题'));
-      let secondaryTitle = await driver.findComponent(ON.text('副标题'));
+      // subHeaderTitleModifier是否存在以下入口。
+      let primaryTitle = await driver.findComponent(ON.text('primaryTitle'));
+      let secondaryTitle = await driver.findComponent(ON.text('secondaryTitle'));
       expect(primaryTitle !== null).assertTrue();
       expect(secondaryTitle !== null).assertTrue();
       await driver.delayMs(1000);
-      console.info('[subHeaderTitleBuilder_0100] END');
+      console.info('[subHeaderTitleModifier_0100] END');
       done();
     });
   })
