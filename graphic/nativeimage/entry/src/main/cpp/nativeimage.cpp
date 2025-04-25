@@ -1835,34 +1835,36 @@ static napi_value OHNativeWindowDropBufferModeSetTrueNormal(napi_env env, napi_c
         napi_create_int32(env, FAIL, &result);
         return result;
     }
-    InitNativeWindow *InitNative = new InitNativeWindow(image);
-    int produce_buffer = 0;
-    int consumer_buffer = 0;
-    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
-        produce_buffer++;
+    InitNativeWindow *initNative = new InitNativeWindow(image);
+    int produceBuffer = 0;
+    int consumerBuffer = 0;
+    while (initNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produceBuffer++;
     }
     while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
-        consumer_buffer++;
+        consumerBuffer++;
     }
-    if (consumer_buffer != PARAM_1 || produce_buffer != PARAM_3) {
+    if (consumerBuffer != PARAM_1 || produceBuffer != PARAM_3) {
         napi_create_int32(env, FAIL * PARAM_8, &result);
         return result;
     }
-    produce_buffer = 0;
-    consumer_buffer = 0;
+    produceBuffer = 0;
+    consumerBuffer = 0;
     ret1 = OH_NativeImage_SetDropBufferMode(image, false);
     // produce_buffer = 2,
     // 是因为UpdateSurfaceImage消费完释放的是上一个buffer。由于上一次UpdateSurfaceImage失败导致其中一个buffer未释放
-    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
-        produce_buffer++;
+    while (initNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produceBuffer++;
     }
     while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
-        consumer_buffer++;
+        consumerBuffer++;
     }
-    if (produce_buffer != PARAM_2 || consumer_buffer != PARAM_2) {
+    if (produceBuffer != PARAM_2 || consumerBuffer != PARAM_2) {
         napi_create_int32(env, FAIL * PARAM_16, &result);
         return result;
     }
+    delete initNative;
+    OH_NativeImage_Destroy(&image);
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1879,34 +1881,36 @@ static napi_value OHNativeWindowDropBufferModeSetTrueNormal2(napi_env env, napi_
         napi_create_int32(env, FAIL, &result);
         return result;
     }
-    InitNativeWindow *InitNative = new InitNativeWindow(image);
-    int produce_buffer = 0;
-    int consumer_buffer = 0;
-    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
-        produce_buffer++;
+    InitNativeWindow *initNative = new InitNativeWindow(image);
+    int produceBuffer = 0;
+    int consumerBuffer = 0;
+    while (initNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produceBuffer++;
     }
     while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
-        consumer_buffer++;
+        consumerBuffer++;
     }
-    if (consumer_buffer != PARAM_3 || produce_buffer != PARAM_3) {
+    if (consumerBuffer != PARAM_3 || produceBuffer != PARAM_3) {
         napi_create_int32(env, FAIL * PARAM_8, &result);
         return result;
     }
-    produce_buffer = 0;
-    consumer_buffer = 0;
+    produceBuffer = 0;
+    consumerBuffer = 0;
     ret1 = OH_NativeImage_SetDropBufferMode(image, true);
     // produce_buffer = 2,
     // 是因为UpdateSurfaceImage消费完释放的是上一个buffer。由于上一次UpdateSurfaceImage失败导致其中一个buffer未释放
-    while (InitNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
-        produce_buffer++;
+    while (initNative->OH_FlushBuffer() == NATIVE_ERROR_OK) {
+        produceBuffer++;
     }
     while (OH_NativeImage_UpdateSurfaceImage(image) == NATIVE_ERROR_OK) {
-        consumer_buffer++;
+        consumerBuffer++;
     }
-    if (consumer_buffer != PARAM_1 || produce_buffer != PARAM_2) {
+    if (consumerBuffer != PARAM_1 || produceBuffer != PARAM_2) {
         napi_create_int32(env, FAIL * PARAM_16, &result);
         return result;
     }
+    delete initNative;
+    OH_NativeImage_Destroy(&image);
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
@@ -1960,6 +1964,10 @@ napi_value NativeImageInit(napi_env env, napi_value exports)
          nullptr},
         {"oHNativeImageDestroy1", nullptr, OHNativeImageDestroy1, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeImageCreateMuch", nullptr, OHNativeImageCreateMuch, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeWindowDropBufferModeSetTrueNormal2", nullptr, OHNativeWindowDropBufferModeSetTrueNormal2,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeWindowDropBufferModeSetAbNormal", nullptr, OHNativeWindowDropBufferModeSetAbNormal,
+         nullptr, nullptr, nullptr, napi_default, nullptr},        
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
     return exports;
@@ -2011,10 +2019,6 @@ static napi_value NativeImageInit2(napi_env env, napi_value exports)
         {"OHConsumerSurfaceSetDefaultUsageSizeNormal", nullptr, OHConsumerSurfaceSetDefaultUsageSizeNormal,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeWindowDropBufferModeSetTrueNormal", nullptr, OHNativeWindowDropBufferModeSetTrueNormal,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeWindowDropBufferModeSetTrueNormal2", nullptr, OHNativeWindowDropBufferModeSetTrueNormal2,
-         nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"oHNativeWindowDropBufferModeSetAbNormal", nullptr, OHNativeWindowDropBufferModeSetAbNormal,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
