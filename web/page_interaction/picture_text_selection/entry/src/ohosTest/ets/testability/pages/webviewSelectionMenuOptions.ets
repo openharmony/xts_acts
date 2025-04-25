@@ -29,11 +29,11 @@ struct webviewSelectionMenuOptions {
   @State userAgentPC:string = '';
   controller: web_webview.WebviewController = new web_webview.WebviewController()
   @State menuOptionArray: Array<ExpandedMenuItemOptions> = [
-    {content: 'Apple', action: (selectedText) => {
+    {content: 'Apple', startIcon: $r('app.media.icon'), action: (selectedText) => {
       console.info('select Apple info ' + selectedText.toString());
       Utils.emitEvent(1, 5400)
     }},
-    {content: 'Banana', action: (selectedText) => {
+    {content: 'Banana', startIcon: $r('app.media.icon'), action: (selectedText) => {
       console.info('select Banana info ' + selectedText.toString());
     }}
   ];

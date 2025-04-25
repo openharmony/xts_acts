@@ -78,9 +78,9 @@ struct WebViewEnumAndFontLibrary {
   @State menuY: Number = 0
   @State LinkUrl: String = ''
   @State ImageContent: boolean = false
-  @State MediaType: Number = 0
-  @State SourceType: Number = 0
-  @State InputFieldType: Number = 0
+  @State MediaType: ContextMenuMediaType = ContextMenuMediaType.None
+  @State SourceType: ContextMenuSourceType = ContextMenuSourceType.None
+  @State InputFieldType: ContextMenuInputFieldType = ContextMenuInputFieldType.None
   @State isEditable: boolean = false
   @State EditStateFlags: Number = 0
   @State SourceUrl: String | null = null
@@ -100,6 +100,9 @@ struct WebViewEnumAndFontLibrary {
   @State PermissionRequestState: boolean = false
   @State userAgentPC:string = "";
   WebResult: WebContextMenuResult = new WebContextMenuResult;
+  @State SourceTypeArr:ContextMenuSourceType[] = [ContextMenuSourceType.None,ContextMenuSourceType.Mouse,ContextMenuSourceType.LongPress]
+  @State MediaTypeArr:ContextMenuMediaType[] = [ContextMenuMediaType.None,ContextMenuMediaType.Image]
+  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other	]
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -175,7 +178,7 @@ struct WebViewEnumAndFontLibrary {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
-              Utils.emitEvent(Number(this.MediaType), 807)
+              Utils.emitEvent(this.MediaTypeArr[this.MediaType], 807)
               this.MediaType = 0
               break;
             }
@@ -189,20 +192,32 @@ struct WebViewEnumAndFontLibrary {
             case "emitWebContextMenuParamGetSourceType": {
               this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
-                  Utils.emitEvent(2, 809)
+                  Utils.emitEvent(this.SourceTypeArr[ContextMenuSourceType.LongPress], 809)
                   break;
                 }
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
-              Utils.emitEvent(Number(this.SourceType), 809)
+              Utils.emitEvent(this.SourceTypeArr[this.SourceType], 809)
               break;
             }
+            case "emitWebContextMenuParamGetSourceTypeNone": {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(this.SourceTypeArr[ContextMenuSourceType.None], 20250423)
+                break;
+              }
+              let driver = Driver.create();
+              await driver.triggerCombineKeys(2047, 2099);
+              Utils.emitEvent(this.SourceTypeArr[this.SourceType], 20250423)
+              break;
+            }
+
             case "emitWebContextMenuParamGetInputFieldType": {
               let driver = Driver.create();
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
-              Utils.emitEvent(Number(this.InputFieldType), 810)
+              Utils.emitEvent(this.FieldTypeArr[this.InputFieldType], 810)
               break;
             }
             case "emitWebContextMenuParamIsEditable": {
@@ -228,7 +243,7 @@ struct WebViewEnumAndFontLibrary {
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
               await Utils.sleep(2000);
-              Utils.emitEvent(Number(this.InputFieldType), 831)
+              Utils.emitEvent(this.FieldTypeArr[this.InputFieldType], 831)
               break;
             }
             case "emitContextMenuSourceTypeLongPress": {
@@ -241,7 +256,7 @@ struct WebViewEnumAndFontLibrary {
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
               await Utils.sleep(2000);
-              Utils.emitEvent(Number(this.SourceType), 841)
+              Utils.emitEvent(this.SourceTypeArr[this.SourceType], 841)
               break;
             }
             case "emitContextMenuEditStateFlags": {
@@ -260,7 +275,7 @@ struct WebViewEnumAndFontLibrary {
               let button = await driver.findComponent(ON.id('webCenter'));
               await button.longClick();
               await Utils.sleep(2000);
-              Utils.emitEvent(Number(this.MediaType), 881)
+              Utils.emitEvent(this.MediaTypeArr[this.MediaType], 881)
               this.MediaType = 0
               this.controller.loadUrl("resource://rawfile/indexJru.html")
               await Utils.sleep(2000);
@@ -273,6 +288,7 @@ struct WebViewEnumAndFontLibrary {
               Utils.emitEvent(Boolean(this.onContextMenuShowState), 1252);
               break;
             }
+
           }
         })
       }

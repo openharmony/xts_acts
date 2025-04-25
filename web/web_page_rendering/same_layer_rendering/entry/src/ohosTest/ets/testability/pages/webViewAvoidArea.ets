@@ -34,6 +34,7 @@ struct webViewAvoidArea {
   @State safeEdge: Array <SafeAreaEdge>=[SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM, SafeAreaEdge.START, SafeAreaEdge.END];
   @State screenHeight: number = 0;
   @State isCreateSuccess: boolean = false;
+  @State ViewportFitArr:ViewportFit[] = [ViewportFit.AUTO,ViewportFit.CONTAINS,ViewportFit.COVER]
 
   aboutToAppear() {
     window.getLastWindow(getContext(this)).then(currentWindow =>{
@@ -81,7 +82,7 @@ struct webViewAvoidArea {
               case 'emitWebViewAvoidArea01': {
                 try {
                   if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent('success', 6201);
+                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.CONTAINS], 6201);
                     return
                   }
                   this.isCreateSuccess = false;
@@ -95,13 +96,13 @@ struct webViewAvoidArea {
               case 'emitWebViewAvoidArea02': {
                 try {
                   if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent('success', 6202);
+                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6202);
                     return
                   }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('auto.html'));
                   if (this.isCreateSuccess === false) {
-                    Utils.emitEvent('success', 6202);
+                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6202);
                   }
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -111,7 +112,7 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea03': {
                 if (Utils.isPC(this.controller) ) {
-                  Utils.emitEvent('success', 6203);
+                  Utils.emitEvent(this.ViewportFitArr[ViewportFit.COVER], 6203);
                   return
                 }
                 try {
@@ -126,13 +127,13 @@ struct webViewAvoidArea {
               case 'emitWebViewAvoidArea04': {
                 try {
                   if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent('success', 6204);
+                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6204);
                     return
                   }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('default.html'));
                   if (this.isCreateSuccess === false) {
-                    Utils.emitEvent('success', 6204);
+                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6204);
                   }
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -176,12 +177,12 @@ struct webViewAvoidArea {
           }
           if (this.emitKey == 'emitWebViewAvoidArea01') {
             if (viewportFit === 1) {
-              Utils.emitEvent('success', 6201);
+              Utils.emitEvent(this.ViewportFitArr[ViewportFit.CONTAINS], 6201);
             }
           }
           if (this.emitKey == 'emitWebViewAvoidArea03') {
             if (viewportFit === 2) {
-              Utils.emitEvent('success', 6203);
+              Utils.emitEvent(this.ViewportFitArr[ViewportFit.COVER], 6203);
             }
           }
         })
