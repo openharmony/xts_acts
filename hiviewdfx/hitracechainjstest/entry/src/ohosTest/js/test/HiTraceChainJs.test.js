@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiTraceChain from '@ohos.hiTraceChain'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import hilog from '@ohos.hilog'
 
 export default function HiTraceJsTest() {
@@ -38,10 +38,10 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi01', 1, async function (done) {
+    it('testHitraceApi01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi01 start');
         try{
-            let traceId = hiTraceChain.begin("hitrace01");
+            let traceId = hiTraceChain.begin("hitrace01", hiTraceChain.HiTraceFlag.DEFAULT);
             let traceIdIsvalid = hiTraceChain.isValid(traceId);
             if(!traceIdIsvalid){
                 expect().assertFail();
@@ -62,7 +62,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi02', 1, async function (done) {
+    it('testHitraceApi02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi02 start');
         try{
             let traceId = hiTraceChain.begin("hitrace02", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC |
@@ -87,7 +87,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi03', 1, async function (done) {
+    it('testHitraceApi03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi03 start');
         try{
             let traceId = hiTraceChain.begin("hitrace03", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -113,7 +113,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi04', 1, async function (done) {
+    it('testHitraceApi04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi04 start');
         try{
             let traceId = hiTraceChain.begin("hitrace04", hiTraceChain.HiTraceFlag.NO_BE_INFO);
@@ -138,7 +138,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi05', 1, async function (done) {
+    it('testHitraceApi05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi05 start');
         try{
             let traceId = hiTraceChain.begin("hitrace05");
@@ -163,7 +163,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi06', 1, async function (done) {
+    it('testHitraceApi06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi06 start');
         try{
             let traceId = hiTraceChain.begin("hitrace06");
@@ -189,7 +189,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi07', 1, async function (done) {
+    it('testHitraceApi07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi07 start');
         try{
             let traceId = hiTraceChain.begin("hitrace07", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
@@ -215,7 +215,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi08', 1, async function (done) {
+    it('testHitraceApi08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi08 start');
         hiTraceChain.clearId();
         let traceId = hiTraceChain.begin("testHitraceApi08", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
@@ -239,7 +239,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHitraceApi09', 1, async function (done) {
+    it('testHitraceApi09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi09 start');
         hiTraceChain.clearId();
         let traceId = hiTraceChain.begin("hitrace09", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
@@ -265,7 +265,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-    it('testHitraceApi10', 0, async function (done) {
+    it('testHitraceApi10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHitraceApi10 start')
         hiTraceChain.clearId();
         try {
@@ -295,7 +295,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-    it('testHitraceApi11', 0, async function (done) {
+    it('testHitraceApi11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHitraceApi11 start')
 		hiTraceChain.setId(12345678);
         hiTraceChain.clearId();
@@ -329,7 +329,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-    it('testHitraceApi12', 0, async function (done) {
+    it('testHitraceApi12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHitraceApi12 start')
         try {
             let traceId = hiTraceChain.begin("hitrace12", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
@@ -349,7 +349,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi12 end')
 		done()
     });
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为null
      * @tc.number DFX_DFT_Hitrace_JS_01300
@@ -358,7 +358,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-    it('testHitraceApi013', 1, async function (done) {
+    it('testHitraceApi013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi013 start');
         let traceId = hiTraceChain.begin(null);
         let traceIdIsvalid = hiTraceChain.isValid(traceId);
@@ -366,7 +366,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi013 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为undefined
      * @tc.number DFX_DFT_Hitrace_JS_01400
@@ -375,7 +375,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi014', 1, async function (done) {
+     it('testHitraceApi014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi014 start');
         let traceId = hiTraceChain.begin(undefined);
         let traceIdIsvalid = hiTraceChain.isValid(traceId);
@@ -383,7 +383,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi014 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为长度大于32位
      * @tc.number DFX_DFT_Hitrace_JS_01500
@@ -392,7 +392,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi015', 1, async function (done) {
+     it('testHitraceApi015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi015 start');
         try{
             let traceId = hiTraceChain.begin("1234567890qwertyuiopasdfghjklzxcvbnm");
@@ -410,7 +410,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi015 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为长度大于1024位
      * @tc.number DFX_DFT_Hitrace_JS_01600
@@ -419,7 +419,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi016', 1, async function (done) {
+     it('testHitraceApi016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi016 start');
         try{
             let traceId = hiTraceChain.begin("1234567890qwertyuiopasdfghjklzxcvbnm1234567890qwertyuiopasdfghjklzxcvbnm1234567890qwertyuiopasdfghjklzxcvbnm12345678901234567890");
@@ -437,7 +437,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi016 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为""
      * @tc.number DFX_DFT_Hitrace_JS_01700
@@ -446,7 +446,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi017', 1, async function (done) {
+     it('testHitraceApi017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi017 start');
         try{
             let traceId = hiTraceChain.begin("");
@@ -464,7 +464,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi017 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为" "
      * @tc.number DFX_DFT_Hitrace_JS_01800
@@ -473,7 +473,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi018', 1, async function (done) {
+     it('testHitraceApi018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi018 start');
         try{
             let traceId = hiTraceChain.begin(" ");
@@ -491,7 +491,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi018 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为"default"
      * @tc.number DFX_DFT_Hitrace_JS_01900
@@ -500,7 +500,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi019', 1, async function (done) {
+     it('testHitraceApi019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi019 start');
         try{
             let traceId = hiTraceChain.begin("default");
@@ -518,7 +518,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi019 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-跟踪业务名为中文字符
      * @tc.number DFX_DFT_Hitrace_JS_02000
@@ -527,7 +527,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi020', 1, async function (done) {
+     it('testHitraceApi020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi020 start');
         try{
             let traceId = hiTraceChain.begin("华为");
@@ -545,7 +545,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi020 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceCommunicationMode为DEFAULT
      * @tc.number DFX_DFT_Hitrace_JS_02100
@@ -554,7 +554,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi021', 1, async function (done) {
+     it('testHitraceApi021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi021 start');
         try{
             let traceId = hiTraceChain.begin("hitrace03", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -574,7 +574,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi021 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceCommunicationMode为PROCESS
      * @tc.number DFX_DFT_Hitrace_JS_02200
@@ -583,7 +583,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi022', 1, async function (done) {
+     it('testHitraceApi022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi022 start');
         try{
             let traceId = hiTraceChain.begin("hitrace03", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -603,7 +603,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi022 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceCommunicationMode为DEVICE
      * @tc.number DFX_DFT_Hitrace_JS_02300
@@ -612,7 +612,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi023', 1, async function (done) {
+     it('testHitraceApi023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi023 start');
         try{
             let traceId = hiTraceChain.begin("testHitraceApi023", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -632,7 +632,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi023 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceTracepointType为CS
      * @tc.number DFX_DFT_Hitrace_JS_02400
@@ -641,7 +641,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi024', 1, async function (done) {
+     it('testHitraceApi024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi024 start');
         try{
             let traceId = hiTraceChain.begin("testHitraceApi024", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -661,7 +661,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi024 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceTracepointType为CR
      * @tc.number DFX_DFT_Hitrace_JS_02500
@@ -670,7 +670,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi025', 1, async function (done) {
+     it('testHitraceApi025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi025 start');
         try{
             let traceId = hiTraceChain.begin("testHitraceApi025", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -690,7 +690,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi025 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceTracepointType为SR
      * @tc.number DFX_DFT_Hitrace_JS_02600
@@ -699,7 +699,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi026', 1, async function (done) {
+     it('testHitraceApi026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi026 start');
         try{
             let traceId = hiTraceChain.begin("testHitraceApi026", hiTraceChain.HiTraceFlag.TP_INFO);
@@ -719,7 +719,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi026 end');
         done();
     })
-    
+
     /**
      * @tc.name: 接口测试-HiTraceTracepointType为GENERAL
      * @tc.number DFX_DFT_Hitrace_JS_02700
@@ -728,7 +728,7 @@ describe('HiTraceJsTest', function () {
      * @tc.level Level3
      * @tc.type FUNC
      */
-     it('testHitraceApi027', 1, async function (done) {
+     it('testHitraceApi027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi027 start');
         try{
             let traceId = hiTraceChain.begin("testHitraceApi027", hiTraceChain.HiTraceFlag.TP_INFO);

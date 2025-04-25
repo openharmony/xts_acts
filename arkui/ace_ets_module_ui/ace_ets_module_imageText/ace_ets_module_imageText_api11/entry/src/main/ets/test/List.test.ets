@@ -107,6 +107,8 @@ import richEditorTest from './RichEditorTest/RichEditorJsunit.test';
 import textTextCaseTest from './textTest/textTextCase.test';
 import textTextDecorationTest from './textTest/textTextDecoration.test';
 import searchTest from './SearchTest/SearchJsunit1.test';
+import TextAreaTypeTest from "./TextAreaTest/TextAreaType.test";
+import SearchTypeTest from "./SearchTest/SearchType.test";
 
 
 export default function testsuite() {
@@ -205,4 +207,6 @@ export default function testsuite() {
   textTextDecorationTest();
   searchTest();
   textInputTest()
+  TextAreaTypeTest();
+  SearchTypeTest();
 }

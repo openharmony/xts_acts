@@ -69,15 +69,34 @@ export default function GridBackToTopTest() {
       );
       await sleep(2000);
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+      let stopJson = getInspectorByKey('gridBackToTop');
+      expect(JSON.parse(stopJson).$attrs.content !== 'onDidGridBackToTop').assertTrue();
+      
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+
+      await driverGrid.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();
-      await sleep(500)
+      await sleep(1500)
+
+      await driverGrid.swipe(
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 4),
+        Math.round(left + width * 0.2),
+        Math.round(bottom - height / 2)
+      );
+      await sleep(2000);
       await switchButton.click();
       await sleep(500)
       await topButton.click();

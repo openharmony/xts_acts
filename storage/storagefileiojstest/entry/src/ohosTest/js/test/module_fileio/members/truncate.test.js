@@ -17,6 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
+import { Level } from '@ohos/hypium';
 
 export default function fileioTruncate() {
 describe('fileio_truncate', function () {
@@ -30,7 +31,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_truncate_async_000', 0, async function (done) {
+  it('fileio_truncate_async_000', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_truncate_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let truncateLen = 5;
@@ -60,7 +61,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_truncate_async_001', 0, async function (done) {
+  it('fileio_truncate_async_001', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_truncate_async_001');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
     let truncateLen = 2;
@@ -96,7 +97,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_truncate_async_002', 0, async function (done) {
+  it('fileio_truncate_async_002', Level.LEVEL0, async function (done) {
     let fpath = await nextFileName('fileio_truncate_async_002');
     let truncateLen = 2;
 
@@ -120,7 +121,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_truncate_async_003', 3, async function (done) {
+  it('fileio_truncate_async_003', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_truncate_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -149,7 +150,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_truncate_async_004', 3, async function (done) {
+  it('fileio_truncate_async_004', Level.LEVEL3, async function (done) {
     let fpath = await nextFileName('fileio_truncate_async_004');
     expect(prepareFile(fpath, 'truncate')).assertTrue();
 
@@ -174,6 +175,35 @@ describe('fileio_truncate', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0500
+   * @tc.name fileio_truncate_async_005
+   * @tc.desc Test the truncate() interface. Promise.
+   * Use default truncateLen = 0.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_truncate_async_005', Level.LEVEL3, async function (done) {
+    let fpath = await nextFileName('fileio_truncate_async_005');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      await fileio.truncate(fpath);
+      let fd = fileio.openSync(fpath, 0o2);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(readLen == 0).assertTrue();
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileio_truncate_async_005 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0000
    * @tc.name fileio_test_truncate_sync_000
    * @tc.desc Test truncateSync() interfaces.
@@ -182,7 +212,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_truncate_sync_000', 0, async function () {
+  it('fileio_test_truncate_sync_000', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_truncate_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -205,7 +235,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_truncate_sync_001', 0, async function () {
+  it('fileio_test_truncate_sync_001', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_truncate_sync_001');
 
     try {
@@ -225,7 +255,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_truncate_sync_002', 0, function () {
+  it('fileio_test_truncate_sync_002', Level.LEVEL0, function () {
     try {
       fileio.truncateSync();
       expect(null).assertFail();
@@ -244,7 +274,7 @@ describe('fileio_truncate', function () {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileio_test_truncate_sync_003', 3, async function () {
+  it('fileio_test_truncate_sync_003', Level.LEVEL0, async function () {
     let fpath = await nextFileName('fileio_test_truncate_sync_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 

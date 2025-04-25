@@ -14,6 +14,7 @@
  */
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
+import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
 import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
@@ -30,10 +31,12 @@ import textPickerDialogShadowTest from './textPickerDialog/textPickerDialogShado
 import timePickerDialogBGBlurStyleTest from './timePickerDialog/timePickerDialogBGBlurStyle.test';
 import timePickerDialogBGColorTest from './timePickerDialog/timePickerDialogBGColor.test';
 import timePickerDialogShadowTest from './timePickerDialog/timePickerDialogShadow.test';
+import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 
 export default function testsuite() {
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
+    EnableHapticFeedback();
     textPickerDialogSelectedAreaTest();
     timePickerDialogSelectedAreaTest();
     textPickerDialogDefaultTextStyleTest();
@@ -50,4 +53,5 @@ export default function testsuite() {
     timePickerDialogBGBlurStyleTest();
     timePickerDialogBGColorTest();
     timePickerDialogShadowTest();
+    textPickerDialogEnableHapticFeedback();
 }

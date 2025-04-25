@@ -340,7 +340,12 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(error.code) == 801) {
+          console.info("BleScanner.startScan is not support.");
+          expect(true).assertTrue();
+        } else {
+          expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })
@@ -365,7 +370,12 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+        if (Number(error.code) == 801) {
+          console.info("BleScanner.stopScan is not support.");
+          expect(true).assertTrue();
+        } else {
+          expect(Number(error.code)).assertEqual(PERMISSION_DENIED_CODE);
+        }
       }
       done();
     })

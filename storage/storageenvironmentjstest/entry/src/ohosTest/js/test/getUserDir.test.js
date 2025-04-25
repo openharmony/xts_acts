@@ -20,7 +20,7 @@ import {
   isSting,
   isIntNum
 } from './Common';
-import { TestType, Size, Level } from '@ohos/hypium';
+import { Level } from '@ohos/hypium';
 
 export default function getUserDir() {
   describe('environment_getUserDir_test', function () {
@@ -34,7 +34,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_001', Level.LEVEL0, async function () {
       try {
         let path = environment.getDesktopDir();
         expect(isSting(path)).assertTrue();
@@ -55,7 +55,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_002', Level.LEVEL0, async function () {
       try {
         let path = environment.getDesktopDir("123%$&^");
         expect(false).assertTrue();
@@ -78,7 +78,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_003', Level.LEVEL0, async function () {
       try {
         let path = environment.getDesktopDir(true);
         expect(false).assertTrue();
@@ -101,7 +101,7 @@ export default function getUserDir() {
     * @tc.level Level 0
     * @tc.require
    */
-    it('environment_test_getDesktopDir_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_004', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir();
         expect(isSting(path)).assertTrue();
@@ -122,7 +122,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_005', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir("123%$&^");
         expect(isSting(path)).assertTrue();
@@ -145,7 +145,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getDesktopDir_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getDesktopDir_006', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDesktopDir(true);
         expect(isSting(path)).assertTrue();
@@ -168,7 +168,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDocumentDir_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDocumentDir_001', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDocumentDir();
         expect(isSting(path)).assertTrue();
@@ -189,7 +189,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDocumentDir_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDocumentDir_002', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDocumentDir("123%$&^");
         expect(false).assertTrue();
@@ -212,7 +212,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDocumentDir_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDocumentDir_003', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDocumentDir(true);
         expect(false).assertTrue();
@@ -235,7 +235,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDownloadDir_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDownloadDir_001', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDownloadtDir();
         expect(isSting(path)).assertTrue();
@@ -256,7 +256,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDownloadDir_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDownloadDir_002', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDownloadDir("123%$&^");
         expect(false).assertTrue();
@@ -279,7 +279,7 @@ export default function getUserDir() {
      * @tc.level Level 0
      * @tc.require
     */
-    it('environment_test_getUserDownloadDir_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('environment_test_getUserDownloadDir_003', Level.LEVEL0, async function () {
       try {
         let path = environment.getUserDownloadDir(true);
         expect(false).assertTrue();

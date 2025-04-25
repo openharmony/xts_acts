@@ -13,8 +13,14 @@
  * limitations under the License.
  */
  
+import iconTabs from './TabsTest/iconTabs.test';
+import onSelectedTabs from './TabsTest/onSelectedTabs.test'; 
 import preloadSwiper from './SwiperTest/preloadSwiper.test'; 
+import selectedSwiper from './SwiperTest/selectedSwiper.test'; 
 
 export default function testsuite() {
+  iconTabs()
+  onSelectedTabs()
   preloadSwiper()
+  selectedSwiper()
 }

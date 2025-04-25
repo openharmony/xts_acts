@@ -8,6 +8,7 @@
         "MainAbility/pages/Tabs/tabsMode",
         "MainAbility/pages/Swiper/swiperPageMode",
         "MainAbility/pages/Tabs/tabsPageMode",
-        "MainAbility/pages/Scroll/getAttributeScroll"
+        "MainAbility/pages/Scroll/getAttributeScroll",
+        "MainAbility/pages/IndicatorComponent/showDotIndicator"
     ]
 }

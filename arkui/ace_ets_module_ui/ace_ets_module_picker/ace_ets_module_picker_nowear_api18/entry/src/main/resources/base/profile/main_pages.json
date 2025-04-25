@@ -3,6 +3,7 @@
     "MainAbility/pages/index/index",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
+    "MainAbility/pages/datePickerDialog/datePickerDialogEnableHapticFeedback",
     "MainAbility/pages/timePickerDialog/timePickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogDefaultTextStyle",
@@ -18,6 +19,7 @@
     "MainAbility/pages/textPickerDialog/textPickerDialogShadow",
     "MainAbility/pages/timePickerDialog/timePickerDialogBGBlurStyle",
     "MainAbility/pages/timePickerDialog/timePickerDialogBGColor",
-    "MainAbility/pages/timePickerDialog/timePickerDialogShadow"
+    "MainAbility/pages/timePickerDialog/timePickerDialogShadow",
+    "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback"
   ]
 }

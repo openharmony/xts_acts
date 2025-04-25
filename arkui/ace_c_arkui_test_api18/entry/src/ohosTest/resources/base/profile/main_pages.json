@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/datePicker/TestDatePickerMode"
+    "MainAbility/pages/datePicker/TestDatePickerMode",
+    "MainAbility/pages/datePicker/datePickerEnableHapticFeedback",
+    "MainAbility/pages/textPicker/textPickerEnableHapticFeedback"
   ]
 }

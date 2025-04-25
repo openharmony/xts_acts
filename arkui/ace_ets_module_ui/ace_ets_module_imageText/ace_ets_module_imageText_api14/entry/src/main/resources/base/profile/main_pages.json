@@ -15,6 +15,7 @@
     "MainAbility/pages/TextArea/textAreaNode",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphNode",
     "MainAbility/pages/ImageOrientation/ImageOrientation",
-    "MainAbility/pages/RichEditor/onWillChange"
+    "MainAbility/pages/RichEditor/onWillChange",
+    "MainAbility/pages/RichEditor/onDoubleClickOnHover"
   ]
 }
