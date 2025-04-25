@@ -10,6 +10,7 @@
         "MainAbility/pages/observer/tabContentState",
         "MainAbility/pages/observer/observeTab",
         "MainAbility/pages/observer/idScrollEvent",
-        "MainAbility/pages/observer/indexTabs"
+        "MainAbility/pages/observer/indexTabs",
+        "MainAbility/pages/observer/onTabUpdate"
     ]
 }
