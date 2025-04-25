@@ -54,7 +54,7 @@ export default function TextClockDateTimeOptionsTest() {
       let strJson = getInspectorByKey('numeric');
       let obj: ESObject = JSON.parse(strJson);
       console.info('TextClockDateTimeOptionsTest_001 component obj is: ' + obj.$attrs.dateTimeOptions);
-      expect(obj.$attrs.dateTimeOptions.hour).assertEqual('numeric');
+      expect(obj.$attrs.dateTimeOptions).assertEqual('{"hour":"numeric"}');
       console.info('[TextClockDateTimeOptionsTest_001] END');
       done();
     });
@@ -72,7 +72,7 @@ export default function TextClockDateTimeOptionsTest() {
       let strJson = getInspectorByKey('digit');
       let obj: ESObject = JSON.parse(strJson);
       console.info('TextClockDateTimeOptionsTest_002 component obj is: ' + obj.$attrs.dateTimeOptions);
-      expect(obj.$attrs.dateTimeOptions.hour).assertEqual('2-digit');
+      expect(obj.$attrs.dateTimeOptions).assertEqual('{"hour":"2-digit"}');
       console.info('[TextClockDateTimeOptionsTest_002] END');
       done();
     });
