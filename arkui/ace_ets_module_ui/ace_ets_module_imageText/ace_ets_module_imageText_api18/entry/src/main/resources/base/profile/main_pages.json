@@ -7,6 +7,10 @@
     "MainAbility/pages/FontScaleTest/symbolGlyphFontScaleTest",
     "MainAbility/pages/Search/SearchGetText",
     "MainAbility/pages/TextArea/TextAreaGetText",
-    "MainAbility/pages/TextInput/TextInputGetText"
+    "MainAbility/pages/TextInput/TextInputGetText",
+    "MainAbility/pages/RichEditor/textBackgroundStyleTest",
+    "MainAbility/pages/RichEditor/HapticFeedbackMode",
+    "MainAbility/pages/RichEditor/RichEditorMaxLinesTest",
+    "MainAbility/pages/TextArea/WordBreakTest"
   ]
 }
