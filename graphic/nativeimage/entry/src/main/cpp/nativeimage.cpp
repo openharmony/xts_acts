@@ -1967,7 +1967,7 @@ napi_value NativeImageInit(napi_env env, napi_value exports)
         {"oHNativeWindowDropBufferModeSetTrueNormal2", nullptr, OHNativeWindowDropBufferModeSetTrueNormal2,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeWindowDropBufferModeSetAbNormal", nullptr, OHNativeWindowDropBufferModeSetAbNormal,
-         nullptr, nullptr, nullptr, napi_default, nullptr},        
+         nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(napi_property_descriptor), desc);
     return exports;
