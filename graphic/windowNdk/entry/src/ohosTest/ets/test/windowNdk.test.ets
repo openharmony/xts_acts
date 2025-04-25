@@ -224,12 +224,13 @@ export default function windowNdk() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('test_NDK_show_subWindow_Minimize_window', 0, async (done:Function) => {
+    it('test_NDK_show_subWindow_Minimize_window', 3, async (done:Function) => {
       let caseName = "test_NDK_show_subWindow_Minimize_window";
       try {
+        let subWindow:window.Window;
         let promise = windowStage.createSubWindow('test_NDK_show_subWindow_Minimize_window');
         promise.then(async (data) => {
-          let subWindow = data;
+          subWindow = data;
           console.info(`${caseName}: Succeeded in creating the subwindow. Data: ` + JSON.stringify(data));
           let subWindowId = subWindow.getWindowProperties().id;
           console.info(`${caseName}: Succeeded in get the subwindow id: ` + subWindowId);
@@ -264,17 +265,18 @@ export default function windowNdk() {
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName}: Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
             await subWindow.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindow.destroyWindow();
             if(err.code == 801){
               done();
             }else{
               expect(false).assertTrue();
               done();
             }
-          });
-        }).catch((err: BusinessError) => {
-          console.error(`${caseName}:Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false).assertTrue();
-          done();
         });
       } catch (exception) {
         console.error(`${caseName}:Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
