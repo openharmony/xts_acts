@@ -8,6 +8,7 @@
     "MainAbility/pages/RichEditor/RichEditorStyledStringTest",
     "MainAbility/pages/Text/enableHapticFeedback",
     "MainAbility/pages/RichEditor/barState",
-    "MainAbility/pages/StyledString/unmarshalling"
+    "MainAbility/pages/StyledString/unmarshalling",
+    "MainAbility/pages/StyledString/CustomSpan"
   ]
 }

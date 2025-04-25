@@ -26,6 +26,12 @@ import MarqueeModifierTest from "./ModifierTest/MarqueeModifier.test";
 import RichEditorModifierTest from "./ModifierTest/RichEditorModifier.test";
 import RichTextModifierTest from "./ModifierTest/RichTextModifier.test";
 import fontFeatureTest from './TextInputTest/fontFeature.test';
+import ParagraphStyle1 from "./StyledString/ParagraphStyle1.test";
+import ImageAttachment from "./StyledString/ImageAttachment.test";
+import ParagraphStyle2 from "./StyledString/ParagraphStyle2.test";
+import ParagraphStyle3 from "./StyledString/ParagraphStyle3.test";
+import RichEditorEKeyboardTest from './RichEditorTest/RichEditorEKeyboardTest.test'
+import RichEditorSymbolSpanStyleTest from './RichEditorTest/RichEditorSymbolSpanStyleTest.test'
 
 export default function testsuite() {
   textAreaInputTest();
@@ -41,4 +47,10 @@ export default function testsuite() {
   RichEditorModifierTest();
   RichTextModifierTest();
   fontFeatureTest();
+  ImageAttachment();
+  ParagraphStyle1();
+  ParagraphStyle2();
+  ParagraphStyle3();
+  RichEditorEKeyboardTest();
+  RichEditorSymbolSpanStyleTest();
 }
