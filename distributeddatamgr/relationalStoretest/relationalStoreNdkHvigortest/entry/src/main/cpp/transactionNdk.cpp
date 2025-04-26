@@ -46,6 +46,21 @@ const char *RDB_TEST_PATH = "/data/storage/el2/database/com.example.buchongndkte
 static OH_Rdb_Store *g_transStore;
 static OH_RDB_TransOptions *g_options;
 static OH_Rdb_Config config_;
+OH_Rdb_Store *store_;
+float test_[] = { 1.2, 2.3 };
+
+static OH_Rdb_ConfigV2 *InitRdbConfig(napi_env env)
+{
+    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_ExecuteQueryV2 is fail.");
+    OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    OH_Rdb_SetStoreName(config, "rdb_vector_test.db");
+    OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    OH_Rdb_SetEncrypted(config, false);
+    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    return config;
+}
 
 static void InitRdbConfig()
 {
@@ -556,6 +571,50 @@ static napi_value OH_VBucket_PutUnlimitedInt0100(napi_env env, napi_callback_inf
     return result;
 }
 
+
+static napi_value OH_Rdb_SetTokenizer0100(napi_env env, napi_callback_info info)
+{
+    mkdir(RDB_TEST_PATH, 0770);
+    OH_Rdb_ConfigV2 *config = InitRdbConfig(env);
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_E_INVALID_ARGS ==
+         OH_Rdb_SetTokenizer(config, static_cast<Rdb_Tokenizer>(Rdb_Tokenizer::RDB_NONE_TOKENIZER - 1)), "OH_Rdb_SetTokenizer is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_E_INVALID_ARGS ==
+         OH_Rdb_SetTokenizer(config, static_cast<Rdb_Tokenizer>(Rdb_Tokenizer::RDB_CUSTOM_TOKENIZER + 1)), "OH_Rdb_SetTokenizer is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK ==
+         OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_NONE_TOKENIZER), "RDB_NONE_TOKENIZER is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK ==
+         OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_CUSTOM_TOKENIZER), "RDB_CUSTOM_TOKENIZER is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK == OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_ICU_TOKENIZER), "RDB_ICU_TOKENIZER is fail.");
+    int numType = 0;
+    const int *supportTypeList = OH_Rdb_GetSupportedDbType(&numType);
+    NAPI_ASSERT(env, supportTypeList != nullptr, "OH_Rdb_SetDbType is fail.");
+    OH_Rdb_DestroyConfig(config);
+    int returnCode = 0;
+    napi_value result;
+    napi_create_int32(env, returnCode, &result);
+    return result;
+}
+
+
+static napi_value OH_Rdb_IsTokenizerSupported0100(napi_env env, napi_callback_info info)
+{
+    bool isSupported = true;
+    int errCode = OH_Rdb_IsTokenizerSupported(RDB_NONE_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(RDB_ICU_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(RDB_CUSTOM_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(static_cast<Rdb_Tokenizer>(RDB_NONE_TOKENIZER - 1), &isSupported);
+    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == errCode, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(static_cast<Rdb_Tokenizer>(RDB_CUSTOM_TOKENIZER + 1), &isSupported);
+    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == errCode, "OH_Rdb_CreateConfig is fail.");
+    int returnCode = 0;
+    napi_value result;
+    napi_create_int32(env, returnCode, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -573,7 +632,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "OH_RdbTrans_QuerySql0100", nullptr, OH_RdbTrans_QuerySql0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_VBucket_PutFloatVector0100", nullptr, OH_VBucket_PutFloatVector0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_VBucket_PutUnlimitedInt0100", nullptr, OH_VBucket_PutUnlimitedInt0100, nullptr, nullptr, nullptr, napi_default, nullptr },
-       
+        { "OH_Rdb_SetTokenizer0100", nullptr, OH_Rdb_SetTokenizer0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_Rdb_IsTokenizerSupported0100", nullptr, OH_Rdb_IsTokenizerSupported0100, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
