@@ -44,7 +44,7 @@ struct BackgroundExample {
         })
     }
     .width(200).height(200)
-    .background(this.renderBackground)
+    .background(this.renderBackground,undefined)
     .backgroundColor(Color.Gray)
 
   }
