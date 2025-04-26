@@ -193,4 +193,29 @@ HWTEST_F(HwEncGetParamNdkTest, VIDEO_ENCODE_MSE_QP_0400, TestSize.Level0)
         return;
     }
 }
+
+/**
+ * @tc.number    : VIDEO_ENCODE_REPEAT_0100
+ * @tc.name      : set frame after 0
+ * @tc.desc      : function test
+ */
+HWTEST_F(HwEncGetParamNdkTest, VIDEO_ENCODE_REPEAT_0100, TestSize.Level0)
+{
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
+    if (cap != nullptr) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_BITRATE_MODE = CBR;
+        vEncSample->SURF_INPUT = true;
+        vEncSample->enableRepeat = true;
+        vEncSample->setMaxCount = true;
+        vEncSample->DEFAULT_FRAME_AFTER = 0;
+        vEncSample->DEFAULT_MAX_COUNT = -1;
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_INVALID_VAL, vEncSample->ConfigureVideoEncoder());
+    }
+}
 }
