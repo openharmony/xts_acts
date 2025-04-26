@@ -148,16 +148,19 @@ export default function abilityTest() {
           done();
         }).catch((err:BusinessError)=>{
           console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
-          try{expect(err?.code).assertEqual(16000001);}catch{};
+          if(err?.code === 801){
+            console.info(tag + '====> startUIServiceExtensionAbility not support: ' + JSON.stringify(err));
+          }else{
+            try{expect(err?.code).assertEqual(16000001);}catch{};
+          }
           done();
         })
       }catch(err){
         if(err?.code === 801){
           console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
-          expect(err?.code).assertEqual(ERR_CODE);
+          expect().assertFail();
         }
-        done();
         done();
       }
     })
