@@ -49,7 +49,7 @@
                 "host": "uri.ohos.com",
                 "path": "link_page"
               }
-            ]
+            ],
             "entities": [
               "entity.system.home"
             ],
