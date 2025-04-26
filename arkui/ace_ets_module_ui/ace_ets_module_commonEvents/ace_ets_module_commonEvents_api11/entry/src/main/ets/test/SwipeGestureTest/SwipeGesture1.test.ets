@@ -25,13 +25,13 @@ const BUNDLE_NAME = 'com.arkui.ace.commonEvents.api11/EntryAbility';
 export default function SwipeGesture1() {
   describe('SwipeGesture1', () => {
     beforeEach(async (done: Function) => {
-config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
-      console.info(`enable success`);
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
       }).catch((err: object) => {
         console.error(`failed to enable, ${err}`);
       })
-	done();
-});
+      done();
+    });
     beforeAll(async (done: Function) => {
       console.info("SwipeGesture1 beforeEach start");
       let options: router.RouterOptions = {
@@ -94,6 +94,30 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("[SwipeGesture1_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect((Number(obj.$attrs.content) - 1) < 10).assertEqual(true);
       console.info('[SwipeGesture1_0200] END');
+      done();
+    });
+    /* *
+    * @tc.number: SUB_ACE_STATUSMANAGER_SUPPORTUUNION_0370
+    * @tc.name  : SwipeGesture1_0300
+    * @tc.desc  : To test that the Provide decorator supports union types.
+    * @tc.level : Level 2
+    */
+    it('SwipeGesture1_0300', 2, async (done: Function) => {
+      console.info('SwipeGesture1_0300 START');
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture2');
+      let top = colum.top
+      let right = colum.right
+      let left = colum.left
+      await driver.swipe(Math.round(left + (right-left)/6), Math.round(top + 100), Math.round(right - (right-left)/6), Math.round(top + 500))
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('Swipe3');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[SwipeGesture1_0300] component obj is: " + JSON.stringify(obj));
+      console.info("[SwipeGesture1_0300] title: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('0');
+      console.info('[SwipeGesture1_0300] END');
       done();
     });
 
