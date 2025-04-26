@@ -326,7 +326,7 @@ export default function DialogOptions() {
       if (uniRenderFlag == 'false') {
         expect(backgroundBlurStyle).assertEqual('BlurStyle.NONE');
       } else {
-        expect(backgroundBlurStyle).assertEqual('ShadowStyle.OUTER_FLOATING_SM');
+        expect(backgroundBlurStyle).assertEqual('BlurStyle.Thick');
       }
 
       let button1 = await driver.findComponent(ON.text('确认'));
