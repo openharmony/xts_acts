@@ -12,21 +12,27 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
+import("//foundation/arkui/ace_engine/ace_config.gni")
 
-ohos_app_assist_suite("ActsAceEtsModuleStateMangagementNoWearApi12TestMain") {
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleStateMangagementNoWearApi12TestMain"
-  part_name = "ace_engine"
-  subsystem_name = "arkui"
-}
-
-ohos_js_app_suite("ActsAceEtsModuleStateMangagementNoWearApi12Test") {
-  test_hap = true
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleStateMangagementNoWearApi12Test"
-  part_name = "ace_engine"
-  subsystem_name = "arkui"
-  deps = [ ":ActsAceEtsModuleStateMangagementNoWearApi12TestMain" ]
+if (ace_engine_feature_wearable) {
+  group("ActsAceEtsModuleStateMangagementNoWearApi12Test") {
+    print("ActsAceEtsModuleStateMangagementNoWearApi12Test is not build")
+  }
+} else {
+  ohos_app_assist_suite("ActsAceEtsModuleStateMangagementNoWearApi12TestMain") {
+    testonly = true
+    certificate_profile = "./signature/openharmony_sx.p7b"
+    hap_name = "ActsAceEtsModuleStateMangagementNoWearApi12TestMain"
+    part_name = "ace_engine"
+    subsystem_name = "arkui"
+  }
+  ohos_js_app_suite("ActsAceEtsModuleStateMangagementNoWearApi12Test") {
+    test_hap = true
+    testonly = true
+    certificate_profile = "./signature/openharmony_sx.p7b"
+    hap_name = "ActsAceEtsModuleStateMangagementNoWearApi12Test"
+    part_name = "ace_engine"
+    subsystem_name = "arkui"
+    deps = [ ":ActsAceEtsModuleStateMangagementNoWearApi12TestMain" ]
+  }
 }
