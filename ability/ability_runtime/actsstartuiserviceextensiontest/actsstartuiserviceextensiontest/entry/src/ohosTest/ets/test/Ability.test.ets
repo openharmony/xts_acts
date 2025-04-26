@@ -205,7 +205,7 @@ export default function abilityTest() {
       })
       }catch(err){
         if(err?.code === 801){
-          console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+          console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(err));
         }else{
           expect().assertFail();
         }
