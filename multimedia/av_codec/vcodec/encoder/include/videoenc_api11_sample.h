@@ -180,7 +180,6 @@ public:
     bool configMain10 = false;
     bool setFormat8Bit = false;
     bool setFormat10Bit = false;
-    bool setFormat10Bit = false;
     bool enableRepeat = false;
     bool setMaxCount = false;
     int32_t DEFAULT_FRAME_AFTER = 1;
