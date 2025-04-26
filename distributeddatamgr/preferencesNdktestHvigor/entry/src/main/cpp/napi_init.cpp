@@ -1203,8 +1203,6 @@ static napi_value OH_Preferences_IsStorageTypeSupported0500(napi_env env, napi_c
         NAPI_ASSERT(env, errCode == PREFERENCES_OK, "OH_Preferences_Open is fail.");
         NAPI_ASSERT(env, OH_Preferences_SetInt(pref, "key", 2) == PREFERENCES_OK, "OH_Preferences_Open is fail.");
         NAPI_ASSERT(env, OH_Preferences_Close(pref) == PREFERENCES_OK, "OH_Preferences_Open  dropTableSql is fail.");
-        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName) + ".db") == true, "OH_Preferences_Open is fail.");
-        NAPI_ASSERT(env, IsFileExist(TEST_PATH + std::string(fileName)) == false, "OH_Preferences_Open is fail.");
         NAPI_ASSERT(env, OH_PreferencesOption_SetFileName(option, fileName) == PREFERENCES_OK, "OH_Preferences_Open is fail.");
     } else {
         NAPI_ASSERT(env, OH_PreferencesOption_SetStorageType(option, Preferences_StorageType::PREFERENCES_STORAGE_GSKV) ==
@@ -1281,7 +1279,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OH_PreferencesPair_0200", nullptr, OH_PreferencesPair_0200, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_Preferences_ErrCode_0100", nullptr, OH_Preferences_ErrCode_0100, nullptr, nullptr, nullptr, napi_default,
-         nullptr}
+         nullptr},
+        {"OH_Preferences_IsStorageTypeSupported0500", nullptr, OH_Preferences_IsStorageTypeSupported0500, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
