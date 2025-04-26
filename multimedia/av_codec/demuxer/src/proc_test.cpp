@@ -159,9 +159,9 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_1400, TestSize.Level0)
     bool videoIsEnd = false;
     int videoFrame = 0;
     const char *file = "/data/test/media/video_2audio.mp4";
+    const char* mimeType = nullptr;
     int fd = open(file, O_RDONLY);
     int64_t size = GetFileSize(file);
-    cout << file << "----------------------" << fd << "---------" << size << endl;
     source = OH_AVSource_CreateWithFD(fd, 0, size);
     ASSERT_NE(source, nullptr);
     demuxer = OH_AVDemuxer_CreateWithSource(source);
@@ -188,6 +188,8 @@ HWTEST_F(DemuxerProcNdkTest, SUB_MEDIA_DEMUXER_PROCESS_1400, TestSize.Level0)
             if (tarckType == 1) {
                 SetVideoValue(attr, videoIsEnd, videoFrame, vKeyCount);
             } else if (tarckType == 0) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, &mimeType));
+                ASSERT_NE(0, strcmp(mimeType, OH_AVCODEC_MIMETYPE_AUDIO_RAW));
                 SetAudioValue(attr, audioIsEnd, audioFrame[index-1], aKeyCount[index-1]);
             }
         }
