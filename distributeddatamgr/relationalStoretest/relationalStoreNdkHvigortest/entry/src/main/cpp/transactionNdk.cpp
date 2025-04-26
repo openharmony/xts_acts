@@ -615,6 +615,35 @@ static napi_value OH_Rdb_IsTokenizerSupported0100(napi_env env, napi_callback_in
     return result;
 }
 
+static napi_value OH_RdbTrans_Commit0100(napi_env env, napi_callback_info info)
+{
+    OH_Rdb_Transaction *trans = nullptr;
+    const char *table = "test";
+    int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    NAPI_ASSERT(env, trans != nullptr, "OH_Rdb_CreateConfig is fail.");
+    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putText(valueBucket, "data1", "test_name4");
+    const int DATA2_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA2_VALUE);
+    const double DATA3_VALUE = 300.1;
+    valueBucket->putReal(valueBucket, "data3", DATA3_VALUE);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFGHI");
+    int64_t rowId = -1;
+    ret = OH_RdbTrans_Insert(trans, table, valueBucket, &rowId);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    NAPI_ASSERT(env, rowId == 4, "OH_Rdb_CreateConfig is fail.");
+    ret = OH_RdbTrans_Commit(trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    valueBucket->destroy(valueBucket);
+    ret = OH_RdbTrans_Destroy(trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -634,6 +663,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "OH_VBucket_PutUnlimitedInt0100", nullptr, OH_VBucket_PutUnlimitedInt0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_Rdb_SetTokenizer0100", nullptr, OH_Rdb_SetTokenizer0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_Rdb_IsTokenizerSupported0100", nullptr, OH_Rdb_IsTokenizerSupported0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_RdbTrans_Commit0100", nullptr, OH_RdbTrans_Commit0100, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
