@@ -31,6 +31,10 @@
     {
       "name": "app_name",
       "value": "Demo"
+    },
+    {
+      "name": "maxFontSize",
+      "value": "12"
     }
   ]
 }
