@@ -31,6 +31,9 @@ struct comSizeAbilityTest_20 {
           FormLink({
             action: "router",
             abilityName: "EntryAbility",
+            moduleName: "entry",
+            bundleName: "com.arkui.ace.commonAttrsLayout.api11",
+            uri:'example: //uri.ohos.com/link_page',
             params: {
               'message': 'testForRouter' // 自定义要发送的message
             }

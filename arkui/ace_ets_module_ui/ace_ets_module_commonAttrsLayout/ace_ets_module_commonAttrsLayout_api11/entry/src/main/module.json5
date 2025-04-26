@@ -43,6 +43,13 @@
         "orientation": "portrait",
         "skills": [
           {
+			"uris": [
+              {
+                "scheme": "example",
+                "host": "uri.ohos.com",
+                "path": "link_page"
+              }
+            ],
             "entities": [
               "entity.system.home"
             ],
