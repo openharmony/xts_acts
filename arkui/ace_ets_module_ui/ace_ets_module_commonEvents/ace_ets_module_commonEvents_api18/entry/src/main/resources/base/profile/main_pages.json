@@ -10,6 +10,12 @@
         "MainAbility/pages/nextFocus/nextFocus",
         "MainAbility/pages/nextFocus2/nextFocus2",
         "MainAbility/pages/Drag/notifyDragStartRequest",
-        "MainAbility/pages/ListeningEvent/UIObserverEvent"
+        "MainAbility/pages/ListeningEvent/UIObserverEvent",
+        "MainAbility/pages/GestureRecognizer/LongPressRecognizer",
+        "MainAbility/pages/GestureRecognizer/PanRecognizer",
+        "MainAbility/pages/GestureRecognizer/PinchRecognizer",
+        "MainAbility/pages/GestureRecognizer/RotationRecognizer",
+        "MainAbility/pages/GestureRecognizer/SwipeRecognizer",
+        "MainAbility/pages/GestureRecognizer/TapRecognizer"
     ]
 }
