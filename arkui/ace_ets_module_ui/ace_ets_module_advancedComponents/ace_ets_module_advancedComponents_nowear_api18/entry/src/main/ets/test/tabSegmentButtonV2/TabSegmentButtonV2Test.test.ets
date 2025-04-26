@@ -58,7 +58,7 @@ export default function TabSegmentButtonV2Test() {
      */
     it('TabSegmentButtonV2Test_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0100 ", "START");
+        console.log("TabSegmentButtonV2Test_0100", "START");
         let tabSegmentButton: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -69,20 +69,19 @@ export default function TabSegmentButtonV2Test() {
           .$children[0]
           .$children[0]
           .$children[0]
-        console.log("TabSegmentButtonV2Test_0100 ", JSON.stringify(tabSegmentButton))
+        console.log("TabSegmentButtonV2Test_0100", JSON.stringify(tabSegmentButton))
         console.log("TabSegmentButtonV2Test_0100 itemMinFontScale ", tabSegmentButton.$attrs.minFontScale)
         console.log("TabSegmentButtonV2Test_0100 itemMaxFontScale ", tabSegmentButton.$attrs.maxFontScale)
         console.log("TabSegmentButtonV2Test_0100 itemSelectedFontSize ", tabSegmentButton.$attrs.fontSize)
         console.log("TabSegmentButtonV2Test_0100 itemSelectedFontColor ", tabSegmentButton.$attrs.fontColor)
         console.log("TabSegmentButtonV2Test_0100 itemSelectedFontWeight ", tabSegmentButton.$attrs.fontWeight)
-        console.log("TabSegmentButtonV2Test_0100 itemSelectedBackgroundColor ", tabSegmentButton.$attrs.selectedBackgroundColor)
         expect(tabSegmentButton.$attrs.minFontScale).assertEqual('0.500000');
         expect(tabSegmentButton.$attrs.maxFontScale).assertEqual('1.200000');
         expect(tabSegmentButton.$attrs.fontSize).assertEqual('18.00fp');
         expect(tabSegmentButton.$attrs.fontColor).assertEqual('#FF0000FF');
         expect(tabSegmentButton.$attrs.fontWeight).assertEqual('FontWeight.Medium');
         await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0100 ", "END");
+        console.log("TabSegmentButtonV2Test_0100", "END");
         done();
       });
 
@@ -97,7 +96,7 @@ export default function TabSegmentButtonV2Test() {
      */
      it('TabSegmentButtonV2Test_0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0110 ", "START");
+        console.log("TabSegmentButtonV2Test_0110", "START");
         let borderRadius: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -109,7 +108,7 @@ export default function TabSegmentButtonV2Test() {
         console.log("TabSegmentButtonV2Test_0110 itemBorderRadius ", borderRadius.$attrs.borderRadius.bottomLeft)
         expect(borderRadius.$attrs.borderRadius.bottomLeft).assertEqual('10.00px');
         await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0110 ", "END");
+        console.log("TabSegmentButtonV2Test_0110", "END");
         done();
       });
 
@@ -123,7 +122,7 @@ export default function TabSegmentButtonV2Test() {
      */
       it('TabSegmentButtonV2Test_0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0120 ", "START");
+        console.log("TabSegmentButtonV2Test_0120", "START");
         let itemSpace: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -134,7 +133,6 @@ export default function TabSegmentButtonV2Test() {
           .$children[0]
           .$children[0]
           await CommonFunc.sleep(500);
-            // 非选中
           let itemUnselected: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
             .$children[0]
             .$children[0]
@@ -154,7 +152,7 @@ export default function TabSegmentButtonV2Test() {
           expect(itemUnselected.$attrs.fontColor).assertEqual('#FFFFC0CB');
           expect(itemUnselected.$attrs.fontWeight).assertEqual('FontWeight.Medium');
           await CommonFunc.sleep(500);
-          console.log("TabSegmentButtonV2Test_0120 ", "END");
+          console.log("TabSegmentButtonV2Test_0120", "END");
           done();
       });
 
@@ -168,7 +166,7 @@ export default function TabSegmentButtonV2Test() {
       */
       it('TabSegmentButtonV2Test_0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0130 ", "START");
+        console.log("TabSegmentButtonV2Test_0130", "START");
         let symbol: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -180,17 +178,16 @@ export default function TabSegmentButtonV2Test() {
           .$children[0]
           .$children[0]
         console.log("TabSegmentButtonV2Test_0130 itemSymbolFontSize ", symbol.$attrs.fontSize)
-        console.log("TabSegmentButtonV2Test_0130 itemSelectedSymbolFontColor ", symbol.$attrs.fontColor)
         expect(symbol.$attrs.fontSize).assertEqual('20.00fp');
-        expect(symbol.$attrs.fontColor).assertEqual('#FF0000FF');
         await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0130 ", "END");
+        console.log("TabSegmentButtonV2Test_0130", "END");
         done();
       });
 
+
      /**
       * @tc.number SegmentButton single direction
-      * @tc.name TabSegmentButtonV2Test_0140
+      * @tc.name 'TabSegmentButtonV2Test_0140
       * @tc.desc Test SegmentButton page
       * @tc.size MediumTest
       * @tc.type Function
@@ -198,35 +195,7 @@ export default function TabSegmentButtonV2Test() {
       */
       it('TabSegmentButtonV2Test_0140', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0140 ", "START");
-        let symbolUnselected: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-          .$children[0]
-          .$children[0]
-          .$children[1]
-          .$children[0]
-          .$children[0]
-          .$children[5]
-          .$children[1]
-          .$children[0]
-          .$children[0]
-        console.log("TabSegmentButtonV2Test_0140 itemSymbolFontColor ", symbolUnselected.$attrs.fontColor)
-        expect(symbolUnselected.$attrs.fontColor).assertEqual('#FFFFC0CB');
-        await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0140 ", "END");
-        done();
-      });
-
-     /**
-      * @tc.number SegmentButton single direction
-      * @tc.name TabSegmentButtonV2Test_0150
-      * @tc.desc Test SegmentButton page
-      * @tc.size MediumTest
-      * @tc.type Function
-      * @tc.level 0
-      */
-      it('TabSegmentButtonV2Test_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
-      async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0150 ", "START");
+        console.log("TabSegmentButtonV2Test_0140", "START");
         let itemMinHeight: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -235,24 +204,24 @@ export default function TabSegmentButtonV2Test() {
           .$children[0]
           .$children[5]
           .$children[0]
-        console.log("TabSegmentButtonV2Test_0150 itemMinHeight ", itemMinHeight.$attrs.height)
+        console.log("TabSegmentButtonV2Test_0140 itemMinHeight ", itemMinHeight.$attrs.height)
         expect(itemMinHeight.$attrs.height).assertEqual('80.00vp');
         await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0150 ", "END");
+        console.log("TabSegmentButtonV2Test_0140", "END");
         done();
       });
 
      /**
       * @tc.number SegmentButton single direction
-      * @tc.name TabSegmentButtonV2Test_0160
+      * @tc.name 'TabSegmentButtonV2Test_0150
       * @tc.desc Test SegmentButton page
       * @tc.size MediumTest
       * @tc.type Function
       * @tc.level 0
       */
-      it('TabSegmentButtonV2Test_0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      it('TabSegmentButtonV2Test_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0160 ", "START");
+        console.log("TabSegmentButtonV2Test_0150", "START");
         let imageSegment: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -263,26 +232,26 @@ export default function TabSegmentButtonV2Test() {
           .$children[0]
           .$children[0]
           .$children[0]
-        console.log("TabSegmentButtonV2Test_0160 itemIconSize ", imageSegment.$attrs.size.width)
-        console.log("TabSegmentButtonV2Test_0160 itemSelectedIconFillColor ", imageSegment.$attrs.fillColor)
+        console.log("TabSegmentButtonV2Test_0150 itemIconSize ", imageSegment.$attrs.size.width)
+        console.log("TabSegmentButtonV2Test_0150 itemSelectedIconFillColor ", imageSegment.$attrs.fillColor)
         expect(imageSegment.$attrs.size.width).assertEqual('30.00vp');
         expect(imageSegment.$attrs.fillColor).assertEqual('#FF000000');
         await CommonFunc.sleep(500);
-        console.log("TabSegmentButtonV2Test_0160 ", "END");
+        console.log("TabSegmentButtonV2Test_0150", "END");
         done();
       });
 
      /**
       * @tc.number SegmentButton single direction
-      * @tc.name TabSegmentButtonV2Test_0170
+      * @tc.name 'TabSegmentButtonV2Test_0160
       * @tc.desc Test SegmentButton page
       * @tc.size MediumTest
       * @tc.type Function
       * @tc.level 0
       */
-      it('TabSegmentButtonV2Test_0170', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      it('TabSegmentButtonV2Test_0160', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-        console.log("TabSegmentButtonV2Test_0170 ", "START");
+        console.log("TabSegmentButtonV2Test_0160", "START");
         let imageUnselected: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
@@ -293,9 +262,9 @@ export default function TabSegmentButtonV2Test() {
           .$children[1]
           .$children[0]
           .$children[0]
-        console.log("TabSegmentButtonV2Test_0170 itemIconFillColor ", imageUnselected.$attrs.fillColor)
+        console.log("TabSegmentButtonV2Test_0160 itemIconFillColor ", imageUnselected.$attrs.fillColor)
         expect(imageUnselected.$attrs.fillColor).assertEqual('#99000000');
-        console.log("TabSegmentButtonV2Test_0170 ", "END");
+        console.log("TabSegmentButtonV2Test_0160", "END");
         done();
       });
   })

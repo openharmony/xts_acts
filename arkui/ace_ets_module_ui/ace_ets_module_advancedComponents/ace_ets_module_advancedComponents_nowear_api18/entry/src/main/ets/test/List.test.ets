@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 import SegmentButtonV2Test0010 from './segmenButtonV2Test/SegmentButtonV2Test0010.test';
 import MultiSegmentButtonV2PageTest from './multiCapsuleSegmentButtonV2/MultiSegmentButtonV2PageTest.test';
 import TabSegmentButtonV2Test from './tabSegmentButtonV2/TabSegmentButtonV2Test.test';
