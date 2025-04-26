@@ -398,7 +398,7 @@ export default function preferencesNdkTest() {
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Preferences_IsStorageTypeSupported0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_Preferences_IsStorageTypeSupported0500', 0, async (done: Function) => {
       let res = testndk.OH_Preferences_IsStorageTypeSupported0500();
       console.info(TAG + "OH_Preferences_IsStorageTypeSupported0500 res=" + res );
       expect(res).assertEqual(0);
