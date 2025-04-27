@@ -1631,17 +1631,13 @@ static napi_value OHNativeBufferY8Y16USAGEandAlloc(napi_env env, napi_callback_i
     OH_NativeBuffer_Config Config3;
     OH_NativeBuffer_GetConfig(nativeBuffer, &Config2);
     OH_NativeBuffer_GetConfig(nativeBuffer1, &Config3);
-    bool areEqual = true;
-    if (Config.format != Config2.format && Config1.format != Config3.format) {
-        areEqual = false;
-    }
-    if (Config.usage != Config2.usage && Config1.usage != Config3.usage) {
-        areEqual = false;
-    }
-    if (areEqual) {
+    if (Config.format == Config2.format && Config1.format == Config3.format && Config.usage == Config2.usage &&
+        Config1.usage == Config3.usage) {
         napi_create_int32(env, SUCCESS, &result);
-    } else {
+    }
+    else {
         napi_create_int32(env, FAIL, &result);
+        return result;
     }
     OH_NativeBuffer_Unreference(nativeBuffer);
     return result;
