@@ -1480,7 +1480,7 @@ export default function geolocationTest_geo7() {
     */
     it('testLocationChange36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
-        let requestInfo1 = {'interval': 1, 'locationScenario': 0x603};
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x603, 'sportsType': geolocationm.SportsType.RUNNING};
         var locationChange1 = (location) => {
             console.log('[lbs_js] SUB_HSS_LOCATIONSYSTEM_LOCREQUEST_3600 data:' + JSON.stringify(location));
             expect(true).assertEqual(locationChange1 !=null);
