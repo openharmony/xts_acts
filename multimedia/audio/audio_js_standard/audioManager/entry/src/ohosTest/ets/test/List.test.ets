@@ -17,6 +17,7 @@ import audioFramework from './AudioFramework.test';
 import AudioManagerApi9 from './AudioManagerApi9.test';
 import audioRoutingManager from './AudioRoutingManager.test';
 import getAudioSceneApi12 from './GetAudioScene.test';
+import audioSpatializationManager from './AudioSpatializationManager.test';
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
@@ -64,4 +65,5 @@ export default function testsuite() {
   AudioManagerApi9();
   audioRoutingManager();
   getAudioSceneApi12();
+  audioSpatializationManager();
 }
