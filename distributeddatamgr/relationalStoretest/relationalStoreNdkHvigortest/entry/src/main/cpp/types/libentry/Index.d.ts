@@ -101,7 +101,9 @@ export const OH_Value_PutNull_0100: () => number;
 export const OH_Value_Put_0100: () => number;
 export const OH_Values_Put_0100: () => number;
 export const OH_Value_PutFloatVector_0100: () => number;
+export const OH_Values_PutFloatVector_0100: () => number;
 
 export const OH_Rdb_SetTokenizer0100: () => number;
 export const OH_Rdb_IsTokenizerSupported0100: () => number;
 export const OH_Cursor_GetFloatVectorCount0100: () => number;
+export const OH_RdbTrans_Commit0100: () => number;
