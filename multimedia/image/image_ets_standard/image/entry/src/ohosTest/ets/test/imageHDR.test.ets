@@ -80,6 +80,14 @@ export default function imageHDR() {
       });
     };
 
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100
+     * @tc.name     : decode hdr image
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreatePixelMap By DecodingOptions4、GetImageInfo to check whether supported Sdr
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
     it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
@@ -118,6 +126,14 @@ export default function imageHDR() {
       }
     });
 
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0200
+     * @tc.name     : decode hdr image
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreatePixelMap By DecodingOptions4、GetImageInfo to check whether supported Sdr
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
     it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0200", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
@@ -155,7 +171,15 @@ export default function imageHDR() {
         done();
       }
     });
-
+    
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0200
+     * @tc.name     : decode hdr image
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.pack image,4.createImageSource by pack,5.GetImageInfo to check whether supported Sdr
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
     it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0300", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("JPEGVividSingle.jpg");
