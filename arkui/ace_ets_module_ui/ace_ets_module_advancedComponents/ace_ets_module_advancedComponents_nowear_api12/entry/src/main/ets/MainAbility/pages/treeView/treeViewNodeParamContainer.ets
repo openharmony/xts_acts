@@ -105,7 +105,7 @@ struct TreeViewDemo {
       editIcon: editResource,
       primaryTitle: '目录1验证悬浮框自适应效果是否OK',
       secondaryTitle: '6',
-      container: this.menuBuilder1
+      container: this.menuBuilder1,
     };
     this.treeController
       .addNode(nodeParam)
@@ -131,7 +131,7 @@ struct TreeViewDemo {
         editIcon: editResource,
         primaryTitle: '目录5',
         secondaryTitle: '0',
-        container: this.menuBuilder1
+        container: this.menuBuilder1,
       })
       .addNode({
         parentNodeId: -1,
@@ -142,7 +142,7 @@ struct TreeViewDemo {
         editIcon: editResource,
         primaryTitle: '目录6',
         secondaryTitle: '0',
-        container: this.menuBuilder1
+        container: this.menuBuilder1,
       })
       .addNode({
         parentNodeId: 32,
@@ -153,7 +153,7 @@ struct TreeViewDemo {
         editIcon: editResource,
         primaryTitle: '目录6-1',
         secondaryTitle: '0',
-        container: this.menuBuilder1
+        container: this.menuBuilder1,
       })
       .addNode({
         parentNodeId: -1,
@@ -164,7 +164,7 @@ struct TreeViewDemo {
         editIcon: editResource,
         primaryTitle: '目录7',
         secondaryTitle: '0',
-        container: this.menuBuilder1
+        container: this.menuBuilder1,
       })
       .addNode({ parentNodeId: 33, currentNodeId: 34, isFolder: false, primaryTitle: '项目8' })
       .addNode({ parentNodeId: -1, currentNodeId: 36, isFolder: false, primaryTitle: '项目9' })

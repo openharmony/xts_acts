@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -25,28 +25,28 @@ export default function toolBarModifierPage() {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/toolBar/toolBarModifierPage',
       }
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get toolBarModifierPage state pages: " + JSON.stringify(pages));
-        if (!('toolBarModifierPage' == pages.name)) {
+        if (!("toolBarModifierPage" == pages.name)) {
           console.info("get toolBarModifierPage pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push toolBarModifierPage page result successful");
         }
       } catch (err) {
         console.error("push toolBarModifierPage page error: " + err);
       }
 
-      await Utils.sleep(1000);
-      console.info('toolBarModifierPage beforeEach end');
-      done();
+      await Utils.sleep(1000)
+      console.info("toolBarModifierPage beforeEach end");
+      done()
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info('toolBarModifierPage after each called');
+      console.info("toolBarModifierPage after each called");
     })
 
     /**
@@ -57,7 +57,7 @@ export default function toolBarModifierPage() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('toolBarModifierPage_0100', 0, async (done: Function) => {
+    it('toolBarModifierPage_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[toolBarModifierPage_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

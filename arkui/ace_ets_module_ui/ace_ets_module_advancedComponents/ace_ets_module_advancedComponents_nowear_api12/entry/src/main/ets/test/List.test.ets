@@ -29,6 +29,7 @@ import filterTest from './filter/filterTest.test';
 import filterTestTwo from './filter/filterTestTwo.test';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test';
 import gridObjectSortComponentTextTest from './gridObjectSortComponent/gridObjectSortComponentTextTest.test';
+import gridObjectSortComponentSymbolTest from './gridObjectSortComponent/GridObjectSortComponentSymbolTest.test';
 import progressButtonTest from './progressButton/progressButtonTest.test';
 import splitLayoutTest from './splitLayout/splitLayoutTest.test';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test';
@@ -37,6 +38,7 @@ import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test';
 import toolBarItemState from './toolBar/toolBarItemState.test';
 import toolBarPageTest from './toolBar/toolBarPageTest.test';
 import treeViewNodeParamContainer from './treeView/treeViewNodeParamContainer.test';
+import treeViewSymbol from './treeView/treeViewSymbol.test';
 
 import editableTitleBarSafeAreaEdges from './editableTitleBar/editableTitleBarSafeAreaEdges.test';
 import editableTitleBarSafeAreaTypes from './editableTitleBar/editableTitleBarSafeAreaTypes.test';
@@ -44,6 +46,8 @@ import subHeaderButton from './subHeader/subHeaderButton.test';
 import subHeaderIconGroup from './subHeader/subHeaderIconGroup.test';
 import subHeaderTextArrow from './subHeader/subHeaderTextArrow.test';
 import subheaderTitleBuilder from './subHeader/subheaderTitleBuilder.test';
+import subHeaderSelect from './subHeader/subHeaderSelect.test';
+import subHeaderTitleModifier from './subHeader/subHeaderTitleModifier.test';
 import chipDirectionTest from './chip/chipDirection.test';
 import popupDirectionTest from './popup/popupDirectionTest.test';
 import segmentButtonDirectionTest from './segmenButton/segmentbuttonDirection.test';
@@ -67,7 +71,9 @@ import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
 import localizedLabelMarginTest from './chip/localizedLabelMarginTest';
 import localizedButtonPaddingTest from './segmenButton/localizedButtonPaddingTest';
 import localizedTextPadding from './segmenButton/localizedTextPadding';
-
+import SegmentButtonItemOptionsArray1 from './segmenButton/SegmentButtonItemOptionsArray1.test';
+import SegmentButtonIconTextItem1 from './segmenButton/SegmentButtonIconTextItem1.test';
+import SegmentButtonTextItem001 from './segmenButton/SegmentButtonTextItemTest.test';
 
 export default function testsuite() {
   chipDirectionTest();
@@ -89,6 +95,7 @@ export default function testsuite() {
   filterTestTwo();
   gridObjectSortComponentTest();
   gridObjectSortComponentTextTest();
+  gridObjectSortComponentSymbolTest();
   progressButtonTest();
   splitLayoutTest();
   selectTitleBarTest();
@@ -97,6 +104,7 @@ export default function testsuite() {
   toolBarItemState();
   toolBarPageTest();
   treeViewNodeParamContainer();
+  treeViewSymbol();
 
   editableTitleBarSafeAreaEdges();
   editableTitleBarSafeAreaTypes();
@@ -104,6 +112,8 @@ export default function testsuite() {
   subHeaderIconGroup();
   subHeaderTextArrow();
   subheaderTitleBuilder();
+  subHeaderSelect();
+  subHeaderTitleModifier();
 
   FileButtonContinueToReceiveTest();
   FileButtonDownloadTest();
@@ -124,4 +134,7 @@ export default function testsuite() {
   localizedLabelMarginTest();
   localizedButtonPaddingTest();
   localizedTextPadding();
+  SegmentButtonItemOptionsArray1();
+  SegmentButtonIconTextItem1();
+  SegmentButtonTextItem001();
 }

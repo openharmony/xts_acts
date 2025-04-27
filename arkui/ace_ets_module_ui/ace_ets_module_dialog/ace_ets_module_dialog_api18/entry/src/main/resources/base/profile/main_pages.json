@@ -13,6 +13,9 @@
     "MainAbility/pages/promptAction/closeMenu",
     "MainAbility/pages/overlayManager/overlayManagerTest",
     "MainAbility/pages/dialog/showDialogLevelOrder",
-    "MainAbility/pages/promptAction/closeToastTest"
+    "MainAbility/pages/promptAction/closeToastTest",
+    "MainAbility/pages/popup/isVisible",
+    "MainAbility/pages/dialog/getDialogControllerTest",
+    "MainAbility/pages/promptAction/DialogOptions"
   ]
 }

@@ -382,7 +382,7 @@ export default function fileIOOpen() {
    * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_open_sync_015', 3, async function () {
+  it('fileIO_test_open_sync_015', Level.LEVEL3, async function () {
     let fpath = await nextFileName('fileIO_test_open_sync_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file;

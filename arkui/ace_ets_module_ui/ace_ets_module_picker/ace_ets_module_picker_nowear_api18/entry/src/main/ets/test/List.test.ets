@@ -14,16 +14,44 @@
  */
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
+import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
 import timePickerDialogSelectedAreaTest from './timePickerDialog/timePickerDialogSelectedArea.test';
 import textPickerDialogDefaultTextStyleTest from './textPickerDialog/textPickerDialogDefaultTextStyle.test';
 import textPickerDialogDisableTextStyleAnimationTest from './textPickerDialog/textPickerDialogDisableTextStyleAnimation.test';
+import calendarPickerDialogBackgroundBlurStyleTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundBlurStyle.test';
+import calendarPickerDialogBackgroundColorTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundColor.test';
+import calendarPickerDialogBackgroundShadowTest from './calendarPickerDialogTest/calendarPickerDialogBackgroundShadow.test';
+import datePickerDialogBGBlurStyleTest from './datePickerDialogTest/datePickerDialogBGBlurStyle.test';
+import datePickerDialogBGColorTest from './datePickerDialogTest/datePickerDialogBGColor.test';
+import datePickerDialogShadowTest from './datePickerDialogTest/datePickerDialogShadow.test';
+import textPickerDialogBGBlurStyleTest from './textPickerDialog/textPickerDialogBGBlurStyle.test';
+import textPickerDialogBGColorTest from './textPickerDialog/textPickerDialogBGColor.test';
+import textPickerDialogShadowTest from './textPickerDialog/textPickerDialogShadow.test';
+import timePickerDialogBGBlurStyleTest from './timePickerDialog/timePickerDialogBGBlurStyle.test';
+import timePickerDialogBGColorTest from './timePickerDialog/timePickerDialogBGColor.test';
+import timePickerDialogShadowTest from './timePickerDialog/timePickerDialogShadow.test';
+import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 
 export default function testsuite() {
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
+    EnableHapticFeedback();
     textPickerDialogSelectedAreaTest();
     timePickerDialogSelectedAreaTest();
     textPickerDialogDefaultTextStyleTest();
     textPickerDialogDisableTextStyleAnimationTest();
+    calendarPickerDialogBackgroundBlurStyleTest();
+    calendarPickerDialogBackgroundColorTest();
+    calendarPickerDialogBackgroundShadowTest();
+    datePickerDialogBGBlurStyleTest();
+    datePickerDialogBGColorTest();
+    datePickerDialogShadowTest();
+    textPickerDialogBGBlurStyleTest();
+    textPickerDialogBGColorTest();
+    textPickerDialogShadowTest();
+    timePickerDialogBGBlurStyleTest();
+    timePickerDialogBGColorTest();
+    timePickerDialogShadowTest();
+    textPickerDialogEnableHapticFeedback();
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import Utils from '../Utils';
@@ -57,7 +57,7 @@ export default function selectDialogTest() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('selectDialogTest_0100', 0, async (done: Function) => {
+    it('selectDialogTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('[selectDialogTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
@@ -67,10 +67,12 @@ export default function selectDialogTest() {
       await driver.delayMs(1000);
       // 点击打开SelectDialog是否存在以下入口。
       let primaryTitle = await driver.findComponent(ON.text('文本标题'));
-      let content = await driver.findComponent(ON.text('文本文本文本文本文本'));
+      let content = await driver.findComponent(ON.text('内容内容'));
+      let radioContent = await driver.findComponent(ON.text('文本文本文本文本文本'));
       let cancelButton = await driver.findComponent(ON.type('Button').text('取消'));
       expect(primaryTitle !== null).assertTrue();
       expect(content !== null).assertTrue();
+      expect(radioContent !== null).assertTrue();
       expect(cancelButton !== null).assertTrue();
       // 关闭SelectDialog
       await cancelButton.click();

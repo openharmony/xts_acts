@@ -19,6 +19,7 @@ group("ActsAceEtsModuleCommonEventsTest") {
       "ace_ets_module_commonEvents_api11:ActsAceEtsModuleCommonEventsApi11Test",
       "ace_ets_module_commonEvents_api12:ActsAceEtsModuleCommonEventsApi12Test",
       "ace_ets_module_commonEvents_api14:ActsAceEtsModuleCommonEventsApi14Test",
+      "ace_ets_module_commonEvents_wear_api18:ActsAceEtsModuleCommonEventsWearApi18Test",
     ]
   } else {
     deps = [
@@ -27,6 +28,7 @@ group("ActsAceEtsModuleCommonEventsTest") {
       "ace_ets_module_commonEvents_api12None:ActsAceEtsModuleCommonEventsApi12NoneTest",
       "ace_ets_module_commonEvents_api14:ActsAceEtsModuleCommonEventsApi14Test",
       "ace_ets_module_commonEvents_api15:ActsAceEtsModuleCommonEventsApi15Test",
+      "ace_ets_module_commonEvents_api18:ActsAceEtsModuleCommonEventsApi18Test",
       "ace_ets_module_commonEvents_noware_api14:ActsAceEtsModuleCommonEventsNoWearApi14Test",
       "ace_ets_module_commonEvents_nowear_api11:ActsAceEtsModuleCommonEventsNoWearApi11Test",
     ]

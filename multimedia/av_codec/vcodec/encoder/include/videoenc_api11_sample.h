@@ -180,6 +180,10 @@ public:
     bool configMain10 = false;
     bool setFormat8Bit = false;
     bool setFormat10Bit = false;
+    bool enableRepeat = false;
+    bool setMaxCount = false;
+    int32_t DEFAULT_FRAME_AFTER = 1;
+    int32_t DEFAULT_MAX_COUNT = 1;
 private:
     std::atomic<bool> isRunning_ { false };
     std::unique_ptr<std::ifstream> inFile_;

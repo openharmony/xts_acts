@@ -53,7 +53,28 @@ import showToastTest from './promptActionTest/showToast.test';
 import BaseDialogTest from './CustomDialogTest/KeyboardAvoidMode/BaseDialogTest.test';
 import CustomDialogTest from './CustomDialogTest/KeyboardAvoidMode/CustomDialogTest.test';
 import PromptActionTest from './CustomDialogTest/KeyboardAvoidMode/PromptActionTest.test';
+
+import primary from './AlertDialogTest/primary.test';
+import buttonMaxFontSize from './button/buttonMaxFontSize.test';
+import sheetBorderWidth from './bindSheet/sheetBorderWidth.test';
+import CustomDialogBorderColor from './CustomDialogTest/CustomDialogBorderColor.test';
+import dialogButtonStyle from './Dialog/dialogButtonStyle.test';
+import arrowOffset from './popup/arrowOffset.test';
+import showDialogTest from './promptActionTest/showDialogTest.test';
+import dialogTransitionTest from './CustomDialogTest/dialogTransitionTest.test';
+import menuTransition from './Menu/menuTransition.test';
+
 export default function testsuite() {
+  buttonMaxFontSize()
+  primary()
+  sheetBorderWidth()
+  CustomDialogBorderColor()
+  dialogButtonStyle()
+  arrowOffset()
+  showDialogTest()
+  dialogTransitionTest()
+  menuTransition()
+  
   dialogApi();
   ActionSheet1();
   ActionSheet2();

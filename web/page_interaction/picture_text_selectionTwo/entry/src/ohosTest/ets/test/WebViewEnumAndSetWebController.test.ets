@@ -112,8 +112,10 @@ export default function WebViewEnumAndSetWebController() {
     it('testContextMenuSourceTypeMouse001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuSourceTypeMouse", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testContextMenuSourceTypeMouse001", 1, 1981, done);
+      Utils.registerEvent("testContextMenuSourceTypeMouse001", ContextMenuSourceType.Mouse, 1981, done);
       sendEventByKey('buttonEnumAndSetWebController', 10, '');
     })
+
+
   })
 }

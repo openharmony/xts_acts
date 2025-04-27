@@ -602,6 +602,171 @@ HWTEST_F(DrawingNativePathPart3Test, testPathGetMatrixMaximal, TestSize.Level3) 
     OH_Drawing_MatrixDestroy(matrix);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4100
+ * @tc.name: testPathGetSegmentNormal
+ * @tc.desc: Testing the enumeration traversal of the interface for extracting path segments and appending them to the
+ * target path
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetSegmentNormal, TestSize.Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a target path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *dstPath = OH_Drawing_PathCreate();
+    EXPECT_NE(dstPath, nullptr);
+    bool result = false;
+    OH_Drawing_ErrorCode errorCode;
+    // 5. Parameter enumeration traversal
+    errorCode = OH_Drawing_PathGetSegment(path, true, 120, 180, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 180, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    errorCode = OH_Drawing_PathGetSegment(path, true, 120, 180, false, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 180, false, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    // 6. Free the memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(dstPath);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4101
+ * @tc.name: testPathGetSegmentNull
+ * @tc.desc: Tests when an interface that intercepts a path fragment and appends it to the target path passes a null
+ * pointer or invalid parameter
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetSegmentNull, TestSize.Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a target path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *dstPath = OH_Drawing_PathCreate();
+    EXPECT_NE(dstPath, nullptr);
+    bool result = false;
+    OH_Drawing_ErrorCode errorCode;
+    // 5. The function OH_Drawing_PathGetSegment passes a null pointer to the first argument
+    errorCode = OH_Drawing_PathGetSegment(nullptr, false, 120, 180, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result, false);
+    // 6. The function OH_Drawing_PathGetSegment passes 0 to the third argument
+    errorCode = OH_Drawing_PathGetSegment(path, false, 0, 180, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    // 7. The function OH_Drawing_PathGetSegment passes 0 to the forth argument
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 0, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, false);
+    // 8. The function OH_Drawing_PathGetSegment passes a null pointer to the fifth argument
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 180, true, nullptr, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result, false);
+    // 9. The function OH_Drawing_PathGetSegment passes a null pointer to the sixth argument
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 180, true, dstPath, nullptr);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result, false);
+    // 10. Free the memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(dstPath);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4102
+ * @tc.name: testPathGetSegmentAbnormal
+ * @tc.desc: Test cases where the function intercepts a path fragment and appends it to the destination path with an
+ * passed exception parameter
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetSegmentAbnormal, TestSize.Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a target path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *dstPath = OH_Drawing_PathCreate();
+    EXPECT_NE(dstPath, nullptr);
+    bool result = false;
+    OH_Drawing_ErrorCode errorCode;
+    // 5. The third argument of the function OH_Drawing_PathGetSegment passes a negative number
+    errorCode = OH_Drawing_PathGetSegment(path, false, -50, 180, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    // 6. The fourth parameter of the function OH_Drawing_PathGetSegment passes a number greater than the path length
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 999, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    // 7. The function OH_Drawing_PathGetSegment passes in the third and fourth arguments equal in value
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 120, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, false);
+    // 8. The third argument of the function OH_Drawing_PathGetSegment is greater than the value of the fourth argument
+    errorCode = OH_Drawing_PathGetSegment(path, false, 120, 100, true, dstPath, &result);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, false);
+    // 9. Free the memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(dstPath);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4103
+ * @tc.name: testPathGetSegmentMultiplies
+ * @tc.desc: The test function intercepts the path fragment and appends it to the target path loop several times
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetSegmentMultiplies, TestSize.Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a target path object using OH_Drawing_PathCreate
+    OH_Drawing_Path *dstPath = OH_Drawing_PathCreate();
+    EXPECT_NE(dstPath, nullptr);
+    bool result = false;
+    OH_Drawing_ErrorCode errorCode;
+    // 5. The function OH_Drawing_PathGetSegment is called 10 times
+    for (int i = 0; i < 10; i++) {
+        errorCode = OH_Drawing_PathGetSegment(path, false, 120, 180, true, dstPath, &result);
+    }
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result, true);
+    // 6. Free the memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(dstPath);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

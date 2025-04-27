@@ -27,7 +27,7 @@ struct LongPressGestureEvent {
                 this.value = '' + event.targetDisplayId
               }
             })
-        )
+          ,GestureMask.Normal)
         .height('40%')
         .width('90%')
         .padding(20)

@@ -25,6 +25,9 @@ import updateMenu from './promptActionTest/updateMenu.test.ets'
 import closeMenu from './promptActionTest/closeMenu.test.ets'
 import overlayManagerTest from './overlayManager/overlayManagerTest.test'
 import showDialogLevelOrder from './dialog/showDialogLevelOrder.test'
+import isVisible from './popup/isVisible.test';
+import getDialogControllerTest from './dialog/getDialogControllerTest.test';
+import DialogOptions from './promptActionTest/DialogOptions.test';
 
 export default function testsuite() {
     buttonType()
@@ -40,5 +43,8 @@ export default function testsuite() {
     closeMenu()
     overlayManagerTest()
     showDialogLevelOrder()
-
+    isVisible()
+    getDialogControllerTest()
+    DialogOptions()
+   
 }

@@ -18,6 +18,9 @@ import NavigationCustomTitlePage from './Navigation/NavigationCustomTitlePage.te
 import TitleOptionsToolOptions from './Navigation/TitleOptionsToolOptions.test'
 import BarStylePage from './Navigation/BarStylePage.test'
 import HideToolBarNavPage from './Navigation/HideToolBarNavPage.test'
+import EntryOptionPage2 from './Navigation/EntryOptionPage2.test'
+import EntryOptionPage from './Navigation/EntryOptionPage.test'
+import NavDestinationUIObserver from './Navigation/NavDestinationUIObserver.test'
 
 export default function testsuite() {
   NavigationTitleTextModifier();
@@ -25,4 +28,7 @@ export default function testsuite() {
   TitleOptionsToolOptions();
   BarStylePage();
   HideToolBarNavPage();
+  EntryOptionPage();
+  EntryOptionPage2();
+  NavDestinationUIObserver();
 }
