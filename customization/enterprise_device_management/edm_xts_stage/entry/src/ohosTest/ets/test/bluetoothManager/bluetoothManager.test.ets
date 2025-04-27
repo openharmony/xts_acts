@@ -408,5 +408,123 @@ export default function bluetoothManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0100
+     * @tc.name test_turnon_bluetooth_0100
+     * @tc.desc test turnOnBluetooth method with unActiveadmin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0100', 0, async (done: Function) => {
+      try {
+        bluetoothManager.turnOnBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0200
+     * @tc.name test_turnon_bluetooth_0200
+     * @tc.desc test turnOnBluetooth method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0200', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOnBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0300
+     * @tc.name test_turnon_bluetooth_0300
+     * @tc.desc test turnOnBluetooth method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0300', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        bluetoothManager.turnOnBluetooth(SELFWANT);
+      } catch(error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+        /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0100
+     * @tc.name test_turnoff_bluetooth_0100
+     * @tc.desc test turnOffBluetooth method with unActiveadmin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0100', 0, async (done: Function) => {
+      try {
+        bluetoothManager.turnOffBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0200
+     * @tc.name test_turnoff_bluetooth_0200
+     * @tc.desc test turnOffBluetooth method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0200', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOffBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0300
+     * @tc.name test_turnoff_bluetooth_0300
+     * @tc.desc test turnOffBluetooth method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0300', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        bluetoothManager.turnOffBluetooth(SELFWANT);
+      } catch(error) {
+        expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
   })
 }

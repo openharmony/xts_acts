@@ -106,5 +106,47 @@ export default function bluetoothManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0100
+     * @tc.name test_turnon_bluetooth_0100
+     * @tc.desc test turnOnBluetooth method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0100', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOnBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0100
+     * @tc.name test_turnoff_bluetooth_0100
+     * @tc.desc test turnOnBluetooth method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0100', 0, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOffBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
   })
 }
