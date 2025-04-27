@@ -141,7 +141,7 @@ export default function cameraSessionMultiSessionTest() {
       let cameraconcurrentinfos: Array<cameraObj.CameraConcurrentInfo> = [];
       cameraconcurrentinfos = mCameraManager.getCameraConcurrentInfos(mCameraDevicesArray);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MULTI_SESSION_CREATE_0100 cameraconcurrentinfos = "+ JSON.stringify(cameraconcurrentinfos));
-      if (!isEmpty(cameraconcurrentinfos)) {
+      if (cameraconcurrentinfos.length>0) {
         await cameraInput.open(cameraObj.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY);
         let firstSession = mCameraManager.createSession(cameraObj.SceneMode.NORMAL_PHOTO);
         if (!firstSession) {
