@@ -196,6 +196,7 @@ import SubAbstractPropertyLinkTest from './StorageTest/SubAbstractPropertyLinkTe
 import EnvironmentTest0040 from './StorageTest/EnvironmentTest0040.test';
 import LocalStorageDeleteTest0120 from './StorageTest/LocalStorageDeleteTest0120.test';
 import LazyForEachTest0120 from './LazyForEach/LazyForEachTest0120.test';
+import LazyForEachChangeTest0020 from './LazyForEach/LazyForEachChangeTest0020.test';
 
 export default function testsuite() {
     ExtendTrackTest();
@@ -381,4 +382,5 @@ export default function testsuite() {
     EnvironmentTest0040();
     LocalStorageDeleteTest0120();
     LazyForEachTest0120();
+    LazyForEachChangeTest0020();
 }
