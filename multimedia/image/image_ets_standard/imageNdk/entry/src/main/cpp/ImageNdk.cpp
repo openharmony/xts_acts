@@ -1189,6 +1189,56 @@ static napi_value DecodingOptionsSetDesiredRegion(napi_env env, napi_callback_in
     return result;
 }
 
+static napi_value DecodingOptionsGetCropAndScaleStrategy(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
+    
+    int32_t cropAndScaleStrategy = 0;
+    Image_ErrorCode ret = OH_DecodingOptions_GetCropAndScaleStrategy(decodeOpts, &cropAndScaleStrategy);
+    if (ret != IMAGE_SUCCESS) {
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
+    napi_create_int32(env, cropAndScaleStrategy, &result);
+
+    return result;
+}
+
+static napi_value DecodingOptionsSetCropAndScaleStrategy(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
+
+    int32_t cropAndScaleStrategy = 0;
+    napi_get_value_int32(env, argValue[NUM_1], &cropAndScaleStrategy);
+    Image_ErrorCode ret = OH_DecodingOptions_SetCropAndScaleStrategy(decodeOpts, cropAndScaleStrategy);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 static napi_value ReleaseDecodingOptions(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_value thisVar = nullptr;
@@ -2371,6 +2421,10 @@ static napi_value Init(napi_env env, napi_value exports) {
          napi_default, nullptr},
         {"DecodingOptionsSetDesiredRegion", nullptr, DecodingOptionsSetDesiredRegion, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"DecodingOptionsGetCropAndScaleStrategy", nullptr, DecodingOptionsGetCropAndScaleStrategy, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"DecodingOptionsSetCropAndScaleStrategy", nullptr, DecodingOptionsSetCropAndScaleStrategy, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
         {"ReleaseDecodingOptions", nullptr, ReleaseDecodingOptions, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateFromUri", nullptr, CreateFromUri, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateFromFd", nullptr, CreateFromFd, nullptr, nullptr, nullptr, napi_default, nullptr},
