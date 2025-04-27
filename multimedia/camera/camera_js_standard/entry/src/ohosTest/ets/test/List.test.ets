@@ -37,9 +37,10 @@ import CameraVideoMirrorTest from './CameraVideoMirrorTest.test.ets'
 import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritizationTest.test.ets'
 import CameraNoPermissionErrorCodeTest from './CameraNoPermissionErrorCodeTest.test.ets'
 import CameraPhotoSessionTest from './CameraPhotoSessionTest.test.ets'
-import CameraConcurrentTest from './CameraConcurrentTest.test.ets'
+import {CameraConcurrentTest,executePicker} from './CameraConcurrentTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
+let isExecutePicker = executePicker();
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
@@ -68,5 +69,7 @@ export default function cameraKit() {
   CameraMirrorTest()
   CameraVideoMirrorTest()
   CameraPhotoSessionTest()
-  CameraConcurrentTest()
+  if (isExecutePicker) {
+   CameraConcurrentTest()
+  }
 }
