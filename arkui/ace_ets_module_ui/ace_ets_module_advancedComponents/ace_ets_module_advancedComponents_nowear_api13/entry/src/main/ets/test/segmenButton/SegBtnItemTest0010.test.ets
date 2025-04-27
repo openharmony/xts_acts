@@ -118,7 +118,7 @@ export default function SegBtnItemTest0010() {
       console.info("[SegBtnItemTest0010_001] btn0.$attrs.accessibilityDescription is: " +
       JSON.stringify(btn0.$attrs.accessibilityDescription));
       expect(btn0.$attrs.accessibilityLevel).assertEqual('auto');
-      expect(btn0.$attrs.accessibilityDescription).assertEqual('tab1');
+      expect(btn0.$attrs.accessibilityDescription).assertEqual('email1');
       await CommonFunc.sleep(500);
       let btn1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0]
