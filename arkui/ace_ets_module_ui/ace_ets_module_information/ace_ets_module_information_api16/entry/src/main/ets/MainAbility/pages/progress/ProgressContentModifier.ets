@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 class MyProgressModifier implements ContentModifier<ProgressConfiguration> {
-  private color: Color = Color.White
+  color: Color = Color.White
 
   constructor(color: Color) {
     this.color = color
