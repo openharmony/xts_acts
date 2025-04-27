@@ -346,5 +346,215 @@ export default function MultiSegmentButtonV2PageTest() {
       console.log("[MultiSegmentButtonV2PageTest_012] END");
       done();
     })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_013
+     * @tc.name MultiSegmentButtonV2PageTest_013
+     * @tc.desc Test MultiSegmentButtonV2 itemMinFontScale
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_013', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_013] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[1];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.minFontScale);
+
+      expect(jsonOption).assertEqual('"0.850000"');
+      console.log("[MultiSegmentButtonV2PageTest_013] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_014
+     * @tc.name MultiSegmentButtonV2PageTest_014
+     * @tc.desc Test MultiSegmentButtonV2 itemMaxFontScale
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_014', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_014] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[1];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.maxFontScale);
+
+      expect(jsonOption).assertEqual('"3.200000"');
+      console.log("[MultiSegmentButtonV2PageTest_014] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_015
+     * @tc.name MultiSegmentButtonV2PageTest_015
+     * @tc.desc Test MultiSegmentButtonV2 languageDirection
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_015', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_022] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[3];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let common1: ESObject = itemBtn0.$children[0];
+      let jsonOption: string = JSON.stringify(common1.$attrs.direction);
+      expect(jsonOption).assertEqual('"Direction.Auto"');
+      console.log("[MultiSegmentButtonV2PageTest_015] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_016
+     * @tc.name MultiSegmentButtonV2PageTest_016
+     * @tc.desc Test MultiSegmentButtonV2 itemFontColor
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_016', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_016] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[3];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[1];
+      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.fontColor);
+
+      expect(jsonOption).assertEqual('"#FF000000"');
+      console.log("[MultiSegmentButtonV2PageTest_016] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_017
+     * @tc.name MultiSegmentButtonV2PageTest_017
+     * @tc.desc Test MultiSegmentButtonV2 itemFontSize
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_017', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_017] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[1];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.fontSize);
+
+      expect(jsonOption).assertEqual('"0.00px"');
+      console.log("[MultiSegmentButtonV2PageTest_017] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_018
+     * @tc.name MultiSegmentButtonV2PageTest_018
+     * @tc.desc Test MultiSegmentButtonV2 itemFontWeight
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_018', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_018] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[3];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[1];
+      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.fontWeight);
+
+      expect(jsonOption).assertEqual('"FontWeight.Medium"');
+      console.log("[MultiSegmentButtonV2PageTest_018] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_019
+     * @tc.name MultiSegmentButtonV2PageTest_019
+     * @tc.desc Test MultiSegmentButtonV2 itemBorderRadius
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_019', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_019] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[3];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let common1: ESObject = itemBtn0.$children[0];
+      let jsonOption: string = JSON.stringify(common1.$attrs.borderRadius.topLeft);
+
+      expect(jsonOption).assertEqual('"20.00vp"');
+      console.log("[MultiSegmentButtonV2PageTest_019] END");
+      done();
+    })
+
+    /**
+     * @tc.number MultiSegmentButtonV2PageTest_020
+     * @tc.name MultiSegmentButtonV2PageTest_020
+     * @tc.desc Test MultiSegmentButtonV2 itemPadding
+     * @tc.size
+     * @tc.type
+     * @tc.level Level.LEVEL0
+     */
+    it('MultiSegmentButtonV2PageTest_020', Level.LEVEL0, async (done: Function) => {
+      console.log("[MultiSegmentButtonV2PageTest_020] START");
+      const driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let tree: ESObject = await getInspectorTree();
+      let scroll: ESObject = tree.$children[0];
+      let column: ESObject = scroll.$children[0];
+      let common: ESObject = column.$children[3];
+      let flex: ESObject = common.$children[0];
+      let itemBtn0: ESObject = flex.$children[0];
+      let common1: ESObject = itemBtn0.$children[0];
+      let jsonOption: string = JSON.stringify(common1.$attrs.padding);
+
+      expect(jsonOption).assertEqual('"0.00vp"');
+      console.log("[MultiSegmentButtonV2PageTest_020] END");
+      done();
+    })
   })
 }
