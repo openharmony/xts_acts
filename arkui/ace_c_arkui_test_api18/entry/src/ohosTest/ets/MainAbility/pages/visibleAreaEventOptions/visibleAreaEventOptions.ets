@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,17 +13,21 @@
  * limitations under the License.
  */
 
-export const testDatePickerMode: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const datePickerEnableHapticFeedback: (a: string) => void;
+@Entry
+@Component
+struct VisibleAreaEventOptionsTest {
+  PAGE_TAG: string = 'VisibleAreaEventOptionsTest';
 
-export const textPickerEnableHapticFeedback: (a: string) => void;
-
-
-export const VisibleAreaEventOptionsTest_a: () => string[];
-
-export const VisibleAreaEventOptionsTest_b: () => string[];
-
-export const VisibleAreaEventOptionsTest_c: () => string[];
-
-export const VisibleAreaEventOptionsTest_d: () => string[];
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.VisibleAreaEventOptionsTest_a();
+      })
+    }
+  }
+}

@@ -17,10 +17,12 @@ import datePickerTest from "./datepicker/DatePickerMode.test"
 import buttonTypeTest from './button/ButtonTypeTest.test'
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
 import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
+import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test';
 
 export default function testsuite() {
   datePickerTest();
   buttonTypeTest();
   datePickerEnableHapticFeedbackTest();
   textPickerEnableHapticFeedbackTest();
+  visibleAreaEventOptions();
 }
