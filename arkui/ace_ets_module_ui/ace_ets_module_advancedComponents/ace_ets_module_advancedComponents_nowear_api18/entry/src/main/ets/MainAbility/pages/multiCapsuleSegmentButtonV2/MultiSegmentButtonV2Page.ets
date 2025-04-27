@@ -15,7 +15,7 @@
 
 
 import {
-  ColorMetrics,
+  ColorMetrics, LengthMetrics,
   MultiCapsuleSegmentButtonV2,
   SegmentButtonV2Items
 } from '@kit.ArkUI';
@@ -28,6 +28,8 @@ struct MultiCapsuleSegmentButtonV2Example {
     { text: 'b' },
     { text: 'c' },
     { text: 'd' },
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { symbol: $r('sys.symbol.phone') },
   ]);
   @Local selectedIndexes: number[] = [];
   @Local itemBackgroundColor: ColorMetrics = ColorMetrics.resourceColor(Color.Red);
@@ -44,6 +46,7 @@ struct MultiCapsuleSegmentButtonV2Example {
   @Local itemBackgroundBlurStyle: BlurStyle = BlurStyle.Thin;
   @Local itemBackgroundBlurStyleOptions: BackgroundBlurStyleOptions =
     { policy: BlurStyleActivePolicy.ALWAYS_INACTIVE, inactiveColor: '#CCCCCC' };
+  @Local onItemClickedNum: number = 0
 
   build() {
     Scroll() {
@@ -57,8 +60,32 @@ struct MultiCapsuleSegmentButtonV2Example {
             this.selectedIndexes = selectedIndexes
             console.log('selectIndex---' + selectedIndexes)
           },
+          onItemClicked: (num: number) => {
+            num = 666
+            console.log('onItemClicked---' + num)
+          },
+          itemMinFontScale: 0.85,
+          itemMaxFontScale: 3.2,
+          itemSpace: LengthMetrics.vp(2),
+          itemFontColor: ColorMetrics.resourceColor(Color.Orange),
+          itemSelectedFontColor: ColorMetrics.rgba(255,0,0), 
+          itemFontSize: LengthMetrics.fp(0),
+          itemSelectedFontSize: LengthMetrics.fp(18),
+          itemFontWeight: FontWeight.Medium,
+          itemSelectedFontWeight: FontWeight.Bolder,
+          itemBorderRadius: LengthMetrics.vp(20),
           itemBackgroundColor: this.itemBackgroundColor,
           itemBackgroundEffect: this.itemBackgroundEffect,
+          itemSelectedBackgroundColor: ColorMetrics.resourceColor(Color.Red),
+          itemIconSize: { width:LengthMetrics.vp(18), height:LengthMetrics.vp(18)} as SizeT<LengthMetrics>,
+          itemIconFillColor: ColorMetrics.resourceColor(Color.Pink),
+          itemSelectedIconFillColor: ColorMetrics.resourceColor(Color.Blue),
+          itemSymbolFontSize: LengthMetrics.vp(20),
+          itemSymbolFontColor: ColorMetrics.resourceColor(Color.Brown),
+          itemSelectedSymbolFontColor: ColorMetrics.resourceColor(Color.Black),
+          itemMinHeight: LengthMetrics.vp(50),
+          itemPadding: LengthMetrics.vp(0) as LocalizedPadding,
+          languageDirection: Direction.Auto
         })
           .backgroundColor(Color.White)
           .borderRadius(8)
