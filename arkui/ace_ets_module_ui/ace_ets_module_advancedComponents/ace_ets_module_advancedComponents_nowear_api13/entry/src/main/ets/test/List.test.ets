@@ -15,10 +15,11 @@
 import SegmentButtonTest003 from './segmenButton/SegmentButtonTest003.test';
 import SegmentButtonTest004 from './segmenButton/SegmentButtonTest004.test';
 import SegmentButtonTest005 from './segmenButton/SegmentButtonTest005.test';
+import SegBtnItemTest0010 from './segmenButton/SegBtnItemTest0010.test';
 
 export default function testsuite() {
   SegmentButtonTest003();
   SegmentButtonTest004();
   SegmentButtonTest005();
-
+  SegBtnItemTest0010();
 }
