@@ -34,6 +34,7 @@ const LABEL_TETHERING = "tethering";
 const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
+const LABEL_SMS = "sms";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -68,6 +69,27 @@ function testSetDisallowedPolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0101
+   * @tc.name      : test_set_disallowed_policy_0101
+   * @tc.desc      : test restrictions setDisallowedPolicy with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0101", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
 }
 
 function testGetDisallowedPolicy() {
@@ -83,6 +105,28 @@ function testGetDisallowedPolicy() {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       restrictions.getDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_POLICY_JS_0101
+   * @tc.name      : test_get_disallowed_policy_0101
+   * @tc.desc      : test restrictions getDisallowedPolicy with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_policy_0101", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.getDisallowedPolicy(SELFWANT, LABEL_SMS);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 201).assertTrue();
