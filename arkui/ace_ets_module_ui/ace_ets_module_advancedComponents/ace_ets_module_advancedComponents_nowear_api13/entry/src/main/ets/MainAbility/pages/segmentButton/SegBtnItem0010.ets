@@ -38,7 +38,7 @@ struct SegBtnItem0010 {
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: 'select',
+        selectedIconAccessibilityText: 'email1',
         accessibilityLevel: 'auto',
         accessibilityDescription: 'email1'
       },
@@ -46,7 +46,7 @@ struct SegBtnItem0010 {
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: 'select',
+        selectedIconAccessibilityText: 'email2',
         accessibilityLevel: 'no',
         accessibilityDescription: 'email2'
       },
@@ -54,7 +54,7 @@ struct SegBtnItem0010 {
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: 'select',
+        selectedIconAccessibilityText: 'email3',
         accessibilityLevel: 'yes',
         accessibilityDescription: 'email3'
       },
@@ -62,7 +62,7 @@ struct SegBtnItem0010 {
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: 'select',
+        selectedIconAccessibilityText: 'email4',
         accessibilityLevel: 'no-hide-descendants',
         accessibilityDescription: 'email4'
       }

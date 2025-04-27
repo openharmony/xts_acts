@@ -156,10 +156,10 @@ export default function SegBtnItemTest0010() {
         .$children[0]
         .$children[0]
       console.info("[SegBtnItemTest0010_001] icon0.$attrs.selectedIcon is: " +
-      JSON.stringify(icon0.$attrs.selectedIcon));
+      JSON.stringify(icon0.$attrs.src));
       console.info("[SegBtnItemTest0010_001] icon0.$attrs.accessibilityText is: " +
       JSON.stringify(icon0.$attrs.accessibilityText));
-      expect(icon0.$attrs.selectedIcon).assertEqual('resource:///125830169.svg');
+      expect(icon0.$attrs.src).assertEqual('resource:///125830169.svg');
       expect(icon0.$attrs.accessibilityText).assertEqual('email1');
       await CommonFunc.sleep(500);
       let icon1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
@@ -170,10 +170,10 @@ export default function SegBtnItemTest0010() {
         .$children[0]
         .$children[0]
         .$children[0]
-      console.info("[SegBtnItemTest0010_001] icon1.$attrs.icon is: " + JSON.stringify(icon1.$attrs.icon));
+      console.info("[SegBtnItemTest0010_001] icon1.$attrs.icon is: " + JSON.stringify(icon1.$attrs.src));
       console.info("[SegBtnItemTest0010_001] icon1.$attrs.accessibilityText is: " +
       JSON.stringify(icon1.$attrs.accessibilityText));
-      expect(icon1.$attrs.selectedIcon).assertEqual('resource:///125830170.svg');
+      expect(icon1.$attrs.src).assertEqual('resource:///125830170.svg');
       expect(icon1.$attrs.accessibilityText).assertEqual('notSelect');
       console.info('[SegBtnItemTest0010_002] END');
       done();
