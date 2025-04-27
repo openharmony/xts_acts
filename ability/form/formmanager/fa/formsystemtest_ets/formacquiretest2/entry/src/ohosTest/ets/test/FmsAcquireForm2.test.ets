@@ -93,6 +93,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -140,6 +141,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -188,13 +190,14 @@ export default function test() {
                 });
             }
 
-            let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
+            let onAcquiredCallBack = async (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
                 console.info("!!!====>FMS_acquireForm_4000 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.data).assertEqual("FMS_FormOnAcquired_commonEvent");
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4000"))
                 commonEvent.subscribe(subscriberOnError, onErrorCallBack);
 
+                await sleep(2000);
                 console.info(`FMS_acquireForm_4000 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
                     want: {
@@ -226,6 +229,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_4000 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -272,7 +276,7 @@ export default function test() {
             }
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
 
-            let onSupplyCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
+            let onSupplyCallBack = async (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
                 console.info("====>FMS_acquireForm_4200 onSupplyCallBack====>" + JSON.stringify(data));
                 if (data.data == "FMS_FormSupply_commonEvent") {
                     commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback("FMS_acquireForm_4200"));
@@ -289,6 +293,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -334,6 +339,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_4300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -380,6 +386,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -433,13 +440,14 @@ export default function test() {
                 });
             }
 
-            let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) =>{
+            let onAcquiredCallBack = async (_:BusinessError, data: CommonEventManager.CommonEventPublishData) =>{
                 console.info("!!!====>FMS_acquireForm_4900 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.data).assertEqual("FMS_FormOnAcquired_commonEvent");
                 expect(data.code).assertEqual(0);
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4900"))
                 commonEvent.subscribe(subscriberCast, onCastCallBack);
 
+                await sleep(2000);
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
                     want: {
@@ -470,6 +478,7 @@ export default function test() {
             }
 
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            await sleep(2000);
             console.info(`FMS_acquireForm_4900 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
