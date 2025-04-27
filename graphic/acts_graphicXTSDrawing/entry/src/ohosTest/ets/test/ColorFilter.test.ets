@@ -789,7 +789,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
-      mulColor : common2D.Color = { alpha: -1, red: 0, green: 0, blue: 0};
+      mulColor = { alpha: -1, red: 0, green: 0, blue: 0};
       try {
         let colorFilter3 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter3 successed');
@@ -806,7 +806,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 256, red: 0, green: 0, blue: 0};
+      mulColor = { alpha: 256, red: 0, green: 0, blue: 0};
       try {
         let colorFilter5 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter5 successed');
@@ -823,7 +823,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: -1, green: 0, blue: 0};
+      mulColor  = { alpha: 255, red: -1, green: 0, blue: 0};
       try {
         let colorFilter7 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter7 successed');
@@ -840,7 +840,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter8 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: 256, green: 0, blue: 0};
+      mulColor  = { alpha: 255, red: 256, green: 0, blue: 0};
       try {
         let colorFilter9 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter9 successed');
@@ -857,7 +857,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter10 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: 255, green: -1, blue: 0};
+      mulColor = { alpha: 255, red: 255, green: -1, blue: 0};
       try {
         let colorFilter9 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter9 successed');
@@ -874,7 +874,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter10 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: 255, green: 256, blue: 0};
+      mulColor = { alpha: 255, red: 255, green: 256, blue: 0};
       try {
         let colorFilter11 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter11 successed');
@@ -891,7 +891,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter12 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: 255, green: 255, blue: -1};
+      mulColor = { alpha: 255, red: 255, green: 255, blue: -1};
       try {
         let colorFilter13 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter13 successed');
@@ -908,7 +908,7 @@ export default function colorFilterTest() {
         console.info(msg + ` createLightingColorFilter colorFilter14 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
-      mulColor : common2D.Color = { alpha: 255, red: 255, green: 255, blue: 256};
+      mulColor = { alpha: 255, red: 255, green: 255, blue: 256};
       try {
         let colorFilter15 = drawing.ColorFilter.createLightingColorFilter(mulColor , addColor );
         console.info(msg + ' createLightingColorFilter colorFilter15 successed');

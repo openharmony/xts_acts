@@ -28,6 +28,7 @@ import {
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import uiEffect from '@ohos.graphics.uiEffect';
+import common2D from '@ohos.graphics.common2D';
 import { getRandomNumber } from './utils';
 
 export default function imageFilterTest() {
@@ -381,13 +382,13 @@ export default function imageFilterTest() {
         console.info(msg + ` createFromImage filter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-      srcRect: common2D.Rect = {
+      srcRect = {
         left: 10000,
         top: 10000,
         right: 800000,
         bottom: 800000
       };
-      dstRect: common2D.Rect = {
+      dstRect = {
         left: -200,
         top: -200,
         right: 400,
@@ -401,13 +402,13 @@ export default function imageFilterTest() {
         console.info(msg + ` createFromImage filter1 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-      srcRect: common2D.Rect = {
+      srcRect = {
         left: 200.3,
         top: 400.0127,
         right: 100.55,
         bottom: 300.2454
       };
-      dstRect: common2D.Rect = {
+      dstRect = {
         left: 300.50,
         top: -200,
         right: 400.3,
@@ -461,13 +462,13 @@ export default function imageFilterTest() {
         console.info(msg + ` createFromImage filter7 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-      srcRect: common2D.Rect = {
+      srcRect = {
         left: Number.MIN_VALUE,
         top: Number.MIN_VALUE,
         right: Number.MAX_VALUE,
         bottom: Number.MAX_VALUE
       };
-      dstRect: common2D.Rect = {
+      dstRect = {
         left: Number.MAX_VALUE,
         top: Number.MAX_VALUE,
         right: Number.MIN_VALUE,
@@ -506,7 +507,7 @@ export default function imageFilterTest() {
           bottom: Math.floor(Math.random() * 200)
         };
         try {
-          let ImageFilter = filter = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+          let ImageFilter = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
           console.info(msg + ' createFromImage  successed,ImageFilter:' + JSON.stringify(ImageFilter));
           expect(ImageFilter != null || ImageFilter != undefined).assertTrue();
         } catch (e) {
@@ -820,7 +821,7 @@ export default function imageFilterTest() {
       }
       let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
       try {
-        let blendImageFilter30 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, blendImageFilter , imgFilter );
+        let blendImageFilter30 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, offsetFilter1 , imgFilter );
         console.info(msg + ' createBlendImageFilter blendImageFilter30 succeeded');
         expect(blendImageFilter30 != null || blendImageFilter30 != undefined).assertTrue();
       } catch (e) {
@@ -1186,9 +1187,9 @@ export default function imageFilterTest() {
      */
     it('testImageFilterCreateFromShaderEffectNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, () => {
       const msg = 'testImageFilterCreateFromShaderEffectNormal';
-      let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00);
+      let shaderEffect0 = drawing.ShaderEffect.createColorShader(0xFF00FF00);
       try {
-        let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect);
+        let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect0);
         console.info(msg + ' createFromShaderEffect renderEffect successed');
         expect(renderEffect != null || renderEffect != undefined).assertTrue()
       } catch( e ) {
