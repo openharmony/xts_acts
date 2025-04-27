@@ -892,16 +892,18 @@ export default function imageFilterTest() {
       try {
         let blendImageFilter3 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, null, offsetFilter2);
         console.info(msg + ' createBlendImageFilter blendImageFilter3 successed');
+        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createBlendImageFilter blendImageFilter3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
       try {
         let blendImageFilter4 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, undefined, offsetFilter2);
         console.info(msg + ' createBlendImageFilter blendImageFilter4 successed');
+        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createBlendImageFilter blendImageFilter4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
       try {
         let blendImageFilter5 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, offsetFilter1, null);
@@ -1017,6 +1019,7 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter1 = drawing.ImageFilter.createComposeImageFilter(null, blurFilter);
         console.info(msg + ' createComposeImageFilter composedImageFilter successed');
+        expect(composedImageFilter1 != null || composedImageFilter1 != undefined).assertTrue()
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -1024,6 +1027,7 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter2 = drawing.ImageFilter.createComposeImageFilter(undefined, blurFilter);
         console.info(msg + ' createComposeImageFilter composedImageFilter2 successed');
+        expect(composedImageFilter2 != null || composedImageFilter2 != undefined).assertTrue()
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -1031,17 +1035,33 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter3 = drawing.ImageFilter.createComposeImageFilter(renderEffect , null);
         console.info(msg + ' createComposeImageFilter composedImageFilter3 successed');
-        expect().assertFail();
+        expect(composedImageFilter3 != null || composedImageFilter3 != undefined).assertTrue()
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect().assertFail();
       }
       try {
         let composedImageFilter4 = drawing.ImageFilter.createComposeImageFilter(renderEffect , undefined);
         console.info(msg + ' createComposeImageFilter composedImageFilter4 successed');
-        expect().assertFail();
+        expect(composedImageFilter4 != null || composedImageFilter4 != undefined).assertTrue()
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      try {
+        let composedImageFilter6 = drawing.ImageFilter.createComposeImageFilter(undefined , undefined);
+        console.info(msg + ' createComposeImageFilter composedImageFilter6 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createComposeImageFilter composedImageFilter6 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let composedImageFilter5 = drawing.ImageFilter.createComposeImageFilter(null , null);
+        console.info(msg + ' createComposeImageFilter composedImageFilter5 successed');
+        expect().assertFail();
+      } catch( e ) {
+        console.info(msg + ` createComposeImageFilter composedImageFilter5 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect(e.code).assertEqual(401);
       }
     });
