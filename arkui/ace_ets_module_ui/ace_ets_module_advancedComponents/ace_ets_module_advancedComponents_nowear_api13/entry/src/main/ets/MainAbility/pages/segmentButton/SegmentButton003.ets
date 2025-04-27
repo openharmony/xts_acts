@@ -29,13 +29,13 @@ struct SegmentButton003 {
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: 'select',
-        accessibilityLevel: 'auto', accessibilityDescription: 'Description'},
+        accessibilityLevel: 'yes', accessibilityDescription: 'Description'},
       { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: 'select',
         accessibilityLevel: 'yes', accessibilityDescription: 'Description'},
       { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: 'select',
-        accessibilityLevel: 'no', accessibilityDescription: 'Description'},
+        accessibilityLevel: 'yes', accessibilityDescription: 'Description'},
       { icon: $r('sys.media.ohos_ic_public_email'), iconAccessibilityText: 'notSelect',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'), selectedIconAccessibilityText: 'select',
         accessibilityLevel: 'yes', accessibilityDescription: 'Description'}
