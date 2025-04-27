@@ -3744,6 +3744,7 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
+                        console.info(msgStr + 'show come in....');
                         try {
                             wnd.minimize((err) => {
                                 if (err.code) {
@@ -3814,6 +3815,7 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
+                        console.info(msgStr + 'show come in....');
                         try {
                             let promise = wnd.minimize();
                             promise.then(() => {
