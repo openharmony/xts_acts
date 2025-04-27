@@ -167,10 +167,12 @@ struct WebViewEnumAndSetWebController {
               this.controller.loadUrl("resource://rawfile/indexLongClickImage.html")
               await Utils.sleep(2000);
               let webRect = Utils.getComponentRect('WebViewEnumAndSetWebControllerWebView');
+              let downX = Math.round(globalThis.winLeft + webRect.left + (webRect.right - webRect.left) / 2);
+              let downY = Math.round(globalThis.winTop + webRect.top + (webRect.bottom - webRect.top) / 2);
               let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseClick({ x: downX, y: downY }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
           }
