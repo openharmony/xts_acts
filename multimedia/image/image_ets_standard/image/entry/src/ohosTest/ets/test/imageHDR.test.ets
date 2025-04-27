@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll,beforeEach,afterEach, afterAll,it, expect, DEFAULT } from '@ohos/hypium'
+import { describe, beforeAll,beforeEach,afterEach, afterAll,it, expect, DEFAULT, Level } from '@ohos/hypium'
 import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
@@ -80,7 +80,7 @@ export default function imageHDR() {
       });
     };
 
-    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -118,7 +118,7 @@ export default function imageHDR() {
       }
     });
 
-    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0200", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("CUVAHdr.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -156,7 +156,7 @@ export default function imageHDR() {
       }
     });
 
-    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0300", Level.LEVEL0, async (done: Function) => {
       try {
         await getFd("JPEGVividSingle.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
