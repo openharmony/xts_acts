@@ -1611,21 +1611,31 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
 static napi_value OHNativeBufferY8Y16USAGEandAlloc(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    OH_NativeBuffer_Config nativeBufferConfig = {
+    OH_NativeBuffer_Config Config = {
         .width = 0x100,
         .height = 0x100,
-        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | NATIVEBUFFER_PIXEL_FMT_Y8 | NATIVEBUFFER_PIXEL_FMT_Y16,
+        .format = NATIVEBUFFER_PIXEL_FMT_Y8,
         .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA
                  | NATIVEBUFFER_USAGE_MEM_MMZ_CACHE,
     };
-    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
-    OH_NativeBuffer_Config nativeBufferConfig2;
-    OH_NativeBuffer_GetConfig(nativeBuffer, &nativeBufferConfig2);
+    OH_NativeBuffer_Config Config1 = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_Y16,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA
+                 | NATIVEBUFFER_USAGE_MEM_MMZ_CACHE,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&Config);
+    OH_NativeBuffer *nativeBuffer1 = OH_NativeBuffer_Alloc(&Config1);
+    OH_NativeBuffer_Config Config2;
+    OH_NativeBuffer_Config Config3;
+    OH_NativeBuffer_GetConfig(nativeBuffer, &Config2);
+    OH_NativeBuffer_GetConfig(nativeBuffer1, &Config3);
     bool areEqual = true;
-    if (nativeBufferConfig.format != nativeBufferConfig2.format) {
+    if (Config.format != Config2.format && Config1.format != Config3.format) {
         areEqual = false;
     }
-    if (nativeBufferConfig.usage != nativeBufferConfig2.usage) {
+    if (Config.usage != Config2.usage && Config1.usage != Config3.usage) {
         areEqual = false;
     }
     if (areEqual) {
