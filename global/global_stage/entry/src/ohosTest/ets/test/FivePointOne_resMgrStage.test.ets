@@ -94,9 +94,9 @@ export default function FivePointOne_resMgrStageTest() {
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
-    it('resourceManager_test_getIntPluralStringValueSync_0100', Level.LEVEL2, () => {
+    it('resourceManager_test_getDoublePluralStringValueSync_0100', Level.LEVEL2, () => {
       let value = res.getDoublePluralStringValueSync($r('app.plural.p_str4').id, 2.1, 2, 'test');
-      console.log('resourceManager_test_getIntPluralStringValueSync_0100:' + value);
+      console.log('resourceManager_test_getDoublePluralStringValueSync_0100:' + value);
       expect(value).assertEqual('2 apples');
     })
 
