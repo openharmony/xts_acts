@@ -633,18 +633,18 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', 0, async (done: Function) => {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((data) => {
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, null, audio.DeviceType.SPEAKER).then((data) => {
           console.info(`getSystemVolumeInDb :SUCCESS ${data}, test fail!`);
           expect(false).assertTrue();
           done();
         }).catch((error: BusinessError) => {
           console.log(`getSystemVolumeInDb : error ${error.code}, check the error code`);
-          expect(Number(error.code) == 401).assertTrue();
+          expect(false).assertTrue();
           done();
         });
       } catch (error) {
         console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
+        expect(Number(error.code) == 401).assertTrue();
         done();
       }
     })
