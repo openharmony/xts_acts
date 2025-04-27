@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 class MyProgressModifier implements ContentModifier<ProgressConfiguration> {
-  color: Color = Color.White
+  private color: Color = Color.White
 
   constructor(color: Color) {
     this.color = color
@@ -62,7 +62,7 @@ function myProgress(config: ProgressConfiguration) {
 
 @Entry
 @Component
-struct Index {
+struct ProgressBuilderExample {
   @State currentValue: number = 0
   modifier = new MyProgressModifier(Color.Red)
   @State myModifier: (MyProgressModifier | undefined) = this.modifier

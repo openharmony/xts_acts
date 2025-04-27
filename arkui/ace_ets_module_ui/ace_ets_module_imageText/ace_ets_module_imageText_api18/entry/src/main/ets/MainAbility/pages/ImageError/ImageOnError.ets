@@ -15,13 +15,13 @@
 @Entry
 @Component
 struct ImageOnErrorExample {
-  @Status componentWidthValue: number = 0
-  @Status componentHeightValue: number = 0
+  @State componentWidthValue: number = 0
+  @State componentHeightValue: number = 0
   build() {
     Column({ space: 10 }) {
       Text('componentWidth: ' + this.componentWidthValue + ' componentHeight: ' + this.componentHeightValue)
-      Text(this.componentWidthValue).id('componentWidth')
-      Text(this.componentHeightValue).id('componentHeight')
+      Text('' + this.componentWidthValue).id('componentWidth')
+      Text('' + this.componentHeightValue).id('componentHeight')
       Image('xxx')
         .width(100)
         .height(100)

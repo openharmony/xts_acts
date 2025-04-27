@@ -43,7 +43,7 @@ class DataPanelBuilder implements ContentModifier<DataPanelConfiguration> {
 
 @Entry
 @Component
-struct Index {
+struct DataPanelBuilderExample {
   build() {
     Column() {
       Text('Data panel').margin({ top: 12 });
