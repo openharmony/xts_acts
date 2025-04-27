@@ -27,7 +27,7 @@ struct CheckboxExample {
             .checkboxShape(CheckBoxShape.ROUNDED_SQUARE)
             .selectedColor('#007DFF')
             .onChange((itemName: CheckboxGroupResult) => {
-              console.info("checkbox group content" + JSON.stringify(itemName));
+              console.info('checkbox group content' + JSON.stringify(itemName));
               this.text1 = JSON.stringify(itemName.status)
             })
           Text('Select All').fontSize(14).lineHeight(20).fontColor('#182431').fontWeight(500)
