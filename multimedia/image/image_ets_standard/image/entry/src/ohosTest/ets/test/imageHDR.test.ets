@@ -42,6 +42,7 @@ export default function imageHDR() {
           await globalpixelmap.release();
         } catch (error) {
           console.info('globalpixelmap release fail');
+          except().assertFail();
         }
       }
       if (globalimageSource != undefined) {
@@ -50,6 +51,7 @@ export default function imageHDR() {
           await globalimageSource.release();
         } catch (error) {
           console.info('globalimageSource release fail');
+          except().assertFail();
         }
         console.info('afterEach case');
       }
@@ -59,6 +61,7 @@ export default function imageHDR() {
             await globalpacker.release();
         } catch (error) {
             console.info('globalpacker release fail');
+            except().assertFail();
         }
         console.info('afterEach case');
       }
