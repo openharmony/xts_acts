@@ -11,6 +11,8 @@
     "MainAbility/pages/RichEditor/textBackgroundStyleTest",
     "MainAbility/pages/RichEditor/HapticFeedbackMode",
     "MainAbility/pages/RichEditor/RichEditorMaxLinesTest",
-    "MainAbility/pages/TextArea/WordBreakTest"
+    "MainAbility/pages/TextArea/WordBreakTest",
+    "MainAbility/pages/ImageContent/ImageContentEmpty",
+    "MainAbility/pages/ImageError/ImageOnError"
   ]
 }
