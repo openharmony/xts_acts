@@ -3781,7 +3781,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testMinimize_Function_Callback', 0, async function (done) {
+    it('testMinimize_Function_Callback', 4, async function (done) {
         let msgStr = 'testMinimize_Function_Callback';
         console.log(msgStr + ' begin');
         window.create('subWindow11', window.WindowType.TYPE_APP).then(wnd => {
@@ -3793,24 +3793,41 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
-
-                        wnd.minimize((err) => {
-                            if (err.code && err.code != 202) {
-                              console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
-                              expect().assertFail()
+                        console.info(msgStr + 'show come in....');
+                        try {
+                            wnd.minimize((err) => {
+                                if (err.code) {
+                                  console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
+                                  expect().assertFail()
+                                }
+                                console.info(msgStr + 'Succeeded in minimizing the window.');
+                                expect(true).assertTrue()
+                                wnd.destroy((err) => {
+                                    if (err.code) {
+                                        console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                        return
+                                    }
+                                    console.info(msgStr + 'Succeeded in destroying the window.');
+                                });
+                                done();
+                            });
+                        } catch (err) {
+                            console.error(msgStr + 'catched Failed to minimize the window. Cause: ' + JSON.stringify(err)+'errCode'+ err.code);
+                            wnd.destroy((err) => {
+                                if (err.code) {
+                                    console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                    return
+                                }
+                                console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            if(err.code == 801){
+                                done();
+                            }else{
+                                expect().assertFail();
+                                done();
                             }
-                            console.info(msgStr + 'Succeeded in minimizing the window.');
-                            expect(true).assertTrue()
-                        });
-
-                        wnd.destroy((err) => {
-                            if (err.code) {
-                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
-                                return
-                            }
-                            console.info(msgStr + 'Succeeded in destroying the window.');
-                        });
-                        done();
+                        }                         
+                        
                     }, (err) => {
                         console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
@@ -3835,7 +3852,7 @@ export default function window_test() {
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-     it('testMinimize_Function_Promise', 0, async function (done) {
+     it('testMinimize_Function_Promise', 4, async function (done) {
         let msgStr = 'testMinimize_Function_Promise';
         console.log(msgStr + ' begin');
         window.create('subWindow12', window.WindowType.TYPE_APP).then(wnd => {
@@ -3847,28 +3864,42 @@ export default function window_test() {
                     console.log(msgStr + ' wnd.isShowing data:' + res);
                     expect(!res).assertTrue();
                     wnd.show().then(() => {
-
-                        let promise = wnd.minimize();
-                        promise.then(() => {
-                            console.info(msgStr + 'Succeeded in minimizing the window.');
-                            expect(true).assertTrue()
+                        console.info(msgStr + 'show come in....');
+                        try {
+                            let promise = wnd.minimize();
+                            promise.then(() => {
+                                console.info(msgStr + 'Succeeded in minimizing the window.');
+                                expect(true).assertTrue()
+                                wnd.destroy((err) => {
+                                    if (err.code) {
+                                        console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                        return
+                                    }
+                                    console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            done();
                         }).catch((err) => {
                             console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
-                            if (!err.code || err.code == 202) {
-                                expect(true).assertTrue()
-                            } else {
-                                expect().assertFail()
-                            }
+                            expect().assertFail()
+                            done();
                         });
-
-                        wnd.destroy((err) => {
-                            if (err.code) {
-                                console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
-                                return
+                        } catch (err) {
+                            console.error(msgStr + 'catched Failed to minimize the window. Cause: ' + JSON.stringify(err)+'errCode'+ err.code);
+                            wnd.destroy((err) => {
+                                if (err.code) {
+                                    console.error(msgStr + ' Failed to destroy the window. err:' + JSON.stringify(err));
+                                    return
+                                }
+                                console.info(msgStr + 'Succeeded in destroying the window.');
+                            });
+                            if(err.code == 801){
+                                done();
+                            }else{
+                                expect().assertFail();
+                                done();
                             }
-                            console.info(msgStr + 'Succeeded in destroying the window.');
-                        });
-                        done();
+                        }
+                          
                     }, (err) => {
                         console.log(msgStr + ' wnd.show failed, err :' + JSON.stringify(err));
                         expect().assertFail();
