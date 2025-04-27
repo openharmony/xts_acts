@@ -55,6 +55,9 @@ export const DecodingOptionsSetDesiredSize: (options: image.DecodingOptions, wid
 export const DecodingOptionsGetDesiredRegion: (options: image.DecodingOptions) => image.Region;
 export const DecodingOptionsSetDesiredRegion: (options: image.DecodingOptions, x:number, y:number, wihth:number,
                                                height:number) => Number;
+export const DecodingOptionsGetCropAndScaleStrategy: (options: image.DecodingOptions) => number;
+export const DecodingOptionsSetCropAndScaleStrategy: (options: image.DecodingOptions,
+                                                      cropAndScaleStrategy:number) => Number;
 export const ReleaseDecodingOptions: (options: image.DecodingOptions) => Number;
 export const CreateFromUri: (uri: string) => image.ImageSource;
 export const CreateFromFd: (fd: number) => image.ImageSource;
