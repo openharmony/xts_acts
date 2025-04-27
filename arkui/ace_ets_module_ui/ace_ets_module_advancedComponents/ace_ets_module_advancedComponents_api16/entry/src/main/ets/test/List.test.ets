@@ -40,6 +40,7 @@ import exceptionPromptSymbolStyleTest from './exceptionPrompt/exceptionPromptSym
 import alertDialogTest from  './dialogV2/alertDialogTest.test';
 import loadingDialogTest from './dialogV2/loadingDialogTest.test';
 import popoverDialogTest from './dialogV2/popoverDialogTest.test';
+import customContentDialogTest from './dialogV2/customContentDialogTest.test';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -69,4 +70,5 @@ export default function testsuite() {
   alertDialogTest();
   loadingDialogTest();
   popoverDialogTest();
+  customContentDialogTest();
 }

@@ -29,7 +29,7 @@ export default function subHeaderV2AccessibilityPageTest() {
         router.clear();
         let pages = router.getState();
         console.info('get subHeaderV2AccessibilityPageTest state pages: ' + JSON.stringify(pages));
-        if (!('subHeaderV2AccessibilityPageTest' == pages.name)) {
+        if (!('subHeaderV2AccessibilityPage' == pages.name)) {
           console.info('get subHeaderV2AccessibilityPageTest pages.name: ' + JSON.stringify(pages.name));
           await router.pushUrl(options);
           await Utils.sleep(2000);
