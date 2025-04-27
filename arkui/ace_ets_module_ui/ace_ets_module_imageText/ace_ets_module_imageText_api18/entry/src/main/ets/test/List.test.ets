@@ -26,6 +26,8 @@ import ParagraphSpacingTest from './StyledStringTest/ParagraphSpacing.test';
 import HapticFeedbackModeTest from './RichEditorTest/HapticFeedbackMode.test';
 import RichEditorMaxLinesTest from './RichEditorTest/RichEditorMaxLinesTest.test';
 import WordBreakTest from './TextAreaTest/WordBreakTest.test';
+import ImageContentEmpty from './ImageContentTest/ImageContentEmpty.test';
+import ImageOnError from './ImageErrorTest/ImageOnError.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -41,4 +43,7 @@ export default function testsuite() {
   HapticFeedbackModeTest();
   RichEditorMaxLinesTest();
   WordBreakTest();
+  ImageContentEmpty();
+  ImageOnError();
+
 }
