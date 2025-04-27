@@ -37,7 +37,13 @@ export default function imageFilterTest() {
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-
+      const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 100, width: 100
+        }
+      }
+      pixel = await image.createPixelMap(color, opts);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -886,18 +892,16 @@ export default function imageFilterTest() {
       try {
         let blendImageFilter3 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, null, offsetFilter2);
         console.info(msg + ' createBlendImageFilter blendImageFilter3 successed');
-        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createBlendImageFilter blendImageFilter3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect().assertFail();
       }
       try {
         let blendImageFilter4 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, undefined, offsetFilter2);
         console.info(msg + ' createBlendImageFilter blendImageFilter4 successed');
-        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createBlendImageFilter blendImageFilter4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect().assertFail();
       }
       try {
         let blendImageFilter5 = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC, offsetFilter1, null);
@@ -1013,18 +1017,16 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter1 = drawing.ImageFilter.createComposeImageFilter(null, blurFilter);
         console.info(msg + ' createComposeImageFilter composedImageFilter successed');
-        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect().assertFail();
       }
       try {
         let composedImageFilter2 = drawing.ImageFilter.createComposeImageFilter(undefined, blurFilter);
         console.info(msg + ' createComposeImageFilter composedImageFilter2 successed');
-        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect().assertFail();
       }
       try {
         let composedImageFilter3 = drawing.ImageFilter.createComposeImageFilter(renderEffect , null);
