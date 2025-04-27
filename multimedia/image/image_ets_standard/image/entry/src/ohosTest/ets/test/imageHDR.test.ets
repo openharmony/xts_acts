@@ -42,7 +42,7 @@ export default function imageHDR() {
           await globalpixelmap.release();
         } catch (error) {
           console.info('globalpixelmap release fail');
-          except().assertFail();
+          expect().assertFail();
         }
       }
       if (globalimageSource != undefined) {
@@ -51,17 +51,17 @@ export default function imageHDR() {
           await globalimageSource.release();
         } catch (error) {
           console.info('globalimageSource release fail');
-          except().assertFail();
+          expect().assertFail();
         }
         console.info('afterEach case');
       }
       if (globalpacker != undefined) {
         console.info('globalpacker release start');
         try {
-            await globalpacker.release();
+          await globalpacker.release();
         } catch (error) {
-            console.info('globalpacker release fail');
-            except().assertFail();
+          console.info('globalpacker release fail');
+          expect().assertFail();
         }
         console.info('afterEach case');
       }
