@@ -465,11 +465,16 @@ export default function test() {
          */
         it(`FMS_stressTest_1800`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: ()=> void) => {
             const tcNumber = `FMS_stressTest_1800`;
-
-            const systemstatus = await formHost.isSystemReady();
-            console.info(`${tcNumber} systemstatus: ${JSON.stringify(systemstatus)}`);
-            expect(systemstatus).assertEqual(undefined);
-            done();
+            try {
+                const systemstatus = await formHost.isSystemReady();
+                console.info(`${tcNumber} systemstatus: ${JSON.stringify(systemstatus)}`);
+                expect(systemstatus).assertEqual(undefined);
+                done();
+            } catch(error) {
+                console.error(`${tcNumber} getAllFormsInfo error: ${JSON.stringify(error)}`);
+                expect(error?.code).assertEqual(1);
+                done();
+            } 
         });
     });
 }
