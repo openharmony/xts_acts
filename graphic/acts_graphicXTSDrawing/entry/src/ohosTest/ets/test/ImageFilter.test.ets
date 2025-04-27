@@ -375,7 +375,7 @@ export default function imageFilterTest() {
         bottom: 400
       };
       try {
-        let filter = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+        let filter = drawing.ImageFilter.createFromImage(pixel, srcRect, dstRect);
         console.info(msg + ' createFromImage filter succeeded');
         expect(filter != null || filter != undefined).assertTrue();
       } catch (e) {
@@ -395,7 +395,7 @@ export default function imageFilterTest() {
         bottom: 400
       };
       try {
-        let filter1 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+        let filter1 = drawing.ImageFilter.createFromImage(pixel, srcRect, dstRect);
         console.info(msg + ' createFromImage filter1 succeeded');
         expect(filter1 != null || filter1 != undefined).assertTrue();
       } catch (e) {
@@ -415,7 +415,7 @@ export default function imageFilterTest() {
         bottom: 400
       };
       try {
-        let filter2 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+        let filter2 = drawing.ImageFilter.createFromImage(pixel, srcRect, dstRect);
         console.info(msg + ' createFromImage filter2 succeeded');
         expect(filter2 != null || filter2 != undefined).assertTrue();
       } catch (e) {
@@ -423,7 +423,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       }
       try {
-        let filter3 = drawing.ImageFilter.createFromImage(this.pixelMap);
+        let filter3 = drawing.ImageFilter.createFromImage(pixel);
         console.info(msg + ' createFromImage filter3 succeeded');
         expect(filter3 != null || filter3 != undefined).assertTrue();
       } catch (e) {
@@ -431,7 +431,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       }
       try {
-        let filter4 = drawing.ImageFilter.createFromImage(this.pixelMap, null, dstRect);
+        let filter4 = drawing.ImageFilter.createFromImage(pixel, null, dstRect);
         console.info(msg + ' createFromImage filter4 succeeded');
         expect(filter4 != null || filter4 != undefined).assertTrue();
       } catch (e) {
@@ -439,7 +439,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       }
       try {
-        let filter5 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, null);
+        let filter5 = drawing.ImageFilter.createFromImage(pixel, srcRect, null);
         console.info(msg + ' createFromImage filter5 succeeded');
         expect(filter5 != null || filter5 != undefined).assertTrue();
       } catch (e) {
@@ -447,7 +447,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       }
       try {
-        let filter6 = drawing.ImageFilter.createFromImage(this.pixelMap, null, null);
+        let filter6 = drawing.ImageFilter.createFromImage(pixel, null, null);
         console.info(msg + ' createFromImage filter6 succeeded');
         expect(filter6 != null || filter6 != undefined).assertTrue();
       } catch (e) {
@@ -455,7 +455,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       }
       try {
-        let filter7 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect);
+        let filter7 = drawing.ImageFilter.createFromImage(pixel, srcRect);
         console.info(msg + ' createFromImage filter7 succeeded');
         expect(filter7 != null || filter7 != undefined).assertTrue();
       } catch (e) {
@@ -475,7 +475,7 @@ export default function imageFilterTest() {
         bottom: Number.MIN_VALUE
       };
       try {
-        let filter8 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+        let filter8 = drawing.ImageFilter.createFromImage(pixel, srcRect, dstRect);
         console.info(msg + ' createFromImage filter8 succeeded');
         expect(filter8 != null || filter8 != undefined).assertTrue();
       } catch (e) {
@@ -507,7 +507,7 @@ export default function imageFilterTest() {
           bottom: Math.floor(Math.random() * 200)
         };
         try {
-          let ImageFilter = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, dstRect);
+          let ImageFilter = drawing.ImageFilter.createFromImage(pixel, srcRect, dstRect);
           console.info(msg + ' createFromImage  successed,ImageFilter:' + JSON.stringify(ImageFilter));
           expect(ImageFilter != null || ImageFilter != undefined).assertTrue();
         } catch (e) {
@@ -555,7 +555,7 @@ export default function imageFilterTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let filter2 = drawing.ImageFilter.createFromImage(this.pixelMap, undefined, dstRect);
+        let filter2 = drawing.ImageFilter.createFromImage(pixel, undefined, dstRect);
         console.info(msg + ' createFromImage  successed,filter2:' + JSON.stringify(filter2));
         expect().assertFail();
       } catch (e) {
@@ -563,7 +563,7 @@ export default function imageFilterTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let filter3 = drawing.ImageFilter.createFromImage(this.pixelMap, srcRect, undefined);
+        let filter3 = drawing.ImageFilter.createFromImage(pixel, srcRect, undefined);
         console.info(msg + ' createFromImage  successed,filter3:' + JSON.stringify(filter3));
         expect().assertFail();
       } catch (e) {

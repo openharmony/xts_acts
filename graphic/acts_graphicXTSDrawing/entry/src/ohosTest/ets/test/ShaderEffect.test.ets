@@ -1430,7 +1430,7 @@ export default function shadowEffectTest() {
       let matrix = new drawing.Matrix();
       let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
       try {
-        let imageShader = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.CLAMP, drawing.TileMode.CLAMP, options, matrix);
+        let imageShader = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.CLAMP, drawing.TileMode.CLAMP, options, matrix);
         console.info(msg + ' createImageShader imageShader successed');
         expect(imageShader != null || imageShader != undefined).assertTrue();
       } catch( e ) {
@@ -1438,7 +1438,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       }
       try {
-        let imageShader2 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.REPEAT, options, matrix);
+        let imageShader2 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.REPEAT, options, matrix);
         console.info(msg + ' createImageShader imageShader2 successed');
         expect(imageShader2 != null || imageShader2 != undefined).assertTrue();
       } catch( e ) {
@@ -1446,7 +1446,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       }
       try {
-        let imageShader3 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.MIRROR, drawing.TileMode.MIRROR, options, matrix);
+        let imageShader3 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.MIRROR, drawing.TileMode.MIRROR, options, matrix);
         console.info(msg + ' createImageShader imageShader3 successed');
         expect(imageShader3 != null || imageShader3 != undefined).assertTrue();
       } catch( e ) {
@@ -1454,7 +1454,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       }
       try {
-        let imageShader4 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.DECAL, drawing.TileMode.DECAL, options, matrix);
+        let imageShader4 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.DECAL, drawing.TileMode.DECAL, options, matrix);
         console.info(msg + ' createImageShader imageShader4 successed');
         expect(imageShader4 != null || imageShader4 != undefined).assertTrue();
       } catch( e ) {
@@ -1469,7 +1469,7 @@ export default function shadowEffectTest() {
       matrix.postScale(sx, sy, px, py);
       options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR);
       try {
-        let imageShader5 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+        let imageShader5 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
         console.info(msg + ' createImageShader imageShader5 successed');
         expect(imageShader5 != null || imageShader5 != undefined).assertTrue();
       } catch( e ) {
@@ -1477,7 +1477,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       }
       try {
-        let imageShader6 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options);
+        let imageShader6 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options);
         console.info(msg + ' createImageShader imageShader6 successed');
         expect(imageShader6 != null || imageShader6 != undefined).assertTrue();
       } catch( e ) {
@@ -1485,7 +1485,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       }
       try {
-        let imageShader7 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, null);
+        let imageShader7 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, null);
         console.info(msg + ' createImageShader imageShader7 successed');
         expect(imageShader7 != null || imageShader7 != undefined).assertTrue();
       } catch( e ) {
@@ -1507,7 +1507,7 @@ export default function shadowEffectTest() {
         let matrix = new drawing.Matrix();
         let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
         try {
-          let imageShader = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
+          let imageShader = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, matrix);
           console.info(msg + ' createImageShader imageShader successed' + i);
           expect(imageShader != null || imageShader != undefined).assertTrue()
         } catch( e ) {
@@ -1545,7 +1545,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader3 = drawing.ShaderEffect.createImageShader(this.pixelMap, null, drawing.TileMode.MIRROR, options, matrix);
+        let imageShader3 = drawing.ShaderEffect.createImageShader(pixel, null, drawing.TileMode.MIRROR, options, matrix);
         console.info(msg + ' createImageShader imageShader3 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1553,7 +1553,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader4 = drawing.ShaderEffect.createImageShader(this.pixelMap, undefined, drawing.TileMode.MIRROR, options, matrix);
+        let imageShader4 = drawing.ShaderEffect.createImageShader(pixel, undefined, drawing.TileMode.MIRROR, options, matrix);
         console.info(msg + ' createImageShader imageShader4 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1561,7 +1561,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader5 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, null, options, matrix);
+        let imageShader5 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, null, options, matrix);
         console.info(msg + ' createImageShader imageShader5 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1569,7 +1569,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader6 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, undefined, options, matrix);
+        let imageShader6 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, undefined, options, matrix);
         console.info(msg + ' createImageShader imageShader6 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1577,7 +1577,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader7 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, null, matrix);
+        let imageShader7 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, null, matrix);
         console.info(msg + ' createImageShader imageShader7 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1585,7 +1585,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader8 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, undefined, matrix);
+        let imageShader8 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, undefined, matrix);
         console.info(msg + ' createImageShader imageShader8 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1593,7 +1593,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader9 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, undefined);
+        let imageShader9 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, drawing.TileMode.MIRROR, options, undefined);
         console.info(msg + ' createImageShader imageShader9 successed');
         expect().assertFail();
       } catch( e ) {
@@ -1614,7 +1614,7 @@ export default function shadowEffectTest() {
       let matrix = new drawing.Matrix();
       let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
       try {
-        let imageShader = drawing.ShaderEffect.createImageShader(this.pixelMap, 10, drawing.TileMode.MIRROR, options, matrix);
+        let imageShader = drawing.ShaderEffect.createImageShader(pixel, 10, drawing.TileMode.MIRROR, options, matrix);
         console.info(msg + ' createImageShader imageShader successed');
         expect().assertFail();
       } catch( e ) {
@@ -1622,7 +1622,7 @@ export default function shadowEffectTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        let imageShader2 = drawing.ShaderEffect.createImageShader(this.pixelMap, drawing.TileMode.REPEAT, 10, options, matrix);
+        let imageShader2 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, 10, options, matrix);
         console.info(msg + ' createImageShader imageShader2 successed');
         expect().assertFail();
       } catch( e ) {
