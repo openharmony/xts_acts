@@ -1634,8 +1634,7 @@ static napi_value OHNativeBufferY8Y16USAGEandAlloc(napi_env env, napi_callback_i
     if (Config.format == Config2.format && Config1.format == Config3.format && Config.usage == Config2.usage &&
         Config1.usage == Config3.usage) {
         napi_create_int32(env, SUCCESS, &result);
-    }
-    else {
+    } else {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
