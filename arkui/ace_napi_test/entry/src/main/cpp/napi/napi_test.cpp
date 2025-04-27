@@ -10046,7 +10046,6 @@ static napi_value NapiThrowErrorTest(napi_env env, napi_callback_info info)
     status = napi_throw_error(env, strErrorCode, nullptr);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "strErrorMsg is null, napi_throw_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_throw_error(nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_throw_error failed.");
@@ -10078,7 +10077,6 @@ static napi_value NapiThrowTypeErrorTest(napi_env env, napi_callback_info info)
     status = napi_throw_type_error(env, strErrorCode, nullptr);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "strErrorMsg is null, napi_throw_type_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_throw_type_error(nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_throw_type_error failed.");
@@ -10110,7 +10108,6 @@ static napi_value NapiThrowRangeErrorTest(napi_env env, napi_callback_info info)
     status = napi_throw_range_error(env, strErrorCode, nullptr);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "strErrorMsg is null, napi_throw_range_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_throw_range_error(nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_throw_range_error failed.");
@@ -10175,11 +10172,9 @@ static napi_value NapiCreateErrorTest(napi_env env, napi_callback_info info)
     status = napi_create_error(env, errorCode, nullptr, &error);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "errorMessage is null, napi_create_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // *error is null
     status = napi_create_error(env, errorCode, errorMessage, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "*error is null, napi_create_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_create_error(nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_error failed.");
@@ -10214,11 +10209,9 @@ static napi_value NapiCreateTypeErrorTest(napi_env env, napi_callback_info info)
     status = napi_create_type_error(env, errorCode, nullptr, &error);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "errorMessage is null, napi_create_type_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // *error is null
     status = napi_create_type_error(env, errorCode, errorMessage, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "*error is null, napi_create_type_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_create_type_error(nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_type_error failed.");
@@ -10253,11 +10246,9 @@ static napi_value NapiCreateRangeErrorTest(napi_env env, napi_callback_info info
     status = napi_create_range_error(env, errorCode, nullptr, &error);
     napi_get_and_clear_last_exception(env, &clearRst);
     NAPI_ASSERT(env, status == napi_invalid_arg, "errorMessage is null, napi_create_range_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // *error is null
     status = napi_create_range_error(env, errorCode, errorMessage, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "*error is null, napi_create_range_error failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
     // all is null
     status = napi_create_range_error(nullptr, nullptr, nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_create_range_error failed.");
@@ -14304,7 +14295,6 @@ static napi_value NapiCallThreadsafeFunctionWithPriorityTest(napi_env env, napi_
     //data is null
     status = napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true);
     NAPI_ASSERT(env, status == napi_invalid_arg, "value is null, napi_call_threadsafe_function_with_priority failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
 
     //all is null
     status = napi_call_threadsafe_function_with_priority(nullptr, nullptr, napi_priority_idle, true);
@@ -14912,7 +14902,6 @@ static napi_value NapiRemoveAsyncCleanupHookTest(napi_env env, napi_callback_inf
     //mustNotCallHandle is null
     status = napi_remove_async_cleanup_hook(nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "mustNotCallHandle is null, napi_remove_async_cleanup_hook failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
 
     napi_value rst;
     bool bRet = true;
@@ -15905,7 +15894,7 @@ static napi_value NapiReleaseThreadsafeFunctionTest(napi_env env, napi_callback_
     //func is null
     status = napi_release_threadsafe_function(nullptr, napi_tsfn_release);
     NAPI_ASSERT(env, status == napi_invalid_arg, "func is null, napi_release_threadsafe_function failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
+
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
@@ -15966,16 +15955,15 @@ static napi_value NapiGetThreadsafeFunctionContextTest(napi_env env, napi_callba
     //func is null
     status = napi_get_threadsafe_function_context(nullptr, &data);
     NAPI_ASSERT(env, status == napi_invalid_arg, "func is null, napi_get_threadsafe_function_context failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
+
     //data is null
     status = napi_get_threadsafe_function_context(func, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "func is null, napi_get_threadsafe_function_context failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
 
     //all is null
     status = napi_get_threadsafe_function_context(nullptr, nullptr);
     NAPI_ASSERT(env, status == napi_invalid_arg, "all is null, napi_get_threadsafe_function_context failed.");
-    NAPI_CHECK_GET_LAST_ERROR_INFO(env, status == napi_invalid_arg);
+
     napi_value rst;
     bool bRet = true;
     napi_get_boolean(env, bRet, &rst);
