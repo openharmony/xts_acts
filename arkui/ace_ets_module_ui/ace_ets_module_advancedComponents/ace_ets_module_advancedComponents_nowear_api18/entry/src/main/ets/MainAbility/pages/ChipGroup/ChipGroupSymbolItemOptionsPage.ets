@@ -19,8 +19,8 @@ import { ChipSize, ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.
 @Preview
 @Component
 struct ChipGroupSymbolItemOptionsPage {
-  @State selected_index: Array<number> = [0, 1, 2, 3, 4, 5, 6];
-  @State selected_state: boolean = true;
+  @State selectedIndex: Array<number> = [0, 1, 2, 3, 4, 5, 6];
+  @State selectedState: boolean = true;
   @State prefixModifierNormal: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'));
   @State prefixModifierActivated: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Red]);
   @State suffixModifierNormal: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
@@ -35,12 +35,12 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityDescription: 'IconGroupSuffix_accessibilityDescription',
         accessibilityLevel: 'yes',
         action: () => {
-          if (this.selected_state == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
-            this.selected_state = true
+          if (this.selectedState == false) {
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedState = true
           } else {
-            this.selected_index = []
-            this.selected_state = false
+            this.selectedIndex = []
+            this.selectedState = false
           }
         }
       },
@@ -50,12 +50,12 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityDescription: 'IconGroupSuffix_accessibilityDescription_2',
         accessibilityLevel: 'no',
         action: () => {
-          if (this.selected_state == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
-            this.selected_state = true
+          if (this.selectedState == false) {
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedState = true
           } else {
-            this.selected_index = []
-            this.selected_state = false
+            this.selectedIndex = []
+            this.selectedState = false
           }
         }
       },
@@ -65,12 +65,12 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityDescription: 'IconGroupSuffix_accessibilityDescription_3',
         accessibilityLevel: 'auto',
         action: () => {
-          if (this.selected_state == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
-            this.selected_state = true
+          if (this.selectedState == false) {
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedState = true
           } else {
-            this.selected_index = []
-            this.selected_state = false
+            this.selectedIndex = []
+            this.selectedState = false
           }
         }
       },
@@ -80,12 +80,12 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityDescription: 'IconGroupSuffix_accessibilityDescription_4',
         accessibilityLevel: 'no-hide-descendants',
         action: () => {
-          if (this.selected_state == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
-            this.selected_state = true
+          if (this.selectedState == false) {
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedState = true
           } else {
-            this.selected_index = []
-            this.selected_state = false
+            this.selectedIndex = []
+            this.selectedState = false
           }
         }
       }]
@@ -98,7 +98,7 @@ struct ChipGroupSymbolItemOptionsPage {
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
-            label: { text: "操作块1" },
+            label: { text: '操作块1' },
             suffixSymbol: { normal: this.suffixModifierNormal, activated: this.suffixModifierActivated },
             accessibilityDescription: 'ChipGroupItem_accessibilityDescription',
             accessibilityLevel: 'auto',
@@ -106,7 +106,7 @@ struct ChipGroupSymbolItemOptionsPage {
           },
           {
             prefixIcon: { src: $r('sys.media.ohos_ic_public_clock'), size: { width: 36, height: 36 } },
-            label: { text: "操作块2" },
+            label: { text: '操作块2' },
             accessibilityLevel: 'no-hide-descendants',
             allowClose: true,
           },
@@ -118,7 +118,7 @@ struct ChipGroupSymbolItemOptionsPage {
           selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize'),
           selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'),
         },
-        selectedIndexes: this.selected_index,
+        selectedIndexes: this.selectedIndex,
         multiple: true,
         chipGroupSpace: { itemSpace: 8, endSpace: 0 },
         chipGroupPadding: { top: 10, bottom: 10 },
