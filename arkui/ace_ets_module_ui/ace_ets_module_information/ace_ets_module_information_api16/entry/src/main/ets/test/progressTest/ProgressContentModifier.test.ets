@@ -55,7 +55,7 @@ export default function ProgressContentModifierTest() {
       let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[ProgressContentModifierTest_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('Current progress is： 0/3');
+      expect(obj.$attrs.content).assertEqual('Current progress is：0/3');
       console.info('[ProgressContentModifierTest_001] END');
       done();
     });
