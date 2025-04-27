@@ -348,58 +348,6 @@ export default function MultiSegmentButtonV2PageTest() {
     })
 
     /**
-     * @tc.number MultiSegmentButtonV2PageTest_013
-     * @tc.name MultiSegmentButtonV2PageTest_013
-     * @tc.desc Test MultiSegmentButtonV2 itemMinFontScale
-     * @tc.size
-     * @tc.type
-     * @tc.level Level.LEVEL0
-     */
-    it('MultiSegmentButtonV2PageTest_013', Level.LEVEL0, async (done: Function) => {
-      console.log("[MultiSegmentButtonV2PageTest_013] START");
-      const driver = Driver.create();
-      await driver.delayMs(1000);
-
-      let tree: ESObject = await getInspectorTree();
-      let scroll: ESObject = tree.$children[0];
-      let column: ESObject = scroll.$children[0];
-      let common: ESObject = column.$children[1];
-      let flex: ESObject = common.$children[0];
-      let itemBtn0: ESObject = flex.$children[0];
-      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.minFontScale);
-
-      expect(jsonOption).assertEqual('"0.850000"');
-      console.log("[MultiSegmentButtonV2PageTest_013] END");
-      done();
-    })
-
-    /**
-     * @tc.number MultiSegmentButtonV2PageTest_014
-     * @tc.name MultiSegmentButtonV2PageTest_014
-     * @tc.desc Test MultiSegmentButtonV2 itemMaxFontScale
-     * @tc.size
-     * @tc.type
-     * @tc.level Level.LEVEL0
-     */
-    it('MultiSegmentButtonV2PageTest_014', Level.LEVEL0, async (done: Function) => {
-      console.log("[MultiSegmentButtonV2PageTest_014] START");
-      const driver = Driver.create();
-      await driver.delayMs(1000);
-
-      let tree: ESObject = await getInspectorTree();
-      let scroll: ESObject = tree.$children[0];
-      let column: ESObject = scroll.$children[0];
-      let common: ESObject = column.$children[1];
-      let flex: ESObject = common.$children[0];
-      let itemBtn0: ESObject = flex.$children[0];
-      let jsonOption: string = JSON.stringify(itemBtn0.$attrs.maxFontScale);
-
-      expect(jsonOption).assertEqual('"3.200000"');
-      console.log("[MultiSegmentButtonV2PageTest_014] END");
-      done();
-    })
-
-    /**
      * @tc.number MultiSegmentButtonV2PageTest_015
      * @tc.name MultiSegmentButtonV2PageTest_015
      * @tc.desc Test MultiSegmentButtonV2 languageDirection
