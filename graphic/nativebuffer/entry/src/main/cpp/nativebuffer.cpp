@@ -1608,7 +1608,34 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
-
+static napi_value OHNativeBufferY8Y16USAGEandAlloc(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config nativeBufferConfig = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | NATIVEBUFFER_PIXEL_FMT_Y8 | NATIVEBUFFER_PIXEL_FMT_Y16,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA
+                 | NATIVEBUFFER_USAGE_MEM_MMZ_CACHE,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&nativeBufferConfig);
+    OH_NativeBuffer_Config nativeBufferConfig2;
+    OH_NativeBuffer_GetConfig(nativeBuffer, &nativeBufferConfig2);
+    bool areEqual = true;
+    if (nativeBufferConfig.format != nativeBufferConfig2.format) {
+        areEqual = false;
+    }
+    if (nativeBufferConfig.usage != nativeBufferConfig2.usage) {
+        areEqual = false;
+    }
+    if (areEqual) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    OH_NativeBuffer_Unreference(nativeBuffer);
+    return result;
+}
 napi_value NativeBufferInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1719,6 +1746,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHNativeBufferGetMetadataValueAbnormal", nullptr, OHNativeBufferGetMetadataValueAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferY8Y16USAGEandAlloc", nullptr, OHNativeBufferY8Y16USAGEandAlloc, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
