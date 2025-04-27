@@ -235,5 +235,21 @@ export default function transactionNdktest() {
       done();
     });
 
+
+    /**
+     * @tc.number SUB_DistributedData_Rdb_SDK_NdkAPITest_OH_RdbTrans_Commit0100
+     * @tc.name OH_RdbTrans_Commit0100
+     * @tc.desc OH_RdbTrans_Commit0100
+     * @tc.level: Level 2
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('OH_RdbTrans_Commit0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let res = testrdb.OH_RdbTrans_Commit0100();
+      console.info(TAG + "OH_RdbTrans_Commit0100 res=" + res );
+      expect(res).assertEqual(0);
+      done();
+    });
+
   })
 }
