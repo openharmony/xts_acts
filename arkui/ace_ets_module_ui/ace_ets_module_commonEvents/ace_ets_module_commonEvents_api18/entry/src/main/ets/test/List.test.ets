@@ -23,6 +23,12 @@ import nextFocus from './nextFocus/nextFocus.test';
 import nextFocus2 from './nextFocus2/nextFocus2.test';
 import notifyDragStartRequest from './Drag/notifyDragStartRequest.test';
 import UIObserverEvent from './ListeningEvent/UIObserverEvent.test';
+import LongPressRecognizer from './GestureRecognizer/LongPressRecognizer.test';
+import PanRecognizer from './GestureRecognizer/PanRecognizer.test';
+import PinchRecognizer from './GestureRecognizer/PinchRecognizer.test';
+import RotationRecognizer from './GestureRecognizer/RotationRecognizer.test';
+import SwipeRecognizer from './GestureRecognizer/SwipeRecognizer.test';
+import TapRecognizer from './GestureRecognizer/TapRecognizer.test';
 
 export default function testsuite() {
   onVisiable();
@@ -35,4 +41,10 @@ export default function testsuite() {
   nextFocus2();
   notifyDragStartRequest()
   UIObserverEvent()
+  LongPressRecognizer();
+  PanRecognizer();
+  PinchRecognizer();
+  RotationRecognizer();
+  SwipeRecognizer();
+  TapRecognizer();
 }
