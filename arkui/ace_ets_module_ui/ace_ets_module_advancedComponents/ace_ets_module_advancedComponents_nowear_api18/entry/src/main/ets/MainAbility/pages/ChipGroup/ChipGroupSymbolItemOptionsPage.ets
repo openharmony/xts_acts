@@ -19,7 +19,7 @@ import { ChipSize, ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.
 @Preview
 @Component
 struct ChipGroupSymbolItemOptionsPage {
-  @State selected_index: Array<number> = [0, 1, 2, 3, 4, 5, 6];
+  @State selectedIndex: Array<number> = [0, 1, 2, 3, 4, 5, 6];
   @State selectedState: boolean = true;
   @State prefixModifierNormal: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'));
   @State prefixModifierActivated: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Red]);
@@ -36,10 +36,10 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityLevel: 'yes',
         action: () => {
           if (this.selectedState == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
             this.selectedState = true
           } else {
-            this.selected_index = []
+            this.selectedIndex = []
             this.selectedState = false
           }
         }
@@ -51,10 +51,10 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityLevel: 'no',
         action: () => {
           if (this.selectedState == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
             this.selectedState = true
           } else {
-            this.selected_index = []
+            this.selectedIndex = []
             this.selectedState = false
           }
         }
@@ -66,10 +66,10 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityLevel: 'auto',
         action: () => {
           if (this.selectedState == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
             this.selectedState = true
           } else {
-            this.selected_index = []
+            this.selectedIndex = []
             this.selectedState = false
           }
         }
@@ -81,10 +81,10 @@ struct ChipGroupSymbolItemOptionsPage {
         accessibilityLevel: 'no-hide-descendants',
         action: () => {
           if (this.selectedState == false) {
-            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
+            this.selectedIndex = [0, 1, 2, 3, 4, 5, 6]
             this.selectedState = true
           } else {
-            this.selected_index = []
+            this.selectedIndex = []
             this.selectedState = false
           }
         }
@@ -118,7 +118,7 @@ struct ChipGroupSymbolItemOptionsPage {
           selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize'),
           selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'),
         },
-        selectedIndexes: this.selected_index,
+        selectedIndexes: this.selectedIndex,
         multiple: true,
         chipGroupSpace: { itemSpace: 8, endSpace: 0 },
         chipGroupPadding: { top: 10, bottom: 10 },
