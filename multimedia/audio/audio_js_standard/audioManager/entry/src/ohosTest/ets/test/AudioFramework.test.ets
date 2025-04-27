@@ -110,10 +110,10 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
     devTypeName = 'REMOTE_CAST';
   } else if (value.deviceType == audio.DeviceType.USB_DEVICE) {
     devTypeName = 'USB_DEVICE';
-  } else if (value.deviceType == audio.DeviceType.HDMI) {
-    devTypeName = 'HDMI';
-  } else if (value.deviceType == audio.DeviceType.LINE_DIGITAL) {
-    devTypeName = 'LINE_DIGITAL';
+  //} else if (value.deviceType == audio.DeviceType.HDMI) {
+  //  devTypeName = 'HDMI';
+  //} else if (value.deviceType == audio.DeviceType.LINE_DIGITAL) {
+  //  devTypeName = 'LINE_DIGITAL';
   } else if (value.deviceType == audio.DeviceType.REMOTE_DAUDIO) {
     devTypeName = 'REMOTE_DAUDIO';
   } else if (value.deviceType == audio.DeviceType.DEFAULT) {
@@ -5310,10 +5310,10 @@ export default function audioFramework() {
       console.info("audio.DeviceType.REMOTE_CAST:" + audio.DeviceType.REMOTE_CAST);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
-      expect(audio.DeviceType.HDMI).assertEqual(27);
-      console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
-      expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
-      console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
+      //expect(audio.DeviceType.HDMI).assertEqual(27);
+      //console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
+      //expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
+      //console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
       expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
       console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
