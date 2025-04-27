@@ -618,13 +618,13 @@ function testSetDisallowedPolicy() {
 
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0127
-   * @tc.name      : test_set_disallowed_policy_0125
+   * @tc.name      : test_set_disallowed_policy_0127
    * @tc.desc      : test restrictions setDisallowedPolicy
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_disallowed_policy_0125", Level.LEVEL2, async (done: Function) => {
+  it("test_set_disallowed_policy_0127", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
@@ -639,13 +639,13 @@ function testSetDisallowedPolicy() {
 
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0128
-   * @tc.name      : test_set_disallowed_policy_0126
+   * @tc.name      : test_set_disallowed_policy_0128
    * @tc.desc      : test restrictions setDisallowedPolicy
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_disallowed_policy_0126", Level.LEVEL2, async (done: Function) => {
+  it("test_set_disallowed_policy_0128", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, true);
@@ -660,13 +660,13 @@ function testSetDisallowedPolicy() {
 
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0129
-   * @tc.name      : test_set_disallowed_policy_0127
+   * @tc.name      : test_set_disallowed_policy_0129
    * @tc.desc      : test restrictions setDisallowedPolicy with normal admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_disallowed_policy_0127", Level.LEVEL2, async (done: Function) => {
+  it("test_set_disallowed_policy_0129", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
