@@ -55,6 +55,7 @@
     "MainAbility/pages/AlertDialog/alertDialog2",
     "MainAbility/pages/Menu/responseType",
     "MainAbility/pages/Panel/PanelUI",
-    "MainAbility/pages/customDialog/CustomDialogRouter"
+    "MainAbility/pages/customDialog/CustomDialogRouter",
+    "MainAbility/pages/checkbox/SelectStatus"
   ]
 }
