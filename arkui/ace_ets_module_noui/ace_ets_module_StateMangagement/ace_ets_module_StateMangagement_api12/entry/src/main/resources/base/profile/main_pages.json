@@ -186,6 +186,7 @@
     "MainAbility/pages/Storage/SubAbstractPropertyLink",
     "MainAbility/pages/Storage/Environment0040",
     "MainAbility/pages/Storage/LocalStorageDelete0120",
-    "MainAbility/pages/LazyForEach/LazyForEach0120"
+    "MainAbility/pages/LazyForEach/LazyForEach0120",
+    "MainAbility/pages/LazyForEach/LazyForEachChange0020"
   ]
 }
