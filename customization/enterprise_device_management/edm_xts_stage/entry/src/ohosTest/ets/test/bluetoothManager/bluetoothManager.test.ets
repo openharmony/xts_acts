@@ -487,7 +487,7 @@ export default function bluetoothManagerTest() {
         expect(error.code == 9200007).assertTrue();
       } finally {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
-        await adminManager.disableAdmin(SELFHAPNAME);
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
       done();
     })
@@ -503,7 +503,7 @@ export default function bluetoothManagerTest() {
     it('test_turnon_bluetooth_0500', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
-        bluetoothManager.turnOnBluetooth(INVALIDWANT);
+        bluetoothManager.turnOnBluetooth(INVALID_WANT);
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 401).assertTrue();
@@ -608,7 +608,7 @@ export default function bluetoothManagerTest() {
     it('test_turnoff_bluetooth_0500', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
-        bluetoothManager.turnOffBluetooth(INVALIDWANT);
+        bluetoothManager.turnOffBluetooth(INVALID_WANT);
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 401).assertTrue();
