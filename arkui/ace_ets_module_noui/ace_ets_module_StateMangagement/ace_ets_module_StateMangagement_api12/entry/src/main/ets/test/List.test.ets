@@ -27,6 +27,7 @@ import FreezeV2Child from './FreezeV2/Freeze003.test';
 import LazyForEachAdd from './LazyForEach/LazyForEachAdd.test';
 import LazyForEachDelete from './LazyForEach/LazyForEachDelete.test';
 import LazyForEachMove from './LazyForEach/LazyForEachMove.test';
+import LazyForEachCacheEnhance from './LazyForEach/LazyForEachCacheEnhance.test';
 import LazyForEachVisibleAreaChange from './LazyForEach/LazyForEachVisibleAreaChange.test';
 import LazyForEachSingleBoolean from './LazyForEach/LazyForEachSingleBoolean.test';
 import LazyForEachSingleNumber from './LazyForEach/LazyForEachSingleNumber.test';
@@ -212,6 +213,7 @@ export default function testsuite() {
     LazyForEachAdd();
     LazyForEachDelete();
     LazyForEachMove();
+    LazyForEachCacheEnhance();
     LazyForEachVisibleAreaChange();
     LazyForEachSingleBoolean();
     LazyForEachSingleNumber();
