@@ -14,7 +14,7 @@
  */
 {
   "app": {
-    "bundleName": "com.example.builtins06",
+    "bundleName": "com.example.builtinsupplytest",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
