@@ -1027,10 +1027,10 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter2 = drawing.ImageFilter.createComposeImageFilter(undefined, blurFilter);
         console.info(msg + ' createComposeImageFilter composedImageFilter2 successed');
-        expect(composedImageFilter2 != null || composedImageFilter2 != undefined).assertTrue()
+        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
       try {
         let composedImageFilter3 = drawing.ImageFilter.createComposeImageFilter(renderEffect , null);
@@ -1043,10 +1043,10 @@ export default function imageFilterTest() {
       try {
         let composedImageFilter4 = drawing.ImageFilter.createComposeImageFilter(renderEffect , undefined);
         console.info(msg + ' createComposeImageFilter composedImageFilter4 successed');
-        expect(composedImageFilter4 != null || composedImageFilter4 != undefined).assertTrue()
+        expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createComposeImageFilter composedImageFilter4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
       try {
         let composedImageFilter6 = drawing.ImageFilter.createComposeImageFilter(undefined , undefined);
