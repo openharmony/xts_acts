@@ -35,7 +35,7 @@ ohos_copy("SyscapSource") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
-    "//prebuilts/ohos-sdk/linux/18/js/api/device-define"
+    "${current_sdk_home}/js/api/device-define"
   ]
   outputs =
       [ root_out_dir + "/suites/acts/acts/testcases/syscap" ]
