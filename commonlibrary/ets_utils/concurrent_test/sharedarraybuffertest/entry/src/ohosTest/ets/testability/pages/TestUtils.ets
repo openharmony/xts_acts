@@ -50,8 +50,8 @@ export class BufferContainer {
     this.array = new Int32Array(this.buffer);
   }
   
-  buffer: SharedArrayBuffer;
-  array: Int32Array;
+  public buffer: SharedArrayBuffer;
+  public array: Int32Array;
 }
 
 /**
@@ -141,9 +141,9 @@ export function getCurrentTime(): number {
  * Memory snapshot information structure
  */
 export class MemorySnapshotInfo {
-  public timestamp: number = 0;
-  public description: string = '';
-  public heapEstimate: number = 0;
+  timestamp: number = 0;
+  description: string = '';
+  heapEstimate: number = 0;
   
   constructor(description: string) {
     this.timestamp = getCurrentTime();

@@ -48,7 +48,7 @@ export default function SharedArrayBufferApiTest() {
 
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0100
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0100
      * @tc.name SharedArrayBufferApiTest0100
      * @tc.desc Test SharedArrayBuffer.prototype.slice where start > end
      * @tc.size MediumTest
@@ -81,7 +81,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0200
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0200
      * @tc.name SharedArrayBufferApiTest0200
      * @tc.desc Test SharedArrayBuffer.prototype.slice where start < end
      * @tc.size MediumTest
@@ -114,7 +114,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0300
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0300
      * @tc.name SharedArrayBufferApiTest0300
      * @tc.desc Test SharedArrayBuffer.prototype.slice where start = end
      * @tc.size MediumTest
@@ -147,7 +147,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0400
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0400
      * @tc.name SharedArrayBufferApiTest0400
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=0, end=1
      * @tc.size MediumTest
@@ -183,7 +183,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0500
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0500
      * @tc.name SharedArrayBufferApiTest0500
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=0, end=length
      * @tc.size MediumTest
@@ -218,7 +218,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0600
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0600
      * @tc.name SharedArrayBufferApiTest0600
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=0, end=length+1
      * @tc.size MediumTest
@@ -253,7 +253,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0700
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0700
      * @tc.name SharedArrayBufferApiTest0700
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length, end=length+1
      * @tc.size MediumTest
@@ -280,7 +280,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0800
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0800
      * @tc.name SharedArrayBufferApiTest0800
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length-1, end=length
      * @tc.size MediumTest
@@ -316,7 +316,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_0900
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_0900
      * @tc.name SharedArrayBufferApiTest0900
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=0
      * @tc.size MediumTest
@@ -356,7 +356,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_1000
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_1000
      * @tc.name SharedArrayBufferApiTest1000
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length
      * @tc.size MediumTest
@@ -386,7 +386,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_1100
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_1100
      * @tc.name SharedArrayBufferApiTest1100
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length+1
      * @tc.size MediumTest
@@ -416,7 +416,7 @@ export default function SharedArrayBufferApiTest() {
     });
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_1200
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_1200
      * @tc.name SharedArrayBufferApiTest1200
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length-1
      * @tc.size MediumTest
@@ -453,7 +453,7 @@ export default function SharedArrayBufferApiTest() {
 
 
     /**
-     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_TEST_1300
+     * @tc.number SUB_MODULE_SHAREDARRAYBUFFER_API_TEST_1300
      * @tc.name SharedArrayBufferApiTest1300
      * @tc.desc Test SharedArrayBuffer.prototype.slice with start=length-1
      * @tc.size MediumTest
