@@ -638,6 +638,11 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
               count = count + 24;
               break;
+            case 'callerInfoQuery':
+              console.info("callerInfoQuery" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.CALLER_INFO_QUERY)
+              count = count + 25
+              break;
           }
           console.info("count" + JSON.stringify(count));
         }
@@ -809,6 +814,11 @@ export default function getBundleInfoForSelf() {
               console.info("fence" + JSON.stringify(extensionList[i].extensionAbilityType));
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
               count = count + 24;
+              break;
+            case 'callerInfoQuery':
+              console.info("callerInfoQuery" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.CALLER_INFO_QUERY)
+              count = count + 25
               break;
             }
             console.info("count" + JSON.stringify(count));
@@ -1499,6 +1509,11 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.FENCE)
             count = count + 24;
             break;
+          case 'callerInfoQuery':
+              console.info("callerInfoQuery" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.CALLER_INFO_QUERY)
+              count = count + 25
+              break;
         }
         console.info("count" + JSON.stringify(count));
       }
