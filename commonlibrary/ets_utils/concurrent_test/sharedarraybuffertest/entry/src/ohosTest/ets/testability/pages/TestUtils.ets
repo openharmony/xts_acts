@@ -141,9 +141,9 @@ export function getCurrentTime(): number {
  * Memory snapshot information structure
  */
 export class MemorySnapshotInfo {
-  timestamp: number = 0;
-  description: string = '';
-  heapEstimate: number = 0;
+  public timestamp: number = 0;
+  public description: string = '';
+  public heapEstimate: number = 0;
   
   constructor(description: string) {
     this.timestamp = getCurrentTime();
