@@ -650,6 +650,7 @@ function testSetDisallowedPolicy() {
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, true);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SMS)).assertTrue();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
     } catch (error) {
       expect().assertFalse();
     } finally {
