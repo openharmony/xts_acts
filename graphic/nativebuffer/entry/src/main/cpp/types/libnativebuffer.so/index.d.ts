@@ -64,6 +64,7 @@ export const oHNativeBufferSetNullMetadataValue: () => number;
 export const oHNativeBufferSetMetadataValueNullptr: () => Array<number>;
 export const oHNativeBufferGetMetadataValueAbnormal: () => Array<number>;
 export const oHNativeBufferGetMetadataValueNullptr: () => Array<number>;
+export const oHNativeBufferY8Y16USAGEandAlloc: () => Array<number>;
 
 
 
