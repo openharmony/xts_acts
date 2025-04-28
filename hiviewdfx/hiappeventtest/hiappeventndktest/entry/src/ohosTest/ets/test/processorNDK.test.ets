@@ -532,54 +532,24 @@ export default function processorNDKTest() {
     })
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3300
-     * @tc.name testHiAppEventProcessoCode33
-     * @tc.desc 验证OOH_HiAppEvent_AddProcessor正常入参
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level3
-     */
-      it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
-        const processor = hiappevent.CreateProcessor("ha_app_event");
-        const appId = "com_huawei_hmos_sdk_ocg";
-        const routeInfo = "AUTO";
-        hiappevent.SetReportRoute(processor, appId, routeInfo)
-        const domain = "api_diagnostic";
-        const name = "api_called_stat";
-        const isRealTime = true;
-        hiappevent.SetReportEvent(processor,domain,name,isRealTime)
-        const result = hiappevent.AddProcessor(processor);
-        expect(result).assertLarger(0);
-        done();
-      })
-
-    /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3400
      * @tc.name testHiAppEventProcessoCode34
-     * @tc.desc 验证OOH_HiAppEvent_AddProcessor-Processor异常
+     * @tc.desc 验证OH_HiAppEvent_AddProcessor-Processor异常
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
      */
       it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
         const processor = hiappevent.CreateProcessor("hiappevent");
-        const appId = "com_huawei_hmos_sdk_ocg";
-        const routeInfo = "AUTO";
-        hiappevent.SetReportRoute(processor, appId, routeInfo)
-        const domain = "api_diagnostic";
-        const name = "api_called_stat";
-        const isRealTime = true;
-        hiappevent.SetReportEvent(processor,domain,name,isRealTime)
         const result = hiappevent.AddProcessor(processor);
         expect(result).assertEqual(-100);
         done();
       })
 
-
     /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3500
      * @tc.name testHiAppEventProcessoCode35
-     * @tc.desc 验证OOH_HiAppEvent_AddProcessor-processor异常
+     * @tc.desc 验证OH_HiAppEvent_AddProcessor-processor异常
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level3
@@ -592,29 +562,6 @@ export default function processorNDKTest() {
       })
 
     /**
-     * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3600
-     * @tc.name testHiAppEventProcessoCode36
-     * @tc.desc 验证OH_HiAppEvent_RemoveProcessor正常入参
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level3
-     */
-    it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
-      const processor = hiappevent.CreateProcessor("ha_app_event");
-      const appId = "com_huawei_hmos_sdk_ocg";
-      const routeInfo = "AUTO";
-      hiappevent.SetReportRoute(processor, appId, routeInfo)
-      const domain = "api_diagnostic";
-      const name = "api_called_stat";
-      const isRealTime = true;
-      hiappevent.SetReportEvent(processor,domain,name,isRealTime)
-      const processorID = hiappevent.AddProcessor(processor);
-      const result = hiappevent.RemoveProcessor(processorID)
-      expect(result).assertEqual(0);
-      done();
-    })
-
-    /**
      * @tc.number SUB_DFX_DFT_HiAppEvent_Processor_Code_3700
      * @tc.name testHiAppEventProcessoCode37
      * @tc.desc 验证OH_HiAppEvent_Remove-事件处理者不存在
@@ -624,13 +571,6 @@ export default function processorNDKTest() {
      */
     it('SUB_DFX_DFT_HiAppEvent_Processor_Code_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)  => {
       const processor = hiappevent.CreateProcessor("test");
-      const appId = "com_hmos_sdk_ocg";
-      const routeInfo = "AUTO";
-      hiappevent.SetReportRoute(processor, appId, routeInfo)
-      const domain = "api_diagnostic";
-      const name = "api_called_stat";
-      const isRealTime = true;
-      hiappevent.SetReportEvent(processor,domain,name,isRealTime)
       const processorID = hiappevent.AddProcessor(processor);
       const result = hiappevent.RemoveProcessor(processorID)
       expect(result).assertEqual(-8);
