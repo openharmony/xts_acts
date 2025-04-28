@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -67,7 +67,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0100', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0100 start *************");
       let u8 = new Uint8Array([1, 2, 3])
         const valueBucket:relationalStore.ValuesBucket = {
@@ -103,7 +103,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0200', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0200 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       const valueBucket:relationalStore.ValuesBucket = {
@@ -139,7 +139,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0300', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0300 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -179,7 +179,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0400', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0400 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -219,7 +219,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0500', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0500 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -252,7 +252,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0600', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0600 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -288,7 +288,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0700', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionErrcode0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionErrcode0700 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -328,7 +328,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0100', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0100 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       const valueBucket:relationalStore.ValuesBucket = {
@@ -364,7 +364,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0200', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0200 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       const valueBucket:relationalStore.ValuesBucket = {
@@ -400,7 +400,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0300', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0300 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -440,7 +440,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0400', 0, async (done:Function) => {
+    it('testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStoreBatchInsertWithConflictResolutionSyncErrcode0400 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -480,7 +480,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0500', 0, async (done:Function) => {
+    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStorebatchInsertWithConflictResolutionSyncErrcode0500 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -513,7 +513,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0600', 0, async (done:Function) => {
+    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStorebatchInsertWithConflictResolutionSyncErrcode0600 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
@@ -549,7 +549,7 @@ export default function relationalStoreBatchInsertErrcodeTest() {
      * @tc.level Level 2
      */
 
-    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0700', 0, async (done:Function) => {
+    it('testRdbStorebatchInsertWithConflictResolutionSyncErrcode0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testRdbStorebatchInsertWithConflictResolutionSyncErrcode0700 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       try {
