@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -417,7 +417,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnon_bluetooth_0100', 0, async (done: Function) => {
+    it('test_turnon_bluetooth_0100', Level.LEVEL2, async (done: Function) => {
       try {
         bluetoothManager.turnOnBluetooth(SELFWANT);
         expect(false).assertTrue();
@@ -435,7 +435,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnon_bluetooth_0200', 0, async (done: Function) => {
+    it('test_turnon_bluetooth_0200', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         bluetoothManager.turnOnBluetooth(SELFWANT);
@@ -456,7 +456,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnon_bluetooth_0300', 0, async (done: Function) => {
+    it('test_turnon_bluetooth_0300', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         bluetoothManager.turnOnBluetooth(SELFWANT);
@@ -468,7 +468,52 @@ export default function bluetoothManagerTest() {
       done();
     })
 
-        /**
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0400
+     * @tc.name test_turnon_bluetooth_0400
+     * @tc.desc test turnOnBluetooth method with super admin && disablebluetooth
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0400', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      const LABEL_BLUETOOTH = "bluetooth";
+      try {
+        restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
+        bluetoothManager.turnOnBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200007).assertTrue();
+      } finally {
+        restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
+        await adminManager.disableAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0500
+     * @tc.name test_turnon_bluetooth_0500
+     * @tc.desc test turnOnBluetooth method with error param
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnon_bluetooth_0500', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOnBluetooth(INVALIDWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
      * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0100
      * @tc.name test_turnoff_bluetooth_0100
      * @tc.desc test turnOffBluetooth method with unActiveadmin
@@ -476,7 +521,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnoff_bluetooth_0100', 0, async (done: Function) => {
+    it('test_turnoff_bluetooth_0100', Level.LEVEL2, async (done: Function) => {
       try {
         bluetoothManager.turnOffBluetooth(SELFWANT);
         expect(false).assertTrue();
@@ -494,7 +539,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnoff_bluetooth_0200', 0, async (done: Function) => {
+    it('test_turnoff_bluetooth_0200', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         bluetoothManager.turnOffBluetooth(SELFWANT);
@@ -515,14 +560,60 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnoff_bluetooth_0300', 0, async (done: Function) => {
+    it('test_turnoff_bluetooth_0300', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         bluetoothManager.turnOffBluetooth(SELFWANT);
       } catch(error) {
         expect(false).assertTrue();
       } finally {
+        bluetoothManager.turnOnBluetooth(SELFWANT);
         await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0400
+     * @tc.name test_turnoff_bluetooth_0400
+     * @tc.desc test turnOffBluetooth method with super admin  && disablebluetooth
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0400', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      const LABEL_BLUETOOTH = "bluetooth";
+      try {
+        restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
+        bluetoothManager.turnOffBluetooth(SELFWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 9200007).assertTrue();
+      } finally {
+        restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_EDM_TURNOFF_BLUETOOTH_0500
+     * @tc.name test_turnoff_bluetooth_0500
+     * @tc.desc test turnOffBluetooth method with error param
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it('test_turnoff_bluetooth_0500', Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        bluetoothManager.turnOffBluetooth(INVALIDWANT);
+        expect(false).assertTrue();
+      } catch(error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
       done();
     })

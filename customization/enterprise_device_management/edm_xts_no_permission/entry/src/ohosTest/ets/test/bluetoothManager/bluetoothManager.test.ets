@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -115,7 +115,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnon_bluetooth_0100', 0, async (done: Function) => {
+    it('test_turnon_bluetooth_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         bluetoothManager.turnOnBluetooth(SELFWANT);
@@ -136,7 +136,7 @@ export default function bluetoothManagerTest() {
      * @tc.type      : Function
      * @tc.size      : MediumTest
      */
-    it('test_turnoff_bluetooth_0100', 0, async (done: Function) => {
+    it('test_turnoff_bluetooth_0100', Level.LEVEL2, async (done: Function) => {
       await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
       try {
         bluetoothManager.turnOffBluetooth(SELFWANT);
