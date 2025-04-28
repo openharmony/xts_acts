@@ -1366,7 +1366,7 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo).assertEqual(null);
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
-      expect(extensionList.length).assertEqual(23);
+      expect(extensionList.length).assertEqual(24);
       let count = 0;
       for (let i = 0;i < 21; i++) {
         switch (extensionList[i].name) {
