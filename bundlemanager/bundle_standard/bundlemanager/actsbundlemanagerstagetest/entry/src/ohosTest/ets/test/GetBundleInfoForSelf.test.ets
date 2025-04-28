@@ -646,7 +646,7 @@ export default function getBundleInfoForSelf() {
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(267);
+        expect(count).assertEqual(269);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -823,7 +823,7 @@ export default function getBundleInfoForSelf() {
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(267);
+          expect(count).assertEqual(269);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1517,7 +1517,7 @@ export default function getBundleInfoForSelf() {
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(267);
+      expect(count).assertEqual(269);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
