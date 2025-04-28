@@ -4860,7 +4860,7 @@ export default function audioCapturer() {
             done();
           }catch (err) {
             console.log(`err : ${err.message},Code:${err.code}`);
-            expect(Number(err.code)).assertEqual(6800101);
+            expect(Number(err.code)).assertEqual(401);
             flag = true;
           }
           expect(flag).assertTrue();
@@ -4913,7 +4913,7 @@ export default function audioCapturer() {
             done();
           }catch (err) {
             console.log(`err : ${err.message},Code:${err.code}`);
-            expect(Number(err.code)).assertEqual(401);
+            expect(Number(err.code)).assertEqual(6800101);
             flag = true;
           }
           expect(flag).assertTrue();
