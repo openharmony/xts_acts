@@ -116,6 +116,7 @@ export default function test() {
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
                 formId = data.data;
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -147,6 +148,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -195,6 +197,7 @@ export default function test() {
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -246,6 +249,7 @@ export default function test() {
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -302,6 +306,7 @@ export default function test() {
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
                 formId = data.data;
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -333,6 +338,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -414,6 +420,7 @@ export default function test() {
                 await sleep(1000);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -454,6 +461,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
             commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -538,6 +546,7 @@ export default function test() {
                 await sleep(1000);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -576,6 +585,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
             commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -688,6 +698,7 @@ export default function test() {
                     await sleep(1000);
                     commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
 
+                    await sleep(2000);
                     console.info(`${tcNumber} featureAbility.startAbility again start`);
                     await featureAbility.startAbility({
                         want: {
@@ -729,6 +740,7 @@ export default function test() {
                 };
                 commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
@@ -788,6 +800,7 @@ export default function test() {
                 commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback(tcNumber));
                 //formId = data.parameters.formId;
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -819,6 +832,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnReleased, onReleasedCallback);
             commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -903,6 +917,7 @@ export default function test() {
                 await sleep(1000);
                 commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -943,6 +958,7 @@ export default function test() {
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
             commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -1002,6 +1018,7 @@ export default function test() {
                 await sleep(1000);
                 commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback2);
 
+                await sleep(2000);
                 console.info(`${tcNumber} featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -1032,6 +1049,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
 
+            await sleep(2000);
             console.info(`${tcNumber} featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
