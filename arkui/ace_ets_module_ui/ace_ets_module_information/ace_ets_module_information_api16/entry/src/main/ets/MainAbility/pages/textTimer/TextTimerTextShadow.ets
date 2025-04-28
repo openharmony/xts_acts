@@ -23,7 +23,7 @@ struct TextTimerExample {
     Column({ space: 8 }) {
       TextTimer().fontSize(20).textShadow(this.textShadows1).id('textTimer1')
       TextTimer().fontSize(20).textShadow(this.textShadows2).id('textTimer2')
-      TextTimer().fontSize(20).textShadow(this.textShadows2).id('textTimer3')
+      TextTimer().fontSize(20).textShadow(this.textShadows3).id('textTimer3')
     }
   }
 }
