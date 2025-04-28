@@ -20,6 +20,7 @@
     "MainAbility/pages/timePickerDialog/timePickerDialogBGBlurStyle",
     "MainAbility/pages/timePickerDialog/timePickerDialogBGColor",
     "MainAbility/pages/timePickerDialog/timePickerDialogShadow",
-    "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback"
+    "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",
+    "MainAbility/pages/slider/SliderEnableHapticFeedbackTest"
   ]
 }
