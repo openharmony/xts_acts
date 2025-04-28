@@ -136,7 +136,8 @@
 	"entryembeddeduiextability/pages/EntryEmbeddedUIExtAbilityPage",
     "pages/ArkUI/AccessibilityNextFocusIdPage",
     "pages/ArkUI/AccessibilityDefaultFocusPage",
-    "pages/ArkUI/AccessibilityScrollTriggerablePage"
+    "pages/ArkUI/AccessibilityScrollTriggerablePage",
+	"pages/ArkUI/EmbeddedComponentInstanceTest"
   ]
 }
 
