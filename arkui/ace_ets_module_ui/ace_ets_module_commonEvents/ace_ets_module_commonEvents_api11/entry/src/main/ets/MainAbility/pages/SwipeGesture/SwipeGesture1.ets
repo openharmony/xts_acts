@@ -38,9 +38,9 @@ struct SwipeGesture1 {
           })
       )
       Column() {
-        Text(String(Math.round(this.rotateAngle1))).key('Swipe3')
+        Text(String(Math.round(this.rotateAngle1))).key('Swipe7')
       }
-      .key('SwipeGesture2')
+      .key('SwipeGesture4')
       .height(150)
       .width(200)
       .backgroundColor(0x008000)
