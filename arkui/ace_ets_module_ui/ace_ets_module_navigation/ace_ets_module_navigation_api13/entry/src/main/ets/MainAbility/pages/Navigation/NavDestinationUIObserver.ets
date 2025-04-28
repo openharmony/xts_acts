@@ -3,17 +3,23 @@ import observer from '@ohos.arkui.observer';
 
 @Component
 struct PageOne {
+  @Consume('stackA') stackA:NavPathStack;
   build() {
     NavDestination() {
-      Text("pageOne")
-    }.title("pageOne")
+      Text('pageOne')
+      Button('back').onClick(() => {
+        this.stackA.pop();
+      })
+      .height('5%')
+      .id('backId')
+    }.title('pageOne')
   }
 }
 
 @Entry
 @Component
 struct NavDestinationUIObserver {
-  @State stackA: NavPathStack = new NavPathStack();
+  @Provide stackA: NavPathStack = new NavPathStack();
   @State stackB: NavPathStack = new NavPathStack();
   private obs: UIContext.UIObserver | null = null;
   @State showText: string = '';

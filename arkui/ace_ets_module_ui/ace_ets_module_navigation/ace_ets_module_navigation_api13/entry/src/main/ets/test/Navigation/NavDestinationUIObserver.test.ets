@@ -80,7 +80,7 @@ export default function NavDestinationUIObserver() {
       expect(showUpdateText).assertEqual('on');
       AppStorage.delete('showUpdateText');
 
-      let backBtn: Component = await driver.findComponent(ON.type('BackButton'));
+      let backBtn: Component = await driver.findComponent(ON.id('backId'));
       await backBtn.click();
       console.info('[NavDestinationUIObserver_0100] backBtn click');
       await driver.delayMs(1000);
