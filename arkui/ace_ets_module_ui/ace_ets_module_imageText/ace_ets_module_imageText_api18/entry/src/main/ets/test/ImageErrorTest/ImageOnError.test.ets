@@ -58,15 +58,16 @@ export default function ImageOnErrorTest() {
       let strJson1 = getInspectorByKey('componentWidth');
       let obj1: ESObject = JSON.parse(strJson1);
       await Utils.sleep(1000);
-      console.info("[ImageOnErrorTest_001] obj1 is: " + JSON.stringify(obj1));
-      let componentWidth = Math.round(px2vp(obj1.$attrs.content)) + '.00vp'
+      console.info("[ImageOnErrorTest_001] obj1.$attrs.content is: " + JSON.stringify(obj1.$attrs.content));
+      console.info("[ImageOnErrorTest_001] px2vp(obj1.$attrs.content) is: " + px2vp(parseFloat(obj1.$attrs.content)));
+      let componentWidth = Math.round(px2vp(parseFloat(obj1.$attrs.content))) + '.00vp'
       expect(obj.$attrs.width).assertEqual(componentWidth);
 
       let strJson2 = getInspectorByKey('componentHeight');
       let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
-      console.info("[ImageOnErrorTest_001] obj2 is: " + JSON.stringify(obj2));
-      let componentHeight = Math.round(px2vp(obj2.$attrs.content)) + '.00vp'
+      console.info("[ImageOnErrorTest_001] obj2.$attrs.content is: " + JSON.stringify(obj2.$attrs.content));
+      let componentHeight = Math.round(px2vp(parseFloat(obj2.$attrs.content))) + '.00vp'
       expect(obj.$attrs.height).assertEqual(componentHeight);
       console.info('[ImageOnErrorTest_001] END');
       done();
