@@ -447,20 +447,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1300
-     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
-     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
+     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
+     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11';
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          spacingBetweenButtons: 11
+          spacingBetweenButtons: 7
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -647,20 +647,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1900
-     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
-     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
+     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
+     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7';
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          closeButtonRightMargin: 7
+          closeButtonRightMargin: 5
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
