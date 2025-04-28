@@ -606,7 +606,7 @@ export default function bluetoothManagerTest() {
      * @tc.size      : MediumTest
      */
     it('test_turnoff_bluetooth_0500', Level.LEVEL2, async (done: Function) => {
-      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
       try {
         bluetoothManager.turnOffBluetooth(INVALIDWANT);
         expect(false).assertTrue();
