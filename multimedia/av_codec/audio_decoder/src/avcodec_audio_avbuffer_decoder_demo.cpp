@@ -723,6 +723,7 @@ OH_AVCodec *ADecBufferDemo::CreateByName(const char *name)
 OH_AVErrCode ADecBufferDemo::Destroy(OH_AVCodec *codec)
 {
     OH_AVErrCode ret = OH_AudioCodec_Destroy(codec);
+    ClearQueue();
     return ret;
 }
 
@@ -744,12 +745,14 @@ OH_AVErrCode ADecBufferDemo::Start(OH_AVCodec *codec)
 OH_AVErrCode ADecBufferDemo::Stop(OH_AVCodec *codec)
 {
     OH_AVErrCode ret = OH_AudioCodec_Stop(codec);
+    ClearQueue();
     return ret;
 }
 
 OH_AVErrCode ADecBufferDemo::Flush(OH_AVCodec *codec)
 {
     OH_AVErrCode ret = OH_AudioCodec_Flush(codec);
+    ClearQueue();
     return ret;
 }
 
@@ -868,4 +871,16 @@ OH_AVErrCode ADecBufferDemo::SetParameter(OH_AVCodec *codec, OH_AVFormat *format
     }
     OH_AVErrCode ret = OH_AudioCodec_SetParameter(codec, format);
     return ret;
+}
+
+void ADecBufferDemo::ClearQueue()
+{
+    while (!signal_->inQueue_.empty())
+        signal_->inQueue_.pop();
+    while (!signal_->outQueue_.empty())
+        signal_->outQueue_.pop();
+    while (!signal_->inBufferQueue_.empty())
+        signal_->inBufferQueue_.pop();
+    while (!signal_->outBufferQueue_.empty())
+        signal_->outBufferQueue_.pop();
 }

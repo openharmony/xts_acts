@@ -261,6 +261,7 @@ public:
     OH_AVErrCode SetParameter(OH_AVCodec* codec, OH_AVFormat* format, int32_t channel, int32_t sampleRate);
 
    private:
+    void ClearQueue();
     int32_t CreateDec();
     int32_t Configure(OH_AVFormat *format);
     int32_t Start();
