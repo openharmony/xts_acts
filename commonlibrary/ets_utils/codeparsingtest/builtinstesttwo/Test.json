@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBuiltinsBigIntAndNumberTest.hap"
+                "ActsBuiltinsTestTwo.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
