@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsBuiltinsTestTwo") {
+ohos_js_app_suite("ActsBuiltinsTwoTest") {
   test_hap = true
   testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsBuiltinsTestTwo"
+  hap_name = "ActsBuiltinsTwoTest"
 
   # 部件名称，真实数据，需要子系统对应
   part_name = "ets_utils"

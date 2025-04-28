@@ -21,7 +21,7 @@ group("codeparsingtest") {
       "baselibtest:ActsBaseLibTest",
       "builtinsarraytest:ActsBuiltinsArrayTest",
       "builtinstest:ActsBuiltinsTest",
-      "builtinstesttwo:ActsBuiltinsTestTwo",
+      "builtinstwotest:ActsBuiltinsTwoTest",
       "datetest:ActsDateTest",
       "decimallibtest:ActsDecimalLibTest",
       "etsspectest:ActsBaseSpecTest",
