@@ -15,11 +15,19 @@
 
 import ethernettest from './ethernet.test';
 import EmptyTest from './Empty.test';
+import ethernet from '@ohos.net.ethernet';
+import { BusinessError } from '@ohos.base';
 
 
 export default function testsuite() {
     if (canIUse("SystemCapability.Communication.NetManager.Ethernet")) {
-        ethernettest();
+    	ethernet.getMacAddress().then((data: Array<ethernet.MacAddressInfo>)=>{
+    	    ethernettest();
+    	}).catch((error:BusinessError)=>{
+    	EmptyTest();
+    	});
+    }else{
+    	EmptyTest();
     }
-    EmptyTest();
+    
 }
