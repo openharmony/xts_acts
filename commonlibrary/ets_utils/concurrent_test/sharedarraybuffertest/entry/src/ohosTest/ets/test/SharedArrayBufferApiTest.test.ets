@@ -55,7 +55,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0100';
       console.info(`${caseName} test start`);
       
@@ -88,7 +88,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0200';
       console.info(`${caseName} test start`);
       
@@ -121,7 +121,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0300';
       console.info(`${caseName} test start`);
       
@@ -154,7 +154,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0400';
       console.info(`${caseName} test start`);
       
@@ -190,7 +190,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0500';
       console.info(`${caseName} test start`);
       
@@ -225,7 +225,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0600';
       console.info(`${caseName} test start`);
       
@@ -260,7 +260,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0700';
       console.info(`${caseName} test start`);
       
@@ -287,7 +287,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0800';
       console.info(`${caseName} test start`);
       
@@ -323,7 +323,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest0900';
       console.info(`${caseName} test start`);
       
@@ -363,7 +363,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest1000';
       console.info(`${caseName} test start`);
       
@@ -393,7 +393,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest1100';
       console.info(`${caseName} test start`);
       
@@ -423,7 +423,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SharedArrayBufferApiTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'SharedArrayBufferApiTest1200';
       console.info(`${caseName} test start`);
       
@@ -460,7 +460,7 @@ export default function SharedArrayBufferApiTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SharedArrayBufferApiTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (Done: Function) => {
+    it('SharedArrayBufferApiTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const caseName = 'SharedArrayBufferApiTest1300';
       console.info(`${caseName} test start`);
       try {

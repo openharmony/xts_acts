@@ -113,22 +113,16 @@ export function readFunction(container: BufferContainer): number[] {
   return Array.from(array);
 }
 
-/**
- * Function to simulate garbage collection by forcing memory pressure
- */
-export async function forceGC(): Promise<void> {
-  try {
-    let pressure: number[] = [];
-    for (let i = 0; i < 100000; i++) {
-      pressure.push(i);
-    }
-    pressure = [];
-  } catch (e) {
-    console.info('Error while trying to create memory pressure');
-  }
-  
-  await sleep(10);
+
+export declare class ArkTools {
+  static forceFullGC(): void;
 }
+
+export function gc() {
+  ArkTools.forceFullGC()
+}
+
+
 
 /**
  * Get current timestamp in milliseconds
@@ -176,7 +170,7 @@ export class MemoryMonitor {
    * Take a memory snapshot
    */
   async takeSnapshot(description: string): Promise<MemorySnapshotInfo> {
-    await forceGC();
+    await gc();
     
     const testObject = new MemorySnapshotInfo(description);
     this.referenceObjects.push(testObject);

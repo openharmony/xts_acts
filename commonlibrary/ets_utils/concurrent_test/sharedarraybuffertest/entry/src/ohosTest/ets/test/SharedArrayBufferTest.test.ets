@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { sleep, SliceResult, WorkerResult, BufferContainer, processSlice, workerFunction, modifyFunction, readFunction, MemoryMonitor, performBufferOperations, forceGC } from '../testability/pages/TestUtils';
+import { sleep, SliceResult, WorkerResult, BufferContainer, processSlice, workerFunction, modifyFunction, readFunction, MemoryMonitor, performBufferOperations, gc } from '../testability/pages/TestUtils';
 import taskpool from '@ohos.taskpool';
 
 export default function SharedArrayBufferTest() {
@@ -643,7 +643,7 @@ export default function SharedArrayBufferTest() {
           }
           
           if (i % 100 === 0) {
-            await forceGC();
+            await gc();
             console.info(`${caseName}: Triggered GC at iteration ${i}`);
           }
           
@@ -663,7 +663,7 @@ export default function SharedArrayBufferTest() {
           }
         }
         
-        await forceGC();
+        await gc();
         
         let endTime: number = Date.now();
         console.info(`${caseName}: Completed 1000 iterations with GC in ${endTime - startTime} ms with total sum: ${totalSum}`);
@@ -681,3 +681,4 @@ export default function SharedArrayBufferTest() {
     
   });
 }
+
