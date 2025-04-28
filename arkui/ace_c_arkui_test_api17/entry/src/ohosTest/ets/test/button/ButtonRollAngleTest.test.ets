@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,37 +17,37 @@ import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 
-async function mouseMoveToCommonEvent(id: string) {
+async function penClickEvent(id: string) {
   let driver = Driver.create();
   let component = await driver.findComponent(ON.id(id));
   let point = await component.getBounds();
   let centerX = Math.round((point.left + point.right) / 2);
   let centerY = Math.round((point.top + point.bottom) / 2);
-  await driver.mouseMoveTo({x: centerX, y: centerY});
+  await driver.penClick({x: centerX, y: centerY});
 }
 
-export default function buttonOnClickEventTest() {
+export default function buttonRollAngleTest() {
 
-  describe('ButtonOnHoverTest', () => {
+  describe('ButtonRollAngleTest', () => {
 
-    let PAGE_TAG = 'ButtonOnHoverEventTest';
+    let PAGE_TAG = 'ButtonRollAngleTest';
 
     beforeAll(async (done: Function) => {
       await Utils.pushPage(`button/${PAGE_TAG}`, done);
     });
 
     /*
-    * @tc.number     : SUB_ARKUI_CAPI_BUTTON_ONHOVER_EVENT_0100
-    * @tc.name       : testButtonOnHover001
-    * @tc.desc       : test onHover event not callback
+    * @tc.number     : SUB_ARKUI_CAPI_BUTTON_ROLLANGLE_0100
+    * @tc.name       : buttonRollAngleTest001
+    * @tc.desc       : test GetRollAngle function is normal
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testButtonOnHover001', Level.LEVEL0, async (done: Function) => {
-      await mouseMoveToCommonEvent('OnHoverTestButton')
+    it('buttonRollAngleTest001', Level.LEVEL0, async (done: Function) => {
+      await penClickEvent('RollAngleTestButton')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnHoverTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('RollAngleTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })
 

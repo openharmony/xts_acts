@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include "plugin_manager.h"
+#include "PluginManagerTest.h"
 #include "./common/common.h"
 
 #include <cstdint>

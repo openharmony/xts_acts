@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#include "button_onhoverevent_test.h"
-#include "../manager/plugin_manager.h"
+#include "ButtonOnHoverEventTest.h"
+#include "../manager/PluginManagerTest.h"
 #include <string>
 
 namespace ArkUICapiTest

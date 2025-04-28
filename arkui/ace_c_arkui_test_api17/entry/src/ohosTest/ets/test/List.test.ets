@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import buttonOnHoverEventTest from './button/ButtonOnHoverEventTest.test'
+import buttonAxisEventTest from './button/ButtonAxisEventTest.test'
+import buttonRollAngleTest from './button/ButtonRollAngleTest.test'
 
 export default function testsuite() {
   buttonOnHoverEventTest();
+  buttonAxisEventTest();
+  buttonRollAngleTest();
 }

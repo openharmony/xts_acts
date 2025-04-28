@@ -11,13 +11,15 @@ include_directories(
 )
 
 add_library(nativerender SHARED
-    manager/plugin_manager.cpp
-    napi_render_init.cpp
-    button/button_onhoverevent_test.cpp
+    manager/PluginManagerTest.cpp
+    NapiRenderInitTest.cpp
+    button/ButtonOnHoverEventTest.cpp
+    button/ButtonAxisEventTest.cpp
+    button/ButtonRollAngleTest.cpp
 )
 
 add_library(nativefunc SHARED
-    napi_func_init.cpp
+    NapiFuncInitTest.cpp
 )
 
 find_library(
