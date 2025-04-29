@@ -418,6 +418,90 @@ async function setOnCallback(avPlayer: media.AVPlayer | null, done: Function) {
   })
 }
 
+async function SetPlaybackRange(startTimeMs: number, endTimeMs: number, mode: media.SeekMode,
+    avPlayer: media.AVPlayer | null, done: Function) {
+  let surfaceID: string = globalThis.value;
+  let pauseCount = 0;
+  let stateChangeCallback = async (state: media.AVPlayerState) => {
+    switch (state) {
+      case INITIALIZED:
+        if (!avPlayer) {
+          console.info(`avPlayer is null`);
+          break;
+        }
+        avPlayer.surfaceId = surfaceID;
+        avPlayer.setPlaybackRange(startTimeMs, endTimeMs, mode).then(() => {
+        }).catch((err: BusinessError) => {
+          console.error(`setPlaybackRange failed, err code ${err.code} msg ${err.message}`);
+          expect().assertFail();
+        });
+        avPlayer.prepare();
+        break;
+      case PREPARED:
+        if (startTimeMs > 0) {
+          expect(avPlayer?.currentTime).assertEqual(startTimeMs);
+        } else if (startTimeMs == -1) {
+          expect(avPlayer?.currentTime).assertEqual(0);
+        }
+        expect(avPlayer?.state).assertEqual(PREPARED);
+        avPlayer?.play();
+        break;
+      case PLAYING:
+        if (pauseCount++ == 0) {
+          avPlayer?.pause();
+        }
+        break;
+      case PAUSED:
+        avPlayer?.play();
+        break;
+      case COMPLETED:
+        if (endTimeMs > 0) {
+          expect(avPlayer?.currentTime).assertLessOrEqual(endTimeMs);
+        } else if (endTimeMs == -1) {
+          expect(avPlayer?.currentTime).assertEqual(avPlayer?.duration);
+        }
+        expect(avPlayer?.state).assertEqual(COMPLETED);
+        avPlayer?.release();
+        break;
+      case RELEASED:
+        avPlayer = null;
+        done();
+        break;
+      case ERROR:
+        console.info(`An error occurred during playback`);
+        avPlayer?.release().then(() => {
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        avPlayer = null;
+        expect().assertFail();
+        done();
+        break;
+      default:
+        break;
+    }
+  }
+  avPlayer?.on('stateChange', stateChangeCallback);
+}
+
+async function testSetPlaybackRange(src: string | media.AVFileDescriptor, startTimeMs: number, endTimeMs: number,
+  mode: media.SeekMode, avPlayer: media.AVPlayer | null, done: Function) {
+  console.info(`case media source: ${src}`);
+  media.createAVPlayer((err, video) => {
+    console.info(`case media err: ${err}`);
+    if (typeof (video) !== 'undefined') {
+      console.info('case createAVPlayer success');
+      avPlayer = video;
+      expect(avPlayer?.state).assertEqual(IDLE);
+      SetPlaybackRange(startTimeMs, endTimeMs, mode, avPlayer, done);
+      setSource(avPlayer, src);
+    }
+    if (err != null) {
+      console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+      expect().assertFail();
+      done();
+    }
+  });
+}
+
 function setPlayerPlaybackStrategy(avPlayer: media.AVPlayer | null, playbackStrategy: media.PlaybackStrategy) {
   avPlayer?.setPlaybackStrategy(playbackStrategy).catch((error: BusinessError) => {
     console.error(`setPlaybackStrategy failed, err code ${error.code} msg ${error.message}`)
@@ -1250,6 +1334,40 @@ export default function AVPlayerLocalTest() {
       if (fileDescriptor) {
         let playbackStrategy: media.PlaybackStrategy = { showFirstFrameOnPrepare: true }
         testSetPlaybackStrategy(fileDescriptor, avPlayer, done, playbackStrategy);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0100
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0100
+        * @tc.desc      : Local Video preferred set playback start position and end position control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0100', Level.LEVEL0, async (done: Function) => {
+      if (fileDescriptor) {
+        let startTimeMs : number = 1000;
+        let endTimeMs : number = 3000;
+        let mode : media.SeekMode = media.SeekMode.SEEK_CLOSEST;
+        expect(startTimeMs).assertLargerOrEqual(-1);
+        testSetPlaybackRange(fileDescriptor, startTimeMs, endTimeMs, mode, avPlayer, done);
+      }
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0200
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0200
+        * @tc.desc      : Local Video preferred set playback start position and end position control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+    */
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SET_PLAYBACK_RANGE_0200', Level.LEVEL0, async (done: Function) => {
+      if (fileDescriptor) {
+        let startTimeMs : number = -1;
+        let endTimeMs : number = -1;
+        let mode : media.SeekMode = media.SeekMode.SEEK_CLOSEST;
+        expect(startTimeMs).assertLargerOrEqual(-1);
+        testSetPlaybackRange(fileDescriptor, startTimeMs, endTimeMs, mode, avPlayer, done);
       }
     });
     /* *
