@@ -497,6 +497,8 @@ import TextCommonTextComputing9 from './TextTest/MeasureSizeTest/TextCommonTextC
 
 import getStyles from './StyledString/getStyles.test';
 import replaceString from './StyledString/replaceString.test';
+import TextAreaTypeTest from "./TextArea/TextAreaType.test";
+import TextInputTypeTest from "./TextInput/TextInputType.test";
 
 export default function testsuite() {
   TextCommonTextComputing1();
@@ -974,4 +976,6 @@ export default function testsuite() {
   RichEditorScroll001();
   getStyles();
   replaceString();
+  TextAreaTypeTest();
+  TextInputTypeTest();
 }
