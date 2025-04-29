@@ -2942,3 +2942,70 @@ Camera_ErrorCode NDKCamera::CameraManagerUnregisterFoldStatusCallback(int useCas
     }
     return ret_;
 }
+
+Camera_ErrorCode NDKCamera::GetCameraDevice(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_Device* cameranow = nullptr;
+        if (cameraManager_ == nullptr) {
+            return ret_;
+        }
+        ret_ = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_BACK, Camera_Type::CAMERA_TYPE_DEFAULT, cameranow);
+    }
+    return ret_;
+}
+ 
+Camera_ErrorCode NDKCamera::GetCameraConcurrentInfos(int useCaseCode)
+{
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_Device* cameraArray;
+        OH_CameraManager_GetSupportedCameras(cameraManager_, &cameraArray, &size_);
+        uint32_t deviceSize = 2;
+        if (size_ < deviceSize || cameraManager_ == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        uint32_t infoSize = 0;
+        Camera_ConcurrentInfo* cameraConcurrentInfo;
+        int retcode = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_BACK, Camera_Type::CAMERA_TYPE_DEFAULT, &cameraArray[0]);
+        if (retcode != CAMERA_OK || cameraArray[0].cameraId == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        retcode = OH_CameraManager_GetCameraDevice(cameraManager_,
+            Camera_Position::CAMERA_POSITION_FRONT, Camera_Type::CAMERA_TYPE_DEFAULT, &cameraArray[1]);
+        if (retcode != CAMERA_OK || cameraArray[1].cameraId == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        retcode = OH_CameraManager_GetCameraConcurrentInfos(cameraManager_,
+            cameraArray, deviceSize, &cameraConcurrentInfo, &infoSize);
+        if (retcode != CAMERA_OK || cameraConcurrentInfo == nullptr) {
+            delete[] cameraArray;
+            cameraArray = nullptr;
+            GetSupportedCameras();
+            return ret_;
+        }
+        Camera_Input* cameraInputnow;
+        retcode = OH_CameraManager_CreateCameraInput(cameraManager_, &cameraArray[0], &cameraInputnow);
+        if (retcode == CAMERA_OK && cameraInputnow != nullptr) {
+            ret_ = OH_CameraInput_OpenConcurrentCameras(cameraInputnow,
+                Camera_ConcurrentType::CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY);
+        }
+        OH_CameraInput_Close(cameraInputnow);
+        OH_CameraInput_Release(cameraInputnow);
+        delete[] cameraArray;
+        cameraArray = nullptr;
+    }
+    GetSupportedCameras();
+    CreateCameraInput();
+    return ret_;
+}

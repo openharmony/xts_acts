@@ -2576,6 +2576,39 @@ static napi_value CameraManagerUnregisterFoldStatusChange(napi_env env, napi_cal
     napi_create_int32(env, code, &result);
     return result;
 }
+static napi_value OHCameraManagerGetCameraDevice(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+ 
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+ 
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+ 
+    Camera_ErrorCode code = ndkCamera_->GetCameraDevice(index);
+ 
+    napi_create_int32(env, code, &result);
+    return result;
+}
+ 
+static napi_value OHCameraManagerGetCameraConcurrentInfos(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+ 
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+ 
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+ 
+    Camera_ErrorCode code = ndkCamera_->GetCameraConcurrentInfos(index);
+ 
+    napi_create_int32(env, code, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2856,6 +2889,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"releaseCamera", nullptr, ReleaseCamera, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"readyCreatePhotoOutputWithoutSurface", nullptr, ReadyCreatePhotoOutputWithoutSurface, nullptr, nullptr,
             nullptr, napi_default, nullptr},
+        {"oHCameraManagerGetCameraDevice", nullptr, OHCameraManagerGetCameraDevice, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"oHCameraManagerGetCameraConcurrentInfos", nullptr, OHCameraManagerGetCameraConcurrentInfos, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
     };
     size_t mergedLength = sizeof(desc) / sizeof(desc[0]) +
                           sizeof(desc1) / sizeof(desc1[0]) +
