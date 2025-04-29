@@ -1236,10 +1236,143 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
   }
 })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_MaximizeSupported_0100
+     * @tc.name      : test_MaximizeSupported_0100
+     * @tc.desc      : test_MaximizeSupported_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_MaximizeSupported_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_MaximizeSupported_0100';
+      console.log(caseName + 'begin');
+      let options : window.SubWindowOptions = {
+        title: 'test_MaximizeSupported_0100',
+        decorEnabled: true,
+        isModal: false,
+        maximizeSupported: true
+      };
+      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      promise1.then(async (data) => {
+        let subWindowClass = data;
+        console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.showWindow();
+        await subWindowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
+        let windowStatusType = subWindowClass.getWindowStatus();
+        console.info(caseName+ ' subWindowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+        if(isPCStatus == ''|| isAutoWindow =='false'){
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FLOATING)
+          await subWindowClass.destroyWindow()
+          done()
+        } else {
+          expect(windowStatusType).assertEqual(window.WindowStatusType.MAXIMIZE)
+          await subWindowClass.destroyWindow()
+          done()
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code === 1300002) {
+          done()
+        } else {
+          expect().assertFail();
+          done();
+        }
+      });
+    });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_MaximizeSupported_0200
+     * @tc.name      : test_MaximizeSupported_0200
+     * @tc.desc      : test_MaximizeSupported_0200
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_MaximizeSupported_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_MaximizeSupported_0200';
+      console.log(caseName + 'begin');
+      let options : window.SubWindowOptions = {
+        title: 'test_MaximizeSupported_0200',
+        decorEnabled: true,
+        isModal: false,
+        maximizeSupported: true
+      };
+      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      promise1.then(async (data) => {
+        let subWindowClass = data;
+        console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.showWindow();
+        await subWindowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+        let windowStatusType = subWindowClass.getWindowStatus();
+        console.info(caseName+ ' subWindowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+        if(isPCStatus == ''|| isAutoWindow =='false'){
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FLOATING)
+          await subWindowClass.destroyWindow()
+          done()
+        }else {
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          await subWindowClass.destroyWindow()
+          done()
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code === 1300002) {
+          done()
+        } else {
+          expect().assertFail();
+          done();
+        }
+      });
+    });
 
-
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_MaximizeSupported_0300
+     * @tc.name      : test_MaximizeSupported_0300
+     * @tc.desc      : test_MaximizeSupported_0300
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_MaximizeSupported_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_MaximizeSupported_0300';
+      console.log(caseName + 'begin');
+      let options : window.SubWindowOptions = {
+        title: 'test_MaximizeSupported_0200',
+        decorEnabled: true,
+        isModal: false,
+        maximizeSupported: false
+      };
+      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      promise1.then(async (data) => {
+        let subWindowClass = data;
+        console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.showWindow();
+        await subWindowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
+        let windowStatusType = subWindowClass.getWindowStatus();
+        console.info(caseName+ ' subWindowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+        if(isPCStatus == ''|| isAutoWindow =='false'){
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FULL_SCREEN)
+          await subWindowClass.destroyWindow()
+          done()
+        }else {
+          expect(windowStatusType).assertEqual(window.WindowStatusType.FLOATING)
+          await subWindowClass.destroyWindow()
+          done()
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code === 1300002) {
+          done()
+        } else {
+          expect().assertFail();
+          done();
+        }
+      });
+    });
 
   })
 }

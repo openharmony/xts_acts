@@ -375,6 +375,134 @@ export default function windowFocusTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0100
+     * @tc.name      : test_ISWINDOWHIGHLIGHTED_0100
+     * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('test_ISWINDOWHIGHLIGHTED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_ISWINDOWHIGHLIGHTED_0100';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_ISWINDOWHIGHLIGHTED_0100');
+      try{
+        windowClass.isWindowHighlighted();
+        await windowClass.destroyWindow();
+        expect(true).assertTrue()
+        done();
+      } catch(err) {
+        console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
+        await windowClass.destroyWindow();
+        if (err.code === 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+    });
 
-    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0200
+     * @tc.name      : test_ISWINDOWHIGHLIGHTED_0200
+     * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0200
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_ISWINDOWHIGHLIGHTED_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_ISWINDOWHIGHLIGHTED_0200';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_ISWINDOWHIGHLIGHTED_0200');
+      await windowClass.destroyWindow();
+      try{
+        windowClass.isWindowHighlighted();
+        expect().assertFail()
+        done();
+      } catch(err) {
+        console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
+        expect(err.code).assertEqual(1300002);
+        done()
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0300
+     * @tc.name      : test_ISWINDOWHIGHLIGHTED_0300
+     * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0300
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_ISWINDOWHIGHLIGHTED_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'test_ISWINDOWHIGHLIGHTED_0300';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_ISWINDOWHIGHLIGHTED_0300');
+      try{
+        await windowClass.setUIContent('testability/pages/First/index1');
+        console.info(`${caseName} Succeeded in loading the system sub window content.`);
+        await windowClass.showWindow();
+        await sleep(300);
+        let res = windowClass.isWindowHighlighted();
+        await windowClass.destroyWindow();
+        expect(res).assertEqual(true)
+        done();
+      } catch(err) {
+        console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
+        await windowClass.destroyWindow();
+        if (err.code === 801) {
+          done();
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_ISWINDOWHIGHLIGHTED_0400
+     * @tc.name      : test_ISWINDOWHIGHLIGHTED_0400
+     * @tc.desc      : test_ISWINDOWHIGHLIGHTED_0400
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_ISWINDOWHIGHLIGHTED_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'test_ISWINDOWHIGHLIGHTED_0400';
+      console.log(caseName + 'begin');
+      let windowClass1 = await windowStage.createSubWindow('test_ISWINDOWHIGHLIGHTED_0400_1');
+      let windowClass2 = await windowStage.createSubWindow('test_ISWINDOWHIGHLIGHTED_0400_2');
+      try{
+        await windowClass1.setUIContent('testability/pages/First/index1');
+        await windowClass1.showWindow();
+        await sleep(300);
+        let res = windowClass1.isWindowHighlighted();
+        expect(res).assertEqual(true)
+        windowClass2.setExclusivelyHighlighted(false);
+        await windowClass2.setUIContent('testability/pages/First/index1');
+        await windowClass2.showWindow();
+        await sleep(300);
+        res = windowClass2.isWindowHighlighted();
+        expect(res).assertEqual(true)
+        await windowClass1.destroyWindow();
+        await windowClass2.destroyWindow();
+        done();
+      } catch(err) {
+        console.log(`${caseName} :sub window setSubWindowZLevel fail1:`+err.code);
+        await windowClass1.destroyWindow();
+        await windowClass2.destroyWindow();
+        if (err.code === 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+    });
+
+
+
+  })
 }
