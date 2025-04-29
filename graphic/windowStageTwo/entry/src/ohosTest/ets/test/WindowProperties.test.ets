@@ -3936,69 +3936,70 @@ export default function windowPropertiesTest() {
           }
       }
     })
-      // /**
-      //  * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
-      //  * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
-      //  * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
-      //  * @tc.size      : MediumTest
-      //  * @tc.type      : Function
-      //  * @tc.level     : Level 0
-      //  */
-      // it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      //   let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
-      //   console.log(caseName + 'begin');
-      //   let windowStageStart = await startAbility3(caseName, context);
-      //   try {
-      //     let windowClass2 = windowStageStart.getMainWindowSync();
-      //     let res = windowClass2.getWindowProperties()
-      //     console.info(caseName + 'res: ' + JSON.stringify(res));
-      //     window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
-      //       console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
-      //       console.info(caseName + `infos.length: ${infos.length}`);
-      //       expect(infos.length).assertLargerOrEqual(1);
-      //       let isExit = false;
-      //       for (let i = 0; i < infos.length; i++) {
-      //         if (infos[i].windowId === res.id) {
-      //           isExit = true;
-      //           let info = infos[i];
-      //           console.info(caseName + 'info: ' + JSON.stringify(info));
-      //           expect(info.rect.left).assertEqual(res.windowRect.left);
-      //           expect(info.rect.top).assertEqual(res.windowRect.top);
-      //           expect(info.rect.width).assertEqual(res.windowRect.width);
-      //           expect(info.rect.height).assertEqual(res.windowRect.height);
-      //           expect(info.isFocused).assertEqual(true);
-      //           console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
-      //           console.info(caseName + `info.bundleName: ${info.bundleName}`);
-      //           console.info(caseName + `info.abilityName: ${info.abilityName}`);
-      //           break;
-      //         }
-      //       }
-      //       if (!isExit) {
-      //         console.error(`${caseName} failed, there is no match windowId.`);
-      //         await terminateAbility3(caseName);
-      //         expect().assertFail();
-      //         done()
-      //       }
-      //       await terminateAbility3(caseName);
-      //       done();
-      //     }).catch(async (err: BusinessError) => {
-      //       console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
-      //       await terminateAbility3(caseName);
-      //       if (err.code === 801) {
-      //         console.log(`${caseName} deviceType does not supported this Capability`);
-      //         done()
-      //       } else {
-      //         expect().assertFail();
-      //         done();
-      //       }
-      //     });
-      //   } catch (err) {
-      //     await terminateAbility3(caseName);
-      //     console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
-      //     expect().assertFail();
-      //     done();
-      //   }
-      // });
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+       * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+        console.log(caseName + 'begin');
+        let windowStageStart = await startAbility3(caseName, context);
+        try {
+          let windowClass2 = windowStageStart.getMainWindowSync();
+          let res = windowClass2.getWindowProperties()
+          console.info(caseName + 'res: ' + JSON.stringify(res));
+          window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+            console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+            console.info(caseName + `infos.length: ${infos.length}`);
+            expect(infos.length).assertLargerOrEqual(1);
+            let isExit = false;
+            for (let i = 0; i < infos.length; i++) {
+              if (infos[i].windowId === res.id) {
+                isExit = true;
+                let info = infos[i];
+                console.info(caseName + 'info: ' + JSON.stringify(info));
+                expect(info.rect.left).assertEqual(res.windowRect.left);
+                expect(info.rect.top).assertEqual(res.windowRect.top);
+                expect(info.rect.width).assertEqual(res.windowRect.width);
+                expect(info.rect.height).assertEqual(res.windowRect.height);
+                expect(info.isFocused).assertEqual(true);
+                console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
+                console.info(caseName + `info.bundleName: ${info.bundleName}`);
+                console.info(caseName + `info.abilityName: ${info.abilityName}`);
+                break;
+              }
+            }
+            if (!isExit) {
+              console.error(`${caseName} failed, there is no match windowId.`);
+              await terminateAbility3(caseName);
+              expect().assertFail();
+              done()
+            }
+            await terminateAbility3(caseName);
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+            await terminateAbility3(caseName);
+            if (err.code === 801) {
+              console.log(`${caseName} deviceType does not supported this Capability`);
+              done()
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (err) {
+          await terminateAbility3(caseName);
+          console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+
       /**
        * @tc.number    : SUB_BASIC_WMS_RotationChange_0100
        * @tc.name      : test_RotationChange_0100
