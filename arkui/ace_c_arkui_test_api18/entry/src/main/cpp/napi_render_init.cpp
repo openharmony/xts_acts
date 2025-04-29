@@ -19,6 +19,7 @@
 #include "datepicker/datePicker_enableHapticFeedback_test.h"
 #include "textpicker/textPicker_enableHapticFeedback_test.h"
 #include "visibleAreaEventOptions/visibleAreaEventOptions.h"
+#include "gestureRecognizer/GestureInterrupterTest.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -47,7 +48,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"VisibleAreaEventOptionsTest_c", nullptr, VisibleAreaEventOptionsTest::VisibleAreaEventOptionsTest_c, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"VisibleAreaEventOptionsTest_d", nullptr, VisibleAreaEventOptionsTest::VisibleAreaEventOptionsTest_d, nullptr,
-         nullptr, nullptr, napi_default, nullptr}
+         nullptr, nullptr, napi_default, nullptr},
+        {"TestGestureInterrupter", nullptr, GestureInterrupterTest::TestGestureInterrupter, nullptr, nullptr,
+         nullptr, napi_default, nullptr}
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
