@@ -1753,13 +1753,8 @@ export default function windowZindexTest() {
         }).catch(async (err: BusinessError) => {
           console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
           await terminateAbility3(caseName);
-          if (err.code === 801) {
-            console.log(`${caseName} deviceType does not supported this Capability`);
-            done()
-          } else {
-            expect().assertFail();
-            done();
-          }
+          expect().assertFail();
+          done();
         });
       } catch (err) {
         await terminateAbility3(caseName);
