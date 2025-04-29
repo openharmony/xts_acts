@@ -1498,44 +1498,45 @@ export default function windowPropertiesTest2() {
         await windowClass.showWindow();
         console.info(`${caseName} Succeeded in showing the sub window.`);
         await sleep(500);
+        try {
+          await windowClass!.setWindowPrivacyMode(true);
+        } catch (err) {
+          console.error(msgStr + 'setWindowPrivacyMode ' + 'caught, err: ' + JSON.stringify(err));
+          await windowClass!.destroyWindow();
+          expect().assertFail();
+          done()
+        }
+        try {
+          windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+            console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
+            let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
+            let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
+            console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            await windowClass!.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
+            await windowClass!.destroyWindow();
+            if (err.code == 801) {
+              console.info(`${caseName} The current device type does not support to snapshotIgnorePrivacy`);
+            } else {
+              expect().assertFail();
+            }
+            done()
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
+          await windowClass!.destroyWindow();
+          expect().assertFail();
+          done()
+        }
       } catch (err) {
         console.error(msgStr + 'createSubWindow ' + 'caught, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done()
-      }
-      try {
-        await windowClass!.setWindowPrivacyMode(true);
-      } catch (err) {
-        console.error(msgStr + 'setWindowPrivacyMode ' + 'caught, err: ' + JSON.stringify(err));
-        await windowClass!.destroyWindow();
-        expect().assertFail();
-        done()
-      }
-      try {
-        windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
-          console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
-          let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
-          let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
-          console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
-          let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
-          console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
-          expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
-          expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
-          pixelMap.release();
-          await windowClass!.destroyWindow();
-          done();
-        }).catch(async (err: BusinessError) => {
-          console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
-          await windowClass!.destroyWindow();
-          if (err.code == 801) {
-            console.info(`${caseName} The current device type does not support to snapshotIgnorePrivacy`);
-          } else {
-            expect().assertFail();
-          }
-          done()
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
         await windowClass!.destroyWindow();
         expect().assertFail();
         done()
