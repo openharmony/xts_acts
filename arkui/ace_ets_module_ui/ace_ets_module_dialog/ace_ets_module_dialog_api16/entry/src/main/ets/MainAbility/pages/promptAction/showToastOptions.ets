@@ -24,6 +24,7 @@ struct showToastOptions {
     Column() {
       Row() {
         Button('Open')
+          .height('8%')
           .id('md')
           .type(ButtonType.Capsule)
           .onClick(() => {
@@ -42,6 +43,7 @@ struct showToastOptions {
               })
           })
         Button('Close')
+          .height('8%')
           .type(ButtonType.Capsule)
           .onClick(() => {
             try {
@@ -56,6 +58,7 @@ struct showToastOptions {
 
       Row() {
         Button('show2')
+          .height('8%')
           .id('shadowOption')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -83,6 +86,7 @@ struct showToastOptions {
         })
 
         Button('show3')
+          .height('8%')
           .id('xs')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -102,6 +106,7 @@ struct showToastOptions {
           }
         })
         Button('show4')
+          .height('8%')
           .id('sm')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -124,6 +129,7 @@ struct showToastOptions {
 
       Row() {
         Button('show5')
+          .height('8%')
           .id('lg')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -144,6 +150,7 @@ struct showToastOptions {
         })
 
         Button('show6')
+          .height('8%')
           .id('fsm')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -163,6 +170,7 @@ struct showToastOptions {
           }
         })
         Button('show7')
+          .height('8%')
           .id('fmd')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -185,6 +193,7 @@ struct showToastOptions {
 
       Row() {
         Button('show8')
+          .height('8%')
           .id('nul')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
@@ -205,6 +214,7 @@ struct showToastOptions {
         })
 
         Button('show9')
+          .height('8%')
           .id('unf')
           .onClick((event: ClickEvent) => {
           let promptAction: PromptAction = this.getUIContext().getPromptAction();
