@@ -30,6 +30,7 @@ import ActionSheetLifeTest from './dialogLifeTest/ActionSheetLife.test'
 import AlertDialogLifeTest from './dialogLifeTest/AlertDialogLife.test'
 import CustomDialogLifeTest from './dialogLifeTest/CustomDialogLife.test'
 import showInSubWindowBindSheet from './bindSheet/showInSubWindowBindSheet.test'
+import showToastOptions from './promptActionTest/showToastOptions.test'
 export default function testsuite() {
     blurStyleOptions();
     effectOptions();
@@ -49,4 +50,5 @@ export default function testsuite() {
     AlertDialogLifeTest();
     CustomDialogLifeTest();
 	showInSubWindowBindSheet()
+    showToastOptions()
 }
