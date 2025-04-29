@@ -1049,7 +1049,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-     it('testOHCameraManagerGetCameraDevice0100', Level0, () => {
+     it('testOHCameraManagerGetCameraDevice0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.oHCameraManagerGetCameraDevice(0)
       console.log(TAG+"testOHCameraManagerGetCameraDevice0100:"+ret);
@@ -1064,7 +1064,7 @@ export default function CameraManagerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerGetCameraConcurrentInfos0100', Level0, () => {
+    it('testOHCameraManagerGetCameraConcurrentInfos0100', Level.LEVEL0, () => {
       getCameraManagerInstance();
       let ret = cameraObj.oHCameraManagerGetCameraConcurrentInfos(0)
       console.log(TAG+"testOHCameraManagerGetCameraConcurrentInfos0100:"+ret);
