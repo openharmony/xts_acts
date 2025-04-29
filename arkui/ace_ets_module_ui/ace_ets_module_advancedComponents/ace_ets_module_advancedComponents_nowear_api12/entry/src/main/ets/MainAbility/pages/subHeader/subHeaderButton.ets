@@ -33,7 +33,8 @@ struct SubHeaderExample {
           value: '操作',
           action: () => {
             promptAction.showToast({ message: 'demo' })
-          }
+          },
+          defaultFocus: false,
         }]
       })
     }
