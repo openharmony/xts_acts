@@ -14,6 +14,7 @@
  */
 
 #include "common/common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
 namespace ArkUICapiTest {
 
