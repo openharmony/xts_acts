@@ -19,79 +19,6 @@ import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
 import settings from '@ohos.settings';
-import { StartOptions } from '@kit.AbilityKit';
-
-let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
-
-async function startAbility2(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
-  let key1 = 'AAAABBBBtest1';
-  let want: Want = {
-    bundleName: AppStorage.get('bundleName'),
-    abilityName: 'StartTestAbility2',
-    parameters: { // 自定义信息
-      instanceKey: key1,
-    }
-  };
-  if (options) {
-    await context.startAbility(want, options).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  } else {
-    await context.startAbility(want).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  }
-  await sleep(1000)
-  let windowStageStart = AppStorage.get('windowStageStartTest2') as window.WindowStage;
-  return windowStageStart
-}
-
-async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
-  let want: Want = {
-    bundleName: AppStorage.get('bundleName'),
-    abilityName: 'StartTestAbility3',
-  };
-  if (options) {
-    await context.startAbility(want, options).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  } else {
-    await context.startAbility(want).then(() => {
-      console.info(`${caseName} Succeeded in starting ability.`);
-    }).catch((err: BusinessError) => {
-      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
-    });
-  }
-  await sleep(1000)
-  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
-  return windowStageStart
-}
-
-async function terminateAbility2(caseName: string) {
-  let pageContext = AppStorage.get('contextTest2') as common.UIAbilityContext
-  await pageContext.terminateSelf().then(() => {
-    console.log(`${caseName} terminateSelf success`);
-  }).catch((err: BusinessError) => {
-    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
-  });
-  await sleep(1000)
-}
-
-async function terminateAbility3(caseName: string) {
-  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
-  await pageContext.terminateSelf().then(() => {
-    console.log(`${caseName} terminateSelf success`);
-  }).catch((err: BusinessError) => {
-    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
-  });
-  await sleep(1000)
-}
 
 export default function windowZindexTest() {
   describe('windowZindexTest', async () => {
@@ -1388,7 +1315,7 @@ export default function windowZindexTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_SubWindowZLevel_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('test_SubWindowZLevel_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_SubWindowZLevel_0200';
       console.log(caseName + 'begin');
       try{
@@ -1453,28 +1380,6 @@ export default function windowZindexTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0700
-     * @tc.name      : test_SubWindowZLevel_0700
-     * @tc.desc      : test_SubWindowZLevel_0700
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('test_SubWindowZLevel_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      let caseName: string = 'test_SubWindowZLevel_0700 ';
-      console.log(caseName + 'begin');
-      let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0700');
-      await windowClass.destroyWindow();
-      try {
-        windowClass.getSubWindowZLevel();
-      } catch (err) {
-        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300002);
-        done()
-      }
-    });
-
-    /**
      * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0400
      * @tc.name      : test_SubWindowZLevel_0400
      * @tc.desc      : test_SubWindowZLevel_0400
@@ -1482,7 +1387,7 @@ export default function windowZindexTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_SubWindowZLevel_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('test_SubWindowZLevel_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_SubWindowZLevel_0400';
       console.log(caseName + 'begin');
       let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0400');
@@ -1528,7 +1433,7 @@ export default function windowZindexTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_SubWindowZLevel_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('test_SubWindowZLevel_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_SubWindowZLevel_0500';
       console.log(caseName + 'begin');
       let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0500');
@@ -1577,7 +1482,7 @@ export default function windowZindexTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('test_SubWindowZLevel_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('test_SubWindowZLevel_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_SubWindowZLevel_0600';
       console.log(caseName + 'begin');
       let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0600');
@@ -1601,6 +1506,28 @@ export default function windowZindexTest() {
           expect().assertFail();
           done();
         }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SubWindowZLevel_0700
+     * @tc.name      : test_SubWindowZLevel_0700
+     * @tc.desc      : test_SubWindowZLevel_0700
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_SubWindowZLevel_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_SubWindowZLevel_0700 ';
+      console.log(caseName + 'begin');
+      let windowClass = await windowStage.createSubWindow('test_SubWindowZLevel_0700');
+      await windowClass.destroyWindow();
+      try {
+        windowClass.getSubWindowZLevel();
+      } catch (err) {
+        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        expect(err.code).assertEqual(1300002);
+        done()
       }
     });
 
@@ -1673,6 +1600,7 @@ export default function windowZindexTest() {
         done();
       }
     });
+
     /**
      * @tc.number    : SUB_BASIC_WMS_createWindow_typeMain_0100
      * @tc.name      : test_create_window_typeMain
