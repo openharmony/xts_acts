@@ -1598,17 +1598,14 @@ export default function windowPropertiesTest2() {
           }
         }
         windowStageStart.on('windowStageEvent', callback)
+        // 3、被拉起的主窗minimize
+        await windowClass.minimize();
+        await sleep(2000);
+        await terminateAbility(caseName);
+        done()
       } catch (err) {
         console.error(msgStr + 'failed, ' + 'caught, err: ' + JSON.stringify(err));
         await terminateAbility(caseName);
-        expect().assertFail();
-        done()
-      }
-      // 3、被拉起的主窗minimize
-      try {
-        await windowClass.minimize();
-      } catch (err) {
-        console.error(msgStr + 'minimize ' + 'caught, err: ' + JSON.stringify(err));
         expect().assertFail();
         done()
       }
