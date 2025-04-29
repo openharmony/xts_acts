@@ -16,8 +16,26 @@
 
 import notifyDragStartRequest from './Drag/notifyDragStartRequest.test';
 import UIObserverEvent from './ListeningEvent/UIObserverEvent.test';
+import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoScroll_false.test';
+import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
+import enableEdgeAutoScroll from './DragInteractionOptions/enableEdgeAutoScroll.test';
+import LongPressRecognizer from './GestureRecognizer/LongPressRecognizer.test';
+import PanRecognizer from './GestureRecognizer/PanRecognizer.test';
+import PinchRecognizer from './GestureRecognizer/PinchRecognizer.test';
+import RotationRecognizer from './GestureRecognizer/RotationRecognizer.test';
+import SwipeRecognizer from './GestureRecognizer/SwipeRecognizer.test';
+import TapRecognizer from './GestureRecognizer/TapRecognizer.test';
 
 export default function testsuite() {
   notifyDragStartRequest()
   UIObserverEvent()
+  enableEdgeAutoScroll_false();
+  enableEdgeAutoScroll_true();
+  enableEdgeAutoScroll();
+  LongPressRecognizer();
+  PanRecognizer();
+  PinchRecognizer();
+  RotationRecognizer();
+  SwipeRecognizer();
+  TapRecognizer();
 }
