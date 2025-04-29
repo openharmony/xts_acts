@@ -385,7 +385,6 @@ export default function lifecycleTest() {
               }
             }
             console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-            await sleep(3000);
             globalThis.ability3.terminateSelfWithResult(para)
               .then((data: ESObject) => {
                 console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
