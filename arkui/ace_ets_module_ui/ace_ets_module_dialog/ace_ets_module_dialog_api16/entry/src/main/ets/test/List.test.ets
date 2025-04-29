@@ -23,6 +23,7 @@ import subwindowDialog from './promptActionTest/subwindowDialog.test'
 import menuitemOnChangeModifierTest from './MenuTest/menuitemOnChangeModifierTest.test'
 import menuFontsizeModifierTest from './MenuTest/menuFontsizeModifierTest.test'
 import menuBindMenuModifierTest from './MenuTest/menuBindMenuModifierTest.test'
+import showToastOptions from './promptActionTest/showToastOptions.test'
 export default function testsuite() {
     maxWidth();
     openMenu();
@@ -35,4 +36,5 @@ export default function testsuite() {
     menuitemOnChangeModifierTest();
     menuFontsizeModifierTest();
     menuBindMenuModifierTest();
+    showToastOptions()
 }
