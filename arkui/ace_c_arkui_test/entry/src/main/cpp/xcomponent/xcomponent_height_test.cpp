@@ -38,12 +38,12 @@ static napi_value TestXComponentHeight002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(xComponent, NODE_HEIGHT, &value_item);
+    auto code = OH_ArkUI_XComponent_StartImageAnalyzer(xComponent, nullptr, nullptr);
+    auto code_ = OH_ArkUI_XComponent_StopImageAnalyzer(xComponent);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(xComponent, NODE_HEIGHT) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(xComponent, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
-    auto code = OH_ArkUI_XComponent_StartImageAnalyzer(xComponent, nullptr, nullptr);
-    auto code_ = OH_ArkUI_XComponent_StopImageAnalyzer(xComponent);
     NAPI_END;
 }
 
