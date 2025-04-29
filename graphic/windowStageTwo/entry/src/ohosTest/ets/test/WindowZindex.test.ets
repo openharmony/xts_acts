@@ -1764,8 +1764,13 @@ export default function windowZindexTest() {
       } catch (err) {
         await terminateAbility3(caseName);
         console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
-        expect().assertFail();
-        done();
+        if (err.code === 801) {
+            console.log(`${caseName} deviceType does not supported this Capability`);
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
       }
     });
 
