@@ -346,6 +346,8 @@ public:
     Camera_ErrorCode CameraManagerRegisterFoldStatusCallback(int useCaseCode);
     Camera_ErrorCode CameraManagerUnregisterFoldStatusCallback(int useCaseCode);
     int32_t ColorSpace(void);
+    Camera_ErrorCode GetCameraDevice(int useCaseCode);     // 基于位置和类型获取相机实例。
+    Camera_ErrorCode GetCameraConcurrentInfos(int useCaseCode);   // 获取相机并发信息。
 
     // test aid
     Camera_ErrorCode SetSceneMode(int useCaseCode);

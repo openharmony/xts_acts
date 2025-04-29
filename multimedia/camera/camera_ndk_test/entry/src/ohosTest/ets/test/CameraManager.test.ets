@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 //import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -1039,6 +1039,36 @@ export default function CameraManagerTest() {
       let ret = cameraObj.cameraManagerUnregisterFoldStatusChange(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHCameraManagerUnregisterFoldStatusCallback0300:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
+    })
+    
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerGetCameraDevice0100
+     * @tc.name       : testOHCameraManagerGetCameraDevice0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+     it('testOHCameraManagerGetCameraDevice0100', Level.LEVEL0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.oHCameraManagerGetCameraDevice(0)
+      console.log(TAG+"testOHCameraManagerGetCameraDevice0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
+    })
+ 
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerGetCameraConcurrentInfos0100
+     * @tc.name       : testOHCameraManagerGetCameraConcurrentInfos0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraManagerGetCameraConcurrentInfos0100', Level.LEVEL0, () => {
+      getCameraManagerInstance();
+      let ret = cameraObj.oHCameraManagerGetCameraConcurrentInfos(0)
+      console.log(TAG+"testOHCameraManagerGetCameraConcurrentInfos0100:"+ret);
+      expect(ret).assertEqual(CAMERA_OK);
     })
   })
 }
