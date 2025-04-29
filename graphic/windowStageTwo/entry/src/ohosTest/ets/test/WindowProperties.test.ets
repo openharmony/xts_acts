@@ -21,6 +21,44 @@ import { Driver, ON } from '@ohos.UiTest';
 import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
+import { StartOptions } from '@kit.AbilityKit';
+import { display } from '@kit.ArkUI';
+
+let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+
+async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility3',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility3(caseName: string) {
+  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
+
 export default function windowPropertiesTest() {
     describe('windowProperties_test', () => {
         let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
@@ -3898,6 +3936,694 @@ export default function windowPropertiesTest() {
           }
       }
     })
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+       * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+        console.log(caseName + 'begin');
+        let windowStageStart = await startAbility3(caseName, context);
+        try {
+          let windowClass2 = windowStageStart.getMainWindowSync();
+          let res = windowClass2.getWindowProperties()
+          console.info(caseName + 'res: ' + JSON.stringify(res));
+          window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+            console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+            console.info(caseName + `infos.length: ${infos.length}`);
+            expect(infos.length).assertLargerOrEqual(1);
+            let isExit = false;
+            for (let i = 0; i < infos.length; i++) {
+              if (infos[i].windowId === res.id) {
+                isExit = true;
+                let info = infos[i];
+                console.info(caseName + 'info: ' + JSON.stringify(info));
+                expect(info.rect.left).assertEqual(res.windowRect.left);
+                expect(info.rect.top).assertEqual(res.windowRect.top);
+                expect(info.rect.width).assertEqual(res.windowRect.width);
+                expect(info.rect.height).assertEqual(res.windowRect.height);
+                expect(info.isFocused).assertEqual(true);
+                console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
+                console.info(caseName + `info.bundleName: ${info.bundleName}`);
+                console.info(caseName + `info.abilityName: ${info.abilityName}`);
+                break;
+              }
+            }
+            if (!isExit) {
+              console.error(`${caseName} failed, there is no match windowId.`);
+              await terminateAbility3(caseName);
+              expect().assertFail();
+              done()
+            }
+            await terminateAbility3(caseName);
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+            await terminateAbility3(caseName);
+            if (err.code === 801) {
+              console.log(`${caseName} deviceType does not supported this Capability`);
+              done()
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (err) {
+          await terminateAbility3(caseName);
+          console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+          expect().assertFail();
+          done();
+        }
+      });
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0100
+       * @tc.name      : test_RotationChange_0100
+       * @tc.desc      : test_RotationChange_0100
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 3
+       */
+      it('test_RotationChange_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0100';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+            };
+          windowClass.on(null, rotationCallback);
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0200
+       * @tc.name      : test_RotationChange_0200
+       * @tc.desc      : test_RotationChange_0200
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 3
+       */
+      it('test_RotationChange_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0200';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0200');
+        await subWindowClass.destroyWindow();
+        try {
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+            };
+          subWindowClass.on('rotationChange', rotationCallback);
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(1300002);
+          done();
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0300
+       * @tc.name      : test_RotationChange_0300
+       * @tc.desc      : test_RotationChange_0300
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 3
+       */
+      it('test_RotationChange_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0300';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+            };
+          windowClass.off(null, rotationCallback);
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0400
+       * @tc.name      : test_RotationChange_0400
+       * @tc.desc      : test_RotationChange_0400
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 3
+       */
+      it('test_RotationChange_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0400';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0200');
+        await subWindowClass.destroyWindow();
+        try {
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              };
+          subWindowClass.off('rotationChange', rotationCallback);
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(1300002);
+          done();
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0500
+       * @tc.name      : test_RotationChange_0500
+       * @tc.desc      : test_RotationChange_0500
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0500';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0500');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+              let displayInfo = display.getDefaultDisplaySync();
+              console.log(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+          }
+          subWindowClass.on('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          let subWindowProperties = subWindowClass.getWindowProperties()
+          console.log(`${caseName} :subWindowProperties.windowRect: ${JSON.stringify(subWindowProperties.windowRect)}`);
+          subWindowClass.off('rotationChange', rotationCallback);
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0600
+       * @tc.name      : test_RotationChange_0600
+       * @tc.desc      : test_RotationChange_0600
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+      it('test_RotationChange_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0600';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0600');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+            }
+          subWindowClass.on('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT_INVERTED)
+          let subWindowProperties = subWindowClass.getWindowProperties()
+          console.log(`${caseName} :subWindowProperties.windowRect: ${JSON.stringify(subWindowProperties.windowRect)}`);
+          subWindowClass.off('rotationChange', rotationCallback);
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0700
+       * @tc.name      : test_RotationChange_0700
+       * @tc.desc      : test_RotationChange_0700
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+      it('test_RotationChange_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0700';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0700');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+            }
+          subWindowClass.on('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE_INVERTED)
+          let subWindowProperties = subWindowClass.getWindowProperties()
+          console.log(`${caseName} :subWindowProperties.windowRect: ${JSON.stringify(subWindowProperties.windowRect)}`);
+          subWindowClass.off('rotationChange', rotationCallback);
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0800
+       * @tc.name      : test_RotationChange_0800
+       * @tc.desc      : test_RotationChange_0800
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0800';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let windowLimits = windowClass.getWindowLimits()
+          console.log(`${caseName} :mainWindow getWindowLimits. info: ${JSON.stringify(windowLimits)}`);
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: 100,
+                    height: 100,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: 100,
+                    height: 100
+                  }
+                };
+              }
+            }
+          windowClass.on('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          let windowProperties = windowClass.getWindowProperties()
+          console.log(`${caseName} :main windowProperties.windowRect: ${JSON.stringify(windowProperties.windowRect)}`);
+          windowClass.off('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_0900
+       * @tc.name      : test_RotationChange_0900
+       * @tc.desc      : test_RotationChange_0900
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_0900';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0900');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback1: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+            }
+          const rotationCallback2: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number + 20,
+                    height: subWindowLimits.minHeight as number + 20,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 30,
+                    height: subWindowLimits.minHeight as number + 30
+                  }
+                };
+              }
+            }
+          subWindowClass.on('rotationChange', rotationCallback1);
+          subWindowClass.on('rotationChange', rotationCallback2);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          subWindowClass.off('rotationChange', rotationCallback1);
+          subWindowClass.off('rotationChange', rotationCallback2);
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_1000
+       * @tc.name      : test_RotationChange_1000
+       * @tc.desc      : test_RotationChange_1000
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_1000';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1000');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+            }
+          subWindowClass.on('rotationChange', rotationCallback);
+          subWindowClass.off('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_1100
+       * @tc.name      : test_RotationChange_1100
+       * @tc.desc      : test_RotationChange_1100
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_1100';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1100');
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+            }
+          subWindowClass.on('rotationChange', rotationCallback);
+          subWindowClass.off('rotationChange');
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_RotationChange_1200
+       * @tc.name      : test_RotationChange_1200
+       * @tc.desc      : test_RotationChange_1200
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+      it('test_RotationChange_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let caseName: string = 'test_RotationChange_1200';
+        let msgStr: string = 'jsUnittest ' + caseName + ' ';
+        console.log(msgStr + 'begin');
+        try {
+          let config: window.Configuration = {
+            name: "test_RotationChange_1200",
+            windowType: window.WindowType.TYPE_DIALOG,
+            ctx: context
+          };
+          const subWindowClass = await window.createWindow(config);
+          console.info(`${caseName} Succeeded in creating the dialog window.`);
+          let subWindowLimits = subWindowClass.getWindowLimits()
+          console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+          let windowClass = windowStage.getMainWindowSync();
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
+            (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
+              console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+              if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 0,
+                    top: 0,
+                    width: subWindowLimits.minWidth as number,
+                    height: subWindowLimits.minHeight as number,
+                  }
+                };
+              } else {
+                rotationResult = {
+                  rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+                  windowRect: {
+                    left: 200,
+                    top: 200,
+                    width: subWindowLimits.minWidth as number + 50,
+                    height: subWindowLimits.minHeight as number + 50
+                  }
+                };
+              }
+              let displayInfo = display.getDefaultDisplaySync();
+              console.log(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+            }
+          subWindowClass.on('rotationChange', rotationCallback);
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.log(`${caseName} :sub windowProperties.windowRect: ${JSON.stringify(windowProperties.windowRect)}`);
+          subWindowClass.off('rotationChange', rotationCallback);
+          await subWindowClass.destroyWindow()
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+          done();
+        } catch (err) {
+          console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      });
+
     })
 }
 

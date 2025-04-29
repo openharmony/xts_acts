@@ -25,6 +25,8 @@ import windowZindexTest from './WindowZindex.test';
 import windowLayoutTest from './WindowLayout.test';
 import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 import windowFocusTest from './WindowFocus.test';
+import windowPCTest from './WindowPC.test';
+
 export default function testsuite() {
   windowFocusTest();
   windowInterface();
@@ -39,4 +41,5 @@ export default function testsuite() {
   windowPropertiesTest();
   windowPropertiesTest2();
   extensionWindowPropertiesTest();
+  windowPCTest()
 }
