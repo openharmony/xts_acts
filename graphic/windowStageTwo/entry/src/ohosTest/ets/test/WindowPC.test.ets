@@ -88,6 +88,8 @@ export default function windowPCTest() {
     afterEach(() => {
     });
     afterAll(() => {
+      let windowClass = windowStage.getMainWindowSync()
+      windowClass.setUIContent('testability/pages/Index')
     });
 
     /**
