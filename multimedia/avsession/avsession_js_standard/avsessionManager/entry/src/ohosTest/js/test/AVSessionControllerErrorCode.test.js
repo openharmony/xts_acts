@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import featureAbility from '@ohos.ability.featureAbility';
 
 export default function AVSessionControllerErrorCode() {
@@ -197,7 +197,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.sendAVKeyEvent(err => {
                     if (err) {
@@ -224,7 +224,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.sendAVKeyEvent(event, err => {
@@ -253,7 +253,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.sendAVKeyEvent(errEvent, async err => {
                     if (err) {
@@ -280,7 +280,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.deactivate().then(() => {
                 console.info('TestLog: session deactivate success');
             }).catch(err => {
@@ -313,7 +313,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.sendAVKeyEvent().then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect().assertFail();
@@ -332,7 +332,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(async () => {
                 await controller.sendAVKeyEvent(event).then(() => {
                     console.info('sendAVKeyEvent Successfully');
@@ -353,7 +353,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.sendAVKeyEvent(errEvent).then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect().assertFail();
@@ -372,7 +372,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_ERRORCODE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.deactivate().then(() => {
                 console.info('TestLog: session deactivate success');
             }).catch(err => {
@@ -397,7 +397,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.getRealPlaybackPositionSync();
@@ -418,7 +418,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(async () => {
                 await controller.getValidCommands().then(() => {
                     console.info(`TestLog: getValidCommands Successfully.`);
@@ -439,7 +439,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await controller.getValidCommands().then((data) => {
                     console.info(`TestLog: getValidCommands Successfully.`);
@@ -460,7 +460,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.getValidCommands(err => {
@@ -489,7 +489,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_ERRORCODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getValidCommands(err => {
@@ -519,7 +519,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             onCallbackInvalidParam('sessionEvent');
             done();
         })
@@ -532,7 +532,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.on('sessionEvent', callback1, callback2);
                 expect().assertFail();
@@ -550,7 +550,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.on('sessionEvent', INVALID_STRING);
                 expect().assertFail();
@@ -568,7 +568,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await onCallbackInvalidController('sessionEvent')
             done();
         })
@@ -581,7 +581,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             offCallbackInvalidParam('sessionEvent');
 			done();
 		})
@@ -594,7 +594,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.sendCommonCommand(COMMON_COMMAND_STRING).then(() => {
                 console.info('sendCommonCommand Successfully');
                 expect().assertFail();
@@ -613,7 +613,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.sendCommonCommand(COMMON_COMMAND_PARAMS, COMMON_COMMAND_PARAMS).then(() => {
                 console.info('sendCommonCommand Successfully');
                 expect().assertFail();
@@ -632,7 +632,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSessionState(async () => {
                 await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).then(() => {
                     console.info('sendCommonCommand Successfully');
@@ -653,7 +653,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(async () => {
                 await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).then(() => {
                     console.info('sendCommonCommand Successfully');
@@ -674,7 +674,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0500", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.sendCommonCommand(COMMON_COMMAND_STRING, err => {
                     if (err) {
@@ -701,7 +701,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0600", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.sendCommonCommand(COMMON_COMMAND_PARAMS, COMMON_COMMAND_PARAMS, err => {
                     if (err) {
@@ -728,7 +728,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0700", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSessionState(() => {
                 try {
                     controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS, err => {
@@ -757,7 +757,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0800", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS, err => {
@@ -786,7 +786,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(async () => {
                 await controller.getExtras().then(() => {
                     console.info('getExtras Successfully');
@@ -807,7 +807,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(async () => {
                 await controller.getExtras().then(() => {
                     console.info('getExtras Successfully');
@@ -828,7 +828,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getExtras(err => {
@@ -857,7 +857,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getExtras(err => {
@@ -886,7 +886,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             onCallbackInvalidParam('extrasChange');
             done();
 		})
@@ -899,7 +899,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			try {
 				controller.on('extrasChange', callback1, callback2);
                 expect().assertFail();
@@ -917,7 +917,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.on('extrasChange', INVALID_STRING);
                 expect().assertFail();
@@ -935,7 +935,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await onCallbackInvalidController('extrasChange')
             done();
 		})
@@ -948,7 +948,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             offCallbackInvalidParam('extrasChange');
 			done();
 		})
@@ -961,7 +961,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             onCallbackInvalidParam('queueItemsChange');
             done();
 		})
@@ -974,7 +974,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.on('queueItemsChange', callback1, callback2);
                 expect().assertFail();
@@ -992,7 +992,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await onCallbackInvalidController('queueItemsChange');
 			done();
 		})
@@ -1005,7 +1005,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             offCallbackInvalidParam('queueItemsChange');
 			done();
 		})
@@ -1018,7 +1018,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             onCallbackInvalidParam('queueTitleChange');
             done();
 		})
@@ -1031,7 +1031,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.on('queueTitleChange', callback1, callback2);
                 expect().assertFail();
@@ -1049,7 +1049,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await onCallbackInvalidController('queueTitleChange');
 			done();
 		})
@@ -1062,7 +1062,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_ERRRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_ERRRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             offCallbackInvalidParam('queueTitleChange');
 			done();
 		})
@@ -1075,7 +1075,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.skipToQueueItem('invalid param').then(() => {
                 console.info('skipToQueueItem Successfully');
                 expect().assertFail();
@@ -1094,7 +1094,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await controller.skipToQueueItem(QUEUE_ITEM_ID).then(() => {
                     console.info('skipToQueueItem Successfully');
@@ -1115,7 +1115,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(async () => {
                 await controller.skipToQueueItem(QUEUE_ITEM_ID).then(() => {
                     console.info('skipToQueueItem Successfully');
@@ -1136,7 +1136,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.skipToQueueItem('invalid param', err => {
                     if (err) {
@@ -1163,7 +1163,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0500", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.skipToQueueItem(QUEUE_ITEM_ID, err => {
@@ -1192,7 +1192,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0600", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_ERRORCODE_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.skipToQueueItem(QUEUE_ITEM_ID, err => {
@@ -1221,7 +1221,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await controller.getAVQueueItems().then(() => {
                     console.info('getAVQueueItems Successfully');
@@ -1242,7 +1242,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(async () => {
                 await controller.getAVQueueItems().then(() => {
                     console.info('getAVQueueItems Successfully');
@@ -1263,7 +1263,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(() => {
                 try {
                     controller.getAVQueueItems(err => {
@@ -1292,7 +1292,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.getAVQueueItems(err => {
@@ -1321,7 +1321,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(async () => {
                 await controller.getAVQueueTitle().then(() => {
                     console.info('getAVQueueTitle Successfully');
@@ -1342,7 +1342,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(async () => {
                 await controller.getAVQueueTitle().then(() => {
                     console.info('getAVQueueTitle Successfully');
@@ -1363,7 +1363,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidSession(() => {
                 try {
                     controller.getAVQueueTitle(err => {
@@ -1392,7 +1392,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0400", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidController(() => {
                 try {
                     controller.getAVQueueTitle(err => {
@@ -1421,7 +1421,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getAVPlaybackStateSync();
@@ -1442,7 +1442,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getAVPlaybackStateSync();
@@ -1463,7 +1463,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getAVMetadataSync();
@@ -1484,7 +1484,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getAVMetadataSync();
@@ -1505,7 +1505,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getAVQueueTitleSync();
@@ -1526,7 +1526,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getAVQueueTitleSync();
@@ -1547,7 +1547,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getAVQueueItemsSync();
@@ -1568,7 +1568,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getAVQueueItemsSync();
@@ -1589,7 +1589,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getOutputDeviceSync();
@@ -1610,7 +1610,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.isActiveSync();
@@ -1631,7 +1631,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.isActiveSync();
@@ -1652,7 +1652,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_ERRORCODE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await invalidSession(() => {
                 try {
                     controller.getValidCommandsSync();
@@ -1673,7 +1673,7 @@ export default function AVSessionControllerErrorCode() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_ERRORCODE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_ERRORCODE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await invalidController(() => {
                 try {
                     controller.getValidCommandsSync();
