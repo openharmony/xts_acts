@@ -490,7 +490,7 @@ export default function bluetoothManagerTest() {
       const LABEL_BLUETOOTH = "bluetooth";
       try {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
-        await sleep(500);
+        await sleep(12000);
         bluetoothManager.turnOnBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
@@ -596,7 +596,7 @@ export default function bluetoothManagerTest() {
       const LABEL_BLUETOOTH = "bluetooth";
       try {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
-        await sleep(500);
+        await sleep(12000);
         bluetoothManager.turnOffBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
