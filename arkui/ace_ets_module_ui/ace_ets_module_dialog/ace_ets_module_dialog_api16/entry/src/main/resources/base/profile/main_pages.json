@@ -11,6 +11,7 @@
     "MainAbility/pages/promptAction/closePopup",
     "MainAbility/pages/Menu/menuFontsizeModifier",
     "MainAbility/pages/Menu/menuitemOnChangeModifier",
-    "MainAbility/pages/Menu/menuBindMenuModifier"
+    "MainAbility/pages/Menu/menuBindMenuModifier",
+    "MainAbility/pages/promptAction/showToastOptions"
   ]
 }
