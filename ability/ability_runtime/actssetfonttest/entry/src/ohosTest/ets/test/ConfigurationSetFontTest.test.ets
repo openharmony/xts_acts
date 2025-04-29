@@ -42,7 +42,7 @@ export default function setFontTest() {
       let cmd = "hilog -r";
       abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
         hilog.info(0x0000, TAG, "[%{public}s] ExecuteShellCommand succeed. ShellCmdResult: %{public}s", TAG, JSON.stringify(data));
-      })
+      });
       await sleep(300);
     })
     afterEach(() => {
@@ -110,13 +110,13 @@ export default function setFontTest() {
         uiContext.getFont().registerFont({
           familyName: "font1",
           familySrc: $rawfile('font/TestFont1.ttf')
-        })
+        });
         applicationContext.setFont("font1");
         await sleep(500);
         abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
           hilog.info(0x0000, TAG, "[%{public}s] ExecuteShellCommand succeed. ShellCmdResult: %{public}s", TAG, JSON.stringify(data));
           flag = data.stdResult.includes("UpdateConfiguration, name:{\"0#ohos.application.font\":\"font1\"}");
-        })
+        });
         await sleep(500);
         hilog.info(0x0000, TAG, "[%{public}s] flag: %{public}s", TAG, JSON.stringify(flag));
         expect(flag).assertEqual(true);
@@ -147,13 +147,13 @@ export default function setFontTest() {
           uiContext.getFont().registerFont({
             familyName: fontNameStr,
             familySrc: $rawfile(fontSrcStr)
-          })
+          });
           applicationContext.setFont(fontNameStr);
           await sleep(500);
           abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
             hilog.info(0x0000, TAG, "[%{public}s] %{public}dth ExecuteShellCommand succeed. ShellCmdResult: %{public}s", TAG, i, JSON.stringify(data));
             flag = data.stdResult.includes(`UpdateConfiguration, name:{\"0#ohos.application.font\":\"${fontNameStr}\"}`);
-          })
+          });
           await sleep(500);
           hilog.info(0x0000, TAG, "[%{public}s] %{public}dth flag: %{public}s", TAG, i, JSON.stringify(flag));
           expect(flag).assertEqual(true);
@@ -182,13 +182,13 @@ export default function setFontTest() {
         uiContext.getFont().registerFont({
           familyName: "font1",
           familySrc: $rawfile('font/TestFont1.ttf')
-        })
+        });
         applicationContext.setFont("font1");
         await sleep(500);
         abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
           hilog.info(0x0000, TAG, "[%{public}s] ExecuteShellCommand succeed. ShellCmdResult: %{public}s", TAG, JSON.stringify(data));
           flag = (data.stdResult.includes("UpdateConfiguration, name:{\"0#ohos.application.font\":\"font1\"}")) && !(data.stdResult.includes("TestAbility onConfigurationUpdate"));
-        })
+        });
         await sleep(500);
         hilog.info(0x0000, TAG, "[%{public}s] flag: %{public}s", TAG, JSON.stringify(flag));
         expect(flag).assertEqual(true);

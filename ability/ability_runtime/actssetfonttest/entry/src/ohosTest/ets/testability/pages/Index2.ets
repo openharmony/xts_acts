@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,7 @@ let testAbilityWant:Want;
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World 222'
+  @State message: string = 'Hello World 222';
   private context:common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
@@ -44,12 +44,12 @@ struct Index {
           .width('100%')
           .height('90%')
           .onTerminated((info) => {
-            console.log("EntryEmbeddedUIExtAbility Index2: onTerminated, info:" + JSON.stringify(info))
+            console.log("EntryEmbeddedUIExtAbility Index2: onTerminated, info:" + JSON.stringify(info));
             this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
             this.context.terminateSelf()
           })
           .onError((error) => {
-            console.log("EntryEmbeddedUIExtAbility Index2: onError, error:" + JSON.stringify(error))
+            console.log("EntryEmbeddedUIExtAbility Index2: onError, error:" + JSON.stringify(error));
             this.message = 'Error: code = ' + error.code;
           })
       }.width('100%')
