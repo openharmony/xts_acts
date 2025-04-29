@@ -78,5 +78,18 @@ export default function customDialogShowTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMDIALOG_SHOW_0500
+     * @tc.name       : testCustomDialogShow005
+     * @tc.desc       : testing show for customDialog with callback function
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testCustomDialogShow005', 0, async (done: Function) => {
+      expect(nativeFunc.testCustomDialogShow005()).assertEqual(0)
+      done()
+    })
+
   })
 }
