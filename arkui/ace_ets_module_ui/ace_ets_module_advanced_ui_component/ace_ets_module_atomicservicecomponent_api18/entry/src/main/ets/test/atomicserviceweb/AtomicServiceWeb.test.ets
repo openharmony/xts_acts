@@ -65,7 +65,7 @@ export default function atomicservicewebTest() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看AtomicServiceWebTest是否存在以下入口。
-      let tab1 = await driver.findComponent(ON.text("发送消息"));
+      let tab1 = await driver.findComponent(ON.text("accessForward"));
       expect(tab1 !== null).assertTrue();
       console.info('[AtomicServiceWebTest_0100] END');
       done();
