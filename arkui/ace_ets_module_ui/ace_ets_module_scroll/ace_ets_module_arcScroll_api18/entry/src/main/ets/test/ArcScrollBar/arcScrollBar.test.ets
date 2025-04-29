@@ -58,7 +58,8 @@ export default function arcScrollBar() {
       console.info("[arcScrollBar_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[arcScrollBar_0100] state: " + JSON.stringify(JSON.parse(strJson).$attrs.state));
       await CommonFunc.sleep(1000);
-      expect(JSON.parse(strJson).$attrs.alignContent).assertEqual("Alignment.Center");
+      expect(JSON.parse(strJson).$attrs.borderStyle).assertEqual("BorderStyle.Solid");
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Center");
       console.info('[arcScrollBar_0100] END');
       done();
     });
