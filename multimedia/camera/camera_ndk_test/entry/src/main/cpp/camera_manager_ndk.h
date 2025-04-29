@@ -203,6 +203,8 @@ public:
     Camera_ErrorCode SessionIsFlashModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetFlashMode(void);
     Camera_ErrorCode SessionSetFlashMode(uint32_t mode);
+    Camera_ErrorCode GetCameraDevice(int useCaseCode);     // 基于位置和类型获取相机实例。
+    Camera_ErrorCode GetCameraConcurrentInfos(int useCaseCode);   // 获取相机并发信息。
 
     Camera_ErrorCode SessionIsExposureModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetExposureMode(void);
