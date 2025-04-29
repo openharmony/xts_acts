@@ -409,6 +409,15 @@ export default function bluetoothManagerTest() {
       done();
     })
 
+    let sleep = (timeout: number): Promise<ESObject> => {
+      return new Promise(resolve => {
+        const st =setTimeout(() => {
+          resolve(null);
+          clearTimeout(st);
+        }, timeout);
+      });
+    };
+    
     /**
      * @tc.number SUB_CUSTOMIZATION_EDM_TURNON_BLUETOOTH_0100
      * @tc.name test_turnon_bluetooth_0100
@@ -481,6 +490,7 @@ export default function bluetoothManagerTest() {
       const LABEL_BLUETOOTH = "bluetooth";
       try {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
+        await sleep(500);
         bluetoothManager.turnOnBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
@@ -586,6 +596,7 @@ export default function bluetoothManagerTest() {
       const LABEL_BLUETOOTH = "bluetooth";
       try {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
+        await sleep(500);
         bluetoothManager.turnOffBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
