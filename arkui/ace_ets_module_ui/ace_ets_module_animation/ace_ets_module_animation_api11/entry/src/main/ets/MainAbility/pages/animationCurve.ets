@@ -16,7 +16,7 @@ import Curves from '@ohos.curves';
 
 @Entry
 @Component
-struct animationCurve {
+struct AnimationCurveTest {
   @State widthSize: number = 50;
   @State heightSize: number = 50;
 
