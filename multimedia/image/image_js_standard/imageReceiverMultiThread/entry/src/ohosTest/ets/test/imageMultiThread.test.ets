@@ -86,8 +86,6 @@ async function createDualChannelPreview(cameraManager: camera.CameraManager, ima
     let previewProfilesObj1: camera.Profile = previewProfiles[0];
     // 预览流2
     let previewProfilesObj2: camera.Profile = previewProfiles[0];
-    // 预览流3
-    let previewProfilesObj3: camera.Profile = previewProfiles[0];
 
     // 创建 预览流1 输出对象
     let previewOutput1: camera.PreviewOutput =
@@ -96,10 +94,6 @@ async function createDualChannelPreview(cameraManager: camera.CameraManager, ima
     // 创建 预览流2 输出对象
     let previewOutput2: camera.PreviewOutput =
       cameraManager.createPreviewOutput(previewProfilesObj2, imageReceiverSurfaceIdArray[1]);
-
-    // 创建 预览流3 输出对象
-    let previewOutput3: camera.PreviewOutput =
-      cameraManager.createPreviewOutput(previewProfilesObj3, imageReceiverSurfaceIdArray[2]);
 
     // 创建cameraInput对象
     let cameraInput: camera.CameraInput = cameraManager.createCameraInput(camerasDevices[0]);
@@ -121,8 +115,6 @@ async function createDualChannelPreview(cameraManager: camera.CameraManager, ima
     photoSession.addOutput(previewOutput1);
     // 把 预览流2 加入到会话
     photoSession.addOutput(previewOutput2);
-    // 把 预览流3 加入到会话
-    photoSession.addOutput(previewOutput3);
 
     // 提交配置信息
     await photoSession.commitConfig();
@@ -141,8 +133,6 @@ async function createDualChannelPreview(cameraManager: camera.CameraManager, ima
     await previewOutput1.release();
     // 释放拍照输出流
     await previewOutput2.release();
-    // 释放拍照输出流
-    await previewOutput3.release();
 
     // 释放会话
     await photoSession.release();
