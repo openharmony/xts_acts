@@ -229,9 +229,9 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         console.info(`${message} Succeeded in setting the function of disabling the resize by drag window.`);
         let windowPoint = await windowClass.getWindowProperties().windowRect
         console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
-        await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top})
+        await driver.mouseMoveTo({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top})
         await sleep(2000)
-        await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 100},2000)
+        await driver.mouseDrag({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top}, {x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 100},2000)
         await sleep(1000)
         let windowPointDragged = await windowClass.getWindowProperties().windowRect
         console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
@@ -2319,9 +2319,9 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
               let windowPoint = subWindowClass.getWindowProperties().windowRect
               console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
               let driver =  Driver.create()
-              await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5})
+              await driver.mouseMoveTo({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5})
               await sleep(1000)
-              await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 100},2000)
+              await driver.mouseDrag({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5}, {x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 100},2000)
               await sleep(1000)
               let windowPointDragged = subWindowClass.getWindowProperties().windowRect
               console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
@@ -2371,9 +2371,9 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
             let windowPoint = windowClass.getWindowProperties().windowRect
             console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
             let driver =  Driver.create()
-            await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5})
+            await driver.mouseMoveTo({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5})
             await sleep(1000)
-            await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top - 100})
+            await driver.mouseDrag({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5}, {x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top - 100})
             await sleep(1000)
             let windowPointDragged = windowClass.getWindowProperties().windowRect
             console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)
@@ -2438,9 +2438,9 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
               let windowPoint = subWindowClass.getWindowProperties().windowRect
               console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
               let driver = Driver.create()
-              await driver.mouseMoveTo({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5})
+              await driver.mouseMoveTo({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5})
               await sleep(1000)
-              await driver.mouseDrag({x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 5}, {x: windowPoint.left + windowPoint.width / 2, y: windowPoint.top + 100})
+              await driver.mouseDrag({x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 5}, {x: windowPoint.left + Math.ceil(windowPoint.width / 2), y: windowPoint.top + 100})
               await sleep(1000)
               let windowPointDragged = subWindowClass.getWindowProperties().windowRect
               console.info(`${message} windowPointDraged = ${JSON.stringify(windowPointDragged)}`)

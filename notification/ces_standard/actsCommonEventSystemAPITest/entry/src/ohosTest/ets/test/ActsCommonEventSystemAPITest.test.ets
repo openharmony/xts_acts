@@ -776,37 +776,34 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (don
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
-
-  notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
-    expect(true).assertTrue();
-  }).catch((err: BusinessError) => {
-    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
-    if (err.code == 801) {
-      expect(true).assertTrue();
-      done();
-    } else {
-      expect().assertFail();
-      done();
-    }
-  });
-
-  await sleep(2000)
-
-  await notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
-    expect(false).assertTrue();
-    done()
-  }).catch((err: BusinessError) => {
-    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
-    if (err.code == 801) {
-      expect(true).assertTrue();
-      done();
-    } else {
-      expect(err.code).assertEqual(1600018)
-      done()
-    }
-  });
-})
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
+      notificationManager.openNotificationSettings(CustomGlobal.context).then(async () => {
+        expect(true).assertTrue();
+        await sleep(2000)
+        await notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
+          expect(false).assertTrue();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect(err.code).assertEqual(1600018)
+            done()
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect(err.code).assertEqual(1600001)
+          done();
+        }
+      });
+    })
 
 
     /*

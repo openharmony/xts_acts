@@ -29,6 +29,7 @@ struct Index {
         Divider().height(2).color(0xCCCCCC)
         EditableTitleBar({
           leftIconStyle: EditableLeftIconType.Cancel,
+          leftIconDefaultFocus: false,
           title: '主标题',
           subtitle: '副标题',
           isSaveIconRequired: false,
@@ -63,6 +64,7 @@ struct Index {
               promptAction.showToast({ message: 'show toast index 1' });
             }
           },
+          saveIconDefaultFocus: false,
           menuItems: [
             {
               value: $r('sys.symbol.house'),

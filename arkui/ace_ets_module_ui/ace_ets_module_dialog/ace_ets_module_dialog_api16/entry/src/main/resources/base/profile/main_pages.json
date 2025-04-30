@@ -18,6 +18,7 @@
     "MainAbility/pages/dialogLife/ActionSheetLife",
     "MainAbility/pages/dialogLife/AlertDialogLife",
     "MainAbility/pages/dialogLife/CustomDialogLife",
-    "MainAbility/pages/bindSheet/showInSubWindowBindSheet"
+    "MainAbility/pages/bindSheet/showInSubWindowBindSheet",
+    "MainAbility/pages/promptAction/showToastOptions"
   ]
 }

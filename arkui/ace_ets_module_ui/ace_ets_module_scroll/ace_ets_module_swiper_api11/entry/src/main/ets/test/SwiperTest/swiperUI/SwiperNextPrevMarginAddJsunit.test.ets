@@ -2569,12 +2569,21 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
 
+      let subcomponment2 = CommonFunc.getComponentRect('2');
+      let right2 =  subcomponment2.right;
+      let left2  =  subcomponment2.left;
+
+      let subcomponment3 = CommonFunc.getComponentRect('3');
+      let right3 =  subcomponment3.right;
+      let left3  =  subcomponment3.left;
+
+
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
       let obj: ESObject = JSON.parse(strJson);
       let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
-      expect(Math.abs(Math.floor((swiperRight - swiperLeft)- (3*(right - left)))) <= 1).assertTrue();
+      expect(Math.abs(Math.floor((swiperRight - swiperLeft)- ((right - left) + (right2 - left2) + (right3 - left3)))) <= 1).assertTrue();
       done();
     });
 

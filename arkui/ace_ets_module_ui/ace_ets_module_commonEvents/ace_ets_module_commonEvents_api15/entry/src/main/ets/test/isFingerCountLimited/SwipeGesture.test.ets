@@ -61,12 +61,12 @@ export default function swipeGestureTest() {
       let areaHeight1 = areaObj1.bottom - areaObj1.top
       let areaWidth1 = areaObj1.right - areaObj1.left
       console.log('SwipeGesture1_0100 areaObj1',areaObj1.left,areaObj1.top,areaObj1.right,areaObj1.bottom)
-      console.log('SwipeGesture1_0100 areaObj1 clicked start',Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2))
-      console.log('SwipeGesture1_0100 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2))
+      console.log('SwipeGesture1_0100 areaObj1 clicked start',Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4))
+      console.log('SwipeGesture1_0100 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1/2))
       let driver = Driver.create();
       let speed = Math.floor(areaWidth1 * 0.6 / 0.016 / 1000) * 1000
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(areaObj1.left + areaWidth1 * 0.2),Math.round(areaObj1.top + areaHeight1/2),Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2),speed)
+      await driver.swipe(Math.round(areaObj1.left + areaWidth1/4),Math.round(areaObj1.top + areaHeight1/4),Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1/2),800)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SwipeGesture');
       let obj: ESObject = JSON.parse(strJson);

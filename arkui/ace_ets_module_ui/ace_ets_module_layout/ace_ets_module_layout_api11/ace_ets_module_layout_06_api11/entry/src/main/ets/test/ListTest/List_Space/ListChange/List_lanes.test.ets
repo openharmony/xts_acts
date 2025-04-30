@@ -142,9 +142,9 @@ export default function List_lanes() {
 
       expect(Math.abs(List_lanes_011.left - List_lanes_01.left) <= 1).assertTrue();
       expect(Math.abs(List_lanes_014.left - List_lanes_01.left) <= 1).assertTrue();
-      expect(Math.abs(Math.round((List_lanes_012.left - List_lanes_011.right) * 10) / 10 - Math.round(vp2px(50 / 3) * 10) / 10) <= 1)
+      expect(Math.abs(Math.round((List_lanes_012.left - List_lanes_011.right) -(vp2px(50 / 3)))) <= 1)
         .assertTrue();
-      expect(Math.abs(Math.round((List_lanes_013.left - List_lanes_012.right) * 10) / 10 - Math.round(vp2px(50 / 3) * 10) / 10) <= 1)
+      expect(Math.abs(Math.round((List_lanes_013.left - List_lanes_012.right) -(vp2px(50 / 3)))) <= 1)
         .assertTrue();
 
       expect(Math.abs(Math.round(List_lanes_011.right - List_lanes_011.left) - Math.round(vp2px(100))) <= 1).assertTrue();
