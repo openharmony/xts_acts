@@ -25,6 +25,7 @@ add_library(nativerender SHARED
     component/button_component.cpp
     ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     visibleAreaEventOptions/visibleAreaEventOptions.cpp
+    gestureRecognizer/GestureInterrupterTest.cpp
 )
 
 add_library(nativefunc SHARED

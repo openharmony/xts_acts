@@ -8,6 +8,7 @@
     "MainAbility/pages/datePicker/datePickerEnableHapticFeedback",
     "MainAbility/pages/swiper/SwiperIndicatorDistanceTest",
     "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback",
-    "MainAbility/pages/visibleAreaEventOptions/visibleAreaEventOptions"
+    "MainAbility/pages/visibleAreaEventOptions/visibleAreaEventOptions",
+    "MainAbility/pages/gestureRecognizer/GestureInterrupterTest"
   ]
 }

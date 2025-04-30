@@ -34,3 +34,5 @@ export const VisibleAreaEventOptionsTest_b: () => string[];
 export const VisibleAreaEventOptionsTest_c: () => string[];
 
 export const VisibleAreaEventOptionsTest_d: () => string[];
+
+export const TestGestureInterrupter: (a: string) => string[];
