@@ -14,6 +14,7 @@
  */
 
 #include "common/common.h"
+#include <arkui/native_type.h>
 
 namespace ArkUICapiTest {
 
