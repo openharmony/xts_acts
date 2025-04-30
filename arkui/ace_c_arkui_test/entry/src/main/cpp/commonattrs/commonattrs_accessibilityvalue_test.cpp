@@ -81,9 +81,9 @@ static napi_value TestCommonAttrsAccessibilityValue006(napi_env env, napi_callba
 {
     ArkUI_AccessibilityValue* accessibilityvalue = OH_ArkUI_AccessibilityValue_Create();
     OH_ArkUI_AccessibilityValue_SetMin(accessibilityvalue, PARAM_100);
-    OH_ArkUI_AccessibilityValue_SetRangeMin(accessibilityValue, PARAM_100);
-    OH_ArkUI_AccessibilityValue_SetRangeMax(accessibilityValue, PARAM_100);
-    OH_ArkUI_AccessibilityValue_SetRangeCurrent(accessibilityValue, PARAM_100);
+    OH_ArkUI_AccessibilityValue_SetRangeMin(accessibilityvalue, PARAM_100);
+    OH_ArkUI_AccessibilityValue_SetRangeMax(accessibilityvalue, PARAM_100);
+    OH_ArkUI_AccessibilityValue_SetRangeCurrent(accessibilityvalue, PARAM_100);
     ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetMin(accessibilityvalue), PARAM_100);
     ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetRangeMin(accessibilityvalue), PARAM_100);
     ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetRangeMax(accessibilityvalue), PARAM_100);
