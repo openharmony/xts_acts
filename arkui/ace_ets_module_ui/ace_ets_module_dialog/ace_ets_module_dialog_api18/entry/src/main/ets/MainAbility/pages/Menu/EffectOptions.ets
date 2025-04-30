@@ -25,6 +25,8 @@ struct backgroundEffectOptions_colorTest {
   blurStyle: ( BlurStyle | undefined ) = BlurStyle.Thin
   build() {
     Column({space:60}) {
+      Text(this.text1)
+      .id('text')
       Button('bindMenu1').fontColor(Color.Black)
         .bindMenu([
           {
@@ -41,6 +43,9 @@ struct backgroundEffectOptions_colorTest {
           },
         ],
           {
+            onAppear: () => {
+              this.text1 = 'bindMenu1'
+            },
             backgroundEffect:this.effectOptions
           }
         )
