@@ -17,6 +17,7 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import Utils from '../../MainAbility/common/Utils';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 export default function effectOptions() {
   describe('effectOptions', () => {
@@ -58,14 +59,22 @@ export default function effectOptions() {
       console.info('EffectOptionsTest_0101 click after');
       await CommonFunc.sleep(1000);
       let tree = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree())).$children.length);
-      if (tree && tree == "2") {
-      let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-      .$children[1].$children[0].$attrs.backgroundEffect.options.color)
-      expect(JSON.parse(text)).assertEqual('#FFFFA500');
-      }else{
+      let deviceTypeInfo: string = deviceInfo.deviceType
+      console.info("[EffectOptionsTest_0101] deviceTypeInfo is: " + deviceTypeInfo);
+      if(deviceTypeInfo == 'default' ){
         let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0].$children[0].$attrs.backgroundEffect.options.brightness)
-      expect(text).assertEqual('1');
+        .$children[1].$children[0].$attrs.backgroundEffect.options.color)
+        expect(text).assertEqual('"#00000000"');
+      }else{
+        if (tree && tree == "2") {
+          let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
+          .$children[1].$children[0].$attrs.backgroundEffect.options.color)
+          expect(JSON.parse(text)).assertEqual('#FFFFA500');
+          }else{
+            let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
+            .$children[0].$children[0].$attrs.backgroundEffect.options.brightness)
+            expect(text).assertEqual('1');
+          }
       }
       await CommonFunc.sleep(1000);
       sendEventByKey('EffectOptions_btn1',10,"");
