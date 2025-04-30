@@ -17297,7 +17297,7 @@ static napi_value NapiWrapEnhanceTest(napi_env env, napi_callback_info info)
     napi_value obj = nullptr;
     status = napi_new_instance(env, testClass, 0, nullptr, &obj);
     NAPI_ASSERT(env, status != napi_ok, "result is null, napi_new_instance failed.");
-    const char* testStr = "test";
+    const char testStr[5] = "test";
     napi_ref wrappedRef = nullptr;
     status = napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr), &wrappedRef);
     NAPI_ASSERT(env, status != napi_ok, "result is null, napi_wrap_enhance failed.");
