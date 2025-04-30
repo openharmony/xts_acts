@@ -94,7 +94,7 @@ struct IndexPage {
     { title: 'NavigationEnableHoverMode', uri: 'pages/ArkUI/NavigationEnableHoverMode' },
     { title: 'AccessibilityProperty', uri: 'pages/ArkUI/AccessibilityProperty' },
     { title: 'AccessibilityOptions', uri: 'pages/ArkUI/AccessibilityOptions' },
-    { title: 'CapiHandDetect', uri: 'pages/ArkUI/GetBarRect' },
+    { title: 'GetBarRect', uri: 'pages/ArkUI/GetBarRect' },
     { title: 'CapiHandDetect', uri: 'pages/ArkUI/CapiHandDetect' },
     { title: 'GameCtrollerCallBackData', uri: 'pages/ArkUI/GameCtrollerCallBackData' },
     { title: 'GameCtronllerCTest', uri: 'pages/ArkUI/GameCtronllerCTest' },

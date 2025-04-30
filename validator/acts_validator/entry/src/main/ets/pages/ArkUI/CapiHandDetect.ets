@@ -25,7 +25,8 @@ const TAG = '[CapiHandDetect]';
 struct CapiHandDetect {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CapiHandDetect';
-  @State StepTips: string =  '操作步骤：1、左手拿手机，左手长按‘单一手势+onTouch’按钮\n'+'\n'+
+  @State StepTips: string =  '提示：下面所有预期结果打印，需要在hilog日志中，搜索关键字handEvent，查看最后一个result2的值\n' +
+    '操作步骤：1、左手拿手机，左手长按‘单一手势+onTouch’按钮\n'+'\n'+
     '预期结果：打印1“\n'+
     '操作步骤：左手拿手机，右手长按‘单一手势+onTouch’按钮\n' + '预期结果：打印2“\n' +
     '操作步骤：右手拿手机，左手长按‘单一手势+onTouch’按钮\n' + '预期结果：打印1“\n' +
@@ -205,7 +206,10 @@ struct CapiHandDetect {
         }).backgroundColor(Color.White)
           .onAppear(() => {
             nativeNode.createNativeNode("xcomponentId", this.getUIContext());
-          }).width("100%")
+            this.Vue = true;
+          })
+          .height("70%")
+          .width("100%")
           .id("xcomponent")
       }
 

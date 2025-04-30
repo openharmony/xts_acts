@@ -10,6 +10,20 @@ include_directories(
     ${NATIVERENDER_ROOT_PATH}/include
 )
 
+add_library(nativerender SHARED
+    manager/plugin_manager.cpp
+    manager/xcomponent_manager.cpp
+    manager/AccessibilityManager.cpp
+    napi_init.cpp
+)
+
+add_library(nativerender_ SHARED
+    manager/plugin_manager.cpp
+    manager/xcomponent_manager.cpp
+    manager/AccessibilityManager_.cpp
+    napi_init_.cpp
+)
+
 add_library(nativeNode SHARED
     capihand/container.cpp
     capihand/manager.cpp
@@ -58,7 +72,10 @@ find_library(
 )
 
 
-
+target_link_libraries(nativerender PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_window})
+target_link_libraries(nativerender_ PUBLIC
+    ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_window})
 target_link_libraries(nativeNode PUBLIC
     ${hilog-lib} ${libace-lib} ${libnapi-lib}  ${libnative_drawing})
 target_link_libraries(nativegamecrontroller PUBLIC

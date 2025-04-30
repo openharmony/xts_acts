@@ -30,7 +30,7 @@ struct GetBarRect {
     '操作步骤：1.点击‘点击获取getBarRect y’按钮\n' + '预期结果：页面下方打印bar的y信息“\n' +
     '操作步骤：1.点击‘点击获取getBarRect width’按钮\n' + '预期结果：页面下方打印bar的width信息“\n' +
     '操作步骤：1.点击‘点击获取getBarRect height’按钮\n' + '预期结果：页面下方打印bar的height信息“\n';
-  @State Vue: boolean = false;
+  @State Vue: boolean = true;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
