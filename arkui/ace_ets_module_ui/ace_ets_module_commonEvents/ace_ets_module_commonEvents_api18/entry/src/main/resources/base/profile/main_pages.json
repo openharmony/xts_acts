@@ -6,6 +6,7 @@
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_false",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_true",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll",
+	"MainAbility/pages/nextFocus2/nextFocus2",
         "MainAbility/pages/GestureRecognizer/LongPressRecognizer",
         "MainAbility/pages/GestureRecognizer/PanRecognizer",
         "MainAbility/pages/GestureRecognizer/PinchRecognizer",
