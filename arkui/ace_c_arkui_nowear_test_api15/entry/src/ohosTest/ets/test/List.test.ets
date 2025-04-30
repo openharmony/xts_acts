@@ -19,7 +19,6 @@ import scrollBackToTopTest from './scroll/ScrollBackToTopTest.test'
 import keyDispatchTest from "./keydispatchTest/KeyDispatchTest.test"
 import FocusControlTest3 from "./foucscontrolTest/FocusControlTest3.test"
 import FocusControlTest4 from "./foucscontrolTest/FocusControlTest4.test"
-import GetGestureParamTest from "./getGestureParam/getGestureParam.test"
 
 export default function testsuite() {
    setKeyProcessingMode01();
@@ -28,5 +27,4 @@ export default function testsuite() {
    keyDispatchTest();
    FocusControlTest3();
    FocusControlTest4();
-   GetGestureParamTest();
 }

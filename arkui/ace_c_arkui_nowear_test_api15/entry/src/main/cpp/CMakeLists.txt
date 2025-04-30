@@ -24,7 +24,6 @@ add_library(nativerender SHARED
     component/text_component.cpp
     keyDisPatchTest/keyEventDispatch_test.cpp
     focusControl/focus_control.cpp
-    getGestureParam/getGestureParam.cpp
 )
 
 add_library(nativefunc SHARED

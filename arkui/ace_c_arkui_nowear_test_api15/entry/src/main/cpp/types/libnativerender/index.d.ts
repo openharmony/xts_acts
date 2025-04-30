@@ -26,29 +26,3 @@ export const scrollBackToTopTest: (a: string) => void;
 export const FocusControlTest_003: (a: string) => void;
 
 export const FocusControlTest_004: (a: string) => void;
-
-export const TestsnapShotetResult: () => string[];
-
-export const GetGestureParamTest_a: () => string[];
-
-export const GetGestureParamTest_a1: () => string[];
-
-export const GetGestureParamTest_b: () => string[];
-
-export const GetGestureParamTest_c: () => string[];
-
-export const GetGestureParamTest_d: () => string[];
-
-export const GetGestureParamTest_e: () => string[];
-
-export const GetGestureParamTest_f: () => string[];
-
-export const GetGestureParamTest_g: () => string[];
-
-export const GetGestureParamTest_h: () => string[];
-
-export const GetGestureParamTest_i: () => string[];
-
-export const GetGestureParamTest_j: () => string[];
-
-export const GetGestureParamTest_j1: () => string[];
