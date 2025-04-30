@@ -17,6 +17,7 @@
 #include "../manager/plugin_manager.h"
 #include "custom_property_test.h"
 #include <arkui/native_node.h>
+#include <arkui/native_type.h>
 #include <string>
 
 namespace ArkUICapiTest {
