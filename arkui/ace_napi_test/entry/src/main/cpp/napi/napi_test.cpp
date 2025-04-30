@@ -9956,6 +9956,31 @@ static napi_value createRangeErrorRes(napi_env env, napi_callback_info info)
     return error;
 }
 
+static napi_value NapiWrapEnhanceTest(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    auto status = napi_define_class(
+        env, "TestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+            return thisVar;
+        },
+        nullptr, 0, nullptr, &testClass);
+    NAPI_ASSERT(env, status != napi_ok, "result is null, napi_define_class failed.");
+    napi_value obj = nullptr;
+    status = napi_new_instance(env, testClass, 0, nullptr, &obj);
+    NAPI_ASSERT(env, status != napi_ok, "result is null, napi_new_instance failed.");
+    const char testStr[5] = "test";
+    napi_ref wrappedRef = nullptr;
+    status = napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr), &wrappedRef);
+    NAPI_ASSERT(env, status != napi_ok, "result is null, napi_wrap_enhance failed.");
+    
+    napi_value rst;
+    bool bRet = true;
+    napi_get_boolean(env, bRet, &rst);
+    return rst;
+}
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -9965,6 +9990,7 @@ static napi_value Init(napi_env env, napi_value exports)
     NAPI_CALL(env, napi_create_string_utf8(env, TEST_STR, sizeof(TEST_STR), &theValue));
     NAPI_CALL(env, napi_set_named_property(env, exports, "testStr", theValue));
     napi_property_descriptor properties[] = {
+        DECLARE_NAPI_FUNCTION("NapiWrapEnhanceTest", NapiWrapEnhanceTest),        
         DECLARE_NAPI_FUNCTION("getLastErrorInfo", getLastErrorInfo),
         DECLARE_NAPI_FUNCTION("cleanUpErrorInfo", cleanUpErrorInfo),
         DECLARE_NAPI_FUNCTION("throwExistingError", throwExistingError),
