@@ -9985,7 +9985,7 @@ export default function napiApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNapiWrapEnhanceTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testNapiWrapEnhanceTest0001', 0, async (done: Function) => {
       console.info('testNapiCheckObjectTypeTagTest0001 START');
       try {
         let value = napitest.NapiWrapEnhanceTest();
