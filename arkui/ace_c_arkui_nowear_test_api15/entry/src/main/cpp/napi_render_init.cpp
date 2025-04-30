@@ -21,6 +21,8 @@
 #include "focusControl/focus_Control.h"
 #include "snapShot/snap_shot.h"
 #include "snapShot/container.h"
+#include "getGestureParam/getGestureParam.h"
+
 
 namespace ArkUICapiTest {
 EXTERN_C_START
