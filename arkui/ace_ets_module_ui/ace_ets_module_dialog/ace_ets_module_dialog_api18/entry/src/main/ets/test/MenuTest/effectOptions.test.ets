@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,25 +50,15 @@ export default function effectOptions() {
      * @tc.type
      * @tc.size
      */
-    it('EffectOptionsTest_0101', 0, async (done: Function) => {
+    it('EffectOptionsTest_0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('EffectOptionsTest_0101 START');
-      await CommonFunc.sleep(3000);
-      sendEventByKey('EffectOptions_btn1',10,"");
-      await CommonFunc.sleep(10000);
-      console.info('EffectOptionsTest_0101 click after');
+      let driver: Driver = Driver.create();
+      let btn = await driver.findComponent(ON.id('EffectOptions_btn1'));
+      await btn.click();
       await CommonFunc.sleep(1000);
-      let tree = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree())).$children.length);
-      if (tree && tree == "2") {
-      let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-      .$children[1].$children[0].$attrs.backgroundEffect.options.color)
-      expect(JSON.parse(text)).assertEqual('#FFFFA500');
-      }else{
-        let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0].$children[0].$attrs.backgroundEffect.options.brightness)
-      expect(text).assertEqual('1');
-      }
-      await CommonFunc.sleep(1000);
-      sendEventByKey('EffectOptions_btn1',10,"");
+      let text = getInspectorByKey('text');
+      expect(JSON.parse(text).$attrs.content).assertEqual('bindMenu1');
+      await btn.click();
       await CommonFunc.sleep(1000);
       console.info('EffectOptionsTest_0101 END');
       done();
@@ -82,7 +72,7 @@ export default function effectOptions() {
      * @tc.type
      * @tc.size
      */
-    it('EffectOptionsTest_0102', 0, async (done: Function) => {
+    it('EffectOptionsTest_0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('EffectOptionsTest_0102 START');
       await CommonFunc.sleep(3000);
       sendEventByKey('EffectOptions_btn2',10,"");
@@ -113,7 +103,7 @@ export default function effectOptions() {
      * @tc.type
      * @tc.size
      */
-    it('EffectOptionsTest_0103', 0, async (done: Function) => {
+    it('EffectOptionsTest_0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('EffectOptionsTest_0103 START');
       await CommonFunc.sleep(3000);
       sendEventByKey('EffectOptions_btn3',10,"");

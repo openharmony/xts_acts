@@ -43,6 +43,8 @@ struct backgroundBlurStyleOptions_scaleTest {
   }
   build() {
     Row() {
+      Text(this.text1)
+      .id('text')
       Button('bindMenu1').fontColor(Color.Black)
         .bindMenu([
           {
@@ -60,7 +62,10 @@ struct backgroundBlurStyleOptions_scaleTest {
         ],
           {
             backgroundBlurStyle:BlurStyle.Thin,
-            backgroundBlurStyleOptions: this.blurStyleOptions
+            backgroundBlurStyleOptions: this.blurStyleOptions,
+            onAppear: () => {
+              this.text1 = 'bindMenu1'
+            }
           }
         )
         .id('MenuStyleOptions_btn1')
