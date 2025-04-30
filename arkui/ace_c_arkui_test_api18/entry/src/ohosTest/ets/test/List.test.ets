@@ -18,6 +18,7 @@ import buttonTypeTest from './button/ButtonTypeTest.test'
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
 import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHapticFeedback.test"
 import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test';
+import gestureInterrupterTest from './gestureRecognizer/GestureInterrupterTest.test'
 
 export default function testsuite() {
   datePickerTest();
@@ -25,4 +26,5 @@ export default function testsuite() {
   datePickerEnableHapticFeedbackTest();
   textPickerEnableHapticFeedbackTest();
   visibleAreaEventOptions();
+  gestureInterrupterTest();
 }
