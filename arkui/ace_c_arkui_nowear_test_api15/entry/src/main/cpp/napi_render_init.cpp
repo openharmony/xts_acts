@@ -19,6 +19,7 @@
 #include "scroll/scroll_backtotop_test.h"
 #include "keyDisPatchTest/keyEventDispatch_test.h"
 #include "focusControl/focus_Control.h"
+#include "getGestureParam/getGestureParam.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -45,7 +46,19 @@ static napi_value Init(napi_env env, napi_value exports)
 		 {"FocusControlTest_003", nullptr, FocusControlTest::FocusControlTest_003,
             nullptr, nullptr, nullptr, napi_default, nullptr},
          {"FocusControlTest_004", nullptr, FocusControlTest::FocusControlTest_004,
-            nullptr, nullptr, nullptr, napi_default, nullptr},   
+            nullptr, nullptr, nullptr, napi_default, nullptr}, 
+        {"GetGestureParamTest_a", nullptr, GetGestureParamTest::GetGestureParamTest_a, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_a1", nullptr, GetGestureParamTest::GetGestureParamTest_a1, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_b", nullptr, GetGestureParamTest::GetGestureParamTest_b, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_c", nullptr, GetGestureParamTest::GetGestureParamTest_c, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_d", nullptr, GetGestureParamTest::GetGestureParamTest_d, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_e", nullptr, GetGestureParamTest::GetGestureParamTest_e, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_f", nullptr, GetGestureParamTest::GetGestureParamTest_f, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_g", nullptr, GetGestureParamTest::GetGestureParamTest_g, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_h", nullptr, GetGestureParamTest::GetGestureParamTest_h, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_i", nullptr, GetGestureParamTest::GetGestureParamTest_i, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_j", nullptr, GetGestureParamTest::GetGestureParamTest_j, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetGestureParamTest_j1", nullptr, GetGestureParamTest::GetGestureParamTest_j1, nullptr, nullptr, nullptr, napi_default, nullptr},  
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
