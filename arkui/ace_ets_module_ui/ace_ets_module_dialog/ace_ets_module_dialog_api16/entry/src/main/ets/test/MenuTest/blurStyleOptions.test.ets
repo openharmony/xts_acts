@@ -17,7 +17,6 @@ import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 import Utils from '../../MainAbility/common/Utils';
-import { deviceInfo } from '@kit.BasicServicesKit';
 
 export default function blurStyleOptions() {
   describe('blurStyleOptions', () => {
@@ -59,28 +58,20 @@ export default function blurStyleOptions() {
       console.info('MenuStyleOptionsTest_0101 click after');
       await CommonFunc.sleep(1000);
       let tree = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree())).$children.length);
-      let deviceTypeInfo: string = deviceInfo.deviceType
-      console.info("[MenuStyleOptionsTest_0101] deviceTypeInfo is: " + deviceTypeInfo);
-      if(deviceTypeInfo == 'default' ){
+      if (tree && tree == "2") {
         let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[1].$children[0].$attrs.backgroundBlurStyle.options.scale)
-        expect(text).assertEqual('1');
+        expect(text).assertEqual('0.1');
       }else{
-        if (tree && tree == "2") {
+        let json = JSON.stringify(getInspectorTree())
+        let chunkSize = 2000;
+        for (let i = 0; i < json.length; i += chunkSize) {
+          console.info(json.slice(i, i + chunkSize));
+        }
           let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-          .$children[1].$children[0].$attrs.backgroundBlurStyle.options.scale)
-          expect(text).assertEqual('0.1');
-          }else{
-            let json = JSON.stringify(getInspectorTree())
-            let chunkSize = 2000;
-            for (let i = 0; i < json.length; i += chunkSize) {
-              console.info(json.slice(i, i + chunkSize));
-            }
-            let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-            .$children[0].$children[0].$attrs.backgroundBlurStyle.options.policy);
-            expect(JSON.parse(text)).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
-          }
-      }
+          .$children[0].$children[0].$attrs.backgroundBlurStyle.options.policy);
+          expect(JSON.parse(text)).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
+        }
       sendEventByKey('MenuStyleOptions_btn1',10,"");
       console.info('MenuStyleOptionsTest_0101 END');
       done();
