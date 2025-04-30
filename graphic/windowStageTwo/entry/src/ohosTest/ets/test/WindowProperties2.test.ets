@@ -1539,7 +1539,7 @@ export default function windowPropertiesTest2() {
         }
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
-        await terminateAbility2(caseName)
+        await windowClass!.destroyWindow();
         expect().assertFail()
         done()
       }
