@@ -26,6 +26,7 @@ add_library(nativerender SHARED
     focusControl/focus_control.cpp
     snapShot/snap_shot.cpp
     snapShot/container.cpp
+    getGestureParam/getGestureParam.cpp
 )
 
 add_library(nativefunc SHARED
