@@ -735,3 +735,4 @@ export const NapiGetCbInfoTest: () => boolean;
 export const NapiCreateFunctionTest: () => boolean;
 export const NapiCallFunctionTest: () => boolean;
 export const NapiCheckObjectTypeTagTest: () => boolean;
+export const NapiWrapEnhanceTest:() => boolean;
