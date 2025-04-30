@@ -86,7 +86,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow005', Level.LEVEL1, async (done: Function) => {
+    it('testCustomDialogShow005', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow005()).assertEqual(0)
       done()
     })
