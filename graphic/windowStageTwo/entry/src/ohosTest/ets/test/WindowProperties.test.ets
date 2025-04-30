@@ -91,8 +91,6 @@ export default function windowPropertiesTest() {
             // This API supports only one parameter: clear action function.
         })
         afterAll(() => {
-          let windowClass = windowStage.getMainWindowSync()
-          windowClass.setUIContent('testability/pages/Index')
             // Presets a clear action, which is performed after all test cases of the test suite end.
             // This API supports only one parameter: clear action function.
         })

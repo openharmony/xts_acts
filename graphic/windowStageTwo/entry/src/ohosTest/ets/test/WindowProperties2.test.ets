@@ -64,6 +64,7 @@ export default function windowPropertiesTest2() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let isAutoWindow: string = '';
+    let isPCStatus: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -71,6 +72,7 @@ export default function windowPropertiesTest2() {
       isAutoWindow =
         settings.getValueSync(context, 'window_pcmode_switch_status', '', settings.domainName.DEVICE_SHARED);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
 
     })
     beforeEach(() => {
@@ -84,8 +86,6 @@ export default function windowPropertiesTest2() {
       // This API supports only one parameter: clear action function.
     })
     afterAll(() => {
-      let windowClass = windowStage.getMainWindowSync()
-      windowClass.setUIContent('testability/pages/Index')
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
@@ -1538,12 +1538,12 @@ export default function windowPropertiesTest2() {
           done()
         }
       } catch (err) {
-        console.error(msgStr + 'createSubWindow ' + 'caught, err: ' + JSON.stringify(err));
-        await windowClass!.destroyWindow();
-        expect().assertFail();
+        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        await terminateAbility2(caseName)
+        expect().assertFail()
         done()
       }
-    })
+    });
 
     /**
      * @tc.number     : testSnapshotIgnorePrivacyWithMinimizeWindow
@@ -1579,6 +1579,8 @@ export default function windowPropertiesTest2() {
                 expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
                 pixelMap.release();
                 await terminateAbility(caseName);
+                await windowClass.maximize();
+                await sleep(2000)
                 done();
               }).catch(async (err: BusinessError) => {
                 console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
@@ -1588,21 +1590,26 @@ export default function windowPropertiesTest2() {
                   expect().assertFail();
                 }
                 await terminateAbility(caseName);
+                await windowClass.maximize();
+                await sleep(2000)
                 done()
               });
-              done()
             } catch (exception) {
               console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
               expect().assertFail();
               await terminateAbility(caseName);
+              await windowClass.maximize();
+              await sleep(2000)
               done()
             }
           }
         }
         windowStageStart.on('windowStageEvent', callback)
         // 3、被拉起的主窗minimize
-        await windowClass.minimize();
-        await sleep(2000);
+        if (isPCStatus != '') {
+          await windowClass.minimize();
+          await sleep(2000);
+        }
         await terminateAbility(caseName);
         done()
       } catch (err) {

@@ -40,6 +40,6 @@ export default function testsuite() {
   windowImmersiveTest();
   windowPropertiesTest();
   windowPropertiesTest2();
-  windowPCTest()
   extensionWindowPropertiesTest();
+  windowPCTest()
 }
