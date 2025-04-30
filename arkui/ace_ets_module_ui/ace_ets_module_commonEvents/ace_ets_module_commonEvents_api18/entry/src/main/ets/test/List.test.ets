@@ -19,6 +19,7 @@ import UIObserverEvent from './ListeningEvent/UIObserverEvent.test';
 import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoScroll_false.test';
 import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
 import enableEdgeAutoScroll from './DragInteractionOptions/enableEdgeAutoScroll.test';
+import nextFocus2 from './nextFocus2/nextFocus2.test';
 import LongPressRecognizer from './GestureRecognizer/LongPressRecognizer.test';
 import PanRecognizer from './GestureRecognizer/PanRecognizer.test';
 import PinchRecognizer from './GestureRecognizer/PinchRecognizer.test';
@@ -32,6 +33,7 @@ export default function testsuite() {
   enableEdgeAutoScroll_false();
   enableEdgeAutoScroll_true();
   enableEdgeAutoScroll();
+  nextFocus2();
   LongPressRecognizer();
   PanRecognizer();
   PinchRecognizer();
