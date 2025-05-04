@@ -47,6 +47,7 @@ group("formmanager") {
       "formproviderst_ets/formsystemproviderd:FormSystemProviderD",
       "formsystemtest_ets/formacquiretest:ActsFormAcquireTest",
       "formsystemtest_ets/formacquiretest2:ActsFormAcquire2Test",
+      "formsystemtest_ets/formacquiretest3:ActsFormAcquire3Test",
       "formsystemtest_ets/formdeletetest:ActsFormDeleteTest",
       "formsystemtest_ets/formdynamicrefreshtest:ActsFormDynamicRefreshTest",
       "formsystemtest_ets/formfuzztest:ActsFormFuzzTest",
