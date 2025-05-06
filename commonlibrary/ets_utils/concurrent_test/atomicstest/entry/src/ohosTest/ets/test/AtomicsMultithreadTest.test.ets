@@ -53,17 +53,17 @@ export default function AtomicsMultithreadTest() {
       const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
       sharedArray[0] = 5;
-      console.log(`主线程: 初始值 = ${sharedArray[0]}`);
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");  //add 5
-      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker4");  //add 5
+      console.log(`${sharedArray[0]}`);
+      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
+      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
       worker1.onmessage = (e) => {
-        console.log(`主线程收到 worker1 消息: ${e.data}`);
+        console.log(`${e.data}`);
         worker1.terminate();
       };
       worker2.onmessage = (e) => {
-        console.log(`主线程收到 worker2 消息: ${e.data}`);
+        console.log(`${e.data}`);
         worker2.terminate();
       };
       await new Promise<void>((resolve) => setTimeout(resolve, 3000));
@@ -81,21 +81,15 @@ export default function AtomicsMultithreadTest() {
      * @tc.level Level 2
      */
     it('AtomicsMultithreadTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      // 创建一个共享内存的 Int32Array
-      const sharedBuffer = new SharedArrayBuffer(4); // 4字节，足够存储一个32位整数
+      const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
-      // 初始值设置为10
       sharedArray[0] = 5;
-      // 创建 Worker 线程
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");  //add 5
-      // 向 Worker 发送共享内存
+      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
       worker1.postMessage(sharedBuffer);
-      // 监听 Worker 的消息
       worker1.onmessage = (e) => {
         worker1.terminate();
       };
       await new Promise<void>((resolve) => setTimeout(resolve, 3000));
-      //5 + 5  = 10
       expect(10).assertEqual(sharedArray[0]);
       Done();
     });
@@ -111,30 +105,23 @@ export default function AtomicsMultithreadTest() {
      * @tc.level Level 2
      */
     it('AtomicsMultithreadTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      // 创建一个共享内存的 Int32Array
-      const sharedBuffer = new SharedArrayBuffer(4); // 4字节，足够存储一个32位整数
+      const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
-      // 初始值设置为10
       sharedArray[0] = 10;
-      // 打印初始值
-      console.log(`主线程: 初始值 = ${sharedArray[0]}`);
-      // 创建 Worker 线程
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");  //add 5
-      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker5");  //and 0b0001
-      // 向 Worker 发送共享内存
+      console.log(`${sharedArray[0]}`);
+      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
+      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker5");
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
-      // 监听 Worker 的消息
       worker1.onmessage = (e) => {
-        console.log(`主线程收到 worker1 消息: ${e.data}`);
+        console.log(`${e.data}`);
         worker1.terminate();
       };
       worker2.onmessage = (e) => {
-        console.log(`主线程收到 worker2 消息: ${e.data}`);
+        console.log(`${e.data}`);
         worker2.terminate();
       };
       await new Promise<void>((resolve) => setTimeout(resolve, 3000));
-      //多线程操作顺序可能不同导致的结果也不同
       expect([1,5].includes(sharedArray[0])).assertTrue();
       Done();
     });
@@ -149,22 +136,14 @@ export default function AtomicsMultithreadTest() {
      * @tc.level Level 2
      */
     it('AtomicsMultithreadTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      // 创建共享计数器（初始值=10）
       const counter = new SharedCounter(10);
-      // 创建两个 Worker
       const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker6");
       let result = 0;
-      // 向 Worker 发送共享内存
       worker1.postMessage(counter.getBuffer());
-
-      // 监听 Worker 完成消息
       worker1.onmessage = () => {
-        console.log(`主线程收到 Worker1 完成通知`);
+        console.log(`Worker1`);
       };
-
-      // 主线程同时操作共享内存
-      result = counter.add(11); //result返回初始值
-      // 3秒后终止 Worker 并查看最终结果
+      result = counter.add(11);
       setTimeout(() => {
         worker1.terminate();
       }, 3000);

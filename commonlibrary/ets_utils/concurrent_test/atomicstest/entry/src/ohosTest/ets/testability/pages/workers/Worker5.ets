@@ -1,4 +1,18 @@
-// worker1.ets
+/*
+* Copyright (C) 2025 HiHope Open Source Organization.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const parentPort = worker.workerPort;
@@ -7,9 +21,8 @@ parentPort.onmessage = (e:MessageEvents) :void => {
   let sharedBuffer: number = e.data;
   const sharedArray = new Int32Array(sharedBuffer);
 
-  // 使用 Atomics.and 进行按位与操作
-  const andResult = Atomics.and(sharedArray, 0, 0b0001); // 进行与操作
-  console.log(`Worker1: Atomics.and(0b1010) - 结果=${andResult}, 当前值=${sharedArray[0]}`);
+  const andResult = Atomics.and(sharedArray, 0, 0b0001);
+  console.log(`Worker1: ${andResult}, ${sharedArray[0]}`);
 
-  parentPort.postMessage("Worker1 操作完成");
+  parentPort.postMessage("Worker1");
 };
