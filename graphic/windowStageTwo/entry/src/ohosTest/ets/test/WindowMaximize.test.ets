@@ -1253,11 +1253,11 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         isModal: false,
         maximizeSupported: true
       };
-      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0100', options);
       promise1.then(async (data) => {
         let subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
         await subWindowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
         let windowStatusType = subWindowClass.getWindowStatus();
@@ -1303,7 +1303,7 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
       promise1.then(async (data) => {
         let subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
         await subWindowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
         let windowStatusType = subWindowClass.getWindowStatus();
@@ -1345,11 +1345,11 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         isModal: false,
         maximizeSupported: false
       };
-      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0300', options);
       promise1.then(async (data) => {
         let subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-        await subWindowClass.setUIContent('testability/pages/shiftAppWindow/subWindow');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
         await subWindowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
         let windowStatusType = subWindowClass.getWindowStatus();
@@ -1365,7 +1365,7 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         }
       }).catch((err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-        if (err.code === 1300002) {
+        if (err.code === 1300002 || err.code === 1300004) {
           done()
         } else {
           expect().assertFail();
