@@ -1,4 +1,3 @@
-
 import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCallback } from '@kit.ArkUI';
 
 @Entry
@@ -10,6 +9,8 @@ struct AtomicserviceTabsTest  {
   @State currentIndex: number = 0;
   @State comingIndex: number = 0;
   @State layoutMode: LayoutMode = LayoutMode.VERTICAL;
+  @State barPosition: TabBarPosition = TabBarPosition.LEFT;
+  controller: TabsController = new TabsController();
   onContentWillChangeCallBack: OnContentWillChangeCallback = (currentIndex: number, comingIndex: number): boolean => {
     this.currentIndex = currentIndex;
     this.comingIndex = comingIndex;
@@ -59,12 +60,15 @@ struct AtomicserviceTabsTest  {
         new TabBarOptions($r('sys.media.ohos_ic_public_location'), '蓝色', Color.Black, Color.Blue),
         new TabBarOptions($r('sys.media.ohos_ic_public_more'), '黄色', Color.Black, Color.Blue),
         ],
-        tabBarPosition: TabBarPosition.BOTTOM,
+        tabBarPosition: this.barPosition,
         barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
         onTabBarClick: this.onTabClick,
         onContentWillChange: this.onContentWillChangeCallBack,
         onChange: this.onChange,
         layoutMode: this.layoutMode,
+        index: 1,
+        barOverlap: true,
+        controller: this.controller
       })
 
       Column() {
@@ -81,6 +85,7 @@ struct AtomicserviceTabsTest  {
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
             this.layoutMode = LayoutMode.HORIZONTAL;
+            this.barPosition = TabBarPosition.BOTTOM
           })
       }.margin({ top: 10 })
     }.height('100%')
