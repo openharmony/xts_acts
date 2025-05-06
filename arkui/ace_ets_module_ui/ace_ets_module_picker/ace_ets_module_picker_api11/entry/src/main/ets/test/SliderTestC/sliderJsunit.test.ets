@@ -15,50 +15,50 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/CommonC';
+import {MessageManager,Callback} from '../../MainAbility/utils/MessageManagerC';
 const waitUiReadyMs = 1000;
 
-export default function sliderJsunit() {
-  describe('sliderJsunit', () => {
+export default function sliderJsunitSliderTest() {
+  describe('sliderJsunitSliderTestSliderTest', () => {
     beforeEach(async (done: Function) => {
-      console.info("sliderJsunit beforeEach start");
+      console.info("sliderJsunitSliderTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Slider/slider',
+        url: 'MainAbility/pages/SliderC/slider',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get sliderJsunit state pages:" + JSON.stringify(pages));
+        console.info("get sliderJsunitSliderTest state pages:" + JSON.stringify(pages));
         if (!("slider" == pages.name)) {
-          console.info("get sliderJsunit state pages.name:" + JSON.stringify(pages.name));
+          console.info("get sliderJsunitSliderTest state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
-          console.info("push sliderJsunit success " + JSON.stringify(result));
+          console.info("push sliderJsunitSliderTest success " + JSON.stringify(result));
         }
       } catch (err) {
-          console.error("push sliderJsunit page error:" + err);
+          console.error("push sliderJsunitSliderTest page error:" + err);
 	        expect().assertFail();
       }
       done();
     });
 
-    it('sliderJsunit_0100', 0, async (done: Function) => {
-      console.info('sliderJsunit_0100 START');
+    it('sliderJsunitSliderTest_0100', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0100 START');
       await CommonFunc.sleep(1000);
       // get the slider component with no parameter and test attribute
       let strJson = getInspectorByKey('sliderConstructor2');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0100 component obj is: ' + obj.$attrs.style);
+      console.info('sliderJsunitSliderTest_0100 component obj is: ' + obj.$attrs.style);
       expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       done();
     });
 
-    it('sliderJsunit_0200', 0, async (done: Function) => {
-      console.info('sliderJsunit_0200 START');
+    it('sliderJsunitSliderTest_0200', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0200 START');
       // get the slider component with parameter and test attribute
       let strJson = getInspectorByKey('sliderConstructor');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0200 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
+      console.info('sliderJsunitSliderTest_0200 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step + "---" + JSON.stringify(obj.$attrs.constructor));
       expect(obj.$attrs.style).assertEqual('SliderStyle.InSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Vertical');
@@ -70,13 +70,13 @@ export default function sliderJsunit() {
       done();
     });
 
-    it('sliderJsunit_0300', 0, async (done: Function) => {
-      console.info('sliderJsunit_0300 START');
+    it('sliderJsunitSliderTest_0300', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0300 START');
       await CommonFunc.sleep(1000);
       // get the slider component attribute
       let strJson = getInspectorByKey('sliderA');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0300 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor
+      console.info('sliderJsunitSliderTest_0300 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor
       + "---" + obj.$attrs.showSteps + "----" + obj.$attrs.showTips + "----" + obj.$attrs.trackThickness + "--" + obj.$attrs.selectedColor);
       expect(obj.$attrs.blockColor).assertEqual('#FF191970');
       expect(obj.$attrs.trackColor).assertEqual('#FFADD8E6');
@@ -87,8 +87,8 @@ export default function sliderJsunit() {
       done();
    });
    
-    it('sliderJsunit_0400', 0, async (done: Function) => {
-      console.info('sliderJsunit_0400 START');
+    it('sliderJsunitSliderTest_0400', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0400 START');
       // modify the Color attribute normal value of slider dynamically
       globalThis.value.message.notify({name:'blockColor',value:'#FFFFFF'})
       await CommonFunc.sleep(200);
@@ -101,7 +101,7 @@ export default function sliderJsunit() {
       // get the slider component attribute
       let strJson = getInspectorByKey('sliderA');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0400 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor
+      console.info('sliderJsunitSliderTest_0400 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor
       + "---" + obj.$attrs.trackThickness);
       expect(obj.$attrs.blockColor).assertEqual('#FFFFFFFF');
       expect(obj.$attrs.trackColor).assertEqual('#FFEEFFFF');
@@ -110,8 +110,8 @@ export default function sliderJsunit() {
       done();   
     });
 
-    it('sliderJsunit_0500', 0, async (done: Function) => {
-      console.info('sliderJsunit_0500 START');
+    it('sliderJsunitSliderTest_0500', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0500 START');
       // modify the Color attribute normal value of slider dynamically
       globalThis.value.message.notify({name:'blockColor',value:'rgb(238, 130, 238)'})
       await CommonFunc.sleep(200);
@@ -122,15 +122,15 @@ export default function sliderJsunit() {
       // get the slider component attribute
       let strJson = getInspectorByKey('sliderA');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0500 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "--" );
+      console.info('sliderJsunitSliderTest_0500 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "--" );
       expect(obj.$attrs.blockColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.trackColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done(); 
     });
 
-    it('sliderJsunit_0600', 0, async (done: Function) => {
-       console.info('sliderJsunit_0600 START');
+    it('sliderJsunitSliderTest_0600', 0, async (done: Function) => {
+       console.info('sliderJsunitSliderTest_0600 START');
       // modify the Color attribute illegal value of slider dynamically
       globalThis.value.message.notify({name:'blockColor',value:'#ACE'})
       await CommonFunc.sleep(200);
@@ -143,7 +143,7 @@ export default function sliderJsunit() {
       // get the slider component attribute
       let strJson = getInspectorByKey('sliderA');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0600 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "---" + obj.$attrs.trackThickness);
+      console.info('sliderJsunitSliderTest_0600 component obj is: ' + obj.$attrs.blockColor + "---" + obj.$attrs.trackColor + "--" + obj.$attrs.selectedColor + "---" + obj.$attrs.trackThickness);
       expect(obj.$attrs.blockColor).assertEqual('#FFAACCEE');
       expect(obj.$attrs.trackColor).assertEqual('#FFAACCEE');
       expect(obj.$attrs.trackThickness).assertEqual('4.00vp');
@@ -151,8 +151,8 @@ export default function sliderJsunit() {
       done(); 
     });
 
-    it('sliderJsunit_0700', 0, async (done: Function) => {
-      console.info('sliderJsunit_0700 START');
+    it('sliderJsunitSliderTest_0700', 0, async (done: Function) => {
+      console.info('sliderJsunitSliderTest_0700 START');
       // modify the constructor attribute of slider dynamically
       globalThis.value.message.notify({name:'vInSetValueOne',value:30})
       await CommonFunc.sleep(1000);
@@ -171,7 +171,7 @@ export default function sliderJsunit() {
       // check the value of changed parameter
       let strJson = getInspectorByKey('sliderConstructor');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('sliderJsunit_0700 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value
+      console.info('sliderJsunitSliderTest_0700 component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
       expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
@@ -183,9 +183,9 @@ export default function sliderJsunit() {
       done();
     });
 
-    it('sliderJsunit_0800', 0, async (done: Function) => {
+    it('sliderJsunitSliderTest_0800', 0, async (done: Function) => {
       // Verify the swipe function of slider component
-      console.info('sliderJsunit_0800 START');
+      console.info('sliderJsunitSliderTest_0800 START');
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'vInSetValueOne',value:30})
       await CommonFunc.sleep(1000);
@@ -213,17 +213,17 @@ export default function sliderJsunit() {
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('tex');
       let obj: ESObject = JSON.parse(strJson);
-      console.info("[sliderJsunit_0800] obj: " + JSON.stringify(obj));
+      console.info("[sliderJsunitSliderTest_0800] obj: " + JSON.stringify(obj));
       expect(Math.round(obj.$attrs.content)).assertEqual(50);
       let strJson1 = getInspectorByKey('modeT');
       let obj1: ESObject = JSON.parse(strJson1);
-      console.info("[sliderJsunit_0800] obj1: " + JSON.stringify(obj1));
+      console.info("[sliderJsunitSliderTest_0800] obj1: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('2');
       done();
     });
     
-   it('sliderJsunit_0900', 0, async (done: Function) => {
-      console.info('[sliderJsunit_0800] START');
+   it('sliderJsunitSliderTest_0900', 0, async (done: Function) => {
+      console.info('[sliderJsunitSliderTest_0800] START');
       // modify the constructor attribute of slider dynamically
       globalThis.value.message.notify({name:'vInSetValueOne',value:-30})
       await CommonFunc.sleep(1000);
@@ -242,7 +242,7 @@ export default function sliderJsunit() {
       // check the value of changed parameter
       let strJson = getInspectorByKey('sliderConstructor');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[sliderJsunit_0900] component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
+      console.info('[sliderJsunitSliderTest_0900] component obj is: ' + obj.$attrs.style + "---" + obj.$attrs.constructor.direction + "--" + obj.$attrs.constructor.value 
       + "---" + obj.$attrs.constructor.reverse + "----" + obj.$attrs.constructor.min + "----" + obj.$attrs.constructor.max + "---" + obj.$attrs.constructor.step);
       expect(obj.$attrs.style).assertEqual('SliderStyle.OutSet');
       expect(obj.$attrs.constructor.direction).assertEqual('Axis.Horizontal');
@@ -251,7 +251,7 @@ export default function sliderJsunit() {
       expect(obj.$attrs.constructor.min).assertEqual('-20.000000');
       expect(obj.$attrs.constructor.max).assertEqual('1000.000000');
       expect(obj.$attrs.constructor.step).assertEqual('1.000000');
-      console.info('[sliderJsunit_0900] END');
+      console.info('[sliderJsunitSliderTest_0900] END');
       done();
     });
   })
