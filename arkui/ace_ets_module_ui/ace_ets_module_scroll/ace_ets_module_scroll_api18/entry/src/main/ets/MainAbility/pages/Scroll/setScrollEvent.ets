@@ -36,9 +36,11 @@ class MyNodeController extends NodeController {
 
   addCommonEvent(frameNode: FrameNode) {
     let listEvent: UIScrollEvent | undefined = typeNode.getEvent(frameNode, 'Scroll');
-    listEvent?.setOnWillScroll((scrollOffx: number, scrollOffy: number, scrollState: ScrollState, scrollSource: ScrollSource)=>{
+    listEvent?.setOnWillScroll((scrollOffx: number, scrollOffy: number, 
+      scrollState: ScrollState, scrollSource: ScrollSource)=>{
       storage.set('Scroll_setOnWillScroll', 'setOnWillScroll');
-      console.log(`shj:: onWillScroll scrollOffx=${scrollOffx}, scrollOffy=${scrollOffy}, scrollState=${scrollState}, scrollSource=${scrollSource}`)
+      console.log(`Scroll:: onWillScroll scrollOffx=${scrollOffx}, scrollOffy=${scrollOffy},
+        scrollState=${scrollState}, scrollSource=${scrollSource}`)
     })
     listEvent?.setOnDidScroll((xOffset: number, yOffset: number, scrollState: ScrollState)=>{
       storage.set('Scroll_setOnDidScroll', 'setOnDidScroll');
