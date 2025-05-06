@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -74,12 +74,12 @@ let ability = async () => {
   await sleep(1000)
 }
 
-export function executePicker() : boolean {
+export function isSupportCameras() : boolean {
   const cameraAvailable = canIUse('SystemCapability.Multimedia.Camera.Core');
   let context = getContext();
 
   let isSupportedCameras = true;
-  let isExecute = false;
+  let isSupportCamera = false;
   let mCameraManager: camera.CameraManager;
   let mCameraDevicesArray: Array<camera.CameraDevice>;
 
@@ -102,11 +102,11 @@ export function executePicker() : boolean {
     isSupportedCameras = false;
   }
   if (cameraAvailable && isSupportedCameras) {
-    isExecute = true;
+    isSupportCamera = true;
   } else {
-    isExecute = false;
+    isSupportCamera = false;
   }
-  return isExecute;
+  return isSupportCamera;
 }
 
 export function CameraConcurrentTest() {
