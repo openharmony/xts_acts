@@ -37,39 +37,39 @@ import CameraVideoMirrorTest from './CameraVideoMirrorTest.test.ets'
 import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritizationTest.test.ets'
 import CameraNoPermissionErrorCodeTest from './CameraNoPermissionErrorCodeTest.test.ets'
 import CameraPhotoSessionTest from './CameraPhotoSessionTest.test.ets'
-import {CameraConcurrentTest,executePicker} from './CameraConcurrentTest.test.ets'
+import {CameraConcurrentTest,isSupportCameras} from './CameraConcurrentTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
-let isExecutePicker = executePicker();
+let isSupportCamera = isSupportCameras();
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
   //无权限优先执行
-  CameraNoPermissionErrorCodeTest()
-  CameraVideoQualityPrioritizationTest()
-  cameraTorchTest()
-  cameraInputTest()
-  cameraVideoSuperStabilizationTest()
-  cameraJSUnitOutput()
-  cameraSessionFlashTest()
-  cameraSessionExposureTest()
-  cameraSessionFocusTest()
-  cameraSessionZoomRatioTest()
-  cameraSessionVideoStabilizationTest()
-  cameraSessionBaseTest()
-  cameraSessionMultiSessionTest();
-  CameraErrorCodeUsecaseTest()
-  cameraManagerTest()
-  cameraPreconfigTest()
-  cameraEnumTest()
-  cameraSecureSessionTest()
-  CameraSessionCameraRotationTest()
-  CameraVideoCodecTypeTest()
-  cameraSessionAutoDeviceSwitchTest()
-  CameraMirrorTest()
-  CameraVideoMirrorTest()
-  CameraPhotoSessionTest()
-  if (isExecutePicker) {
-   CameraConcurrentTest()
+  if (isSupportCamera) {
+    CameraNoPermissionErrorCodeTest()
+    CameraVideoQualityPrioritizationTest()
+    cameraTorchTest()
+    cameraInputTest()
+    cameraVideoSuperStabilizationTest()
+    cameraJSUnitOutput()
+    cameraSessionFlashTest()
+    cameraSessionExposureTest()
+    cameraSessionFocusTest()
+    cameraSessionZoomRatioTest()
+    cameraSessionVideoStabilizationTest()
+    cameraSessionBaseTest()
+    cameraSessionMultiSessionTest();
+    CameraErrorCodeUsecaseTest()
+    cameraManagerTest()
+    cameraPreconfigTest()
+    cameraEnumTest()
+    cameraSecureSessionTest()
+    CameraSessionCameraRotationTest()
+    CameraVideoCodecTypeTest()
+    cameraSessionAutoDeviceSwitchTest()
+    CameraMirrorTest()
+    CameraVideoMirrorTest()
+    CameraPhotoSessionTest()
+    CameraConcurrentTest()
   }
 }
