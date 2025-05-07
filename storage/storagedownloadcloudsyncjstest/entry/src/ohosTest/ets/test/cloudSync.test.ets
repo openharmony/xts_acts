@@ -642,7 +642,7 @@ describe('cloud_sync_test', () => {
         console.info("start download successfully");
       }).catch((err: BusinessError) => {
         console.error("test_cloudSync_State_023 start download failed: " + err.message + ", error code: " + err.code);
-        expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+        expect(false).assertTrue();
       });
      } catch (err) {
        console.log('test_cloudSync_State_023 has failed for ' + err.message + ', code: ' + err.code);
@@ -673,7 +673,7 @@ describe('cloud_sync_test', () => {
       fileCache.start(uri, (err: BusinessError) => {
         if (err) {
           console.error("test_cloudSync_State_024 start download failed: " + err.message + ", error code: " + err.code);
-          expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+          expect(false).assertTrue();
         } else {
           console.info("start download successfully");
         }
