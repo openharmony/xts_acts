@@ -452,10 +452,10 @@ export default function windowPCTest() {
       let caseName: string = 'test_SetWindowRectAutoSave_0600 ';
       console.log(caseName + 'begin');
       let windowStageStart = await startAbility2(caseName, context);
-      let windowRect1 = mainWindow.getWindowProperties().windowRect;
-      console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
+        let windowRect1 = mainWindow.getWindowProperties().windowRect;
+        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
