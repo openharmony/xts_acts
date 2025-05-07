@@ -35,6 +35,7 @@ const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
 const LABEL_MAINTENANCE_MODE = "maintenanceMode";
+const LABEL_SMS = "sms";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -609,6 +610,70 @@ function testSetDisallowedPolicy() {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_MAINTENANCE_MODE, false);
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0127
+   * @tc.name      : test_set_disallowed_policy_0127
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0127", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SMS)).assertFalse();
+    } catch (error) {
+      expect().assertFalse();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0128
+   * @tc.name      : test_set_disallowed_policy_0128
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0128", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, true);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SMS)).assertTrue();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
+    } catch (error) {
+      expect().assertFalse();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0129
+   * @tc.name      : test_set_disallowed_policy_0129
+   * @tc.desc      : test restrictions setDisallowedPolicy with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0129", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SMS, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
