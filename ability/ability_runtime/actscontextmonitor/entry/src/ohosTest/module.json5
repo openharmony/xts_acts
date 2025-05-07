@@ -18,6 +18,7 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
+    "srcEntry": "./ets/abilityStage/ability01.ts",
     "deviceTypes": [
       "default",
       "tablet",
@@ -43,26 +44,6 @@
             "entities": [
               "entity.system.home"
             ]
-          }
-        ]
-      },
-      {
-        "name": "abilityStage01",
-        "srcEntry": "./ets/test/abilityStage/ability01.ts",
-        "description": "$string:TestAbility_desc",
-        "icon": "$media:icon",
-        "label": "$string:TestAbility_label",
-        "startWindowIcon": "$media:icon",
-        "exported": true,
-        "startWindowBackground": "$color:start_window_background",
-        "skills": [
-          {
-            "actions": [
-              "action.system.home",
-            ],
-            "entities": [
-              "entity.system.home",
-            ],
           }
         ]
       },

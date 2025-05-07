@@ -96,22 +96,9 @@ export default function contextMonitoringTest() {
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
             if (data.event == 'ACTS_TEST_START') {
-              setTimeout(() => {
-                try {
-                  context.startAbility(
-                    {
-                      bundleName: 'com.test.actcontextmonitor',
-                      abilityName: 'abilityStage01'
-                    }).then(() => {
-                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
-                  })
-                } catch (err) {
-                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} open fail : ${err}`);
-                }
-              }, 500);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} wait abilityStage load`);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.stageContext01.terminateSelf()
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -146,7 +133,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -220,7 +207,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -288,7 +275,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -354,7 +341,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -422,7 +409,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -488,7 +475,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -558,7 +545,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -643,7 +630,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
@@ -725,7 +712,7 @@ export default function contextMonitoringTest() {
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {

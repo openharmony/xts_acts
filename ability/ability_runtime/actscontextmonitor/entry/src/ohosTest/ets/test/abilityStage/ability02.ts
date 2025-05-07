@@ -14,10 +14,10 @@
  */
 
 import hilog from '@ohos.hilog';
-import { AbilityStage } from '@kit.AbilityKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
+import { UIAbility, Want } from '@kit.AbilityKit';
 
-export default class abilityStage02 extends AbilityStage {
+export default class abilityStage02 extends UIAbility {
 
   onCreate(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage02 onCreate');
