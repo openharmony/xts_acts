@@ -85,7 +85,7 @@ export default function webViewContCookieToGeoLocationError() {
     it('testGetCookieInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetCookieInitErr";
       Utils.registerEvent("testGetCookieInitErr", "17100002", 752, done);
-      Utils.registerEvent("testGetCookieInitErr", "Invalid url", 753, done);
+      Utils.registerEvent("testGetCookieInitErr", "URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.", 753, done);
       sendEventByKey('webViewContCookieToGeoLocationError', 10, '');
     })
     /*
@@ -96,7 +96,7 @@ export default function webViewContCookieToGeoLocationError() {
     it('testSetCookieInitErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitSetCookieValueErr";
       Utils.registerEvent("testSetCookieInitErr", "17100002", 754, done);
-      Utils.registerEvent("testSetCookieInitErr", "Invalid url", 755, done);
+      Utils.registerEvent("testSetCookieInitErr", "URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.", 755, done);
       sendEventByKey('webViewContCookieToGeoLocationError', 10, '');
     })
     /*
@@ -107,7 +107,7 @@ export default function webViewContCookieToGeoLocationError() {
     it('testSetCookieValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteOriginValueNullErr";
       Utils.registerEvent("testSetCookieValueErr", "17100005", 756, done);
-      Utils.registerEvent("testSetCookieValueErr", "Invalid cookie value", 757, done);
+      Utils.registerEvent("testSetCookieValueErr", "Invalid cookie value.The cookie format must follow defined in RFC 6265.", 757, done);
       sendEventByKey('webViewContCookieToGeoLocationError', 10, '');
     })
     /*
