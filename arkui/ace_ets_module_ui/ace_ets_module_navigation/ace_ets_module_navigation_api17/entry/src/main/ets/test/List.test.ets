@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import OnActivePage from './OnActivePage.test'
+import NavDestinationStateActive from './NavDestinationStateActive.test'
 
 export default function testsuite() {
   OnActivePage();
+  NavDestinationStateActive();
 }
