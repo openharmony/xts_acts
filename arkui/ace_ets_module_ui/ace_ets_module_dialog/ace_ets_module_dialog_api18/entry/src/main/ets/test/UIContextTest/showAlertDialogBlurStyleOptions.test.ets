@@ -54,13 +54,23 @@ export default function showAlertDialogBlurStyleOptionsTest() {
       await Utils.sleep(1000);
       let obj1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await Utils.sleep(2000);
+      let dialog: ESObject = obj1.$children[1]
       let date1 = JSON.stringify(obj1.$children[1].$children[0])
-      console.info("[showAlertDialogBlurStyleOptions_0100] $attrs.options is: " + JSON.stringify(JSON.parse(date1).$attrs.backgroundBlurStyle.options));
-      expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.policy).assertEqual('BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE');
-      expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.adaptiveColor).assertEqual('AdaptiveColor.Average');
-      expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.scale).assertEqual(0);
-      expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.Light');
-      expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#FFFFC0CB');
+      let uniRenderFlag: string = dialog.$attrs.uniRender;
+      if(uniRenderFlag == 'false' ){
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.policy).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.adaptiveColor).assertEqual('AdaptiveColor.Default');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.scale).assertEqual(1.0);
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.System');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#00000000');
+      }else{
+        console.info("[showAlertDialogBlurStyleOptions_0100] $attrs.options is: " + JSON.stringify(JSON.parse(date1).$attrs.backgroundBlurStyle.options));
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.policy).assertEqual('BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.adaptiveColor).assertEqual('AdaptiveColor.Average');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.scale).assertEqual(0);
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.colorMode).assertEqual('ThemeColorMode.Light');
+        expect(JSON.parse(date1).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#FFFFC0CB');
+      }
       let btn1: Component = await driver.findComponent(ON.text('button'));
       await btn1?.click();
       await Utils.sleep(1000);

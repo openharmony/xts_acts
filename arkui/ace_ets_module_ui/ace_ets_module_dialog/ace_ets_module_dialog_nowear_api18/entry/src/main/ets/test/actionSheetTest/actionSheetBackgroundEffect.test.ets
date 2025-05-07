@@ -54,16 +54,29 @@ export default function actionSheetBackgroundEffectTest() {
       await Utils.sleep(1000);
       let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await Utils.sleep(2000);
+      let dialog: ESObject = obj.$children[1]
       let date = JSON.stringify(obj.$children[1].$children[0])
-      console.info("[actionSheetBackgroundEffectTest_0100] $attrs.options is: " + JSON.stringify(JSON.parse(date).$attrs.backgroundEffect.options));
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.policy).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.adaptiveColor).assertEqual('AdaptiveColor.Default');
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.color).assertEqual('#FFFFC0CB');
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.radius).assertEqual(40);
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.saturation).assertEqual(25);
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(2);
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#FF0000FF');
-      expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[20.000000,20.000000]');
+      let uniRenderFlag: string = dialog.$attrs.uniRender;
+      if(uniRenderFlag == 'false' ){
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.policy).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.adaptiveColor).assertEqual('AdaptiveColor.Default');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.color).assertEqual('#00000000');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.radius).assertEqual(0);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.saturation).assertEqual(1);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(1);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#00000000');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[0,0]');
+      }else{
+        console.info("[actionSheetBackgroundEffectTest_0100] $attrs.options is: " + JSON.stringify(JSON.parse(date).$attrs.backgroundEffect.options));
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.policy).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.adaptiveColor).assertEqual('AdaptiveColor.Default');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.color).assertEqual('#FFFFC0CB');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.radius).assertEqual(40);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.saturation).assertEqual(25);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.brightness).assertEqual(2);
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#FF0000FF');
+        expect(JSON.parse(date).$attrs.backgroundEffect.options.blurOption).assertEqual('[20.000000,20.000000]');
+      }
       let btn1: Component = await driver.findComponent(ON.text('Confirm button'));
       await btn1?.click();
       await Utils.sleep(1000);
