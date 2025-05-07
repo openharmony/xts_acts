@@ -18,22 +18,28 @@ import { AbilityStage } from '@kit.AbilityKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@ohos.base';
 
-export default class abilityStage01 extends AbilityStage {
+export default class AbilityStage01 extends AbilityStage {
 
-  public eventCallback(argOne?: number, argTwo?: number){
+  public eventCallback(argOne?: number, argTwo?: number): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback success, argOne is: ${argOne}, argTwo is: ${argTwo}`);
-    if(argOne == 1 && argTwo == 2){
+    let commonEventData: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        'resultA': argOne,
+        'resultB': argTwo,
+      }
+    }
+    if (argOne === 1 && argTwo === 2) {
       setTimeout(()=>{
         commonEventManager.publish('ACTS_TEST_DESTROY', function () {
           hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage01 entry publish ACTS_TEST_DESTROY');
         });
-      },2000)
+      }, 2000);
     }
   }
 
   onCreate(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage01 onCreate');
-    globalThis.stageContext01 = this.context
+    globalThis.stageContext01 = this.context;
     try {
       this.context.eventHub.on('event01', this.eventCallback);
     } catch (e) {
@@ -42,7 +48,7 @@ export default class abilityStage01 extends AbilityStage {
       hilog.info(0x0000, 'testTag', '%{public}s', `EventHub emit error, code: ${code}, msg: ${msg}`);
     }
     try {
-      this.context.eventHub.emit('event01',1,2);
+      this.context.eventHub.emit('event01', 1, 2);
     } catch (e) {
       let code: number = (e as BusinessError).code;
       let msg: string = (e as BusinessError).message;

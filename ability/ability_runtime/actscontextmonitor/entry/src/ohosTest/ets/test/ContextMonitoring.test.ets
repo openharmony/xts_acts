@@ -99,6 +99,8 @@ export default function contextMonitoringTest() {
               hilog.info(0x0000, 'testTag', '%{public}s', `${tag} wait abilityStage load`);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
+              expect(data.parameters?.resultA).assertEqual(1)
+              expect(data.parameters?.resultB).assertEqual(1)
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);

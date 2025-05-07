@@ -19,10 +19,7 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "srcEntry": "./ets/abilityStage/ability01.ts",
-    "deviceTypes": [
-      "default",
-      "tablet",
-    ],
+    "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",

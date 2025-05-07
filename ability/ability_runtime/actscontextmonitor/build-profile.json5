@@ -12,16 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+    ],
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
         "compileSdkVersion": 18,
         "compatibleSdkVersion": 12,
-        "targetSdkVersion": 18,
+        "targetSdkVersion": 12,
         "runtimeOS": "OpenHarmony",
       }
     ]
@@ -38,6 +40,6 @@
           ]
         }
       ]
-    },
+    }
   ]
 }
