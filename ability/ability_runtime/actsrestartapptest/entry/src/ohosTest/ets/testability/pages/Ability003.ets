@@ -14,11 +14,13 @@
  */
 import hilog from '@ohos.hilog';
 
+const caseName = 'SUB_Ability_AbilityRuntime_restartApp_0300';
+
 @Entry
 @Component
 struct Ability003 {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability003 index aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability003 index aboutToAppear');
   }
 
   @State message: string = 'Ability003';

@@ -16,13 +16,9 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { application, common } from '@kit.AbilityKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { Driver, ON ,Component } from '@kit.TestKit';
+import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 let context = getContext(this) as common.UIAbilityContext;
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 
 function sleep(ms: number) {
   return new Promise<string>(resolve => setTimeout(resolve, ms));
@@ -30,6 +26,7 @@ function sleep(ms: number) {
 
 export default function abilityTest() {
   describe('ActsRestartAppTest', () => {
+    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       context = globalThis.context;
     })
@@ -41,173 +38,284 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0100
-     * @tc.name    The parameter 'abilityName' is not Uiability, and calling the RestartApp interface returns 16000063
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   0
+     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0100
+     * @tc.name   : The parameter 'abilityName' is not Uiability, and calling the RestartApp interface returns 16000063
+     * @tc.desc   : Function test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_restartApp_0100', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
+      console.log(`${caseName} starts.`);
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
         abilityName: 'Ability001'
       };
-      context.startAbility(want, (err: BusinessError) => {
-        if(err.code) {
-          console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
-        }
-        console.info(`${caseName} Succeed to startAbility.`);
-      });
-      let cmd = "hilog -x -e SUB_Ability_AbilityRuntime_restartApp_0100";
-      let isRestartApp: boolean = false;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      await sleep(1000);
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(`${caseName} ExecuteShellCommand succeed. ShellCmdResult: ${JSON.stringify(data)}`);
-        isRestartApp = data.stdResult.includes('16000063');
-        console.info(`${caseName} the isRestartApp is ${isRestartApp}`);
-      })
-      await sleep(1000);
-      expect(isRestartApp).assertEqual(true);
-      done();
+      let errCode: string | undefined = '';
+      try {
+        context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info(`${caseName} Succeed to startAbility.`);
+        });
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['restartapp0100'],
+        };
+        commonEventManager.createSubscriber(subscribeInfo,
+          async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+            if (err) {
+              console.error(`${caseName} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            }
+            console.info(`${caseName} Succeeded in creating subscriber.`);
+            subscriber = data;
+            console.log(`${caseName} the subsciber is ${JSON.stringify(subscriber)}`);
+
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              console.log(caseName + ' subscribe__' + JSON.stringify(data));
+              if (err) {
+                console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.info(`${caseName} CommenEventData.data is ${data.data}`);
+                errCode = data.data;
+              }
+            });
+          });
+        await sleep(2000);
+        expect(errCode).assertEqual('16000063');
+        console.log(`${caseName} ends.`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} Failed to running this case.Code: ${err.code}, message: ${err.message}`);
+      }
     });
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0200
-     * @tc.name    The parameter 'abilityName' is "", and calling the RestartApp interface returns 401
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   0
+     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0200
+     * @tc.name   : The parameter 'abilityName' is "", and calling the RestartApp interface returns 401
+     * @tc.desc   : Function test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_restartApp_0200', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0200';
+      console.log(`${caseName} starts.`);
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
         abilityName: 'Ability002'
       };
-      context.startAbility(want, (err: BusinessError) => {
-        if(err.code) {
-          console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
-        }
-        console.info(`${caseName} Succeed to startAbility.`);
-      });
-      let cmd = "hilog -x -e SUB_Ability_AbilityRuntime_restartApp_0200";
-      let isRestartApp: boolean = false;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      await sleep(1000);
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(`${caseName} ExecuteShellCommand succeed. ShellCmdResult: ${JSON.stringify(data)}`);
-        isRestartApp = data.stdResult.includes('401');
-        console.info(`${caseName} the isRestartApp is ${isRestartApp}`);
-      })
-      await sleep(1000);
-      expect(isRestartApp).assertEqual(true);
-      done();
+      let errCode: string | undefined = '';
+      try {
+        context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info(`${caseName} Succeed to startAbility.`);
+        });
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['restartapp0200'],
+        };
+        commonEventManager.createSubscriber(subscribeInfo,
+          async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+            if (err) {
+              console.error(`${caseName} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            }
+            console.info(`${caseName} Succeeded in creating subscriber.`);
+            subscriber = data;
+            console.log(`${caseName} the subsciber is ${JSON.stringify(subscriber)}`);
+
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              console.log(caseName + ' subscribe__' + JSON.stringify(data));
+              if (err) {
+                console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.info(`${caseName} CommenEventData.data is ${data.data}`);
+                errCode = data.data;
+              }
+            });
+          });
+        await sleep(2000);
+        expect(errCode).assertEqual('401');
+        console.log(`${caseName} ends.`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} Failed to running this case.Code: ${err.code}, message: ${err.message}`);
+      }
     });
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0300
-     * @tc.name    The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   0
+     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0300
+     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.desc   : Function test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_restartApp_0300', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0300';
+      console.log(`${caseName} starts.`);
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
         abilityName: 'Ability003'
       };
-      context.startAbility(want, (err: BusinessError) => {
-        if(err.code) {
-          console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
-        }
-        console.info(`${caseName} Succeed to startAbility.`);
-      });
-      let cmd = "hilog -x -e SUB_Ability_AbilityRuntime_restartApp_0300";
-      let isRestartApp: boolean = false;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      await sleep(1000);
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(`${caseName} ExecuteShellCommand succeed. ShellCmdResult: ${JSON.stringify(data)}`);
-        isRestartApp = data.stdResult.includes('16000063');
-        console.info(`${caseName} the flag is ${isRestartApp}`);
-      })
-      await sleep(1000);
-      expect(isRestartApp).assertEqual(true);
-      done();
+      let errCode: string | undefined = '';
+      try {
+        context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info(`${caseName} Succeed to startAbility.`);
+        });
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['restartapp0300'],
+        };
+        commonEventManager.createSubscriber(subscribeInfo,
+          async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+            if (err) {
+              console.error(`${caseName} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+              return;
+            }
+            console.info(`${caseName} Succeeded in creating subscriber.`);
+            subscriber = data;
+            console.log(`${caseName} the subsciber is ${JSON.stringify(subscriber)}`);
+
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              console.log(caseName + ' subscribe__' + JSON.stringify(data));
+              if (err) {
+                console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+                return;
+              } else {
+                console.info(`${caseName} CommenEventData.data is ${data.data}`);
+                errCode = data.data;
+              }
+            });
+          });
+        await sleep(2000);
+        expect(errCode).assertEqual('16000063');
+        console.log(`${caseName} ends.`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} Filed to running this case.Code: ${err.code}, message: ${err.message}`);
+      }
     });
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0400
-     * @tc.name    The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   0
+     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0400
+     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.desc   : Function test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_restartApp_0400', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0400';
+      console.log(`${caseName} starts.`);
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
         abilityName: 'Ability004'
       };
-      context.startAbility(want, (err: BusinessError) => {
-        if(err.code) {
-          console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
-        }
-        console.info(`${caseName} Succeed to startAbility.`);
-      });
-      let cmd = "hilog -x -e SUB_Ability_AbilityRuntime_restartApp_0400";
-      let isRestartApp: boolean = false;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      await sleep(1000);
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(`${caseName} ExecuteShellCommand succeed. ShellCmdResult: ${JSON.stringify(data)}`);
-        isRestartApp = data.stdResult.includes('401');
-        console.info(`${caseName} the isRestartApp is ${isRestartApp}`);
-      })
-      await sleep(1000);
-      expect(isRestartApp).assertEqual(true);
-      done();
+      let errCode: string | undefined = '';
+      try {
+        context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info(`${caseName} Succeed to startAbility.`);
+        });
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['restartapp0400'],
+        };
+        commonEventManager.createSubscriber(subscribeInfo,
+          async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+            if (err) {
+              console.error(`${caseName} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+              return;
+            }
+            console.info(`${caseName} Succeeded in creating subscriber.`);
+            subscriber = data;
+            console.log(`${caseName} the subsciber is ${JSON.stringify(subscriber)}`);
+
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              console.log(caseName + ' subscribe__' + JSON.stringify(data));
+              if (err) {
+                console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+                return;
+              } else {
+                console.info(`${caseName} CommenEventData.data is ${data.data}`);
+                errCode = data.data;
+              }
+            });
+          });
+        await sleep(2000);
+        expect(errCode).assertEqual('401');
+        console.log(`${caseName} ends.`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} Filed to running this case.Code: ${err.code}, message: ${err.message}`);
+      }
     });
 
     /*
-     * @tc.number  SUB_Ability_AbilityRuntime_restartApp_0500
-     * @tc.name    Parameter Want is empty and calling the RestartApp interface returns 401
-     * @tc.desc    Function test
-     * @tc.size    MediumTest
-     * @tc.type    Function
-     * @tc.level   0
+     * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0500
+     * @tc.name   : Parameter Want is empty and calling the RestartApp interface returns 401
+     * @tc.desc   : Function test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 0
      */
     it('SUB_Ability_AbilityRuntime_restartApp_0500', Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0500';
+      console.log(`${caseName} starts.`);
       let want: Want = {
         bundleName: 'com.test.actsrestartapptest',
         abilityName: 'Ability005'
       };
-      context.startAbility(want, (err: BusinessError) => {
-        if(err.code) {
-          console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
-        }
-        console.info(`${caseName} Succeed to startAbility.`);
-      });
-      let cmd = "hilog -x -e SUB_Ability_AbilityRuntime_restartApp_0500";
-      let isRestartApp: boolean = false;
-      abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      await sleep(1000);
-      abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(`${caseName} ExecuteShellCommand succeed. ShellCmdResult: ${JSON.stringify(data)}`);
-        isRestartApp = data.stdResult.includes('401');
-        console.info(`${caseName} the isRestartApp is ${isRestartApp}`);
-      })
-      await sleep(1000);
-      expect(isRestartApp).assertEqual(true);
-      done();
+      let errCode: string | undefined = '';
+      try {
+        context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info(`${caseName} Succeed to startAbility.`);
+        });
+        let subscriber: commonEventManager.CommonEventSubscriber;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ['restartapp0500'],
+        };
+        commonEventManager.createSubscriber(subscribeInfo,
+          async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+            if (err) {
+              console.error(`${caseName} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+              return;
+            }
+            console.info(`${caseName} Succeeded in creating subscriber.`);
+            subscriber = data;
+            console.log(`${caseName} the subsciber is ${JSON.stringify(subscriber)}`);
+
+            commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+              console.log(caseName + ' subscribe__' + JSON.stringify(data));
+              if (err) {
+                console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+                return;
+              } else {
+                console.info(`${caseName} CommenEventData.data is ${data.data}`);
+                errCode = data.data;
+              }
+            });
+          });
+        await sleep(2000);
+        expect(errCode).assertEqual('401');
+        console.log(`${caseName} ends.`);
+        done();
+      } catch (err) {
+        console.info(`${caseName} Filed to running this case.Code: ${err.code}, message: ${err.message}`);
+      }
     });
   })
 }

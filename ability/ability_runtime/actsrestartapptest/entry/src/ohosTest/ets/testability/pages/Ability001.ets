@@ -13,12 +13,15 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+
+const caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
 
 @Entry
 @Component
 struct Ability001 {
   aboutToAppear() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability001 index aboutToAppear');
+    hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 index aboutToAppear');
   }
 
   @State message: string = 'Ability001';
