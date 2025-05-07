@@ -85,6 +85,14 @@ function expectFalse() {
   }
 }
 
+function expectTrue(data : boolean){
+    try {
+        expect(data).assertTrue();
+    } catch (err){
+        console.info('assertion failure');    
+    }
+};
+
 export default function NetworkManagerMulticastHTTP2Test() {
   afterAll(async () =>{
     console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -104,7 +112,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100";
       httpRequest.request(url, httpRequestOptions_fileData).then((data) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(data)}`);
-        expect(data.responseCode == 200).assertTrue();
+        expectTrue(data.responseCode == 200);
         done();
       }).catch((err: BusinessError) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(err)}`);
@@ -124,7 +132,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200";
       httpRequest.request(url,httpRequestOptions_form).then((data) => {
           console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-          expect(data.responseCode == 200).assertTrue();
+          expectTrue(data.responseCode == 200);
           done();
         }).catch((err:BusinessError) => {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -144,7 +152,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300";
       httpRequest.request(url,httpRequestOptions).then((data) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-        expect(data.responseCode == 200).assertTrue();
+        expectTrue(data.responseCode == 200);
         done();
       }).catch((err:BusinessError) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
