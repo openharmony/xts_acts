@@ -52,6 +52,334 @@ async function exitInputMethod() {
 }
 
 export default function UiTest() {
+    describe('UiTest_API20', () => {
+        let driver: Driver
+        beforeAll(async (done: Function) => {
+            driver = Driver.create()
+            await driver.delayMs(1000)
+            done()
+        })
+
+        beforeEach(async () => {
+            await stopApplication('com.uitestScene.acts');
+        })
+
+        /*
+        * @tc.number: uiTest_20001
+        * @tc.name: testDriverLongClickAt
+        * @tc.desc: LongClick on the specified location on the screen, the value of duration is 3000.
+        */
+        it('testDriverLongClickAt', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverLongClickAt start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs)
+            let Button = await driver.findComponent(ON.text('next page'))
+            let center = await Button.getBoundsCenter()
+            await driver.longClickAt({x:center.x,y:center.y} , 3000)
+            await driver.delayMs(waitUiReadyMs)
+            let newButton = await driver.findComponent(ON.text('longClick'))
+            let text = await newButton.getText()
+            console.log(`${TestTag}, testDriverLongClickAt text,${JSON.stringify(text)}`);
+            expect(text == 'longClick').assertTrue()
+            await newButton.click()
+            console.log(`${TestTag}, testDriverLongClickAt end`);
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+             * @tc.number: uiTest_20001
+             * @tc.name: testDragBetween
+             * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent, the value of duration is 3000, the value of speed is 3000.
+             */
+        it('testDragBetween', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDragBetween start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.id('jump'))
+            await button.longClick()
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await driver.findComponent(ON.text('one'))
+            let text2 = await driver.findComponent(ON.text('two'))
+            let center1 = await text1.getBoundsCenter()
+            let center2 = await text2.getBoundsCenter()
+            await driver.dragBetween({x:center1.x,y:center1.y}, {x:center2.x,y:center2.y}, 3000, 3000)
+            await driver.delayMs(waitUiReadyMs)
+            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
+            expect(text == null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDragBetween end`);
+        })
+
+        /*
+        * @tc.number: uiTest_20003
+        * @tc.name: testMouseDrag
+        * @tc.desc: drag on the screen between the specified points by mouse.
+        */
+        it('testMouseDrag', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testMouseDrag start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.id('jump'))
+            let center = await button.getBoundsCenter();
+            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 2072, 3000)
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await driver.findComponent(ON.text('two'))
+            let text2 = await driver.findComponent(ON.text('three'))
+            let point1 = await text1.getBoundsCenter()
+            let point2 = await text2.getBoundsCenter()
+            await driver.mouseDrag(point1, point2, 600, 3000)
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
+            expect(text == null).assertTrue()
+            await driver.mouseDrag(point1, point2)
+            console.log(`${TestTag}, testMouseDrag end`);
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_20005
+         * @tc.name: testDriverinputText
+         * @tc.desc: enter '123',the values of both a and b are false
+         */
+        it('testDriverinputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverinputText start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            let center = await text.getBoundsCenter()
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.inputText(center, '123', {paste:false, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDriverinputText end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20006
+         * @tc.name: testDriverinputText1
+         * @tc.desc: enter '长贵儿',the values of both a and b are false
+         */
+        it('testDriverinputText1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverinputText1 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            let center = await text.getBoundsCenter()
+            await driver.inputText(center, '长贵儿', {paste:false, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '长贵儿').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDriverinputText1 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20007
+         * @tc.name: testDriverinputText2
+         * @tc.desc: enter '123',the values of paste is true,the values of addition is false
+         */
+        it('testDriverinputText2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverinputText2 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            let center = await text.getBoundsCenter()
+            await driver.inputText(center, '123', {paste:true, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDriverinputText2 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20008
+         * @tc.name: testDriverinputText3
+         * @tc.desc: enter '123',the values of paste is false,the values of addition is true
+         */
+        it('testDriverinputText3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverinputText3 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            let center = await text.getBoundsCenter()
+            await driver.inputText(center, '123', {paste:false, addition:true})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == 'Hello World123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDriverinputText3 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20009
+         * @tc.name: testDriverinputText4
+         * @tc.desc: enter '123',the values of paste is true,the values of addition is true
+         */
+        it('testDriverinputText4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testDriverinputText4 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            let center = await text.getBoundsCenter()
+            await driver.inputText(center, '123', {paste:true, addition:true})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == 'Hello World123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testDriverinputText4 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20010
+         * @tc.name: testComponentinputText
+         * @tc.desc: enter '123',the values of both paste and addition are false
+         */
+        it('testComponentinputText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testComponentinputText start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            await text.inputText('123', {paste:false, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testComponentinputText end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20011
+         * @tc.name: testComponentinputText1
+         * @tc.desc: enter '长贵儿',the values of both paste and addition are false
+         */
+        it('testComponentinputText1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testComponentinputText1 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            await text.inputText('长贵儿', {paste:false, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '长贵儿').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testComponentinputText1 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20012
+         * @tc.name: testDriverinputText2
+         * @tc.desc: enter '123',the values of paste is true,the values of addition is false
+         */
+        it('testcomponentinputText2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testcomponentinputText2 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.clearText()
+            await driver.delayMs(2000)
+            await exitInputMethod()
+            await text.inputText('123', {paste:true, addition:false})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testcomponentinputText2 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20013
+         * @tc.name: testComponentinputText3
+         * @tc.desc: enter '123',the values of paste is false,the values of addition is true
+         */
+        it('testComponentinputText3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testComponentinputText3 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.inputText('123', {paste:false, addition:true})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == 'Hello World123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testComponentinputText3 end`);
+        })
+
+        /*
+         * @tc.number: uiTest_20014
+         * @tc.name: testComponentinputText4
+         * @tc.desc: enter '123',the values of paste is true,the values of addition is true
+         */
+        it('testComponentinputText4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(`${TestTag}, testComponentinputText4 start`);
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            await text.inputText('123', {paste:true, addition:true})
+            await driver.delayMs(2000)
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text1.getText() == '123').assertTrue()
+            await stopApplication('com.uitestScene.acts')
+            console.log(`${TestTag}, testComponentinputText4 end`);
+        })
+
+    })
     describe('UiTest_API16', () => {
         let driver: Driver
         beforeAll(async (done: Function) => {
