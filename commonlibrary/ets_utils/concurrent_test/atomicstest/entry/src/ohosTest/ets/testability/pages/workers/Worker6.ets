@@ -22,7 +22,7 @@ parentPort.onmessage = (e) => {
   let buffer:SharedArrayBuffer = e.data;
   const counter = new SharedCounter(0);
   const addResult = counter.add(5);
-  parentPort.postMessage("Worker1");
+  parentPort.postMessage('Worker1');
 };
 
 
