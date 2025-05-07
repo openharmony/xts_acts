@@ -103,15 +103,16 @@ struct setOnListIndex02 {
 
   build() {
     Column() {
+      Button('reset CommonEvent to List')
+        .height('5%')
+        .onClick(() => {
+          this.myNodeController!.resetEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
+        })
       Button('add CommonEvent to List')
         .id('List_addCommonEvent_02')
         .height('5%')
         .onClick(() => {
           this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
-        })
-      Button('reset CommonEvent to List')
-        .onClick(() => {
-          this.myNodeController!.resetEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
         })
       Text(this.text).id('List_setOnWill_02')
         .height('5%')
