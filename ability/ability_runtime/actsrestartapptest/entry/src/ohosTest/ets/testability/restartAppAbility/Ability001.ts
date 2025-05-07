@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,15 +20,15 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 const caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
 
 export default class Ability001 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onCreate');
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/Ability001', (err, data) => {
@@ -40,11 +40,11 @@ export default class Ability001 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onForeground');
     let applicationContext = this.context.getApplicationContext();
     let want: Want = {
@@ -53,7 +53,7 @@ export default class Ability001 extends UIAbility {
     };
     try {
       applicationContext.restartApp(want);
-      console.info(`${caseName} Succeed to restart App.`)
+      console.info(`${caseName} Succeed to restart App.`);
     } catch (e) {
       console.info(`${caseName} Failed to restart App.Code: ${e.code}, message: ${e.message}`);
       let options: commonEventManager.CommonEventPublishData = {
@@ -61,7 +61,7 @@ export default class Ability001 extends UIAbility {
         data: e.code.toString()
       };
       commonEventManager.publish('restartapp0100', options, (err: BusinessError) => {
-        if(err) {
+        if (err) {
           hilog.error(0xFF00, 'testTag', caseName + 'PublishCallBack err = ' + JSON.stringify(err));
         } else {
           hilog.info(0xFF00, 'testTag', caseName + 'Publish success');
@@ -70,7 +70,7 @@ export default class Ability001 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'Ability001 onBackground');
   }
 }

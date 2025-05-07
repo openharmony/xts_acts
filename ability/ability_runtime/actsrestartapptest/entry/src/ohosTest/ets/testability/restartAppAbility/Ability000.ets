@@ -6,30 +6,30 @@ const DOMAIN = 0x0000;
 const caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
 
 export default class Ability000 extends EmbeddedUIExtensionAbility {
-  onCreate() {
+  onCreate(): void {
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onCreate`);
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onForeground`);
   }
 
-  onBackground() {
+  onBackground(): void {
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onBackground`);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onDestroy`);
   }
 
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     const storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('session', session);
     session.loadContent('testability/pages/Ability000Page', storage);
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onSessionCreate done`);
   }
 
-  onSessionDestroy(session: UIExtensionContentSession) {
+  onSessionDestroy(session: UIExtensionContentSession): void {
     session.terminateSelf().catch(() => {
     });
     hilog.info(DOMAIN, 'testTag', caseName + `Ability000 onSessionDestroy`);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -39,7 +39,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0100
-     * @tc.name   : The parameter 'abilityName' is not Uiability, and calling the RestartApp interface returns 16000063
+     * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0100
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -94,7 +94,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0200
-     * @tc.name   : The parameter 'abilityName' is "", and calling the RestartApp interface returns 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0200
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -149,7 +149,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0300
-     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0300
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -206,7 +206,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0400
-     * @tc.name   : The parameter 'abilityName' is an illegal value. Calling the RestartApp interface returns 16000063
+     * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0400
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -263,7 +263,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0500
-     * @tc.name   : Parameter Want is empty and calling the RestartApp interface returns 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0500
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
