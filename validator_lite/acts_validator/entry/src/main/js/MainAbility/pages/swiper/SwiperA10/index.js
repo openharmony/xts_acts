@@ -14,11 +14,11 @@
  */
 
 import {showPage} from '../../../common/js/swiper';
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        item_index: NaN,
         index: 0,
         str: '',
         title: 'swiper',
@@ -39,10 +39,16 @@ export default {
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                item_index: this.item_index
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

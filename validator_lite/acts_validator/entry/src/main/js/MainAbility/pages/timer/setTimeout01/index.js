@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data:{
+        item_index: NaN,
         value:'show',
         timeoutId: -1,
         str: '',
@@ -27,10 +27,20 @@ export default {
     },
     startTimer() {
         this.value = 'show';
-        this.timeoutId = setTimeout(()=> {this.value = 'once_timer success'}, 3000);
+        if (this.timeoutId !== -1) {
+            clearTimeout(this.timeoutId);
+        }
+        this.timeoutId = setTimeout(()=> {
+            console.info("start setTimeout")
+            this.value = 'once_timer success'
+        }, 3000);
     },
 
     clearTimer() {
+        clearTimeout(this.timeoutId);
+    },
+
+    onDestroy() {
         clearTimeout(this.timeoutId);
     },
 
@@ -47,10 +57,16 @@ export default {
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                item_index: this.item_index
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

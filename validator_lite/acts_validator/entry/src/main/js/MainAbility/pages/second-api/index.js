@@ -17,6 +17,7 @@ import router from '@system.router';
 
 export default {
   data: {
+    item_index: 0,
     todolist: [
       {
         id: 0,
@@ -126,9 +127,25 @@ export default {
     ]
   },
 
-  clickChange(url) {
-    console.info('onclick url: ' + url);
-    router.replace({ uri: url });
+  onShow() {
+    console.info("onShow item_index: " + this.item_index)
+    this.$refs.list.scrollTo({index: this.item_index})
   },
 
+  clickChange(item) {
+    console.info('onclick url: ' + item.url);
+    router.replace({
+      uri: item.url,
+      params: {
+        item_index: item.id
+      }
+    });
+  },
+
+  swipeEvent(e) {
+    if (e.direction === 'right') {
+      console.info('swipeEvent');
+      router.replace({ uri: 'pages/index/index' });
+    }
+  },
 };

@@ -14,11 +14,11 @@
  */
 
 import { swipeFunc } from '../../../common/js/event';
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
   data: {
+    item_index: NaN,
     color: '#5265ef',
     flag: false,
     pointX: 0,
@@ -50,10 +50,16 @@ export default {
 
   back() {
     console.info('onclick back ');
-    router.replace({ uri: 'pages/second-compent/index' });
+    router.replace({
+      uri: 'pages/second-compent/index',
+      params: {
+        item_index: this.item_index
+      }
+    });
   },
 
   changeResult(result) {
-    saveTxtData(this, result);
+    getApp().data.keyList[this.title] = result;
+    this.back();
   },
 };
