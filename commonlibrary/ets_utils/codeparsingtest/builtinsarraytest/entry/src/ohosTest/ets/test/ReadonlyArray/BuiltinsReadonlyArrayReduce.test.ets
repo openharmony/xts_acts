@@ -88,7 +88,7 @@ export default function builtinsReadonlyArrayReduceTest() {
         console.log(`${result}`);
       } catch (error) {
         console.error(error.message);
-        expect("out of range.").assertEqual(error.message);
+        expect('TypeError').assertEqual(error.name);
       }
       ;
       Done();
