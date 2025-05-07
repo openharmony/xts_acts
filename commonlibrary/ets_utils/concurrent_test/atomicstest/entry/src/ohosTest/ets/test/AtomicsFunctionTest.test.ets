@@ -1,13 +1,13 @@
 /*
  * Copyright (C) 2025 HiHope Open Source Organization.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -109,7 +109,7 @@ export default function AtomicsFunctionTest() {
       WorkerSrc.workerInstance.postMessage(buffer);
       WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
         const workerData:Uint8Array = e.data;
-        console.info("workerInstance onmessage is: ", workerData);
+        console.info('workerInstance onmessage is: ', workerData);
         for (let i = 0; i < 100; i++) {
           const mainResult = Atomics.load(sharedArray, i);
           expect(mainResult).assertEqual(workerData[i]);
@@ -170,7 +170,7 @@ export default function AtomicsFunctionTest() {
       WorkerSrc.workerInstance.postMessage(buffer);
       WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
         const workerData = new Uint16Array(e.data);
-        console.info("workerInstance onmessage is: ", workerData);
+        console.info('workerInstance onmessage is: ', workerData);
         for (let i = 0; i < 100; i++) {
           const mainResult = Atomics.load(sharedArray, i);
           expect(mainResult).assertEqual(workerData[i]);
@@ -230,7 +230,7 @@ export default function AtomicsFunctionTest() {
       WorkerSrc.workerInstance.postMessage(buffer);
       WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
         const workerData = new Uint32Array(e.data);
-        console.info("workerInstance onmessage is: ", workerData);
+        console.info('workerInstance onmessage is: ', workerData);
         for (let i = 0; i < 100; i++) {
           const mainResult = Atomics.load(sharedArray, i);
           expect(mainResult).assertEqual(workerData[i]);
@@ -289,7 +289,7 @@ export default function AtomicsFunctionTest() {
       WorkerSrc.workerInstance.postMessage(buffer);
       WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
         const workerData = new BigUint64Array(e.data);
-        console.info("workerInstance onmessage is: ", workerData);
+        console.info('workerInstance onmessage is: ', workerData);
         for (let i = 0; i < 100; i++) {
           const mainResult = Atomics.load(sharedArray, i);
           expect(mainResult).assertEqual(workerData[i]);
@@ -320,7 +320,7 @@ export default function AtomicsFunctionTest() {
       WorkerSrc1.workerInstance.postMessage(buffer);
       WorkerSrc1.workerInstance.onmessage = (e: MessageEvents) => {
         const workerData = new BigUint64Array(e.data);
-        console.info("workerInstance onmessage is: ", workerData);
+        console.info('workerInstance onmessage is: ', workerData);
         for (let i = 0; i < 100; i++) {
           const mainResult = Atomics.load(sharedArray, i);
           expect(mainResult).assertEqual(workerData[i]);
@@ -456,7 +456,7 @@ export default function AtomicsFunctionTest() {
         taskGroup.addTask(task);
       }
       await taskpool.execute(taskGroup);
-      console.info("All tasks executed successfully");
+      console.info('All tasks executed successfully');
 
       for (let i = 0; i < 6; i++) {
         const startIndex = i * 100;
@@ -491,7 +491,7 @@ export default function AtomicsFunctionTest() {
       const task = new taskpool.Task(modifyValueTask, int8Array, targetIndex);
 
       await taskpool.execute(task);
-      console.info("Task executed successfully");
+      console.info('Task executed successfully');
 
       await new Promise<void>(resolve => setTimeout(resolve, 100));
 

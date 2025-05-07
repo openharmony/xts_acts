@@ -21,7 +21,7 @@ parentPort.onmessage = (e:MessageEvents) :void => {
   let sharedBuffer: number = e.data;
   const sharedArray = new Int32Array(sharedBuffer);
   const oldValue = Atomics.add(sharedArray, 0, 5);
-  console.log(`Worker1: Atomics.add(5) - 旧值=${oldValue}, 新值=${sharedArray[0]}`);
+  console.log(`${oldValue},${sharedArray[0]}`);
 
   parentPort.postMessage(sharedArray[0]);
 };

@@ -1,18 +1,18 @@
 /*
  * Copyright (C) 2025 HiHope Open Source Organization.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { worker } from "@kit.ArkTS";
+import { worker } from '@kit.ArkTS';
 
 /**
  * Sleep function for test synchronization
@@ -166,7 +166,7 @@ export function atomicTask1(sharedArray:Int8Array) {
 
 
 export class WorkerSrc {
-  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../pages/workers/Worker");
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker');
 }
 
 @Concurrent
@@ -201,18 +201,18 @@ export function atomicXorTask(buffer:SharedArrayBuffer) {
 
 
 export class WorkerSrc1 {
-  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../pages/workers/Worker2");
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker2');
 }
 
 
 
 export class XorWorker {
-  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../pages/workers/XorWorker");
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/XorWorker');
 }
 
 
 export class StoreWorker {
-  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../pages/workers/StoreWorker");
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/StoreWorker');
 }
 
 
@@ -362,12 +362,13 @@ export function modifyValueTask(int8Array: Int8Array, targetIndex: number) {
 
 
 export class Worker3 {
-  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker("../pages/workers/Worker3");
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker3');
 }
 
 
 @Concurrent
-export function modifyInt16Array(sharedBuffer: SharedArrayBuffer, targetIdx: number, newVal: number, statusIdx: number) {
+export function modifyInt16Array(sharedBuffer: SharedArrayBuffer,
+  targetIdx: number, newVal: number, statusIdx: number) {
   const arr: Int32Array = new Int32Array(sharedBuffer);
   Atomics.notify(arr, statusIdx);
   setTimeout(() => {
@@ -392,9 +393,9 @@ export function waitInTaskpool2(sharedBuffer: SharedArrayBuffer, statusIdx: numb
   const arr: Int32Array = new Int32Array(sharedBuffer);
   console.log(`Taskpool task is waiting at index ${statusIdx} with timeout 1s`);
   const waitResult = Atomics.wait(arr, statusIdx, 0, 1000);
-  if (waitResult === "ok") {
+  if (waitResult === 'ok') {
     console.log(`Taskpool task at index ${statusIdx} has been notified`);
-  } else if (waitResult === "timed-out") {
+  } else if (waitResult === 'timed-out') {
     console.log(`Taskpool task at index ${statusIdx} timed out`);
   } else {
     console.log(`Taskpool task at index ${statusIdx} got unexpected result: ${waitResult}`);

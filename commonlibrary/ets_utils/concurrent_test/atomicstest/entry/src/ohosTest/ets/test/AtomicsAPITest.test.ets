@@ -1,13 +1,13 @@
 /*
  * Copyright (C) 2025 HiHope Open Source Organization.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -197,7 +197,7 @@ export default function AtomicsAPITest() {
 
     /**
      * @tc.number SUB_ATOMICS_API_TEST_0400
-     * @tc.name AtomicsAndApiTest0400AtomicsAndApiTest0
+     * @tc.name AtomicsAndApiTest0400
      * @tc.desc Test Atomics.and method which performs a bitwise AND operation on a value at a specific index in an array, and returns the old value
      * @tc.size MediumTest
      * @tc.type Function
@@ -1557,14 +1557,14 @@ export default function AtomicsAPITest() {
         typedArray[0] = 10;
         
         const result1 = Atomics.wait(typedArray, 0, 10, 100);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         typedArray[0] = 20;
         const result2 = Atomics.wait(typedArray, 0, 10, 100);
-        expect(result2).assertEqual("not-equal");
+        expect(result2).assertEqual('not-equal');
         
         const result3 = Atomics.wait(typedArray, 0, 20, 100);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);
@@ -1601,26 +1601,26 @@ export default function AtomicsAPITest() {
         typedArray[5] = MIN_INT;
         
         const result1 = Atomics.wait(typedArray, 0, -1, 100);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         const result2 = Atomics.wait(typedArray, 1, 0, 100);
-        expect(result2).assertEqual("timed-out");
+        expect(result2).assertEqual('timed-out');
         
         const result3 = Atomics.wait(typedArray, 2, 1, 100);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
         const result4 = Atomics.wait(typedArray, 3, 7, 100);
-        expect(result4).assertEqual("timed-out");
+        expect(result4).assertEqual('timed-out');
         
         const result5 = Atomics.wait(typedArray, 4, MAX_INT, 100);
-        expect(result5).assertEqual("timed-out");
+        expect(result5).assertEqual('timed-out');
         
         const result6 = Atomics.wait(typedArray, 5, MIN_INT, 100);
-        expect(result6).assertEqual("timed-out");
+        expect(result6).assertEqual('timed-out');
         
         typedArray[0] = 42;
         const result7 = Atomics.wait(typedArray, 0, -1, 100);
-        expect(result7).assertEqual("not-equal");
+        expect(result7).assertEqual('not-equal');
         
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);
@@ -1653,11 +1653,11 @@ export default function AtomicsAPITest() {
         typedArray[3] = 40;
         
         const result1 = Atomics.wait(typedArray, 0, 10, 100);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         const lastIndex = typedArray.length - 1;
         const result2 = Atomics.wait(typedArray, lastIndex, 40, 100);
-        expect(result2).assertEqual("timed-out");
+        expect(result2).assertEqual('timed-out');
         
         try {
           Atomics.wait(typedArray, -1, 0, 100);
@@ -1708,19 +1708,19 @@ export default function AtomicsAPITest() {
         typedArray[0] = 42;
         
         const result2 = Atomics.wait(typedArray, 0, 42, 0);
-        expect(result2).assertEqual("timed-out");
+        expect(result2).assertEqual('timed-out');
         
         const result3 = Atomics.wait(typedArray, 0, 42, 1);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
         const result4 = Atomics.wait(typedArray, 0, 42, 7);
-        expect(result4).assertEqual("timed-out");
+        expect(result4).assertEqual('timed-out');
         
         const result5 = Atomics.wait(typedArray, 0, 42, 50);
-        expect(result5).assertEqual("timed-out");
+        expect(result5).assertEqual('timed-out');
         
         const result7 = Atomics.wait(typedArray, 0, 43, 50);
-        expect(result7).assertEqual("not-equal");
+        expect(result7).assertEqual('not-equal');
         
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);
@@ -1750,18 +1750,18 @@ export default function AtomicsAPITest() {
         typedArray[0] = 50;
         
         const result1 = Atomics.wait(typedArray, 0, 50, 50);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         typedArray[0] = 51;
         const result2 = Atomics.wait(typedArray, 0, 50, 50);
-        expect(result2).assertEqual("not-equal");
+        expect(result2).assertEqual('not-equal');
         
         const result3 = Atomics.wait(typedArray, 0, 51, 50);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
         Atomics.store(typedArray, 0, 52);
         const result4 = Atomics.wait(typedArray, 0, 51, 50);
-        expect(result4).assertEqual("not-equal");
+        expect(result4).assertEqual('not-equal');
         
         const valueAfterStore = Atomics.load(typedArray, 0);
         expect(valueAfterStore).assertEqual(52);
@@ -1772,7 +1772,7 @@ export default function AtomicsAPITest() {
         expect(valueAfterAdd).assertEqual(valueBeforeAdd + 1);
         
         const result5 = Atomics.wait(typedArray, 0, valueBeforeAdd, 50);
-        expect(result5).assertEqual("not-equal");
+        expect(result5).assertEqual('not-equal');
         
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);
@@ -1804,18 +1804,18 @@ export default function AtomicsAPITest() {
         Atomics.notify(typedArray, 0, 1);
         
         const result1 = Atomics.wait(typedArray, 0, 60, 100);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         typedArray[0] = 61;
         
         const result2 = Atomics.wait(typedArray, 0, 60, 100);
-        expect(result2).assertEqual("not-equal");
+        expect(result2).assertEqual('not-equal');
         
         const notifyCount = Atomics.notify(typedArray, 0, 1);
         expect(notifyCount).assertEqual(0);
         
         const result3 = Atomics.wait(typedArray, 0, 61, 5);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
         typedArray[0] = 62;
         const notifyCount2 = Atomics.notify(typedArray, 0, 5);
@@ -1849,24 +1849,24 @@ export default function AtomicsAPITest() {
         typedArray[0] = 70;
         
         const result1 = Atomics.wait(typedArray, 0, 70, 10);
-        expect(result1).assertEqual("timed-out");
+        expect(result1).assertEqual('timed-out');
         
         const result2 = Atomics.wait(typedArray, 0, 70, 10);
-        expect(result2).assertEqual("timed-out");
+        expect(result2).assertEqual('timed-out');
         
         const result3 = Atomics.wait(typedArray, 0, 70, 10);
-        expect(result3).assertEqual("timed-out");
+        expect(result3).assertEqual('timed-out');
         
         typedArray[0] = 71;
         
         const result4 = Atomics.wait(typedArray, 0, 70, 10);
-        expect(result4).assertEqual("not-equal");
+        expect(result4).assertEqual('not-equal');
         
         const result5 = Atomics.wait(typedArray, 0, 70, 10);
-        expect(result5).assertEqual("not-equal");
+        expect(result5).assertEqual('not-equal');
         
         const result6 = Atomics.wait(typedArray, 0, 71, 10);
-        expect(result6).assertEqual("timed-out");
+        expect(result6).assertEqual('timed-out');
         
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);

@@ -1,22 +1,22 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
 
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Level, Size } from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Level, Size } from '@ohos/hypium';
 import { worker } from '@kit.ArkTS';
 import {SharedCounter} from '../testability/pages/AtomicsMultithreadUtils';
-import { sleep } from "../testability/pages/TestUtils";
+import { sleep } from '../testability/pages/TestUtils';
 
 export default function AtomicsMultithreadTest() {
   describe('AtomicsMultithreadTest', () => {
@@ -54,8 +54,8 @@ export default function AtomicsMultithreadTest() {
       const sharedArray = new Int32Array(sharedBuffer);
       sharedArray[0] = 5;
       console.log(`${sharedArray[0]}`);
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
-      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
+      const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
+      const worker2 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
       worker1.onmessage = (e) => {
@@ -84,7 +84,7 @@ export default function AtomicsMultithreadTest() {
       const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
       sharedArray[0] = 5;
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
+      const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
       worker1.postMessage(sharedBuffer);
       worker1.onmessage = (e) => {
         worker1.terminate();
@@ -109,8 +109,8 @@ export default function AtomicsMultithreadTest() {
       const sharedArray = new Int32Array(sharedBuffer);
       sharedArray[0] = 10;
       console.log(`${sharedArray[0]}`);
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker4");
-      const worker2 = new worker.ThreadWorker("../testability/pages/workers/Worker5");
+      const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
+      const worker2 = new worker.ThreadWorker('../testability/pages/workers/Worker5');
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
       worker1.onmessage = (e) => {
@@ -137,7 +137,7 @@ export default function AtomicsMultithreadTest() {
      */
     it('AtomicsMultithreadTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const counter = new SharedCounter(10);
-      const worker1 = new worker.ThreadWorker("../testability/pages/workers/Worker6");
+      const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker6');
       let result = 0;
       worker1.postMessage(counter.getBuffer());
       worker1.onmessage = () => {
