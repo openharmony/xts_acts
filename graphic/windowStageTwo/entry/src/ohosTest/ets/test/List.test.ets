@@ -26,6 +26,7 @@ import windowLayoutTest from './WindowLayout.test';
 import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 import windowFocusTest from './WindowFocus.test';
 import windowPCTest from './WindowPC.test';
+import windowRotationTest from './WindowRotation.test';
 
 export default function testsuite() {
   windowFocusTest();
@@ -42,4 +43,5 @@ export default function testsuite() {
   windowPropertiesTest2();
   extensionWindowPropertiesTest();
   windowPCTest()
+  windowRotationTest()
 }
