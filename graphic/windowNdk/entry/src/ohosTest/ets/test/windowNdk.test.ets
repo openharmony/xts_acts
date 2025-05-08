@@ -1602,6 +1602,7 @@ export default function windowNdk() {
         console.log(caseName + '  windowlimitsWidth:'+windowlimitsWidth+',windowlimitsHeight:'+windowlimitsHeight);
         subWindow.resizeAsync(windowlimitsWidth,windowlimitsHeight);
         await subWindow.showWindow();
+        await sleep(300);
         let diaplayId = subWindow.getWindowProperties().displayId;
         console.log(caseName + '  diaplayId:'+diaplayId);
         let result = windowNdkTest.getAllWIndowLayOutInfo(diaplayId);
