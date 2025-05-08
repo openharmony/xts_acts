@@ -1254,7 +1254,7 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         maximizeSupported: true
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0100', options);
-      let subWindowClass: window.Window = undefined;
+      let subWindowClass: window.Window | undefined = undefined;
       promise1.then(async (data) => {
         subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -1304,7 +1304,7 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         maximizeSupported: true
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
-      let subWindowClass: window.Window = undefined;
+      let subWindowClass: window.Window | undefined = undefined;
       promise1.then(async (data) => {
         subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -1354,7 +1354,7 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         maximizeSupported: false
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0300', options);
-      let subWindowClass: window.Window = undefined;
+      let subWindowClass: window.Window | undefined = undefined;
       promise1.then(async (data) => {
         subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
