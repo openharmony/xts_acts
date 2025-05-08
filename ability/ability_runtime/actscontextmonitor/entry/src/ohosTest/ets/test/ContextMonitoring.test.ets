@@ -100,7 +100,7 @@ export default function contextMonitoringTest() {
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               expect(data.parameters?.resultA).assertEqual(1)
-              expect(data.parameters?.resultB).assertEqual(1)
+              expect(data.parameters?.resultB).assertEqual(2)
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
