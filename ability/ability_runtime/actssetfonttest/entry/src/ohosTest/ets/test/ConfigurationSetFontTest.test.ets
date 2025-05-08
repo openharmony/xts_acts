@@ -46,7 +46,7 @@ export default function setFontTest() {
       await sleep(300);
     })
     afterEach(() => {
-
+      hilog.info(0x0000, TAG, "[%{public}s] case end.", TAG);
     })
     afterAll(() => {
 
@@ -60,6 +60,7 @@ export default function setFontTest() {
      */
     it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0100';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
         hilog.info(0x0000, TAG, "[%{public}s] applicationContext: %{public}s", TAG, JSON.stringify(applicationContext));
@@ -81,6 +82,7 @@ export default function setFontTest() {
      */
     it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0200', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0200';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
         hilog.info(0x0000, TAG, "[%{public}s] applicationContext: %{public}s", TAG, JSON.stringify(applicationContext));
@@ -102,6 +104,7 @@ export default function setFontTest() {
      */
     it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0300', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0300';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
         let cmd = "hilog -x -e UpdateConfiguration";
@@ -136,6 +139,7 @@ export default function setFontTest() {
      */
     it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0400';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
         let cmd = "hilog -x -e UpdateConfiguration";
@@ -174,6 +178,7 @@ export default function setFontTest() {
      */
     it('SUB_Ability_AbilityRuntime_Configuration_FontSettings_0500', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Configuration_FontSettings_0500';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       try {
         let applicationContext = testAbilityContext.getApplicationContext();
         let cmd = "hilog -x -e UpdateConfiguration";
