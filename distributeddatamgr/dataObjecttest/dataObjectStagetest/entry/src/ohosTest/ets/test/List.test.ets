@@ -15,9 +15,11 @@
 import ObjectStoreJsunitV9Ets from './ObjectStoreJsunitV9Ets.test.ets'
 import DataObjectErrTest from './DataObjectErrTest.test';
 import objectStoreTest from "./ObjectStoreJsunit.test";
+import objectStoreTestV9 from "./ObjectStoreJsunitV9.test";
 
 export default function testsuite() {
     ObjectStoreJsunitV9Ets(globalThis.abilityContext);
 	DataObjectErrTest();
-	objectStoreTest()
+	objectStoreTest();
+	objectStoreTestV9()
 }
