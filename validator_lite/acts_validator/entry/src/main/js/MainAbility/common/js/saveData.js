@@ -17,7 +17,7 @@ import file from '@system.file';
 
 export const getTxtData = function () {
     let dataInfo = getApp().data.keyList
-    let str = ""
+    let str = '';
     for (const key in dataInfo) {
         if (Object.prototype.hasOwnProperty.call(dataInfo, key)) {
             console.log(`${key}: ${dataInfo[key]}`);
