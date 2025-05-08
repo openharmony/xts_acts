@@ -15,6 +15,7 @@ struct Index {
   @State action:string = 'int'
   @State getVerticalAxisValue:string = 'int'
   @State getHorizontalAxisValue:string = 'int'
+  @State propagationValue:string = 'int'
 
 
 
@@ -32,6 +33,7 @@ struct Index {
           this.action=event.action+''
           this.getVerticalAxisValue=event.getVerticalAxisValue()+''
           this.getHorizontalAxisValue=event.getHorizontalAxisValue()+''
+          this.propagationValue=event.propagation()+''
         })
       Text(this.x).key('x')
       Text(this.y).key('y')
@@ -43,7 +45,7 @@ struct Index {
       Text(this.action).key('action')
       Text(this.getVerticalAxisValue).key('getVerticalAxisValue')
       Text(this.getHorizontalAxisValue).key('getHorizontalAxisValue')
-
+      Text(this.propagationValue).key('propagationValue')
     }
     .alignItems(HorizontalAlign.Start).width('100%').height('100%').key('AxisEvent_Father')
   }
