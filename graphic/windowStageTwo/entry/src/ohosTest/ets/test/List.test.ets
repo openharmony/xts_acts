@@ -39,9 +39,9 @@ export default function testsuite() {
   windowPromiseTest();
   windowMaximizeTest();
   windowImmersiveTest();
+  windowPCTest();
+  windowRotationTest();
   windowPropertiesTest();
   windowPropertiesTest2();
   extensionWindowPropertiesTest();
-  windowPCTest()
-  windowRotationTest()
 }

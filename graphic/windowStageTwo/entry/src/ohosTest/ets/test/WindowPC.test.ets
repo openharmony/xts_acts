@@ -187,12 +187,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           mainWindow.moveWindowToAsync(300, 400)
           mainWindow.resizeAsync(1000, 1200);
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await sleep(300);
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -239,12 +239,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200);
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await sleep(300);
           let driver: Driver = Driver.create()
           // 二分屏
@@ -300,12 +300,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING)
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -350,12 +350,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE)
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -402,12 +402,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(true,true).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.minimize()
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -454,12 +454,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
           let mainWindow2 = windowStageStart2.getMainWindowSync();
@@ -505,12 +505,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           let driver: Driver = Driver.create()
           // 二分屏
           let title = await driver.findComponent(ON.id('ContainerModalTitleRow'))
@@ -565,12 +565,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING)
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -617,12 +617,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.maximize(window.MaximizePresentation.ENTER_IMMERSIVE)
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);
@@ -669,12 +669,12 @@ export default function windowPCTest() {
       let windowStageStart = await startAbility2(caseName, context);
       try {
         let mainWindow = windowStageStart.getMainWindowSync();
-        let windowRect1 = mainWindow.getWindowProperties().windowRect;
-        console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
         windowStageStart.setWindowRectAutoSave(false,false).then(async () => {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           await mainWindow.moveWindowToAsync(300, 400)
           await mainWindow.resizeAsync(1000, 1200)
+          let windowRect1 = mainWindow.getWindowProperties().windowRect;
+          console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await mainWindow.minimize()
           await terminateAbility2(caseName)
           let windowStageStart2 = await startAbility2(caseName, context);

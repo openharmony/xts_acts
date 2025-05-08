@@ -1254,8 +1254,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         maximizeSupported: true
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0100', options);
+      let subWindowClass: window.Window = undefined;
       promise1.then(async (data) => {
-        let subWindowClass = data;
+        subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
@@ -1271,8 +1272,11 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
           await subWindowClass.destroyWindow()
           done()
         }
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (subWindowClass != undefined) {
+          await subWindowClass.destroyWindow()
+        }
         if (err.code === 1300002) {
           done()
         } else {
@@ -1300,8 +1304,9 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
         maximizeSupported: true
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0200', options);
+      let subWindowClass: window.Window = undefined;
       promise1.then(async (data) => {
-        let subWindowClass = data;
+        subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
@@ -1317,8 +1322,11 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
           await subWindowClass.destroyWindow()
           done()
         }
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (subWindowClass != undefined) {
+          await subWindowClass.destroyWindow()
+        }
         if (err.code === 1300002) {
           done()
         } else {
@@ -1340,14 +1348,15 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
       let caseName: string = 'test_MaximizeSupported_0300';
       console.log(caseName + 'begin');
       let options : window.SubWindowOptions = {
-        title: 'test_MaximizeSupported_0200',
+        title: 'test_MaximizeSupported_0300',
         decorEnabled: true,
         isModal: false,
         maximizeSupported: false
       };
       let promise1 = windowStage.createSubWindowWithOptions('test_MaximizeSupported_0300', options);
+      let subWindowClass: window.Window = undefined;
       promise1.then(async (data) => {
-        let subWindowClass = data;
+        subWindowClass = data;
         console.info(caseName+ ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.showWindow();
@@ -1363,8 +1372,11 @@ it('testSetTitleAndDockHoverShow_Title_hide_status', TestType.FUNCTION | Size.ME
           await subWindowClass.destroyWindow()
           done()
         }
-      }).catch((err: BusinessError) => {
+      }).catch(async (err: BusinessError) => {
         console.error(`${caseName} :Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (subWindowClass != undefined) {
+          await subWindowClass.destroyWindow()
+        }
         if (err.code === 1300002 || err.code === 1300004) {
           done()
         } else {
