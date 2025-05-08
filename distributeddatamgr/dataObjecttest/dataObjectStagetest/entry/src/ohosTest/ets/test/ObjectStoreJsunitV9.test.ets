@@ -111,6 +111,7 @@ export default function objectStoreTestV9() {
       console.info(TAG + 'afterAll');
     });
     console.info(TAG + "*************Unit Test Begin*************");
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
@@ -123,6 +124,24 @@ export default function objectStoreTestV9() {
       async (done: Function) => {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001 start *************");
         let g_object: distributedObject.DataObject;
+        try {
+          g_object = distributedObject.create(undefined, {
+            name: "Amy", age: 18, isVis: false
+          });
+          expect().assertFail();
+        } catch (error) {
+          console.info(error.code + error.message);
+          expect(error.code == 401).assertEqual(true);
+          expect(error.message == "Parameter error. The type of 'context' must be 'Context'.").assertEqual(true);
+        }
+        try {
+          g_object = distributedObject.create(context, undefined);
+          expect().assertFail();
+        } catch (error) {
+          console.info(error.code + error.message);
+          expect(error.code == 401).assertEqual(true);
+          expect(error.message == "Parameter error. The type of 'source' must be 'object'.").assertEqual(true);
+        }
         g_object = distributedObject.create(context, {
           name: "Amy", age: 18, isVis: false
         });
@@ -132,13 +151,43 @@ export default function objectStoreTestV9() {
           console.info(TAG + data);
         }).catch((error: BusinessError) => {
           console.info(TAG + error);
+          expect().assertFail();
         });
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001 end *************");
         g_object.setSessionId((error, data) => {
           console.info(TAG + error + ", data=" + data);
         });
         done();
-      });
+      })
+
+    /**
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002
+     * @tc.desc: object join session and on,object can receive callback when data has been changed
+     * @tc.type: Function
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3000
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 start *************");
+        let g_object = distributedObject.create(context, {
+          name: "Amy", age: 18, isVis: false
+        });
+        expect(g_object == undefined).assertEqual(false);
+        try {
+          await g_object.setSessionId(undefined)
+          console.info("setSessionId success")
+        } catch (error) {
+          expect().assertFail();
+        }
+        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 end *************");
+        g_object.setSessionId((error, data) => {
+          console.info(TAG + error + "," + data);
+        });
+        done();
+      })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003
      * @tc.desc: object join session and on,object can receive callback when data has been changed
@@ -158,16 +207,17 @@ export default function objectStoreTestV9() {
         expect("session1" == g_object["__sessionId"]).assertEqual(true);
         await g_object.setSessionId("session1").then(() => {
           console.info(TAG + "setSessionId test");
-        }).catch((error: BusinessError) => {
-          expect(error.code == 15400001).assertEqual(true);
-          expect(error.message == "create table failed").assertEqual(true);
+        }).catch((error:BusinessError) => {
+          console.error(TAG + JSON.stringify(error))
+          expect().assertFail();
         });
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003 end *************");
         g_object.setSessionId((error, data) => {
           console.info(TAG + error + "," + data);
         });
         done();
-      });
+      })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004
      * @tc.desc: object join session and on,object can receive callback when data has been changed
@@ -186,15 +236,17 @@ export default function objectStoreTestV9() {
         await g_object.setSessionId("123456").then((data) => {
           console.info(TAG + "setSessionId test");
           console.info(TAG + data);
-        }).catch((err: BusinessError) => {
+        }).catch((err:BusinessError) => {
           console.info(TAG + err.code + err.message);
+          expect().assertFail()
         });
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004 end *************");
         g_object.setSessionId((error, data) => {
           console.info(TAG + error + "," + data);
         });
         done();
-      });
+      })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005
      * @tc.desc: object join session and on,object can receive callback when data has been changed
@@ -217,12 +269,23 @@ export default function objectStoreTestV9() {
         g_object.setSessionId("", (error, data) => {
           console.info(TAG + error + "," + data);
         });
+        try {
+          g_object.setSessionId(undefined, (error, data) => {
+            console.info(TAG + error + "," + data);
+            console.info(TAG + "setSessionId test");
+          });
+        } catch (error) {
+          console.info(error.code + error.message);
+          expect().assertFail();
+        }
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005 end *************");
         g_object.setSessionId("", (error, data) => {
           console.info(TAG + error + "," + data);
         });
         done();
-      });
+      })
+
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_On_001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
@@ -231,46 +294,127 @@ export default function objectStoreTestV9() {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: Function) => {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
-        let g_object = distributedObject.create(context, {
-          name: "Amy", age: 18, isVis: false
-        });
-        expect(g_object == undefined).assertEqual(false);
-        await g_object.setSessionId("session1").then(() => {
-          console.info("join session");
-        }).catch((error: BusinessError) => {
-          console.info(TAG + error.code + error.message);
-        });
-        expect("session1" == g_object["__sessionId"]).assertEqual(true);
-        console.info(TAG + " start call watch change");
-        g_object.on("change", (sessionId, changeData) => {
-          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_001 callback start.");
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("session1").then(() => {
+        console.info("join session");
+      }).catch((error:BusinessError) => {
+        console.info(TAG + error.code + error.message);
+      });
+      expect("session1" == g_object["__sessionId"]).assertEqual(true);
+      console.info(TAG + " start call watch change");
+      g_object.on("change", (sessionId, changeData) => {
+        console.info("SUB_DDM_AppDataFWK_Object_Api9_On_001 callback start.");
+        if (changeData != null && changeData != undefined) {
+          changeData.forEach(element => {
+            console.info(TAG + "data changed !" + element);
+          });
+        }
+        console.info("SUB_DDM_AppDataFWK_Object_Api9_On_001 callback end.");
+      });
+      if (g_object != undefined && g_object != null) {
+        g_object["name"] = "jack1";
+        g_object["age"] = 19;
+        g_object["isVis"] = true;
+        expect(g_object["name"] == "jack1").assertEqual(true);
+        expect(g_object["age"] == 19).assertEqual(true);
+        console.info(TAG + " set data success!");
+      } else {
+        console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
+      }
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 end *************");
+      g_object.off("change");
+      g_object.setSessionId("", (error, data) => {
+        console.info(TAG + error + "," + data);
+      });
+      done();
+    })
+
+    /**
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_On_002
+     * @tc.desc: object join session and on,then object change data twice,object can receive two callbacks when data has been changed
+     * @tc.type: Function
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2200
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
+      });
+      expect(g_object == undefined).assertEqual(false);
+      g_object.setSessionId("session1");
+      expect("session1" == g_object["__sessionId"]).assertEqual(true);
+      console.info(TAG + " start call watch change");
+      try {
+        g_object.on(undefined, (sessionId: string, changeData: Array<string>) => {
+          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_002 callback start.");
+          console.info(TAG + sessionId);
           if (changeData != null && changeData != undefined) {
             changeData.forEach(element => {
               console.info(TAG + "data changed !" + element);
             });
           }
-          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_001 callback end.");
+          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_002 callback end.");
         });
-        if (g_object != undefined && g_object != null) {
-          g_object["name"] = "jack1";
-          g_object["age"] = 19;
-          g_object["isVis"] = true;
-          expect(g_object["name"] == "jack1").assertEqual(true);
-          expect(g_object["age"] == 19).assertEqual(true);
-          console.info(TAG + " set data success!");
-        } else {
-          console.info(TAG + " object is null,set name fail");
-        }
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 end *************");
-        g_object.off("change");
-        g_object.setSessionId("", (error, data) => {
-          console.info(TAG + error + "," + data);
-        });
-        done();
+        expect().assertFail();
+      } catch (error) {
+        expect(error.code == 401).assertEqual(true);
+      }
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 end *************");
+      g_object.setSessionId("", (error, data) => {
+        console.info(TAG + error + "," + data);
       });
+      done();
+    })
+
+    /**
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_On_003
+     * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
+     * @tc.type: Function
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1500
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('SUB_DDM_AppDataFWK_Object_Api9_On_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("session1").then(() => {
+        console.info("join session");
+      }).catch((error:BusinessError) => {
+        console.info(TAG + error.code + error.message);
+        expect().assertFail();
+      });
+      expect("session1" == g_object["__sessionId"]).assertEqual(true);
+      console.info(TAG + " start call watch change");
+      try {
+        g_object.on(undefined, (sessionId: string, changeData: Array<string>) => {
+          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_003 callback start.");
+          if (changeData != null && changeData != undefined) {
+            changeData.forEach(element => {
+              console.info(TAG + "data changed !" + element);
+            });
+          }
+          console.info("SUB_DDM_AppDataFWK_Object_Api9_On_003 callback end.");
+        });
+      } catch (error) {
+        expect(error.code == 401).assertEqual(true);
+      }
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 end *************");
+      g_object.setSessionId("", (error, data) => {
+        console.info(TAG + error + "," + data);
+      });
+      done();
+    })
 
     /**
      * @tc.name SUB_DDM_AppDataFWK_Object_Api9_Off_001
@@ -280,49 +424,89 @@ export default function objectStoreTestV9() {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: Function) => {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
-        let g_object = distributedObject.create(context, {
-          name: "Amy", age: 18, isVis: false
-        });
-        expect(g_object == undefined).assertEqual(false);
-        await g_object.setSessionId("session5").then(() => {
-          console.info("join session");
-        }).catch((error: BusinessError) => {
-          console.info(TAG + error.code + error.message);
-        });
-        expect("session5" == g_object["__sessionId"]).assertEqual(true);
-        g_object.on("change", changeCallback);
-        console.info(TAG + " start call watch change");
-        if (g_object != undefined && g_object != null) {
-          g_object["name"] = "jack1";
-          g_object["age"] = 19;
-          g_object["isVis"] = true;
-          expect(g_object["name"] == "jack1").assertEqual(true);
-          expect(g_object["age"] == 19).assertEqual(true);
-          console.info(TAG + " set data success!");
-        } else {
-          console.info(TAG + " object is null,set name fail");
-        }
-        g_object.off("change", changeCallback);
-        console.info(TAG + " end call watch change");
-        if (g_object != undefined && g_object != null) {
-          g_object["name"] = "jack2";
-          g_object["age"] = 20;
-          g_object["isVis"] = false;
-          expect(g_object["name"] == "jack2").assertEqual(true);
-          expect(g_object["age"] == 20).assertEqual(true);
-          console.info(TAG + " set data success!");
-        } else {
-          console.info(TAG + " object is null,set name fail");
-        }
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 end *************");
-        g_object.setSessionId((error, data) => {
-          console.info(TAG + error + "," + data);
-        });
-        done();
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
       });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("session5").then(() => {
+        console.info("join session");
+      }).catch((error:BusinessError) => {
+        console.info(TAG + error.code + error.message);
+      });
+      expect("session5" == g_object["__sessionId"]).assertEqual(true);
+      g_object.on("change", changeCallback);
+      console.info(TAG + " start call watch change");
+      if (g_object != undefined && g_object != null) {
+        g_object["name"] = "jack1";
+        g_object["age"] = 19;
+        g_object["isVis"] = true;
+        expect(g_object["name"] == "jack1").assertEqual(true);
+        expect(g_object["age"] == 19).assertEqual(true);
+        console.info(TAG + " set data success!");
+      } else {
+        console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
+      }
+      g_object.off("change", changeCallback);
+      console.info(TAG + " end call watch change");
+      if (g_object != undefined && g_object != null) {
+        g_object["name"] = "jack2";
+        g_object["age"] = 20;
+        g_object["isVis"] = false;
+        expect(g_object["name"] == "jack2").assertEqual(true);
+        expect(g_object["age"] == 20).assertEqual(true);
+        console.info(TAG + " set data success!");
+      } else {
+        console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
+      }
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 end *************");
+      g_object.setSessionId((error, data) => {
+        console.info(TAG + error + "," + data);
+      });
+      done();
+    })
+
+    /**
+     * @tc.name:SUB_DDM_AppDataFWK_Object_Api9_Off_002
+     * @tc.desc object join session and off,object can not receive callback
+     * @tc.type: Function
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1000
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("session6").then(() => {
+        console.info("join session");
+      }).catch((error:BusinessError) => {
+        console.info(TAG + error.code + error.message);
+        expect().assertFail();
+      });
+      expect("session6" == g_object["__sessionId"]).assertEqual(true);
+      try {
+        g_object.off(undefined);
+        expect().assertFail();
+      } catch (error) {
+        expect(error.code == 401).assertEqual(true);
+      }
+      console.info(TAG + " end call watch change");
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 end *************");
+      await g_object.setSessionId().then((data) => {
+        console.info(TAG + data);
+        console.info(TAG + "setSessionId test");
+      }).catch((error: BusinessError) => {
+        console.info(TAG + error.code + error.message);
+        expect().assertFail();
+      });
+      done();
+    })
 
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001
@@ -342,6 +526,7 @@ export default function objectStoreTestV9() {
         expect(g_object == undefined).assertEqual(false);
         try {
           g_object.on("status", null);
+          expect().assertFail();
         } catch (error) {
           expect(error.code == 401).assertEqual(true);
           expect(error.message == "Parameter error. The type of 'callback' must be 'function'.").assertEqual(true);
@@ -353,9 +538,11 @@ export default function objectStoreTestV9() {
           console.info(TAG + "setSessionId test");
         }).catch((error: BusinessError) => {
           console.info(TAG + error.code + error.message);
+          expect().assertFail();
         });
         done();
-      });
+      })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002
      * @tc.desc: object set several listener and can unWatch all watcher
@@ -383,51 +570,54 @@ export default function objectStoreTestV9() {
           console.info("leave session");
         }).catch((error: BusinessError) => {
           console.info(TAG + error.code + error.message);
+          expect().assertFail();
         });
         done();
-      });
+      })
+
     /**
-     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_Save_001
+     * @tc.name: V9testSave001
      * @tc.desc: test save local
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2700
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: Function) => {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
-        console.info(TAG + "************* V9testSave001 start *************");
-        let g_object = distributedObject.create(context, {
-          name: "Amy", age: 18, isVis: false
-        });
-        expect(g_object == undefined).assertEqual(false);
-        await g_object.setSessionId("mySession1").then(() => {
-          console.info("join session");
-        }).catch((error: BusinessError) => {
-          console.info(TAG + error.code + error.message);
-        });
-        expect("mySession1" == g_object["__sessionId"]).assertEqual(true);
-        await g_object.save("local").then((ret) => {
-          expect(ret.sessionId == "mySession1").assertEqual(true);
-          expect(ret.version == g_object["__version"]).assertEqual(true);
-          expect(ret.deviceId == "local").assertEqual(true);
-          done();
-          g_object.setSessionId("");
-          g_object["name"] = undefined;
-          g_object["age"] = undefined;
-          g_object["isVis"] = undefined;
-          g_object.setSessionId("mySession1");
-          expect(g_object["name"] == "Amy").assertEqual(true);
-          expect(g_object["age"] == 18).assertEqual(true);
-          expect(g_object["isVis"] == false).assertEqual(true);
-        }).catch((err: BusinessError) => {
-          console.info('testV9Save001 err ' + `, error code is ${err.code}, message is ${err.message}`);
-          expect("801").assertEqual(err.code.toString());
-          done();
-        });
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 end *************");
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
+      console.info(TAG + "************* V9testSave001 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
       });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("mySession1").then(() => {
+        console.info("join session");
+      }).catch((error: BusinessError) => {
+        console.info(TAG + error.code + error.message);
+        expect().assertFail();
+      });
+      expect("mySession1" == g_object["__sessionId"]).assertEqual(true);
+      await g_object.save("local").then((ret) => {
+        expect(ret.sessionId == "mySession1").assertEqual(true);
+        expect(ret.version == g_object["__version"]).assertEqual(true);
+        expect(ret.deviceId == "local").assertEqual(true);
+        done();
+        g_object.setSessionId("");
+        g_object["name"] = undefined;
+        g_object["age"] = undefined;
+        g_object["isVis"] = undefined;
+        g_object.setSessionId("mySession1");
+        expect(g_object["name"] == "Amy").assertEqual(true);
+        expect(g_object["age"] == 18).assertEqual(true);
+        expect(g_object["isVis"] == false).assertEqual(true);
+      }).catch((err: BusinessError) => {
+        console.info('testV9Save001 err ' + `, error code is ${err.code}, message is ${err.message}`);
+        expect("801").assertEqual(err.code.toString());
+        done();
+      });
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 end *************");
+    })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_Save_002
      * @tc.desc: test save local
@@ -436,37 +626,38 @@ export default function objectStoreTestV9() {
      * @tc.size: MediumTest
      * @tc.level: Level 2
      */
-    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-      async (done: Function) => {
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
-        let g_object = distributedObject.create(context, {
-          name: "Amy", age: 18, isVis: false
-        });
-        expect(g_object == undefined).assertEqual(false);
-        g_object.setSessionId("mySession2");
-        expect("mySession2" == g_object["__sessionId"]).assertEqual(true);
-        g_object.save("local", (err, result) => {
-          if (err) {
-            console.info('testV9Save002 err ' + `, error code is ${err.code}, message is ${err.message}`);
-            expect("801").assertEqual(err.code.toString());
-            done();
-            return;
-          }
-          expect(result.sessionId == "mySession2").assertEqual(true);
-          expect(result.version == g_object["__version"]).assertEqual(true);
-          expect(result.deviceId == "local").assertEqual(true);
-          g_object.setSessionId("");
-          g_object["name"] = undefined;
-          g_object["age"] = undefined;
-          g_object["isVis"] = undefined;
-          g_object.setSessionId("mySession2");
-          expect(g_object["name"] == "Amy").assertEqual(true);
-          expect(g_object["age"] == 18).assertEqual(true);
-          expect(g_object["isVis"] == false).assertEqual(true);
-          done();
-        });
-        console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 end *************");
+    it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
+      let g_object = distributedObject.create(context, {
+        name: "Amy", age: 18, isVis: false
       });
+      expect(g_object == undefined).assertEqual(false);
+      g_object.setSessionId("mySession2");
+      expect("mySession2" == g_object["__sessionId"]).assertEqual(true);
+      g_object.save("local", (err, result) => {
+        if (err) {
+          console.info('testV9Save002 err ' + `, error code is ${err.code}, message is ${err.message}`);
+          expect("801").assertEqual(err.code.toString());
+          done();
+          return;
+        }
+        expect(result.sessionId == "mySession2").assertEqual(true);
+        expect(result.version == g_object["__version"]).assertEqual(true);
+        expect(result.deviceId == "local").assertEqual(true);
+        g_object.setSessionId("");
+        g_object["name"] = undefined;
+        g_object["age"] = undefined;
+        g_object["isVis"] = undefined;
+        g_object.setSessionId("mySession2");
+        expect(g_object["name"] == "Amy").assertEqual(true);
+        expect(g_object["age"] == 18).assertEqual(true);
+        expect(g_object["isVis"] == false).assertEqual(true);
+        done();
+      });
+      console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 end *************");
+    })
+
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001
      * @tc.desc: test RevokeSave
@@ -513,7 +704,10 @@ export default function objectStoreTestV9() {
           });
         });
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 end *************");
-      });
+      })
+
+
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002
      * @tc.desc: test RevokeSave
@@ -542,7 +736,7 @@ export default function objectStoreTestV9() {
         expect((result as distributedObject.SaveSuccessResponse).sessionId.toString() == "mySession5").assertEqual(true);
         expect((result as distributedObject.SaveSuccessResponse).version.toString() == g_object["__version"].toString()).assertEqual(true);
         expect((result as distributedObject.SaveSuccessResponse).deviceId.toString() == "local").assertEqual(true);
-        let result1 = await g_object.revokeSave().catch((err: BusinessError) => {
+        let result1 = await g_object.revokeSave().catch((err:BusinessError) => {
           expect("801").assertEqual(err.code.toString());
           return CATCH_ERR;
         });
@@ -558,7 +752,8 @@ export default function objectStoreTestV9() {
         expect(g_object["age"] == undefined).assertEqual(true);
         expect(g_object["isVis"] == undefined).assertEqual(true);
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 end *************");
-      });
+      })
+
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100
      * @tc.desc: test NumberMax
@@ -580,10 +775,11 @@ export default function objectStoreTestV9() {
           expect(g_object == undefined).assertEqual(false);
         } catch (error) {
           console.info(error.code + error.message);
+          expect().assertFail();
         }
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100 end *************");
         done();
-      });
+      })
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100
      * @tc.desc: test NumberMin
@@ -605,10 +801,11 @@ export default function objectStoreTestV9() {
           expect(g_object == undefined).assertEqual(false);
         } catch (error) {
           console.info(error.code + error.message);
+          expect().assertFail();
         }
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100 end *************");
         done();
-      });
+      })
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100
      * @tc.desc: test NumberAbnormal
@@ -630,10 +827,11 @@ export default function objectStoreTestV9() {
           expect(g_object == undefined).assertEqual(false);
         } catch (error) {
           console.info(error.code + error.message);
+          expect().assertFail();
         }
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100 end *************");
         done();
-      });
+      })
     /**
      * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200
      * @tc.desc: test NumberAbnormal
@@ -655,10 +853,12 @@ export default function objectStoreTestV9() {
           expect(g_object == undefined).assertEqual(false);
         } catch (error) {
           console.info(error.code + error.message);
+          expect().assertFail();
         }
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200 end *************");
         done();
-      });
+      })
+
     /**
      * @tc.name: V9testbindAssetStore010
      * @tc.desc: Test bindAssetStore
@@ -742,7 +942,9 @@ export default function objectStoreTestV9() {
         expect(null).assertFail();
         done();
       }
-    });
+    })
+
+
     /**
      * @tc.name: V9testbindAssetStorePromise010
      * @tc.desc: Test bindAssetStore
@@ -825,7 +1027,9 @@ export default function objectStoreTestV9() {
         expect(null).assertFail();
         done();
       });
-    });
+    })
+
+
     /**
      * @tc.name: V9testbindAssetStore020
      * @tc.desc: Test bindAssetStore
@@ -910,7 +1114,9 @@ export default function objectStoreTestV9() {
         expect(null).assertFail();
         done();
       }
-    });
+    })
+
+
     /**
      * @tc.name: V9testbindAssetStore030
      * @tc.desc: Test bindAssetStore
@@ -995,7 +1201,242 @@ export default function objectStoreTestV9() {
         expect(null).assertFail();
         done();
       }
-    });
+    })
+
+    /**
+     * @tc.name: V9testbindAssetStore002
+     * @tc.desc: Test bindAssetStore with invalid args,storeName is null
+     * @tc.type: Functiontion
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0200
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('V9testbindAssetStore002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* V9testbindAssetStore002 start *************");
+      let g_object = distributedObject.create(context, {
+        title: "bindAssettest-title",
+        content: "bindAssettest-content",
+        mark: "no mark",
+        asset002: {
+          status: 0,
+          name: "1.txt",
+          uri: "file://com.example.myapp/data/dir/1.txt",
+          path: "/dir/1.txt",
+          createTime: "2023/11/30 19:48:00",
+          modifyTime: "2023/11/30 20:10:00",
+          size: "1",
+        }
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("sessionBA2");
+      let asset1: commonType.Asset = {
+        name: "name1",
+        uri: "uri1",
+        createTime: "createTime1",
+        modifyTime: "modifyTime1",
+        size: "size1",
+        path: "path1",
+        status: commonType.AssetStatus.ASSET_NORMAL,
+      };
+      try {
+        g_object.bindAssetStore("asset002", undefined, (err, data) => {
+          expect(null).assertFail();
+          done();
+        });
+      } catch (error) {
+        console.info(`V9testbindAssetStore002 err is: ${error.code} and msg is: ${error.message}`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.name: V9testbindAssetStore003
+     * @tc.desc: Test bindAssetStore with invalid args,tableName is null
+     * @tc.type: Functiontion
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0300
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('V9testbindAssetStore003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* V9testbindAssetStore003 start *************");
+      let g_object = distributedObject.create(context, {
+        title: "bindAssettest-title",
+        content: "bindAssettest-content",
+        mark: "no mark",
+        asset003: {
+          status: 0,
+          name: "1.txt",
+          uri: "file://com.example.myapp/data/dir/1.txt",
+          path: "/dir/1.txt",
+          createTime: "2023/11/30 19:48:00",
+          modifyTime: "2023/11/30 20:10:00",
+          size: "1",
+        }
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("sessionBA3");
+      let asset1: commonType.Asset = {
+        name: "name1",
+        uri: "uri1",
+        createTime: "createTime1",
+        modifyTime: "modifyTime1",
+        size: "size1",
+        path: "path1",
+        status: commonType.AssetStatus.ASSET_NORMAL,
+      };
+      try {
+        g_object.bindAssetStore("asset003", undefined, (err, data) => {
+          expect(null).assertFail();
+          done();
+        });
+      } catch (error) {
+        console.info(`V9testbindAssetStore003 err is: ${error.code} and msg is: ${error.message}`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.name: V9testbindAssetStore004
+     * @tc.desc: Test bindAssetStore with invalid args,primaryKey is null
+     * @tc.type: Functiontion
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0400
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('V9testbindAssetStore004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* V9testbindAssetStore004 start *************");
+      let g_object = distributedObject.create(context, {
+        title: "bindAssettest-title",
+        content: "bindAssettest-content",
+        mark: "no mark",
+        asset004: {
+          status: 0,
+          name: "1.txt",
+          uri: "file://com.example.myapp/data/dir/1.txt",
+          path: "/dir/1.txt",
+          createTime: "2023/11/30 19:48:00",
+          modifyTime: "2023/11/30 20:10:00",
+          size: "1",
+        }
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("sessionBA4");
+      let asset1: commonType.Asset = {
+        name: "name1",
+        uri: "uri1",
+        createTime: "createTime1",
+        modifyTime: "modifyTime1",
+        size: "size1",
+        path: "path1",
+        status: commonType.AssetStatus.ASSET_NORMAL,
+      };
+      try {
+        g_object.bindAssetStore("asset004", undefined, (err, data) => {
+          expect(null).assertFail();
+          done();
+        });
+      } catch (error) {
+        console.info(`V9testbindAssetStore004 err is: ${error.code} and msg is: ${error.message}`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.name: V9testbindAssetStore005
+     * @tc.desc: Test bindAssetStore with invalid args,field is null
+     * @tc.type: Functiontion
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0500
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('V9testbindAssetStore005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* V9testbindAssetStore005 start *************");
+      let g_object = distributedObject.create(context, {
+        title: "bindAssettest-title",
+        content: "bindAssettest-content",
+        mark: "no mark",
+        asset005: {
+          status: 0,
+          name: "1.txt",
+          uri: "file://com.example.myapp/data/dir/1.txt",
+          path: "/dir/1.txt",
+          createTime: "2023/11/30 19:48:00",
+          modifyTime: "2023/11/30 20:10:00",
+          size: "1",
+        }
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("sessionBA5");
+      let asset1: commonType.Asset = {
+        name: "name1",
+        uri: "uri1",
+        createTime: "createTime1",
+        modifyTime: "modifyTime1",
+        size: "size1",
+        path: "path1",
+        status: commonType.AssetStatus.ASSET_NORMAL,
+      };
+      try {
+        g_object.bindAssetStore("asset005", undefined, (err, data) => {
+          expect(null).assertFail();
+          done();
+        });
+      } catch (error) {
+        console.info(`V9testbindAssetStore005 err is: ${error.code} and msg is: ${error.message}`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.name: V9testbindAssetStore006
+     * @tc.desc: Test bindAssetStore with invalid args,assetName is null
+     * @tc.type: Functiontion
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_bindAssetStore_0600
+     * @tc.size: MediumTest
+     * @tc.level: Level 2
+     */
+    it('V9testbindAssetStore006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* V9testbindAssetStore006 start *************");
+      let g_object = distributedObject.create(context, {
+        title: "bindAssettest-title",
+        content: "bindAssettest-content",
+        mark: "no mark",
+        asset006: {
+          status: 0,
+          name: "1.txt",
+          uri: "file://com.example.myapp/data/dir/1.txt",
+          path: "/dir/1.txt",
+          createTime: "2023/11/30 19:48:00",
+          modifyTime: "2023/11/30 20:10:00",
+          size: "1",
+        }
+      });
+      expect(g_object == undefined).assertEqual(false);
+      await g_object.setSessionId("sessionBA6");
+      let asset1: commonType.Asset = {
+        name: "name1",
+        uri: "uri1",
+        createTime: "createTime1",
+        modifyTime: "modifyTime1",
+        size: "size1",
+        path: "path1",
+        status: commonType.AssetStatus.ASSET_NORMAL,
+      };
+      try {
+        g_object.bindAssetStore("asset006", undefined, (err, data) => {
+          expect(null).assertFail();
+          done();
+        });
+      } catch (error) {
+        console.info(`V9testbindAssetStore006 err is: ${error.code} and msg is: ${error.message}`);
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
 
     /**
      * @tc.name: V9testbindAssetStore007
@@ -1051,7 +1492,9 @@ export default function objectStoreTestV9() {
         expect(error.code == 401).assertTrue();
         done();
       }
-    });
+    })
+
+
     /**
      * @tc.name: V9testbindAssetStore008
      * @tc.desc: Test bindAssetStore with invalid args,assetKey is null
@@ -1106,7 +1549,8 @@ export default function objectStoreTestV9() {
         expect(error.code == 401).assertTrue();
         done();
       }
-    });
+    })
+
     /**
      * @tc.name: V9testModifyAsset001
      * @tc.desc: object with asset create distributed data object
@@ -1127,34 +1571,40 @@ export default function objectStoreTestV9() {
         modifyTime: "2023-11-26 10:00:00",
         size: "1"
       };
+      g_object = distributedObject.create(context, {
+        title: "my note",
+        content: "It's a nice day today.",
+        mark: false,
+        attachment
+      });
+      expect(g_object === undefined).assertEqual(false);
       try {
-        g_object = distributedObject.create(context, {
-          title: "my note",
-          content: "It's a nice day today.",
-          mark: false,
-          attachment
-        });
-        expect(g_object === undefined).assertEqual(false);
         await g_object.setSessionId("123456").then((data) => {
           console.info(TAG + "V9testModifyAsset001");
           console.info(TAG + data);
         }).catch((error: BusinessError) => {
           console.info(TAG + error);
         });
-        g_object.setSessionId("").then((data) => {
-          console.info(TAG + "V9testModifyAsset001");
-          console.info(TAG + data);
-        }).catch((error: BusinessError) => {
-          console.info(TAG + error);
-        });
-        console.log(TAG + "************* V9testModifyAsset001 end *************");
-        g_object.setSessionId((error, data) => {
-          console.info(TAG + error + "," + data);
-        });
+        g_object["attachment"] = {};
       } catch (error) {
         console.info(error.code + error.message);
+        expect(error.code === 401).assertEqual(true);
       }
-    });
+      g_object.setSessionId("").then((data) => {
+        console.info(TAG + "V9testModifyAsset001");
+        console.info(TAG + data);
+      }).catch((error: BusinessError) => {
+        console.info(TAG + error);
+        expect().assertFail();
+      });
+      console.log(TAG + "************* V9testModifyAsset001 end *************");
+      g_object.setSessionId((error, data) => {
+        console.info(TAG + error + "," + data);
+      });
+    })
+
+
+
     console.info(TAG + "*************Unit Test End*************");
   })
 }

@@ -144,6 +144,7 @@ export default function objectStoreTest() {
         expect("session1" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOn001 joinSession failed");
+        expect().assertFail();
       }
       console.info(TAG + " start call watch change");
       objectTest.on("change", changeCallback);
@@ -156,6 +157,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       objectTest.setSessionId("");
@@ -181,6 +183,7 @@ export default function objectStoreTest() {
         expect("session2" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOn002 joinSession failed");
+        expect().assertFail();
       }
       if (objectTest != undefined && objectTest != null) {
         objectTest["name"] = "jack1";
@@ -191,6 +194,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.setSessionId("");
       done();
@@ -216,6 +220,7 @@ export default function objectStoreTest() {
         expect("session3" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOn003 joinSession failed");
+        expect().assertFail();
       }
       objectTest.on("change", changeCallback);
       console.info(TAG + " start call watch change");
@@ -233,6 +238,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       objectTest.setSessionId("");
@@ -258,6 +264,7 @@ export default function objectStoreTest() {
         expect("session4" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOn004 joinSession failed");
+        expect().assertFail();
       }
       objectTest.on("change", changeCallback);
       console.info(TAG + " start call watch change");
@@ -286,6 +293,7 @@ export default function objectStoreTest() {
         expect("session5" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOff001 joinSession failed");
+        expect().assertFail();
       }
       objectTest.on("change", changeCallback);
       console.info(TAG + " start call watch change");
@@ -298,6 +306,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       console.info(TAG + " end call watch change");
@@ -310,6 +319,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.setSessionId("");
       done();
@@ -334,6 +344,7 @@ export default function objectStoreTest() {
         expect("session6" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOff002 joinSession failed");
+        expect().assertFail();
       }
       objectTest.off("change");
       console.info(TAG + " end call watch change");
@@ -346,6 +357,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       done();
       console.info(TAG + "************* testOff002 end *************");
@@ -370,6 +382,7 @@ export default function objectStoreTest() {
         expect("session7" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testMultiObjectOn001 joinSession1 failed");
+        expect().assertFail();
       }
       let testObject = distributedObject.createDistributedObject({
         name: "Eric", age: 81, isVis: true
@@ -380,6 +393,7 @@ export default function objectStoreTest() {
         expect("testSession1" == testObject["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testMultiObjectOn001 joinSession2 failed");
+        expect().assertFail();
       }
       objectTest.on("change", changeCallback);
       testObject.on("change", changeCallback2);
@@ -393,6 +407,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " objectTest is null,set name fail");
+        expect().assertFail();
       }
       if (testObject != undefined && testObject != null) {
         testObject["name"] = "jack2";
@@ -403,6 +418,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " testObject is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       testObject.off("change");
@@ -430,6 +446,7 @@ export default function objectStoreTest() {
         expect("session8" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testMultiObjectOn002 joinSession failed");
+        expect().assertFail();
       }
       let testObject = distributedObject.createDistributedObject({
         name: "Eric", age: 81, isVis: true
@@ -440,6 +457,7 @@ export default function objectStoreTest() {
         expect("testSession2" == testObject["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testMultiObjectOn002 joinSession failed");
+        expect().assertFail();
       }
       console.info(TAG + " start call watch change");
       objectTest.on("change", changeCallback);
@@ -454,6 +472,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       if (testObject != undefined && testObject != null) {
         testObject["name"] = "jack2";
@@ -464,6 +483,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       if (objectTest != undefined && objectTest != null) {
@@ -475,6 +495,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       testObject.off("change");
       if (testObject != undefined && testObject != null) {
@@ -486,6 +507,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.setSessionId("");
       testObject.setSessionId("");
@@ -511,6 +533,7 @@ export default function objectStoreTest() {
         expect("session9" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testChangeSession001 joinSession failed");
+        expect().assertFail();
       }
       objectTest.on("change", changeCallback);
       console.info(TAG + " start call watch change");
@@ -523,6 +546,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       console.info(TAG + "start change sessionId");
       objectTest.setSessionId("session10");
@@ -531,6 +555,7 @@ export default function objectStoreTest() {
         expect("session10" == objectTest["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testChangeSession001 joinSession again failed");
+        expect().assertFail();
       }
       if (objectTest != undefined && objectTest != null) {
         objectTest["name"] = "jack2";
@@ -541,6 +566,7 @@ export default function objectStoreTest() {
         console.info(TAG + " set data success!");
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.off("change");
       objectTest.setSessionId("");
@@ -566,6 +592,7 @@ export default function objectStoreTest() {
         expect("session11" == undefined_object["__sessionId"]).assertEqual(true);
       } catch (error) {
         console.error(TAG + error);
+        expect().assertFail();
       }
       done();
       console.info(TAG + "************* testUndefinedType001 end *************");
@@ -580,8 +607,13 @@ export default function objectStoreTest() {
      */
     it('testGenSessionId001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.info(TAG + "************* testGenSessionId001 start *************");
-      let sessionId = distributedObject.genSessionId();
-      expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
+      try {
+        let sessionId = distributedObject.genSessionId();
+        expect(sessionId != null && sessionId.length > 0 && typeof (sessionId) == 'string').assertEqual(true);
+      }catch (err) {
+        console.error(TAG + err);
+        expect().assertFail();
+      }
       done();
       console.info(TAG + "************* testGenSessionId001 end *************");
     });
@@ -595,9 +627,14 @@ export default function objectStoreTest() {
      */
     it('testGenSessionId002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.info(TAG + "************* testGenSessionId002 start *************");
-      let sessionId1 = distributedObject.genSessionId();
-      let sessionId2 = distributedObject.genSessionId();
-      expect(sessionId1 != sessionId2).assertEqual(true);
+      try {
+        let sessionId1 = distributedObject.genSessionId();
+        let sessionId2 = distributedObject.genSessionId();
+        expect(sessionId1 != sessionId2).assertEqual(true);
+      }catch (err) {
+        console.error(TAG + err);
+        expect().assertFail();
+      }
       done();
       console.info(TAG + "************* testGenSessionId002 end *************");
     });
@@ -612,14 +649,19 @@ export default function objectStoreTest() {
     it('testOnStatus001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.info(TAG + "************* testOnStatus001 start *************");
       console.info(TAG + "start watch status");
-      let objectTest = distributedObject.createDistributedObject({
-        name: "Amy", age: 18, isVis: false
-      });
-      expect(objectTest == undefined).assertEqual(false);
-      objectTest.on("status", statusCallback1);
-      console.info(TAG + "watch success");
-      objectTest.off("status");
-      objectTest.setSessionId("");
+      try {
+        let objectTest = distributedObject.createDistributedObject({
+          name: "Amy", age: 18, isVis: false
+        });
+        expect(objectTest == undefined).assertEqual(false);
+        objectTest.on("status", statusCallback1);
+        console.info(TAG + "watch success");
+        objectTest.off("status");
+        objectTest.setSessionId("");
+      }catch (err) {
+        console.error(TAG + err);
+        expect().assertFail();
+      }
       done();
       console.info(TAG + "************* testOnStatus001 end *************");
     });
@@ -634,20 +676,25 @@ export default function objectStoreTest() {
     it('testOnStatus002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.info(TAG + "************* testOnStatus002 start *************");
       console.info(TAG + "start watch status");
-      let objectTest = distributedObject.createDistributedObject({
-        name: "Amy", age: 18, isVis: false
-      });
-      expect(objectTest == undefined).assertEqual(false);
-      objectTest.on("status", statusCallback1);
-      objectTest.on("status", statusCallback2);
-      objectTest.on("status", statusCallback3);
-      console.info(TAG + "watch success");
-      console.info(TAG + "start call unwatch status");
-      objectTest.off("status", statusCallback1);
-      objectTest.off("status", statusCallback2);
-      objectTest.off("status", statusCallback3);
-      console.info(TAG + "unwatch success");
-      objectTest.setSessionId("");
+      try {
+        let objectTest = distributedObject.createDistributedObject({
+          name: "Amy", age: 18, isVis: false
+        });
+        expect(objectTest == undefined).assertEqual(false);
+        objectTest.on("status", statusCallback1);
+        objectTest.on("status", statusCallback2);
+        objectTest.on("status", statusCallback3);
+        console.info(TAG + "watch success");
+        console.info(TAG + "start call unwatch status");
+        objectTest.off("status", statusCallback1);
+        objectTest.off("status", statusCallback2);
+        objectTest.off("status", statusCallback3);
+        console.info(TAG + "unwatch success");
+        objectTest.setSessionId("");
+      }catch (err) {
+        console.error(TAG + err);
+        expect().assertFail();
+      }
       done();
       console.info(TAG + "************* testOnStatus002 end *************");
     });
@@ -662,18 +709,23 @@ export default function objectStoreTest() {
     it('testOnStatus003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
       console.info(TAG + "************* testOnStatus003 start *************");
       console.info(TAG + "start watch status");
-      let objectTest = distributedObject.createDistributedObject({
-        name: "Amy", age: 18, isVis: false
-      });
-      expect(objectTest == undefined).assertEqual(false);
-      objectTest.on("status", statusCallback1);
-      objectTest.on("status", statusCallback2);
-      objectTest.on("status", statusCallback3);
-      console.info(TAG + "watch success");
-      console.info(TAG + "start call unwatch status");
-      objectTest.off("status");
-      console.info(TAG + "unwatch success");
-      objectTest.setSessionId("");
+      try {
+        let objectTest = distributedObject.createDistributedObject({
+          name: "Amy", age: 18, isVis: false
+        });
+        expect(objectTest == undefined).assertEqual(false);
+        objectTest.on("status", statusCallback1);
+        objectTest.on("status", statusCallback2);
+        objectTest.on("status", statusCallback3);
+        console.info(TAG + "watch success");
+        console.info(TAG + "start call unwatch status");
+        objectTest.off("status");
+        console.info(TAG + "unwatch success");
+        objectTest.setSessionId("");
+      }catch (err) {
+        console.error(TAG + err);
+        expect().assertFail();
+      }
       done();
       console.info(TAG + "************* testOnStatus003 end *************");
     });
@@ -699,6 +751,7 @@ export default function objectStoreTest() {
         expect("session12" == complexObject["__sessionId"]).assertEqual(true);
       } else {
         console.info(TAG + "testOnComplex001 joinSession session12 failed");
+        expect().assertFail();
       }
       complexObject["name"] = "jack";
       complexObject["age"] = 19;
@@ -740,6 +793,7 @@ export default function objectStoreTest() {
         expect("session13" == objectTest["__sessionId"]);
       } else {
         console.info(TAG + "testMaxSize001 joinSession session13 failed");
+        expect().assertFail();
       }
       //maxString = 32byte
       let maxString = "12345678123456781234567812345678".repeat(131072);
@@ -751,6 +805,7 @@ export default function objectStoreTest() {
         console.info(TAG + "get/set maxSize string success:" + objectTest["name"]);
       } else {
         console.info(TAG + " object is null,set name fail");
+        expect().assertFail();
       }
       objectTest.setSessionId("");
       done();
