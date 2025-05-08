@@ -38,6 +38,7 @@ import timePickerDialogBGBlurStyleTest from './timePickerDialog/timePickerDialog
 import timePickerDialogBGColorTest from './timePickerDialog/timePickerDialogBGColor.test';
 import timePickerDialogShadowTest from './timePickerDialog/timePickerDialogShadow.test';
 import enableCascadeTest from './timePickerDialog/addEnableCascadeApi.test'
+import columnWidths from './textPicker/columnWidths.test';
 
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
@@ -66,4 +67,5 @@ export default function testsuite() {
     timePickerDialogBGColorTest();
     timePickerDialogShadowTest();
     enableCascadeTest();
+    columnWidths();
 }
