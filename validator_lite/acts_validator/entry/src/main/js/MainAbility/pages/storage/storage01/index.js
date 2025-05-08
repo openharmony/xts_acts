@@ -18,7 +18,7 @@ import storage from '@system.storage';
 
 export default {
   data: {
-    item_index: NaN,
+    itemIndex: NaN,
     str: '',
     title: 'storage',
     pass: 'true ;',
@@ -138,7 +138,7 @@ export default {
   },
 
   onDestroy() {
-      this.storageClear()
+      this.storageClear();
   },
 
   help() {
@@ -157,7 +157,7 @@ export default {
     router.replace({
       uri: 'pages/second-api/index',
       params: {
-        item_index: this.item_index
+        itemIndex: this.itemIndex
       }
     });
   },

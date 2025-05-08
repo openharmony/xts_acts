@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data:{
-        item_index: NaN,
+        itemIndex: NaN,
         value:'show',
         timeoutId: -1,
         str: '',
@@ -31,8 +31,8 @@ export default {
             clearTimeout(this.timeoutId);
         }
         this.timeoutId = setTimeout(()=> {
-            console.info("start setTimeout")
-            this.value = 'once_timer success'
+            console.info('start setTimeout');
+            this.value = 'once_timer success';
         }, 3000);
     },
 
@@ -60,7 +60,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

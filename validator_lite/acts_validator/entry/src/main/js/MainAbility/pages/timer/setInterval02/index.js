@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data:{
-        item_index: NaN,
+        itemIndex: NaN,
         index: 0,
         intervalID: -1,
         str: '',
@@ -62,7 +62,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

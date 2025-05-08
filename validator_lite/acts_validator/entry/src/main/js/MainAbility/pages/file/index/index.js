@@ -18,7 +18,7 @@ import file from '@system.file';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         str: '',
         title: 'file',
         pass: 'true ;',
@@ -329,7 +329,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

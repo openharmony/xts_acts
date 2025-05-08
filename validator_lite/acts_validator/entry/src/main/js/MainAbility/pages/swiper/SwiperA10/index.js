@@ -18,7 +18,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         index: 0,
         str: '',
         title: 'swiper',
@@ -42,7 +42,7 @@ export default {
         router.replace({
             uri: 'pages/second-compent/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

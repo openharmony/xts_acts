@@ -18,7 +18,7 @@ import router from '@system.router';
 
 export default {
   data: {
-    item_index: NaN,
+    itemIndex: NaN,
     frames,
     state: null,
     str: '',
@@ -71,13 +71,13 @@ export default {
     router.replace({
       uri: 'pages/second-compent/index',
       params: {
-        item_index: this.item_index
+        itemIndex: this.itemIndex
       }
     });
   },
 
   changeResult(result) {
     getApp().data.keyList[this.title] = result;
-    this.back()
+    this.back();
   },
 };

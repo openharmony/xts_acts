@@ -18,7 +18,7 @@ import brightness from '@system.brightness';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         value: 0,
         getValue : 0,
         str: '',
@@ -87,7 +87,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

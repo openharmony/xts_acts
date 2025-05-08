@@ -18,7 +18,7 @@ import Vibrator from '@system.vibrator';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         strStates: ['短振动', '长振动'],
         state: '',
         str: '',
@@ -79,7 +79,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

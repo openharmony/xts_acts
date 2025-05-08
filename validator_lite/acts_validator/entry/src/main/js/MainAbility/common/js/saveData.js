@@ -19,12 +19,12 @@ export const getTxtData = function () {
     let dataInfo = getApp().data.keyList
     let str = ""
     for (const key in dataInfo) {
-        if (dataInfo.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(dataInfo, key)) {
             console.log(`${key}: ${dataInfo[key]}`);
-            str = str + key + ":" + dataInfo[key]
+            str = str + key + ':' + dataInfo[key];
         }
     }
-    console.info("save data: " + str);
+    console.info('save data: ' + str);
     saveTxtFile(str);
 };
 

@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         sliderValue: '',
         dynamicValue: 150,
         str: '',
@@ -53,7 +53,7 @@ export default {
         router.replace({
             uri: 'pages/second-compent/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

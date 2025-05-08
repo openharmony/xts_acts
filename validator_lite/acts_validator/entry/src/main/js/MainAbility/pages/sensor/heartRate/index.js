@@ -18,7 +18,7 @@ import sensor from '@system.sensor';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         heartRate: 0,
         str: '',
         title: 'heartRate',
@@ -69,7 +69,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

@@ -18,7 +18,7 @@ import battery from '@system.battery';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         level: 0,
         str: '',
         title: 'battery',
@@ -63,7 +63,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

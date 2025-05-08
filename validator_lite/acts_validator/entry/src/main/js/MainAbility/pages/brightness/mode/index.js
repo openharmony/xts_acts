@@ -18,7 +18,7 @@ import brightness from '@system.brightness';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         modeType: '',
         modeStr: ['手动调', '自动调'],
         keepScreen: true,
@@ -93,7 +93,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

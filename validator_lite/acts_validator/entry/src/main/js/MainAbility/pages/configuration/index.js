@@ -18,7 +18,7 @@ import configuration from '@system.configuration';
 
 export default {
     data: {
-        item_index: NaN,
+        itemIndex: NaN,
         localeInfo: '',
         str: '',
         title: 'configuration',
@@ -71,7 +71,7 @@ export default {
         router.replace({
             uri: 'pages/second-api/index',
             params: {
-                item_index: this.item_index
+                itemIndex: this.itemIndex
             }
         });
     },

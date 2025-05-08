@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
   data: {
-    item_index: 0,
+    itemIndex: 0,
     todolist: [
       {
         id: 0,
@@ -128,8 +128,8 @@ export default {
   },
 
   onShow() {
-    console.info("onShow item_index: " + this.item_index)
-    this.$refs.list.scrollTo({index: this.item_index})
+    console.info("onShow item_index: " + this.itemIndex);
+    this.$refs.list.scrollTo({index: this.itemIndex});
   },
 
   clickChange(item) {
@@ -137,7 +137,7 @@ export default {
     router.replace({
       uri: item.url,
       params: {
-        item_index: item.id
+        itemIndex: item.id
       }
     });
   },
