@@ -1648,9 +1648,9 @@ export default function windowPromiseTest() {
         await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_2').then(async (data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          await subWindowClass.setUIContent('testability/pages/First/index2').then(async () => {
+          await subWindowClass.setUIContent('testability/pages/First/index2').then(() => {
             console.info(msgStr + 'Succeeded in setUiContent.');
-            subWindowClass.setWindowGrayScale(grayScale).then(() => {
+            subWindowClass.setWindowGrayScale(grayScale).then(async () => {
               console.info(msgStr + 'Succeeded in setting the grayScale 1.');
               await subWindowClass.destroyWindow();
               expect(true).assertTrue();
