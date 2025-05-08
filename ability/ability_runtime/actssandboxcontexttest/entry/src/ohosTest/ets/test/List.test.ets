@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import sandboxContextTest from './sandboxContextTest.test'
+import sandboxContextTest from './SandboxContextTest.test'
 export default function testsuite() {
   sandboxContextTest();
 }

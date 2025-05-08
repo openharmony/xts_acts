@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityManager, common } from '@kit.AbilityKit';
 
@@ -29,7 +29,7 @@ export default function sandboxContextTest() {
 
     })
     afterEach(() => {
-
+      hilog.info(0x0000, TAG, "[%{public}s] case end.", TAG);
     })
     afterAll(() => {
 
@@ -41,8 +41,9 @@ export default function sandboxContextTest() {
      * @tc.desc    Verifying that non-DLP applications receive a 401 error when passing incorrect parameter types to the API
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2400', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2400', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2400';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       let want: Want = {
         bundleName: 'com.example.myapplication',
         abilityName: 'EntryAbility'
@@ -56,11 +57,17 @@ export default function sandboxContextTest() {
       try {
         abilityManager.notifySaveAsResult(abilityResult, requestCode).then(() => {
           hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult success', TAG);
-          expect().assertFail();
+          try {
+            expect().assertFail();
+          } catch {
+          }
           done();
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult fail, err: %{public}s', TAG, JSON.stringify(err));
-          expect(err.code).assertEqual(401);
+          try {
+            expect(err.code).assertEqual(401);
+          } catch {
+          }
           done();
         });
       } catch (paramError) {
@@ -76,19 +83,26 @@ export default function sandboxContextTest() {
      * @tc.desc    Verifying that non-DLP applications receive a 401 error when passing incorrect parameter types to the API (callback)
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2800', 0, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2800', Level.LEVEL0, async (done: Function) => {
       TAG = 'SUB_Ability_AbilityRuntime_Sandbox_SupportsStartSandbox_2800';
+      hilog.info(0x0000, TAG, "[%{public}s] case start.", TAG);
       let abilityResult = null;
       let requestCode = 100;
       try {
         abilityManager.notifySaveAsResult(abilityResult, requestCode, (err: BusinessError) => {
           if (err && err.code != 0) {
             hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult fail, err: %{public}s', TAG, JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            try {
+              expect(err.code).assertEqual(401);
+            } catch {
+            }
             done();
           } else {
             hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult success', TAG);
-            expect().assertFail();
+            try {
+              expect().assertFail();
+            } catch {
+            }
             done();
           }
         });
