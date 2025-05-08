@@ -57,372 +57,370 @@ let innerEvent6: emitter.InnerEvent = {
 
 @Entry
 @Component
-struct Index {
-  private notificationOperations: NotificationOperations = new NotificationOperations(getContext(this));
-  private notificationUtil = new NotificationUtil();
-  @State isPromptTone: boolean = false;
-  @State name: string = 'CustomNotification';
-  @State StepTips: string = '操作步骤：\n分别点击6个小卡片，发送不同类型的通知' + '\n' + '预期结果：通知卡片变为绿色，通知中心收到不同类型的通知，则通过';
-  @State Vue: boolean = false;
-  @State isVibrationEffect: boolean = false;
+struct NotificationPage {
+  @State ClearAll: boolean = false;
+  private current: number = 0;
   @State count: number = 0;
-  @State flagOne: boolean = false;
-  @State flagTwo: boolean = false;
-  @State flagThree: boolean = false;
-  @State flagFour: boolean = false;
-  @State flagFive: boolean = false;
-  @State flagSix: boolean = false;
-
-  @Builder
-  PassBtn(text: Resource, isFullScreen: boolean) {
-    if (this.Vue == false) {
-      Button({ stateEffect: this.Vue }) {
-        Image($r('app.media.ic_public_pass'))
-          .width('20vp')
-          .height('20vp')
-      }
-      .width('30%')
-      .height('30vp')
-      .backgroundColor(Color.Grey)
-      .opacity(0.4)
-      .onClick(() => {
-
-      })
-    }
-    else {
-      Button({ stateEffect: this.Vue }) {
-        Image($r('app.media.ic_public_pass'))
-          .width('20vp')
-          .height('20vp')
-      }.width('30%')
-      .height('30vp')
-      .backgroundColor(Color.Grey)
-      .onClick(() => {
-        router.back({
-          url: 'pages/Notification/Notification_index',
-          params: {
-            result: 'true ', title: this.name,
-          }
-        })
-        promptAction.showToast({
-          message: '通过', duration: 1000
-        });
-      })
-    }
-  }
-
-  @Builder
-  FailBtn(text: Resource, isFullScreen: boolean) {
-    Button() {
-      Image($r('app.media.ic_public_fail'))
-        .width('20vp')
-        .height('20vp')
-    }
-    .width('30%')
-    .height('30vp')
-    .backgroundColor(Color.Grey)
-    .onClick(() => {
-      router.back({
-        url: 'pages/Notification/Notification_index',
-        params: {
-          result: 'false', title: this.name,
-        }
-      })
-      promptAction.showToast({
-        message: '失败', duration: 1000
-      });
-    })
-  }
-
-  @Styles
-  viewStyle(){
-    .width('48%')
-    .height(100)
-    .borderRadius(20)
-    .margin({ top: 18 })
-    .backgroundColor('#FFFFFF')
-  }
-
-  @Styles
-  toggleStyle(){
-    .width(52)
-    .height(26)
-    .margin({ right: 24 })
-  }
-
-  @Styles
-  rowStyle(){
-    .backgroundColor('#FFFFFF')
-    .borderRadius(20)
-    .margin({ top: 18 })
-    .height(80)
-    .width('90%')
-  }
-
-  async aboutToAppear() {
-    await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    this.isVibrationEffect = this.notificationUtil.vibrationEffect();
-  }
+  @State result: string = '';
+  @State TEST: number = 0;
+  private TestCaseList: TestCase[] = [
+    { title: 'CommonEvent', uri: 'pages/Notification/CommonEvent/page/CommonEventSetting' },
+    { title: 'CustomNotification', uri: 'pages/Notification/CustomNotification/CustomNotification' }
+  ]
+  @State ColorObject: Object[] = letColor;
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
   async onPageShow() {
-    // 收到eventId为1的事件后执行回调函数
-    emitter.on(innerEvent, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagOne = res.data.flag
-        console.info('emitter.on =11= ' + this.count);
-        console.info('emitter.on =11flagOne= ' + this.flagOne);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
-      }
+    let Test : data_preferences.Preferences | number = 0;
+    let context: Context | null;
+    context = globalThis.getContext();
+    let preferences: ESObject;
+
+    let promise = data_preferences.getPreferences(context, 'mystore');
+    await promise.then((object) => {
+      preferences = object;
+    });
+    promise = preferences.get('Notification', 0);
+    await promise.then((data) => {
+      Test = data;
+      console.info("Succeeded in getting value of 'Notification'. Data: " + data);
     });
 
-    emitter.on(innerEvent2, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagTwo = res.data.flag
-        console.info('emitter.on =22= ' + this.count);
-        console.info('emitter.on =22flagTwo= ' + this.flagOne);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
+    if (Test != 1) {
+      let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      for (let i = 0; i < this.TestCaseList.length; i++) {
+        let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
+        fs.writeSync(fd.fd, log);
       }
+      fs.closeSync(fd);
+    }
+    promise = preferences.put('Notification', 1);
+    promise.then(() => {
+      console.info("Succeeded in putting value of 'Notification'.");
     });
+    promise = preferences.flush();
+    promise.then(() => {
+      console.info("Succeeded in flushing.");
+    });
+    this.TEST = Test;
 
-    emitter.on(innerEvent3, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagThree = res.data.flag
-        console.info('emitter.on =33= ' + this.count);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
-      }
-    });
+    let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let buff = new ArrayBuffer(40960);
+    let RD = fs.readSync(opt.fd, buff);
+    let uint8Array = new Uint8Array(buff, 0, RD);
+    let ColorBack: string = String.fromCharCode(...uint8Array);
+    let TestList: string[] = ColorBack.split(';');
+    for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
+      letColor[i] = TestList[i * 2+1];
+    }
+    fs.closeSync(opt);
 
-    emitter.on(innerEvent4, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagFour = res.data.flag
-        console.info('emitter.on =44= ' + this.count);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
-      }
-    });
+    if (this.count === 1) {
 
-    emitter.on(innerEvent5, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagFive = res.data.flag
-        console.info('emitter.on =55= ' + this.count);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
-      }
-    });
+      let myRouter = router.getParams() as Record<string, string | number>
+      this.result = myRouter.result as string
+      let titles: string = myRouter.title as string;
+      let name1: string = '刚刚点进了哪个用例：' + titles;
+      let results = this.result;
+      let WriteTitle = (titles).toString();
+      let number = WriteTitle.length + 7;
+      let Index = ColorBack.indexOf(WriteTitle);
 
-    emitter.on(innerEvent6, (res) => {
-      if(res.data !== undefined) {
-        this.count = res.data.content
-        this.flagSix = res.data.flag
-        console.info('emitter.on =66= ' + this.count);
-        if (this.count === 6) {
-          this.Vue = true;
-        }
+      if (this.result === 'true ') {
+        this.ColorObject[this.current] = 'true ';
+        let Log = (titles + ';' + 'true ' + ';');
+        let key = ColorBack.substring(Index, Index + number);
+        let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        ColorBack = ColorBack.replace(key, Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fs.readSync(FD.fd, buffer);
+        let Report = ColorBack.substring(0, rd);
+        fs.closeSync(FD);
+        let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(Fd.fd, Report);
+        filewrite(name1, results, titles)
       }
-    });
+      else if (this.result === 'false') {
+        this.ColorObject[this.current] = 'false';
+        let Log = (titles + ';' + 'false' + ';');
+        let key = ColorBack.substring(Index, Index + number);
+        let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        ColorBack = ColorBack.replace(key, Log);
+        let buffer = new ArrayBuffer(4096);
+        let rd = fs.readSync(FD.fd, buffer);
+        let Report = ColorBack.substring(0, rd);
+        fs.closeSync(FD);
+        let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(Fd.fd, Report);
+        filewrite(name1, results, titles);
+      }
+      else {
+        this.ColorObject[this.current] = this.ColorObject[this.current];
+      }
+    }
+    for (let i = 0; i < TestList.length; i++) {
+      if (this.ColorObject[i] === 'true ') {
+        this.ColorTrue[i] = 0x263526
+        this.ColorTrue2[i] = 0x0CB60C
+
+      }
+      else if (this.ColorObject[i] === 'false') {
+        this.ColorTrue[i] = 0x380303
+        this.ColorTrue2[i] = 0xd60a0a
+      }
+      else {
+        this.ColorTrue[i] = 0x000000
+        this.ColorTrue2[i] = 0x000000
+      }
+    }
   }
 
   build() {
     Column() {
-      Column() {
-        Row() {
-          Button() {
-            Image($r('app.media.ic_public_back'))
-              .width('20vp')
-              .height('18vp')
-              .margin({ left: '20vp' })
-          }
-          .backgroundColor(Color.Black)
-          .size({ width: '40vp', height: '30vp' })
-          .onClick(() => {
-            router.back({
-              url: 'pages/Notification/Notification_index',
-              params: { result: 'None', }
-            })
-          })
-
-          Text(this.name)
-            .fontColor(Color.White)
-            .fontSize('18fp')
-            .margin({ left: '-20vp' })
-          Text('hello')
-            .fontColor(Color.White)
-            .visibility(Visibility.Hidden)
+      Row() {
+        Button() {
+          Image($r('app.media.ic_public_back'))
+            .width('20vp')
+            .height('18vp')
         }
         .backgroundColor(Color.Black)
-        .height('10%')
-        .width('100%')
-        .justifyContent(FlexAlign.SpaceBetween)
-
-        Column() {
-          Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.SpaceEvenly }) {
-            Column() {
-              Image($r('app.media.ic_notice_jiben'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('基本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishBasicNotification)
-            }
-            .borderColor(this.flagOne ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishBasicNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_changwenben'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('长文本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishLongTextNotification)
-            }
-            .borderColor(this.flagTwo ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishLongTextNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_duohang'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('多行文本型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishMultiLineNotification)
-            }
-            .borderColor(this.flagThree ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishMultiLineNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_tupian'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('图片型通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishPictureNotification)
-            }
-            .borderColor(this.flagFour ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishPictureNotification)
-
-            Column() {
-              Image($r('app.media.ic_notice_anniu'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('带按钮的通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishNotificationWithButtons)
-            }
-            .borderColor(this.flagFive ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishNotificationWithButtons)
-
-            Column() {
-              Image($r('app.media.ic_notice_tiaozhuan'))
-                .width(40)
-                .height(28)
-                .objectFit(ImageFit.Contain)
-                .margin({ bottom: 10 })
-              Text('点击可跳转的通知')
-                .fontSize(16)
-                .onClick(this.notificationOperations.publishNotificationWithWantAgent)
-            }
-            .borderColor(this.flagSix ? Color.Green : Color.White)
-            .borderWidth(10)
-            .viewStyle()
-            .justifyContent(FlexAlign.Center)
-            .alignItems(HorizontalAlign.Center)
-            .onClick(this.notificationOperations.publishNotificationWithWantAgent)
-          }
-          .width('90%')
-
-          Button('清空所有通知')
-            .backgroundColor(Color.White)
-            .width(230)
-            .height(40)
-            .margin(10)
-            .fontSize(16)
-            .margin({ top: 50 })
-            .fontColor(Color.Black)
-            .onClick(() => {
-              this.notificationUtil.cancelAllNotifications();
-              notificationManagement.resetTypeNotificationState();
-            })
-        }
-        .width('100%')
-        .height('80%')
+        .onClick(() => {
+          router.back();
+        })
 
         Row() {
-          this.PassBtn($r('app.string.btn_fullscreen'), true);
+          Text('ces')
+            .fontColor(Color.White)
+            .fontSize('22fp')
+        }
+        .justifyContent(FlexAlign.SpaceAround)
+        .backgroundColor(Color.Black)
+        .size({ width: '40%' , height: '100%' })
+
+        Row() {
           Button() {
-            Image($r('app.media.ic_public_help'))
+            Image($r('app.media.ic_public_delete'))
               .width('20vp')
-              .height('20vp')
+              .height('18vp')
           }
-          .width('30%')
-          .height('30vp')
-          .backgroundColor(Color.Grey)
+          .backgroundColor(Color.Black)
           .onClick(() => {
             AlertDialog.show(
               {
-                title: '操作提示',
-                message: this.StepTips,
-                confirm: {
-                  value: 'OK',
+                message: "是否删除所有记录",
+                primaryButton: {
+                  value: 'Yes',
                   action: () => {
+                    this.ClearAll = true;
+                    this.ColorObject.forEach((value, index) => {
+                      this.ColorObject[index] = 'none ';
+                    });
+                    this.ClearText();
+                    router.replaceUrl({
+                      url: 'pages/Notification/Notification_index',
+                    })
+                    promptAction.showToast({
+                      message: '结果已删除', duration: 1000
+                    });
                   }
+                },
+                secondaryButton: {
+                  value: 'No',
+                  action: () => {
+
+                  }
+                },
+                cancel: () => {
+
                 }
               }
             )
           })
 
-          this.FailBtn($r('app.string.btn_fullscreen'), true);
+          Button() {
+            Image($r('app.media.ic_public_save'))
+              .width('20vp')
+              .height('18vp')
+              .margin({ left: 30 })
+          }.backgroundColor(Color.Black)
+          .onClick(() => {
+            this.ReadTextParseXml();
+            AlertDialog.show({
+              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Notification/NotificationTest.xml -本地路径'",
+              confirm: {
+                value: 'OK',
+                action: () => {
+                  promptAction.showToast({
+                    message: '报告已生成', duration: 1000
+                  })
+                }
+              },
+              cancel: () => {
+                promptAction.showToast({
+                  message: '报告已生成', duration: 1000
+                });
+              }
+            })
+          })
         }
-        .height('10%')
-        .width('100%')
-        .justifyContent(FlexAlign.SpaceEvenly)
-        .backgroundColor(Color.Black)
       }
+      .width('60%')
+      .justifyContent(FlexAlign.SpaceAround)
+      .margin({ top: '15vp' })
+      .height('20%')
+      .backgroundColor(Color.Black)
+
+      List({}) {
+        ForEach(this.TestCaseList, (item: TestCase, index) => {
+          ListItem() {
+            Row() {
+              Text(item.title).fontSize(20).fontColor(Color.White)
+            }
+            .width('100%')
+            .height(50)
+            .alignItems(VerticalAlign.Center)
+            .linearGradient(this.count === 0 && this.TEST === 0 ? {
+              angle: 90,
+              colors: [[0x000000, 0.0], [0x000000, 1.0]]
+            } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
+            .onClick(() => {
+              this.count = 1;
+              this.ClearAll = false;
+              this.current = index;
+              router.push({
+                url: item.uri,
+              })
+            })
+          }
+        }, (item: TestCase) => item.title)
+      }
+      .width('100%')
+      .height('92%')
+      .divider({ strokeWidth: 1, color: Color.Grey })
     }
-    .backgroundColor(Color.Black)
     .width('100%')
     .height('100%')
+    .backgroundColor(Color.Black)
+  }
+
+  ClearText() {
+    fs.rmdirSync(path1);
+    fs.mkdirSync(path1);
+    fs.openSync(CommonEventTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(CustomNotification_indexPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    for (let i = 0; i < this.TestCaseList.length; i++) {
+      let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
+      fs.writeSync(fd.fd, log);
+    }
+    FlushData.ResetSensor();
+  }
+
+  ReadTextParseXml() {
+    let ReportPath = path1 + '/NotificationReport.txt';
+    let dir = fs.listFileSync(path1);
+    console.info("ssssss" + dir);
+    while (dir) {
+      let OP = fs.openSync(ReportPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let buf = new ArrayBuffer(40960);
+      let RD = fs.readSync(OP.fd, buf);
+      console.info("ddddd" + RD);
+      let report: string = String.fromCharCode(...new Uint8Array(buf));
+      let str1: string[] = report.split(";");
+      let title: string[] = [];
+      let result: string[] = [];
+      for (let i = 0; i < Math.floor(str1.length / 2); i++) {
+        title[i] = str1[i*2];
+        result[i] = str1[i * 2+1];
+      }
+      let FailIndex = report.indexOf('false');
+      let FailNum = 0;
+      while (FailIndex != -1) {
+        console.log(FailIndex.toString());
+        FailNum++;
+        FailIndex = report.indexOf('false', FailIndex + 1);
+      }
+      let failNum = (FailNum).toString();
+      let PassIndex = report.indexOf('true ');
+      let PassNum = 0;
+      while (PassIndex != -1) {
+        console.log(PassIndex.toString());
+        PassNum++;
+        PassIndex = report.indexOf('true ', PassIndex + 1);
+      }
+      let TestNum = FailNum + PassNum;
+      let testNum = (TestNum).toString();
+      let arrayBuffer = new ArrayBuffer(40960);
+      let bufView = new DataView(arrayBuffer);
+      let serializer = new xml.XmlSerializer(bufView);
+      serializer.setDeclaration();
+      serializer.startElement("testsuite");
+      serializer.setAttributes("name", "ActsNotificationTest");
+      serializer.setAttributes("time", "*");
+      serializer.setAttributes("errors", "0");
+      serializer.setAttributes("disabled", "0");
+      serializer.setAttributes("failures", failNum);
+      serializer.setAttributes("ignored", "0");
+      serializer.setAttributes("tests", testNum);
+      serializer.setAttributes("message", "*");
+      serializer.setAttributes("modulename", "ActsNotificationTest");
+      for (let i = 0; i < title.length; i++) {
+        serializer.startElement("testcase");
+        serializer.setAttributes("name", String(title[i]));
+        serializer.setAttributes("status", "run");
+        serializer.setAttributes("time", "*");
+        serializer.setAttributes("classname", "ActsNotificationTest");
+        serializer.setAttributes("result", String(result[i]));
+        serializer.setAttributes("level", "*");
+        serializer.setAttributes("message", "*");
+        serializer.endElement();
+      }
+      serializer.endElement();
+
+      let that = new util.TextDecoder('utf-8');
+      let array = new Uint8Array(arrayBuffer);
+      let serializerStr = that.decode(array);
+      console.info(xmlPath);
+      let xmlfd: fs.File | null = null;
+      try {
+        console.error(TAG, "write xmlPath =" + xmlPath);
+        xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(xmlfd.fd, serializerStr);
+      } catch (err) {
+        console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
+      } finally {
+        fs.closeSync(xmlfd);
+      }
+      return;
+    }
+  }
+}
+
+function filewrite(name1: string, results: string, titles: string) {
+  let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let buf = new ArrayBuffer(4096);
+  let RD = fs.readSync(fd.fd, buf);
+  let uint8Array = new Uint8Array(buf, 0, RD);
+  console.info("RRRRRRRRRRd" + RD);
+  let report: ESObject = String.fromCharCode(...uint8Array);
+  let WriteTitle = (titles).toString();
+  let WriteResult = (results).toString();
+  let number = WriteTitle.length + WriteResult.length + 2;
+  let Index: number = report.indexOf(WriteTitle);
+  let Log = (titles + ";" + results + ";").toString();
+  if (Index == -1) {
+    fs.writeSync(fd.fd, Log);
+  }
+  else if (Index != -1) {
+    let key: string = report.substring(Index, Index + number);
+    let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    report = report.replace(key, Log);
+    let buffer = new ArrayBuffer(4096);
+    let rd = fs.readSync(FD.fd, buffer);
+    let Report: string = report.substring(0, rd);
+    fs.closeSync(FD);
+    let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.writeSync(Fd.fd, Report);
   }
 }
