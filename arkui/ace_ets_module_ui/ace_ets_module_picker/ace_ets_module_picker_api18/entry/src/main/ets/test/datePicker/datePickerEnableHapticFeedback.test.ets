@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { BY, UiDriver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -45,11 +45,11 @@ export default function EnableHapticFeedbackTest() {
      * @tc.number: DatePickerEnableHapticFeedback_001
      * @tc.name  : DatePickerEnableHapticFeedback_001
      * @tc.desc  : To test the enableHapticFeedback interface true
-     * @tc.level : Level 3
+     * @tc.level : Level 1
      * @tc.type
      * @tc.size
      */
-    it('DatePickerEnableHapticFeedback_001', 0, async (done: Function) => {
+    it('DatePickerEnableHapticFeedback_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('datePicker1');
       console.log('DatePickerEnableHapticFeedback_001')
       await Utils.sleep(1000)
@@ -63,11 +63,11 @@ export default function EnableHapticFeedbackTest() {
      * @tc.number: DatePickerEnableHapticFeedback_002
      * @tc.name  : DatePickerEnableHapticFeedback_002
      * @tc.desc  : To test the enableHapticFeedback interface false
-     * @tc.level : Level 3
+     * @tc.level : Level 1
      * @tc.type
      * @tc.size
      */
-    it('DatePickerEnableHapticFeedback_002', 0, async (done: Function) => {
+    it('DatePickerEnableHapticFeedback_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('datePicker2');
       console.log('DatePickerEnableHapticFeedback_002')
       await Utils.sleep(1000)
@@ -81,11 +81,11 @@ export default function EnableHapticFeedbackTest() {
      * @tc.number: DatePickerEnableHapticFeedback_003
      * @tc.name  : DatePickerEnableHapticFeedback_003
      * @tc.desc  : To test the enableHapticFeedback interface undefined
-     * @tc.level : Level 3
+     * @tc.level : Level 1
      * @tc.type
      * @tc.size
      */
-    it('DatePickerEnableHapticFeedback_003', 0, async (done: Function) => {
+    it('DatePickerEnableHapticFeedback_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('datePicker3');
       console.log('DatePickerEnableHapticFeedback_003')
       await Utils.sleep(1000)
@@ -99,11 +99,11 @@ export default function EnableHapticFeedbackTest() {
      * @tc.number: DatePickerEnableHapticFeedback_004
      * @tc.name  : DatePickerEnableHapticFeedback_004
      * @tc.desc  : To test the enableHapticFeedback interface null
-     * @tc.level : Level 3
+     * @tc.level : Level 1
      * @tc.type
      * @tc.size
      */
-    it('DatePickerEnableHapticFeedback_004', 0, async (done: Function) => {
+    it('DatePickerEnableHapticFeedback_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('datePicker4');
       console.log('DatePickerEnableHapticFeedback_004')
       await Utils.sleep(1000)

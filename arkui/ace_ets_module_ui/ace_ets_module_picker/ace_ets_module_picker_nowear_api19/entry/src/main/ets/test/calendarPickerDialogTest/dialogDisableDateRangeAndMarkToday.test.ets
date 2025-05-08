@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON, Component } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -45,11 +45,11 @@ export default function dialogDialogDisableDateRangeAndMarkTodayTest() {
      * @tc.number: DialogDisableDateRangeAndMarkToday_001
      * @tc.name  : DialogDisableDateRangeAndMarkToday_001
      * @tc.desc  : Test the width of the disabledDateRange 2025-01-09-2025-01-10 and markToday true
-     * @tc.level : Level 3
+     * @tc.level : Level 1
      * @tc.type
      * @tc.size
      */
-    it('DialogDisableDateRangeAndMarkToday_001', 0, async (done: Function) => {
+    it('DialogDisableDateRangeAndMarkToday_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('[DialogDialogDisableDateRangeAndMarkToday_001] START');
       await Utils.sleep(2000);
       let driver: Driver = Driver.create();
@@ -88,7 +88,7 @@ export default function dialogDialogDisableDateRangeAndMarkTodayTest() {
      * @tc.type
      * @tc.size
      */
-    it('DialogDisableDateRangeAndMarkToday_002', 0, async (done: Function) => {
+    it('DialogDisableDateRangeAndMarkToday_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('[DialogDisableDateRangeAndMarkToday_002] START');
       await Utils.sleep(2000);
       let driver: Driver = Driver.create();
@@ -125,7 +125,7 @@ export default function dialogDialogDisableDateRangeAndMarkTodayTest() {
      * @tc.type
      * @tc.size
      */
-    it('DialogDisableDateRangeAndMarkToday_003', 0, async (done: Function) => {
+    it('DialogDisableDateRangeAndMarkToday_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('[DialogDisableDateRangeAndMarkToday_003] START');
       await Utils.sleep(2000);
       let driver: Driver = Driver.create();
@@ -162,7 +162,7 @@ export default function dialogDialogDisableDateRangeAndMarkTodayTest() {
      * @tc.type
      * @tc.size
      */
-    it('DialogDisableDateRangeAndMarkToday_004', 0, async (done: Function) => {
+    it('DialogDisableDateRangeAndMarkToday_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('[DialogDisableDateRangeAndMarkToday_004] START');
       await Utils.sleep(2000);
       let driver: Driver = Driver.create();

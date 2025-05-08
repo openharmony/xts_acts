@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so';
@@ -35,7 +35,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback0001', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0001 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)
@@ -58,7 +58,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback002', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0002 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)
@@ -81,7 +81,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback0003', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0003 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)
