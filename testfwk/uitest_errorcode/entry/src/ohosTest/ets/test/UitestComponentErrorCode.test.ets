@@ -39,7 +39,7 @@ export default function uitestComponentErrorTest() {
   describe('UitestComponentErrorTest', () => {
 
     /*
-     * @tc.number: UitestComponentErrorTest_041
+     * @tc.number: UitestComponentErrorTest_001
      * @tc.name: test_scrollToTop_17000002
      * @tc.desc: scrollToTop 17000002 test.
     */
@@ -64,7 +64,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_042
+    * @tc.number: UitestComponentErrorTest_002
     * @tc.name: test_scrollToTop_17000004
     * @tc.desc: scrollToTop 17000004 test.
     */
@@ -89,7 +89,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-        * @tc.number: UitestComponentErrorTest_038
+        * @tc.number: UitestComponentErrorTest_003
         * @tc.name: test_scrollSearch_17000002
         * @tc.desc: scrollSearch 17000002 test.
         */
@@ -116,7 +116,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_039
+    * @tc.number: UitestComponentErrorTest_004
     * @tc.name: test_scrollSearch_17000004
     * @tc.desc: scrollSearch 17000004 test.
     */
@@ -140,7 +140,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_043
+    * @tc.number: UitestComponentErrorTest_005
     * @tc.name: test_scrollToBottom_17000002
     * @tc.desc: scrollToBottom 17000002 test.
     */
@@ -166,7 +166,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_044
+    * @tc.number: UitestComponentErrorTest_006
     * @tc.name: test_scrollSearch_17000004
     * @tc.desc: scrollToBottom 17000004 test.
     */
@@ -192,7 +192,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_001
+    * @tc.number: UitestComponentErrorTest_007
     * @tc.name: test_click_17000002
     * @tc.desc: click 17000002 test.
     */
@@ -218,7 +218,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_002
+    * @tc.number: UitestComponentErrorTest_008
     * @tc.name: test_click_17000004
     * @tc.desc: click 17000004 test.
     */
@@ -243,7 +243,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_003
+    * @tc.number: UitestComponentErrorTest_009
     * @tc.name: test_doubleClick_17000002
     * @tc.desc: doubleClick 17000002 test.
     */
@@ -269,7 +269,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_004
+    * @tc.number: UitestComponentErrorTest_010
     * @tc.name: test_doubleClick_17000004
     * @tc.desc: doubleClick 17000004 test.
     */
@@ -294,7 +294,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_005
+    * @tc.number: UitestComponentErrorTest_011
     * @tc.name: test_longClick_17000002
     * @tc.desc: doubleClick 17000002 test.
     */
@@ -320,7 +320,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_006
+    * @tc.number: UitestComponentErrorTest_012
     * @tc.name: test_doubleClick_17000004
     * @tc.desc: doubleClick 17000004 test.
     */
@@ -344,7 +344,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_007
+    * @tc.number: UitestComponentErrorTest_013
     * @tc.name: test_getId_17000002
     * @tc.desc: getId 17000002 test.
     */
@@ -370,7 +370,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_008
+    * @tc.number: UitestComponentErrorTest_014
     * @tc.name: test_getId_17000004
     * @tc.desc: getId 17000004 test.
     */
@@ -394,7 +394,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_009
+    * @tc.number: UitestComponentErrorTest_015
     * @tc.name: test_getText_17000002
     * @tc.desc: getText 17000002 test.
     */
@@ -420,7 +420,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_010
+    * @tc.number: UitestComponentErrorTest_016
     * @tc.name: test_getId_17000004
     * @tc.desc: getText 17000004 test.
     */
@@ -444,7 +444,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_011
+    * @tc.number: UitestComponentErrorTest_017
     * @tc.name: test_getText_17000002
     * @tc.desc: getText 17000002 test.
     */
@@ -470,7 +470,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_012
+    * @tc.number: UitestComponentErrorTest_018
     * @tc.name: test_getType_17000004
     * @tc.desc: getText 17000004 test.
     */
@@ -494,7 +494,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_013
+    * @tc.number: UitestComponentErrorTest_019
     * @tc.name: test_getBounds_17000002
     * @tc.desc: getBounds 17000002 test.
     */
@@ -520,7 +520,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_014
+    * @tc.number: UitestComponentErrorTest_020
     * @tc.name: test_getBounds_17000004
     * @tc.desc: getBounds 17000004 test.
     */
@@ -544,7 +544,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_015
+    * @tc.number: UitestComponentErrorTest_021
     * @tc.name: test_getBoundsCenter_17000002
     * @tc.desc: getBoundsCenter 17000002 test.
     */
@@ -570,7 +570,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_016
+    * @tc.number: UitestComponentErrorTest_022
     * @tc.name: test_getBounds_17000004
     * @tc.desc: getBoundsCenter 17000004 test.
     */
@@ -594,7 +594,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_017
+    * @tc.number: UitestComponentErrorTest_023
     * @tc.name: test_isClickable_17000002
     * @tc.desc: isClickable 17000002 test.
     */
@@ -620,7 +620,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_018
+    * @tc.number: UitestComponentErrorTest_024
     * @tc.name: test_isClickable_17000004
     * @tc.desc: isClickable 17000004 test.
     */
@@ -644,7 +644,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_019
+    * @tc.number: UitestComponentErrorTest_025
     * @tc.name: test_isClickable_17000002
     * @tc.desc: isLongClickable 17000002 test.
     */
@@ -670,7 +670,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_020
+    * @tc.number: UitestComponentErrorTest_026
     * @tc.name: test_isClickable_17000004
     * @tc.desc: isLongClickable 17000004 test.
     */
@@ -694,7 +694,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_021
+    * @tc.number: UitestComponentErrorTest_027
     * @tc.name: test_isChecked_17000002
     * @tc.desc: isChecked 17000002 test.
     */
@@ -720,7 +720,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_022
+    * @tc.number: UitestComponentErrorTest_028
     * @tc.name: test_isChecked_17000004
     * @tc.desc: isChecked 17000004 test.
     */
@@ -744,7 +744,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_023
+    * @tc.number: UitestComponentErrorTest_029
     * @tc.name: test_isCheckable_17000002
     * @tc.desc: isCheckable 17000002 test.
     */
@@ -770,7 +770,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_024
+    * @tc.number: UitestComponentErrorTest_030
     * @tc.name: test_isCheckable_17000004
     * @tc.desc: isCheckable 17000004 test.
     */
@@ -794,7 +794,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_025
+    * @tc.number: UitestComponentErrorTest_031
     * @tc.name: test_isScrollable_17000002
     * @tc.desc: isScrollable 17000002 test.
     */
@@ -820,7 +820,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_026
+    * @tc.number: UitestComponentErrorTest_032
     * @tc.name: test_isScrollable_17000004
     * @tc.desc: isScrollable 17000004 test.
     */
@@ -843,7 +843,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_027
+    * @tc.number: UitestComponentErrorTest_033
     * @tc.name: test_isEnabled_17000002
     * @tc.desc: isEnabled 17000002 test.
     */
@@ -869,7 +869,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_028
+    * @tc.number: UitestComponentErrorTest_034
     * @tc.name: test_isEnabled_17000004
     * @tc.desc: isEnabled 17000004 test.
     */
@@ -892,7 +892,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_029
+    * @tc.number: UitestComponentErrorTest_035
     * @tc.name: test_isEnabled_17000002
     * @tc.desc: isFocused 17000002 test.
     */
@@ -918,7 +918,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_030
+    * @tc.number: UitestComponentErrorTest_036
     * @tc.name: test_isFocused_17000004
     * @tc.desc: isFocused 17000004 test.
     */
@@ -942,7 +942,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_031
+    * @tc.number: UitestComponentErrorTest_037
     * @tc.name: test_isSelected_17000002
     * @tc.desc: isSelected 17000002 test.
     */
@@ -968,7 +968,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_032
+    * @tc.number: UitestComponentErrorTest_038
     * @tc.name: test_isSelected_17000004
     * @tc.desc: isSelected 17000004 test.
     */
@@ -992,7 +992,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_039
     * @tc.name: test_inputText_17000002
     * @tc.desc: inputText 17000002 test.
     */
@@ -1018,7 +1018,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_040
     * @tc.name: test_inputTextMode_801
     * @tc.desc: inputText 801 test.
     */
@@ -1045,7 +1045,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_041
     * @tc.name: test_inputTextMode_17000002
     * @tc.desc: inputText 17000002 test.
     */
@@ -1073,7 +1073,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_041
     * @tc.name: test_inputTextMode_17000002
     * @tc.desc: inputText 17000002 test.
     */
@@ -1099,7 +1099,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_042
     * @tc.name: test_inputTextMode_401
     * @tc.desc: inputText 401 test.
     */
@@ -1136,7 +1136,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_034
+    * @tc.number: UitestComponentErrorTest_043
     * @tc.name: test_inputText_17000004
     * @tc.desc: inputText 17000004 test.
     */
@@ -1160,7 +1160,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_036
+    * @tc.number: UitestComponentErrorTest_044
     * @tc.name: test_clearText_17000002
     * @tc.desc: clearText 17000002 test.
     */
@@ -1187,7 +1187,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_037
+    * @tc.number: UitestComponentErrorTest_045
     * @tc.name: test_clearText_17000004
     * @tc.desc: clearText 17000004 test.
     */
@@ -1211,7 +1211,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_045
+    * @tc.number: UitestComponentErrorTest_046
     * @tc.name: test_dragTo_17000002
     * @tc.desc: dragTo 17000002 test.
     */
@@ -1253,7 +1253,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_046
+    * @tc.number: UitestComponentErrorTest_047
     * @tc.name: test_dragTo_17000004
     * @tc.desc: dragTo 17000004 test.
     */
@@ -1368,7 +1368,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_051
+   * @tc.number: UitestComponentErrorTest_050
    * @tc.name: test_pinchIn_17000002
    * @tc.desc: pinchIn 17000002 test.
    */
@@ -1405,7 +1405,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_052
+   * @tc.number: UitestComponentErrorTest_051
    * @tc.name: test_pinchOut_17000004
    * @tc.desc: pinchIn 17000004 test.
    */
@@ -1443,7 +1443,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_054
+   * @tc.number: UitestComponentErrorTest_052
    * @tc.name: test_getDescription_17000002
    * @tc.desc: getDescription 17000002 test.
    */
@@ -1473,7 +1473,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_055
+   * @tc.number: UitestComponentErrorTest_053
    * @tc.name: test_getDescription_17000004
    * @tc.desc: getDescription 17000004 test.
    */
@@ -1505,7 +1505,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_056
+   * @tc.number: UitestComponentErrorTest_054
    * @tc.name: test_getHint_17000002
    * @tc.desc: getHint 17000002 test.
    */
@@ -1535,7 +1535,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_057
+   * @tc.number: UitestComponentErrorTest_055
    * @tc.name: test_getHint_17000004
    * @tc.desc: getHint 17000004 test.
    */

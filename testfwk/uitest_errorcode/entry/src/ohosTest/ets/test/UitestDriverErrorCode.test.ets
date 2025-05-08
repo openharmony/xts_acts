@@ -59,7 +59,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_003
+   * @tc.number: uitestDriverErrorTest_002
    * @tc.name: test_findComponent_17000002
    * @tc.desc: findComponent 17000002 test.
    */
@@ -83,7 +83,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_005
+   * @tc.number: uitestDriverErrorTest_003
    * @tc.name: test_findComponent_17000002
    * @tc.desc: findComponents 17000002 test.
    */
@@ -107,7 +107,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_007
+   * @tc.number: uitestDriverErrorTest_004
    * @tc.name: test_findWindow_17000002
    * @tc.desc: findWindow 17000002 test.
    */
@@ -129,7 +129,7 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-   * @tc.number: uitestDriverErrorTest_009
+   * @tc.number: uitestDriverErrorTest_005
    * @tc.name: test_waitForComponent_17000002
    * @tc.desc: waitForComponent 17000002 test.
    */
@@ -153,7 +153,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-       * @tc.number: uitestDriverErrorTest_011
+       * @tc.number: uitestDriverErrorTest_006
        * @tc.name: test_assertComponentExist_17000002
        * @tc.desc: assertComponentExist 17000002 test.
        */
@@ -178,7 +178,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_013
+   * @tc.number: uitestDriverErrorTest_007
    * @tc.name: test_assertComponentExist_17000003
    * @tc.desc: assertComponentExist 17000003 test.
    */
@@ -198,7 +198,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_014
+   * @tc.number: uitestDriverErrorTest_008
    * @tc.name: test_pressBack_17000002
    * @tc.desc: delayMs 17000002 test.
    */
@@ -219,7 +219,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_015
+   * @tc.number: uitestDriverErrorTest_009
    * @tc.name: test_triggerKey_17000002
    * @tc.desc: triggerKey 17000002 test.
    */
@@ -240,7 +240,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_017
+   * @tc.number: uitestDriverErrorTest_010
    * @tc.name: test_triggerCombineKeys_17000002
    * @tc.desc: triggerCombineKeys 17000002 test.
    */
@@ -262,7 +262,7 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-   * @tc.number: uitestDriverErrorTest_019
+   * @tc.number: uitestDriverErrorTest_011
    * @tc.name: test_driver_click_17000002
    * @tc.desc: click 17000002 test.
    */
@@ -283,7 +283,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_021
+   * @tc.number: uitestDriverErrorTest_012
    * @tc.name: test_driver_click_17000002
    * @tc.desc: doubleClick 17000002 test.
    */
@@ -304,7 +304,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_023
+   * @tc.number: uitestDriverErrorTest_013
    * @tc.name: test_driver_longClick_17000002
    * @tc.desc: longClick 17000002 test.
    */
@@ -326,7 +326,7 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-   * @tc.number: uitestDriverErrorTest_025
+   * @tc.number: uitestDriverErrorTest_014
    * @tc.name: test_driver_swipe_17000002
    * @tc.desc: swipe 17000002 test.
    */
@@ -347,7 +347,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_027
+   * @tc.number: uitestDriverErrorTest_015
    * @tc.name: test_driver_drag_17000002
    * @tc.desc: drag 17000002 test.
    */
@@ -368,7 +368,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_029
+   * @tc.number: uitestDriverErrorTest_016
    * @tc.name: test_driver_screenCap_17000002
    * @tc.desc: screenCap 17000002 test.
    */
@@ -389,7 +389,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_031
+   * @tc.number: uitestDriverErrorTest_017
    * @tc.name: test_driver_setDisplayRotation_17000002
    * @tc.desc: setDisplayRotation 17000002 test.
    */
@@ -410,7 +410,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_033
+   * @tc.number: uitestDriverErrorTest_018
    * @tc.name: test_driver_getDisplayRotation_17000002
    * @tc.desc: setDisplayRotation 17000002 test.
    */
@@ -432,7 +432,7 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-   * @tc.number: uitestDriverErrorTest_034
+   * @tc.number: uitestDriverErrorTest_019
    * @tc.name: test_driver_setDisplayRotationEnabled_17000002
    * @tc.desc: setDisplayRotationEnabled 17000002 test.
    */
@@ -453,7 +453,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_036
+   * @tc.number: uitestDriverErrorTest_020
    * @tc.name: test_driver_getDisplaySize_17000002
    * @tc.desc: getDisplaySize 17000002 test.
    */
@@ -474,7 +474,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_037
+   * @tc.number: uitestDriverErrorTest_021
    * @tc.name: test_driver_getDisplayDensity_17000002
    * @tc.desc: getDisplaySize 17000002 test.
    */
@@ -495,7 +495,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_038
+   * @tc.number: uitestDriverErrorTest_022
    * @tc.name: test_driver_wakeUpDisplay_17000002
    * @tc.desc: wakeUpDisplay 17000002 test.
    */
@@ -516,7 +516,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_039
+   * @tc.number: uitestDriverErrorTest_023
    * @tc.name: test_driver_pressHome_17000002
    * @tc.desc: pressHome 17000002 test.
    */
@@ -537,7 +537,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_040
+   * @tc.number: uitestDriverErrorTest_024
    * @tc.name: test_driver_waitForIdle_17000002
    * @tc.desc: waitForIdle 17000002 test.
    */
@@ -558,7 +558,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_042
+   * @tc.number: uitestDriverErrorTest_025
    * @tc.name: test_driver_fling_17000002
    * @tc.desc: fling 17000002 test.
    */
@@ -580,7 +580,7 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-   * @tc.number: uitestDriverErrorTest_044
+   * @tc.number: uitestDriverErrorTest_026
    * @tc.name: test_driver_injectMultiPointerAction_17000002
    * @tc.desc: injectMultiPointerAction 17000002 test.
    */
@@ -612,7 +612,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_046
+   * @tc.number: uitestDriverErrorTest_027
    * @tc.name: test_driver_fling_U_17000002
    * @tc.desc: fling 17000002 test.
    */
@@ -633,7 +633,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_048
+   * @tc.number: uitestDriverErrorTest_028
    * @tc.name: test_driver_screenCapture_17000002
    * @tc.desc: screenCapture 17000002 test.
    */
@@ -654,7 +654,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_050
+   * @tc.number: uitestDriverErrorTest_029
    * @tc.name: test_driver_mouseClick_17000002
    * @tc.desc: mouseClick 17000002 test.
    */
@@ -675,7 +675,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_052
+   * @tc.number: uitestDriverErrorTest_030
    * @tc.name: test_driver_mouseScroll_17000002
    * @tc.desc: mouseScroll 17000002 test.
    */
@@ -696,7 +696,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_054
+   * @tc.number: uitestDriverErrorTest_031
    * @tc.name: test_driver_mouseMoveTo_17000002
    * @tc.desc: mouseMoveTo 17000002 test.
    */
@@ -717,7 +717,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_056
+   * @tc.number: uitestDriverErrorTest_032
    * @tc.name: test_driver_createUIEventObserver_17000002
    * @tc.desc: createUIEventObserver 17000002 test.
    */
@@ -738,7 +738,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_057
+   * @tc.number: uitestDriverErrorTest_033
    * @tc.name: test_driver_mouseScroll_11_17000002
    * @tc.desc: mouseScroll 17000002 test.
    */
@@ -759,7 +759,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_059
+   * @tc.number: uitestDriverErrorTest_034
    * @tc.name: test_driver_mouseDoubleClick_11_17000002
    * @tc.desc: mouseDoubleClick 17000002 test.
     */
@@ -780,7 +780,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_061
+   * @tc.number: uitestDriverErrorTest_035
    * @tc.name: test_driver_mouseLongClick_11_17000002
    * @tc.desc: mouseLongClick 17000002 test.
    */
@@ -801,7 +801,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_063
+   * @tc.number: uitestDriverErrorTest_036
    * @tc.name: test_driver_mouseMoveWithTrack_11_17000002
    * @tc.desc: mouseMoveWithTrack 17000002 test.
    */
@@ -822,7 +822,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_065
+   * @tc.number: uitestDriverErrorTest_037
    * @tc.name: test_driver_mouseDrag_11_17000002
    * @tc.desc: mouseDrag 17000002 test.
    */
@@ -843,7 +843,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_067
+   * @tc.number: uitestDriverErrorTest_038
    * @tc.name: test_driver_inputText_11_17000002
    * @tc.desc: inputText 17000002 test.
    */
@@ -864,7 +864,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_069
+   * @tc.number: uitestDriverErrorTest_039
    * @tc.name: test_driver_touchPadMultiFingerSwipe_17000002
    * @tc.desc: touchPadMultiFingerSwipe 17000002 test.
    */
@@ -885,7 +885,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_071
+   * @tc.number: uitestDriverErrorTest_040
    * @tc.name: test_driver_penClick_17000002
    * @tc.desc: penClick 17000002 test.
    */
@@ -906,7 +906,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_073
+   * @tc.number: uitestDriverErrorTest_041
    * @tc.name: test_driver_penLongClick_17000002
    * @tc.desc: penLongClick 17000002 test.
    */
@@ -927,7 +927,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_075
+   * @tc.number: uitestDriverErrorTest_042
    * @tc.name: test_driver_penDoubleClick_401
    * @tc.desc: penDoubleClick 17000002 test.
    */
@@ -948,7 +948,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_077
+   * @tc.number: uitestDriverErrorTest_043
    * @tc.name: test_driver_penSwipe_17000002
    * @tc.desc: penSwipe 17000002 test.
    */
@@ -969,7 +969,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_079
+   * @tc.number: uitestDriverErrorTest_044
    * @tc.name: test_driver_injectPenPointerAction_17000002
    * @tc.desc: injectPenPointerAction 17000002 test.
    */
@@ -994,7 +994,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-       * @tc.number: uitestDriverErrorTest_080
+       * @tc.number: uitestDriverErrorTest_045
        * @tc.name: test_UiDriver_assertComponentExist_17000002
        * @tc.desc: assertComponentExist 17000002 test.
        */
@@ -1019,7 +1019,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-   * @tc.number: uitestDriverErrorTest_081
+   * @tc.number: uitestDriverErrorTest_046
    * @tc.name: test_UiDriver_assertComponentExist_17000003
    * @tc.desc: assertComponentExist 17000003 test.
    */
@@ -1039,7 +1039,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_080
+     * @tc.number: uitestDriverErrorTest_047
      * @tc.name: test_driver_dragBetween_17000002
      * @tc.desc: dragBetween 17000002 test.
      */
@@ -1060,7 +1060,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-    * @tc.number: uitestDriverErrorTest_080
+    * @tc.number: uitestDriverErrorTest_048
     * @tc.name: test_driver_dragBetween_17000007
     * @tc.desc: dragBetween 17000007 test.
     */
@@ -1134,7 +1134,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_049
      * @tc.name: test_driver_mouseLongClick_duration_17000002
      * @tc.desc: mouseLongClick 17000002 test.
      */
@@ -1155,7 +1155,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_050
      * @tc.name: test_driver_mouseLongClick_duration_401
      * @tc.desc: mouseLongClick 401 test.
      */
@@ -1208,7 +1208,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_051
      * @tc.name: test_driver_inputTextMode_17000002
      * @tc.desc: mouseLongClick 17000002 test.
      */
@@ -1231,7 +1231,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_052
      * @tc.name: test_driver_inputTextMode_401
      * @tc.desc: mouseLongClick inputText test.
      */
@@ -1261,7 +1261,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: test_driver_inputTextMode_801
+     * @tc.number: uitestDriverErrorTest_053
      * @tc.name: test_driver_inputTextMode_801
      * @tc.desc: mouseLongClick inputText test.
      */
@@ -1280,7 +1280,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_054
      * @tc.name: test_driver_crownRotate_17000002
      * @tc.desc: crownRotate 17000002 test.
      */
@@ -1301,7 +1301,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_055
      * @tc.name: test_driver_crownRotate_401
      * @tc.desc: crownRotate 401 test.
      */
@@ -1328,8 +1328,8 @@ export default function uitestDriverErrorTest() {
 
 
     /*
-     * @tc.number: test_driver_crownRotate_801
-     * @tc.name: test_driver_crownRotate_401
+     * @tc.number: uitestDriverErrorTest_056
+     * @tc.name: test_driver_crownRotate_801
      * @tc.desc: crownRotate 801 test.
      */
     it('test_driver_crownRotate_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
@@ -1344,7 +1344,7 @@ export default function uitestDriverErrorTest() {
       console.log(`${TestTag}, test_driver_crownRotate_801 end`);
     })
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_057
      * @tc.name: test_driver_longClickAt_17000002
      * @tc.desc: longClickAt 17000002 test.
      */
@@ -1365,7 +1365,7 @@ export default function uitestDriverErrorTest() {
     })
 
     /*
-     * @tc.number: uitestDriverErrorTest_061
+     * @tc.number: uitestDriverErrorTest_058
      * @tc.name: test_driver_longClickAt_17000007
      * @tc.desc: longClickAt 17000002 test.
      */
@@ -1434,5 +1434,27 @@ export default function uitestDriverErrorTest() {
       }
       console.log(`${TestTag}, test_driver_longClickAt_17000007 end`);
     })
+
+    /*
+   * @tc.number: uitestDriverErrorTest_059
+   * @tc.name: test_driver_mouseDrag_11_17000002
+   * @tc.desc: mouseDrag 17000002 test.
+   */
+    it('test_driver_mouseDrag_22_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_mouseDrag_22_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.mouseDrag({x:100, y:100}, {x:200, y:200}, 600, 1500);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_mouseDrag_22_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_mouseDrag_22_17000002 end`);
+    })
+
   })
 }
