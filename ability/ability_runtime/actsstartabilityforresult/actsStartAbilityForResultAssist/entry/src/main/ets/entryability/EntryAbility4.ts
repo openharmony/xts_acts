@@ -16,7 +16,7 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import app, { AppResponse } from '@system.app'
+import app, { AppResponse } from '@system.app';
 import { common } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { router } from '@kit.ArkUI';
@@ -83,7 +83,7 @@ export default class EntryAbility4 extends UIAbility {
         let message = (err as BusinessError).message;
         hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
       }
-    }else if (backSet === 1) {
+    } else if (backSet === 1) {
       commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
       });

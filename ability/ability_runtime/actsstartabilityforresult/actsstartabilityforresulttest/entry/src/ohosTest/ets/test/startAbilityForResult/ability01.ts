@@ -23,7 +23,7 @@ export default class UiAbility01 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onCreate');
     globalThis.uiAbilityContext1 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
-    if(want.action == 'abc'){
+    if (want.action == 'abc'){
       globalThis.testNum01++
       hilog.info(0x0000, 'testTag', '%{public}s', `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 action = abc`);
     }
