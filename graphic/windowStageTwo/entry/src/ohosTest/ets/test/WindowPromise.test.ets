@@ -1958,7 +1958,6 @@ export default function windowPromiseTest() {
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
-        subWindowClass.destroyWindow();
         if (error.code == 801) {
           console.log(msgStr + '此设备不支持注册noInteractionDetected监听');
           expect(true).assertTrue();
@@ -2421,6 +2420,7 @@ export default function windowPromiseTest() {
           let minHeight = Number(subWindowClass.getWindowLimits().minHeight);
           console.log('Window WindowLimits:' + minWidth +' '+ minHeight);
           subWindowClass.resizeAsync(minWidth,minHeight);
+          await sleep(300);
           subWindowClass.on('windowSizeChange', async (data) => {
             console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
             let subWindowRect = data;
