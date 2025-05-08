@@ -122,9 +122,14 @@ export default function AxisEvent() {
 
       let text10 = getInspectorByKey('getHorizontalAxisValue');
       let obj10: ESObject = JSON.parse(text10);
-      console.log('AxisEvent_0100 obj2 $attrs content',obj2.$attrs.content,obj10)
+      console.log('AxisEvent_0100 obj10 $attrs content',obj10.$attrs.content,obj10)
       expect(obj10.$attrs.content).not().assertEqual('init');
 
+      let text11 = getInspectorByKey('propagationValue');
+      let obj11: ESObject = JSON.parse(text10);
+      console.log('AxisEvent_0100 obj11 $attrs content',obj11.$attrs.content,obj11)
+      expect(obj11.$attrs.content).not().assertEqual('init');
+      
       console.info('AxisEvent_0100 END');
       done();
     });
