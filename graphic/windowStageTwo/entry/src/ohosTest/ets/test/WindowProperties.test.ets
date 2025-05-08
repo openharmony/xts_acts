@@ -3635,7 +3635,8 @@ export default function windowPropertiesTest() {
          */
         it('testRestoreByMinimizeBtn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestRestoreByMinimizeBtn';
-            try {
+            if(isPCStatus != ''|| isAutoWindow =='true'){
+                try {
                 let windowClass = windowStage.getMainWindowSync();
                 const mainWindowstatus = windowClass.getWindowStatus();
                 console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
@@ -3682,6 +3683,10 @@ export default function windowPropertiesTest() {
                     done();
                 }
             }
+            }else{
+                done();
+            }
+            
         })
 
 

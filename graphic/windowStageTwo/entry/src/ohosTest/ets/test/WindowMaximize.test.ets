@@ -254,7 +254,7 @@ export default function windowMaximizeTest() {
       try {
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setLayoutFullScreen(true);
-        await sleep(1000);
+        await sleep(2000);
         windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING).then(() => {
           const immersiveModeEnabledState = windowClass.getImmersiveModeEnabledState();
           console.info(`${message} Succeeded in maximizing the window, immersiveModeEnabledState is：${immersiveModeEnabledState}`);

@@ -1648,14 +1648,16 @@ export default function windowPromiseTest() {
         await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_2').then(async (data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          await subWindowClass.setUIContent('testability/pages/First/index2').then(() => {
+          await subWindowClass.setUIContent('testability/pages/First/index2').then(async () => {
             console.info(msgStr + 'Succeeded in setUiContent.');
             subWindowClass.setWindowGrayScale(grayScale).then(() => {
               console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+              await subWindowClass.destroyWindow();
               expect(true).assertTrue();
               done();
-            }).catch((err: BusinessError) => {
+            }).catch(async (err: BusinessError) => {
               console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+              await subWindowClass.destroyWindow();
               if (err.code == 801) {
                 console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
                 done();
@@ -1956,6 +1958,7 @@ export default function windowPromiseTest() {
         });
       } catch (error) {
         console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
+        subWindowClass.destroyWindow();
         if (error.code == 801) {
           console.log(msgStr + '此设备不支持注册noInteractionDetected监听');
           expect(true).assertTrue();
