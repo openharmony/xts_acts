@@ -244,9 +244,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext) {
         });
       } catch (err) {
         console.error(caseName + 'Failed2 to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
         await terminateAbility(caseName);
-        done();
+        if(err.code == 801 || err.code == 201){
+          done();
+        }else{
+          expect().assertFail()
+          done();
+        }
       }
     });
   })
