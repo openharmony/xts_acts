@@ -259,7 +259,7 @@ function addPreviewOutput() {
   }
 }
 
-async function openSecureCamera() {
+function openSecureCamera() {
   let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
   console.info(TAG+"openSecureCamera:"+ret.errorCode);
   console.info(TAG+"openSecureCamera secureSeqId:"+ret.secureSeqId);
@@ -336,7 +336,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0100', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0100', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -348,7 +348,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutput();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -366,7 +366,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0200', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0200', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -378,7 +378,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutput();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -396,7 +396,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0300', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0300', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -408,7 +408,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutput();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -426,7 +426,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0400', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0400', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -438,7 +438,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutputUsedInPreconfig();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -456,7 +456,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0500', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0500', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -468,7 +468,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutputUsedInPreconfig();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -486,7 +486,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0600', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0600', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -498,7 +498,7 @@ export default function SecureCameraTest() {
         getSupportedCameraOutputCapabilityWithSceneMode();
         createPreviewOutputUsedInPreconfig();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -516,7 +516,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0700', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0700', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.log(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
@@ -525,7 +525,7 @@ export default function SecureCameraTest() {
         setSessionMode();
         createPreviewOutputUsedInPreconfig();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
@@ -543,7 +543,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0800', Level.LEVEL0, async () => {
+    it('testOHCaptureSessionAddSecureOutput0800', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.log(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
@@ -552,7 +552,7 @@ export default function SecureCameraTest() {
         setSessionMode();
         createPreviewOutputUsedInPreconfig();
         createCameraInput();
-        await openSecureCamera();
+        openSecureCamera();
         sessionBeginConfig();
         addInput();
         addPreviewOutput();
