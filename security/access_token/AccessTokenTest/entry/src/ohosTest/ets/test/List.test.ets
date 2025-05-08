@@ -13,10 +13,14 @@
  * limitations under the License.
  */
 
+import AccessTokenApiTest from './AccessTokenApiTest.test'
+import AccessTokenTest from './AccessTokenTest.test'
 import FileShareTest from './FileShareTest.test'
 import ScreenLockFileManagerTest from './ScreenLockFileManagerTest.test'
 
 export default function testsuite() {
 	FileShareTest()
 	ScreenLockFileManagerTest()
+	AccessTokenTest()
+	AccessTokenApiTest()
 }
