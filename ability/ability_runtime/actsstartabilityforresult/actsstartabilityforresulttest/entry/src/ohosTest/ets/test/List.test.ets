@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import startAbilityForResultTest from './StartAbilityForResultTest.test'
-import startAbilityForResultTwoTest from './startAbilityForResult.test'
+import startAbilityForResultTwoTest from './StartAbilityForResult.test'
 
 export default function testsuite() {
    startAbilityForResultTwoTest();

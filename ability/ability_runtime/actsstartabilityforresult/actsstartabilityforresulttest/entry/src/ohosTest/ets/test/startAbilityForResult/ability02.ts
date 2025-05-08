@@ -20,7 +20,7 @@ import { common } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
-let backSet:number = 0
+let backSet:number = 0;
 
 export default class UiAbility02 extends UIAbility {
   onCreate(want, launchParam) {
@@ -56,7 +56,7 @@ export default class UiAbility02 extends UIAbility {
     };
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility02 backSet is: ${backSet}`);
-    if(backSet==0){
+    if (backSet === 0) {
       backSet++;
       hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility02 backSet.. is: ${backSet}`);
       try {
@@ -76,7 +76,7 @@ export default class UiAbility02 extends UIAbility {
         let message = (err as BusinessError).message;
         hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
       }
-    } else if(backSet==1){
+    } else if (backSet === 1) {
       commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
       });

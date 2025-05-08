@@ -21,22 +21,22 @@ import { common } from '@kit.AbilityKit';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { router } from '@kit.ArkUI';
 
-let backSet:number = 0
+let backSet:number = 0;
 
 export default class EntryAbility4 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onCreate');
-    globalThis.abilityAssist4 = this.context
+    globalThis.abilityAssist4 = this.context;
     commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onWindowStageCreate');
     commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
@@ -51,19 +51,19 @@ export default class EntryAbility4 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onForeground');
     let want: Want = {
       bundleName: 'com.example.mytest1',
       abilityName: 'startAbilityForResult03'
     };
-    if(backSet==0){
+    if (backSet === 0) {
       try {
         commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
           hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
@@ -83,24 +83,24 @@ export default class EntryAbility4 extends UIAbility {
         let message = (err as BusinessError).message;
         hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
       }
-    }else if(backSet==1){
+    }else if (backSet === 1) {
       commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
       });
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 execute router.back!');
-      try{
+      try {
         router.back();
         hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 router.back success!');
-      } catch (err){
+      } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         hilog.info(0x0000, 'testTag', '%{public}s', `EntryAbility4 router.back failed, error.code: ${code}, error.message: ${message}`);
       }
     }
-    backSet++
+    backSet++;
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility4 onBackground');
     commonEventManager.publish('ACTS_LIFE_CYCLE', function () {

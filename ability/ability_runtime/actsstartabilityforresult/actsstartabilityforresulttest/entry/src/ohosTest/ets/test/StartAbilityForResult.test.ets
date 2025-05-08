@@ -54,8 +54,8 @@ export default function startAbilityForResultTwoTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500
-     * @tc.name   : Implicit initiation ability
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500
+     * @tc.desc   : Implicit initiation ability
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -143,8 +143,8 @@ export default function startAbilityForResultTwoTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000
-     * @tc.name   : For different applications, using startAbilityForResult to launch the ability.
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000
+     * @tc.desc   : For different applications, using startAbilityForResult to launch the ability.
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
