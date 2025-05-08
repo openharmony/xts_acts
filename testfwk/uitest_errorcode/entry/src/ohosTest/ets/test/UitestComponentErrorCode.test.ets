@@ -28,6 +28,7 @@ const TestTag = 'UitestComponentErrorTest';
 const AsyncErrorCode = 17000002;
 const InvisibleErrorCode = 17000004;
 const ErrorCode = 401;
+const CapabilityCode = 801;
 
 function sleep(nm: number) {
   return new Promise<void>((resolve: Function, reject: Function) => {
@@ -1035,7 +1036,7 @@ export default function uitestComponentErrorTest() {
         });
       }catch (e) {
         console.log(`${TestTag}, test_inputTextMode_801 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(801);
+        expect(e.code).assertEqual(CapabilityCode);
       } finally {
         await stopApplication('com.uitestScene.acts');
       }
@@ -1542,7 +1543,7 @@ export default function uitestComponentErrorTest() {
     /*
     * @tc.number: UitestComponentErrorTest_056
     * @tc.name: test_inputTextMode_17000004
-    * @tc.desc: inputText 17000002 test.
+    * @tc.desc: inputText 17000004 test.
     */
     it('test_inputTextMode_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_inputTextMode_17000004 start`);
