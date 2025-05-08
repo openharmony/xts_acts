@@ -1073,32 +1073,6 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_041
-    * @tc.name: test_inputTextMode_17000002
-    * @tc.desc: inputText 17000002 test.
-    */
-    it('test_inputTextMode_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-      console.log(`${TestTag}, test_inputTextMode_17000004 start`);
-      try {
-        const driver = Driver.create();
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
-        await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.text('MainPage'));
-        await driver.delayMs(waitUiReadyMs);
-        await stopApplication('com.uitestScene.acts');
-        await driver.delayMs(waitUiReadyMs * 2);
-        await button.inputText('hello', {
-          paste: false
-        });
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_inputTextMode_17000004 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(InvisibleErrorCode);
-      }
-      console.log(`${TestTag}, test_inputTextMode_17000004 end`);
-    })
-
-    /*
     * @tc.number: UitestComponentErrorTest_042
     * @tc.name: test_inputTextMode_401
     * @tc.desc: inputText 401 test.
@@ -1564,5 +1538,31 @@ export default function uitestComponentErrorTest() {
       console.log(`${TestTag}, test_getHint_17000004 end`);
     })
 
+
+    /*
+    * @tc.number: UitestComponentErrorTest_056
+    * @tc.name: test_inputTextMode_17000004
+    * @tc.desc: inputText 17000002 test.
+    */
+    it('test_inputTextMode_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_inputTextMode_17000004 start`);
+      try {
+        const driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let button = await driver.findComponent(ON.text('MainPage'));
+        await driver.delayMs(waitUiReadyMs);
+        await stopApplication('com.uitestScene.acts');
+        await driver.delayMs(waitUiReadyMs * 2);
+        await button.inputText('hello', {
+          paste: false
+        });
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_17000004 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(InvisibleErrorCode);
+      }
+      console.log(`${TestTag}, test_inputTextMode_17000004 end`);
+    })
   })
 }

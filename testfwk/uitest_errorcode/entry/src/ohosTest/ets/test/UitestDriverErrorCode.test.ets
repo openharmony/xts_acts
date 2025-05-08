@@ -1437,7 +1437,7 @@ export default function uitestDriverErrorTest() {
 
     /*
    * @tc.number: uitestDriverErrorTest_059
-   * @tc.name: test_driver_mouseDrag_11_17000002
+   * @tc.name: test_driver_mouseDrag_22_17000002
    * @tc.desc: mouseDrag 17000002 test.
    */
     it('test_driver_mouseDrag_22_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
