@@ -1663,7 +1663,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.NONE;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.NONE;
     }));
   }
 
@@ -1673,7 +1673,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.MOUSE;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.MOUSE;
     }));
   }
 
@@ -1683,7 +1683,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.TOUCH;
     }));
   }
 
@@ -1693,7 +1693,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.OTHER;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.OTHER;
     }));
   }
 
@@ -1703,7 +1703,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.NONE;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.NONE;
     }));
   }
 
@@ -1713,7 +1713,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.MOUSE;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.MOUSE;
     }));
   }
 
@@ -1723,7 +1723,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.TOUCH;
     }));
   }
 
@@ -1733,7 +1733,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800 attachOptions is' + JSON.stringify(attachOptions));
 
-      return attachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.OTHER;
+      return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.OTHER;
     }));
   }
 
@@ -1743,14 +1743,14 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100 attachOptions is' + JSON.stringify(attachOptions));
 
-      if (attachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.NONE) {
+      if (attachOptions.requestKeyboardReason !== inputmethodengine.RequestKeyboardReason.NONE) {
         return false;
       }
 
       return new Promise((resolve, reject) => {
         this.InputClient.on('attachOptionsDidChange', (newAttachOptions) => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100 newAttachOptions is ' + JSON.stringify(newAttachOptions));
-          resolve(newAttachOptions.requestKeyboardReason === inputMethod.RequestKeyboardReason.TOUCH);
+          resolve(newAttachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.TOUCH);
           this.InputClient.off('attachOptionsDidChange');
         });
       });
@@ -1763,7 +1763,7 @@ export class KeyboardController {
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 attachOptions is' + JSON.stringify(attachOptions));
 
-      if (attachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.NONE) {
+      if (attachOptions.requestKeyboardReason !== inputmethodengine.RequestKeyboardReason.NONE) {
         return false;
       }
 
@@ -1771,7 +1771,7 @@ export class KeyboardController {
         let count = 0;
         let callback1 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback1 newAttachOptions is ' + JSON.stringify(newAttachOptions));
-          if (newAttachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.TOUCH) {
+          if (newAttachOptions.requestKeyboardReason !== inputmethodengine.RequestKeyboardReason.TOUCH) {
             console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback1 not called correct reason');
             resolve(false);
             return;
@@ -1786,7 +1786,7 @@ export class KeyboardController {
         };
         let callback2 = (newAttachOptions): void => {
           console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback2 newAttachOptions is ' + JSON.stringify(newAttachOptions));
-          if (newAttachOptions.requestKeyboardReason !== inputMethod.RequestKeyboardReason.TOUCH) {
+          if (newAttachOptions.requestKeyboardReason !== inputmethodengine.RequestKeyboardReason.TOUCH) {
             console.info(TAG + '====> Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200 callback2 not called correct reason');
             resolve(false);
             return;
