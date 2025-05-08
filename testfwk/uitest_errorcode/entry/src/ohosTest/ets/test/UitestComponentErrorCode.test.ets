@@ -1089,7 +1089,6 @@ export default function uitestComponentErrorTest() {
         await button.inputText(null, {
           paste: false
         });
-        console.log(`${TestTag}, test_inputTextMode_401 0000000000000000`);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_inputTextMode_401 text = null error is: ${JSON.stringify(e)}`);
