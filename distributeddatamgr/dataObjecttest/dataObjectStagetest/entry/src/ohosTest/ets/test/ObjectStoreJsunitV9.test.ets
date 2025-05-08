@@ -635,7 +635,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: testNumberAbnormal
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200
      * @tc.desc: test NumberAbnormal
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1700
