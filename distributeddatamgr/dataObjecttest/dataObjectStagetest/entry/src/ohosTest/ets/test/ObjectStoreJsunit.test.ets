@@ -69,7 +69,7 @@ async function grantPerm() {
     console.info("accessTokenId" + tokenID);
     let atManager = abilityAccessCtrl.createAtManager();
     console.info("createAtManager success");
-    context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
+    context = AppStorage.Get<common.UIAbilityContext>("context") as common.UIAbilityContext;
     let data = await atManager.requestPermissionsFromUser(context, [PERMISSION_USER_NAME]);
     console.info("requestPermissionsFromUser success data is" + data);
     console.info("====grant Permission end====");

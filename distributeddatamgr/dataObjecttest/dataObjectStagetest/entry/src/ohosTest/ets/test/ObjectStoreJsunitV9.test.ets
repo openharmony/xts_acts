@@ -54,7 +54,7 @@ async function grantPerm() {
     console.info("accessTokenId" + tokenID);
     let atManager = abilityAccessCtrl.createAtManager();
     console.info("createAtManager success");
-    context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
+    context = AppStorage.Get<common.UIAbilityContext>("context") as common.UIAbilityContext;
     let data = await atManager.requestPermissionsFromUser(context, [PERMISSION_USER_NAME]);
     console.info("requestPermissionsFromUser success data is" + data);
     console.info("====grant Permission end====");
@@ -112,7 +112,7 @@ export default function objectStoreTestV9() {
     });
     console.info(TAG + "*************Unit Test Begin*************");
     /**
-     * @tc.name: V9testsetSessionId001
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2900
      * @tc.type: Function
@@ -140,7 +140,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testsetSessionId003
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3100
@@ -169,7 +169,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testsetSessionId004
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3200
@@ -196,7 +196,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testsetSessionId005
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3300
@@ -224,7 +224,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testOn001
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_On_001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2100
@@ -273,7 +273,7 @@ export default function objectStoreTestV9() {
       });
 
     /**
-     * @tc.name V9testOff001
+     * @tc.name SUB_DDM_AppDataFWK_Object_Api9_Off_001
      * @tc.desc object join session and on&off,object can not receive callback after off
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2000
@@ -325,7 +325,7 @@ export default function objectStoreTestV9() {
       });
 
     /**
-     * @tc.name: V9testOnStatus001
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001
      * @tc.desc: object set a listener to watch another object online/offline
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2300
@@ -357,7 +357,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testOnStatus002
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002
      * @tc.desc: object set several listener and can unWatch all watcher
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2400
@@ -387,7 +387,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: V9testSave001
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_Save_001
      * @tc.desc: test save local
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2700
@@ -429,7 +429,7 @@ export default function objectStoreTestV9() {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 end *************");
       });
     /**
-     * @tc.name: V9testSave002
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_Save_002
      * @tc.desc: test save local
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2800
@@ -468,7 +468,7 @@ export default function objectStoreTestV9() {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 end *************");
       });
     /**
-     * @tc.name: V9testRevokeSave001
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001
      * @tc.desc: test RevokeSave
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2500
@@ -515,7 +515,7 @@ export default function objectStoreTestV9() {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 end *************");
       });
     /**
-     * @tc.name: V9testRevokeSave002
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002
      * @tc.desc: test RevokeSave
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2600
@@ -560,7 +560,7 @@ export default function objectStoreTestV9() {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 end *************");
       });
     /**
-     * @tc.name: testNumberMax
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100
      * @tc.desc: test NumberMax
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1800
@@ -585,7 +585,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: testNumberMin
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100
      * @tc.desc: test NumberMin
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1900
@@ -610,7 +610,7 @@ export default function objectStoreTestV9() {
         done();
       });
     /**
-     * @tc.name: testNumberAbnormal
+     * @tc.name: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100
      * @tc.desc: test NumberAbnormal
      * @tc.type: Function
      * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1600
