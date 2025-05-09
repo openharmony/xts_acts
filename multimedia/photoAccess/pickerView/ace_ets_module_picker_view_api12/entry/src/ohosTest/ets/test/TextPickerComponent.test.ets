@@ -85,6 +85,7 @@ async function clickResultButton(driver: Driver) {
   }
   await btn.click();
   console.info("testPicker btn click finish");
+  await CommonFunc.sleep(1000);
 }
 
 async function clickAlbumButton(driver: Driver) {
@@ -511,7 +512,7 @@ export default function TextPicker() {
       pickerOptions.selectMode = SelectMode.SINGLE_SELECT;
       let callback = (event: events_emitter.EventData) => {
         let expectResult: number = pickerOptions.selectMode ?? SelectMode.MULTI_SELECT;
-        let result: PhotoPickerResult = event?.data?.msg.SelectMode;
+        let result: PhotoPickerResult = event?.data?.msg.selectMode;
         console.info('testPicker09 result event.data.msg=:' + result);
         console.info('testPicker09 result expect =:' + expectResult);
         expect(result).assertEqual(expectResult);
