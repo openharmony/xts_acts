@@ -408,10 +408,16 @@ export default function UiTest() {
             console.log(TestTag, 'testCrownRotate start');
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
+            let btn = await driver.findComponent(ON.text('Click twice'))
+            if (btn == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                btn = await scorll.scrollSearch(ON.text('Click twice'))
+            }
+            await btn.longClick();
             try {
                 await driver.crownRotate(-300);
                 await driver.delayMs(1000);
-                let toastBtn = await driver.findComponent(ON.text('toast'));
+                let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
             } catch (error) {
@@ -431,10 +437,16 @@ export default function UiTest() {
             console.log(TestTag, 'testCrownRotateSpeed start');
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
+            let btn = await driver.findComponent(ON.text('Click twice'))
+            if (btn == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                btn = await scorll.scrollSearch(ON.text('Click twice'))
+            }
+            await btn.longClick();
             try {
-                await driver.crownRotate(-300, 50);
+                await driver.crownRotate(-300, 300);
                 await driver.delayMs(1000);
-                let toastBtn = await driver.findComponent(ON.text('toast'));
+                let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
             } catch (error) {

@@ -93,6 +93,12 @@ struct ScrollExample {
                   router.push({ uri: 'pages/third' })
                 })
             )
+            .gesture(
+              LongPressGesture({ repeat: false })
+                .onAction((event: GestureEvent) => {
+                  router.push({ uri: 'pages/wearList' })
+                })
+            )
             Button() {
               Text(this.hoverText)
                 .fontSize(25)
