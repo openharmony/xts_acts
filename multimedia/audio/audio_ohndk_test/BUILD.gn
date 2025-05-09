@@ -15,9 +15,9 @@ import("//test/xts/tools/build/suite.gni")
 
 AUDIO_ROOT_DIR = "//foundation/multimedia/audio_framework/"
 
-ohos_moduletest_suite("ActsOhaudioNdkTest") {
-  module_out_path = "acts/ActsOhaudioNdkTest"
-  sources = [ "ActsOhaudioNdkTest.cpp" ]
+ohos_moduletest_suite("ActsAudioNdkTest") {
+  module_out_path = "acts/ActsAudioNdkTest"
+  sources = [ "ActsAudioNdkTest.cpp" ]
 
   include_dirs = [
     "$AUDIO_ROOT_DIR/interfaces/kits/c/",
