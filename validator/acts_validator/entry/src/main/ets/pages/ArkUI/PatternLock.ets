@@ -134,14 +134,14 @@ struct patternLock {
       Column() {
         Text(this.message)
           .textAlign(TextAlign.Center)
-          .margin(20)
-          .fontSize(20)
-          .margin({ top: 24 })
+          .fontSize(12)
+          .fontColor(Color.Red)
 
         PatternLock(this.patternLockController)
-          .sideLength(300)
+          .sideLength(100)
           .circleRadius(9)
           .pathStrokeWidth(18)
+          .regularColor('#ff182431')
           .activeColor('#B0C4DE')
           .selectedColor('#228B22')
           .pathColor('#90EE90')
@@ -174,7 +174,8 @@ struct patternLock {
           })
 
         Button('重置密码锁')
-          .margin(30)
+          .margin(10)
+          .fontSize(12)
           .onClick(() => {
             // 重置密码锁
             this.patternLockController.reset()
@@ -182,7 +183,7 @@ struct patternLock {
             this.message = '请输入密码'
           })
       }
-      .height('80%')
+      .height('70%')
       .width('100%')
       .backgroundColor(Color.White)
 
@@ -222,4 +223,5 @@ struct patternLock {
     .backgroundColor('#F1F3F5')
   }
 }
-
+patternlock
+----------------------------------
