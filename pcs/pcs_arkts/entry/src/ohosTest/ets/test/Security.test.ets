@@ -38,17 +38,20 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 async function isInstalled() {
-  await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`).then(result => {
-    console.info(`testAuthenticationCall0100, bm dump Finished: ${JSON.stringify(result)}`)
-    console.info(`testAuthenticationCall0100, bm dump stdResult: ${JSON.stringify(result.stdResult)}`)
+  let isInstall = true;
+  try {
+    let result = await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`);
+    console.error(`UiTestCase, bm dump success,: ${ JSON.stringify( result )}`)
     if (!result.stdResult || result.stdResult == '') {
-      return false;
+      isInstall = false;
+    } else {
+      isInstall = true;
     }
-    return true;
-  }).catch((err : BusinessError) => {
-    console.error(`UiTestCase, bm dump Failed: ${err}`)
-    return false;
-  })
+  } catch (error) {
+    console.error(`UiTestCase, bm dump Failed: ${ JSON.stringify(error)}`)
+    isInstall = false;
+  }
+  return isInstall;
 }
 
 export default function securityTest() {
