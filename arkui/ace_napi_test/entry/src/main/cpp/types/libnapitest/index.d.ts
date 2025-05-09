@@ -543,5 +543,5 @@ export const hasOwnPropertyCheckpro: () =>boolean;
 export const hasOwnPropertyCheckOwnpro: () =>boolean;
 export const createTypeErrorRes:() => Error;
 export const createRangeErrorRes:() => Error;
-export const NapiWrapEnhanceTest:() => boolean;
+export const NapiWrapEnhanceTest:() => number;
 
