@@ -1,0 +1,201 @@
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { common } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+function sleep(ms: number) {
+  return new Promise<string>(resolve => setTimeout(resolve, ms));
+}
+let TestAbilityContext:common.UIAbilityContext;
+export default function abilityTest() {
+  describe('ActsAbilityTest', () => {
+    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
+    beforeAll(() => {
+      // Presets an action, which is performed only once before all test cases of the test suite start.
+      // This API supports only one parameter: preset action function.
+      TestAbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext
+    })
+    beforeEach(() => {
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
+    })
+    afterEach(() => {
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
+    })
+    afterAll(() => {
+      // Presets a clear action, which is performed after all test cases of the test suite end.
+      // This API supports only one parameter: clear action function.
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100
+     * @tc.name    SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100
+     * @tc.desc    Callback verification for getTopAbility interface
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100', Level.LEVEL0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["OnWindowStageWillDestory01"]
+      };
+      let subscriber : commonEventManager.CommonEventSubscriber;
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            try {
+              expect(JSON.stringify(commonEventData.parameters?.result)).assertEqual(JSON.stringify(1));
+            } catch {
+            }
+            commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+              hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+              done();
+            });
+          })
+          let startWant: Want = {
+            bundleName: 'com.test.actslifecycletest',
+            abilityName: "MainAbility1",
+          };
+          globalThis.context.startAbility(startWant).then(() => {
+            console.log(TAG,'startAbility success');
+          }).catch((error: BusinessError) => {
+            console.log(TAG,'startAbility error', JSON.stringify(error));
+            expect().assertFail();
+          })
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600
+     * @tc.name    SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600
+     * @tc.desc    Callback verification for getTopAbility interface
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600', Level.LEVEL0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0600';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["OnWindowStageWillDestory06"]
+      };
+      let subscriber : commonEventManager.CommonEventSubscriber;
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            try {
+              expect().assertFail();
+            } catch {
+            }
+          })
+          let startWant: Want = {
+            bundleName: 'com.test.actslifecycletest',
+            abilityName: "MainAbility2",
+          };
+          globalThis.context.startAbility(startWant).then(() => {
+            console.log(TAG,'startAbility success');
+          }).catch((error: BusinessError) => {
+            console.log(TAG,'startAbility error', JSON.stringify(error));
+            expect().assertFail();
+          })
+          commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+            done();
+          });
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500
+     * @tc.name    SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500
+     * @tc.desc    Callback verification for getTopAbility interface
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500', Level.LEVEL0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0500';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["OnWindowStageWillDestory0500"]
+      };
+      let subscriber : commonEventManager.CommonEventSubscriber;
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            try {
+              expect().assertFail();
+            } catch {
+            }
+          })
+          let startWant: Want = {
+            bundleName: 'com.acts.ability.actslifecyclerely',
+            abilityName: "EntryAbility",
+          };
+          globalThis.context.startAbility(startWant).then(() => {
+            console.log(TAG,'startAbility success');
+          }).catch((error: BusinessError) => {
+            console.log(TAG,'startAbility error', JSON.stringify(error));
+          });
+          await sleep(500);
+          abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+          let cmd2 ="kill -9 pidof com.acts.ability.actslifecyclerely";
+          abilityDelegator.executeShellCommand(cmd2, (err : BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
+            console.info('executeShellCommand2 callback');
+          });
+          commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+            done();
+          });
+        })
+    })
+
+    /*
+     * @tc.number  SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700
+     * @tc.name    SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700
+     * @tc.desc    restartApp does not call back the onWindowStageWillDestory lifecycle
+     * @tc.level   0
+     */
+    it('SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700', Level.LEVEL0, async (done: Function) => {
+      let TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0700';
+      let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["OnWindowStageWillDestory07"]
+      };
+      let subscriber : commonEventManager.CommonEventSubscriber;
+      await commonEventManager.createSubscriber(commonEventSubscribeInfo)
+        .then(async (commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+          subscriber = commonEventSubscriber;
+          hilog.info(0x0000, TAG, "[%{public}s] createSubscriber succeed", TAG);
+          commonEventManager.subscribe(subscriber, (err: BusinessError, commonEventData: commonEventManager.CommonEventPublishData) => {
+            hilog.info(0x0000, TAG, "[%{public}s] subscribe callback. Gained commonEventData: %{public}s", TAG, JSON.stringify(commonEventData));
+            try {
+              expect().assertFail();
+            } catch {
+            }
+          })
+          let startWant: Want = {
+            bundleName: 'com.test.actslifecycletest',
+            abilityName: "MainAbility3",
+          };
+          globalThis.context.startAbility(startWant).then(() => {
+            console.log(TAG,'startAbility success');
+          }).catch((error: BusinessError) => {
+            console.log(TAG,'startAbility error', JSON.stringify(error));
+            expect().assertFail();
+          })
+          commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+            hilog.info(0x0000, TAG, "[%{public}s] unsubscribe callback. err: %{public}s, data: %{public}s", TAG, JSON.stringify(err), JSON.stringify(data));
+            done();
+          });
+        })
+    })
+
+  })
+}
