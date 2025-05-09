@@ -11,10 +11,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
-*/
+ */
 
-import PolicyTest from './Policy.test';
+import DataManagerHasCardTest from './DataManagerHasCard.test';
+import EmptyTest from './Empty.test'
+import sim from '@ohos.telephony.sim';
+import connection from '@ohos.net.connection';
+let isNet: number = connection.getDefaultNetSync().netId;
 
 export default function testsuite() {
-  PolicyTest();
+  if (sim.getMaxSimCount() != 0 ) {
+    if(sim.hasSimCardSync(0) && isNet == 0){
+      DataManagerHasCardTest()
+    } else {
+      EmptyTest()
+    }
+  }else{
+    EmptyTest()
+  }
 }
