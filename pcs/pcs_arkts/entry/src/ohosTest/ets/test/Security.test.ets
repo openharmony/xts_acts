@@ -32,7 +32,10 @@ import securityLabel from '@ohos.file.securityLabel';
 import distributedKVStore from '@ohos.data.distributedKVStore';
 import camera from '@ohos.multimedia.camera';
 import appManager from '@ohos.app.ability.appManager';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
+const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
 async function isInstalled() {
   await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`).then(result => {
