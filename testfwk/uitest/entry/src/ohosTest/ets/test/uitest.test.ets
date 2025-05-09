@@ -26,6 +26,7 @@ const waitUiReadyMs : number = 1000;
 const TestTag = 'UiTest_API16';
 const DeviceErrorCode = 17000005;
 const ErrorCode = 401;
+const CapabilityCode = 801;
 
 async function startAbility(bundleName: string, abilityName: string) {
     await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
@@ -397,6 +398,52 @@ export default function UiTest() {
             console.log(TestTag, 'testComponentInputText4 over');
         })
 
+
+        /*
+         * @tc.number: uiTest_20015
+         * @tc.name: testCrownRotate
+         * @tc.desc: crownRotate test
+         */
+        it('testCrownRotate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(TestTag, 'testCrownRotate start');
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(1000)
+            try {
+                await driver.crownRotate(300);
+                await driver.delayMs(1000);
+                let toastBtn = await driver.findComponent(ON.text('toast'));
+                await driver.delayMs(1000);
+                expect(toastBtn == null).assertTrue();
+            } catch (error) {
+                console.log(`${TestTag}, testCrownRotate error is: ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(CapabilityCode);
+            }
+            await stopApplication('com.uitestScene.acts')
+            console.log(TestTag, 'testCrownRotate over');
+        })
+
+        /*
+         * @tc.number: uiTest_20016
+         * @tc.name: testCrownRotateSpeed
+         * @tc.desc: crownRotate test
+         */
+        it('testCrownRotateSpeed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+            console.log(TestTag, 'testCrownRotateSpeed start');
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            await driver.delayMs(1000)
+            try {
+                await driver.crownRotate(300, 50);
+                await driver.delayMs(1000);
+                let toastBtn = await driver.findComponent(ON.text('toast'));
+                await driver.delayMs(1000);
+                expect(toastBtn == null).assertTrue();
+            } catch (error) {
+                console.log(`${TestTag}, testCrownRotateSpeed error is: ${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(CapabilityCode);
+            }
+            await stopApplication('com.uitestScene.acts')
+            console.log(TestTag, 'testCrownRotateSpeed over');
+        })
     })
     describe('UiTest_API16', () => {
         let driver: Driver
