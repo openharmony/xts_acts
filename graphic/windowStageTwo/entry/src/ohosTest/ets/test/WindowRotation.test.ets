@@ -291,7 +291,7 @@ export default function windowRotationTest() {
               console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
               let subWindowProperties = subWindowClass.getWindowProperties()
               console.error(`${caseName} :subWindowProperties.windowRect 1: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(window.Orientation.PORTRAIT_INVERTED)
+              expect(rotationInfo.orientation).assertEqual(2)
               expect(rotationInfo.displayId).assertEqual(displayInfo.id)
               expect(rotationInfo.displayRect.left).assertEqual(0)
               expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -319,7 +319,7 @@ export default function windowRotationTest() {
               console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
               let subWindowProperties = subWindowClass.getWindowProperties()
               console.error(`${caseName} :subWindowProperties.windowRect 2: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1);
+              expect(rotationInfo.orientation).assertEqual(2);
               expect(rotationInfo.displayId).assertEqual(displayInfo.id);
               expect(rotationInfo.displayRect.left).assertEqual(0)
               expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -387,7 +387,7 @@ export default function windowRotationTest() {
               console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
               let subWindowProperties = subWindowClass.getWindowProperties()
               console.error(`${caseName} :subWindowProperties.windowRect 1: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(window.Orientation.LANDSCAPE_INVERTED)
+              expect(rotationInfo.orientation).assertEqual(3)
               expect(rotationInfo.displayId).assertEqual(displayInfo.id)
               expect(rotationInfo.displayRect.left).assertEqual(0)
               expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -415,7 +415,7 @@ export default function windowRotationTest() {
               console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
               let subWindowProperties = subWindowClass.getWindowProperties()
               console.error(`${caseName} :subWindowProperties.windowRect 2: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1);
+              expect(rotationInfo.orientation).assertEqual(3);
               expect(rotationInfo.displayId).assertEqual(displayInfo.id);
               expect(rotationInfo.displayRect.left).assertEqual(0)
               expect(rotationInfo.displayRect.top).assertEqual(0)
@@ -490,6 +490,8 @@ export default function windowRotationTest() {
             }
             console.log(`${caseName} :rotationCallback rotationResult rectType: ${JSON.stringify(rotationResult.rectType)}`);
             console.log(`${caseName} :rotationCallback rotationResult windowRect: ${JSON.stringify(rotationResult.windowRect)}`);
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
             let windowProperties2 = windowClass.getWindowProperties()
             console.log(`${caseName} :main windowProperties2.windowRect: ${JSON.stringify(windowProperties2.windowRect)}`);
             expect(Math.abs(windowProperties.windowRect.left-windowProperties2.windowRect.left)).assertLessOrEqual(1);
@@ -497,10 +499,10 @@ export default function windowRotationTest() {
             expect(Math.abs(windowProperties.windowRect.height-windowProperties2.windowRect.height)).assertLessOrEqual(1);
             expect(Math.abs(windowProperties.windowRect.width-windowProperties2.windowRect.width)).assertLessOrEqual(1);
             // callback的信息不一致怎么判断？
-            expect(Math.abs(windowProperties.windowRect.left-rotationInfo.displayRect.left)).assertLargerOrEqual(2);
-            expect(Math.abs(windowProperties.windowRect.top-rotationInfo.displayRect.left)).assertLargerOrEqual(2);
-            expect(Math.abs(windowProperties.windowRect.width-rotationInfo.displayRect.width)).assertLargerOrEqual(2);
-            expect(Math.abs(windowProperties.windowRect.height-rotationInfo.displayRect.height)).assertLargerOrEqual(2);
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
             windowClass.off('rotationChange', rotationCallback);
             await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
             done();

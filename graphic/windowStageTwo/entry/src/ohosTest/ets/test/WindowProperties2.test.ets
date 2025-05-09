@@ -1579,7 +1579,6 @@ export default function windowPropertiesTest2() {
                 expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
                 pixelMap.release();
                 await terminateAbility(caseName);
-                await windowClass.maximize();
                 await sleep(2000)
                 done();
               }).catch(async (err: BusinessError) => {
@@ -1590,7 +1589,6 @@ export default function windowPropertiesTest2() {
                   expect().assertFail();
                 }
                 await terminateAbility(caseName);
-                await windowClass.maximize();
                 await sleep(2000)
                 done()
               });
@@ -1598,7 +1596,6 @@ export default function windowPropertiesTest2() {
               console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
               expect().assertFail();
               await terminateAbility(caseName);
-              await windowClass.maximize();
               await sleep(2000)
               done()
             }
