@@ -406,6 +406,7 @@ export default function objectStoreTestV9() {
           }
           console.info("SUB_DDM_AppDataFWK_Object_Api9_On_003 callback end.");
         });
+		expect().assertFail();
       } catch (error) {
         expect(error.code == 401).assertEqual(true);
       }
