@@ -16,9 +16,11 @@ struct Index {
   @State getVerticalAxisValue:string = 'int'
   @State getHorizontalAxisValue:string = 'int'
   @State propagationValue:string = 'int'
-
-
-
+  @State None:string = '123'
+  @State Begin:string = '123'
+  @State UPDATE:string = '123'
+  @State END:string = '123'
+  @State Cancel:string = '123'
   build() {
     Column() {
       Text('Mouse AxisEvent').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('AxisEvent001')
@@ -34,6 +36,31 @@ struct Index {
           this.getVerticalAxisValue=event.getVerticalAxisValue()+''
           this.getHorizontalAxisValue=event.getHorizontalAxisValue()+''
           this.propagationValue=event.propagation()+''
+          if (event.action==AxisAction.NONE){
+            console.log("NONE");
+            this.None = "NONE"
+          }
+          else console.log("error");
+          if (event.action==AxisAction.BEGIN){
+            console.log("BEGIN ");
+            this.Begin = "BEGIN"
+          }
+          else console.log("error");
+          if (event.action==AxisAction.UPDATE){
+            console.log("UPDATE ");
+            this.UPDATE= "UPDATE"
+          }
+          else console.log("error");
+          if (event.action==AxisAction.END){
+            console.log("END ");
+            this.END="END"
+          }
+          else console.log("error");
+          if (event.action==AxisAction.CANCEL){
+            console.log("CANCEL  ");
+            this.Cancel="CANCEL"
+          }
+          else console.log("error");
         })
       Text(this.x).key('x')
       Text(this.y).key('y')
@@ -46,8 +73,12 @@ struct Index {
       Text(this.getVerticalAxisValue).key('getVerticalAxisValue')
       Text(this.getHorizontalAxisValue).key('getHorizontalAxisValue')
       Text(this.propagationValue).key('propagationValue')
+      Text(this.None).key('None')
+      Text(this.Begin).key('Begin')
+      Text(this.UPDATE).key('UPDATE')
+      Text(this.END).key('END')
+      Text(this.Cancel).key('Cancel')
     }
     .alignItems(HorizontalAlign.Start).width('100%').height('100%').key('AxisEvent_Father')
   }
 }
-
