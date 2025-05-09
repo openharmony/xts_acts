@@ -13,13 +13,17 @@
  * limitations under the License.
  */
 
-import {commonFunc, dataCommon} from '../../../common/js/event';
-import { saveTxtData } from '../../../common/js/saveData';
+import { commonFunc } from '../../../common/js/event';
 import router from '@system.router';
 
 export default {
   data: {
-    ...dataCommon,
+    itemIndex: NaN,
+    color: '#5265ef',
+    flag: false,
+    pointX: 0,
+    pointY: 0,
+    timeStamp: 0,
     str: '',
     title: 'longpress',
     pass: 'true ;',
@@ -44,10 +48,16 @@ export default {
 
   back() {
     console.info('onclick back ');
-    router.replace({ uri: 'pages/second-compent/index' });
+    router.replace({
+      uri: 'pages/second-compent/index',
+      params: {
+        itemIndex: this.itemIndex
+      }
+    });
   },
 
   changeResult(result) {
-    saveTxtData(this, result);
+    getApp().data.keyList[this.title] = result;
+    this.back();
   },
 };

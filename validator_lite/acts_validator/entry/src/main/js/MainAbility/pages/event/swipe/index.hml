@@ -20,16 +20,16 @@ limitations under the License.
   </div>
 
   <div
-          class="commonStyle"
-          style="background-color:{{color}}"
-          onswipe="swipe"
-          ></div>
-  <text style="width:90%;height:40px;"
-          >方向: {{direction}} , 距离: {{distance}}</text
-          >
-  <text style="width:90%;height:80px;"
-          >timeStamp: {{timeStamp}}</text
-          >
+      class="commonStyle"
+      style="background-color:{{color}}"
+      onswipe="swipe"
+      ></div>
+  <text style="width:90%;height:40px;">
+    方向: {{direction}} , 距离: {{distance}}
+  </text>
+  <text style="width:90%;height:80px;">
+    timeStamp: {{timeStamp}}
+  </text>
 
   <div class="bottom-bt">
     <input type="button" value="pass" class="button" onclick="changeResult(pass)" />
