@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: NaN,
         qrColor: '#87ceeb',
         qrBackgroundColor: '#f0ffff',
         qrValue: 'value',
@@ -69,10 +69,16 @@ export default {
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };
