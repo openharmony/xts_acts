@@ -18,19 +18,28 @@ import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-export default class UiAbility007 extends UIAbility {
+export default class UiAbility07 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
+    });
     globalThis.uiAbilityContext7 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility07 want is, ${JSON.stringify(want)}`);
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onDestroy');
+    commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_TEST_DESTROY');
+    });
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -47,9 +56,10 @@ export default class UiAbility007 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onForeground');
-    commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_TEST_DESTROY');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
     });
+    globalThis.uiAbilityContext7.terminateSelf();
   }
 
   onBackground() {

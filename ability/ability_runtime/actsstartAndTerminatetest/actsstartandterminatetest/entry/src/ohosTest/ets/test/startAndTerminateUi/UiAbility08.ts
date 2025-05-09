@@ -20,9 +20,12 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 let testNum:number = 0;
 
-export default class UiAbility008 extends UIAbility {
+export default class UiAbility08 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 publish ACTS_LIFE_CYCLE');
+    });
     globalThis.uiAbilityContext8 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility08 want is, ${JSON.stringify(want)}`);
   }
@@ -36,8 +39,8 @@ export default class UiAbility008 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 onWindowStageCreate');
-    commonEventManager.publish('ACTS_TEST_START02', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 publish ACTS_TEST_START02');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 publish ACTS_LIFE_CYCLE');
     });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
@@ -54,18 +57,36 @@ export default class UiAbility008 extends UIAbility {
   }
 
   onForeground() {
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 publish ACTS_LIFE_CYCLE');
+    });
     testNum++
-    hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 onForeground');
-    if(testNum==2){
+    if (testNum === 1) {
+      try {
+        globalThis.uiAbilityContext8.startAbility(
+          {
+            bundleName: 'com.acts.actsstartandterminateassisttest01',
+            abilityName: 'AbilityTest01'
+          }).then(() => {
+          hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility08 start other hap AbilityTest01 end`);
+        })
+      } catch (err) {
+        hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility08 start other hap AbilityTest01 fail : ${err}`);
+      }
+    } else if (testNum === 2) {
       setTimeout(() => {
         // destroy
-        globalThis.uiAbilityContext8.terminateSelf()
+        globalThis.uiAbilityContext8.terminateSelf();
       }, 500);
-    }
+    };
+    hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 onForeground');
   }
 
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 onBackground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility08 publish ACTS_LIFE_CYCLE');
+    });
   }
 }

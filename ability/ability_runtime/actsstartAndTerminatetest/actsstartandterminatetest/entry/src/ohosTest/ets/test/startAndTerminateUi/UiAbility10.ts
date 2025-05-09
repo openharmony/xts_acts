@@ -18,10 +18,13 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
-export default class UiAbility010 extends UIAbility {
+export default class UiAbility10 extends UIAbility {
 
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    });
     globalThis.uiAbilityContext10 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility10 want is, ${JSON.stringify(want)}`);
   }
@@ -32,6 +35,9 @@ export default class UiAbility010 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -47,6 +53,9 @@ export default class UiAbility010 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onForeground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    });
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_TEST_DESTROY');
     });

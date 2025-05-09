@@ -27,7 +27,8 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_ONFORGROUND',
     'ACTS_TEST_ONBACKGROUND',
     'ACTS_TEST_ONDESTROYED',
-    'ACTS_TEST_DESTROY'
+    'ACTS_TEST_DESTROY',
+    'ACTS_LIFE_CYCLE'
   ]
 };
 let subscriber: commonEventManager.CommonEventSubscriber;
@@ -75,17 +76,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
+      let testNum01:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum01 is: ${testNum01}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              expect(testNum01).assertEqual(8)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum01++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -140,17 +147,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum02:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum02 is: ${testNum02}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum02).assertEqual(8)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum02++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -206,17 +219,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum03:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum03 is: ${testNum03}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum03).assertEqual(11)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum03++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -272,17 +291,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum04:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum04 is: ${testNum04}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum04).assertEqual(13)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum04++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -334,9 +359,9 @@ export default function startAndTerminateTest() {
               }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext5.terminateSelf()
-              globalThis.uiAbilityContext6.terminateSelf()
-              globalThis.uiAbilityContext7.terminateSelf()
+              // globalThis.uiAbilityContext5.terminateSelf();
+              // globalThis.uiAbilityContext6.terminateSelf();
+              // globalThis.uiAbilityContext7.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -361,17 +386,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum05:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum05 is: ${testNum05}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum05).assertEqual(11)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum05++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -408,7 +439,7 @@ export default function startAndTerminateTest() {
               }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext5.terminateSelf()
+              globalThis.uiAbilityContext5.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -432,17 +463,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum06:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum06 is: ${testNum06}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum06).assertEqual(10)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum06++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -458,23 +495,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START02') {
-              setTimeout(() => {
-                try {
-                  globalThis.uiAbilityContext8.startAbility(
-                    {
-                      bundleName: 'com.acts.actsstartandterminateassisttest01',
-                      abilityName: 'AbilityTest01'
-                    }).then(() => {
-                    hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
-                  })
-                } catch (err) {
-                  hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility fail : ${err}`);
-                }
-              }, 500);
-            }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext8.terminateSelf()
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -498,17 +519,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum07:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum07 is: ${testNum07}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum07).assertEqual(10)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum07++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -528,7 +555,7 @@ export default function startAndTerminateTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_ONFORGROUND') {
-              globalThis.uiAbilityContext9.terminateSelf()
+              globalThis.uiAbilityContext9.terminateSelf();
             }
             if (data.event == 'ACTS_TEST_ONBACKGROUND') {
               if(data.parameters){
@@ -554,7 +581,7 @@ export default function startAndTerminateTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext9.terminateSelf()
+              globalThis.uiAbilityContext9.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -579,17 +606,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum08:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum08 is: ${testNum08}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum08).assertEqual(3)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum08++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -612,7 +645,7 @@ export default function startAndTerminateTest() {
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
-                globalThis.uiAbilityContext10.terminateSelf()
+                globalThis.uiAbilityContext10.terminateSelf();
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
             }
@@ -635,17 +668,23 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum09:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum09 is: ${testNum09}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum09).assertEqual(3)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum09++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -664,7 +703,7 @@ export default function startAndTerminateTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext10.terminateSelf()
+              globalThis.uiAbilityContext10.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -688,18 +727,24 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let testNum10:number = 0;
       let res: string = ""
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
+            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum10 is: ${testNum10}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
+              expect(testNum10).assertEqual(3)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
+            if (data.event == 'ACTS_LIFE_CYCLE') {
+              testNum10++;
+            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(async () => {
                 await abilityDelegator.executeShellCommand('aa start -a UiAbility10 -b com.test.actsstartandterminatetest')
@@ -715,7 +760,7 @@ export default function startAndTerminateTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              globalThis.uiAbilityContext10.terminateSelf()
+              globalThis.uiAbilityContext10.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);

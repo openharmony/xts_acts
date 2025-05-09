@@ -42,6 +42,27 @@
             ]
           }
         ]
+      },
+      {
+        "name": "EntryAbility1",
+        "srcEntry": "./ets/entryability/EntryAbility1.ts",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "isolationProcess": false,
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
       }
     ]
   }

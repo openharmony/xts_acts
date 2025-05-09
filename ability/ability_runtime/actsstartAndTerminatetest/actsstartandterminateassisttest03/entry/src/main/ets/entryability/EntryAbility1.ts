@@ -21,10 +21,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
-    });
-    globalThis.abilityAssistEntry03 = this.context
+    globalThis.abilityAssist03 = this.context
   }
 
   onDestroy() {
@@ -37,9 +34,6 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
-    });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -57,12 +51,9 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
-    });
     setTimeout(() => {
       // destroy assistHap
-      globalThis.abilityAssistEntry03.terminateSelf()
+      globalThis.abilityAssist03.terminateSelf()
     }, 2500);
   }
 

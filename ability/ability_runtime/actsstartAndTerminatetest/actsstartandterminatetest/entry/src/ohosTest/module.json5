@@ -19,8 +19,6 @@
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
-      "default",
-      "tablet",
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -184,6 +182,7 @@
         "srcEntry": "./ets/test/startAndTerminateUi/UiAbility08.ts",
         "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
+        "exported": true,
         "label": "$string:TestAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
@@ -204,6 +203,7 @@
         "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:TestAbility_label",
+        "exported": true,
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "skills": [

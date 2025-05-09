@@ -20,20 +20,26 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 let testNum:number = 0;
 
-export default class UiAbility009 extends UIAbility {
+export default class UiAbility09 extends UIAbility {
 
   static isFirstStart:boolean = true;
 
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
+    });
     globalThis.uiAbilityContext9 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility09 want is, ${JSON.stringify(want)}`);
-    UiAbility009.isFirstStart = want.parameters.isFirstStart
+    UiAbility09.isFirstStart = want.parameters.isFirstStart
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onDestroy');
-    if(UiAbility009.isFirstStart){
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
+    });
+    if (UiAbility09.isFirstStart) {
       commonEventManager.publish('ACTS_TEST_ONDESTROYED', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONDESTROYED');
       });
@@ -42,6 +48,9 @@ export default class UiAbility009 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -57,7 +66,10 @@ export default class UiAbility009 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onForeground');
-    if(UiAbility009.isFirstStart){
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
+    });
+    if (UiAbility09.isFirstStart) {
       commonEventManager.publish('ACTS_TEST_ONFORGROUND', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONFORGROUND');
       });
@@ -71,12 +83,15 @@ export default class UiAbility009 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onBackground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
+    });
     let options = {
       parameters: {
         result: 'onBackground'
       }
     };
-    if(UiAbility009.isFirstStart){
+    if (UiAbility09.isFirstStart) {
       commonEventManager.publish('ACTS_TEST_ONBACKGROUND', options, function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONBACKGROUND');
       });

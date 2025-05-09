@@ -13,23 +13,33 @@
  * limitations under the License.
  */
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import app, { AppResponse } from '@system.app'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
-    globalThis.abilityAssistEntry = this.context
+    hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    });
+    globalThis.abilityAssistEntry01 = this.context
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    });
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -47,15 +57,20 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    });
     setTimeout(() => {
       // destroy assistHap
-      globalThis.abilityAssistEntry.terminateSelf()
+      globalThis.abilityAssistEntry01.terminateSelf()
     }, 5000);
   }
 
   onBackground() {
-    console.info('EntryAbility onBackground');
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onBackground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    });
   }
 }

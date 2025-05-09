@@ -18,20 +18,25 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
-export default class UiAbility005 extends UIAbility {
+export default class UiAbility05 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 onCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_LIFE_CYCLE');
+    });
     globalThis.uiAbilityContext5 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility05 want is, ${JSON.stringify(want)}`);
   }
 
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility005 onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    console.info('UiAbility05 onWindowStageCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 onWindowStageCreate');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -48,6 +53,9 @@ export default class UiAbility005 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 onForeground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_LIFE_CYCLE');
+    });
     commonEventManager.publish('ACTS_TEST_START02', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_TEST_START02');
     });
@@ -56,6 +64,9 @@ export default class UiAbility005 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 onBackground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_LIFE_CYCLE');
+    });
     let options = {
       parameters: {
         result: 'onBackground'
@@ -63,6 +74,7 @@ export default class UiAbility005 extends UIAbility {
     };
     commonEventManager.publish('ACTS_TEST_ONBACKGROUND', options, function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility05 publish ACTS_TEST_ONBACKGROUND');
+      globalThis.uiAbilityContext5.terminateSelf();
     });
   }
 }

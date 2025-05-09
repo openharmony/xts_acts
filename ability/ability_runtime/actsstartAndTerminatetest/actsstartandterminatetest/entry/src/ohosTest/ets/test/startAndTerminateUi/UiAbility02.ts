@@ -16,12 +16,16 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import { commonEventManager } from '@kit.BasicServicesKit';
 
-export default class UiAbility002 extends UIAbility {
+export default class UiAbility02 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onCreate');
     globalThis.uiAbilityContext2 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility02 want is, ${JSON.stringify(want)}`);
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100 publish ACTS_LIFE_CYCLE');
+    });
   }
 
   onDestroy() {
@@ -31,7 +35,9 @@ export default class UiAbility002 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onWindowStageCreate');
-
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100 publish ACTS_LIFE_CYCLE');
+    });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -49,9 +55,12 @@ export default class UiAbility002 extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onForeground');
+    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100 publish ACTS_LIFE_CYCLE');
+    });
     setTimeout(() => {
       // destroy uiAbilityContext2
-      globalThis.uiAbilityContext2.terminateSelf()
+      globalThis.uiAbilityContext2.terminateSelf();
     }, 6000);
   }
 
