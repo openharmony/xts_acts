@@ -33,6 +33,21 @@ import distributedKVStore from '@ohos.data.distributedKVStore';
 import camera from '@ohos.multimedia.camera';
 import appManager from '@ohos.app.ability.appManager';
 
+
+async function isInstalled() {
+  await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`).then(result => {
+    console.info(`testAuthenticationCall0100, bm dump Finished: ${JSON.stringify(result)}`)
+    console.info(`testAuthenticationCall0100, bm dump stdResult: ${JSON.stringify(result.stdResult)}`)
+    if (!result.stdResult || result.stdResult == '') {
+      return false;
+    }
+    return true;
+  }).catch((err : BusinessError) => {
+    console.error(`UiTestCase, bm dump Failed: ${err}`)
+    return false;
+  })
+}
+
 export default function securityTest() {
   describe('SecurityTest', () => {
     let abilityContext: common.UIAbilityContext
@@ -159,7 +174,9 @@ export default function securityTest() {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let contacts = canIUse("SystemCapability.Applications.Contacts");
       console.info(`testAuthenticationCall0100 contacts,${ contacts }`);
-      if (contacts) {
+      const isInstall = await isInstalled();
+      console.info(`testAuthenticationCall0100 isInstall,${ isInstall }`);
+      if (contacts && isInstall) {
         let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
         let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
         let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
