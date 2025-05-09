@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import Vibrator from '@system.vibrator';
 
 export default {
     data: {
+        itemIndex: NaN,
         strStates: ['短振动', '长振动'],
         state: '',
         str: '',
@@ -76,10 +76,16 @@ export default {
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };
