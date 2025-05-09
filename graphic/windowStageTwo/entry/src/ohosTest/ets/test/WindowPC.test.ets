@@ -191,6 +191,7 @@ export default function windowPCTest() {
           console.info(caseName + 'Succeeded in calling setWindowRectAutoSave.');
           mainWindow.moveWindowToAsync(300, 400)
           mainWindow.resizeAsync(1000, 1200);
+          await sleep(300);
           let windowRect1 = mainWindow.getWindowProperties().windowRect;
           console.info(caseName + 'windowRect1: ' + JSON.stringify(windowRect1));
           await sleep(300);

@@ -580,87 +580,87 @@ export default function windowRotationTest() {
       let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
-        console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');//需要为子窗设置页面，页面可以换一个子窗页面
+        console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
+        await sleep(100);
+        let windowProperties1 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties1.windowRect: ${JSON.stringify(windowProperties1.windowRect)}`);
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
-        const rotationCallback1: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback1 rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            console.log(`${caseName} :rotationCallback1 rotationInfo type: ${JSON.stringify(rotationInfo.type)}`);
-            console.log(`${caseName} :rotationCallback1 rotationInfo orientation: ${JSON.stringify(rotationInfo.orientation)}`);
-            console.log(`${caseName} :rotationCallback1 rotationInfo displayId: ${JSON.stringify(rotationInfo.displayId)}`);
-            console.log(`${caseName} :rotationCallback1 rotationInfo displayRect: ${JSON.stringify(rotationInfo.displayRect)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 0,
-                  top: 0,
-                  width: subWindowLimits.minWidth as number,
-                  height: subWindowLimits.minHeight as number,
-                }
-              };
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 50,
-                  height: subWindowLimits.minHeight as number + 50
-                }
-              };
+        let rotationCallback1 = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
             }
-            timer++;
-            console.log(`${caseName} :rotationCallback1 rotationResult rectType: ${JSON.stringify(rotationResult.rectType)}`);
-            console.log(`${caseName} :rotationCallback1 rotationResult windowRect: ${JSON.stringify(rotationResult.windowRect)}`);
-            subWindowClass.off('rotationChange', rotationCallback1);
-          }
-        const rotationCallback2: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback2 rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            console.log(`${caseName} :rotationCallback2 rotationInfo type: ${JSON.stringify(rotationInfo.type)}`);
-            console.log(`${caseName} :rotationCallback2 rotationInfo orientation: ${JSON.stringify(rotationInfo.orientation)}`);
-            console.log(`${caseName} :rotationCallback2 rotationInfo displayId: ${JSON.stringify(rotationInfo.displayId)}`);
-            console.log(`${caseName} :rotationCallback2 rotationInfo displayRect: ${JSON.stringify(rotationInfo.displayRect)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 0,
-                  top: 0,
-                  width: subWindowLimits.minWidth as number + 20,
-                  height: subWindowLimits.minHeight as number + 20,
-                }
-              };
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 30,
-                  height: subWindowLimits.minHeight as number + 30
-                }
-              };
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;
+            rotationResult.windowRect = {
+              left: 100,
+              top: 100,
+              width: subWindowLimits.minWidth as number,
+              height:subWindowLimits.minHeight as number,
+
             }
-            timer--;
-            console.log(`${caseName} :rotationCallback2 rotationResult rectType: ${JSON.stringify(rotationResult.rectType)}`);
-            console.log(`${caseName} :rotationCallback2 rotationResult windowRect: ${JSON.stringify(rotationResult.windowRect)}`);
-            console.log(`${caseName} :timer: ${JSON.stringify(timer)}`);
-            subWindowClass.off('rotationChange', rotationCallback2);
-            expect(timer).assertEqual(-1);
-            await subWindowClass.destroyWindow()
-            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
-            done();
+            timer ++;
+            console.log(`${caseName} rotationCallback1 :timer: ${JSON.stringify(timer)}`);
+            return rotationResult;
+          } else {
+            return;
           }
+        }
+        let rotationCallback2 = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
+            }
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;
+            rotationResult.windowRect = {
+              left: 200,
+              top: 200,
+              width: subWindowLimits.minWidth as number + 10,
+              height: subWindowLimits.minHeight as number + 5,
+            }
+            timer ++;
+            console.log(`${caseName} rotationCallback2 :timer: ${JSON.stringify(timer)}`);
+            return rotationResult;
+          } else {
+            return;
+          }
+        }
         subWindowClass.on('rotationChange', rotationCallback1);
         subWindowClass.on('rotationChange', rotationCallback2);
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
         await sleep(4000);
+        let windowProperties2 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties2.windowRect: ${JSON.stringify(windowProperties2.windowRect)}`);
+        console.log(`${caseName} :timer: ${JSON.stringify(timer)}`);
+        expect(windowProperties2.windowRect.left-200).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.top-200).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.width-(subWindowLimits.minWidth as number + 10)).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.height-(subWindowLimits.minHeight as number + 5)).assertLessOrEqual(1);
+        expect(timer).assertEqual(2);
+        subWindowClass.off('rotationChange');
+
+        await subWindowClass.destroyWindow()
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+        done();
       } catch (err) {
         console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
         await subWindowClass.destroyWindow()
@@ -685,54 +685,63 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1000';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let timer = 0;
       let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1000');
+      let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
-        console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');//需要为子窗设置页面，页面可以换一个子窗页面
+        console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
+        await sleep(100);
+        let windowProperties1 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties1.windowRect: ${JSON.stringify(windowProperties1.windowRect)}`);
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
-        const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo type: ${JSON.stringify(rotationInfo.type)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo orientation: ${JSON.stringify(rotationInfo.orientation)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo displayId: ${JSON.stringify(rotationInfo.displayId)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo displayRect: ${JSON.stringify(rotationInfo.displayRect)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 0,
-                  top: 0,
-                  width: subWindowLimits.minWidth as number,
-                  height: subWindowLimits.minHeight as number,
-                }
-              };
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 50,
-                  height: subWindowLimits.minHeight as number + 50
-                }
-              };
+        let rotationCallback1 = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
             }
-            console.log(`${caseName} :rotationCallback rotationResult rectType: ${JSON.stringify(rotationResult.rectType)}`);
-            console.log(`${caseName} :rotationCallback rotationResult windowRect: ${JSON.stringify(rotationResult.windowRect)}`);
-            timer++;
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;
+            rotationResult.windowRect = {
+              left: 100,
+              top: 100,
+              width: subWindowLimits.minWidth as number,
+              height:subWindowLimits.minHeight as number,
+
+            }
+            timer ++;
+            console.log(`${caseName} rotationCallback1 :timer: ${JSON.stringify(timer)}`);
+            return rotationResult;
+          } else {
+            return;
           }
-        subWindowClass.on('rotationChange', rotationCallback);
-        subWindowClass.off('rotationChange', rotationCallback);
+        }
+
+        subWindowClass.on('rotationChange', rotationCallback1);
+        subWindowClass.off('rotationChange', rotationCallback1);
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
         await sleep(4000);
-        // 不会调用callback回调，因此timer不会自增1
-        expect(timer).assertEqual(0)
+        let windowProperties2 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties2.windowRect: ${JSON.stringify(windowProperties2.windowRect)}`);
+        console.log(`${caseName} :timer: ${JSON.stringify(timer)}`);
+        expect(windowProperties2.windowRect.left-windowProperties1.windowRect.left).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.top-windowProperties1.windowRect.left).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.width-windowProperties1.windowRect.width).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.height-windowProperties1.windowRect.height).assertLessOrEqual(1);
+        expect(timer).assertEqual(0);
+        subWindowClass.off('rotationChange');
+
         await subWindowClass.destroyWindow()
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         done();
@@ -760,60 +769,69 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1100';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let timer = 0;
       let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1100');
+      let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
-        console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');//需要为子窗设置页面，页面可以换一个子窗页面
+        console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
+        await sleep(100);
+        let windowProperties1 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties1.windowRect: ${JSON.stringify(windowProperties1.windowRect)}`);
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
-        const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo type: ${JSON.stringify(rotationInfo.type)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo orientation: ${JSON.stringify(rotationInfo.orientation)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo displayId: ${JSON.stringify(rotationInfo.displayId)}`);
-            console.log(`${caseName} :rotationCallback rotationInfo displayRect: ${JSON.stringify(rotationInfo.displayRect)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 0,
-                  top: 0,
-                  width: subWindowLimits.minWidth as number,
-                  height: subWindowLimits.minHeight as number,
-                }
-              };
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 50,
-                  height: subWindowLimits.minHeight as number + 50
-                }
-              };
+        let rotationCallback1 = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
             }
-            console.log(`${caseName} :rotationCallback rotationResult rectType: ${JSON.stringify(rotationResult.rectType)}`);
-            console.log(`${caseName} :rotationCallback rotationResult windowRect: ${JSON.stringify(rotationResult.windowRect)}`);
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;
+            rotationResult.windowRect = {
+              left: 100,
+              top: 100,
+              width: subWindowLimits.minWidth as number,
+              height:subWindowLimits.minHeight as number,
+
+            }
+            timer ++;
+            console.log(`${caseName} rotationCallback1 :timer: ${JSON.stringify(timer)}`);
+            return rotationResult;
+          } else {
+            return;
           }
-        subWindowClass.on('rotationChange', rotationCallback);
+        }
+
+        subWindowClass.on('rotationChange', rotationCallback1);
         subWindowClass.off('rotationChange');
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
         await sleep(4000);
-        // 不会调用callback回调，因此timer不会自增1
-        expect(timer).assertEqual(0)
+        let windowProperties2 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindow windowProperties2.windowRect: ${JSON.stringify(windowProperties2.windowRect)}`);
+        console.log(`${caseName} :timer: ${JSON.stringify(timer)}`);
+        expect(windowProperties2.windowRect.left-windowProperties1.windowRect.left).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.top-windowProperties1.windowRect.left).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.width-windowProperties1.windowRect.width).assertLessOrEqual(1);
+        expect(windowProperties2.windowRect.height-windowProperties1.windowRect.height).assertLessOrEqual(1);
+        expect(timer).assertEqual(0);
+        subWindowClass.off('rotationChange');
+
         await subWindowClass.destroyWindow()
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         done();
       } catch (err) {
         console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
         await subWindowClass.destroyWindow()
-        done();
         if (err.code === 801) {
           done()
         } else {
@@ -844,79 +862,93 @@ export default function windowRotationTest() {
       console.info(`${caseName} Succeeded in creating the dialog window.`);
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
-        console.log(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');//需要为子窗设置页面，页面可以换一个子窗页面
+        console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
-        const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 0,
-                  top: 0,
-                  width: subWindowLimits.minWidth as number,
-                  height: subWindowLimits.minHeight as number,
-                }
-              };
-              console.error(`${caseName} rotationInfo 1: ${JSON.stringify(rotationInfo)}`);
-              console.error(`${caseName} rotationResult 1: ${JSON.stringify(rotationResult)}`)
-              let displayInfo = display.getDefaultDisplaySync();
-              console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
-              let subWindowProperties = subWindowClass.getWindowProperties()
-              console.error(`${caseName} :subWindowProperties.windowRect 1: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1)
-              expect(rotationInfo.displayId).assertEqual(displayInfo.id)
-              expect(rotationInfo.displayRect.left).assertEqual(0)
-              expect(rotationInfo.displayRect.top).assertEqual(0)
-              expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
-              expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
-              expect(rotationResult.rectType).assertEqual(window.RectType.RELATIVE_TO_SCREEN);
-              expect(rotationResult.windowRect.left).assertEqual(subWindowProperties.windowRect.left)
-              expect(rotationResult.windowRect.top).assertEqual(subWindowProperties.windowRect.top)
-              expect(rotationResult.windowRect.width).assertEqual(subWindowLimits.minWidth);
-              expect(rotationResult.windowRect.height).assertEqual(subWindowLimits.minHeight);
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 50,
-                  height: subWindowLimits.minHeight as number + 50
-                }
-              };
-              console.error(`${caseName} rotationInfo2: ${JSON.stringify(rotationInfo)}`);
-              console.error(`${caseName} rotationResult2: ${JSON.stringify(rotationResult)}`)
-              expect(rotationInfo.type).assertEqual(window.RotationChangeType.WINDOW_DID_ROTATE)
-              let displayInfo = display.getDefaultDisplaySync();
-              console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
-              let subWindowProperties = subWindowClass.getWindowProperties()
-              console.error(`${caseName} :subWindowProperties.windowRect 2: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1);
-              expect(rotationInfo.displayId).assertEqual(displayInfo.id);
-              expect(rotationInfo.displayRect.left).assertEqual(0)
-              expect(rotationInfo.displayRect.top).assertEqual(0)
-              expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
-              expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
-
-              subWindowClass.off('rotationChange', rotationCallback);
-              await subWindowClass.destroyWindow()
-              await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
-              done();
+        let rotationCallback = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
             }
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;//这里换成相对屏幕
+            rotationResult.windowRect = {
+              left: 200,
+              top: 200,
+              width: subWindowLimits.minWidth as number,
+              height: subWindowLimits.minHeight as number,
+            }
+
+            console.error(`${caseName} rotationInfo 1: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult 1: ${JSON.stringify(rotationResult)}`)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+            sleep(2000)
+            let subWindowProperties1 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(1)
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id)
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            expect(rotationResult.rectType).assertEqual(window.RectType.RELATIVE_TO_SCREEN);
+            expect(rotationResult.windowRect.left).assertEqual(200)
+            expect(rotationResult.windowRect.top).assertEqual(200)
+            expect(rotationResult.windowRect.width).assertEqual(subWindowLimits.minWidth);
+            expect(rotationResult.windowRect.height).assertEqual(subWindowLimits.minHeight);
+            return rotationResult;
+          } else {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_PARENT_WINDOW;
+            rotationResult.windowRect = {
+              left: 500,
+              top: 500,
+              width: subWindowLimits.minWidth as number + 50,
+              height: subWindowLimits.minHeight as number + 50
+            }
+            console.error(`${caseName} rotationInfo2: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult2: ${JSON.stringify(rotationResult)}`)
+            expect(rotationInfo.type).assertEqual(window.RotationChangeType.WINDOW_DID_ROTATE)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
+            let subWindowProperties2 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(1);
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id);
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            return rotationResult;
           }
+        }
         subWindowClass.on('rotationChange', rotationCallback);
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
         await sleep(4000);
-      } catch (err) {
-        await subWindowClass.destroyWindow()
+        let subWindowProperties3 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindowProperties3.windowRect 3: ${JSON.stringify(subWindowProperties3.windowRect)}`);
+        expect(subWindowProperties3.windowRect.left).assertEqual(200);
+        expect(subWindowProperties3.windowRect.top).assertEqual(200);
+        expect(subWindowProperties3.windowRect.width).assertEqual(subWindowLimits.minWidth);
+        expect(subWindowProperties3.windowRect.height).assertEqual(subWindowLimits.minHeight);
+        subWindowClass.off('rotationChange', rotationCallback);
+        await subWindowClass.destroyWindow();
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
         done();
+      } catch (err) {
         console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        await subWindowClass.destroyWindow()
         if (err.code === 801) {
           done()
         } else {
@@ -926,6 +958,14 @@ export default function windowRotationTest() {
       }
     });
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_RotationChange_1300
+     * @tc.name      : test_RotationChange_1300
+     * @tc.desc      : test_RotationChange_1300
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
     it('test_RotationChange_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'test_RotationChange_1300';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
@@ -934,76 +974,202 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');//需要为子窗设置页面
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
         let windowClass = windowStage.getMainWindowSync();
-        let mainWindowId = windowClass.getWindowProperties().id;
-        console.error(`${caseName} sunWindowId : ${JSON.stringify(mainWindowId)}`);
+        let mainWindowProperties = windowClass.getWindowProperties();
+        console.error(`${caseName} :mainWindowProperties.windowRect: ${JSON.stringify(mainWindowProperties.windowRect)}`);
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
-        const rotationCallback: window.RotationChangeCallback<window.RotationChangeInfo, void> =
-          async (rotationInfo: window.RotationChangeInfo, rotationResult?: window.RotationChangeResult) => {
-            console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
-            if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
-                windowRect: {
-                  left: 50,
-                  top: 50,
-                  width: subWindowLimits.minWidth as number,
-                  height: subWindowLimits.minHeight as number,
-                }
-              };
-              console.error(`${caseName} rotationInfo 1: ${JSON.stringify(rotationInfo)}`);
-              console.error(`${caseName} rotationResult 1: ${JSON.stringify(rotationResult)}`)
-              let displayInfo = display.getDefaultDisplaySync();
-              console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
-              let mainWindowProperties = windowClass.getWindowProperties()
-              console.error(`${caseName} :mainWindowProperties.windowRect 1: ${JSON.stringify(mainWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1)
-              expect(rotationInfo.displayId).assertEqual(displayInfo.id)
-              expect(rotationInfo.displayRect.left).assertEqual(0)
-              expect(rotationInfo.displayRect.top).assertEqual(0)
-              expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
-              expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
-              expect(rotationResult.rectType).assertEqual(window.RectType.RELATIVE_TO_PARENT_WINDOW);
-              expect(rotationResult.windowRect.left).assertEqual(mainWindowProperties.windowRect.left + 50)
-              expect(rotationResult.windowRect.top).assertEqual(mainWindowProperties.windowRect.top + 50)
-              expect(rotationResult.windowRect.width).assertEqual(subWindowLimits.minWidth);
-              expect(rotationResult.windowRect.height).assertEqual(subWindowLimits.minHeight);
-            } else {
-              rotationResult = {
-                rectType: window.RectType.RELATIVE_TO_SCREEN,
-                windowRect: {
-                  left: 200,
-                  top: 200,
-                  width: subWindowLimits.minWidth as number + 50,
-                  height: subWindowLimits.minHeight as number + 50
-                }
-              };
-              console.error(`${caseName} rotationInfo 2: ${JSON.stringify(rotationInfo)}`);
-              console.error(`${caseName} rotationResult 2: ${JSON.stringify(rotationResult)}`)
-              expect(rotationInfo.type).assertEqual(window.RotationChangeType.WINDOW_DID_ROTATE)
-              let displayInfo = display.getDefaultDisplaySync();
-              console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
-              let subWindowProperties = subWindowClass.getWindowProperties()
-              console.error(`${caseName} :subWindowProperties.windowRect 2: ${JSON.stringify(subWindowProperties.windowRect)}`);
-              expect(rotationInfo.orientation).assertEqual(1);
-              expect(rotationInfo.displayId).assertEqual(displayInfo.id);
-              expect(rotationInfo.displayRect.left).assertEqual(0)
-              expect(rotationInfo.displayRect.top).assertEqual(0)
-              expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
-              expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
-
-              subWindowClass.off('rotationChange', rotationCallback);
-              await subWindowClass.destroyWindow()
-              await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
-              done();
+        let rotationCallback = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_PARENT_WINDOW,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
             }
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_PARENT_WINDOW;//这里换成相对屏幕
+            rotationResult.windowRect = {
+              left: 50,
+              top: 50,
+              width: subWindowLimits.minWidth as number,
+              height: subWindowLimits.minHeight as number,
+            }
+
+            console.error(`${caseName} rotationInfo 1: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult 1: ${JSON.stringify(rotationResult)}`)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+            sleep(2000)
+            let subWindowProperties1 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(1)
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id)
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            expect(rotationResult.rectType).assertEqual(window.RectType.RELATIVE_TO_PARENT_WINDOW);
+            expect(rotationResult.windowRect.left).assertEqual(50)
+            expect(rotationResult.windowRect.top).assertEqual(50)
+            expect(rotationResult.windowRect.width).assertEqual(subWindowLimits.minWidth);
+            expect(rotationResult.windowRect.height).assertEqual(subWindowLimits.minHeight);
+            return rotationResult;
+          } else {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_PARENT_WINDOW;
+            rotationResult.windowRect = {
+              left: 500,
+              top: 500,
+              width: subWindowLimits.minWidth as number + 50,
+              height: subWindowLimits.minHeight as number + 50
+            }
+            console.error(`${caseName} rotationInfo2: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult2: ${JSON.stringify(rotationResult)}`)
+            expect(rotationInfo.type).assertEqual(window.RotationChangeType.WINDOW_DID_ROTATE)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
+            let subWindowProperties2 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(1);
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id);
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            return rotationResult;
           }
+        }
         subWindowClass.on('rotationChange', rotationCallback);
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
         await sleep(4000);
+        let subWindowProperties3 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindowProperties3.windowRect 3: ${JSON.stringify(subWindowProperties3.windowRect)}`);
+        expect(subWindowProperties3.windowRect.left).assertEqual(mainWindowProperties.windowRect.left+50);
+        expect(subWindowProperties3.windowRect.top).assertEqual(mainWindowProperties.windowRect.top+50);
+        expect(subWindowProperties3.windowRect.width).assertEqual(subWindowLimits.minWidth);
+        expect(subWindowProperties3.windowRect.height).assertEqual(subWindowLimits.minHeight);
+        subWindowClass.off('rotationChange', rotationCallback);
+        await subWindowClass.destroyWindow();
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        done();
+      } catch (err) {
+        console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
+        await subWindowClass.destroyWindow()
+        if (err.code === 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_RotationChange_1400
+     * @tc.name      : test_RotationChange_1400
+     * @tc.desc      : test_RotationChange_1400
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_RotationChange_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'test_RotationChange_1400';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_1400');
+      try {
+        let subWindowLimits = subWindowClass.getWindowLimits()
+        console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await subWindowClass.setBackgroundColor('#FF00FF00');
+        subWindowClass.resizeAsync(300,300);
+        await subWindowClass.showWindow();
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
+        await sleep(2000)
+        let rotationCallback = (rotationInfo: window.RotationChangeInfo): window.RotationChangeResult | void => {
+          let rotationResult: window.RotationChangeResult = {
+            rectType: window.RectType.RELATIVE_TO_SCREEN,
+            windowRect: {
+              left: 0,
+              top: 0,
+              width: 0,
+              height: 0,
+            }
+          };
+          console.log(`${caseName} :rotationCallback rotationInfo: ${JSON.stringify(rotationInfo)}`);
+          if (rotationInfo.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_SCREEN;
+            rotationResult.windowRect = {
+              left: 200,
+              top: 200,
+              width: subWindowLimits.minWidth as number,
+              height: subWindowLimits.minHeight as number,
+            }
+
+            console.error(`${caseName} rotationInfo 1: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult 1: ${JSON.stringify(rotationResult)}`)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+            sleep(2000)
+            let subWindowProperties1 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties1.windowRect 1: ${JSON.stringify(subWindowProperties1.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(0)
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id)
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            expect(rotationResult.rectType).assertEqual(window.RectType.RELATIVE_TO_SCREEN);
+            expect(rotationResult.windowRect.left).assertEqual(200)
+            expect(rotationResult.windowRect.top).assertEqual(200)
+            expect(rotationResult.windowRect.width).assertEqual(subWindowLimits.minWidth);
+            expect(rotationResult.windowRect.height).assertEqual(subWindowLimits.minHeight);
+            return rotationResult;
+          } else {
+            rotationResult.rectType = window.RectType.RELATIVE_TO_PARENT_WINDOW;
+            rotationResult.windowRect = {
+              left: 500,
+              top: 500,
+              width: subWindowLimits.minWidth as number + 50,
+              height: subWindowLimits.minHeight as number + 50
+            }
+            console.error(`${caseName} rotationInfo2: ${JSON.stringify(rotationInfo)}`);
+            console.error(`${caseName} rotationResult2: ${JSON.stringify(rotationResult)}`)
+            expect(rotationInfo.type).assertEqual(window.RotationChangeType.WINDOW_DID_ROTATE)
+            let displayInfo = display.getDefaultDisplaySync();
+            console.error(`${caseName} :display.getDefaultDisplaySync . info 2: ${JSON.stringify(displayInfo)}`);
+            let subWindowProperties2 = subWindowClass.getWindowProperties()
+            console.error(`${caseName} :subWindowProperties2.windowRect 2: ${JSON.stringify(subWindowProperties2.windowRect)}`);
+            expect(rotationInfo.orientation).assertEqual(0);
+            expect(rotationInfo.displayId).assertEqual(displayInfo.id);
+            expect(rotationInfo.displayRect.left).assertEqual(0)
+            expect(rotationInfo.displayRect.top).assertEqual(0)
+            expect(rotationInfo.displayRect.width).assertEqual(displayInfo.width);
+            expect(rotationInfo.displayRect.height).assertEqual(displayInfo.height);
+            return rotationResult;
+          }
+        }
+        subWindowClass.on('rotationChange', rotationCallback);
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+        await sleep(4000);
+        let subWindowProperties3 = subWindowClass.getWindowProperties()
+        console.error(`${caseName} :subWindowProperties3.windowRect 3: ${JSON.stringify(subWindowProperties3.windowRect)}`);
+        expect(subWindowProperties3.windowRect.left).assertEqual(200);
+        expect(subWindowProperties3.windowRect.top).assertEqual(200);
+        expect(subWindowProperties3.windowRect.width).assertEqual(subWindowLimits.minWidth);
+        expect(subWindowProperties3.windowRect.height).assertEqual(subWindowLimits.minHeight);
+        subWindowClass.off('rotationChange', rotationCallback);
+        await subWindowClass.destroyWindow();
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        done();
       } catch (err) {
         console.error(`${caseName} :Failed . Cause code: ${err.code}, message: ${err.message}`);
         await subWindowClass.destroyWindow()
