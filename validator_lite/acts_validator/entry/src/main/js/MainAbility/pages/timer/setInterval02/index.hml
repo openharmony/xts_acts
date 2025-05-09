@@ -25,7 +25,7 @@ limitations under the License.
 
     <div class="bottom-operate">
         <input type="button" class="button-operate" value="startInterval" onclick="startInterval" />
-        <input type="button" class="button-operate" value="clearInterval" onclick="clearInterval" />
+        <input type="button" class="button-operate" value="clearInterval" onclick="clearTimer" />
     </div>
 
     <div class="bottom-bt">
