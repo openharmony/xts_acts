@@ -180,13 +180,14 @@ export default function AtomicsAPIThirdlyTest() {
           if (sliceView.length > 0) {
             Atomics.add(sliceView, 0, 1);
           }
+
+          expect(sliceView[0]).assertEqual(1374389536);
         }
         let endTime: number = Date.now();
         console.info(`${caseName}: Completed 1000 iterations in ${endTime - startTime} ms with total sum: ${totalSum}`);
-        expect(true).assertTrue();
+        expect(totalSum).assertEqual(2448729166000);
       } catch (error) {
         console.error(`${caseName} Test failed: ${error}`);
-        expect(true).assertTrue();
       } finally {
         console.info(`${caseName} test end`);
         Done();

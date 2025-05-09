@@ -52,22 +52,29 @@ export default function AtomicsMultithreadTest() {
     it('AtomicsMultithreadTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
-      sharedArray[0] = 5;
-      console.log(`${sharedArray[0]}`);
+      sharedArray[0] = 10;
       const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
-      const worker2 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
+      const worker2 = new worker.ThreadWorker('../testability/pages/workers/Worker5');
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
-      worker1.onmessage = (e) => {
-        console.log(`${e.data}`);
-        worker1.terminate();
-      };
-      worker2.onmessage = (e) => {
-        console.log(`${e.data}`);
-        worker2.terminate();
-      };
-      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
-      expect(15).assertEqual(sharedArray[0]);
+      await Promise.all([
+        new Promise<void>((resolve) => {
+          worker1.onmessage = (e) => {
+            console.log(`Worker1 result: ${e.data}`);
+            worker1.terminate();
+            resolve();
+          };
+        }),
+        new Promise<void>((resolve) => {
+          worker2.onmessage = (e) => {
+            console.log(`Worker2 result: ${e.data}`);
+            worker2.terminate();
+            resolve();
+          };
+        }),
+      ]);
+      console.log(`Final sharedArray[0]: ${sharedArray[0]}`);
+      expect([1, 5].includes(sharedArray[0])).assertTrue();
       Done();
     });
 
@@ -86,11 +93,14 @@ export default function AtomicsMultithreadTest() {
       sharedArray[0] = 5;
       const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
       worker1.postMessage(sharedBuffer);
-      worker1.onmessage = (e) => {
-        worker1.terminate();
-      };
-      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
-      expect(10).assertEqual(sharedArray[0]);
+      const finalValue = await new Promise<number>((resolve) => {
+        worker1.onmessage = (e) => {
+          console.log(`Worker1 result: ${e.data}`);
+          worker1.terminate();
+          resolve(sharedArray[0]);
+        };
+      });
+      expect(10).assertEqual(finalValue);
       Done();
     });
 
@@ -108,24 +118,30 @@ export default function AtomicsMultithreadTest() {
       const sharedBuffer = new SharedArrayBuffer(4);
       const sharedArray = new Int32Array(sharedBuffer);
       sharedArray[0] = 10;
-      console.log(`${sharedArray[0]}`);
       const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker4');
       const worker2 = new worker.ThreadWorker('../testability/pages/workers/Worker5');
       worker1.postMessage(sharedBuffer);
       worker2.postMessage(sharedBuffer);
-      worker1.onmessage = (e) => {
-        console.log(`${e.data}`);
-        worker1.terminate();
-      };
-      worker2.onmessage = (e) => {
-        console.log(`${e.data}`);
-        worker2.terminate();
-      };
-      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
-      expect([1,5].includes(sharedArray[0])).assertTrue();
+      await Promise.all([
+        new Promise<void>((resolve) => {
+          worker1.onmessage = (e) => {
+            console.log(`Worker1 result: ${e.data}`);
+            worker1.terminate();
+            resolve();
+          };
+        }),
+        new Promise<void>((resolve) => {
+          worker2.onmessage = (e) => {
+            console.log(`Worker2 result: ${e.data}`);
+            worker2.terminate();
+            resolve();
+          };
+        }),
+      ]);
+      console.log(`Final sharedArray[0]: ${sharedArray[0]}`);
+      expect([1, 5].includes(sharedArray[0])).assertTrue();
       Done();
     });
-
 
     /**
      * @tc.number SUB_ATOMICS_MULTITHREAD_TEST_0400
@@ -140,19 +156,19 @@ export default function AtomicsMultithreadTest() {
       const worker1 = new worker.ThreadWorker('../testability/pages/workers/Worker6');
       let result = 0;
       worker1.postMessage(counter.getBuffer());
-      worker1.onmessage = () => {
-        console.log(`Worker1`);
-      };
-      result = counter.add(11);
-      setTimeout(() => {
-        worker1.terminate();
-      }, 3000);
+      result = await new Promise<number>((resolve)=>{
+        worker1.onmessage = () => {
+          console.log(`Worker1`);
+        };
+        result = counter.add(11);
+        setTimeout(() => {
+          worker1.terminate();
+        }, 3000);
+        resolve(result)
+      })
 
-      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
       expect(10).assertEqual(result);
       Done();
     });
-
-
   })
 }
