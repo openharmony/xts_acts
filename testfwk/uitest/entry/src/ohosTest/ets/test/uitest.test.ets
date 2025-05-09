@@ -409,7 +409,7 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
             try {
-                await driver.crownRotate(300);
+                await driver.crownRotate(-300);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('toast'));
                 await driver.delayMs(1000);
@@ -432,7 +432,7 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
             try {
-                await driver.crownRotate(300, 50);
+                await driver.crownRotate(-300, 50);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('toast'));
                 await driver.delayMs(1000);
