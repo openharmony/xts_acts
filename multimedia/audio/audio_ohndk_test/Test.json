@@ -1,7 +1,7 @@
 {
     "description": "Config for ohaudio ndk test cases",
     "driver": {
-        "module-name": "ActsOhaudioNdkTest",
+        "module-name": "ActsAudioNdkTest",
         "native-test-timeout": "300000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "1s",
@@ -17,7 +17,7 @@
                 "mkdir -p /data/local/tmp/"
             ],
             "push": [
-                "ActsOhaudioNdkTest->/data/local/tmp/ActsOhaudioNdkTest"
+                "ActsAudioNdkTest->/data/local/tmp/ActsAudioNdkTest"
             ]
         },
         {

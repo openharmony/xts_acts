@@ -25,7 +25,7 @@ constexpr int32_t CHANNEL_2 = 2;
 
 namespace OHOS {
 namespace AudioStandard {
-class ActsOhAudioNdkTest : public testing::Test {
+class ActsAudioNdkTest : public testing::Test {
 public:
     // SetUpTestCase: Called before all test cases
     static void SetUpTestCase(void);

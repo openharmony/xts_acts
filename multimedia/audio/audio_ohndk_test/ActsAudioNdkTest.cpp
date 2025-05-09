@@ -16,7 +16,7 @@
 #include <mutex>
 #include <chrono>
 #include <thread>
-#include "ActsOhaudioNdkTest.h"
+#include "ActsAudioNdkTest.h"
 
 using namespace std::chrono;
 using namespace testing::ext;
@@ -35,15 +35,15 @@ static int32_t AudioRendererOnWriteData(OH_AudioRenderer* renderer,
     return 0;
 }
 
-void ActsOhAudioNdkTest::SetUpTestCase(void) { }
+void ActsAudioNdkTest::SetUpTestCase(void) { }
 
-void ActsOhAudioNdkTest::TearDownTestCase(void) { }
+void ActsAudioNdkTest::TearDownTestCase(void) { }
 
-void ActsOhAudioNdkTest::SetUp(void) { }
+void ActsAudioNdkTest::SetUp(void) { }
 
-void ActsOhAudioNdkTest::TearDown(void) { }
+void ActsAudioNdkTest::TearDown(void) { }
 
-OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateRenderBuilder()
+OH_AudioStreamBuilder* ActsAudioNdkTest::CreateRenderBuilder()
 {
     OH_AudioStreamBuilder* builder;
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
@@ -56,9 +56,9 @@ OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateRenderBuilder()
 * @tc.number: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_GetUnderflowCount_0100
 * @tc.desc  : Test OH_AudioRenderer_GetUnderflowCount interface.
 */
-HWTEST(ActsOhAudioNdkTest, SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_GetUnderflowCount_0100, TestSize.Level0)
+HWTEST(ActsAudioNdkTest, SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_GetUnderflowCount_0100, TestSize.Level0)
 {
-    OH_AudioStreamBuilder* builder = ActsOhAudioNdkTest::CreateRenderBuilder();
+    OH_AudioStreamBuilder* builder = ActsAudioNdkTest::CreateRenderBuilder();
 
     OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLE_RATE_48000);
     OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_2);

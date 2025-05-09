@@ -110,6 +110,10 @@ function displayDeviceProp(value: ESObject, index: number, array: ESObject) {
     devTypeName = 'REMOTE_CAST';
   } else if (value.deviceType == audio.DeviceType.USB_DEVICE) {
     devTypeName = 'USB_DEVICE';
+  } else if (value.deviceType == audio.DeviceType.HDMI) {
+    devTypeName = 'HDMI';
+  } else if (value.deviceType == audio.DeviceType.LINE_DIGITAL) {
+    devTypeName = 'LINE_DIGITAL';
   } else if (value.deviceType == audio.DeviceType.REMOTE_DAUDIO) {
     devTypeName = 'REMOTE_DAUDIO';
   } else if (value.deviceType == audio.DeviceType.DEFAULT) {
