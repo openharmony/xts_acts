@@ -129,7 +129,31 @@ export default function AxisEvent() {
       let obj11: ESObject = JSON.parse(text10);
       console.log('AxisEvent_0100 obj11 $attrs content',obj11.$attrs.content,obj11)
       expect(obj11.$attrs.content).not().assertEqual('init');
-      
+
+      let text12 = getInspectorByKey('None');
+      let obj12: ESObject = JSON.parse(text12);
+      console.log('AxisEvent_0100 obj11 $attrs content',obj11.$attrs.content,obj11)
+      expect(obj12.$attrs.content).not().assertEqual('init');
+
+      let text13 = getInspectorByKey('Begin');
+      let obj13: ESObject = JSON.parse(text13);
+      console.log('AxisEvent_0100 obj11 $attrs content',obj11.$attrs.content,obj11)
+      expect(obj13.$attrs.content).not().assertEqual('init');
+
+      let text14 = getInspectorByKey('UPDATE');
+      let obj14: ESObject = JSON.parse(text10);
+      console.log('AxisEvent_0100 obj14 $attrs content',obj11.$attrs.content,obj11)
+      expect(obj14.$attrs.content).not().assertEqual('init');
+
+      let text15 = getInspectorByKey('Cancel');
+      let obj15: ESObject = JSON.parse(text15);
+      console.log('AxisEvent_0100 obj11 $attrs content',obj11.$attrs.content,obj11)
+      expect(obj15.$attrs.content).not().assertEqual('init');
+
+      let text16 = getInspectorByKey('END');
+      let obj16: ESObject = JSON.parse(text15);
+      console.log('AxisEvent_0100 obj16 $attrs content',obj16.$attrs.content,obj11)
+      expect(obj16.$attrs.content).not().assertEqual('init');
       console.info('AxisEvent_0100 END');
       done();
     });
