@@ -13889,9 +13889,9 @@ export default function napiApiTest() {
     it('testNapiWrapEnhanceTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('testNapiCheckObjectTypeTagTest0001 START');
       try {
-        let value = napitest.NapiWrapEnhanceTest();
+        let value:number = napitest.NapiWrapEnhanceTest();
         console.info('NapiWrapEnhanceTest value is: ' + value);
-        expect(value).assertEqual(true);
+        expect(value).assertEqual(1);
       } catch (err) {
         console.error('NapiWrapEnhanceTest err msg' + err.message);
         expect().assertFail();
