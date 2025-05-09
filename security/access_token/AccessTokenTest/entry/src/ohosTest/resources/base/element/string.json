@@ -15,6 +15,10 @@
     {
       "name": "description_application",
       "value": "description"
+    },
+    {
+      "name": "usePermission_desc",
+      "value": "use for xts"
     }
   ]
 }
