@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -20,7 +21,7 @@ struct Index {
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
   }
-
+  private context = getContext(this) as common.UIAbilityContext;
   @State message: string = 'Hello World';
 
   build() {
@@ -30,7 +31,7 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Button() {
-          Text('next page')
+          Text('show font')
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
         }
@@ -42,6 +43,11 @@ struct Index {
         .width('35%')
         .height('5%')
         .onClick(() => {
+          try {
+            console.log("zhuhan font" + this.context.config.fontSizeScale)
+          } catch(e) {
+            console.log("zhuhan err" + e.code);
+          }
         })
       }
       .width('100%')
