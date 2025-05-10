@@ -6,6 +6,7 @@
     "pages/ArkUI/CanvasFillStyle",
     "pages/ArkUI/LongPressGesture",
     "pages/ArkUI/PanGesture",
+    "pages/ArkUI/KeyEvent",
     "pages/ArkUI/PinchGestureTest",
     "pages/ArkUI/RotationGestureTest",
     "pages/ArkUI/SwipeGestureTest",
