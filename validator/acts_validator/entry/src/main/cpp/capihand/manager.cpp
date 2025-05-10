@@ -69,6 +69,7 @@ static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 static ArkUI_NodeHandle showContent = nullptr;
 static ArkUI_NodeHandle textInput = nullptr;
 static ArkUI_NativeGestureAPI_1 *gestureApi = nullptr;
+static int32_t HandResult = 0;
 
 
 struct AA {
@@ -261,13 +262,18 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
 
             ArkUI_NumberValue button_widthValue[] = {200};
             ArkUI_AttributeItem button_widthItem = {button_widthValue, 1};
-            ArkUI_NumberValue button_heightValue1[] = {200};
+            ArkUI_NumberValue button_heightValue1[] = {60};
             ArkUI_AttributeItem button_heightItem1 = {button_heightValue1, 1};
             ArkUI_NumberValue button_focusable[] = {{.i32 = true}};
             ArkUI_AttributeItem button_focusableItem = {button_focusable, 1};
             ArkUI_NumberValue button_defaultFocus[] = {{.i32 = true}};
             ArkUI_AttributeItem button_defaultFocusItem = {button_defaultFocus, 1};
 
+            auto scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
+            nodeAPI->setAttribute(scroll, NODE_WIDTH, &widthItem);
+            nodeAPI->setAttribute(scroll, NODE_HEIGHT, &heightItem1);
+            nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &colorItem);
+            
             auto stack = nodeAPI->createNode(ARKUI_NODE_COLUMN);
             nodeAPI->setAttribute(stack, NODE_WIDTH, &widthItem);
             nodeAPI->setAttribute(stack, NODE_HEIGHT, &heightItem1);
@@ -284,7 +290,26 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
             nodeAPI->setAttribute(innerColumn, NODE_WIDTH, &width1Item);
             nodeAPI->setAttribute(innerColumn, NODE_HEIGHT, &height1Item1);
             nodeAPI->setAttribute(innerColumn, NODE_BACKGROUND_COLOR, &color1Item);
-            nodeAPI->addChild(stack, innerColumn);
+            auto innerList = nodeAPI->createNode(ARKUI_NODE_SCROLL);
+            nodeAPI->setAttribute(innerList, NODE_WIDTH, &width1Item);
+            nodeAPI->setAttribute(innerList, NODE_HEIGHT, &height1Item1);
+            nodeAPI->setAttribute(innerList, NODE_BACKGROUND_COLOR, &color1Item);
+            ArkUI_NumberValue value[] = {20};
+            ArkUI_AttributeItem item = {value, 1};
+            nodeAPI->setAttribute(innerList, NODE_SCROLL_BAR_WIDTH, &item);
+            nodeAPI->addChild(stack, innerList);
+            nodeAPI->addChild(innerList, innerColumn);
+            
+            ArkUI_NumberValue widthTextValue[] = {200};
+            ArkUI_AttributeItem widthTextItem = {widthTextValue, 1};
+            ArkUI_NumberValue heightTextValue1[] = {60};
+            ArkUI_AttributeItem heighTextItem1 = {heightTextValue1, 1};
+            auto text = nodeAPI->createNode(ARKUI_NODE_TEXT);
+            nodeAPI->setAttribute(text, NODE_WIDTH, &widthTextItem);
+            nodeAPI->setAttribute(text, NODE_HEIGHT, &heighTextItem1);
+            nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &color1Item);
+            ArkUI_AttributeItem textContent = {.string = "0"};
+            nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &textContent);
 
             auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
             ArkUI_AttributeItem LABEL_Item4 = {.string = "单一手势+onTouch"};
@@ -327,6 +352,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
             ArkUI_AttributeItem button_color1Item5 = {button_color1Value5, 1};
             nodeAPI->setAttribute(button5, NODE_BACKGROUND_COLOR, &button_color1Item5);
             nodeAPI->addChild(innerColumn, button5);
+            nodeAPI->addChild(innerColumn, text);
             
             
 
@@ -347,6 +373,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                         ArkUI_InteractionHand hand1, hand2;
                         auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(uiInputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(uiInputEvent, &hand2);
+                        HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                             "handEvent click event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
                         break;
@@ -380,6 +407,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                             "handEvent pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
             };
@@ -403,6 +431,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent tap1 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -414,6 +443,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent Swipe event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -425,6 +455,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent tap2 event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -437,6 +468,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -449,6 +481,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent rotate event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -461,6 +494,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent pinch event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -529,6 +563,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent PARALLEL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -541,6 +576,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                             "handEvent PARALLEL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
             };
@@ -551,6 +587,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent EXCLUSIVE long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -563,6 +600,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                             "handEvent EXCLUSIVE pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
             };
@@ -573,6 +611,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1 = OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                 auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                 OH_LOG_Print(
                     LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                     "handEvent SEQUENTIAL long event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d",
@@ -585,6 +624,7 @@ napi_value Manager::CreateNativeNode(napi_env env, napi_callback_info info) {
                 ArkUI_InteractionHand hand1, hand2;
                 auto res1= OH_ArkUI_PointerEvent_GetInteractionHandByIndex(inputEvent, 0, &hand1);
                         auto res2 = OH_ArkUI_PointerEvent_GetInteractionHand(inputEvent, &hand2);
+                HandResult = res2;
                         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
                             "handEvent SEQUENTIAL pan event hand1=%{public}d result1=%{public}d, hand2=%{public}d  result1=%{public}d", hand1,res1, hand2, res2);
             };
@@ -799,9 +839,20 @@ void Manager::SetNativeXComponent(std::string &id, OH_NativeXComponent *nativeXC
         nativeXComponentMap_[id] = nativeXComponent;
         return;
     }
+
+    if (nativeXComponentMap_[id] != nativeXComponent) {
+        OH_NativeXComponent *tmp = nativeXComponentMap_[id];
+        tmp = nullptr;
+        nativeXComponentMap_[id] = nativeXComponent;
+    }
 }
 
-OH_NativeXComponent *Manager::GetNativeXComponent(const std::string &id) { return nativeXComponentMap_[id]; }
+OH_NativeXComponent *Manager::GetNativeXComponent(const std::string &id) {
+    if (nativeXComponentMap_.find(id) == nativeXComponentMap_.end()) {
+        return nullptr;
+    }
+    return nativeXComponentMap_[id];
+}
 
 Container *Manager::GetContainer(std::string &id) {
     if (containerMap_.find(id) == containerMap_.end()) {
