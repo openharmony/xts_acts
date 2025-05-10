@@ -149,7 +149,7 @@ export default function geolocationTest_6(){
         })
     
     
-        it('SUB_HSS_LocationSystem_BatchingErr_0801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+        it('SUB_HSS_LocationSystem_BatchingErr_0801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
             console.info("SUB_HSS_LocationSystem_BatchingErr_0801 : " + isAcessToken);
             if (!isAcessToken) {
@@ -163,10 +163,11 @@ export default function geolocationTest_6(){
                     console.info("[lbs_js] cacheOn8 try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
                     expect(error.code).assertEqual("401");
                 }
+                done();
             }
         })
         
-        it('SUB_HSS_LocationSystem_BatchingErr_0901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+        it('SUB_HSS_LocationSystem_BatchingErr_0901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
             var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
             console.info("SUB_HSS_LocationSystem_BatchingErr_0901 : " + isAcessToken);
             if (!isAcessToken) {
@@ -180,6 +181,7 @@ export default function geolocationTest_6(){
                     console.info("[lbs_js] cacheOff9 try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
                     expect(error.code).assertEqual("801");
                 }
+                done();
             }
         })
     
