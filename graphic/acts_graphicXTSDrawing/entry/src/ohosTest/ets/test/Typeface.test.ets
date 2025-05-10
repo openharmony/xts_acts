@@ -394,7 +394,6 @@ export default function typefaceTest() {
     it('testTypeFaceMakeFromCurrentNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, () => {
       const msg = 'testTypeFaceMakeFromCurrentNormal';
       let typeArguments = new drawing.TypefaceArguments();
-      let mytypeface = drawing.Typeface.makeFromFile(str);
       let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
       try {
         let  typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
@@ -426,7 +425,6 @@ export default function typefaceTest() {
       const msg = 'testTypeFaceMakeFromCurrentMultipleCalls';
       for (let i = 0; i < 20; i++) {
         let typeArguments = new drawing.TypefaceArguments();
-        let mytypeface = drawing.Typeface.makeFromFile(str);
         let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
         try {
           let  typeFace1 = myTypeFace.makeFromCurrent(typeArguments)
@@ -448,6 +446,8 @@ export default function typefaceTest() {
      */
     it('testTypeFaceMakeFromCurrentNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromCurrentNull';
+      let typeArguments = new drawing.TypefaceArguments();
+      let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
       try {
         let typeFace1 = myTypeFace.makeFromCurrent(null);
         expect().assertFail();
@@ -571,7 +571,7 @@ export default function typefaceTest() {
         console.info(msg + ` makeFromFileWithArguments mytypeface1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
       }
       try {
-        let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments($r('image.png'), typeFaceArgument);
+        let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments($r('app.boolean.apptest1'), typeFaceArgument);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
