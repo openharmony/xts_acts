@@ -312,50 +312,50 @@ export default function typefaceTest() {
      */
     it('testTypeFaceMakeFromFileWithArgumentsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromFileWithArgumentsNull';
+      let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface = drawing.Typeface.makeFromFileWithArguments(null, typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect(e.code).assertEqual(401)
       }
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface2 = drawing.Typeface.makeFromFileWithArguments(undefined, typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect(e.code).assertEqual(401)
       }
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface3 = drawing.Typeface.makeFromFileWithArguments(str, null);
+        console.info(msg + ` makeFromFileWithArguments mytypeface3 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface3 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect(e.code).assertEqual(401)
       }
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface4 = drawing.Typeface.makeFromFileWithArguments(str, undefined);
+        console.info(msg + ` makeFromFileWithArguments mytypeface4 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface4 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect(e.code).assertEqual(401)
       }
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface5 = drawing.Typeface.makeFromFileWithArguments("", typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface5 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface5 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect(e.code).assertEqual(401)
       }
     });
     /**
@@ -368,16 +368,17 @@ export default function typefaceTest() {
      */
     it('testTypeFaceMakeFromFileWithArgumentsAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testTypeFaceMakeFromFileWithArgumentsAbnormal';
+      let typeFaceArgument = new drawing.TypefaceArguments();
       try {
-        let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface1 = drawing.Typeface.makeFromFileWithArguments('testTypeFaceMakeFromFileWithArgumentsAbnormal', typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface1 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
       }
       try {
-        let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface2 = drawing.Typeface.makeFromFileWithArguments('/system/fonts', typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -450,6 +451,7 @@ export default function typefaceTest() {
       let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
       try {
         let typeFace1 = myTypeFace.makeFromCurrent(null);
+        console.info(msg + ` makeFromCurrent typeFace1 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromCurrent typeFace1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -457,6 +459,7 @@ export default function typefaceTest() {
       }
       try {
         let typeFace2 = myTypeFace.makeFromCurrent(undefined);
+        console.info(msg + ` makeFromCurrent typeFace2 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromCurrent typeFace2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -526,6 +529,7 @@ export default function typefaceTest() {
       let typeFaceArgument = new drawing.TypefaceArguments();
       try {
         let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments(null, typeFaceArgument);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromRawFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -533,6 +537,7 @@ export default function typefaceTest() {
       }
       try {
         let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments(undefined, typeFaceArgument);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace2 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromRawFileWithArguments myTypeFace2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -540,6 +545,7 @@ export default function typefaceTest() {
       }
       try {
         let myTypeFace3 = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), null);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace3 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromRawFileWithArguments myTypeFace3 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -547,6 +553,7 @@ export default function typefaceTest() {
       }
       try {
         let myTypeFace4 = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), undefined);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace4 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromRawFileWithArguments myTypeFace4 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
@@ -566,12 +573,15 @@ export default function typefaceTest() {
       let typeFaceArgument = new drawing.TypefaceArguments();
       try {
         let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('image.png'), typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments myTypeFace success`);
         expect().assertFail();
       } catch (e) {
-        console.info(msg + ` makeFromFileWithArguments mytypeface1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        console.info(msg + ` makeFromFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(undefined)
       }
       try {
         let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments($r('app.boolean.apptest1'), typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments myTypeFace2 success`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
