@@ -353,7 +353,7 @@ export default function typefaceTest() {
         let typeFaceArgument = new drawing.TypefaceArguments();
         let mytypeface5 = drawing.Typeface.makeFromFileWithArguments("", typeFaceArgument);
         console.info(msg + ` makeFromFileWithArguments mytypeface5 success`);
-        expect(mytypeface5).assertEqual(null);
+        expect(mytypeface5).assertEqual(undefined);
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface5 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect().assertFail();
@@ -373,7 +373,7 @@ export default function typefaceTest() {
       try {
         let mytypeface1 = drawing.Typeface.makeFromFileWithArguments('testTypeFaceMakeFromFileWithArgumentsAbnormal', typeFaceArgument);
         console.info(msg + ` makeFromFileWithArguments mytypeface1 success`);
-        expect(mytypeface1).assertEqual(null);
+        expect(mytypeface1).assertEqual(undefined);
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect().assertFail();
@@ -381,7 +381,7 @@ export default function typefaceTest() {
       try {
         let mytypeface2 = drawing.Typeface.makeFromFileWithArguments('/system/fonts', typeFaceArgument);
         console.info(msg + ` makeFromFileWithArguments mytypeface2 success`);
-        expect(mytypeface2).assertEqual(null);
+        expect(mytypeface2).assertEqual(undefined);
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect().assertFail();
@@ -577,7 +577,7 @@ export default function typefaceTest() {
       try {
         let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('image.png'), typeFaceArgument);
         console.info(msg + ` makeFromFileWithArguments myTypeFace success`);
-        expect(myTypeFace).assertEqual(null)
+        expect(myTypeFace).assertEqual(undefined)
       } catch (e) {
         console.info(msg + ` makeFromFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
         expect().assertFail();
