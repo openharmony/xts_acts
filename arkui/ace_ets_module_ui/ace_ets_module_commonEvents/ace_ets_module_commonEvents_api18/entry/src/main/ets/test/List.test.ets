@@ -15,6 +15,8 @@
 
 import onVisiable from './onVisiable/onVisiable.test';
 import panGestureOnOffTest from './PanGesture/panGestureOnOff.test';
+import panGestureDistanceTest from './PanGesture/panGestureDistance.test';
+import InteractionEventBindingInfoTest from './InteractionEventBindingInfo/InteractionEventBindingInfo.test';
 import PreDrag from './Drag/PreDrag.test';
 import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoScroll_false.test';
 import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
@@ -33,6 +35,8 @@ import TapRecognizer from './GestureRecognizer/TapRecognizer.test';
 export default function testsuite() {
   onVisiable();
   panGestureOnOffTest();
+  panGestureDistanceTest();
+  InteractionEventBindingInfoTest();
   PreDrag();
   enableEdgeAutoScroll_false();
   enableEdgeAutoScroll_true();

@@ -3,6 +3,8 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/onVisiable/onVisiable",
         "MainAbility/pages/PanGesture/panGestureOnOff",
+        "MainAbility/pages/PanGesture/panGestureDistance",
+        "MainAbility/pages/InteractionEventBindingInfo/InteractionEventBindingInfo",
         "MainAbility/pages/Drag/PreDrag",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_false",
         "MainAbility/pages/DragInteractionOptions/enableEdgeAutoScroll_true",
