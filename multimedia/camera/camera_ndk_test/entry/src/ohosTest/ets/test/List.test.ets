@@ -33,6 +33,7 @@ import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.t
 import CameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test';
 import CameraSessionQualityPrioritizationTest from './CameraSessionQualityPrioritizationTest.test'
 import VideoMirrorTest from './VideoMirror.test'
+import CameraSessionMacroTest from './CameraSessionMacroTest.test'
 
 let voice = call.hasVoiceCapability()
 
@@ -43,6 +44,7 @@ export default function testsuite() {
   SecureCameraTest();
   CameraManagerTest();
   VideoMirrorTest();
+  CameraSessionMacroTest();
 
   if (voice){
     CameraSessionExposureTest();

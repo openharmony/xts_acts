@@ -3009,3 +3009,34 @@ Camera_ErrorCode NDKCamera::GetCameraConcurrentInfos(int useCaseCode)
     CreateCameraInput();
     return ret_;
 }
+
+Camera_ErrorCode NDKCamera::SessionIsMacroSupported(int useCaseCode)
+{
+    LOG("isMacroSupported begin.");
+    if (useCaseCode == PARAMETER_OK) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(captureSession_, &isMacroSupported_);
+        if (ret_ == CAMERA_OK) {
+            LOG("OH_CaptureSession_IsMacroSupported success.");
+        } else {
+            LOG("OH_CaptureSession_IsMacroSupported failed. %d ", ret);
+        }
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(captureSession_, nullptr);
+    } else if (useCaseCode == PARAMETER2_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_IsMacroSupported(nullptr, &isMacroSupported_);
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::SessionEnableMacro(int useCaseCode, bool isEnable)
+{
+    LOG("EnableMacro begin.");
+    if (useCaseCode == PARAMETER_OK){
+        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(captureSession_, isEnable);
+    } else if (useCaseCode == PARAMETER1_ERROR) {
+        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(captureSession_, nullptr);
+    } else {
+        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(nullptr, isEnable);
+    }
+    return ret_;
+}
