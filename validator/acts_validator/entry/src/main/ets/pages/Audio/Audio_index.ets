@@ -166,7 +166,6 @@ struct IndexPage {
             .height('18vp')
         }
         .backgroundColor(Color.Black)
-        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back();
         })
@@ -178,12 +177,13 @@ struct IndexPage {
         }
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor(Color.Black)
+        .size({ width: '40%' , height: '100%' })
 
         Row() {
           Button() {
             Image($r('app.media.ic_public_delete'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
           }
           .backgroundColor(Color.Black)
           .onClick(() => {
@@ -221,8 +221,8 @@ struct IndexPage {
 
           Button() {
             Image($r('app.media.ic_public_save'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
               .margin({ left: 30 })
           }.backgroundColor(Color.Black)
           .onClick(() => {
@@ -249,7 +249,7 @@ struct IndexPage {
       .width('100%')
       .justifyContent(FlexAlign.SpaceAround)
       .margin({ top: '15vp' })
-      .height('6%')
+      .height('22vp')
       .backgroundColor(Color.Black)
 
       List({}) {

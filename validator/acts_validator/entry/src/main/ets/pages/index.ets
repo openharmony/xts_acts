@@ -190,8 +190,8 @@ struct IndexPage {
         Row() {
           Button() {
             Image($r('app.media.ic_public_delete'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
           }.backgroundColor(Color.Black)
           .onClick(() => {
             AlertDialog.show(
@@ -221,8 +221,8 @@ struct IndexPage {
 
           Button() {
             Image($r('app.media.ic_public_save'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
               .margin({ left: 30 })
           }.backgroundColor(Color.Black)
           .onClick(() => {
@@ -245,7 +245,7 @@ struct IndexPage {
             })
           })
         }
-      }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({ top: '15vp' }).height('6%')
+      }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({ top: '15vp' }).height('22vp')
 
       List({}) {
         ForEach(this.TestCaseList, (item: TestCase, index: number) => {
