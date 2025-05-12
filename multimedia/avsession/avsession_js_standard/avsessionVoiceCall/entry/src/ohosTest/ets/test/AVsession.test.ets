@@ -1419,6 +1419,8 @@ export default function abilityTest() {
       };
       session.setAVPlaybackState(PlaybackState).then(() => {
         console.info('SetAVPlaybackState successfully');
+        expect(true).assertTrue();
+        done()
       }).catch((err: BusinessError) => {
         console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
       });
