@@ -67,7 +67,7 @@ export default function geolocationPermissionsErrorCode() {
    * @tc.desc       : test accessibleGeolocation error
    * @tc.size       : MEDIUM
    * @tc.type       : Function
-   * @tc.level      : Level 2
+   * @tc.level      : Level 0
    */
     it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError001", 10)
