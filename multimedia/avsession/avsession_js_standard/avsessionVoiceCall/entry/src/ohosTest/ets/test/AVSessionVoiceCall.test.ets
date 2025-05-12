@@ -27,7 +27,7 @@ let sleep = (ms: number): Promise<string> => {
   })
 }
 
-interface Size {
+interface Size_Pixel {
   height: number,
   width: number
 }
@@ -35,7 +35,7 @@ interface Size {
 interface Opts {
   editable: boolean,
   pixelFormat: number,
-  size: Size,
+  size: Size_Pixel,
   AlphaType: number
 };
 
