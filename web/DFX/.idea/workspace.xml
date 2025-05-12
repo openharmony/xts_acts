@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="486e5a6a-a03c-45e5-8d8e-f9c607984b25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../security/huks/huks_js_api9/entry/src/ohosTest/js/test/SecurityHuksSignVerifyED25519PromiseJsunit.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../security/huks/huks_js_api9/entry/src/ohosTest/js/test/SecurityHuksSignVerifyED25519PromiseJsunit.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log_dotting_five/entry/src/ohosTest/ets/test/Ability.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/log_dotting_five/entry/src/ohosTest/ets/test/Ability.test.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log_dotting_one/entry/src/ohosTest/ets/test/webViewContCookieToGeoLocationError.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/log_dotting_one/entry/src/ohosTest/ets/test/webViewContCookieToGeoLocationError.test.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log_dotting_two/entry/src/ohosTest/ets/test/GeolocationPermissionsErrorCode.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/log_dotting_two/entry/src/ohosTest/ets/test/GeolocationPermissionsErrorCode.test.ets" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2wzTaWcZXpMwlCnm8wbPGRMdHlS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "settings.editor.selected.configurable": "com.huawei.deveco.sdkmanager.idea.ui.SdkConfigProvider"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>
