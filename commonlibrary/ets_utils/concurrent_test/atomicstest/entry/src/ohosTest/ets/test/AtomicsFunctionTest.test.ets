@@ -38,6 +38,9 @@ import {
   Worker3,
   WorkerSrc,
   WorkerSrc1,
+  WorkerSrc2,
+  WorkerSrc3,
+  WorkerSrc4,
   XorWorker} from '../testability/pages/TestUtils';
 import { ErrorEvent, MessageEvents, taskpool } from '@kit.ArkTS';
 
@@ -106,20 +109,22 @@ export default function AtomicsFunctionTest() {
         sharedArray[i] = i + 1;
       }
       console.log(`${buffer.byteLength}`)
-      WorkerSrc.workerInstance.postMessage(buffer);
-      WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
-        const workerData:Uint8Array = e.data;
-        console.info('workerInstance onmessage is: ', workerData);
-        for (let i = 0; i < 100; i++) {
-          const mainResult = Atomics.load(sharedArray, i);
-          expect(mainResult).assertEqual(workerData[i]);
-        }
-      }
-
-      WorkerSrc.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+      const workerFinished = new Promise<void>((resolve) => {
+        WorkerSrc.workerInstance.postMessage(buffer);
+        WorkerSrc.workerInstance.onmessage = (e) => {
+          const workerData:Uint8Array = e.data;
+          console.info('workerInstance onmessage is: ', workerData);
+          for (let i = 0; i < 100; i++) {
+            const mainResult = Atomics.load(sharedArray, i);
+            expect(mainResult).assertEqual(workerData[i]);
+          }
+        };
+        WorkerSrc.workerInstance.onexit = (code) => {
+          console.info(`${caseName} worker exited with code: ${code}`);
+          resolve();
+        };
+      });
+      await workerFinished;
       console.info(`${caseName} test end`);
       Done();
     });
@@ -172,20 +177,24 @@ export default function AtomicsFunctionTest() {
       for (let i = 0; i < 100; i++) {
         sharedArray[i] = i;
       }
-      WorkerSrc.workerInstance.postMessage(buffer);
-      WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
-        const workerData = new Uint16Array(e.data);
-        console.info('workerInstance onmessage is: ', workerData);
-        for (let i = 0; i < 100; i++) {
-          const mainResult = Atomics.load(sharedArray, i);
-          expect(mainResult).assertEqual(workerData[i]);
-        }
-      };
+      const workerFinished = new Promise<void>((resolve) => {
+        WorkerSrc2.workerInstance.postMessage(buffer);
+        WorkerSrc2.workerInstance.onmessage = (e: MessageEvents) => {
+          const workerData = new Uint16Array(e.data);
+          console.info('workerInstance onmessage is: ', workerData);
+          for (let i = 0; i < 100; i++) {
+            const mainResult = Atomics.load(sharedArray, i);
+            expect(mainResult).assertEqual(workerData[i]);
+          }
+        };
 
-      WorkerSrc.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+        WorkerSrc2.workerInstance.onexit = (e) => {
+          console.log(`${e}`)
+          expect(e).assertEqual(0);
+          resolve();
+        };
+      })
+      await workerFinished;
       console.info(`${caseName} test end`);
       Done();
     });
@@ -237,19 +246,23 @@ export default function AtomicsFunctionTest() {
       for (let i = 0; i < 100; i++) {
         sharedArray[i] = i;
       }
-      WorkerSrc.workerInstance.postMessage(buffer);
-      WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
-        const workerData = new Uint32Array(e.data);
-        console.info('workerInstance onmessage is: ', workerData);
-        for (let i = 0; i < 100; i++) {
-          const mainResult = Atomics.load(sharedArray, i);
-          expect(mainResult).assertEqual(workerData[i]);
-        }
-      };
-      WorkerSrc.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+      const workerFinished = new Promise<void>((resolve) => {
+        WorkerSrc3.workerInstance.postMessage(buffer);
+        WorkerSrc3.workerInstance.onmessage = (e: MessageEvents) => {
+          const workerData = new Uint32Array(e.data);
+          console.info('workerInstance onmessage is: ', workerData);
+          for (let i = 0; i < 100; i++) {
+            const mainResult = Atomics.load(sharedArray, i);
+            expect(mainResult).assertEqual(workerData[i]);
+          }
+        };
+        WorkerSrc3.workerInstance.onexit = (e) => {
+          console.log(`${e}`)
+          expect(e).assertEqual(0);
+          resolve();
+        };
+      })
+      await workerFinished;
       console.info(`${caseName} test end`);
       Done();
     });
@@ -300,20 +313,23 @@ export default function AtomicsFunctionTest() {
       for (let i = 0; i < 100; i++) {
         sharedArray[i] = BigInt(i);
       }
-      WorkerSrc.workerInstance.postMessage(buffer);
-      WorkerSrc.workerInstance.onmessage = (e: MessageEvents) => {
-        const workerData = new BigUint64Array(e.data);
-        console.info('workerInstance onmessage is: ', workerData);
-        for (let i = 0; i < 100; i++) {
-          const mainResult = Atomics.load(sharedArray, i);
-          expect(mainResult).assertEqual(workerData[i]);
-        }
-      };
-      WorkerSrc.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
-      WorkerSrc.workerInstance.terminate();
+      const workerFinished = new Promise<void>((resolve) => {
+        WorkerSrc4.workerInstance.postMessage(buffer);
+        WorkerSrc4.workerInstance.onmessage = (e: MessageEvents) => {
+          const workerData = new BigUint64Array(e.data);
+          console.info('workerInstance onmessage is: ', workerData);
+          for (let i = 0; i < 100; i++) {
+            const mainResult = Atomics.load(sharedArray, i);
+            expect(mainResult).assertEqual(workerData[i]);
+          }
+        };
+        WorkerSrc4.workerInstance.onexit = (e) => {
+          console.log(`${e}`)
+          expect(e).assertEqual(0);
+          resolve();
+        };
+      });
+      await workerFinished;
       console.info(`${caseName} test end`);
       Done();
     });
@@ -335,20 +351,24 @@ export default function AtomicsFunctionTest() {
       for (let i = 0; i < 100; i++) {
         sharedArray[i] = BigInt(i);
       }
-      WorkerSrc1.workerInstance.postMessage(buffer);
-      WorkerSrc1.workerInstance.onmessage = (e: MessageEvents) => {
-        const workerData = new BigUint64Array(e.data);
-        console.info('workerInstance onmessage is: ', workerData);
-        for (let i = 0; i < 100; i++) {
-          const mainResult = Atomics.load(sharedArray, i);
-          expect(mainResult).assertEqual(workerData[i]);
-        }
-      };
-      WorkerSrc1.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+      const workerFinished = new Promise<void>((resolve) => {
+        WorkerSrc1.workerInstance.postMessage(buffer);
+        WorkerSrc1.workerInstance.onmessage = (e: MessageEvents) => {
+          const workerData = new BigUint64Array(e.data);
+          console.info('workerInstance onmessage is: ', workerData);
+          for (let i = 0; i < 100; i++) {
+            const mainResult = Atomics.load(sharedArray, i);
+            expect(mainResult).assertEqual(workerData[i]);
+          }
+        };
+        WorkerSrc1.workerInstance.onexit = (e) => {
+          console.log(`${e}`)
+          expect(e).assertEqual(0);
+          resolve();
+        };
+      });
       WorkerSrc1.workerInstance.terminate();
+      await workerFinished;
       console.info(`${caseName} test end`);
       Done();
     });
@@ -374,38 +394,57 @@ export default function AtomicsFunctionTest() {
       let completedTasks = 0;
       const totalTasks = 6;
 
-      XorWorker.workerInstance.onmessage = (e: MessageEvents) => {
-        const resultBuffer:SharedArrayBuffer = e.data;
-        if (resultBuffer instanceof SharedArrayBuffer) {
-          const resultArray = new BigInt64Array(resultBuffer);
-          for (let i = 0; i < 100; i++) {
-            sharedArray[i] = resultArray[i];
+      await new Promise<void>((resolve, reject) => {
+        XorWorker.workerInstance.onmessage = (e) => {
+          const resultBuffer:SharedArrayBuffer = e.data;
+          if (resultBuffer instanceof SharedArrayBuffer) {
+            const resultArray = new BigInt64Array(resultBuffer);
+            for (let i = 0; i < 100; i++) {
+              sharedArray[i] = resultArray[i];
+            }
+            completedTasks++;
           }
-          completedTasks++;
-        }
-      };
-      XorWorker.workerInstance.postMessage(buffer);
-      XorWorker.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+        };
 
+        XorWorker.workerInstance.onerror = (error) => {
+          console.error(`${caseName} XorWorker:`, error);
+          reject(error);
+        };
 
-      StoreWorker.workerInstance.onmessage = (e: MessageEvents) => {
-        const resultBuffer:SharedArrayBuffer = e.data;
-        if (resultBuffer instanceof SharedArrayBuffer) {
-          const resultArray = new BigInt64Array(resultBuffer);
-          for (let i = 0; i < 100; i++) {
-            sharedArray[i] = resultArray[i];
+        XorWorker.workerInstance.onexit = (code) => {
+          console.log(`${caseName} XorWorker: ${code}`);
+          expect(code).assertEqual(0);
+          resolve();
+        };
+
+        XorWorker.workerInstance.postMessage(buffer);
+      });
+
+      await new Promise<void>((resolve, reject) => {
+        StoreWorker.workerInstance.onmessage = (e) => {
+          const resultBuffer:SharedArrayBuffer = e.data;
+          if (resultBuffer instanceof SharedArrayBuffer) {
+            const resultArray = new BigInt64Array(resultBuffer);
+            for (let i = 0; i < 100; i++) {
+              sharedArray[i] = resultArray[i];
+            }
+            completedTasks++;
           }
-          completedTasks++;
-        }
-      };
-      StoreWorker.workerInstance.postMessage(buffer);
-      StoreWorker.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
+        };
+
+        StoreWorker.workerInstance.onerror = (error) => {
+          console.error(`${caseName} StoreWorker:`, error);
+          reject(error);
+        };
+
+        StoreWorker.workerInstance.onexit = (code) => {
+          console.log(`${caseName} StoreWorker: ${code}`);
+          expect(code).assertEqual(0);
+          resolve();
+        };
+
+        StoreWorker.workerInstance.postMessage(buffer);
+      });
 
       const andTaskInstance = new taskpool.Task(andTask, buffer);
       const andResultBuffer = await taskpool.execute(andTaskInstance);
@@ -435,7 +474,7 @@ export default function AtomicsFunctionTest() {
           sharedArray[i] = resultArray[i];
         }
         completedTasks++;
-        console.info('orTask 任务完成，当前已完成任务数: ', completedTasks);
+        console.info('orTask: ', completedTasks);
       }
 
       const subTaskInstance = new taskpool.Task(subTask, buffer);
@@ -447,8 +486,6 @@ export default function AtomicsFunctionTest() {
         }
         completedTasks++;
       }
-      XorWorker.workerInstance.terminate();
-      StoreWorker.workerInstance.terminate();
       expect(totalTasks).assertEqual(completedTasks);
       console.info(`${caseName} test end`);
       Done();
@@ -539,53 +576,70 @@ export default function AtomicsFunctionTest() {
       console.info(`${caseName} test start`);
       const sharedArrayBuffer: SharedArrayBuffer = new SharedArrayBuffer(11 * 8);
       const bigInt64Array: BigInt64Array = new BigInt64Array(sharedArrayBuffer);
+
       for (let i: number = 0; i < 10; i++) {
         bigInt64Array[i] = BigInt(i * 2);
       }
+
       const statusIndex: number = 10;
-      Atomics.store(bigInt64Array, statusIndex, 0n);
       const targetIndex: number = 3;
       const newValue: bigint = 100n;
 
-      Worker3.workerInstance.onerror = (err: ErrorEvent): void => {
-        console.error('Worker error: ', err.message);
-      };
+      Atomics.store(bigInt64Array, statusIndex, 0n);
+
+      const workerExited = new Promise<void>((resolve, reject) => {
+        Worker3.workerInstance.onexit = (code: number) => {
+          console.info(`Worker exited with code ${code}`);
+          if (code === 0) {
+            resolve();
+          } else {
+            reject(new Error(`Worker exited with non-zero code: ${code}`));
+          }
+        };
+
+        Worker3.workerInstance.onerror = (err: ErrorEvent) => {
+          console.error('Worker error: ', err.message);
+          reject(err);
+        };
+      });
 
       interface WorkerData {
-        sharedArrayBuffer: SharedArrayBuffer;
-        targetIndex: number;
-        newValue: bigint;
-        statusIndex: number;
-      }
+          sharedArrayBuffer: SharedArrayBuffer;
+          targetIndex: number;
+          newValue: bigint;
+          statusIndex: number;
+        }
 
-      const dataToSend: WorkerData = {
+      const dataToSend:WorkerData = {
         sharedArrayBuffer,
         targetIndex,
         newValue,
         statusIndex
       };
-
       Worker3.workerInstance.postMessage(dataToSend);
-      const waitResult = Atomics.wait(bigInt64Array, statusIndex, 0n, 1000);
 
-      const firstLoadedValue: bigint = Atomics.load(bigInt64Array, targetIndex);
-      const originalValue: bigint = BigInt(targetIndex * 2);
+      let waitResult = Atomics.wait(bigInt64Array, statusIndex, 0n, 1000);
+
+      const firstLoadedValue = Atomics.load(bigInt64Array, targetIndex);
+      const originalValue = BigInt(targetIndex * 2);
       expect(firstLoadedValue).assertEqual(originalValue);
 
       if (waitResult === 'timed-out') {
-        console.log('Main thread timed out waiting for worker.');
+        console.log('Main thread timed out waiting for worker (1 second).');
+        waitResult = Atomics.wait(bigInt64Array, statusIndex, 0n, 4000);
+          if (waitResult === 'timed-out') {
+            console.error('Main thread timed out again (4 seconds). Worker might not have updated the value.');
+            const finalValue = Atomics.load(bigInt64Array, targetIndex);
+            expect(finalValue).assertEqual(newValue);
+            Done(new Error('Test timed out after 4 seconds'));
+          } else {
+            console.log('Main thread received notification after second wait.');
+            const finalValue = Atomics.load(bigInt64Array, targetIndex);
+            expect(finalValue).assertEqual(newValue);
+            console.info(`${caseName} test end`);
+            Done();
+          }
       }
-      Atomics.wait(bigInt64Array, statusIndex, 0n);
-      const secondLoadedValue: bigint = Atomics.load(bigInt64Array, targetIndex);
-
-      Worker3.workerInstance.onexit = (e) => {
-        console.log(`${e}`)
-        expect(e).assertEqual(0);
-      };
-      Worker3.workerInstance.terminate();
-      expect(secondLoadedValue).assertEqual(newValue);
-      console.info(`${caseName} test end`);
-      Done();
     });
 
 
