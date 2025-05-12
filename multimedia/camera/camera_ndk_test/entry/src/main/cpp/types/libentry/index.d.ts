@@ -143,7 +143,7 @@ interface autoDeviceSwitchSupportInfo {
 
 interface MacroSupportedinfo {
   errorCode: number;
-  colorSpacesSize: boolean;
+  isMacroSupported: boolean;
 }
 
 export const initCamera: (surfaceId: string) => number;
