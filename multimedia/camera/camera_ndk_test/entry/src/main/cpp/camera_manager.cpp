@@ -3029,8 +3029,6 @@ Camera_ErrorCode NDKCamera::SessionEnableMacro(int useCaseCode, bool isEnable)
     if (useCaseCode == PARAMETER_OK){
         Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(captureSession_, isEnable);
     } else if (useCaseCode == PARAMETER1_ERROR) {
-        Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(captureSession_, nullptr);
-    } else {
         Camera_ErrorCode ret_ = OH_CaptureSession_EnableMacro(nullptr, isEnable);
     }
     return ret_;
