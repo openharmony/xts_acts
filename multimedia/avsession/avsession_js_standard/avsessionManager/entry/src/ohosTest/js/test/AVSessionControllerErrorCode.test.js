@@ -520,7 +520,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
         it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            onCallbackInvalidParam('sessionEvent');
+            try{
+                onCallbackInvalidParam('sessionEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -569,7 +575,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
         it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            await onCallbackInvalidController('sessionEvent')
+            try{
+                await onCallbackInvalidController('sessionEvent')
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
         })
 
@@ -582,7 +594,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            offCallbackInvalidParam('sessionEvent');
+            try{
+                offCallbackInvalidParam('sessionEvent');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -887,7 +905,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            onCallbackInvalidParam('extrasChange');
+            try{
+                onCallbackInvalidParam('extrasChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
 		})
 
@@ -936,7 +960,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_ERRORCODE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            await onCallbackInvalidController('extrasChange')
+            try{
+                await onCallbackInvalidController('extrasChange')
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
 		})
 
@@ -949,7 +979,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            offCallbackInvalidParam('extrasChange');
+            try{
+                offCallbackInvalidParam('extrasChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -962,7 +998,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            onCallbackInvalidParam('queueItemsChange');
+            try{
+                onCallbackInvalidParam('queueItemsChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
 		})
 
@@ -993,7 +1035,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-			await onCallbackInvalidController('queueItemsChange');
+            try{
+                await onCallbackInvalidController('queueItemsChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1006,7 +1054,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            offCallbackInvalidParam('queueItemsChange');
+            try{
+                offCallbackInvalidParam('queueItemsChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1019,7 +1073,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            onCallbackInvalidParam('queueTitleChange');
+            try{
+                onCallbackInvalidParam('queueTitleChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
             done();
 		})
 
@@ -1050,7 +1110,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_ERRORCODE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-			await onCallbackInvalidController('queueTitleChange');
+            try{
+                await onCallbackInvalidController('queueTitleChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
@@ -1063,7 +1129,13 @@ export default function AVSessionControllerErrorCode() {
          * @tc.level     : Level2
          */
 		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_ERRRORCODE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-            offCallbackInvalidParam('queueTitleChange');
+            try{
+                offCallbackInvalidParam('queueTitleChange');
+            }catch{
+                console.info('TestLog: off callback error');
+                expect().assertFail();
+                done()
+            }
 			done();
 		})
 
