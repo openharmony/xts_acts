@@ -169,6 +169,21 @@ export class WorkerSrc {
   public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker');
 }
 
+export class WorkerSrc2 {
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker7');
+}
+
+export class WorkerSrc3 {
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker8');
+}
+
+export class WorkerSrc4 {
+  public static workerInstance :worker.ThreadWorker= new worker.ThreadWorker('../pages/workers/Worker9');
+}
+
+
+
+
 @Concurrent
 export function atomicCompareExchangeTask(sharedArray:Int16Array) {
   for (let i = 0; i < 100; i++) {
