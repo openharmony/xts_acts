@@ -472,6 +472,6 @@ export const oHCameraManagerGetCameraConcurrentInfos: (index:number) => number;
  
 export const oHCameraInputOpenConcurrentCameras: (index:number) => number
 
-export const sessionIsMacroSupported: (a: number) => boolean;
+export const sessionIsMacroSupported: (a: number) => MacroSupportedinfo;
 
 export const sessionEnableMacro: (index: number, enable: boolean) => number;
