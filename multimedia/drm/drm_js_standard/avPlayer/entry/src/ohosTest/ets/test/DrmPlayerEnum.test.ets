@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import drm from '@ohos.multimedia.drm';
 
 export default function drmEnumTest() {
@@ -38,7 +38,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_CERTIFICATE_STATUS_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_CERTIFICATE_STATUS_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.CertificateStatus.CERT_STATUS_PROVISIONED == 0).assertTrue();
             console.log(`drm.CertificateStatus.CERT_STATUS_PROVISIONED: ${drm.CertificateStatus.CERT_STATUS_PROVISIONED}`);
             expect(drm.CertificateStatus.CERT_STATUS_NOT_PROVISIONED == 1).assertTrue();
@@ -59,7 +59,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_MEDIA_KEY_REQUEST_TYPE_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_MEDIA_KEY_REQUEST_TYPE_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN == 0).assertTrue();
             console.log(`drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN: ${drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN}`);
             expect(drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_INITIAL == 1).assertTrue();
@@ -82,7 +82,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_ERROR_CODE_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_ERROR_CODE_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.DrmErrorCode.ERROR_UNKNOWN == 24700101).assertTrue();
             console.log(`drm.DrmErrorCode.ERROR_UNKNOWN: ${drm.DrmErrorCode.ERROR_UNKNOWN}`);
             expect(drm.DrmErrorCode.MAX_SYSTEM_NUM_REACHED == 24700103).assertTrue();
@@ -101,7 +101,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_PREDEFINED_CONFIG_NAME_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_PREDEFINED_CONFIG_NAME_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR == 'vendor').assertTrue();
             console.log(`drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR: ${drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR}`);
             expect(drm.PreDefinedConfigName.CONFIG_DEVICE_VERSION == 'version').assertTrue();
@@ -126,7 +126,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_MEDIA_KEY_TYPE_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_MEDIA_KEY_TYPE_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE == 0).assertTrue();
             console.log(`drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE: ${drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE}`);
             expect(drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE == 1).assertTrue();
@@ -141,7 +141,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_OFFLINE_MEDIA_KEY_STATUS_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_OFFLINE_MEDIA_KEY_STATUS_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN == 0).assertTrue();
             console.log(`drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN: ${drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN}`);
             expect(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE == 1).assertTrue();
@@ -158,7 +158,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_DRM_CONTENT_PROTECTION_LEVEL_ENUM_0100', 0, (done: Function) => {
+        it('SUB_MULTIMEDIA_DRM_CONTENT_PROTECTION_LEVEL_ENUM_0100', Level.LEVEL0, (done: Function) => {
             expect(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN == 0).assertTrue();
             console.log(`drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN: ${drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN}`);
             expect(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO == 1).assertTrue();
