@@ -115,6 +115,11 @@ export default function AtomicsFunctionTest() {
           expect(mainResult).assertEqual(workerData[i]);
         }
       }
+
+      WorkerSrc.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
       console.info(`${caseName} test end`);
       Done();
     });
@@ -176,6 +181,11 @@ export default function AtomicsFunctionTest() {
           expect(mainResult).assertEqual(workerData[i]);
         }
       };
+
+      WorkerSrc.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
       console.info(`${caseName} test end`);
       Done();
     });
@@ -236,6 +246,10 @@ export default function AtomicsFunctionTest() {
           expect(mainResult).assertEqual(workerData[i]);
         }
       };
+      WorkerSrc.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
       console.info(`${caseName} test end`);
       Done();
     });
@@ -295,6 +309,10 @@ export default function AtomicsFunctionTest() {
           expect(mainResult).assertEqual(workerData[i]);
         }
       };
+      WorkerSrc.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
       WorkerSrc.workerInstance.terminate();
       console.info(`${caseName} test end`);
       Done();
@@ -326,6 +344,10 @@ export default function AtomicsFunctionTest() {
           expect(mainResult).assertEqual(workerData[i]);
         }
       };
+      WorkerSrc1.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
       WorkerSrc1.workerInstance.terminate();
       console.info(`${caseName} test end`);
       Done();
@@ -352,35 +374,38 @@ export default function AtomicsFunctionTest() {
       let completedTasks = 0;
       const totalTasks = 6;
 
-      await new Promise<void>((resolve) => {
-        XorWorker.workerInstance.onmessage = (e: MessageEvents) => {
-          const resultBuffer:SharedArrayBuffer = e.data;
-          if (resultBuffer instanceof SharedArrayBuffer) {
-            const resultArray = new BigInt64Array(resultBuffer);
-            for (let i = 0; i < 100; i++) {
-              sharedArray[i] = resultArray[i];
-            }
-            completedTasks++;
-            resolve();
+      XorWorker.workerInstance.onmessage = (e: MessageEvents) => {
+        const resultBuffer:SharedArrayBuffer = e.data;
+        if (resultBuffer instanceof SharedArrayBuffer) {
+          const resultArray = new BigInt64Array(resultBuffer);
+          for (let i = 0; i < 100; i++) {
+            sharedArray[i] = resultArray[i];
           }
-        };
-        XorWorker.workerInstance.postMessage(buffer);
-      });
+          completedTasks++;
+        }
+      };
+      XorWorker.workerInstance.postMessage(buffer);
+      XorWorker.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
 
-      await new Promise<void>((resolve) => {
-        StoreWorker.workerInstance.onmessage = (e: MessageEvents) => {
-          const resultBuffer:SharedArrayBuffer = e.data;
-          if (resultBuffer instanceof SharedArrayBuffer) {
-            const resultArray = new BigInt64Array(resultBuffer);
-            for (let i = 0; i < 100; i++) {
-              sharedArray[i] = resultArray[i];
-            }
-            completedTasks++;
-            resolve();
+
+      StoreWorker.workerInstance.onmessage = (e: MessageEvents) => {
+        const resultBuffer:SharedArrayBuffer = e.data;
+        if (resultBuffer instanceof SharedArrayBuffer) {
+          const resultArray = new BigInt64Array(resultBuffer);
+          for (let i = 0; i < 100; i++) {
+            sharedArray[i] = resultArray[i];
           }
-        };
-        StoreWorker.workerInstance.postMessage(buffer);
-      });
+          completedTasks++;
+        }
+      };
+      StoreWorker.workerInstance.postMessage(buffer);
+      StoreWorker.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
 
       const andTaskInstance = new taskpool.Task(andTask, buffer);
       const andResultBuffer = await taskpool.execute(andTaskInstance);
@@ -422,6 +447,8 @@ export default function AtomicsFunctionTest() {
         }
         completedTasks++;
       }
+      XorWorker.workerInstance.terminate();
+      StoreWorker.workerInstance.terminate();
       expect(totalTasks).assertEqual(completedTasks);
       console.info(`${caseName} test end`);
       Done();
@@ -489,12 +516,8 @@ export default function AtomicsFunctionTest() {
       int8Array[0] = 10;
       const targetIndex = 0;
       const task = new taskpool.Task(modifyValueTask, int8Array, targetIndex);
-
       await taskpool.execute(task);
       console.info('Task executed successfully');
-
-      await new Promise<void>(resolve => setTimeout(resolve, 100));
-
       const newValue = Atomics.load(int8Array, targetIndex);
       console.log(`Value at index ${targetIndex} after modification: ${newValue}`);
       expect(20).assertEqual(newValue);
@@ -554,6 +577,12 @@ export default function AtomicsFunctionTest() {
       }
       Atomics.wait(bigInt64Array, statusIndex, 0n);
       const secondLoadedValue: bigint = Atomics.load(bigInt64Array, targetIndex);
+
+      Worker3.workerInstance.onexit = (e) => {
+        console.log(`${e}`)
+        expect(e).assertEqual(0);
+      };
+      Worker3.workerInstance.terminate();
       expect(secondLoadedValue).assertEqual(newValue);
       console.info(`${caseName} test end`);
       Done();
