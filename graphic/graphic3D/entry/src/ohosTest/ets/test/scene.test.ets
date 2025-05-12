@@ -49,10 +49,10 @@ export default function sceneTest() {
      * @tc.name      : testGetNodeByPath
      * @tc.desc      : Nodes are obtained from paths
      * @tc.size      : MediumTest
-     * @tc.type      : Function
+我我知道     * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testGetNodeByPath";
       console.info(msg + ' begin ');
       try {
@@ -77,7 +77,7 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetResourceFactory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testGetResourceFactory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testGetResourceFactory";
       console.info(msg + ' begin ');
       try {
@@ -101,7 +101,7 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testDestroy";
       console.info(msg + ' begin ');
       try {
@@ -194,7 +194,7 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneRenderFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testSceneRenderFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testSceneRenderFrame";
       console.info(msg + ' begin ');
       try {
