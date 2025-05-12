@@ -24,7 +24,10 @@
         "./src/ohosTest/ets/testability/pages/workers/Worker3.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker4.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker5.ets",
-        "./src/ohosTest/ets/testability/pages/workers/Worker6.ets"
+        "./src/ohosTest/ets/testability/pages/workers/Worker6.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker7.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker8.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker9.ets"
       ]
     }
   },

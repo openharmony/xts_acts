@@ -33,11 +33,22 @@ workerPort.onmessage = (e: MessageEvents) => {
   const statusIndex = receivedData.statusIndex;
   const arr: BigInt64Array = new BigInt64Array(sharedArrayBuffer);
 
-  setTimeout(() => {
-    Atomics.store(arr, targetIndex, newValue);
-    Atomics.store(arr, statusIndex, 1n);
-    Atomics.notify(arr, statusIndex);
-  }, 3000);
+  console.info(`Worker received data. Will modify index ${targetIndex} to ${newValue} after 3 seconds.`);
 
-  workerPort.postMessage('done');
+  // 延迟3秒
+  setTimeout(() => {
+    // 修改目标位置的值
+    Atomics.store(arr, targetIndex, newValue);
+    console.info(`Worker updated index ${targetIndex} to ${newValue}`);
+
+    // 更新状态标志
+    Atomics.store(arr, statusIndex, 1n);
+    console.info(`Worker set status to 1`);
+
+    // 通知等待的线程
+    Atomics.notify(arr, statusIndex);
+
+    // 关闭Worker
+    workerPort.close();
+  }, 3000);
 }

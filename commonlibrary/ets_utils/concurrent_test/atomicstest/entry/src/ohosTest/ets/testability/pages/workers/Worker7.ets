@@ -16,21 +16,22 @@
 
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
-
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
   const buffer:SharedArrayBuffer = e.data;
   console.log(`${buffer.byteLength}`)
-  if (buffer.byteLength == 100){
-    const sharedArray = new Uint8Array(buffer);
-    for (let i = 0; i < 100; i++) {
-      Atomics.and(sharedArray, i, 1);
+  if (buffer.byteLength == 200){
+    if (buffer instanceof SharedArrayBuffer) {
+      const sharedArray = new Uint16Array(buffer);
+      for (let i = 0; i < 100; i++) {
+        const replacement = 10 + i;
+        Atomics.exchange(sharedArray, i, replacement);
+      }
+      workerPort.postMessage(sharedArray.buffer);
+      workerPort.close();
     }
-    workerPort.postMessage(sharedArray);
-    workerPort.close();
   }
 }
-
 
 workerPort.onerror = (err: ErrorEvent) => {
   console.info('workerPort onerror err is: ', err.message);

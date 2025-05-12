@@ -39,6 +39,7 @@ workerPort.onmessage = (e: MessageEvents) => {
       }
     }
     workerPort.postMessage(sharedArray.buffer);
+    workerPort.close();
   }
 
 }

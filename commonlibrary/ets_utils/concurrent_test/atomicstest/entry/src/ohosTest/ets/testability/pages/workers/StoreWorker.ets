@@ -26,5 +26,6 @@ workerPort.onmessage = (e: MessageEvents) => {
       Atomics.store(sharedArray, index, 1000n + BigInt(index));
     }
     workerPort.postMessage(sharedArray.buffer);
+    workerPort.close();
   }
 }

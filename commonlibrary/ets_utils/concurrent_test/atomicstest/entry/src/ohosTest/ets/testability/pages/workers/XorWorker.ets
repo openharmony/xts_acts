@@ -27,5 +27,6 @@ workerPort.onmessage = (e: MessageEvents) => {
       Atomics.xor(sharedArray, index, 2n);
     }
     workerPort.postMessage(sharedArray.buffer);
+    workerPort.close();
   }
 }
