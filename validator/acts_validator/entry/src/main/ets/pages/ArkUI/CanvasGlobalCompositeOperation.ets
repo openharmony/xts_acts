@@ -55,24 +55,24 @@ struct SetCircle {
               Text('').fontSize(0).border({ width: 0 }).size({ width: '0%', height: '2%' })
             }
 
-            Row({ space: 10 }) {
+            Row({ space: 2 }) {
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('s-over').fontSize(13)
+                Text('s-over').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num1 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -83,22 +83,22 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('s-atop')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-atop';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num2 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -108,22 +108,22 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('s-in').fontSize(13)
+                Text('s-in').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-in';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num3 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -134,22 +134,22 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('s-out')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-out';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num4 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -159,25 +159,25 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 10 }) {
+            Row({ space: 2 }) {
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('d-over')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'destination-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num5 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -188,22 +188,22 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('d-atop')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'destination-atop';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num6 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -213,22 +213,22 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('d-in').fontSize(13)
+                Text('d-in').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'destination-in';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num7 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -238,22 +238,22 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('d-out').fontSize(13)
+                Text('d-out').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'destination-out';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num8 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -263,25 +263,25 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 10 }) {
+            Row({ space: 2 }) {
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('lighter')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'lighter';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num9 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -292,22 +292,22 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('copy')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'copy';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num10 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -318,22 +318,22 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('xor')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '20%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'source-over';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
-                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillRect(60, 20, 30, 30);
+                this.context.clearRect(0, 0, 350, 300);
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 50, 50);
+                this.context.fillRect(50, 10, 30, 30);
                 this.context.globalCompositeOperation = 'xor';
                 this.context.fillStyle = 'rgb(0,0,255)';
-                this.context.fillRect(180, 180, 50, 50);
+                this.context.fillRect(60, 20, 30, 30);
                 this.num11 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -347,7 +347,7 @@ struct SetCircle {
                 .border({ width: 0 })
                 .size({ width: '18%', height: '20%' })
             }
-          }.width('90%').height('30%')
+          }.width('90%').height('60%')
 
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
@@ -358,7 +358,7 @@ struct SetCircle {
               })
           }
           .width('100%')
-          .height('70%')
+          .height('40%')
         }
       }
       .scrollBarWidth('6vp')
