@@ -189,7 +189,7 @@ struct IndexPage {
             Row() {
               Text('Validator')
                 .fontColor(Color.White)
-                .fontSize(30)
+                .fontSize(20)
             }
 
             Row({ space: 20 }) {
@@ -250,10 +250,11 @@ struct IndexPage {
                   }
                 })
               })
+
             }
 
-          }.width('100%').height('20%').justifyContent(FlexAlign.SpaceBetween)
-        }.scrollable(ScrollDirection.Horizontal).scrollBar(BarState.On)
+          }.width('130%').height('20%').justifyContent(FlexAlign.Center)
+        }.scrollable(ScrollDirection.Horizontal).scrollBar(BarState.On).scrollBarColor(Color.Orange)
 
         List({}) {
           ForEach(this.TestCaseList, (item: TestCase, index: number) => {
@@ -265,6 +266,7 @@ struct IndexPage {
               .height(50)
               .alignItems(VerticalAlign.Center)
               .backgroundColor(this.ColorObject[index])
+              .justifyContent(FlexAlign.Center)
               .onClick(() => {
                 router.pushUrl({
                   url: item.uri,
@@ -281,14 +283,17 @@ struct IndexPage {
               })
             }
           }, (item: TestCase) => item.title)
-        }.width('100%').height('92%').divider({ strokeWidth: 1, color: Color.Grey })
+        }.width('100%').divider({ strokeWidth: 1, color: Color.Grey })
       }
     }
     .backgroundColor(Color.Black)
+    .border({width:1,color:Color.White})
     .width('100%')
     .height('100%')
     .scrollBar(BarState.On)
     .scrollable(ScrollDirection.Vertical)
+    .scrollBarColor(Color.Orange)
+    .margin({bottom:80})
   }
 
   ClearText() {
