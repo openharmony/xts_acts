@@ -69,7 +69,7 @@ export default function geolocationPermissionsErrorCode() {
    * @tc.type       : Function
    * @tc.level      : Level 0
    */
-    it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError001", '17100011', 20020, done);
