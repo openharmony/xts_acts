@@ -49,7 +49,7 @@ export default function sceneTest() {
      * @tc.name      : testGetNodeByPath
      * @tc.desc      : Nodes are obtained from paths
      * @tc.size      : MediumTest
-我我知道     * @tc.type      : Function
+     * @tc.type      : Function
      * @tc.level     : Level 3
      */
     it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
