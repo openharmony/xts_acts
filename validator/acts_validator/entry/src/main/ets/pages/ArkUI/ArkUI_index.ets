@@ -46,7 +46,6 @@ struct IndexPage {
     { title: 'ScrollingList', uri: 'pages/ArkUI/ScrollListTest' },
     { title: 'TouchMove', uri: 'pages/ArkUI/TouchMoveTest' },
     { title: 'PinchGesture', uri: 'pages/ArkUI/PinchGestureTest' },
-    { title: 'KeyEvent', uri: 'pages/ArkUI/KeyEvent' },
     { title: 'RotationGesture', uri: 'pages/ArkUI/RotationGestureTest' },
     { title: 'SwipeGesture', uri: 'pages/ArkUI/SwipeGestureTest' },
     { title: 'LongPressGesture', uri: 'pages/ArkUI/LongPressGesture' },
