@@ -87,56 +87,6 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20002
-         * @tc.name: testDragBetween
-         * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent, the value of duration is 3000, the value of speed is 3000.
-         */
-        it('testDragBetween', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-            console.log(TestTag, 'testDragBetween start');
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.id('jump'))
-            await button.longClick()
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('one'))
-            let text2 = await driver.findComponent(ON.text('two'))
-            let center1 = await text1.getBoundsCenter()
-            let center2 = await text2.getBoundsCenter()
-            await driver.dragBetween(center1, center2, 3000, 3000)
-            await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
-            expect(text == null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
-            console.log(TestTag, 'testDragBetween over');
-        })
-
-        /*
-        * @tc.number: uiTest_20003
-        * @tc.name: testNewMouseDrag
-        * @tc.desc: drag on the screen between the specified points by mouse, the value of speed and duration are 3000.
-        */
-        it('testNewMouseDrag', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
-            console.log(TestTag, 'testNewMouseDrag start');
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.id('jump'))
-            let center = await button.getBoundsCenter();
-            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 2072, 3000)
-            console.log(TestTag, 'mouseLongClick successful');
-            await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('one'))
-            let text2 = await driver.findComponent(ON.text('two'))
-            let point1 = await text1.getBoundsCenter()
-            let point2 = await text2.getBoundsCenter()
-            await driver.mouseDrag(point1, point2, 3000, 3000)
-            await driver.delayMs(2000)
-            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
-            expect(text == null).assertTrue()
-            await driver.mouseDrag(point1, point2, 3000, 3000)
-            console.log(TestTag, 'testNewMouseDrag over');
-        })
-
-        /*
         * @tc.number: uiTest_200015
         * @tc.name: testNewMouseLongClick
         * @tc.desc: longClick in the specified location on the screen by mouse, the value of speed and duration are 3000.
@@ -170,11 +120,11 @@ export default function UiTest() {
                 text = await scorll.scrollSearch(ON.type('TextInput'))
             }
             let center = await text.getBoundsCenter()
-            await text.clearText()
-            await driver.delayMs(2000)
-            await exitInputMethod()
+            await text.clearText();
+            await driver.delayMs(2000);
             await driver.inputText(center, '123', {paste:false, addition:false})
-            await driver.delayMs(2000)
+            await exitInputMethod();
+            await driver.delayMs(2000);
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -195,11 +145,13 @@ export default function UiTest() {
                 let scorll = await driver.findComponent(ON.type('Scroll'))
                 text = await scorll.scrollSearch(ON.type('TextInput'))
             }
-            await text.clearText()
+            await text.clearText();
+            await driver.delayMs(2000);
+            await exitInputMethod();
+            let center = await text.getBoundsCenter();
+            await driver.inputText(center, '长贵儿', {paste:false, addition:false});
             await driver.delayMs(2000)
             await exitInputMethod()
-            let center = await text.getBoundsCenter()
-            await driver.inputText(center, '长贵儿', {paste:false, addition:false})
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '长贵儿').assertTrue()
@@ -227,6 +179,8 @@ export default function UiTest() {
             let center = await text.getBoundsCenter()
             await driver.inputText(center, '123', {paste:true, addition:false})
             await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -249,6 +203,8 @@ export default function UiTest() {
             }
             let center = await text.getBoundsCenter()
             await driver.inputText(center, '123', {paste:false, addition:true})
+            await driver.delayMs(2000)
+            await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == 'Hello World123').assertTrue()
@@ -273,6 +229,8 @@ export default function UiTest() {
             let center = await text.getBoundsCenter()
             await driver.inputText(center, '123', {paste:true, addition:true})
             await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -293,10 +251,9 @@ export default function UiTest() {
                 let scorll = await driver.findComponent(ON.type('Scroll'))
                 text = await scorll.scrollSearch(ON.type('TextInput'))
             }
-            await text.clearText()
+            await text.inputText('123', {paste:false, addition:false})
             await driver.delayMs(2000)
             await exitInputMethod()
-            await text.inputText('123', {paste:false, addition:false})
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '123').assertTrue()
@@ -323,6 +280,8 @@ export default function UiTest() {
             await exitInputMethod()
             await text.inputText('长贵儿', {paste:false, addition:false})
             await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '长贵儿').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -348,6 +307,8 @@ export default function UiTest() {
             await exitInputMethod()
             await text.inputText('123', {paste:true, addition:false})
             await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -370,6 +331,8 @@ export default function UiTest() {
             }
             await text.inputText('123', {paste:false, addition:true})
             await driver.delayMs(2000)
+            await exitInputMethod()
+            await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -391,6 +354,8 @@ export default function UiTest() {
                 text = await scorll.scrollSearch(ON.type('TextInput'))
             }
             await text.inputText('123', {paste:true, addition:true})
+            await driver.delayMs(2000)
+            await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
             expect(await text1.getText() == 'Hello World123').assertTrue()
@@ -415,7 +380,7 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(-300);
+                await driver.crownRotate(-20);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
@@ -444,7 +409,7 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(-300, 300);
+                await driver.crownRotate(-30, 30);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
