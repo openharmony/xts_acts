@@ -3621,50 +3621,54 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testRestoreByMinimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-            let caseName = 'TestRestoreByMinimize';
-            try {
-                let windowClass = windowStage.getMainWindowSync();
-                const mainWindowstatus = windowClass.getWindowStatus();
-                console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-                if (isPCStatus != '') {
-                  windowClass.minimize().then(async () => {
-                    console.info(`${caseName} Succeeded in minimizing the window.`);
-                    await sleep(2000);
-                    windowClass.restore().then(async () => {
-                      console.info(`${caseName} Succeeded in restoring the window.`);
-                      await sleep(1000);
-                      let windowStatus = windowClass.getWindowStatus();
-                      console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-                      expect(windowStatus).assertEqual(mainWindowstatus);
-                      done();
-                    }).catch((err: BusinessError) => {
-                      if (err.code === 801) {
-                        console.error(`${caseName} The current device type does not support to restore.`);
-                        done();
-                      } else {
-                        console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-                        expect(1300004).assertEqual(err.code);
-                        done();
-                      }
-                    });
-                  }).catch((err: BusinessError) => {
-                    console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
-                    expect().assertFail();
-                    done();
-                  });
-                }
-            } catch (exception) {
-                if (exception.code === 801) {
-                    console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
-                    done();
+      it('testRestoreByMinimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName = 'TestRestoreByMinimize';
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          const mainWindowstatus = windowClass.getWindowStatus();
+          console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+          if (isPCStatus != '' || isAutoWindow == 'false') {
+            windowClass.minimize().then(async () => {
+              console.info(`${caseName} Succeeded in minimizing the window.`);
+              await sleep(2000);
+              windowClass.restore().then(async () => {
+                console.info(`${caseName} Succeeded in restoring the window.`);
+                await sleep(1000);
+                let windowStatus = windowClass.getWindowStatus();
+                console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+                expect(windowStatus).assertEqual(mainWindowstatus);
+                done();
+              }).catch((err: BusinessError) => {
+                if (err.code === 801) {
+                  console.error(`${caseName} The current device type does not support to restore.`);
+                  done();
                 } else {
-                    console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
-                    expect().assertFail();
-                    done();
+                  console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+                  expect(1300004).assertEqual(err.code);
+                  done();
                 }
-            }
-        })
+              });
+            }).catch((err: BusinessError) => {
+              console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+              done();
+            });
+          }else {
+            done();
+          }
+
+        } catch (exception) {
+          if (exception.code === 801) {
+            console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+            done();
+          } else {
+            console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
         /**
          * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8100
          * @tc.name      : testRestoreByMinimizeBtn

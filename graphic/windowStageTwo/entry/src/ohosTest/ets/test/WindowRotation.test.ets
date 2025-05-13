@@ -171,7 +171,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -282,7 +282,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -393,7 +393,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -581,7 +581,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -690,7 +690,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -774,7 +774,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -863,7 +863,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -974,7 +974,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
@@ -1087,7 +1087,7 @@ export default function windowRotationTest() {
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
-        await subWindowClass.setUIContent('testability/pages/First/Index2');
+        await subWindowClass.setUIContent('testability/pages/First/index2');
         await subWindowClass.setBackgroundColor('#FF00FF00');
         subWindowClass.resizeAsync(300,300);
         await subWindowClass.showWindow();
