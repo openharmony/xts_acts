@@ -64,6 +64,7 @@ export default function windowPropertiesTest2() {
     let context: common.UIAbilityContext;
     let windowStage: ohosWindow.WindowStage;
     let isAutoWindow: string = '';
+    let isPCStatus: string = '';
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -71,6 +72,7 @@ export default function windowPropertiesTest2() {
       isAutoWindow =
         settings.getValueSync(context, 'window_pcmode_switch_status', '', settings.domainName.DEVICE_SHARED);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+      isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
 
     })
     beforeEach(() => {
@@ -1498,49 +1500,50 @@ export default function windowPropertiesTest2() {
         await windowClass.showWindow();
         console.info(`${caseName} Succeeded in showing the sub window.`);
         await sleep(500);
-      } catch (err) {
-        console.error(msgStr + 'createSubWindow ' + 'caught, err: ' + JSON.stringify(err));
-        expect().assertFail();
-        done()
-      }
-      try {
-        await windowClass!.setWindowPrivacyMode(true);
-      } catch (err) {
-        console.error(msgStr + 'setWindowPrivacyMode ' + 'caught, err: ' + JSON.stringify(err));
-        await windowClass!.destroyWindow();
-        expect().assertFail();
-        done()
-      }
-      try {
-        windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
-          console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
-          let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
-          let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
-          console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
-          let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
-          console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
-          expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
-          expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
-          pixelMap.release();
+        try {
+          await windowClass!.setWindowPrivacyMode(true);
+        } catch (err) {
+          console.error(msgStr + 'setWindowPrivacyMode ' + 'caught, err: ' + JSON.stringify(err));
           await windowClass!.destroyWindow();
-          done();
-        }).catch(async (err: BusinessError) => {
-          console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
-          await windowClass!.destroyWindow();
-          if (err.code == 801) {
-            console.info(`${caseName} The current device type does not support to snapshotIgnorePrivacy`);
-          } else {
-            expect().assertFail();
-          }
+          expect().assertFail();
           done()
-        });
-      } catch (exception) {
-        console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
+        }
+        try {
+          windowClass!.snapshotIgnorePrivacy().then(async (pixelMap: image.PixelMap) => {
+            console.info(msgStr + 'Succeeded in calling snapshotIgnorePrivacy.');
+            let widthBefore: number = windowClass!.getWindowProperties().windowRect.width;
+            let heightBefore: number = windowClass!.getWindowProperties().windowRect.height;
+            console.info(`${caseName} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${caseName} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            await windowClass!.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
+            await windowClass!.destroyWindow();
+            if (err.code == 801) {
+              console.info(`${caseName} The current device type does not support to snapshotIgnorePrivacy`);
+            } else {
+              expect().assertFail();
+            }
+            done()
+          });
+        } catch (exception) {
+          console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
+          await windowClass!.destroyWindow();
+          expect().assertFail();
+          done()
+        }
+      } catch (err) {
+        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
         await windowClass!.destroyWindow();
-        expect().assertFail();
+        expect().assertFail()
         done()
       }
-    })
+    });
 
     /**
      * @tc.number     : testSnapshotIgnorePrivacyWithMinimizeWindow
@@ -1576,6 +1579,7 @@ export default function windowPropertiesTest2() {
                 expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
                 pixelMap.release();
                 await terminateAbility(caseName);
+                await sleep(2000)
                 done();
               }).catch(async (err: BusinessError) => {
                 console.error(msgStr + 'Failed to call snapshotIgnorePrivacy. Cause: ' + JSON.stringify(err));
@@ -1585,29 +1589,29 @@ export default function windowPropertiesTest2() {
                   expect().assertFail();
                 }
                 await terminateAbility(caseName);
+                await sleep(2000)
                 done()
               });
-              done()
             } catch (exception) {
               console.error(msgStr + 'Failed2 to set the call snapshotIgnorePrivacy. Cause:' + JSON.stringify(exception));
               expect().assertFail();
               await terminateAbility(caseName);
+              await sleep(2000)
               done()
             }
           }
         }
         windowStageStart.on('windowStageEvent', callback)
+        // 3、被拉起的主窗minimize
+        if (isPCStatus != '') {
+          await windowClass.minimize();
+          await sleep(2000);
+        }
+        await terminateAbility(caseName);
+        done()
       } catch (err) {
         console.error(msgStr + 'failed, ' + 'caught, err: ' + JSON.stringify(err));
         await terminateAbility(caseName);
-        expect().assertFail();
-        done()
-      }
-      // 3、被拉起的主窗minimize
-      try {
-        await windowClass.minimize();
-      } catch (err) {
-        console.error(msgStr + 'minimize ' + 'caught, err: ' + JSON.stringify(err));
         expect().assertFail();
         done()
       }
