@@ -187,7 +187,7 @@ struct IndexPage {
         Scroll() {
           Row() {
             Row() {
-              Text('Validator')
+              Text('ActsValidator')
                 .fontColor(Color.White)
                 .fontSize(20)
             }
