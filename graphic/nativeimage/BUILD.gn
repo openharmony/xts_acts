@@ -26,7 +26,7 @@ ohos_js_app_suite("ActsNativeImageTest") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNativeImageTest"
-  part_name = "graphic_surface"
+  part_name = "graphic_2d"
   subsystem_name = "graphic"
   deps = [ ":nativeImage_ndk_main" ]
 }
