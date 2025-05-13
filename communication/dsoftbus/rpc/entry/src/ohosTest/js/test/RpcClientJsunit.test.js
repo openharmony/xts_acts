@@ -4297,11 +4297,11 @@ export default function ActsRpcClientJsTest() {
          * @tc.number  : SUB_DSoftbus_IPC_API_MessageSequence_1100
          * @tc.name    : test Test MessageSequence to deliver the reply message received in promise across processes
          * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-         * @tc.level   : Level 1
+         * @tc.level   : Level 0
          * @tc.type    : Compatibility
          * @tc.size    : MediumTest
          */
-        it("SUB_DSoftbus_IPC_API_MessageSequence_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageSequence_1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageSequence_1100---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
@@ -10326,11 +10326,11 @@ export default function ActsRpcClientJsTest() {
         * @tc.number  : SUB_DSoftbus_IPC_API_MessageParcel_1250
         * @tc.name    : test Test messageparcel to deliver the reply message received in promise across processes
         * @tc.desc    : Function test
-        * @tc.level   : Level 3
+        * @tc.level   : Level 0
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_MessageParcel_1250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it("SUB_DSoftbus_IPC_API_MessageParcel_1250", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_MessageParcel_1250---------------------------");
             try {
                 var data = rpc.MessageParcel.create();
@@ -13869,11 +13869,11 @@ export default function ActsRpcClientJsTest() {
         * @tc.name    : test Test that messageparcel passes through the same process, and the client
         *             receives the reply message in promise
         * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   : Level 1
+        * @tc.level   : Level 0
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_IRemoteObject_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it("SUB_DSoftbus_IPC_API_IRemoteObject_0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_IRemoteObject_0020---------------------------");
             try {
                 var data = rpc.MessageParcel.create();
@@ -14149,11 +14149,11 @@ export default function ActsRpcClientJsTest() {
         * @tc.number  : SUB_DSoftbus_IPC_API_IRemoteObject_0090
         * @tc.name    : test IRemoteObject sendMessageRequest API Test
         * @tc.desc    : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   : Level 1
+        * @tc.level   : Level 0
         * @tc.type    : Compatibility
         * @tc.size    : MediumTest
         */
-        it("SUB_DSoftbus_IPC_API_IRemoteObject_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it("SUB_DSoftbus_IPC_API_IRemoteObject_0090", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("---------------------start SUB_DSoftbus_IPC_API_IRemoteObject_0090---------------------------");
             try {
                 var data = rpc.MessageSequence.create();
