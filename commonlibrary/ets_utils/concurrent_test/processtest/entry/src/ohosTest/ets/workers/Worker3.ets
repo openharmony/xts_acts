@@ -33,11 +33,11 @@ workerPort.onmessage = (event: MessageEvents) => {
       let tid = process.tid;
       let result = process.getThreadPriority(tid);
       if (result) {
-        console.info("getThreadPriority execute success");
+        console.info('getThreadPriority execute success');
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;

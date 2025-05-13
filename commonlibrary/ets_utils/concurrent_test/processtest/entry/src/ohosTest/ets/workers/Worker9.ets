@@ -34,11 +34,11 @@ workerPort.onmessage = (event: MessageEvents) => {
       let _SC_ARG_MAX = 0;
       let result = pro.getSystemConfig(_SC_ARG_MAX);
       if (result) {
-        console.info("getSystemConfig execute success");
+        console.info('getSystemConfig execute success');
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;

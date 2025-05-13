@@ -35,11 +35,11 @@ workerPort.onmessage = (e: MessageEvents) => {
       let pro = new process.ProcessManager();
       let result = pro.isAppUid(uid);
       if (typeof result === 'boolean') {
-        console.info("isAppUid execute success");
+        console.info('isAppUid execute success');
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;

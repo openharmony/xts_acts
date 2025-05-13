@@ -35,11 +35,11 @@ workerPort.onmessage = (event: MessageEvents) => {
       let params = 'PATH'
       let result = process.getEnvironmentVar(params);
       if (result) {
-        console.info("getEnvironmentVar execute success",result);
+        console.info('getEnvironmentVar execute success',result);
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;

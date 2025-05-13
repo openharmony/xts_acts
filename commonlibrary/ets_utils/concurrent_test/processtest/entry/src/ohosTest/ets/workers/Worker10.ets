@@ -31,13 +31,13 @@ workerPort.onmessage = (event: MessageEvents) => {
   for (let i = 0; i < count; i++) {
     try {
       let pro = new process.ProcessManager();
-      let result = pro.getEnvironmentVar("PATH");
+      let result = pro.getEnvironmentVar('PATH');
       if (result) {
-        console.info("getEnvironmentVar execute success",result);
+        console.info('getEnvironmentVar execute success',result);
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;

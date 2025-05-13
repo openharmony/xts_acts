@@ -34,11 +34,11 @@ workerPort.onmessage = (event: MessageEvents) => {
     try {
       let result = process.getUidForName(uname);
       if (result) {
-        console.info("getUidForName execute success");
+        console.info('getUidForName execute success');
         success++;
       } else {
         failure++;
-        console.info("process failure",failure);
+        console.info('process failure',failure);
       }
     } catch (error) {
       exception++;
