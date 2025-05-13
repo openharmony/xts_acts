@@ -686,6 +686,7 @@ function testSetGlobalProxySync() {
    */
   it("test_set_global_proxy_sync_0103", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let originProxy: connection.HttpProxy = networkManager.getGlobalProxySync(SELFWANT);
     try {
       networkManager.setGlobalProxySync(SELFWANT, HTTP_PROXY);
       let proxy: connection.HttpProxy = networkManager.getGlobalProxySync(SELFWANT);
@@ -695,6 +696,7 @@ function testSetGlobalProxySync() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
+      networkManager.setGlobalProxySync(SELFWANT, originProxy);
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
@@ -756,30 +758,6 @@ function testGetGlobalProxySync() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
-    } finally {
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
-    }
-    done();
-  });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_GLOBAL_PROXY_SYNC_JS_0103
-   * @tc.name      : test_get_global_proxy_sync_0103
-   * @tc.desc      : test networkManager getGlobalProxySync success
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_get_global_proxy_sync_0103", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-    try {
-      networkManager.setGlobalProxySync(SELFWANT, HTTP_PROXY);
-      let proxy: connection.HttpProxy = networkManager.getGlobalProxySync(SELFWANT);
-      expect(proxy.host === HTTP_PROXY.host).assertTrue();
-      expect(proxy.port === HTTP_PROXY.port).assertTrue();
-      expect(proxy.exclusionList.length === HTTP_PROXY.exclusionList.length).assertTrue();
-    } catch (error) {
-      expect(false).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
