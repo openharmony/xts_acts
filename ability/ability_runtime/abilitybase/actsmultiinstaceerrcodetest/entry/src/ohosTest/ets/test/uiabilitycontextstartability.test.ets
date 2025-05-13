@@ -56,8 +56,8 @@ export default function openLinkTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.ability.baseerrorrely",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_100"
             }
@@ -113,7 +113,7 @@ export default function openLinkTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0200
+     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0700
      * @tc.name   : To verify StartAbility ErrorCode.
      * @tc.desc   : Expect: 16000076
      * @tc.type   : Function
@@ -121,11 +121,11 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0700', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0700 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.ability.baseerrorrely",
+            bundleName:"com.acts.actsbaseerrrocodemethodtest",
             abilityName:"EntryAbility",
             parameters:{
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_default_100"
@@ -134,12 +134,12 @@ export default function openLinkTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0200 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0700 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000076);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0200 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0700 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
@@ -151,7 +151,7 @@ export default function openLinkTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0400
+     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0900
      * @tc.name   : To verify StartAbility ErrorCode.
      * @tc.desc   : Expect: 16000078
      * @tc.type   : Function
@@ -159,7 +159,7 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0900', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0900 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
@@ -173,12 +173,12 @@ export default function openLinkTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0900 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000079);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0900 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
