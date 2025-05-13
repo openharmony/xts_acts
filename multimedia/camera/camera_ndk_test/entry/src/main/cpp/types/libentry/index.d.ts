@@ -470,7 +470,7 @@ export const oHCameraManagerGetCameraDevice: (index:number) => number;
  
 export const oHCameraManagerGetCameraConcurrentInfos: (index:number) => number;
  
-export const oHCameraInputOpenConcurrentCameras: (index:number) => number
+export const oHCameraInputOpenConcurrentCameras: (index:number) => number;
 
 export const sessionIsMacroSupported: (a: number) => MacroSupportedinfo;
 
