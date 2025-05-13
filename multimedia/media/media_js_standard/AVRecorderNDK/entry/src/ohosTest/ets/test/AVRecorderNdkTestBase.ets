@@ -361,6 +361,12 @@ export default class AVRecorderNdkTestBase {
     return filename;
   }
 
+  resourceAACName() {
+    let timestamp = Date.now();
+    let filename = `avRecorder_${timestamp}.aac`;
+    return filename;
+  }
+
   async AvPlayerMp4(config: string, fdNumber: string) {
     await media.createAVPlayer((err, video) => {
       console.info(`case media err: ${err}`)
