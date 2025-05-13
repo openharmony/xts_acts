@@ -86,23 +86,23 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0400', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0400 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.actsbaseerrrocodemethodtest",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true,
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_0"
             }
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0400 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000079);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0400 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
@@ -125,8 +125,8 @@ export default function openLinkTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.actsbaseerrrocodemethodtest",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_default_100"
             }
@@ -163,8 +163,8 @@ export default function openLinkTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.actsbaseerrrocodemethodtest",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true,
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_0"
