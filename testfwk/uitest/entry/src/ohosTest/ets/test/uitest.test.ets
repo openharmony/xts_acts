@@ -363,7 +363,6 @@ export default function UiTest() {
             console.log(TestTag, 'testComponentInputText4 over');
         })
 
-
         /*
          * @tc.number: uiTest_20015
          * @tc.name: testCrownRotate
@@ -380,11 +379,17 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(-20);
+                await driver.crownRotate(50);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
+                await driver.delayMs(1000);
+                await driver.crownRotate(-50);
+                await driver.delayMs(1000);
+                let toastBtn1 = await driver.findComponent(ON.text('1'));
+                await driver.delayMs(1000);
+                expect(toastBtn1 != null).assertTrue();
             } catch (error) {
                 console.log(`${TestTag}, testCrownRotate error is: ${JSON.stringify(error)}`);
                 expect(error.code).assertEqual(CapabilityCode);
@@ -409,11 +414,17 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(-30, 30);
+                await driver.crownRotate(50, 30);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
+                await driver.delayMs(1000);
+                await driver.crownRotate(-50, 30);
+                await driver.delayMs(1000);
+                let toastBtn1 = await driver.findComponent(ON.text('1'));
+                await driver.delayMs(1000);
+                expect(toastBtn1 != null).assertTrue();
             } catch (error) {
                 console.log(`${TestTag}, testCrownRotateSpeed error is: ${JSON.stringify(error)}`);
                 expect(error.code).assertEqual(CapabilityCode);
