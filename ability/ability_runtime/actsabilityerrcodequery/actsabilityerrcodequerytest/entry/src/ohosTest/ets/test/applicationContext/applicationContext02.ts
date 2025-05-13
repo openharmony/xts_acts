@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
+let flag = true;
 export default class applicationContext02 extends UIAbility {
   onCreate(want) {
     console.info('applicationContext02 onCreate');
@@ -53,22 +54,27 @@ export default class applicationContext02 extends UIAbility {
 
   onForeground() {
     // Ability has brought to foreground
-    let want1: Want = {
-      bundleName: "ohos.acts.applicationContextAssist",
-      abilityName: "EntryAbility",
-      parameters: {
-        appLinkingOnly: false,
-        demo_num: 111
-      }
+    if(flag){
+      setTimeout(()=>{
+        let want1: Want = {
+          bundleName: "ohos.acts.applicationContextAssist",
+          abilityName: "EntryAbility",
+          parameters: {
+            appLinkingOnly: false,
+            demo_num: 111
+          }
+        }
+        console.info('applicationContext02 onForeground');
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+        globalThis.applicationContext02.startAbility(want1, (err: BusinessError) => {
+          flag = false;
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+          }
+          console.info('context.startAbility applicationContext03 succeed');
+        })
+      }, 1000)
     }
-    console.info('applicationContext02 onForeground');
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-    globalThis.applicationContext02.startAbility(want1, (err: BusinessError) => {
-      if (err.code) {
-        console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-      }
-      console.info('context.startAbility applicationContext03 succeed');
-    })
   }
 
   onBackground() {
@@ -82,21 +88,22 @@ export default class applicationContext02 extends UIAbility {
         demo_num: 111
       }
     }
-
-    try {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'globalThis.applicationContext.restartApp begin');
-      globalThis.applicationContext.restartApp(want);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'globalThis.applicationContext.restartApp succeed,case failed');
-    } catch (error) {
-      console.log(`applicationContext.restartApp fail, error: ${JSON.stringify(error)}`);
-      if (error.code == 16000053) {
-        commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-          console.info('====>SUB_ChildProcessManager_sendableContextManager_0800 publish ACTS_TEST_DESTROY');
-          setTimeout(() => {
-            globalThis.applicationContext02.terminateSelf()
-          }, 500)
-        });
+    setTimeout(()=>{
+      try {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'globalThis.applicationContext.restartApp begin');
+        globalThis.applicationContext.restartApp(want);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'globalThis.applicationContext.restartApp succeed,case failed');
+      } catch (error) {
+        console.log(`applicationContext.restartApp fail, error: ${JSON.stringify(error)}`);
+        if (error.code == 16000053) {
+          commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+            console.info('====>SUB_ChildProcessManager_sendableContextManager_0800 publish ACTS_TEST_DESTROY');
+            setTimeout(() => {
+              globalThis.applicationContext02.terminateSelf()
+            }, 500)
+          });
+        }
       }
-    }
+    }, 2000)
   }
 }
