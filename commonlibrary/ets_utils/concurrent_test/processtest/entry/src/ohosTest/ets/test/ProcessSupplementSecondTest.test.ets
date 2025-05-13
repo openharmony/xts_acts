@@ -65,7 +65,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0100';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -114,7 +114,7 @@ export default function ProcessSupplementSecondTest() {
 
 
     it('ProcessSupplementSecondTest0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidTaskpoolTest';
+      const caseName = 'ProcessSupplementSecondTest0200';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -160,7 +160,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidEAWorkerTest';
+      const caseName = 'ProcessSupplementSecondTest0300';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -205,7 +205,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetUidForNameMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0400';
       console.info(`${caseName}, test start`);
       const TEST_NAME = 'tool';
       const TEST_COUNT = 100;
@@ -248,7 +248,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetUidForNameMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0500';
       console.info(`${caseName}, test start`);
       const TEST_UID = 'tool';
       const TEST_COUNT = 100;
@@ -294,7 +294,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidEAWorkerTest';
+      const caseName = 'ProcessSupplementSecondTest0600';
       console.info(`${caseName}, test start`);
       const TEST_NAME = 'tool';
       const TEST_COUNT = 100;
@@ -339,7 +339,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0700';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -382,7 +382,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0800';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -428,7 +428,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest0900';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -474,7 +474,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetSystemConfigMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1000';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -520,7 +520,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetSystemConfigMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1100';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -564,7 +564,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetEnvironmentVarMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1200';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -610,7 +610,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetEnvironmentVarMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1300';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -654,7 +654,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1400';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -703,7 +703,7 @@ export default function ProcessSupplementSecondTest() {
 
 
     it('ProcessSupplementSecondTest1500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidTaskpoolTest';
+      const caseName = 'ProcessSupplementSecondTest1500';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -749,7 +749,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidEAWorkerTest';
+      const caseName = 'ProcessSupplementSecondTest1600';
       console.info(`${caseName}, test start`);
       const TEST_UID = 12345;
       const TEST_COUNT = 100;
@@ -794,7 +794,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetUidForNameMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1700';
       console.info(`${caseName}, test start`);
       const TEST_NAME = 'tool';
       const TEST_COUNT = 100;
@@ -838,7 +838,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetUidForNameMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest1800';
       console.info(`${caseName}, test start`);
       const TEST_UID = 'tool';
       const TEST_COUNT = 100;
@@ -884,7 +884,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest1900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processIsAppUidEAWorkerTest';
+      const caseName = 'ProcessSupplementSecondTest1900';
       console.info(`${caseName}, test start`);
       const TEST_NAME = 'tool';
       const TEST_COUNT = 100;
@@ -929,7 +929,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2000', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2000';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -973,7 +973,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2100';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -1019,7 +1019,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetThreadPriorityMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2200';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -1063,7 +1063,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetSystemConfigMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2300';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -1109,7 +1109,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetSystemConfigMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2400';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;
@@ -1152,7 +1152,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetEnvironmentVarMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2500';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount: number = 0;
@@ -1198,7 +1198,7 @@ export default function ProcessSupplementSecondTest() {
      * @tc.level Level 1
      */
     it('ProcessSupplementSecondTest2600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'processGetEnvironmentVarMainThreadTest';
+      const caseName = 'ProcessSupplementSecondTest2600';
       console.info(`${caseName}, test start`);
       const TEST_COUNT = 100;
       let successCount = 0;

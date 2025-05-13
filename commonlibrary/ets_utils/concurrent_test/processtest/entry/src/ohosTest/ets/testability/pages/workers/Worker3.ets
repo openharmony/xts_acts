@@ -25,11 +25,10 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  */
 workerPort.onmessage = (event: MessageEvents) => {
   if (event.data === '1') {
-    const result = process.is64Bit();
-    console.info(`is64Bit() = ${result}`);
-    workerPort.postMessage(result);
+    console.log(`TID = ${process.tid}`);
+    workerPort.postMessage(process.tid);
   } else if (event.data === '2') {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
     workerPort.postMessage(event.data)
     workerPort.close();

@@ -25,13 +25,12 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  */
 workerPort.onmessage = (event: MessageEvents) => {
   if (event.data === '1') {
-    const result = process.isIsolatedProcess();
-    console.info(`isIsolatedProcess() = ${result}`);
-    workerPort.postMessage(result);
+    console.log(`PID = ${process.uid}`);
+    workerPort.postMessage(process.uid);
   } else if (event.data === '2') {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
-    workerPort.postMessage(event.data)
+    workerPort.postMessage(event.data);
     workerPort.close();
   }
 };

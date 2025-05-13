@@ -25,11 +25,11 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  */
 workerPort.onmessage = (event: MessageEvents) => {
   if (event.data === '1') {
-    const currentTime = process.getStartRealtime();
-    console.log(`Start Realtime = ${currentTime}`);
-    workerPort.postMessage(currentTime);
+    const result = process.isIsolatedProcess();
+    console.info(`isIsolatedProcess() = ${result}`);
+    workerPort.postMessage(result);
   } else if (event.data === '2') {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
     workerPort.postMessage(event.data)
     workerPort.close();

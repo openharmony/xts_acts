@@ -13,7 +13,6 @@
 * limitations under the License.
 */
 
-
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 import { process } from '@kit.ArkTS';
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -26,11 +25,11 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  */
 workerPort.onmessage = (event: MessageEvents) => {
   if (event.data === '1') {
-    const currentTime = process.getPastCpuTime();
+    const currentTime = process.getStartRealtime();
     console.log(`Start Realtime = ${currentTime}`);
     workerPort.postMessage(currentTime);
   } else if (event.data === '2') {
-    let s: Array<string> = []
+    let s: string[] = []
     s[0].split('')[1].toString()
     workerPort.postMessage(event.data)
     workerPort.close();

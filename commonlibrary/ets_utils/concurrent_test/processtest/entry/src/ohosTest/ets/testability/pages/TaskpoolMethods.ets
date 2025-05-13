@@ -69,35 +69,35 @@ export function printArgs8(): number {
 }
 
 export class WorkThread {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker');
 }
 
 export class WorkThread2 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker2');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker2');
 }
 
 export class WorkThread3 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker3');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker3');
 }
 
 export class WorkThread4 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker4');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker4');
 }
 
 export class WorkThread5 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker5');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker5');
 }
 
 export class WorkThread6 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker6');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker6');
 }
 
 export class WorkThread7 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker7');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker7');
 }
 
 export class WorkThread8 {
-  public static workerStageModel = new worker.ThreadWorker('../workers/Worker8');
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker8');
 }
 
 
