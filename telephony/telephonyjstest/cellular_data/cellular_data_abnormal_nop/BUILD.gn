@@ -20,7 +20,7 @@ ohos_js_app_suite("ActsCellularDataAbnormalNopTest") {
   hap_name = "ActsCellularDataAbnormalNopTest"
 
   # 部件名称，真实数据，需要子系统对应
-  part_name = "cellular_data"
+  part_name = "telephony_data"
 
   # 子系统名称，真实数据，需要部件对应
   subsystem_name = "telephony"
