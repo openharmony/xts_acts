@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -161,8 +162,8 @@ struct IndexPage {
     Scroll() {
       Column() {
         Scroll(){
-          Row({ space: 20 }) {
-            Row({ space: 20 }) {
+          Row() {
+            Row() {
               Button() {
                 Image($r('app.media.ic_public_back'))
                   .width('30vp')
@@ -180,7 +181,7 @@ struct IndexPage {
               }
             }
 
-            Row({ space: 20 }) {
+            Row({ space: 15 }) {
               Button() {
                 Image($r('app.media.ic_public_delete'))
                   .width('30vp')
@@ -248,7 +249,7 @@ struct IndexPage {
             }
 
 
-          }.width('130%').height('20%').justifyContent(FlexAlign.Center)
+          }.width('130%').height('30%').justifyContent(FlexAlign.Center)
         }.scrollable(ScrollDirection.Horizontal).scrollBar(BarState.On).scrollBarColor(Color.Orange)
 
         List({}) {
@@ -275,8 +276,8 @@ struct IndexPage {
               })
             }
           }, (item: TestCase) => item.title)
-        }.width('100%').divider({ strokeWidth: 1, color: Color.Grey })
-      }.height('100%')
+        }.width('100%').height('130%').divider({ strokeWidth: 1, color: Color.Grey })
+      }
     }.backgroundColor(Color.Black)
     .border({width:1,color:Color.White})
     .width('100%')
@@ -284,7 +285,6 @@ struct IndexPage {
     .scrollBar(BarState.On)
     .scrollable(ScrollDirection.Vertical)
     .scrollBarColor(Color.Orange)
-    .margin({bottom:80})
 
   }
 
