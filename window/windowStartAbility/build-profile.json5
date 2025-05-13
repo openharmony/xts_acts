@@ -1,0 +1,54 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/kaihong/.ohos/config/openharmony/default_windowStartAbility__4HmxQR9OAY3BRwHk3SZNrJWbXKErDZCGZy8ZLpT8MQ=.cer",
+          "storePassword": "0000001BB5E81FEE02458AED426571CF586F8CDC6A922BBD1A6189D760FC3CB65F4042C64EC4C71BC3D1D2",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BADB035BDAEDB43E257527799081326EA75580FAE14818816ED954E3D01F2553F119E9731B6F4AD",
+          "profile": "C:/Users/kaihong/.ohos/config/openharmony/default_windowStartAbility__4HmxQR9OAY3BRwHk3SZNrJWbXKErDZCGZy8ZLpT8MQ=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/kaihong/.ohos/config/openharmony/default_windowStartAbility__4HmxQR9OAY3BRwHk3SZNrJWbXKErDZCGZy8ZLpT8MQ=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 19,
+        "compatibleSdkVersion": 12,
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
