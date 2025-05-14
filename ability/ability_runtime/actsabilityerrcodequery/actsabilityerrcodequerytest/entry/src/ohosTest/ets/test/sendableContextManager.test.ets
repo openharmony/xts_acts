@@ -22,7 +22,7 @@ import { common, sendableContextManager } from '@kit.AbilityKit';
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { Driver, MatchPattern, ON } from '@ohos.UiTest';
-import { router } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let driver = Driver.create();
 const TEST_CASE_NAME: string = 'SUB_ChildProcessManager_sendableContextManager_';
@@ -42,7 +42,7 @@ async function clickMatchingButton(texts: Array<string>) {
 };
 
 async function handlePermissionPrompt() {
-  let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS), 10000);
+  let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), 10000);
   hilog.info(0x0000, TAG, '%{public}s',
     `${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
   if (allowed) {
@@ -206,7 +206,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, async (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
       if (mpEnable === 'true') {
         let link:string = 'https://www.applicationContext02.com'
