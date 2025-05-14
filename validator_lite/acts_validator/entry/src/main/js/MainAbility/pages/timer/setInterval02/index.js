@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data:{
-        itemIndex: NaN,
+        itemIndex: -1,
         index: 0,
         intervalID: -1,
         str: '',
@@ -52,7 +52,8 @@ export default {
             params: {
                 step: '操作步骤：点击startInterval、clearInterval',
                 result: '预期结果：点击startInterval每过1s数字加1，在点clearInterval时数字停止增加',
-                url: 'pages/timer/setInterval02/index'
+                url: 'pages/timer/setInterval02/index',
+                itemIndex: this.itemIndex
             }
         });
     },

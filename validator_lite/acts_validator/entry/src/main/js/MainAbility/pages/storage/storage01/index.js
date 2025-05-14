@@ -18,7 +18,7 @@ import storage from '@system.storage';
 
 export default {
   data: {
-    itemIndex: NaN,
+    itemIndex: -1,
     str: '',
     title: 'storage',
     pass: 'true ;',
@@ -147,7 +147,8 @@ export default {
       params: {
         step: '操作步骤：点击测试storage按钮',
         result: '预期结果：屏幕上显示各接口的测试结果',
-        url: 'pages/storage/storage01/index'
+        url: 'pages/storage/storage01/index',
+        itemIndex: this.itemIndex
       }
     });
   },

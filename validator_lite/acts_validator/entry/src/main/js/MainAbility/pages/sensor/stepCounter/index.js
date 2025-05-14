@@ -18,7 +18,7 @@ import sensor from '@system.sensor';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         steps: 0,
         str: '',
         title: 'stepCounter',
@@ -58,7 +58,8 @@ export default {
             params: {
                 step: '操作步骤：点击订阅计步和取消订阅',
                 result: '预期结果：订阅计步后会实时更新当前步数，取消订阅后步数不再更新',
-                url: 'pages/sensor/stepCounter/index'
+                url: 'pages/sensor/stepCounter/index',
+                itemIndex: this.itemIndex
             }
         });
     },

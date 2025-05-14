@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         state: '',
         isChecked: false,
         str: '',
@@ -47,7 +47,8 @@ export default {
             params: {
                 step: '操作步骤：点击开关选择器',
                 result: '预期结果：开关状态随之变化',
-                url: 'pages/switch/index'
+                url: 'pages/switch/index',
+                itemIndex: this.itemIndex
             }
         });
     },
