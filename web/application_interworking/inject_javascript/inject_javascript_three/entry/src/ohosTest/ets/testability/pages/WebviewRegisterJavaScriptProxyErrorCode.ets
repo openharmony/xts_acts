@@ -101,11 +101,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051301);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051301, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051301);
                 }
               }
               break;
@@ -127,11 +125,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051302);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051302, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051302);
                 }
               }
               break;
@@ -153,11 +149,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051303);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051303, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051303);
                 }
               }
               break;
@@ -179,11 +173,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051304);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051304, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051304);
                 }
               }
               break;
@@ -205,11 +197,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051305);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051305, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051305);
                 }
               }
               break;
@@ -231,11 +221,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051306);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051306, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051306);
                 }
               }
               break;
@@ -257,11 +245,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051307);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051307, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051307);
                 }
               }
               break;
@@ -283,11 +269,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051308);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051308, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051308);
                 }
               }
               break;
@@ -307,11 +291,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051309);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051309, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051309);
                 }
               }
               break;
@@ -331,11 +313,9 @@ struct Index {
                 if (e.code == 801) {
                   Utils.emitEvent('401', 2025051310);
                 } else {
-                  let check = (v1: string, v2: string): boolean => {
-                    return v1 == v2 ? true: false;
-                  }
-                  this.errorCode = String(e.code)
-                  await waitForAssert(()=>this.errorCode, check, '401', 2025051310, this.str);
+                  this.errorCode = String(e.code);
+                  console.log('errorCode===>' + this.errorCode);
+                  Utils.emitEvent(this.errorCode, 2025051310);
                 }
               }
               break;
