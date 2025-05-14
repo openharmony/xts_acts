@@ -18,7 +18,7 @@ import Vibrator from '@system.vibrator';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         strStates: ['短振动', '长振动'],
         state: '',
         str: '',
@@ -69,7 +69,8 @@ export default {
             params: {
                 step: '操作步骤：点击短振动、长振动按钮',
                 result: '预期结果：状态信息显示正确并且在点击短振动按钮设备振动一下，点击长振动按钮设备振动较长时间',
-                url: 'pages/vibrator/index'
+                url: 'pages/vibrator/index',
+                itemIndex: this.itemIndex
             }
         });
     },

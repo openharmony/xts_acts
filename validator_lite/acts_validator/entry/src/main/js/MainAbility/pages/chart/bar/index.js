@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'chart(bar)',
         pass: 'true ;',
@@ -66,7 +66,8 @@ export default {
             params: {
                 step: '操作步骤：无需操作',
                 result: '预期结果：柱状图正常显示',
-                url: 'pages/chart/bar/index'
+                url: 'pages/chart/bar/index',
+                itemIndex: this.itemIndex
             }
         });
     },

@@ -18,7 +18,7 @@ import geolocation from '@system.geolocation';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'location(info)',
         pass: 'true ;',
@@ -102,7 +102,8 @@ export default {
             params: {
                 step: '操作步骤：点击获取，类型，坐标系',
                 result: '预期结果：屏幕上出现位置信息，定位类型信息，坐标系信息',
-                url: 'pages/location/info/index'
+                url: 'pages/location/info/index',
+                itemIndex: this.itemIndex
             }
         });
     },
