@@ -71,7 +71,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyObjectNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyObjectNull', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyObjectNull', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyObjectNull', '401', 2025051301, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -85,7 +85,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyObjectUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyObjectUndefined', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyObjectUndefined', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyObjectUndefined', '401', 2025051302, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -99,7 +99,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyNameNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyNameNull', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyNameNull', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyNameNull', '401', 2025051303, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -113,7 +113,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyNameUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyNameUndefined', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyNameUndefined', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyNameUndefined', '401', 2025051304, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -127,7 +127,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyMethodListNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyMethodListNull', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyMethodListNull', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyMethodListNull', '401', 2025051305, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -141,7 +141,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyMethodListUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyMethodListUndefined', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyMethodListUndefined', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyMethodListUndefined', '401', 2025051306, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -155,7 +155,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyAsyncMethodListNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyAsyncMethodListNull', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyAsyncMethodListNull', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyAsyncMethodListNull', '401', 2025051307, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -169,7 +169,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyAsyncMethodListUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyAsyncMethodListUndefined', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyAsyncMethodListUndefined', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyAsyncMethodListUndefined', '401', 2025051308, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -183,7 +183,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyPermissionNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyPermissionNull', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyPermissionNull', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyPermissionNull', '401', 2025051309, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
@@ -197,7 +197,7 @@ export default function WebviewRegisterJavaScriptProxyErrorCode() {
     * @tc.level      : Level 2
     */
     it('testWebviewRegisterJavaScriptProxyPermissionUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyPermissionUndefined', 10);
+      Utils.emitEvent('emitWebviewRegisterJavaScriptProxyPermissionUndefined', 14);
       Utils.registerEvent('testWebviewRegisterJavaScriptProxyPermissionUndefined', '401', 2025051310, done);
       sendEventByKey('WebviewRegisterJavaScriptProxyErrorCodeButton', 10, '');
     })
