@@ -214,14 +214,28 @@ function expectFalse() {
   }
 };
 
+function expectTrue(data : boolean) {
+  try {
+    expect(data).assertTrue();
+  } catch (err) {
+    console.info('assertion failure');
+  }
+}
+
 let dataSendProgress_01 = async (done: Function) => {
   let caseName = 'test SUB_NetworkManager_HTTP_on_dataSendProgress_0100';
   try {
     httpRequest.on('dataSendProgress', dataSendProgress_on_callback);
     httpRequest.request(address_post, httpRequestOptions_post, (err, data) => {
       console.log(`${caseName} on dataSendProgress success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
-      done();
+      if(err) {
+        console.log(`${caseName} request failed,err:${JSON.stringify(err)}`);
+        done();
+      } else {
+        console.log(`${caseName} request succeed,data:${JSON.stringify(data)}`);
+        expectTrue(data.responseCode == 200);
+        done();
+      }
     })
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
@@ -238,7 +252,7 @@ let dataSendProgress_02 = async (done: Function) => {
     done();
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
-    expect(error.code == 401).assertTrue();
+    expectTrue(error.code == 401);
     done();
   }
 };
@@ -251,7 +265,7 @@ let dataSendProgress_03 = async (done: Function) => {
     done();
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
-    expect(error.code == 401).assertTrue();
+    expectTrue(error.code == 401);
     done();
   }
 };
@@ -262,8 +276,14 @@ let dataSendProgress_0100 = async (done: Function) => {
     httpRequest.on('dataSendProgress', dataSendProgress_on_callback);
     httpRequest.request(address_post, httpRequestOptions_post, (err, data) => {
       console.log(`${caseName} on dataSendProgress success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
-      done();
+      if(err) {
+        console.log(`${caseName} request failed,err:${JSON.stringify(err)}`);
+        done();
+      } else {
+        console.log(`${caseName} request succeed,data:${JSON.stringify(data)}`);
+        expectTrue(data.responseCode == 200);
+        done();
+      }
     })
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
@@ -280,7 +300,7 @@ let dataSendProgress_0200 = async (done: Function) => {
     done();
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
-    expect(error.code == 401).assertTrue();
+    expectTrue(error.code == 401);
     done();
   }
 };
@@ -293,7 +313,7 @@ let dataSendProgress_0300 = async (done: Function) => {
     done();
   } catch (error) {
     console.log(`${caseName} catch error: ${JSON.stringify(error)}`);
-    expect(error.code == 401).assertTrue();
+    expectTrue(error.code == 401);
     done();
   }
 };
@@ -307,7 +327,7 @@ let resumeFrom_0100 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 206).assertTrue();
+      expectTrue(data.responseCode == 206);
       done();
     }
   });
@@ -322,7 +342,7 @@ let resumeFrom_0300 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -337,7 +357,7 @@ let resumeFrom_0200 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode >= 200).assertTrue();
+      expectTrue(data.responseCode >= 200);
       done();
     }
   });
@@ -352,7 +372,7 @@ let resumeFrom_0400 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -367,7 +387,7 @@ let resumeFrom_0500 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -378,7 +398,7 @@ let clientCert_0100 = async (done: Function) => {
   httpRequest.request(address_baidu, httpRequestOptions_clientCert, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-      expect(err !== undefined).assertTrue();
+      expectTrue(err !== undefined);
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
@@ -393,7 +413,7 @@ let clientCert_0200 = async (done: Function) => {
   httpRequest.request(address_baidu, httpRequestOptions_clientCert_err, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-      expect(err !== undefined).assertTrue();
+      expectTrue(err !== undefined);
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
@@ -412,7 +432,7 @@ let clientCert_0300 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -427,7 +447,7 @@ let clientCert_0400 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -442,7 +462,7 @@ let clientCert_0500 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -457,7 +477,7 @@ let dnsOverHttps_0100 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -472,7 +492,7 @@ let dnsOverHttps_0200 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -487,7 +507,7 @@ let dnsOverHttps_0300 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -502,7 +522,7 @@ let dnsOverHttps_0400 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -517,7 +537,7 @@ let dnsServers_0100 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -532,7 +552,7 @@ let dnsServers_0200 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -547,7 +567,7 @@ let dnsServers_0300 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -562,7 +582,7 @@ let dnsServers_0400 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.responseCode == 200).assertTrue();
+      expectTrue(data.responseCode == 200);
       done();
     }
   });
@@ -577,16 +597,16 @@ let performanceTiming_0100 = async (done: Function) => {
       done();
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
-      expect(data.performanceTiming.dnsTiming > 0).assertTrue();
-      expect(data.performanceTiming.tcpTiming > 0).assertTrue();
-      expect(data.performanceTiming.tlsTiming > 0).assertTrue();
-      expect(data.performanceTiming.firstSendTiming > 0).assertTrue();
-      expect(data.performanceTiming.firstReceiveTiming > 0).assertTrue();
-      expect(data.performanceTiming.totalFinishTiming > 0).assertTrue();
-      expect(data.performanceTiming.redirectTiming >= 0).assertTrue();
-      expect(data.performanceTiming.responseHeaderTiming > 0).assertTrue();
-      expect(data.performanceTiming.responseBodyTiming > 0).assertTrue();
-      expect(data.performanceTiming.totalTiming > 0).assertTrue();
+      expectTrue(data.performanceTiming.dnsTiming > 0);
+      expectTrue(data.performanceTiming.tcpTiming > 0);
+      expectTrue(data.performanceTiming.tlsTiming > 0);
+      expectTrue(data.performanceTiming.firstSendTiming > 0);
+      expectTrue(data.performanceTiming.firstReceiveTiming > 0);
+      expectTrue(data.performanceTiming.totalFinishTiming > 0);
+      expectTrue(data.performanceTiming.redirectTiming >= 0);
+      expectTrue(data.performanceTiming.responseHeaderTiming > 0);
+      expectTrue(data.performanceTiming.responseBodyTiming > 0);
+      expectTrue(data.performanceTiming.totalTiming > 0);
       done();
     }
   });

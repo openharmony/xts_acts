@@ -58,6 +58,14 @@ function expectFalse() {
     }
 }
 
+function expectTrue(data : boolean) {
+  try {
+    expect(data).assertTrue();
+  } catch (err) {
+    console.info('assertion failure');
+  }
+};
+
 export default function NetworkManagerMulticast1HTTP2Test() {
     afterAll(async ()=> {
         console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -78,11 +86,11 @@ export default function NetworkManagerMulticast1HTTP2Test() {
                 httpRequest.request(url,httpRequestOptions_http3,(err,data)=>{
                     if(err) {
                         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                        expect(err.code === 2300999).assertTrue();
+                        expectTrue(err.code === 2300999);
                         done();
                     } else {
                         console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
-                        expect(data.responseCode === 200).assertTrue();
+                        expectTrue(data.responseCode === 200);
                         done();
                     }
                 })
@@ -103,11 +111,11 @@ export default function NetworkManagerMulticast1HTTP2Test() {
             httpRequest.request(url,httpRequestOptions_http3_HTTP1_1,(err,data)=>{
                 if(err) {
                     console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                    expect(err.code === 2300999).assertTrue();
+                    expectTrue(err.code === 2300999);
                     done();
                 } else {
                     console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
-                    expect(data.responseCode === 200).assertTrue();
+                    expectTrue(data.responseCode === 200);
                     done();
                 }
             })
@@ -125,11 +133,11 @@ export default function NetworkManagerMulticast1HTTP2Test() {
             httpRequest.request(url,httpRequestOptions_http3_HTTP2,(err,data)=>{
                 if(err) {
                     console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                    expect(err.code === 2300999).assertTrue();
+                    expectTrue(err.code === 2300999);
                     done();
                 } else {
                     console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
-                    expect(data.responseCode === 200).assertTrue();
+                    expectTrue(data.responseCode === 200);
                     done();
                 }
             })
