@@ -84,7 +84,7 @@ struct Index {
         Button('WebErrorCode click').key('WebviewRegisterJavaScriptProxyErrorCodeButton').onClick(async () => {
           console.info('key==>' + this.str);
           switch (this.str) {
-            case 'testWebviewRegisterJavaScriptProxyObjectNull': {
+            case 'emitWebviewRegisterJavaScriptProxyObjectNull': {
               try {
                 this.controller.registerJavaScriptProxy(
                   null,
@@ -108,7 +108,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyObjectUndefined': {
+            case 'emitWebviewRegisterJavaScriptProxyObjectUndefined': {
               try {
                 this.controller.registerJavaScriptProxy(
                   undefined,
@@ -132,7 +132,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyNameNull': {
+            case 'emitWebviewRegisterJavaScriptProxyNameNull': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -156,7 +156,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyNameUndefined': {
+            case 'emitWebviewRegisterJavaScriptProxyNameUndefined': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -180,7 +180,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyMethodListNull': {
+            case 'emitWebviewRegisterJavaScriptProxyMethodListNull': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -204,7 +204,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyMethodListUndefined': {
+            case 'emitWebviewRegisterJavaScriptProxyMethodListUndefined': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -228,7 +228,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyAsyncMethodListNull': {
+            case 'emitWebviewRegisterJavaScriptProxyAsyncMethodListNull': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -252,7 +252,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyAsyncMethodListUndefined': {
+            case 'emitWebviewRegisterJavaScriptProxyAsyncMethodListUndefined': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -276,7 +276,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyPermissionNull': {
+            case 'emitWebviewRegisterJavaScriptProxyPermissionNull': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
@@ -298,7 +298,7 @@ struct Index {
               }
               break;
             }
-            case 'testWebviewRegisterJavaScriptProxyPermissionUndefined': {
+            case 'emitWebviewRegisterJavaScriptProxyPermissionUndefined': {
               try {
                 this.controller.registerJavaScriptProxy(
                   this.testObj,
