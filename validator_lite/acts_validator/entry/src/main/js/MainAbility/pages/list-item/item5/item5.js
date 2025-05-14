@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
   data: {
-    itemIndex: NaN,
+    itemIndex: -1,
     listData: [],
     str: '',
     title: 'list-item',
@@ -40,7 +40,8 @@ export default {
       params: {
         step: '操作步骤：在方框内上下滑动',
         result: '预期结果：方框中的元素随滑动变化',
-        url: 'pages/list-item/item5/item5'
+        url: 'pages/list-item/item5/item5',
+        itemIndex: this.itemIndex
       }
     });
   },
