@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-// import startabilityHide from './startabilityHide.test'
-// import startVisibility from './startVisibility.test'
 import startabilityWindowRect from './startabilityWindowRect.test'
 
 export default function testsuite() {
-  // startVisibility()
-  // startabilityHide()
   startabilityWindowRect()
 }
