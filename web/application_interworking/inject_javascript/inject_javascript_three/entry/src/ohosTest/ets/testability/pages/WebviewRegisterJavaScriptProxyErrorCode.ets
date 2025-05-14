@@ -53,6 +53,7 @@ struct Index {
   @State testObj: testObj = new testObj();
   @State errorCode: string = '0';
   @State isSslErrorHandlerComplete: number = 0;
+  @State isReceive: number = -1;
   no_error: string = 'no error happened';
 
   onPageShow() {
@@ -73,6 +74,7 @@ struct Index {
       console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
+        this.isReceive = 0;
       }
     }
   }
@@ -83,6 +85,7 @@ struct Index {
       Row() {
         Button('WebErrorCode click').key('WebviewRegisterJavaScriptProxyErrorCodeButton').onClick(async () => {
           console.info('key==>' + this.str);
+          await waitForExist(()=>this.isReceive, this.str, 0);
           switch (this.str) {
             case 'emitWebviewRegisterJavaScriptProxyObjectNull': {
               try {
