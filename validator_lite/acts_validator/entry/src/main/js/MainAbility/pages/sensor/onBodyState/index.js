@@ -18,7 +18,7 @@ import sensor from '@system.sensor';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         value: 0,
         str: '',
         title: 'onBodyState',
@@ -71,7 +71,8 @@ export default {
             params: {
                 step: '操作步骤：点击订阅佩戴和取消订阅，佩戴状态',
                 result: '预期结果：订阅佩戴会实时更新当前佩戴状态，取消订阅后佩戴状态不再更新，佩戴状态显示当前的佩戴状态',
-                url: 'pages/sensor/onBodyState/index'
+                url: 'pages/sensor/onBodyState/index',
+                itemIndex: this.itemIndex
             }
         });
     },

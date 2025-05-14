@@ -18,7 +18,7 @@ import sensor from '@system.sensor';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         speedX: 0,
         speedY: 0,
         speedZ: 0,
@@ -67,7 +67,8 @@ export default {
             params: {
                 step: '操作步骤：点击订阅陀螺仪和取消订阅',
                 result: '预期结果：订阅陀螺仪后会实时更新当前x,y,z值，取消订阅后数据不再更新',
-                url: 'pages/sensor/gyroscope/index'
+                url: 'pages/sensor/gyroscope/index',
+                itemIndex: this.itemIndex
             }
         });
     },

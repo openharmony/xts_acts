@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         sliderValue: '',
         dynamicValue: 150,
         str: '',
@@ -43,7 +43,8 @@ export default {
             params: {
                 step: '操作步骤：拖动或点击滑动条',
                 result: '预期结果：滑动条值跟随变化并显示操作状态',
-                url: 'pages/slider/index/index'
+                url: 'pages/slider/index/index',
+                itemIndex: this.itemIndex
             }
         });
     },

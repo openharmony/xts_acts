@@ -18,7 +18,7 @@ import router from '@system.router';
 
 export default {
   data: {
-    itemIndex: NaN,
+    itemIndex: -1,
     frames,
     state: null,
     str: '',
@@ -61,7 +61,8 @@ export default {
       params: {
         step: '操作步骤：点击播放，暂停，恢复，停止按钮',
         result: '预期结果：动画随操作步骤播放或停止，播放状态随之对应变化',
-        url: 'pages/image-animator/04/index'
+        url: 'pages/image-animator/04/index',
+        itemIndex: this.itemIndex
       }
     });
   },
