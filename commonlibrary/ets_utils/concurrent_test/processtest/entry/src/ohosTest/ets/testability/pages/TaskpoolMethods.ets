@@ -100,7 +100,48 @@ export class WorkThread8 {
   public static workerStageModel = new worker.ThreadWorker('./workers/Worker8');
 }
 
+export class WorkThread9 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker9');
+}
 
+
+export class WorkThread10 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker10');
+}
+
+
+export class WorkThread11 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker11');
+}
+
+export class WorkThread12 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker12');
+}
+
+
+export class WorkThread13 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker13');
+}
+
+export class WorkThread14 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker14');
+}
+
+export class WorkThread15 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker15');
+}
+
+export class WorkThread16 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker16');
+}
+
+export class WorkThread17 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker17');
+}
+
+export class WorkThread18 {
+  public static workerStageModel = new worker.ThreadWorker('./workers/Worker18');
+}
 
 
 @Concurrent

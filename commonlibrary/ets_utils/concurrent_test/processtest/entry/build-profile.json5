@@ -16,7 +16,7 @@
   "apiType": 'stageMode',
   "buildOption": {
     "sourceOption": {
-      "workers": [
+       "workers": [
         "./src/ohosTest/ets/testability/pages/workers/Worker.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker2.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker3.ets",
@@ -24,7 +24,17 @@
         "./src/ohosTest/ets/testability/pages/workers/Worker5.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker6.ets",
         "./src/ohosTest/ets/testability/pages/workers/Worker7.ets",
-        "./src/ohosTest/ets/testability/pages/workers/Worker8.ets"
+        "./src/ohosTest/ets/testability/pages/workers/Worker8.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker9.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker10.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker11.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker12.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker13.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker14.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker15.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker16.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker17.ets",
+        "./src/ohosTest/ets/testability/pages/workers/Worker18.ets"
       ]
     }
   },
