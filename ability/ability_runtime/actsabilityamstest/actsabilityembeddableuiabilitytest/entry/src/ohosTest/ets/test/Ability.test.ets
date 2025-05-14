@@ -258,7 +258,7 @@ export default function abilityTest() {
         events: ['setMissionContinue'],
       };
       commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
-        console .log('createSubscriber data1: state',`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${JSON.stringify(data) },${JSON.stringify(err)}`);
+        console .log('createSubscriber data1: state',`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
