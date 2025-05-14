@@ -509,8 +509,8 @@ export default function CameraVideoQualityPrioritizationTest() {
       console.info('beforeAll case');
     })
 
-    beforeEach(() => {
-      sleep(5000);
+    beforeEach(async () => {
+      await sleep(5000);
       console.info('beforeEach case');
     })
 
@@ -522,7 +522,7 @@ export default function CameraVideoQualityPrioritizationTest() {
       await releaseVideoReceiveSurface();
       releaseCameraSessionInstance();
       await releaseInput();
-      sleep(1000);
+      await sleep(1000);
       console.info('afterAll case');
     })
 
