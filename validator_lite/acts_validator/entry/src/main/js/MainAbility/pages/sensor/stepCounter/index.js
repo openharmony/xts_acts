@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
 export default {
     data: {
+        itemIndex: -1,
         steps: 0,
         str: '',
         title: 'stepCounter',
@@ -58,17 +58,24 @@ export default {
             params: {
                 step: '操作步骤：点击订阅计步和取消订阅',
                 result: '预期结果：订阅计步后会实时更新当前步数，取消订阅后步数不再更新',
-                url: 'pages/sensor/stepCounter/index'
+                url: 'pages/sensor/stepCounter/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

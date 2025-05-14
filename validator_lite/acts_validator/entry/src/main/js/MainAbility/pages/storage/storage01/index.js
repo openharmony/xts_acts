@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import storage from '@system.storage';
 
 export default {
   data: {
+    itemIndex: -1,
     str: '',
     title: 'storage',
     pass: 'true ;',
@@ -137,6 +137,9 @@ export default {
     });
   },
 
+  onDestroy() {
+      this.storageClear();
+  },
 
   help() {
     router.replace({
@@ -144,17 +147,24 @@ export default {
       params: {
         step: '操作步骤：点击测试storage按钮',
         result: '预期结果：屏幕上显示各接口的测试结果',
-        url: 'pages/storage/storage01/index'
+        url: 'pages/storage/storage01/index',
+        itemIndex: this.itemIndex
       }
     });
   },
 
   back() {
     console.info('onclick back ');
-    router.replace({ uri: 'pages/second-api/index' });
+    router.replace({
+      uri: 'pages/second-api/index',
+      params: {
+        itemIndex: this.itemIndex
+      }
+    });
   },
 
   changeResult(result) {
-    saveTxtData(this, result);
+    getApp().data.keyList[this.title] = result;
+    this.back();
   },
 };

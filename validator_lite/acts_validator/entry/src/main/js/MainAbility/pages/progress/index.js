@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: -1,
         arcVal: 10,
         horizontalVal: 10,
         str: '',
@@ -51,17 +51,24 @@ export default {
             params: {
                 step: '操作步骤：点击线下进度条或弧形进度条',
                 result: '预期结果：进度条向前增加',
-                url: 'pages/progress/index'
+                url: 'pages/progress/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

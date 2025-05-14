@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import file from '@system.file';
 
 export default {
     data: {
+        itemIndex: -1,
         str: '',
         title: 'file',
         pass: 'true ;',
@@ -319,17 +319,24 @@ export default {
             params: {
                 step: '操作步骤：点击测试file按钮',
                 result: '预期结果：屏幕上依次呈现各接口的测试结果',
-                url: 'pages/file/index/index'
+                url: 'pages/file/index/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };
