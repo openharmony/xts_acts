@@ -57,8 +57,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
         let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -87,6 +88,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -94,10 +98,6 @@ export default function abilityTest() {
             let button1: Component = await driver.findComponent(ON.id('set and show'));
             await button1.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -137,8 +137,9 @@ export default function abilityTest() {
             context.startAbility(want, (err: BusinessError) => {
               if(err.code) {
                 console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+              } else {
+                console.info(`${caseName} Succeed to startAbility.`);
               }
-              console.info(`${caseName} Succeed to startAbility.`);
             });
 
             commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
@@ -155,6 +156,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('0');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -164,10 +168,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('0');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -193,8 +193,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -224,6 +225,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('2');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -233,10 +237,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('2');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -262,8 +262,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
         let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -292,6 +293,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('9999999');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -301,10 +305,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('9999999');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -330,8 +330,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
         let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -360,6 +361,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -367,10 +371,6 @@ export default function abilityTest() {
             let button1: Component = await driver.findComponent(ON.id('set and show'));
             await button1.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -396,8 +396,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -427,6 +428,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -434,10 +438,6 @@ export default function abilityTest() {
             let button1: Component = await driver.findComponent(ON.id('set and show'));
             await button1.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -463,8 +463,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -494,6 +495,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -501,10 +505,6 @@ export default function abilityTest() {
             let button: Component = await driver.findComponent(ON.id('set and show'));
             await button.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -530,8 +530,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -561,6 +562,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('0');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -570,10 +574,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('0');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -599,8 +599,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -630,6 +631,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('2');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -639,10 +643,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('2');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -668,8 +668,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -699,6 +700,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(fontSizeScale).assertEqual('9999999');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -708,10 +712,6 @@ export default function abilityTest() {
             let button2: Component = await driver.findComponent(ON.id('show'));
             await button2.click();
           });
-        await sleep(6000);
-        expect(fontSizeScale).assertEqual('9999999');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -737,8 +737,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -768,6 +769,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -775,10 +779,6 @@ export default function abilityTest() {
             let button1: Component = await driver.findComponent(ON.id('set and show'));
             await button1.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -804,8 +804,9 @@ export default function abilityTest() {
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info(`${caseName} Succeed to startAbility.`);
           }
-          console.info(`${caseName} Succeed to startAbility.`);
         });
 
         let subscriber: commonEventManager.CommonEventSubscriber | undefined;
@@ -835,6 +836,9 @@ export default function abilityTest() {
                   subscriber = undefined;
                   console.info(`${caseName} Succeeded in unsubscribing.`);
                 }), 500);
+                expect(errCode).assertEqual('401');
+                console.log(`${caseName} ends.`);
+                done();
               }
             });
             await sleep(1000);
@@ -842,10 +846,6 @@ export default function abilityTest() {
             let button1: Component = await driver.findComponent(ON.id('set and show'));
             await button1.click();
           });
-        await sleep(6000);
-        expect(errCode).assertEqual('401');
-        console.log(`${caseName} ends.`);
-        done();
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
