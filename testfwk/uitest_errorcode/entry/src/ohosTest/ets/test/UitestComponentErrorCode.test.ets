@@ -1089,6 +1089,7 @@ export default function uitestComponentErrorTest() {
         await button.inputText(null, {
           paste: false
         });
+        console.log(`${TestTag}, test_inputTextMode_401 success`);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_inputTextMode_401 text = null error is: ${JSON.stringify(e)}`);
@@ -1195,26 +1196,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         let driver = Driver.create()
         await driver.delayMs(waitUiReadyMs)
-        let button = await driver.findComponent(ON.id('jump'))
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.text('jump'))
-        }
-        await button.longClick()
-        await driver.delayMs(waitUiReadyMs)
-        let text1 = await driver.findComponent(ON.text('one'));
-        if (text1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          text1 = await scorll.scrollSearch(ON.text('one'))
-        }
-        let text2 = await driver.findComponent(ON.text('two'))
-        if (text2 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          text2 = await scorll.scrollSearch(ON.text('two'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
-        await text1.dragTo(text2)
+        await button.dragTo(button)
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_dragTo_17000002 error is: ${JSON.stringify(e)}`);
@@ -1237,26 +1222,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.text('jump'))
-        }
-        await button.longClick();
-        await driver.delayMs(waitUiReadyMs);
-        let text1 = await driver.findComponent(ON.text('one'));
-        if (text1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          text1 = await scorll.scrollSearch(ON.text('one'));
-        }
-        let text2 = await driver.findComponent(ON.text('two'));
-        if (text2 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          text2 = await scorll.scrollSearch(ON.text('two'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await text1.dragTo(text2)
+        await button.dragTo(button)
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();
       }catch (e) {
@@ -1277,21 +1246,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
-        await image1.pinchOut(1.2);
+        await button.pinchOut(1.2);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_pinchOut_17000002 error is: ${JSON.stringify(e)}`);
@@ -1314,21 +1272,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await image1.pinchOut(1.2);
+        await button.pinchOut(1.2);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
       }catch (e) {
@@ -1352,21 +1299,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3)
         await sleep(100);
-        await image1.pinchIn(0.5);
+        await button.pinchIn(0.5);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_pinchIn_17000002 error is: ${JSON.stringify(e)}`);
@@ -1389,21 +1325,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await image1.pinchIn(0.5);
+        await button.pinchIn(0.5);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
       }catch (e) {
@@ -1427,11 +1352,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.type('Button'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.type('Button'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
         await button.getDescription();
@@ -1457,11 +1378,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.type('Button'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.type('Button'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
@@ -1489,11 +1406,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.hint('welcome'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.hint('welcome'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
         await button.getHint();
@@ -1519,11 +1432,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.hint('welcome'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.hint('welcome'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);

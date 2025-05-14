@@ -3,7 +3,6 @@ import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver, InputTextMode } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 
 const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
@@ -14,22 +13,6 @@ const ParameterErrorCode = 17000007;
 const CapabilityCode = 801;
 const ErrorCode = 401;
 
-async function startAbility(bundleName: string, abilityName: string) {
-  await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
-    console.info(`UiTestCase, start abilityFinished: ${result}`)
-  }).catch((err : BusinessError) => {
-    console.error(`UiTestCase, start abilityFailed: ${err}`)
-  })
-}
-
-async function stopApplication(bundleName: string) {
-  await delegator.executeShellCommand(`aa force-stop ${bundleName} `).then(result => {
-    console.info(`UiTestCase, stop application finished: ${result}`)
-  }).catch((err : BusinessError) => {
-    console.error(`UiTestCase,stop application failed: ${err}`)
-  })
-}
-//
 function sleep(nm: number) {
   return new Promise<void>((resolve: Function, reject: Function) => {
     setTimeout(resolve, nm);
@@ -68,7 +51,6 @@ export default function uitestDriverErrorTest() {
     it('test_findComponent_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponent_17000002 start`);
       try {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 3);
@@ -79,7 +61,6 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_findComponent_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
-      await stopApplication('com.uitestScene.acts');
       await sleep(waitUiReadyMs * 8);
       console.log(`${TestTag}, test_findComponent_17000002 end`);
     })
@@ -92,7 +73,6 @@ export default function uitestDriverErrorTest() {
     it('test_findComponents_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_findComponents_17000002 start`);
       try {
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
         driver.delayMs(waitUiReadyMs * 3);
@@ -104,7 +84,6 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(AsyncErrorCode);
       }
       await sleep(waitUiReadyMs * 8);
-      await stopApplication('com.uitestScene.acts');
       console.log(`${TestTag}, test_findComponents_17000002 end`);
     })
 
@@ -137,7 +116,6 @@ export default function uitestDriverErrorTest() {
    */
     it('test_waitForComponent_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_waitForComponent_17000002 start`);
-      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       try {
         let driver: Driver = Driver.create();
         let on  = ON.enabled(true);
@@ -150,7 +128,6 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(AsyncErrorCode);
       }
       await sleep(waitUiReadyMs * 8)
-      await stopApplication('com.uitestScene.acts');
       console.log(`${TestTag}, test_waitForComponent_17000002 end`);
     })
 
@@ -161,7 +138,6 @@ export default function uitestDriverErrorTest() {
        */
     it('test_assertComponentExist_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_assertComponentExist_17000002 start`);
-      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await sleep(waitUiReadyMs);
       try {
         let driver: Driver = Driver.create();
@@ -174,7 +150,6 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_assertComponentExist_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
-      await stopApplication('com.uitestScene.acts');
       await sleep(waitUiReadyMs * 8);
       console.log(`${TestTag}, test_assertComponentExist_17000002 end`);
     })
@@ -1002,7 +977,6 @@ export default function uitestDriverErrorTest() {
        */
     it('test_UiDriver_assertComponentExist_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 start`);
-      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
       await sleep(waitUiReadyMs);
       try {
         let driver = UiDriver.create();
@@ -1015,7 +989,6 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(AsyncErrorCode);
       }
-      await stopApplication('com.uitestScene.acts');
       await sleep(waitUiReadyMs * 8);
       console.log(`${TestTag}, test_UiDriver_assertComponentExist_17000002 end`);
     })
