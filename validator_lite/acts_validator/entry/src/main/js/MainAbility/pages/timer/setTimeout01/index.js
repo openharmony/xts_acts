@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data:{
-        itemIndex: NaN,
+        itemIndex: -1,
         value:'show',
         timeoutId: -1,
         str: '',
@@ -50,7 +50,8 @@ export default {
             params: {
                 step: '操作步骤：startTimer、clearTimer',
                 result: '预期结果：点击startTimer过3s后show变成once_timer success，在点startTimer时文字显示show时点clearTimer，show不会再变化',
-                url: 'pages/timer/setTimeout01/index'
+                url: 'pages/timer/setTimeout01/index',
+                itemIndex: this.itemIndex
             }
         });
     },
