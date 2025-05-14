@@ -107,7 +107,7 @@ export default function webViewContCookieToGeoLocationError() {
     it('testSetCookieValueErr', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       emitKey = "emitDeleteOriginValueNullErr";
       Utils.registerEvent("testSetCookieValueErr", "17100005", 756, done);
-      Utils.registerEvent("testSetCookieValueErr", "The provided cookie value is invalid. It must follow the format specified in RFC 6265.", 757, done);
+      Utils.registerEvent("testSetCookieValueErr", "Invalid cookie value.The cookie format must follow defined in RFC 6265.", 757, done);
       sendEventByKey('webViewContCookieToGeoLocationError', 10, '');
     })
     /*
