@@ -62,16 +62,16 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['isTerminating'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-        console .log(TAG, '%{public}s',`createSubscriber data1: state ${JSON.stringify(data) },${JSON.stringify(err)}`);
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
+        console .log(TAG, '%{public}s',`createSubscriber data1: state ${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', ' Succeeded in creating subscriber.');
-        subscriber = data;
+        subscriber = subscriberdata;
 
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log(  TAG, '%{public}s',JSON.stringify(data));
           console.log('this subscribe is success2');
 
@@ -80,7 +80,7 @@ export default function abilityTest() {
             return;
           }else {
             hilog.info(0x0000, TAG, '%{public}s', 'this push data is isTerminating', '%{public}s', data.data);
-            expect(JSON.stringify('false')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('false')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -112,14 +112,14 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['moveAbilityToBackground'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           console.log('this subscribe is success2');
           if (err) {
@@ -127,11 +127,16 @@ export default function abilityTest() {
             return;
           }else {
             hilog.info(0x0000, TAG, '%{public}s', 'this push data is moveAbilityToBackground success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
-            commonEventManager.unsubscribe(subscriber, (err, data) => {
-              hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
-            });
-            done();
+            if(data.code == 16000061){
+              hilog.info(0x0000, TAG, '%{public}s', 'current device not support moveAbilityToBackground');
+              done();
+            }else{
+              expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
+              commonEventManager.unsubscribe(subscriber, (err, data) => {
+                hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
+              });
+              done();
+            }
           }
         })
         let want: Want = {
@@ -158,14 +163,14 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['reportDrawn'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           console.log('this subscribe is success2');
           if (err) {
@@ -173,7 +178,7 @@ export default function abilityTest() {
             return;
           }else {
             hilog.info(0x0000, TAG, '%{public}s', 'this push data is reportDrawn success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -205,15 +210,14 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['restoreWindowStage'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to create subscriber. Code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        console.log('this subscriber is'+JSON);
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           console.log('this subscribe is success2');
           if (err) {
@@ -221,7 +225,7 @@ export default function abilityTest() {
             return;
           }else {
             hilog.info(0x0000, 'this push data is restoreWindowStage success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', '%{public}s', 'unsubscribe OK');
             });
@@ -253,16 +257,15 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setMissionContinue'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
         console .log('createSubscriber data1: state',`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${JSON.stringify(data) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        console.log('this subscriber is'+JSON);
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           console.log('this subscribe is success2');
           if (err) {
@@ -270,7 +273,7 @@ export default function abilityTest() {
             return;
           }else {
             hilog.info(0x0000, 'this push data is setMissionContinue success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -302,21 +305,21 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setMissionLabel'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-        console .log('createSubscriber data1: state',`${JSON.stringify(data) },${JSON.stringify(err)}`);
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
+        console .log('createSubscriber data1: state',`${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           if (err) {
             hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
             return;
           }else {
             hilog.info(0x0000, 'this push data is setMissionLabel success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -348,23 +351,22 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['startAbility'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-        console .log('createSubscriber data1: state',`${JSON.stringify(data) },${JSON.stringify(err)}`);
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
+        console .log('createSubscriber data1: state',`${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        console.log('this subscriber is'+JSON);
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           if (err) {
             hilog.error(0x0000, TAG, '%{public}s', `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
             return;
           }else {
             hilog.info(0x0000, 'this push data is startAbility success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -396,23 +398,22 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['startAbilityForResult'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-        console .log('createSubscriber data1: state',`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${JSON.stringify(data) },${JSON.stringify(err)}`);
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
+        console .log('createSubscriber data1: state',`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        console.log('this subscriber is'+JSON);
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           if (err) {
             hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
             return;
           }else {
             hilog.info(0x0000, 'this push data is startAbilityForResult success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -457,7 +458,7 @@ export default function abilityTest() {
           }
           console.info('startAbilityForResult succeed');
           console.info('result.resultCode:'+JSON.stringify(result.resultCode));
-          expect(JSON.stringify(100)).message('The two data are different').assertEqual(JSON.stringify(result.resultCode));
+          expect(JSON.stringify(100)).assertEqual(JSON.stringify(result.resultCode));
           done();
         });
       } catch (err) {
@@ -483,22 +484,21 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['startAbility'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME}Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        console.log('this subscriber is'+JSON);
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this push data is a'+JSON.stringify(data));
           if (err) {
             hilog.error(0x0000, TAG, '%{public}s', `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
             return;
           }else {
             hilog.info(0x0000, TAG, '%{public}s', 'this push data is pstartAbility success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -534,22 +534,22 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['startAbilityForResult'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-        console .log('createSubscriber data1: state',`${JSON.stringify(data) },${JSON.stringify(err)}`);
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscriberdata: commonEventManager.CommonEventSubscriber) => {
+        console .log('createSubscriber data1: state',`${JSON.stringify(subscriberdata) },${JSON.stringify(err)}`);
         if (err) {
           hilog.error(0x0000, TAG, '%{public}s', `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(0x0000, TAG, '%{public}s', 'Succeeded in creating subscriber.');
-        subscriber = data;
-        commonEventManager.subscribe(data, (err: BusinessError, data: commonEventManager.CommonEventData) => {
+        subscriber = subscriberdata;
+        commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
           console .log('this data:'+JSON.stringify(data));
           if (err) {
             hilog.error(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
             return;
           }else {
             hilog.info(0x0000, 'this push data is pstartAbilityForResult success', '%{public}s', data.data);
-            expect(JSON.stringify('1')).message('The two data are different').assertEqual(JSON.stringify(data.data));
+            expect(JSON.stringify('1')).assertEqual(JSON.stringify(data.data));
             commonEventManager.unsubscribe(subscriber, (err, data) => {
               hilog.info(0x0000, TAG, '%{public}s', 'unsubscribe OK');
             });
@@ -600,7 +600,7 @@ export default function abilityTest() {
           }
           console.info('startAbilityForResult succeed');
           console.info('startAbilityForResult succeed'+ JSON.stringify(result.resultCode));
-          expect(JSON.stringify(100)).message('The two data are different').assertEqual(JSON.stringify(result.resultCode));
+          expect(JSON.stringify(100)).assertEqual(JSON.stringify(result.resultCode));
           done();
         });
       } catch (err) {
