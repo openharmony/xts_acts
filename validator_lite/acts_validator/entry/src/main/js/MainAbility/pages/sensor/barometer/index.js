@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import sensor from '@system.sensor';
 
 export default {
     data: {
+        itemIndex: -1,
         pressure: 0,
         str: '',
         title: 'barometer',
@@ -58,17 +58,24 @@ export default {
             params: {
                 step: '操作步骤：点击订阅气压和取消订阅',
                 result: '预期结果：订阅气压后会实时更新当前气压，取消订阅后气压值不再更新',
-                url: 'pages/sensor/barometer/index'
+                url: 'pages/sensor/barometer/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

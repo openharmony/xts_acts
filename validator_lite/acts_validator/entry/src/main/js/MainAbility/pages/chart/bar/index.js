@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: -1,
         str: '',
         title: 'chart(bar)',
         pass: 'true ;',
@@ -66,18 +66,25 @@ export default {
             params: {
                 step: '操作步骤：无需操作',
                 result: '预期结果：柱状图正常显示',
-                url: 'pages/chart/bar/index'
+                url: 'pages/chart/bar/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 
 };

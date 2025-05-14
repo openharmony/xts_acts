@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import Vibrator from '@system.vibrator';
 
 export default {
     data: {
+        itemIndex: -1,
         strStates: ['短振动', '长振动'],
         state: '',
         str: '',
@@ -33,7 +33,7 @@ export default {
         Vibrator.vibrate({
             mode: 'short',
             success: function(ret) {
-                obj.state = this.strStates[0];
+                obj.state = obj.strStates[0];
                 console.info('vibrate is successful');
             },
             fail: function(ret) {
@@ -51,7 +51,7 @@ export default {
         Vibrator.vibrate({
             mode: 'long',
             success: function(ret) {
-                obj.state = this.strStates[1];
+                obj.state = obj.strStates[1];
                 console.info('vibrate is successful');
             },
             fail: function(ret) {
@@ -69,17 +69,24 @@ export default {
             params: {
                 step: '操作步骤：点击短振动、长振动按钮',
                 result: '预期结果：状态信息显示正确并且在点击短振动按钮设备振动一下，点击长振动按钮设备振动较长时间',
-                url: 'pages/vibrator/index'
+                url: 'pages/vibrator/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };
