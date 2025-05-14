@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import device from '@system.device';
 
 export default {
     data: {
+        itemIndex: -1,
         str: '',
         title: 'deviceInfo',
         pass: 'true ;',
@@ -98,17 +98,24 @@ export default {
             params: {
                 step: '操作步骤：点击获取信息按钮',
                 result: '预期结果：屏幕上显示设备信息，滑动看到所有信息',
-                url: 'pages/deviceInfo/index'
+                url: 'pages/deviceInfo/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

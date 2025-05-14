@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import configuration from '@system.configuration';
 
 export default {
     data: {
+        itemIndex: -1,
         localeInfo: '',
         str: '',
         title: 'configuration',
@@ -61,18 +61,25 @@ export default {
             params: {
                 step: '操作步骤：点击获取信息',
                 result: '预期结果：获取信息按钮正确显示应用当前的语言和地区',
-                url: 'pages/configuration/index'
+                url: 'pages/configuration/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 
 };

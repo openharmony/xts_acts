@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: -1,
         defaultTime: '',
         time: '',
         str: '',
@@ -63,17 +63,24 @@ export default {
             params: {
                 step: '操作步骤：滑动选择器修改选择时间',
                 result: '预期结果：红色字体的时间跟随滑动选择器变化，时间并保持一致',
-                url: 'pages/picker-view/time/index'
+                url: 'pages/picker-view/time/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };
