@@ -1381,9 +1381,8 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
 
     OH_DecodingOptions *decodeOpts = nullptr;
     if (2 == argCount) {
-        void *ptr2 = nullptr;
-        status = napi_get_value_external(env, argValue[NUM_1], &ptr2);
-        decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr2);
+        status = napi_get_value_external(env, argValue[NUM_1], &ptr);
+        decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
     }
     
     OH_PixelmapNative *resPixMap = nullptr;
