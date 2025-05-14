@@ -14,95 +14,18 @@
  */
 
 import file from '@system.file';
-import storage from '@system.storage';
-let strData = '';
-export const saveTxtData = function (obj, str) {
-
-    console.info('saveTxtData key= ' + obj.title + ', str= ' + str);
-    let keyStr = obj.title;
-    storage.set({
-       key: keyStr,
-       value: str,
-       success: function () {
-           console.info('storage set success, key= ' + keyStr + 'value= ' + str);
-       },
-       fail: function () {
-           console.info('storage set fail, key= ' + keyStr + 'value= ' + str);
-       },
-       complete: function () {
-           console.info('storage set call complete');
-       }
-    });
-
-};
 
 export const getTxtData = function () {
-    let keyList = [
-        'chart(bar)',
-        'chart(line)',
-        'image-animator',
-        'input',
-        'list-item',
-        'longpress',
-        'marquee',
-        'opacity',
-        'picker-view',
-        'progress',
-        'qrcode',
-        'slider',
-        'swipe',
-        'swiper',
-        'switch',
-        'transition',
-        'app',
-        'configuration',
-        'timer(timeout)',
-        'timer(interval)',
-        'storage',
-        'file',
-        'vibrator',
-        'stepCounter',
-        'barometer',
-        'heartRate',
-        'onBodyState',
-        'accelerometer',
-        'gyroscope',
-        'location(info)',
-        'location(subscribe)',
-        'deviceInfo',
-        'brightness(value)',
-        'brightness(mode)',
-        'battery',
-        'nfc'
-    ];
-
-    for (let index = 0; index < keyList.length; index++) {
-        const element = keyList[index];
-        getStorageData(element, index, keyList.length);
+    let dataInfo = getApp().data.keyList;
+    let str = '';
+    for (const key in dataInfo) {
+        if (Object.prototype.hasOwnProperty.call(dataInfo, key)) {
+            console.log(`${key}: ${dataInfo[key]}`);
+            str = str + key + ':' + dataInfo[key];
+        }
     }
-};
-
-export const getStorageData = function (element, index, totalLength) {
-
-    storage.get({
-        key: element,
-        success: function (data) {
-            console.info('storage get call success, key= ' + element + ', value= ' + data);
-            if (data !== '') {
-                strData += element + ':' + data;
-            }
-            if (index === totalLength - 1) {
-                console.info('get data complete strData= ' + strData);
-                saveTxtFile(strData);
-            }
-        },
-        fail: function (data, code) {
-            console.info('storage get call fail, key= ' + element);
-        },
-        complete: function () {
-            console.info('storage get call complete');
-        },
-    });
+    console.info('save data: ' + str);
+    saveTxtFile(str);
 };
 
 export const saveTxtFile = function (str) {
