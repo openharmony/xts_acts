@@ -23,7 +23,7 @@ class TextInputModifier implements AttributeModifier<TextInputAttribute> {
 @Entry
 @Component
 struct TextInputType {
-  @State TextInputModifier: TextInputModifier = new TextInputModifier()
+  @State textInputModifier: TextInputModifier = new TextInputModifier()
 
   build() {
     Column({ space: 1 }) {
@@ -44,7 +44,7 @@ struct TextInputType {
 
       TextInput({ placeholder: 'TextInputType: Modifier' })
         .id('TextInputType_Modifier')
-        .attributeModifier(this.TextInputModifier)
+        .attributeModifier(this.textInputModifier)
         .height('10%')
         .margin(1)
         .borderWidth(1)

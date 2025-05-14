@@ -48,7 +48,7 @@ export default function textAreaInputTest() {
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0001
      * @tc.name         textAreaInputTest0001
-     * @tc.desic        Adapt to Xiaoyi input method pop-up window
+     * @tc.desc        Adapt to Xiaoyi input method pop-up window
      */
     it('textAreaInputTest0001', Level.LEVEL0, async () => {
       if (globalThis.winLeft == 0) {

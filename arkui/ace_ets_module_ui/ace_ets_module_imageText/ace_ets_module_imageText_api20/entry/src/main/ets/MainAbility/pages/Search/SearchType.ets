@@ -23,7 +23,7 @@
 @Entry
 @Component
 struct SearchTypeExample {
-  @State SearchModifier: SearchModifier = new SearchModifier()
+  @State searchModifier: SearchModifier = new SearchModifier()
 
   build() {
     Column({ space: 5 }) {
@@ -54,7 +54,7 @@ struct SearchTypeExample {
         value:'SearchModifier',
         placeholder:'Search组件, 请输入...'
       })
-        .attributeModifier(this.SearchModifier)
+        .attributeModifier(this.searchModifier)
         .id('SearchType_Modifier')
         .height('5%')
         .margin(1)

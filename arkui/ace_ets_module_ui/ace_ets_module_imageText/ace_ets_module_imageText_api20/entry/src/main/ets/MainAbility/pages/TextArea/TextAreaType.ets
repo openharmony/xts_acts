@@ -23,7 +23,7 @@ class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
 @Entry
 @Component
 struct TextAreaTypeExample {
-  @State TextAreaModifier: TextAreaModifier = new TextAreaModifier()
+  @State textAreaModifier: TextAreaModifier = new TextAreaModifier()
 
   build() {
     Column({ space: 5 }) {
@@ -60,7 +60,7 @@ struct TextAreaTypeExample {
         text:'TextAreaModifier',
         placeholder: 'TextArea组件, 请输入...' 
       })
-        .attributeModifier(this.TextAreaModifier)
+        .attributeModifier(this.textAreaModifier)
         .id('TextAreaType_Modifier')
         .height('5%')
         .margin(1)
