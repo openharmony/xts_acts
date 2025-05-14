@@ -18,7 +18,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         index: 0,
         str: '',
         title: 'swiper',
@@ -32,7 +32,8 @@ export default {
             params: {
                 step: '操作步骤：在方框内上下滑动',
                 result: '预期结果：方框中的页面随滑动切换',
-                url: 'pages/swiper/SwiperA10/index'
+                url: 'pages/swiper/SwiperA10/index',
+                itemIndex: this.itemIndex
             }
         });
     },

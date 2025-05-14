@@ -18,7 +18,7 @@ import app from '@system.app';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'app',
         pass: 'true ;',
@@ -60,7 +60,8 @@ export default {
             params: {
                 step: '操作步骤：点击获取信息按钮',
                 result: '预期结果：获取信息按钮正确显示应用信息',
-                url: 'pages/app/index'
+                url: 'pages/app/index',
+                itemIndex: this.itemIndex
             }
         });
     },

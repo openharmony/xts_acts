@@ -18,7 +18,7 @@ import router from '@system.router';
 
 export default {
   data: {
-    itemIndex: NaN,
+    itemIndex: -1,
     color: '#5265ef',
     flag: false,
     pointX: 0,
@@ -41,7 +41,8 @@ export default {
       params: {
         step: '操作步骤：长按彩色区域',
         result: '预期结果：x、y、timeStamp、彩色区颜色随长按事件变化而变化',
-        url: 'pages/event/longpress/index'
+        url: 'pages/event/longpress/index',
+        itemIndex: this.itemIndex
       }
     });
   },

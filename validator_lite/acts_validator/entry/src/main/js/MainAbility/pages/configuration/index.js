@@ -18,7 +18,7 @@ import configuration from '@system.configuration';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         localeInfo: '',
         str: '',
         title: 'configuration',
@@ -61,7 +61,8 @@ export default {
             params: {
                 step: '操作步骤：点击获取信息',
                 result: '预期结果：获取信息按钮正确显示应用当前的语言和地区',
-                url: 'pages/configuration/index'
+                url: 'pages/configuration/index',
+                itemIndex: this.itemIndex
             }
         });
     },

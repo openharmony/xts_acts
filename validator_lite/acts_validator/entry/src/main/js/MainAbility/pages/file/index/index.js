@@ -18,7 +18,7 @@ import file from '@system.file';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'file',
         pass: 'true ;',
@@ -319,7 +319,8 @@ export default {
             params: {
                 step: '操作步骤：点击测试file按钮',
                 result: '预期结果：屏幕上依次呈现各接口的测试结果',
-                url: 'pages/file/index/index'
+                url: 'pages/file/index/index',
+                itemIndex: this.itemIndex
             }
         });
     },
