@@ -177,7 +177,7 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
+      console.info(`${caseName}, creating Worker`);
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread9.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -191,11 +191,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread9.workerStageModel.postMessage({ uid: TEST_UID, count: TEST_COUNT });
       await workerTestPromise;
       WorkThread9.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -310,7 +310,7 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
+      console.info(`${caseName}, creating Worker`);
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread10.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -324,11 +324,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread10.workerStageModel.postMessage({ uid: TEST_NAME, count: TEST_COUNT });
       await workerTestPromise;
       WorkThread10.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -442,7 +442,7 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
+      console.info(`${caseName}, creating Worker`);
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread11.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -456,11 +456,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread11.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread11.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -533,8 +533,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker4');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker4');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread12.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -548,11 +548,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread12.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread12.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -623,8 +623,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker5');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker5');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread13.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -638,11 +638,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread13.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread13.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -762,8 +762,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker6');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker6');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread14.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -777,11 +777,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread14.workerStageModel.postMessage({ uid: TEST_UID, count: TEST_COUNT });
       await workerTestPromise;
       WorkThread14.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -897,8 +897,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker7');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker7');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread15.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -912,11 +912,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread15.workerStageModel.postMessage({ uid: TEST_NAME, count: TEST_COUNT });
       await workerTestPromise;
       WorkThread15.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -1031,8 +1031,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker8');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker8');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread16.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -1046,11 +1046,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread16.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread16.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -1121,8 +1121,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker9');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker9');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread17.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -1136,11 +1136,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread17.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread17.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);
@@ -1210,8 +1210,8 @@ export default function ProcessSupplementSecondTest() {
       let successCount = 0;
       let failureCount = 0;
       let exceptionCount = 0;
-      console.info(`${caseName}, creating EAWorker`);
-      //const eaWorker = new worker.ThreadWorker('../workers/Worker10');
+      console.info(`${caseName}, creating Worker`);
+      //const Worker = new worker.ThreadWorker('../workers/Worker10');
       const workerTestPromise = new Promise<void>((resolve) => {
         WorkThread18.workerStageModel.onmessage = (e: MessageEvent<number>) => {
           const results = e.data;
@@ -1225,11 +1225,11 @@ export default function ProcessSupplementSecondTest() {
           resolve();
         };
       });
-      console.info(`${caseName}, starting EAWorker test`);
+      console.info(`${caseName}, starting Worker test`);
       WorkThread18.workerStageModel.postMessage({  count: TEST_COUNT });
       await workerTestPromise;
       WorkThread18.workerStageModel.terminate();
-      console.info(`${caseName}, EAWorker test results:`);
+      console.info(`${caseName}, Worker test results:`);
       console.info(`Success: ${successCount}, Failures: ${failureCount}, Exceptions: ${exceptionCount}`);
       expect(successCount).assertEqual(TEST_COUNT);
       expect(failureCount).assertEqual(0);

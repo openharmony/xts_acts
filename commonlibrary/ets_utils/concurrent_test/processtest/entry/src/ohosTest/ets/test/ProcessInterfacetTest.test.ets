@@ -27,11 +27,8 @@ import {
   WorkThread7,
   WorkThread8
 } from '../testability/pages/TaskpoolMethods';
-import { Driver } from '@kit.TestKit';
 
 let tag: string = 'ProcessInterfacetTest'
-let driver: Driver = Driver.create();
-
 
 export default function ProcessInterfacetTest() {
   describe('ProcessInterfacetTest', () => {
@@ -74,9 +71,7 @@ export default function ProcessInterfacetTest() {
         expect(result).assertTrue();
         count++;
       }
-      while (count < 100) {
-        await driver.delayMs(100)
-      }
+      await sleep(100);
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
       Done();
@@ -94,19 +89,18 @@ export default function ProcessInterfacetTest() {
       const caseName = 'ProcessInterfacetTest0200'
       console.info(`${caseName}, test start`);
       let count: number = 0;
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs4, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs4, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          taskpool.execute(taskGroup).then(() => {
+          taskpool.execute(task).then(() => {
             count++;
           })
         } catch (e) {
           console.info(`${tag} execute error:${e.message}`)
         }
       }
-      while (count < 100) {
-        await driver.delayMs(100)
+      while (count<100){
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -133,9 +127,7 @@ export default function ProcessInterfacetTest() {
         };
         count++;
       }
-      while (count < 100) {
-        await driver.delayMs(100)
-      }
+      await sleep(100);
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
       Done();
@@ -159,9 +151,7 @@ export default function ProcessInterfacetTest() {
         expect(result).assertFalse();
         count++;
       }
-      while (count < 100) {
-        await driver.delayMs(100)
-      }
+      await sleep(100);
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
       Done();
@@ -179,11 +169,10 @@ export default function ProcessInterfacetTest() {
       const caseName = 'ProcessInterfacetTest0500'
       console.info(`${caseName}, test start`);
       let count: number = 0;
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs5, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs5, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          taskpool.execute(taskGroup).then(() => {
+          taskpool.execute(task).then(() => {
             count++;
           })
         } catch (e) {
@@ -191,7 +180,7 @@ export default function ProcessInterfacetTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -219,7 +208,7 @@ export default function ProcessInterfacetTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
@@ -235,7 +224,7 @@ export default function ProcessInterfacetTest() {
      * @tc.level Level 2
      */
     it('ProcessInterfacetTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
-      const caseName = 'ProcessInterfacetTest0500';
+      const caseName = 'ProcessInterfacetTest0700';
       console.info(`${caseName}, test start`);
       let count: number = 0;
       const startTime = process.getStartRealtime();
@@ -247,7 +236,7 @@ export default function ProcessInterfacetTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -267,21 +256,21 @@ export default function ProcessInterfacetTest() {
       console.info(`${caseName}, test start`);
       let count: number = 0;
       const startTime = process.getStartRealtime();
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs6, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs6, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          const result = await taskpool.execute(taskGroup);
-          const currentTime = result[0];
-          console.info(JSON.stringify(currentTime));
-          expect(startTime).assertEqual(currentTime);
+          taskpool.execute(task).then((result)=>{
+            const currentTime = result;
+            console.info(JSON.stringify(currentTime));
+            expect(startTime).assertEqual(currentTime);
+          });
           count++;
         } catch (e) {
           console.info(`execute error: ${e.message}`);
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -310,7 +299,7 @@ export default function ProcessInterfacetTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
@@ -341,7 +330,7 @@ export default function ProcessInterfacetTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -362,24 +351,24 @@ export default function ProcessInterfacetTest() {
       let count: number = 0;
       const startTime = process.getPastCpuTime();
       console.info(`Realtime = ${startTime}`)
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs7, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs7, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          const result = await taskpool.execute(taskGroup);
-          const currentTime = result[0];
-          console.info(JSON.stringify(currentTime));
-          if (startTime > currentTime) {
-            throw new Error('startTime is greater than currentTime');
-          } else {
-            count++;
-          }
+          taskpool.execute(task).then((result)=>{
+            const currentTime = result;
+            console.info(JSON.stringify(currentTime));
+            if (startTime > currentTime) {
+              throw new Error('startTime is greater than currentTime');
+            } else {
+              count++;
+            }
+          });
         } catch (e) {
           console.info(`execute error: ${e.message}`);
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -438,7 +427,7 @@ export default function ProcessInterfacetTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -459,24 +448,24 @@ export default function ProcessInterfacetTest() {
       let count: number = 0;
       const startTime = process.uptime();
       console.info(`Realtime = ${startTime}`)
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs8, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs8, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          const result = await taskpool.execute(taskGroup);
-          const currentTime = result[0];
-          console.info(JSON.stringify(currentTime));
-          if (startTime > currentTime) {
-            throw new Error('startTime is greater than currentTime');
-          } else {
-            count++;
-          }
+          taskpool.execute(task).then((result)=>{
+            const currentTime = result;
+            console.info(JSON.stringify(currentTime));
+            if (startTime > currentTime) {
+              throw new Error('startTime is greater than currentTime');
+            } else {
+              count++;
+            }
+          });
         } catch (e) {
           console.info(`execute error: ${e.message}`);
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);

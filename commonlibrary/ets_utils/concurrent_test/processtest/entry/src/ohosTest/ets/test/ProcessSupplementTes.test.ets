@@ -13,15 +13,13 @@
 * limitations under the License.
 */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { process, taskpool, worker } from '@kit.ArkTS';
+import { process, taskpool} from '@kit.ArkTS';
 import { printArgs1, printArgs2, printArgs3,
   sleep,
   WorkThread, WorkThread2,
   WorkThread3 } from '../testability/pages/TaskpoolMethods';
-import { Driver } from '@kit.TestKit';
 
 let tag: string = 'ProcessSupplementTest'
-let driver: Driver = Driver.create();
 
 
 export default function ProcessSupplementTest() {
@@ -64,7 +62,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -83,11 +81,10 @@ export default function ProcessSupplementTest() {
       const caseName = 'ProcessSupplementTest0200'
       console.info(`${caseName}, test start`);
       let count: number = 0;
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs1, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs1, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          taskpool.execute(taskGroup).then(() => {
+          taskpool.execute(task).then(() => {
             count++;
           })
         } catch (e) {
@@ -95,7 +92,7 @@ export default function ProcessSupplementTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -122,7 +119,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
@@ -146,7 +143,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -165,11 +162,10 @@ export default function ProcessSupplementTest() {
       const caseName = 'ProcessSupplementTest0500'
       console.info(`${caseName}, test start`);
       let count: number = 0;
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs2, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs2, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          taskpool.execute(taskGroup).then(() => {
+          taskpool.execute(task).then(() => {
             count++;
           })
         } catch (e) {
@@ -177,7 +173,7 @@ export default function ProcessSupplementTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -204,7 +200,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
@@ -228,7 +224,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       console.info(`${caseName}, test end`);
       Done();
@@ -246,11 +242,10 @@ export default function ProcessSupplementTest() {
       const caseName = 'ProcessSupplementTest0800'
       console.info(`${caseName}, test start`);
       let count: number = 0;
-      let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-      taskGroup.addTask(printArgs3, 1);
+      let task:taskpool.Task = new taskpool.Task(printArgs3, 1);
       for (let i = 0; i < 100; i++) {
         try {
-          taskpool.execute(taskGroup).then(() => {
+          taskpool.execute(task).then(() => {
             count++;
           })
         } catch (e) {
@@ -258,7 +253,7 @@ export default function ProcessSupplementTest() {
         }
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -285,7 +280,7 @@ export default function ProcessSupplementTest() {
         count++;
       }
       while (count < 100) {
-        await driver.delayMs(100)
+        await sleep(100);
       }
       expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
