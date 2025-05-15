@@ -175,7 +175,7 @@ struct AccessibilityHoverDemo {
           Text(this.text4).key('hoverTest4').margin(5)
           Button(this.hoverText)
             .width(180)
-            .height(80)
+            .height('20%')
             .margin(10)
             .enabled(this.onAccessibilityHoverEnable)
             .opacity(this.onAccessibilityHoverEnable ? 1 : 0.4)

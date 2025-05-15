@@ -49,9 +49,9 @@ struct Inspector {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("inspector")
-        .width(100)
-        .height(70)
-        .fontSize(20)
+        .width('100%')
+        .height('5%')
+        .fontSize(5)
         .opacity(1)
         .align(Alignment.TopStart)
         .fontColor(0xCCCCCC)
@@ -88,7 +88,7 @@ struct Inspector {
             })
           Text("inspectorApiTwo")
             .key("inspectorApiTwo")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               try {
@@ -113,7 +113,7 @@ struct Inspector {
 
           Text("inspectorApiThree")
             .key("inspectorApiThree")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               setAppBgColor('#F9CF93');
@@ -121,7 +121,7 @@ struct Inspector {
 
           Text("inspectorApiFour")
             .key("inspectorApiFour")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               try {
@@ -177,7 +177,7 @@ struct Inspector {
         }
         .width('100%')
       }
-      .height('100%')
+      .height('95%')
 
     }.width("100%").height("100%")
   }

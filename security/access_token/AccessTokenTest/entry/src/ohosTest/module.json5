@@ -44,6 +44,25 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "$string:usePermission_desc",
+        "usedScene": {
+          "abilities": [
+            "MainAbility",
+            "FormAbility",
+            "ServiceExtAbility"
+          ]
+        }
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+      }
     ]
   }
 }

@@ -59,13 +59,13 @@ export default function effectOptions() {
       await CommonFunc.sleep(1000);
       let tree = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree())).$children.length);
       if (tree && tree == "2") {
-      let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
-      .$children[1].$children[0].$attrs.backgroundEffect.options.color)
-      expect(JSON.parse(text)).assertEqual('#FFFFA500');
-      }else{
+        let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
+        .$children[1].$children[0].$attrs.backgroundEffect.options.color)
+        expect(JSON.parse(text)).assertEqual('#FFFFA500');
+        }else{
         let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[0].$children[0].$attrs.backgroundEffect.options.brightness)
-      expect(text).assertEqual('1');
+        expect(text).assertEqual('1');
       }
       await CommonFunc.sleep(1000);
       sendEventByKey('EffectOptions_btn1',10,"");

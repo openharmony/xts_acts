@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import testNapi from 'libimageEffect.so'
 import { ImageUtils } from './ImageUtils';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -72,7 +72,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoCreate001', 0, () => {
+    it('testOHEffectBufferInfoCreate001', Level.LEVEL0, () => {
       console.info(`testOHEffectBufferInfoCreate001 test start `);
 
       let result: number = testNapi.OHEffectBufferInfoCreate();
@@ -89,7 +89,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetAddr001', 0, () => {
+    it('testOHEffectBufferInfoSetAddr001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetAddr(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -102,7 +102,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetAddr002', 0, () => {
+    it('testOHEffectBufferInfoSetAddr002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetAddr(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -115,7 +115,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetAddr003', 0, () => {
+    it('testOHEffectBufferInfoSetAddr003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetAddr(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -128,7 +128,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetAddr004', 0, () => {
+    it('testOHEffectBufferInfoSetAddr004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetAddr(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -141,7 +141,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetAddr001', 0, () => {
+    it('testOHEffectBufferInfoGetAddr001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetAddr(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -154,7 +154,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetAddr002', 0, () => {
+    it('testOHEffectBufferInfoGetAddr002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetAddr(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -167,7 +167,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetAddr003', 0, () => {
+    it('testOHEffectBufferInfoGetAddr003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetAddr(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -180,7 +180,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat001', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -193,7 +193,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat002', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -206,7 +206,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat003', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -219,7 +219,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat004', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -232,7 +232,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat005', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -245,7 +245,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat006', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat006', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_6);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -258,7 +258,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat007', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat007', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_7);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -271,7 +271,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetEffectFormat008', 0, () => {
+    it('testOHEffectBufferInfoSetEffectFormat008', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetEffectFormat(CASE_INDEX_8);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -284,7 +284,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetEffectFormat001', 0, () => {
+    it('testOHEffectBufferInfoGetEffectFormat001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetEffectFormat(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -297,7 +297,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetEffectFormat002', 0, () => {
+    it('testOHEffectBufferInfoGetEffectFormat002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetEffectFormat(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -310,7 +310,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetEffectFormat003', 0, () => {
+    it('testOHEffectBufferInfoGetEffectFormat003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetEffectFormat(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -323,7 +323,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetEffectFormat004', 0, () => {
+    it('testOHEffectBufferInfoGetEffectFormat004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetEffectFormat(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -336,7 +336,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetEffectFormat005', 0, () => {
+    it('testOHEffectBufferInfoGetEffectFormat005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetEffectFormat(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -349,7 +349,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetHeight001', 0, () => {
+    it('testOHEffectBufferInfoSetHeight001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetHeight(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -362,7 +362,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetHeight002', 0, () => {
+    it('testOHEffectBufferInfoSetHeight002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetHeight(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -375,7 +375,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetHeight003', 0, () => {
+    it('testOHEffectBufferInfoSetHeight003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetHeight(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -388,7 +388,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetHeight004', 0, () => {
+    it('testOHEffectBufferInfoSetHeight004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetHeight(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -401,7 +401,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetHeight001', 0, () => {
+    it('testOHEffectBufferInfoGetHeight001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetHeight(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -414,7 +414,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetHeight002', 0, () => {
+    it('testOHEffectBufferInfoGetHeight002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetHeight(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -427,7 +427,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetHeight003', 0, () => {
+    it('testOHEffectBufferInfoGetHeight003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetHeight(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -440,7 +440,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetHeight004', 0, () => {
+    it('testOHEffectBufferInfoGetHeight004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetHeight(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -453,7 +453,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetRowSize001', 0, () => {
+    it('testOHEffectBufferInfoSetRowSize001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetRowSize(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -466,7 +466,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetRowSize002', 0, () => {
+    it('testOHEffectBufferInfoSetRowSize002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetRowSize(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -479,7 +479,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetRowSize003', 0, () => {
+    it('testOHEffectBufferInfoSetRowSize003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetRowSize(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -492,7 +492,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetRowSize004', 0, () => {
+    it('testOHEffectBufferInfoSetRowSize004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetRowSize(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -505,7 +505,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetRowSize001', 0, () => {
+    it('testOHEffectBufferInfoGetRowSize001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetRowSize(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -518,7 +518,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetRowSize002', 0, () => {
+    it('testOHEffectBufferInfoGetRowSize002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetRowSize(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -531,7 +531,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetRowSize003', 0, () => {
+    it('testOHEffectBufferInfoGetRowSize003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetRowSize(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -544,7 +544,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetRowSize004', 0, () => {
+    it('testOHEffectBufferInfoGetRowSize004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetRowSize(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -557,7 +557,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetWidth001', 0, () => {
+    it('testOHEffectBufferInfoSetWidth001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetWidth(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -570,7 +570,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetWidth002', 0, () => {
+    it('testOHEffectBufferInfoSetWidth002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetWidth(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -583,7 +583,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetWidth003', 0, () => {
+    it('testOHEffectBufferInfoSetWidth003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetWidth(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -596,7 +596,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetWidth004', 0, () => {
+    it('testOHEffectBufferInfoSetWidth004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetWidth(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -609,7 +609,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetWidth001', 0, () => {
+    it('testOHEffectBufferInfoGetWidth001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetWidth(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -622,7 +622,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetWidth002', 0, () => {
+    it('testOHEffectBufferInfoGetWidth002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetWidth(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -635,7 +635,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetWidth003', 0, () => {
+    it('testOHEffectBufferInfoGetWidth003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetWidth(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -648,7 +648,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetWidth004', 0, () => {
+    it('testOHEffectBufferInfoGetWidth004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetWidth(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -661,7 +661,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetTimestamp001', 0, () => {
+    it('testOHEffectBufferInfoSetTimestamp001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -674,7 +674,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetTimestamp002', 0, () => {
+    it('testOHEffectBufferInfoSetTimestamp002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -687,7 +687,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoSetTimestamp003', 0, () => {
+    it('testOHEffectBufferInfoSetTimestamp003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoSetTimestamp(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -700,7 +700,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetTimestamp001', 0, () => {
+    it('testOHEffectBufferInfoGetTimestamp001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -713,7 +713,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetTimestamp002', 0, () => {
+    it('testOHEffectBufferInfoGetTimestamp002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -726,7 +726,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoGetTimestamp003', 0, () => {
+    it('testOHEffectBufferInfoGetTimestamp003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoGetTimestamp(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -739,7 +739,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoRelease001', 0, () => {
+    it('testOHEffectBufferInfoRelease001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoRelease(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -752,7 +752,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectBufferInfoRelease002', 0, () => {
+    it('testOHEffectBufferInfoRelease002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectBufferInfoRelease(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -765,7 +765,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoCreate001', 0, () => {
+    it('testOHEffectFilterInfoCreate001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoCreate();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -778,7 +778,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetFilterName001', 0, () => {
+    it('testOHEffectFilterInfoSetFilterName001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetFilterName(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -791,7 +791,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetFilterName002', 0, () => {
+    it('testOHEffectFilterInfoSetFilterName002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetFilterName(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -804,7 +804,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetFilterName003', 0, () => {
+    it('testOHEffectFilterInfoSetFilterName003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetFilterName(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -817,7 +817,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetFilterName001', 0, () => {
+    it('testOHEffectFilterInfoGetFilterName001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetFilterName(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -830,7 +830,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetFilterName002', 0, () => {
+    it('testOHEffectFilterInfoGetFilterName002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetFilterName(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -843,7 +843,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetFilterName003', 0, () => {
+    it('testOHEffectFilterInfoGetFilterName003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetFilterName(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -856,7 +856,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedBufferTypes001', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedBufferTypes001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedBufferTypes(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -869,7 +869,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedBufferTypes002', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedBufferTypes002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedBufferTypes(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -882,7 +882,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedBufferTypes003', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedBufferTypes003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedBufferTypes(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -895,7 +895,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedBufferTypes001', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedBufferTypes001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedBufferTypes(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -908,7 +908,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedBufferTypes002', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedBufferTypes002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedBufferTypes(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -921,7 +921,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedBufferTypes003', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedBufferTypes003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedBufferTypes(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -934,7 +934,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedFormats001', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedFormats001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedFormats(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -947,7 +947,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedFormats002', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedFormats002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedFormats(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -960,7 +960,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoSetSupportedFormats003', 0, () => {
+    it('testOHEffectFilterInfoSetSupportedFormats003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoSetSupportedFormats(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -973,7 +973,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats001', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -986,7 +986,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats002', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -999,7 +999,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats003', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1012,7 +1012,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats004', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1025,7 +1025,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats005', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1038,7 +1038,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoGetSupportedFormats006', 0, () => {
+    it('testOHEffectFilterInfoGetSupportedFormats006', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoGetSupportedFormats(CASE_INDEX_6);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1051,7 +1051,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoRelease001', 0, () => {
+    it('testOHEffectFilterInfoRelease001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoRelease(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1064,7 +1064,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterInfoRelease002', 0, () => {
+    it('testOHEffectFilterInfoRelease002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterInfoRelease(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1077,7 +1077,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterCreate001', 0, () => {
+    it('testOHEffectFilterCreate001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterCreate(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1090,7 +1090,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterCreate002', 0, () => {
+    it('testOHEffectFilterCreate002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterCreate(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1103,7 +1103,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterSetValue001', 0, () => {
+    it('testOHEffectFilterSetValue001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1116,7 +1116,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterSetValue002', 0, () => {
+    it('testOHEffectFilterSetValue002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_29000122);
     });
@@ -1129,7 +1129,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterSetValue003', 0, () => {
+    it('testOHEffectFilterSetValue003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1142,7 +1142,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterSetValue004', 0, () => {
+    it('testOHEffectFilterSetValue004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1155,7 +1155,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterSetValue005', 0, () => {
+    it('testOHEffectFilterSetValue005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterSetValue(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1168,7 +1168,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterGetValue001', 0, () => {
+    it('testOHEffectFilterGetValue001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1181,7 +1181,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterGetValue002', 0, () => {
+    it('testOHEffectFilterGetValue002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_29000122);
     });
@@ -1194,7 +1194,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterGetValue003', 0, () => {
+    it('testOHEffectFilterGetValue003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1207,7 +1207,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterGetValue004', 0, () => {
+    it('testOHEffectFilterGetValue004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1220,7 +1220,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterGetValue005', 0, () => {
+    it('testOHEffectFilterGetValue005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterGetValue(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1233,7 +1233,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilterInfo001', 0, () => {
+    it('testOHEffectFilterLookupFilterInfo001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilterInfo(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1246,7 +1246,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilterInfo002', 0, () => {
+    it('testOHEffectFilterLookupFilterInfo002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilterInfo(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1259,7 +1259,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilterInfo003', 0, () => {
+    it('testOHEffectFilterLookupFilterInfo003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilterInfo(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1272,7 +1272,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilters001', 0, () => {
+    it('testOHEffectFilterLookupFilters001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilters(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1285,7 +1285,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilters002', 0, () => {
+    it('testOHEffectFilterLookupFilters002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilters(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1298,7 +1298,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilters003', 0, () => {
+    it('testOHEffectFilterLookupFilters003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilters(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1311,7 +1311,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilters004', 0, () => {
+    it('testOHEffectFilterLookupFilters004', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilters(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1324,7 +1324,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterLookupFilters005', 0, () => {
+    it('testOHEffectFilterLookupFilters005', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterLookupFilters(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1337,7 +1337,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRegister001', 0, () => {
+    it('testOHEffectFilterRegister001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRegister(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1350,7 +1350,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRegister002', 0, () => {
+    it('testOHEffectFilterRegister002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRegister(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1363,7 +1363,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRegister003', 0, () => {
+    it('testOHEffectFilterRegister003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRegister(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1376,7 +1376,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRelease001', 0, () => {
+    it('testOHEffectFilterRelease001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRelease(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1389,7 +1389,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRelease002', 0, () => {
+    it('testOHEffectFilterRelease002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRelease(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1402,7 +1402,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterReleaseFilterNames001', 0, () => {
+    it('testOHEffectFilterReleaseFilterNames001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterReleaseFilterNames(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1415,7 +1415,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterReleaseFilterNames002', 0, () => {
+    it('testOHEffectFilterReleaseFilterNames002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterReleaseFilterNames(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1428,7 +1428,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRender001', 0, () => {
+    it('testOHEffectFilterRender001', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_1);
       console.log(`test render1${result}`);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
@@ -1442,7 +1442,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRender002', 0, () => {
+    it('testOHEffectFilterRender002', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_2);
       console.log(`test render2${result}`);
       expect(result).assertEqual(EFFECT_SUCCESS);
@@ -1456,7 +1456,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHEffectFilterRender003', 0, () => {
+    it('testOHEffectFilterRender003', Level.LEVEL0, () => {
       let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_3);
       console.log(`test render3${result}`);
       expect(result).assertEqual(EFFECT_SUCCESS);
@@ -1470,7 +1470,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectCreate001', 0, () => {
+    it('testOHImageEffectCreate001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectCreate(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1483,7 +1483,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectCreate002', 0, () => {
+    it('testOHImageEffectCreate002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectCreate(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1496,7 +1496,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectConfigure001', 0, () => {
+    it('testOHImageEffectConfigure001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectConfigure(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1509,7 +1509,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectConfigure002', 0, () => {
+    it('testOHImageEffectConfigure002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectConfigure(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_29000121);
     });
@@ -1522,7 +1522,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectConfigure003', 0, () => {
+    it('testOHImageEffectConfigure003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectConfigure(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1535,7 +1535,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectConfigure004', 0, () => {
+    it('testOHImageEffectConfigure004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectConfigure(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1548,7 +1548,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectConfigure005', 0, () => {
+    it('testOHImageEffectConfigure005', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectConfigure(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1561,7 +1561,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilter001', 0, () => {
+    it('testOHImageEffectAddFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1574,7 +1574,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilter002', 0, () => {
+    it('testOHImageEffectAddFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1587,7 +1587,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilter003', 0, () => {
+    it('testOHImageEffectAddFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1600,7 +1600,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilterByFilter001', 0, () => {
+    it('testOHImageEffectAddFilterByFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1613,7 +1613,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilterByFilter002', 0, () => {
+    it('testOHImageEffectAddFilterByFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1626,7 +1626,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectAddFilterByFilter003', 0, () => {
+    it('testOHImageEffectAddFilterByFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectAddFilterByFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1639,7 +1639,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilter001', 0, () => {
+    it('testOHImageEffectGetFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1652,7 +1652,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilter002', 0, () => {
+    it('testOHImageEffectGetFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1665,7 +1665,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilterCount001', 0, () => {
+    it('testOHImageEffectGetFilterCount001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilterCount(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1678,7 +1678,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilterCount002', 0, () => {
+    it('testOHImageEffectGetFilterCount002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilterCount(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1691,7 +1691,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilterCount003', 0, () => {
+    it('testOHImageEffectGetFilterCount003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilterCount(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1704,7 +1704,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetFilterCount004', 0, () => {
+    it('testOHImageEffectGetFilterCount004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetFilterCount(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1717,7 +1717,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetInputSurface001', 0, () => {
+    it('testOHImageEffectGetInputSurface001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetInputSurface(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1730,7 +1730,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectGetInputSurface002', 0, () => {
+    it('testOHImageEffectGetInputSurface002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectGetInputSurface(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1743,7 +1743,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilter001', 0, () => {
+    it('testOHImageEffectInsertFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1756,7 +1756,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilter002', 0, () => {
+    it('testOHImageEffectInsertFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1769,7 +1769,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilter003', 0, () => {
+    it('testOHImageEffectInsertFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1782,7 +1782,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilter004', 0, () => {
+    it('testOHImageEffectInsertFilter004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilter(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1795,7 +1795,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilterByFilter001', 0, () => {
+    it('testOHImageEffectInsertFilterByFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1808,7 +1808,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilterByFilter002', 0, () => {
+    it('testOHImageEffectInsertFilterByFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1821,7 +1821,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilterByFilter003', 0, () => {
+    it('testOHImageEffectInsertFilterByFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1834,7 +1834,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectInsertFilterByFilter004', 0, () => {
+    it('testOHImageEffectInsertFilterByFilter004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectInsertFilterByFilter(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1847,7 +1847,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilter001', 0, () => {
+    it('testOHImageEffectReplaceFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1860,7 +1860,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilter002', 0, () => {
+    it('testOHImageEffectReplaceFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1873,7 +1873,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilter003', 0, () => {
+    it('testOHImageEffectReplaceFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1886,7 +1886,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilter004', 0, () => {
+    it('testOHImageEffectReplaceFilter004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilter(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1899,7 +1899,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilterByFilter001', 0, () => {
+    it('testOHImageEffectReplaceFilterByFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1912,7 +1912,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilterByFilter002', 0, () => {
+    it('testOHImageEffectReplaceFilterByFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1925,7 +1925,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilterByFilter003', 0, () => {
+    it('testOHImageEffectReplaceFilterByFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1938,7 +1938,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectReplaceFilterByFilter004', 0, () => {
+    it('testOHImageEffectReplaceFilterByFilter004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectReplaceFilterByFilter(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1951,7 +1951,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRelease_001', 0, () => {
+    it('testOHImageEffectRelease_001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRelease(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1964,7 +1964,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRelease002', 0, () => {
+    it('testOHImageEffectRelease002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRelease(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -1977,7 +1977,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilter001', 0, () => {
+    it('testOHImageEffectRemoveFilter001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilter(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -1990,7 +1990,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilter002', 0, () => {
+    it('testOHImageEffectRemoveFilter002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilter(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2003,7 +2003,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilter003', 0, () => {
+    it('testOHImageEffectRemoveFilter003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilter(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2016,7 +2016,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilterByIndex001', 0, () => {
+    it('testOHImageEffectRemoveFilterByIndex001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2029,7 +2029,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilterByIndex002', 0, () => {
+    it('testOHImageEffectRemoveFilterByIndex002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2042,7 +2042,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRemoveFilterByIndex003', 0, () => {
+    it('testOHImageEffectRemoveFilterByIndex003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRemoveFilterByIndex(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2055,7 +2055,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSave001', 0, () => {
+    it('testOHImageEffectSave001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSave(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2068,7 +2068,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSave002', 0, () => {
+    it('testOHImageEffectSave002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSave(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2081,7 +2081,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSave003', 0, () => {
+    it('testOHImageEffectSave003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSave(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2094,7 +2094,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRestore001', 0, () => {
+    it('testOHImageEffectRestore001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRestore(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2107,7 +2107,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRestore002', 0, () => {
+    it('testOHImageEffectRestore002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRestore(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2120,7 +2120,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectRestore003', 0, () => {
+    it('testOHImageEffectRestore003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectRestore(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2133,7 +2133,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputNativeBuffer001', 0, () => {
+    it('testOHImageEffectSetInputNativeBuffer001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputNativeBuffer();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2146,7 +2146,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputPixelmap001', 0, () => {
+    it('testOHImageEffectSetInputPixelmap001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2159,7 +2159,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputPixelmap002', 0, () => {
+    it('testOHImageEffectSetInputPixelmap002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2172,7 +2172,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputPixelmap003', 0, () => {
+    it('testOHImageEffectSetInputPixelmap003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputPixelmap(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2185,7 +2185,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri001', 0, () => {
+    it('testOHImageEffectSetInputUri001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2198,7 +2198,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri002', 0, () => {
+    it('testOHImageEffectSetInputUri002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2211,7 +2211,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri003', 0, () => {
+    it('testOHImageEffectSetInputUri003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2224,7 +2224,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri004', 0, () => {
+    it('testOHImageEffectSetInputUri004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2237,7 +2237,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri005', 0, () => {
+    it('testOHImageEffectSetInputUri005', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2250,7 +2250,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri006', 0, () => {
+    it('testOHImageEffectSetInputUri006', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_6);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2263,7 +2263,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri007', 0, () => {
+    it('testOHImageEffectSetInputUri007', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_7);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2276,7 +2276,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri008', 0, () => {
+    it('testOHImageEffectSetInputUri008', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_8);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2289,7 +2289,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri009', 0, () => {
+    it('testOHImageEffectSetInputUri009', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_9);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2302,7 +2302,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri010', 0, () => {
+    it('testOHImageEffectSetInputUri010', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_10);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2315,7 +2315,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputUri011', 0, () => {
+    it('testOHImageEffectSetInputUri011', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputUri(CASE_INDEX_11);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2328,7 +2328,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputNativeBuffer001', 0, () => {
+    it('testOHImageEffectSetOutputNativeBuffer001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputNativeBuffer();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2341,7 +2341,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputPixelmap001', 0, () => {
+    it('testOHImageEffectSetOutputPixelmap001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2354,7 +2354,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputPixelmap002', 0, () => {
+    it('testOHImageEffectSetOutputPixelmap002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2367,7 +2367,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputPixelmap003', 0, () => {
+    it('testOHImageEffectSetOutputPixelmap003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputPixelmap(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2380,7 +2380,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputSurface001', 0, () => {
+    it('testOHImageEffectSetOutputSurface001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputSurface(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2393,7 +2393,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputSurface002', 0, () => {
+    it('testOHImageEffectSetOutputSurface002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputSurface(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2406,7 +2406,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri001', 0, () => {
+    it('testOHImageEffectSetOutputUri001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_1);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2419,7 +2419,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri002', 0, () => {
+    it('testOHImageEffectSetOutputUri002', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_2);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2432,7 +2432,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri003', 0, () => {
+    it('testOHImageEffectSetOutputUri003', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_3);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2445,7 +2445,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri004', 0, () => {
+    it('testOHImageEffectSetOutputUri004', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_4);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2458,7 +2458,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri005', 0, () => {
+    it('testOHImageEffectSetOutputUri005', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_5);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2471,7 +2471,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri006', 0, () => {
+    it('testOHImageEffectSetOutputUri006', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_6);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2484,7 +2484,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri007', 0, () => {
+    it('testOHImageEffectSetOutputUri007', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_7);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2497,7 +2497,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri008', 0, () => {
+    it('testOHImageEffectSetOutputUri008', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_8);
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2510,7 +2510,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri009', 0, () => {
+    it('testOHImageEffectSetOutputUri009', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_9);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2523,7 +2523,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri010', 0, () => {
+    it('testOHImageEffectSetOutputUri010', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_10);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2536,7 +2536,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputUri011', 0, () => {
+    it('testOHImageEffectSetOutputUri011', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputUri(CASE_INDEX_11);
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2549,7 +2549,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectStart001', 0, () => {
+    it('testOHImageEffectStart001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectStart();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2562,7 +2562,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectStop001', 0, () => {
+    it('testOHImageEffectStop001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectStop();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });
@@ -2575,7 +2575,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetInputPicture001', 0, () => {
+    it('testOHImageEffectSetInputPicture001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetInputPicture();
       expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
@@ -2588,7 +2588,7 @@ export default function imageEffectTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it('testOHImageEffectSetOutputPicture001', 0, () => {
+    it('testOHImageEffectSetOutputPicture001', Level.LEVEL0, () => {
       let result: number = testNapi.OHImageEffectSetOutputPicture();
       expect(result).assertEqual(EFFECT_SUCCESS);
     });

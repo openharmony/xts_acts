@@ -14,7 +14,7 @@
  */
 
 
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, Level } from "@ohos/hypium";
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import fs from '@ohos.file.fs'
@@ -573,7 +573,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_moving_photo_0001', 0, async (done: Function) => {
+    it('create_moving_photo_0001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'create_moving_photo_0001';
       await createMovingPhoto(done, testNum);
     });
@@ -585,7 +585,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_handler_0001', 0, async (done: Function) => {
+    it('request_moving_photo_content_handler_0001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_handler_0001';
       try {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -627,7 +627,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_0001', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_0001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_0001';
       await requestMovingPhotoTranscodeContent(done, testNum, 0);
     });
@@ -639,7 +639,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_0002', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_0002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_0002';
       await requestMovingPhotoTranscodeContent(done, testNum, 1);
     });
@@ -651,7 +651,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_0003', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_0003', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_0003';
       await requestMovingPhotoTranscodeContent(done, testNum, 2);
     });
@@ -663,7 +663,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_0004', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_0004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_0004';
       await requestMovingPhotoTranscodeContentArrayBuffer(done, testNum, 0);
       done();
@@ -676,7 +676,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_0005', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_0005', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_0005';
       await requestMovingPhotoTranscodeContentArrayBuffer(done, testNum, 1);
       done();
@@ -690,7 +690,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_noprogress_0001', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_noprogress_0001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_noprogress_0001';
       await requestMovingPhotoTranscodeNoProgressContent(done, testNum, 0);
     });
@@ -702,7 +702,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_noprogress_0002', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_noprogress_0002', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_noprogress_0002';
       await requestMovingPhotoTranscodeNoProgressContent(done, testNum, 1);
     });
@@ -714,7 +714,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_noprogress_0003', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_noprogress_0003', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_noprogress_0003';
       await requestMovingPhotoTranscodeNoProgressContent(done, testNum, 2);
     });
@@ -726,7 +726,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_noprogress_0004', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_noprogress_0004', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_noprogress_0004';
       await requestMovingPhotoTranscodeNoProgressContentArrayBuffer(done, testNum, 0);
     });
@@ -738,7 +738,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('request_moving_photo_content_transcode_noprogress_0005', 0, async (done: Function) => {
+    it('request_moving_photo_content_transcode_noprogress_0005', Level.LEVEL0, async (done: Function) => {
       const testNum = 'request_moving_photo_content_transcode_noprogress_0005';
       await requestMovingPhotoTranscodeNoProgressContentArrayBuffer(done, testNum, 1);
     });
@@ -750,7 +750,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0001', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0001';
       await requestMovingPhotoErrorDeliveryModeNull(done, testNum);
     });
@@ -762,7 +762,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0002', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0002';
       await requestMovingPhotoErrorCompatibleModeNull(done, testNum);
     });
@@ -774,7 +774,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0003', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0003';
       await requestMovingPhotoErrorProgressHandlerNull(done, testNum);
     });
@@ -786,7 +786,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0004', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0004', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0004';
       await requestMovingPhotoErrorDeliveryModeUndefined(done, testNum);
     });
@@ -798,7 +798,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0005', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0005', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0005';
       await requestMovingPhotoErrorCompatibleModeUndefined(done, testNum);
     });
@@ -810,7 +810,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0006', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0006', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0006';
       await requestMovingPhotoErrorProgressHandlerUndefined(done, testNum);
     });
@@ -822,7 +822,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0007', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0007', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0007';
       await requestMovingPhotoErrorDeliveryModeOutlier(done, testNum);
     });
@@ -834,7 +834,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0008', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0008', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0008';
       await requestMovingPhotoErrorCompatibleModeOutlier(done, testNum);
     });
@@ -846,7 +846,7 @@ export default function getMovingPhotoTranscodeTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('request_moving_photo_error_content_0009', 2, async (done: Function) => {
+    it('request_moving_photo_error_content_0009', Level.LEVEL2, async (done: Function) => {
       const testNum = 'request_moving_photo_error_content_0009';
       await requestMovingPhotoErrorProgressHandlerOutlier(done, testNum);
     });

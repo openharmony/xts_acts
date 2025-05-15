@@ -158,7 +158,8 @@ struct AccessibilityOptions {
 
       Column({ space: 12 }) {
         Row() {
-          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp').margin({ top: 20 })
+          Text(`是否设备支持屏幕朗读`).fontColor(Color.Green).fontSize('18fp')
+            //.margin({ top: 20 })
         }
 
         Row() {
@@ -185,19 +186,19 @@ struct AccessibilityOptions {
                 this.Vue = true
               })
           }
-        }
+        }.height('10%')
 
-        Column({ space: 10 }) {
+        Column({ space: 2 }) {
           Text('123456')
             .focusable(true)
             .borderRadius(5)
             .accessibilityText("有accessibility有text优先读accessibility")
-            .accessibilityLevel("yes")
-          Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility")
-          Button("无accessibility有text 读text").accessibilityLevel("yes")
-          Button()
-          Button('btnl23').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes")
-          Button('btn123').accessibilityLevel("yes")
+            .accessibilityLevel("yes").height('9%')
+          Button().accessibilityLevel("yes").accessibilityText("accessibility无text 读accessibility").height('9%')
+          Button("无accessibility有text 读text").accessibilityLevel("yes").height('9%')
+          Button().height('9%')
+          Button('btnl23').accessibilityText("有accessibility有text btn123").accessibilityLevel("yes").height('9%')
+          Button('btn123').accessibilityLevel("yes").height('9%')
         }
         .accessibilityGroup(true, { accessibilityPreferred: true })
       }.height('80%')

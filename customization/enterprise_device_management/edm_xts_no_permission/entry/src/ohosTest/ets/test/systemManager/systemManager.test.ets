@@ -28,6 +28,7 @@ export default function systemManagerTest() {
     testGetOtaUpdatePolicy();
     testNotifyUpdatePackages();
     testGetUpdateResult();
+    testGetUpdateAuthData();
   })
 }
 
@@ -173,6 +174,28 @@ function testGetUpdateResult() {
       expect(error.code == 201).assertTrue();
     });
     await adminManager.disableAdmin(SELFWANT);
+    done();
+  });
+}
+
+function testGetUpdateAuthData() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_UPDATE_RESULT_JS_0001
+   * @tc.name      : test_get_update_auth_data_0001
+   * @tc.desc      : test systemManager getUpdateAuthData with admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_update_auth_data_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      let authData: string = await systemManager.getUpdateAuthData(SELFWANT);
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
     done();
   });
 }

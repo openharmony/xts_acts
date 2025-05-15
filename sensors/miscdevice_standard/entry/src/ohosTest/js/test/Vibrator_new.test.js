@@ -63,7 +63,7 @@ describe("VibratorJsTest_misc_4", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0010
      */
-    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest001  vibrator error');

@@ -3753,7 +3753,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3775,7 +3775,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0200', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3797,7 +3797,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0300', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3819,7 +3819,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0500', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3842,7 +3842,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0600', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3865,7 +3865,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0700', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3888,7 +3888,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3911,7 +3911,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0400', Level.LEVEL2, async (done: Function) => {
       let beforePublish = async () => {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
@@ -3933,7 +3933,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3964,7 +3964,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_onAttachOptionsDidChange_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -3995,7 +3995,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0100', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
@@ -4032,7 +4032,7 @@ export default function inputMethodEngineJSUnit() {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', 0, async (done: Function) => {
+    it('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', Level.LEVEL2, async (done: Function) => {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0

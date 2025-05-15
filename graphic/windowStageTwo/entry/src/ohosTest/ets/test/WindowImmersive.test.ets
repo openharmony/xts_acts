@@ -53,14 +53,89 @@ export default function windowImmersiveTest() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(() => {
-      // Presets a clear action, which is performed after each unit test case ends.
-      // The number of execution times is the same as the number of test cases defined by **it**.
-      // This API supports only one parameter: clear action function.
+    afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
     })
-    afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
+    afterAll(async () => {
+      // await windowClass.setWindowLayoutFullScreen(false);
+      // await windowClass.setWindowSystemBarEnable(['status']);
+      // await windowClass.setFullScreen(false);
+      let windowClass = windowStage.getMainWindowSync();
+      await windowClass.recover();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100
+     * @tc.name      : test_setImmersiveModeEnabledState_true
+     * @tc.desc      : test_setImmersiveModeEnabledState_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = true;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState();
+        console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:' + isEnabled);
+        if(isPCStatus == '' || isAutoWindow =='false'){
+          expect(isEnabled).assertEqual(true);
+          done();
+        }else{
+          expect(isEnabled).assertEqual(false);
+          done();
+        }
+        
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState enable' + JSON.stringify(error.code) +
+          error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200
+     * @tc.name      : test_setImmersiveModeEnabledState_false
+     * @tc.desc      : test_setImmersiveModeEnabledState_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = false;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState();
+        console.log(msgStr + 'success to setImmersiveModeEnabledState disenabled:' + isEnabled);
+        expect(isEnabled).assertEqual(false);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState disEnable' + JSON.stringify(error.code) +
+          error.message);
+        expect(false).assertTrue();
+        done();
+      }
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
@@ -1762,6 +1837,431 @@ export default function windowImmersiveTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_401
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_401!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent("testability/pages/First/index2");
+          await sleep(1000)
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(null);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(401);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_801
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await data.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await data.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300002
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              expect(err.code == 801 || err.code ==1300002).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_ErrorCode_0400
+     * @tc.name       : test_setSystemAvoidAreaEnabled_ErrorCode_1300004
+     * @tc.desc       : setSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_ErrorCode_1300004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_ErrorCode_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let subWindowClass = data;
+          await subWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await subWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            let promise1 = subWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect().assertFail();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await subWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code == 801 || err.code ==1300004).assertTrue();
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await subWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_setSystemAvoidAreaEnabled_0100
+     * @tc.name       : test_setSystemAvoidAreaEnabled_dialog
+     * @tc.desc       : dialog调用setSystemAvoidAreaEnabled接口
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setSystemAvoidAreaEnabled_dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setSystemAvoidAreaEnabled_dialog!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            let promise1 = dialogWindowClass.setSystemAvoidAreaEnabled(true);
+            promise1.then(async () => {
+              console.info(`${message} succeed setSystemAvoidAreaEnabled`);
+              expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(true);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${message} promise promise Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+              await dialogWindowClass?.destroyWindow();
+              await sleep(1000);
+              expect(err.code).assertEqual(801);
+              done();
+            })
+          }catch (err) {
+            console.error(`${message} Failed to setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test setSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0100
+     * @tc.name       : test_isSystemAvoidAreaEnabled_801
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_801!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            expect(dialogWindowClass.isSystemAvoidAreaEnabled()).assertEqual(false)
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect(err.code).assertEqual(801);
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0200
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300004
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300004
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300004!'
+      try {
+        let promise = windowStage.createSubWindow(message)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent('testability/pages/First/index2')
+          await sleep(1000)
+          await dialogWindowClass.showWindow();
+          await sleep(1000)
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled()
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            await dialogWindowClass?.destroyWindow();
+            await sleep(1000);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            await dialogWindowClass?.destroyWindow();
+            console.info(`${message} after destroyWindow`);
+            await sleep(1000);
+            expect(err.code == 801 || err.code ==1300004).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_isSystemAvoidAreaEnabled_ErrorCode_0300
+     * @tc.name       : test_isSystemAvoidAreaEnabled_1300002
+     * @tc.desc       : isSystemAvoidAreaEnabled接口验证1300002
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_isSystemAvoidAreaEnabled_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_isSystemAvoidAreaEnabled_1300002!'
+      let config: window.Configuration = {
+        name: message,
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      }
+      try {
+        let promise = window.createWindow(config)
+        promise.then(async (data) => {
+          console.info(`${message} succeed createWindow`);
+          let dialogWindowClass = data;
+          await dialogWindowClass.setUIContent("testability/pages/First/index2")
+          await dialogWindowClass.showWindow();
+          await sleep(1000);
+          await dialogWindowClass?.destroyWindow();
+          await sleep(1000);
+          try {
+            dialogWindowClass.isSystemAvoidAreaEnabled();
+            console.info(`${message} succeed assert isSystemAvoidAreaEnabled`);
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.error(`${message} Failed to assert isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+            expect(err.code == 801 || err.code ==1300002).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to createWindow, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to test isSystemAvoidAreaEnabled, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+    
   })
 }
 

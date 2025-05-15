@@ -21,7 +21,8 @@ import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHap
 import swiperIndicatorDistanceTest from "./swiper/SwiperIndicatorDistanceTest.test"
 import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
 import customDialogBackGroundTest from "./customdialog/customDialogBackGroundTest.test"
-import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test';
+import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test'
+import gestureInterrupterTest from './gestureRecognizer/GestureInterrupterTest.test'
 
 export default function testsuite() {
   customDialogTest();
@@ -33,4 +34,5 @@ export default function testsuite() {
   ExpectedFrameRateRangeCallback();
   customDialogBackGroundTest();
   visibleAreaEventOptions();
+  gestureInterrupterTest();
 }

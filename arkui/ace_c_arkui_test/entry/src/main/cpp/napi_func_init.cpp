@@ -7798,6 +7798,8 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testCustomDialogShow004", nullptr, TestCustomDialogShow004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testCustomDialogShow005", nullptr, TestCustomDialogShow005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
 
         {"testLazyForEachCreate001", nullptr, TestLazyForEachCreate001, nullptr, nullptr, nullptr, napi_default,
          nullptr},

@@ -97,7 +97,7 @@ export default function MovingPhotoViewTest() {
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('MovingPhotoView_autoPlay'));
       await button1.click();
-      await CommonFunc.sleep(5000);
+      await CommonFunc.sleep(10000);
       let strJson = getInspectorByKey('MovingPhotoView_start');
       let strJson1 = getInspectorByKey('MovingPhotoView_pause');
       let strJson2 = getInspectorByKey('MovingPhotoView_finish');

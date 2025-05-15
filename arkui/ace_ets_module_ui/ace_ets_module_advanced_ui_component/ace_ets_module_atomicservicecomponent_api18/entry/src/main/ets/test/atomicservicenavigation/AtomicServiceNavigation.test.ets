@@ -65,7 +65,7 @@ export default function atomicservicenavigationTest() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看atomicservicenavigationTest是否存在以下入口。
-      let tab1 = await driver.findComponent(ON.text("主题"));
+      let tab1 = await driver.findComponent(ON.text("page1"));
       expect(tab1 !== null).assertTrue();
       console.info('[atomicservicenavigationTest_0100] END');
       done();

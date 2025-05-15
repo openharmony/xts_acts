@@ -15,6 +15,8 @@
 
 import onVisiable from './onVisiable/onVisiable.test';
 import panGestureOnOffTest from './PanGesture/panGestureOnOff.test';
+import panGestureDistanceTest from './PanGesture/panGestureDistance.test';
+import InteractionEventBindingInfoTest from './InteractionEventBindingInfo/InteractionEventBindingInfo.test';
 import PreDrag from './Drag/PreDrag.test';
 import enableEdgeAutoScroll_false from './DragInteractionOptions/enableEdgeAutoScroll_false.test';
 import enableEdgeAutoScroll_true from './DragInteractionOptions/enableEdgeAutoScroll_true.test';
@@ -23,10 +25,18 @@ import nextFocus from './nextFocus/nextFocus.test';
 import nextFocus2 from './nextFocus2/nextFocus2.test';
 import notifyDragStartRequest from './Drag/notifyDragStartRequest.test';
 import UIObserverEvent from './ListeningEvent/UIObserverEvent.test';
+import LongPressRecognizer from './GestureRecognizer/LongPressRecognizer.test';
+import PanRecognizer from './GestureRecognizer/PanRecognizer.test';
+import PinchRecognizer from './GestureRecognizer/PinchRecognizer.test';
+import RotationRecognizer from './GestureRecognizer/RotationRecognizer.test';
+import SwipeRecognizer from './GestureRecognizer/SwipeRecognizer.test';
+import TapRecognizer from './GestureRecognizer/TapRecognizer.test';
 
 export default function testsuite() {
   onVisiable();
   panGestureOnOffTest();
+  panGestureDistanceTest();
+  InteractionEventBindingInfoTest();
   PreDrag();
   enableEdgeAutoScroll_false();
   enableEdgeAutoScroll_true();
@@ -35,4 +45,10 @@ export default function testsuite() {
   nextFocus2();
   notifyDragStartRequest()
   UIObserverEvent()
+  LongPressRecognizer();
+  PanRecognizer();
+  PinchRecognizer();
+  RotationRecognizer();
+  SwipeRecognizer();
+  TapRecognizer();
 }

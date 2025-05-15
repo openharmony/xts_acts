@@ -21,8 +21,36 @@ import base from '@ohos.base';
 import { common, sendableContextManager } from '@kit.AbilityKit';
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
-import { router } from '@kit.ArkUI';
+import { Driver, MatchPattern, ON } from '@ohos.UiTest';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+let driver = Driver.create();
+const TEST_CASE_NAME: string = 'SUB_ChildProcessManager_sendableContextManager_';
+let textsToMatch: Array<string> = ["打开", "允许", "本次允许"];
+let TAG = 'clickMatchingButton';
+async function clickMatchingButton(texts: Array<string>) {
+  for (const text of texts) {
+    let buttons = await driver.findComponents(ON.text(text));
+    if (buttons && buttons.length > 0) {
+      buttons[buttons.length - 1].click();
+      hilog.info(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} click last button success`);
+      return true;
+    }
+  }
+  hilog.error(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} no matching button found`);
+  return false;
+};
+
+async function handlePermissionPrompt() {
+  let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), 10000);
+  hilog.info(0x0000, TAG, '%{public}s',
+    `${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+  if (allowed) {
+    if (!await clickMatchingButton(textsToMatch)) {
+      hilog.error(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} no matching button found`);
+    }
+  }
+};
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: ['ACTS_TEST_OPENLINK', 'ACTS_TEST_DESTROY']
 };
@@ -178,7 +206,7 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, async (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
       if (mpEnable === 'true') {
         let link:string = 'https://www.applicationContext02.com'
@@ -190,6 +218,7 @@ export default function sendableContextManagerTest() {
             demo_num: 111
           }
         }
+
         commonEventManager.createSubscriber(ACTS_EVENT)
           .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
             subscriber = commonEventSubscriber;
@@ -217,6 +246,7 @@ export default function sendableContextManagerTest() {
             commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
           }, 100)
         })
+        await handlePermissionPrompt();
       }else if(mpEnable === 'false') {
         console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();

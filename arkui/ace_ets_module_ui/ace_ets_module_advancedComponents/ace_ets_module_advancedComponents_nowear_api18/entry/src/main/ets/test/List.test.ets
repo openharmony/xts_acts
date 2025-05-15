@@ -12,15 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
+import ChipGroupIconItemOptionsTest from './ChipGroupTest/ChipGroupIconItemOptionsTest.test';
+import ChipGroupSymbolItemOptionsTest from './ChipGroupTest/ChipGroupSymbolItemOptionsTest.test';
+import ChipTest0010 from './ChipTest/ChipTest0010.test'; 
 import SegmentButtonV2Test0010 from './segmenButtonV2Test/SegmentButtonV2Test0010.test';
 import MultiSegmentButtonV2PageTest from './multiCapsuleSegmentButtonV2/MultiSegmentButtonV2PageTest.test';
+import SegmentButtonV2Test from './capsuleSegmentButtonV2/SegmentButtonV2.test';
 import TabSegmentButtonV2Test from './tabSegmentButtonV2/TabSegmentButtonV2Test.test';
 import SegBtnItemTest0010 from './segbtnTest/SegBtnItemTest0010.test';
 
 export default function testsuite() {
+  ChipGroupIconItemOptionsTest();
+  ChipGroupSymbolItemOptionsTest();
+  ChipTest0010();
   SegmentButtonV2Test0010();
   MultiSegmentButtonV2PageTest();
+  SegmentButtonV2Test();
   SegBtnItemTest0010();
   TabSegmentButtonV2Test();
 }

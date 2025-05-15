@@ -36,6 +36,9 @@ import nodeTypeGrid from './GridTest/nodeTypeGrid.test';
 import listScrollerBar from './ScrollBarTest/listScrollerBar.test';
 import cachedShowGrid from './GridTest/cachedShowGrid.test';
 import cachedShowList from './ListTest/cachedShowList.test';
+import getItemError from './ListTest/getItemError.test'; 
+import getVisibleListError from './ListTest/getVisibleListError.test'; 
+import itemInGroupError from './ListTest/itemInGroupError.test'; 
 
 export default function testsuite() {
   enableScrollJsunit()
@@ -61,4 +64,7 @@ export default function testsuite() {
   listScrollerBar()
   cachedShowGrid()
   cachedShowList()
+  getItemError()
+  getVisibleListError()
+  itemInGroupError()
 }

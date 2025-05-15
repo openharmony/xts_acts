@@ -18,9 +18,12 @@ import activeApiTest from './UIContext/FocusController/activeApiTest.test';
 import PanGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/PanGestureHandlerAllowedTypesTest.test';
 import RotationGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/RotationGestureHandlerAllowedTypesTest.test';
 import SwipeGestureHandlerAllowedTypesTest from './GestureHandlerAllowedTypes/SwipeGestureHandlerAllowedTypesTest.test';
+import next_Focus from './next_Focus/next_Focus.test';  
+
 export default function testsuite() {
   activeApiTest();
   PanGestureHandlerAllowedTypesTest();
   RotationGestureHandlerAllowedTypesTest();
   SwipeGestureHandlerAllowedTypesTest();
+  next_Focus();
 }

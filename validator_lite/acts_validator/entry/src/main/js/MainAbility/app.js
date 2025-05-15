@@ -14,6 +14,46 @@
  */
 
 export default {
+    data: {
+        keyList: {
+            'chart(bar)': "null ;",
+            'chart(line)': "null ;",
+            'image-animator': "null ;",
+            'input': "null ;",
+            'list-item': "null ;",
+            'longpress': "null ;",
+            'marquee': "null ;",
+            'opacity': "null ;",
+            'picker-view': "null ;",
+            'progress': "null ;",
+            'qrcode': "null ;",
+            'slider': "null ;",
+            'swipe': "null ;",
+            'swiper': "null ;",
+            'switch': "null ;",
+            'transition': "null ;",
+            'app': "null ;",
+            'configuration': "null ;",
+            'timer(timeout)': "null ;",
+            'timer(interval)': "null ;",
+            'storage': "null ;",
+            'file': "null ;",
+            'vibrator': "null ;",
+            'stepCounter': "null ;",
+            'barometer': "null ;",
+            'heartRate': "null ;",
+            'onBodyState': "null ;",
+            'accelerometer': "null ;",
+            'gyroscope': "null ;",
+            'location(info)': "null ;",
+            'location(subscribe)': "null ;",
+            'deviceInfo': "null ;",
+            'brightness(value)': "null ;",
+            'brightness(mode)': "null ;",
+            'battery': "null ;",
+            'nfc': "null ;"
+        }
+    },
     onCreate() {
         console.info('Application onCreate');
     },

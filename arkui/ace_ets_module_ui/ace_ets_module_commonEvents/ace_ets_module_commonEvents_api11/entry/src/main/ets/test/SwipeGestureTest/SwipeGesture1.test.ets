@@ -106,13 +106,13 @@ export default function SwipeGesture1() {
       console.info('SwipeGesture1_0300 START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture2');
+      let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture4');
       let top = colum.top
       let right = colum.right
       let left = colum.left
       await driver.swipe(Math.round(left + (right-left)/6), Math.round(top + 100), Math.round(right - (right-left)/6), Math.round(top + 500))
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('Swipe3');
+      let strJson = getInspectorByKey('Swipe7');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[SwipeGesture1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture1_0300] title: " + JSON.stringify(obj.$attrs.content));

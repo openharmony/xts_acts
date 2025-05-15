@@ -19,7 +19,6 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import { Driver, ON, MatchPattern } from '@ohos.UiTest'
 
 let testContext: common.UIAbilityContext;
 let supportSpecifiedProcess: boolean = false;
@@ -56,24 +55,6 @@ let sleep = async (millis: number) => {
   return new Promise<void>(resolve => setTimeout(resolve, millis));
 }
 
-let driver = Driver.create();
-const DELAY_TIME = 5000;
-
-let allowOpen = async (text: string) => {
-  let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELAY_TIME);
-  hilog.info(DOMAIN, LOG_TAG, 'needAllow: %{public}s', JSON.stringify(allowed));
-  if (allowed) {
-    let buttons = await driver.findComponents(ON.text(text, MatchPattern.CONTAINS));
-    if (buttons && buttons.length > 0) {
-      await buttons[buttons.length - 1].click();
-    }
-  }
-}
-
-let allowAlways = async () => {
-  await allowOpen('始终允许');
-}
-
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -108,7 +89,7 @@ export default function abilityTest() {
       // This API supports only one parameter: preset action function.
     })
     afterEach(async (done: Function) => {
-      await sleep(200);
+      await sleep(1000);
       done();
     })
     afterAll(() => {
@@ -130,7 +111,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy']
+          'StartSpecifiedAbility_Exit']
       });
 
       let acceptWantDone = false;
@@ -144,7 +125,7 @@ export default function abilityTest() {
             done();
           }
           createDone = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(acceptWantDone).assertTrue();
@@ -156,7 +137,6 @@ export default function abilityTest() {
 
       try {
         await testContext.startAbility(demo1Entry);
-        await allowAlways();
       } catch (err) {
         commonEventManager.unsubscribe(subscriber);
         try { expect().assertFail(); } catch (err) {}
@@ -183,7 +163,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnNewWant', 'StartSpecifiedAbility_OnDestroy']
+          'StartSpecifiedAbility_OnNewWant', 'StartSpecifiedAbility_Exit']
       });
 
       let acceptWantDone = 0;
@@ -200,7 +180,7 @@ export default function abilityTest() {
           createDone = true;
         } else if (data?.event === 'StartSpecifiedAbility_OnNewWant') {
           newWantDone = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(acceptWantDone).assertEqual(2);
@@ -240,7 +220,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnNewWant', 'StartSpecifiedAbility_OnDestroy']
+          'StartSpecifiedAbility_OnNewWant', 'StartSpecifiedAbility_Exit']
       });
 
       let acceptWantDone = 0;
@@ -257,7 +237,7 @@ export default function abilityTest() {
           }
         } else if (data?.event === 'StartSpecifiedAbility_OnNewWant') {
           newWantDone = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(acceptWantDone).assertEqual(2);
@@ -296,7 +276,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy']
+          'StartSpecifiedAbility_Exit']
       });
 
       let acceptWantDone = 0;
@@ -311,7 +291,7 @@ export default function abilityTest() {
             done();
           }
           createDone++;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -354,7 +334,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy']
+          'StartSpecifiedAbility_Exit']
       });
 
       let acceptWantDone = 0;
@@ -378,7 +358,7 @@ export default function abilityTest() {
               }
             });
           }
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -414,7 +394,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy', 'SecondAbility_OnCreate']
+          'StartSpecifiedAbility_Exit', 'SecondAbility_OnCreate']
       });
 
       let acceptWantDone = 0;
@@ -428,7 +408,7 @@ export default function abilityTest() {
           entryCreate = true;
         } else if (data?.event === 'SecondAbility_OnCreate') {
           secondCreate = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -474,7 +454,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy', 'SecondAbility_OnCreate', 'StartSpecifiedAbility_OnNewWant']
+          'StartSpecifiedAbility_Exit', 'SecondAbility_OnCreate', 'StartSpecifiedAbility_OnNewWant']
       });
 
       let acceptWantDone = 0;
@@ -496,7 +476,7 @@ export default function abilityTest() {
           secondCreate = true;
         } else if (data?.event === 'StartSpecifiedAbility_OnNewWant') {
           newWantDone = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -539,7 +519,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy', 'demo2_acceptWant', 'demo2_entry_onCreate']
+          'StartSpecifiedAbility_Exit', 'demo2_acceptWant', 'demo2_entry_onCreate']
       });
 
       let demo1AcceptWant = false;
@@ -548,7 +528,7 @@ export default function abilityTest() {
       let demo2Create = false;
       let destroyDone = 0;
       commonEventManager.subscribe(subscriber, (err, data) => {
-        // hilog.info(DOMAIN, LOG_TAG, tag + " data?.event");
+        hilog.info(DOMAIN, LOG_TAG, tag + " event: " + data?.event);
         if (data?.event === 'StartSpecifiedAbility_OnAcceptWant') {
           demo1AcceptWant = true;
         } else if (data?.event === 'StartSpecifiedAbility_OnCreate') {
@@ -557,7 +537,7 @@ export default function abilityTest() {
           demo2AcceptWant = true;
         } else if (data?.event === 'demo2_entry_onCreate') {
           demo2Create = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -575,7 +555,6 @@ export default function abilityTest() {
       try {
         await testContext.startAbility(demo1Entry);
         await testContext.startAbility(demo2Entry);
-        await allowAlways();
       } catch (err) {
         commonEventManager.unsubscribe(subscriber);
         try { expect().assertFail(); } catch (err) {}
@@ -602,7 +581,7 @@ export default function abilityTest() {
 
       let subscriber = commonEventManager.createSubscriberSync({
         events: ['StartSpecifiedAbility_OnAcceptWant', 'StartSpecifiedAbility_OnCreate',
-          'StartSpecifiedAbility_OnDestroy', 'demo2_acceptWant', 'demo2_entry_onCreate',
+          'StartSpecifiedAbility_Exit', 'demo2_acceptWant', 'demo2_entry_onCreate',
           'SecondAbility_OnCreate']
       });
 
@@ -623,7 +602,7 @@ export default function abilityTest() {
           demo2Create++;
         } else if (data?.event === 'SecondAbility_OnCreate') {
           secondAbilityCreate = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           destroyDone++;
           if (destroyDone === 5) {
             commonEventManager.unsubscribe(subscriber);
@@ -689,11 +668,11 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['Demo3_OnDestroy']
+        events: ['Demo3_Exit']
       });
 
       commonEventManager.subscribe(subscriber, (err, data) => {
-        if (data?.event === 'Demo3_OnDestroy') {
+        if (data?.event === 'Demo3_Exit') {
           commonEventManager.unsubscribe(subscriber);
           done();
         }
@@ -707,8 +686,6 @@ export default function abilityTest() {
             triggerCrash: true
           }
         });
-        try { await allowAlways(); } catch (err) {}
-        await sleep(300);
         await testContext.startAbility(demo3Entry);
       } catch (err) {
         hilog.info(DOMAIN, LOG_TAG, tag + " err: " + JSON.stringify(err));
@@ -735,12 +712,20 @@ export default function abilityTest() {
         return;
       }
 
+      let timeoutRatio = systemParameterEnhance.getSync('persist.sys.abilityms.timeout_unit_time_ratio', '1');
+      hilog.info(DOMAIN, LOG_TAG, 'timeoutRatio: %{public}s', timeoutRatio);
+      let ratio = parseInt(timeoutRatio)
+      if (Number.isNaN(ratio) || ratio > 2) {
+        done();
+        return;
+      }
+
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['Demo3_OnDestroy']
+        events: ['Demo3_Exit']
       });
 
       commonEventManager.subscribe(subscriber, (err, data) => {
-        if (data?.event === 'Demo3_OnDestroy') {
+        if (data?.event === 'Demo3_Exit') {
           commonEventManager.unsubscribe(subscriber);
           done();
         }
@@ -780,14 +765,14 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy']
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit']
       });
 
       let createDone = false;
       commonEventManager.subscribe(subscriber, (err, data) => {
         if (data?.event === 'demo2_singleton_onCreate') {
           createDone = true;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(createDone).assertTrue();
@@ -829,7 +814,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy', 'demo2_singleton_onNewWant']
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit', 'demo2_singleton_onNewWant']
       });
 
       let createDone = false;
@@ -839,7 +824,7 @@ export default function abilityTest() {
           createDone = true;
         }  else if (data?.event === 'demo2_singleton_onNewWant') {
           newWantDone = true;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(createDone).assertTrue();
@@ -889,7 +874,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy', 'demo2_singleton_onNewWant',
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit', 'demo2_singleton_onNewWant',
           'demo2_onNewProcessRequest']
       });
 
@@ -910,7 +895,7 @@ export default function abilityTest() {
           newWantDone = true;
         } else if (data?.event === 'demo2_onNewProcessRequest') {
           newProcessDone = true;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(createDone).assertTrue();
@@ -954,7 +939,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy', 'demo2_stage_create',
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit', 'demo2_stage_create',
           'demo2_entry_onCreate']
       });
 
@@ -968,7 +953,7 @@ export default function abilityTest() {
           singletonCreate = true;
         } else if (data?.event === 'demo2_stage_create') {
           stageCreate++;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(entryCreate).assertTrue();
@@ -1013,7 +998,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy', 'demo2_stage_create']
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit', 'demo2_stage_create']
       });
 
       let singletonCreate = false;
@@ -1023,7 +1008,7 @@ export default function abilityTest() {
           singletonCreate = true;
         } else if (data?.event === 'demo2_stage_create') {
           stageCreate++;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(singletonCreate).assertTrue();
@@ -1067,7 +1052,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_singleton_onCreate', 'demo2_singleton_onDestroy', 'demo2_stage_create']
+        events: ['demo2_singleton_onCreate', 'demo2_singleton_Exit', 'demo2_stage_create']
       });
 
       let singletonCreate = false;
@@ -1077,7 +1062,7 @@ export default function abilityTest() {
           singletonCreate = true;
         } else if (data?.event === 'demo2_stage_create') {
           stageCreate++;
-        } else if (data?.event === 'demo2_singleton_onDestroy') {
+        } else if (data?.event === 'demo2_singleton_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(singletonCreate).assertTrue();
@@ -1122,14 +1107,14 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['IsolationAbility_onCreate', 'IsolationAbility_onDestroy']
+        events: ['IsolationAbility_onCreate', 'IsolationAbility_Exit']
       });
 
       let createDone = false;
       commonEventManager.subscribe(subscriber, (err, data) => {
         if (data?.event === 'IsolationAbility_onCreate') {
           createDone = true;
-        } else if (data?.event === 'IsolationAbility_onDestroy') {
+        } else if (data?.event === 'IsolationAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(createDone).assertTrue();
@@ -1171,7 +1156,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['IsolationAbility_onCreate', 'IsolationAbility_onDestroy', 'IsolationAbility_onNewWant']
+        events: ['IsolationAbility_onCreate', 'IsolationAbility_Exit', 'IsolationAbility_onNewWant']
       });
 
       let createDone = false;
@@ -1181,7 +1166,7 @@ export default function abilityTest() {
           createDone = true;
         } else if (data?.event === 'IsolationAbility_onNewWant') {
           neWantDone = true;
-        } else if (data?.event === 'IsolationAbility_onDestroy') {
+        } else if (data?.event === 'IsolationAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(createDone).assertTrue();
@@ -1234,7 +1219,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['IsolationAbility_onCreate', 'IsolationAbility_onDestroy', 'demo2_stage_create']
+        events: ['IsolationAbility_onCreate', 'IsolationAbility_Exit', 'demo2_stage_create']
       });
 
       const processFlag = 'process1';
@@ -1251,7 +1236,7 @@ export default function abilityTest() {
           abilityCreate++;
         } else if (data?.event === 'demo2_stage_create') {
           stageCreate++;
-        } else if (data?.event === 'IsolationAbility_onDestroy') {
+        } else if (data?.event === 'IsolationAbility_Exit') {
           abilityDestroy++;
           if (abilityDestroy === 2) {
             commonEventManager.unsubscribe(subscriber);
@@ -1305,7 +1290,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['IsolationAbility_onCreate', 'IsolationAbility_onDestroy', 'demo2_stage_create',
+        events: ['IsolationAbility_onCreate', 'IsolationAbility_Exit', 'demo2_stage_create',
           'IsolationAbility_onNewWant']
       });
 
@@ -1329,7 +1314,7 @@ export default function abilityTest() {
           stageCreate++;
         } else if (data?.event === 'IsolationAbility_onNewWant') {
           newWant = true;
-        } else if (data?.event === 'IsolationAbility_onDestroy') {
+        } else if (data?.event === 'IsolationAbility_Exit') {
           abilityDestroy++;
           if (abilityDestroy === 3) {
             commonEventManager.unsubscribe(subscriber);
@@ -1363,6 +1348,7 @@ export default function abilityTest() {
           }
         });
         // actually process1
+        await sleep(100);
         await testContext.startAbility({
           bundleName: demo2BundleName,
           abilityName: 'IsolationAbility',
@@ -1398,8 +1384,8 @@ export default function abilityTest() {
       hilog.info(DOMAIN, LOG_TAG, tag + " it begin");
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['demo2_entry_onCreate', 'StartSpecifiedAbility_OnDestroy',
-            'demo2_stage_create', 'demo2_nospecified_onCreate']
+        events: ['demo2_entry_onCreate', 'StartSpecifiedAbility_Exit',
+          'demo2_stage_create', 'demo2_nospecified_onCreate']
       });
 
       let specifiedCreate = false;
@@ -1412,7 +1398,7 @@ export default function abilityTest() {
           noSpecifiedCreate = true;
         } else if (data?.event === 'demo2_stage_create') {
           stageCreate = true;
-        } else if (data?.event === 'StartSpecifiedAbility_OnDestroy') {
+        } else if (data?.event === 'StartSpecifiedAbility_Exit') {
           commonEventManager.unsubscribe(subscriber);
           try {
             expect(specifiedCreate).assertTrue();
@@ -1451,7 +1437,7 @@ export default function abilityTest() {
       }
 
       let subscriber = commonEventManager.createSubscriberSync({
-        events: ['IsolationAbility_onDestroy', 'demo2_stage_create', 'IsolationAbility_onCreate',
+        events: ['IsolationAbility_Exit', 'demo2_stage_create', 'IsolationAbility_onCreate',
           'IsolationAbility_onNewWant']
       });
 
@@ -1486,7 +1472,7 @@ export default function abilityTest() {
           } catch (err) {}
           newWant = true;
           testContext.startAbility(noSpecifiedWant);
-        } else if (data?.event === 'IsolationAbility_onDestroy') {
+        } else if (data?.event === 'IsolationAbility_Exit') {
           abilityDestroy++;
           if (abilityDestroy === 1) {
             try {

@@ -9271,6 +9271,77 @@ static napi_value testWasmOperator(napi_env env1, napi_callback_info info)
     return result11;
 }
 
+void test_set_debug_option(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope1, handleScope2, handleScope3;
+    int num = 100;
+    bool boolValue = false;
+    JSVM_Value array1[num], array2[num], array3[num];
+    OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, true);
+    OH_JSVM_OpenHandleScope(env, &handleScope1);
+    for (int i = 0; i < num; i++) {
+        OH_JSVM_GetBoolean(env, false, &array1[i]);
+        OH_JSVM_IsBoolean(env, array1[i], &boolValue);
+    }
+    OH_JSVM_OpenHandleScope(env, &handleScope2);
+    for (int i = 0; i < num; i++) {
+        OH_JSVM_GetBoolean(env, false, &array2[i]);
+        OH_JSVM_IsBoolean(env, array2[i], &boolValue);
+    }
+    OH_JSVM_OpenHandleScope(env, &handleScope3);
+    for (int i = 0; i < num; i++) {
+        OH_JSVM_GetBoolean(env, false, &array3[i]);
+        OH_JSVM_IsBoolean(env, array3[i], &boolValue);
+    }
+    OH_JSVM_CloseHandleScope(env, handleScope3);
+    OH_JSVM_CloseHandleScope(env, handleScope2);
+    OH_JSVM_CloseHandleScope(env, handleScope1);
+    OH_JSVM_SetDebugOption(env, JSVM_SCOPE_CHECK, false);
+}
+
+static napi_value testSetDebugOption(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    test_set_debug_option(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
 static JSVM_CallbackStruct param[] = {
     {.callback = CreateStringUtf8, .data = nullptr},
     {.callback = GetValueStringUtf8, .data = nullptr},
@@ -11175,6 +11246,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("externalStringTest", ExternalStringTest),
         DECLARE_NAPI_FUNCTION("wasmTest", WasmTest),
         DECLARE_NAPI_FUNCTION("arrayBufferBackingStoreTest", ArrayBufferBackingStoreTest),
+        DECLARE_NAPI_FUNCTION("testSetDebugOption", testSetDebugOption),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

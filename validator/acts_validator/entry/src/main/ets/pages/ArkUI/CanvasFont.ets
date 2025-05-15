@@ -69,20 +69,21 @@ struct SetCircle {
                 .size({ width: '0%', height: '1%' })
             }
 
-            Row({ space: 10 }) {
+            Row({ space: 2 }) {
               Text('font-style')
-                .fontSize(13)
+                .fontSize(10)
                 .border({ width: 0 })
                 .size({ width: '24%', height: '18%' })
+                .fontColor(Color.Brown)
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('normal')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '24%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal normal 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal normal 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num1 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -94,13 +95,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('italic').fontSize(13)
+                Text('italic').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '24%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'italic normal 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'italic normal 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num2 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -112,20 +113,21 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 8 }) {
+            Row({ space: 2 }) {
               Text('font-weight')
-                .fontSize(13)
+                .fontSize(10)
                 .border({ width: 0 })
                 .size({ width: '24%', height: '18%' })
+                .fontColor(Color.Brown)
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('normal')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '16%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal normal 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal normal 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num3 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -137,13 +139,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('bold').fontSize(13)
+                Text('bold').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '16%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal bold 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal bold 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num4 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -155,13 +157,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('bolder').fontSize(13)
+                Text('bolder').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '16%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal bolder 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal bolder 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num5 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -173,13 +175,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('lighter').fontSize(13)
+                Text('lighter').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '16%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal lighter 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal lighter 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num6 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -191,15 +193,15 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 5 }) {
+            Row({ space: 2 }) {
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('100').fontSize(13)
+                Text('100').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 100 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 100 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num7 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -211,13 +213,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('200').fontSize(13)
+                Text('200').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 200 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 200 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num8 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -229,13 +231,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('300').fontSize(13)
+                Text('300').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 300 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 300 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num9 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -247,13 +249,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('400').fontSize(13)
+                Text('400').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 400 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 400 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num10 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -265,13 +267,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('500').fontSize(13)
+                Text('500').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 500 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 500 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num11 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -283,13 +285,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('600').fontSize(13)
+                Text('600').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 600 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 600 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num12 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -301,13 +303,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('700').fontSize(13)
+                Text('700').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 700 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 700 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num13 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -319,13 +321,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('800').fontSize(13)
+                Text('800').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 800 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 800 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num14 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -337,13 +339,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('900').fontSize(13)
+                Text('900').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal 900 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal 900 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num15 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -355,16 +357,16 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 10 }) {
-              Text('font-family').fontSize(13).border({ width: 0 }).size({ width: '24%', height: '18%' })
+            Row({ space: 2 }) {
+              Text('font-family').fontSize(10).fontColor(Color.Brown).border({ width: 0 }).size({ width: '24%', height: '18%' })
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('sans-serif').fontSize(13)
+                Text('sans-serif').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '24%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal normal 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal normal 30px sans-serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num16 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -376,13 +378,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('serif').fontSize(13)
+                Text('serif').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '24%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal normal 80px serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal normal 30px serif';
+                this.context.fillText("Hello World", 20, 50);
                 this.num17 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -394,13 +396,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('monospace').fontSize(13)
+                Text('monospace').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '24%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
-                this.context.font = 'normal normal 80px monospace';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.clearRect(0, 0, 1200, 1200);
+                this.context.font = 'normal normal 30px monospace';
+                this.context.fillText("Hello World", 20, 50);
                 this.num18 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -412,20 +414,21 @@ struct SetCircle {
               })
             }
 
-            Row({ space: 10 }) {
+            Row({ space: 2 }) {
               Text('font-size')
-                .fontSize(13)
+                .fontSize(10)
                 .border({ width: 0 })
                 .size({ width: '18%', height: '18%' })
+                .fontColor(Color.Brown)
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('small')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
+                this.context.clearRect(0, 0, 1200, 1200);
                 this.context.font = 'normal normal 10px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.fillText("Hello World", 20, 50);
                 this.num19 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -438,13 +441,13 @@ struct SetCircle {
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
                 Text('medium')
-                  .fontSize(13)
+                  .fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
+                this.context.clearRect(0, 0, 1200, 1200);
                 this.context.font = 'normal normal 50px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.fillText("Hello World", 20, 50);
                 this.num20 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -456,13 +459,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('large').fontSize(13)
+                Text('large').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
+                this.context.clearRect(0, 0, 1200, 1200);
                 this.context.font = 'normal normal 80px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.fillText("Hello World", 20, 50);
                 this.num21 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -474,13 +477,13 @@ struct SetCircle {
               })
 
               Toggle({ type: ToggleType.Button, isOn: false }) {
-                Text('extra').fontSize(13)
+                Text('extra').fontSize(10).fontColor(Color.Black)
               }
               .size({ width: '18%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 1200, 1200);
+                this.context.clearRect(0, 0, 1200, 1200);
                 this.context.font = 'normal normal 120px sans-serif';
-                this.context.fillText("Hello World", 40, 180);
+                this.context.fillText("Hello World", 20, 50);
                 this.num22 = 1;
                 if (this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
                   && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
@@ -493,22 +496,23 @@ struct SetCircle {
             }
           }
           .width('90%')
-          .height('30%')
-
-          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-            Canvas(this.context)
-              .width('100%')
-              .height('100%')
-              .backgroundColor('#ffffffff')
-              .onReady(() => {
-              })
-          }
-          .width('100%')
-          .height('70%')
+          .height('200vp')
         }
       }
       .scrollBarWidth('6vp')
       .scrollBarColor('#cccccc')
+      .height('60%')
+
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#ffffffff')
+          .onReady(() => {
+          })
+      }
+      .width('100%')
+      .height('40%')
     }
     .width('100%')
     .height('80%')

@@ -80,11 +80,11 @@ describe("VibratorJsTest_misc_2", function () {
     * @tc.name:VibratorJsTest001
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0010
-    * @tc.level:Level 3
+    * @tc.level:Level 0
     * @tc.type:Function
     * @tc.size:MediumTest
     */
-    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("VibratorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         TAG = "VibratorJsTest001"
         console.info(TAG + ' isAvailable ' + isAvailable);
         if (isAvailable) {

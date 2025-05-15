@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
 import data_relationalStore from '@ohos.data.relationalStore'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
@@ -58,7 +58,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
      * @tc.level Level 2
      */
 
-    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0100', 0, async (done:Function) => {
+    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.log(TAG + "************* testTransactionBatchInsertWithConflictResolutionSyncErrcode0100 start *************");
       let u8 = new Uint8Array([1, 2, 3])
       let transaction = await (rdbStore as data_relationalStore.RdbStore).createTransaction();
@@ -96,7 +96,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
      * @tc.level Level 2
      */
 
-    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0200', 0, async (done: Function) => {
+    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testTransactionBatchInsertWithConflictResolutionSyncErrcode0200 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
       let transaction = await (rdbStore as data_relationalStore.RdbStore).createTransaction();
@@ -140,7 +140,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
      * @tc.level Level 2
      */
 
-    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0300', 0, async (done: Function) => {
+    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testTransactionBatchInsertWithConflictResolutionSyncErrcode0300 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
       let transaction = await (rdbStore as data_relationalStore.RdbStore).createTransaction();
@@ -179,7 +179,7 @@ export default function TransactionBatchinsertTestSyncErrcode() {
      * @tc.level Level 2
      */
 
-    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0400', 0, async (done: Function) => {
+    it('testTransactionBatchInsertWithConflictResolutionSyncErrcode0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log(TAG + "************* testTransactionBatchInsertWithConflictResolutionSyncErrcode0400 start *************");
       let u8 = new Uint8Array([1, 2, 3]);
       let transaction = await (rdbStore as data_relationalStore.RdbStore).createTransaction();

@@ -36,7 +36,7 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
       try{
 
         let want: Want = {
-          bundleName: 'com.acts.ability.errcode',
+          bundleName: 'com.acts.ability.errcode2',
           abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_100"}
@@ -79,7 +79,7 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
     if (want?.parameters?.case == "startErrorCodeCallBack16000077") {
       try{
         let want: Want = {
-          bundleName: 'com.acts.ability.errcode',
+          bundleName: 'com.acts.ability.errcode2',
           abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,
@@ -142,8 +142,8 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
     if (want?.parameters?.case == "startErrorCodeCallBack16000079") {
       try{
         let want: Want = {
-          bundleName: 'com.ability.errcode.assist',
-          abilityName: 'EntryAbility',
+          bundleName: 'com.acts.ability.errcode2',
+          abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_100",
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,
@@ -189,7 +189,7 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
       try{
 
         let want: Want = {
-          bundleName: 'com.acts.ability.errcode',
+          bundleName: 'com.acts.ability.errcode2',
           abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_100"}
@@ -235,7 +235,7 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
     if (want?.parameters?.case == "startErrorCodeCallBackOptions16000077") {
       try{
         let want: Want = {
-          bundleName: 'com.acts.ability.errcode',
+          bundleName: 'com.acts.ability.errcode2',
           abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,
@@ -298,8 +298,8 @@ export default class TestEmbeddedAbility extends EmbeddedUIExtensionAbility {
     if (want?.parameters?.case == "startErrorCodeCallBackOptions16000079") {
       try{
         let want: Want = {
-          bundleName: 'com.ability.errcode.assist',
-          abilityName: 'EntryAbility',
+          bundleName: 'com.acts.ability.errcode2',
+          abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_100",
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,

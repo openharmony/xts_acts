@@ -27,6 +27,7 @@
     "MainAbility/pages/composeListItem/composeListItemAccessibilityPage",
     "MainAbility/pages/exceptionPrompt/exceptionPromptSymbolStyle",
     "MainAbility/pages/dialogV2/alertDialogV2TestPage",
-    "MainAbility/pages/dialogV2/popoverDialogV2TestPage"
+    "MainAbility/pages/dialogV2/popoverDialogV2TestPage",
+    "MainAbility/pages/dialogV2/customContentDialogV2TestPage"
   ]
 }

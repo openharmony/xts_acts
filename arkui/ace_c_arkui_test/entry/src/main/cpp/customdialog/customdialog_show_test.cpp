@@ -61,4 +61,24 @@ static napi_value TestCustomDialogShow004(napi_env env, napi_callback_info info)
     dialogAPI->dispose(customDialog);
     NAPI_END;
 }
+
+static napi_value TestCustomDialogShow005(napi_env env, napi_callback_info info)
+{
+    const auto dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+    NAPI_START(column, ARKUI_NODE_COLUMN);
+    auto customDialog = dialogAPI->create();
+    dialogAPI->setContent(customDialog, column);
+    auto event = [](int32_t reason) {
+        if (reason == 1) {
+            return true;
+        }
+        return false;
+    };
+    dialogAPI->registerOnWillDismiss(customDialog, event);
+    auto ret = dialogAPI->show(customDialog, true);
+    ASSERT_EQ(ret, SUCCESS);
+    dialogAPI->dispose(customDialog);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

@@ -119,34 +119,6 @@ export default function SerialAddTest() {
       }
     })
 
-    /**  
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0200
-     * @tc.name     : testGetAttribute004
-     * @tc.desc     : getAttribute successfully.
-     */
-    it('testGetAttribute004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        console.info(TAG, 'testGetAttribute004 start');
-        if (await checkDevice() === false) {
-          done();
-          return;
-        }
-        let attribute: serial.SerialAttribute = {
-          baudRate: serial.BaudRates.BAUDRATE_460800,
-          dataBits: serial.DataBits.DATABIT_7,
-          parity: serial.Parity.PARITY_ODD,
-          stopBits: serial.StopBits.STOPBIT_1P5
-        };
-        serial.open(openPortId);
-        serial.setAttribute(openPortId, attribute);
-        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1P5);
-        serial.close(openPortId);
-        done();
-      } catch (error) {
-        console.error(TAG, 'testGetAttribute004 catch err code: ', error.code, ', message: ', error.message);
-        expect().assertFail();
-      }
-    })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0300
@@ -207,71 +179,13 @@ export default function SerialAddTest() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0500
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0700
      * @tc.name     : testGetAttribute007
      * @tc.desc     : getAttribute successfully.
      */
     it('testGetAttribute007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         console.info(TAG, 'testGetAttribute007 start');
-        if (await checkDevice() === false) {
-          done();
-          return;
-        }
-        let attribute: serial.SerialAttribute = {
-          baudRate: serial.BaudRates.BAUDRATE_921600,
-          dataBits: serial.DataBits.DATABIT_4,
-          parity: serial.Parity.PARITY_SPACE,
-          stopBits: serial.StopBits.STOPBIT_1P5
-        };
-        serial.open(openPortId);
-        serial.setAttribute(openPortId, attribute);
-        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1P5);
-        serial.close(openPortId);
-        done();
-      } catch (error) {
-        console.error(TAG, 'testGetAttribute007 catch err code: ', error.code, ', message: ', error.message);
-        expect().assertFail();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0600
-     * @tc.name     : testGetAttribute008
-     * @tc.desc     : getAttribute successfully.
-     */
-    it('testGetAttribute008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        console.info(TAG, 'testGetAttribute008 start');
-        if (await checkDevice() === false) {
-          done();
-          return;
-        }
-        let attribute: serial.SerialAttribute = {
-          baudRate: serial.BaudRates.BAUDRATE_1000000,
-          dataBits: serial.DataBits.DATABIT_6,
-          parity: serial.Parity.PARITY_ODD,
-          stopBits: serial.StopBits.STOPBIT_1P5
-        };
-        serial.open(openPortId);
-        serial.setAttribute(openPortId, attribute);
-        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1P5);
-        serial.close(openPortId);
-        done();
-      } catch (error) {
-        console.error(TAG, 'testGetAttribute008 catch err code: ', error.code, ', message: ', error.message);
-        expect().assertFail();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0700
-     * @tc.name     : testGetAttribute009
-     * @tc.desc     : getAttribute successfully.
-     */
-    it('testGetAttribute009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        console.info(TAG, 'testGetAttribute009 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -288,48 +202,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute009 catch err code: ', error.code, ', message: ', error.message);
-        expect().assertFail();
-      }
-    })
-
-    /**
-     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0800
-     * @tc.name     : testGetAttribute010
-     * @tc.desc     : getAttribute successfully.
-     */
-    it('testGetAttribute010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        console.info(TAG, 'testGetAttribute010 start');
-        if (await checkDevice() === false) {
-          done();
-          return;
-        }
-        let attribute: serial.SerialAttribute = {
-          baudRate: serial.BaudRates.BAUDRATE_1500000,
-          dataBits: serial.DataBits.DATABIT_6,
-          parity: serial.Parity.PARITY_ODD,
-          stopBits: serial.StopBits.STOPBIT_1P5
-        };
-        serial.open(openPortId);
-        serial.setAttribute(openPortId, attribute);
-        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1P5);
-        serial.close(openPortId);
-        done();
-      } catch (error) {
-        console.error(TAG, 'testGetAttribute010 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute007 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_0900
-     * @tc.name     : testGetAttribute011
+     * @tc.name     : testGetAttribute008
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute011 start');
+        console.info(TAG, 'testGetAttribute008 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -346,19 +231,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();  
       } catch (error) {
-        console.error(TAG, 'testGetAttribute011 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute008 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1000
-     * @tc.name     : testGetAttribute012
+     * @tc.name     : testGetAttribute009
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute012 start');
+        console.info(TAG, 'testGetAttribute009 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -375,19 +260,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute012 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute009 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1100
-     * @tc.name     : testGetAttribute013
+     * @tc.name     : testGetAttribute010
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute013 start');
+        console.info(TAG, 'testGetAttribute010 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -404,19 +289,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute013 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute010 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1200
-     * @tc.name     : testGetAttribute014
+     * @tc.name     : testGetAttribute011
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute014 start');
+        console.info(TAG, 'testGetAttribute011 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -433,19 +318,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute014 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute011 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1300
-     * @tc.name     : testGetAttribute015
+     * @tc.name     : testGetAttribute012
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute015 start');
+        console.info(TAG, 'testGetAttribute012 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -462,19 +347,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute015 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute012 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1400
-     * @tc.name     : testGetAttribute016
+     * @tc.name     : testGetAttribute013
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute016 start');
+        console.info(TAG, 'testGetAttribute013 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -491,19 +376,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute016 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute013 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1500
-     * @tc.name     : testGetAttribute017
+     * @tc.name     : testGetAttribute014
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute017 start');
+        console.info(TAG, 'testGetAttribute014 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -520,19 +405,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute017 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute014 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1600
-     * @tc.name     : testGetAttribute018
+     * @tc.name     : testGetAttribute015
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute018 start');
+        console.info(TAG, 'testGetAttribute015 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -549,19 +434,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute018 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute015 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1700
-     * @tc.name     : testGetAttribute019
+     * @tc.name     : testGetAttribute016
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute019 start');
+        console.info(TAG, 'testGetAttribute016 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -578,19 +463,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute019 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute016 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1800
-     * @tc.name     : testGetAttribute020
+     * @tc.name     : testGetAttribute017
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute020 start');
+        console.info(TAG, 'testGetAttribute017 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -607,19 +492,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute020 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute017 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_1900
-     * @tc.name     : testGetAttribute021
+     * @tc.name     : testGetAttribute018
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute021 start');
+        console.info(TAG, 'testGetAttribute018 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -636,19 +521,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute021 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute018 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2000
-     * @tc.name     : testGetAttribute022
+     * @tc.name     : testGetAttribute019
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute022 start');
+        console.info(TAG, 'testGetAttribute019 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -665,19 +550,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute022 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute019 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2100
-     * @tc.name     : testGetAttribute023
+     * @tc.name     : testGetAttribute020
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute023 start');
+        console.info(TAG, 'testGetAttribute020 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -694,19 +579,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute023 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute020 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2200
-     * @tc.name     : testGetAttribute024
+     * @tc.name     : testGetAttribute021
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute024 start');
+        console.info(TAG, 'testGetAttribute021 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -723,19 +608,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute024 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute021 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2300
-     * @tc.name     : testGetAttribute025
+     * @tc.name     : testGetAttribute022
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute025 start');
+        console.info(TAG, 'testGetAttribute022 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -752,19 +637,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute025 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute022 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2400
-     * @tc.name     : testGetAttribute026
+     * @tc.name     : testGetAttribute023
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute026 start');
+        console.info(TAG, 'testGetAttribute023 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -781,19 +666,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute026 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute023 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2500
-     * @tc.name     : testGetAttribute027
+     * @tc.name     : testGetAttribute024
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute027 start');
+        console.info(TAG, 'testGetAttribute024 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -810,19 +695,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute027 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute024 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2600
-     * @tc.name     : testGetAttribute028
+     * @tc.name     : testGetAttribute025
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute028 start');
+        console.info(TAG, 'testGetAttribute025 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -839,19 +724,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute028 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute025 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_2700
-     * @tc.name     : testGetAttribute029
+     * @tc.name     : testGetAttribute026
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute029 start');
+        console.info(TAG, 'testGetAttribute026 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -868,19 +753,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute029 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute026 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3000
-     * @tc.name     : testGetAttribute032
+     * @tc.name     : testGetAttribute027
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute032 start');
+        console.info(TAG, 'testGetAttribute027 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -897,19 +782,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute032 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute027 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3100
-     * @tc.name     : testGetAttribute033
+     * @tc.name     : testGetAttribute028
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute033 start');
+        console.info(TAG, 'testGetAttribute028 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -926,19 +811,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute033 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute028 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3200
-     * @tc.name     : testGetAttribute034
+     * @tc.name     : testGetAttribute029
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute034 start');
+        console.info(TAG, 'testGetAttribute029 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -955,19 +840,19 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute034 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute029 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })
 
     /**
      * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3300
-     * @tc.name     : testGetAttribute035
+     * @tc.name     : testGetAttribute030
      * @tc.desc     : getAttribute successfully.
      */
-    it('testGetAttribute035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testGetAttribute030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
-        console.info(TAG, 'testGetAttribute035 start');
+        console.info(TAG, 'testGetAttribute030 start');
         if (await checkDevice() === false) {
           done();
           return;
@@ -984,7 +869,7 @@ export default function SerialAddTest() {
         serial.close(openPortId);
         done();
       } catch (error) {
-        console.error(TAG, 'testGetAttribute035 catch err code: ', error.code, ', message: ', error.message);
+        console.error(TAG, 'testGetAttribute030 catch err code: ', error.code, ', message: ', error.message);
         expect().assertFail();
       }
     })

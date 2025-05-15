@@ -27,7 +27,7 @@ struct Index222 {
     Column() {
       Text("test").margin(20)
       EmbeddedComponent({
-        bundleName: "com.acts.ability.errcode",
+        bundleName: "com.acts.ability.errcode2",
         abilityName: "TestEmbeddedUIExtAbility",
         parameters:{
             "case":testAbilityWant?.parameters?.case as string,

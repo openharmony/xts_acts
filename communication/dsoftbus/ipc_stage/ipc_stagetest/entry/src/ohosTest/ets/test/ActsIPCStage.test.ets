@@ -1320,9 +1320,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_0370---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();
@@ -5520,9 +5520,9 @@ export default function ActsRpcClientEtsTest() {
      * @tc.desc       : [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+    it("SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       console.info("---------------------start SUB_DSoftbus_IPC_API_Stage_MessageSequence_1680---------------------------");
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
       let reply: rpc.MessageSequence = rpc.MessageSequence.create();

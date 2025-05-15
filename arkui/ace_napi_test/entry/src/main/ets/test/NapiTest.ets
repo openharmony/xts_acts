@@ -10899,6 +10899,26 @@ export default function napiApiTest() {
       done();
     });
     /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUESTRINGUTF8TEST_0100
+     * @tc.name      : testNapiGetValueStringUtf8Test0001
+     * @tc.desc      : Testing NapiGetValueStringUtf8Test NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testNapiGetValueStringUtf8Test0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiGetValueStringUtf8Test0001 START');
+      try {
+        let value = napitest.NapiGetValueStringUtf8Test();
+        console.info('NapiGetValueStringUtf8Test value is: ' + value);
+        expect(value).assertEqual(true);
+      } catch (err) {
+        console.error('NapiGetValueStringUtf8Test err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+    /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_NAPIGETVALUESTRINGUTF16TEST_0100
      * @tc.name      : testNapiGetValueStringUtf16Test0001
      * @tc.desc      : Testing NapiGetValueStringUtf16 NAPI interface.
@@ -13853,6 +13873,27 @@ export default function napiApiTest() {
         expect(value).assertEqual(true);
       } catch (err) {
         console.error('NapiCheckObjectTypeTagTest err msg' + err.message);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_RUNTIME_LANGUAGE_NAPI_testNapiWrapEnhanceTest0001
+     * @tc.name      : testNapiWrapEnhanceTest0001
+     * @tc.desc      : Testing NapiCheckObjectTypeTagTest NAPI interface.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testNapiWrapEnhanceTest0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info('testNapiCheckObjectTypeTagTest0001 START');
+      try {
+        let value:number = napitest.NapiWrapEnhanceTest();
+        console.info('NapiWrapEnhanceTest value is: ' + value);
+        expect(value).assertEqual(1);
+      } catch (err) {
+        console.error('NapiWrapEnhanceTest err msg' + err.message);
         expect().assertFail();
       }
       done();

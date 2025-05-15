@@ -66,13 +66,13 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['action1'],
       };
-      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+      commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscribedata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
           return;
         }
         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-        subscriber = data;
+        subscriber = subscribedata;
         console .log('-+-+-+-',`${JSON.stringify(subscriber)}`);
 
           commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
@@ -83,7 +83,7 @@ export default function abilityTest() {
               return;
             }else {
               hilog.info(0x0000, 'this +++++++803', '%{public}s', data.data);
-              expect(JSON.stringify('-~!@#$ %^&*')).message('action is not equal depplinkdemo.action!').assertEqual(JSON.stringify(data.data));
+              expect(JSON.stringify('-~!@#$ %^&*')).assertEqual(JSON.stringify(data.data));
               done();
             }
           })

@@ -80,12 +80,12 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "image_framework:pixelmap",
   ]
   include_dirs = [
-    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/include/native_drawing",
-    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/include/GLES3",
+    "${current_sdk_home}/native/sysroot/usr/include/native_drawing",
+    "${current_sdk_home}/native/sysroot/usr/include/GLES3",
   ]
   libs = [
-    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/lib/${target_platform_triple}/libnative_drawing.so",
-    "//prebuilts/ohos-sdk/linux/18/native/sysroot/usr/lib/${target_platform_triple}/libGLESv3.so",
+    "${current_sdk_home}/native/sysroot/usr/lib/${target_platform_triple}/libnative_drawing.so",
+    "${current_sdk_home}/native/sysroot/usr/lib/${target_platform_triple}/libGLESv3.so",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }

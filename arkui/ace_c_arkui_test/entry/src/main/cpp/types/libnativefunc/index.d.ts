@@ -7786,6 +7786,7 @@ export const testCustomDialogShow001: () => number;
 export const testCustomDialogShow002: () => number;
 export const testCustomDialogShow003: () => number;
 export const testCustomDialogShow004: () => number;
+export const testCustomDialogShow005: () => number;
 export const testLazyForEachCreate001: () => number;
 export const testLazyForEachDispose001: () => number;
 export const testLazyForEachDispose002: () => number;

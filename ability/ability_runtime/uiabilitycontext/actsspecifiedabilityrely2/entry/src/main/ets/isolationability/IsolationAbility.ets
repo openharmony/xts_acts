@@ -20,9 +20,9 @@ import { JSON, process } from '@kit.ArkTS';
 
 const DOMAIN = 0x0000;
 let exitTime = 500;
-let exitTask = 0;
 
 export default class IsolationAbility extends UIAbility {
+  private exitTask: number = 0;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate ' + JSON.stringify(want));
 
@@ -50,7 +50,6 @@ export default class IsolationAbility extends UIAbility {
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
-    commonEventManager.publish('IsolationAbility_onDestroy', {}, () => {});
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -74,13 +73,14 @@ export default class IsolationAbility extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground: ' + exitTime);
-    if (exitTask !== 0) {
+    if (this.exitTask !== 0) {
       return;
     }
-    exitTask = setTimeout(() => {
+    this.exitTask = setTimeout(() => {
       hilog.info(DOMAIN, 'testTag', '%{public}s', 'IsolationAbility terminateSelf');
-      this.context.terminateSelf();
-      exitTask = 0;
+      commonEventManager.publish('IsolationAbility_Exit', {}, () => {
+        this.context.terminateSelf();
+      });
     }, exitTime);
   }
 

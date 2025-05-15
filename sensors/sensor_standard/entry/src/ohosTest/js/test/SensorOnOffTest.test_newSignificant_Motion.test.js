@@ -64,7 +64,8 @@ describe("SensorJsTest_sensor_50", function () {
     const PARAMETER_ERROR_CODE = 401
     const SERVICE_EXCEPTION_CODE = 14500101
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    const SERVICE_EXCEPTION_MSG = 'Service exception.'
+    const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
     let invalid  = -1;
 
     /*
@@ -72,7 +73,7 @@ describe("SensorJsTest_sensor_50", function () {
      * @tc.name: newSignificant_Motion_SensorJsTest012
      * @tc.desc: Functional Use Cases
      */
-    it("newSignificant_Motion_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newSignificant_Motion_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newSignificant_Motion_SensorJsTest012--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback);
         setTimeout(()=>{
