@@ -40,13 +40,13 @@ export default function HttpRequestAndDestroyTest() {
   describe("HttpRequestAndDestroyTest", () => {
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_createHttp_0100
-     * @tc.name:    testHttpCreateHttp0100
+     * @tc.name:    testNetworkMgrHttpCreateHttp0100
      * @tc.desc:    test createHttp
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpCreateHttp0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrHttpCreateHttp0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = "testHttpCreateHttp0100";
       console.info(`${caseName} test Start`);
       try {
@@ -73,14 +73,14 @@ export default function HttpRequestAndDestroyTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_Request_0200
-     * @tc.name:    SUB_NetworkMgr_Http_Request_0200
+     * @tc.name:    testNetworkMgrHttpRequest0200
      * @tc.desc:    test Request
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      const caseName: string = "testHttpRequest0200";
+    it('testNetworkMgrHttpRequest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequest0200";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
@@ -116,14 +116,14 @@ export default function HttpRequestAndDestroyTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_Request_0300
-     * @tc.name:    SUB_NetworkMgr_Http_Request_0300
+     * @tc.name:    testNetworkMgrHttpRequest0300
      * @tc.desc:    test Request with options
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      const caseName: string = "testHttpRequest0300";
+    it('testNetworkMgrHttpRequest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequest0300";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
@@ -174,14 +174,14 @@ export default function HttpRequestAndDestroyTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_Request_0400
-     * @tc.name:    SUB_NetworkMgr_Http_Request_0400
+     * @tc.name:    testNetworkMgrHttpRequest0400
      * @tc.desc:    test Request
      * @tc.size:    MediumTest
      * @tc.type:    Function
-     * @tc.level:   level 2
+     * @tc.level:   level 0
      */
-    it('testHttpRequest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      const caseName: string = "testHttpRequest0400";
+    it('testNetworkMgrHttpRequest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpRequest0400";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {

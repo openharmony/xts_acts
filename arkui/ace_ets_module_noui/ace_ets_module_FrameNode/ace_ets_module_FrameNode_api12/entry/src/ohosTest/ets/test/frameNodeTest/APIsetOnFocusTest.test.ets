@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, On, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function APIsetOnFocusTest() {
   describe('APIsetOnFocusTest', () => {
     beforeEach(async (done: Function) => {
@@ -48,14 +47,13 @@ export default function APIsetOnFocusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnFocusTest_0100', 0, async (done: Function) => {
+    it('APIsetOnFocusTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0100 START');
       let strJson = getInspectorByKey('setOnFocus_1');
       let obj:ESObject = JSON.parse(strJson);
       console.info("[APIsetOnFocusTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[APIsetOnFocusTest_0100] backgroundColor: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFF0000');
-
       let strJson2 = getInspectorByKey('setOn_text');
       let obj2:ESObject = JSON.parse(strJson2);
       console.info("[APIsetOnFocusTest_0100] component obj2 is: " + JSON.stringify(obj2));
@@ -72,9 +70,8 @@ export default function APIsetOnFocusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnFocusTest_0200', 0, async (done: Function) => {
+    it('APIsetOnFocusTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0200 START');
-
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('setOnFocus_2'));
       if (await buttonCl.isFocused()) {
@@ -83,7 +80,6 @@ export default function APIsetOnFocusTest() {
         console.info('This button is not focused');
       }
       await CommonFunc.sleep(2000);
-
       let strJson = getInspectorByKey('setOnFocus_2');
       let obj:ESObject = JSON.parse(strJson);
       console.info("[APIsetOnFocusTest_0200] component obj is: " + JSON.stringify(obj));
@@ -92,6 +88,5 @@ export default function APIsetOnFocusTest() {
       console.info('[APIsetOnFocusTest_0200] END');
       done();
     });
-
   })
 }

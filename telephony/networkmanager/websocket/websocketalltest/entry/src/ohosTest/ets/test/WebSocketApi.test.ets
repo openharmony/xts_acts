@@ -208,9 +208,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address(url is availableWebSocketAddress)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback0500';
       console.info(`${caseName} test start`);
       try {
@@ -447,9 +447,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,options is {},callback)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectCallback1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectCallback1200';
       console.info(`${caseName} test start`);
       try {
@@ -749,9 +749,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,options is null)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0500';
       console.info(`${caseName} test start`);
       try {
@@ -873,9 +873,9 @@ export default function WebSocketApiTest() {
      * @tc.desc  : Establish a WebSocket connection based on the URL address and header(correct url,correct options)
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrWebSocketConnectPromise0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrWebSocketConnectPromise0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrWebSocketConnectPromise0900';
       console.info(`${caseName} test start`);
       try {
@@ -3119,7 +3119,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -3179,7 +3179,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.off('message');
         ws.off('message');
@@ -3242,7 +3242,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -3302,7 +3302,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.off('message');
         ws.on('open', (err: BusinessError, value: Object) => {
@@ -4002,7 +4002,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -4058,7 +4058,7 @@ export default function WebSocketApiTest() {
         }
         ws.on('dataEnd', () => {
           console.info(`${caseName} ondataEnd success`);
-          done();
+          
         })
         ws.on('error', (err: BusinessError) => {
           console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
@@ -4066,7 +4066,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -4125,13 +4125,13 @@ export default function WebSocketApiTest() {
         });
         ws.on('dataEnd', () => {
           console.info(`${caseName} ondataEnd success`);
-          done();
+          
         });
         ws.off(null);
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -4187,7 +4187,7 @@ export default function WebSocketApiTest() {
         }
         ws.on('dataEnd', () => {
           console.info(`${caseName} ondataEnd success`);
-          done();
+          
         });
         ws.off('dataEnd');
         ws.off('dataEnd');
@@ -4197,7 +4197,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -4254,7 +4254,7 @@ export default function WebSocketApiTest() {
         ws.off('dataEnd');
         ws.on('dataEnd', () => {
           console.info(`${caseName} ondataEnd success`);
-          done();
+          
         });
         ws.on('error', (err: BusinessError) => {
           console.info(`${caseName} findError" + ${JSON.stringify(err)}`);
@@ -4262,7 +4262,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+          
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
@@ -4318,7 +4318,7 @@ export default function WebSocketApiTest() {
         }
         ws.on('dataEnd', () => {
           console.info(`${caseName} ondataEnd success`);
-          done();
+          
         });
         ws.off('dataEnd');
         ws.on('error', (err: BusinessError) => {
@@ -4327,7 +4327,7 @@ export default function WebSocketApiTest() {
         ws.on('message', (err: BusinessError, value: string | ArrayBuffer) => {
           console.info(`${caseName} onmessage err is ${JSON.stringify(err)} and value is ${value}`);
           expectTrue(value != null);
-          done();
+        
         });
         ws.on('open', (err: BusinessError, value: Object) => {
           console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);

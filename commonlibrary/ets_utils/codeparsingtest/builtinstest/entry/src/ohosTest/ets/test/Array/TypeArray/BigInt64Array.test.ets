@@ -59,9 +59,9 @@ export default function BigInt64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigInt64Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigInt64Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigInt64Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigInt64Constructor0001";
       try {
         let array = new BigInt64Array();
@@ -78,9 +78,9 @@ export default function BigInt64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigInt64Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigInt64Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigInt64Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigInt64Constructor0002";
       try {
         let array = new BigInt64Array(0);
@@ -98,9 +98,9 @@ export default function BigInt64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigInt64Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigInt64Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigInt64Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigInt64Constructor0003";
       try {
         let array = new BigInt64Array(10);
@@ -118,9 +118,9 @@ export default function BigInt64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigInt64Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigInt64Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigInt64Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigInt64Constructor0004";
       try {
         let array = new BigInt64Array(10);
@@ -138,9 +138,9 @@ export default function BigInt64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigInt64Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigInt64Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigInt64Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigInt64Constructor0005";
       try {
         let array = new BigInt64Array(10);

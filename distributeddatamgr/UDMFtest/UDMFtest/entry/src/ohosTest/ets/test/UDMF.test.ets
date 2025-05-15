@@ -145,9 +145,9 @@ export default function UDMFApiTest() {
      * @tc.desc      : Test UDMF creating a unifieddata with a text record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0100 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(text);
       let records = unifiedData.getRecords();
@@ -167,9 +167,9 @@ export default function UDMFApiTest() {
      * @tc.desc      : Test UDMF creating a unifieddata with a plaintext record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0200 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
       let records = unifiedData.getRecords();
@@ -191,9 +191,9 @@ export default function UDMFApiTest() {
      * @tc.desc      : Test UDMF creating a unifieddata with a hyperlink record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0300 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(link);
       let records = unifiedData.getRecords();
@@ -215,9 +215,9 @@ export default function UDMFApiTest() {
      * @tc.desc      : Test UDMF creating a unifieddata with a html record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0400 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(html);
       let records = unifiedData.getRecords();
@@ -240,9 +240,9 @@ export default function UDMFApiTest() {
      * @tc.desc      : Test UDMF creating a unifieddata with a file record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_0500 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(file);
       let records = unifiedData.getRecords();

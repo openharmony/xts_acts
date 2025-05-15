@@ -38,9 +38,13 @@
                 "chmod 644 /data/*.hap",
                 "power-shell wakeup",
                 "power-shell setmode 602",
+                "param set persist.sys.abilityms.support.ecologicalrulemgrservice false",
                 "uinput -T -m 300 1279 280 200",
                 "uinput -T -d 1070 1070 -u 1070 1070"
-            ]
+            ],
+            "teardown-command": [
+              "param set persist.sys.abilityms.support.ecologicalrulemgrservice true"
+          ]
         }
     ]
 }

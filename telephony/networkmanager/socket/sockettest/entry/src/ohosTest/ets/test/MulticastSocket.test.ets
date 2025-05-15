@@ -40,9 +40,9 @@ export default function MulticastSocket() {
      * @tc.desc  :  Create a MulticastSocket object
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 2
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketConstructMulticastSocketInstance0100';
       console.info(`${caseName} test start`);
       try {
@@ -65,9 +65,9 @@ export default function MulticastSocket() {
      * @tc.desc  :  Join a multicast group
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 3
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketMulticastSocketAddMembership0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testNetworkMgrSocketMulticastSocketAddMembership0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketMulticastSocketAddMembership0100';
       console.info(`${caseName} test start`);
       try {

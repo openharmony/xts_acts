@@ -19,6 +19,7 @@ group("DFXTest") {
       "log_dotting:ActsWebLogDottingTest",
       "log_dotting_five:ActsWebLogDottingFiveTest",
       "log_dotting_four:ActsWebLogDottingFourTest",
+      "log_dotting_nine:ActsWebLogDottingNineTest",
       "log_dotting_one:ActsWebLogDottingOneTest",
       "log_dotting_seven:ActsWebLogDottingSevenTest",
       "log_dotting_six:ActsWebLogDottingSixTest",

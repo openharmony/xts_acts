@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { driveFn, genRadomStr, getPermission, sleep, } from '../common';
 import common from '@ohos.app.ability.common';
 
@@ -72,7 +72,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('delete_assets_uri_change_request_000', 0, async (done: Function) => {
+    it('delete_assets_uri_change_request_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'delete_assets_uri_change_request_000';
       try {
         let uriList = await createFileUriList(1);
@@ -95,7 +95,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('delete_assets_uri_change_request_001', 2, async (done: Function) => {
+    it('delete_assets_uri_change_request_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'delete_assets_uri_change_request_001';
       try {
         let uriList = await createFileUriList(5);
@@ -118,7 +118,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-        it('delete_assets_uri_change_request_002', 2, async (done: Function) => {
+        it('delete_assets_uri_change_request_002', Level.LEVEL2, async (done: Function) => {
           const testNum = 'delete_assets_uri_change_request_002';
           try {
             const uriList: Array<string> = new Array();
@@ -142,7 +142,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('delete_assets_obj_change_request_000', 2, async (done: Function) => {
+    it('delete_assets_obj_change_request_000', Level.LEVEL2, async (done: Function) => {
       const testNum = 'delete_assets_obj_change_request_000';
       try {
         let objList = await createFileUriList(1);
@@ -164,7 +164,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('delete_assets_obj_change_request_001', 2, async (done: Function) => {
+    it('delete_assets_obj_change_request_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'delete_assets_obj_change_request_001';
       try {
         let objList = await createFileUriList(5);
@@ -186,7 +186,7 @@ export default function deleteAssetsChangeRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('delete_assets_obj_change_request_002', 2, async (done: Function) => {
+    it('delete_assets_obj_change_request_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'delete_assets_obj_change_request_002';
       try {
         const objList: Array<photoAccessHelper.PhotoAsset> = new Array();

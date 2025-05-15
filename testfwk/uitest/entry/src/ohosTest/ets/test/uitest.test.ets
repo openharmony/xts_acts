@@ -370,7 +370,7 @@ export default function UiTest() {
                 await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
                 await driver.delayMs(waitUiReadyMs);
                 // 三指上划返回桌面
-                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {speed: 200});
+                await driver.touchPadMultiFingerSwipe(3, UiDirection.UP, {speed: 2000});
                 await driver.delayMs(waitUiReadyMs);
                 let mainPageCom = await driver.findComponent(ON.text('MainPage'));
                 await driver.delayMs(waitUiReadyMs);

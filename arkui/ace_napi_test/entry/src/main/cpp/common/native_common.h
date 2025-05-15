@@ -103,4 +103,15 @@
         (name), nullptr, nullptr, nullptr, nullptr, val, napi_default_jsproperty, nullptr \
     }
 
+#define NAPI_CHECK_GET_LAST_ERROR_INFO_BASE(env, assertion)                     \
+    do {                                                                                \
+        if (assertion) {                                                                \
+            const napi_extended_error_info *errorInfo;                                  \
+            napi_get_last_error_info(env, &errorInfo);                                  \
+            NAPI_ASSERT(env, errorInfo->error_message != nullptr, "Test Node-API last error "   \
+                         "info return errorInfo, error info is nullptr.");              \
+        }                                                                               \
+    } while (0)
+
+#define NAPI_CHECK_GET_LAST_ERROR_INFO(env, assertion) NAPI_CHECK_GET_LAST_ERROR_INFO_BASE(env, assertion)
 #endif /* FOUNDATION_ACE_NAPI_INTERFACES_KITS_NAPI_NATIVE_COMMON_H */

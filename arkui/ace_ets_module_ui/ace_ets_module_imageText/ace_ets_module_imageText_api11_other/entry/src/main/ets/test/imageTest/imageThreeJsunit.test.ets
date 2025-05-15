@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function imageThreeJsunit() {
       done();
     });
 
-    it('imageThreeJsunit_0100', 0, async (done: Function) => {
+    it('imageThreeJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('imageThreeJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // test the image complete Event
@@ -54,7 +54,7 @@ export default function imageThreeJsunit() {
       done();
     });
 
-    it('imageThreeJsunit_0200', 0, async (done: Function) => {
+    it('imageThreeJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('imageThreeJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // test the image finish Event
@@ -65,7 +65,7 @@ export default function imageThreeJsunit() {
       done();
     });  
     
-    it('imageThreeJsunit_0300', 0, async (done: Function) => {
+    it('imageThreeJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('imageThreeJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // test the image click event
@@ -80,7 +80,7 @@ export default function imageThreeJsunit() {
       done();
     });
 
-    it('imageThreeJsunit_0400', 0, async (done: Function) => {
+    it('imageThreeJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('imageThreeJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // test the image error event

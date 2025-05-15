@@ -26,6 +26,7 @@
   "MainAbility/pages/Text/editMeunOptions",
   "MainAbility/pages/RichEditor/RichEditorApi1",
   "MainAbility/pages/RichEditor/onDidIMEInput",
-  "MainAbility/pages/TextArea/setTextSelection"
+  "MainAbility/pages/TextArea/setTextSelection",
+  "MainAbility/pages/TextArea/TextDeleteDirectionTest"
   ]
 }

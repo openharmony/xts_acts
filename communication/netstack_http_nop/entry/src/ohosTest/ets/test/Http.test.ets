@@ -16,7 +16,7 @@
 import http from '@ohos.net.http';
 import hilog from '@ohos.hilog';
 import { BusinessError } from '@ohos.base'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 
 // no permission.
 const NOT_PERMISSION = 201;
@@ -58,11 +58,11 @@ export default function httpTest() {
      * @tc.number:SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100
      * @tc.name: Http_RequestInStream_HttpRequestOptions_Promise_100
      * @tc.desc:Using the on method without permission
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,  async (done: Function) => {
       hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Promise_100 begin');
       try {
         let promise = httpRequest.requestInStream("EXAMPLE_URL", {
@@ -95,7 +95,7 @@ export default function httpTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Callback_200', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Callback_200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_RequestInStream_HttpRequestOptions_Callback_200 begin');
       try {
         httpRequest.requestInStream("EXAMPLE_URL", {
@@ -129,7 +129,7 @@ export default function httpTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Http_RequestInStream_Callback_300', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Http_RequestInStream_Callback_300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_RequestInStream_Callback_300 begin');
       try {
         httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) => {
@@ -158,7 +158,7 @@ export default function httpTest() {
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SUB_Communication_NetStack_Http_Request_Callback_400', 0, async (done: Function) => {
+    it('SUB_Communication_NetStack_Http_Request_Callback_400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async (done: Function) => {
       hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_Request_Callback_400 begin');
       try {
         httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse) => {
@@ -188,7 +188,7 @@ export default function httpTest() {
        * @tc.type:Function
        * @tc.size:MediumTest
        */
-      it('SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Callback_500', 0, async (done: Function) => {
+      it('SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Callback_500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,  async (done: Function) => {
         hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Callback_500 begin');
         try {
           httpRequest.request("EXAMPLE_URL", {
@@ -222,7 +222,7 @@ export default function httpTest() {
        * @tc.type:Function
        * @tc.size:MediumTest
        */
-      it('SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Promise_600', 0, async (done: Function) => {
+      it('SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Promise_600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         hilog.info(0x0000, 'httpTag', '%{public}s', 'SUB_Communication_NetStack_Http_Request_HttpRequestOptions_Promise_600 begin');
         try {
           let promise = httpRequest.request("EXAMPLE_URL", {

@@ -54,11 +54,11 @@ export default function NetworkManagerCaPathTest() {
          * @tc.number SUB_Telephony_NetStack_HTTPSCertificateManagement_0100
          * @tc.name SUB_Telephony_NetStack_HTTPSCertificateManagement_0100  
 		 * @tc.desc request: input https://www.openharmony.cn/ & error of caPath by Async
-		 * @tc.level 2
+		 * @tc.level 0
 		 * @tc.type Function
          * @tc.size SmallTest
          */
-        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function (done) {
+        it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0100';
 			try {
 				let httpRequest = http.createHttp();

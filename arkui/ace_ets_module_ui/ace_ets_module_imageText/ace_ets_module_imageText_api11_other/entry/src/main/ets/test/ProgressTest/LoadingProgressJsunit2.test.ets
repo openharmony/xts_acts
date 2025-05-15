@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -43,7 +43,7 @@ export default function loadingProgressJsunit2() {
       console.info("loadingProgress after each called");
     });
 
-    it('testLoadingProgress_100', 0, async (done: Function) => {
+    it('testLoadingProgress_100', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_100] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');
@@ -54,7 +54,7 @@ export default function loadingProgressJsunit2() {
       done();
     });
 
-    it('testLoadingProgress_200', 0, async (done: Function) => {
+    it('testLoadingProgress_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_200] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');
@@ -65,7 +65,7 @@ export default function loadingProgressJsunit2() {
       done();
     });
 
-    it('testLoadingProgress_300', 0, async (done: Function) => {
+    it('testLoadingProgress_300', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_300] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');
@@ -76,7 +76,7 @@ export default function loadingProgressJsunit2() {
       done();
     });
 
-    it('testLoadingProgress_400', 0, async (done: Function) => {
+    it('testLoadingProgress_400', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_400] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');
@@ -87,7 +87,7 @@ export default function loadingProgressJsunit2() {
       done();
     });
 
-    it('testLoadingProgress_500', 0, async (done: Function) => {
+    it('testLoadingProgress_500', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_500] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');
@@ -98,7 +98,7 @@ export default function loadingProgressJsunit2() {
       done();
     });
 
-    it('testLoadingProgress_600', 0, async (done: Function) => {
+    it('testLoadingProgress_600', Level.LEVEL1, async (done: Function) => {
       console.info('[testLoadingProgress_600] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('LP');

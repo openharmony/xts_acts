@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import { modifyBuf } from "./modifyBuffer";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@ohos.base';
@@ -444,7 +444,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100",
@@ -464,7 +464,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200",
@@ -484,7 +484,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300",
@@ -504,7 +504,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400",
@@ -524,7 +524,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500",
@@ -544,7 +544,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Top-right").assertTrue();
       }
@@ -562,7 +562,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("38") != -1).assertTrue();
       }
@@ -586,7 +586,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("9") != -1).assertTrue();
       }
@@ -610,7 +610,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "N").assertTrue();
       }
@@ -634,7 +634,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "W").assertTrue();
       }
@@ -658,7 +658,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "4, 4, 4").assertTrue();
       }
@@ -682,7 +682,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "800").assertTrue();
       }
@@ -706,7 +706,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "500").assertTrue();
       }
@@ -730,7 +730,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -754,7 +754,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1/3 sec.").assertTrue();
       }
@@ -778,7 +778,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Directly photographed").assertTrue();
       }
@@ -802,7 +802,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2").assertTrue();
       }
@@ -826,7 +826,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "f/0.5").assertTrue();
       }
@@ -850,7 +850,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -874,7 +874,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "11:37:56.00").assertTrue();
       }
@@ -898,7 +898,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2023:10:19").assertTrue();
       }
@@ -922,7 +922,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "badPhoto").assertTrue();
       }
@@ -946,7 +946,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "XiaoMI").assertTrue();
       }
@@ -970,7 +970,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "TNY-AL00").assertTrue();
       }
@@ -994,7 +994,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "ISO speed").assertTrue();
       }
@@ -1018,7 +1018,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "200").assertTrue();
       }
@@ -1042,7 +1042,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "3").assertTrue();
       }
@@ -1066,7 +1066,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV (f/1.2)").assertTrue();
       }
@@ -1090,7 +1090,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV").assertTrue();
       }
@@ -1114,7 +1114,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Spot").assertTrue();
       }
@@ -1138,7 +1138,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Fluorescent").assertTrue();
       }
@@ -1162,7 +1162,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Flash fired, auto mode").assertTrue();
       }
@@ -1186,7 +1186,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.5 mm").assertTrue();
       }
@@ -1210,7 +1210,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1111").assertTrue();
       }
@@ -1234,7 +1234,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -1258,7 +1258,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -1282,7 +1282,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Auto white balance").assertTrue();
       }
@@ -1306,7 +1306,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_4000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_4000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "35").assertTrue();
       }
@@ -1331,7 +1331,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation",
         "2");
     });
@@ -1346,7 +1346,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200",
@@ -1366,7 +1366,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300",
@@ -1386,7 +1386,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400",
@@ -1406,7 +1406,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500",
@@ -1426,7 +1426,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Top-right").assertTrue();
       }
@@ -1444,7 +1444,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("38") != -1).assertTrue();
       }
@@ -1462,7 +1462,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("9") != -1).assertTrue();
       }
@@ -1480,7 +1480,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "N").assertTrue();
       }
@@ -1498,7 +1498,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "W").assertTrue();
       }
@@ -1516,7 +1516,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "4, 4, 4").assertTrue();
       }
@@ -1534,7 +1534,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "800").assertTrue();
       }
@@ -1552,7 +1552,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "500").assertTrue();
       }
@@ -1571,7 +1571,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -1595,7 +1595,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1/3 sec.").assertTrue();
       }
@@ -1619,7 +1619,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Directly photographed").assertTrue();
       }
@@ -1643,7 +1643,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2").assertTrue();
       }
@@ -1667,7 +1667,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "f/0.5").assertTrue();
       }
@@ -1691,7 +1691,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -1715,7 +1715,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "11:37:56.00").assertTrue();
       }
@@ -1739,7 +1739,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2023:10:19").assertTrue();
       }
@@ -1763,7 +1763,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "badPhoto").assertTrue();
       }
@@ -1787,7 +1787,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "XiaoMI").assertTrue();
       }
@@ -1811,7 +1811,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "TNY-AL00").assertTrue();
       }
@@ -1835,7 +1835,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "ISO speed").assertTrue();
       }
@@ -1859,7 +1859,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "200").assertTrue();
       }
@@ -1883,7 +1883,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "3").assertTrue();
       }
@@ -1907,7 +1907,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV (f/1.2)").assertTrue();
       }
@@ -1931,7 +1931,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV").assertTrue();
       }
@@ -1955,7 +1955,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Spot").assertTrue();
       }
@@ -1979,7 +1979,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Fluorescent").assertTrue();
       }
@@ -2003,7 +2003,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Flash fired, auto mode").assertTrue();
       }
@@ -2027,7 +2027,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.5 mm").assertTrue();
       }
@@ -2051,7 +2051,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1111").assertTrue();
       }
@@ -2075,7 +2075,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -2099,7 +2099,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -2123,7 +2123,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Auto white balance").assertTrue();
       }
@@ -2147,7 +2147,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_4000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_4000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "35").assertTrue();
       }
@@ -2171,7 +2171,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100",
@@ -2191,7 +2191,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200",
@@ -2211,7 +2211,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300",
@@ -2231,7 +2231,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400",
@@ -2251,7 +2251,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImageBufferProperty(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500",
@@ -2271,7 +2271,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Top-right").assertTrue();
       }
@@ -2295,7 +2295,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("38") != -1).assertTrue();
       }
@@ -2319,7 +2319,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result.search("9") != -1).assertTrue();
       }
@@ -2343,7 +2343,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "N").assertTrue();
       }
@@ -2367,7 +2367,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "W").assertTrue();
       }
@@ -2391,7 +2391,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "4, 4, 4").assertTrue();
       }
@@ -2415,7 +2415,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "800").assertTrue();
       }
@@ -2439,7 +2439,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "500").assertTrue();
       }
@@ -2464,7 +2464,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -2488,7 +2488,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1/3 sec.").assertTrue();
       }
@@ -2512,7 +2512,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Directly photographed").assertTrue();
       }
@@ -2536,7 +2536,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2").assertTrue();
       }
@@ -2560,7 +2560,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "f/0.5").assertTrue();
       }
@@ -2584,7 +2584,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2022:06:02 00:00:00").assertTrue();
       }
@@ -2608,7 +2608,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "11:37:56.00").assertTrue();
       }
@@ -2632,7 +2632,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2023:10:19").assertTrue();
       }
@@ -2656,7 +2656,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "badPhoto").assertTrue();
       }
@@ -2680,7 +2680,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "XiaoMI").assertTrue();
       }
@@ -2704,7 +2704,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "TNY-AL00").assertTrue();
       }
@@ -2728,7 +2728,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "ISO speed").assertTrue();
       }
@@ -2752,7 +2752,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "200").assertTrue();
       }
@@ -2776,7 +2776,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "3").assertTrue();
       }
@@ -2800,7 +2800,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV (f/1.2)").assertTrue();
       }
@@ -2824,7 +2824,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3100", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.50 EV").assertTrue();
       }
@@ -2848,7 +2848,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3200", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Spot").assertTrue();
       }
@@ -2872,7 +2872,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3300", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Fluorescent").assertTrue();
       }
@@ -2896,7 +2896,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3400", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Flash fired, auto mode").assertTrue();
       }
@@ -2920,7 +2920,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3500", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "0.5 mm").assertTrue();
       }
@@ -2944,7 +2944,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3600", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "1111").assertTrue();
       }
@@ -2968,7 +2968,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3700", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -2992,7 +2992,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3800", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "2000").assertTrue();
       }
@@ -3016,7 +3016,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3900", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "Auto white balance").assertTrue();
       }
@@ -3040,7 +3040,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_4000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_4000", Level.LEVEL0, async (done: Function) => {
       let checkProps = (result: ESObject) => {
         expect(result == "35").assertTrue();
       }
@@ -3065,7 +3065,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100",
@@ -3085,7 +3085,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
@@ -3105,7 +3105,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
@@ -3125,7 +3125,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400",
@@ -3145,7 +3145,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500",
@@ -3165,7 +3165,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600",
@@ -3185,7 +3185,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700",
@@ -3205,7 +3205,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800",
@@ -3225,7 +3225,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900",
@@ -3245,7 +3245,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyPromiseError(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000",
@@ -3265,7 +3265,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation",
         "abcdef");
     });
@@ -3280,7 +3280,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude",
         "abc,3");
     });
@@ -3295,7 +3295,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", "fd",
         "GPSLongitude", "abc,2");
     });
@@ -3310,7 +3310,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", "fd",
         "GPSLongitudeRef", "1234");
     });
@@ -3325,7 +3325,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", "fd",
         "GPSLatitudeRef", "456");
     });
@@ -3340,7 +3340,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600",
@@ -3360,7 +3360,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", "buffer",
         "GPSLatitude", "abc,3");
     });
@@ -3375,7 +3375,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800",
@@ -3395,7 +3395,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900",
@@ -3415,7 +3415,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000",
@@ -3435,7 +3435,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100",
@@ -3455,7 +3455,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200",
@@ -3475,7 +3475,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300",
@@ -3495,7 +3495,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400",
@@ -3515,7 +3515,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500",
@@ -3535,7 +3535,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600",
@@ -3555,7 +3555,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700",
@@ -3575,7 +3575,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800",
@@ -3595,7 +3595,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900",
@@ -3615,7 +3615,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000", Level.LEVEL0, async (done: Function) => {
       testModifyImagePropertyOptCbErr(
         done,
         "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000",
@@ -3635,7 +3635,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageWidth: "1024",
         ImageLength: "2048"
@@ -3663,7 +3663,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageLength: "2048"
       }
@@ -3689,7 +3689,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         GPSDateStamp: "2023:04:13",
         ImageDescription: "A gray picture"
@@ -3717,7 +3717,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         GPSDateStamp: "2023:04:13",
         ImageWidth: "1024",
@@ -3746,7 +3746,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let checkKey = [
         IMAGE_WIDTH,
         IMAGE_LENGTH
@@ -3773,7 +3773,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageWidth: "-1",
         ImageLength: "2344"
@@ -3801,7 +3801,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageWidth: "100000000000000",
         ImageLength: "2344"
@@ -3829,7 +3829,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         "ErrorKey1": "1024",
         "ErrorKey2": "2048"
@@ -3857,7 +3857,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageLength: "2048",
         "ErrorKey": "1024",
@@ -3885,7 +3885,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500", Level.LEVEL0, async (done: Function) => {
       let checkKeys: ESObject = Object.values(image.PropertyKey).filter(item =>
       !item.startsWith("Hw") && item != "GIFLoopCount"
       );
@@ -3915,7 +3915,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageLength: "2048",
         ImageWidth: "",
@@ -3943,7 +3943,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageLength: "2048",
         ImageWidth: "abc",
@@ -3971,7 +3971,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         HwMnoteSceneBlueSkyConf: "71",
         HwMnoteSceneGreenPlantConf: "98"
@@ -3999,7 +3999,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageWidth: "1024",
         ImageLength: "2048",
@@ -4031,7 +4031,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         "JPEGInterchangeFormat": "1450",
         "JPEGInterchangeFormatLength": "1450",
@@ -4061,7 +4061,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100", Level.LEVEL0, async (done: Function) => {
       let props: ESObject = {
         ImageWidth: "1024",
         ImageLength: "2048"
@@ -4088,7 +4088,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", Level.LEVEL0, async (done: Function) => {
       console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100 start");
       testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", "gif", false, done);
     });
@@ -4101,7 +4101,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", Level.LEVEL0, async (done: Function) => {
       console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200 start");
       testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", "gif", true, done);
     });
@@ -4114,7 +4114,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", Level.LEVEL0, async (done: Function) => {
       console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300 start");
       testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", "jpg", false, done);
     });
@@ -4127,7 +4127,7 @@ export default function imageModifyProperty() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", Level.LEVEL0, async (done: Function) => {
       console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400 start");
       testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", "jpg", true, done);
     });

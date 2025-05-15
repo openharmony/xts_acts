@@ -42,7 +42,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100 starts`);
 
     let beginIndex = 1;
@@ -2467,7 +2467,7 @@ describe('AccessibleSendEvent', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500 starts`);
 
     let typy = 'requestFocusForAccessibility';

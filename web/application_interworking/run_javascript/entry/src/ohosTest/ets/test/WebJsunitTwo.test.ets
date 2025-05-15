@@ -18,6 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 
+
 let emitKey = "emitOnConsoleTwo";
 
 export default function webJsunitTwo() {

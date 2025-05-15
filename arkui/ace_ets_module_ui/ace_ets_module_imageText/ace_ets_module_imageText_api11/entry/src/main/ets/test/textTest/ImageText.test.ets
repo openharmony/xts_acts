@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router'
 
 export default function ImageTextTest() {
@@ -43,7 +43,7 @@ export default function ImageTextTest() {
      *tc.name   ImageSpan.verticalAlign(ImageSpanAlignment.BASELINE/CENTER/TOP/BOTTOM)
      *tc.desc   ImageSpan.verticalAlign(ImageSpanAlignment.BASELINE/CENTER/TOP/BOTTOM)
      */
-    it('ArkUI_Image_Text_0100', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -68,7 +68,7 @@ export default function ImageTextTest() {
      *tc.name   ImageSpan.objectFit(Contain/Cover/Auto/Fill/ScaleDown/None)
      *tc.desc   ImageSpan.objectFit(Contain/Cover/Auto/Fill/ScaleDown/None)
      */
-    it('ArkUI_Image_Text_0200', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -99,7 +99,7 @@ export default function ImageTextTest() {
      *tc.name   Text.textIndent
      *tc.desc   Text.textIndent
      */
-    it('ArkUI_Image_Text_0300', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0300', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -120,7 +120,7 @@ export default function ImageTextTest() {
      *tc.name   ImageSpan(null/undefined/'')
      *tc.desc   ImageSpan(null/undefined/'')
      */
-    it('ArkUI_Image_Text_0400', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0400', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0400'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -143,7 +143,7 @@ export default function ImageTextTest() {
      *tc.name   verticalAlign(null/undefined)
      *tc.desc   verticalAlign(null/undefined)
      */
-    it('ArkUI_Image_Text_0500', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0500', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0500'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -163,7 +163,7 @@ export default function ImageTextTest() {
      *tc.name   objectFit(null/undefined)
      *tc.desc   objectFit(null/undefined)
      */
-    it('ArkUI_Image_Text_0600', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0600', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0600'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -183,7 +183,7 @@ export default function ImageTextTest() {
      *tc.name   textIndent(null/undefined)
      *tc.desc   textIndent(null/undefined)
      */
-    it('ArkUI_Image_Text_0700', 0, async (done: Function) => {
+    it('ArkUI_Image_Text_0700', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_Image_Text_0700'
       console.info(`${SUITE} ${CASE} START`);
 

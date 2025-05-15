@@ -270,6 +270,37 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_CreateLineTypography_003
+     * @tc.name       : testOHDrawingCreateLineTypography003
+     * @tc.desc       : test OH_Drawing_CreateLineTypography_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingCreateLineTypography003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingCreateLineTypography003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_CreateLineTypography_004
+     * @tc.name       : testOHDrawingCreateLineTypography004
+     * @tc.desc       : test OH_Drawing_CreateLineTypography_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingCreateLineTypography004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = nativeFontNdk.oHDrawingCreateLineTypography004();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyGetLineBreak_001
      * @tc.name       : testOHDrawingLineTypographyGetLineBreak001
      * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_001
@@ -281,6 +312,72 @@ export default function fontTest() {
       async (done: Function) => {
       let result: number = nativeFontNdk.oHDrawingLineTypographyGetLineBreak001();
       expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyGetLineBreak_002
+     * @tc.name       : testOHDrawingLineTypographyGetLineBreak002
+     * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyGetLineBreak002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyGetLineBreak002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyGetLineBreak_003
+     * @tc.name       : testOHDrawingLineTypographyGetLineBreak003
+     * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyGetLineBreak003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyGetLineBreak003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyGetLineBreak_004
+     * @tc.name       : testOHDrawingLineTypographyGetLineBreak004
+     * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyGetLineBreak004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyGetLineBreak004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyGetLineBreak_005
+     * @tc.name       : testOHDrawingLineTypographyGetLineBreak005
+     * @tc.desc       : test OH_Drawing_LineTypographyGetLineBreak_005
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyGetLineBreak005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyGetLineBreak005();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
       done();
     });
 
@@ -300,6 +397,88 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyCreateLine_002
+     * @tc.name       : testOHDrawingLineTypographyCreateLine002
+     * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyCreateLine002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyCreateLine002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyCreateLine_003
+     * @tc.name       : testOHDrawingLineTypographyCreateLine003
+     * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyCreateLine003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyCreateLine003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyCreateLine_004
+     * @tc.name       : testOHDrawingLineTypographyCreateLine004
+     * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyCreateLine004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyCreateLine004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyCreateLine_005
+     * @tc.name       : testOHDrawingLineTypographyCreateLine005
+     * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_005
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyCreateLine005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyCreateLine005();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_LineTypographyCreateLine_006
+     * @tc.name       : testOHDrawingLineTypographyCreateLine006
+     * @tc.desc       : test OH_Drawing_LineTypographyCreateLine_006
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingLineTypographyCreateLine006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingLineTypographyCreateLine006();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetBounds_001
      * @tc.name       : testOHDrawingFontGetBounds001
      * @tc.desc       : test OH_Drawing_FontGetBounds_001
@@ -310,6 +489,40 @@ export default function fontTest() {
     it('testOHDrawingFontGetBounds001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
       let result: Array<number> = nativeFontNdk.oHDrawingFontGetBounds001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetBounds_002
+     * @tc.name       : testOHDrawingFontGetBounds002
+     * @tc.desc       : test OH_Drawing_FontGetBounds_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingFontGetBounds002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetBounds002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetBounds_003
+     * @tc.name       : testOHDrawingFontGetBounds003
+     * @tc.desc       : test OH_Drawing_FontGetBounds_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingFontGetBounds003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetBounds003();
       expect(result[0]).assertEqual(0);
       expect(result[1]).assertEqual(0);
       expect(result[2]).assertEqual(0);
@@ -365,6 +578,40 @@ export default function fontTest() {
     });
 
     /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetPathForGlyph_003
+     * @tc.name       : testOHDrawingFontGetPathForGlyph003
+     * @tc.desc       : test OH_Drawing_FontGetPathForGlyph_003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingFontGetPathForGlyph003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetPathForGlyph003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_FontGetPathForGlyph_004
+     * @tc.name       : testOHDrawingFontGetPathForGlyph004
+     * @tc.desc       : test OH_Drawing_FontGetPathForGlyph_004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingFontGetPathForGlyph004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingFontGetPathForGlyph004();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_RectGetArraySize_001
      * @tc.name       : testOHDrawingRectGetArraySize001
      * @tc.desc       : test OH_Drawing_RectGetArraySize_001
@@ -374,8 +621,25 @@ export default function fontTest() {
      */
     it('testOHDrawingRectGetArraySize001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: Function) => {
-      let result: number = nativeFontNdk.oHDrawingRectGetArraySize001();
-      expect(result).assertEqual(0);
+      let result: Array<number> = nativeFontNdk.oHDrawingRectGetArraySize001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_RectGetArraySize_002
+     * @tc.name       : testOHDrawingRectGetArraySize002
+     * @tc.desc       : test OH_Drawing_RectGetArraySize_002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingRectGetArraySize002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingRectGetArraySize002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
       done();
     });
 

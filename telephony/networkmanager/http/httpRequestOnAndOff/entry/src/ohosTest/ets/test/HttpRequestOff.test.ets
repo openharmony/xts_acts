@@ -42,11 +42,11 @@ export default function HttpRequestOffTest() {
      * @tc.number : SUB_NetworkMgr_Http_HttpRequest_Off_0100
      * @tc.name   : testNetworkMgrHttpHttpRequestOff0100
      * @tc.desc   : Unsubscribe from HTTP Response Header event.
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0100';
       console.info(`${caseName}---Start`);
       try {
@@ -94,11 +94,11 @@ export default function HttpRequestOffTest() {
      * @tc.number : SUB_NetworkMgr_Http_HttpRequest_Off_0200
      * @tc.name   : testNetworkMgrHttpHttpRequestOff0200
      * @tc.desc   : Unsubscribe from HTTP Response Header event.
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testNetworkMgrHttpHttpRequestOff0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
+    it('testNetworkMgrHttpHttpRequestOff0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testNetworkMgrHttpHttpRequestOff0200';
       console.info(`${caseName}---Start`);
       try {

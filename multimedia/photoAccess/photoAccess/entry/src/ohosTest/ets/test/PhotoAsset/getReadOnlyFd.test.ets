@@ -14,7 +14,7 @@
  */
 
 import fileio from "@ohos.fileio";
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
@@ -82,7 +82,7 @@ export default function getReadOnlyFdTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getReadOnlyFd_callback_000', 0, async (done:Function)=> {
+    it('getReadOnlyFd_callback_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getReadOnlyFd_callback_000';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       await getReadOnlyFdCallback(done, testNum, fetchOps);
@@ -96,7 +96,7 @@ export default function getReadOnlyFdTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getReadOnlyFd_callback_001', 0, async (done:Function)=> {
+    it('getReadOnlyFd_callback_001', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getReadOnlyFd_callback_001';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await getReadOnlyFdCallback(done, testNum, fetchOps);
@@ -110,7 +110,7 @@ export default function getReadOnlyFdTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getReadOnlyFd_promise_000', 0, async (done:Function)=> {
+    it('getReadOnlyFd_promise_000', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getReadOnlyFd_promise_000';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       await getReadOnlyFdPromise(done, testNum, fetchOps);
@@ -124,7 +124,7 @@ export default function getReadOnlyFdTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getReadOnlyFd_promise_001', 0, async (done:Function)=> {
+    it('getReadOnlyFd_promise_001', Level.LEVEL0, async (done:Function)=> {
       const testNum = 'getReadOnlyFd_promise_001';
       const fetchOps:photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       await getReadOnlyFdPromise(done, testNum, fetchOps);

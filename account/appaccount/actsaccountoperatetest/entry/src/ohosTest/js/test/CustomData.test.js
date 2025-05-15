@@ -24,7 +24,7 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : The setCustomData setting valueis called when the forwarding parameters
         *                 are correct, and then getCustomData is called for the value(callback)
         */
-        it('ActsAccountCustomData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsAccountCustomData_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountCustomData_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -56,7 +56,7 @@ export default function ActsAccountCustomData() {
         * @tc.desc      : The setCustomData setting value is called when the forwarding parameters
         *                 are correct, and then getCustomData is called for the value(promise)
         */
-        it('ActsAccountCustomData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsAccountCustomData_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountCustomData_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

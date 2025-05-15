@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   albumType,
   albumSubtype,
@@ -49,7 +49,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_commitModify_callback_000', 0, async (done: Function) => {
+    it('album_commitModify_callback_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_commitModify_callback_000';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -88,7 +88,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-       it('album_commitModify_callback_001', 2, async (done: Function) => {
+       it('album_commitModify_callback_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_callback_001';
       try {
         const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
@@ -116,7 +116,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_commitModify_callback_002', 2, async (done: Function) => {
+    it('album_commitModify_callback_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_callback_002';
       try {
         const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
@@ -141,7 +141,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_commitModify_callback_003', 2, async (done: Function) => {
+    it('album_commitModify_callback_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_callback_003';
       try {
         const album: photoAccessHelper.Album = await helper.createAlbum(testNum);
@@ -184,7 +184,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('album_commitModify_promise_000', 0, async (done: Function) => {
+    it('album_commitModify_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'album_commitModify_promise_000';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -213,7 +213,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_commitModify_promise_001', 2, async (done: Function) => {
+    it('album_commitModify_promise_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_promise_001';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -234,7 +234,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_commitModify_promise_002', 2, async (done: Function) => {
+    it('album_commitModify_promise_002', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_promise_002';
       try {
         const album:ESObject = await helper.createAlbum(testNum);
@@ -257,7 +257,7 @@ export default function albumCommitModifyTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('album_commitModify_promise_003', 2, async (done: Function) => {
+    it('album_commitModify_promise_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'album_commitModify_promise_003';
       try {
         const album:ESObject = await helper.createAlbum(testNum);

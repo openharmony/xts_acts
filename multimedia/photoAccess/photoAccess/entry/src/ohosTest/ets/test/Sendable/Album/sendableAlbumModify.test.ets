@@ -15,7 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import common from '@ohos.app.ability.common';
 import {
   sleep,
@@ -44,7 +44,7 @@ export default function sendableAlbumModifyTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('sendable_album_commitModify_promise_001', 0, async (done: Function) => {
+    it('sendable_album_commitModify_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'sendable_album_commitModify_promise_001';
       try {
         let albumName = testNum + genRadomStr(20);

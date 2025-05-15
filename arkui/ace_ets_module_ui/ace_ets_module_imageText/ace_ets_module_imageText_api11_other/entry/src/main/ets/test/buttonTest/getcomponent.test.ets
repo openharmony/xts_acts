@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 
@@ -53,7 +53,7 @@ export default function ActsgetcomponentTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Get_component_0010', 0, async (done: Function) => {
+    it('ArkUX_Get_component_0010', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Get_component_0010 START');
       let strJson = getInspectorByKey('ArkUX_Get_component_0010');
       console.info('ArkUX_Get_component_0010 width: ' + JSON.stringify(JSON.parse(strJson).$attrs.width));

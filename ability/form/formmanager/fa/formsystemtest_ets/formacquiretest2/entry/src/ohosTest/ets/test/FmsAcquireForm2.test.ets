@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeEach, afterEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
 import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 
@@ -80,7 +80,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter ability is wrong.
          * @tc.desc: Failed to create form when verifying that the parameter (formId) of creating form is wrong.
          */
-        it(`FMS_acquireForm_3800`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_3800`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_3800 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -127,7 +127,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter bundleName is wrong.
          * @tc.desc: Failed to create form when verifying that the parameter (bundleName) of creating form is wrong.
          */
-        it(`FMS_acquireForm_3900`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_3900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_3900 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -174,7 +174,7 @@ export default function test() {
          * @tc.name: When the form specifications are inconsistent, creating the cached form fails.
          * @tc.desc: Return failed.
          */
-        it(`FMS_acquireForm_4000`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4000`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4000 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -260,7 +260,7 @@ export default function test() {
          * @tc.name: Success to add form when parameter formName is blank.
          * @tc.desc: Success to create form when verifying that the parameter (formName) of creating form is success.
          */
-        it(`FMS_acquireForm_4200`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4200`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4200 start`);
 
             let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -322,7 +322,7 @@ export default function test() {
          * @tc.name: Success to add form when parameter dimension is passed.
          * @tc.desc: Success to create form when verifying that the parameter (dimension) of creating form.
          */
-        it(`FMS_acquireForm_4300`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4300`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4300 start`);
             let onAcquiredCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) =>{
                 console.info("!!!====>FMS_acquireForm_4300 onAcquiredCallBack data:====>" + JSON.stringify(data));
@@ -367,7 +367,7 @@ export default function test() {
          * @tc.name: Failed to add form when parameter dimension is not exist.
          * @tc.desc: Failed to create form when verifying that the parameter (dimension) of creating form is wrong.
          */
-        it(`FMS_acquireForm_4400`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4400`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4400 start`);
 
             let onErrorCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {
@@ -415,7 +415,7 @@ export default function test() {
          * @tc.name: Cast temp form when the formId is created formId.
          * @tc.desc: When the verification formId is set to 0, the form is created failed.
          */
-        it(`FMS_acquireForm_4900`, 0, async (done:() => void) => {
+        it(`FMS_acquireForm_4900`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:() => void) => {
             console.info(`FMS_acquireForm_4900 start`);
 
             let onCastCallBack = (_:BusinessError, data: CommonEventManager.CommonEventPublishData) => {

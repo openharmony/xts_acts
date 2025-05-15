@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from '../../MainAbility/utils/Common';
 import {
@@ -29,7 +29,6 @@ import {
   WindowMode,
   PointerMatrix
 } from "@ohos.UiTest";
-
 export default function SymbolGlyphTest() {
   describe("SymbolGlyphTest", () => {
     beforeEach(async (done: Function) => {
@@ -57,7 +56,6 @@ export default function SymbolGlyphTest() {
       await CommonFunc.sleep(1000);
       console.info("SymbolGlyphTest after each called");
     });
-
     /**
      * @tc.number SymbolGlyphTest
      * @tc.name testBack
@@ -66,7 +64,7 @@ export default function SymbolGlyphTest() {
      * @tc.type
      * @tc.size
      */
-    it("SymbolGlyphTest_001", 0, async (done: Function) => {
+    it("SymbolGlyphTest_001", Level.LEVEL0, async (done: Function) => {
       console.info("[SymbolGlyphTest_001] START");
       await CommonFunc.sleep(1000);
       let AppearSymbolEffect = getInspectorByKey("AppearSymbolEffect");
@@ -76,8 +74,7 @@ export default function SymbolGlyphTest() {
       console.info("[SymbolGlyphTest_001] END");
       done();
     });
-
-    it("SymbolGlyphTest_002", 0, async (done: Function) => {
+    it("SymbolGlyphTest_002", Level.LEVEL0, async (done: Function) => {
       console.info("[SymbolGlyphTest_002] START");
       await CommonFunc.sleep(1000);
       let DisappearSymbolEffect = getInspectorByKey("DisappearSymbolEffect");
@@ -87,8 +84,7 @@ export default function SymbolGlyphTest() {
       console.info("[SymbolGlyphTest_002] END");
       done();
     });
-
-    it("SymbolGlyphTest_003", 0, async (done: Function) => {
+    it("SymbolGlyphTest_003", Level.LEVEL0, async (done: Function) => {
       console.info("[SymbolGlyphTest_003] START");
       await CommonFunc.sleep(1000);
       let ReplaceSymbolEffect = getInspectorByKey("ReplaceSymbolEffect");
@@ -98,8 +94,7 @@ export default function SymbolGlyphTest() {
       console.info("[SymbolGlyphTest_003] END");
       done();
     });
-
-    it("SymbolGlyphTest_004", 0, async (done: Function) => {
+    it("SymbolGlyphTest_004", Level.LEVEL0, async (done: Function) => {
       console.info("[SymbolGlyphTest_004] START");
       await CommonFunc.sleep(1000);
       let BounceSymbolEffect = getInspectorByKey("BounceSymbolEffect");

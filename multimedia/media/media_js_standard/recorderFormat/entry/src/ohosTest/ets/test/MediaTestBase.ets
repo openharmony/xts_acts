@@ -176,7 +176,7 @@ export default class MediaTestBase {
   }
 
 
-  async driveFnNoSleep(num: number) {
+  async driveFn(num: number) {
     console.info(`case come in driveFn 111`)
     let driver = await UiDriver.create()
     console.info(`driver is ${JSON.stringify(driver)}`)
@@ -188,9 +188,11 @@ export default class MediaTestBase {
         continue;
       }
       console.info(`button is ${JSON.stringify(button)}`)
+      await this.sleep(2000)
       if (await driver.findComponent(BY.text('允许')) != null) {
         await button.click()
       }
+      await this.sleep(2000)
     }
     await this.sleep(500)
   }

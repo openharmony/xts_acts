@@ -39,14 +39,32 @@ struct UIContextCreateFromBuilder {
                   this.pixmap_2 = pixmap
                   console.info('UIContextComponentSnapshot pixmap_text_3 start')
                   this.pixmap_text_3 = 'snapshot'
-                })
+                },undefined,
+                false,
+                {
+                  scale: 1, waitUntilRenderFinished: true,
+                  region: {
+                    left: 100,
+                    right: 200,
+                    top: 100,
+                    bottom: 200
+                  }
+                }
+              )
             }).width('90%').margin(10).id('getComponentSnapshot_03')
           Button('新增：Gauge图片')
             .onClick(() => {
               this.uiContext.getComponentSnapshot()
                 .createFromBuilder(() => {
                   this.GaugeBuilder()
-                })
+                }, undefined, false, {
+                  scale: 1, waitUntilRenderFinished: true,
+                  region: {
+                    left: 100,
+                    right: 200,
+                    top: 100,
+                    bottom: 200
+                  }})
                 .then((pixmap: image.PixelMap) => {
                   this.pixmap_2 = pixmap
                   console.info('UIContextComponentSnapshot pixmap_text_4 start')

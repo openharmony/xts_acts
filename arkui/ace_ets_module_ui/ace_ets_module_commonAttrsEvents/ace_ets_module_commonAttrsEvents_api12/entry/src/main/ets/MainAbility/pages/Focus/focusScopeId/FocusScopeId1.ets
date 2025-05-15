@@ -101,7 +101,7 @@ struct FocusScopeId1 {
               Button('defaultFocus:true').focusOnTouch(true).defaultFocus(true)
                 .id('FocusScopeId1_btn3_6')
             }
-            .focusScopeId('FocusScopeId1_focusGroup6',true)
+            .focusScopeId('FocusScopeId1_focusGroup6',true,true)
             .borderWidth(1)
 
             Button('clearFocus')

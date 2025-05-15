@@ -15,20 +15,49 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
+import { systemParameterEnhance} from '@kit.BasicServicesKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import base from '@ohos.base';
 import { common, sendableContextManager } from '@kit.AbilityKit';
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
-import { router } from '@kit.ArkUI';
+import { Driver, MatchPattern, ON } from '@ohos.UiTest';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+let driver = Driver.create();
+const TEST_CASE_NAME: string = 'SUB_ChildProcessManager_sendableContextManager_';
+let textsToMatch: Array<string> = ["打开", "允许", "本次允许"];
+let TAG = 'clickMatchingButton';
+async function clickMatchingButton(texts: Array<string>) {
+  for (const text of texts) {
+    let buttons = await driver.findComponents(ON.text(text));
+    if (buttons && buttons.length > 0) {
+      buttons[buttons.length - 1].click();
+      hilog.info(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} click last button success`);
+      return true;
+    }
+  }
+  hilog.error(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} no matching button found`);
+  return false;
+};
+
+async function handlePermissionPrompt() {
+  let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), 10000);
+  hilog.info(0x0000, TAG, '%{public}s',
+    `${TEST_CASE_NAME} no need to click button=allowed== ${allowed} `);
+  if (allowed) {
+    if (!await clickMatchingButton(textsToMatch)) {
+      hilog.error(0x0000, TAG, '%{public}s', `${TEST_CASE_NAME} no matching button found`);
+    }
+  }
+};
 let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
   events: ['ACTS_TEST_OPENLINK', 'ACTS_TEST_DESTROY']
 };
 let subscriber: commonEventManager.CommonEventSubscriber;
 let context = getContext(this) as common.UIAbilityContext;
 let wantAgentData: WantAgent;
-
+let mpEnable="";
 function publishCB(err: BusinessError) {
   if (err) {
     console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
@@ -42,7 +71,12 @@ export default function sendableContextManagerTest() {
   describe('sendableContextManagerTest', () => {
 
     beforeAll(() => {
-      context = globalThis.context
+      context = globalThis.context;
+      try {
+        mpEnable = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable', 'false');
+      } catch(err) {
+        console.info(`MoveAbilityToBackground Get system parameter error: ${JSON.stringify(err)}`);
+      }
     })
     beforeEach(() => {
     })
@@ -172,26 +206,28 @@ export default function sendableContextManagerTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_ChildProcessManager_sendableContextManager_0800', 0, (done:Function) => {
+    it('SUB_ChildProcessManager_sendableContextManager_0800', Level.LEVEL0, async (done:Function) => {
       let tag:string = `SUB_ChildProcessManager_sendableContextManager_0800`;
-      let link:string = 'https://www.applicationContext02.com'
-      let want: Want = {
-        bundleName:"com.test.actsabilityerrcodequerytest",
-        abilityName:"applicationContext02",
-        parameters: {
-          appLinkingOnly: false,
-          demo_num: 111
-        }
-      }
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              console.info(`====>${tag} unSubscribeCallback`);
-              done();
-            }, 600);
+      if (mpEnable === 'true') {
+        let link:string = 'https://www.applicationContext02.com'
+        let want: Want = {
+          bundleName:"com.test.actsabilityerrcodequerytest",
+          abilityName:"applicationContext02",
+          parameters: {
+            appLinkingOnly: false,
+            demo_num: 111
           }
+        }
+
+        commonEventManager.createSubscriber(ACTS_EVENT)
+          .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+            subscriber = commonEventSubscriber;
+            let unSubscribeCallback = () => {
+              setTimeout(async () => {
+                console.info(`====>${tag} unSubscribeCallback`);
+                done();
+              }, 600);
+            }
           let subscribeCallBack = (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
             console.log("OpenLink subscribeCallBack success")
             if (data.event == 'ACTS_TEST_OPENLINK') {
@@ -210,6 +246,16 @@ export default function sendableContextManagerTest() {
             commonEventManager.publish('ACTS_TEST_OPENLINK', publishCB);
           }, 100)
         })
+        await handlePermissionPrompt();
+      }else if(mpEnable === 'false') {
+        console.info(`${tag} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
+        done();
+      }else{
+        console.info(`${tag} error, current device get MoveAbilityToBackground config fail,please check: ${JSON.stringify(mpEnable)}`);
+        expect().assertFail();
+        done();
+      }
+      
     })
 
     /*

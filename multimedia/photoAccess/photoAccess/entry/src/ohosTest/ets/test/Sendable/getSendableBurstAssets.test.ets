@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper';
 import {
   sleep,
@@ -75,7 +75,7 @@ export default function getSendableBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_image_001", 0, async (done: Function) => {
+    it("get_burst_assets_image_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_001";
       try {
         let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, imageDisplayName);
@@ -108,7 +108,7 @@ export default function getSendableBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_burst_assets_video_001", 0, async (done: Function) => {
+    it("get_burst_assets_video_001", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_video_001";
       try {
         let fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, videoDisplayName);
@@ -141,7 +141,7 @@ export default function getSendableBurstAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("get_image_burst_assets_003", 0, async (done: Function) => {
+    it("get_image_burst_assets_003", Level.LEVEL0, async (done: Function) => {
       const testNum = "get_burst_assets_image_003";
       try {
         let ops: photoAccessHelper.FetchOptions = fetchAllOption();

@@ -27,7 +27,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with other hap.
      */
-    it('getNameForUid_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getNameForUid_0100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME1);
@@ -48,7 +48,7 @@ export default function getNameForUid() {
      * @tc.name BUNDLE::getBundleInfo
      * @tc.desc Test getBundleInfo interfaces with hap.
      */
-    it('getNameForUid_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async function (done) {
+    it('getNameForUid_0200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async function (done) {
         let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME2,bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME2);

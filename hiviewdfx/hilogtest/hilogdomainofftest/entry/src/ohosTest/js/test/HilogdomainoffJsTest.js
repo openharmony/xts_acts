@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 import hilog from '@ohos.hilog'
 
 export default function HilogdomainoffJsTest() {
@@ -37,7 +37,7 @@ describe('HilogdomainoffJsTest', function () {
      * @tc.name 验证关闭domain白名单，type为LOG_APP,domain id有效，日志正常打印
      * @tc.desc The log tool can read valid app log types when domain off.
      */
-    it('testHilogJsApi07', 2, function () {
+    it('testHilogJsApi07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         console.info('testHilogJsApi01 start');
         try{
             hilog.error(0xffff, "HILOGTEST", "%{public}s", ['hilogJs0100'])
@@ -53,7 +53,7 @@ describe('HilogdomainoffJsTest', function () {
      * @tc.name 验证关闭domain白名单，type为LOG_APP,domain id无效（在白名单内)，日志正常打印
      * @tc.desc The log tool can read white app log types when domain off.
      */
-    it('testHilogJsApi08', 2, function () {
+    it('testHilogJsApi08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
         console.info('testHilogJsApi08 start');
         try{
             hilog.error(0xD003200, "HILOGTEST", "%{public}s", ['hilogJs0200'])

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -77,7 +77,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Tests the MaxLength property parameter of the TextArea component to 0
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0100', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "0");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -98,7 +98,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Tests the MaxLength property parameter of the TextArea component to 10
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0200', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "10");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -119,7 +119,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to string "10".
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0300', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "10");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -140,7 +140,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to -1.
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0400', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "-1");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -162,7 +162,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to "".
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0500', Level.LEVEL1, async (done: Function) => {
       await forKey("TextStr", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -183,7 +183,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to null.
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0600', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "null");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -205,7 +205,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to undefined.
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0700', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "undefined");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -227,7 +227,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to 5 and again to 10
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0800', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "5");
       await forKey("TextNum", "10");
       try {
@@ -249,7 +249,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to 5 and again to null
      */
-    it('ArkUX_Stage_TextArea_MaxLength_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_0900', Level.LEVEL1, async (done: Function) => {
       await forKey("TextNum", "5");
       await forKey("TextErr", "null");
       try {
@@ -271,7 +271,7 @@ export default function textAreaUxTest() {
      * @tc.name Tests the maximum number of input characters for text
      * @tc.desc Set the MaxLength property parameter of the TextArea component to undefined and again to 5
      */
-    it('ArkUX_Stage_TextArea_MaxLength_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_MaxLength_1000', Level.LEVEL1, async (done: Function) => {
       await forKey("TextErr", "undefined");
       await forKey("TextNum", "5");
       try {
@@ -293,7 +293,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Modify the assertion to set the TextArea component ShowCounter property parameter to true
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0100', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolTrue", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -314,7 +314,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Modify the assertion to set the TextArea component ShowCounter property parameter to false
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0200', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolFalse", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -335,7 +335,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Set the TextArea component ShowCounter property parameter to 1
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0300', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrNum", "1");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -356,7 +356,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Set the TextArea component ShowCounter property parameter to ''
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0400', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrStr", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -377,7 +377,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Set the TextArea component ShowCounter property parameter to null
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0500', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrNull", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -398,7 +398,7 @@ export default function textAreaUxTest() {
      * @tc.name Set whether text displays a text counter
      * @tc.desc Set the TextArea component ShowCounter property parameter to undefined
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0600', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrUndefined", "");
       try {
         let strJson = getInspectorByKey('TextArea');
@@ -420,7 +420,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component ShowCounter property parameter to true,
      *               and then set the parameter to false again
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0700', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolTrue", "");
       await forKey("BoolFalse", "");
       try {
@@ -443,7 +443,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component ShowCounter property parameter to true,
      *               and then set the parameter to null again
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0800', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolTrue", "");
       await forKey("BoolErrNull", "");
       try {
@@ -466,7 +466,7 @@ export default function textAreaUxTest() {
      * @tc.desc Set the TextArea component ShowCounter property parameter to undefined,
      *               and then set the parameter to true again
      */
-    it('ArkUX_Stage_TextArea_ShowCounter_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_ShowCounter_0900', Level.LEVEL1, async (done: Function) => {
       await forKey("BoolErrUndefined", "");
       await forKey("BoolTrue", "");
       try {
@@ -489,7 +489,7 @@ export default function textAreaUxTest() {
      * @tc.name TextArea component ShowCounter and maxlength default value validation
      * @tc.desc Do not set the TextArea components ShowCounter and maxlength properties
      */
-    it('ArkUX_Stage_TextArea_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextArea_0100', Level.LEVEL1, async (done: Function) => {
       try {
         let strJson = getInspectorByKey('TextAreaNo');
         console.info('ArkUX_Stage_TextArea_0100 START :' + JSON.stringify(strJson));

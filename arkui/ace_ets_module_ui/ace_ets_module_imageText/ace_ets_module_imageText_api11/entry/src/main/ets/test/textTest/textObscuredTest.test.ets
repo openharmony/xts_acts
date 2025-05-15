@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 export default function textObscuredTest() {
@@ -52,7 +52,7 @@ export default function textObscuredTest() {
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Redacted_Text_0090', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Text_0090', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Text_0090 START');
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function textObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Text_0100', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Text_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Text_0100 START');
       setTimeout(() => {
         try {
@@ -98,7 +98,7 @@ export default function textObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Text_0110', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Text_0110', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Text_0110 START');
       setTimeout(() => {
         try {
@@ -121,7 +121,7 @@ export default function textObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Text_0120', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Text_0120', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Text_0120 START');
       setTimeout(() => {
         try {
@@ -144,7 +144,7 @@ export default function textObscuredTest() {
       }, 500)
     });
 
-    it('ArkUX_Redacted_Text_0130', 0, async (done: Function) => {
+    it('ArkUX_Redacted_Text_0130', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Redacted_Text_0130 START');
       setTimeout(() => {
         try {

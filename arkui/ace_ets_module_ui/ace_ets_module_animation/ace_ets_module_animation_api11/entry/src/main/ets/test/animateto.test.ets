@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../MainAbility/utils/Common';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
-
 const waitUiReadyMs = 1000;
-
 export default function animateToTest() {
   describe('animateToTest', () => {
     beforeEach(async (done: Function) => {
@@ -42,12 +40,10 @@ export default function animateToTest() {
       }
       done()
     });
-
     afterEach(async () => {
       console.info("animate after each called");
     });
-
-    it('animateTest_0100', 0, async (done: Function) => {
+    it('animateTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0100 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 51,
@@ -71,7 +67,7 @@ export default function animateToTest() {
       console.info("animateTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
     });
 
-    it('animateTest_0200', 0, async (done: Function) => {
+    it('animateTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0200 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 52,
@@ -90,8 +86,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0200 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
     });
-
-    it('animateTest_0300', 0, async (done: Function) => {
+    it('animateTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0300 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 53,
@@ -114,8 +109,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0300 click result is: " + JSON.stringify(sendEventByKey('button3', 10, "")));
     });
-
-    it('animateTest_0400', 0, async (done: Function) => {
+    it('animateTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0400 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 54,
@@ -134,8 +128,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0400 click result is: " + JSON.stringify(sendEventByKey('button4', 10, "")));
     });
-
-    it('animateTest_0500', 0, async (done: Function) => {
+    it('animateTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0500 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 55,
@@ -154,8 +147,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0500 click result is: " + JSON.stringify(sendEventByKey('button5', 10, "")));
     });
-
-    it('animateTest_0600', 0, async (done: Function) => {
+    it('animateTest_0600', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(10);
       globalThis.value.message.notify({
         name: 'duration', value: 2000
@@ -182,8 +174,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0600 click result is: " + JSON.stringify(sendEventByKey('button11', 10, "")));
     });
-
-    it('animateTest_0700', 0, async (done: Function) => {
+    it('animateTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0700 START');
       globalThis.value.message.notify({
         name: 'curve', value: 'Linear'
@@ -210,8 +201,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0700 click result is: " + JSON.stringify(sendEventByKey('button12', 10, "")));
     });
-
-    it('animateTest_0800', 0, async (done: Function) => {
+    it('animateTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0800 START');
       globalThis.value.message.notify({
         name: 'iteration', value: 2
@@ -238,8 +228,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0800 click result is: " + JSON.stringify(sendEventByKey('button13', 10, "")));
     });
-
-    it('animateTest_0900', 0, async (done: Function) => {
+    it('animateTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_0900 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "20000"
@@ -266,8 +255,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_0900 click result is: " + JSON.stringify(sendEventByKey('button14', 10, "")));
     });
-
-    it('animateTest_1000', 0, async (done: Function) => {
+    it('animateTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1000 START');
       globalThis.value.message.notify({
         name: 'playmode', value: PlayMode.Alternate
@@ -294,8 +282,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1000 click result is: " + JSON.stringify(sendEventByKey('button15', 10, "")));
     });
-
-    it('animateTest_1100', 0, async (done: Function) => {
+    it('animateTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1100 START');
       globalThis.value.message.notify({
         name: 'duration', value: -1000
@@ -322,8 +309,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1100 click result is: " + JSON.stringify(sendEventByKey('button6', 10, "")));
     });
-
-    it('animateTest_1200', 0, async (done: Function) => {
+    it('animateTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1200 START');
       globalThis.value.message.notify({
         name: 'duration', value: 100000000
@@ -350,8 +336,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1200 click result is: " + JSON.stringify(sendEventByKey('button7', 10, "")));
     });
-
-    it('animateTest_1300', 0, async (done: Function) => {
+    it('animateTest_1300', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1300 START');
       globalThis.value.message.notify({
         name: 'curve', value: '123'
@@ -378,8 +363,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1300 click result is: " + JSON.stringify(sendEventByKey('button8', 10, "")));
     });
-
-    it('animateTest_1400', 0, async (done: Function) => {
+    it('animateTest_1400', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1400 START');
       globalThis.value.message.notify({
         name: 'curve', value: 'abc'
@@ -406,8 +390,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1400 click result is: " + JSON.stringify(sendEventByKey('button9', 10, "")));
     });
-
-    it('animateTest_1500', 0, async (done: Function) => {
+    it('animateTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1500 START');
       globalThis.value.message.notify({
         name: 'iteration', value: 121
@@ -434,8 +417,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1500 click result is: " + JSON.stringify(sendEventByKey('button10', 10, "")));
     });
-
-    it('animateTest_1600', 0, async (done: Function) => {
+    it('animateTest_1600', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1600 START');
       globalThis.value.message.notify({
         name: 'iteration', value: -5
@@ -462,8 +444,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1600 click result is: " + JSON.stringify(sendEventByKey('button111', 10, "")));
     });
-
-    it('animateTest_1700', 0, async (done: Function) => {
+    it('animateTest_1700', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1700 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "12121212121212"
@@ -490,8 +471,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1700 click result is: " + JSON.stringify(sendEventByKey('button121', 10, "")));
     });
-
-    it('animateTest_1800', 0, async (done: Function) => {
+    it('animateTest_1800', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1800 START');
       globalThis.value.message.notify({
         name: 'tempo', value: "-5"
@@ -518,8 +498,7 @@ export default function animateToTest() {
       }
       console.info("animateTest_1800 click result is: " + JSON.stringify(sendEventByKey('button131', 10, "")));
     });
-
-    it('animateTest_1900', 0, async (done: Function) => {
+    it('animateTest_1900', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_1900 START');
       globalThis.value.message.notify({
         name: 'playmode', value: -6
@@ -546,14 +525,12 @@ export default function animateToTest() {
       }
       console.info("animateTest_1900 click result is: " + JSON.stringify(sendEventByKey('button141', 10, "")));
     });
-
-    it('animateTest_2000', 0, async (done: Function) => {
+    it('animateTest_2000', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_2000 START');
       globalThis.value.message.notify({
         name: 'playmode', value: 123456
       });
       await CommonFunc.sleep(2);
-
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 1010,
         priority: events_emitter.EventPriority.LOW
@@ -581,10 +558,9 @@ export default function animateToTest() {
       * @tc.desc  : finishCallbackType Property not set
       * @tc.level : Level 3
     */
-    it('animateTest_2100', 0, async (done: Function) => {
+    it('animateTest_2100', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_2100 START');
       await CommonFunc.sleep(2);
-
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 1011,
         priority: events_emitter.EventPriority.LOW
@@ -612,7 +588,7 @@ export default function animateToTest() {
       * @tc.desc  : finishCallbackType Property set FinishCallbackType.REMOVED
       * @tc.level : Level 3
     */
-    it('animateTest_2200', 0, async (done: Function) => {
+    it('animateTest_2200', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_2200 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 1012,
@@ -637,7 +613,7 @@ export default function animateToTest() {
       * @tc.desc  : finishCallbackType Property set FinishCallbackType.LOGICALLY
       * @tc.level : Level 3
     */
-    it('animateTest_2300', 0, async (done: Function) => {
+    it('animateTest_2300', Level.LEVEL0, async (done: Function) => {
       console.info('animateTest_2300 START');
       globalThis.value.message.notify({
         name: 'finishCallbackType', value: 1

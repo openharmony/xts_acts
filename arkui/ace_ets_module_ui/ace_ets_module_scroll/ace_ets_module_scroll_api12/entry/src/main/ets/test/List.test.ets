@@ -36,6 +36,8 @@ import scrollSourceDrag from './ScrollTest/scrollSourceDrag.test';
 import offsetRemain from './ScrollTest/offsetRemain.test';
 import finishTransSwiper from './SwiperTest/finishTransSwiper.test';
 import preloadErrorTabs from './TabsTest/preloadErrorTabs.test'; 
+import childrenSizeError from './ListTest/childrenSizeError.test';
+import flingError from './ListTest/flingError.test';
 import symbolTabs from './TabsTest/symbolTabs.test'; 
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
@@ -151,6 +153,8 @@ export default function testsuite() {
   offsetRemain()
   finishTransSwiper()
   preloadErrorTabs()
+  childrenSizeError()
+  flingError()
   symbolTabs()
   TabsAp1()
   ScrollApi1()

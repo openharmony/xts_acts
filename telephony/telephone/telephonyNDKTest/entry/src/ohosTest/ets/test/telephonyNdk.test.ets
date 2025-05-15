@@ -58,9 +58,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the default cellular data slot id.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetDefaultCellularDataSlotId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHTelephonyGetDefaultCellularDataSlotId_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let idNdk = telAPI.OHTelephonyGetDefaultCellularDataSlotId();
       console.info('====>testOHTelephonyGetDefaultCellularDataSlotId_0100 idNdk: ' + idNdk);
       let idTs = data.getDefaultCellularDataSlotIdSync();
@@ -120,9 +120,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the radio network state for given slot id.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetNetworkStateForSlot_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHTelephonyGetNetworkStateForSlot_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = telAPI.OHTelephonyGetNetworkStateForSlotParam(CASE_INDEX_4);
       console.info('====>testOHTelephonyGetNetworkStateForSlot_0400 result: ' + result);
       expect(result).assertEqual(TELEPHONY_OK);
@@ -232,9 +232,9 @@ export default function telephonyNdkTest() {
      * @tc.desc Obtains the radio network state.
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('testOHTelephonyGetNetworkState_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testOHTelephonyGetNetworkState_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let stateNdk = telAPI.OHTelephonyGetNetworkState();
       console.info('====>testOHTelephonyGetNetworkState_0300 stateNdk: ', JSON.stringify(stateNdk));
       

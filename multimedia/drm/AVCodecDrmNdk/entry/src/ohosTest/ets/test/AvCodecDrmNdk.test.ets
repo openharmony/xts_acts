@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import avcodec from 'libentry.so'
 
 interface GeneratedObjectLiteralInterface_1 {
@@ -74,7 +74,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0100', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_CencInfo_Destroy("ptr");
       expect(result).assertEqual(0);
       done();
@@ -87,7 +87,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0200', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_UNENCRYPTED);
       expect(result).assertEqual(0);
       done();
@@ -100,7 +100,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0300', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_AES_CTR);
       expect(result).assertEqual(0);
       done();
@@ -113,7 +113,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0400', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_AES_WV);
       expect(result).assertEqual(0);
       done();
@@ -126,7 +126,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0500', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_AES_CBC);
       expect(result).assertEqual(0);
       done();
@@ -139,7 +139,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0600', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_SM4_CBC);
       expect(result).assertEqual(0);
       done();
@@ -152,7 +152,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0700', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", DrmCencAlgo.DRM_ALG_CENC_SM4_CTR);
       expect(result).assertEqual(0);
       done();
@@ -165,7 +165,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0800', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAlgorithm("ptr", -1);
       expect(result).assertEqual(0);
       done();
@@ -180,7 +180,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_0900', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetKeyIdAndIv("ptr", "ptr", 16, "ptr", 16);
       expect(result).assertEqual(0);
       done();
@@ -195,7 +195,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1000', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetKeyIdAndIv("ptr", "ptr", 8, "ptr", 16);
       expect(result).assertEqual(3);
       done();
@@ -210,7 +210,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1100', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetKeyIdAndIv("ptr", "ptr", 16, "ptr", 7);
       expect(result).assertEqual(3);
       done();
@@ -227,7 +227,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1200', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetSubsampleInfo("ptr", 10, 2, 0, 4, "ptr");
       expect(result).assertEqual(0);
       done();
@@ -240,7 +240,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1300', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetMode("ptr", DrmCencInfoMode.DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
       expect(result).assertEqual(0);
       done();
@@ -253,7 +253,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1400', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetMode("ptr", DrmCencInfoMode.DRM_CENC_INFO_KEY_IV_SUBSAMPLES_NOT_SET);
       expect(result).assertEqual(0);
       done();
@@ -266,7 +266,7 @@ export default function abilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVCODEC_DRM_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVCODEC_DRM_1500', Level.LEVEL0, async (done: Function) => {
       let result: number = avcodec.Test_AVCencInfo_SetAVBuffer("ptr", "ptr");
       expect(result).assertEqual(0);
       done();

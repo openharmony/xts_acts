@@ -81,6 +81,7 @@
 #include "checkbox/checkbox_enabled_test.h"
 #include "datepicker/datepicker_enabled_test.h"
 #include "slider/slider_enabled_test.h"
+#include "slider/slider_color_test.h"
 #include "refresh/refresh_onrefreshing_test.h"
 #include "refresh/refresh_onstatechange_test.h"
 #include "refresh/refresh_onOffsetChange_test.h"
@@ -430,6 +431,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"sliderEnabledTest", nullptr, SliderEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"SliderColorTest", nullptr, SliderColorTest::TestSliderColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"refreshOnRefreshingTest", nullptr, RefreshOnRefreshingTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"refreshOnStateChangeTest", nullptr, RefreshOnStateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,

@@ -243,7 +243,7 @@ describe('CharacterInI18nTest', function () {
     * @tc.name    test isIdeograph interface with abc param
     * @tc.desc    check the isIdeograph interface
     */
-    it('i18n_test_character_1500', Level.LEVEL0, function () {
+    it('i18n_test_character_1500', Level.LEVEL2, function () {
         console.log('i18n_test_character_1500 ' + 'start');
         let character = new I18n.Character();
         let value = character.isIdeograph('abc');

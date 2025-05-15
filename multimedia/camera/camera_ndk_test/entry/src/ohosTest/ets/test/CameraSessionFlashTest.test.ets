@@ -17,7 +17,7 @@ import cameraObj from 'libentry.so';
 import { cameraInfo } from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import featureAbility from '@ohos.ability.featureAbility'
 import { Camera_FlashMode, GlobalThis } from './Constants';
@@ -260,7 +260,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_HAS_FLASH_PROMISE_001', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_HAS_FLASH_PROMISE_001', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_HAS_FLASH_PROMISE_001--------------");
       let hasFlashPromise = cameraObj.sessionHasFlash();
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_HAS_FLASH_PROMISE_001 finish");
@@ -281,7 +281,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_002', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_002', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_002--------------");
       let sessionIsFlashModeSupported = cameraObj.sessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_CLOSE);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_002 finish");
@@ -302,7 +302,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_003', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_003', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_003--------------");
       let ret = cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_CLOSE);
       if (ret != 0) {
@@ -320,7 +320,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_004', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_004', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_004--------------");
       let sessionIsFlashModeSupported = cameraObj.sessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_OPEN);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_004 finish");
@@ -341,7 +341,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_005', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_005', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_005--------------");
       cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_OPEN);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_005 finish");
@@ -365,7 +365,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_006', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_006--------------");
       if (mHasFlashArray[0] == true) {
         let sessionIsFlashModeSupported = cameraObj.sessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_AUTO);
@@ -391,7 +391,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_007', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_007', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_007--------------");
       if ((mHasFlashArray[0] == true) && (mIsFlashModeSupportedArray[0] == true)) {
         cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_AUTO);
@@ -420,7 +420,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_008', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_008', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_IS_FLASH_MODE_SUPPORT_PROMISE_008--------------");
       if (mHasFlashArray[0] == true) {
         let sessionIsFlashModeSupported = cameraObj.sessionIsFlashModeSupported(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN);
@@ -446,7 +446,7 @@ export default function cameraSessionFlashTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_009', 2, async () => {
+    it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_009', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_009--------------");
       cameraObj.sessionSetFlashMode(Camera_FlashMode.FLASH_MODE_ALWAYS_OPEN);
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FLASH_MODE_PROMISE_009 finish");

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../MainAbility/common/Common';
 import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function RichEditorApi222() {
     * @tc.desc        RichEditorApi2 RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('RichEditorApi2_001', 0, async (done: Function) => {
+    it('RichEditorApi2_001', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi2_001] START');
       await CommonFunc.sleep(1000);
 
@@ -84,7 +84,7 @@ export default function RichEditorApi222() {
   * @tc.desc        RichEditorApi2 RichEditorSymbolSpanStyle test
   * @tc.level       Level 2
   */
-    it('RichEditorApi2_002', 0, async (done: Function) => {
+    it('RichEditorApi2_002', Level.LEVEL2, async (done: Function) => {
       console.info('[RichEditorApi2_002] START');
       await CommonFunc.sleep(1000);
 

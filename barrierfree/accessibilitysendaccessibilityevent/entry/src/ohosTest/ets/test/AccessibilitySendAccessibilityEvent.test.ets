@@ -49,7 +49,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
              */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
             let eventType : accessibility.EventType = 'accessibilityFocus';
 
@@ -78,7 +78,7 @@ export default function abilityTest() {
         * @tc.type    User
         * @tc.level   Level 1
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
             console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200');
             let eventType : accessibility.EventType = 'accessibilityFocus';
 

@@ -16,7 +16,9 @@
 import { beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function webviewNetworkProxy() {
 
   describe('webviewNetworkProxyTest', () => {
@@ -42,6 +44,11 @@ export default function webviewNetworkProxy() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info('webviewNetworkProxy beforeEach start');
       done();
@@ -54,9 +61,9 @@ export default function webviewNetworkProxy() {
     * @tc.desc       : test ProxySchemeFilter MATCH_ALL_SCHEMES
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 1
+    * @tc.level      : Level 0
     */
-    it('testNetworkProxySchemeFilterMatchAllSchemes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testNetworkProxySchemeFilterMatchAllSchemes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent('testNetworkProxySchemeFilterMatchAllSchemes', 10)
       await Utils.sleep(2000);
       Utils.registerEvent('testNetworkProxySchemeFilterMatchAllSchemes', true, 202502181, done);

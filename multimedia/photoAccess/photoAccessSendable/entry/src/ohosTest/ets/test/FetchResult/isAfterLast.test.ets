@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit'
 import {
@@ -48,7 +48,7 @@ export default function IsAfterLastTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('isAfterLast_000', 0, async (done: Function) => {
+    it('isAfterLast_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'isAfterLast_000';
       try {
         const fetchOption: photoAccessHelper.FetchOptions = fetchAllOption();

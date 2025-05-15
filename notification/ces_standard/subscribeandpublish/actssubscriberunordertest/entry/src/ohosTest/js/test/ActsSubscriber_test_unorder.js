@@ -178,6 +178,7 @@ export default function ActsSubscriberTestUnorder() {
      */
     it('Sub_Notification_Ces_Subscriber_Subscribe_0900', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0900 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0500'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0500'
       CommonEventSubscriberInfo.priority = 10
@@ -240,7 +241,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0900 END`)
     })
 
@@ -251,6 +251,7 @@ export default function ActsSubscriberTestUnorder() {
      */
     it('Sub_Notification_Ces_Publish_CommonEvent_8350', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8350 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0600'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0600'
       CommonEventSubscriberInfo.priority = 10
@@ -313,7 +314,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8350 END`)
     })
 
@@ -324,6 +324,7 @@ export default function ActsSubscriberTestUnorder() {
      */
     it('Sub_Notification_Ces_Publish_CommonEvent_8250', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8250 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0700'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0700'
       CommonEventSubscriberInfo.priority = 10
@@ -386,7 +387,6 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8250 END`)
     })
 
@@ -397,6 +397,7 @@ export default function ActsSubscriberTestUnorder() {
      */
     it('Sub_Notification_Ces_Publish_CommonEvent_8300', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8300 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0800'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0800'
       CommonEventSubscriberInfo.priority = 10
@@ -456,7 +457,6 @@ export default function ActsSubscriberTestUnorder() {
           done()
         }
       })
-      await sleep(5000)
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_8300 END`)
     })
 
@@ -467,6 +467,7 @@ export default function ActsSubscriberTestUnorder() {
      */
     it('Sub_Notification_Ces_Subscriber_Subscribe_0800', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0800 START`)
+      await sleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
       CommonEventSubscriberInfo.priority = 10
@@ -514,7 +515,7 @@ export default function ActsSubscriberTestUnorder() {
         }
       })
 
-      await sleep(5000)
+      await sleep(2000)
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_0800 END`)
     })     
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_TEST END`)

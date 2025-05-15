@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -75,6 +75,19 @@ export default function customDialogShowTest() {
      */
     it('testCustomDialogShow004', 0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMDIALOG_SHOW_0500
+     * @tc.name       : testCustomDialogShow005
+     * @tc.desc       : testing show for customDialog with callback function
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testCustomDialogShow005', Level.LEVEL1, async (done: Function) => {
+      expect(nativeFunc.testCustomDialogShow005()).assertEqual(0)
       done()
     })
 

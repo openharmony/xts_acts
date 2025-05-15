@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import {
   UiComponent,
   UiDriver,
@@ -30,9 +29,7 @@ import {
 } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
-
 export default function setPolyToPoly() {
-
   describe('setPolyToPoly', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
@@ -54,12 +51,10 @@ export default function setPolyToPoly() {
       }
       done();
     });
-
     afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("setPolyToPoly after each called");
     });
-
     /**
      * @tc.number SUB_ACE_BASIC_ETS_API_0100
      * @tc.name testGetImageAttr010
@@ -68,9 +63,7 @@ export default function setPolyToPoly() {
      * @tc.type :
      * @tc.size :
      */
-
-
-    it('setPolyToPoly_0100', 0, async (done: Function) => {
+    it('setPolyToPoly_0100', Level.LEVEL0, async (done: Function) => {
       console.info('setPolyToPoly_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -79,7 +72,6 @@ export default function setPolyToPoly() {
       let strJson = getInspectorByKey('ImageSetPoly');
       expect(JSON.parse(strJson).$attrs.width).assertEqual('150.00vp');
       await CommonFunc.sleep(1000);
-
       console.info('[setPolyToPoly_0100] END');
       done();
     });

@@ -37,9 +37,9 @@ export default function AsyncLockTest() {
     * @tc.author: liu-zelin
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 0
     */
-    it('setDelayRequestAndCloseWorkerInstantlyTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('setDelayRequestAndCloseWorkerInstantlyTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await setDelayRequestAndCloseWorkerInstantlyTest();
       expect(result).assertEqual('PASSED');
       done();

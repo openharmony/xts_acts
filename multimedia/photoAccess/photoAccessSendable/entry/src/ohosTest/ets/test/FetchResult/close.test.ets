@@ -14,7 +14,7 @@
  */
 
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { common } from '@kit.AbilityKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import {
@@ -48,7 +48,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('close_fetch_result_000', 0, async (done: Function) => {
+    it('close_fetch_result_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'close_fetch_result_000';
       try {
         const fetchOption: photoAccessHelper.FetchOptions = fetchAllOption();
@@ -75,7 +75,7 @@ export default function closeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('close_fetch_result_001', 0, async (done: Function) => {
+    it('close_fetch_result_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'close_fetch_result_001';
       try {
         const fetchOption: photoAccessHelper.FetchOptions = fetchAllOption();

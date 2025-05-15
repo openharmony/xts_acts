@@ -110,8 +110,12 @@ struct Index {
         .scrollable(ScrollDirection.Vertical)
       }
       .width('100%')
+      .padding({
+        bottom: 20,
+      })
     }
     .height('100%')
+    .alignItems(VerticalAlign.Top)
   }
 
   async startAudio(audioRenderer: audio.AudioRenderer, abilityContext: common.UIAbilityContext) {

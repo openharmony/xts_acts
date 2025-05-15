@@ -258,7 +258,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountLocalId callback
     * @tc.desc    : Verify that the user localId obtained from the current process uid
     */
-    it('ActsOsAccountQueryIdFormProcess_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryIdFormProcess_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountQueryIdFormProcess_0100 start====");
       var osAccountManager = osaccount.getAccountManager();
       var bundleName = "com.example.actsosaccountthirdpartytest";
@@ -281,7 +281,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountLocalId promise
     * @tc.desc    : Verify that the user localId obtained from the current process uid
     */
-    it('ActsOsAccountQueryIdFormProcess_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryIdFormProcess_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountQueryIdFormProcess_0200 start====");
       var osAccountManager = osaccount.getAccountManager();
       var bundleName = "com.example.actsosaccountthirdpartytest";
@@ -302,7 +302,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountType callback
     * @tc.desc    : Verify that the user type obtained from the current process uid
     */
-    it('ActsOsAccountgetType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountgetType_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountgetType_0100 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.info("====>get AccountManager finish====");
@@ -321,7 +321,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountType promise
     * @tc.desc    : Verify that the user type obtained from the current process uid
     */
-    it('ActsOsAccountgetType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountgetType_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountgetType_0200 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.info("====>get AccountManager finish====");
@@ -337,7 +337,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getSerialNumberForOsAccountLocalId callback
     * @tc.desc    : Verify query serialNumber by 100 user and query 100 user by serialNumber
     */
-    it('ActsOsAccountQueryLocalIdSerial_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryLocalIdSerial_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsOsAccountQueryLocalIdSerial_0100 start====");
       var osAccountManager = osaccount.getAccountManager();
       var testLocalId = await osAccountManager.getOsAccountLocalId();
@@ -366,7 +366,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getSerialNumberForOsAccountLocalId promise
     * @tc.desc    : Verify query serialNumber by 100 user and query 100 user by serialNumber
     */
-    it('ActsOsAccountQueryLocalIdSerial_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryLocalIdSerial_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsOsAccountQueryLocalIdSerial_0200 start====");
       var osAccountManager = osaccount.getAccountManager();
       var testLocalId = await osAccountManager.getOsAccountLocalId();
@@ -389,7 +389,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountLocalIdForSerialNumber callback
     * @tc.desc    : Verify query serialNumber by 0 user and query 0 user by serialNumber
     */
-    it('ActsOsAccountQueryLocalIdSerial_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryLocalIdSerial_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsOsAccountQueryLocalIdSerial_0300 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.info("====>get AccountManager finish====");
@@ -417,7 +417,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.name    : getOsAccountLocalIdForSerialNumber promise
     * @tc.desc    : Verify query serialNumber by 0 user and query 0 user by serialNumber
     */
-    it('ActsOsAccountQueryLocalIdSerial_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountQueryLocalIdSerial_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
       console.info("====>ActsOsAccountQueryLocalIdSerial_0400 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.info("====>get AccountManager finish====");
@@ -834,11 +834,11 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.number  : ActsOsAccountIsOsAccountConstraintEnabled_0100
     * @tc.name    : IsOsAccountConstraintEnabled promise
     * @tc.desc    : Checks whether the given constraint is enabled for the current OS account
-    * @tc.level   : Level3
+    * @tc.level   : Level0
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountIsOsAccountConstraintEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountIsOsAccountConstraintEnabled_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountIsOsAccountConstraintEnabled_0100 start====");
       var AccountManager = osaccount.getAccountManager();
       console.info("====>get os AccountManager finish====");
@@ -859,11 +859,11 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     * @tc.number  : ActsOsAccountGetOsAccountName_0100
     * @tc.name    : GetOsAccountName promise
     * @tc.desc    : Gets the name of the OS account to which the caller belongs
-    * @tc.level   : Level3
+    * @tc.level   : Level0
     * @tc.size    : MediumTest
     * @tc.type    : Function
     */
-    it('ActsOsAccountGetOsAccountName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsOsAccountGetOsAccountName_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsOsAccountGetOsAccountName_0100 start====");
       var AccountManager = osaccount.getAccountManager();
       console.info("====>get os AccountManager finish====");

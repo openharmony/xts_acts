@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it,expect, Level } from "@ohos/hypium"
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -51,7 +51,7 @@ export default function tabsDemo() {
      * @tc.desc        Tabs customContentTransition test
      * @tc.level       Level 2
      */
-    it('tabsDemo_001', 0, async (done: Function) => {
+    it('tabsDemo_001', Level.LEVEL2, async (done: Function) => {
       console.info('[tabsDemo_001] START');
       await CommonFunc.sleep(1000);
 

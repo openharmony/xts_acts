@@ -111,9 +111,9 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('executeDelayedTaskErrorTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0100';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -148,9 +148,9 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Generics Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('executeDelayedTaskErrorTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('executeDelayedTaskErrorTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0200';
       console.info(`${caseName} test start`);
       let num = 0;
@@ -185,7 +185,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task onEnqueued ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0300';
@@ -232,7 +232,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task onStartExecution ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0400';
@@ -279,7 +279,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task onExecutionFailed ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0500';
@@ -320,7 +320,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task onExecutionSucceeded ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0600';
@@ -366,7 +366,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task onReceiveData ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0700';
@@ -412,7 +412,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task then ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0800';
@@ -452,7 +452,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task catch ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest0900';
@@ -497,7 +497,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing Task catch ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1000';
@@ -537,7 +537,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1100';
@@ -574,7 +574,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task then ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1200';
@@ -614,7 +614,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task catch ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1300';
@@ -659,7 +659,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1400';
@@ -699,7 +699,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1500';
@@ -736,7 +736,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing promise Task then ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1600';
@@ -776,7 +776,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1700';
@@ -821,7 +821,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing asyncLock Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1800';
@@ -861,7 +861,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing setTimeout Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest1900';
@@ -898,7 +898,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing async Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest2000';
@@ -937,7 +937,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing worker Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest2900';
@@ -986,7 +986,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing worker Task onmessage ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3000';
@@ -1035,7 +1035,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing errorTask2 Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3100';
@@ -1073,7 +1073,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing errorTaskThen2 Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3200';
@@ -1110,7 +1110,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing errorTaskCatch2 Task ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3300';
@@ -1147,7 +1147,7 @@ export default function executeDelayedTaskErrorTest() {
      * @tc.desc Testing errorTaskFinally2 Task finally ThrowError
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('executeDelayedTaskErrorTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName = 'executeDelayedTaskErrorTest3400';

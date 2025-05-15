@@ -172,7 +172,7 @@ let ServerOptions: socket.TLSConnectOptions = {
   address: addr,
   secureOptions: {
     ca: client_ca,
-    key: server_ca,
+    key: server_key,
     password: '123456',
     cert: server_ca,
     protocols: [socket.Protocol.TLSv12],

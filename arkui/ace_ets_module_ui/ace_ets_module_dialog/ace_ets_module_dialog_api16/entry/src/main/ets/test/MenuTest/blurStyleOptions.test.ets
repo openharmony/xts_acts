@@ -62,12 +62,12 @@ export default function blurStyleOptions() {
         let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
         .$children[1].$children[0].$attrs.backgroundBlurStyle.options.scale)
         expect(text).assertEqual('0.1');
-        }else{
-          let json = JSON.stringify(getInspectorTree())
-          let chunkSize = 2000;
-          for (let i = 0; i < json.length; i += chunkSize) {
-            console.info(json.slice(i, i + chunkSize));
-          }
+      }else{
+        let json = JSON.stringify(getInspectorTree())
+        let chunkSize = 2000;
+        for (let i = 0; i < json.length; i += chunkSize) {
+          console.info(json.slice(i, i + chunkSize));
+        }
           let text = JSON.stringify(JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0].$children[0].$attrs.backgroundBlurStyle.options.policy);
           expect(JSON.parse(text)).assertEqual('BlurStyleActivePolicy.ALWAYS_ACTIVE');

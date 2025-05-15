@@ -19,6 +19,10 @@ group("uiabilitycontext") {
     deps = [
       "actssetabilityinstanceinforely:ActsSetAbilityInstanceInfoRely",
       "actssetabilityinstanceinfotest:ActsSetAbilityInstanceInfoTest",
+      "actsspecifiedabilityrely1:ActsSpecifiedAbilityRely1",
+      "actsspecifiedabilityrely2:ActsSpecifiedAbilityRely2",
+      "actsspecifiedabilityrely3:ActsSpecifiedAbilityRely3",
+      "actsspecifiedabilitytest:ActsSpecifiedAbilityTest",
     ]
   }
 }

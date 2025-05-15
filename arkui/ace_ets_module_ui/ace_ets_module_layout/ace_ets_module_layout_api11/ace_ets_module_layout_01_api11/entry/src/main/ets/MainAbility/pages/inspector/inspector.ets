@@ -22,6 +22,9 @@ struct Inspector {
   @State message: string = 'test'
   @State setColor: string = '#F9CF93'
   @State catchStatus: string = "success"
+  @State response: string = ""
+  @State text01: string = "text01"
+  @State text02: string = "text02"
 
   onPageShow() {
     console.info('[inspector] page show called');
@@ -46,9 +49,9 @@ struct Inspector {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("inspector")
-        .width(100)
-        .height(70)
-        .fontSize(20)
+        .width('100%')
+        .height('5%')
+        .fontSize(5)
         .opacity(1)
         .align(Alignment.TopStart)
         .fontColor(0xCCCCCC)
@@ -85,7 +88,7 @@ struct Inspector {
             })
           Text("inspectorApiTwo")
             .key("inspectorApiTwo")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               try {
@@ -110,7 +113,7 @@ struct Inspector {
 
           Text("inspectorApiThree")
             .key("inspectorApiThree")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               setAppBgColor('#F9CF93');
@@ -118,7 +121,7 @@ struct Inspector {
 
           Text("inspectorApiFour")
             .key("inspectorApiFour")
-            .fontSize(50)
+            .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               try {
@@ -147,10 +150,34 @@ struct Inspector {
                 console.info("inspector_103 onClick emit action state err: " + JSON.stringify((err as Error)?.message))
               }
             })
+          Text(this.text01).id("text01_id")
+          Button("getFilteredInspectorTree").id("getFilteredInspectorTree")
+            .onClick(() => {
+              console.log("getFilteredInspectorTree...")
+              try {
+                this.response = this.getUIContext().getFilteredInspectorTree(null)
+              } catch (err) {
+                this.text01 = JSON.stringify(err);
+                console.log("catch err msg response:" + JSON.stringify(err))
+              }
+            })
+          Text(this.text02).id("text02_id")
+          Button("getFilteredInspectorTreeById").id("getFilteredInspectorTreeById")
+            .onClick(() => {
+              console.log("getFilteredInspectorTreeById...")
+              try {
+                this.response = this.getUIContext().getFilteredInspectorTreeById('testId', 0, null)
+                console.log("response:" + this.response)
+              } catch (err) {
+                this.text02 = JSON.stringify(err);
+                console.log("catch err msg response:" + JSON.stringify(err))
+              }
+            })
+
         }
         .width('100%')
       }
-      .height('100%')
+      .height('95%')
 
     }.width("100%").height("100%")
   }

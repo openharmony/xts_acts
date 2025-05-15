@@ -27,7 +27,7 @@ export default function getSignatureInfo() {
      * @tc.type: Function
      * @tc.level: Level1
      */
-    it('Sub_Bms_Framework_getSignatureInfo01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
+    it('Sub_Bms_Framework_getSignatureInfo01', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) => {
       let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
       bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO
 

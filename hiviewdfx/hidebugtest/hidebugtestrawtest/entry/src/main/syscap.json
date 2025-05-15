@@ -4,7 +4,7 @@
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.HiviewDFX.HiCollie"
+                    "SystemCapability.HiviewDFX.HiProfiler.HiDebug"
                 ]
             }
         ]

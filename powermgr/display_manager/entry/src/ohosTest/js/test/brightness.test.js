@@ -42,11 +42,11 @@ export default function BrightnessTest() {
      * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0050
      * @tc.name testSystem_API_Test_brightness_Manager_0100
      * @tc.desc Test the third-party application call setValue will be blocked
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('System_API_Test_brightness_Manager_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+    it('System_API_Test_brightness_Manager_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async function (done) {
         let TAG = 'System_API_Test_brightness_Manager_0100';
         try {

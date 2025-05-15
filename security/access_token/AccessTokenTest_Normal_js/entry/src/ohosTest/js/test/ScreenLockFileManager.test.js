@@ -250,11 +250,11 @@ export default function ScreenLockFileManagerJsTest() {
          * @tc.number:SUB_Security_EL5_KeyStatusConst_0300
          * @tc.name: Test EL5 KeyStatus Const Attribute
          * @tc.desc: Test screenLockFileManager KeyStatus const KEY_EXIST
-         * @tc.level: Level1
+         * @tc.level: Level0
          * @tc.size: MediumTest
          * @tc.type: Function
          */
-        it("SUB_Security_EL5_KeyStatusConst_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function (done) {
+        it("SUB_Security_EL5_KeyStatusConst_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             console.info('----------------------SUB_Security_EL5_KeyStatusConst_0300---------------------------');
             let value = screenLockFileManager.KeyStatus.KEY_EXIST;
             console.info('SUB_Security_EL5_KeyStatusConst_0300 value is: ' + value);

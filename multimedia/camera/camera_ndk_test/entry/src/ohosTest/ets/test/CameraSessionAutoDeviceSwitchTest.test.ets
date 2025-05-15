@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
 import { Camera_SceneMode, Parameter_Setting } from './Constants';
@@ -265,7 +265,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionIsAutoDeviceSwitchSupportedTest100', 2, async () => {
+    it('testOHSessionIsAutoDeviceSwitchSupportedTest100', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionIsAutoDeviceSwitchSupportedTest100--------------");
       let isFoldable = display.isFoldable();
       console.info(TAG + "testOHSessionIsAutoDeviceSwitchSupportedTest100 isFoldable:" + isFoldable);
@@ -284,7 +284,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionEnableAutoDeviceSwitchTest100', 2, async () => {
+    it('testOHSessionEnableAutoDeviceSwitchTest100', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionEnableAutoDeviceSwitchTest100--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -307,7 +307,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest100', 2, async () => {
+    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest100', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionRegisterAutoDeviceSwitchCallbackTest100--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -334,7 +334,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest200', 2, async () => {
+    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest200', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionRegisterAutoDeviceSwitchCallbackTest200--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -361,7 +361,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest300', 2, async () => {
+    it('testOHSessionRegisterAutoDeviceSwitchCallbackTest300', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionRegisterAutoDeviceSwitchCallbackTest300--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -388,7 +388,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest100', 2, async () => {
+    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest100', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionUnregisterAutoDeviceSwitchCallbackTest100--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -415,7 +415,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest200', 2, async () => {
+    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest200', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionUnregisterAutoDeviceSwitchCallbackTest200--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {
@@ -442,7 +442,7 @@ export default function CameraSessionAutoDeviceSwitchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest300', 2, async () => {
+    it('testOHSessionUnregisterAutoDeviceSwitchCallbackTest300', Level.LEVEL2, async () => {
       console.info("--------------testOHSessionUnregisterAutoDeviceSwitchCallbackTest300--------------");
       let autoSwitchSupportInfo = cameraObj.sessionIsAutoDeviceSwitchSupported();
       if (autoSwitchSupportInfo.errorCode != 0) {

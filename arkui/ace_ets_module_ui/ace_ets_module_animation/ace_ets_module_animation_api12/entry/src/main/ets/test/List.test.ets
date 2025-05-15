@@ -22,6 +22,12 @@ import ParticleAnimatorTest from './Particle/ParticleAnimatorTest.test'
 import APIParticleEmitter from './APIParticleEmitter.test'
 import animateToTest from './AnimatorResultTest/animateToTest.test'
 import ParticleAttributeTest from './Particle/ParticleAttributeTest.test'
+import CurvePage from './CurvePage.test'
+import SimpleAnimatorOptionsPage from './SimpleAnimatorOptionsPage.test'
+import Blur from './Blur.test'
+import ParticlePage from './Particle.test'
+
+
 export default function testsuite() {
   AnimatorResultTest()
   setExpectedFrameRateRangeTest()
@@ -32,4 +38,8 @@ export default function testsuite() {
   APIParticleEmitter();
   animateToTest();
   ParticleAttributeTest();
+  CurvePage();
+  SimpleAnimatorOptionsPage();
+  Blur();
+  ParticlePage();
 }

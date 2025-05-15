@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import {
   sleep,
@@ -57,7 +57,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_supported_photo_formats_000', 0, async (done: Function) => {
+    it('get_supported_photo_formats_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'get_supported_photo_formats_000';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1);
@@ -81,7 +81,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_supported_photo_formats_001', 0, async (done: Function) => {
+    it('get_supported_photo_formats_001', Level.LEVEL0, async (done: Function) => {
       let testNum = 'get_supported_photo_formats_001';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(2);
@@ -105,7 +105,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_supported_photo_formats_002', 0, async (done: Function) => {
+    it('get_supported_photo_formats_002', Level.LEVEL0, async (done: Function) => {
       let testNum = 'get_supported_photo_formats_002';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(1000);
@@ -129,7 +129,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_supported_photo_formats_003', 0, async (done: Function) => {
+    it('get_supported_photo_formats_003', Level.LEVEL0, async (done: Function) => {
       let testNum = 'get_supported_photo_formats_003';
       try {
         let result = await phAccessHelper.getSupportedPhotoFormats(null);
@@ -153,7 +153,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_supported_photo_formats_004', 2, async (done: Function) => {
+    it('get_supported_photo_formats_004', Level.LEVEL2, async (done: Function) => {
       let testNum = 'get_supported_photo_formats_004';
       try {
         await phAccessHelper.getSupportedPhotoFormats(3);
@@ -174,7 +174,7 @@ export default function getSupportedPhotoFormatsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('get_supported_photo_formats_005', 2, async (done: Function) => {
+    it('get_supported_photo_formats_005', Level.LEVEL2, async (done: Function) => {
       let testNum = 'get_supported_photo_formats_005';
       try {
         await phAccessHelper.getSupportedPhotoFormats(undefined);

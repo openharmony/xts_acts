@@ -139,7 +139,7 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                await driver.swipe(X, Y + 60, X, Y - 60);
+                await driver.swipe(X, Y + 230, X, Y - 200);
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100034)
               } catch (error) {

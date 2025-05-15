@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@ohos.base';
 
@@ -105,7 +105,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -161,7 +161,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0200", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -217,7 +217,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_JPG_0300", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -273,7 +273,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -327,7 +327,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0200", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -381,7 +381,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -437,7 +437,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -493,7 +493,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -554,7 +554,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -608,7 +608,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -662,7 +662,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0200", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -731,7 +731,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -783,7 +783,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0200", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -835,7 +835,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0200", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -891,7 +891,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -934,7 +934,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
             try {
                 await getFd("test.jpg");
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -970,7 +970,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0100", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1018,7 +1018,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1066,7 +1066,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1114,7 +1114,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1160,7 +1160,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1206,7 +1206,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1256,7 +1256,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1302,7 +1302,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1355,7 +1355,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1403,7 +1403,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1449,7 +1449,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1508,7 +1508,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1554,7 +1554,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1600,7 +1600,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1646,7 +1646,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1681,7 +1681,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
             await getFd("moving_test.gif");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1708,7 +1708,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1756,7 +1756,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0500", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1804,7 +1804,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0600", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1852,7 +1852,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0500", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1898,7 +1898,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0600", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1944,7 +1944,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1994,7 +1994,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0500", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2040,7 +2040,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2093,7 +2093,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0300", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2141,7 +2141,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0500", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2187,7 +2187,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0600", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2247,7 +2247,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0500", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2293,7 +2293,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0600", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2339,7 +2339,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0600", Level.LEVEL0, async (done: Function) => {
             await getFd("test.bmp");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2385,7 +2385,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0700", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2433,7 +2433,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0800", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2481,7 +2481,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_PIXELFORMAT_0900", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2529,7 +2529,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0700", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2576,7 +2576,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_INDEX_0800", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2623,7 +2623,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_SAMPLESIZE_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2674,7 +2674,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0700", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2721,7 +2721,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_PIXELFORMAT_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2775,7 +2775,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_EDITABLE_FALSE_0400", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2824,7 +2824,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0700", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2871,7 +2871,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_DESIRED_0800", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2931,7 +2931,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0700", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -2978,7 +2978,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0800", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -3024,7 +3024,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0800", Level.LEVEL0, async (done: Function) => {
             await getFd("test.png");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -3070,7 +3070,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_UNSUPPORTED_IMAGE_FORMAT_0100", Level.LEVEL0, async (done: Function) => {
             await getFd("test.tiff");
             const imageSourceApi = image.createImageSource(fdNumber);
             let decodingOptions: Options = {
@@ -3115,7 +3115,7 @@ export default function imageDecodeOptions() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_ROTATE_0900", Level.LEVEL0, async (done: Function) => {
             await getFd("test.jpg");
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -3169,5 +3169,174 @@ export default function imageDecodeOptions() {
                 });
             }
         });
+
+        /**
+         * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100
+         * @tc.name     : CreatePixelMap(decodingOptions)
+         * @tc.desc     : 1.create imagesource
+                          2.set desiredSize and desiredRegion DecodeOptions
+                          3.create PixelMap
+                          4.callback return undefined
+         * @tc.size     : MEDIUM
+         * @tc.type     : Functional
+         * @tc.level    : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 createPixelMap error  " +
+                                                                                                                 JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+               console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0100 error: " + error);
+               expect(false).assertTrue();
+               done(); 
+            }
+        });
+
+        /**
+        * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200
+        * @tc.name     : CreatePixelMap(decodingOptions)
+        * @tc.desc     : 1.create imagesource
+                        2.set desiredSize and desiredRegion DecodeOptions
+                        3.create PixelMap
+                        4.callback return undefined
+        * @tc.size     : MEDIUM
+        * @tc.type     : Functional
+        * @tc.level    : Level 1
+        */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                        cropAndScaleStrategy : image.CropAndScaleStrategy.SCALE_FIRST
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 createPixelMap error" +
+                                    JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredRegionSize.width && imageInfo.size.height == desiredRegionSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0200 error: " + error);
+                expect(false).assertTrue();
+                done(); 
+            }
+        });
+
+        /**
+        * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300
+        * @tc.name     : CreatePixelMap(decodingOptions)
+        * @tc.desc     : 1.create imagesource
+                        2.set desiredSize and desiredRegion DecodeOptions
+                        3.create PixelMap
+                        4.callback return undefined
+        * @tc.size     : MEDIUM
+        * @tc.type     : Functional
+        * @tc.level    : Level 1
+        */
+        it("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300", 0, async (done: Function) => {
+            try {
+                await getFd("jpeg_test_1440x1920.jpg");
+                const imageSourceApi = image.createImageSource(fdNumber);
+                if (imageSourceApi == undefined) {
+                    console.info(
+                        "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 create image source failed"
+                    );
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let desiredSize: image.Size = { width: 960, height: 1440 };
+                    let desiredRegionSize: image.Size = { width: 800, height: 800 };
+                    let decodingOptions: image.DecodingOptions = {
+                        desiredSize: desiredSize,
+                        desiredRegion: { size: desiredRegionSize, x: 0, y: 0},
+                        cropAndScaleStrategy : image.CropAndScaleStrategy.CROP_FIRST
+                    };
+                    imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                        if (err) {
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 createPixelMap error  " +
+                                    JSON.stringify(err)
+                            );
+                            expect(false).assertTrue();
+                            done();
+                        } else {
+                            globalpixelmap = pixelmap;
+                            console.info(
+                                "SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 success"
+                            );
+                            expect(pixelmap != undefined).assertTrue();
+                            let imageInfo = pixelmap.getImageInfoSync()
+                            expect(imageInfo.size.width == desiredSize.width && imageInfo.size.height == desiredSize.height).assertTrue();
+                            done();
+                        }
+                    });
+                }
+            } catch (error) {
+                console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_CropAndScaleStrategy_0300 error: " + error);
+                expect(false).assertTrue();
+                done(); 
+            }
+        });
     });
 }
+
+

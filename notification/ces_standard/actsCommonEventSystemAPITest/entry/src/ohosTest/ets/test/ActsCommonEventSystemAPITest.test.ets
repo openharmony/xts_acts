@@ -204,7 +204,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', Level.LEVEL0, async (done: Function) => {
+     it('Sub_Notification_Ces_Publish_CommonEvent_7900_279', Level.LEVEL2, async (done: Function) => {
       //构造notificationManager.publish 1600004错误码
       let basicContent: notificationManager.NotificationBasicContent = {
         title: "test_title",
@@ -662,7 +662,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL0, async (done: Function) => {
+it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (done: Function) => {
   notificationManager.requestEnableNotification(CustomGlobal.context)
 
   await sleep(1000)
@@ -776,37 +776,34 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL0, async (don
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
-
-  notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
-    expect(true).assertTrue();
-  }).catch((err: BusinessError) => {
-    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
-    if (err.code == 801) {
-      expect(true).assertTrue();
-      done();
-    } else {
-      expect().assertFail();
-      done();
-    }
-  });
-
-  await sleep(2000)
-
-  await notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
-    expect(false).assertTrue();
-    done()
-  }).catch((err: BusinessError) => {
-    console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
-    if (err.code == 801) {
-      expect(true).assertTrue();
-      done();
-    } else {
-      expect(err.code).assertEqual(1600018)
-      done()
-    }
-  });
-})
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
+      notificationManager.openNotificationSettings(CustomGlobal.context).then(async () => {
+        expect(true).assertTrue();
+        await sleep(2000)
+        await notificationManager.openNotificationSettings(CustomGlobal.context).then(() => {
+          expect(false).assertTrue();
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+          if (err.code == 801) {
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect(err.code).assertEqual(1600018)
+            done()
+          }
+        });
+      }).catch((err: BusinessError) => {
+        console.error(TAG + "openNotificationSettings: " + JSON.stringify(err));
+        if (err.code == 801) {
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect(err.code).assertEqual(1600001)
+          done();
+        }
+      });
+    })
 
 
     /*

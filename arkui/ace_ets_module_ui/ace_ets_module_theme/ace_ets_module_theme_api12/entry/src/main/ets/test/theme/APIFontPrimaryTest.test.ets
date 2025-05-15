@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -30,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import Utils from '../Utils';
-
 export default function APIFontPrimaryTest() {
   describe('APIFontPrimaryTest', () => {
     beforeEach(async (done: Function) => {
@@ -55,17 +53,15 @@ export default function APIFontPrimaryTest() {
       }
       done();
     });
-
     afterEach(async () => {
       await Utils.sleep(2000);
     });
-
     /*
      *tc.number api
      *tc.name   APIFontPrimaryTest_0100
      *tc.desc   APIFontPrimaryTest_0100
     */
-    it('APIFontPrimaryTest_0100', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -85,7 +81,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0200
      *tc.desc   APIFontPrimaryTest_0200
     */
-    it('APIFontPrimaryTest_0200', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0200 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -105,7 +101,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0300
      *tc.desc   APIFontPrimaryTest_0300
     */
-    it('APIFontPrimaryTest_0300', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0300 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -125,7 +121,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0400
      *tc.desc   APIFontPrimaryTest_0400
     */
-    it('APIFontPrimaryTest_0400', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0400 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -145,7 +141,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0500
      *tc.desc   APIFontPrimaryTest_0500
     */
-    it('APIFontPrimaryTest_0500', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0500 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -165,7 +161,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0600
      *tc.desc   APIFontPrimaryTest_0600
     */
-    it('APIFontPrimaryTest_0600', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0600 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -185,7 +181,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0700
      *tc.desc   APIFontPrimaryTest_0700
     */
-    it('APIFontPrimaryTest_0700', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0700 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -205,7 +201,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0800
      *tc.desc   APIFontPrimaryTest_0800
     */
-    it('APIFontPrimaryTest_0800', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0800 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -225,7 +221,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_0900
      *tc.desc   APIFontPrimaryTest_0900
     */
-    it('APIFontPrimaryTest_0900', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_0900 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -245,7 +241,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1000
      *tc.desc   APIFontPrimaryTest_1000
     */
-    it('APIFontPrimaryTest_1000', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1000', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1000 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -265,7 +261,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1100
      *tc.desc   APIFontPrimaryTest_1100
     */
-    it('APIFontPrimaryTest_1100', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1100', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -285,7 +281,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1200
      *tc.desc   APIFontPrimaryTest_1200
     */
-    it('APIFontPrimaryTest_1200', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1200', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1200 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -305,7 +301,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1300
      *tc.desc   APIFontPrimaryTest_1300
     */
-    it('APIFontPrimaryTest_1300', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1300', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1300 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -325,7 +321,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1400
      *tc.desc   APIFontPrimaryTest_1400
     */
-    it('APIFontPrimaryTest_1400', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1400', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1400 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -345,7 +341,7 @@ export default function APIFontPrimaryTest() {
      *tc.name   APIFontPrimaryTest_1500
      *tc.desc   APIFontPrimaryTest_1500
     */
-    it('APIFontPrimaryTest_1500', 0, async (done: Function) => {
+    it('APIFontPrimaryTest_1500', Level.LEVEL0, async (done: Function) => {
       console.info('APIFontPrimaryTest_1500 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);

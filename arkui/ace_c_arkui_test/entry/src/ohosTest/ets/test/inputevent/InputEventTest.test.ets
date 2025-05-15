@@ -133,7 +133,7 @@ export default function InputEventTest() {
      */
     it('testInputEvent003', 0, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent003', 'OH_ArkUI_UIInputEvent_GetSourceType',
-        MouseButton.MOUSE_BUTTON_RIGHT, true, 0);
+        MouseButton.MOUSE_BUTTON_RIGHT, true, 1);
       done();
     });
     /*
@@ -146,7 +146,7 @@ export default function InputEventTest() {
      */
     it('testInputEvent004', 0, async (done: Function) => {
       await mouseButtonInputEventTest('testInputEvent004', 'OH_ArkUI_UIInputEvent_GetToolType',
-        MouseButton.MOUSE_BUTTON_RIGHT, true, 0);
+        MouseButton.MOUSE_BUTTON_RIGHT, true, 3);
       let state = nativeRender.getEventState();
       done();
     });

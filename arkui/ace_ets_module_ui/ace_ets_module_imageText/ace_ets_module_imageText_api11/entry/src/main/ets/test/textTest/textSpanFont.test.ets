@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -54,7 +54,8 @@ export default function textSpanFontTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('ArkUX_Stage_Text_Font_FontWeight_0100', 0, async (done: Function) => {
+    
+    it('ArkUX_Stage_Text_Font_FontWeight_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0100 START');
       setTimeout(() => {
         try {
@@ -74,7 +75,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0200 START');
       setTimeout(() => {
         try {
@@ -96,7 +97,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0300 START');
       setTimeout(() => {
         try {
@@ -118,7 +119,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0400 START');
       setTimeout(() => {
         try {
@@ -140,7 +141,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0500 START');
       setTimeout(() => {
         try {
@@ -162,7 +163,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0600 START');
       setTimeout(() => {
         try {
@@ -184,7 +185,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0700 START');
       setTimeout(() => {
         try {
@@ -206,7 +207,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0800 START');
       setTimeout(() => {
         try {
@@ -228,7 +229,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_0900 START');
       setTimeout(() => {
         try {
@@ -250,7 +251,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_1000 START');
       setTimeout(() => {
         try {
@@ -272,7 +273,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_1100 START');
       setTimeout(() => {
         try {
@@ -294,7 +295,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontWeight_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontWeight_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontWeight_1200 START');
       setTimeout(() => {
         try {
@@ -316,7 +317,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0100 START');
       setTimeout(() => {
         try {
@@ -338,7 +339,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0200 START');
       setTimeout(() => {
         try {
@@ -360,7 +361,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0300 START');
       setTimeout(() => {
         try {
@@ -382,7 +383,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0400 START');
       setTimeout(() => {
         try {
@@ -404,7 +405,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0500 START');
       setTimeout(() => {
         try {
@@ -426,7 +427,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0600 START');
       setTimeout(() => {
         try {
@@ -448,7 +449,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0700 START');
       setTimeout(() => {
         try {
@@ -470,7 +471,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0800 START');
       setTimeout(() => {
         try {
@@ -492,7 +493,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_0900 START');
       setTimeout(() => {
         try {
@@ -514,7 +515,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_1000 START');
       setTimeout(() => {
         try {
@@ -536,7 +537,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_1100 START');
       setTimeout(() => {
         try {
@@ -558,7 +559,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontWeight_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontWeight_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontWeight_1200 START');
       setTimeout(() => {
         try {
@@ -580,7 +581,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0100 START');
       setTimeout(() => {
         try {
@@ -602,7 +603,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0200 START');
       setTimeout(() => {
         try {
@@ -624,7 +625,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0300 START');
       setTimeout(() => {
         try {
@@ -646,7 +647,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0400 START');
       setTimeout(() => {
         try {
@@ -668,7 +669,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0500 START');
       setTimeout(() => {
         try {
@@ -690,7 +691,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0600 START');
       setTimeout(() => {
         try {
@@ -713,7 +714,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0700 START');
       setTimeout(() => {
         try {
@@ -735,7 +736,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0800 START');
       setTimeout(() => {
         try {
@@ -758,7 +759,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_0900 START');
       setTimeout(() => {
         try {
@@ -781,7 +782,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontSize_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontSize_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontSize_1000 START');
       setTimeout(() => {
         try {
@@ -803,7 +804,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0100 START');
       setTimeout(() => {
         try {
@@ -825,7 +826,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0200 START');
       setTimeout(() => {
         try {
@@ -847,7 +848,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0300 START');
       setTimeout(() => {
         try {
@@ -869,7 +870,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0400 START');
       setTimeout(() => {
         try {
@@ -891,7 +892,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0500 START');
       setTimeout(() => {
         try {
@@ -913,7 +914,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0600 START');
       setTimeout(() => {
         try {
@@ -925,7 +926,7 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Span_Font_FontSize_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Span_Font_FontSize_0600 END ');
         } catch (err) {
           expect().assertFail()
@@ -935,7 +936,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0700 START');
       setTimeout(() => {
         try {
@@ -947,7 +948,7 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Span_Font_FontSize_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Span_Font_FontSize_0700 END ');
         } catch (err) {
           expect().assertFail()
@@ -957,7 +958,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0800 START');
       setTimeout(() => {
         try {
@@ -969,7 +970,7 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Span_Font_FontSize_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Span_Font_FontSize_0800 END ');
         } catch (err) {
           expect().assertFail()
@@ -979,7 +980,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_0900 START');
       setTimeout(() => {
         try {
@@ -991,7 +992,7 @@ export default function textSpanFontTest() {
 
           console.info("ArkUX_Stage_Span_Font_FontSize_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
-          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
+          expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
           console.info('ArkUX_Stage_Span_Font_FontSize_0900 END ');
         } catch (err) {
           expect().assertFail()
@@ -1001,7 +1002,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontSize_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontSize_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontSize_1000 START');
       setTimeout(() => {
         try {
@@ -1023,7 +1024,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0100 START');
       setTimeout(() => {
         try {
@@ -1045,7 +1046,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0200 START');
       setTimeout(() => {
         try {
@@ -1067,7 +1068,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0300 START');
       setTimeout(() => {
         try {
@@ -1089,7 +1090,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0400 START');
       setTimeout(() => {
         try {
@@ -1111,7 +1112,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0500 START');
       setTimeout(() => {
         try {
@@ -1133,7 +1134,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontStyle_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontStyle_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontStyle_0600 START');
       setTimeout(() => {
         try {
@@ -1155,7 +1156,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0100 START');
       setTimeout(() => {
         try {
@@ -1177,7 +1178,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0200 START');
       setTimeout(() => {
         try {
@@ -1199,7 +1200,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0300 START');
       setTimeout(() => {
         try {
@@ -1221,7 +1222,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0400 START');
       setTimeout(() => {
         try {
@@ -1243,7 +1244,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0500 START');
       setTimeout(() => {
         try {
@@ -1265,7 +1266,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontStyle_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontStyle_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontStyle_0600 START');
       setTimeout(() => {
         try {
@@ -1287,7 +1288,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0100 START');
       setTimeout(() => {
         try {
@@ -1309,7 +1310,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0200 START');
       setTimeout(() => {
         try {
@@ -1331,7 +1332,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0300 START');
       setTimeout(() => {
         try {
@@ -1353,7 +1354,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0400 START');
       setTimeout(() => {
         try {
@@ -1375,7 +1376,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0500 START');
       setTimeout(() => {
         try {
@@ -1397,7 +1398,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0600 START');
       setTimeout(() => {
         try {
@@ -1420,7 +1421,7 @@ export default function textSpanFontTest() {
     });
 
 
-    it('ArkUX_Stage_Text_Font_FontFamily_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Text_Font_FontFamily_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Text_Font_FontFamily_0700 START');
       setTimeout(() => {
         try {
@@ -1442,7 +1443,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0100 START');
       setTimeout(() => {
         try {
@@ -1464,7 +1465,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0200 START');
       setTimeout(() => {
         try {
@@ -1486,7 +1487,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0300 START');
       setTimeout(() => {
         try {
@@ -1508,7 +1509,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0400 START');
       setTimeout(() => {
         try {
@@ -1530,7 +1531,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0500 START');
       setTimeout(() => {
         try {
@@ -1552,7 +1553,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0600 START');
       setTimeout(() => {
         try {
@@ -1574,7 +1575,7 @@ export default function textSpanFontTest() {
       }, 500)
     });
 
-    it('ArkUX_Stage_Span_Font_FontFamily_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Span_Font_FontFamily_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Span_Font_FontFamily_0700 START');
       setTimeout(() => {
         try {

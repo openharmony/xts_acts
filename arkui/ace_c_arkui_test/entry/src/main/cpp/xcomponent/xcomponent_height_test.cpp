@@ -14,6 +14,7 @@
  */
 
 #include "common/common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
 namespace ArkUICapiTest {
 
@@ -42,6 +43,8 @@ static napi_value TestXComponentHeight002(napi_env env, napi_callback_info info)
     if (nodeAPI->getAttribute(xComponent, NODE_HEIGHT) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(xComponent, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
+    auto code = OH_ArkUI_XComponent_StartImageAnalyzer(xComponent, nullptr, nullptr);
+    auto code_ = OH_ArkUI_XComponent_StopImageAnalyzer(xComponent);
     NAPI_END;
 }
 

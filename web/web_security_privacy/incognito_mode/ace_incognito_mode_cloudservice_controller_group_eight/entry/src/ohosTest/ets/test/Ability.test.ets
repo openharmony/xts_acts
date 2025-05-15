@@ -104,7 +104,7 @@ export default function abilityTest() {
      * @tc.level Level 1
      */
     it("testWebView_getAccessibleGeolocation0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin", 214, done,
+      Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin.The origin format must follow defined in RFC 6454.", 214, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
@@ -122,7 +122,7 @@ export default function abilityTest() {
      * @tc.level Level 1
      */
     it("testWebView_getAccessibleGeolocation0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin", 215, done,
+      Utils.registerBaseEvent("deleteGeolocation", "17100011Invalid origin.The origin format must follow defined in RFC 6454.", 215, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });

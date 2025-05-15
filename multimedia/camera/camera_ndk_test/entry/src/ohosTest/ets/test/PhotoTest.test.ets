@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 import { Camera_PreconfigType, Camera_SceneMode, Camera_MediaType, Parameter_Setting } from './Constants';
@@ -584,7 +584,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0100', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0100', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -602,7 +602,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0200', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0200', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -620,7 +620,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0300', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0300', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -638,7 +638,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0400', 0, () => {
+    it('testOHCameraManagerCreatePhotoOutputWithoutSurface0400', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -655,7 +655,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAvailableCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAvailableCallback0100', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -674,7 +674,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAvailableCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAvailableCallback0200', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -693,7 +693,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAvailableCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAvailableCallback0300', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -711,7 +711,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0100', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -731,7 +731,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0200', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -751,7 +751,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAvailableCallback0300', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -770,7 +770,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0100', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -789,7 +789,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0200', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -808,7 +808,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterPhotoAssetAvailableCallback0300', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -826,7 +826,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0100', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -846,7 +846,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0200', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -866,7 +866,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterPhotoAssetAvailableCallback0300', Level.LEVEL0, () => {
       readyCreatePhotoOutputWithoutSurface();
       createPreviewOutput();
       createCameraInput();
@@ -885,7 +885,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMovingPhotoSupported0100', 0, () => {
+    it('testOHPhotoOutputIsMovingPhotoSupported0100', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -909,7 +909,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMovingPhotoSupported0200', 0, () => {
+    it('testOHPhotoOutputIsMovingPhotoSupported0200', Level.LEVEL0, () => {
       let canPreconfig = preconfig();
       createPreviewOutputUsedInPreconfig(canPreconfig);
       createCameraInput();
@@ -934,7 +934,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMovingPhotoSupported0300', 0, () => {
+    it('testOHPhotoOutputIsMovingPhotoSupported0300', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -954,7 +954,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputIsMovingPhotoSupported0400', 0, () => {
+    it('testOHPhotoOutputIsMovingPhotoSupported0400', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -974,7 +974,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMovingPhoto0100', 0, () => {
+    it('testOHPhotoOutputEnableMovingPhoto0100', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -999,7 +999,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMovingPhoto0200', 0, () => {
+    it('testOHPhotoOutputEnableMovingPhoto0200', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -1024,7 +1024,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMovingPhoto0300', 0, () => {
+    it('testOHPhotoOutputEnableMovingPhoto0300', Level.LEVEL0, () => {
       let canPreconfig = preconfig();
       createPreviewOutputUsedInPreconfig(canPreconfig);
       createCameraInput();
@@ -1050,7 +1050,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMovingPhoto0400', 0, () => {
+    it('testOHPhotoOutputEnableMovingPhoto0400', Level.LEVEL0, () => {
       let canPreconfig = preconfig();
       createPreviewOutputUsedInPreconfig(canPreconfig);
       createCameraInput();
@@ -1076,7 +1076,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputEnableMovingPhoto0500', 0, () => {
+    it('testOHPhotoOutputEnableMovingPhoto0500', Level.LEVEL0, () => {
       createPreviewOutput();
       createCameraInput();
       sessionFlow();
@@ -1098,7 +1098,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoNativeGetMain0200', 0, () => {
+    it('testOHPhotoNativeGetMain0200', Level.LEVEL0, () => {
       let ret = cameraObj.oHPhotoNativeGetMainImage(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoNativeGetMain0200:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
@@ -1111,7 +1111,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoNativeRelease0200', 0, () => {
+    it('testOHPhotoNativeRelease0200', Level.LEVEL0, () => {
       let ret = cameraObj.oHPhotoNativeRelease(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoNativeRelease0200:"+ret);
       expect(ret).assertEqual(CAMERA_INVALID_ARGUMENT);
@@ -1124,7 +1124,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureStartWithInfoCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureStartWithInfoCallback0100:"+ret);
@@ -1139,7 +1139,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureStartWithInfoCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureStartWithInfoCallback0200:"+ret);
@@ -1154,7 +1154,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureStartWithInfoCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureStartWithInfoCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureStartWithInfoCallback0300:"+ret);
@@ -1168,7 +1168,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureStartWithInfoCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0100:"+ret);
@@ -1183,7 +1183,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureStartWithInfoCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0200:"+ret);
@@ -1198,7 +1198,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureStartWithInfoCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret =
         cameraObj.oHPhotoOutputUnregisterCaptureStartWithInfoCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
@@ -1213,7 +1213,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureEndCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureEndCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureEndCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureEndCallback0100:"+ret);
@@ -1228,7 +1228,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureEndCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureEndCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureEndCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureEndCallback0200:"+ret);
@@ -1243,7 +1243,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureEndCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureEndCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureEndCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureEndCallback0300:"+ret);
@@ -1257,7 +1257,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureEndCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureEndCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureEndCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureEndCallback0100:"+ret);
@@ -1272,7 +1272,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureEndCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureEndCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureEndCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureEndCallback0200:"+ret);
@@ -1287,7 +1287,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureEndCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureEndCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureEndCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureEndCallback0300:"+ret);
@@ -1301,7 +1301,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterFrameShutterEndCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterFrameShutterEndCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterFrameShutterEndCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputRegisterFrameShutterEndCallback0100:"+ret);
@@ -1316,7 +1316,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterFrameShutterEndCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterFrameShutterEndCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterFrameShutterEndCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterFrameShutterEndCallback0200:"+ret);
@@ -1331,7 +1331,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterFrameShutterEndCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterFrameShutterEndCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterFrameShutterEndCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterFrameShutterEndCallback0300:"+ret);
@@ -1345,7 +1345,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterFrameShutterEndCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputUnregisterFrameShutterEndCallback0100:"+ret);
@@ -1360,7 +1360,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterFrameShutterEndCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterFrameShutterEndCallback0200:"+ret);
@@ -1375,7 +1375,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterFrameShutterEndCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterFrameShutterEndCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterFrameShutterEndCallback0300:"+ret);
@@ -1389,7 +1389,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureReadyCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureReadyCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureReadyCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureReadyCallback0100:"+ret);
@@ -1404,7 +1404,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureReadyCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureReadyCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureReadyCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureReadyCallback0200:"+ret);
@@ -1419,7 +1419,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterCaptureReadyCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterCaptureReadyCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterCaptureReadyCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputRegisterCaptureReadyCallback0300:"+ret);
@@ -1433,7 +1433,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureReadyCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureReadyCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureReadyCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureReadyCallback0100:"+ret);
@@ -1448,7 +1448,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureReadyCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureReadyCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureReadyCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureReadyCallback0200:"+ret);
@@ -1463,7 +1463,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterCaptureReadyCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterCaptureReadyCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterCaptureReadyCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHPhotoOutputUnregisterCaptureReadyCallback0300:"+ret);
@@ -1477,7 +1477,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0100', 0, () => {
+    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputRegisterEstimatedCaptureDurationCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0100:"+ret);
@@ -1492,7 +1492,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0200', 0, () => {
+    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret =
         cameraObj.oHPhotoOutputRegisterEstimatedCaptureDurationCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -1508,7 +1508,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0300', 0, () => {
+    it('testOHPhotoOutputRegisterEstimatedCaptureDurationCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret =
         cameraObj.oHPhotoOutputRegisterEstimatedCaptureDurationCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
@@ -1523,7 +1523,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0100', 0, () => {
+    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0100', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret = cameraObj.oHPhotoOutputUnregisterEstimatedCaptureDurationCallback(Parameter_Setting.ALL_PARAMETER_OK);
       console.info(TAG+"testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0100:"+ret);
@@ -1538,7 +1538,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0200', 0, () => {
+    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0200', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret =
         cameraObj.oHPhotoOutputUnregisterEstimatedCaptureDurationCallback(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -1554,7 +1554,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0300', 0, () => {
+    it('testOHPhotoOutputUnregisterEstimatedCaptureDurationCallback0300', Level.LEVEL0, () => {
       createPhotoOutput();
       let ret =
         cameraObj.oHPhotoOutputUnregisterEstimatedCaptureDurationCallback(Parameter_Setting.SECOND_PARAMETER_ERROR);
@@ -1569,7 +1569,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetSupportedFrameRates0100', 0, () => {
+    it('testOHVideoOutputGetSupportedFrameRates0100', Level.LEVEL0, () => {
       videoOutputFrameRate();
       let ret = cameraObj.oHVideoOutputGetSupportedFrameRates(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
       console.info(TAG+"testOHVideoOutputGetSupportedFrameRates0100:"+ret);
@@ -1584,7 +1584,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetSupportedFrameRates0200', 0, () => {
+    it('testOHVideoOutputGetSupportedFrameRates0200', Level.LEVEL0, () => {
       videoOutputFrameRate();
       let ret = cameraObj.oHVideoOutputGetSupportedFrameRates(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
       console.info(TAG+"testOHVideoOutputGetSupportedFrameRates0200:"+ret);
@@ -1599,7 +1599,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetSupportedFrameRates0300', 0, () => {
+    it('testOHVideoOutputGetSupportedFrameRates0300', Level.LEVEL0, () => {
       videoOutputFrameRate();
       let ret = cameraObj.oHVideoOutputGetSupportedFrameRates(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
       console.info(TAG+"testOHVideoOutputGetSupportedFrameRates0300:"+ret);
@@ -1613,7 +1613,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputDeleteFrameRates0100', 0, () => {
+    it('testOHVideoOutputDeleteFrameRates0100', Level.LEVEL0, () => {
       videoOutputFrameRate();
       if (getVideoOutputSupportedFrameRates() != 0) {
         let ret = cameraObj.oHVideoOutputDeleteFrameRates(Parameter_Setting.ALL_PARAMETER_OK);
@@ -1632,7 +1632,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputDeleteFrameRates0200', 0, () => {
+    it('testOHVideoOutputDeleteFrameRates0200', Level.LEVEL0, () => {
       videoOutputFrameRate();
       getVideoOutputSupportedFrameRates();
       let ret = cameraObj.oHVideoOutputDeleteFrameRates(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -1648,7 +1648,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputDeleteFrameRates0300', 0, () => {
+    it('testOHVideoOutputDeleteFrameRates0300', Level.LEVEL0, () => {
 
       videoOutputFrameRate();
       getVideoOutputSupportedFrameRates();
@@ -1664,7 +1664,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveFrameRate0100', 0, () => {
+    it('testOHVideoOutputGetActiveFrameRate0100', Level.LEVEL0, () => {
       videoOutputFrameRate();
       if (getVideoOutputSupportedFrameRates() != 0) {
         let ret = cameraObj.oHVideoOutputGetActiveFrameRate(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
@@ -1681,7 +1681,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveFrameRate0200', 0, () => {
+    it('testOHVideoOutputGetActiveFrameRate0200', Level.LEVEL0, () => {
       videoOutputFrameRate();
       getVideoOutputSupportedFrameRates();
       let ret = cameraObj.oHVideoOutputGetActiveFrameRate(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
@@ -1697,7 +1697,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputGetActiveFrameRate0300', 0, () => {
+    it('testOHVideoOutputGetActiveFrameRate0300', Level.LEVEL0, () => {
       videoOutputFrameRate();
       getVideoOutputSupportedFrameRates();
       let ret = cameraObj.oHVideoOutputGetActiveFrameRate(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
@@ -1712,7 +1712,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputSetFrameRate0100', 0, () => {
+    it('testOHVideoOutputSetFrameRate0100', Level.LEVEL0, () => {
       videoOutputFrameRate();
       if (getVideoOutputSupportedFrameRates() != 0) {
         if (getVideoOutputActiveFrameRate().min != 0 && getVideoOutputActiveFrameRate().max != 0) {
@@ -1731,7 +1731,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputSetFrameRate0200', 0, () => {
+    it('testOHVideoOutputSetFrameRate0200', Level.LEVEL0, () => {
       videoOutputFrameRate();
       getVideoOutputSupportedFrameRates();
       getVideoOutputActiveFrameRate();
@@ -1748,7 +1748,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputSetFrameRate0300', 0, () => {
+    it('testOHVideoOutputSetFrameRate0300', Level.LEVEL0, () => {
       videoOutputFrameRate();
       if (getVideoOutputSupportedFrameRates() == 0) {
         if (getVideoOutputActiveFrameRate().min != 0 && getVideoOutputActiveFrameRate().max != 0) {
@@ -1767,7 +1767,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputSetFrameRate0400', 0, () => {
+    it('testOHVideoOutputSetFrameRate0400', Level.LEVEL0, () => {
       videoOutputFrameRate();
       if (getVideoOutputSupportedFrameRates() != 0) {
           getVideoOutputActiveFrameRate();
@@ -1784,7 +1784,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetSupportedFrameRates0100', 0, () => {
+    it('testOHPreviewOutputGetSupportedFrameRates0100', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       let ret = cameraObj.oHPreviewOutputGetSupportedFrameRates(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
@@ -1800,7 +1800,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetSupportedFrameRates0200', 0, () => {
+    it('testOHPreviewOutputGetSupportedFrameRates0200', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       let ret = cameraObj.oHPreviewOutputGetSupportedFrameRates(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
@@ -1816,7 +1816,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetSupportedFrameRates0300', 0, () => {
+    it('testOHPreviewOutputGetSupportedFrameRates0300', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       let ret = cameraObj.oHPreviewOutputGetSupportedFrameRates(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
@@ -1832,7 +1832,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetSupportedFrameRates0400', 0, () => {
+    it('testOHPreviewOutputGetSupportedFrameRates0400', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       let ret = cameraObj.oHPreviewOutputGetSupportedFrameRates(Parameter_Setting.THIRD_PARAMETER_ERROR).errorCode;
@@ -1847,7 +1847,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputDeleteFrameRates0100', 0, () => {
+    it('testOHPreviewOutputDeleteFrameRates0100', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       if (getSupportedFrameRates() != 0) {
@@ -1867,7 +1867,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputDeleteFrameRates0200', 0, () => {
+    it('testOHPreviewOutputDeleteFrameRates0200', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       getSupportedFrameRates();
@@ -1884,7 +1884,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputDeleteFrameRates0300', 0, () => {
+    it('testOHPreviewOutputDeleteFrameRates0300', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       getSupportedFrameRates();
@@ -1900,7 +1900,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveFrameRate0100', 0, () => {
+    it('testOHPreviewOutputGetActiveFrameRate0100', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       if (getSupportedFrameRates() != 0) {
@@ -1920,7 +1920,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveFrameRate0200', 0, () => {
+    it('testOHPreviewOutputGetActiveFrameRate0200', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       getSupportedFrameRates();
@@ -1937,7 +1937,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputGetActiveFrameRate0300', 0, () => {
+    it('testOHPreviewOutputGetActiveFrameRate0300', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       getSupportedFrameRates();
@@ -1953,7 +1953,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputSetFrameRate0100', 0, () => {
+    it('testOHPreviewOutputSetFrameRate0100', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       if (getSupportedFrameRates() != 0) {
@@ -1976,7 +1976,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputSetFrameRate0200', 0, () => {
+    it('testOHPreviewOutputSetFrameRate0200', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       getSupportedFrameRates();
@@ -1994,7 +1994,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputSetFrameRate0300', 0, () => {
+    it('testOHPreviewOutputSetFrameRate0300', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       if (getSupportedFrameRates() == 0) {
@@ -2015,7 +2015,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHPreviewOutputSetFrameRate0400', 0, () => {
+    it('testOHPreviewOutputSetFrameRate0400', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       createPreviewOutput();
       if (getSupportedFrameRates() != 0) {
@@ -2035,7 +2035,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureValue0100', 0, () => {
+    it('testOHCaptureSessionGetExposureValue0100', Level.LEVEL0, () => {
       captureSessionstart();
       sessionStart();
       let ret = cameraObj.oHCaptureSessionGetExposureValue(Parameter_Setting.ALL_PARAMETER_OK);
@@ -2051,7 +2051,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureValue0200', 0, () => {
+    it('testOHCaptureSessionGetExposureValue0200', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetExposureValue(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHCaptureSessionGetExposureValue0200:"+ret);
@@ -2066,7 +2066,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetExposureValue0300', 0, () => {
+    it('testOHCaptureSessionGetExposureValue0300', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetExposureValue(Parameter_Setting.SECOND_PARAMETER_ERROR)
       console.info(TAG+"testOHCaptureSessionGetExposureValue0300:"+ret);
@@ -2080,7 +2080,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocalLength0100', 0, () => {
+    it('testOHCaptureSessionGetFocalLength0100', Level.LEVEL0, () => {
       captureSessionstart();
       sessionStart();
       let ret = cameraObj.oHCaptureSessionGetFocalLength(Parameter_Setting.ALL_PARAMETER_OK);
@@ -2096,7 +2096,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocalLength0200', 0, () => {
+    it('testOHCaptureSessionGetFocalLength0200', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetFocalLength(Parameter_Setting.FIRST_PARAMETER_ERROR)
       console.info(TAG+"testOHCaptureSessionGetFocalLength0200:"+ret);
@@ -2111,7 +2111,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetFocalLength0300', 0, () => {
+    it('testOHCaptureSessionGetFocalLength0300', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetFocalLength(Parameter_Setting.SECOND_PARAMETER_ERROR);
       console.info(TAG+"testOHCaptureSessionGetFocalLength0300:"+ret);
@@ -2125,7 +2125,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSmoothZoom0100', 0, () => {
+    it('testOHCaptureSessionSetSmoothZoom0100', Level.LEVEL0, () => {
       captureSessionstart();
       sessionStart();
       let ret = cameraObj.oHCaptureSessionSetSmoothZoom(Parameter_Setting.ALL_PARAMETER_OK)
@@ -2141,7 +2141,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetSmoothZoom0200', 0, () => {
+    it('testOHCaptureSessionSetSmoothZoom0200', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionSetSmoothZoom(Parameter_Setting.FIRST_PARAMETER_ERROR);
       console.info(TAG+"testOHCaptureSessionSetSmoothZoom0200:"+ret);
@@ -2155,7 +2155,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetSupportedColorSpaces0100', 0, () => {
+    it('testOHCaptureSessionGetSupportedColorSpaces0100', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetSupportedColorSpaces(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
       console.info(TAG+"testOHCaptureSessionGetSupportedColorSpaces0100:"+ret);
@@ -2170,7 +2170,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetSupportedColorSpaces0200', 0, () => {
+    it('testOHCaptureSessionGetSupportedColorSpaces0200', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetSupportedColorSpaces(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
       console.info(TAG+"testOHCaptureSessionGetSupportedColorSpaces0200:"+ret);
@@ -2185,7 +2185,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetSupportedColorSpaces0300', 0, () => {
+    it('testOHCaptureSessionGetSupportedColorSpaces0300', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetSupportedColorSpaces(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
       console.info(TAG+"testOHCaptureSessionGetSupportedColorSpaces0300:"+ret);
@@ -2200,7 +2200,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetSupportedColorSpaces0400', 0, () => {
+    it('testOHCaptureSessionGetSupportedColorSpaces0400', Level.LEVEL0, () => {
       captureSessionstart();
       let ret = cameraObj.oHCaptureSessionGetSupportedColorSpaces(Parameter_Setting.THIRD_PARAMETER_ERROR).errorCode;
       console.info(TAG+"testOHCaptureSessionGetSupportedColorSpaces0400:"+ret);
@@ -2214,7 +2214,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionDeleteColorSpaces0100', 0, () => {
+    it('testOHCaptureSessionDeleteColorSpaces0100', Level.LEVEL0, () => {
       captureSessionstart();
       if (getSupportedColorSpaces() != 0) {
         let ret = cameraObj.oHCaptureSessionDeleteColorSpaces(Parameter_Setting.ALL_PARAMETER_OK);
@@ -2233,7 +2233,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionDeleteColorSpaces0200', 0, () => {
+    it('testOHCaptureSessionDeleteColorSpaces0200', Level.LEVEL0, () => {
       captureSessionstart();
       getSupportedColorSpaces();
       let ret = cameraObj.oHCaptureSessionDeleteColorSpaces(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -2249,7 +2249,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionDeleteColorSpaces0300', 0, () => {
+    it('testOHCaptureSessionDeleteColorSpaces0300', Level.LEVEL0, () => {
       captureSessionstart();
       getSupportedColorSpaces();
       let ret = cameraObj.oHCaptureSessionDeleteColorSpaces(Parameter_Setting.SECOND_PARAMETER_ERROR);
@@ -2264,7 +2264,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetActiveColorSpace0100', 0, () => {
+    it('testOHCaptureSessionGetActiveColorSpace0100', Level.LEVEL0, () => {
       captureSessionstart();
       if (getSupportedColorSpaces() != 0) {
         let ret = cameraObj.oHCaptureSessionGetActiveColorSpace(Parameter_Setting.ALL_PARAMETER_OK).errorCode;
@@ -2283,7 +2283,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetActiveColorSpace0200', 0, () => {
+    it('testOHCaptureSessionGetActiveColorSpace0200', Level.LEVEL0, () => {
       captureSessionstart();
       getSupportedColorSpaces();
       let ret = cameraObj.oHCaptureSessionGetActiveColorSpace(Parameter_Setting.FIRST_PARAMETER_ERROR).errorCode;
@@ -2299,7 +2299,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionGetActiveColorSpace0300', 0, () => {
+    it('testOHCaptureSessionGetActiveColorSpace0300', Level.LEVEL0, () => {
       captureSessionstart();
       getSupportedColorSpaces();
       let ret = cameraObj.oHCaptureSessionGetActiveColorSpace(Parameter_Setting.SECOND_PARAMETER_ERROR).errorCode;
@@ -2314,7 +2314,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetActiveColorSpace0100', 0, () => {
+    it('testOHCaptureSessionSetActiveColorSpace0100', Level.LEVEL0, () => {
       captureSessionstart();
       if (getSupportedColorSpaces() != 0) {
         if (getActiveColorSpace() != 0) {
@@ -2335,7 +2335,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetActiveColorSpace0200', 0, () => {
+    it('testOHCaptureSessionSetActiveColorSpace0200', Level.LEVEL0, () => {
       captureSessionstart();
       getActiveColorSpace();
       let ret = cameraObj.oHCaptureSessionSetActiveColorSpace(Parameter_Setting.FIRST_PARAMETER_ERROR);
@@ -2351,7 +2351,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetActiveColorSpace0300', 0, () => {
+    it('testOHCaptureSessionSetActiveColorSpace0300', Level.LEVEL0, () => {
       captureSessionstart();
       getActiveColorSpace();
       let ret = cameraObj.oHCaptureSessionSetActiveColorSpace(Parameter_Setting.SECOND_PARAMETER_ERROR)
@@ -2367,7 +2367,7 @@ export default function PhotoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionSetActiveColorSpace0500', 0, () => {
+    it('testOHCaptureSessionSetActiveColorSpace0500', Level.LEVEL0, () => {
       captureSessionstart();
       if (nativeBufferColorSpace().colorSpacesSize != 0) {
         if (nativeBufferColorSpace().colorSpaceSupportSize == 0) {

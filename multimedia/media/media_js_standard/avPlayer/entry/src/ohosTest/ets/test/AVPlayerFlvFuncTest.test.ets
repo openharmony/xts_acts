@@ -15,7 +15,7 @@
 import media from '@ohos.multimedia.media'
 import MediaTestBase from './MediaTestBase';
 import { testAVPlayerFun, setSource, PlayTest, sleep } from './AVPlayerTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { http } from '@kit.NetworkKit';
 
 const INITIALIZED = 'initialized';
@@ -187,7 +187,7 @@ export default function AVPlayerFlvFuncTest() {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SEIMESSAGERECEIVED_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SEIMESSAGERECEIVED_0100', Level.LEVEL0,async (done: Function) => {
       const videoSrc = 'http://media.iyuns.top:1003/live/SEI-H264.flv';
       payloadTypes = [5];
       await checkDataCanBeRead(videoSrc, done);

@@ -18,7 +18,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Test
 import { webview } from '@kit.ArkWeb';
 import { temp } from './Const';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -28,6 +30,11 @@ export default function abilityTest() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
@@ -72,7 +79,7 @@ export default function abilityTest() {
       } catch (e) {
         console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
         expect(e.code).assertEqual("17100002")
-        expect(e.message).assertEqual("Invalid url")
+        expect(e.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
         console.info('Sub_WEB_PrefetchResource_0100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0100 end')
         return
@@ -314,7 +321,7 @@ export default function abilityTest() {
       } catch (e) {
         console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
         expect(e.code).assertEqual("17100002")
-        expect(e.message).assertEqual("Invalid url")
+        expect(e.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
         console.info('Sub_WEB_PrefetchResource_0900 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_0900 end')
         return
@@ -354,7 +361,7 @@ export default function abilityTest() {
       } catch (e) {
         console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
         expect(e.code).assertEqual("17100002")
-        expect(e.message).assertEqual("Invalid url")
+        expect(e.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
         console.info('Sub_WEB_PrefetchResource_1000 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1000 end')
         return
@@ -394,7 +401,7 @@ export default function abilityTest() {
       } catch (e) {
         console.error(`[PrefetchResource] ErrorCode: ${(e as BusinessError).code},  Message: ${(e as BusinessError).message}`);
         expect(e.code).assertEqual("17100002")
-        expect(e.message).assertEqual("Invalid url")
+        expect(e.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
         console.info('Sub_WEB_PrefetchResource_1100 end')
         hilog.info(0x0000, 'testTag', '%{public}s', 'Sub_WEB_PrefetchResource_1100 end')
         return

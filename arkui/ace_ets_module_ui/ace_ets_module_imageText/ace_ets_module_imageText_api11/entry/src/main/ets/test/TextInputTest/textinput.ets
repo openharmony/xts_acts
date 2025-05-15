@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 let emitKey = "emitUserAgent";
 function sleep(time: number) {
@@ -51,7 +51,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   The component does not have a text parameter. Set the caretPosition property parameter to 3
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Badge_FontWeight_0100 START');
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Sets the caretPosition property parameter to 0
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0200 START');
       setTimeout(() => {
         try {
@@ -99,7 +99,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Sets the caretPosition property parameter to 7
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0300 START');
       setTimeout(() => {
         try {
@@ -123,7 +123,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Sets the caretPosition property parameter to "7"
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0400 START');
       setTimeout(() => {
         try {
@@ -147,7 +147,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Sets the caretPosition property parameter to $r("app.string.textInput_Size_test")
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0400 START');
       setTimeout(() => {
         try {
@@ -171,7 +171,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to exceed the existing text length by 100
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0600 START');
       setTimeout(() => {
         try {
@@ -197,7 +197,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to an outlier ""
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0700 START');
       setTimeout(() => {
         try {
@@ -221,7 +221,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to an outlier -1
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0800 START');
       setTimeout(() => {
         try {
@@ -245,7 +245,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to an outlier null
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_0900 START');
       setTimeout(() => {
         try {
@@ -269,7 +269,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_1000 START');
       setTimeout(() => {
         try {
@@ -293,7 +293,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition property parameter to 7 and set the caretPosition property parameter to 3 again
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_1100 START');
       setTimeout(() => {
         try {
@@ -319,7 +319,7 @@ export default function textInputTest() {
      *tc.desc   Set the caretPosition property parameter to 7 and set the caretPosition property
                 parameter to undefined again
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_1200 START');
       setTimeout(() => {
         try {
@@ -344,7 +344,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   Set the caretPosition attribute parameter to 7 and the generic position attribute to null
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_1300 START');
       setTimeout(() => {
         try {
@@ -368,7 +368,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor position change of TextInput component
      *tc.desc   TextInput component text text overlength setting cursor position "70"
      */
-    it('ArkUX_Stage_TextInput_CaretPosition_1400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretPosition_1400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretPosition_1400 START');
       setTimeout(() => {
         try {
@@ -392,7 +392,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to 0
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0100 START');
       setTimeout(() => {
         try {
@@ -417,7 +417,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to 7
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0200 START');
       setTimeout(() => {
         try {
@@ -442,7 +442,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to "7vp"
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0300 START');
       setTimeout(() => {
         try {
@@ -467,7 +467,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to $r("app.string.textInput_Size_test")
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0400 START');
       setTimeout(() => {
         try {
@@ -492,7 +492,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to outlier -1
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0500 START');
       setTimeout(() => {
         try {
@@ -517,7 +517,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to outlier ""
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0600 START');
       setTimeout(() => {
         try {
@@ -542,7 +542,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to outlier null
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0700 START');
       setTimeout(() => {
         try {
@@ -567,7 +567,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to outlier undefined
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0800 START');
       setTimeout(() => {
         try {
@@ -592,7 +592,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to outlier "asff%6&"
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_0900 START');
       setTimeout(() => {
         try {
@@ -617,7 +617,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to 7 and set the caretWidth property parameter to "2fp" again
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_1000 START');
       setTimeout(() => {
         try {
@@ -642,7 +642,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to 7 and set the caretWidth property parameter to undefined again
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_1100 START');
       setTimeout(() => {
         try {
@@ -667,7 +667,7 @@ export default function textInputTest() {
      *tc.name   Support modifying the cursor thickness of TextInput component
      *tc.desc   Set the caretWidth property parameter to "7lpx" and the common property width property to null
      */
-    it('ArkUX_Stage_TextInput_CaretWidth_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_CaretWidth_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_CaretWidth_1200 START');
       setTimeout(() => {
         try {
@@ -692,7 +692,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to 0x00ff00
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0100 START');
       setTimeout(() => {
         try {
@@ -716,7 +716,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to #fffd0000
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0200 START');
       setTimeout(() => {
         try {
@@ -740,7 +740,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to 'rgb(138,43,226)'
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0300 START');
       setTimeout(() => {
         try {
@@ -764,7 +764,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0400 START');
       setTimeout(() => {
         try {
@@ -788,7 +788,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to $r("app.color.TextInput_Color")
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0500 START');
       setTimeout(() => {
         try {
@@ -812,7 +812,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to an outlier ""
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0600 START');
       setTimeout(() => {
         try {
@@ -836,7 +836,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to an outlier null
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0700 START');
       setTimeout(() => {
         try {
@@ -860,7 +860,7 @@ export default function textInputTest() {
      *tc.name   Support to modify the color of the selected base plate of the TextInput component
      *tc.desc   Set the selectedColor property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0800 START');
       setTimeout(() => {
         try {
@@ -885,7 +885,7 @@ export default function textInputTest() {
      *tc.desc   Set the selectedColor property parameter to Color.Pink and
      *          again set the selectedColor property parameter to "#FFFD0000".
      */
-    it('ArkUX_Stage_TextInput_selectedColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_0900 START');
       setTimeout(() => {
         try {
@@ -910,7 +910,7 @@ export default function textInputTest() {
       *tc.desc   Set the selectedColor property parameter to Color.Pink and
       *          again set the selectedColor property parameter to the outlier undefined.
       */
-    it('ArkUX_Stage_TextInput_selectedColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_1000 START');
       setTimeout(() => {
         try {
@@ -935,7 +935,7 @@ export default function textInputTest() {
       *tc.desc   Set the selectedColor property parameter to 0x00ff00 and
       *          the universal property backgroundColor property to the outlier null
       */
-    it('ArkUX_Stage_TextInput_selectedColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_1100 START');
       setTimeout(() => {
         try {
@@ -959,7 +959,7 @@ export default function textInputTest() {
       *tc.name   Combined test all new attributes of textinput component
       *tc.desc   Set .selectedBackgroundColor(0x00ff00).width (7).caretPosition(4)
       */
-    it('ArkUX_Stage_TextInput_selectedColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_1200 START');
       setTimeout(() => {
         try {
@@ -990,7 +990,7 @@ export default function textInputTest() {
       *tc.name   Combined test all new attributes of textinput component
       *tc.desc   Do not set new attributes
       */
-    it('ArkUX_Stage_TextInput_selectedColor_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_TextInput_selectedColor_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_TextInput_selectedColor_1300 START');
       setTimeout(() => {
         try {

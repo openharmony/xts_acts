@@ -45,11 +45,11 @@ export default function NetManagerTLSSupportSendArrayBufferTest() {
      * @tc.number: SUB_NetManager_NetStack_Api_TLSSupportSendArrayBuffer_0100
      * @tc.name: SUB_NetManager_NetStack_Api_TLSSupportSendArrayBuffer_0100
      * @tc.desc: Test callback TLSSocketInstance send ArrayBuffer fail.
-     * @tc.level 3
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_NetManager_NetStack_Api_TLSSupportSendArrayBuffer_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+    it("SUB_NetManager_NetStack_Api_TLSSupportSendArrayBuffer_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'SUB_NetManager_NetStack_Api_TLSSupportSendArrayBuffer_0100';
       try {
         let typedArray: Uint8Array = new Uint8Array( [1, 2, 3, 4] );

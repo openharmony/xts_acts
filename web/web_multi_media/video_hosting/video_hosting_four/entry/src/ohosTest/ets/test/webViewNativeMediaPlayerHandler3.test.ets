@@ -12,13 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterEach, beforeAll, beforeEach, describe, it, expect , TestType, Size, Level } from '@ohos/hypium';
+import { afterEach, beforeAll, beforeEach, describe, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
+import { Driver, ON } from '@kit.TestKit';
+
+
 // @ts-nocheck
 let emitKey = ""
+
+async function clickButton(id: string) {
+  let driver = Driver.create()
+  let button = await driver.findComponent(ON.id(id))
+  await Utils.sleep(1000)
+  button.click()
+}
 
 export default function webViewNativeMediaPlayerHandler3() {
   describe('ActsAceWebViewMediaPlayerHandler3', () => {
@@ -46,26 +56,15 @@ export default function webViewNativeMediaPlayerHandler3() {
     });
 
     beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'testability/pages/webViewNativeMediaPlayerHandler3',
+      }
+      await router.replaceUrl(options);
       await Utils.sleep(2000);
       done();
     })
 
     afterEach(async (done: Function) => {
-      try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent : events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
-      } catch (err) {
-        console.error("emit emitKey error:" + JSON.stringify(err));
-      }
       await Utils.sleep(1000);
       done();
     })
@@ -77,15 +76,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerUpdateRect_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerUpdateRect_1"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_1", true, 1821,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0023
@@ -95,15 +96,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerUpdateRect_2"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_2", true, 1822,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerUpdateRect_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerUpdateRect_2"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_2", true, 1822,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0006
@@ -113,15 +116,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRateNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRateNegative1"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRateNegative1", true, 1805,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-        expect(backData?.data?.ACTION).assertEqual(expected);
-      });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRateNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRateNegative1"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRateNegative1", true, 1805,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
 
     /*
@@ -132,15 +137,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2", true, 1801,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2", true, 1801,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0003
@@ -150,15 +157,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange", true, 1802,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate2_handleRateChange"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate2_handleRateChange", true, 1802,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0004
@@ -168,15 +177,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3", true, 1803,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3", true, 1803,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0005
@@ -186,16 +197,18 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange", true, 1804,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
-    
+    it('testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate3_handleRateChange"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate3_handleRateChange", true, 1804,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
+
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0001
      *@tc.name testWebViewNativeMediaPlayerSetPlayRate10
@@ -204,15 +217,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate10"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate10", true, 1800,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate10"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate10", true, 1800,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0007
      *@tc.name testWebViewNativeMediaPlayerSetPlayRate1_point_2
@@ -221,15 +236,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2", true, 1806,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2", true, 1806,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0008
@@ -239,15 +256,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange", true, 1807,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange',
+      TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerSetPlayRate1_point_2_handleRateChange", true, 1807,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0013
@@ -257,15 +276,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerPreloadAuto02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto02", true, 1812,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerPreloadAuto02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerPreloadAuto"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerPreloadAuto02", true, 1812,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0014
      *@tc.name testWebViewNativeMediaPlayerTimeUpdate
@@ -274,15 +295,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerTimeUpdate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerTimeUpdate"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerTimeUpdate", true, 1813,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerTimeUpdate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerTimeUpdate"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerTimeUpdate", true, 1813,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
     *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0016
@@ -292,15 +315,17 @@ export default function webViewNativeMediaPlayerHandler3() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewNativeMediaPlayerFormatError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerFormatError"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerFormatError", true, 1815,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerFormatError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerFormatError"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerFormatError", true, 1815,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
     *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0017
@@ -310,15 +335,17 @@ export default function webViewNativeMediaPlayerHandler3() {
     *@tc.type Function
     *@tc.level Level 1
     */
-    it('testWebViewNativeMediaPlayerNetError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerNetError"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetError", true, 1816,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerNetError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerNetError"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetError", true, 1816,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0018
@@ -328,15 +355,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerDecodeError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerDecodeError"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerDecodeError", true, 1817,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerDecodeError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerDecodeError"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerDecodeError", true, 1817,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0020
@@ -346,15 +375,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateIdle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerNetworkStateIdle"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateIdle", true, 1819,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerNetworkStateIdle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerNetworkStateIdle"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateIdle", true, 1819,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0019
@@ -364,15 +395,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateLoading', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerNetworkStateLoading"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateLoading", true, 1818,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerNetworkStateLoading', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerNetworkStateLoading"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateLoading", true, 1818,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0021
      *@tc.name testWebViewNativeMediaPlayerNetworkStateError
@@ -381,16 +414,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerNetworkStateError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerNetworkStateError"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateError", true, 1820,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
-
+    it('testWebViewNativeMediaPlayerNetworkStateError', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerNetworkStateError"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerNetworkStateError", true, 1820,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
 
     /*
@@ -401,15 +435,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerReadyState_2"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_2", true, 1826,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerReadyState_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerReadyState_2"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_2", true, 1826,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0028
@@ -419,15 +455,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerReadyState_3"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_3", true, 1827,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerReadyState_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerReadyState_3"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_3", true, 1827,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0024
@@ -437,15 +475,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerUpdateRect_3"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_3", true, 1823,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerUpdateRect_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerUpdateRect_3"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_3", true, 1823,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
       *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0029
       *@tc.name testWebViewNativeMediaPlayerReadyState_4
@@ -454,15 +494,17 @@ export default function webViewNativeMediaPlayerHandler3() {
       *@tc.type Function
       *@tc.level Level 2
       */
-    it('testWebViewNativeMediaPlayerReadyState_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerReadyState_4"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_4", true, 1828,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerReadyState_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerReadyState_4"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_4", true, 1828,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0025
      *@tc.name testWebViewNativeMediaPlayerUpdateRect_4
@@ -471,15 +513,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 1
      */
-    it('testWebViewNativeMediaPlayerUpdateRect_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerUpdateRect_4"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_4", true, 1824,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerUpdateRect_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerUpdateRect_4"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerUpdateRect_4", true, 1824,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
     /*
      *@tc.number SUB_ACE_WEB_NativeMediaPlayerSetPlayRate_API_0026
      *@tc.name testWebViewNativeMediaPlayerReadyState_1
@@ -488,15 +532,17 @@ export default function webViewNativeMediaPlayerHandler3() {
      *@tc.type Function
      *@tc.level Level 2
      */
-    it('testWebViewNativeMediaPlayerReadyState_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      emitKey = "emitWebViewNativeMediaPlayerReadyState_1"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_1", true, 1825,
-        done, (backData: events_emitter.EventData, expected: Object) => {
-          expect(backData?.data?.ACTION).assertEqual(expected);
-        });
-      sendEventByKey('webViewNativeMediaPlayerRateHandler3', 10, '');
-    })
+    it('testWebViewNativeMediaPlayerReadyState_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: Function) => {
+        emitKey = "emitWebViewNativeMediaPlayerReadyState_1"
+        Utils.emitEvent(emitKey, 10);
+        Utils.sleep(2000)
+        Utils.registerBaseEvent("testWebViewNativeMediaPlayerReadyState_1", true, 1825,
+          done, (backData: events_emitter.EventData, expected: Object) => {
+            expect(backData?.data?.ACTION).assertEqual(expected);
+          });
+        await clickButton('webViewNativeMediaPlayerRateHandler3');
+      })
 
 
   })

@@ -159,7 +159,7 @@ struct refresh {
         .height(20)
         .width('90%')
         .justifyContent(FlexAlign.Start)
-        .margin({ top: 50 })
+        .margin({ top: 5 })
 
         Refresh({ refreshing: $$this.isRefreshing, offset: 120, friction: 100 }) {
           Text('点击我下拉进行刷新: ' + this.text)
@@ -178,9 +178,9 @@ struct refresh {
         })
         .height('100%')
       }
-      .height('80%')
+      .height('75%')
       .width('100%')
-      .backgroundColor(Color.White)
+      .backgroundColor(Color.Pink)
 
       Row() {
         this.PassBtn($r('app.string.btn_fullscreen'), true);

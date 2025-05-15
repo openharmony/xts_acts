@@ -43,10 +43,10 @@ export default function certManagerNotSystemAPPTestUnit() {
      * @tc.name test getAllAppPrivateCertificates with no system app one
      * @tc.desc use promise type
      * @tc.size SmallTest
-     * @tc.level Level3
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('Security_CertManager_NotSystemApp_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('Security_CertManager_NotSystemApp_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         await certManager.getAllAppPrivateCertificates();
         expect(null).assertFail();

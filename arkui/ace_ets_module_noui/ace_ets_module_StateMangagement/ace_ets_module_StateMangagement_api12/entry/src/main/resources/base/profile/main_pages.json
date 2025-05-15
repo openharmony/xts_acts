@@ -6,6 +6,7 @@
     "MainAbility/pages/LazyForEach/LazyForEachAdd",
     "MainAbility/pages/LazyForEach/LazyForEachDelete",
     "MainAbility/pages/LazyForEach/LazyForEachMove",
+    "MainAbility/pages/LazyForEach/LazyForEachCacheEnhance",
     "MainAbility/pages/LazyForEach/LazyForEachVisibleAreaChange",
     "MainAbility/pages/LazyForEach/LazyForEachSingleBoolean",
     "MainAbility/pages/LazyForEach/LazyForEachSingleNumber",
@@ -186,6 +187,7 @@
     "MainAbility/pages/Storage/SubAbstractPropertyLink",
     "MainAbility/pages/Storage/Environment0040",
     "MainAbility/pages/Storage/LocalStorageDelete0120",
-    "MainAbility/pages/LazyForEach/LazyForEach0120"
+    "MainAbility/pages/LazyForEach/LazyForEach0120",
+    "MainAbility/pages/LazyForEach/LazyForEachChange0020"
   ]
 }

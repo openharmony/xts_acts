@@ -84,7 +84,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       console.log(msg +  ' beforeEach end!!!')
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4620
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0010
      * @tc.name      : testCreateWindow_DialogWindow_Callback
      * @tc.desc      : Create a window
      * @tc.size      : MediumTest
@@ -122,7 +122,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4630
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0020
      * @tc.name      : testCreateWindow_DialogWindow_Promise
      * @tc.desc      : Create a window
      * @tc.size      : MediumTest
@@ -156,7 +156,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4640
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0030
      * @tc.name      : testCreate_DialogWindow_Callback
      * @tc.desc      : Create a system window
      * @tc.size      : MediumTest
@@ -183,7 +183,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4650
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0040
      * @tc.name      : testCreate_DialogWindow_Promise
      * @tc.desc      : Create a system window
      * @tc.size      : MediumTest
@@ -208,7 +208,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4670
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0050
      * @tc.name      : testGetSubWindow_SubWinNumIsOne_Promise
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -240,7 +240,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4680
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0060
      * @tc.name      : testGetSubWindow_SubWinNumIsMore_Promise
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -288,7 +288,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4690
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0070
      * @tc.name      : testGetSubWindow_SubWinAndHasDialogWin_Promise
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -340,7 +340,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       done();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4700
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0080
      * @tc.name      : testGetSubWindow_SubWinNumIsOne_Callback
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -377,7 +377,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4710
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0090
      * @tc.name      : testGetSubWindow_SubWinNumIsMore_Callback
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -432,7 +432,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4720
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0100
      * @tc.name      : testGetSubWindow_SubWinAndHasDialogWin_Callback
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -492,7 +492,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4730
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0110
      * @tc.name      : testCreateSubWindow_Callback
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -524,7 +524,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4740
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0120
      * @tc.name      : testCreateSubWindow_Promise
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -550,7 +550,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4750
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0130
      * @tc.name      : testCreateSubWindow_WinNameNull_Promise
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -577,7 +577,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4760
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0140
      * @tc.name      : testCreateSubWindow_WinNameNull_Callback
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -610,7 +610,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4770
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0150
      * @tc.name      : testCreateSubWindow_WinNameUndefined_Promise
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -637,7 +637,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4780
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0160
      * @tc.name      : testCreateSubWindow_WinNameUndefined_Callback
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -670,7 +670,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4790
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0170
      * @tc.name      : testSetSubWindowModal_DialogWindow
      * @tc.desc      : Sets whether the modal properties of the subwindow are enabled
      * @tc.size      : MediumTest
@@ -701,7 +701,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4800
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0180
      * @tc.name      : testSetSubWindowModal_MainWindow
      * @tc.desc      : Sets whether the modal properties of the subwindow are enabled
      * @tc.size      : MediumTest
@@ -723,7 +723,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4810
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0190
      * @tc.name      : testSetSubWindowModal_SubWindow
      * @tc.desc      : Sets whether the modal properties of the subwindow are enabled
      * @tc.size      : MediumTest
@@ -759,7 +759,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       await (subWin as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5400
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0200
      * @tc.name      : testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Callback
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -839,7 +839,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5410
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0210
      * @tc.name      : testGetSubWindow_SubWinAndDialogWinAndSubWinWithOps_Promise
      * @tc.desc      : Gets all the child Windows under the WindowStage instance
      * @tc.size      : MediumTest
@@ -916,7 +916,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5420
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0220
      * @tc.name      : testCreateSubWindowWithOptions_Normal
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -948,7 +948,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5430
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0230
      * @tc.name      : testCreateSubWindowWithOptions_isModalIsUndefined
      * @tc.desc      : Create a child window under the WindowStage instance
      * @tc.size      : MediumTest
@@ -981,7 +981,7 @@ export default function specialWindowTest(context: common.UIAbilityContext, wind
         });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5470
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SPECIALWINDOW_JS_API_0240
      * @tc.name      : testSetSubWindowModal_SubWindowWithOps
      * @tc.desc      : Sets whether the modal properties of the subwindow are enabled
      * @tc.size      : MediumTest

@@ -64,6 +64,10 @@
             {
                 "name": "ohos.permission.MANAGE_AUDIO_CONFIG",
                 "reason": "$string:TestAbility_desc"
+            },
+            {
+                "name": "ohos.permission.USE_BLUETOOTH",
+                "reason": "$string:EntryAbility_desc"
             }
         ]
     }

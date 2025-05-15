@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function transformTest() {
      * @tc.type : 
      * @tc.size :
      */
-    it('transformTest_0100', 0, async (done: Function) => {
+    it('transformTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('transformTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('transform');
@@ -62,8 +62,6 @@ export default function transformTest() {
       console.info('[transformTest_0100] END');
       done();
     });
-    
-
   })
 }
 

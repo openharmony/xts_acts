@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
@@ -21,21 +21,63 @@ import { Driver, ON } from '@ohos.UiTest';
 import deviceInfo from '@ohos.deviceInfo';
 import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
+import { StartOptions } from '@kit.AbilityKit';
+import { display } from '@kit.ArkUI';
+
+let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+
+async function startAbility3(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility3',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest3') as window.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility3(caseName: string) {
+  let pageContext = AppStorage.get('contextTest3') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
+
 export default function windowPropertiesTest() {
     describe('windowProperties_test', () => {
         let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
         let context: common.UIAbilityContext;
-        let deviceType: string = '';
         let windowStage: ohosWindow.WindowStage;
         let isAutoWindow: string = '';
+        let isPCStatus: string = '';
         beforeAll(() => {
             context = AppStorage.get('context') as common.UIAbilityContext;
             console.log('windowTest context: ' + JSON.stringify(context))
             windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-            deviceType = deviceInfo.deviceType;
-            console.log('jsUnittest beforeAll deviceType =' + deviceType);
             isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
             console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
+            isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+            //isPCStatus == '' 非PC设备
+            //isPCStatus == '1' PC设备状态栏dock未融合
+            //isPCStatus == '0' PC设备状态栏dock融合
+            console.info(`beforeAll isPCStatus: `+ isPCStatus);
+
 
         })
         beforeEach(() => {
@@ -43,11 +85,23 @@ export default function windowPropertiesTest() {
             // The number of execution times is the same as the number of test cases defined by **it**.
             // This API supports only one parameter: preset action function.
         })
-        afterEach(() => {
-            // Presets a clear action, which is performed after each unit test case ends.
-            // The number of execution times is the same as the number of test cases defined by **it**.
-            // This API supports only one parameter: clear action function.
-        })
+        afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
+    })
         afterAll(() => {
             // Presets a clear action, which is performed after all test cases of the test suite end.
             // This API supports only one parameter: clear action function.
@@ -58,9 +112,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : test_getAllWindowLayoutInfo_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_getAllWindowLayoutInfo_mainWindow', 0, async (done: Function) => {
+    it('test_getAllWindowLayoutInfo_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_getAllWindowLayoutInfo_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -96,9 +150,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : getWindowDensityInfo
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level3
         */
-        it('testGetWindowDensityInfo', 0, async (done: Function) => {
+        it('testGetWindowDensityInfo', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testGetWindowDensityInfo';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -127,9 +181,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : getWindowDensityInfo, DPI-1 getWindowDensityInfo
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level0
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensityParamCheck', 0, async (done: Function) => {
+        it('testSetCustomDensityParamCheck', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testSetCustomDensityParamCheck';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -163,9 +217,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : 有效左边界校验
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensityParamCheck1', 0, async (done: Function) => {
+        it('testSetCustomDensityParamCheck1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testSetCustomDensityParamCheck1';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -192,9 +246,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : effective right boundary
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensityParamCheck2', 0, async (done: Function) => {
+        it('testSetCustomDensityParamCheck2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testSetCustomDensityParamCheck2';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -221,9 +275,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : testGetWindowDensityInfo with aruguments null
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level2
         */
-        it('testSetCustomDensityParamCheck5', 0, async (done: Function) => {
+        it('testSetCustomDensityParamCheck5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testSetCustomDensityParamCheck5';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -251,9 +305,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : testGetWindowDensityInfo with arguments undefined
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensityParamCheck6', 0, async (done: Function) => {
+        it('testSetCustomDensityParamCheck6', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testSetCustomDensityParamCheck6';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -281,9 +335,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : new ability set dpi
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensity', 0, async (done: Function) => {
+        it('testSetCustomDensity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_SetCustomDensity';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -341,9 +395,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : new abilty setDefaultDensityEnabled true
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensity1', 0, async (done: Function) => {
+        it('testSetCustomDensity1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_SetCustomDensity1';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -404,9 +458,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : new abilty setDefaultDensityEnabled false
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level1
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensity2', 0, async (done: Function) => {
+        it('testSetCustomDensity2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_SetCustomDensity2';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -463,9 +517,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : multi ability,set ability with diffrent dpi
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level2
+        * @tc.level     : Level3
         */
-        it('testSetCustomDensity3', 0, async (done: Function) => {
+        it('testSetCustomDensity3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_SetCustomDensity3';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -546,9 +600,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : on systemDensityChange
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level2
+        * @tc.level     : Level3
         */
-        it('testOnSetCustomDensity', 0, async (done: Function) => {
+        it('testOnSetCustomDensity', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testOnSetCustomDensity';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -629,9 +683,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : off systemDensityChange event
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level2
+        * @tc.level     : Level3
         */
-        it('testOnSetCustomDensity1', 0, async (done: Function) => {
+        it('testOnSetCustomDensity1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
         let caseName: string = 'test_testOnSetCustomDensity1';
         let msgStr: string = 'jsUnittest ' + caseName + ' ';
         console.log(msgStr + 'begin');
@@ -668,9 +722,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : Set whether to disable the gesture back function.
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-        it('testSetGestureBackEnabledTrue', 0, async (done: Function) => {
+        it('testSetGestureBackEnabledTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
             let caseName = 'TestSetGestureBackEnabledTrue';
             let windowClass = windowStage.getMainWindowSync();
             windowClass.setGestureBackEnabled(true).then(() => {
@@ -696,9 +750,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : Set whether to disable the gesture back function.
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-        it('testSetGestureBackEnabledFalse', 0, async (done: Function) => {
+        it('testSetGestureBackEnabledFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
             let caseName = 'TestSetGestureBackEnabledFalse';
             let windowClass = windowStage.getMainWindowSync();
             windowClass.setGestureBackEnabled(false).then(async () => {
@@ -726,7 +780,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testSetGestureBackEnabledInSubWindow', 0, async (done: Function) => {
+        it('testSetGestureBackEnabledInSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetGestureBackEnabledInSubWindow';
             let subWindowClass = await windowStage.createSubWindow('subWindow');
             console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -759,7 +813,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testSetGestureBackEnabledInSysSubWindow', 0, async (done: Function) => {
+        it('testSetGestureBackEnabledInSysSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetGestureBackEnabledInSysSubWindow';
             let config: window.Configuration = {
                 name: "systemWindow",
@@ -797,7 +851,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testSetGestureBackEnabledInDestroyWindow', 0, async (done: Function) => {
+        it('testSetGestureBackEnabledInDestroyWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetGestureBackEnabledInDestroyWindow';
             let subWindowClass = await windowStage.createSubWindow('subWindow');
             console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -829,7 +883,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetGestureBackEnabledInSubWindow', 0, async (done: Function) => {
+        it('testGetGestureBackEnabledInSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetGestureBackEnabledInSubWindow';
             let subWindowClass = await windowStage.createSubWindow('subWindow');
             console.info(`${caseName} Succeeded in creating the sub window.`);
@@ -859,9 +913,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : get the current window properties
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level3
+         * @tc.level     : Level2
          */
-        it('testGetWindowPropertiesInMainWindow', 0, (done: Function) => {
+        it('testGetWindowPropertiesInMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
             let caseName = 'TestGetWindowPropertiesInMainWindow';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -883,7 +937,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetWindowPropertiesInSubWindow', 0, (done: Function) => {
+        it('testGetWindowPropertiesInSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestGetWindowPropertiesInSubWindow';
             try {
                 windowStage.createSubWindow('subWindow').then((data) => {
@@ -910,9 +964,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSetWindowGrayScale0", 0, async (done: Function) => {
+        it("testSetWindowGrayScale0", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSetWindowGrayScale0";
             let windowClass = await windowStage.getMainWindow();
             try {
@@ -943,9 +997,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSetWindowGrayScale0.5", 0, async (done: Function) => {
+        it("testSetWindowGrayScale0.5", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSetWindowGrayScale0.5";
             let windowClass = await windowStage.getMainWindow();
             try {
@@ -976,9 +1030,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSetWindowGrayScale1", 0, async (done: Function) => {
+        it("testSetWindowGrayScale1",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSetWindowGrayScale1";
             let windowClass = await windowStage.getMainWindow();
             try {
@@ -1009,9 +1063,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSetWindowGrayScaleNegative1", 0, async (done: Function) => {
+        it("testSetWindowGrayScaleNegative1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSetWindowGrayScaleNegative1";
             let windowClass = await windowStage.getMainWindow();
             try {
@@ -1043,9 +1097,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSetWindowGrayScale2", 0, async (done: Function) => {
+        it("testSetWindowGrayScale2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSetWindowGrayScale2";
             let windowClass = await windowStage.getMainWindow();
             try {
@@ -1077,9 +1131,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : test subWindow setWindowGrayScale
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it("testSubWindowSetWindowGrayScale1", 0, async (done: Function) => {
+        it("testSubWindowSetWindowGrayScale1",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestSubWindowSetWindowGrayScale1";
             try {
                 windowStage.createSubWindow('TestSubWindowSetWindowGrayScale1').then(async (data) => {
@@ -1119,7 +1173,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOnRectChangeOptionsResizeSubWindow", 0, async (done: Function) => {
+        it("testOnRectChangeOptionsResizeSubWindow", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOnRectChangeOptionsResizeSubWindow";
             try {
                 let subWindowClass = await windowStage.createSubWindow("subwindow");
@@ -1150,7 +1204,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOnRectChangeOptionsResizeMainWindow", 0, async (done: Function) => {
+        it("testOnRectChangeOptionsResizeMainWindow", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOnRectChangeOptionsResizeMainWindow";
             let windowClass = windowStage.getMainWindowSync();
             try {
@@ -1199,7 +1253,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOnRectChangeOptionsMove", 0, async (done: Function) => {
+        it("testOnRectChangeOptionsMove", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOnRectChangeOptionsMove";
             try {
                 let subWindowClass = await windowStage.createSubWindow("TestOnRectChangeOptionsMove");
@@ -1238,7 +1292,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOffRectChangeOptions", 0, async (done: Function) => {
+        it("testOffRectChangeOptions", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOffRectChangeOptions";
             try {
                 let subWindowClass = await windowStage.createSubWindow("subwindow");
@@ -1278,7 +1332,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOffOneRectChangeOptions", 0, async (done: Function) => {
+        it("testOffOneRectChangeOptions", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOffOneRectChangeOptions";
             try {
                 let subWindowClass = await windowStage.createSubWindow("TestOffOneRectChangeOptions");
@@ -1327,7 +1381,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOnTwoRectChangeOptions", 0, async (done: Function) => {
+        it("testOnTwoRectChangeOptions", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOnTwoRectChangeOptions";
             try {
                 let subWindowClass = await windowStage.createSubWindow("subwindow");
@@ -1375,7 +1429,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it("testOffTwoRectChangeOptions", 0, async (done: Function) => {
+        it("testOffTwoRectChangeOptions", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = "TestOffTwoRectChangeOptions";
             try {
                 let subWindowClass = await windowStage.createSubWindow("subwindow");
@@ -1423,7 +1477,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testIsSubWindowSupportWideGamutCallback', 0, async (done: Function) => {
+        it('testIsSubWindowSupportWideGamutCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestIsSubWindowSupportWideGamutCallback';
             try {
                 windowStage.createSubWindow('SubWindow1').then((data) => {
@@ -1460,7 +1514,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testIsSubWindowSupportWideGamutPromise', 0, async (done: Function) => {
+        it('testIsSubWindowSupportWideGamutPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestIsSubWindowSupportWideGamutPromise';
             try {
                 windowStage.createSubWindow('SubWindow2').then((data) => {
@@ -1494,7 +1548,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testIsMainWindowSupportWideGamutCallback', 0, async (done: Function) => {
+        it('testIsMainWindowSupportWideGamutCallback',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestIsMainWindowSupportWideGamutCallback';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1523,7 +1577,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testIsMainWindowSupportWideGamutPromise', 0, async (done: Function) => {
+        it('testIsMainWindowSupportWideGamutPromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestIsMainWindowSupportWideGamutPromise';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1549,7 +1603,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetMainWindowColorSpaceDefaultCallback', 0, async (done: Function) => {
+        it('testSetMainWindowColorSpaceDefaultCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetMainWindowColorSpaceDefaultCallback';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1581,7 +1635,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowColorSpaceDefaultCallback', 0, async (done: Function) => {
+        it('testSetSubWindowColorSpaceDefaultCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowColorSpaceDefaultCallback';
             try {
                 windowStage.createSubWindow('SubWindow3').then((data) => {
@@ -1621,7 +1675,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetMainWindowColorSpaceWideGamutPromise', 0, async (done: Function) => {
+        it('testSetMainWindowColorSpaceWideGamutPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetMainWindowColorSpaceDefaultPromise';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1650,7 +1704,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowColorSpaceWideGamutCallback', 0, async (done: Function) => {
+        it('testSetSubWindowColorSpaceWideGamutCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowColorSpaceWideGamutCallback';
             try {
                 windowStage.createSubWindow('SubWindow4').then((data) => {
@@ -1690,7 +1744,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetMainWindowBackgroundColor', 0, async (done: Function) => {
+        it('testSetMainWindowBackgroundColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetMainWindowBackgroundColor';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1713,7 +1767,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowBackgroundColor', 0, (done: Function) => {
+        it('testSetSubWindowBackgroundColor', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestSetSubWindowBackgroundColor';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1745,7 +1799,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowBackgroundColorNoUIContent', 0, async (done: Function) => {
+        it('testSetSubWindowBackgroundColorNoUIContent', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowBackgroundColorNoUIContent';
             try {
                 let subWindowClass = await windowStage.createSubWindow('SubWindow6');
@@ -1768,7 +1822,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallbackNegative2', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallbackNegative2',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallbackNegative2';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1798,7 +1852,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallback1.5', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallback1.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallback1.5';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1828,7 +1882,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallback0', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallback0',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallback0';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1857,7 +1911,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallback0.5', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallback0.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallback0.5';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1886,7 +1940,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallback1', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallback1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallback_1';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1915,7 +1969,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessCallbackDefault', 0, async (done: Function) => {
+        it('testSetWindowBrightnessCallbackDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessCallbackDefault';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1944,7 +1998,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromiseNegative1.5', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromiseNegative1.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessPromise_1.5';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -1971,7 +2025,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromise1.5', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromise1.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessPromise1.5';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2003,7 +2057,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromise0', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromise0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessPromise_0';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2029,7 +2083,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromise0.5', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromise0.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessPromise_0.5';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2055,7 +2109,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromise1', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromise1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'testSetWindowBrightnessPromise_1';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2081,7 +2135,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowBrightnessPromiseNegative1', 0, async (done: Function) => {
+        it('testSetWindowBrightnessPromiseNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowBrightnessPromiseNegative1';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2107,7 +2161,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowBrightnessPromiseNegative1', 0, (done: Function) => {
+        it('testSetSubWindowBrightnessPromiseNegative1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestSetSubWindowBrightnessPromiseNegative1';
             try {
                 windowStage.createSubWindow('subWindow6').then((data) => {
@@ -2141,7 +2195,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowBrightnessPromiseNegative2', 0, (done: Function) => {
+        it('testSetSubWindowBrightnessPromiseNegative2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestSetSubWindowBrightnessPromiseNegative2';
             try {
                 windowStage.createSubWindow('subWindow7').then((data) => {
@@ -2176,7 +2230,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowKeepScreenOnCallbackFalse', 0, (done: Function) => {
+        it('testSetSubWindowKeepScreenOnCallbackFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestSetSubWindowKeepScreenOnCallbackFalse';
             try {
                 windowStage.createSubWindow('subWindow8').then((data) => {
@@ -2213,7 +2267,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowKeepScreenOnCallbackTrue', 0, (done: Function) => {
+        it('testSetSubWindowKeepScreenOnCallbackTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (done: Function) => {
             let caseName = 'TestSetSubWindowKeepScreenOnCallbackTrue';
             try {
                 windowStage.createSubWindow('subWindow9').then((data) => {
@@ -2250,7 +2304,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowKeepScreenOnCallbackFalse', 0, async (done: Function) => {
+        it('testSetWindowKeepScreenOnCallbackFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowKeepScreenOnCallbackFalse';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2279,7 +2333,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowKeepScreenOnCallbackTrue', 0, async (done: Function) => {
+        it('testSetWindowKeepScreenOnCallbackTrue',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowKeepScreenOnCallbackTrue';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2308,7 +2362,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowKeepScreenOnPromiseTrue', 0, async (done: Function) => {
+        it('testSetWindowKeepScreenOnPromiseTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowKeepScreenOnPromiseTrue';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2334,7 +2388,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowKeepScreenOnPromiseFalse', 0, async (done: Function) => {
+        it('testSetWindowKeepScreenOnPromiseFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowKeepScreenOnPromiseFalse';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2360,7 +2414,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowPrivacyModeTrue', 0, async (done: Function) => {
+        it('testSetSubWindowPrivacyModeTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowPrivacyModeTrue';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow10');
@@ -2396,7 +2450,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowPrivacyModeFalse', 0, async (done: Function) => {
+        it('testSetSubWindowPrivacyModeFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowPrivacyModeFalse';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow11');
@@ -2432,7 +2486,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowPrivacyModeTrue', 0, async (done: Function) => {
+        it('testSetWindowPrivacyModeTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowPrivacyModeTrue';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2466,7 +2520,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetWindowPrivacyModeFalse', 0, async (done: Function) => {
+        it('testSetWindowPrivacyModeFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetWindowPrivacyModeFalse';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2500,7 +2554,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testWindowSnapshotCallback', 0, async (done: Function) => {
+        it('testWindowSnapshotCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestWindowSnapshotCallback';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2542,7 +2596,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowSnapshotCallback', 0, async (done: Function) => {
+        it('testSubWindowSnapshotCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowSnapshotCallback';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow12');
@@ -2586,7 +2640,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testWindowSnapshotPromise', 0, async (done: Function) => {
+        it('testWindowSnapshotPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestWindowSnapshotPromise';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2625,7 +2679,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowSnapshotPromise', 0, async (done: Function) => {
+        it('testSubWindowSnapshotPromise',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowSnapshotPromise';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow13');
@@ -2664,9 +2718,9 @@ export default function windowPropertiesTest() {
          * @tc.desc      : get window ui context
          * @tc.size      : MediumTest
          * @tc.type      : Function
-         * @tc.level     : Level 3
+         * @tc.level     : Level 2
          */
-        it('testWindowGetUIContext', 0, async (done: Function) => {
+        it('testWindowGetUIContext', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
             let caseName = 'TestWindowGetUIContext';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2693,7 +2747,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowGetUIContext', 0, async (done: Function) => {
+        it('testSubWindowGetUIContext', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowGetUIContext';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow14');
@@ -2722,7 +2776,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testWindowSetUIContextCallback', 0, async (done: Function) => {
+        it('testWindowSetUIContextCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestWindowSetUIContextCallback';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2751,7 +2805,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testWindowSetUIContextErrorPathCallback', 0, async (done: Function) => {
+        it('testWindowSetUIContextErrorPathCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestWindowSetUIContextErrorPathCallback';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2781,7 +2835,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowSetUIContextCallback', 0, async (done: Function) => {
+        it('testSubWindowSetUIContextCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowSetUIContextCallback';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow15');
@@ -2812,7 +2866,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowSetUIContextErrorPathCallback', 0, async (done: Function) => {
+        it('testSubWindowSetUIContextErrorPathCallback', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowSetUIContextErrorPathCallback';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindow16');
@@ -2844,7 +2898,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testWindowSetUIContextPromise', 0, async (done: Function) => {
+        it('testWindowSetUIContextPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestWindowSetUIContextPromise';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2870,7 +2924,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSubWindowSetUIContextErrorPathPromise', 0, async (done: Function) => {
+        it('testSubWindowSetUIContextErrorPathPromise', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSubWindowSetUIContextErrorPathPromise';
             try {
                 let subWindow = await windowStage.createSubWindow('subWindowError');
@@ -2898,7 +2952,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetDefaultDensityEnabledTrue', 0, async (done: Function) => {
+        it('testSetDefaultDensityEnabledTrue',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetDefaultDensityEnabledTrue';
             try {
                 windowStage.setDefaultDensityEnabled(true);
@@ -2923,7 +2977,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetDefaultDensityEnabledFalse', 0, async (done: Function) => {
+        it('testSetDefaultDensityEnabledFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetDefaultDensityEnabledFalse';
             try {
                 windowStage.setDefaultDensityEnabled(false);
@@ -2948,7 +3002,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetMainWindowMask', 0, async (done: Function) => {
+        it('testSetMainWindowMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetMainWindowMask';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -2976,7 +3030,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 3
          */
-        it('testSetSubWindowMask', 0, async (done: Function) => {
+        it('testSetSubWindowMask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestSetSubWindowMask';
             let subWindow: window.Window | undefined;
             try {
@@ -3013,7 +3067,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetWindowStatusInDefault', 0, async (done: Function) => {
+        it('testGetWindowStatusInDefault', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetWindowStatusInDefault';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -3061,7 +3115,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetWindowStatusInFullScreen', 0, async (done: Function) => {
+        it('testGetWindowStatusInFullScreen', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetWindowStatusInFullScreen';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -3069,7 +3123,7 @@ export default function windowPropertiesTest() {
                 console.info(`${caseName} Succeeded in enabling the full-screen mode.`);
                 const windowStatus = windowClass.getWindowStatus();
                 console.info(`${caseName} windowStatus is: ${windowStatus}`);
-                if (deviceType !== '2in1' || isAutoWindow == 'false') {
+                if (isPCStatus == '' || isAutoWindow == 'false') {
                     expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
                     await windowClass.recover();
                     done();
@@ -3097,7 +3151,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetWindowStatusInMaximize', 0, async (done: Function) => {
+        it('testGetWindowStatusInMaximize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetWindowStatusInMaximize';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -3128,7 +3182,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetDialogWindowStatus', 0, async (done: Function) => {
+        it('testGetDialogWindowStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetDialogWindowStatus';
             try {
                 let config: window.Configuration = {
@@ -3167,7 +3221,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetDestroyedDialogWindowStatus', 0, async (done: Function) => {
+        it('testGetDestroyedDialogWindowStatus',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetDestroyedDialogWindowStatus';
             try {
                 let config: window.Configuration = {
@@ -3205,7 +3259,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetDestroyedSubWindowStatus', 0, async (done: Function) => {
+        it('testGetDestroyedSubWindowStatus', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetDestroyedSubWindowStatus';
             try {
                 const windowClass = await windowStage.createSubWindow('subwindow');
@@ -3237,7 +3291,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetSubWindowFocused', 0, async (done: Function) => {
+        it('testGetSubWindowFocused', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetSubWindowFocused';
             try {
                 const windowClass = await windowStage.createSubWindow('subwindow');
@@ -3273,7 +3327,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetDialogWindowFocused', 0, async (done: Function) => {
+        it('testGetDialogWindowFocused', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetDialogWindowFocused';
             try {
                 let config: window.Configuration = {
@@ -3311,7 +3365,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetTopSubWindowFocused', 0, async (done: Function) => {
+        it('testGetTopSubWindowFocused', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetTopSubWindowFocused';
             let windowClass1: window.Window | undefined;
             let windowClass2: window.Window | undefined;
@@ -3351,7 +3405,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetShiftWindowFocused', 0, async (done: Function) => {
+        it('testGetShiftWindowFocused', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetShiftWindowFocused';
             try {
                 const windowClass = windowStage.getMainWindowSync();
@@ -3375,11 +3429,13 @@ export default function windowPropertiesTest() {
                 expect(subWindowStatus).assertFalse();
                 done();
             } catch (exception) {
+                console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
                 if (exception.code === 1300002) {
                     console.error(`${caseName} This window state is abnormal.`);
                     done();
-                } else {
-                    console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+                } else if(exception.code === 801){
+                    done();
+                }else {
                     expect().assertFail();
                     done();
                 }
@@ -3393,7 +3449,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testGetDestroyedSubWindowFocused', 0, async (done: Function) => {
+        it('testGetDestroyedSubWindowFocused', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestGetDestroyedSubWindowFocused';
             try {
                 const windowClass = await windowStage.createSubWindow('subwindow');
@@ -3420,7 +3476,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testmoveWindowToGlobal_401', 0, async (done: Function) => {
+        it('testmoveWindowToGlobal_401',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestmoveWindowToGlobal_401';
             try {
                 const windowClass = await windowStage.createSubWindow('testmoveWindowToGlobal_401');
@@ -3454,7 +3510,7 @@ export default function windowPropertiesTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testmoveWindowToGlobal_moveConfiguration', 0, async (done: Function) => {
+    it('testmoveWindowToGlobal_moveConfiguration', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testmoveWindowToGlobal_moveConfiguration';
       try {
         let moveConfiguration: window.MoveConfiguration = {
@@ -3491,7 +3547,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testsetWindowLayoutFullScreen_callback_401', 0, async (done: Function) => {
+        it('testsetWindowLayoutFullScreen_callback_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'testsetWindowLayoutFullScreen_callback_401';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -3521,7 +3577,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testsetWindowLayoutFullScreen_promise_401', 0, async (done: Function) => {
+        it('testsetWindowLayoutFullScreen_promise_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'testsetWindowLayoutFullScreen_promise_401';
             try {
                 let windowClass = windowStage.getMainWindowSync();
@@ -3551,7 +3607,7 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testgetGlobalRect', 0, async (done: Function) => {
+        it('testgetGlobalRect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'testgetGlobalRect';
             try {
                 const windowClass = windowStage.getMainWindowSync();
@@ -3579,48 +3635,54 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testRestoreByMinimize', 0, async (done: Function) => {
-            let caseName = 'TestRestoreByMinimize';
-            try {
-                let windowClass = windowStage.getMainWindowSync();
-                const mainWindowstatus = windowClass.getWindowStatus();
-                console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
-                windowClass.minimize().then(async () => {
-                    console.info(`${caseName} Succeeded in minimizing the window.`);
-                    await sleep(2000);
-                    windowClass.restore().then(async () => {
-                        console.info(`${caseName} Succeeded in restoring the window.`);
-                        await sleep(1000);
-                        let windowStatus = windowClass.getWindowStatus();
-                        console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
-                        expect(windowStatus).assertEqual(mainWindowstatus);
-                        done();
-                    }).catch((err: BusinessError) => {
-                        if (err.code === 801) {
-                            console.error(`${caseName} The current device type does not support to restore.`);
-                            done();
-                        } else {
-                            console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
-                            expect(1300004).assertEqual(err.code);
-                            done();
-                        }
-                    });
-                }).catch((err: BusinessError) => {
-                    console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
-                    expect().assertFail();
-                    done();
-                });
-            } catch (exception) {
-                if (exception.code === 801) {
-                    console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
-                    done();
+      it('testRestoreByMinimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+        let caseName = 'TestRestoreByMinimize';
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          const mainWindowstatus = windowClass.getWindowStatus();
+          console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
+          if (isPCStatus != '' || isAutoWindow == 'false') {
+            windowClass.minimize().then(async () => {
+              console.info(`${caseName} Succeeded in minimizing the window.`);
+              await sleep(2000);
+              windowClass.restore().then(async () => {
+                console.info(`${caseName} Succeeded in restoring the window.`);
+                await sleep(1000);
+                let windowStatus = windowClass.getWindowStatus();
+                console.info(`${caseName} Succeeded in getting the window status. Data: ${windowStatus}`);
+                expect(windowStatus).assertEqual(mainWindowstatus);
+                done();
+              }).catch((err: BusinessError) => {
+                if (err.code === 801) {
+                  console.error(`${caseName} The current device type does not support to restore.`);
+                  done();
                 } else {
-                    console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
-                    expect().assertFail();
-                    done();
+                  console.error(`${caseName} Unauthorized operation. Cause code: ${err.code}, message: ${err.message}`);
+                  expect(1300004).assertEqual(err.code);
+                  done();
                 }
-            }
-        })
+              });
+            }).catch((err: BusinessError) => {
+              console.error(`${caseName} Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
+              expect().assertFail();
+              done();
+            });
+          }else {
+            done();
+          }
+
+        } catch (exception) {
+          if (exception.code === 801) {
+            console.error(`${caseName} The current device type does not support to getWindowStatus. Cause code: ${exception.code}, message: ${exception.message}`);
+            done();
+          } else {
+            console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
         /**
          * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_8100
          * @tc.name      : testRestoreByMinimizeBtn
@@ -3629,9 +3691,10 @@ export default function windowPropertiesTest() {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('testRestoreByMinimizeBtn', 0, async (done: Function) => {
+        it('testRestoreByMinimizeBtn', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
             let caseName = 'TestRestoreByMinimizeBtn';
-            try {
+            if(isPCStatus != ''|| isAutoWindow =='true'){
+                try {
                 let windowClass = windowStage.getMainWindowSync();
                 const mainWindowstatus = windowClass.getWindowStatus();
                 console.info(`${caseName} Succeeded in getting window status. Data: ${mainWindowstatus}`);
@@ -3678,6 +3741,10 @@ export default function windowPropertiesTest() {
                     done();
                 }
             }
+            }else{
+                done();
+            }
+            
         })
 
 
@@ -3687,9 +3754,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : On DisplayChange
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level3
+        * @tc.level     : Level0
         */
-        it('testOnDisplayIdChangeTest', 0, async (done: Function) => {
+        it('testOnDisplayIdChangeTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let caseName = 'testOnDisplayIdChangeTest';
             console.log(caseName + 'start run');
             let windowClass = windowStage.getMainWindowSync();
@@ -3714,9 +3781,9 @@ export default function windowPropertiesTest() {
         * @tc.desc      : Off DisplayChange
         * @tc.size      : MediumTest
         * @tc.type      : Function
-        * @tc.level     : Level3
+        * @tc.level     : Level2
         */
-        it('testOffDisplayIdChangeTest', 0, async (done: Function) => {
+        it('testOffDisplayIdChangeTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
             let caseName = 'testOffDisplayIdChangeTest';
             console.log(caseName + 'start run');
             let windowClass = windowStage.getMainWindowSync();
@@ -3742,9 +3809,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : test_getAllWindowLayoutInfo_401
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_getAllWindowLayoutInfo_401', 0, async (done: Function) => {
+    it('test_getAllWindowLayoutInfo_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_getAllWindowLayoutInfo_401';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3779,9 +3846,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : test_startMoving_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_startMoving_mainWindow', 0, async (done: Function) => {
+    it('test_startMoving_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_startMoving_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3816,9 +3883,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : test_stopMoving_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_stopMoving_mainWindow', 0, async (done: Function) => {
+    it('test_stopMoving_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_stopMoving_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -3853,9 +3920,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : test_SetWindowLimits_40vp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level4
+     * @tc.level     : Level3
      */
-    it('test_SetWindowLimits_40vp', 0, async(done: Function) => {
+    it('test_SetWindowLimits_40vp', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async(done: Function) => {
       let msg = ' test_SetWindowLimits_40vp ';
       console.info(msg + ' begin ');
       try {
@@ -3894,6 +3961,486 @@ export default function windowPropertiesTest() {
           }
       }
     })
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+       * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level 0
+       */
+       /**
+     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+      console.log(caseName + 'begin');
+      let windowStageStart = await startAbility3(caseName, context);
+      try {
+        let windowClass2 = windowStageStart.getMainWindowSync();
+        let res = windowClass2.getWindowProperties()
+        console.info(caseName + 'res: ' + JSON.stringify(res));
+        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+          console.info(caseName + `infos.length: ${infos.length}`);
+          expect(infos.length).assertLargerOrEqual(1);
+          let isExit = false;
+          for (let i = 0; i < infos.length; i++) {
+            if (infos[i].windowId === res.id) {
+              isExit = true;
+              let info = infos[i];
+              console.info(caseName + 'info: ' + JSON.stringify(info));
+              expect(info.rect.left).assertEqual(res.windowRect.left);
+              expect(info.rect.top).assertEqual(res.windowRect.top);
+              expect(info.rect.width).assertEqual(res.windowRect.width);
+              expect(info.rect.height).assertEqual(res.windowRect.height);
+              expect(info.isFocused).assertEqual(true);
+              console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
+              console.info(caseName + `info.bundleName: ${info.bundleName}`);
+              console.info(caseName + `info.abilityName: ${info.abilityName}`);
+              break;
+            }
+          }
+          if (!isExit) {
+            console.error(`${caseName} failed, there is no match windowId.`);
+            await terminateAbility3(caseName);
+            expect().assertFail();
+            done()
+          }
+          await terminateAbility3(caseName);
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+          await terminateAbility3(caseName);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        await terminateAbility3(caseName);
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        if (err.code === 801) {
+            console.log(`${caseName} deviceType does not supported this Capability`);
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+      }
+    });
+      /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it("testSetDefaultDensityEnabled_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let msgStr = "testSetDefaultDensityEnabled_true";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.setDefaultDensityEnabled(true);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+       /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0020
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it("testSetDefaultDensityEnabled_false", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let msgStr = "testSetDefaultDensityEnabled_false";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.setDefaultDensityEnabled(false);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0030
+     * @tc.name      : testRectChangeOptions_on
+     * @tc.desc      : Test the function value of testRectChangeOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testRectChangeOptions_on", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_on";
+      console.log(msgStr + "begin");
+      try {
+        let windowClass = await windowStage.getMainWindow();
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
+          console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+
+     /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0100
+         * @tc.name      : test_setWindowGrayScale_0
+         * @tc.desc      : test_setWindowGrayScale_0
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_0", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_0";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let grayScale = 0;
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 0.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0200
+         * @tc.name      : test_setWindowGrayScale_0.5
+         * @tc.desc      : test_setWindowGrayScale_0.5
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_0.5", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_0.5";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 0.5;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 0.5.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0300
+         * @tc.name      : test_setWindowGrayScale_1
+         * @tc.desc      : test_setWindowGrayScale_1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_1";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 1;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0400
+         * @tc.name      : test_setWindowGrayScale_-1
+         * @tc.desc      : test_setWindowGrayScale_-1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+    it("test_setWindowGrayScale_-1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_-1";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = -1;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale -1.');
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0500
+         * @tc.name      : test_setWindowGrayScale_2
+         * @tc.desc      : test_setWindowGrayScale_2
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_2";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 2;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 2.');
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0600
+         * @tc.name      : test_subWindow_setWindowGrayScale_1
+         * @tc.desc      : test_subWindow_setWindowGrayScale_1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_subWindow_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_subWindow_setWindowGrayScale_1";
+      console.log(msgStr + "begin");
+      let grayScale = 1;
+      try {
+        await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_2').then(async (data) => {
+          let subWindowClass = data;
+          console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index2').then(() => {
+            console.info(msgStr + 'Succeeded in setUiContent.');
+            subWindowClass.setWindowGrayScale(grayScale).then(async () => {
+              console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+              await subWindowClass.destroyWindow();
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+              await subWindowClass.destroyWindow();
+              if (err.code == 801) {
+                console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.log(msgStr + `Failed to setUiContent. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.log(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0100
+     * @tc.name      : test_snapshotIgnorePrivacy_1300002
+     * @tc.desc      :  test_snapshotIgnorePrivacy_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_snapshotIgnorePrivacy_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_snapshotIgnorePrivacy_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          let promise2 = subWindowClass.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            await subWindowClass.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else if(err.code == 1300002){
+              expect(true).assertTrue();
+              done();
+            }else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0200
+     * @tc.name      : test_snapshotIgnorePrivacy
+     * @tc.desc      :  test_snapshotIgnorePrivacy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_snapshotIgnorePrivacy", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy";
+      console.log(msgStr + "begin");
+      let mainWoindow: ohosWindow.Window = windowStage.getMainWindowSync();
+      try {
+          let promise2 = mainWoindow.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            let widthBefore: number = mainWoindow.getWindowProperties().windowRect.width;
+            let heightBefore: number = mainWoindow.getWindowProperties().windowRect.height;
+            console.info(`${msgStr} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
     })
 }
 

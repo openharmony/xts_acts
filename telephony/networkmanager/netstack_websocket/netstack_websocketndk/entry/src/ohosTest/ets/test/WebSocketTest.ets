@@ -17,33 +17,62 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import webSocket from 'libtestNetStackWebsocketNdk.so'
 export default function webSocketTest() {
-  describe('ActsAbilityTest', () => {
-
-    it('testWebSocketClientConstruct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+  describe('ActsAbilityTest', () => {    
+    /*
+     * @tc.number:SUB_testWebSocketClientConstruct001
+     * @tc.name: testWebSocketClientConstruct001
+     * @tc.desc:test webSocket OHWebSocketClientConstruct 
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testWebSocketClientConstruct001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let result:number = webSocket.OHWebSocketClientConstruct();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConstruct001 result=%{public}d', result);
       expect(0).assertEqual(result);
       done()
     })
-
-    it('testWebSocketClientAddHeader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    
+    /*
+     * @tc.number:SUB_testWebSocketClientAddHeader002
+     * @tc.name: testWebSocketClientAddHeader002
+     * @tc.desc:test webSocket OHWebSocketClientAddHeader 
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testWebSocketClientAddHeader002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let result:number = webSocket.OHWebSocketClientAddHeader();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientAddHeader002 result=%{public}d', result);
       expect(0).assertEqual(result);
       done()
     })
-
-    it('testWebSocketClientConnect003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+/*
+     * @tc.number:SUB_testWebSocketClientConnect003
+     * @tc.name: testWebSocketClientConnect003
+     * @tc.desc:test webSocket OHWebSocketClientConnect 
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testWebSocketClientConnect003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       let result:number = webSocket.OHWebSocketClientConnect();
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConnect003 result=%{public}d', result);
       expect(0).assertEqual(result);
       done()
     })
-
-    it('tesWebSocketClientSend004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+/*
+     * @tc.number:SUB_tesWebSocketClientSend004
+     * @tc.name: tesWebSocketClientSend004
+     * @tc.desc:test webSocket OHWebSocketClientSend 
+     * @tc.level:Level 0
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('tesWebSocketClientSend004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', 'websocket XTS ClientConnect004 %{public}s', 'it begin');
       let result:number = webSocket.OHWebSocketClientSend();

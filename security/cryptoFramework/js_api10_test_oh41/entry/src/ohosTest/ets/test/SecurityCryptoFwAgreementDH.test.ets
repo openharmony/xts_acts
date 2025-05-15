@@ -49,9 +49,9 @@ export default function SecurityCryptoFwAgreementDHTestUnit() {
      * @tc.desc AsyKeyGenerator with algName DH_modp1536
      * @tc.size Medium
      * @tc.type Func
-     * @tc.level Level1
+     * @tc.level Level0
      */
-    it("SUB_Security_CryptoFramework_Agreement_DH_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("SUB_Security_CryptoFramework_Agreement_DH_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_DH_Func_0100";
       console.log(testNumber + ": started.");
       let param: string = "DH_modp1536";

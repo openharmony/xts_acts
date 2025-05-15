@@ -7,7 +7,7 @@ struct InterstitialDialogActionTest {
   build() {
     Row() {
       Column() {
-        Text('show dialog')
+        Text('show dialog 1')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
@@ -27,6 +27,31 @@ struct InterstitialDialogActionTest {
               onDialogClose: () => { console.log('outer close action') }
             });
             interstitialDialogAction.openDialog();
+          })
+
+        Text('show dialog 2')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let ctx: UIContext | null = getDialogUIContext();
+            let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
+              uiContext: ctx as UIContext,
+              title: '主标题',
+              subtitle: '副标题',
+              titleColor: 'rgb(255, 192, 0)',
+              subtitleColor: Color.Red,
+              backgroundImage: $r('app.media.icon'),
+              foregroundImage: $r('app.media.icon'),
+              iconStyle: IconStyle.DARK,
+              titlePosition: TitlePosition.TOP,
+              bottomOffsetType: BottomOffset.OFFSET_FOR_NONE,
+              onDialogClick: () => { console.log('outer dialog click action'); },
+              onDialogClose: () => { console.log('outer close action'); },
+            });
+            interstitialDialogAction.openDialog();
+            setTimeout(() => {
+              interstitialDialogAction.closeDialog();
+            }, 1000)
           })
       }
       .width('100%')

@@ -504,6 +504,7 @@ export default function SqlExecutionTimeTest() {
         expect().assertFail();
         done();
       }
+      done();
       console.info(TAG + "************* testRdbStoreStatistics0009 end *************");
     })
 
@@ -606,25 +607,30 @@ export default function SqlExecutionTimeTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('testRdbStoreStatistics0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
+     it('testRdbStoreStatistics0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
       console.info(TAG + "************* testRdbStoreStatistics0012 start *************");
-      if(rdbStore == undefined){
+      if (rdbStore == undefined) {
         return;
       }
       try {
         rdbStore.on('statistics', (SqlExeInfo) => {
           expect().assertFail();
-          done();
         });
-      }
-      catch (err) {
+      } catch (err) {
         console.error(TAG + `register fail, code:${err.code}, message: ${err.message}`);
         expect().assertFail();
         done();
       }
       try {
+        rdbStore.off('statistics', undefined);
+        console.info(TAG + 'off statistics is success')
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      try {
         let u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket:ValuesBucket = {
+        const valueBucket: ValuesBucket = {
           "name": "LILI",
           "age": 18,
           "salary": 100.5,
@@ -632,30 +638,13 @@ export default function SqlExecutionTimeTest() {
         };
         let rowId = await rdbStore.insert("test", valueBucket);
         expect(2).assertEqual(rowId);
-      }
-      catch (error) {
+      } catch (error) {
         console.error(TAG + `batchInsert fail, code:${error.code}, message: ${error.message}`);
         expect().assertFail();
         done();
       }
-
-      try {
-        rdbStore.off('statistics', undefined);
-        console.info(TAG + 'off statistics is success')
-        done();
-      }
-      catch (error) {
-        expect().assertFail();
-        done();
-      }
+      done();
       console.info(TAG + "************* testRdbStoreStatistics0012 end *************");
     })
-
-
-
-
-
-
-
   })
 }

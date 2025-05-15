@@ -46,6 +46,7 @@ import requestImageNativeTest from './MediaAssetManager/requestImageNative.test'
 import requestCancelNativeTest from './MediaAssetManager/requestCancelNative.test';
 import requestVideoTest from './MediaAssetManager/requestVideo.test';
 import getMovingPhotoTest from './PhotoAccessHelper/getMovingPhoto.test';
+import getMovingPhotoTranscodeTest from './PhotoAccessHelper/getMovingPhotoTranscode.test';
 import showAssetsCreationDialogTest from './PhotoAccessHelper/showAssetsCreationDialog.test';
 import PhotoAccessHelperNativeTest from './PhotoAccessHelper/photoAccessHelperNative.test';
 import getBurstAssetsTest from './PhotoAccessHelper/getBurstAssets.test';
@@ -122,6 +123,7 @@ export default function testsuite() {
   requestCancelNativeTest();
   requestVideoTest();
   getMovingPhotoTest();
+  getMovingPhotoTranscodeTest();
   showAssetsCreationDialogTest();
   PhotoAccessHelperNativeTest();
   getBurstAssetsTest();

@@ -82,6 +82,10 @@ let source_type_RTK = geolocationm.LocationSourceType.RTK
 let coordinate_WGS84 = geolocationm.CoordinateSystemType.WGS84
 let coordinate_GCJ02 = geolocationm.CoordinateSystemType.GCJ02
 
+let request_RUNNING = geolocationm.SportsType.RUNNING
+let request_WALKING = geolocationm.SportsType.WALKING
+let request_CYCLING = geolocationm.SportsType.CYCLING
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -281,22 +285,30 @@ export default function geolocationTest_LocErr(){
          * @tc.level Level 2
          */
         it('SUB_HSS_LocationSystem_BatchingErr_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-            try {
-                geolocationm.getCachedGnssLocationsSize("test",(err, data) => {
-                    if (err) {
-                        console.info('[lbs_js] getCachedSiz1 callback err is:' + JSON.stringify(err));
-                        expect(err.code).assertEqual("401");
-                        return;
-                    }
-                    console.info("[lbs_js] getCachedSiz1 callback data is:" + JSON.stringify(data));
-                    expect(true).assertFalse();
-                });
-            } catch (error) {
-                console.info("[lbs_js] getCachedSiz1 callback try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-                expect(error.code).assertEqual("401");
+            var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+            console.info("SUB_HSS_LocationSystem_BatchingErr_0100 : " + isAcessToken);
+            if (!isAcessToken) {
+                console.info("The device does not support Gnss");
+                expect(isAcessToken).assertFalse();
+                done();
+            } else {
+                try {
+                    geolocationm.getCachedGnssLocationsSize("test",(err, data) => {
+                        if (err) {
+                            console.info('[lbs_js] getCachedSiz1 callback err is:' + JSON.stringify(err));
+                            expect(err.code).assertEqual("401");
+                            return;
+                        }
+                        console.info("[lbs_js] getCachedSiz1 callback data is:" + JSON.stringify(data));
+                        expect(true).assertFalse();
+                    });
+                } catch (error) {
+                    console.info("[lbs_js] getCachedSiz1 callback try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
+                    expect(error.code).assertEqual("401");
+                }
+                await sleep(2000);
+                done();
             }
-            await sleep(2000);
-            done();
         })
     
         /**
@@ -308,22 +320,30 @@ export default function geolocationTest_LocErr(){
          * @tc.level Level 2
          */
         it('SUB_HSS_LocationSystem_BatchingErr_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-            try {
-                geolocationm.flushCachedGnssLocations("test",(err, data) => {
-                    if (err) {
-                        console.info('[lbs_js] flushCachedGnssLocations4 callback err is : ' + JSON.stringify(err));
-                        expect(err.code).assertEqual("401");
-                        return;
-                    }
-                    console.info("[lbs_js] flushCachedGnssLocations4 callback data is: " + JSON.stringify(data));
-                    expect(true).assertFalse();
-                });
-            } catch (error) {
-                console.info("[lbs_js] flushCachedGnssLocations4 callback try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-                expect(error.code).assertEqual("401");
+            var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+            console.info("SUB_HSS_LocationSystem_BatchingErr_0400 : " + isAcessToken);
+            if (!isAcessToken) {
+                console.info("The device does not support Gnss");
+                expect(isAcessToken).assertFalse();
+                done();
+            } else {
+                try {
+                    geolocationm.flushCachedGnssLocations("test",(err, data) => {
+                        if (err) {
+                            console.info('[lbs_js] flushCachedGnssLocations4 callback err is : ' + JSON.stringify(err));
+                            expect(err.code).assertEqual("401");
+                            return;
+                        }
+                        console.info("[lbs_js] flushCachedGnssLocations4 callback data is: " + JSON.stringify(data));
+                        expect(true).assertFalse();
+                    });
+                } catch (error) {
+                    console.info("[lbs_js] flushCachedGnssLocations4 callback try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
+                    expect(error.code).assertEqual("401");
+                }
+                await sleep(2000);
+                done();
             }
-            await sleep(2000);
-            done();
         })
     
         /**
@@ -335,17 +355,25 @@ export default function geolocationTest_LocErr(){
          * @tc.level Level 2
          */
         it('SUB_HSS_LocationSystem_BatchingErr_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-            (async () => {
-                try {
-                    let result = await geolocationm.flushCachedGnssLocations(1); 
-                    console.info("[lbs_js] flushCachedGnssLocations5 promise successful :" + JSON.stringify(result));
-                } catch(error) {
-                    console.info('[lbs_js] flushCachedGnssLocations5 promise err:' + JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-                    expect(error.code).assertEqual("401");
-                }
-              })();
-            await sleep(2000);
-            done();
+            var isAcessToken = canIUse("SystemCapability.Location.Location.Gnss");
+            console.info("SUB_HSS_LocationSystem_BatchingErr_0500 : " + isAcessToken);
+            if (!isAcessToken) {
+                console.info("The device does not support Gnss");
+                expect(isAcessToken).assertFalse();
+                done();
+            } else {
+                (async () => {
+                    try {
+                        let result = await geolocationm.flushCachedGnssLocations(1); 
+                        console.info("[lbs_js] flushCachedGnssLocations5 promise successful :" + JSON.stringify(result));
+                    } catch(error) {
+                        console.info('[lbs_js] flushCachedGnssLocations5 promise err:' + JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
+                        expect(error.code).assertEqual("401");
+                    }
+                })();
+                await sleep(2000);
+                done();
+            }
         })
         
        /**
@@ -404,20 +432,20 @@ export default function geolocationTest_LocErr(){
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_ENTER == 1)
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_EXIT == 2)
             expect(true).assertEqual(GEOFENCE_TRANSITION_EVENT_DWELL == 4)
-
             expect(true).assertEqual(LOCATING_FAILED_DEFAULT == -1)
             expect(true).assertEqual(LOCATING_FAILED_LOCATION_PERMISSION_DENIED == -2)
             expect(true).assertEqual(LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED == -3)
             expect(true).assertEqual(LOCATING_FAILED_LOCATION_SWITCH_OFF == -4)
             expect(true).assertEqual(LOCATING_FAILED_INTERNET_ACCESS_FAILURE == -5)
-
             expect(true).assertEqual(source_type_GNSS == 1)
             expect(true).assertEqual(source_type_NETWORK == 2)
             expect(true).assertEqual(source_type_INDOOR == 3)
             expect(true).assertEqual(source_type_RTK == 4)
-
             expect(true).assertEqual(coordinate_WGS84 == 1)
             expect(true).assertEqual(coordinate_GCJ02 == 2)
+            expect(true).assertEqual(request_RUNNING == 1)
+            expect(true).assertEqual(request_WALKING == 2)
+            expect(true).assertEqual(request_CYCLING == 3)
             done();
         })
 
@@ -430,37 +458,45 @@ export default function geolocationTest_LocErr(){
          * @tc.level     : Level 1
          */
         it('testAddGnssGeofence05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
-            let geofence = {
-                "latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": 100000, "coordinateSystemType": 1
-            }
-            let transitionStatusList = [
-                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
-                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
-                geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_DWELL
-            ];
-            let gnssGeofenceRequest = {
-                geofence: geofence,
-                monitorTransitionEvents: transitionStatusList,
-                geofenceTransitionCallback: (err, transition) => {}
-            }
-            for (let i = 0; i < 1000; i++) {
+            var isAcessToken = canIUse("SystemCapability.Location.Location.Geofence");
+            console.info("testAddGnssGeofence05 : " + isAcessToken);
+            if (!isAcessToken) {
+                console.info("The device does not support Geofence");
+                expect(isAcessToken).assertFalse();
+                done();
+            } else {
+                let geofence = {
+                    "latitude": 31.12, "longitude": 121.11, "radius": 1, "expiration": 100000, "coordinateSystemType": 1
+                }
+                let transitionStatusList = [
+                    geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
+                    geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
+                    geolocationm.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_DWELL
+                ];
+                let gnssGeofenceRequest = {
+                    geofence: geofence,
+                    monitorTransitionEvents: transitionStatusList,
+                    geofenceTransitionCallback: (err, transition) => {}
+                }
+                for (let i = 0; i < 1000; i++) {
+                    try {
+                        await geolocationm.addGnssGeofence(gnssGeofenceRequest);
+                    } catch(error) {
+                        console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+                    }
+                }
+
                 try {
-                    await geolocationm.addGnssGeofence(gnssGeofenceRequest);
+                    await geolocationm.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+                    }).catch((error) => {
+                        console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+                        expect(error.code).assertEqual(3301601);
+                    });
                 } catch(error) {
                     console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
                 }
+                done();
             }
-
-            try {
-                await geolocationm.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-                }).catch((error) => {
-                    console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
-                    expect(error.code).assertEqual(3301601);
-                });
-            } catch(error) {
-                console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
-            }
-            done();
         })
 
         /**
@@ -472,17 +508,25 @@ export default function geolocationTest_LocErr(){
          * @tc.level     : Level 1
          */
         it('testRemoveGnssGeofence06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
-            let fenceId = -1
-            try {
-                await geolocationm.removeGnssGeofence(fenceId).then(() => {
-                }).catch((error) => {
-                    console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 remove error=" + JSON.stringify(error));
-                    expect(error.code).assertEqual(3301602);
-                });
-            } catch(error) {
-                console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+            var isAcessToken = canIUse("SystemCapability.Location.Location.Geofence");
+            console.info("testRemoveGnssGeofence06 : " + isAcessToken);
+            if (!isAcessToken) {
+                console.info("The device does not support Geofence");
+                expect(isAcessToken).assertFalse();
+                done();
+            } else {
+                let fenceId = -1
+                try {
+                    await geolocationm.removeGnssGeofence(fenceId).then(() => {
+                    }).catch((error) => {
+                        console.info("[lbs_js] SUB_HSS_LOCATIONSYSTEM_GEOFENCE_0400 remove error=" + JSON.stringify(error));
+                        expect(error.code).assertEqual(3301602);
+                    });
+                } catch(error) {
+                    console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+                }
+                done();
             }
-            done();
         })
     })
 }

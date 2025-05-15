@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../common/js/saveData';
 import router from '@system.router';
 import battery from '@system.battery';
 
 export default {
     data: {
+        itemIndex: -1,
         level: 0,
         str: '',
         title: 'battery',
@@ -53,17 +53,24 @@ export default {
             params: {
                 step: '操作步骤：点击获取电量',
                 result: '预期结果：显示当前设备的电量实际百分值',
-                url: 'pages/battery/index'
+                url: 'pages/battery/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

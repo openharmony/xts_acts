@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
-import { describe, it, expect, beforeAll } from "@ohos/hypium";
+import { describe, it, expect, beforeAll, Level } from "@ohos/hypium";
 import {
   photoKeys,
   photoFetchOption,
@@ -148,7 +148,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_uri_001', 2, async (done: Function) => {
+    it('get_image_uri_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_uri_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -166,7 +166,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_photo_type_001', 2, async (done: Function) => {
+    it('get_image_photo_type_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_photo_type_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -184,7 +184,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_displayName_001', 2, async (done: Function) => {
+    it('get_image_displayName_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_displayName_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -201,7 +201,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_date_added_001', 2, async (done: Function) => {
+    it('get_image_date_added_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_date_added_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -219,7 +219,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_date_modified_001', 2, async (done: Function) => {
+    it('get_image_date_modified_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_date_modified_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -237,7 +237,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_duration_001', 2, async (done: Function) => {
+    it('get_image_duration_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_duration_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -255,7 +255,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_width_001', 2, async (done: Function) => {
+    it('get_image_width_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_width_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -273,7 +273,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_height_001', 2, async (done: Function) => {
+    it('get_image_height_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_height_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -291,7 +291,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_date_taken_001', 2, async (done: Function) => {
+    it('get_image_date_taken_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_date_taken_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -309,7 +309,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_orientation_001', 2, async (done: Function) => {
+    it('get_image_orientation_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_orientation_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -327,7 +327,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_favorite_001', 2, async (done: Function) => {
+    it('get_image_favorite_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_favorite_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -345,7 +345,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_size_001', 2, async (done: Function) => {
+    it('get_image_size_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_size_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -363,7 +363,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_title_001', 2, async (done: Function) => {
+    it('get_image_title_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_title_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -381,7 +381,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_position_001', 2, async (done: Function) => {
+    it('get_image_position_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_position_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -399,7 +399,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_date_trash_001', 2, async (done: Function) => {
+    it('get_image_date_trash_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_date_trash_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -417,7 +417,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_image_hidden_001', 2, async (done: Function) => {
+    it('get_image_hidden_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_image_hidden_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -436,7 +436,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_uri_001', 2, async (done: Function) => {
+    it('get_video_uri_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_uri_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -454,7 +454,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_photo_type_001', 2, async (done: Function) => {
+    it('get_video_photo_type_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_photo_type_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -472,7 +472,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_display_name_001', 2, async (done: Function) => {
+    it('get_video_display_name_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_052';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -489,7 +489,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_added_001', 2, async (done: Function) => {
+    it('get_video_date_added_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_date_added_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -507,7 +507,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_modified_001', 2, async (done: Function) => {
+    it('get_video_date_modified_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_date_modified_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -525,7 +525,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_duration_001', 2, async (done: Function) => {
+    it('get_video_duration_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_duration_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -543,7 +543,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_width_001', 2, async (done: Function) => {
+    it('get_video_width_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_width_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -561,7 +561,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_height_001', 2, async (done: Function) => {
+    it('get_video_height_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_height_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -579,7 +579,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_taken_001', 2, async (done: Function) => {
+    it('get_video_date_taken_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_date_taken_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -597,7 +597,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_orientation_001', 2, async (done: Function) => {
+    it('get_video_orientation_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_orientation_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -615,7 +615,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_favorite_001', 2, async (done: Function) => {
+    it('get_video_favorite_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_favorite_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -633,7 +633,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_size_001', 2, async (done: Function) => {
+    it('get_video_size_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_size_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -651,7 +651,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_title_001', 2, async (done: Function) => {
+    it('get_video_title_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_title_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -669,7 +669,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_position_001', 2, async (done: Function) => {
+    it('get_video_position_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_position_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -687,7 +687,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_trash_001', 2, async (done: Function) => {
+    it('get_video_date_trash_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_date_trash_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -705,7 +705,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_hidden_001', 2, async (done: Function) => {
+    it('get_video_hidden_001', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_hidden_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -723,7 +723,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_date_add_ms_001', 1, async (done: Function) => {
+    it('get_image_date_add_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_date_add_ms_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -748,7 +748,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_date_added_ms_001', 1, async (done: Function) => {
+    it('get_video_date_added_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_date_add_ms_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -773,7 +773,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_date_modified_ms_001', 1, async (done: Function) => {
+    it('get_image_date_modified_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_date_modified_ms_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -798,7 +798,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_date_modified_ms_001', 1, async (done: Function) => {
+    it('get_video_date_modified_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_date_modified_ms_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -824,7 +824,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_dynamic_range_type_001', 1, async (done: Function) => {
+    it('get_image_dynamic_range_type_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_dynamic_range_type_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -842,7 +842,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_cover_position_001', 1, async (done: Function) => {
+    it('get_image_cover_position_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_cover_position_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -860,7 +860,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_cover_position_001', 1, async (done: Function) => {
+    it('get_video_cover_position_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_cover_position_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -878,7 +878,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_burst_key_001', 1, async (done: Function) => {
+    it('get_image_burst_key_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_burst_key_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -897,7 +897,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_burst_key_001', 1, async (done: Function) => {
+    it('get_video_burst_key_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_burst_key_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -916,7 +916,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_lcd_size_001', 1, async (done: Function) => {
+    it('get_image_lcd_size_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_lcd_size_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -934,7 +934,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_lcd_size_001', 1, async (done: Function) => {
+    it('get_video_lcd_size_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_lcd_size_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -952,7 +952,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_thm_size_001', 1, async (done: Function) => {
+    it('get_image_thm_size_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_thm_size_001';
       const displayName = 'getTest.jpg';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -971,7 +971,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_thm_size_001', 1, async (done: Function) => {
+    it('get_video_thm_size_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_thm_size_001';
       const displayName = 'getTest.mp4';
       const fetchOps: photoAccessHelper.FetchOptions = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -990,7 +990,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_detail_time_001', 1, async (done: Function) => {
+    it('get_image_detail_time_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_detail_time_001';
       const displayName = 'getTest.jpg';
       try {
@@ -1023,7 +1023,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_detail_time_001', 1, async (done: Function) => {
+    it('get_video_detail_time_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_detail_time_00';
       const displayName = 'getTest.mp4';
       try {
@@ -1056,7 +1056,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_image_date_taken_ms_001', 1, async (done: Function) => {
+    it('get_image_date_taken_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_image_date_taken_ms_001';
       const displayName = 'getTest.jpg';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -1081,7 +1081,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_video_date_taken_ms_001', 1, async (done: Function) => {
+    it('get_video_date_taken_ms_001', Level.LEVEL1, async (done: Function) => {
       const testNum = 'get_video_date_taken_ms_001';
       const displayName = 'getTest.mp4';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -1106,7 +1106,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-      it('get_video_date_taken_ms_002', 2, async (done: Function) => {
+      it('get_video_date_taken_ms_002', Level.LEVEL2, async (done: Function) => {
         const testNum = 'get_video_date_taken_ms_002';
         const displayName = 'getTest.mp4';
         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -1125,7 +1125,7 @@ export default function getTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_video_date_taken_ms_003', 2, async (done: Function) => {
+    it('get_video_date_taken_ms_003', Level.LEVEL2, async (done: Function) => {
       const testNum = 'get_video_date_taken_ms_003';
       const displayName = 'getTest.mp4';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
@@ -1134,5 +1134,43 @@ export default function getTest() {
       await getErrorKeysValue(done, testNum, fetchOps, undefined, value);
       done();
     });
+
+    /**
+     * @tc.number    : Sub_MediaLibrary_Get_MediaSuffix_001
+     * @tc.name      : get_asset_mediaSuffix_001
+     * @tc.desc      : get all asset mediaSuffix
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_asset_mediaSuffix_001', Level.LEVEL1, async (done: Function) => {
+      const testNum = 'get_asset_mediaSuffix_001';
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [
+            photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+            photoAccessHelper.PhotoKeys.MEDIA_SUFFIX
+          ],
+          predicates: predicates
+        };
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+        let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+        for (let i = 0; i < photoAssetList.length; i++) {
+          let photoAsset: photoAccessHelper.PhotoAsset = photoAssetList[i];
+          let suffix: string = (photoAsset.displayName).substring(((photoAsset.displayName).lastIndexOf(".") + 1), photoAsset.displayName.length);
+          console.log(`${testNum} :: get PhotoAsset ${photoAsset.displayName} mediaSuffix = ${suffix}`);
+          let mediaSuffix: string = photoAsset.get(photoAccessHelper.PhotoKeys.MEDIA_SUFFIX).toString();
+          console.log(`${testNum} :: get  get PhotoAsset suffix key value = ${mediaSuffix}`);
+          expect(mediaSuffix).assertEqual(suffix);
+        }
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: get asset mediaSuffix failed ! error = ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
   })
 }

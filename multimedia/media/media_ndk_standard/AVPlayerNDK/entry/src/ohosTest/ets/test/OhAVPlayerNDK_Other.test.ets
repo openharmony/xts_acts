@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import avplayer from 'libavplayerndk.so'
 import fs from '@ohos.file.fs'
@@ -156,7 +156,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerList001', 0, async (done: Function) => {
+    it('testOhAvPlayerList001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerList001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -272,7 +272,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess001', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess001', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess001 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -319,7 +319,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess002', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess002', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess002 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -363,7 +363,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess003', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess003', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess003 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -408,7 +408,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess004', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess004', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess004 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -447,7 +447,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess005', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess005', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess005 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -474,7 +474,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess006', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess006', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess006 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -507,7 +507,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetAVPlayerNormalProcess007', 0, async (done: Function) => {
+    it('testGetAVPlayerNormalProcess007', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerNormalProcess007 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -562,7 +562,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal001', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal001', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal001 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -592,7 +592,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal002', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal002', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal002 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -627,7 +627,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal003', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal003', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal003 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -671,7 +671,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal004', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal004', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal004 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -706,7 +706,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal005', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal005', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal005 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -736,7 +736,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal006', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal006', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal006 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -766,7 +766,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal007', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal007', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal007 test start `);
 
       let result: number = avplayer.OhAvPlayerSetFdPathSource();
@@ -811,7 +811,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal008', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal008', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal008 test start `);
 
       let result: number = avplayer.OhAvPlayerPrepare();
@@ -833,7 +833,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal009', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal009', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal009 test start `);
 
       let result: number = await avplayer.OhAvPlayerPlay();
@@ -855,7 +855,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal010', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal010', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal010 test start `);
 
       let result: number = avplayer.OhAvPlayerPause();
@@ -877,7 +877,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal011', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal011', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal011 test start `);
 
       let result: number = avplayer.OhAvPlayerStop();
@@ -899,7 +899,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal012', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal012', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal012 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -953,7 +953,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal013', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal013', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal013 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -998,7 +998,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal014', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal014', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal014 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -1043,7 +1043,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testGetAVPlayerAbnormal015', 0, async (done: Function) => {
+    it('testGetAVPlayerAbnormal015', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerAbnormal015 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -1104,7 +1104,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlaybackSpeed001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlaybackSpeed001 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1171,7 +1171,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlaybackSpeed002', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlaybackSpeed002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlaybackSpeed002 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1236,7 +1236,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlaybackSpeed003', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlaybackSpeed003 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1301,7 +1301,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlaybackSpeed004', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlaybackSpeed004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlaybackSpeed004 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1366,7 +1366,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlaybackSpeed005', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlaybackSpeed005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlaybackSpeed005 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1431,7 +1431,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSelectBitRate001', 0, async (done: Function) => {
+    it('testOhAvPlayerSelectBitRate001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSelectBitRate001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1484,7 +1484,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSelectBitRate002', 0, async (done: Function) => {
+    it('testOhAvPlayerSelectBitRate002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSelectBitRate002 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1537,7 +1537,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSelectBitRate003', 0, async (done: Function) => {
+    it('testOhAvPlayerSelectBitRate003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSelectBitRate003 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1591,7 +1591,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSelectBitRate004', 0, async (done: Function) => {
+    it('testOhAvPlayerSelectBitRate004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSelectBitRate004 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1645,7 +1645,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetPlayerCallback001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetPlayerCallback001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetPlayerCallback001 test start `);
 
       let result: number = avplayer.OhAvPlayerCreate();
@@ -1696,7 +1696,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetLooping001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetLooping001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetLooping001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1754,7 +1754,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetLooping002', 0, async (done: Function) => {
+    it('testOhAvPlayerSetLooping002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetLooping002 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1812,7 +1812,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume001', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1866,7 +1866,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume002', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume002 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1922,7 +1922,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume003', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume003', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume003 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -1980,7 +1980,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume004', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume004', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume004 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2033,7 +2033,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume005', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume005', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume005 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2088,7 +2088,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOhAvPlayerSetVolume006', 0, async (done: Function) => {
+    it('testOhAvPlayerSetVolume006', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerSetVolume006 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2174,7 +2174,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerGetCurrentTrack001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetCurrentTrack001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetCurrentTrack001 test start `);
       let result: number = await avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2213,7 +2213,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerGetCurrentTrack002', 0, async (done: Function) => {
+    it('testOhAvPlayerGetCurrentTrack002', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetCurrentTrack002 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2255,7 +2255,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerGetDuration001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetDuration001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetDuration001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2294,7 +2294,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerGetVideoWidth001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetVideoWidth001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetVideoWidth001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2332,7 +2332,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testOhAvPlayerGetVideoHeighth001', 0, async (done: Function) => {
+    it('testOhAvPlayerGetVideoHeighth001', Level.LEVEL0,async (done: Function) => {
       console.info(`testOhAvPlayerGetVideoHeight001 test start `);
       let result: number = avplayer.OhAvPlayerCreate();
       expect(result).assertEqual(AV_ERR_OK);
@@ -2428,7 +2428,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate001', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate001', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate001 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2467,7 +2467,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate002', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate002', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate002 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2559,7 +2559,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate003', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate003', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate003 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2602,7 +2602,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate004', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate004', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate004 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -2694,7 +2694,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate005', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate005', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate005 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2740,7 +2740,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate006', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate006', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate006 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2781,7 +2781,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate007', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate007', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate007 test start `);
 
       let state: number = avplayer.OhAvPlayerGetState();
@@ -2884,7 +2884,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate008', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate008', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate008 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -2944,7 +2944,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate009', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate009', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate009 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3064,7 +3064,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate010', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate010', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate010 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3126,7 +3126,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate011', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate011', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate011 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3240,7 +3240,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate012', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate012', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate012 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3317,7 +3317,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate013', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate013', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate013 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3448,7 +3448,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate014', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate014', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate014 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3535,7 +3535,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate015', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate015', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate015 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3675,7 +3675,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate016', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate016', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate016 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3763,7 +3763,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate017', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate017', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate017 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3900,7 +3900,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate018', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate018', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate018 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -3980,7 +3980,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate019', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate019', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate019 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4105,7 +4105,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate020', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate020', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate020 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4177,7 +4177,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate021', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate021', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate021 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4310,7 +4310,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate022', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate022', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate022 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4397,7 +4397,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate023', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate023', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate023 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4538,7 +4538,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate024', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate024', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate024 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4618,7 +4618,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate025', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate025', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate025 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4756,7 +4756,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate026', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate026', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate026 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);
@@ -4846,7 +4846,7 @@ export default function OhAVPlayerNDKOtherTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testGetAVPlayerCirculate027', 0, async (done: Function) => {
+    it('testGetAVPlayerCirculate027', Level.LEVEL0,async (done: Function) => {
       console.info(`testGetAVPlayerCirculate027 test start `);
       let state: number = avplayer.OhAvPlayerGetState();
       expect(state).assertEqual(AV_IDLE);

@@ -211,7 +211,7 @@ export default function ReminderAgentManagerOnlyMainTest() {
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0034", 0, async function (done) {
+        it("reminderRequestAttribute_0034", Level.LEVEL3, async function (done) {
             console.info('----------------------reminderRequestAttribute_0034---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1

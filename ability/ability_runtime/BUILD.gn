@@ -48,6 +48,7 @@ group("ability_runtime") {
       "actscleantemptest:cleantempfiles",
       "actscollaborateresulttest:actscollaborateresulttest",
       "actscontextmonitor:ActsContextMonitorTest",
+      "actscompletionhandlertest:actscompletionhandlertest",
       "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",

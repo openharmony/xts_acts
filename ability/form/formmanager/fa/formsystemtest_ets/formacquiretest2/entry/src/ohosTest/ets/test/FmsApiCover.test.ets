@@ -14,7 +14,7 @@
  */
 
 import FormInfo from '@ohos.app.form.formInfo';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 let formState: FormInfo.FormState;
 
@@ -27,8 +27,12 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it(`FMS_apiCoverTest_001`, 0, async (done: () => void) => {
+    it(`FMS_apiCoverTest_001`, TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
       console.info("FMS_apiCoverTest_001 start");
+
+      if (FormInfo.FormParam.FORM_LOCATION_KEY) {
+        expect("ohos.extra.param.key.form_location").assertEqual(FormInfo.FormParam.FORM_LOCATION_KEY);
+      }
 
       expect("ohos.extra.param.key.form_identity").assertEqual(FormInfo.FormParam.IDENTITY_KEY);
       expect("ohos.extra.param.key.bundle_name").assertEqual(FormInfo.FormParam.BUNDLE_NAME_KEY);
