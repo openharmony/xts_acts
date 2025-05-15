@@ -29,9 +29,18 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+import deviceInfo from "@ohos.deviceInfo"
 
 export default function sheetBorderWidth() {
   describe('sheetBorderWidth', () => {
+    let currentDeviceIsPC = false
+    beforeAll(() => {
+      console.info("popupKeyboardAvoidMode beforeAll start")
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsPC = deviceTypeInfo === "2in1" ? true : false
+      console.info("the value of the currentDeviceIsPC is " + currentDeviceIsPC)
+      console.info("the value of the deviceType is " + deviceInfo.deviceType)
+    })
 
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
@@ -151,7 +160,12 @@ export default function sheetBorderWidth() {
       console.info("[sheetBorderWidth_0300] obj2.$children[1].$children[0] borderWidth is: " + JSON.stringify(obj2.$children[1].$children[0].$attrs));
       console.info("[sheetBorderWidth_0300] obj2.$children[1].$children[0] borderWidth is: " + JSON.stringify(obj2.$children[1].$children[0].$attrs?.borderWidth));
       let borderWidth:string = obj2.$children[1].$children[0].$attrs?.borderWidth
-      expect(borderWidth).assertEqual('0.00vp');
+
+      if(currentDeviceIsPC){
+        expect(borderWidth).assertEqual('1.00px');
+      }else{
+        expect(borderWidth).assertEqual('0.00vp');
+      }
             
       let btn2: Component = await driver.findComponent(ON.id('close1_border'));
       await btn2.click();
