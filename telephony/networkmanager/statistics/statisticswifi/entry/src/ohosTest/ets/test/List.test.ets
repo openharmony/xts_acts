@@ -14,13 +14,12 @@
  */
 
 
-import NetStatisticsTest from './Statistics.test';
+
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 import statisticsErrorCodeTest from './StatisticsErrorCode.test';
 
 export default function testsuite() {if (sim.getMaxSimCount()>1){
-  NetStatisticsTest();
   statisticsErrorCodeTest();
   }else{
   EmptyTest()

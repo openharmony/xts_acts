@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.example.policy",
+    "bundleName": "com.example.data",
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",

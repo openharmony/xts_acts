@@ -26,7 +26,7 @@
     "pages": "$profile:test_pages",
     "requestPermissions": [
       {
-        "name": "ohos.permission.MANAGE_NET_STRATEGY"
+        "name": "ohos.permission.GET_NETWORK_INFO"
       }
     ],
     "abilities": [
