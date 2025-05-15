@@ -85,11 +85,23 @@ export default function windowPropertiesTest() {
             // The number of execution times is the same as the number of test cases defined by **it**.
             // This API supports only one parameter: preset action function.
         })
-        afterEach(() => {
-            // Presets a clear action, which is performed after each unit test case ends.
-            // The number of execution times is the same as the number of test cases defined by **it**.
-            // This API supports only one parameter: clear action function.
-        })
+        afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
+    })
         afterAll(() => {
             // Presets a clear action, which is performed after all test cases of the test suite end.
             // This API supports only one parameter: clear action function.
@@ -3417,11 +3429,13 @@ export default function windowPropertiesTest() {
                 expect(subWindowStatus).assertFalse();
                 done();
             } catch (exception) {
+                console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
                 if (exception.code === 1300002) {
                     console.error(`${caseName} This window state is abnormal.`);
                     done();
-                } else {
-                    console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+                } else if(exception.code === 801){
+                    done();
+                }else {
                     expect().assertFail();
                     done();
                 }
@@ -3955,61 +3969,477 @@ export default function windowPropertiesTest() {
        * @tc.type      : Function
        * @tc.level     : Level 0
        */
-      it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-        let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
-        console.log(caseName + 'begin');
-        let windowStageStart = await startAbility3(caseName, context);
-        try {
-          let windowClass2 = windowStageStart.getMainWindowSync();
-          let res = windowClass2.getWindowProperties()
-          console.info(caseName + 'res: ' + JSON.stringify(res));
-          window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
-            console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
-            console.info(caseName + `infos.length: ${infos.length}`);
-            expect(infos.length).assertLargerOrEqual(1);
-            let isExit = false;
-            for (let i = 0; i < infos.length; i++) {
-              if (infos[i].windowId === res.id) {
-                isExit = true;
-                let info = infos[i];
-                console.info(caseName + 'info: ' + JSON.stringify(info));
-                expect(info.rect.left).assertEqual(res.windowRect.left);
-                expect(info.rect.top).assertEqual(res.windowRect.top);
-                expect(info.rect.width).assertEqual(res.windowRect.width);
-                expect(info.rect.height).assertEqual(res.windowRect.height);
-                expect(info.isFocused).assertEqual(true);
-                console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
-                console.info(caseName + `info.bundleName: ${info.bundleName}`);
-                console.info(caseName + `info.abilityName: ${info.abilityName}`);
-                break;
-              }
+       /**
+     * @tc.number    : SUB_BASIC_WMS_GET_VISIBLEWINDOWINFO_0100
+     * @tc.name      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.desc      : test_GET_VISIBLEWINDOWINFO_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_GET_VISIBLEWINDOWINFO_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName: string = 'test_GET_VISIBLEWINDOWINFO_0100 ';
+      console.log(caseName + 'begin');
+      let windowStageStart = await startAbility3(caseName, context);
+      try {
+        let windowClass2 = windowStageStart.getMainWindowSync();
+        let res = windowClass2.getWindowProperties()
+        console.info(caseName + 'res: ' + JSON.stringify(res));
+        window.getVisibleWindowInfo().then(async (infos: Array<window.WindowInfo>) => {
+          console.info(caseName + 'Succeeded in calling getVisibleWindowInfo.');
+          console.info(caseName + `infos.length: ${infos.length}`);
+          expect(infos.length).assertLargerOrEqual(1);
+          let isExit = false;
+          for (let i = 0; i < infos.length; i++) {
+            if (infos[i].windowId === res.id) {
+              isExit = true;
+              let info = infos[i];
+              console.info(caseName + 'info: ' + JSON.stringify(info));
+              expect(info.rect.left).assertEqual(res.windowRect.left);
+              expect(info.rect.top).assertEqual(res.windowRect.top);
+              expect(info.rect.width).assertEqual(res.windowRect.width);
+              expect(info.rect.height).assertEqual(res.windowRect.height);
+              expect(info.isFocused).assertEqual(true);
+              console.info(caseName + `info.windowStatusType: ${info.windowStatusType}`);
+              console.info(caseName + `info.bundleName: ${info.bundleName}`);
+              console.info(caseName + `info.abilityName: ${info.abilityName}`);
+              break;
             }
-            if (!isExit) {
-              console.error(`${caseName} failed, there is no match windowId.`);
-              await terminateAbility3(caseName);
-              expect().assertFail();
-              done()
-            }
+          }
+          if (!isExit) {
+            console.error(`${caseName} failed, there is no match windowId.`);
             await terminateAbility3(caseName);
-            done();
-          }).catch(async (err: BusinessError) => {
-            console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
-            await terminateAbility3(caseName);
-            if (err.code === 801) {
-              console.log(`${caseName} deviceType does not supported this Capability`);
-              done()
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
-        } catch (err) {
+            expect().assertFail();
+            done()
+          }
           await terminateAbility3(caseName);
-          console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(caseName + 'Failed to call getVisibleWindowInfo. Cause: ' + JSON.stringify(err));
+          await terminateAbility3(caseName);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        await terminateAbility3(caseName);
+        console.log(`${caseName} : failed, code: ${err.code}, msg: ${err.message}`);
+        if (err.code === 801) {
+            console.log(`${caseName} deviceType does not supported this Capability`);
+            done()
+          } else {
+            expect().assertFail();
+            done();
+          }
+      }
+    });
+      /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it("testSetDefaultDensityEnabled_true", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let msgStr = "testSetDefaultDensityEnabled_true";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.setDefaultDensityEnabled(true);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+
+       /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0020
+     * @tc.name      : testSetDefaultDensityEnabled_true
+     * @tc.desc      : Test the function value of setDefaultDensityEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it("testSetDefaultDensityEnabled_false", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let msgStr = "testSetDefaultDensityEnabled_false";
+      console.log(msgStr + "begin");
+      try {
+        windowStage.setDefaultDensityEnabled(false);
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log('Failed to set default density enabled. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0030
+     * @tc.name      : testRectChangeOptions_on
+     * @tc.desc      : Test the function value of testRectChangeOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("testRectChangeOptions_on", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "testRectChangeOptions_on";
+      console.log(msgStr + "begin");
+      try {
+        let windowClass = await windowStage.getMainWindow();
+        let rect: ohosWindow.Rect = {
+          left: 10,
+          top: 10,
+          width: 10,
+          height: 10
+        };
+        let reason: ohosWindow.RectChangeReason;
+        windowClass.on('windowRectChange', (data: ohosWindow.RectChangeOptions) => {
+          console.log(msgStr + 'Succeeded window rect changes. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        if (error.code === 801) {
+          console.info(`${msgStr} The current device type does not support to windowRectChange`);
+          done();
+        } else {
+          console.log(msgStr + 'Failed to window rect changes.Data: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
-      });
+      }
+    })
+
+     /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0100
+         * @tc.name      : test_setWindowGrayScale_0
+         * @tc.desc      : test_setWindowGrayScale_0
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_0", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_0";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let grayScale = 0;
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 0.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0200
+         * @tc.name      : test_setWindowGrayScale_0.5
+         * @tc.desc      : test_setWindowGrayScale_0.5
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_0.5", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_0.5";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 0.5;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 0.5.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0300
+         * @tc.name      : test_setWindowGrayScale_1
+         * @tc.desc      : test_setWindowGrayScale_1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_1";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 1;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0400
+         * @tc.name      : test_setWindowGrayScale_-1
+         * @tc.desc      : test_setWindowGrayScale_-1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+    it("test_setWindowGrayScale_-1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_-1";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = -1;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale -1.');
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0500
+         * @tc.name      : test_setWindowGrayScale_2
+         * @tc.desc      : test_setWindowGrayScale_2
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_setWindowGrayScale_2", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_setWindowGrayScale_2";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      let grayScale = 2;
+      try {
+        windowClass.setWindowGrayScale(grayScale).then(() => {
+          console.info(msgStr + 'Succeeded in setting the grayScale 2.');
+          expect(false).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code));
+        expect(error.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_WINDOW_GRAYSCALE_0600
+         * @tc.name      : test_subWindow_setWindowGrayScale_1
+         * @tc.desc      : test_subWindow_setWindowGrayScale_1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+    it("test_subWindow_setWindowGrayScale_1", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_subWindow_setWindowGrayScale_1";
+      console.log(msgStr + "begin");
+      let grayScale = 1;
+      try {
+        await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_2').then(async (data) => {
+          let subWindowClass = data;
+          console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.setUIContent('testability/pages/First/index2').then(() => {
+            console.info(msgStr + 'Succeeded in setUiContent.');
+            subWindowClass.setWindowGrayScale(grayScale).then(async () => {
+              console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+              await subWindowClass.destroyWindow();
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+              await subWindowClass.destroyWindow();
+              if (err.code == 801) {
+                console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.log(msgStr + `Failed to setUiContent. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          });
+        }).catch((err: BusinessError) => {
+          console.log(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0100
+     * @tc.name      : test_snapshotIgnorePrivacy_1300002
+     * @tc.desc      :  test_snapshotIgnorePrivacy_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_snapshotIgnorePrivacy_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: ohosWindow.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_snapshotIgnorePrivacy_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          let promise2 = subWindowClass.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            await subWindowClass.destroyWindow();
+            expect(false).assertTrue();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else if(err.code == 1300002){
+              expect(true).assertTrue();
+              done();
+            }else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_snapshotIgnorePrivacy_0200
+     * @tc.name      : test_snapshotIgnorePrivacy
+     * @tc.desc      :  test_snapshotIgnorePrivacy
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("test_snapshotIgnorePrivacy", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let msgStr = "test_snapshotIgnorePrivacy";
+      console.log(msgStr + "begin");
+      let mainWoindow: ohosWindow.Window = windowStage.getMainWindowSync();
+      try {
+          let promise2 = mainWoindow.snapshotIgnorePrivacy();
+          promise2.then(async (pixelMap:image.PixelMap) => {
+            let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
+            console.info(`${msgStr} pixelMapHeight: ${imageInfo.size.height}, pixelMapWidth: ${imageInfo.size.width}`);
+            let widthBefore: number = mainWoindow.getWindowProperties().windowRect.width;
+            let heightBefore: number = mainWoindow.getWindowProperties().windowRect.height;
+            console.info(`${msgStr} windowHeight: ${heightBefore}, windowWidth: ${widthBefore}`);
+            expect(Math.abs(widthBefore-imageInfo.size.width)).assertLessOrEqual(1);
+            expect(Math.abs(heightBefore-imageInfo.size.height)).assertLessOrEqual(1);
+            pixelMap.release();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              console.log(msgStr + '此设备不支持');
+              done();
+            } else {
+              console.log(msgStr + 'Failed to setWindowMask');
+              expect(false).assertTrue();
+              done();
+            }
+
+          });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
 
     })
 }

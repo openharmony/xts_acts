@@ -14,13 +14,13 @@
  */
 import WindowLifecycle from './WindowLifecycle.test';
 import windowTitleBarTest from './WindowTitleBar.test';
-import windowPromiseTest from './WindowPromise.test';
+import windowModalTest from './WindowModal.test';
 import windowMaximizeTest from './WindowMaximize.test';
 import windowImmersiveTest from './WindowImmersive.test';
 import windowPropertiesTest from './WindowProperties.test';
 import windowPropertiesTest2 from './WindowProperties2.test';
 import windowManageTest from './WindowManage.test';
-import windowInterface from './WindowInterface.test';
+import windowAutoSaveTest from './WindowAutoSave.test';
 import windowZindexTest from './WindowZindex.test';
 import windowLayoutTest from './WindowLayout.test';
 import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
@@ -30,13 +30,13 @@ import windowRotationTest from './WindowRotation.test';
 
 export default function testsuite() {
   windowFocusTest();
-  windowInterface();
+  windowAutoSaveTest();
   windowTitleBarTest();
   windowLayoutTest();
   windowZindexTest();
   windowManageTest();
   WindowLifecycle();
-  windowPromiseTest();
+  windowModalTest();
   windowMaximizeTest();
   windowImmersiveTest();
   windowPCTest();
