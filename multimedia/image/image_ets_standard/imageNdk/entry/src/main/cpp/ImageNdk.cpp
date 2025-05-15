@@ -1411,6 +1411,54 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
     return result;
 }
 
+static napi_value AssertImageSize(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+    
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        return result;
+    }
+
+    OH_Pixelmap_ImageInfo *imageInfo;
+    Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    errCode = OH_PixelmapNative_GetImageInfo(TEST_PIXELMAP, imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    ImageInfo imageInfoJs;
+    errCode = OH_PixelmapImageInfo_GetWidth(imageInfo, &(imageInfoJs.width));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetWidth failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iwidth;
+    napi_get_value_uint32(env, argValue[NUM_0], &iwidth);
+    OH_LOG_INFO(LOG_APP, "width is %{public}d", iwidth);
+    OH_LOG_INFO(LOG_APP, "imageInfo getWidth is %{public}d", imageInfoJs.width);
+    errCode = OH_PixelmapImageInfo_GetHeight(imageInfo, &(imageInfoJs.height));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetHeight failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iheight;
+    napi_get_value_uint32(env, argValue[NUM_1], &iheight);
+    OH_LOG_INFO(LOG_APP, "height is %{public}d", iheight);
+    OH_LOG_INFO(LOG_APP, "imageInfo getHeight is %{public}d", imageInfoJs.height);
+
+    if (iwidth == imageInfoJs.width && iheight == imageInfoJs.height) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
 static napi_value CreatePixelMapList(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_value argValue[NUM_2] = {0};
@@ -2430,6 +2478,7 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"CreateFromFd", nullptr, CreateFromFd, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreateFromData", nullptr, CreateFromData, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMap", nullptr, CreatePixelMap, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"AssertImageSize", nullptr, AssertImageSize, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CreatePixelMapList", nullptr, CreatePixelMapList, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageInfo", nullptr, GetImageInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetImageProperty", nullptr, GetImageProperty, nullptr, nullptr, nullptr, napi_default, nullptr},
