@@ -1042,7 +1042,7 @@ export default function CameraManagerTest() {
     })
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraManagerGetCameraDevice0100
-     * @tc.name       : testOHCameraManagerGetCameraDevice0100
+     * @tc.name       : test0100
      * @tc.size       : MediumTest
      * @tc.desc       : The total duration of obtaining media files, accurate to milliseconds.
      * @tc.type       : Function
