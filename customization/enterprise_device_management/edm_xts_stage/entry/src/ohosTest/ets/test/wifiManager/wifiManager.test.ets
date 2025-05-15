@@ -1139,6 +1139,33 @@ function testAddAllowedWifiList() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_WIFI_LIST_JS_00012
+   * @tc.name      : test_add_allowed_wifi_list_00012
+   * @tc.desc      : test wifiManager addAllowedWifiList conflict
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_allowed_wifi_list_00012", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
 }
 
 function testRemoveAllowedWifiList() {
@@ -1633,6 +1660,32 @@ function testAddDisallowedWifiList() {
     } finally {
       let ret: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(SELFWANT);
       wifiManager.removeDisallowedWifiList(SELFWANT, ret);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_DISALLOWED_WIFI_LIST_JS_00012
+   * @tc.name      : test_add_disallowed_wifi_list_00012
+   * @tc.desc      : test wifiManager addDisallowedWifiList conflict
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_disallowed_wifi_list_00012", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let wifiAccessInfos: Array<wifiManager.WifiAccessInfo> = [
+        {ssid: "wifi1", bssid: "68:77:24:77:A6:D6"},
+        {ssid: "wifi2", bssid: "68:77:24:77:A6:D6"}
+      ]
+      wifiManager.addAllowedWifiList(SELFWANT, wifiAccessInfos);
+      wifiManager.addDisallowedWifiList(SELFWANT, wifiAccessInfos);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
