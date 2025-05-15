@@ -189,8 +189,8 @@ export default function imageNdkTest() {
         const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
         if (typeof pixelMap === "object") {
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap success :${pixelMap}`)
-          let result = await ndkTest.AsssertImageSize(width, height)
-          expect(result == 0).assertTrue;
+          let result = ndkTest.AssertImageSize(width, height);
+          expect(result == 0).assertTrue();
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap Size is equal to DesiredSize success :${pixelMap}`)
           expect(true).assertTrue();
           ndkTest.SourceRelease(imageSourceApi);
@@ -225,8 +225,8 @@ export default function imageNdkTest() {
         const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
         if (typeof pixelMap === "object") {
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap success :${pixelMap}`)
-          let result = await ndkTest.AsssertImageSize(width, height)
-          expect(result == 0).assertTrue;
+          let result = ndkTest.AssertImageSize(width, height);
+          expect(result == 0).assertTrue();
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap Size is equal to DesiredSize success :${pixelMap}`)
           expect(true).assertTrue();
           ndkTest.SourceRelease(imageSourceApi)
@@ -261,8 +261,8 @@ export default function imageNdkTest() {
         const pixelMap: image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi, options)
         if (typeof pixelMap === "object") {
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap success :${pixelMap}`)
-          let result = await ndkTest.AsssertImageSize(width, height)
-          expect(result == 0).assertTrue;
+          let result = ndkTest.AssertImageSize(width, height);
+          expect(result == 0).assertTrue();
           hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap Size is equal to DesiredSize success :${pixelMap}`)
           expect(true).assertTrue();
           ndkTest.SourceRelease(imageSourceApi);
