@@ -18,7 +18,7 @@ import cardEmulation from '@ohos.nfc.cardEmulation';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         hceService: null,
         value: '',
         str: '',
@@ -57,7 +57,8 @@ export default {
             params: {
                 step: '操作步骤：点击读卡按钮(接口中已有模拟卡片数据)',
                 result: '预期结果：显示读卡：success',
-                url: 'pages/nfc/index'
+                url: 'pages/nfc/index',
+                itemIndex: this.itemIndex
             }
         });
     },

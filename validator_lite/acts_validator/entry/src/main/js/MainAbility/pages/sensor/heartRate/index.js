@@ -18,7 +18,7 @@ import sensor from '@system.sensor';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         heartRate: 0,
         str: '',
         title: 'heartRate',
@@ -59,7 +59,8 @@ export default {
             params: {
                 step: '操作步骤：点击订阅心率和取消订阅',
                 result: '预期结果：订阅心率后会实时更新当前心率值，取消订阅后心率不再更新',
-                url: 'pages/sensor/heartRate/index'
+                url: 'pages/sensor/heartRate/index',
+                itemIndex: this.itemIndex
             }
         });
     },
