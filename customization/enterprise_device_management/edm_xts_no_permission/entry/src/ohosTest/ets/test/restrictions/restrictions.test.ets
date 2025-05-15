@@ -34,6 +34,7 @@ const LABEL_TETHERING = "tethering";
 const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
+const LABEL_APN = "apn";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -44,6 +45,7 @@ export default function restrictionsTest() {
     testAddDisallowedListForAccountPolicy();
     testRemoveDisallowedListForAccountPolicy();
     testGetDisallowedListForAccountPolicy();
+    testSetUserRestrictionPolicy();
   })
 }
 
@@ -198,6 +200,29 @@ function testGetDisallowedListForAccountPolicy() {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       restrictions.getDisallowedListForAccount(SELFWANT, LABEL_SNAPSHOT_SKIP_FOR_ACCOUNT, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testSetUserRestrictionPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0100
+   * @tc.name      : test_set_user_restriction_0100
+   * @tc.desc      : test restrictions setUserRestriction with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0100", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_APN, true);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 201).assertTrue();
