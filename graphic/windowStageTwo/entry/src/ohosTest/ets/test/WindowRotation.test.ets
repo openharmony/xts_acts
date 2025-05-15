@@ -27,7 +27,8 @@ export default function windowRotationTest() {
     let windowStage: window.WindowStage;
     let isAutoWindow: string = '';
     let isPCStatus: string = '';
-    beforeAll(() => {
+    let isSupportRotate = false;
+    beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context));
       windowStage = AppStorage.get('windowStage') as window.WindowStage;
@@ -41,6 +42,21 @@ export default function windowRotationTest() {
       //isPCStatus == '1' PC设备状态栏dock未融合
       //isPCStatus == '0' PC设备状态栏dock融合
       console.info(`beforeAll isPCStatus: `+ isPCStatus);
+      let mainWindow = windowStage.getMainWindowSync();
+      await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT)
+      await sleep(300);
+      let Orientation1 = display.getDefaultDisplaySync().orientation;
+      await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
+      await sleep(300);
+      let Orientation2 = display.getDefaultDisplaySync().orientation;
+      if(Orientation1 != Orientation2){
+        isSupportRotate = true;
+      }else{
+        isSupportRotate = false;
+      }
+      await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
+      await sleep(300);
+      console.log(`beforeAll isSupportRotate: ${JSON.stringify(isSupportRotate)},Orientation1: ${JSON.stringify(Orientation1)},Orientation2: ${JSON.stringify(Orientation2)}`)
     });
     beforeEach(() => {
     });
@@ -182,7 +198,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_0500';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0500');
+      if(isSupportRotate){
+        let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0500');
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
@@ -279,6 +296,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -293,7 +314,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_0600';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0600');
+      if(isSupportRotate){
+        let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0600');
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
@@ -390,6 +412,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -404,7 +430,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_0700';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0700');
+      if(isSupportRotate){
+        let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_0700');
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
@@ -501,6 +528,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -515,7 +546,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_0800';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      try {
+      if(isSupportRotate){
+        try {
         let windowClass = windowStage.getMainWindowSync();
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
         await sleep(2000)
@@ -577,6 +609,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -591,7 +627,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_0900';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0900');
+      if(isSupportRotate){
+        let subWindowClass = await windowStage.createSubWindow('test_RotationChange_0900');
       let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
@@ -686,6 +723,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -700,7 +741,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1000';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1000');
+      if(isSupportRotate){
+        let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1000');
       let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
@@ -770,6 +812,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -784,7 +830,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1100';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1100');
+      if(isSupportRotate){
+        let subWindowClass = await windowStage.createSubWindow('test_RotationChange_1100');
       let timer = 0;
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
@@ -854,6 +901,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -868,7 +919,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1200';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let config: window.Configuration = {
+      if(isSupportRotate){
+        let config: window.Configuration = {
         name: "test_RotationChange_1200",
         windowType: window.WindowType.TYPE_DIALOG,
         ctx: context
@@ -971,6 +1023,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -985,7 +1041,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1300';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_1300');
+      if(isSupportRotate){
+        let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_1300');
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
@@ -1084,6 +1141,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
     /**
@@ -1098,7 +1159,8 @@ export default function windowRotationTest() {
       let caseName: string = 'test_RotationChange_1400';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_1400');
+      if(isSupportRotate){
+        let subWindowClass:window.Window = await windowStage.createSubWindow('test_RotationChange_1400');
       try {
         let subWindowLimits = subWindowClass.getWindowLimits()
         console.error(`${caseName} :subWindow getWindowLimits. info: ${JSON.stringify(subWindowLimits)}`);
@@ -1195,6 +1257,10 @@ export default function windowRotationTest() {
           done();
         }
       }
+      }else{
+        done();
+      }
+      
     });
 
   })
