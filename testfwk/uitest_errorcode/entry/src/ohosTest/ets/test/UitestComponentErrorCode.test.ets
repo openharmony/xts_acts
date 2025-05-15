@@ -1030,6 +1030,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
         let button = await driver.findComponent(ON.type('TextInput'));
+        if (button == null) {
+          let scorll = await driver.findComponent(ON.type('Scroll'))
+          button = await scorll.scrollSearch(ON.type('TextInput'))
+        }
         await driver.delayMs(waitUiReadyMs);
         await button.inputText('123456', {
           paste: true
