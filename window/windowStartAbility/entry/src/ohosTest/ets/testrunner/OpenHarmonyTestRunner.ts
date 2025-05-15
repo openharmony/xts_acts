@@ -1,10 +1,10 @@
-/*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+/**
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -47,7 +47,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
     let cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName
     let debug = abilityDelegatorArguments.parameters['-D']
-    if (debug == 'true') {
+    if (debug === 'true') {
       cmd += ' -D'
     }
     hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
