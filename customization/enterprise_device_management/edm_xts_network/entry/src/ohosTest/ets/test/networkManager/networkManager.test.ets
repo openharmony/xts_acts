@@ -134,6 +134,9 @@ export default function networkManagerTest() {
 
     testSetGlobalProxyForAccount();
     testGetGlobalProxyForAccount();
+
+    testTurnOnMobileData();
+    testTurnOffMobileData();
   })
 }
 
@@ -1653,6 +1656,219 @@ function testGetGlobalProxyForAccount() {
       expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testTurnOnMobileData() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0001
+   * @tc.name      : test_turnon_mobile_data_0001
+   * @tc.desc      : test wifiManager turnOnMobileData without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      networkManager.turnOnMobileData(SELFWANT, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0002
+   * @tc.name      : test_turnon_mobile_data_0002
+   * @tc.desc      : test wifiManager turnOnMobileData without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0002", Level.LEVEL2, async (done: Function) => {
+    try {
+      networkManager.turnOnMobileData(SELFWANT, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0003
+   * @tc.name      : test_turnon_mobile_data_0003
+   * @tc.desc      : test wifiManager turnOnMobileData with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.turnOnMobileData(SELFWANT, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0004
+   * @tc.name      : test_turnon_mobile_data_0004
+   * @tc.desc      : test wifiManager turnOnMobileData with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.turnOnMobileData(SELFWANT, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0005
+   * @tc.name      : test_turnon_mobile_data_0005
+   * @tc.desc      : test wifiManager turnOnMobileData with normal super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      networkManager.turnOnMobileData(SELFWANT, true);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+       await adminManager.disableSuperAdmin(SELFHAPNAME);
+       networkManager.turnOnMobileData(SELFWANT, false);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0006
+   * @tc.name      : test_turnon_mobile_data_0006
+   * @tc.desc      : test wifiManager turnOnMobileData with no super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0006", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      networkManager.turnOnMobileData(null, true);
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_MOBILE_DATA_JS_0007
+   * @tc.name      : test_turnon_mobile_data_0007
+   * @tc.desc      : test wifiManager turnOnMobileData with normal super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_mobile_data_0007", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      networkManager.turnOnMobileData(SELFWANT, false);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testTurnOffMobileData() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_MOBILE_DATA_JS_JS_0001
+   * @tc.name      : test_turnoff_mobile_data_0001
+   * @tc.desc      : test networkManager turnOffMobileData without activated admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnoff_mobile_data_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      networkManager.turnOffMobileData(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_MOBILE_DATA_JS_0002
+   * @tc.name      : test_turnoff_mobile_data_0002
+   * @tc.desc      : test networkManager turnOffMobileData with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnoff_mobile_data_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.turnOffMobileData(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_MOBILE_DATA_JS_0003
+   * @tc.name      : test_turnoff_mobile_data_0003
+   * @tc.desc      : test networkManager turnOffMobileData with no super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnoff_mobile_data_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      networkManager.turnOffMobileData(null);
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_MOBILE_DATA_JS_0004
+   * @tc.name      : test_turnoff_mobile_data_0004
+   * @tc.desc      : test networkManager turnOffMobileData with normal super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnoff_mobile_data_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      networkManager.turnOffMobileData(SELFWANT);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+       await adminManager.disableSuperAdmin(SELFHAPNAME);
+       networkManager.turnOnMobileData(SELFWANT, false);
     }
     done();
   });
