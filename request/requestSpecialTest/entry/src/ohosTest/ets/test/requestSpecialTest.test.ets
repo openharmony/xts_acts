@@ -67,6 +67,26 @@ export default function requestSpecialUnitTest() {
     });
 
     /**
+     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
+     */
+    beforeEach(async (done: Function) => {
+      console.info('====>beforeEach removeTasks start');
+      await removeTasks();
+      console.info('====>beforeEach removeTasks end');
+      done();
+    });
+
+    /**
+     * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
+    afterEach(async (done: Function) => {
+      console.info('====>afterEach removeTasks start');
+      await removeTasks();
+      console.info('====>afterEach removeTasks end');
+      done();
+    });
+
+    /**
      * afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed.
      */
     afterAll(async (done: Function) => {
@@ -266,14 +286,12 @@ export default function requestSpecialUnitTest() {
         mode:request.agent.Mode.BACKGROUND
       };
       try {
-        await removeTasks();
         for (let i = 0; i < 1002; i++){
           request.agent.create(baseContext, config, async (err:BusinessError ,task: request.agent.Task) =>{
             try {
               if(err){
                 console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create err: " + JSON.stringify(err));
                 expect(err.code).assertEqual(21900004);
-                await removeTasks();
                 done();
               } else {
                 console.info("====>SUB_Request_Agent_CreateTaskErrorCode_Callback_0100 create times: " + i);
@@ -311,7 +329,6 @@ export default function requestSpecialUnitTest() {
         mode:request.agent.Mode.BACKGROUND
       };
       try {
-        await removeTasks();
         for (let i = 0; i < 1002; i++){
           console.info("====>SUB_Request_Agent_CreateTaskErrorCode_promise_0100 create times: " + i);
           await request.agent.create(baseContext, config);
@@ -321,7 +338,6 @@ export default function requestSpecialUnitTest() {
       } catch (err) {
         console.info("====>SUB_Request_Agent_CreateTaskErrorCode_promise_0100 create catch err: " + JSON.stringify(err));
         expect(err.code).assertEqual(21900004);
-        await removeTasks();
         done();
       }
     });
