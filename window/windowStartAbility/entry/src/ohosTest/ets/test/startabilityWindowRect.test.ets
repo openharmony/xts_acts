@@ -61,13 +61,17 @@ export default function startabilityWindowRect() {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let context : common.UIAbilityContext;
     let windowStage:window.WindowStage;
+    let isAutoWindow: string = '';
     let isPCStatus: string = ''
 
     beforeAll(() => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
       windowStage = AppStorage.get('windowStage') as window.WindowStage;
+      isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
+      console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
       isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
+      console.info(`beforeAll isPCStatus: `+ isPCStatus);
     })
 
     /**
@@ -112,7 +116,12 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.left).assertEqual(10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect3.left).assertEqual(0);
+        } else {
+          expect(windowRect3.left).assertEqual(10);
+        }
+
         await terminateAbility(caseName);
 
         done();
