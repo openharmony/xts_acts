@@ -18,6 +18,6 @@
     "MainAbility/pages/Popup/PopupApi/PopupApi",
     "MainAbility/pages/Popup/DismissReason",
     "MainAbility/pages/TimePickerDialog/DateTimeOptions",
-    "MainAbility/pages/AlertDialog/primary",
+    "MainAbility/pages/AlertDialog/primary"
   ]
 }
