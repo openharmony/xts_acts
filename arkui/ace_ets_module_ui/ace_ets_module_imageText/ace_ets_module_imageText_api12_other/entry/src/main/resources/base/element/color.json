@@ -15,6 +15,10 @@
     {
       "name": "Divider_color",
       "value": "#000000"
+    },
+    {
+      "name": "red",
+      "value": "#f04b3d"
     }
   ]
 }

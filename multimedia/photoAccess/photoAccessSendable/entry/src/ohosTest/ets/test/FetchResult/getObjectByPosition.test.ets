@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll } from '@ohos/hypium';
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium';
 import sendablePhotoAccessHelper from '@ohos.file.sendablePhotoAccessHelper'
 import { common } from '@kit.AbilityKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -66,7 +66,7 @@ export default function getObjectByPositionTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getObjectByPosition_promise_000', 0, async (done: Function) => {
+    it('getObjectByPosition_promise_000', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getObjectByPosition_promise_000';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.PHOTO_TYPE, sendablePhotoAccessHelper.PhotoType.IMAGE);
       await getObjectByPositionPromiseTest(done, testNum, fetchOps);
@@ -80,7 +80,7 @@ export default function getObjectByPositionTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getObjectByPosition_promise_001', 0, async (done: Function) => {
+    it('getObjectByPosition_promise_001', Level.LEVEL0, async (done: Function) => {
       const testNum = 'getObjectByPosition_promise_001';
       const fetchOps: photoAccessHelper.FetchOptions = fetchOption(testNum, photoKeys.PHOTO_TYPE, sendablePhotoAccessHelper.PhotoType.VIDEO);
       await getObjectByPositionPromiseTest(done, testNum, fetchOps);

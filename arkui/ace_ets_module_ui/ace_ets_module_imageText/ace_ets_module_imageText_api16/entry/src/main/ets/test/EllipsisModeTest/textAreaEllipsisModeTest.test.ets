@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import { Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common'
 
@@ -53,7 +53,7 @@ export default function textAreaEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaEllipsisModeTest0001', 0, async () => {
+    it('textAreaEllipsisModeTest0001', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaEllipsisModeTest textAreaEllipsisModeTest0001 START');
         await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function textAreaEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaEllipsisModeTest0002', 0, async () => {
+    it('textAreaEllipsisModeTest0002', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaEllipsisModeTest textAreaEllipsisModeTest0002 START');
         await CommonFunc.sleep(1000);
@@ -91,7 +91,7 @@ export default function textAreaEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaEllipsisModeTest0003', 0, async () => {
+    it('textAreaEllipsisModeTest0003', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaEllipsisModeTest textAreaEllipsisModeTest0003 START');
         await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function textAreaEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaEllipsisModeTest0004', 0, async () => {
+    it('textAreaEllipsisModeTest0004', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaEllipsisModeTest textAreaEllipsisModeTest0004 START');
         await CommonFunc.sleep(1000);
@@ -129,7 +129,7 @@ export default function textAreaEllipsisModeTest() {
 	 * @tc.type         Function
 	 * @tc.level        1
      */
-    it('textAreaEllipsisModeTest0005', 0, async () => {
+    it('textAreaEllipsisModeTest0005', Level.LEVEL1, async () => {
         let driver = Driver.create();
         console.info('textAreaEllipsisModeTest textAreaEllipsisModeTest0005 START');
         await CommonFunc.sleep(1000);

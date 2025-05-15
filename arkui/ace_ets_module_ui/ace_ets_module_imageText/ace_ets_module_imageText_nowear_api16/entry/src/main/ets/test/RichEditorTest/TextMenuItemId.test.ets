@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -47,7 +47,7 @@ export default function TextMenuItemId() {
      * @tc.name         TextMenuItemId0001
      * @tc.desic        set TextMenuItem for text
      */
-    it('TextMenuItemId0001', 0, async (done: Function) => {
+    it('TextMenuItemId0001', Level.LEVEL0, async (done: Function) => {
       console.info("[TextMenuItemId0001] start");
       let driver = Driver.create();
       console.info('TextMenuItemId TextMenuItemId0001 START');
@@ -68,7 +68,7 @@ export default function TextMenuItemId() {
      * @tc.name         TextMenuItemId0002
      * @tc.desic        set TextMenuItem for textArea
      */
-    it('TextMenuItemId0002', 0, async (done: Function) => {
+    it('TextMenuItemId0002', Level.LEVEL0, async (done: Function) => {
       console.info("[TextMenuItemId0002] start");
       let driver = Driver.create();
       console.info('TextMenuItemId TextMenuItemId0002 START');
@@ -89,7 +89,7 @@ export default function TextMenuItemId() {
      * @tc.name         TextMenuItemId0003
      * @tc.desic        set TextMenuItem for textInput
      */
-    it('TextMenuItemId0003', 0, async (done: Function) => {
+    it('TextMenuItemId0003', Level.LEVEL0, async (done: Function) => {
       console.info("[TextMenuItemId0003] start");
       let driver = Driver.create();
       console.info('TextMenuItemId TextMenuItemId0003 START');
@@ -110,7 +110,7 @@ export default function TextMenuItemId() {
      * @tc.name         TextMenuItemId0004
      * @tc.desic        set TextMenuItem for richEditor
      */
-    it('TextMenuItemId0004', 0, async (done: Function) => {
+    it('TextMenuItemId0004', Level.LEVEL0, async (done: Function) => {
       console.info("[TextMenuItemId0004] start");
       let driver = Driver.create();
       console.info('TextMenuItemId TextMenuItemId0004 START');
@@ -131,7 +131,7 @@ export default function TextMenuItemId() {
      * @tc.name         TextMenuItemId0005
      * @tc.desic        set TextMenuItem for search
      */
-    it('TextMenuItemId0005', 0, async (done: Function) => {
+    it('TextMenuItemId0005', Level.LEVEL0, async (done: Function) => {
       console.info("[TextMenuItemId0005] start");
       let driver = Driver.create();
       console.info('TextMenuItemId TextMenuItemId0005 START');

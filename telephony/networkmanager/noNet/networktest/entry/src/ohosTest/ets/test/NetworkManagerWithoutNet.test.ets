@@ -33,9 +33,9 @@ export default function networkManagerWithoutCardTest() {
      * @tc.desc  : Gets the network type of the current device;none.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testNetworkMgrNetworkGetType0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testNetworkMgrNetworkGetType0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrNetworkGetType0300';
       console.info(`${caseName} test start`);
       try {

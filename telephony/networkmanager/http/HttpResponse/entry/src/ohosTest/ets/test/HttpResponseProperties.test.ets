@@ -76,14 +76,14 @@ export default function HttpResponsePropertiesTest() {
   describe("HttpResponsePropertiesTest", () => {
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_Response_0100
-     * @tc.name  :  SUB_NetworkMgr_Http_Response_0100
+     * @tc.name  :  testNetworkMgrHttpResponse0100
      * @tc.desc  :  test resultType with default parameter for expectDataType
      * @tc.size  :  SmallTest
      * @tc.type  :  Function
-     * @tc.level :  level 3
+     * @tc.level :  level 0
     */
-    it('testHttpResponse0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
-      const caseName: string = "testHttpResponse0100";
+    it('testNetworkMgrHttpResponse0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpResponse0100";
       console.info(`${caseName} test Start`);
       let resultType: http.HttpDataType = -1;
       try {
@@ -551,14 +551,14 @@ export default function HttpResponsePropertiesTest() {
 
     /* *
      * @tc.number:  SUB_NetworkMgr_Http_Response_1000
-     * @tc.name:    testHttpResponse1000
+     * @tc.name:    testNetworkMgrHttpResponse1000
      * @tc.desc:    test resultType with default parameter for expectDataType
      * @tc.size:    SmallTest
      * @tc.type:    Function
-     * @tc.level:   level 3
+     * @tc.level:   level 0
      */
-    it('testHttpResponse1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,async (done: Function) => {
-      const caseName: string = "testHttpResponse1000";
+    it('testNetworkMgrHttpResponse1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
+      const caseName: string = "testNetworkMgrHttpResponse1000";
       console.info(`${caseName} test Start`);
       try {
         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {

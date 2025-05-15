@@ -400,6 +400,33 @@
         "label": "$string:TestAbility_label",
         "description": "$string:TestAbility_desc",
         "type": "assetAcceleration"
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "formEdit",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "formEdit",
+        "visible": true
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "fence",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "fence",
+        "visible": true
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "callerInfoQuery",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "callerInfoQuery",
+        "visible": true
     }
   ],
   "requestPermissions": [

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function editMenuOptions() {
      * @tc.name         editMenuOptions0001
      * @tc.desic        The labelinfo property is added to the customized menu of the text component
      */
-    it('editMenuOptions0001', 0, async (done: Function) => {
+    it('editMenuOptions0001', Level.LEVEL0, async (done: Function) => {
         let driver = Driver.create();
         console.info('editMenuOptions editMenuOptions0001 START');
         await CommonFunc.sleep(500);
@@ -64,8 +64,6 @@ export default function editMenuOptions() {
         await CommonFunc.sleep(500);
         await search2.click();
         await CommonFunc.sleep(500);
-
-
         let strJson = getInspectorByKey('textLabelInfo');
         let obj: ESObject = JSON.parse(strJson);
         console.log('editMenuOptions0001---obj.$attrs---' +
@@ -73,7 +71,6 @@ export default function editMenuOptions() {
         console.log('editMenuOptions0001---obj.$attrs.content---' +
          JSON.stringify(obj.$attrs.content));
         expect('' + obj.$attrs.content).assertEqual("abc123456");
-        
         console.info("[editMenuOptions0001] end");
         done();
     });
@@ -83,7 +80,7 @@ export default function editMenuOptions() {
      * @tc.name         editMenuOptions0002
      * @tc.desic        The labelinfo property is added to the customized menu of the textArea component
      */
-    it('editMenuOptions0002', 0, async (done: Function) => {
+    it('editMenuOptions0002', Level.LEVEL0, async (done: Function) => {
         let driver = Driver.create();
         console.info('editMenuOptions editMenuOptions0002 START');
         await CommonFunc.sleep(500);
@@ -99,8 +96,6 @@ export default function editMenuOptions() {
         await CommonFunc.sleep(500);
         await search2.click();
         await CommonFunc.sleep(500);
-
-
         let strJson = getInspectorByKey('textAreaLabelInfo');
         let obj: ESObject = JSON.parse(strJson);
         console.log('editMenuOptions0002---obj.$attrs---' +
@@ -111,7 +106,6 @@ export default function editMenuOptions() {
         
         console.info("[editMenuOptions0002] end");
         done();
-
     });
 
     /*
@@ -119,7 +113,7 @@ export default function editMenuOptions() {
      * @tc.name         editMenuOptions0003
      * @tc.desic        The labelinfo property is added to the customized menu of the textInput component
      */
-    it('editMenuOptions0003', 0, async (done: Function) => {
+    it('editMenuOptions0003', Level.LEVEL0, async (done: Function) => {
         let driver = Driver.create();
         console.info('editMenuOptions editMenuOptions0003 START');
         await CommonFunc.sleep(500);
@@ -135,8 +129,6 @@ export default function editMenuOptions() {
         await CommonFunc.sleep(500);
         await search2.click();
         await CommonFunc.sleep(500);
-
-
         let strJson = getInspectorByKey('textInputLabelInfo');
         let obj: ESObject = JSON.parse(strJson);
         console.log('editMenuOptions0003---obj.$attrs---' +
@@ -144,10 +136,8 @@ export default function editMenuOptions() {
         console.log('editMenuOptions0003---obj.$attrs.content---' +
          JSON.stringify(obj.$attrs.content));
         expect('' + obj.$attrs.content).assertEqual("2222222");
-        
         console.info("[editMenuOptions0003] end");
         done();
-
     });
 
     /*
@@ -155,7 +145,7 @@ export default function editMenuOptions() {
      * @tc.name         editMenuOptions0004
      * @tc.desic        The labelinfo property is added to the customized menu of the richEditor component
      */
-    it('editMenuOptions0004', 0, async (done: Function) => {
+    it('editMenuOptions0004', Level.LEVEL0, async (done: Function) => {
         let driver = Driver.create();
         console.info('editMenuOptions editMenuOptions0004 START');
         await CommonFunc.sleep(500);
@@ -172,8 +162,6 @@ export default function editMenuOptions() {
         await CommonFunc.sleep(500);
         await search2.click();
         await CommonFunc.sleep(500);
-
-
         let strJson = getInspectorByKey('richEditorLabelInfo');
         let obj: ESObject = JSON.parse(strJson);
         console.log('editMenuOptions0004---obj.$attrs---' +
@@ -181,10 +169,8 @@ export default function editMenuOptions() {
         console.log('editMenuOptions0004---obj.$attrs.content---' +
          JSON.stringify(obj.$attrs.content));
         expect('' + obj.$attrs.content).assertEqual("abc123456");
-        
         console.info("[editMenuOptions0004] end");
         done();
-
     });
 
     /*
@@ -192,7 +178,7 @@ export default function editMenuOptions() {
      * @tc.name         editMenuOptions0005
      * @tc.desic        The labelinfo property is added to the customized menu of the search component
      */
-    it('editMenuOptions0005', 0, async (done: Function) => {
+    it('editMenuOptions0005', Level.LEVEL0, async (done: Function) => {
         let driver = Driver.create();
         console.info('editMenuOptions editMenuOptions0005 START');
         await CommonFunc.sleep(500);
@@ -209,8 +195,6 @@ export default function editMenuOptions() {
         await CommonFunc.sleep(500);
         await search2.click();
         await CommonFunc.sleep(500);
-
-
         let strJson = getInspectorByKey('searchLabelInfo');
         let obj: ESObject = JSON.parse(strJson);
         console.log('editMenuOptions0005---obj.$attrs---' +
@@ -218,12 +202,8 @@ export default function editMenuOptions() {
         console.log('editMenuOptions0005---obj.$attrs.content---' +
          JSON.stringify(obj.$attrs.content));
         expect('' + obj.$attrs.content).assertEqual("");
-        
         console.info("[editMenuOptions0005] end");
         done();
-
     });
-
-
   })
 }

@@ -43,9 +43,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0001";
       try {
         const escape = 'aaa\b';
@@ -62,9 +62,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0002";
       try {
         const escape = 'aaa\f';
@@ -81,9 +81,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \n
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0003";
       try {
         const escape = 'aaa\n';
@@ -100,9 +100,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \r
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0004";
       try {
         const escape = 'aaa\r';
@@ -119,9 +119,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \t
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0005";
       try {
         const escape = 'aaa\t';
@@ -138,9 +138,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \v
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0006";
       try {
         const escape = 'aaa\v';
@@ -157,9 +157,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \x24
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0007";
       try {
         const escape = 'aaa\x24';
@@ -176,9 +176,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \开
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0008";
       try {
         const escape = '\开';
@@ -195,9 +195,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \😊
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0009";
       try {
         const escape = '\😊';
@@ -215,9 +215,9 @@ export default function EscapeBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input escape \0
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBufferAllocEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBufferAllocEscape0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBufferAllocEscape0010";
       try {
         const escape = '\0';

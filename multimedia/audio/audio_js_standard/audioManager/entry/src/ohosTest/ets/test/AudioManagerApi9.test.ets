@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level} from '@ohos/hypium';
 import call from '@ohos.telephony.call';
 import audio from '@ohos.multimedia.audio';
 import { BusinessError } from '@ohos.base';
@@ -252,6 +252,103 @@ export default function audioManagerApi9() {
       }
 
     })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100
+     * @tc.name      : getAPPVolumePercentage
+     * @tc.desc      : getAPPVolumePercentage
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let groupManager = audioVolumeManager.getAppVolumePercentage();
+        if ((typeof groupManager) == 'object') {
+          console.info('audioManagerApi9Test: Promise: getAppVolumePercentage  :  PASS');
+          expect(true).assertTrue();
+          done();
+        } else {
+          console.info('audioManagerApi9Test: Promise: getAppVolumePercentage  :  FAIL');
+          expect(false).assertTrue();
+          done();
+        }
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to getAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100
+     * @tc.name      : setAppVolumePercentage - String_Parameter - 401
+     * @tc.desc      : setAppVolumePercentage - String_Parameter - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        await audioVolumeManager.setAppVolumePercentage(strParams);
+        console.info(`audioManagerApi9Test: Promise: setppVolumePercentage  :  Success`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200
+     * @tc.name      : setAppVolumePercentage - Null_Parameter - 6800301
+     * @tc.desc      : setAppVolumePercentage - Null_Parameter - 6800301
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        await audioVolumeManager.setAppVolumePercentage(-1);
+        console.info(`audioManagerApi9Test: Promise: setAppVolumePercentage  :  Success`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+        expect(Number(error.code)).assertEqual(6800301);
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0300
+     * @tc.name      : setAppVolumePercentage - Over_Parameter - 6800101
+     * @tc.desc      : setAppVolumePercentage - Over_Parameter - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+//    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+//      let audioVolumeManager = audioManager.getVolumeManager();
+//     try {
+//        await audioVolumeManager.setAppVolumePercentage(101);
+//        console.info(`audioManagerApi9Test: Promise: setAppVolumePercentage  :  Success`);
+//        expect(false).assertTrue();
+//        done();
+//      } catch (error) {
+//        console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
+//        expect(Number(error.code)).assertEqual(6800101);
+//        done();
+//      }
+//
+//    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100
      * @tc.name      : getVolumeGroupManager - callback - number_Parameter
@@ -741,7 +838,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -754,6 +851,54 @@ export default function audioManagerApi9() {
         expect(false).assertTrue();
         done();
       }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0200
+     * @tc.name      : off_ringerModeChange - Invaild_Number_Parameter - 6800101
+     * @tc.desc      : off_ringerModeChange - Invaild_Number_Parameter - 6800101
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = '123';
+      let flag: boolean = false;
+      try {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
+        groupManager.off(para,()=>{});
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0300
+     * @tc.name      : off_ringerModeChange - String_Parameter - 401
+     * @tc.desc      : off_ringerModeChange - String_Parameter - 401
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let para: ESObject = 123;
+      let flag: boolean = false;
+      try {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
+        groupManager.off(para);
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(Number(err.code)).assertEqual(401);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
     })
 
     /**
@@ -1860,13 +2005,117 @@ export default function audioManagerApi9() {
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, maxVolume)
       await sleep(50);
       audioVolumeManager.on('volumeChange', (VolumeEvent) => {
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
+        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume},VolumeEvent.volumeMode:${VolumeEvent.volumeMode}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
         expect(VolumeEvent.volumeType).assertEqual(audio.AudioVolumeType.MEDIA);
         expect(VolumeEvent.volume).assertEqual(minVolume);
         expect(VolumeEvent.updateUi).assertEqual(false);
         done();
       });
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, minVolume)
+      done();
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = 1;
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      };
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = '1';
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 6800101).assertTrue();
+        done();
+      };
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let interAudioInterrupt: audio.AudioInterrupt = {
+        streamUsage:2,
+        contentType:0,
+        pauseWhenDucked:true
+      };
+      // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+      let interruptCallback = (interruptAction: audio.InterruptAction) => {
+        if (interruptAction.actionType === 0) {
+          console.info('An event to gain the audio focus starts.');
+          console.info(`Focus gain event: ${interruptAction} `);
+        }
+        if (interruptAction.actionType === 1) {
+          console.info('An audio interruption event starts.');
+          console.info(`Audio interruption event: ${interruptAction} `);
+        }
+      };
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
+        audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
       done();
     })
   })

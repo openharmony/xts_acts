@@ -34,3 +34,5 @@ export const oHPixelmapNativeCreateScaledPixelMapWithAntiAliasing001: () => numb
 export const oHPixelmapNativeGetByteCount001: () => Array<number>;
 export const oHPixelmapNativeAccessPixels001: () => number;
 export const oHPixelmapNativeUnaccessPixels001: () => number;
+export const oHPixelmapInitializationOptionsEditable001: () => Array<number>;
+export const oHPixelmapNativeDestroy001: () => Array<number>;

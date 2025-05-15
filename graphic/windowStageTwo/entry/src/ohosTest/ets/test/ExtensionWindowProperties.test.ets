@@ -53,9 +53,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : Obtain the area that the window rect 
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level3
+     * @tc.level     : Level0
      */
-    it('testUIExtensionHostWindowProxyRect', 0, async (done: Function) => {
+    it('testUIExtensionHostWindowProxyRect', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'testUIExtensionHostWindowProxyRectTest';
       console.log(caseName + 'start run');
       let windowClass = windowStage.getMainWindowSync();
@@ -89,7 +89,7 @@ export default function extensionWindowPropertiesTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testUIExtensionHostRectChange', 0, async (done: Function) => {
+    it('testUIExtensionHostRectChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostRectChange';
       console.log(caseName + 'start run');
       try {
@@ -345,9 +345,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOccupyEvents with click and longPress
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostOccupyEvents', 0, async (done: Function) => {
+    it('testUIExtensionHostOccupyEvents', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostOccupyEvents ';
       console.log(caseName + 'start run');
       try {
@@ -439,9 +439,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOccupyEvents_ErrorCode401 when got arguments null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostOccupyEvents_ErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostOccupyEvents_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostOccupyEvents_ErrorCode401 ';
       console.log(caseName + 'start run');
       try {
@@ -503,9 +503,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostGetAvoidArea_ErrorCode401 when got argument -1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostGetAvoidArea_ErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostGetAvoidArea_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostGetAvoidArea_ErrorCode401 ';
       console.log(caseName + 'start run');
       try {
@@ -566,9 +566,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOnAvoidAreaChange_ErrorCode401 when got callback with null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostOnAvoidAreaChange_ErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostOnAvoidAreaChange_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostOnAvoidAreaChange_ErrorCode401 ';
       console.log(caseName + 'start run');
       try {
@@ -629,9 +629,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOnWindowSizeChange_ErrorCode401 when got callback with null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostOnWindowSizeChange_ErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostOnWindowSizeChange_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostOnWindowSizeChange_ErrorCode401 ';
       console.log(caseName + 'start run');
       try {
@@ -692,9 +692,9 @@ export default function extensionWindowPropertiesTest() {
      * @tc.desc      : testUIExtensionHostOnWindowSizeChange_ErrorCode401 when got callback with null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level3
      */
-    it('testUIExtensionHostCreateSubWindowWithOptions_ErrorCode401', 0, async (done: Function) => {
+    it('testUIExtensionHostCreateSubWindowWithOptions_ErrorCode401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName = 'testUIExtensionHostCreateSubWindowWithOptions_ErrorCode401 ';
       console.log(caseName + 'start run');
       try {

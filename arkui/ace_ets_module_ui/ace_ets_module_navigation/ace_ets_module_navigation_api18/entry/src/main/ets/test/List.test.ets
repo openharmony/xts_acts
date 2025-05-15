@@ -14,8 +14,10 @@
  */
 import OnActivePage from './OnActivePage.test'
 import PathStackPage from './PathStackPage.test'
+import NavDestinationStateActive from './NavDestinationStateActive.test'
 
 export default function testsuite() {
   PathStackPage();
   OnActivePage();
+  NavDestinationStateActive();
 }

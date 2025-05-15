@@ -20,7 +20,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
 import { BusinessError } from '@ohos.base';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Context } from '@kit.AbilityKit';
 
 const TAG = "CAMERA_LOGTAG_JS_VIDEO";
@@ -246,7 +246,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutput0100', 0, () => {
+    it('testOHCameraManagerCreateVideoOutput0100', Level.LEVEL0, () => {
 
       let ret = cameras.oHCameraManagerCreateVideoOutput(videoSurfaceId,0);
       console.log(TAG+"testOHCameraManagerCreateVideoOutput0100:"+ret);
@@ -260,7 +260,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutput0200', 0, () => {
+    it('testOHCameraManagerCreateVideoOutput0200', Level.LEVEL0, () => {
 
       let ret = cameras.oHCameraManagerCreateVideoOutput(videoSurfaceId,1);
       console.log(TAG+"testOHCameraManagerCreateVideoOutput0200:"+ret);
@@ -274,7 +274,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutput0300', 0, () => {
+    it('testOHCameraManagerCreateVideoOutput0300', Level.LEVEL0, () => {
 
       let ret = cameras.oHCameraManagerCreateVideoOutput(videoSurfaceId,2);
       console.log(TAG+"testOHCameraManagerCreateVideoOutput0300:"+ret);
@@ -288,7 +288,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutput0400', 0, () => {
+    it('testOHCameraManagerCreateVideoOutput0400', Level.LEVEL0, () => {
 
       let ret = cameras.oHCameraManagerCreateVideoOutput(videoSurfaceId,3);
       console.log(TAG+"testOHCameraManagerCreateVideoOutput0400:"+ret);
@@ -302,7 +302,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCameraManagerCreateVideoOutput0500', 0, () => {
+    it('testOHCameraManagerCreateVideoOutput0500', Level.LEVEL0, () => {
 
       let ret = cameras.oHCameraManagerCreateVideoOutput(videoSurfaceId,4);
       console.log(TAG+"testOHCameraManagerCreateVideoOutput0500:"+ret);
@@ -316,7 +316,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddVideoOutput0100', 0, () => {
+    it('testOHCaptureSessionAddVideoOutput0100', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
 
@@ -332,7 +332,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddVideoOutput0200', 0, () => {
+    it('testOHCaptureSessionAddVideoOutput0200', Level.LEVEL0, () => {
       CreateVideoOutput();
       let ret = cameras.oHCaptureSessionAddVideoOutput(1);
       console.log(TAG+"testOHCaptureSessionAddVideoOutput0200:"+ret);
@@ -346,7 +346,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddVideoOutput0300', 0, () => {
+    it('testOHCaptureSessionAddVideoOutput0300', Level.LEVEL0, () => {
       CreateVideoOutput();
       let ret = cameras.oHCaptureSessionAddVideoOutput(2);
       console.log(TAG+"testOHCaptureSessionAddVideoOutput0300:"+ret);
@@ -360,7 +360,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRegisterCallback0100', 0, () => {
+    it('testOHVideoOutputRegisterCallback0100', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputRegisterCallback(0);
@@ -375,7 +375,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRegisterCallback0200', 0, () => {
+    it('testOHVideoOutputRegisterCallback0200', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputRegisterCallback(1);
@@ -390,7 +390,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRegisterCallback0300', 0, () => {
+    it('testOHVideoOutputRegisterCallback0300', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputRegisterCallback(2);
@@ -405,7 +405,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputUnregisterCallback0100', 0, () => {
+    it('testOHVideoOutputUnregisterCallback0100', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputUnregisterCallback(0);
@@ -420,7 +420,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputUnregisterCallback0200', 0, () => {
+    it('testOHVideoOutputUnregisterCallback0200', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputUnregisterCallback(1);
@@ -435,7 +435,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputUnregisterCallback0300', 0, () => {
+    it('testOHVideoOutputUnregisterCallback0300', Level.LEVEL0, () => {
 
       CreateVideoOutput();
       let ret = cameras.oHVideoOutputUnregisterCallback(2);
@@ -450,7 +450,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStart0100', 0, () => {
+    it('testOHVideoOutputStart0100', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
       cameras.oHCaptureSessionAddVideoOutput(0);
@@ -470,7 +470,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStart0200', 0, () => {
+    it('testOHVideoOutputStart0200', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
       cameras.oHCaptureSessionAddVideoOutput(0);
@@ -488,7 +488,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStart0300', 0, () => {
+    it('testOHVideoOutputStart0300', Level.LEVEL0, () => {
 
       captureSessionCommitConfig()
       CreateVideoOutput();
@@ -507,7 +507,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStop0100', 0, () => {
+    it('testOHVideoOutputStop0100', Level.LEVEL0, () => {
 
       captureSessionCommitConfig()
       CreateVideoOutput();
@@ -527,7 +527,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStop0200', 0, () => {
+    it('testOHVideoOutputStop0200', Level.LEVEL0, () => {
 
       captureSessionCommitConfig()
       CreateVideoOutput();
@@ -547,7 +547,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputStop0300', 0, () => {
+    it('testOHVideoOutputStop0300', Level.LEVEL0, () => {
 
       captureSessionCommitConfig()
       CreateVideoOutput();
@@ -567,7 +567,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRelease0100', 0, () => {
+    it('testOHVideoOutputRelease0100', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
 
@@ -583,7 +583,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRelease0200', 0, () => {
+    it('testOHVideoOutputRelease0200', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
 
@@ -599,7 +599,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHVideoOutputRelease0300', 0, () => {
+    it('testOHVideoOutputRelease0300', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
 
@@ -615,7 +615,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveVideoOutput0100', 0, () => {
+    it('testOHCaptureSessionRemoveVideoOutput0100', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
       cameras.oHCaptureSessionAddVideoOutput(0);
@@ -632,7 +632,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveVideoOutput0200', 0, () => {
+    it('testOHCaptureSessionRemoveVideoOutput0200', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
       cameras.oHCaptureSessionAddVideoOutput(0);
@@ -649,7 +649,7 @@ export default function VideoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionRemoveVideoOutput0300', 0, () => {
+    it('testOHCaptureSessionRemoveVideoOutput0300', Level.LEVEL0, () => {
       captureSessionCommitConfig()
       CreateVideoOutput();
       cameras.oHCaptureSessionAddVideoOutput(0);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll,  it, Level, expect } from '@ohos/hypium'
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -33,7 +33,6 @@ import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { UIContext } from '@ohos.arkui.UIContext';
-
 export default function APIgetFrameNodeByUniqueId() {
   describe('APIgetFrameNodeByUniqueId', () => {
     beforeEach(async (done: Function) => {
@@ -61,7 +60,6 @@ export default function APIgetFrameNodeByUniqueId() {
       await CommonFunc.sleep(1000);
       console.info("APIgetFrameNodeByUniqueId after each called");
     })
-
     /**
      * @tc.number api
      * @tc.name APIgetFrameNodeByUniqueId_0100
@@ -70,7 +68,7 @@ export default function APIgetFrameNodeByUniqueId() {
      * @tc.type UIContext
      * @tc.level 2
      */
-    it('APIgetFrameNodeByUniqueId_0100', 0, async (done: Function) => {
+    it('APIgetFrameNodeByUniqueId_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIgetFrameNodeByUniqueId_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

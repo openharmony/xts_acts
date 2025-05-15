@@ -26,8 +26,12 @@ import commonColorModeJsunit from './imageEffectsTest/common.test';
 import enumsCancelJsunit from './imageEffectsTest/enums.test';
 import hoverEffectJsunit from './imageEffectsTest/hoverEffect.test';
 import hitTestModeJsunit from './imageEffectsTest/hitTestMode.test';
+import transformPointTest from './imageEffectsTest/transformPointTest.test';
 import commonBackgroundBlurStyleJsunit from './imageEffectsTest/common.test3';
 import common_ts_ets_apiStaticClearJsunit from './imageEffectsTest/common_ts_ets_api.test';
+import rotateTest from './imageEffectsTest/rotateTest.test';
+import shapeTest from './imageEffectsTest/shapeTest.test';
+
 export default function testsuite() {
   imageEffectsJsunit();
   backgroundEffectJsunit();
@@ -41,6 +45,9 @@ export default function testsuite() {
   commonColorModeJsunit()
   hoverEffectJsunit()
   hitTestModeJsunit()
+  transformPointTest()
   commonBackgroundBlurStyleJsunit()
   common_ts_ets_apiStaticClearJsunit()
+  rotateTest()
+  shapeTest()
 }

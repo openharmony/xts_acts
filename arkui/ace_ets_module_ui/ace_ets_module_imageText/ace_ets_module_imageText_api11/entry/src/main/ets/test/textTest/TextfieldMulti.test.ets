@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -45,7 +45,7 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0110', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0110', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0110 START');
       setTimeout(() => {
         try {
@@ -77,7 +77,7 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0120', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0120', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0120 START');
       setTimeout(() => {
         try {
@@ -109,7 +109,7 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0130', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0130', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0130 START');
       setTimeout(() => {
         try {
@@ -141,7 +141,7 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to default value
      */
-    it('ArkUX_Text_Visual_0140', 0, async (done: Function) => {
+    it('ArkUX_Text_Visual_0140', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0140 START');
       setTimeout(() => {
         try {

@@ -109,9 +109,11 @@ export default function RichEditorThreeStrikes004() {
       await driver.click(getBounds.left + 150, getBounds.top + 30);
       await CommonFunc.sleep(80);
       await driver.click(getBounds.left + 150, getBounds.top + 30);
-      await CommonFunc.sleep(80);
+      await CommonFunc.sleep(1000);
       let copy = await driver.findComponent(ON.text('复制'));
-      await copy?.click();
+      if(copy){
+        await copy.click();
+      }
       await CommonFunc.sleep(1000);
       let message = await driver.findComponent(ON.id('message'));
       let messageText = await message.getText();

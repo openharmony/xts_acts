@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0100', 0, async (done: Function) => {
+    it('textTwoJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0200 START');
       // test the illegal value of decoration
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0200', 0, async (done: Function) => {
+    it('textTwoJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('imageOneJsunit_0200 START');
       await CommonFunc.sleep(500);
       // get the image component and test attribute
@@ -105,7 +105,7 @@ export default function textTwoJsunit() {
 
    
 
-    it('textTwoJsunit_0300', 0, async (done: Function) => {
+    it('textTwoJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0300 START');
       // test the baselineOffset
       await CommonFunc.sleep(1000);
@@ -118,7 +118,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0400', 0, async (done: Function) => {
+    it('textTwoJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0400 START');
       // test the baselineOffset of negative value
       await CommonFunc.sleep(1000);
@@ -131,7 +131,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0500', 0, async (done: Function) => {
+    it('textTwoJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0500 START');
       // test the letterSpacing
       await CommonFunc.sleep(1000);
@@ -144,7 +144,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0600', 0, async (done: Function) => {
+    it('textTwoJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0600 START');
       // test the baselineOffset of negative value
       await CommonFunc.sleep(1000);
@@ -157,7 +157,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0700', 0, async (done: Function) => {
+    it('textTwoJsunit_0700', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0700 START');
       // test the testcase
       await CommonFunc.sleep(1000);
@@ -184,7 +184,7 @@ export default function textTwoJsunit() {
       done();
     });
 
-    it('textTwoJsunit_0800', 0, async (done: Function) => {
+    it('textTwoJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('textTwoJsunit_0800 START');
       // test the testcase of illegal value
       await CommonFunc.sleep(1000);

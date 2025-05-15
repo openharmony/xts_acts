@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import osAccount from '@ohos.account.osAccount';
 import intelligence from '@ohos.data.intelligence'
@@ -23,7 +23,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { config } from '@kit.AccessibilityKit';
 import { ErrorCode } from '@kit.AbilityKit';
 import deviceInfo from '@ohos.deviceInfo';
-
 
 const TAG =["Intelligence_Test"];
 
@@ -43,19 +42,19 @@ let imageConfig:intelligence.ModelConfig = {
 export default function intelligenceTest() {
   let currentDeviceIsPc = false;
   describe('intelligenceTest', () => {
-    beforeAll(() => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let deviceTypeInfo = deviceInfo.deviceType;
       currentDeviceIsPc = deviceTypeInfo === '2in1' ? true : false;
       console.info(TAG + "the value of the deviceType is : " + deviceInfo.deviceType);
     })
-    beforeEach(() => {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
     })
-    afterEach(() => {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
     })
-    afterAll(() => {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     })
 
@@ -69,10 +68,10 @@ export default function intelligenceTest() {
      * @tc.desc splitText interface test
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
 
-    it("intelligenceApiTest0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("intelligenceApiTest0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0100 start")
       let text =
         "日常生活中，我们对接触到的事物，会产生一个不假思索地看法，或者说直觉性的认知.百科全书里这样解释道“ 认知包括感觉、知觉、记忆、思维、想象和语言等。";
@@ -114,7 +113,6 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-
     it("intelligenceApiTest0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0200 start");
       if (currentDeviceIsPc) {
@@ -152,7 +150,6 @@ export default function intelligenceTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-
 
     it("intelligenceApiTest0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0300 start");
@@ -220,7 +217,6 @@ export default function intelligenceTest() {
     })
 
 
-
     /**
      * @tc.name intelligenceApiTest0500
      * @tc.number SUB_DistributedData_Intelligence_SDK_intelligenceApiTest_0500
@@ -229,7 +225,6 @@ export default function intelligenceTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-
 
     it("intelligenceApiTest0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0500 start");
@@ -276,7 +271,6 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-
     it("intelligenceApiTest0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0600 start");
 
@@ -311,7 +305,6 @@ export default function intelligenceTest() {
     })
 
 
-
     /**
      * @tc.name intelligenceApiTest0700
      * @tc.number SUB_DistributedData_Intelligence_SDK_intelligenceApiTest_0700
@@ -320,7 +313,6 @@ export default function intelligenceTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-
 
     it("intelligenceApiTest0700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0700 start");
@@ -368,7 +360,6 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-
     it("intelligenceApiTest0800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0800 start");
 
@@ -403,8 +394,6 @@ export default function intelligenceTest() {
     })
 
 
-
-
     /**
      * @tc.name intelligenceApiTest0900
      * @tc.number SUB_DistributedData_Intelligence_SDK_intelligenceApiTest_0900
@@ -413,7 +402,6 @@ export default function intelligenceTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-
 
     it("intelligenceApiTest0900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.info(TAG + "intelligenceApiTest0900 start");
@@ -447,7 +435,6 @@ export default function intelligenceTest() {
             })
         }
     })
-
 
 
     /**
@@ -504,7 +491,6 @@ export default function intelligenceTest() {
      * @tc.level Level 2
      */
 
-
     it("intelligenceApiTest1100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       console.info(TAG + "intelligenceApiTest1100 start");
 
@@ -538,8 +524,6 @@ export default function intelligenceTest() {
           })
       }
     })
-
-
 
 
     /**
@@ -586,7 +570,7 @@ export default function intelligenceTest() {
       }
       
     })
-
+    
 
     /**
      * @tc.name intelligenceApiTest2600
@@ -628,7 +612,6 @@ export default function intelligenceTest() {
     })
 
 
-
     /**
      * @tc.name intelligenceApiTest2700
      * @tc.number SUB_DistributedData_Intelligence_SDK_intelligenceApiTest_2700
@@ -667,7 +650,6 @@ export default function intelligenceTest() {
       }
       console.info(TAG + "intelligenceApiTest2700 end");
     })
-
 
 
     /**

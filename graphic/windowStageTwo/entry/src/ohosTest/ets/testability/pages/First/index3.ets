@@ -39,6 +39,7 @@ struct Index3 {
              .onClick(()=>{
              })
            }
+           .id('SubWinTestId')
              .width('100%')
          }
              .height('100%')

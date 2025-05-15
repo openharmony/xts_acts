@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -42,7 +42,7 @@ export default function marqueeUIJsunit() {
       done();
     });
 
-    it('marqueeUIJsunit_0100', 0, async (done: Function) => {
+    it('marqueeUIJsunit_0100', Level.LEVEL1, async (done: Function) => {
        console.info('marqueeUIJsunit_0100 START');
        await CommonFunc.sleep(1000);
        // get the marquee component and test attribute
@@ -60,7 +60,7 @@ export default function marqueeUIJsunit() {
        done();
     });
 
-   it('marqueeUIJsunit_0200', 0, async (done: Function) => {
+   it('marqueeUIJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0200 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'fromStart',value:true})
@@ -72,7 +72,7 @@ export default function marqueeUIJsunit() {
       done();
     });
 
-    it('marqueeUIJsunit_0300', 0, async (done: Function) => {
+    it('marqueeUIJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0400 START');
       await CommonFunc.sleep(1000);
       //  test event 
@@ -99,7 +99,7 @@ export default function marqueeUIJsunit() {
       done();   
     });
 
-    it('marqueeUIJsunit_0400', 0, async (done: Function) => {
+    it('marqueeUIJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0300 START');
       await CommonFunc.sleep(100);
       // modify the values partly attribute illegal value of marguee dynamically
@@ -112,7 +112,7 @@ export default function marqueeUIJsunit() {
       done();
    });
    
-    it('marqueeUIJsunit_0500', 0, async (done: Function) => {
+    it('marqueeUIJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0400 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'step',value:50})
@@ -126,7 +126,7 @@ export default function marqueeUIJsunit() {
       done();   
     });    
     
-   it('marqueeUIJsunit_0600', 0, async (done: Function) => {
+   it('marqueeUIJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0600 START');
       // modify the values partly attribute illegal value of marguee dynamically
       globalThis.value.message.notify({name:'step',value:-30})
@@ -137,7 +137,7 @@ export default function marqueeUIJsunit() {
       done();
    });
   
-   it('marqueeUIJsunit_0700', 0, async (done: Function) => {
+   it('marqueeUIJsunit_0700', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0700 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'loop',value:2})
@@ -148,7 +148,7 @@ export default function marqueeUIJsunit() {
       done();   
     });
 
-    it('marqueeUIJsunit_0800', 0, async (done: Function) => {
+    it('marqueeUIJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('marqueeUIJsunit_0800 START');
       // modify the type attribute normal value of marquee dynamically
       globalThis.value.message.notify({name:'src',value:'Running Marquee starts rolling'})

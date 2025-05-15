@@ -14,7 +14,7 @@
  */
 import hiSysEvent from '@ohos.hiSysEvent';
 import fs from '@ohos.file.fs';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function hiSysEventBoxTest() {
 describe('hiSysEventBoxTest', function () {
@@ -48,7 +48,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox04
 	 * @tc.desc 验证调用exportSysEvents接口，QueryRule11条，抛出错误码11200301
 	 */
-	it('testHiSysEventBox04', 1, async function (done) {
+	it('testHiSysEventBox04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox04 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -104,7 +104,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox05
 	 * @tc.desc 验证调用exportSysEvents接口，QueryRule-domain无效，抛出错误码11200302
 	 */
-	it('testHiSysEventBox05', 1, async function (done) {
+	it('testHiSysEventBox05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox05 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -130,7 +130,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox06
 	 * @tc.desc 验证调用exportSysEvents接口，QueryRule-evetname无效，抛出错误码11200302
 	 */
-	it('testHiSysEventBox06', 3, async function (done) {
+	it('testHiSysEventBox06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox06 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -156,7 +156,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox07
 	 * @tc.desc 验证调用exportSysEvents接口，QueryRule-domain为空，抛出错误码11200302
 	 */
-	it('testHiSysEventBox07', 3, async function (done) {
+	it('testHiSysEventBox07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox07 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -182,7 +182,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox08
 	 * @tc.desc 验证调用exportSysEvents接口，QueryRule-eventname为空，抛出错误码11200302
 	 */
-	it('testHiSysEventBox08', 3, async function (done) {
+	it('testHiSysEventBox08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventBox08 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -208,7 +208,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox10
 	 * @tc.desc 验证设备重启后exportSysEvents接口一小时内可调用一次，QueryRule10条，返回值为调用时间戳，沙箱路径存在导出的文件
 	 */
-	it('testHiSysEventBox10', 3, async function (done) {
+	it('testHiSysEventBox10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox10 start')
 		try {
 			hiSysEvent.write({
@@ -292,7 +292,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox11
 	 * @tc.desc 验证一小时内重复调用exportSysEvents的接口，抛出错误码11200304
 	 */
-	it('testHiSysEventBox11', 3, async function (done) {
+	it('testHiSysEventBox11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox11 start')
 		try {
 			let time = hiSysEvent.exportSysEvents({
@@ -318,7 +318,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox13
 	 * @tc.desc 验证调用subscribe，30条订阅事件，其中一个domain16字节，eventname32字节，沙箱路径存在导出的文件，Hiview数据库存在uid信息
 	 */
-	it('testHiSysEventBox13', 3, async function (done) {
+	it('testHiSysEventBox13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox13 start')
 		let msgArray = []
 		for (let i = 0; i < 29; i++) {
@@ -371,7 +371,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox14
 	 * @tc.desc 验证调用subscribe接口订阅事件后取消订阅unsubscribe，沙箱路径存在导出的文件，Hiview数据库不存在uid信息
 	 */
-	it('testHiSysEventBox14', 3, async function (done) {
+	it('testHiSysEventBox14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox14 start')
 		let msgArray = []
 		for (let i = 0; i < 29; i++) {
@@ -424,7 +424,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox16
 	 * @tc.desc 验证调用subscribe，31条订阅事件，抛出错误码11200301
 	 */
-	it('testHiSysEventBox16', 3, async function (done) {
+	it('testHiSysEventBox16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox16 start')
 		let msgArray = []
 		for (let i = 0; i < 30; i++) {
@@ -454,7 +454,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox17
 	 * @tc.desc 验证调用subscribe接口，QueryRule-domain17字节，抛出错误码11200302
 	 */
-	it('testHiSysEventBox17', 3, async function (done) {
+	it('testHiSysEventBox17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox17 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -476,7 +476,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox18
 	 * @tc.desc 验证调用subscribe接口，QueryRule-evetname33字节，抛出错误码11200302
 	 */
-	it('testHiSysEventBox18', 3, async function (done) {
+	it('testHiSysEventBox18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox18 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -498,7 +498,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox19
 	 * @tc.desc 验证调用subscribe接口，QueryRule-domain为空，抛出错误码11200302
 	 */
-	it('testHiSysEventBox19', 3, async function (done) {
+	it('testHiSysEventBox19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox19 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -520,7 +520,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox20
 	 * @tc.desc 验证调用subscribe接口，QueryRule-evetname为空，抛出错误码11200302
 	 */
-	it('testHiSysEventBox20', 3, async function (done) {
+	it('testHiSysEventBox20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox20 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -542,7 +542,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox21
 	 * @tc.desc 验证调用subscribe接口，QueryRule-domain含有特殊字节，抛出错误码11200302
 	 */
-	it('testHiSysEventBox21', 3, async function (done) {
+	it('testHiSysEventBox21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox21 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -564,7 +564,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox22
 	 * @tc.desc 验证调用subscribe接口，QueryRule-evetname含有特殊字节，抛出错误码11200302
 	 */
-	it('testHiSysEventBox22', 3, async function (done) {
+	it('testHiSysEventBox22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox22 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -586,7 +586,7 @@ describe('hiSysEventBoxTest', function () {
 	 * @tc.name testHiSysEventBox25
 	 * @tc.desc 验证无订阅，直接调用unsubscribe取消订阅，抛出错误码11200305
 	 */
-	it('testHiSysEventBox25', 3, async function (done) {
+	it('testHiSysEventBox25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventBox25 start')
 		try {
 			hiSysEvent.unsubscribe();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, TestType, Size, Level } from "@ohos/hypium";
 import huks from "@ohos.security.huks";
 import Data from "./utils/data.json";
 import { HuksHmac } from "./utils/param/hmac/publicHmacParam.js";
@@ -219,7 +219,7 @@ async function update(handle, HuksOptions) {
 
 export default function SecurityHuksMacHmacPromiseJsunit() {
     describe("SecurityHuksMacHmacPromiseJsunit", function () {
-        it("Security_HUKS_Hmac_API9_101", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = "testHmacDigestSHA256KeyAlias101";
             let HuksOptions = {
                 properties: new Array(
@@ -233,7 +233,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_102", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = "testHmacDigestSHA256KeyAlias102";
             let HuksOptions = {
                 properties: new Array(
@@ -247,7 +247,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_103", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = "testHmacDigestSHA256KeyAlias103";
             let HuksOptions = {
                 properties: new Array(
@@ -261,7 +261,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_104", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             const srcKeyAlies = "testHmacDigestSHA256KeyAlias104";
             let HuksOptions = {
                 properties: new Array(
@@ -274,7 +274,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
             done();
         });
-        it("testReformedHmacSHA384103", 0, async function (done) {
+        it("testReformedHmacSHA384103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSHA384KeyAlias003";
             let HuksOptions = {
                 properties: new Array(
@@ -287,7 +287,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
             done();
         });
-        it("testReformedHmacSHA512103", 0, async function (done) {
+        it("testReformedHmacSHA512103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSHA512KeyAlias003";
             let HuksOptions = {
                 properties: new Array(
@@ -300,7 +300,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
             done();
         });
-        it("Security_HUKS_Hmac_API9_SM3_101", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_SM3_101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
             let HuksOptions = {
                 properties: new Array(
@@ -315,7 +315,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_SM3_102", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_SM3_102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
             let HuksOptions = {
                 properties: new Array(
@@ -329,7 +329,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_SM3_103", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_SM3_103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
             let HuksOptions = {
                 properties: new Array(
@@ -343,7 +343,7 @@ export default function SecurityHuksMacHmacPromiseJsunit() {
             done();
         });
 
-        it("Security_HUKS_Hmac_API9_SM3_104", 0, async function (done) {
+        it("Security_HUKS_Hmac_API9_SM3_104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
             let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
             let HuksOptions = {
                 properties: new Array(

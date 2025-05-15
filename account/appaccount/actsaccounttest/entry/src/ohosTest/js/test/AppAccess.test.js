@@ -26,7 +26,7 @@ export default function ActsAccountAppAccess() {
         * @tc.name      : enableAppAccess callback
         * @tc.desc      : Enable the app to access the app itself
         */
-        it('ActsAccountAppAccess_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountAppAccess_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountAppAccess_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -51,7 +51,7 @@ export default function ActsAccountAppAccess() {
         * @tc.name      : enableAppAccess promise
         * @tc.desc      : Enable the app to access the app itself
         */
-        it('ActsAccountAppAccess_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountAppAccess_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountAppAccess_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function backgroundAndSizeSettingJsunit() {
       console.info("backgroundAndSizeSetting after each called");
     });
 
-    it('testBackgroundAndSizeSetting_0100', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0100', Level.LEVEL1, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0100 START');
       await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontColor');
@@ -56,7 +56,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0200', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0200', Level.LEVEL1, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0200 START');
       await CommonFunc.sleep(1000);
       try {
@@ -82,7 +82,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0300', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0300', Level.LEVEL1, async (done: Function) => {
       console.info('testBackgroundAndSizeSetting_0300 START');
       await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('backgroundColor');
@@ -93,7 +93,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0400', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0400] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('centerRow');
@@ -106,7 +106,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0500', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0500] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('innerRow');
@@ -117,7 +117,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0600', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0600] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -148,7 +148,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0700', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0700', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0700] START');
       await CommonFunc.sleep(1000);
       try {
@@ -176,7 +176,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0800', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0800', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0800] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('layoutWeight1');
@@ -186,7 +186,7 @@ export default function backgroundAndSizeSettingJsunit() {
       done();
     });
 
-    it('testBackgroundAndSizeSetting_0900', 0, async (done: Function) => {
+    it('testBackgroundAndSizeSetting_0900', Level.LEVEL1, async (done: Function) => {
       console.info('[testBackgroundAndSizeSetting_0900] START');
       await CommonFunc.sleep(1000);
       try {

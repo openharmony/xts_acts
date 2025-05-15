@@ -1660,4 +1660,49 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_CAP_API_7100, TestSize.Level2)
         ASSERT_NE(AV_ERR_OK, OH_VideoDecoder_Configure(vdec_, format));
     }
 }
+
+/**
+ * @tc.number    : VIDEO_MPEG2SWDEC_ILLEGAL_PARA_0700
+ * @tc.name      : OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 OH_VideoDecoder_Configure para error
+ * @tc.desc      : api test
+ */
+HWTEST_F(SwdecApiNdkTest, VIDEO_MPEG2SWDEC_ILLEGAL_PARA_0700, TestSize.Level2)
+{
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_MPEG2, false, SOFTWARE);
+    if (cap != nullptr) {
+        vdec_ = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_MPEG2);
+        ASSERT_NE(NULL, vdec_);
+        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoDecoder_Configure(vdec_, NULL));
+    }
+}
+
+/**
+ * @tc.number    : VIDEO_MPEG4SWDEC_ILLEGAL_PARA_0700
+ * @tc.name      : OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 OH_VideoDecoder_Configure para error
+ * @tc.desc      : api test
+ */
+HWTEST_F(SwdecApiNdkTest, VIDEO_MPEG4SWDEC_ILLEGAL_PARA_0700, TestSize.Level2)
+{
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2, false, SOFTWARE);
+    if (cap != nullptr) {
+        vdec_ = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2);
+        ASSERT_NE(NULL, vdec_);
+        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoDecoder_Configure(vdec_, NULL));
+    }
+}
+
+/**
+ * @tc.number    : VIDEO_H263SWDEC_ILLEGAL_PARA_0700
+ * @tc.name      : OH_AVCODEC_MIMETYPE_VIDEO_H263 OH_VideoDecoder_Configure para error
+ * @tc.desc      : api test
+ */
+HWTEST_F(SwdecApiNdkTest, VIDEO_H263SWDEC_ILLEGAL_PARA_0700, TestSize.Level2)
+{
+    cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_H263, false, SOFTWARE);
+    if (cap != nullptr) {
+        vdec_ = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_H263);
+        ASSERT_NE(NULL, vdec_);
+        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoDecoder_Configure(vdec_, NULL));
+    }
+}
 } // namespace

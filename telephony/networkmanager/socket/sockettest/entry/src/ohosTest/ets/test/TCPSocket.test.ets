@@ -408,7 +408,7 @@ export default function TCPSocketTest() {
         tcp.bind(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(401);
+            expectTrue(err.code===401);
           } else {
             console.info(`${caseName} success`);
             expectFail();
@@ -441,7 +441,7 @@ export default function TCPSocketTest() {
         tcp.bind(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} fail err:${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(401);
+            expectTrue(err.code===401);
           } else {
             console.info(`${caseName} success`);
             expectFail();
@@ -868,7 +868,7 @@ export default function TCPSocketTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} fail ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(401);
+          expectTrue(err.code===401);
           done();
         }).finally(() => {
           console.info(`${caseName} test end`);
@@ -901,7 +901,7 @@ export default function TCPSocketTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} fail ${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(401);
+          expectTrue(err.code===401);
           done();
         }).finally(() => {
           console.info(`${caseName} test end`);

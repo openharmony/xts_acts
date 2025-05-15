@@ -5079,8 +5079,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSliderReverse003", nullptr, TestSliderReverse003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderReverse004", nullptr, TestSliderReverse004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSliderReverse005", nullptr, TestSliderReverse005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSliderSelectedColor001", nullptr, TestSliderSelectedColor001, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testSliderSelectedColor002", nullptr, TestSliderSelectedColor002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSliderSelectedColor003", nullptr, TestSliderSelectedColor003, nullptr, nullptr, nullptr, napi_default,
@@ -7799,6 +7797,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testCustomDialogShow003", nullptr, TestCustomDialogShow003, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testCustomDialogShow004", nullptr, TestCustomDialogShow004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogShow005", nullptr, TestCustomDialogShow005, nullptr, nullptr, nullptr, napi_default,
          nullptr},
 
         {"testLazyForEachCreate001", nullptr, TestLazyForEachCreate001, nullptr, nullptr, nullptr, napi_default,

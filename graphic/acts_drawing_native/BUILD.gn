@@ -75,15 +75,17 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "-Dprotected=public",
   ]
 
-  include_dirs = [ "//third_party/googletest/googletest/include" ]
-
   external_deps = [
-    "graphic_2d:2d_graphics",
     "graphic_2d:EGL",
-    "graphic_2d:GLESv3",
-    "graphic_2d:native_drawing_ndk",
-    "hilog:libhilog",
     "image_framework:pixelmap",
+  ]
+  include_dirs = [
+    "${current_sdk_home}/native/sysroot/usr/include/native_drawing",
+    "${current_sdk_home}/native/sysroot/usr/include/GLES3",
+  ]
+  libs = [
+    "${current_sdk_home}/native/sysroot/usr/lib/${target_platform_triple}/libnative_drawing.so",
+    "${current_sdk_home}/native/sysroot/usr/lib/${target_platform_triple}/libGLESv3.so",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }

@@ -16,5 +16,7 @@ import JsvmTest from './JsvmTest';
 
 
 export default function testsuite() {
-  JsvmTest();
+  if (canIUse("SystemCapability.ArkCompiler.JSVM")) {
+    JsvmTest();
+  }
 }

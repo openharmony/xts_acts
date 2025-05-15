@@ -17,11 +17,18 @@ import { afterEach, beforeEach, describe, it , TestType, Size, Level } from '@oh
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 // import router from '@system.router';
 export default function webViewOnErrorReceive02Jsunit() {
     describe('ActsAceWebDevWebViewOnErrorReceive02Test',  () =>{
         beforeEach(async  (done: Function) =>{
+            config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+                console.info(`enable success`);
+                }).catch((err: object) => {
+                console.error(`failed to enable, ${err}`);
+            })
             let options: router.RouterOptions = {
                 url: "testability/pages/onErrorReceive02"
             }

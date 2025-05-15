@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 
 export default {
     data: {
+        itemIndex: -1,
         sliderValue: '',
         dynamicValue: 150,
         str: '',
@@ -43,17 +43,24 @@ export default {
             params: {
                 step: '操作步骤：拖动或点击滑动条',
                 result: '预期结果：滑动条值跟随变化并显示操作状态',
-                url: 'pages/slider/index/index'
+                url: 'pages/slider/index/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-compent/index' });
+        router.replace({
+            uri: 'pages/second-compent/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

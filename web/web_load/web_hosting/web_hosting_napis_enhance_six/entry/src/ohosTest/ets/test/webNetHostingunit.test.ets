@@ -3,12 +3,20 @@ import { beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import Utils from './Utils';
 // import { hilog } from '@kit.PerformanceAnalysisKit';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webviewApi() {
 
   describe('webNetHostingTwo', () => {
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(1000);
       console.info("web beforeEach start");
       done();

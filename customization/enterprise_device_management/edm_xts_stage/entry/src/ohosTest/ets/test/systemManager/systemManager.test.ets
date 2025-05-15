@@ -614,6 +614,43 @@ function testNotifyUpdatePackages() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_NOTIFY_UPDATE_PACKAGES_JS_0005
+   * @tc.name      : test_notify_update_packages_0005
+   * @tc.desc      : test systemManager notifyUpdatePackages with invalid authinfo
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_notify_update_packages_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let notify: systemManager.NotifyDescription = {
+      "installTips": "installTips",
+      "installTipsDetail": "installTips detail"
+    }
+    let description: systemManager.PackageDescription = {
+      "notify": notify,
+    }
+    let updatePaskageInfo: Array<systemManager.Package> = [{
+      "type": systemManager.PackageType.FIRMWARE,
+      "path": "path"
+    }]
+    let updatePackageInfo: systemManager.UpdatePackageInfo = {
+      "version" : UPDATE_VERSION,
+      "packages" : updatePaskageInfo,
+      "description" : description,
+      "authInfo" : "invalid authinfo",
+    };
+    await systemManager.notifyUpdatePackages(SELFWANT, updatePackageInfo).then(()=>{
+      expect(false).assertTrue();
+    }).catch ((error: BusinessError)=> {
+      expect(error.code == 9201004).assertTrue();
+    }).finally(async () => {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    });
+    done();
+  });
 }
 
 function testGetUpdateResult() {

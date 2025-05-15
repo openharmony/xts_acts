@@ -20,7 +20,9 @@ import { webview } from '@kit.ArkWeb';
 import { LocalContext } from './GloablConfig';
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let driver: Driver = Driver.create();
 let flg: boolean = false
 
@@ -33,6 +35,11 @@ export default function webRequestHeaderList() {
       // This API supports only one parameter: preset action function.
     })
     beforeEach(() => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       flg = false;
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
@@ -69,7 +76,7 @@ export default function webRequestHeaderList() {
         flg = true
         console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         expect(error.code).assertEqual("17100002")
-        expect(error.message).assertEqual("Invalid url")
+        expect(error.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
       }
       await driver.delayMs(2000)
       expect(flg).assertTrue()
@@ -97,7 +104,7 @@ export default function webRequestHeaderList() {
         flg = true
         console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         expect(error.code).assertEqual("17100002")
-        expect(error.message).assertEqual("Invalid url")
+        expect(error.message).assertEqual("URL error. Possible causes:1.No valid cookie found for the specified URL. 2.The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.")
       }
       await driver.delayMs(2000)
       expect(flg).assertTrue()

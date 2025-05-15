@@ -36,9 +36,9 @@ describe('userAuthTestEnum', function () {
     * @tc.number    Security_IAM_Face_JSAPI_Function_Enum_0100
     * @tc.size      MEDIUM
     * @tc.type      FUNC
-    * @tc.level     Level2
+    * @tc.level     Level0
     */
-    it('Security_IAM_Face_JSAPI_Function_Enum_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+    it('Security_IAM_Face_JSAPI_Function_Enum_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         expect(typeof userAuth.AuthenticationResult.NO_SUPPORT !==undefined).assertTrue()
         expect(userAuth.AuthenticationResult.NO_SUPPORT).assertEqual(-1)
     })

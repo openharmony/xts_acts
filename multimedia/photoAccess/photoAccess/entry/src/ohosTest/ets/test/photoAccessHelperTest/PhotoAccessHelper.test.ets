@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import Want  from '@ohos.app.ability.Want';
 import { sleep, Constant } from './Common';
@@ -62,7 +62,7 @@ export default function photoAccessHelperTest() {
        * @tc.type      : Function
        * @tc.level     : Level2
        */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0000', Level.LEVEL0, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['uri', 'media_type', 'subtype', 'display_name'],
@@ -88,7 +88,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100', Level.LEVEL1, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: [],
@@ -114,7 +114,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200', Level.LEVEL2, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions | undefined = undefined;
         phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
@@ -136,7 +136,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: [],
@@ -162,7 +162,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400', 4, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions | undefined = undefined;
         await phAccessHelper.getAssets(fetchOptions);
@@ -183,7 +183,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500', 5, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['screenshot_20240805_124506.jpeg'],
@@ -208,7 +208,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', 6, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['screenshot_20240805_124506'],
@@ -233,7 +233,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', 7, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['screenshot_20240805_124506'],
@@ -258,7 +258,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', 8, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['screenshot_20240805_124506'],
@@ -283,7 +283,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', 9, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900', Level.LEVEL3, async (done: Function) => {
       try {
         let fetchOptions: photoAccessHelper.FetchOptions = {
           fetchColumns: ['uri', 'media_type', 'subtype', 'display_name'],
@@ -309,7 +309,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', 10, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -337,7 +337,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', 11, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType | undefined = undefined;
         let extension: string = 'jpg';
@@ -362,7 +362,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200', 12, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = '123';
@@ -387,7 +387,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300', 13, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = '';
@@ -412,7 +412,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400', 14, async (done: Function) => { //14
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400', Level.LEVEL3, async (done: Function) => { //14
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -438,7 +438,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500', 15, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -461,7 +461,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600', 16, async (done: Function) => { //16
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600', Level.LEVEL3, async (done: Function) => { //16
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -486,7 +486,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700', 17, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType | undefined = undefined;
         let extension: string = 'mp4';
@@ -511,7 +511,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800', 18, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = '123';
@@ -536,7 +536,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900', 19, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = '';
@@ -561,7 +561,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000', 20, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -586,7 +586,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100', 21, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -609,7 +609,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200', 22, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -634,7 +634,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300', 23, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -660,7 +660,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400', 24, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -687,7 +687,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500', 25, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType | undefined = undefined;
         let extension: string = 'jpg';
@@ -713,7 +713,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600', 26, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = '123';
@@ -739,7 +739,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700', 27, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string | undefined = undefined;
@@ -765,7 +765,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800', 28, (done: Function) => { //28
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800', Level.LEVEL3, (done: Function) => { //28
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -791,7 +791,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900', 29, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -815,7 +815,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000', 30, (done: Function) => { //30
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000', Level.LEVEL3, (done: Function) => { //30
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -841,7 +841,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', 31, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType | undefined = undefined;
         let extension: string = 'mp4';
@@ -867,7 +867,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200', 32, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200', Level.LEVEL3, (done: Function) => {
       let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
       let extension: string = '123';
       let options: photoAccessHelper.CreateOptions = {
@@ -887,7 +887,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300', 33, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string | undefined = undefined;
@@ -913,7 +913,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', 34, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -939,7 +939,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', 35, (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500', Level.LEVEL3, (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -963,7 +963,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600', 36, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
         let extension: string = 'jpg';
@@ -987,7 +987,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700', 37, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700', Level.LEVEL3, async (done: Function) => {
       try {
         let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
         let extension: string = 'mp4';
@@ -1011,7 +1011,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800', 38, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1040,7 +1040,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900', 39, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900', Level.LEVEL3, async (done: Function) => {
       phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC)
         .then(async (fetchResult) => {
           expect(fetchResult).not().assertUndefined();
@@ -1062,7 +1062,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000', 40, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1091,7 +1091,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100', 41, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1120,7 +1120,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200', 42, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1149,7 +1149,7 @@ export default function photoAccessHelperTest() {
     * @tc.type      : Function
     * @tc.level     : Level3
     */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300', 43, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -1178,7 +1178,7 @@ export default function photoAccessHelperTest() {
    * @tc.type      : Function
    * @tc.level     : Level3
    */
-    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', 44, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', Level.LEVEL3, async (done: Function) => {
       // 示例代码中为获取相册名为newAlbumName的相册。
       console.info('getAlbumsDemo');
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();

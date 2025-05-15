@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -43,7 +43,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0100', 0, async (done: Function) => {
+    it('RenderFitJsunit_0100', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0100] START');
       let strJson = getInspectorByKey('LEFT');
@@ -55,7 +55,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0200', 0, async (done: Function) => {
+    it('RenderFitJsunit_0200', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0200] START');
       let strJson = getInspectorByKey('RIGHT');
@@ -67,7 +67,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0300', 0, async (done: Function) => {
+    it('RenderFitJsunit_0300', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0300] START');
       let strJson = getInspectorByKey('TOP_LEFT');
@@ -79,7 +79,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0400', 0, async (done: Function) => {
+    it('RenderFitJsunit_0400', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0400] START');
       let strJson = getInspectorByKey('TOP_RIGHT');
@@ -91,7 +91,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0500', 0, async (done: Function) => {
+    it('RenderFitJsunit_0500', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0500] START');
       let strJson = getInspectorByKey('BOTTOM_LEFT');
@@ -103,7 +103,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0600', 0, async (done: Function) => {
+    it('RenderFitJsunit_0600', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0600] START');
       let strJson = getInspectorByKey('BOTTOM_RIGHT');
@@ -115,7 +115,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0700', 0, async (done: Function) => {
+    it('RenderFitJsunit_0700', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0700] START');
       let strJson = getInspectorByKey('RESIZE_FILL');
@@ -127,7 +127,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0800', 0, async (done: Function) => {
+    it('RenderFitJsunit_0800', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0800] START');
       let strJson = getInspectorByKey('RESIZE_CONTAIN');
@@ -139,7 +139,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_0900', 0, async (done: Function) => {
+    it('RenderFitJsunit_0900', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_0900] START');
       let strJson = getInspectorByKey('RESIZE_CONTAIN_TOP_LEFT');
@@ -151,7 +151,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_1000', 0, async (done: Function) => {
+    it('RenderFitJsunit_1000', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_1000] START');
       let strJson = getInspectorByKey('RESIZE_CONTAIN_BOTTOM_RIGHT');
@@ -163,7 +163,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_1100', 0, async (done: Function) => {
+    it('RenderFitJsunit_1100', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_1100] START');
       let strJson = getInspectorByKey('RESIZE_COVER');
@@ -175,7 +175,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_1200', 0, async (done: Function) => {
+    it('RenderFitJsunit_1200', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_1200] START');
       let strJson = getInspectorByKey('RESIZE_COVER_TOP_LEFT');
@@ -187,7 +187,7 @@ export default function RenderFitJsunit() {
       done();
     });
 
-    it('RenderFitJsunit_1300', 0, async (done: Function) => {
+    it('RenderFitJsunit_1300', Level.LEVEL2, async (done: Function) => {
       // Get the information of the RenderFit
       console.info('[RenderFitJsunit_1300] START');
       let strJson = getInspectorByKey('RESIZE_COVER_BOTTOM_RIGHT');
@@ -196,6 +196,18 @@ export default function RenderFitJsunit() {
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.renderFit).assertEqual('RenderFit.RESIZE_COVER_BOTTOM_RIGHT');
       console.info('[RenderFitJsunit_1300] END');
+      done();
+    });
+
+    it('RenderFitJsunit_1400', Level.LEVEL2, async (done: Function) => {
+      // Get the information of the RenderFit
+      console.info('[RenderFitJsunit_1400] START');
+      let strJson = getInspectorByKey('RenderFit_TOP');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("[RenderFitJsunit_1400] TOP: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+      expect(obj.$attrs.renderFit).assertEqual('RenderFit.TOP');
+      console.info('[RenderFitJsunit_1400] END');
       done();
     });
   })

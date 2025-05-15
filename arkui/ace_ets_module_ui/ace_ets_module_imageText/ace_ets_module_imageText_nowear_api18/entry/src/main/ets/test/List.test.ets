@@ -17,10 +17,12 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import TextMenuItemId from './RichEditorTest/TextMenuItemId.test';
 import getCaretRect from './RichEditorTest/getCaretRect.test';
 import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test';
+import RichEditorMaxLengthTest from './RichEditorTest/RichEditorMaxLengthTest.test';
 
 export default function testsuite() {
   textAreaInputTest();
   TextMenuItemId();
   getCaretRect();
   MovingPhotoViewTest();
+  RichEditorMaxLengthTest();
 }

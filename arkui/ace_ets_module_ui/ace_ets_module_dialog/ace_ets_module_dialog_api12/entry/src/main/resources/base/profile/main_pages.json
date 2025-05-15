@@ -40,6 +40,15 @@
     "MainAbility/pages/promptAction/showToast",
     "MainAbility/pages/CustomDialog/KeyboardAvoidMode/BaseDialog",
     "MainAbility/pages/CustomDialog/KeyboardAvoidMode/CustomDialog",
-    "MainAbility/pages/CustomDialog/KeyboardAvoidMode/PromptAction"
+    "MainAbility/pages/CustomDialog/KeyboardAvoidMode/PromptAction",
+    "MainAbility/pages/AlertDialog/primary",
+    "MainAbility/pages/button/buttonMaxFontSize",
+    "MainAbility/pages/bindSheet/sheetBorderWidth",
+    "MainAbility/pages/CustomDialog/CustomDialogBorderColor",
+    "MainAbility/pages/Dialog/dialogButtonStyle",
+    "MainAbility/pages/popup/arrowOffset",
+    "MainAbility/pages/promptAction/showDialogTest",
+    "MainAbility/pages/CustomDialog/dialogTransitionTest",
+    "MainAbility/pages/Menu/menuTransition"
   ]
 }

@@ -19,6 +19,7 @@ group("security") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "access_token/AccessTokenTest:ActsAccessTokenApiTest",
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "accesstokenNDKTest:ActsAccessTokenNDKTest",
       "asset",

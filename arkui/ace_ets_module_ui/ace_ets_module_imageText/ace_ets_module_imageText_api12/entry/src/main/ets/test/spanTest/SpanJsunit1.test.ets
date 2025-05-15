@@ -39,7 +39,7 @@ export default function spanTest() {
       }
       done()
     });
-
+    let resourceSize = getContext().resourceManager.getNumber($r('sys.float.ohos_id_text_font_size').id);
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info("span after each called");
@@ -510,7 +510,10 @@ export default function spanTest() {
       console.info('[' + tagName + '] component obj is: ' + strJson);
       let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Span');
-	  expect(obj.$attrs.font).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","weight":"FontWeight.Normal","family":"HarmonyOS Sans"}');
+      expect(JSON.parse(obj.$attrs.font).style).assertEqual("FontStyle.Normal");
+      expect(JSON.parse(obj.$attrs.font).size).assertEqual(px2fp(resourceSize)+'.00fp');
+      expect(JSON.parse(obj.$attrs.font).weight).assertEqual("FontWeight.Normal");
+      expect(JSON.parse(obj.$attrs.font).family).assertEqual("HarmonyOS Sans");
 
       try {
         let eventData: events_emitter.EventData = {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0010', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0010 onComplete,setAutoPlayPeriod');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -91,13 +91,13 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0020', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0020 onStart,onPause,onFinish,autoPlay');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
       let button1 = await driver.findComponent(ON.id('MovingPhotoView_autoPlay'));
       await button1.click();
-      await CommonFunc.sleep(5000);
+      await CommonFunc.sleep(10000);
       let strJson = getInspectorByKey('MovingPhotoView_start');
       let strJson1 = getInspectorByKey('MovingPhotoView_pause');
       let strJson2 = getInspectorByKey('MovingPhotoView_finish');
@@ -122,7 +122,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0030', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0030', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0030 startPlayback');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -144,7 +144,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0040', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0040', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0040 stopPlayback');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -166,7 +166,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0050', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0050', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0050 onStop');
       let driver = await Driver.create()
       await CommonFunc.sleep(2000);
@@ -188,7 +188,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0060', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0060', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0060 muted');
       let strJson = getInspectorByKey('MovingPhotoView_mute');
       console.log('MovingPhotoViewTest_0060', JSON.parse(strJson).$attrs.content)
@@ -205,7 +205,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0070', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0070', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0070 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -227,7 +227,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0080', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0080', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0080 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -249,7 +249,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0090', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0090', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -271,7 +271,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0100', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0100 START');
       let strJson = getInspectorByKey('MovingPhotoView_repeatPlay');
       console.log('MovingPhotoViewTest_0100', JSON.parse(strJson).$attrs.content)
@@ -288,7 +288,7 @@ export default function MovingPhotoViewTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('MovingPhotoViewTest_0110', 0, async (done: Function) => {
+    it('MovingPhotoViewTest_0110', Level.LEVEL2, async (done: Function) => {
       console.info('MovingPhotoViewTest_0110 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

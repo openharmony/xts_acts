@@ -14,7 +14,7 @@
  */
 
 import contact from '@ohos.contact';
-import { afterAll, afterEach, beforeAll, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { bundleManager } from '@kit.AbilityKit';
 import account from '@ohos.account.osAccount';
@@ -193,7 +193,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_updateContact_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_updateContact_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       const caseName: string = "SUB_Telephony_ContactsApi_updateContact_test_0100";
       console.info(`${caseName} test start`);
       let context: Context = AppStorage.get('context') as Context;
@@ -275,7 +275,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_updateContact_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_updateContact_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -355,7 +355,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_updateContact_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_updateContact_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -434,7 +434,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_updateContact_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_updateContact_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -468,7 +468,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_isLocalContact_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_isLocalContact_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -502,7 +502,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_isMyCard_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_isMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -536,7 +536,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_isMyCard_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_isMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -570,7 +570,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_selectContacts_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -602,7 +602,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_selectContacts_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -633,7 +633,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_selectContacts_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -667,7 +667,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_selectContacts_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -700,7 +700,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_key_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_key_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let rawContactId = await contact.addContact(context, contactData);
@@ -725,7 +725,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_key_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_key_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let caseName = "SUB_Telephony_ContactsApi_query_key_test_0200";
       sleep(500);
@@ -760,7 +760,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_insert_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_insert_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let contactDataError:contact.Contact = {};
       try {
@@ -783,7 +783,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_contact_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_contact_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let queryId = "-1";
       try {
@@ -811,7 +811,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_email_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_email_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let email = "email2222";
       try {
@@ -834,7 +834,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_phoneNumber_test_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_phoneNumber_test_0500", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let phoneNumber = "19999999";
       try {
@@ -857,7 +857,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_query_key_test_0600", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_query_key_test_0600", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let idTest = -1;
       try {
@@ -879,7 +879,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_addContact_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_addContact_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -925,7 +925,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_addContact_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_addContact_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       let promise = contact.addContact(context, contactData);
@@ -970,7 +970,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContact_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContact_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       expect(holder.bundleName === null).assertFalse();
       expect(holder.displayName === null).assertFalse();
@@ -1019,7 +1019,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContact_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContact_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1064,7 +1064,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContact_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContact_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1110,7 +1110,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContact_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContact_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1155,7 +1155,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContact_test_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContact_test_0500", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1200,7 +1200,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContacts_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContacts_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1235,7 +1235,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContacts_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContacts_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1270,7 +1270,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContacts_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContacts_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1305,7 +1305,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContacts_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContacts_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1340,7 +1340,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContacts_test_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContacts_test_0500", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1375,7 +1375,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1412,7 +1412,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1449,7 +1449,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1486,7 +1486,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1523,7 +1523,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1559,7 +1559,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1594,7 +1594,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1629,7 +1629,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1664,7 +1664,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1699,7 +1699,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1734,7 +1734,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryGroups_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryGroups_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1769,7 +1769,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryGroups_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryGroups_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1804,7 +1804,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryGroups_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryGroups_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1839,7 +1839,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryHolders_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryHolders_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL1, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       contact.queryHolders(context, (err, data) => {
         if (err) {
@@ -1862,7 +1862,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryHolders_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryHolders_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let promise = contact.queryHolders(context as Context);
       promise.then((data) => {
@@ -1885,7 +1885,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryKey_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryKey_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL4, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1920,7 +1920,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryKey_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryKey_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1955,7 +1955,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryKey_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryKey_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       sleep(500);
       contact.addContact(context, contactData, (err, data) => {
@@ -1990,7 +1990,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0100", TestType.FUNCTION | Size.SmallTest | Level.LEVEL3, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       contact.queryMyCard(context, (err, data) => {
         if (err) {
@@ -2012,7 +2012,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0200", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       contact.queryMyCard(context, attr, (err, data) => {
         if (err) {
@@ -2034,7 +2034,7 @@ export default function ContactInterfaceStageTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_ContactsApi_queryMyCard_test_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_ContactsApi_queryMyCard_test_0300", TestType.FUNCTION | Size.SmallTest | Level.LEVEL2, async (done:Function) => {
       let context: Context = AppStorage.get('context') as Context;
       let promise = contact.queryMyCard(context, attr);
       promise.then((data) => {

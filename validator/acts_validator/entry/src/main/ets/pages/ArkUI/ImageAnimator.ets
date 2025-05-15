@@ -163,7 +163,7 @@ struct imageAnimator {
         .height(20)
         .width('90%')
         .justifyContent(FlexAlign.Start)
-        .margin({ top: 24 })
+        //.margin({ top: 24 })
 
         ImageAnimator()
           .images([
@@ -192,11 +192,11 @@ struct imageAnimator {
               src: $r('app.media.image_animator_8')
             }
           ])
-          .margin({ top: 12 })
+          //.margin({ top: 12 })
           .duration(3000)
           .fillMode(FillMode.None)
           .width('60%')
-          .height('75%')
+          .height('40%')
           .iterations(this.animatorInterations)
           .state(this.animatorState)
           .reverse(this.animatorReserve)
@@ -244,7 +244,7 @@ struct imageAnimator {
               this.count++
               this.animatorState = AnimationStatus.Running
             })
-            .width(100)
+            .width(60)
             .margin(5)
             .type(ButtonType.Normal)
             .borderRadius(20)
@@ -254,7 +254,7 @@ struct imageAnimator {
             .onClick(() => {
               this.animatorState = AnimationStatus.Paused
             })
-            .width(100)
+            .width(60)
             .margin(5)
             .type(ButtonType.Normal)
             .borderRadius(20)
@@ -264,12 +264,12 @@ struct imageAnimator {
             .onClick(() => {
               this.animatorState = AnimationStatus.Stopped
             })
-            .width(100)
+            .width(60)
             .margin(5)
             .type(ButtonType.Normal)
             .borderRadius(20)
         }
-        .margin({ top: 12 })
+        //.margin({ top: 12 })
         .justifyContent(FlexAlign.SpaceEvenly)
       }
       .height('80%')

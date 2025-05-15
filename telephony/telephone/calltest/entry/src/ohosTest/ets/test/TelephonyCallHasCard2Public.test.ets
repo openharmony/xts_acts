@@ -426,6 +426,7 @@ export default function HasCard2PublicTest() {
     it('testTelephonyCallManagerIsEmergencyPhoneNumber1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber1800';
       console.info(`${caseName} test start`);
+      if(sim.getMaxSimCount()>1){
       const phoneNumber: string = "";
       const options: call.EmergencyNumberOptions = {
         slotId: 1
@@ -441,6 +442,11 @@ export default function HasCard2PublicTest() {
           done();
         }
       });
+      }else{
+        console.info(`${caseName}：Not support dual SIM cards.`);
+        ExpectTrue(true);
+        done();
+      }
       console.info(`${caseName} test end`);
     });
 
@@ -455,6 +461,7 @@ export default function HasCard2PublicTest() {
     it('testTelephonyCallManagerIsEmergencyPhoneNumber2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber2000';
       console.info(`${caseName} test start`);
+      if(sim.getMaxSimCount()>1){
       const phoneNumber: string = "!@#$%";
       const options: call.EmergencyNumberOptions = {
         slotId: 1
@@ -470,6 +477,11 @@ export default function HasCard2PublicTest() {
           done();
         }
       });
+      }else{
+        console.info(`${caseName}：Not support dual SIM cards.`);
+        ExpectTrue(true);
+        done();
+      }
       console.info(`${caseName} test end`);
     });
 

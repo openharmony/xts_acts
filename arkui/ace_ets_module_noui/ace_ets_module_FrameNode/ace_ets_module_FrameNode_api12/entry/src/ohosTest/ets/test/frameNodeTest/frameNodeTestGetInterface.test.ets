@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -29,7 +29,6 @@ import {
   PointerMatrix
 } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-
 export default function frameNodeGetInterfaceTest() {
   describe('frameNodeGetInterfaceTest', () => {
     beforeEach(async (done: Function) => {
@@ -61,7 +60,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0100', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -85,7 +84,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0200', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0200  START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -101,7 +100,6 @@ export default function frameNodeGetInterfaceTest() {
       console.info('[frameNodeGetInterfaceTest_0200] END');
       done();
     });
-
     /**
      * @tc.number frameNodeGetVisible
      * @tc.name frameNodeGetInterfaceTest_0300
@@ -110,7 +108,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0300', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -126,7 +124,6 @@ export default function frameNodeGetInterfaceTest() {
       console.info('[frameNodeGetInterfaceTest_0300] END');
       done();
     });
-
     /**
      * @tc.number frameNodeIsClipToFrame
      * @tc.name frameNodeGetInterfaceTest_0400
@@ -135,7 +132,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0400', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -151,7 +148,6 @@ export default function frameNodeGetInterfaceTest() {
       console.info('[frameNodeGetInterfaceTest_0400] END');
       done();
     });
-
     /**
      * @tc.number frameNodeIsAttached
      * @tc.name frameNodeGetInterfaceTest_0500
@@ -160,7 +156,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0500', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0500 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -176,8 +172,6 @@ export default function frameNodeGetInterfaceTest() {
       console.info('[frameNodeGetInterfaceTest_0500] END');
       done();
     });
-
-
     /**
      * @tc.number frameNodeGetInspectorInfo
      * @tc.name frameNodeGetInterfaceTest_0600
@@ -186,7 +180,7 @@ export default function frameNodeGetInterfaceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('frameNodeGetInterfaceTest_0600', 0, async (done: Function) => {
+    it('frameNodeGetInterfaceTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0600 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -202,7 +196,5 @@ export default function frameNodeGetInterfaceTest() {
       console.info('[frameNodeGetInterfaceTest_0600] END');
       done();
     });
-
   })
 }
-

@@ -65,46 +65,57 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
-            console.info("[wifi_test] check the 2.4G rssi assgined to level test.");
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-65, 1));
-            expect(wifiMg.getSignalLevel(-65, 1)).assertEqual(4);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-66, 1));
-            expect(wifiMg.getSignalLevel(-66, 1)).assertEqual(3);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-75, 1));
-            expect(wifiMg.getSignalLevel(-75, 1)).assertEqual(3);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-76, 1));
-            expect(wifiMg.getSignalLevel(-76, 1)).assertEqual(2);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-82, 1));
-            expect(wifiMg.getSignalLevel(-82, 1)).assertEqual(2);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-83, 1));
-            expect(wifiMg.getSignalLevel(-83, 1)).assertEqual(1);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-88, 1));
-            expect(wifiMg.getSignalLevel(-88, 1)).assertEqual(1);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-89, 1));
-            expect(wifiMg.getSignalLevel(-89, 1)).assertEqual(0);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-127, 1));
-            expect(wifiMg.getSignalLevel(-127, 1)).assertEqual(0);
+        it('SUB_Communication_WiFi_XTS_Sta_0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
+            try{
+                console.info("[wifi_test] check the 2.4G rssi assgined to level test.");
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-65, 1));
+                expect(wifiMg.getSignalLevel(-65, 1)).assertEqual(4);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-66, 1));
+                expect(wifiMg.getSignalLevel(-66, 1)).assertEqual(3);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-75, 1));
+                expect(wifiMg.getSignalLevel(-75, 1)).assertEqual(3);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-76, 1));
+                expect(wifiMg.getSignalLevel(-76, 1)).assertEqual(2);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-82, 1));
+                expect(wifiMg.getSignalLevel(-82, 1)).assertEqual(2);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-83, 1));
+                expect(wifiMg.getSignalLevel(-83, 1)).assertEqual(1);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-88, 1));
+                expect(wifiMg.getSignalLevel(-88, 1)).assertEqual(1);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-89, 1));
+                expect(wifiMg.getSignalLevel(-89, 1)).assertEqual(0);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-127, 1));
+                expect(wifiMg.getSignalLevel(-127, 1)).assertEqual(0);
 
-            console.info("[wifi_test] check the 5G rssi assgined to level test.");
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-65, 2));
-            expect(wifiMg.getSignalLevel(-65, 2)).assertEqual(4);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-66, 2));
-            expect(wifiMg.getSignalLevel(-66, 2)).assertEqual(3);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-72, 2));
-            expect(wifiMg.getSignalLevel(-72, 2)).assertEqual(3);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-73, 2));
-            expect(wifiMg.getSignalLevel(-73, 2)).assertEqual(2);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-79, 2));
-            expect(wifiMg.getSignalLevel(-79, 2)).assertEqual(2);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-80, 2));
-            expect(wifiMg.getSignalLevel(-80, 2)).assertEqual(1);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-85, 2));
-            expect(wifiMg.getSignalLevel(-85, 2)).assertEqual(1);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-86, 2));
-            expect(wifiMg.getSignalLevel(-86, 2)).assertEqual(0);
-            console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-127, 2));
-            expect(wifiMg.getSignalLevel(-127, 2)).assertEqual(0);
+                console.info("[wifi_test] check the 5G rssi assgined to level test.");
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-65, 2));
+                expect(wifiMg.getSignalLevel(-65, 2)).assertEqual(4);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-66, 2));
+                expect(wifiMg.getSignalLevel(-66, 2)).assertEqual(3);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-72, 2));
+                expect(wifiMg.getSignalLevel(-72, 2)).assertEqual(3);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-73, 2));
+                expect(wifiMg.getSignalLevel(-73, 2)).assertEqual(2);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-79, 2));
+                expect(wifiMg.getSignalLevel(-79, 2)).assertEqual(2);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-80, 2));
+                expect(wifiMg.getSignalLevel(-80, 2)).assertEqual(1);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-85, 2));
+                expect(wifiMg.getSignalLevel(-85, 2)).assertEqual(1);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-86, 2));
+                expect(wifiMg.getSignalLevel(-86, 2)).assertEqual(0);
+                console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel(-127, 2));
+                expect(wifiMg.getSignalLevel(-127, 2)).assertEqual(0);
+            } catch(error) {
+                console.info("getSignalLevel: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info("getSignalLevel is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect().assertFail();
+                }
+            }
+            done();
         })
 
         /**
@@ -115,31 +126,42 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+        it('SUB_Communication_WiFi_XTS_Sta_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             expect(wifiMg.isWifiActive()).assertTrue();
-            let getCountryCodeResult = wifiMg.getCountryCode();
-            console.info("[wifi_test]getCountryCode :" + JSON.stringify(getCountryCodeResult));
-            let countrylenth = getCountryCodeResult.length;
-            console.info("[wifi_test]getCountryCode.length :" + JSON.stringify(countrylenth));
-            expect(true).assertEqual(countrylenth == 2);
-            let WIDTH_20MHZ = wifiMg.WifiChannelWidth .WIDTH_20MHZ;
-            console.info("[wifi_test]WIDTH_20MHZ : " + JSON.stringify(WIDTH_20MHZ));
-            expect(true).assertEqual( WIDTH_20MHZ == 0);
-            let WIDTH_40MHZ = wifiMg.WifiChannelWidth .WIDTH_40MHZ;
-            console.info("[wifi_test]WIDTH_40MHZ : " + JSON.stringify(WIDTH_40MHZ));
-            expect(true).assertEqual( WIDTH_40MHZ == 1);
-            let WIDTH_80MHZ = wifiMg.WifiChannelWidth .WIDTH_80MHZ;
-            console.info("[wifi_test]WIDTH_80MHZ : " + JSON.stringify(WIDTH_80MHZ));
-            expect(true).assertEqual( WIDTH_80MHZ == 2);
-            let WIDTH_160MHZ = wifiMg.WifiChannelWidth .WIDTH_160MHZ;
-            console.info("[wifi_test]WIDTH_160MHZ : " + JSON.stringify(WIDTH_160MHZ));
-            expect(true).assertEqual( WIDTH_160MHZ == 3);
-            let WIDTH_80MHZ_PLUS = wifiMg.WifiChannelWidth .WIDTH_80MHZ_PLUS;
-            console.info("[wifi_test]WIDTH_80MHZ_PLUS : " + JSON.stringify(WIDTH_80MHZ_PLUS));
-            expect(true).assertEqual( WIDTH_80MHZ_PLUS == 4);
-            let WIDTH_INVALID = wifiMg.WifiChannelWidth .WIDTH_INVALID;
-            console.info("[wifi_test]WIDTH_INVALID : " + JSON.stringify(WIDTH_INVALID));
-            expect(true).assertEqual( WIDTH_INVALID == 5);
+            try {
+                let getCountryCodeResult = wifiMg.getCountryCode();
+                console.info("[wifi_test]getCountryCode :" + JSON.stringify(getCountryCodeResult));
+                let countrylenth = getCountryCodeResult.length;
+                console.info("[wifi_test]getCountryCode.length :" + JSON.stringify(countrylenth));
+                expect(true).assertEqual(countrylenth == 2);
+                let WIDTH_20MHZ = wifiMg.WifiChannelWidth .WIDTH_20MHZ;
+                console.info("[wifi_test]WIDTH_20MHZ : " + JSON.stringify(WIDTH_20MHZ));
+                expect(true).assertEqual( WIDTH_20MHZ == 0);
+                let WIDTH_40MHZ = wifiMg.WifiChannelWidth .WIDTH_40MHZ;
+                console.info("[wifi_test]WIDTH_40MHZ : " + JSON.stringify(WIDTH_40MHZ));
+                expect(true).assertEqual( WIDTH_40MHZ == 1);
+                let WIDTH_80MHZ = wifiMg.WifiChannelWidth .WIDTH_80MHZ;
+                console.info("[wifi_test]WIDTH_80MHZ : " + JSON.stringify(WIDTH_80MHZ));
+                expect(true).assertEqual( WIDTH_80MHZ == 2);
+                let WIDTH_160MHZ = wifiMg.WifiChannelWidth .WIDTH_160MHZ;
+                console.info("[wifi_test]WIDTH_160MHZ : " + JSON.stringify(WIDTH_160MHZ));
+                expect(true).assertEqual( WIDTH_160MHZ == 3);
+                let WIDTH_80MHZ_PLUS = wifiMg.WifiChannelWidth .WIDTH_80MHZ_PLUS;
+                console.info("[wifi_test]WIDTH_80MHZ_PLUS : " + JSON.stringify(WIDTH_80MHZ_PLUS));
+                expect(true).assertEqual( WIDTH_80MHZ_PLUS == 4);
+                let WIDTH_INVALID = wifiMg.WifiChannelWidth .WIDTH_INVALID;
+                console.info("[wifi_test]WIDTH_INVALID : " + JSON.stringify(WIDTH_INVALID));
+                expect(true).assertEqual( WIDTH_INVALID == 5);
+            } catch(error) {
+                console.info("getCountryCode: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info("getCountryCode is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect().assertFail();
+                }
+            }
+            done();
         })
 
         /**
@@ -150,7 +172,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.size LargeTest
          * @tc.level Level 3
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, function () {
+        it('SUB_Communication_WiFi_XTS_Sta_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function(done) {
             expect(wifiMg.isWifiActive()).assertTrue();
             let wifiUtils = {
                 WIFI_FEATURE_INFRA: 0x0001,
@@ -164,26 +186,37 @@ export default function actsWifiManagerFunctionsTest() {
                 WIFI_FEATURE_WPA3_SUITE_B: 0x10000000,
                 WIFI_FEATURE_OWE: 0x20000000
             }
-            let isSupport1 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_INFRA);
-            console.info("[wifi_test] isFeatureSupported -> " + isSupport1);
-            let isSupport2 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_INFRA_5G);
-            console.info("[wifi_test] isFeatureSupported2 -> " + isSupport2);
-            let isSupport3 = wifiMg.isFeatureSupported(wifiUtils.WIFI_GAS_ANQP);
-            console.info("[wifi_test] isFeatureSupported3 -> " + isSupport3);
-            let isSupport4 = wifiMg.isFeatureSupported(wifiUtils.WIFI_WIFI_DIRECT);
-            console.info("[wifi_test] isFeatureSupported4 -> " + isSupport4);
-            let isSupport5 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_MOBILE_HOTSPOT);
-            console.info("[wifi_test] isFeatureSupported5 -> " + isSupport5);
-            let isSupport6 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_AWARE);
-            console.info("[wifi_test] isFeatureSupported6 -> " + isSupport6);
-            let isSupport7 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_AP_STA);
-            console.info("[wifi_test] isFeatureSupported7 -> " + isSupport7);
-            let isSupport8 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_WPA3_SAE);
-            console.info("[wifi_test] isFeatureSupported8 -> " + isSupport8);
-            let isSupport9 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_WPA3_SUITE_B);
-            console.info("[wifi_test] isFeatureSupported9 -> " + isSupport9);
-            let isSupport = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_OWE);
-            console.info("[wifi_test] isFeatureSupported -> " + isSupport);
+            try {
+                let isSupport1 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_INFRA);
+                console.info("[wifi_test] isFeatureSupported -> " + isSupport1);
+                let isSupport2 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_INFRA_5G);
+                console.info("[wifi_test] isFeatureSupported2 -> " + isSupport2);
+                let isSupport3 = wifiMg.isFeatureSupported(wifiUtils.WIFI_GAS_ANQP);
+                console.info("[wifi_test] isFeatureSupported3 -> " + isSupport3);
+                let isSupport4 = wifiMg.isFeatureSupported(wifiUtils.WIFI_WIFI_DIRECT);
+                console.info("[wifi_test] isFeatureSupported4 -> " + isSupport4);
+                let isSupport5 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_MOBILE_HOTSPOT);
+                console.info("[wifi_test] isFeatureSupported5 -> " + isSupport5);
+                let isSupport6 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_AWARE);
+                console.info("[wifi_test] isFeatureSupported6 -> " + isSupport6);
+                let isSupport7 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_AP_STA);
+                console.info("[wifi_test] isFeatureSupported7 -> " + isSupport7);
+                let isSupport8 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_WPA3_SAE);
+                console.info("[wifi_test] isFeatureSupported8 -> " + isSupport8);
+                let isSupport9 = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_WPA3_SUITE_B);
+                console.info("[wifi_test] isFeatureSupported9 -> " + isSupport9);
+                let isSupport = wifiMg.isFeatureSupported(wifiUtils.WIFI_FEATURE_OWE);
+                console.info("[wifi_test] isFeatureSupported -> " + isSupport);
+            } catch(error) {
+                console.info("isFeatureSupported: errCode:" + error.code + ",errMessage:" + error.message);
+                if (Number(error.code) == 801) {
+                    console.info("isFeatureSupported is not support");
+                    expect(true).assertTrue();
+                }else {
+                    expect().assertFail();
+                }
+            }
+            done();
         })
 
         /**

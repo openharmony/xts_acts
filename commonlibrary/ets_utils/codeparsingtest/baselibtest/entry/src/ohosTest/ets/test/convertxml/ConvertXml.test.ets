@@ -55,9 +55,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with trim is true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0001';
       try {
         let xml =
@@ -96,9 +96,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with trim is false.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0002';
       try {
         let xml =
@@ -137,9 +137,9 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with ignoreDeclaration is true.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConvertXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConvertXmlConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testConvertXmlConstructor0003';
       try {
         let xml =
@@ -184,7 +184,7 @@ export default function ConvertXmlTest() {
      * @tc.desc       : Testing the convertxml convertToJSObject with ignoreDeclaration is false.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('testConvertXmlConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testConvertXmlConstructor0004';

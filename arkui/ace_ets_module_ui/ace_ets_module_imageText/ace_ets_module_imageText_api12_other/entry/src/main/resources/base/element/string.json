@@ -87,6 +87,10 @@
     {
       "name": "fontfamily_1",
       "value": "HarmonyOS Sans"
+    },
+    {
+      "name": "fontSize",
+      "value": "50"
     }
   ]
 }

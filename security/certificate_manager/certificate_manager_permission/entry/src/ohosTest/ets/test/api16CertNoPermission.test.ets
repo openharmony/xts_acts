@@ -18,7 +18,6 @@ import { BusinessError } from '@ohos.base';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import { GlobalContext } from '../../../../src/main/ets/pages/HomePage';
 import certManagerDialog from '@ohos.security.certManagerDialog';
-import deviceInfo from '@ohos.deviceInfo';
 import type common from '@ohos.app.ability.common';
 
 let caCert = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x00,
@@ -118,10 +117,10 @@ export default function api16CertNoPermissionTestUnit() {
      * @tc.name test getAllUserTrustedCertificates interface no permission to call
      * @tc.desc abnormal test
      * @tc.size SmallTest
-     * @tc.level Level2
+     * @tc.level Level0
      * @tc.type Function
      */
-    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('SUB_Security_CertManager_GetAllUserTrustedCertificates_0010 start');
       try {
         let scope: certManager.CertScope = certManager.CertScope.CURRENT_USER;
@@ -190,12 +189,14 @@ export default function api16CertNoPermissionTestUnit() {
       console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0010: started ");
       let uir ='oh:t=c;o=vBBPFaSL5wncpUKn4dS5328FRSfoAuqpLVlURCWK_nEA;u=0;a=20010044';
       const context :common.Context = GlobalContext.getContext();
-      if (deviceInfo.deviceType == '2in1') {
-        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
-        try {
-          await certManagerDialog.openUninstallCertificateDialog(context, certificateType, uir)
-          expect(null).assertFail();
-        } catch (err) {
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      try {
+        await certManagerDialog.openUninstallCertificateDialog(context, certificateType, uir)
+        expect(null).assertFail();
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenUninstallCertificateDialog_0010: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_NO_PERMISSION);
         }
@@ -217,11 +218,13 @@ export default function api16CertNoPermissionTestUnit() {
       let property: certManagerDialog.CertificateDialogProperty = {
         showInstallButton: false /* 不显示安装按钮 */
       };
-      if (deviceInfo.deviceType == '2in1') {
-        try {
-          await certManagerDialog.openCertificateDetailDialog(context, caCert, property)
-          expect(null).assertFail();
-        } catch (err) {
+      try {
+        await certManagerDialog.openCertificateDetailDialog(context, caCert, property)
+        expect(null).assertFail();
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenCertificateDialog_0011: e.code " + err.code);
           expect(err.code).assertEqual(201);
         }

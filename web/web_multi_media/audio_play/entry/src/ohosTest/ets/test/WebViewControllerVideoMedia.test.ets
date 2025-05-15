@@ -17,6 +17,9 @@ import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import webView from '@ohos.web.webview';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewControllerVideoMedia() {
 
@@ -41,6 +44,11 @@ export default function webViewControllerVideoMedia() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -57,7 +65,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0100", 3, 77011, done);
+      Utils.registerEvent("StopAllMedia0100", 'MediaPlaybackState.STOPPED', 77011, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -80,7 +88,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0200", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0200", 0, 77012, done);
+      Utils.registerEvent("StopAllMedia0200", 'MediaPlaybackState.NONE', 77012, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -103,7 +111,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0300", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0300", 3, 77013, done);
+      Utils.registerEvent("StopAllMedia0300", 'MediaPlaybackState.STOPPED', 77013, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -126,7 +134,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0400", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0400", 2, 77014, done);
+      Utils.registerEvent("StopAllMedia0400", 'MediaPlaybackState.PAUSED', 77014, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -149,7 +157,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0500", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0500", 2, 77015, done);
+      Utils.registerEvent("StopAllMedia0500", 'MediaPlaybackState.PAUSED', 77015, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -172,7 +180,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0600", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0600", 3, 77016, done);
+      Utils.registerEvent("StopAllMedia0600", 'MediaPlaybackState.STOPPED', 77016, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -195,7 +203,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0700", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0700", 3, 77017, done);
+      Utils.registerEvent("StopAllMedia0700",'MediaPlaybackState.STOPPED', 77017, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -218,7 +226,7 @@ export default function webViewControllerVideoMedia() {
     it('StopAllMedia0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("StopAllMedia0800", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("StopAllMedia0800", 3, 77018, done);
+      Utils.registerEvent("StopAllMedia0800", 'MediaPlaybackState.STOPPED', 77018, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -241,7 +249,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0100", 1, 78011, done);
+      Utils.registerEvent("ResumeAllMedia0100", 'MediaPlaybackState.PLAYING', 78011, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -264,7 +272,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0200", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0200", 0, 78012, done);
+      Utils.registerEvent("ResumeAllMedia0200", 'MediaPlaybackState.NONE', 78012, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -287,7 +295,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0300", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0300", 1, 78013, done);
+      Utils.registerEvent("ResumeAllMedia0300", 'MediaPlaybackState.PLAYING', 78013, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -310,7 +318,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0400", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0400", 2, 78014, done);
+      Utils.registerEvent("ResumeAllMedia0400", 'MediaPlaybackState.PAUSED', 78014, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -333,7 +341,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0500", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0500", 3, 78015, done);
+      Utils.registerEvent("ResumeAllMedia0500", 'MediaPlaybackState.STOPPED', 78015, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -356,7 +364,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0600", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0600", 1, 78016, done);
+      Utils.registerEvent("ResumeAllMedia0600", 'MediaPlaybackState.PLAYING', 78016, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -379,7 +387,7 @@ export default function webViewControllerVideoMedia() {
     it('ResumeAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("ResumeAllMedia0700", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("ResumeAllMedia0700", 1, 78017, done);
+      Utils.registerEvent("ResumeAllMedia0700", 'MediaPlaybackState.PLAYING', 78017, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -402,7 +410,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0100", 2, 79011, done);
+      Utils.registerEvent("PauseAllMedia0100", 'MediaPlaybackState.PAUSED', 79011, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -425,7 +433,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0200", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0200", 2, 79012, done);
+      Utils.registerEvent("PauseAllMedia0200", 'MediaPlaybackState.PAUSED', 79012, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -448,7 +456,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0300", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0300", 2, 79013, done);
+      Utils.registerEvent("PauseAllMedia0300", 'MediaPlaybackState.PAUSED', 79013, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -471,7 +479,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0400", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0400", 2, 79014, done);
+      Utils.registerEvent("PauseAllMedia0400", 'MediaPlaybackState.PAUSED', 79014, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -494,7 +502,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0500", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0500", 2, 79015, done);
+      Utils.registerEvent("PauseAllMedia0500", 'MediaPlaybackState.PAUSED', 79015, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -517,7 +525,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0600", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0600", 2, 79016, done);
+      Utils.registerEvent("PauseAllMedia0600", 'MediaPlaybackState.PAUSED', 79016, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -540,7 +548,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0700", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0700", 2, 79017, done);
+      Utils.registerEvent("PauseAllMedia0700", 'MediaPlaybackState.PAUSED', 79017, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -563,7 +571,7 @@ export default function webViewControllerVideoMedia() {
     it('PauseAllMedia0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("PauseAllMedia0800", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("PauseAllMedia0800", 2, 79018, done);
+      Utils.registerEvent("PauseAllMedia0800", 'MediaPlaybackState.PAUSED', 79018, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -586,7 +594,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0100", 0, 8101, done);
+      Utils.registerEvent("GetMediaPlaybackState0100", 'MediaPlaybackState.NONE', 8101, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -609,7 +617,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0200", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0200", 1, 8102, done);
+      Utils.registerEvent("GetMediaPlaybackState0200", 'MediaPlaybackState.PLAYING', 8102, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -632,7 +640,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0300", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0300", 2, 8103, done);
+      Utils.registerEvent("GetMediaPlaybackState0300", 'MediaPlaybackState.PAUSED', 8103, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -655,7 +663,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0400", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0400", 2, 8104, done);
+      Utils.registerEvent("GetMediaPlaybackState0400", 'MediaPlaybackState.PAUSED', 8104, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -678,7 +686,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0500", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0500", 3, 8105, done);
+      Utils.registerEvent("GetMediaPlaybackState0500", 'MediaPlaybackState.STOPPED', 8105, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -724,7 +732,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0700", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0700", 0, 8107, done);
+      Utils.registerEvent("GetMediaPlaybackState0700", 'MediaPlaybackState.NONE', 8107, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -747,7 +755,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0800", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0800", 1, 8108, done);
+      Utils.registerEvent("GetMediaPlaybackState0800", 'MediaPlaybackState.PLAYING', 8108, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -770,7 +778,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState0900", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState0900", 1, 8109, done);
+      Utils.registerEvent("GetMediaPlaybackState0900", 'MediaPlaybackState.PLAYING', 8109, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -793,7 +801,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1000", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState1000", 1, 8110, done);
+      Utils.registerEvent("GetMediaPlaybackState1000", 'MediaPlaybackState.PLAYING', 8110, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -816,7 +824,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1100", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState1100", 2, 8111, done);
+      Utils.registerEvent("GetMediaPlaybackState1100", 'MediaPlaybackState.PAUSED', 8111, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();
@@ -839,7 +847,7 @@ export default function webViewControllerVideoMedia() {
     it('GetMediaPlaybackState1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("GetMediaPlaybackState1200", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("GetMediaPlaybackState1200", 2, 8112, done);
+      Utils.registerEvent("GetMediaPlaybackState1200", 'MediaPlaybackState.PAUSED', 8112, done);
       let driver = Driver.create();
       let StartModel = await driver.findComponent(ON.id("WebViewControllerVideoMedia"));
       await StartModel.click();

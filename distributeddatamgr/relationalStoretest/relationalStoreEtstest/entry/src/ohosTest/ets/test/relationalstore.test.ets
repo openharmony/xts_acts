@@ -62,9 +62,9 @@ export default function relationalStoreInterfaceTest() {
      * @tc.desc delete success callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('relationalStoreTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) =>{
+    it('relationalStoreTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) =>{
       console.info(TAG + "************* relationalStoreTest001 start *************");
           const record :relationalStore.ValuesBucket = {
             "name": "Jim",
@@ -92,9 +92,9 @@ export default function relationalStoreInterfaceTest() {
      * @tc.desc query success callback
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('relationalStoreTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+    it('relationalStoreTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info(TAG + "************* relationalStoreTest002 start *************");
       const record:relationalStore.ValuesBucket = {
         "name": "Jim",

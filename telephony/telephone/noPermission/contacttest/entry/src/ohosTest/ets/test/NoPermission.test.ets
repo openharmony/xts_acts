@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 
@@ -132,7 +132,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactsByEmail_3200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactsByEmail_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactsByEmail_3200";
       console.info(`${caseName} test start `);
       try {
@@ -163,7 +163,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactsByEmail_3400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactsByEmail_3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactsByEmail_3400";
       console.info(`${caseName} test start `);
       try {
@@ -194,7 +194,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactsByEmail_3600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactsByEmail_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactsByEmail_3600";
       console.info(`${caseName} test start `);
       try {
@@ -225,7 +225,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactsByEmail_3800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactsByEmail_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactsByEmail_3800";
       console.info(`${caseName} test start `);
       try {
@@ -256,7 +256,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactsByEmail_4000', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactsByEmail_4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactsByEmail_4000";
       console.info(`${caseName} test start `);
       try {
@@ -287,7 +287,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups0800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups0800";
       console.info(`${caseName} test start `);
       try {
@@ -318,7 +318,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups1000', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups1000";
       console.info(`${caseName} test start `);
       try {
@@ -349,7 +349,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryGroups1200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryGroups1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryGroups1200";
       console.info(`${caseName} test start `);
       try {
@@ -380,7 +380,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryHolders0500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryHolders0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryHolders0500";
       console.info(`${caseName} test start `);
       try {
@@ -411,7 +411,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryHolders0600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryHolders0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryHolders0600";
       console.info(`${caseName} test start `);
       try {
@@ -441,7 +441,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryKey4500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryKey4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryKey4500";
       console.info(`${caseName} test start `);
       try {
@@ -472,7 +472,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryKey4600', 0, async (done: Function) => {
+    it('testTelephonyContactQueryKey4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryKey4600";
       console.info(`${caseName} test start `);
       try {
@@ -504,7 +504,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryKey5000', 0, async (done: Function) => {
+    it('testTelephonyContactQueryKey5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryKey5000";
       console.info(`${caseName} test start `);
       try {
@@ -534,7 +534,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContact0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContact0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContact0200";
       console.info(`${caseName} test start `);
       try {
@@ -565,7 +565,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3.
      */
-    it('testTelephonyContactQueryContact0700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContact0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContact0700";
       console.info(`${caseName} test start `);
       try {
@@ -596,7 +596,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContact1400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContact1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContact1400";
       console.info(`${caseName} test start `);
       try {
@@ -627,7 +627,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContact1900', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContact1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContact1900";
       console.info(`${caseName} test start `);
       try {
@@ -658,7 +658,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContact2700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContact2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContact2700";
       console.info(`${caseName} test start `);
       try {
@@ -688,7 +688,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContacts0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContacts0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContacts0200";
       console.info(`${caseName} test start `);
       try {
@@ -719,7 +719,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContacts0500', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContacts0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContacts0500";
       console.info(`${caseName} test start `);
       try {
@@ -750,7 +750,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContacts0800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContacts0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContacts0800";
       console.info(`${caseName} test start `);
       try {
@@ -781,7 +781,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContacts1100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContacts1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContacts1100";
       console.info(`${caseName} test start `);
       try {
@@ -812,7 +812,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContacts1400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContacts1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContacts1400";
       console.info(`${caseName} test start `);
       try {
@@ -842,7 +842,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact0200', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact0200";
       console.info(`${caseName} test start `);
       try {
@@ -873,7 +873,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact1400', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact1400";
       console.info(`${caseName} test start `);
       try {
@@ -904,7 +904,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactUpdateContact2600', 0, async (done: Function) => {
+    it('testTelephonyContactUpdateContact2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactUpdateContact2600";
       console.info(`${caseName} test start `);
       try {
@@ -933,7 +933,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactDeleteContact0500', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact0500";
       console.info(`${caseName} test start `);
       try {
@@ -964,7 +964,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactDeleteContact1000', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact1000";
       console.info(`${caseName} test start `);
       try {
@@ -993,7 +993,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber0400', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber0400";
       console.info(`${caseName} test start `);
       try {
@@ -1024,7 +1024,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber1700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber9100";
       console.info(`${caseName} test start `);
       try {
@@ -1055,7 +1055,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3700', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3700";
       console.info(`${caseName} test start `);
       try {
@@ -1085,7 +1085,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3800', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3800";
       console.info(`${caseName} test start `);
       try {
@@ -1116,7 +1116,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryContactByPhoneNumber3900', 0, async (done: Function) => {
+    it('testTelephonyContactQueryContactByPhoneNumber3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3900";
       console.info(`${caseName} test start `);
       try {
@@ -1147,7 +1147,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1000', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1000";
       console.info(`${caseName} test start `);
       try {
@@ -1178,7 +1178,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2500";
       console.info(`${caseName} test start `);
       try {
@@ -1208,7 +1208,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0300', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0300";
       console.info(`${caseName} test start `);
       try {
@@ -1239,7 +1239,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1100', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1100";
       console.info(`${caseName} test start `);
       try {
@@ -1269,7 +1269,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard0400', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard0400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1294,7 +1294,7 @@ export default function NoPermissionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsMyCard1900', 0, async (done: Function) => {
+    it('testTelephonyContactIsMyCard1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsMyCard1900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;

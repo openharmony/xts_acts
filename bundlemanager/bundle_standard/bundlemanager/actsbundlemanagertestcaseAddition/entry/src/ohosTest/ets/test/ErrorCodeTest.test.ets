@@ -66,7 +66,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestNoUserId17700001
      * @tc.desc: test errCode 17700001 when call getBundleInfo
      */
-    it('getBundleInfoTestNoUserId17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getBundleInfoTestNoUserId17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       console.info("getBundleInfoTestNoUserId17700001 start");
       try {
         bundleManager.getBundleInfo("xx", bundleFlags, (err, data) => {
@@ -202,7 +202,7 @@ export default function ErrcodeTest() {
      * @tc.name:  getBundleInfoTestWithUserIdPromise17700001
      * @tc.desc: test errCode 17700001 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdPromise17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdPromise17700001', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: Function) =>  {
       console.info(TAG + "getBundleInfoTestWithUserIdPromise17700001 start");
       try {
         await bundleManager.getBundleInfo("xx", bundleFlags, userId).then((data) => {
@@ -227,7 +227,7 @@ export default function ErrcodeTest() {
     * @tc.name:  getBundleInfoTestWithUserIdPromise17700004
     * @tc.desc: test errCode 17700004 when call getBundleInfo
     */
-    it('getBundleInfoTestWithUserIdPromise17700004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getBundleInfoTestWithUserIdPromise17700004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       console.info(TAG +"getBundleInfoTestWithUserIdPromise17700004 start");
       try {
        await bundleManager.getBundleInfo(BUNDLE_NAME, bundleFlags, 2000000).then((data) => {
@@ -279,7 +279,7 @@ export default function ErrcodeTest() {
    * @tc.name:  getBundleNameByUidCallBack17700021
    * @tc.desc: test errCode 17700021 when call getBundleNameByUid
    */
-    it('getBundleNameByUidCallBack17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: Function) =>  {
+    it('getBundleNameByUidCallBack17700021', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: Function) =>  {
       console.info(TAG +"getBundleNameByUidCallBack17700021 start");
       try {
         bundleManager.getBundleNameByUid(2190, (err:BusinessError,data:String) => {

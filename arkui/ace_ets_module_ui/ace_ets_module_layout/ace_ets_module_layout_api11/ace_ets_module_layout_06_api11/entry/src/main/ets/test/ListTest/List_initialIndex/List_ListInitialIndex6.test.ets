@@ -90,8 +90,8 @@ export default function list_ListInitialIndex6Test() {
       expect(Math.abs(Math.round(secondListItem.right - secondListItem.left) - vp2px(0)) <= 1).assertTrue();
       expect(Math.abs(Math.round(secondListItem.bottom - secondListItem.top) - vp2px(0)) <= 1).assertTrue();
 
-      expect(Math.abs(thirdListItem.top - listContainer.top) <= 1).assertTrue();;
-      expect(Math.abs(thirdListItem.left - listContainer.left) <= 1).assertTrue();;
+      expect(Math.abs(thirdListItem.top - listContainer.top) <= 1).assertTrue();
+      expect(Math.abs(thirdListItem.left - listContainer.left) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdListItem.right - thirdListItem.left) - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdListItem.bottom - thirdListItem.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 

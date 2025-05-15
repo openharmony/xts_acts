@@ -865,6 +865,25 @@ export default function nativeBufferTest() {
         done();
       }
     });
-
+    /**
+     * @tc.number     : SUB_BASIC_GRAPHICS_SPECIAL_API_C_NATIVE_BUFFER_0914
+     * @tc.name       : testNativeBufferY8Y16USAGEandAlloc
+     * @tc.desc       : test NATIVEBUFFER_PIXEL_FMT_Y8 NATIVEBUFFER_PIXEL_FMT_Y16 NATIVEBUFFER_USAGE_MEM_MMZ_CACHE
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testNativeBufferY8Y16USAGEandAlloc', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      if (deviceTypeInfo == "default") {
+        expect(0).assertEqual(0);
+        done();
+      } else {
+        let result: Array<number> = nativebuffer.oHNativeBufferY8Y16USAGEandAlloc();
+        console.info("testNativeBufferY8Y16USAGEandAlloc result: " + result)
+        expect(result).assertEqual(0);
+        done();
+      }
+    });
   })
 }

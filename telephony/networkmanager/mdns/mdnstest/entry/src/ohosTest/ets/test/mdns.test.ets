@@ -907,9 +907,9 @@ export default function mdnsTest() {
      * @tc.desc  : Remove an mDNS service callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrRemoveLocalService0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrRemoveLocalService0200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrRemoveLocalService0200";
       console.info(`${caseName} test start `);
       try {
@@ -1030,9 +1030,9 @@ export default function mdnsTest() {
      * @tc.desc  : Remove an mDNS service callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrRemoveLocalService0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrRemoveLocalService0500",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrRemoveLocalService0500";
       console.info(`${caseName} test start `);
       try {
@@ -1194,9 +1194,9 @@ export default function mdnsTest() {
      * @tc.desc  : Remove an mDNS service callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrRemoveLocalService0900",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrRemoveLocalService0900",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrRemoveLocalService0900";
       console.info(`${caseName} test start `);
       try {
@@ -1312,9 +1312,9 @@ export default function mdnsTest() {
      * @tc.desc  : Remove an mDNS service Promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrRemoveLocalService1200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrRemoveLocalService1200",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrRemoveLocalService1200";
       console.info(`${caseName} test start `);
       try {
@@ -1633,9 +1633,9 @@ export default function mdnsTest() {
      * @tc.desc  : Remove an mDNS service Promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrRemoveLocalService2000",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrRemoveLocalService2000",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrRemoveLocalService2000";
       console.info(`${caseName} test start `);
       try {
@@ -2239,9 +2239,9 @@ export default function mdnsTest() {
      * @tc.desc  : Parsing an mDNS service Promise
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrResolveLocalService1400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrResolveLocalService1400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrResolveLocalService1400";
       console.info(`${caseName} test start `);
       try {
@@ -2598,9 +2598,9 @@ export default function mdnsTest() {
      * @tc.desc  : Parsing an mDNS service callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrResolveLocalService0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrResolveLocalService0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrResolveLocalService0400";
       console.info(`${caseName} test start `);
       try {
@@ -2663,9 +2663,9 @@ export default function mdnsTest() {
      * @tc.desc  : Return a DiscoveryService object callBack
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it("testNetworkMgrCreateDiscoveryService0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3 ,async (done: Function) => {
+    it("testNetworkMgrCreateDiscoveryService0400",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0 ,async (done: Function) => {
       const caseName: string = "testNetworkMgrCreateDiscoveryService0400";
       console.info(`${caseName} test start `);
       try {

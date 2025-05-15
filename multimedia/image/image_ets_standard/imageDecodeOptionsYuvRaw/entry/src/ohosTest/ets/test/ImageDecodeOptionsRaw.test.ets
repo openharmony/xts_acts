@@ -114,6 +114,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
+      await imageSourceApi.release();
     }
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -135,6 +136,7 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
+      await imageSourceApi.release();
     }
 
     const getResult_F16 = async (TAG: string, index: number, sampleSize: number, rotate: number, editable:boolean,
@@ -187,6 +189,7 @@ export default function imageDecodeOptionsRawTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
+      await imageSourceApi.release();
     }
 
     const callBackCreate_F16 = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -208,8 +211,9 @@ export default function imageDecodeOptionsRawTest() {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
+      await imageSourceApi.release();
     }
-
+    
     beforeAll(() => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'beforeAll case');
     })
@@ -247,7 +251,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -275,7 +279,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -304,7 +308,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -332,7 +336,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -361,7 +365,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -389,7 +393,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -418,7 +422,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -446,7 +450,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -475,7 +479,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_0900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -503,7 +507,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -532,7 +536,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -560,7 +564,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -589,7 +593,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -617,7 +621,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -646,7 +650,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -674,7 +678,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -703,7 +707,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -731,7 +735,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -760,7 +764,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -788,7 +792,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -817,7 +821,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -845,7 +849,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -874,7 +878,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -902,7 +906,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -931,7 +935,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -959,7 +963,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -988,7 +992,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1016,7 +1020,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_2800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1045,7 +1049,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1073,7 +1077,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1102,7 +1106,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1130,7 +1134,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1159,7 +1163,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1187,7 +1191,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1216,7 +1220,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1244,7 +1248,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1273,7 +1277,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_0900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1301,7 +1305,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1330,7 +1334,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1358,7 +1362,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1387,7 +1391,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1415,7 +1419,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1444,7 +1448,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -1472,7 +1476,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -1501,7 +1505,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -1529,7 +1533,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -1558,7 +1562,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1586,7 +1590,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1615,7 +1619,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1643,7 +1647,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1672,7 +1676,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1700,7 +1704,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1729,7 +1733,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1757,7 +1761,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1786,7 +1790,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1814,7 +1818,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_2800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1843,7 +1847,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1871,7 +1875,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1900,7 +1904,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1928,7 +1932,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1957,7 +1961,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -1985,7 +1989,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2014,7 +2018,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2042,7 +2046,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2071,7 +2075,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_0900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2099,7 +2103,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2128,7 +2132,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2156,7 +2160,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2185,7 +2189,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2213,7 +2217,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2242,7 +2246,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -2270,7 +2274,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -2299,7 +2303,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -2327,7 +2331,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -2356,7 +2360,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2384,7 +2388,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2413,7 +2417,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2441,7 +2445,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2470,7 +2474,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2498,7 +2502,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2527,7 +2531,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2555,7 +2559,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2584,7 +2588,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2612,7 +2616,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_2800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2641,7 +2645,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2669,7 +2673,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2698,7 +2702,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2726,7 +2730,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2755,7 +2759,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2783,7 +2787,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2812,7 +2816,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2840,7 +2844,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2869,7 +2873,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2897,7 +2901,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2926,7 +2930,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2954,7 +2958,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -2983,7 +2987,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3011,7 +3015,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3040,7 +3044,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -3068,7 +3072,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -548, width: 730 };
@@ -3097,7 +3101,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -3125,7 +3129,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 548, width: -730 };
@@ -3154,7 +3158,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3182,7 +3186,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3211,7 +3215,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3239,7 +3243,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3268,7 +3272,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3296,7 +3300,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3325,7 +3329,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3353,7 +3357,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3382,7 +3386,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
@@ -3410,7 +3414,7 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800", Level.LEVEL0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };

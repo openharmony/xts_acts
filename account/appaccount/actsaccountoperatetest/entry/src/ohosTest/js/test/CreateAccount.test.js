@@ -31,7 +31,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form without additional information
     */
-    it('ActsAccountCreateAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsAccountCreateAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0100 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -52,7 +52,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form without additional information
     */
-    it('ActsAccountCreateAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    it('ActsAccountCreateAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0200 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -78,7 +78,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Add account in callback form with additional information
     */
-    it('ActsAccountCreateAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('ActsAccountCreateAccount_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0300 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -99,7 +99,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Add account in promise form with additional information
     */
-    it('ActsAccountCreateAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+    it('ActsAccountCreateAccount_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0400 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>creat finish====");
@@ -126,7 +126,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account callback form
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
-    it('ActsAccountCreateAccount_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsAccountCreateAccount_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0500 start====");
       var appAccountManager = account.createAppAccountManager();
       appAccountManager.createAccount("account_name_callback_third", createAccountOptions, (err) => {
@@ -151,7 +151,7 @@ export default function ActsAccountCreateAccount() {
     * @tc.name      : Add account promise form
     * @tc.desc      : Repeatedly add the same name account and the same additional information
     */
-    it('ActsAccountCreateAccount_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it('ActsAccountCreateAccount_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
       console.info("====>ActsAccountCreateAccount_0600 start====");
       var appAccountManager = account.createAppAccountManager();
       console.info("====>add account for the first time ActsAccountCreateAccount_0600====");

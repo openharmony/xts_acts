@@ -46,9 +46,9 @@ export default function TestObject() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testObjectConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testObjectConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testObjectConstructor0001";
       try {
         const obj = new Object();

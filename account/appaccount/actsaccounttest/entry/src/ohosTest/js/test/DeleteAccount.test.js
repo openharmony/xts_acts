@@ -24,7 +24,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account callback form
         * @tc.desc      : Delete the added account in callback form
         */
-        it('ActsAccountDeleteAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsAccountDeleteAccount_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsAccountDeleteAccount_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -45,7 +45,7 @@ export default function ActsAccountDeleteAccount() {
         * @tc.name      : Delete account promise form
         * @tc.desc      : Delete the added account in promise form
         */
-        it('ActsAccountDeleteAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async function (done){
+        it('ActsAccountDeleteAccount_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async function (done){
             console.info("====>ActsAccountDeleteAccount_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>add account ActsAccountAddAccount_0200 start====");

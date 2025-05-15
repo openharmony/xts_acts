@@ -85,7 +85,7 @@ describe('LangTest', function () {
     * @tc.name    test the is24HourClock interface
     * @tc.desc    check the value of is24HourClock method
     */
-    it('i18n_test_clock_0100', Level.LEVEL0, function () {
+    it('i18n_test_clock_0100', Level.LEVEL2, function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);

@@ -34,7 +34,6 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "utils/scalar.h"
 #include "gtest/gtest.h"
 #include <random>
 

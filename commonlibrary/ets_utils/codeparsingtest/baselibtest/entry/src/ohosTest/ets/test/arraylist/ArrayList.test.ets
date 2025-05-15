@@ -48,9 +48,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList length is ok
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListLength0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListLength0001';
       try {
         const arrayList = new ArrayList<number>();
@@ -67,9 +67,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList constructor support dataType
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListConstructor0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | bigint | Int8Array |
@@ -88,9 +88,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList Add different dataType data
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListAdd0001';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -122,9 +122,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList add special string
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListAdd0002';
       try {
         let arrayList: ArrayList<number | string | Array<number | string | boolean> | boolean | undefined | null |
@@ -148,9 +148,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList insert data in start and end
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListInsert0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListInsert0001';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();
@@ -175,9 +175,9 @@ export default function ArrayListTest() {
      * @tc.desc      : Testing ArrayList insert special string
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testArrayListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testArrayListInsert0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testArrayListInsert0002';
       try {
         let arrayList: ArrayList<number | string> = new ArrayList();

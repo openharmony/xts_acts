@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -64,7 +64,7 @@ export default function textAreaJsunit() {
      * @tc.name testTextArea010
      * @tc.desc aceEtsTest
      */
-    it('testTextArea010', 0, async (done: Function) => {
+    it('testTextArea010', Level.LEVEL1, async (done: Function) => {
       console.info('testTextArea010 START');
       let strJson = getInspectorByKey('textArea1');
       let obj: ESObject = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function textAreaJsunit() {
      * @tc.name testTextArea020
      * @tc.desc aceEtsTest
      */
-    it('testTextArea020', 0, async (done: Function) => {
+    it('testTextArea020', Level.LEVEL1, async (done: Function) => {
       console.info('testTextArea020 START');
       let strJson = getInspectorByKey('textArea2');
       let obj: ESObject = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function textAreaJsunit() {
      * @tc.name testTextArea030
      * @tc.desc aceEtsTest
      */
-    it('testTextArea030', 0, async (done: Function) => {
+    it('testTextArea030', Level.LEVEL1, async (done: Function) => {
       console.info('testTextArea030 START');
       let strJson = getInspectorByKey('textArea3');
       let obj: ESObject = JSON.parse(strJson);

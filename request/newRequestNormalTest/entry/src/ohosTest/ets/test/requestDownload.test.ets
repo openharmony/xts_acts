@@ -182,9 +182,9 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.desc Starts a download session.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010', Level.LEVEL1, async (done: Function) => {
+    it('SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010', Level.LEVEL0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Download_Promise_0010 is starting-----------------------");
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,

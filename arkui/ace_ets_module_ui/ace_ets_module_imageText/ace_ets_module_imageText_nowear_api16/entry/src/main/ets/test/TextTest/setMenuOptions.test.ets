@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import { Driver, ON, UiWindow } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -46,11 +46,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0010
      * @tc.name      SetMenuOptionsTest_0010
      * @tc.desc      get TextInput setMenuOptions: default
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0010', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0010] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -70,11 +70,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0020
      * @tc.name      SetMenuOptionsTest_0020
      * @tc.desc      set TextInput setMenuOptions: TextMenuShowMode.DEFAULT
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0020', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0020] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -98,11 +98,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0030
      * @tc.name      SetMenuOptionsTest_0030
      * @tc.desc      set TextInput setMenuOptions: TextMenuShowMode.PREFER_WINDOW
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0030', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0030', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0030] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -126,11 +126,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0040
      * @tc.name      SetMenuOptionsTest_0040
      * @tc.desc      set TextInput setMenuOptions: undefined
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0040', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0040', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0040] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -154,11 +154,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0050
      * @tc.name      SetMenuOptionsTest_0050
      * @tc.desc      get Text setMenuOptions: default
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0050', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0050', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0050] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -178,11 +178,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0060
      * @tc.name      SetMenuOptionsTest_0060
      * @tc.desc      set Text setMenuOptions: TextMenuShowMode.DEFAULT
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0060', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0060', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0060] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -206,11 +206,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0070
      * @tc.name      SetMenuOptionsTest_0030
      * @tc.desc      set Text setMenuOptions: TextMenuShowMode.PREFER_WINDOW
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0070', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0070', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0070] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -234,11 +234,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0080
      * @tc.name      SetMenuOptionsTest_0080
      * @tc.desc      set Text setMenuOptions: undefined
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0080', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0080', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0080] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -262,11 +262,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0090
      * @tc.name      SetMenuOptionsTest_0090
      * @tc.desc      get TextArea setMenuOptions: default
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0090', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0090', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0090] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -286,11 +286,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0100
      * @tc.name      SetMenuOptionsTest_0100
      * @tc.desc      set TextArea setMenuOptions: TextMenuShowMode.DEFAULT
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0100', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0100] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -314,11 +314,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0110
      * @tc.name      SetMenuOptionsTest_0110
      * @tc.desc      set TextArea setMenuOptions: TextMenuShowMode.PREFER_WINDOW
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0110', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0110', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0110] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -342,11 +342,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0120
      * @tc.name      SetMenuOptionsTest_0120
      * @tc.desc      set TextArea setMenuOptions: undefined
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0120', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0120', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0120] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -370,11 +370,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0130
      * @tc.name      SetMenuOptionsTest_0130
      * @tc.desc      get Search setMenuOptions: default
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0130', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0130', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0130] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -394,11 +394,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0140
      * @tc.name      SetMenuOptionsTest_0140
      * @tc.desc      set Search setMenuOptions: TextMenuShowMode.DEFAULT
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0140', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0140', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0140] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -422,11 +422,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0150
      * @tc.name      SetMenuOptionsTest_0150
      * @tc.desc      set Search setMenuOptions: TextMenuShowMode.PREFER_WINDOW
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0150', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0150', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0150] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -450,11 +450,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0160
      * @tc.name      SetMenuOptionsTest_0160
      * @tc.desc      set Search setMenuOptions: undefined
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0160', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0160', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0160] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -478,11 +478,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0170
      * @tc.name      SetMenuOptionsTest_0170
      * @tc.desc      get RichEditor setMenuOptions: default
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0170', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0170', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0170] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -502,11 +502,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0180
      * @tc.name      SetMenuOptionsTest_0180
      * @tc.desc      set RichEditor setMenuOptions: TextMenuShowMode.DEFAULT
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0180', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0180', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0180] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -530,11 +530,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0190
      * @tc.name      SetMenuOptionsTest_0190
      * @tc.desc      set RichEditor setMenuOptions: TextMenuShowMode.PREFER_WINDOW
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0190', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0190', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0190] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -558,11 +558,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0200
      * @tc.name      SetMenuOptionsTest_0200
      * @tc.desc      set RichEditor setMenuOptions: undefined
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0200', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0200] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -586,11 +586,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0210
      * @tc.name      SetMenuOptionsTest_0210
      * @tc.desc      set RichEditor setMenuOptions: null
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0210', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0210', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0210] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -614,11 +614,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0220
      * @tc.name      SetMenuOptionsTest_0220
      * @tc.desc      set Text setMenuOptions: null
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0220', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0220', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0220] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -642,11 +642,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0230
      * @tc.name      SetMenuOptionsTest_0230
      * @tc.desc      set TextInput setMenuOptions: null
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0230', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0230', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0230] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -670,11 +670,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0240
      * @tc.name      SetMenuOptionsTest_0240
      * @tc.desc      set TextArea setMenuOptions: null
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0240', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0240', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0240] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -698,11 +698,11 @@ export default function SetMenuOptionsTest() {
      * @tc.number    SUB_ACE_SetMenuOptionsTest_0250
      * @tc.name      SetMenuOptionsTest_0250
      * @tc.desc      set Search setMenuOptions: null
-     * @tc.level:    Level 2
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('SetMenuOptionsTest_0250', 0, async (done: Function) => {
+    it('SetMenuOptionsTest_0250', Level.LEVEL0, async (done: Function) => {
       console.info('[SetMenuOptionsTest_0250] START');
       let driver = Driver.create();
       await CommonFunc.sleep(500);

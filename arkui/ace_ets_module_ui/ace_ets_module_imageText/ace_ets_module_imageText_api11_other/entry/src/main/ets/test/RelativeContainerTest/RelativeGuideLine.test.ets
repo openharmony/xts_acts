@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -49,8 +49,7 @@ export default function RelativeGuideLine() {
      * @tc.type
      * @tc.size
      */
-
-    it('RelativeGuideLine_001', 0, async (done: Function) => {
+    it('RelativeGuideLine_001', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_001] START');
 
       await CommonFunc.sleep(1000);
@@ -72,8 +71,7 @@ export default function RelativeGuideLine() {
      * @tc.type
      * @tc.size
      */
-
-    it('RelativeGuideLine_002', 0, async (done: Function) => {
+    it('RelativeGuideLine_002', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_002] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -99,8 +97,7 @@ export default function RelativeGuideLine() {
      * @tc.type
      * @tc.size
      */
-
-    it('RelativeGuideLine_003', 0, async (done: Function) => {
+    it('RelativeGuideLine_003', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_003] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -128,8 +125,7 @@ export default function RelativeGuideLine() {
      * @tc.type
     * @tc.size
      */
-
-    it('RelativeGuideLine_004', 0, async (done: Function) => {
+    it('RelativeGuideLine_004', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_004] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -155,8 +151,7 @@ export default function RelativeGuideLine() {
      * @tc.type
     * @tc.size
      */
-
-    it('RelativeGuideLine_005', 0, async (done: Function) => {
+    it('RelativeGuideLine_005', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_005] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -182,8 +177,7 @@ export default function RelativeGuideLine() {
      * @tc.type
      * @tc.size
      */
-
-    it('RelativeGuideLine_006', 0, async (done: Function) => {
+    it('RelativeGuideLine_006', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_006] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -210,7 +204,7 @@ export default function RelativeGuideLine() {
      * @tc.size
      */
 
-    it('RelativeGuideLine_007', 0, async (done: Function) => {
+    it('RelativeGuideLine_007', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_007] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -238,7 +232,7 @@ export default function RelativeGuideLine() {
      * @tc.size
      */
 
-    it('RelativeGuideLine_008', 0, async (done: Function) => {
+    it('RelativeGuideLine_008', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_008] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -265,7 +259,7 @@ export default function RelativeGuideLine() {
      * @tc.size
      */
 
-    it('RelativeGuideLine_009', 0, async (done: Function) => {
+    it('RelativeGuideLine_009', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_009] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -293,7 +287,7 @@ export default function RelativeGuideLine() {
     * @tc.size
      */
 
-    it('RelativeGuideLine_010', 0, async (done: Function) => {
+    it('RelativeGuideLine_010', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_010] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -321,7 +315,7 @@ export default function RelativeGuideLine() {
     * @tc.size
      */
 
-    it('RelativeGuideLine_011', 0, async (done: Function) => {
+    it('RelativeGuideLine_011', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_011] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -349,7 +343,7 @@ export default function RelativeGuideLine() {
     * @tc.size
      */
 
-    it('RelativeGuideLine_012', 0, async (done: Function) => {
+    it('RelativeGuideLine_012', Level.LEVEL3, async (done: Function) => {
       console.info('[RelativeGuideLine_012] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();

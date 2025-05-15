@@ -17,10 +17,20 @@ import iconTabs from './TabsTest/iconTabs.test';
 import onSelectedTabs from './TabsTest/onSelectedTabs.test'; 
 import preloadSwiper from './SwiperTest/preloadSwiper.test'; 
 import selectedSwiper from './SwiperTest/selectedSwiper.test'; 
+import SwiperIndicatorDistanceTest from './SwiperTest/SwiperIndicatorDistanceTest.test'
+import barBackground from './TabsTest/barBackground.test';
+import setGridEvent from './GridTest/setGridEvent.test'; 
+import setListEvent from './ListTest/setListEvent.test'; 
+import setScrollEvent from './ScrollTest/setScrollEvent.test';
 
 export default function testsuite() {
   iconTabs()
   onSelectedTabs()
   preloadSwiper()
   selectedSwiper()
+  SwiperIndicatorDistanceTest()
+  barBackground()
+  setGridEvent()
+  setListEvent()
+  setScrollEvent()
 }

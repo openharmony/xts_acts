@@ -17,6 +17,7 @@ import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level 
 import Utils from './Utils';
 import router from '@ohos.router';
 
+
 export default function webInitTest() {
   describe('WebInitTest', () => {
     beforeAll(async (done: Function) => {

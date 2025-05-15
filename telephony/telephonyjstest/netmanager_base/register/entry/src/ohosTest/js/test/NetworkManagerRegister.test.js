@@ -28,7 +28,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * call Register() to activate the default network, and see if the callback information is generated
          @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0100';
             let netConn = connection.createNetConnection();
             netConn.register(function (error) {
@@ -72,7 +72,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          * call Register() to activate the default network, and see if the callback information is generated
          @tc.desc Function test
          */
-        it('Telephony_NetworkManager_register_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0200';
             let netSpecifier = {
                 netCapabilities: {
@@ -121,7 +121,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
           * call Register ()to activate the default network,and see if the callback information is generated
           *@tc.desc Function test
           */
-        it('Telephony_NetworkManager_register_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('Telephony_NetworkManager_register_Async_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'Telephony_NetworkManager_register_Async_0300';
             let netSpecifier = {
                 netCapabilities: {
@@ -1212,7 +1212,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
          *          call Register () to activate the default network ,and see if the callback information is generated
          * @tc.desc Function test
          */
-        it('Telephony_NetworkManager_unregister_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('Telephony_NetworkManager_unregister_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let caseName = 'Telephony_NetworkManager_unregister_Async_0100';
             let netSpecifier = {
                 netCapabilities: {

@@ -17,7 +17,7 @@ import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio'
 import { playAudioSource } from './AudioPlayerTestBase';
 import MediaTestBase from './MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { resourceManager } from '@kit.LocalizationKit';
 
 let audioPlayer: media.AudioPlayer | null = media.createAudioPlayer();
@@ -307,7 +307,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SETSOURCE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SETSOURCE_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let mySteps = new Array(SRC_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
       initAudioPlayer();
@@ -324,7 +324,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SETVOLUME_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SETVOLUME_0100', Level.LEVEL0,async (done: Function) => {
       let mySteps =
         new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0, VOLUME_STATE, 0.5, VOLUME_STATE, MAX_VOLUME, RESET_STATE,
           RELEASE_STATE, END_STATE);
@@ -342,7 +342,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SEEK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_SEEK_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let mySteps =
         new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, SEEK_STATE, DURATION_TIME / 2, SEEK_STATE, DURATION_TIME,
@@ -361,7 +361,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_GETTRECKDESCRIPTION_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_GETTRECKDESCRIPTION_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let mySteps = new Array(SRC_STATE, GETDESCRIPTION_PROMISE, GETDESCRIPTION_CALLBACK, RELEASE_STATE, END_STATE);
       initAudioPlayer();
@@ -378,7 +378,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_LOOP_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_LOOP_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       let playCount = 0;
       let seekCount = 0;
@@ -458,7 +458,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_BASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_BASE_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
     });
@@ -470,7 +470,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_BASE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_BASE_0200', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
       playAudioSource(fileDescriptor, DURATION_TIME, PLAY_TIME, true, done);
     });
@@ -482,7 +482,7 @@ export default function PlayerLocalTestAudioFUNC() {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_MULTIPLE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FUNCTION_MULTIPLE_0100', Level.LEVEL0,async (done: Function) => {
       mediaTestBase.isFileOpen(fileDescriptor, done);
 
       playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);

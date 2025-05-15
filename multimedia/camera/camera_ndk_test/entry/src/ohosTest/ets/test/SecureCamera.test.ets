@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import cameraObj from 'libentry.so'
 import image from '@ohos.multimedia.image';
 //import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -327,136 +327,7 @@ export default function SecureCameraTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0100
-     * @tc.name       : testOHCameraInputOpenSecureCamera0100
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in normal condition.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHCameraInputOpenSecureCamera0100', 0, () => {
-      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
-      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (!supportedSceneModes.isSecurePhoto) {
-        console.error(TAG+"SECURE_PHOTO is not supported");
-        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
-      } else {
-        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
-        setSessionMode();
-        getSupportedCameraOutputCapabilityWithSceneMode();
-        createPreviewOutput();
-        createCameraInput();
-        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0100 errorCode:"+ret.errorCode);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0100 secureSeqId:"+ret.secureSeqId);
-        expect(ret.errorCode).assertEqual(CAMERA_OK);
-        expect(ret.secureSeqId != BigInt(0)).assertEqual(true);
-      }
-      console.info(TAG+"testOHCameraInputOpenSecureCamera0100 end");
-    })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0200
-     * @tc.name       : testOHCameraInputOpenSecureCamera0200
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, the first parameter is null.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHCameraInputOpenSecureCamera0200', 0, () => {
-      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
-      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (!supportedSceneModes.isSecurePhoto) {
-        console.error(TAG+"SECURE_PHOTO is not supported");
-        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
-      } else {
-        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
-        setSessionMode();
-        getSupportedCameraOutputCapabilityWithSceneMode();
-        createPreviewOutput();
-        createCameraInput();
-        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.FIRST_PARAMETER_ERROR);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0200:"+ret.errorCode);
-        expect(ret.errorCode).assertEqual(CAMERA_INVALID_ARGUMENT);
-      }
-      console.info(TAG+"testOHCameraInputOpenSecureCamera0200 end");
-    })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0300
-     * @tc.name       : testOHCameraInputOpenSecureCamera0300
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, the second parameter is null.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHCameraInputOpenSecureCamera0300', 0, () => {
-      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
-      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (!supportedSceneModes.isSecurePhoto) {
-        console.error(TAG+"SECURE_PHOTO is not supported");
-        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
-      } else {
-        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
-        setSessionMode();
-        getSupportedCameraOutputCapabilityWithSceneMode();
-        createPreviewOutput();
-        createCameraInput();
-        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.SECOND_PARAMETER_ERROR);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0300:"+ret.errorCode);
-        expect(ret.errorCode).assertEqual(CAMERA_INVALID_ARGUMENT);
-      }
-      console.info(TAG+"testOHCameraInputOpenSecureCamera0300 end");
-    })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0400
-     * @tc.name       : testOHCameraInputOpenSecureCamera0400
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, scene mode is normal photo.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHCameraInputOpenSecureCamera0400', 0, () => {
-      getSupportedCameraOutputCapability();
-      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (supportedSceneModes.isNormalPhoto && !supportedSceneModes.isSecurePhoto) {
-        setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
-        setSessionMode();
-        createPreviewOutput();
-        createCameraInput();
-        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0400:"+ret.errorCode);
-        expect(ret.errorCode).assertEqual(CAMERA_OK);
-        expect(ret.secureSeqId).assertEqual(BigInt(0));
-      } else {
-        console.error(TAG+"testOHCameraInputOpenSecureCamera0400: NORMAL_PHOTO is not supported.");
-      }
-    })
-    /**
-     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0500
-     * @tc.name       : testOHCameraInputOpenSecureCamera0500
-     * @tc.size       : MediumTest
-     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, scene mode is normal video.
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testOHCameraInputOpenSecureCamera0500', 0, () => {
-      getSupportedCameraOutputCapability();
-      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
-      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
-      if (supportedSceneModes.isNormalVideo && !supportedSceneModes.isSecurePhoto) {
-        setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
-        setSessionMode();
-        createPreviewOutput();
-        createCameraInput();
-        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
-        console.info(TAG+"testOHCameraInputOpenSecureCamera0500:"+ret.errorCode);
-        expect(ret.errorCode).assertEqual(CAMERA_OK);
-        expect(ret.secureSeqId).assertEqual(BigInt(0));
-      } else {
-        console.error(TAG+"testOHCameraInputOpenSecureCamera0500: NORMAL_PHOTO is not supported.");
-      }
-    })
+    
     /**
      * @tc.number     : SUB_MULTIMEIDA_OHCAMERANDK_OHCaptureSessionAddSecureOutput0100
      * @tc.name       : testOHCaptureSessionAddSecureOutput0100
@@ -465,7 +336,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0100', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0100', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -495,7 +366,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0200', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0200', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -525,7 +396,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0300', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0300', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -555,7 +426,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0400', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0400', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -585,7 +456,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0500', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0500', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -615,7 +486,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0600', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0600', Level.LEVEL0, () => {
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
       console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
       if (!supportedSceneModes.isSecurePhoto) {
@@ -645,7 +516,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0700', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0700', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.log(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
@@ -672,7 +543,7 @@ export default function SecureCameraTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testOHCaptureSessionAddSecureOutput0800', 0, () => {
+    it('testOHCaptureSessionAddSecureOutput0800', Level.LEVEL0, () => {
       getSupportedCameraOutputCapability();
       let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
       console.log(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
@@ -690,6 +561,136 @@ export default function SecureCameraTest() {
         expect(ret).assertEqual(CAMERA_OPERATION_NOT_ALLOWED);
       }
       console.log(TAG+"testOHCaptureSessionAddSecureOutput0800 end");
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0100
+     * @tc.name       : testOHCameraInputOpenSecureCamera0100
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in normal condition.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraInputOpenSecureCamera0100', Level.LEVEL0, () => {
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (!supportedSceneModes.isSecurePhoto) {
+        console.error(TAG+"SECURE_PHOTO is not supported");
+        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
+      } else {
+        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
+        setSessionMode();
+        getSupportedCameraOutputCapabilityWithSceneMode();
+        createPreviewOutput();
+        createCameraInput();
+        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0100 errorCode:"+ret.errorCode);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0100 secureSeqId:"+ret.secureSeqId);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+        expect(ret.secureSeqId != BigInt(0)).assertEqual(true);
+      }
+      console.info(TAG+"testOHCameraInputOpenSecureCamera0100 end");
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0200
+     * @tc.name       : testOHCameraInputOpenSecureCamera0200
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, the first parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraInputOpenSecureCamera0200', Level.LEVEL0, () => {
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (!supportedSceneModes.isSecurePhoto) {
+        console.error(TAG+"SECURE_PHOTO is not supported");
+        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
+      } else {
+        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
+        setSessionMode();
+        getSupportedCameraOutputCapabilityWithSceneMode();
+        createPreviewOutput();
+        createCameraInput();
+        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.FIRST_PARAMETER_ERROR);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0200:"+ret.errorCode);
+        expect(ret.errorCode).assertEqual(CAMERA_INVALID_ARGUMENT);
+      }
+      console.info(TAG+"testOHCameraInputOpenSecureCamera0200 end");
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0300
+     * @tc.name       : testOHCameraInputOpenSecureCamera0300
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, the second parameter is null.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraInputOpenSecureCamera0300', Level.LEVEL0, () => {
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.SET_CAMERA_FRONT_FOR_SECURE_PHOTO);
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (!supportedSceneModes.isSecurePhoto) {
+        console.error(TAG+"SECURE_PHOTO is not supported");
+        expect(supportedSceneModes.isSecurePhoto).assertEqual(false);
+      } else {
+        setSceneMode(Camera_SceneMode.SECURE_PHOTO);
+        setSessionMode();
+        getSupportedCameraOutputCapabilityWithSceneMode();
+        createPreviewOutput();
+        createCameraInput();
+        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.SECOND_PARAMETER_ERROR);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0300:"+ret.errorCode);
+        expect(ret.errorCode).assertEqual(CAMERA_INVALID_ARGUMENT);
+      }
+      console.info(TAG+"testOHCameraInputOpenSecureCamera0300 end");
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0400
+     * @tc.name       : testOHCameraInputOpenSecureCamera0400
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, scene mode is normal photo.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraInputOpenSecureCamera0400', Level.LEVEL0, () => {
+      getSupportedCameraOutputCapability();
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (supportedSceneModes.isNormalPhoto && !supportedSceneModes.isSecurePhoto) {
+        setSceneMode(Camera_SceneMode.NORMAL_PHOTO);
+        setSessionMode();
+        createPreviewOutput();
+        createCameraInput();
+        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0400:"+ret.errorCode);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+        expect(ret.secureSeqId).assertEqual(BigInt(0));
+      } else {
+        console.error(TAG+"testOHCameraInputOpenSecureCamera0400: NORMAL_PHOTO is not supported.");
+      }
+    })
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_OHCAMWEANDK_OHCameraInputOpenSecureCamera0500
+     * @tc.name       : testOHCameraInputOpenSecureCamera0500
+     * @tc.size       : MediumTest
+     * @tc.desc       : Test OH_CameraInput_OpenSecureCamera in abnormal condition, scene mode is normal video.
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testOHCameraInputOpenSecureCamera0500', Level.LEVEL0, () => {
+      getSupportedCameraOutputCapability();
+      let supportedSceneModes = getSupportedSceneModes(Parameter_Setting.ALL_PARAMETER_OK);
+      console.info(TAG+"getSupportedSceneModesSize is called. sceneModesSize is "+supportedSceneModes.sceneModesSize);
+      if (supportedSceneModes.isNormalVideo && !supportedSceneModes.isSecurePhoto) {
+        setSceneMode(Camera_SceneMode.NORMAL_VIDEO);
+        setSessionMode();
+        createPreviewOutput();
+        createCameraInput();
+        let ret = cameraObj.oHCameraInputOpenSecureCamera(Parameter_Setting.ALL_PARAMETER_OK);
+        console.info(TAG+"testOHCameraInputOpenSecureCamera0500:"+ret.errorCode);
+        expect(ret.errorCode).assertEqual(CAMERA_OK);
+        expect(ret.secureSeqId).assertEqual(BigInt(0));
+      } else {
+        console.error(TAG+"testOHCameraInputOpenSecureCamera0500: NORMAL_PHOTO is not supported.");
+      }
     })
   })
 }

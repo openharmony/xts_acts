@@ -21,20 +21,20 @@ export default function flexAlignSelf_StartJsunit() {
   describe('flexItemAlignStartTest7', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexAlignSelf',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/ItemAlign_Start_FlexAlignSelf',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexSecond state success " + JSON.stringify(pages));
-        if (!("FlexSecond" == pages.name)) {
-          console.info("get FlexSecond state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Start_FlexAlignSelf state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Start_FlexAlignSelf" == pages.name)) {
+          console.info("get ItemAlign_Start_FlexAlignSelf state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexSecond page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Start_FlexAlignSelf page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexSecond page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Start_FlexAlignSelf page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
@@ -42,7 +42,7 @@ export default function flexAlignSelf_StartJsunit() {
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexSecond after each called");
+      console.info("ItemAlign_Start_FlexAlignSelf after each called");
     });
 
     /**
@@ -52,14 +52,14 @@ export default function flexAlignSelf_StartJsunit() {
      */
     it('testFlexItemAlignStartSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignStartSetAlignSelf START');
-      let strJson1 = getInspectorByKey('flexAlignSelf');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flexAlignSelf');
 
-      let strJson2 = getInspectorByKey('textAlignSelf01');
+      let strJson2 = getInspectorByKey('ItemAlign_Start_textAlignSelf01');
 
-      let textAlignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
-      let textAlignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
-      let textAlignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');
-      let flexAlignSelf01: RectValue = CommonFunc.getComponentRect('flexAlignSelf');
+      let textAlignSelf01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textAlignSelf01');
+      let textAlignSelf02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textAlignSelf02');
+      let textAlignSelf03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textAlignSelf03');
+      let flexAlignSelf01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flexAlignSelf');
       expect(Math.abs(textAlignSelf01.left - flexAlignSelf01.left) <= 1).assertTrue();
       expect(Math.abs(textAlignSelf01.right - textAlignSelf02.left) <= 1).assertTrue();
       expect(Math.abs(textAlignSelf01.top - textAlignSelf02.bottom) <= 1).assertTrue();

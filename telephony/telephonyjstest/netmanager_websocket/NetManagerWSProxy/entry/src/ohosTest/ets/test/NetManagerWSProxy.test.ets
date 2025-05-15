@@ -40,11 +40,11 @@ export default function NetManagerWSProxy() {
      * @tc.number SUB_NetworkManager_NetStack_Api_WSProxy_0100
      * @tc.name SUB_NetworkManager_NetStack_Api_WSProxy_0100
      * @tc.desc Test callback options default connect success.
-     * @tc.level 2
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSProxy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSProxy_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSProxy_0100 test start")
       try {
         let webSock = webSocket.createWebSocket();
@@ -72,11 +72,11 @@ export default function NetManagerWSProxy() {
      * @tc.number SUB_NetworkManager_NetStack_Api_WSProxy_0200
      * @tc.name SUB_NetworkManager_NetStack_Api_WSProxy_0200
      * @tc.desc Test promise options default connect success.
-     * @tc.level 2
+     * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_NetStack_Api_WSProxy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done : Function) => {
+    it('SUB_NetworkManager_NetStack_Api_WSProxy_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done : Function) => {
       console.info("SUB_NetworkManager_NetStack_Api_WSProxy_0200 test start")
       try {
         let webSock = webSocket.createWebSocket();

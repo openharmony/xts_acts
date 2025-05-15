@@ -10,6 +10,11 @@
     "MainAbility/pages/Search/SearchGetText",
     "MainAbility/pages/TextArea/TextAreaGetText",
     "MainAbility/pages/TextInput/TextInputGetText",
-    "MainAbility/pages/StyledString/ParagraphSpacing"
+    "MainAbility/pages/StyledString/ParagraphSpacing",
+    "MainAbility/pages/RichEditor/HapticFeedbackMode",
+    "MainAbility/pages/RichEditor/RichEditorMaxLinesTest",
+    "MainAbility/pages/TextArea/WordBreakTest",
+    "MainAbility/pages/ImageContent/ImageContentEmpty",
+    "MainAbility/pages/ImageError/ImageOnError"
   ]
 }

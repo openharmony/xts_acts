@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import { UiDriver, BY } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -46,7 +46,7 @@ export default function textAreaJsunit3() {
       console.info("textArea after each called");
     });
 
-    it('textAreaTest01', 0, async (done: Function) => {
+    it('textAreaTest01', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest01] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
@@ -57,7 +57,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest02', 0, async (done: Function) => {
+    it('textAreaTest02', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -83,7 +83,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest03', 0, async (done: Function) => {
+    it('textAreaTest03', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest03] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
@@ -95,7 +95,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest04', 0, async (done: Function) => {
+    it('textAreaTest04', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -121,7 +121,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest05', 0, async (done: Function) => {
+    it('textAreaTest05', Level.LEVEL1, async (done: Function) => {
       console.info('[testArea05] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
@@ -132,7 +132,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest06', 0, async (done: Function) => {
+    it('textAreaTest06', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -158,7 +158,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest07', 0, async (done: Function) => {
+    it('textAreaTest07', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest07] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
@@ -171,7 +171,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest08', 0, async (done: Function) => {
+    it('textAreaTest08', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest08] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -199,7 +199,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest09', 0, async (done: Function) => {
+    it('textAreaTest09', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest09] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
@@ -210,7 +210,7 @@ export default function textAreaJsunit3() {
       done();
     });
 
-    it('textAreaTest10', 0, async (done: Function) => {
+    it('textAreaTest10', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest10] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -241,7 +241,7 @@ export default function textAreaJsunit3() {
      * @tc.name   :test getCaretOffset when iput text is null
      * @tc.desc   :expect caretOffset index 0 when text is null
      */
-    it('textAreaTest11', 0, async (done: Function) => {
+    it('textAreaTest11', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest11] START');
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
@@ -260,7 +260,7 @@ export default function textAreaJsunit3() {
      * @tc.name   :test getCaretOffset when iput text length not exceed maxLength.
      * @tc.desc   :expect caretOffset index equal text length
      */
-    it('textAreaTest12', 0, async (done: Function) => {
+    it('textAreaTest12', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest12] START');
       await CommonFunc.sleep(1000);
       try {
@@ -295,7 +295,7 @@ export default function textAreaJsunit3() {
      * @tc.name   :test getCaretOffset when iput text length exceed maxLength.
      * @tc.desc   :expect caretOffset index equal maxLength
      */
-    it('textAreaTest13', 0, async (done: Function) => {
+    it('textAreaTest13', Level.LEVEL1, async (done: Function) => {
       console.info('[textAreaTest13] START');
       await CommonFunc.sleep(1000);
       try {

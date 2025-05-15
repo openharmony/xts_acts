@@ -52,9 +52,9 @@ export default function builtinsArraySortTest() {
      * @tc.desc test ['banana', 'apple', 'cherry']sort()
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArraySort0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('builtinsArraySort0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       const fruits: Array<string> = ['banana', 'apple', 'cherry'];
       fruits.sort();
       console.log(fruits.toString());

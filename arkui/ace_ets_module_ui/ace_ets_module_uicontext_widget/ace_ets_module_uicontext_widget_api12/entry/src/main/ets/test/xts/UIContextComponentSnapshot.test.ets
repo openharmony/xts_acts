@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach,  it, Level, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-
 export default function UIContextComponentSnapshotJsunit() {
   describe('UIContextComponentSnapshotTest', () => {
     beforeEach(async (done: Function) => {
@@ -40,12 +39,10 @@ export default function UIContextComponentSnapshotJsunit() {
       }
       done()
     });
-
     afterEach(async () => {
       await Utils.sleep(1000);
       console.info('UIContextComponentSnapshot after each called');
     });
-
     /**
      * @tc.number UIContextComponentSnapshotTest_0100
      * @tc.name Test the properties of components
@@ -54,7 +51,7 @@ export default function UIContextComponentSnapshotJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('UIContextComponentSnapshotTest_0100', 0, async (done: Function) => {
+    it('UIContextComponentSnapshotTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshotTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('getComponentSnapshot_01'));
@@ -65,7 +62,6 @@ export default function UIContextComponentSnapshotJsunit() {
       console.info('UIContextComponentSnapshotTest_0100 END');
       done();
     });
-
     /**
      * @tc.number UIContextComponentSnapshotTest_0200
      * @tc.name Test the properties of components
@@ -74,7 +70,7 @@ export default function UIContextComponentSnapshotJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('UIContextComponentSnapshotTest_0200', 0, async (done: Function) => {
+    it('UIContextComponentSnapshotTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshotTest_0200 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('getComponentSnapshot_02'));

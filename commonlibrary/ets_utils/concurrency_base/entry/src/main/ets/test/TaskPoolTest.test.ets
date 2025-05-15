@@ -32,9 +32,9 @@ export default function TaskPoolTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testHappyPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testHappyPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testHappyPath();
       expect(result).assertEqual("PASSED");
       done();
@@ -47,9 +47,9 @@ export default function TaskPoolTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('testTwoTasks', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testTwoTasks', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testTwoTasks();
       expect(result).assertEqual("PASSED");
       done();

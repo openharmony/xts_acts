@@ -167,24 +167,24 @@ struct NotificationPage {
             .height('18vp')
         }
         .backgroundColor(Color.Black)
-        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back();
         })
 
         Row() {
-          Text('Notification')
+          Text('ces')
             .fontColor(Color.White)
             .fontSize('22fp')
         }
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor(Color.Black)
+        .size({ width: '40%' , height: '100%' })
 
         Row() {
           Button() {
             Image($r('app.media.ic_public_delete'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
           }
           .backgroundColor(Color.Black)
           .onClick(() => {
@@ -222,8 +222,8 @@ struct NotificationPage {
 
           Button() {
             Image($r('app.media.ic_public_save'))
-              .width('30vp')
-              .height('30vp')
+              .width('20vp')
+              .height('18vp')
               .margin({ left: 30 })
           }.backgroundColor(Color.Black)
           .onClick(() => {
@@ -247,10 +247,10 @@ struct NotificationPage {
           })
         }
       }
-      .width('100%')
+      .width('60%')
       .justifyContent(FlexAlign.SpaceAround)
       .margin({ top: '15vp' })
-      .height('6%')
+      .height('20%')
       .backgroundColor(Color.Black)
 
       List({}) {

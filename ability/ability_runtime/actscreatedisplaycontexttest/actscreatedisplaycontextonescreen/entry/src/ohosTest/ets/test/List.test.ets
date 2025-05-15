@@ -13,7 +13,9 @@
 * limitations under the License.
 */
 import abilityTest from './Ability.test';
+import transfercontextinworkertest from './TransferContextInWorkerTest.test';
 
 export default function testsuite() {
   abilityTest();
+  transfercontextinworkertest();
 }

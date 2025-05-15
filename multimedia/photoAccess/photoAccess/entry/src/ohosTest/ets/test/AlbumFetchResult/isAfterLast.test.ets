@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect, beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import {
   albumType,
   albumSubtype,
@@ -44,7 +44,7 @@ export default function albumIsAfterLastTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_isAfterLast_000', 0, async (done: Function) => {
+    it('album_isAfterLast_000', Level.LEVEL0, async (done: Function) => {
 			const testNum = 'album_isAfterLast_000';
       try {
         const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -84,7 +84,7 @@ export default function albumIsAfterLastTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('album_isAfterLast_001', 0, async (done: Function) => {
+    it('album_isAfterLast_001', Level.LEVEL0, async (done: Function) => {
 			const testNum = 'album_isAfterLast_001';
       try {
         await createUserAlbum(testContext, testNum, genRadomStr(10));

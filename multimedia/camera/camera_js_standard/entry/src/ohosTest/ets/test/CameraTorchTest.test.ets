@@ -14,7 +14,7 @@
  */
 
 import camera from '@ohos.multimedia.camera';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect,Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 const TAG = "CameraModuleTest: ";
 
@@ -78,7 +78,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_ON_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_ON_0100', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_ON_0100 FAILED with NoCamera`);
         expect().assertFail();
@@ -113,7 +113,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_OFF_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_OFF_0100', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_OFF_0100 FAILED with NoCamera`);
         expect().assertFail();
@@ -149,7 +149,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_AUTO_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_AUTO_0100', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_AUTO_0100 FAILED with NoCamera`);
         expect().assertFail();
@@ -185,7 +185,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0100', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0100 FAILED with NoCamera`);
         expect().assertFail();
@@ -241,7 +241,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0200', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0200 FAILED with NoCamera`);
         expect().assertFail();
@@ -297,7 +297,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0300', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0300 FAILED with NoCamera`);
         expect().assertFail();
@@ -353,7 +353,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0400', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0400 FAILED with NoCamera`);
         expect().assertFail();
@@ -409,7 +409,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0500', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0500 FAILED with NoCamera`);
         expect().assertFail();
@@ -465,7 +465,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0600', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0600 FAILED with NoCamera`);
         expect().assertFail();
@@ -522,7 +522,7 @@ export default function cameraTorchTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_CAMERA_OFF_TORCH_STATUS_CHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_CAMERA_OFF_TORCH_STATUS_CHANGE_0100', Level.LEVEL2, async (done: Function) => {
       if (mCameraNum == 0) {
         console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_OFF_TORCH_STATUS_CHANGE_0100 FAILED with NoCamera`);
         expect().assertFail();

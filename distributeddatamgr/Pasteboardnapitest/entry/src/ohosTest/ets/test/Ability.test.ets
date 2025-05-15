@@ -30,12 +30,12 @@ export default function pasteboardTestNdkTest() {
      * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0100
      * @tc.name OH_PasteboardSubscriber_Create0100
      * @tc.desc OH_PasteboardObserver_Create test
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
 
-    it('OH_PasteboardSubscriber_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('OH_PasteboardSubscriber_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let data = testndk.OH_PasteboardSubscriber_Create0100();
       console.info(TAG + "OH_PasteboardSubscriber_Create0100 data = " + data );
       expect(data).assertEqual(1);
@@ -51,11 +51,11 @@ export default function pasteboardTestNdkTest() {
      * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0200
      * @tc.name OH_PasteboardObserver_SetData0100
      * @tc.desc OH_PasteboardObserver_SetData test invalid
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_PasteboardObserver_SetData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
+    it('OH_PasteboardObserver_SetData0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
       console.info( TAG + 'OH_PasteboardObserver_SetData0100' );
       let data = testndk.OH_PasteboardObserver_SetData0100();
       console.info( TAG + 'OH_PasteboardObserver_SetData0100 data= ' + JSON.stringify(data));
@@ -119,11 +119,11 @@ export default function pasteboardTestNdkTest() {
      * @tc.number SUB_DistributedData_Pasteboard_SDK_NdkApiTest_0600
      * @tc.name OH_Pasteboard_Create0100
      * @tc.desc OH_Pasteboard_Subscribe test invalid
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      * @tc.type: Functiontion
      * @tc.size: MediumTest
      */
-    it('OH_Pasteboard_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function () {
+    it('OH_Pasteboard_Create0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
       console.info( TAG + 'OH_Pasteboard_Create0100' );
       let data = testndk.OH_Pasteboard_Create0100();
       console.info( TAG + 'OH_Pasteboard_Create0100 data= ' + JSON.stringify(data));

@@ -15,7 +15,7 @@
 
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility'
 import { BusinessError } from '@ohos.base';
 
@@ -75,7 +75,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif1.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -108,7 +108,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -141,7 +141,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -174,7 +174,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -207,7 +207,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -240,7 +240,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -273,7 +273,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -306,7 +306,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -339,7 +339,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -371,7 +371,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif1.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -403,7 +403,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -435,7 +435,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -467,7 +467,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -499,7 +499,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -531,7 +531,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -563,7 +563,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -595,7 +595,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -627,7 +627,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -660,7 +660,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif1.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -696,7 +696,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -732,7 +732,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -768,7 +768,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -804,7 +804,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -840,7 +840,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -876,7 +876,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -912,7 +912,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
@@ -948,7 +948,7 @@ export default function imageExif() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900', Level.LEVEL0, async (done: Function) => {
       await getFd('test_exif.jpg');
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {

@@ -25,7 +25,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts callback
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('ActsGetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('ActsGetAllAccounts_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsGetAllAccounts_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");
@@ -61,7 +61,7 @@ export default function ActsGetAllAccounts() {
         * @tc.name      : getAllAccounts promise
         * @tc.desc      : This application gets its own application information after adding an account
         */
-        it('ActsGetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
+        it('ActsGetAllAccounts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsGetAllAccounts_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>creat finish====");

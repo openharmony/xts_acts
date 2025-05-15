@@ -32,6 +32,27 @@ import securityLabel from '@ohos.file.securityLabel';
 import distributedKVStore from '@ohos.data.distributedKVStore';
 import camera from '@ohos.multimedia.camera';
 import appManager from '@ohos.app.ability.appManager';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+
+const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+async function isInstalled() {
+  let isInstall = true;
+  try {
+    let result = await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`);
+    console.error(`UiTestCase, bm dump success,: ${ JSON.stringify( result )}`)
+    if (!result.stdResult || result.stdResult == '') {
+      isInstall = false;
+    } else {
+      isInstall = true;
+    }
+  } catch (error) {
+    console.error(`UiTestCase, bm dump Failed: ${ JSON.stringify(error)}`)
+    isInstall = false;
+  }
+  return isInstall;
+}
 
 export default function securityTest() {
   describe('SecurityTest', () => {
@@ -155,40 +176,50 @@ export default function securityTest() {
      * @tc.level: Level 0
      */
     it('testAuthenticationCall0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info(`testAuthenticationCall0100 start`)
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
-      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
-      let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
-      let tokenId = applicationInfo.appInfo.accessTokenId
-      let contactInfo: contact.Contact = {
-        name: {fullName: 'pcstest'},
-        phoneNumbers: [{phoneNumber: '10000000000'}]
+      let contacts = canIUse("SystemCapability.Applications.Contacts");
+      console.info(`testAuthenticationCall0100 contacts,${ contacts }`);
+      const isInstall = await isInstalled();
+      console.info(`testAuthenticationCall0100 isInstall,${ isInstall }`);
+      if (contacts && isInstall) {
+        let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+        let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+        let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
+        let tokenId = applicationInfo.appInfo.accessTokenId
+        let contactInfo: contact.Contact = {
+          name: {fullName: 'pcstest'},
+          phoneNumbers: [{phoneNumber: '10000000000'}]
+        }
+        let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
+        console.info(`testAuthenticationCall0100 grantStatus,${ grantStatus }`);
+        expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED)
+        try {
+          let id = await contact.addContact(abilityContext, contactInfo)
+          expect(false).assertTrue()
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
+          expect(err.code == 201).assertTrue()
+        }
+        let permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS']
+        await PermissionUtils.getPermission(abilityContext, permissions)
+        await PermissionUtils.grantPermission()
+        let driver = Driver.create();
+        await driver.delayMs(1000)
+        grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
+        console.info(`testAuthenticationCall0100 grantStatus again,${ grantStatus }`);
+        expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED)
+        try {
+          let id = await contact.addContact(abilityContext, contactInfo)
+          expect(id != undefined).assertTrue()
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(`Failed to add contact again. error: ${JSON.stringify(err)}`)
+          expect(err.code != 201).assertTrue()
+        }
       }
-      let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
-      expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED)
-      try {
-        let id = await contact.addContact(abilityContext, contactInfo)
-        expect(false).assertTrue()
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
-        expect(err.code == 201).assertTrue()
-      }
-      let permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS']
-      await PermissionUtils.getPermission(abilityContext, permissions)
-      await PermissionUtils.grantPermission()
-      let driver = Driver.create();
-      await driver.delayMs(1000)
-      grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
-      expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED)
-      try {
-        let id = await contact.addContact(abilityContext, contactInfo)
-        expect(id != undefined).assertTrue()
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
-        expect(err.code != 201).assertTrue()
-      }
+      console.info(`testAuthenticationCall0100 end`)
       done()
     })
 

@@ -155,9 +155,9 @@ export default function preferencesCallBackTest(){
          * @tc.desc get defaultValue callback interface test
          * @tc.size MediumTest
          * @tc.type Function
-         * @tc.level Level 2
+         * @tc.level Level 0
          */
-        it('testPreferencesGetDefValue0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('testPreferencesGetDefValue0062', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await mPreferences.clear();
             await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue", function (err, ret) {
                 expect('defaultValue').assertEqual(ret);

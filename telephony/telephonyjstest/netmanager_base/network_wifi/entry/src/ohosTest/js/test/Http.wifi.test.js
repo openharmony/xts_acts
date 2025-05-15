@@ -24,7 +24,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
      * @tc.name Whether the GetType method is called successfully with WiFi
      * @tc.desc Function test
      */
-    it("Telephony_NetManager_NetWorkTest_GetType_WiFi_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("Telephony_NetManager_NetWorkTest_GetType_WiFi_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
         network.getType({
             success : function(data){
                 console.info("NetManager getType "+ JSON.stringify(data));

@@ -484,20 +484,18 @@ export default function actsEmitterandComEventTest() {
      * @tc.level      : Level 2
      */
     it('Sub_Notification_Emitter_Publish_Sendable_0001',  Level.LEVEL2, async (done: Function) => {
-      // 调用持续订阅指定事件接口
+      //调用持续订阅指定事件接口
       let result = 0
-      emitter.on("eventId111", () => {
-        console.info(TAG+'callback success'+result); //第二个参数就是订阅回调的函数，回调成功才会打印
+
+      let callback = (eventData: emitter.GenericEventData<Sample>): void => {
+        let storage: Sample = eventData.data!;
+        storage.printCount();
+        console.info(TAG+'callback success111111'+result);
         result += 1
-        return result
-      });
-      //调用发送指定事件接口
-      let eventData: emitter.EventData = {
-        data: {
-          "content": "c",
-          "id": 1,
-        }
-      };
+      }
+      emitter.on("eventId111", callback);
+
+      let eventData = new SelfEventData();
       emitter.emit("eventId111", eventData);
       console.info(TAG+'emitterEmit success');
       //等待5s
@@ -528,11 +526,13 @@ export default function actsEmitterandComEventTest() {
      */
     it('Sub_Notification_Emitter_Publish_Sendable_0002', Level.LEVEL0, async (done: Function) => {
       let onConsume_number = 0
-      emitter.once("eventId222", () => {
-        console.info(TAG+'once callback success'+onConsume_number);
+      let callback = (eventData: emitter.GenericEventData<Sample>): void => {
+        let storage: Sample = eventData.data!;
+        storage.printCount();
         onConsume_number += 1
-        return onConsume_number
-      });
+      }
+      emitter.once("eventId222", callback);
+
       //调用取消订阅事件接口
       await sleep(2000)
       emitter.off("eventId222");
@@ -550,18 +550,16 @@ export default function actsEmitterandComEventTest() {
      * @tc.level      : Level 2
      */
     it('Sub_Notification_Emitter_Publish_Sendable_0003', Level.LEVEL3, async (done: Function) => {
-      let eventData: emitter.EventData = {
-        data: {
-          "content": "c",
-          "id": 1,
-        }
-      };
+      let eventData = new SelfEventData();
+
       let onConsume_number = 0
-      emitter.once("eventId333", () => {
-        console.info(TAG+'once callback success'+onConsume_number);
+
+      let callback = (eventData: emitter.GenericEventData<Sample>): void => {
+        let storage: Sample = eventData.data!;
+        storage.printCount();
         onConsume_number += 1
-        return onConsume_number
-      });
+      }
+      emitter.once("eventId333", callback);
       await sleep(100)
       emitter.emit("eventId333", eventData);
       console.info(TAG+'emitterEmit success');
@@ -578,19 +576,17 @@ export default function actsEmitterandComEventTest() {
      * @tc.level      : Level 0
      */
     it('Sub_Notification_Emitter_Publish_Sendable_0004', Level.LEVEL0, async (done: Function) => {
-      let eventData: emitter.EventData = {
-        data: {
-          "content": "c",
-          "id": 1,
-        }
-      };
+      let eventData = new SelfEventData();
+
       let onConsume_number = 0
       let emit_number = 0
-      emitter.once("eventId444", () => {
-        console.info(TAG+'once callback success'+onConsume_number);
+
+      let callback = (eventData: emitter.GenericEventData<Sample>): void => {
+        let storage: Sample = eventData.data!;
+        storage.printCount();
         onConsume_number += 1
-        return onConsume_number
-      });
+      }
+      emitter.once("eventId444", callback);
       await sleep(100)
       emitter.emit("eventId444", eventData);
       console.info(TAG+'emitterEmit success'+emit_number);
@@ -607,4 +603,19 @@ export default function actsEmitterandComEventTest() {
 
 function done() {
   throw new Error('Function not implemented.');
+}
+
+@Sendable
+class Sample {
+  constructor() {
+    this.count = 100;
+  }
+  printCount() {
+    console.info('Print count : ' + this.count);
+  }
+  count: number;
+}
+
+class SelfEventData implements emitter.EventData {
+  data: Sample = new Sample();
 }

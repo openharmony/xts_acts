@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, afterEach, it, expect, beforeEach } from '@ohos/hypium'
+import { describe, beforeAll, afterEach, it, expect, beforeEach, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -195,7 +195,7 @@ export default function AddContactTest() {
      * @tc.name contactsApi_insert error
      * @tc.desc Function test
      */
-    it("abnormal_contactsApi_insert_test_2800", 0,  async (done: Function) => {
+    it("abnormal_contactsApi_insert_test_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let contactDataError: contact.Contact = {};
       try {
         let rawContactId = await contact.addContact(contactDataError);
@@ -216,7 +216,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactAddContact0100', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0100";
       console.info(`${caseName} test start `);
       try {
@@ -248,7 +248,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactAddContact0200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -306,7 +306,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0300', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -344,7 +344,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -382,7 +382,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -420,7 +420,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0600', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -458,7 +458,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0700', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -498,7 +498,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0800', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -542,7 +542,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact0900', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact0900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -581,7 +581,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1200";
       console.info(`${caseName} test start `);
       let phoneNumContact: contact.Contact = {
@@ -619,7 +619,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1300', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -657,7 +657,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -695,7 +695,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -733,7 +733,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactAddContact1600', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -770,7 +770,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactAddContact1700', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -826,7 +826,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1800', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -863,7 +863,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact1900', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -900,7 +900,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2000', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -937,7 +937,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2100', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -974,7 +974,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1013,7 +1013,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2300', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1056,7 +1056,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1095,7 +1095,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2700', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1133,7 +1133,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2800', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1170,7 +1170,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact2900', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact2900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1207,7 +1207,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactAddContact3000', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact3000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1246,7 +1246,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testTelephonyContactAddContact6100', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1300,7 +1300,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1355,7 +1355,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6300', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1403,7 +1403,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1450,7 +1450,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1504,7 +1504,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testTelephonyContactAddContact6600', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1558,7 +1558,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6700', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1612,7 +1612,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6800', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1659,7 +1659,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact6900', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact6900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1706,7 +1706,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7000', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1754,7 +1754,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testTelephonyContactAddContact7100', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1809,7 +1809,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1863,7 +1863,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7300', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7300";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1917,7 +1917,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -1964,7 +1964,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2011,7 +2011,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7600', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2058,7 +2058,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testTelephonyContactAddContact7700', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2112,7 +2112,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7800', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7800";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2166,7 +2166,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact7900', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact7900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact7900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2222,7 +2222,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact8000', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8000";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2276,7 +2276,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it('testTelephonyContactAddContact8100', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2320,7 +2320,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact8200', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2375,7 +2375,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact8400', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2430,7 +2430,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact8500', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8500";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2485,7 +2485,7 @@ export default function AddContactTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testTelephonyContactAddContact8600', 0, async (done: Function) => {
+    it('testTelephonyContactAddContact8600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact8600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2547,7 +2547,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsLocalContact0100', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2588,7 +2588,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0200', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2620,7 +2620,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0400', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0400";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2651,7 +2651,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0500', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0500";
       console.info(`${caseName} test start `);
       try {
@@ -2684,7 +2684,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0700', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0700";
       console.info(`${caseName} test start `);
       try {
@@ -2715,7 +2715,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact0800', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0800";
       console.info(`${caseName} test start `);
       try {
@@ -2747,7 +2747,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactIsLocalContact0900', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact0900";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2794,7 +2794,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1000', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1000";
       console.info(`${caseName} test start `);
       try {
@@ -2825,7 +2825,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1200', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2855,7 +2855,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1300', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1300";
       console.info(`${caseName} test start `);
       try {
@@ -2886,7 +2886,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1500', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1500";
       console.info(`${caseName} test start `);
       try {
@@ -2916,7 +2916,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactIsLocalContact1600', 0, async (done: Function) => {
+    it('testTelephonyContactIsLocalContact1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactIsLocalContact1600";
       console.info(`${caseName} test start `);
       try {
@@ -2947,7 +2947,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactDeleteContact0100', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact0100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -2992,7 +2992,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactDeleteContact0200', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -3024,7 +3024,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactDeleteContact0600', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact0600";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -3068,7 +3068,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactDeleteContact0700', 0, async (done: Function) => {
+    it('testTelephonyContactDeleteContact0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactDeleteContact0700";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -3101,7 +3101,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTelephonyContactQueryHolders0100', 0, async (done: Function) => {
+    it('testTelephonyContactQueryHolders0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryHolders0100";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
@@ -3132,7 +3132,7 @@ export default function AddContactTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testTelephonyContactQueryHolders0200', 0, async (done: Function) => {
+    it('testTelephonyContactQueryHolders0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName: string = "testTelephonyContactQueryHolders0200";
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;

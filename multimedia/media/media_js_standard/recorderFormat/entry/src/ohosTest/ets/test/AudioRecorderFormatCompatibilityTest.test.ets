@@ -14,7 +14,7 @@
  */
 
 import MediaTestBase from './MediaTestBase';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import { Permissions } from '@ohos.abilityAccessCtrl';
 
 let mediaTestBase = new MediaTestBase();
@@ -30,7 +30,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
       let permissionNames: Array<Permissions> = [permissionName1, permissionName2, permissionName3, permissionName4];
       await mediaTestBase.getPermission(permissionNames);
       await mediaTestBase.sleep(2000);
-      await mediaTestBase.driveFnNoSleep(3);
+      await mediaTestBase.driveFn(3);
       console.info('beforeAll case');
     })
 
@@ -55,7 +55,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0100', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFd('COMPATIBILITY_0100.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = -90;
@@ -75,7 +75,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0200', Level.LEVEL0,async (done: Function) => {
       await  mediaTestBase.getFd('COMPATIBILITY_0200.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = 90;
@@ -95,7 +95,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0300', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFd('COMPATIBILITY_0300.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = 0;
@@ -115,7 +115,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0400', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFd('COMPATIBILITY_0400.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = 0;
@@ -135,7 +135,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0500', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFd('COMPATIBILITY_0500.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = -30;
@@ -155,7 +155,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_0600', Level.LEVEL0,async (done: Function) => {
       await mediaTestBase.getFd('COMPATIBILITY_0600.m4a');
       mediaTestBase.audioConfig.uri = "fd://"+mediaTestBase.outputFdObject.fd;
       mediaTestBase.location1.latitude = 60;

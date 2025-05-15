@@ -47,9 +47,9 @@ export default function UDPSocketTest() {
      * @tc.desc  :  Create a UDPSocket object
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 2
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100';
       console.info(`${caseName} test start`);
       try {
@@ -569,9 +569,9 @@ export default function UDPSocketTest() {
      * @tc.desc  :  Bind IP address and port
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 2
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketUDPSocketBind1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1600';
       console.info(`${caseName} test start`);
       try {
@@ -1025,9 +1025,9 @@ export default function UDPSocketTest() {
      * @tc.desc  :  Sending data through UDPSocket connection
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 3
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketUDPSocketSend1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1200';
       console.info(`${caseName} test start`);
       try {
@@ -1243,9 +1243,9 @@ export default function UDPSocketTest() {
      * @tc.desc  :  Sending data through UDPSocket connection
      * @tc.size  :  MediumTest
      * @tc.type  :  Function
-     * @tc.level :  Level 3
+     * @tc.level :  Level 0
      */
-    it('testNetworkMgrSocketUDPSocketSend1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1900';
       console.info(`${caseName} test start`);
       try {

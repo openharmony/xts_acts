@@ -26,7 +26,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSharedLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testSharedLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('library').then(m => {
         try {
@@ -50,7 +50,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testStaticLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStaticLibraryRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('har').then(m => {
         try {
@@ -74,7 +74,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRelativePathRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testRelativePathRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('./test').then(m => {
         try {
@@ -98,7 +98,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSystemInternal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testSystemInternal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('@ohos.hilog').then(m => {
         try {
@@ -121,7 +121,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSystemRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testSystemRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('@system.app').then(m => {
         try {
@@ -145,7 +145,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testNapiRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNapiRes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('libentry.so').then(m => {
         try {
@@ -169,7 +169,7 @@ export default function dynamicImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testImportJson', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testImportJson', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let res: String = '';
       import('./1.json').then(m => {
         try {

@@ -244,7 +244,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkMultiOsAccountEnabled callback
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
-        it('ActsOsAccountCheckMulty_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsOsAccountCheckMulty_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsOsAccountCheckMulty_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -263,7 +263,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.name    : checkMultiOsAccountEnabled promise
         * @tc.desc    : Check whether the function of supporting multiple os account is enabled
         */
-        it('ActsOsAccountCheckMulty_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('ActsOsAccountCheckMulty_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsOsAccountCheckMulty_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
@@ -513,11 +513,11 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
         * @tc.number  : ActsOsAccountIsOsAccountUnlocked_0100
         * @tc.name    : IsOsAccountUnlocked promise
         * @tc.desc    : Verify that the initial state query is unlocked to false
-        * @tc.level   : Level2
+        * @tc.level   : Level0
         * @tc.size    : MediumTest
         * @tc.type    : Function
         */
-        it('ActsOsAccountIsOsAccountUnlocked_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        it('ActsOsAccountIsOsAccountUnlocked_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info("====>ActsOsAccountIsOsAccountUnlocked_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.info("====>get os AccountManager finish====");

@@ -16,6 +16,9 @@
 import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function geolocationPermissionsErrorCode() {
 
@@ -42,6 +45,11 @@ export default function geolocationPermissionsErrorCode() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       console.info("geolocationPermissionsErrorCode beforeEach start");
       done();
     })
@@ -59,9 +67,9 @@ export default function geolocationPermissionsErrorCode() {
     * @tc.desc       : test accessibleGeolocation error
     * @tc.size       : MEDIUM
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testGetAccessibleGeolocationError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationError001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testGetAccessibleGeolocationError001", '17100011', 20020, done);
@@ -304,7 +312,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess001", 'Invalid origin', 11816, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess001", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11816, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -319,7 +327,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess002", 'Invalid origin', 11818, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess002", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11818, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -334,7 +342,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess003", 'Invalid origin', 11820, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess003", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11820, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -349,7 +357,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess004", 'Invalid origin', 11822, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess004", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11822, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -364,7 +372,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess005", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess005", 'Invalid origin', 11824, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess005", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11824, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -379,7 +387,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess006", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess006", 'Invalid origin', 11826, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess006", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11826, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -394,7 +402,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess007", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess007", 'Invalid origin', 11828, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess007", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11828, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -409,7 +417,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testGetAccessibleGeolocationErrorMess008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testGetAccessibleGeolocationErrorMess008", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testGetAccessibleGeolocationErrorMess008", 'Invalid origin', 11830, done);
+      Utils.registerEvent("testGetAccessibleGeolocationErrorMess008", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11830, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -424,7 +432,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testDeleteGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testDeleteGeolocationErrorMess001", 'Invalid origin', 11832, done);
+      Utils.registerEvent("testDeleteGeolocationErrorMess001", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11832, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -439,7 +447,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testDeleteGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testDeleteGeolocationErrorMess002", 'Invalid origin', 11834, done);
+      Utils.registerEvent("testDeleteGeolocationErrorMess002", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11834, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -454,7 +462,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testDeleteGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testDeleteGeolocationErrorMess003", 'Invalid origin', 11836, done);
+      Utils.registerEvent("testDeleteGeolocationErrorMess003", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11836, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -469,7 +477,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testDeleteGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testDeleteGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testDeleteGeolocationErrorMess004", 'Invalid origin', 11838, done);
+      Utils.registerEvent("testDeleteGeolocationErrorMess004", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11838, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '')
     })
 
@@ -484,7 +492,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testAllowGeolocationErrorMess001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess001", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testAllowGeolocationErrorMess001", 'Invalid origin', 11840, done);
+      Utils.registerEvent("testAllowGeolocationErrorMess001", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11840, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '');
     })
 
@@ -499,7 +507,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testAllowGeolocationErrorMess002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testAllowGeolocationErrorMess002", 'Invalid origin', 11842, done);
+      Utils.registerEvent("testAllowGeolocationErrorMess002", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11842, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '');
     })
 
@@ -514,7 +522,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testAllowGeolocationErrorMess003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testAllowGeolocationErrorMess003", 'Invalid origin', 11844, done);
+      Utils.registerEvent("testAllowGeolocationErrorMess003", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11844, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '');
     })
 
@@ -529,7 +537,7 @@ export default function geolocationPermissionsErrorCode() {
     it('testAllowGeolocationErrorMess004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       Utils.emitEvent("testAllowGeolocationErrorMess004", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testAllowGeolocationErrorMess004", 'Invalid origin', 11846, done);
+      Utils.registerEvent("testAllowGeolocationErrorMess004", 'Invalid origin.The origin format must follow defined in RFC 6454.', 11846, done);
       sendEventByKey('GeolocationPermissionsErrorCodeButton', 10, '');
     })
   })

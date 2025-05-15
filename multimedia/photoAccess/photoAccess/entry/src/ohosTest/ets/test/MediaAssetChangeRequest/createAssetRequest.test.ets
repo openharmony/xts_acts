@@ -14,7 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect,beforeAll } from '@ohos/hypium'
+import { describe, it, expect, beforeAll, Level } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import { sleep, getPermission, fetchOption, photoKeys, pushCreateAsset, driveFn } from '../common'
@@ -41,7 +41,7 @@ export default function createAssetRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('create_asset_request_000', 0, async (done: Function) => {
+    it('create_asset_request_000', Level.LEVEL0, async (done: Function) => {
       let testNum = 'create_asset_request_000';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.IMAGE);
@@ -73,7 +73,7 @@ export default function createAssetRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('create_asset_request_001', 2, async (done: Function) => {
+    it('create_asset_request_001', Level.LEVEL2, async (done: Function) => {
       let testNum = 'create_asset_request_001';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.IMAGE);
@@ -108,7 +108,7 @@ export default function createAssetRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('create_asset_request_002', 2, async (done: Function) => {
+    it('create_asset_request_002', Level.LEVEL2, async (done: Function) => {
       let testNum = 'create_asset_request_002';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
@@ -140,7 +140,7 @@ export default function createAssetRequestTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('create_asset_request_003', 2, async (done: Function) => {
+    it('create_asset_request_003', Level.LEVEL2, async (done: Function) => {
       let testNum = 'create_asset_request_003';
       try {
         let fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
@@ -175,7 +175,7 @@ export default function createAssetRequestTest() {
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-      it('create_asset_request_004', 2, async (done: Function) => {
+      it('create_asset_request_004', Level.LEVEL2, async (done: Function) => {
         let testNum = 'create_asset_request_004';
         try {
           let photoType =  photoAccessHelper.PhotoType.IMAGE;

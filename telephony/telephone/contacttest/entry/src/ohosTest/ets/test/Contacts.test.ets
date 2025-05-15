@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -194,7 +194,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactCallBack0100", 0, async (done: Function) => {
+    it("testContactAddContactCallBack0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactCallBack0100';
       console.info(`${caseName} test start`);
       try {
@@ -252,7 +252,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactCallBack0200", 0, async (done: Function) => {
+    it("testContactAddContactCallBack0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactCallBack0200';
       console.info(`${caseName} test start`);
       try {
@@ -303,7 +303,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactCallBack0300", 0, async (done: Function) => {
+    it("testContactAddContactCallBack0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactCallBack0300';
       console.info(`${caseName} test start`);
       try {
@@ -354,7 +354,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactPromise0100", 0, async (done: Function) => {
+    it("testContactAddContactPromise0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactPromise0100';
       console.info(`${caseName} test start`);
       try {
@@ -409,7 +409,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactPromise0200", 0, async (done: Function) => {
+    it("testContactAddContactPromise0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactPromise0200';
       console.info(`${caseName} test start`);
       try {
@@ -458,7 +458,7 @@ export default function ContactsTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("testContactAddContactPromise0300", 0, async (done: Function) => {
+    it("testContactAddContactPromise0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testContactAddContactPromise0300';
       console.info(`${caseName} test start`);
       try {

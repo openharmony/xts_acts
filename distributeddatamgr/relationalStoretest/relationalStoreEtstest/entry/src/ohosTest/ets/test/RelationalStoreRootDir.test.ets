@@ -196,8 +196,8 @@ export default function rdbrootDirTest() {
       try {
         data_relationalStore.getRdbStore(context,STORE_CONFIG1 , async(err, rdbStore) => {
           expect().assertFail();
+          done();
         })
-        done()
       } catch (err) {
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");
         console.log(TAG +"delete rdbstore success");
@@ -508,6 +508,7 @@ export default function rdbrootDirTest() {
       try {
         data_relationalStore.deleteRdbStore(context, STORE_CONFIG1, async(err) => {
           expect().assertFail();
+          done();
         })
       } catch (err) {
         await data_relationalStore.deleteRdbStore(context, "rootDirTest.db");

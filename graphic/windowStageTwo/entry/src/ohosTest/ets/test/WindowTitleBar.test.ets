@@ -14,11 +14,12 @@
  */
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
 import { ConfigurationConstant } from '@kit.AbilityKit';
+import { ColorMetrics } from '@kit.ArkUI';
 
 export default function windowTitleBarTest() {
   describe('windowTitleBarTest', async () => {
@@ -33,20 +34,91 @@ export default function windowTitleBarTest() {
     });
     beforeEach(() => {
     });
-    afterEach(() => {
-    });
+    afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
+    })
     afterAll(() => {
     });
+/**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0100
+     * @tc.name       : test_setStatusBarColor_401
+     * @tc.desc       : setStatusBarColor接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_401!'
+      try {
+        let mainWindowClass = windowStage.getMainWindowSync();
+        let promise = mainWindowClass.setStatusBarColor(null);
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0200
+     * @tc.name       : test_setStatusBarColor_801
+     * @tc.desc       : setStatusBarColor接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_801!'
+      try {
+        let mainWindowClass = windowStage.getMainWindowSync();
+        let promise = mainWindowClass.setStatusBarColor(ColorMetrics.rgba(1, 1, 1));
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_0100
      * @tc.name      : test_setDecorButtonStyle_null
      * @tc.desc      : test_setDecorButtonStyle_null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_null', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_null';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -75,9 +147,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_getDecorButtonStyle_undifined
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_getDecorButtonStyle_undifined', 0, async (done: Function) => {
+    it('test_getDecorButtonStyle_undifined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_getDecorButtonStyle_undifined';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -106,9 +178,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_colorMode_-2
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_colorMode_-2', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_colorMode_-2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_colorMode_-2';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -141,9 +213,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_colorMode_-1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_colorMode_-1', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_colorMode_-1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_colorMode_-1';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -175,9 +247,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_colorMode_1
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_colorMode_1', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_colorMode_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_colorMode_1';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -209,9 +281,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_colorMode_0
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_colorMode_0', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_colorMode_0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_colorMode_0';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -243,9 +315,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_10
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_10', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_10';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -277,9 +349,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_50
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_50', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_50', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_50';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -311,9 +383,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_20
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_20', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_buttonBackgroundSize_20vp_40vp_20';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -345,9 +417,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -385,9 +457,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_12
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_12', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_12';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -418,9 +490,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_24
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_24', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_24';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -447,20 +519,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1300
-     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
-     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
+     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
+     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11', 0, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11';
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          spacingBetweenButtons: 11
+          spacingBetweenButtons: 7
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -485,9 +557,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_25
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_25', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_25';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -519,9 +591,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_20
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_20', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_20';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -552,9 +624,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_18.5
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_18.5', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_18.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_18.5';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -585,9 +657,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_8
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_8', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_8', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_8';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -618,9 +690,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_22
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_22', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_22';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -647,20 +719,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1900
-     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
-     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
+     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
+     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7', 0, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7';
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          closeButtonRightMargin: 7
+          closeButtonRightMargin: 5
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -685,9 +757,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_23
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_23', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_23';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -719,9 +791,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_20
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_20', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_20';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -752,9 +824,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_18.5
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_18.5', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_18.5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_18.5';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -785,9 +857,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_closeButtonRightMargin
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_closeButtonRightMargin', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_spacingBetweenButtons_closeButtonRightMargin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_closeButtonRightMargin';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -820,9 +892,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_colorMode_spacingBetweenButtons_closeButtonRightMargin
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_colorMode_spacingBetweenButtons_closeButtonRightMargin', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_colorMode_spacingBetweenButtons_closeButtonRightMargin', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_colorMode_spacingBetweenButtons_closeButtonRightMargin';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -858,9 +930,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_stylenull
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_stylenull', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_stylenull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_stylenull';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -908,9 +980,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setTitleAndDockHoverShown_hide
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setTitleAndDockHoverShown_hide', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setTitleAndDockHoverShown_hide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setTitleAndDockHoverShown_hide';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -955,9 +1027,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setTitleAndDockHoverShown_show
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setTitleAndDockHoverShown_show', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setTitleAndDockHoverShown_show', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setTitleAndDockHoverShown_show';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1002,9 +1074,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_on_windowTitleButtonRectChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_on_windowTitleButtonRectChange', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_on_windowTitleButtonRectChange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_on_windowTitleButtonRectChange';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1039,9 +1111,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setWindowTitleButtonVisible_true_true
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_true_true', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_true_true', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setWindowTitleButtonVisible_true_true';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1082,9 +1154,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setWindowTitleButtonVisible_false_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_false_false', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_false_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setWindowTitleButtonVisible_false_false';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1125,9 +1197,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setWindowTitleButtonVisible_true_false';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1168,9 +1240,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowDecorHeight_setDecorButtonStyle
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowDecorHeight_setDecorButtonStyle', 0, async (done: Function) => {
+    it('test_setWindowDecorHeight_setDecorButtonStyle', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowDecorHeight_setDecorButtonStyle';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1213,9 +1285,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_setWindowDecorHeight
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_setWindowDecorHeight', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_setWindowDecorHeight', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_setWindowDecorHeight';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1258,9 +1330,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setDecorButtonStyle_30_setWindowDecorHeight_20
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_30_setWindowDecorHeight_20', 0, async (done: Function) => {
+    it('test_setDecorButtonStyle_30_setWindowDecorHeight_20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setDecorButtonStyle_30_setWindowDecorHeight_20';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1304,9 +1376,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_null
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_null', 0, async (done: Function) => {
+    it('test_setWindowTitle_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_null';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1339,9 +1411,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_no_title
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_no_title', 0, async (done: Function) => {
+    it('test_setWindowTitle_no_title', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_no_title';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1392,9 +1464,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_window_destroy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_window_destroy', 0, async (done: Function) => {
+    it('test_setWindowTitle_window_destroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_window_destroy';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1437,9 +1509,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_mainWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_mainWindow', 0, async (done: Function) => {
+    it('test_setWindowTitle_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_mainWindow';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1471,9 +1543,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_subWindow_title
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_subWindow_title', 0, async (done: Function) => {
+    it('test_setWindowTitle_subWindow_title', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_subWindow_title';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1526,9 +1598,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_dialogWindow_title
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_dialogWindow_title', 0, async (done: Function) => {
+    it('test_setWindowTitle_dialogWindow_title', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_dialogWindow_title';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1577,9 +1649,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_mainWindow_hide_titlebar
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_mainWindow_hide_titlebar', 0, async (done: Function) => {
+    it('test_setWindowTitle_mainWindow_hide_titlebar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_mainWindow_hide_titlebar';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1616,9 +1688,9 @@ export default function windowTitleBarTest() {
      * @tc.desc      : test_setWindowTitle_mainWindow_Too_long_parameter
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 3
      */
-    it('test_setWindowTitle_mainWindow_Too_long_parameter', 0, async (done: Function) => {
+    it('test_setWindowTitle_mainWindow_Too_long_parameter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'test_setWindowTitle_mainWindow_Too_long_parameter';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -1647,6 +1719,48 @@ export default function windowTitleBarTest() {
         }
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_getWindowDecorVisible_0100
+     * @tc.name      : test_getWindowDecorVisible_1300002
+     * @tc.desc      :  test_getWindowDecorVisible_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_getWindowDecorVisible_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_getWindowDecorVisible_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: window.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_getWindowDecorVisible_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          subWindowClass.getWindowDecorVisible();
+          expect(false).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to getWindowDecorVisible. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else if(err.code == 1300002){
+            expect(true).assertTrue();
+            done();
+          }else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
 
   })
 }

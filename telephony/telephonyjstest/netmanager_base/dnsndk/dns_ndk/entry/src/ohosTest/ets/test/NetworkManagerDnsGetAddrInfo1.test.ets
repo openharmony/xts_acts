@@ -43,9 +43,9 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level 2
+    * @tc.level   Level 0
     */
-    it("NetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0100"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_default);
       if (status != 0) {
@@ -87,9 +87,9 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level 2
+    * @tc.level   Level 0
     */
-    it("NetworkManager_Dns_GetAddrInfo_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("NetworkManager_Dns_GetAddrInfo_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0300"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_invalid);
       if (status != 401) {
@@ -131,9 +131,9 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     * @tc.desc    check register dns resolver
     * @tc.size    MediumTest
     * @tc.type    Function
-    * @tc.level   Level 2
+    * @tc.level   Level 0
     */
-    it("NetworkManager_Dns_RegisterDnsResolver_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it("NetworkManager_Dns_RegisterDnsResolver_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_RegisterDnsResolver_0100"
       let status = testNapi.registerdnsresolver(function_valid);
       if (status != 0) {
