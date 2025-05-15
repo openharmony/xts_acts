@@ -18,7 +18,10 @@
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
-    "deviceTypes": [],
+    "deviceTypes": [
+      "default",
+      "tablet",
+    ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
@@ -30,8 +33,6 @@
         "icon": "$media:icon",
         "label": "$string:TestAbility_label",
         "exported": true,
-        "visible": true,
-        "orientation": "portrait",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
         "skills": [

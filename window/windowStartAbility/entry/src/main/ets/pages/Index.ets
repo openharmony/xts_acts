@@ -12,17 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import hilog from '@ohos.hilog';
+
+const TAG: string = 'actsAbilityRunTimeTest-Page ';
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World'
+  aboutToAppear() {
+    hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index aboutToAppear');
+  }
+
+  onPageShow(): void {
+    hilog.info(0x0000, TAG, '%{public}s', 'EntryAbility index onPageShow');
+  }
+
   build() {
     Row() {
       Column() {
-        Text(this.message)
+        Text("Hello")
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-
       }
       .width('100%')
     }

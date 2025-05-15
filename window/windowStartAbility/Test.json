@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-        "ActsWindowStartAbilityTest.hap"
+                "ActsWindowStartAbilityTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

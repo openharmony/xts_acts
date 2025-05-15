@@ -12,13 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 {
-  "apiType": 'stageMode',
+  "apiType": "stageMode",
   "buildOption": {
   },
+  "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": false,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        }
+      }
+    },
+  ],
   "targets": [
     {
-      "name": "default",
+      "name": "default"
     },
     {
       "name": "ohosTest",
