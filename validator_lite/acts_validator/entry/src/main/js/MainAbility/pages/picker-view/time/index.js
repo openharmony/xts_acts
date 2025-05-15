@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         defaultTime: '',
         time: '',
         str: '',
@@ -63,7 +63,8 @@ export default {
             params: {
                 step: '操作步骤：滑动选择器修改选择时间',
                 result: '预期结果：红色字体的时间跟随滑动选择器变化，时间并保持一致',
-                url: 'pages/picker-view/time/index'
+                url: 'pages/picker-view/time/index',
+                itemIndex: this.itemIndex
             }
         });
     },

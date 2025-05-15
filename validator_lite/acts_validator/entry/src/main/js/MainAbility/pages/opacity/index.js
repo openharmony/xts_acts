@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'opacity',
         pass: 'true ;',
@@ -30,7 +30,8 @@ export default {
             params: {
                 step: '操作步骤：观察三张图片透明度',
                 result: '预期结果：第一张图片不透明，第二张图片半透明，第三张图片更透明',
-                url: 'pages/opacity/index'
+                url: 'pages/opacity/index',
+                itemIndex: this.itemIndex
             }
         });
     },

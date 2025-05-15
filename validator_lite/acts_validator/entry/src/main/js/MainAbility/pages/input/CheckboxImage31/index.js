@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'input',
         pass: 'true ;',
@@ -30,7 +30,8 @@ export default {
             params: {
                 step: '操作步骤：复选框，单选，图片按钮均可点击',
                 result: '预期结果：复选框可反复点击，单选框只能点击一次，图片按钮点击时有变化',
-                url: 'pages/input/CheckboxImage31/index'
+                url: 'pages/input/CheckboxImage31/index',
+                itemIndex: this.itemIndex
             }
         });
     },
