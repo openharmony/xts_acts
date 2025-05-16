@@ -25,16 +25,8 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  * @param event message data
  */
 workerPort.onmessage = (event: MessageEvents) => {
-  if (event.data === '1') {
     const currentTime = process.getPastCpuTime();
-    console.log(`Start Realtime = ${currentTime}`);
     workerPort.postMessage(currentTime);
-  } else if (event.data === '2') {
-    let s: string[] = []
-    s[0].split('')[1].toString()
-    workerPort.postMessage(event.data)
-    workerPort.close();
-  }
 };
 
 /**

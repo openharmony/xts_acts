@@ -110,18 +110,27 @@ export default function ProcessSupplementTest() {
     it('ProcessSupplementTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessSupplementTest0300';
       console.info(`${caseName}, test start`);
-      let count:number = 0;
-      for (let i = 0; i < 100; i++) {
-        WorkThread.workerStageModel.postMessage('1')
-        WorkThread.workerStageModel.onmessage = (event) => {
-          console.info(event.data)
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainUid = process.uid;
+      WorkThread.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainUid) {
+          errorCount++;
+        }
+        console.log(event.data);
+      };
+
+      WorkThread.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread.workerStageModel.postMessage('getUid');
       }
-      while (count < 100) {
-        await sleep(100);
-      }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -191,18 +200,29 @@ export default function ProcessSupplementTest() {
     it('ProcessSupplementTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessSupplementTest0600';
       console.info(`${caseName}, test start`);
-      let count:number = 0;
-      for (let i = 0; i < 100; i++) {
-        WorkThread2.workerStageModel.postMessage('1')
-        WorkThread2.workerStageModel.onmessage = (event) => {
-          console.info(event.data)
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainPid = process.pid;
+      console.info(`${caseName}, PID: ${mainPid}`);
+
+      WorkThread2.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainPid) {
+          errorCount++;
+        }
+        console.log(event.data);
+      };
+
+      WorkThread2.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread2.workerStageModel.postMessage('getPid');
       }
-      while (count < 100) {
-        await sleep(100);
-      }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread2.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -271,18 +291,29 @@ export default function ProcessSupplementTest() {
     it('ProcessSupplementTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessSupplementTest0900';
       console.info(`${caseName}, test start`);
-      let count:number = 0;
-      for (let i = 0; i < 100; i++) {
-        WorkThread3.workerStageModel.postMessage('1')
-        WorkThread3.workerStageModel.onmessage = (event) => {
-          console.info(event.data)
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainTid = process.tid;
+      console.info(`${caseName}, TID: ${mainTid}`);
+
+      WorkThread3.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainTid) {
+          errorCount++;
+        }
+        console.log(event.data);
+      };
+
+      WorkThread3.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread3.workerStageModel.postMessage('getTid');
       }
-      while (count < 100) {
-        await sleep(100);
-      }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread3.workerStageModel.terminate();
+      expect(errorCount).assertEqual(100);
       console.info(`${caseName}, test end`);
       Done();
     })

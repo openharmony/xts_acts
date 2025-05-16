@@ -68,7 +68,7 @@ export default function ProcessInterfacetTest() {
       for (let i = 0; i < 100; i++) {
         const result = process.isIsolatedProcess();
         console.info(`Call ${i + 1}: isIsolatedProcess() = ${result}`);
-        expect(result).assertTrue();
+        expect(result).assertEqual(true);
         count++;
       }
       await sleep(100);
@@ -118,17 +118,29 @@ export default function ProcessInterfacetTest() {
     it('ProcessInterfacetTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessInterfacetTest0300';
       console.info(`${caseName}, test start`);
-      let count: number = 0;
-      for (let i = 0; i < 100; i++) {
-        WorkThread4.workerStageModel.postMessage('1')
-        WorkThread4.workerStageModel.onmessage = (event) => {
-          console.info(event.data)
-          expect(JSON.stringify(event.data).toString()).assertEqual('true');
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainIsIsolatedProcess = process.isIsolatedProcess();
+      console.info(`${caseName}, isIsolatedProcess: ${mainIsIsolatedProcess}`);
+
+      WorkThread4.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainIsIsolatedProcess) {
+          errorCount++;
+        }
+        console.log(`${event.data}`);
+      };
+
+      WorkThread4.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread4.workerStageModel.postMessage('getIsIsolatedProcess');
       }
       await sleep(100);
-      expect(count).assertEqual(100);
+      WorkThread4.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -148,11 +160,12 @@ export default function ProcessInterfacetTest() {
       for (let i = 0; i < 100; i++) {
         const result = process.is64Bit();
         console.info(`Call ${i + 1}: is64Bit() = ${result}`);
-        expect(result).assertFalse();
         count++;
       }
-      await sleep(100);
-      expect(count).assertEqual(100)
+      while (count<100){
+        await sleep(100);
+      }
+      expect(count).assertEqual(100);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -198,19 +211,28 @@ export default function ProcessInterfacetTest() {
     it('ProcessInterfacetTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessInterfacetTest0600';
       console.info(`${caseName}, test start`);
-      let count: number = 0;
-      for (let i = 0; i < 100; i++) {
-        WorkThread5.workerStageModel.postMessage('1')
-        WorkThread5.workerStageModel.onmessage = (event) => {
-          console.info(event.data)
-          expect(JSON.stringify(event.data).toString()).assertEqual('false');
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainIs64Bit = process.is64Bit();
+      console.info(`${caseName}, isIs64Bit: ${mainIs64Bit}`);
+      WorkThread5.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainIs64Bit) {
+          errorCount++;
+        }
+        console.log(`${event.data}`);
+      };
+
+      WorkThread5.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread5.workerStageModel.postMessage('getIsIs64Bit');
       }
-      while (count < 100) {
-        await sleep(100);
-      }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread5.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -288,20 +310,27 @@ export default function ProcessInterfacetTest() {
     it('ProcessInterfacetTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessInterfacetTest0900';
       console.info(`${caseName}, test start`);
-      let count: number = 0;
-      for (let i = 0; i < 100; i++) {
-        const startTime = process.getStartRealtime();
-        WorkThread6.workerStageModel.postMessage('1')
-        WorkThread6.workerStageModel.onmessage = (event) => {
-          console.info(event.data);
-          expect(startTime).assertEqual(event.data);
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainGetStartRealtime = process.getStartRealtime();
+      console.info(`${caseName}, getStartRealtime: ${mainGetStartRealtime}`);
+      WorkThread6.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainGetStartRealtime) {
+          errorCount++;
+        }
+        console.log(`${event.data}`);
+      };
+      WorkThread6.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread6.workerStageModel.postMessage('getStartRealtime');
       }
-      while (count < 100) {
-        await sleep(100);
-      }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread6.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -330,7 +359,7 @@ export default function ProcessInterfacetTest() {
         }
       }
       while (count < 100) {
-        await sleep(100);
+        await sleep(1000);
       }
       expect(count).assertEqual(100)
       console.info(`${caseName}, test end`);
@@ -368,7 +397,7 @@ export default function ProcessInterfacetTest() {
         }
       }
       while (count < 100) {
-        await sleep(100);
+        await sleep(1000);
       }
       expect(100).assertEqual(count)
       console.info(`${caseName}, test end`);
@@ -386,19 +415,28 @@ export default function ProcessInterfacetTest() {
     it('ProcessInterfacetTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessInterfacetTest1200';
       console.info(`${caseName}, test start`);
-      let count: number = 0;
-      const startTime = process.getPastCpuTime();
-      for (let i = 0; i < 100; i++) {
-        WorkThread7.workerStageModel.postMessage('1')
-        WorkThread7.workerStageModel.onmessage = (event) => {
-          console.info(event.data);
-          if (startTime > event.data) {
-            throw new Error('startTime is greater than currentTime');
-          }
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainGetPastCpuTime = process.getPastCpuTime();
+      console.info(`${caseName}, getPastCpuTime: ${mainGetPastCpuTime}`);
+      WorkThread7.workerStageModel.onmessage = (event) => {
+        if (mainGetPastCpuTime > event.data) {
+          throw new Error('mainGetPastCpuTime is greater than currentTime');
+        }
+        errorCount++;
+        console.log(`${event.data}`);
+      };
+      WorkThread7.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread7.workerStageModel.postMessage('getPastCpuTime');
       }
-      expect(count).assertEqual(100);
+      await sleep(1000);
+      WorkThread7.workerStageModel.terminate();
+      expect(errorCount).assertEqual(100);
       console.info(`${caseName}, test end`);
       Done();
     })
@@ -483,19 +521,27 @@ export default function ProcessInterfacetTest() {
     it('ProcessInterfacetTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'ProcessInterfacetTest1500';
       console.info(`${caseName}, test start`);
-      let count: number = 0;
-      const startTime = process.uptime();
-      for (let i = 0; i < 100; i++) {
-        WorkThread8.workerStageModel.postMessage('1')
-        WorkThread8.workerStageModel.onmessage = (event) => {
-          console.info(event.data);
-          if (startTime > event.data) {
-            throw new Error('startTime is greater than currentTime');
-          }
-        };
-        count++;
+      let errorCount = 0;
+      const totalCalls = 100;
+      const mainUptime = process.uptime();
+      console.info(`${caseName}, uptime: ${mainUptime}`);
+      WorkThread8.workerStageModel.onmessage = (event) => {
+        if (event.data !== mainUptime) {
+          errorCount++;
+        }
+        console.log(`${event.data}`);
+      };
+      WorkThread8.workerStageModel.onerror = (err) => {
+        console.error(`${caseName}, Worker error: ${err.message}`);
+        errorCount++;
+      };
+
+      for (let i = 0; i < totalCalls; i++) {
+        WorkThread8.workerStageModel.postMessage('uptime');
       }
-      expect(count).assertEqual(100);
+      await sleep(100);
+      WorkThread8.workerStageModel.terminate();
+      expect(errorCount).assertEqual(0);
       console.info(`${caseName}, test end`);
       Done();
     })

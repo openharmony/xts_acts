@@ -24,15 +24,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
  * @param event message data
  */
 workerPort.onmessage = (event: MessageEvents) => {
-  if (event.data === '1') {
-    console.log(`UID = ${process.pid}`);
-    workerPort.postMessage(process.pid);
-  } else if (event.data === '2') {
-    let s: string[] = []
-    s[0].split('')[1].toString()
-    workerPort.postMessage(event.data)
-    workerPort.close();
-  }
+  workerPort.postMessage(process.pid);
 };
 
 /**
