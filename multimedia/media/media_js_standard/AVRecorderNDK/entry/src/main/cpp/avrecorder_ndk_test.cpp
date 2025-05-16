@@ -543,6 +543,19 @@ static napi_value prepareCamera(napi_env env, napi_callback_info info)
     return res;
 }
 
+static napi_value setWillMuteWhenInterrupted(napi_env env, napi_callback_info info)
+{
+    (void)info;
+    struct OH_AVRecorder *avRecorder = OH_AVRecorder_Create();
+    int result = OH_AVRecorder_SetWillMuteWhenInterrupted(avRecorder, true);
+    OH_AVRecorder_Release(avRecorder);
+    avRecorder = nullptr;
+    OH_LOG_INFO(LOG_APP, "AVRecorder OH_AVRecorder_SetWillMuteWhenInterrupted result :%{public}d", result);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -562,6 +575,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"setPreviewSurfaceId", nullptr, setPreviewSurfaceId, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getAVRecorderConfig", nullptr, getAVRecorderConfig, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getAvailableEncoder", nullptr, getAvailableEncoder, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setWillMuteWhenInterrupted", nullptr,
+            setWillMuteWhenInterrupted, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

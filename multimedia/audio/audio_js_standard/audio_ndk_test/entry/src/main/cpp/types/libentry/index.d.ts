@@ -260,3 +260,4 @@ export const audioVolumeManagerUnregisterRingerModeChangeCallback_001: () => num
 export const audioVolumeManagerUnregisterRingerModeChangeCallback_002: () => number;
 export const audioVolumeManagerUnregisterRingerModeChangeCallback_003: () => number;
 export const audioVolumeManagerUnregisterRingerModeChangeCallback_004: () => number;
+export const AudioCapturerSetWillMuteWhenInterrupted: () => number;

@@ -3826,5 +3826,20 @@ export default function audioNDK() {
       expect(result).assertEqual(TEST_PASS)
       done()
      })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED
+     * @tc.name      : set interrupt strategy before generate audioCaptuer
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.AudioCapturerSetWillMuteWhenInterrupted();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED AudioCapturerSetWillMuteWhenInterrupted: ${result}`);
+      expect(result).assertEqual(0)
+      done()
+    })
   })
 }
