@@ -18,6 +18,7 @@ import window from '@ohos.window';
 import ohosWindow from '@ohos.window';
 import common from '@ohos.app.ability.common';
 import settings from '@ohos.settings';
+import { display } from '@kit.ArkUI';
 export default function windowImmersiveTest() {
   describe('windowImmersive_test', () => {
     let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
@@ -26,7 +27,7 @@ export default function windowImmersiveTest() {
     let isPCStatus:string = '';
     let isAutoWindow:string = '';
     let avoidArea1: window.AvoidArea;
-    
+    let isSupportRotate = false;
     beforeAll(async () => {
       context = AppStorage.get('context') as common.UIAbilityContext;
       console.log('windowTest context: ' + JSON.stringify(context))
@@ -47,6 +48,22 @@ export default function windowImmersiveTest() {
         let type = window.AvoidAreaType.TYPE_SYSTEM;
         avoidArea1 = windowClass.getWindowAvoidArea(type);
         console.info(` Succeeded in getWindowAvoidArea1. Data: ${JSON.stringify(avoidArea1)}`);
+        //查看设备是否支持旋转：isSupportRotate == true,支持；isSupportRotate == false,不支持
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT)
+        await sleep(300);
+        let Orientation1 = display.getDefaultDisplaySync().orientation;
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(300);
+        let Orientation2 = display.getDefaultDisplaySync().orientation;
+        if(Orientation1 != Orientation2){
+          isSupportRotate = true;
+        }else{
+          isSupportRotate = false;
+        }
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+        await sleep(300);
+        console.log(`beforeAll isSupportRotate: ${JSON.stringify(isSupportRotate)},Orientation1: ${JSON.stringify(Orientation1)},Orientation2: ${JSON.stringify(Orientation2)}`)
+    
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -76,6 +93,170 @@ export default function windowImmersiveTest() {
       // await windowClass.setFullScreen(false);
       let windowClass = windowStage.getMainWindowSync();
       await windowClass.recover();
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0100
+     * @tc.name      : testOnavoidAreaChangeInLandScape
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInLandScape', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInLandScape';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayWidth);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+          await sleep(500);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0200
+     * @tc.name      : testOnavoidAreaChangeInPORTRAIT
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInPORTRAIT', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInPORTRAIT';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+          await sleep(300);
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect!== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayHeight);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          await sleep(2000);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_OnavoidAreaChange_0300
+     * @tc.name      : testOnavoidAreaChangeInLANDSCAPE_INVERTED
+     * @tc.desc      : Obtain the area that the window content avoids
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('testOnavoidAreaChangeInLANDSCAPE_INVERTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = 'testOnavoidAreaChangeInLANDSCAPE_INVERTED';
+      if(isSupportRotate){
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let displayWidth = display.getDefaultDisplaySync().width;
+          console.info(caseName+ 'displayWidth: ' + JSON.stringify(displayWidth));
+          let displayHeight = display.getDefaultDisplaySync().height;
+          console.info(caseName+ 'displayHeight: ' + JSON.stringify(displayHeight));
+          await sleep(300);
+          windowClass.on('avoidAreaChange', async (data) => {
+            console.info(caseName+ ':Succeeded in enabling the listener for system avoid area changes. type:' +
+            JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
+            if(data.type == 0){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect !== null).assertTrue();
+              expect(data.area.leftRect !== null).assertTrue();
+            }else if(data.type == 4){
+              expect(data.area.visible).assertTrue();
+              expect(data.area.topRect !== null).assertTrue();
+              expect(data.area.rightRect !== null).assertTrue();
+              expect(data.area.bottomRect.top+data.area.bottomRect.height).assertEqual(displayWidth);
+              expect(data.area.leftRect !== null).assertTrue();
+            }else{
+              await sleep(500);
+            }
+            windowClass.off('avoidAreaChange');
+            await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+            await sleep(300);
+            done();
+
+          });
+          await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE_INVERTED);
+          await sleep(2000);
+        } catch (exception) {
+          console.error(`${caseName} Error. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      }else{
+        done();
+      }
+
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100
