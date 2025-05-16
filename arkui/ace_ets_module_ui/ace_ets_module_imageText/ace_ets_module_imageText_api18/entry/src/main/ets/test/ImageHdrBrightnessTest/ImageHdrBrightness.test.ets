@@ -1,11 +1,8 @@
 import { describe, it, expect, beforeAll, afterEach, Level } from '@ohos/hypium';
 // 导入测试依赖kit
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
-import CommonFunc from '../../../main/ets/pages/common/Common';
-import { Want } from '@kit.AbilityKit';
 import { router } from '@kit.ArkUI';
-const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
+import Utils from '../../MainAbility/common/Utils';
 
 export default function ImageHDRBrightnessTest() {
   describe('ImageHDRBrightnessTest', () => {
@@ -19,7 +16,7 @@ export default function ImageHDRBrightnessTest() {
         let pages = router.getState();
         if (!("ImageHdrBrightness" == pages.name)) {
           let result = await router.push(options);
-          await CommonFunc.sleep(2000);
+          await Utils.sleep(2000);
         }
       } catch (err) {
         console.error("push ImageHDRBrightnessTest page error: " + err);
@@ -27,7 +24,7 @@ export default function ImageHDRBrightnessTest() {
     });
 
     afterEach(async () => {
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       console.info("ImageHDRBrightnessTest after each called");
     });
 
@@ -35,7 +32,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr00'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -48,7 +45,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr03'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -60,7 +57,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr08'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -72,7 +69,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr10'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -84,7 +81,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr_1'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -96,7 +93,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr20'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -108,7 +105,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdr20'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -120,7 +117,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdrNull'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
@@ -132,7 +129,7 @@ export default function ImageHDRBrightnessTest() {
       const driver = Driver.create();
       const button = await driver.findComponent(ON.id('hdrUndefined'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await Utils.sleep(1000);
       let strJson = getInspectorByKey('hdrImageKey');
       let obj: ESObject = JSON.parse(strJson);
       let hdr: number = obj.$attrs.hdrBrightness
