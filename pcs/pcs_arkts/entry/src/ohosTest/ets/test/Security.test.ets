@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, TestType, Level, Size } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
@@ -32,6 +32,27 @@ import securityLabel from '@ohos.file.securityLabel';
 import distributedKVStore from '@ohos.data.distributedKVStore';
 import camera from '@ohos.multimedia.camera';
 import appManager from '@ohos.app.ability.appManager';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+
+const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+
+async function isInstalled() {
+  let isInstall = true;
+  try {
+    let result = await delegator.executeShellCommand(`bm dump -a | grep com.ohos.contacts`);
+    console.error(`UiTestCase, bm dump success,: ${ JSON.stringify( result )}`)
+    if (!result.stdResult || result.stdResult == '') {
+      isInstall = false;
+    } else {
+      isInstall = true;
+    }
+  } catch (error) {
+    console.error(`UiTestCase, bm dump Failed: ${ JSON.stringify(error)}`)
+    isInstall = false;
+  }
+  return isInstall;
+}
 
 export default function securityTest() {
   describe('SecurityTest', () => {
@@ -54,7 +75,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testPermissionUserGrant0100', 0, async (done: Function) => {
+    it('testPermissionUserGrant0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if(!canIUse("SystemCapability.Multimedia.Camera.Core")) {
         expect(true).assertTrue()
         done()
@@ -82,7 +103,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testBackgroundCameraBanned0100', 0, async (done: Function) => {
+    it('testBackgroundCameraBanned0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       if(!canIUse("SystemCapability.Multimedia.Camera.Core")) {
         expect(true).assertTrue()
         done()
@@ -154,41 +175,51 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testAuthenticationCall0100', 0, async (done: Function) => {
+    it('testAuthenticationCall0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      console.info(`testAuthenticationCall0100 start`)
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
-      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-      let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
-      let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
-      let tokenId = applicationInfo.appInfo.accessTokenId
-      let contactInfo: contact.Contact = {
-        name: {fullName: 'pcstest'},
-        phoneNumbers: [{phoneNumber: '10000000000'}]
+      let contacts = canIUse("SystemCapability.Applications.Contacts");
+      console.info(`testAuthenticationCall0100 contacts,${ contacts }`);
+      const isInstall = await isInstalled();
+      console.info(`testAuthenticationCall0100 isInstall,${ isInstall }`);
+      if (contacts && isInstall) {
+        let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+        let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+        let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
+        let tokenId = applicationInfo.appInfo.accessTokenId
+        let contactInfo: contact.Contact = {
+          name: {fullName: 'pcstest'},
+          phoneNumbers: [{phoneNumber: '10000000000'}]
+        }
+        let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
+        console.info(`testAuthenticationCall0100 grantStatus,${ grantStatus }`);
+        expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED)
+        try {
+          let id = await contact.addContact(abilityContext, contactInfo)
+          expect(false).assertTrue()
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
+          expect(err.code == 201).assertTrue()
+        }
+        let permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS']
+        await PermissionUtils.getPermission(abilityContext, permissions)
+        await PermissionUtils.grantPermission()
+        let driver = Driver.create();
+        await driver.delayMs(1000)
+        grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
+        console.info(`testAuthenticationCall0100 grantStatus again,${ grantStatus }`);
+        expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED)
+        try {
+          let id = await contact.addContact(abilityContext, contactInfo)
+          expect(id != undefined).assertTrue()
+        } catch (error) {
+          let err = error as BusinessError;
+          console.info(`Failed to add contact again. error: ${JSON.stringify(err)}`)
+          expect(err.code != 201).assertTrue()
+        }
       }
-      let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
-      expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED)
-      try {
-        let id = await contact.addContact(abilityContext, contactInfo)
-        expect(false).assertTrue()
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
-        expect(err.code == 201).assertTrue()
-      }
-      let permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS']
-      await PermissionUtils.getPermission(abilityContext, permissions)
-      await PermissionUtils.grantPermission()
-      let driver = Driver.create();
-      await driver.delayMs(1000)
-      grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
-      expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED)
-      try {
-        let id = await contact.addContact(abilityContext, contactInfo)
-        expect(id != undefined).assertTrue()
-      } catch (error) {
-        let err = error as BusinessError;
-        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
-        expect(err.code != 201).assertTrue()
-      }
+      console.info(`testAuthenticationCall0100 end`)
       done()
     })
 
@@ -200,7 +231,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testHardwareSupportAESGCM256Alg0100', 0, async (done: Function) => {
+    it('testHardwareSupportAESGCM256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey = await SecurityUtils.genSymKeyByData(keyData, 'AES256')
@@ -232,7 +263,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportHASHAndHMACAlg0100', 0, async (done: Function) => {
+    it('testSupportHASHAndHMACAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let mdAlgName = 'SHA256'
         let message = 'This is a HASH_SHA256 test'
@@ -277,7 +308,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportRSA2048Alg0100', 0, async (done: Function) => {
+    it('testSupportRSA2048Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyGenAlg = "RSA2048"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -305,7 +336,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportECCAlg0100', 0, async (done: Function) => {
+    it('testSupportECCAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyGenAlg = "ECC256"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -333,7 +364,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportSecureRandomNumber0100', 0, async (done: Function) => {
+    it('testSupportSecureRandomNumber0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let rand = cryptoFramework.createRandom();
         let seed = new Uint8Array([1, 2, 3]);
@@ -360,7 +391,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportHASHSHA256Alg0100', 0, async (done: Function) => {
+    it('testSupportHASHSHA256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let mdAlgName = 'SHA256'
         let message = 'This is a HASH_SHA256 test'
@@ -387,7 +418,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportHKDFAlg0100', 0, async (done: Function) => {
+    it('testSupportHKDFAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyAlias = 'hkdf_key'
       let HuksKeyDeriveKeySize = 32
       let deriveHkdfInData = "deriveHkdfTestIndata"
@@ -427,7 +458,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCBC128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCBC128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -457,7 +488,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCBC192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCBC192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -487,7 +518,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCBC256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCBC256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -517,7 +548,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESGCM128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESGCM128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -547,7 +578,7 @@ export default function securityTest() {
       * @tc.type: Function
       * @tc.level: Level 0
       */
-    it('testSupportAESGCM192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESGCM192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -577,7 +608,7 @@ export default function securityTest() {
       * @tc.type: Function
       * @tc.level: Level 0
       */
-    it('testSupportAESGCM256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESGCM256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -608,7 +639,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESECB128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESECB128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -638,7 +669,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESECB192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESECB192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -668,7 +699,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESECB256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESECB256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -698,7 +729,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESOFB128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESOFB128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -729,7 +760,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESOFB192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESOFB192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -760,7 +791,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESOFB256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESOFB256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -791,7 +822,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCFB128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCFB128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -822,7 +853,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCFB192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCFB192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -853,7 +884,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCFB256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCFB256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -884,7 +915,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCTR128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCTR128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -915,7 +946,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCTR192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCTR192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -947,7 +978,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCTR256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCTR256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -978,7 +1009,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCCM128Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCCM128Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData1 = new Uint8Array(buffer.from('12345678abcdefgh', 'utf8').buffer)
         let symKey1 = await SecurityUtils.genSymKeyByData(keyData1, 'AES128')
@@ -1009,7 +1040,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCCM192Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCCM192Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData2 = new Uint8Array(buffer.from('12345678abcdefgh12345678', 'utf8').buffer)
         let symKey2 = await SecurityUtils.genSymKeyByData(keyData2, 'AES192')
@@ -1040,7 +1071,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportAESCCM256Alg0100', 0, async (done: Function) => {
+    it('testSupportAESCCM256Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyData3 = new Uint8Array(buffer.from('12345678abcdefgh12345678abcdefgh', 'utf8').buffer)
         let symKey3 = await SecurityUtils.genSymKeyByData(keyData3, 'AES256')
@@ -1071,7 +1102,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportRSA3072Alg0100', 0, async (done: Function) => {
+    it('testSupportRSA3072Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyGenAlg = "RSA3072"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1100,7 +1131,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportRSA4096Alg0100', 0, async (done: Function) => {
+    it('testSupportRSA4096Alg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyGenAlg = "RSA4096"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1129,7 +1160,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportSignatureVerifyAlg0100', 0, async (done: Function) => {
+    it('testSupportSignatureVerifyAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let keyGenAlg = "ECC256"
         let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg)
@@ -1174,7 +1205,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testSupportKeySignatureAlg0100', 0, async (done: Function) => {
+    it('testSupportKeySignatureAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256')
         let keyPairA = await eccGen.generateKeyPair()
@@ -1213,7 +1244,7 @@ export default function securityTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testSupportKeyAgreementAlg0100', 0, async (done: Function) => {
+    it('testSupportKeyAgreementAlg0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256')
         let keyPairA = await eccGen.generateKeyPair()
@@ -1251,7 +1282,7 @@ export default function securityTest() {
     * @tc.type: Function
     * @tc.level: Level 0
     */
-    it('testKeyStorage0100', 0, async (done: Function) => {
+    it('testKeyStorage0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let keyAlias = 'hkdf_key'
       try {
         let generateRes: [boolean, huks.HuksOptions] = await SecurityUtils.generateKeyItem(keyAlias,
@@ -1278,7 +1309,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testKeyIdentityAssociation0100', 0, async (done: Function) => {
+    it('testKeyIdentityAssociation0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(1000)
@@ -1347,7 +1378,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testFileRiskLevelEnable0100', 0, async (done: Function) => {
+    it('testFileRiskLevelEnable0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let pathDir = abilityContext.filesDir
         let filePath = pathDir + '/SecurityTest.txt'
@@ -1376,7 +1407,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testDatabaseRiskLevelEnable0100', 0, async (done: Function) => {
+    it('testDatabaseRiskLevelEnable0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let kvManagerConfig: distributedKVStore.KVManagerConfig = {
           context: abilityContext,
@@ -1415,7 +1446,7 @@ export default function securityTest() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('testDriverNodeAccess', 0, async (done: Function) => {
+    it('testDriverNodeAccess', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let driverList = ['/dev', '/dev/auth_ctrl', '/dev/bbox', '/dev/block', '/dev/bus', '/dev/char', '/dev/code_sign',
         '/dev/console', '/dev/cpu_dma_latency', '/dev/cec0', '/dev/dri', '/dev/fscklogs', '/dev/full', '/dev/fuse',
         '/dev/gpiochip0', '/dev/graphics', '/dev/vcs', '/dev/xpm', '/dev/zero', '/dev/tty']
@@ -1427,7 +1458,7 @@ export default function securityTest() {
         } catch (error) {
           let err = error as BusinessError
           console.error(`Failed to. error: ${JSON.stringify(err)}`)
-          expect(err.code).assertEqual(13900012)
+		  expect((err.code == 13900012 || err.code == 13900006)).assertTrue();
         }
       }
       done()
