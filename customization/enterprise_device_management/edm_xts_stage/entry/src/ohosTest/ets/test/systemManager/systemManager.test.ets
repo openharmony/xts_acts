@@ -434,6 +434,38 @@ function testSetOtaUpdatePolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_OTA_UPDATE_POLICY_JS_0010
+   * @tc.name      : test_set_ota_update_policy_0010
+   * @tc.desc      : test systemManager setOtaUpdatePolicy with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_ota_update_policy_0010", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let policy: systemManager.OtaUpdatePolicy = {
+      "policyType": systemManager.PolicyType.DEFAULT,
+      "version": UPDATE_VERSION,
+      "disableSystemOtaUpdate": true
+    }
+
+    try {
+      systemManager.setOtaUpdatePolicy(SELFWANT, policy);
+      let getPolicy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(SELFWANT);
+      expect(getPolicy.disableSystemOtaUpdate).assertTrue();
+      policy.disableSystemOtaUpdate = false;
+      systemManager.setOtaUpdatePolicy(SELFWANT, policy);
+      let getPolicy2: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(SELFWANT);
+      expect(getPolicy2.disableSystemOtaUpdate).assertFalse();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testGetOtaUpdatePolicy() {
