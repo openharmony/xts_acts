@@ -15,7 +15,7 @@
 
 import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 const TAG = "[AVSessionJSTest]";
@@ -101,7 +101,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100 error " + JSON.stringify(err));
@@ -122,7 +122,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -140,7 +140,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.setExtras(CUSTOM_EXTRAS, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100 error " + JSON.stringify(err));
@@ -161,7 +161,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -179,7 +179,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('commonCommand', commonCommandCallback1);
 			await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100 error " + JSON.stringify(err));
@@ -210,7 +210,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('commonCommand', commonCommandCallback1);
 			session.on('commonCommand', commonCommandCallback2);
 			await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
@@ -247,7 +247,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('commonCommand', commonCommandCallback1);
 			session.on('commonCommand', commonCommandCallback2);
 			session.off('commonCommand', commonCommandCallback2);
@@ -280,7 +280,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('commonCommand', commonCommandCallback1);
 			session.on('commonCommand', commonCommandCallback2);
 			session.off('commonCommand', commonCommandCallback1);
@@ -310,7 +310,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('commonCommand', commonCommandCallback1);
 			session.on('commonCommand', commonCommandCallback2);
 			session.off('commonCommand');
@@ -340,7 +340,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			try {
 				let outputDeviceInfo = session.getOutputDeviceSync();
 				console.log(`Get output device info: ${outputDeviceInfo}`);
@@ -359,7 +359,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {
@@ -396,7 +396,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0200", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {
@@ -432,7 +432,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0300", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {
@@ -468,7 +468,7 @@ export default function AVSessionJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0400", 0, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {
