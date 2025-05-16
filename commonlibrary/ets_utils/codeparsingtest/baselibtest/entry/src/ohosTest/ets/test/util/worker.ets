@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,21 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "apiType": 'stageMode',
-  "buildOption": {
-    "sourceOption": {
-      "workers": [
-        "./src/ohosTest/ets/test/util/worker.ets"
-      ]
-    }
-  },
-  "targets": [
-    {
-      "name": "default",
-    },
-    {
-      "name": "ohosTest",
-    }
-  ]
+
+import util from '@ohos.util';
+import worker, { MessageEvents } from '@ohos.worker';
+
+const workerPort = worker.workerPort;
+
+workerPort.onmessage = (event: MessageEvents) => {
+  let msg = util.getMainThreadStackTrace();
+  workerPort.postMessage(msg);
 }
