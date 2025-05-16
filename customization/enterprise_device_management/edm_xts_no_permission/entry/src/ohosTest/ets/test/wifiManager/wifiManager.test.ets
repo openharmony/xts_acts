@@ -281,27 +281,6 @@ function testTurnOnWifi() {
     }
     done();
   });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_WIFI_JS_0003
-   * @tc.name      : test_turnon_wifi_list_0003
-   * @tc.desc      : test wifiManager turnOnWifi with normal admin
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_turnon_wifi_list_0003", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
-    try {
-      wifiManager.turnOnWifi(SELFWANT, true);
-      expect(false).assertTrue();
-    } catch (error) {
-      except(error.code == 203).assertTrue();
-    } finally {
-      await adminManager.disableAdmin(SELFWANT);
-    }
-    done();
-  });
 }
 
 function testTurnOffWifi() {
@@ -320,28 +299,6 @@ function testTurnOffWifi() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 201).assertTrue();
-      except(error.code == 203).assertTrue();
-    } finally {
-      await adminManager.disableAdmin(SELFWANT);
-    }
-    done();
-  });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_WIFI_JS_0002
-   * @tc.name      : test_turnoff_wifi_list_0002
-   * @tc.desc      : test wifiManager turnOffWifi with normal admin
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_turnoff_wifi_list_0002", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
-    try {
-      wifiManager.turnOffWifi(SELFWANT);
-      expect(false).assertTrue();
-    } catch (error) {
-      except(error.code == 203).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }

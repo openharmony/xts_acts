@@ -1976,15 +1976,40 @@ function testTurnOnWifiList() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_WIFI_LIST_JS_0007
    * @tc.name      : test_turnon_wifi_list_0007
-   * @tc.desc      : test wifiManager turnOnWifi with error param
+   * @tc.desc      : test wifiManager turnOnWifi with super admin && disablewifi
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
   it("test_turnon_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    const LABEL_WIFI = "wifi";
     try {
-      wifiManager.turnOnWifi(SELFWANT,false);
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
+      await sleep(12000);
+      wifiManager.turnOnWifi(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 203).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
+      await adminManager.disableAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_WIFI_LIST_JS_0008
+   * @tc.name      : test_turnon_wifi_list_0008
+   * @tc.desc      : test wifiManager turnOnWifi with error param
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_wifi_list_0008", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      wifiManager.turnOnWifi(INVALID_WANT);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
@@ -2032,7 +2057,7 @@ function testTurnOffWifiList() {
     }
     done();
   });
-  
+
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_WIFI_LIST_JS_0003
    * @tc.name      : test_turnoff_wifi_list_0003
@@ -2056,15 +2081,40 @@ function testTurnOffWifiList() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_WIFI_LIST_JS_0004
    * @tc.name      : test_turnoff_wifi_list_0004
+   * @tc.desc      : test wifiManager turnOffWifi with super admin && disablewifi
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_turnon_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    const LABEL_WIFI = "wifi";
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
+      await sleep(12000);
+      wifiManager.turnOffWifi(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 203).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
+      await adminManager.disableAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_WIFI_LIST_JS_0005
+   * @tc.name      : test_turnoff_wifi_list_0005
    * @tc.desc      : test wifiManager turnOffWifi with error param
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_turnon_wifi_list_0007", Level.LEVEL2, async (done: Function) => {
+  it("test_turnon_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      wifiManager.turnOffWifi(SELFWANT);
+      wifiManager.turnOffWifi(INVALID_WANT);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
