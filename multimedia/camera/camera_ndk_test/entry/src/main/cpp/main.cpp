@@ -2778,7 +2778,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "sessionIsMacroSupported", nullptr, SessionIsMacroSupported, nullptr, nullptr, nullptr,
             napi_default, nullptr },
-        { "SessionEnableMacro", nullptr, SessionEnableMacro, nullptr, nullptr, nullptr,
+        { "sessionEnableMacro", nullptr, SessionEnableMacro, nullptr, nullptr, nullptr,
             napi_default, nullptr },
     };
     napi_property_descriptor desc1[] = {
