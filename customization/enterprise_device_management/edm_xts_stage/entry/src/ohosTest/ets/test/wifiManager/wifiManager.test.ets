@@ -18,6 +18,7 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import wifiManager from '@ohos.enterprise.wifiManager';
+import restrictions from '@ohos.enterprise.restrictions';
 
 const WIFI_LIST_MAX_SIZE = 200;
 
@@ -1986,7 +1987,6 @@ function testTurnOnWifiList() {
     const LABEL_WIFI = "wifi";
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
-      await sleep(12000);
       wifiManager.turnOnWifi(SELFWANT, true);
       expect(false).assertTrue();
     } catch (error) {
@@ -2011,7 +2011,6 @@ function testTurnOnWifiList() {
     const LABEL_WIFI = "wifi";
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
-      await sleep(12000);
       wifiManager.turnOnWifi(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
@@ -2132,12 +2131,11 @@ function testTurnOffWifiList() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_turnon_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
+  it("test_turnoff_wifi_list_0004", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     const LABEL_WIFI = "wifi";
     try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
-      await sleep(12000);
       wifiManager.turnOffWifi(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
@@ -2146,6 +2144,7 @@ function testTurnOffWifiList() {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
       await adminManager.disableAdmin(SELFHAPNAME);
     }
+    turnOnWifi(SELFWANT, true);
     done();
   });
 
@@ -2157,7 +2156,7 @@ function testTurnOffWifiList() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_turnon_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
+  it("test_turnoff_wifi_list_0005", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       wifiManager.turnOffWifi(INVALID_WANT);
