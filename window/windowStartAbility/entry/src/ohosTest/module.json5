@@ -21,6 +21,7 @@
     "deviceTypes": [
       "default",
       "tablet",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

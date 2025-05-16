@@ -187,7 +187,11 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.top).assertEqual(availableTop3+10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect3.top).assertEqual(0);
+        } else {
+          expect(windowRect3.top).assertEqual(availableTop3+10);
+        }
         await terminateAbility(caseName);
 
         done();
@@ -228,8 +232,13 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.left).assertEqual(-10);
-        expect(windowRect1.top).assertEqual(availableTop1+10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect1.left).assertEqual(0);
+          expect(windowRect1.top).assertEqual(0);
+        } else {
+          expect(windowRect1.left).assertEqual(-10);
+          expect(windowRect1.top).assertEqual(availableTop1+10);
+        }
         await terminateAbility(caseName);
 
         let displayDisplay2: display.Display = display.getDefaultDisplaySync()
@@ -245,8 +254,14 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.left).assertEqual(10);
-        expect(windowRect2.top).assertEqual(availableTop2);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect2.left).assertEqual(0);
+          expect(windowRect2.top).assertEqual(0);
+        } else {
+          expect(windowRect2.left).assertEqual(10);
+          expect(windowRect2.top).assertEqual(availableTop2);
+        }
+
         await terminateAbility(caseName);
 
         let displayDisplay3: display.Display = display.getDefaultDisplaySync()
@@ -262,8 +277,14 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.left).assertEqual(-10);
-        expect(windowRect3.top).assertEqual(availableTop3);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect3.left).assertEqual(0);
+          expect(windowRect3.top).assertEqual(0);
+        } else {
+          expect(windowRect3.left).assertEqual(-10);
+          expect(windowRect3.top).assertEqual(availableTop3);
+        }
+
         await terminateAbility(caseName);
 
         let displayDisplay4: display.Display = display.getDefaultDisplaySync()
@@ -279,8 +300,14 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.left).assertEqual(10);
-        expect(windowRect4.top).assertEqual(availableTop4+10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect4.left).assertEqual(0);
+          expect(windowRect4.top).assertEqual(0);
+        } else {
+          expect(windowRect4.left).assertEqual(10);
+          expect(windowRect4.top).assertEqual(availableTop4+10);
+        }
+
         await terminateAbility(caseName);
 
         done();
@@ -310,7 +337,7 @@ export default function startabilityWindowRect() {
       try{
         let windowClass: window.Window = windowStage.getMainWindowSync();
         let windowLimits = await windowClass.getWindowLimits();
-        console.error(`${caseName} windowLimits: ${windowLimits}`)
+        console.error(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`)
         let curMaxWidth = windowLimits.maxWidth;
         let curMinWidth = windowLimits.minWidth;
         let options1: StartOptions = {
@@ -385,7 +412,7 @@ export default function startabilityWindowRect() {
       try{
         let windowClass: window.Window = windowStage.getMainWindowSync();
         let windowLimits = await windowClass.getWindowLimits();
-        console.error(`${caseName} windowLimits: ${windowLimits}`)
+        console.error(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`)
         let curMaxHeight = windowLimits.maxHeight;
         let curMinHeight = windowLimits.minHeight;
         let options1: StartOptions = {
@@ -459,7 +486,7 @@ export default function startabilityWindowRect() {
       try{
         let windowClass: window.Window = windowStage.getMainWindowSync();
         let windowLimits = await windowClass.getWindowLimits();
-        console.error(`${caseName} windowLimits: ${windowLimits}`)
+        console.error(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`)
         let curMaxHeight = windowLimits.maxHeight;
         let curMinHeight = windowLimits.minHeight;
         let curMaxWidth = windowLimits.maxWidth;
@@ -543,7 +570,7 @@ export default function startabilityWindowRect() {
       try{
         let windowClass: window.Window = windowStage.getMainWindowSync();
         let windowLimits = await windowClass.getWindowLimits();
-        console.error(`${caseName} windowLimits: ${windowLimits}`)
+        console.error(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`)
         let curMaxHeight = windowLimits.maxHeight;
         let curMinHeight = windowLimits.minHeight;
         let curMaxWidth = windowLimits.maxWidth;
@@ -563,8 +590,13 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.left).assertEqual(-10);
-        expect(windowRect1.top).assertEqual(availableTop1 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect1.left).assertEqual(0);
+          expect(windowRect1.top).assertEqual(0);
+        } else {
+          expect(windowRect1.left).assertEqual(-10);
+          expect(windowRect1.top).assertEqual(availableTop1 + 10);
+        }
         expect(windowRect1.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect1.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -584,8 +616,13 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.left).assertEqual(10);
-        expect(windowRect2.top).assertEqual(availableTop2);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect2.left).assertEqual(0);
+          expect(windowRect2.top).assertEqual(0);
+        } else {
+          expect(windowRect2.left).assertEqual(10);
+          expect(windowRect2.top).assertEqual(availableTop2);
+        }
         expect(windowRect2.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect2.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -605,8 +642,13 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.left).assertEqual(10);
-        expect(windowRect3.top).assertEqual(availableTop1 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect3.left).assertEqual(0);
+          expect(windowRect3.top).assertEqual(0);
+        } else {
+          expect(windowRect3.left).assertEqual(10);
+          expect(windowRect3.top).assertEqual(availableTop1 + 10);
+        }
         expect(windowRect3.height).assertEqual(curMinHeight as number);
         expect(windowRect3.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -626,8 +668,13 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.left).assertEqual(10);
-        expect(windowRect4.top).assertEqual(availableTop1 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect4.left).assertEqual(0);
+          expect(windowRect4.top).assertEqual(0);
+        } else {
+          expect(windowRect4.left).assertEqual(10);
+          expect(windowRect4.top).assertEqual(availableTop1 + 10);
+        }
         expect(windowRect4.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect4.width).assertEqual(curMinWidth as number);
         await terminateAbility(caseName);
@@ -660,7 +707,7 @@ export default function startabilityWindowRect() {
       try{
         let windowClass: window.Window = windowStage.getMainWindowSync();
         let windowLimits = await windowClass.getWindowLimits();
-        console.error(`${caseName} windowLimits: ${windowLimits}`)
+        console.error(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`)
         let curMaxHeight = windowLimits.maxHeight;
         let curMinHeight = windowLimits.minHeight;
         let curMaxWidth = windowLimits.maxWidth;
@@ -680,8 +727,13 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.left).assertEqual(-10);
-        expect(windowRect1.top).assertEqual(availableTop1);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect1.left).assertEqual(0);
+          expect(windowRect1.top).assertEqual(0);
+        } else {
+          expect(windowRect1.left).assertEqual(-10);
+          expect(windowRect1.top).assertEqual(availableTop1);
+        }
         expect(windowRect1.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect1.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -701,8 +753,13 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.left).assertEqual(-10);
-        expect(windowRect2.top).assertEqual(availableTop2 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect2.left).assertEqual(0);
+          expect(windowRect2.top).assertEqual(0);
+        } else {
+          expect(windowRect2.left).assertEqual(-10);
+          expect(windowRect2.top).assertEqual(availableTop2 + 10);
+        }
         expect(windowRect2.height).assertEqual(curMinHeight as number);
         expect(windowRect2.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -722,8 +779,13 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.left).assertEqual(-10);
-        expect(windowRect3.top).assertEqual(availableTop1 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect3.left).assertEqual(0);
+          expect(windowRect3.top).assertEqual(0);
+        } else {
+          expect(windowRect3.left).assertEqual(-10);
+          expect(windowRect3.top).assertEqual(availableTop1 + 10);
+        }
         expect(windowRect3.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect3.width).assertEqual(curMinWidth as number);
         await terminateAbility(caseName);
@@ -743,8 +805,13 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.left).assertEqual(10);
-        expect(windowRect4.top).assertEqual(availableTop1);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect4.left).assertEqual(0);
+          expect(windowRect4.top).assertEqual(0);
+        } else {
+          expect(windowRect4.left).assertEqual(10);
+          expect(windowRect4.top).assertEqual(availableTop1);
+        }
         expect(windowRect4.height).assertEqual(curMinHeight as number);
         expect(windowRect4.width).assertEqual(curMinWidth as number + 10);
         await terminateAbility(caseName);
@@ -764,8 +831,13 @@ export default function startabilityWindowRect() {
         let windowClass5 = windowStageStart5.getMainWindowSync();
         let windowRect5 = windowClass5.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect5: ' + JSON.stringify(windowRect5));
-        expect(windowRect5.left).assertEqual(10);
-        expect(windowRect5.top).assertEqual(availableTop5);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect5.left).assertEqual(0);
+          expect(windowRect5.top).assertEqual(0);
+        } else {
+          expect(windowRect5.left).assertEqual(10);
+          expect(windowRect5.top).assertEqual(availableTop5);
+        }
         expect(windowRect5.height).assertEqual(curMinHeight as number + 10);
         expect(windowRect5.width).assertEqual(curMinWidth as number);
         await terminateAbility(caseName);
@@ -785,8 +857,13 @@ export default function startabilityWindowRect() {
         let windowClass6 = windowStageStart6.getMainWindowSync();
         let windowRect6 = windowClass6.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect6: ' + JSON.stringify(windowRect6));
-        expect(windowRect6.left).assertEqual(10);
-        expect(windowRect6.top).assertEqual(availableTop6 + 10);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          expect(windowRect6.left).assertEqual(0);
+          expect(windowRect6.top).assertEqual(0);
+        } else {
+          expect(windowRect6.left).assertEqual(10);
+          expect(windowRect6.top).assertEqual(availableTop6 + 10);
+        }
         expect(windowRect6.height).assertEqual(curMinHeight as number);
         expect(windowRect6.width).assertEqual(curMinWidth as number);
         await terminateAbility(caseName);
