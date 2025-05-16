@@ -296,5 +296,100 @@ export default function FormApiCoverTest() {
       expect(JSON.stringify({})).assertEqual(JSON.stringify(result.customizeData));
       console.info("checkFormInfo end");
     };
+    
+    /*
+     * @tc.number  RequestOverflow_Cover_0100
+     * @tc.name    RequestOverflow_Cover_0100
+     * @tc.desc    Function RequestOverflow covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   Level 1
+     */
+    it(`RequestOverflow_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'RequestOverflow_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.requestOverflow("1", {
+          area: {left: -30, top: -30, width: 200, height: 200},
+          duration: 3500
+        });
+        console.log(`${name} RequestOverflow`);
+        console.log(`${name} should not reach here`);
+        done();
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      console.info(`${name} end`);
+    });
+ 
+    /*
+     * @tc.number  CancelOverflow_Cover_0100
+     * @tc.name    CancelOverflow_Cover_0100
+     * @tc.desc    Function CancelOverflow covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   Level 1
+     */
+    it(`CancelOverflow_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'CancelOverflow_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.cancelOverflow("1");
+        console.log(`${name} CancelOverflow`);
+        console.log(`${name} should not reach here`);
+        done();
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      console.info(`${name} end`);
+    });
+ 
+    /*
+     * @tc.number  ActivateSceneAnimation_Cover_0100
+     * @tc.name    ActivateSceneAnimation_Cover_0100
+     * @tc.desc    Function ActivateSceneAnimation covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   Level 1
+     */
+    it(`ActivateSceneAnimation_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'ActivateSceneAnimation_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.activateSceneAnimation("1");
+        console.log(`${name} activateSceneAnimation`);
+        console.log(`${name} should not reach here`);
+        done();
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      console.info(`${name} end`);
+    });
+ 
+    /*
+     * @tc.number  DeactivateSceneAnimation_Cover_0100
+     * @tc.name    DeactivateSceneAnimation_Cover_0100
+     * @tc.desc    Function DeactivateSceneAnimation covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   Level 1
+     */
+    it(`DeactivateSceneAnimation_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'DeactivateSceneAnimation_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.deactivateSceneAnimation("1");
+        console.log(`${name} deactivateSceneAnimation`);
+        console.log(`${name} should not reach here`);
+        done();
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      console.info(`${name} end`);
+    });
   })
 }
