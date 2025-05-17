@@ -26,6 +26,8 @@ add_library(nativerender SHARED
     ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     visibleAreaEventOptions/visibleAreaEventOptions.cpp
     gestureRecognizer/GestureInterrupterTest.cpp
+    render/EGLRender.cpp
+    XComponent/xcomponent_lifecycle_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -33,6 +35,22 @@ add_library(nativefunc SHARED
     napi_func_init.cpp
     customdialog/customdialog_background.cpp
     customdialog/customdialog_test.cpp
+)
+
+find_library(
+    # Sets the name of the path variable.
+    EGL-lib
+    # Specifies the name of the NDK library that
+    # you want CMake to locate.
+    EGL
+)
+
+find_library(
+    # Sets the name of the path variable.
+    GLES-lib
+    # Specifies the name of the NDK library that
+    # you want CMake to locate.
+    GLESv3
 )
 
 find_library(
@@ -67,7 +85,13 @@ find_library(
     uv
 )
 
+find_library(
+    # Sets the name of the path variable.
+    libwindow-lib
+    native_window
+)
+
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so)
+    libnative_drawing.so libace_napi.z.so ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libudmf.so libnative_window.so libpixelmap.so)
 target_link_libraries(nativefunc PUBLIC
 libnative_drawing.so libpixelmap.so libace_napi.z.so libudmf.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
