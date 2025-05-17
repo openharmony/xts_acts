@@ -36,8 +36,8 @@
                 "./resource/image/test.raf ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
                 "./resource/image/test.nrw ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
                 "./resource/image/test.rw2 ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
-                "./resource/image/pef.test ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
-                "./resource/image/arw.test ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files"
+                "./resource/image/test.pef ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
+                "./resource/image/test.arw ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files"
             ]
         }
     ]
