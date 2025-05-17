@@ -18,6 +18,18 @@ add_library(nativerender SHARED
     napi_render_init.cpp
     calendarPicker/calendar_picker_test.cpp
     slider/slider_test.cpp
+    dragEndPending/dragEndPending.cpp
+    swiperIndicator/swiperIndicator.cpp
+    pointerEvent/pointerEvent.cpp
+    swiperDigitIndicator/swiperDigitIndicator.cpp
+    getGestureParam/getGestureParam.cpp
+    layoutCallbackOnNodeHandle/layoutCallbackOnNodeHandle.cpp
+    swiperArrowStyle/swiperArrowStyle.cpp
+    arkuiXComponent/arkuiXComponent.cpp
+    accessibilityValue/accessibilityValue.cpp
+    surfaceHolder/surfaceHolder.cpp
+    textPickerCascade/textPickerCascade.cpp
+    customDialog/customDialog.cpp
 )
 
 add_library(nativefunc SHARED
