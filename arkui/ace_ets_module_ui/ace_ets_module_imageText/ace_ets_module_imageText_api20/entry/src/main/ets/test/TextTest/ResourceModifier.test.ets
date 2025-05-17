@@ -30,7 +30,7 @@ export default function ResourceModifierTest() {
         let pages = router.getState();
         console.info("get ResourceModifierTest state success " + JSON.stringify(pages));
         let result = await router.replaceUrl(options);
-        if (!("ResourceModifierTest" == pages.name)) {
+        if (!("ResourceModifier" == pages.name)) {
           console.info("get ResourceModifierTest state success " + JSON.stringify(pages.name));
           await CommonFunc.sleep(2000);
           console.info("push ResourceModifierTest page success " + JSON.stringify(result));

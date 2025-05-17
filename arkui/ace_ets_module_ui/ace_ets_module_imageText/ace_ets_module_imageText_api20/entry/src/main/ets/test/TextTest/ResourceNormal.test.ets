@@ -23,14 +23,14 @@ export default function ResourceNormalTest() {
     beforeEach(async (done: Function) => {
       console.info("ResourceNormalTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Text/ResourceNormalTest',
+        url: 'MainAbility/pages/Text/ResourceNormal',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get ResourceNormalTest state success " + JSON.stringify(pages));
         let result = await router.replaceUrl(options);
-        if (!("ResourceNormalTest" == pages.name)) {
+        if (!("ResourceNormal" == pages.name)) {
           console.info("get ResourceNormalTest state success " + JSON.stringify(pages.name));
           await CommonFunc.sleep(2000);
           console.info("push ResourceNormalTest page success " + JSON.stringify(result));
