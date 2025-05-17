@@ -186,7 +186,7 @@ struct ResourceNormalPage {
             }
           }
         })
-        let TextJson = getInspectorByKey('Text');
+        let TextJson = getInspectorByKey('Text_Resource');
         let TextObj: ESObject = JSON.parse(TextJson);
         AppStorage.setOrCreate('TextLetterSpacing',TextObj.$attrs.letterSpacing)
         AppStorage.setOrCreate('TextBaselineOffset',TextObj.$attrs.baselineOffset)
@@ -194,21 +194,21 @@ struct ResourceNormalPage {
         console.log('TextObj--letterSpacing:' + TextObj.$attrs.letterSpacing);
         console.log('TextObj--baselineOffset:' + TextObj.$attrs.baselineOffset);
         console.log('TextObj--fontWeight:' + TextObj.$attrs.fontWeight);
-        let TextInputJson = getInspectorByKey('TextInput');
+        let TextInputJson = getInspectorByKey('TextInput_Resource');
         let TextInputObj: ESObject = JSON.parse(TextInputJson);
         AppStorage.setOrCreate('TextInputFontWeight',TextInputObj.$attrs.fontWeight)
         console.log('TextInputObj--fontWeight:' + TextInputObj.$attrs.fontWeight);
-        let TextAreaJson = getInspectorByKey('TextArea');
+        let TextAreaJson = getInspectorByKey('TextArea_Resource');
         let TextAreaObj: ESObject = JSON.parse(TextAreaJson);
         AppStorage.setOrCreate('TextAreaFontWeight',TextAreaObj.$attrs.fontWeight)
         console.log('TextAreaObj--fontWeight:' + TextAreaObj.$attrs.fontWeight);
-        let SpanJson = getInspectorByKey('Span');
+        let SpanJson = getInspectorByKey('Span_Resource');
         let SpanObj: ESObject = JSON.parse(SpanJson);
         AppStorage.setOrCreate('SpanBaselineOffset',SpanObj.$attrs.baselineOffset)
         AppStorage.setOrCreate('SpanFontWeight',SpanObj.$attrs.fontWeight)
         console.log('SpanObj--baselineOffset:' + SpanObj.$attrs.letterSpacing);
         console.log('SpanObj--fontWeight:' + SpanObj.$attrs.fontWeight);
-        let SearchJson = getInspectorByKey('Search');
+        let SearchJson = getInspectorByKey('Search_Resource');
         let SearchObj: ESObject = JSON.parse(SearchJson);
         AppStorage.setOrCreate('SearchSearchButton',SearchObj.$attrs.searchButton)
         AppStorage.setOrCreate('SearchValue',SearchObj.$attrs.value)
