@@ -132,5 +132,6 @@ export {
   createFullData,
   compareNumber,
   compareString,
-  doScryptCallback
+  doScryptCallback,
+  asyncType
 }
