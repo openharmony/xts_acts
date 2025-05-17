@@ -165,6 +165,12 @@
       },
       {
         "name": "ohos.permission.PERSONAL_MANAGE_RESTRICTIONS"
+      },
+      {
+        "name": "ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
       }
     ]
   }
