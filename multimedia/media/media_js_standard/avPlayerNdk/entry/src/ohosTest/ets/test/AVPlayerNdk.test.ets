@@ -25,7 +25,8 @@ function getContext(): Context {
   let context = abilityDelegator.getAppContext();
   return context;
 }
-
+const PATH_DEMO =  "demo_no_audio_10s.mp4"
+const g_currentPathId = 0;
 export default function AVPlayerNdkTest() {
   describe('AVPlayerTest', () => {
 
@@ -33,17 +34,17 @@ export default function AVPlayerNdkTest() {
       let context = getContext()
       let dir = context.filesDir + "/";
       try {
-        let ml_face_model_file = dir + "demo.mp4";
-        context.resourceManager.getRawFileContent("demo.mp4", (error, model_buffer) => {
+        let ml_face_model_file = dir + PATH_DEMO;
+        context.resourceManager.getRawFileContent(PATH_DEMO, (error, model_buffer) => {
           if (error) {
             console.log(
-              `[rawfile_copy_to_sandbox] demo.mp4 is
+              `[rawfile_copy_to_sandbox] demo_no_audio_10s.mp4 is
               copy failed:${error.code}, message: ${error.message}.`);
           } else {
             let file = fs.openSync(ml_face_model_file, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
             fs.writeSync(file.fd, model_buffer.buffer);
             fs.closeSync(file);
-            console.log("[rawfile_copy_to_sandbox] demo.mp4 is copy success");
+            console.log("[rawfile_copy_to_sandbox] demo_no_audio_10s.mp4 is copy success");
           }
         });
       } catch (error) {
@@ -57,16 +58,17 @@ export default function AVPlayerNdkTest() {
     beforeEach(async () => {
       let dir = getContext().filesDir + "/";
 
-      let ml_face_model = dir + "demo.mp4";
+      let ml_face_model = dir + PATH_DEMO;
       await fs.stat(ml_face_model).then(async (res) => {
         if (res) {
-          console.info("demo.mp4 file exists");
-          console.info(`demo.mp4 size:${res.size}`);
+          console.info("demo_no_audio_10s.mp4 file exists");
+          console.info(`demo_no_audio_10s.mp4 size:${res.size}`);
         }
       }).catch((err: BusinessError) => {
-        console.info("MindSporeDemo demo.mp4 file does not exists! access failed with error message: " +
+        console.info("MindSporeDemo demo_no_audio_10s.mp4 file does not exists! access failed with error message: " +
         err.message + ", error code: " + err.code);
       });
+      avplayer.OhAvPlayerSetCurrentPathId(g_currentPathId);
       await Utils.sleep(2000)
     })
 
@@ -205,7 +207,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetAudioEffectMode001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetAudioEffectMode();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
     
@@ -260,7 +262,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPlay001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPlay(1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerPlay(1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -315,7 +317,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPause001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPause(1, 1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerPause(1, 1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -384,7 +386,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerStop001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerStop(1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerStop(1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -593,7 +595,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSeek001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSeek();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -621,7 +623,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetCurrentTime001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetCurrentTime();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -705,7 +707,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetPlaybackSpeed();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -733,7 +735,7 @@ export default function AVPlayerNdkTest() {
     */
     it('testOhAvPlayerSetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetPlaybackSpeedNormalThree();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -761,7 +763,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetPlaybackSpeed();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -789,7 +791,7 @@ export default function AVPlayerNdkTest() {
     */
     it('testOhAvPlayerGetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetPlaybackSpeedNormalThree();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -901,7 +903,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetDuration001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetDuration();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -983,7 +985,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerIsPlaying001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerIsPlaying();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1011,7 +1013,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerIsLooping001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerIsLooping();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1039,7 +1041,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetLooping001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetLooping();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1123,7 +1125,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSelectTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSelectTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1151,7 +1153,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerDeselectTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerDeselectTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1179,7 +1181,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetCurrentTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetCurrentTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 

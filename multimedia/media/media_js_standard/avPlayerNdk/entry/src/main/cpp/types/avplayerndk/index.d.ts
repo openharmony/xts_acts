@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 export const AvPlayerCreate: () => number;
+export const OhAvPlayerSetCurrentPathId: (a:number) => number;
 export const AvPlayerSetURLSourceAbnormalOne: () => number;
 export const AvPlayerSetURLSourceAbnormalTwo: () => number;
 export const AvPlayerSetFDSource: () => number;

@@ -29,6 +29,7 @@
 #include <fstream>
 #include <unistd.h>
 #include <hilog/log.h>
+#include <thread>
 
 #define INVALID_FD (-1)
 #define PARAM_0 0
@@ -54,12 +55,35 @@
 #define PARAM_DURATION 10000
 #define PARAM_0666 0666
 #define PARAM_0666 0666
-#define PATH "/data/storage/el2/base/files/demo.mp4"
+#define PATH_NO_AUDIO "/data/storage/el2/base/files/demo_no_audio_10s.mp4"
+#define PATH "/data/storage/el2/base/files/demo_video_audio_10s.mp4"
+static int32_t g_gPlaytime = 100;
+int g_currentPathId = 0;
 
-#define LOG_MSG_TAG "AVPlayerNdk"
-#define LOG(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
-#define LOGE(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
-#define LOGD(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
+#undef LOG_DOMIN 0x3200
+#define LOG_TAG 
+#define LOG_TAG "AVPlayerNdk_xtsDemo"
+#define LOG(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, LOG_TAG, format, ##__VA_ARGS__))
+#define LOGE(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, LOG_TAG, format, ##__VA_ARGS__))
+#define LOGD(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, 0xFF00, LOG_TAG, format, ##__VA_ARGS__))
+
+void waitAvPlayerStateChange(OH_AVPlayer *player, AVPlayerState state) {
+    AVPlayerState currentStage;
+    OH_AVErrCode avErrorCode;
+    avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
+    const int32_t kMaxSleepAttempts = 4;
+    int32_t gSleepTotalTime = 0;
+    while(state != currentStage) {
+        gSleepTotalTime++;
+        if (gSleepTotalTime > kMaxSleepAttempts) {
+            break;
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(g_gPlaytime));
+        avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
+        LOGE("OH_AVPlayer_GetState currentState:%{public}d gSleepTotalTime:%{public}d",
+        currentStage, gSleepTotalTime)
+    }
+}
 
 void InitGLES(EGLDisplay &display, EGLContext &context, EGLSurface &surface)
 {
@@ -135,10 +159,27 @@ static int64_t GetFileSize(const char *fileName)
     return fileSize;
 }
 
+static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info info){
+    napi_value result = nullptr;
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int firstParam;
+    napi_get_value_int32(env, args[PARAM_0], &firstParam);
+    g_currentPathId = firstParam;
+    napi_create_int32(env, firstParam, &result);
+    return result;
+}
+
 static OH_AVErrCode GetFDSourceInfo(OH_AVPlayer *player) {
-    char fileName[] = {PATH};
-    int fileDescribe = open(fileName, O_RDONLY, PARAM_0666);
-    int64_t fileSize = GetFileSize(PATH);
+    std::string filePath = PATH_NO_AUDIO;
+    if(g_currentPathId == 0) {
+        filePath = PATH_NO_AUDIO;
+    } else if (g_currentPathId == 1) {
+        filePath = PATH;
+    }
+    int fileDescribe = open(filePath.c_str(), O_RDONLY, PARAM_0666);
+    int64_t fileSize = GetFileSize(filePath.c_str());
     OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, fileDescribe, PARAM_0, fileSize);
     close(fileDescribe);
     return errCode;
@@ -1691,6 +1732,7 @@ static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"AvPlayerCreate", nullptr, OhAvPlayerCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OhAvPlayerSetCurrentPathId", nullptr, OhAvPlayerSetCurrentPathId, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"AvPlayerSetURLSourceAbnormalOne", nullptr, OhAvPlayerSetURLSourceAbnormalOne, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         {"AvPlayerSetURLSourceAbnormalTwo", nullptr, OhAvPlayerSetURLSourceAbnormalTwo, nullptr, nullptr, nullptr,
