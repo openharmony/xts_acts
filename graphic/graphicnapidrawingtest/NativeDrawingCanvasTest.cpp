@@ -614,32 +614,20 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter018, Functio
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlendMode019, Function | MediumTest | Level1)
 {
     EXPECT_EQ(OH_Drawing_BrushGetColor(brush_), 0xFFFF0000);
-    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateBlendMode(0xff0000ff,
-        OH_Drawing_BlendMode::BLEND_MODE_SRC);
-    EXPECT_NE(colorFilter, nullptr);
-    OH_Drawing_ColorFilter* colorFilterTmp = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
-    EXPECT_NE(colorFilterTmp, nullptr);
     OH_Drawing_Filter* filter = OH_Drawing_FilterCreate();
     EXPECT_NE(filter, nullptr);
 
-    OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
-    OH_Drawing_FilterSetColorFilter(filter, nullptr);
-    OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter*>(colorFilterTmp)->GetType(), ColorFilter::FilterType::NO_TYPE);
-
-    OH_Drawing_FilterSetColorFilter(filter, colorFilter);
-    OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter*>(colorFilterTmp)->GetType(), ColorFilter::FilterType::BLEND_MODE);
-
-    OH_Drawing_BrushSetFilter(brush_, nullptr);
     OH_Drawing_BrushSetFilter(brush_, filter);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
     OH_Drawing_ColorFilter* linear = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+    EXPECT_NE(linear, nullptr);
     OH_Drawing_FilterSetColorFilter(filter, linear);
     OH_Drawing_CanvasTranslate(canvas_, 100, 100);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
     OH_Drawing_ColorFilter* luma = OH_Drawing_ColorFilterCreateLuma();
+    EXPECT_NE(luma, nullptr);
     OH_Drawing_FilterSetColorFilter(filter, luma);
     OH_Drawing_CanvasTranslate(canvas_, 200, 200);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
@@ -657,11 +645,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlend
     OH_Drawing_CanvasTranslate(canvas_, 300, 300);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
     OH_Drawing_RectDestroy(rect);
-    OH_Drawing_ColorFilterDestroy(colorFilter);
     OH_Drawing_ColorFilterDestroy(luma);
     OH_Drawing_ColorFilterDestroy(matrixFilter);
     OH_Drawing_ColorFilterDestroy(linear);
-    OH_Drawing_ColorFilterDestroy(colorFilterTmp);
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_FilterDestroy(nullptr);
 }

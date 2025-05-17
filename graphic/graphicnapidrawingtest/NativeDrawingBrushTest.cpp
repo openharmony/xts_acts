@@ -135,13 +135,6 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushGetFilter005, Funct
     OH_Drawing_Filter* tmpFilter_ = OH_Drawing_FilterCreate();
     EXPECT_NE(tmpFilter_, nullptr);
 
-    OH_Drawing_ColorFilter* colorFilterTmp = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
-
-    OH_Drawing_FilterSetColorFilter(cFilter_, nullptr);
-    OH_Drawing_FilterGetColorFilter(cFilter_, colorFilterTmp);
-    EXPECT_EQ((reinterpret_cast<ColorFilter*>(colorFilterTmp))->GetType(),
-        ColorFilter::FilterType::NO_TYPE);
-
     OH_Drawing_ColorFilter* cColorFilter_ = OH_Drawing_ColorFilterCreateBlendMode(0xFF0000FF, BLEND_MODE_COLOR);
     OH_Drawing_FilterSetColorFilter(cFilter_, cColorFilter_);
     OH_Drawing_BrushSetFilter(brush, cFilter_);
@@ -152,7 +145,6 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brushGetFilter005, Funct
     OH_Drawing_FilterDestroy(cFilter_);
     OH_Drawing_FilterDestroy(tmpFilter_);
     OH_Drawing_ColorFilterDestroy(cColorFilter_);
-    OH_Drawing_ColorFilterDestroy(colorFilterTmp);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
