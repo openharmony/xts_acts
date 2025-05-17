@@ -80,6 +80,28 @@ export default function imageHDR() {
       });
     };
 
+    const checkMimeType = async(done: Function, TAG: string, picture: string, mimeType:string) => {
+      try {
+        await getFd(picture);
+        let imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi != undefined) {
+          globalimageSource = imageSourceApi;
+          let imageInfo = imageSourceApi.getImageInfoSync();
+          console.info(TAG + ' imageInfo.mimeType is ' + imageInfo.mimeType);
+          expect(imageInfo.mimeType == mimeType).assertTrue();
+          done();
+        } else {
+          console.info(TAG + ' create imageSource fail');
+          expect(false).assertTrue();
+          done();
+        }
+      } catch (error) {
+        console.info(TAG + ' check imageInfo.mimeType fail');
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     /**
      * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100
      * @tc.name     : decode hdr image
@@ -241,38 +263,112 @@ export default function imageHDR() {
      * @tc.level    : Level 0
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100", Level.LEVEL0, async (done: Function) => {
-      let tag = 'SUB_MULTIMEDIA_IMAGE__0100';
-      let pic_list = ['test.jpg', 'test.ico', 'test.dng', 'test.cr2', 'test.raf', 'test.nrw', 'test.rw2', 'test.pef', 'test.arw']
-      let mimeType_list = ['image/jpeg', 'image/x-icon', 'image/x-adobe-dng', 'image/x-canon-cr2', 'image/x-fuji-raf', 'image/x-nikon--nrw', 'image/x-panasonic-rw2', 'image/x-samsung-srw', 'image/x-sony-arw']
-      try {
-        for (let i = 0; i < pic_list.length; i++) {
-          await getFd(pic_list[i]);
-          let imageSourceApi = image.createImageSource(fdNumber);
-          if (imageSourceApi != undefined) {
-            let imageInfo = imageSourceApi.getImageInfoSync()
-            console.info(tag + ' imageInfo.mimeType is ' + imageInfo.mimeType);
-            if (imageInfo.mimeType == mimeType_list[i]) {
-              console.info(tag + ' check imageInfo.mimeType success: ' + imageInfo.mimeType);
-              await imageSourceApi.release();
-              expect(true).assertTrue();
-              done();
-            } else {
-              console.info(tag + ' check imageInfo.mimeType fail: ' + imageInfo.mimeType);
-              await imageSourceApi.release();
-              expect(false).assertTrue();
-              done();
-            }
-          }else {
-            console.info(tag + ' create imageSource fail');
-            expect(false).assertTrue();
-            done();
-          }
-        }
-      } catch (error) {
-        console.info(tag + ' check imageInfo.mimeType fail');
-        expect(false).assertTrue();
-        done();
-      }
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100';
+      checkMimeType(done, tag, 'test.jpg', 'image/jpeg');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200';
+      checkMimeType(done, tag, 'test.ico', 'image/x-icon');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300';
+      checkMimeType(done, tag, 'test.dng', 'image/x-adobe-dng');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400';
+      checkMimeType(done, tag, 'test.cr2', 'image/x-canon-cr2');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500';
+      checkMimeType(done, tag, 'test.raf', 'image/x-fuji-raf');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600';
+      checkMimeType(done, tag, 'test.nrw', 'image/x-nikon--nrw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700';
+      checkMimeType(done, tag, 'test.rw2', 'image/x-panasonic-rw2');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800';
+      checkMimeType(done, tag, 'test.pef', 'image/x-samsung-srw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
+      checkMimeType(done, tag, 'test.arw', 'image/x-sony-arw');
     })
 
   })
