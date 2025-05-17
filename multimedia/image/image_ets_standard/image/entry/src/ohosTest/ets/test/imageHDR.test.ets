@@ -231,5 +231,42 @@ export default function imageHDR() {
         done();
       }
     })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE__0100';
+      let pic_list = ['test.jpg', 'test.ico', 'test.dng', 'test.cr2', 'test.raf', 'test.nrw', 'test.rw2', 'pef.test', 'arw.test']
+      let mimeType_list = ['image/jpeg', 'image/x-icon', 'image/x-adobe-dng', 'image/x-canon-cr2', 'image/x-fuji-raf', 'image/x-nikon--nrw', 'image/x-panasonic-rw2', 'image/x-samsung-srw', 'image/x-sony-arw']
+      try {
+        for (let i = 0; i < pic_list.length; i++) {
+          await getFd(pic_list[i]);
+          let imageSourceApi = image.createImageSource(fdNumber);
+          if (imageSourceApi != undefined) {
+            let imageInfo = imageSourceApi.getImageInfoSync()
+            console.info(tag + ' imageInfo.mimeType is ' + imageInfo.mimeType);
+            expect(imageInfo.mimeType == mimeType_list[i]).assertTrue();
+            console.info(tag + ' check imageInfo.mimeType success');
+            await imageSourceApi.release();
+            done();
+          }else {
+            console.info(tag + ' create imageSource fail');
+            expect(false).assertTrue();
+            done();
+          }
+        }
+      } catch (error) {
+        console.info(tag + ' check imageInfo.mimeType fail');
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
   })
 }
