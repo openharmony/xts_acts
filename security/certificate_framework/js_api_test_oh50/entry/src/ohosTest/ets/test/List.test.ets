@@ -26,6 +26,7 @@ import certFrameworkParseP12CertTestUnit from './parseP12Cert.test';
 import certFrameworkCertPkcs7ExtCMSFunctionTestUnit from './certP7.test';
 import certFrameworkCertCsrTestUnit from './certCsr.test';
 import certFrameworkResultCodeTestUnit from './certResultCode.test';
+import certFrameworkCertResolutionTestUnit from './certResolution.test';
 
 
 export default function testsuite() {
@@ -42,4 +43,5 @@ export default function testsuite() {
   certFrameworkCertPkcs7ExtCMSFunctionTestUnit();
   certFrameworkCertCsrTestUnit();
   certFrameworkResultCodeTestUnit();
+  certFrameworkCertResolutionTestUnit();
 }
