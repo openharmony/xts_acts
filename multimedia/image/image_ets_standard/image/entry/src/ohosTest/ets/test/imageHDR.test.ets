@@ -242,7 +242,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE__0100';
-      let pic_list = ['test.jpg', 'test.ico', 'test.dng', 'test.cr2', 'test.raf', 'test.nrw', 'test.rw2', 'pef.test', 'arw.test']
+      let pic_list = ['test.jpg', 'test.ico', 'test.dng', 'test.cr2', 'test.raf', 'test.nrw', 'test.rw2', 'test.pef', 'test.arw']
       let mimeType_list = ['image/jpeg', 'image/x-icon', 'image/x-adobe-dng', 'image/x-canon-cr2', 'image/x-fuji-raf', 'image/x-nikon--nrw', 'image/x-panasonic-rw2', 'image/x-samsung-srw', 'image/x-sony-arw']
       try {
         for (let i = 0; i < pic_list.length; i++) {
