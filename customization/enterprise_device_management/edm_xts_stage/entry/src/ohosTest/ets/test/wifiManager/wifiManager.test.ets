@@ -1870,7 +1870,7 @@ function testTurnOnWifiList() {
    */
   it("test_turnon_wifi_list_0001", Level.LEVEL2, async (done: Function) => {
     try {
-      wifiManager.turnOnWifi(SELFWANT, ture);
+      wifiManager.turnOnWifi(SELFWANT, true);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
