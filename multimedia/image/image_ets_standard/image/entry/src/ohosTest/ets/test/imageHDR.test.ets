@@ -251,10 +251,17 @@ export default function imageHDR() {
           if (imageSourceApi != undefined) {
             let imageInfo = imageSourceApi.getImageInfoSync()
             console.info(tag + ' imageInfo.mimeType is ' + imageInfo.mimeType);
-            expect(imageInfo.mimeType == mimeType_list[i]).assertTrue();
-            console.info(tag + ' check imageInfo.mimeType success');
-            await imageSourceApi.release();
-            done();
+            if (imageInfo.mimeType == mimeType_list[i]) {
+              console.info(tag + ' check imageInfo.mimeType success: ' + imageInfo.mimeType);
+              await imageSourceApi.release();
+              expect(true).assertTrue();
+              done();
+            } else {
+              console.info(tag + ' check imageInfo.mimeType fail: ' + imageInfo.mimeType);
+              await imageSourceApi.release();
+              expect(false).assertTrue();
+              done();
+            }
           }else {
             console.info(tag + ' create imageSource fail');
             expect(false).assertTrue();
