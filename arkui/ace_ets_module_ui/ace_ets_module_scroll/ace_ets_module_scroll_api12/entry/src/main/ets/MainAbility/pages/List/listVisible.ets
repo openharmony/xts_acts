@@ -86,8 +86,20 @@ struct ListVisibleExample {
       .id('list_Visible')
       .scrollBar(BarState.On)
       .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
-        this.message = 'onScrollVisibleContentChange: '+ start.itemGroupArea
         this.message1 = 'itemIndexInGroup: '+ start.itemIndexInGroup
+        if (start.itemGroupArea === 0) { //列表项组区域为无
+          this.message = 'ListItemGroupArea.NONE'
+          console.info('ListItemGroupArea NONE success')
+        } else if (start.itemGroupArea === 1) {  //ListItemGroup内部ListItem区域
+          this.message = 'ListItemGroupArea.IN_LIST_ITEM_AREA'
+          console.info('ListItemGroupArea IN_LIST_ITEM_AREA success')
+        } else if (start.itemGroupArea === 2) {  //ListItemGroup内部header区域
+          this.message = 'ListItemGroupArea.IN_HEADER_AREA'
+          console.info('ListItemGroupArea IN_HEADER_AREA success')
+        } else if (start.itemGroupArea === 3) {  //ListItemGroup内部footer区域
+          this.message = 'ListItemGroupArea.IN_FOOTER_AREA'
+          console.info('ListItemGroupArea IN_FOOTER_AREA success')
+        }
         console.log(' start index: ' + start.index +
           ' start item group area: ' + start.itemGroupArea +
           ' start index in group: ' + start.itemIndexInGroup)
