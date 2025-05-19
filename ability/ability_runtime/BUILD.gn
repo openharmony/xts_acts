@@ -67,6 +67,7 @@ group("ability_runtime") {
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
       "actsserviceabilityclienttest:serviceability",
+      "actssetfontsize:ActsSetFontSize",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
       "actsstartabilityforresulttest:actsstartabilityforresulttest",
       "actsstartabilitygetdisplayidtest:actsstartabilitygetdisplayidtest",
