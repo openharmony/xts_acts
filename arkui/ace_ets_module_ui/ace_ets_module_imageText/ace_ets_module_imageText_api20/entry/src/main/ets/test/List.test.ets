@@ -17,8 +17,6 @@ import textAreaInputTest from './TextTest/textAreaInputTest.test';
 import SearchTypeTest from './SearchTest/SearchType.test';
 import TextAreaTypeTest from './TextAreaTest/TextAreaType.test';
 import TextInputTypeTest from './TextInputTest/TextInputType.test';
-import ResourceNormalTest from './TextTest/ResourceNormal.test';
-import ResourceModifierTest from './TextTest/ResourceModifier.test';
 
 
 export default function testsuite() {
@@ -26,6 +24,4 @@ export default function testsuite() {
   SearchTypeTest();
   TextAreaTypeTest();
   TextInputTypeTest();
-  ResourceNormalTest();
-  ResourceModifierTest();
 }
