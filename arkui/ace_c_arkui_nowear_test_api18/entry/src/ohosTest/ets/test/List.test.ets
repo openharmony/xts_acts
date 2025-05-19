@@ -14,7 +14,6 @@
  */
 
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
-import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 import SliderTest from "./slider/SliderEnableHapticFeedbackTest.test"
 import DragEndPendingTest from "./dragEndPending/dragEndPending.test"
 import SwiperIndicatorTest from "./swiperIndicator/swiperIndicator.test"
@@ -32,7 +31,6 @@ import CustomDialogTest from "./customDialog/customDialog.test"
 export default function testsuite() {
    CustomDialogTest();
    calendarPickerDateTest();
-   calendarPickerTest();
    SliderTest();
    DragEndPendingTest();
    SwiperIndicatorTest();

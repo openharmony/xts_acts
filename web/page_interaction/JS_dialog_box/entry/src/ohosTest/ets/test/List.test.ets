@@ -17,6 +17,7 @@ import bindSelectionMenu from './bindSelectionMenu.test'
 import webAttributeTest from './WebAttributeTest.test'
 import WebOnPermissionRequest from './WebOnPermissionRequest.test'
 import webInitTest from './WebInitTest.test'
+import WebPreviewMenuOptions from './WebPreviewMenuOptions.test'
 
 export default function testsuite() {
   webInitTest()
@@ -24,4 +25,5 @@ export default function testsuite() {
   bindSelectionMenu()
   WebOnPermissionRequest()
   WebViewEnumAndFontLibrary()
+  WebPreviewMenuOptions()
 }

@@ -209,3 +209,7 @@ export const audioRendererStart: () => number;
 export const audioRendererPause: () => number;
 export const audioRendererStop: () => number;
 export const audioRendererRelease: () => number;
+export const audioStreamBuilderSetVolumeModeTest_001: () => number;
+export const audioStreamBuilderSetVolumeModeTest_002: () => number;
+export const audioStreamBuilderSetVolumeModeTest_003: () => number;
+export const audioStreamBuilderSetVolumeModeTest_004: () => number;

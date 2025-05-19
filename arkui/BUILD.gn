@@ -46,6 +46,7 @@ group("arkui") {
       "ace_c_arkui_nowear_test_api14:ActsAceCArkUINoWear14Test",
       "ace_c_arkui_nowear_test_api15:ActsAceCArkUINoWear15Test",
       "ace_c_arkui_nowear_test_api18:ActsAceCArkUINoWear18Test",
+      "ace_c_arkui_nowear_test_api19:ActsAceCArkUINoWear19Test",
       "ace_c_arkui_test:ActsAceCArkUITest",
       "ace_c_arkui_test_api13:ActsAceCArkUI13Test",
       "ace_c_arkui_test_api14:ActsAceCArkUI14Test",

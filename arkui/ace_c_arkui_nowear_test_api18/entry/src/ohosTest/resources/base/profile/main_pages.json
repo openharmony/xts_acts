@@ -3,7 +3,6 @@
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
     "MainAbility/pages/calendarPicker/TestCalendarPickerDate",
-    "MainAbility/pages/calendarPicker/CalendarPickerMarkTodayTest",
     "MainAbility/pages/slider/SliderEnableHapticFeedbackTest",
     "MainAbility/pages/dragEndPending/dragEndPending",
     "MainAbility/pages/swiperIndicator/swiperIndicator",
