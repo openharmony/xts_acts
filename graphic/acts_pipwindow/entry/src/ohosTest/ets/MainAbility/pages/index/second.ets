@@ -1,0 +1,341 @@
+/*
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import router from '@ohos.router';
+import { BusinessError } from '@ohos.base';
+import pipWindow from '@ohos.PiPWindow';
+
+let sleep = async (time:number):Promise<void> => {
+  let timeoutId:number | null = null;
+  await new Promise((resolve: (value: string) => void) => {
+    timeoutId = setTimeout(() => {
+      resolve('sleep finished');
+    }, time);
+  });
+  clearTimeout(timeoutId)
+}
+
+let pipController: pipWindow.PiPController | undefined = undefined;
+let pipController2: pipWindow.PiPController | undefined = undefined;
+let pipController3: pipWindow.PiPController | undefined = undefined;
+let pipController4: pipWindow.PiPController | undefined = undefined;
+let mXComponentController: XComponentController = new XComponentController();
+let mXComponentController2: XComponentController = new XComponentController();
+let mXComponentController3: XComponentController = new XComponentController();
+let mXComponentController4: XComponentController = new XComponentController();
+let navId: string = "page_1"; // 假设当前页面的导航id为page_1，详见PiPConfiguration定义，具体导航名称由开发者自行定义。
+let contentWidth: number = 800; // 假设当前内容宽度800px。
+let contentHeight: number = 600; // 假设当前内容高度600px。
+let config1: pipWindow.PiPConfiguration = {
+  context: getContext(this),
+  componentController: mXComponentController,
+  navigationId: navId,
+  templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+  contentWidth: contentWidth,
+  contentHeight: contentHeight,
+  defaultWindowSizeType: 2
+};
+
+let config2: pipWindow.PiPConfiguration = {
+  context: getContext(this),
+  componentController: mXComponentController2,
+  navigationId: navId,
+  templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+  contentWidth: contentWidth,
+  contentHeight: contentHeight,
+  defaultWindowSizeType: undefined
+};
+
+let config3: pipWindow.PiPConfiguration = {
+  context: getContext(this),
+  componentController: mXComponentController3,
+  navigationId: navId,
+  templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+  contentWidth: contentWidth,
+  contentHeight: contentHeight,
+  defaultWindowSizeType: 0
+};
+
+let config4: pipWindow.PiPConfiguration = {
+  context: getContext(this),
+  componentController: mXComponentController4,
+  navigationId: navId,
+  templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+  contentWidth: contentWidth,
+  contentHeight: contentHeight,
+  defaultWindowSizeType: 1
+};
+
+@Entry
+@Component
+struct Second {
+  aboutToAppear() {
+    console.info('StartAbility second aboutToAppear')
+  }
+  @State getPipWindowInfoText1: string = '';
+  @State getPipWindowInfoText2: string = '';
+  @State getPipWindowInfoText3: string = '';
+  @State getPipWindowInfoText4: string = '';
+  build() {
+    Row() {
+      Column() {
+        Button() {
+          Text('CreateStartPipWindow1')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('CreatePipWindow1')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          let promise : Promise<pipWindow.PiPController> = pipWindow.create(config1);
+          promise.then(async (data : pipWindow.PiPController) => {
+            pipController = data;
+            console.info(`Succeeded in creating pip controller. Data:${data}`);
+            await pipController.startPiP();
+            console.log(`Succeeded startPiP`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button(this.getPipWindowInfoText1) {
+          Text('GetPiPWindowInfo1')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('GetPiPWindowInfo1')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.getPipWindowInfoText1 = data.size.scale.toString()
+            console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button(this.getPipWindowInfoText1)
+          .id('PipWindowInfoText1')
+          .width('30%')
+
+        Button() {
+          Text('StopPiPWindow1')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('StopPiPWindow1')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController!.stopPiP().then(async () => {
+            console.info(`Succeeded in stopPiP.`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('CreatePipWindow2')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('CreatePipWindow2')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          let promise : Promise<pipWindow.PiPController> = pipWindow.create(config2);
+          promise.then(async (data : pipWindow.PiPController) => {
+            pipController2 = data;
+            console.info(`Succeeded in creating pip controller. Data:${data}`);
+            await pipController2.startPiP();
+            console.log(`Succeeded startPiP`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('GetPiPWindowInfo2')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('GetPiPWindowInfo2')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController2!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.getPipWindowInfoText2 = data.size.scale.toString()
+            console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button(this.getPipWindowInfoText2)
+          .id('PipWindowInfoText2')
+          .width('30%')
+          .height('2%')
+
+        Button() {
+          Text('StopPiPWindow2')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('StopPiPWindow2')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController2!.stopPiP().then(async () => {
+            console.info(`Succeeded in stopPiP.`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('CreatePipWindow3')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('CreatePipWindow3')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          let promise : Promise<pipWindow.PiPController> = pipWindow.create(config3);
+          promise.then(async (data : pipWindow.PiPController) => {
+            pipController3 = data;
+            console.info(`Succeeded in creating pip controller. Data:${data}`);
+            await pipController3.startPiP();
+            console.log(`Succeeded startPiP`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('GetPiPWindowInfo3')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('GetPiPWindowInfo3')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController3!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.getPipWindowInfoText3 = data.size.scale.toString()
+            console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button(this.getPipWindowInfoText3)
+          .id('PipWindowInfoText3')
+          .width('30%')
+          .height('2%')
+
+        Button() {
+          Text('StopPiPWindow3')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('StopPiPWindow3')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController3!.stopPiP().then(async () => {
+            console.info(`Succeeded in stopPiP.`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('CreatePipWindow4')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('CreatePipWindow4')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          let promise : Promise<pipWindow.PiPController> = pipWindow.create(config4);
+          promise.then(async (data : pipWindow.PiPController) => {
+            pipController4 = data;
+            console.info(`Succeeded in creating pip controller. Data:${data}`);
+            await pipController4.startPiP();
+            console.log(`Succeeded startPiP`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button() {
+          Text('GetPiPWindowInfo4')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('GetPiPWindowInfo4')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController4!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.getPipWindowInfoText4 = data.size.scale.toString()
+            console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+        Button(this.getPipWindowInfoText4)
+          .id('PipWindowInfoText4')
+          .width('30%')
+          .height('2%')
+
+        Button() {
+          Text('StopPiPWindow4')
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .id('StopPiPWindow4')
+        .backgroundColor('#0D9FFB')
+        .width('50%')
+        .height('2%')
+        .onClick(()=>{
+          pipController4!.stopPiP().then(async () => {
+            console.info(`Succeeded in stopPiP.`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
+          });
+        })
+
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
