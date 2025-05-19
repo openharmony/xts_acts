@@ -35,6 +35,7 @@ struct setTextSelectionTest {
         .copyOption(CopyOptions.InApp)
         .id('textInput')
         .height('5%')
+        .margin({top:60})
 
       Button('setTextSelection -1 -1')
         .onClick(() => {
