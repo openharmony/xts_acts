@@ -19,6 +19,7 @@
     "@ohos/hypium": "1.0.6"
   },
   "author": "",
+  "modelVersion": "5.0.0",
   "name": "com.example.httpconcurrent",
   "description": "XTS",
   "main": "",
