@@ -48,7 +48,7 @@ export default function FlexLayoutPolicyTest() {
     /**
      * @tc.number    FlexLayoutPolicyTest_0100
      * @tc.name      FlexLayoutPolicyTest_0100
-     * @tc.desc      test Flex LayoutPolicy
+     * @tc.desc      test Flex LayoutPolicy.matchParent
      * @tc.level:    Level 1
      * @tc.type :    FlexLayoutPolicy
      * @tc.size :
@@ -68,6 +68,7 @@ export default function FlexLayoutPolicyTest() {
       console.log('[FlexLayoutPolicyTest_0100] flex_child_width is:' + flex_child_width);
       console.log('[FlexLayoutPolicyTest_0100] flex_child_height is:' + flex_child_height);
       
+      // padding(20*2) + border(5*2) + safeAreaPadding(10*2)
       expect(Math.floor(Math.abs(flex_parent_width - flex_child_width - vp2px(70))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(flex_parent_height - flex_child_height - vp2px(70))) <= 1).assertTrue();
 

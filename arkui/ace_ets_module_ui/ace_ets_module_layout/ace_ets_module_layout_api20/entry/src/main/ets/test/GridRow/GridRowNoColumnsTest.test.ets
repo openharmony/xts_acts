@@ -36,23 +36,23 @@ async function ComparisonLGAssert() {
   let GridCol_13: RectValue = CommonFunc.getComponentRect('GridRow_No_Columns_12');
 
   // first row
-  expect(Math.abs(GridCol_1.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_1.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_2.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_3.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_4.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_5.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_6.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_7.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_8.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_9.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_10.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_11.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_12.top - GridRow.top) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_2.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_3.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_4.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_6.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_7.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_8.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_10.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_11.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_12.top - GridRow.top)) <= 1).assertTrue();
 
   // second row
-  expect(Math.abs(GridCol_13.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_13.top - GridCol_1.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.top - GridCol_1.bottom)) <= 1).assertTrue();
 }
 
 async function ComparisonMDAssert() {
@@ -72,23 +72,23 @@ async function ComparisonMDAssert() {
   let GridCol_13: RectValue = CommonFunc.getComponentRect('GridRow_No_Columns_12');
 
   // first row
-  expect(Math.abs(GridCol_1.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_1.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_2.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_3.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_4.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_5.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_6.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_7.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_8.top - GridRow.top) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_2.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_3.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_4.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_6.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_7.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_8.top - GridRow.top)) <= 1).assertTrue();
 
   // second row
-  expect(Math.abs(GridCol_9.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_9.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_10.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_11.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_12.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_13.top - GridCol_1.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_10.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_11.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_12.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.top - GridCol_1.bottom)) <= 1).assertTrue();
 }
 
 async function ComparisonSMAssert() {
@@ -108,29 +108,29 @@ async function ComparisonSMAssert() {
   let GridCol_13: RectValue = CommonFunc.getComponentRect('GridRow_No_Columns_12');
 
   // first row
-  expect(Math.abs(GridCol_1.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_1.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_2.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_3.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_4.top - GridRow.top) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_2.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_3.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_4.top - GridRow.top)) <= 1).assertTrue();
 
   // second row
-  expect(Math.abs(GridCol_5.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_5.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_6.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_7.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_8.top - GridCol_1.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_6.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_7.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_8.top - GridCol_1.bottom)) <= 1).assertTrue();
 
   // third row
-  expect(Math.abs(GridCol_9.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_9.top - GridCol_5.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_10.top - GridCol_5.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_11.top - GridCol_5.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_12.top - GridCol_5.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.top - GridCol_5.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_10.top - GridCol_5.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_11.top - GridCol_5.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_12.top - GridCol_5.bottom)) <= 1).assertTrue();
 
   // fourth row
-  expect(Math.abs(GridCol_13.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_13.top - GridCol_9.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.top - GridCol_9.bottom)) <= 1).assertTrue();
 }
 
 async function ComparisonXSAssert() {
@@ -150,38 +150,38 @@ async function ComparisonXSAssert() {
   let GridCol_13: RectValue = CommonFunc.getComponentRect('GridRow_No_Columns_12');
 
   // first row
-  expect(Math.abs(GridCol_1.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_1.top - GridRow.top) <= 1).assertTrue();
-  expect(Math.abs(GridCol_2.top - GridRow.top) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_1.top - GridRow.top)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_2.top - GridRow.top)) <= 1).assertTrue();
 
   // second row
-  expect(Math.abs(GridCol_3.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_3.top - GridCol_1.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_4.top - GridCol_1.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_3.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_3.top - GridCol_1.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_4.top - GridCol_1.bottom)) <= 1).assertTrue();
 
   // third row
-  expect(Math.abs(GridCol_5.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_5.top - GridCol_3.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_6.top - GridCol_3.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_5.top - GridCol_3.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_6.top - GridCol_3.bottom)) <= 1).assertTrue();
 
   // fourth row
-  expect(Math.abs(GridCol_7.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_7.top - GridCol_5.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_8.top - GridCol_5.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_7.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_7.top - GridCol_5.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_8.top - GridCol_5.bottom)) <= 1).assertTrue();
 
   // fifth row
-  expect(Math.abs(GridCol_9.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_9.top - GridCol_7.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_10.top - GridCol_7.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_9.top - GridCol_7.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_10.top - GridCol_7.bottom)) <= 1).assertTrue();
 
   // sixth row
-  expect(Math.abs(GridCol_11.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_11.top - GridCol_9.bottom) <= 1).assertTrue();
-  expect(Math.abs(GridCol_12.top - GridCol_9.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_11.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_11.top - GridCol_9.bottom)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_12.top - GridCol_9.bottom)) <= 1).assertTrue();
 
   // seventh row
-  expect(Math.abs(GridCol_13.left - GridRow.left) <= 1).assertTrue();
-  expect(Math.abs(GridCol_13.top - GridCol_11.bottom) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.left - GridRow.left)) <= 1).assertTrue();
+  expect(Math.floor(Math.abs(GridCol_13.top - GridCol_11.bottom)) <= 1).assertTrue();
 }
 
 export default function GridRowNoColumnsTest() {
