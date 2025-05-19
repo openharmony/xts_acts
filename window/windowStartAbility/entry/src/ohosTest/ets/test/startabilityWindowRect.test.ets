@@ -352,7 +352,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect1.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect1.width-curMinWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.width - (curMinWidth as number))).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -370,7 +370,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect2.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect2.width-curMinWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -387,7 +387,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect3.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect3.width-curMaxWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width-(curMaxWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -403,7 +403,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect4.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect4.width-curMinWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -450,7 +450,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect1.height).assertEqual(displayInfo.height);
         } else {
-          expect(Math.abs(windowRect1.height-curMinHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.height-(curMinHeight as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -467,7 +467,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect2.height).assertEqual(displayInfo.height);
         } else {
-          expect(Math.abs(windowRect2.height-curMinHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-(curMinHeight as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -484,7 +484,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect3.height).assertEqual(displayInfo.height);
         } else {
-          expect(Math.abs(windowRect3.height-curMaxHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.height-(curMaxHeight as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -501,7 +501,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect4.height).assertEqual(displayInfo.height);
         } else {
-          expect(Math.abs(windowRect4.height-curMaxHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-(curMaxHeight as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -552,8 +552,8 @@ export default function startabilityWindowRect() {
           expect(windowRect1.height).assertEqual(displayInfo.height);
           expect(windowRect1.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect1.height-curMinHeight)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect1.width-curMinWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.height-(curMinHeight as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -572,8 +572,8 @@ export default function startabilityWindowRect() {
           expect(windowRect2.height).assertEqual(displayInfo.height);
           expect(windowRect2.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect2.height-curMinHeight)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect2.width-curMinWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-(curMinHeight as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -592,8 +592,8 @@ export default function startabilityWindowRect() {
           expect(windowRect3.height).assertEqual(displayInfo.height);
           expect(windowRect3.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect3.height-curMaxHeight)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect3.width-curMaxWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.height-(curMaxHeight as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width-(curMaxWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -612,8 +612,8 @@ export default function startabilityWindowRect() {
           expect(windowRect4.height).assertEqual(displayInfo.height);
           expect(windowRect4.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect4.height-curMaxHeight)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect4.width-curMaxWidth)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-curMaxHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-curMaxWidth as number)).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -733,7 +733,7 @@ export default function startabilityWindowRect() {
         } else {
           expect(Math.abs(windowRect3.left- 10)).assertLessOrEqual(1);
           expect(Math.abs(windowRect3.top-(availableTop3 + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect3.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.height-(curMinHeight as number))).assertLessOrEqual(1);
           expect(Math.abs(windowRect3.width-(curMinWidth as number  + 10))).assertLessOrEqual(1);
         }
 
@@ -764,7 +764,7 @@ export default function startabilityWindowRect() {
           expect(Math.abs(windowRect4.left- 10)).assertLessOrEqual(1);
           expect(Math.abs(windowRect4.top-(availableTop4 + 10))).assertLessOrEqual(1);
           expect(Math.abs(windowRect4.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect4.width-curMinWidth as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
         done();
@@ -854,7 +854,7 @@ export default function startabilityWindowRect() {
         } else {
           expect(Math.abs(windowRect2.left- (-10))).assertLessOrEqual(1);
           expect(Math.abs(windowRect2.top-(availableTop2 + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect2.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-(curMinHeight as number))).assertLessOrEqual(1);
           expect(Math.abs(windowRect2.width-(curMinWidth as number + 10))).assertLessOrEqual(1);
         }
 
@@ -885,7 +885,7 @@ export default function startabilityWindowRect() {
           expect(Math.abs(windowRect3.left - (-10))).assertLessOrEqual(1);
           expect(Math.abs(windowRect3.top-(availableTop3 + 10))).assertLessOrEqual(1);
           expect(Math.abs(windowRect3.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect3.width- curMinWidth as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width- (curMinWidth as number))).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -914,7 +914,7 @@ export default function startabilityWindowRect() {
         } else {
           expect(Math.abs(windowRect4.left-10)).assertLessOrEqual(1);
           expect(Math.abs(windowRect4.top-availableTop4)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect4.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-(curMinHeight as number))).assertLessOrEqual(1);
           expect(Math.abs(windowRect4.width-(curMinWidth as number + 10))).assertLessOrEqual(1);
         }
 
@@ -945,7 +945,7 @@ export default function startabilityWindowRect() {
           expect(Math.abs(windowRect5.left-10)).assertLessOrEqual(1);
           expect(Math.abs(windowRect5.top-availableTop5)).assertLessOrEqual(1);
           expect(Math.abs(windowRect5.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect5.width-curMinWidth as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect5.width-(curMinWidth as number))).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -974,8 +974,8 @@ export default function startabilityWindowRect() {
         } else {
           expect(Math.abs(windowRect6.left-10)).assertLessOrEqual(1);
           expect(Math.abs(windowRect6.top-(availableTop6 + 10))).assertLessOrEqual(1);
-          expect(Math.abs(windowRect6.width-curMinWidth as number)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect6.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect6.width-(curMinWidth as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect6.height-(curMinHeight as number))).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
