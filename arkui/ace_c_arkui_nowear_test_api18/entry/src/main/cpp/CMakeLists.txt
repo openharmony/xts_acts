@@ -16,7 +16,6 @@ add_library(nativerender SHARED
     component/calendarPicker_component.cpp
     manager/plugin_manager.cpp
     napi_render_init.cpp
-    calendarPicker/calendar_picker_test.cpp
     slider/slider_test.cpp
 )
 

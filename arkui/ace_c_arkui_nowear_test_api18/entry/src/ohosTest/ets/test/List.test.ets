@@ -14,11 +14,9 @@
  */
 
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
-import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 import SliderTest from "./slider/SliderEnableHapticFeedbackTest.test"
 
 export default function testsuite() {
    calendarPickerDateTest();
-   calendarPickerTest();
    SliderTest();
 }

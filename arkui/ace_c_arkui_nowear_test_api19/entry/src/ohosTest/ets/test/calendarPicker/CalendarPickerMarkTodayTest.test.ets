@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function calendarPickerTest(){
      * @tc.type: Function
      * @tc.level: Level 1
       */
-    it('CalendarPickerMarkTodayTest001', 0, async (done: Function) => {
+    it('CalendarPickerMarkTodayTest001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerMarkTodayTest001 START');
       let PAGE_TAG = 'CalendarPickerMarkTodayTest';
       await Utils.pushPage(`calendarPicker/${PAGE_TAG}`);
@@ -58,7 +58,7 @@ export default function calendarPickerTest(){
      * @tc.type: Function
      * @tc.level: Level 1
       */
-    it('CalendarPickerMarkTodayTest002', 0, async (done: Function) => {
+    it('CalendarPickerMarkTodayTest002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerMarkTodayTest002 START');
       let PAGE_TAG = 'CalendarPickerMarkTodayTest';
       await Utils.pushPage(`calendarPicker/${PAGE_TAG}`);
@@ -83,7 +83,7 @@ export default function calendarPickerTest(){
     * @tc.type: Function
     * @tc.level: Level 1
      */
-    it('CalendarPickerMarkTodayTest003', 0, async (done: Function) => {
+    it('CalendarPickerMarkTodayTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerMarkTodayTest003 START');
       let PAGE_TAG = 'CalendarPickerMarkTodayTest';
       await Utils.pushPage(`calendarPicker/${PAGE_TAG}`);
@@ -108,7 +108,7 @@ export default function calendarPickerTest(){
    * @tc.type: Function
    * @tc.level: Level 1
     */
-    it('CalendarPickerMarkTodayTest004', 0, async (done: Function) => {
+    it('CalendarPickerMarkTodayTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('CalendarPickerMarkTodayTest004 START');
       let PAGE_TAG = 'CalendarPickerMarkTodayTest';
       await Utils.pushPage(`calendarPicker/${PAGE_TAG}`);
