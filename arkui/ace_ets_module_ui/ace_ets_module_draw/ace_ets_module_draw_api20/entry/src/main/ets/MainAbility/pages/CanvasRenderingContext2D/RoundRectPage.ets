@@ -27,6 +27,7 @@ struct RoundRectPage {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
+        .id('RoundRectPage_Canvas')
         .onReady(() => {
           this.context.beginPath();
           this.context.roundRect(15, 0, 50, 30);
