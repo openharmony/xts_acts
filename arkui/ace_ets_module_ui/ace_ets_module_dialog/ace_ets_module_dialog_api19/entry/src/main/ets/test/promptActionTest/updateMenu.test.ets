@@ -12,53 +12,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
-export default function closeMenuTest() {
-    describe('closeMenuTest', () => {
+export default function updateMenuTest() {
+    describe('updateMenuTest', () => {
       beforeEach(async (done: Function) => {
-        console.info("closeMenuTest beforeEach start");
+        console.info("updateMenuTest beforeEach start");
         let options: router.RouterOptions = {
-          url: 'MainAbility/pages/promptAction/closeMenu',
+          url: 'MainAbility/pages/promptAction/updateMenu',
         }
         try {
           router.clear();
           let pages = router.getState();
-          console.info("get closeMenuTest state pages: " + JSON.stringify(pages));
-          if (!("closeMenuTest" == pages.name)) {
-            console.info("get closeMenuTest state pages.name: " + JSON.stringify(pages.name));
+          console.info("get updateMenuTest state pages: " + JSON.stringify(pages));
+          if (!("updateMenuTest" == pages.name)) {
+            console.info("get updateMenuTest state pages.name: " + JSON.stringify(pages.name));
             let result = await router.push(options);
             await CommonFunc.sleep(2000);
-            console.info("push closeMenuTest success: " + JSON.stringify(result));
+            console.info("push updateMenuTest success: " + JSON.stringify(result));
           }
         } catch (err) {
-          console.error("push closeMenuTest page error: " + err);
+          console.error("push updateMenuTest page error: " + err);
           expect().assertFail();
         }
         done();
       });
       /**
-     * @tc.number    closeMenu
-     * @tc.name      closeMenuTest_0100
+     * @tc.number    updateMenu
+     * @tc.name      updateMenuTest_0100
      * @tc.desc      api
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
      */
-      it('closeMenuTest_0100', 0, async (done: Function) => {
-        let tagName = 'closeMenuTest_0100';
+      it('updateMenuTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+        let tagName = 'updateMenuTest_0100';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(1000);
         let driver: Driver = Driver.create();
         let btn = await driver.findComponent(ON.id('btn'));
         await btn.click();
         await CommonFunc.sleep(3500);
-        let closeMenu = getInspectorByKey('closeMenu');
-        console.info("[closeMenuTest_0100] attrs is: " + JSON.stringify(JSON.parse(closeMenu).$attrs));
-        expect(JSON.parse(closeMenu).$attrs.content).assertEqual('closeMenu');
+        let updateMenu = getInspectorByKey('updateMenu');
+        console.info("[updateMenuTest_0100] attrs is: " + JSON.stringify(JSON.parse(updateMenu).$attrs));
+        expect(JSON.parse(updateMenu).$attrs.content).assertEqual('updateMenu');
         console.info('[' + tagName + '] END ===========================');
         done();
       });
