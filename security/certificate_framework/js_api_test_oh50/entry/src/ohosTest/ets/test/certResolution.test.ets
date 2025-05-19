@@ -529,9 +529,9 @@ export default function certFrameworkCertResolutionTestUnit() {
           let subjectNameDer: string = X500NameDer.getName(cert.EncodingType.ENCODING_UTF8);
           let subjectName: string = X500NamePem.getName();
           let subjectNameType: string[] = X500NamePem.getName("CN");
-          expect(subjectNameType[0]).assertEqual("中文测试 Test");
-          expect(subjectNameType[1]).assertEqual("中文测试 Test1");
-          expect(subjectNameType[2]).assertEqual("中文测试 Test2");
+          expect(subjectNameType[0]).assertEqual("xE4xB8xADxE6x96x87xE6xB5x8BxE8xAFx95 Test");
+          expect(subjectNameType[1]).assertEqual("xE4xB8xADxE6x96x87xE6xB5x8BxE8xAFx95 Test1");
+          expect(subjectNameType[2]).assertEqual("xE4xB8xADxE6x96x87xE6xB5x8BxE8xAFx95 Test2");
           expect(subjectNamePem).assertEqual(subjectNameDer);
           expect(subjectNameDer).assertEqual("C=CN,ST=陕西 HAI 13<..>,L=Hello 321 西安,O=Hello 测试,CN=中文测试 Test,CN=中文测试 Test1,CN=中文测试 Test2")
           expect(subjectNamePem).not().assertEqual(subjectName);
