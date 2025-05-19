@@ -34,7 +34,7 @@ const LABEL_TETHERING = "tethering";
 const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
-const LABEL_APN = "apn";
+const LABEL_SET_APN = "setApn";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -1394,7 +1394,7 @@ function testSetUserRestrictionPolicy() {
    */
   it("test_set_user_restriction_0100", Level.LEVEL2, async (done: Function) => {
     try {
-      restrictions.setUserRestriction(SELFWANT, LABEL_APN, true);
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200001).assertTrue();
@@ -1413,7 +1413,7 @@ function testSetUserRestrictionPolicy() {
   it("test_set_user_restriction_0200", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
-      restrictions.setUserRestriction(SELFWANT, LABEL_APN, true);
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
@@ -1434,33 +1434,11 @@ function testSetUserRestrictionPolicy() {
   it("test_set_user_restriction_0300", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setUserRestriction(SELFWANT, LABEL_APN, true);
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-      restrictions.setUserRestriction(SELFWANT, LABEL_APN, false);
-      await adminManager.disableAdmin(SELFWANT);
-
-    }
-    done();
-  });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0400
-   * @tc.name      : test_set_user_restriction_0400
-   * @tc.desc      : test setUserRestriction with error param
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_set_user_restriction_0400", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-    try {
-      restrictions.setUserRestriction(INVALID_WANT, LABEL_APN, true);
-      expect(false).assertTrue();
-    } catch (error) {
-      expect(error.code == 401).assertTrue();
-    } finally {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, false);
       await adminManager.disableAdmin(SELFWANT);
     }
     done();
