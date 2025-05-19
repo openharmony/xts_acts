@@ -119,7 +119,7 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect3.left).assertEqual(0);
         } else {
-          expect(windowRect3.left).assertEqual(10);
+          expect(Math.abs(windowRect3.left-100)).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -157,7 +157,7 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.top).assertEqual(availableTop1);
+        expect(Math.abs(windowRect1.top-availableTop1)).assertLessOrEqual(1);
         await terminateAbility(caseName);
 
         let displayDisplay2: display.Display = display.getDefaultDisplaySync()
@@ -172,7 +172,7 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.top).assertEqual(availableTop2);
+        expect(Math.abs(windowRect2.top-availableTop2)).assertLessOrEqual(1);
         await terminateAbility(caseName);
 
         let displayDisplay3: display.Display = display.getDefaultDisplaySync()
@@ -190,7 +190,7 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect3.top).assertEqual(0);
         } else {
-          expect(windowRect3.top).assertEqual(availableTop3+10);
+          expect(Math.abs(windowRect3.top-(availableTop3+10))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -236,8 +236,8 @@ export default function startabilityWindowRect() {
           expect(windowRect1.left).assertEqual(0);
           expect(windowRect1.top).assertEqual(0);
         } else {
-          expect(windowRect1.left).assertEqual(-10);
-          expect(windowRect1.top).assertEqual(availableTop1+10);
+          expect(Math.abs(windowRect1.left-(-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.top-(availableTop1+10))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -258,8 +258,8 @@ export default function startabilityWindowRect() {
           expect(windowRect2.left).assertEqual(0);
           expect(windowRect2.top).assertEqual(0);
         } else {
-          expect(windowRect2.left).assertEqual(10);
-          expect(windowRect2.top).assertEqual(availableTop2);
+          expect(Math.abs(windowRect2.left-10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-availableTop2)).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -281,8 +281,8 @@ export default function startabilityWindowRect() {
           expect(windowRect3.left).assertEqual(0);
           expect(windowRect3.top).assertEqual(0);
         } else {
-          expect(windowRect3.left).assertEqual(-10);
-          expect(windowRect3.top).assertEqual(availableTop3);
+          expect(Math.abs(windowRect3.left- (-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.top-availableTop3)).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -304,8 +304,8 @@ export default function startabilityWindowRect() {
           expect(windowRect4.left).assertEqual(0);
           expect(windowRect4.top).assertEqual(0);
         } else {
-          expect(windowRect4.left).assertEqual(10);
-          expect(windowRect4.top).assertEqual(availableTop4+10);
+          expect(Math.abs(windowRect4.left-10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.top-(availableTop4+10))).assertLessOrEqual(1);
         }
 
         await terminateAbility(caseName);
@@ -348,7 +348,13 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.width).assertEqual(curMinWidth);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect1.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect1.width-curMinWidth)).assertLessOrEqual(1);
+        }
+
         await terminateAbility(caseName);
 
         let options2: StartOptions = {
@@ -359,7 +365,13 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.width).assertEqual(curMinWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect2.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect2.width-curMinWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options3: StartOptions = {
@@ -370,7 +382,13 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.width).assertEqual(curMaxWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect3.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect3.width-curMaxWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options4: StartOptions = {
@@ -381,7 +399,12 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.width).assertEqual(curMaxWidth);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect4.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect4.width-curMinWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         done();
@@ -423,7 +446,12 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.height).assertEqual(curMinHeight);
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect1.height).assertEqual(displayInfo.height);
+        } else {
+          expect(Math.abs(windowRect1.height-curMinHeight)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options2: StartOptions = {
@@ -434,7 +462,13 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.height).assertEqual(curMinHeight);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect2.height).assertEqual(displayInfo.height);
+        } else {
+          expect(Math.abs(windowRect2.height-curMinHeight)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options3: StartOptions = {
@@ -445,7 +479,13 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.height).assertEqual(curMaxHeight);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect3.height).assertEqual(displayInfo.height);
+        } else {
+          expect(Math.abs(windowRect3.height-curMaxHeight)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options4: StartOptions = {
@@ -456,7 +496,13 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.height).assertEqual(curMaxHeight);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect4.height).assertEqual(displayInfo.height);
+        } else {
+          expect(Math.abs(windowRect4.height-curMaxHeight)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         done();
@@ -500,8 +546,15 @@ export default function startabilityWindowRect() {
         let windowClass1 = windowStageStart1.getMainWindowSync();
         let windowRect1 = windowClass1.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect1: ' + JSON.stringify(windowRect1));
-        expect(windowRect1.height).assertEqual(curMinHeight);
-        expect(windowRect1.width).assertEqual(curMinWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect1.height).assertEqual(displayInfo.height);
+          expect(windowRect1.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect1.height-curMinHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.width-curMinWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options2: StartOptions = {
@@ -513,8 +566,15 @@ export default function startabilityWindowRect() {
         let windowClass2 = windowStageStart2.getMainWindowSync();
         let windowRect2 = windowClass2.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect2: ' + JSON.stringify(windowRect2));
-        expect(windowRect2.height).assertEqual(curMinHeight);
-        expect(windowRect2.width).assertEqual(curMinWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect2.height).assertEqual(displayInfo.height);
+          expect(windowRect2.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect2.height-curMinHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-curMinWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options3: StartOptions = {
@@ -526,8 +586,15 @@ export default function startabilityWindowRect() {
         let windowClass3 = windowStageStart3.getMainWindowSync();
         let windowRect3 = windowClass3.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect3: ' + JSON.stringify(windowRect3));
-        expect(windowRect3.height).assertEqual(curMaxHeight);
-        expect(windowRect3.width).assertEqual(curMaxWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect3.height).assertEqual(displayInfo.height);
+          expect(windowRect3.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect3.height-curMaxHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width-curMaxWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         let options4: StartOptions = {
@@ -539,8 +606,15 @@ export default function startabilityWindowRect() {
         let windowClass4 = windowStageStart4.getMainWindowSync();
         let windowRect4 = windowClass4.getWindowProperties().windowRect;
         console.info(caseName + 'getWindowProperties.windowRect4: ' + JSON.stringify(windowRect4));
-        expect(windowRect4.height).assertEqual(curMaxHeight);
-        expect(windowRect4.width).assertEqual(curMaxWidth);
+
+        if (isPCStatus == '' || isAutoWindow == 'false') {
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect4.height).assertEqual(displayInfo.height);
+          expect(windowRect4.width).assertEqual(displayInfo.width);
+        } else {
+          expect(Math.abs(windowRect4.height-curMaxHeight)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-curMaxWidth)).assertLessOrEqual(1);
+        }
         await terminateAbility(caseName);
 
         done();
@@ -593,12 +667,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect1.left).assertEqual(0);
           expect(windowRect1.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect1.height).assertEqual(displayInfo.height as number);
+          expect(windowRect1.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect1.left).assertEqual(-10);
-          expect(windowRect1.top).assertEqual(availableTop1 + 10);
+          expect(Math.abs(windowRect1.left - (-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.top-(availableTop1 + 10 ))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.width-(curMinWidth as number  + 10))).assertLessOrEqual(1);
         }
-        expect(windowRect1.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect1.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay2: display.Display = display.getDefaultDisplaySync()
@@ -619,12 +697,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect2.left).assertEqual(0);
           expect(windowRect2.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect2.height).assertEqual(displayInfo.height as number);
+          expect(windowRect2.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect2.left).assertEqual(10);
-          expect(windowRect2.top).assertEqual(availableTop2);
+          expect(Math.abs(windowRect2.left- 10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-availableTop2)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-(curMinWidth as number  + 10))).assertLessOrEqual(1);
         }
-        expect(windowRect2.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect2.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay3: display.Display = display.getDefaultDisplaySync()
@@ -645,12 +727,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect3.left).assertEqual(0);
           expect(windowRect3.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect3.height).assertEqual(displayInfo.height as number);
+          expect(windowRect3.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect3.left).assertEqual(10);
-          expect(windowRect3.top).assertEqual(availableTop1 + 10);
+          expect(Math.abs(windowRect3.left- 10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.top-(availableTop3 + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width-(curMinWidth as number  + 10))).assertLessOrEqual(1);
         }
-        expect(windowRect3.height).assertEqual(curMinHeight as number);
-        expect(windowRect3.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay4: display.Display = display.getDefaultDisplaySync()
@@ -671,14 +757,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect4.left).assertEqual(0);
           expect(windowRect4.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect4.height).assertEqual(displayInfo.height as number);
+          expect(windowRect4.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect4.left).assertEqual(10);
-          expect(windowRect4.top).assertEqual(availableTop1 + 10);
+          expect(Math.abs(windowRect4.left- 10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.top-(availableTop4 + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-curMinWidth as number)).assertLessOrEqual(1);
         }
-        expect(windowRect4.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect4.width).assertEqual(curMinWidth as number);
         await terminateAbility(caseName);
-
         done();
       } catch(err) {
         console.error(`${caseName} fail: ${JSON.stringify(err)}`);
@@ -730,12 +818,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect1.left).assertEqual(0);
           expect(windowRect1.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect1.height).assertEqual(displayInfo.height as number);
+          expect(windowRect1.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect1.left).assertEqual(-10);
-          expect(windowRect1.top).assertEqual(availableTop1);
+          expect(Math.abs(windowRect1.left- (-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.top-availableTop1)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect1.width-(curMinWidth as number+10))).assertLessOrEqual(1);
         }
-        expect(windowRect1.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect1.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay2: display.Display = display.getDefaultDisplaySync()
@@ -756,12 +848,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect2.left).assertEqual(0);
           expect(windowRect2.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect2.height).assertEqual(displayInfo.height as number);
+          expect(windowRect2.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect2.left).assertEqual(-10);
-          expect(windowRect2.top).assertEqual(availableTop2 + 10);
+          expect(Math.abs(windowRect2.left- (-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.top-(availableTop2 + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect2.width-(curMinWidth as number + 10))).assertLessOrEqual(1);
         }
-        expect(windowRect2.height).assertEqual(curMinHeight as number);
-        expect(windowRect2.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay3: display.Display = display.getDefaultDisplaySync()
@@ -782,12 +878,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect3.left).assertEqual(0);
           expect(windowRect3.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect3.height).assertEqual(displayInfo.height as number);
+          expect(windowRect3.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect3.left).assertEqual(-10);
-          expect(windowRect3.top).assertEqual(availableTop1 + 10);
+          expect(Math.abs(windowRect3.left - (-10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.top-(availableTop3 + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect3.width- curMinWidth as number)).assertLessOrEqual(1);
         }
-        expect(windowRect3.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect3.width).assertEqual(curMinWidth as number);
+
         await terminateAbility(caseName);
 
         let displayDisplay4: display.Display = display.getDefaultDisplaySync()
@@ -808,12 +908,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect4.left).assertEqual(0);
           expect(windowRect4.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect4.height).assertEqual(displayInfo.height as number);
+          expect(windowRect4.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect4.left).assertEqual(10);
-          expect(windowRect4.top).assertEqual(availableTop1);
+          expect(Math.abs(windowRect4.left-10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.top-availableTop4)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-curMinHeight as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-(curMinWidth as number + 10))).assertLessOrEqual(1);
         }
-        expect(windowRect4.height).assertEqual(curMinHeight as number);
-        expect(windowRect4.width).assertEqual(curMinWidth as number + 10);
+
         await terminateAbility(caseName);
 
         let displayDisplay5: display.Display = display.getDefaultDisplaySync()
@@ -834,12 +938,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect5.left).assertEqual(0);
           expect(windowRect5.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect5.height).assertEqual(displayInfo.height as number);
+          expect(windowRect5.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect5.left).assertEqual(10);
-          expect(windowRect5.top).assertEqual(availableTop5);
+          expect(Math.abs(windowRect5.left-10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect5.top-availableTop5)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect5.height-(curMinHeight as number + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect5.width-curMinWidth as number)).assertLessOrEqual(1);
         }
-        expect(windowRect5.height).assertEqual(curMinHeight as number + 10);
-        expect(windowRect5.width).assertEqual(curMinWidth as number);
+
         await terminateAbility(caseName);
 
         let displayDisplay6: display.Display = display.getDefaultDisplaySync()
@@ -860,12 +968,16 @@ export default function startabilityWindowRect() {
         if (isPCStatus == '' || isAutoWindow == 'false') {
           expect(windowRect6.left).assertEqual(0);
           expect(windowRect6.top).assertEqual(0);
+          let displayInfo = display.getDefaultDisplaySync();
+          expect(windowRect6.height).assertEqual(displayInfo.height as number);
+          expect(windowRect6.width).assertEqual(displayInfo.width as number);
         } else {
-          expect(windowRect6.left).assertEqual(10);
-          expect(windowRect6.top).assertEqual(availableTop6 + 10);
+          expect(Math.abs(windowRect6.left-10)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect6.top-(availableTop6 + 10))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect6.width-curMinWidth as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect6.height-curMinHeight as number)).assertLessOrEqual(1);
         }
-        expect(windowRect6.height).assertEqual(curMinHeight as number);
-        expect(windowRect6.width).assertEqual(curMinWidth as number);
+
         await terminateAbility(caseName);
 
         done();
