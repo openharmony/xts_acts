@@ -368,15 +368,6 @@ static OH_CryptoKeyPair *OHTEST_ConvertX25519AsymKey(VectorAgreementSpec *vec, b
             goto EXIT;
         }
     }
-    // printf("\nsk:");
-    // for(uint32_t i = 0; i < sk.len; i++) {
-    //     printf("%02x", sk.data[i]);
-    // }
-    // printf("\npk:");
-    // for(uint32_t i = 0; i < pk.len; i++) {
-    //     printf("%02x", pk.data[i]);
-    // }
-    // printf("\n");
     if (OH_CryptoAsymKeySpec_Create(vec->algoName, CRYPTO_ASYM_KEY_KEY_PAIR_SPEC, &specCtx) != CRYPTO_SUCCESS
         || OH_CryptoAsymKeySpec_SetParam(specCtx, CRYPTO_X25519_SK_DATABLOB, &sk) != CRYPTO_SUCCESS
         || OH_CryptoAsymKeySpec_SetParam(specCtx, CRYPTO_X25519_PK_DATABLOB, &pk) != CRYPTO_SUCCESS
@@ -425,20 +416,6 @@ HWTEST_P(AGREEMENT_VECTOR_TEST, SUB_Security_CryptoFramework_NAPI_Agreement_Vect
     EXPECT_EQ(OH_CryptoKeyAgreement_Create(vecInfo.algoName, &peerCtx), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoKeyAgreement_GenerateSecret(peerCtx, peerPrivkey, localPubkey, &peerSharedKey), CRYPTO_SUCCESS);
     if (localSharedKey.len == peerSharedKey.len) {
-        printf("\nlocalSharedKey:");
-        for(uint32_t i = 0; i < localSharedKey.len; i++) {
-            printf("%02x", localSharedKey.data[i]);
-        }
-        printf("\npeerSharedKey:");
-        for(uint32_t i = 0; i < peerSharedKey.len; i++) {
-            printf("%02x", peerSharedKey.data[i]);
-        }
-        printf("\n");
-        printf("\nsharedKey:");
-        for(uint32_t i = 0; i < peerSharedKey.len; i++) {
-            printf("%02x", vecInfo.sharedKey[i]);
-        }
-        printf("\n");
         EXPECT_TRUE(memcmp(peerSharedKey.data, localSharedKey.data, localSharedKey.len) == 0);
     }
     EXPECT_EQ(localSharedKey.len, peerSharedKey.len);
@@ -547,7 +524,7 @@ static VectorEccAgreementSpec g_vectors[] = {
         .aliceD = "00000143253d19be2489ab254f71a1ee0e294c2b73ca65dcc9929a2de741d886b878459bf595d7b7620ada2a797b429219e926b49daa9a4a8d2de7bcf885bba5b7949e77",
         .aliceX = "00000031b99843ddfc55e807c20c506c934c93ad5711f00ec0045483fd74b3513696a49ae00153bcaa263b9d86ae1d1eec587d366e614385373449191be385761a0c1b0e",
         .aliceY = "00000012a7fed0fc77d6fe888f346f18eb34c33d63ea63ae384e21545a1a934b416cb403a7c67a51a4c9f98aa40987e7619dc349960b0cd21911cf82bfe6ef4eb5080e2c",
-        .sharedKey = "02c59aa457630c8490bbb25d3a7e26cf62122516e508920e153151a9019cfc679271b0edbe5cf22f439c127bf1a20cb088557c9bb566f295338c475d8e7883f96a61"
+        .sharedKey = "00c59aa457630c8490bbb25d3a7e26cf62122516e508920e153151a9019cfc679271b0edbe5cf22f439c127bf1a20cb088557c9bb566f295338c475d8e7883f96a61"
     },
     {
         .algoName = "ECC521",
@@ -598,20 +575,6 @@ HWTEST_P(AGREEMENT_VECTOR_ECC_TEST, SUB_Security_CryptoFramework_NAPI_Agreement_
     }
     EXPECT_EQ(localSharedKey.len, peerSharedKey.len);
     EXPECT_EQ(OHTEST_HexStringToDataBlob(vecInfo.sharedKey, &sharedKey, true), CRYPTO_SUCCESS);
-    printf("\nlocalSharedKey:");
-    for(uint32_t i = 0; i < localSharedKey.len; i++) {
-        printf("%02x", localSharedKey.data[i]);
-    }
-    printf("\npeerSharedKey:");
-    for(uint32_t i = 0; i < peerSharedKey.len; i++) {
-        printf("%02x", peerSharedKey.data[i]);
-    }
-    printf("\n");
-    printf("\nsharedKey:");
-    for(uint32_t i = 0; i < sharedKey.len; i++) {
-        printf("%02x", sharedKey.data[i]);
-    }
-    printf("\n");
     EXPECT_TRUE(memcmp(peerSharedKey.data, sharedKey.data, sharedKey.len) == 0);
 
     OH_CryptoKeyAgreement_Destroy(peerCtx);
@@ -786,20 +749,6 @@ HWTEST_P(AGREEMENT_VECTOR_DH_TEST, SUB_Security_CryptoFramework_NAPI_Agreement_V
     }
     EXPECT_EQ(localSharedKey.len, peerSharedKey.len);
     EXPECT_EQ(OHTEST_HexStringToDataBlob(vecInfo.sharedKey, &sharedKey, true), CRYPTO_SUCCESS);
-    printf("\nlocalSharedKey:");
-    for(uint32_t i = 0; i < localSharedKey.len; i++) {
-        printf("%02x", localSharedKey.data[i]);
-    }
-    printf("\npeerSharedKey:");
-    for(uint32_t i = 0; i < peerSharedKey.len; i++) {
-        printf("%02x", peerSharedKey.data[i]);
-    }
-    printf("\n");
-    printf("\nsharedKey:");
-    for(uint32_t i = 0; i < sharedKey.len; i++) {
-        printf("%02x", sharedKey.data[i]);
-    }
-    printf("\n");
     EXPECT_TRUE(memcmp(peerSharedKey.data, sharedKey.data, sharedKey.len) == 0);
 
     OH_CryptoKeyAgreement_Destroy(peerCtx);
