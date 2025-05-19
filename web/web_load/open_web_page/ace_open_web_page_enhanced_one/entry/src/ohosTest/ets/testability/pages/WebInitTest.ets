@@ -19,39 +19,41 @@ import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
+import { waitForExist } from '../../test/WaitTest.test';
 import business_error from '@ohos.base';
 
 @Entry
 @Component
 struct WebInitTest {
   controller: webView.WebviewController = new webView.WebviewController();
-  @State str: string = ""
+  @State isComplete: number = -1;
+  @State str: string = ''
   @State webInit: boolean = false
   @State webCreated: boolean = false
   @State interceptUrl: string = ''
   @State consoleMsg: string = ''
   @State consoleCorsError: boolean = false
   schemeList: webView.WebCustomScheme[] = [
-    { schemeName: "jump1", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "jump2", isSupportCORS: true, isSupportFetch: false },
-    { schemeName: "jump3", isSupportCORS: false, isSupportFetch: true },
-    { schemeName: "jump4", isSupportCORS: false, isSupportFetch: false }
+    { schemeName: 'jump1', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'jump2', isSupportCORS: true, isSupportFetch: false },
+    { schemeName: 'jump3', isSupportCORS: false, isSupportFetch: true },
+    { schemeName: 'jump4', isSupportCORS: false, isSupportFetch: false }
   ]
   outOfRangeSchemeList: webView.WebCustomScheme[] = [
-    { schemeName: "name1", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name2", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name3", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name4", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name5", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name6", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name7", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name8", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name9", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name10", isSupportCORS: true, isSupportFetch: true },
-    { schemeName: "name11", isSupportCORS: true, isSupportFetch: true }
+    { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name4', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name5', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name6', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name7', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name8', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name9', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name10', isSupportCORS: true, isSupportFetch: true },
+    { schemeName: 'name11', isSupportCORS: true, isSupportFetch: true }
   ]
   invalidSchemeList: webView.WebCustomScheme[] = [{
-    schemeName: "nameLength32nameLength32nameLength32nameLength32",
+    schemeName: 'nameLength32nameLength32nameLength32nameLength32',
     isSupportCORS: true,
     isSupportFetch: true
   }]
@@ -96,13 +98,13 @@ struct WebInitTest {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
         try {
-          this.controller.loadUrl("resource://rawfile/index.html");
+          this.controller.loadUrl('resource://rawfile/index.html');
         } catch (error) {
           console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
         }
@@ -127,11 +129,11 @@ struct WebInitTest {
     }
 
     try {
-      webView.once("webInited", () => {
+      webView.once('webInited', () => {
         console.error('webInited =====>')
         this.webInit = true
       })
-      webView.once("webCreated", () => {
+      webView.once('webCreated', () => {
         console.error('webCreated =====>')
         this.webCreated = true
       })
@@ -146,9 +148,10 @@ struct WebInitTest {
         Button('WebInitTestButton')
           .key('WebInitTestButton')
           .onClick(async () => {
-            console.info("key==>" + this.str)
+            console.info('key==>' + this.str)
             switch (this.str) {
-              case "testCustomizeSchemesFetch001": {
+              case 'testCustomizeSchemesFetch001': {
+                await waitForExist(()=>this.isComplete, 'testCustomizeSchemesFetch001',0)
                 this.controller.runJavaScript('fetchUrl("jump789")')
                 await Utils.sleep(2000);
                 if (this.interceptUrl.indexOf('jump789') < 0 && this.consoleMsg.indexOf('Failed to fetch') >= 0) {
@@ -158,13 +161,13 @@ struct WebInitTest {
                 }
                 break;
               }
-              case "testCustomizeSchemesFetch002": {
+              case 'testCustomizeSchemesFetch002': {
                 this.controller.runJavaScript('fetchUrl("jump1")')
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.interceptUrl.indexOf('jump1') >= 0, 204);
                 break;
               }
-              case "testCustomizeSchemesFetch003": {
+              case 'testCustomizeSchemesFetch003': {
                 this.controller.runJavaScript('fetchUrl("jump3")')
                 await Utils.sleep(2000);
                 Utils.emitEvent(
@@ -175,7 +178,7 @@ struct WebInitTest {
                 );
                 break;
               }
-              case "testCustomizeSchemesFetch004": {
+              case 'testCustomizeSchemesFetch004': {
                 this.controller.runJavaScript('fetchUrlAllowCors("jump3")')
                 await Utils.sleep(2000);
                 Utils.emitEvent(
@@ -186,7 +189,7 @@ struct WebInitTest {
                 );
                 break;
               }
-              case "testCustomizeSchemesFetch005": {
+              case 'testCustomizeSchemesFetch005': {
                 this.controller.runJavaScript('fetchUrlAllowCors("jump2")')
                 await Utils.sleep(2000);
                 Utils.emitEvent(
@@ -196,7 +199,7 @@ struct WebInitTest {
                 );
                 break;
               }
-              case "testCustomizeSchemesFetch006": {
+              case 'testCustomizeSchemesFetch006': {
                 this.controller.runJavaScript('fetchUrlAllowCors("jump4")')
                 await Utils.sleep(2000);
                 Utils.emitEvent(
@@ -206,7 +209,7 @@ struct WebInitTest {
                 );
                 break;
               }
-              case "testSchemeName001": {
+              case 'testSchemeName001': {
                 try {
                   webView.WebviewController.customizeSchemes(this.invalidSchemeList)
                 } catch (error) {
@@ -216,7 +219,7 @@ struct WebInitTest {
                 }
                 break;
               }
-              case "testCustomizeSchemes001": {
+              case 'testCustomizeSchemes001': {
                 try {
                   webView.WebviewController.customizeSchemes(this.outOfRangeSchemeList)
                 } catch (error) {
@@ -226,7 +229,7 @@ struct WebInitTest {
                 }
                 break;
               }
-              case "emitOnce001": {
+              case 'emitOnce001': {
                 try {
                   Utils.emitEvent(this.webInit, 409);
                 } catch (error) {
@@ -234,7 +237,7 @@ struct WebInitTest {
                 }
                 break;
               }
-              case "emitOnce002": {
+              case 'emitOnce002': {
                 try {
                   Utils.emitEvent(this.webCreated, 410);
                 } catch (error) {
@@ -259,12 +262,12 @@ struct WebInitTest {
             }
 
             let head1: Header = {
-              headerKey: "Connection",
-              headerValue: "keep-alive"
+              headerKey: 'Connection',
+              headerValue: 'keep-alive'
             }
             let head2: Header = {
-              headerKey: "Cache-Control",
-              headerValue: "no-cache"
+              headerKey: 'Cache-Control',
+              headerValue: 'no-cache'
             }
             this.heads.push(head1)
             this.heads.push(head2)
@@ -306,6 +309,13 @@ struct WebInitTest {
                 console.log('The request header key is : ' + i.headerKey + ', value is : ' + i.headerValue)
               }
             }
+          })
+          .onPageBegin((event) => {
+              console.log('onPageBegin ==>' + event.url);
+          })
+          .onPageEnd((event) => {
+              console.log('onPageEnd ==>' + event.url);
+              this.isComplete = 0
           })
       }
       .width('100%')
