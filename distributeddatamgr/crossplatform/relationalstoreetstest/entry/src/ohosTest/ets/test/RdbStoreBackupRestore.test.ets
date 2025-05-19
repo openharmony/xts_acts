@@ -333,7 +333,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore!.restore("", async (err) => {
           console.info(`restore success.`);
-          expect(!err).assertTrue();
+          expect().assertFail();
           done();
         });
       } catch (errInfo) {
@@ -384,7 +384,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore!.backup(backupName);
       try {
         await RdbStore!.restore("");
-        expect(RdbStore !== null).assertEqual(true);
+        expect().assertFail();
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore003 error: " + errInfo.code + errInfo.message);
@@ -408,7 +408,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore!.backup(backupName);
       try {
         await RdbStore!.restore(STORE_CONFIG.name);
-        expect(RdbStore !== null).assertEqual(true);
+        expect().assertFail();
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore004 error: " + errInfo.code + errInfo.message);
@@ -432,7 +432,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore!.backup(backupName);
       try {
         let promise = await RdbStore!.restore();
-        expect(promise === null).assertEqual(true);
+        expect().assertFail();
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore005 error: " + errInfo.code + errInfo.message);
