@@ -20,6 +20,7 @@ import textPickerEnableHapticFeedbackTest from "./textpicker/textPickerEnableHap
 import datePickerEnableHapticFeedbackTest from "./datepicker/datePickerEnableHapticFeedback.test"
 import swiperIndicatorDistanceTest from "./swiper/SwiperIndicatorDistanceTest.test"
 import ExpectedFrameRateRangeCallback from "./ExpectedFrameRateRange/ExpectedFrameRateRangeCallback.test"
+import XComponentLifeCycleTest from './XComponent/XComponentLifeCycleTest.test'
 import customDialogBackGroundTest from "./customdialog/customDialogBackGroundTest.test"
 import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test'
 import gestureInterrupterTest from './gestureRecognizer/GestureInterrupterTest.test'
@@ -32,6 +33,7 @@ export default function testsuite() {
   datePickerEnableHapticFeedbackTest();
   swiperIndicatorDistanceTest();
   ExpectedFrameRateRangeCallback();
+  XComponentLifeCycleTest();
   customDialogBackGroundTest();
   visibleAreaEventOptions();
   gestureInterrupterTest();

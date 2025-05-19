@@ -9,6 +9,7 @@
     "MainAbility/pages/swiper/SwiperIndicatorDistanceTest",
     "MainAbility/pages/ExpectedFrameRateRange/ExpectedFrameRateRangeCallback",
     "MainAbility/pages/visibleAreaEventOptions/visibleAreaEventOptions",
-    "MainAbility/pages/gestureRecognizer/GestureInterrupterTest"
+    "MainAbility/pages/gestureRecognizer/GestureInterrupterTest",
+    "MainAbility/pages/XComponent/XComponentLifeCyclePage"
   ]
 }
