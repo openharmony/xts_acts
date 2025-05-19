@@ -190,9 +190,11 @@ static napi_value OhAvPlayerSetFDSource(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    waitAvPlayerStateChange(player,AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
         backParam = SUCCESS;
     }
+    waitAvPlayerStateChange(player,AV_INITIALIZED);
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
     return result;
@@ -215,10 +217,12 @@ static napi_value OhAvPlayerSetFDSourceAbnormalTwo(napi_env env, napi_callback_i
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    waitAvPlayerStateChange(player,AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, INVALID_FD, PARAM_0, PARAM_0);
     if (errCode != AV_ERR_OK) {
         backParam = SUCCESS;
     }
+    waitAvPlayerStateChange(player,AV_INITIALIZED);
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
     return result;
@@ -256,12 +260,15 @@ static napi_value OhAvPlayerSetAudioRendererInfo(napi_env env, napi_callback_inf
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    waitAvPlayerStateChange(player,AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        waitAvPlayerStateChange(player,AV_INITIALIZED);
         OH_AVErrCode errCode = OH_AVPlayer_SetAudioRendererInfo(player, AUDIOSTREAM_USAGE_UNKNOWN);
         if (errCode == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
+    waitAvPlayerStateChange(player,AV_INITIALIZED);
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
     return result;
@@ -272,13 +279,16 @@ static napi_value OhAvPlayerSetAudioInterruptMode(napi_env env, napi_callback_in
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    waitAvPlayerStateChange(player,AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        waitAvPlayerStateChange(player,AV_INITIALIZED);
         OH_AVErrCode errCode = OH_AVPlayer_SetAudioInterruptMode(player,
             AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT);
         if (errCode == AV_ERR_OK) {
             backParam = SUCCESS;
         }
     }
+    waitAvPlayerStateChange(player,AV_INITIALIZED);
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
     return result;
@@ -299,7 +309,9 @@ static napi_value OhAvPlayerPrepare(napi_env env, napi_callback_info info)
     if (firstParam == PARAM_1) {
         GetFDSourceInfo(player);
     }
+    waitAvPlayerStateChange(player,AV_INITIALIZED);
     OH_AVErrCode errCode = ((secondParam == PARAM_1) ? OH_AVPlayer_Prepare(player) : OH_AVPlayer_Prepare(nullptr));
+    waitAvPlayerStateChange(player,AV_PREPARED);
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, GetBackParam(thirdParam, errCode), &result);
     return result;
