@@ -24,6 +24,8 @@ import XComponentLifeCycleTest from './XComponent/XComponentLifeCycleTest.test'
 import customDialogBackGroundTest from "./customdialog/customDialogBackGroundTest.test"
 import visibleAreaEventOptions from './visibleAreaEventOptions/visibleAreaEventOptions.test'
 import gestureInterrupterTest from './gestureRecognizer/GestureInterrupterTest.test'
+import swiperDigitIndicatorTest from "./swiper/SwiperDigitIndicatorTest.test"
+import swiperArrowStyleTest from "./swiper/SwiperArrowStyleTest.test"
 
 export default function testsuite() {
   customDialogTest();
@@ -37,4 +39,6 @@ export default function testsuite() {
   customDialogBackGroundTest();
   visibleAreaEventOptions();
   gestureInterrupterTest();
+  swiperDigitIndicatorTest();
+  swiperArrowStyleTest();
 }

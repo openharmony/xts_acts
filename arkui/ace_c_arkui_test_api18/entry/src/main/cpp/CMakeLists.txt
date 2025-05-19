@@ -35,6 +35,8 @@ add_library(nativefunc SHARED
     napi_func_init.cpp
     customdialog/customdialog_background.cpp
     customdialog/customdialog_test.cpp
+    swiper/swiper_dot_indicator_test.cpp
+    swiper/swiper_arrowStyle_test.cpp
 )
 
 find_library(
