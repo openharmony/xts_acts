@@ -28,8 +28,8 @@ function getContext(): Context {
 const PATH_DEMO =  "demo_video_audio_10s.mp4"
 const g_currentPathId = 1;
 
-export default function AVPlayerNdkTest() {
-  describe('AVPlayerTest', () => {
+export default function AVPlayerNdkTest2() {
+  describe('AVPlayerTest2', () => {
 
     beforeAll(async () => {
       let context = getContext()
@@ -263,7 +263,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPlay001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPlay(1, 1, 1, 1);
+      let result: number = avplayer.OhAvPlayerPlaySuccess(1, 1, 1, 1);
       expect(result).assertEqual(0);
       done();
     });
@@ -318,7 +318,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPause001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPause(1, 1, 1, 1, 1);
+      let result: number = avplayer.OhAvPlayerPauseSuccess(1, 1, 1, 1, 1);
       expect(result).assertEqual(0);
       done();
     });

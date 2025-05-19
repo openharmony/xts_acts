@@ -29,7 +29,9 @@ export const AvPlayerSetOnInfoCallbackAbnormal: (a:number, b:number, c:number, d
 export const AvPlayerSetOnInfoCallbackWithPrepare: () => number;
 export const AvPlayerSetOnErrorCallback: (a:number, b:number) => number;
 export const AvPlayerSetOnErrorCallbackAbnormal: (a:number, b:number, c:number, d:number) => number;
+export const OhAvPlayerPlaySuccess: (a:number,b:number,c:number, d:number) => number;
 export const AvPlayerPlay: (a:number,b:number,c:number, d:number) => number;
+export const OhAvPlayerPauseSuccess: (a:number,b:number,c:number, d:number, e:number) => number;
 export const AvPlayerPause: (a:number,b:number,c:number, d:number, e:number) => number;
 export const AvPlayerStop: (a:number,b:number,c:number, d:number) => number;
 export const AvPlayerReset: (a:number,b:number,c:number, d:number, e:number, f:number, g:number) => number;
