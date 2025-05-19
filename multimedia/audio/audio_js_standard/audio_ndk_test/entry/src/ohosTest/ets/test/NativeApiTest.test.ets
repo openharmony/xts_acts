@@ -3057,5 +3057,70 @@ export default function audioNDK() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_001
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('audioStreamBuilderSetVolumeModeTest_001', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_001();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_001: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_002
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('audioStreamBuilderSetVolumeModeTest_002', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_002();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_002: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_003
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStreamBuilder parameter is nullptr
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStreamBuilder parameter is nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('audioStreamBuilderSetVolumeModeTest_003', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_003();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_003: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_004
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStream_VolumeMode parameter is invaild
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStream_VolumeMode parameter is invaild
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('audioStreamBuilderSetVolumeModeTest_004', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_004();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_004: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
   })
 }
