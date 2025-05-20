@@ -612,8 +612,8 @@ export default function startabilityWindowRect() {
           expect(windowRect4.height).assertEqual(displayInfo.height);
           expect(windowRect4.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect4.height-curMaxHeight as number)).assertLessOrEqual(1);
-          expect(Math.abs(windowRect4.width-curMaxWidth as number)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.height-(curMaxHeight as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-(curMaxWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
