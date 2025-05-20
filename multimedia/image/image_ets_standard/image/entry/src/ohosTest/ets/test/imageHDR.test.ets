@@ -329,7 +329,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600';
-      await checkMimeType(done, tag, 'mimeType_test.nrw', 'image/x-nikon--nrw');
+      await checkMimeType(done, tag, 'mimeType_test.nrw', 'image/x-nikon-nrw');
     })
 
     /**
