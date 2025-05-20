@@ -797,6 +797,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi
     }
     napi_value res;
     napi_create_int32(env, resCapture, &res);
+    return res;
+}
+
 static napi_value normalAVScreenCaptureContentChangedCallback(napi_env env, napi_callback_info info)
 {
     screenCaptureContentChange = OH_AVScreenCapture_Create();
