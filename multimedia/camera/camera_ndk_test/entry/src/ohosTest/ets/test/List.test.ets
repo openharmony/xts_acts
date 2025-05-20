@@ -46,7 +46,6 @@ export default function testsuite() {
   SecureCameraErrorCodeTest();
   CameraManagerTest();
   VideoMirrorTest();
-
   CameraSessionMacroTest();
 
   if (voice){
