@@ -1602,9 +1602,9 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_Asy
     ASSERT_TRUE(privKey != nullptr);
     EXPECT_EQ(OH_CryptoPrivKeyEncodingParams_Create(&params), CRYPTO_SUCCESS);
     ASSERT_TRUE(params != nullptr);
-    EXPECT_EQ(OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR, &password), CRYPTO_SUCCESS);
+    EXPECT_EQ(OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR, &password), CRYPTO_PARAMETER_CHECK_FAILED);
     EXPECT_EQ(OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR, &cipher), CRYPTO_SUCCESS);
-    ASSERT_EQ(OH_CryptoPrivKey_Encode(privKey, CRYPTO_PEM, (const char *)"PKCS8", params, &out), CRYPTO_SUCCESS);
+    ASSERT_EQ(OH_CryptoPrivKey_Encode(privKey, CRYPTO_PEM, (const char *)"PKCS8", params, &out), CRYPTO_OPERTION_ERROR);
     
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoPrivKeyEncodingParams_Destroy(params);
@@ -1621,7 +1621,7 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_Asy
 */
 HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1900, TestSize.Level0)
 {
-    Crypto_DataBlob password = {.data = (uint8_t *)"0123456789", .len = 0};
+    Crypto_DataBlob password = {.data = (uint8_t *)"0123456789", .len = 10};
     Crypto_DataBlob cipher = {.data = (uint8_t *)"SM4-128-CBC", .len = 11};
     Crypto_DataBlob out = { .data = nullptr, .len = 0 };
     OH_CryptoPrivKeyEncodingParams *params = nullptr;
@@ -1651,7 +1651,7 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_Asy
 */
 HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_2000, TestSize.Level0)
 {
-    Crypto_DataBlob password = {.data = (uint8_t *)"0123456789", .len = 0};
+    Crypto_DataBlob password = {.data = (uint8_t *)"0123456789", .len = 10};
     Crypto_DataBlob cipher = {.data = (uint8_t *)"AES-128-CBC", .len = 11};
     Crypto_DataBlob out = { .data = nullptr, .len = 0 };
     OH_CryptoPrivKeyEncodingParams *params = nullptr;
