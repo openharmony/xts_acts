@@ -355,7 +355,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800';
-      await checkMimeType(done, tag, 'test.pef', 'image/x-samsung-srw');
+      await checkMimeType(done, tag, 'test.pef', 'image/x-pentax-pef');
     })
 
     /**
@@ -379,9 +379,9 @@ export default function imageHDR() {
      * @tc.type     : Functional
      * @tc.level    : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
-      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
-      await checkMimeType(done, tag, 'test.nef', 'image/x-sony-arw');
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000';
+      await checkMimeType(done, tag, 'test.nef', 'image/x-nikon-nef');
     })
 
     /**
@@ -392,9 +392,9 @@ export default function imageHDR() {
      * @tc.type     : Functional
      * @tc.level    : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
-      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
-      await checkMimeType(done, tag, 'test.orf', 'image/x-sony-arw');
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100';
+      await checkMimeType(done, tag, 'test.orf', 'image/x-olympus-orf');
     })
 
     /**
@@ -405,9 +405,9 @@ export default function imageHDR() {
      * @tc.type     : Functional
      * @tc.level    : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
-      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
-      await checkMimeType(done, tag, 'test.srw', 'image/x-sony-arw');
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200';
+      await checkMimeType(done, tag, 'test.srw', 'image/x-samsung-srw');
     })
 
   })
