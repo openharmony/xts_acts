@@ -264,7 +264,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100';
-      await checkMimeType(done, tag, 'test.jpg', 'image/jpeg');
+      await checkMimeType(done, tag, 'mimeType_test.jpg', 'image/jpeg');
     })
 
     /**
@@ -277,7 +277,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200';
-      await checkMimeType(done, tag, 'test.ico', 'image/x-icon');
+      await checkMimeType(done, tag, 'mimeType_test.ico', 'image/x-icon');
     })
 
     /**
@@ -290,7 +290,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300';
-      await checkMimeType(done, tag, 'test.dng', 'image/x-adobe-dng');
+      await checkMimeType(done, tag, 'mimeType_test.dng', 'image/x-adobe-dng');
     })
 
     /**
@@ -303,7 +303,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400';
-      await checkMimeType(done, tag, 'test.cr2', 'image/x-canon-cr2');
+      await checkMimeType(done, tag, 'mimeType_test.cr2', 'image/x-canon-cr2');
     })
 
     /**
@@ -316,7 +316,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500';
-      await checkMimeType(done, tag, 'test.raf', 'image/x-fuji-raf');
+      await checkMimeType(done, tag, 'mimeType_test.raf', 'image/x-fuji-raf');
     })
 
     /**
@@ -329,7 +329,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600';
-      await checkMimeType(done, tag, 'test.nrw', 'image/x-nikon--nrw');
+      await checkMimeType(done, tag, 'mimeType_test.nrw', 'image/x-nikon--nrw');
     })
 
     /**
@@ -342,7 +342,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700';
-      await checkMimeType(done, tag, 'test.rw2', 'image/x-panasonic-rw2');
+      await checkMimeType(done, tag, 'mimeType_test.rw2', 'image/x-panasonic-rw2');
     })
 
     /**
@@ -355,7 +355,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800';
-      await checkMimeType(done, tag, 'test.pef', 'image/x-pentax-pef');
+      await checkMimeType(done, tag, 'mimeType_test.pef', 'image/x-pentax-pef');
     })
 
     /**
@@ -368,7 +368,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
-      await checkMimeType(done, tag, 'test.arw', 'image/x-sony-arw');
+      await checkMimeType(done, tag, 'mimeType_test.arw', 'image/x-sony-arw');
     })
 
     /**
@@ -381,7 +381,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000';
-      await checkMimeType(done, tag, 'test.nef', 'image/x-nikon-nef');
+      await checkMimeType(done, tag, 'mimeType_test.nef', 'image/x-nikon-nef');
     })
 
     /**
@@ -394,7 +394,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100';
-      await checkMimeType(done, tag, 'test.orf', 'image/x-olympus-orf');
+      await checkMimeType(done, tag, 'mimeType_test.orf', 'image/x-olympus-orf');
     })
 
     /**
@@ -407,7 +407,7 @@ export default function imageHDR() {
      */
     it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200", Level.LEVEL0, async (done: Function) => {
       let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200';
-      await checkMimeType(done, tag, 'test.srw', 'image/x-samsung-srw');
+      await checkMimeType(done, tag, 'mimeType_test.srw', 'image/x-samsung-srw');
     })
 
   })
