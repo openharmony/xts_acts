@@ -21,7 +21,7 @@
 class IpcInterface {
 public:
     virtual ~IpcInterface() = default;
-    virtual bool RequestExitChildProcess() = 0;
+    virtual bool RequestExitChildProcess(int32_t exitCode) = 0;
     virtual int32_t Add(int32_t a, int32_t b) = 0;
     virtual int32_t StartNativeChildProcess() = 0;
     
