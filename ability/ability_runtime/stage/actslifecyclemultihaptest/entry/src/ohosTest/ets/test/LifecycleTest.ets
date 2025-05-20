@@ -18,7 +18,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import ability from '@ohos.ability.ability';
 import base from '@ohos.base';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 
 let TAG = 'AbilityTest';
@@ -524,7 +524,7 @@ export default function abilityTest() {
             });
           }
         } else if (event === 'Hap2MainAbility8onForeground') {
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             done();
             return;
           }
@@ -738,7 +738,7 @@ export default function abilityTest() {
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
           })
         } else if (event === 'Hap3MainAbility3onForeground') {
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             done();
             return;
           }

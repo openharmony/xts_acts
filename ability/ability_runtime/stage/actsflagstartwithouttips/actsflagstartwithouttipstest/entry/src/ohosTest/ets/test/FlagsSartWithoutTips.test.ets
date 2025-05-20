@@ -24,7 +24,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import { BusinessError } from "@ohos.base";
 
 let selectorBundleName: string = '';
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let context: common.UIAbilityContext;
 const driver: Driver = Driver.create();
 const abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();

@@ -21,7 +21,7 @@ import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CALL_EVENT', 'ACTS_CALL_EVENT_ANOTHER']
@@ -162,8 +162,8 @@ export default function abilityTest() {
           console.info(`====>ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0300 createSubscriber  ${data}`);
           subscriber = data;
           commonEvent.subscribe(data, (err, data) => {
-            console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
-            if (deviceType === '2in1') {
+            console.log(`====>ActsActionExtensionAbility deviceSupport: ${deviceSupport}`);
+            if (deviceSupport === 'false') {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>AsyncCallback_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
                 expect(data.parameters!.result).assertEqual(0);
@@ -456,8 +456,8 @@ export default function abilityTest() {
           console.info(`====>Promise_0300 createSubscriber  ${data}`);
           subscriber = data;
           commonEvent.subscribe(data, (err, data) => {
-            console.log(`====>ActsActionExtensionAbility deviceType: ${deviceType}`);
-            if (deviceType === '2in1') {
+            console.log(`====>ActsActionExtensionAbility deviceSupport: ${deviceSupport}`);
+            if (deviceSupport === 'false') {
               if (data.event == 'ACTS_CALL_EVENT') {
                 console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`);
                 expect(data.parameters!.result).assertEqual(0);

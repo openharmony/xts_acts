@@ -19,7 +19,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 const START_ABILITY_TIMEOUT_THOUSAND = 1000;
 
@@ -52,7 +52,7 @@ export default function ForegroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_FOREGROUND_PROMISE_0001 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
@@ -142,7 +142,7 @@ export default function ForegroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_FOREGROUND_PROMISE_ERROR_0002 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
@@ -223,7 +223,7 @@ export default function ForegroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_FOREGROUND_PROMISE_ERROR_0003 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
@@ -302,7 +302,7 @@ export default function ForegroundPromise() {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_FOREGROUND_PROMISE_0004 start"
       );
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -393,7 +393,7 @@ export default function ForegroundPromise() {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_FOREGROUND_PROMISE_ERROR_0005 start"
         );
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           done();
           return;
         }
