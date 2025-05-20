@@ -375,9 +375,9 @@ HWTEST_F(OHCryptoFrameworkMacNapiTest, SUB_Security_CryptoFramework_NAPI_Mac_Tes
     EXPECT_TRUE(msgBlob.len == msgLen);
     EXPECT_EQ(OH_CryptoMac_Create(macInfo.type, &ctx), CRYPTO_SUCCESS);
     EXPECT_EQ(OHTEST_CryptoHmac_SetParam(ctx, macInfo.paramType.degistName), CRYPTO_SUCCESS);
-    EXPECT_EQ(OH_CryptoMac_Update(ctx, &msgBlob), CRYPTO_PARAMETER_CHECK_FAILED);
-    EXPECT_EQ(OH_CryptoMac_Final(ctx, &out), CRYPTO_PARAMETER_CHECK_FAILED);
-    EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_PARAMETER_CHECK_FAILED);
+    EXPECT_EQ(OH_CryptoMac_Update(ctx, &msgBlob), CRYPTO_OPERTION_ERROR);
+    EXPECT_EQ(OH_CryptoMac_Final(ctx, &out), CRYPTO_OPERTION_ERROR);
+    EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_SUCCESS);
 
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
@@ -404,9 +404,9 @@ HWTEST_F(OHCryptoFrameworkMacNapiTest, SUB_Security_CryptoFramework_NAPI_Mac_Tes
     EXPECT_TRUE(msgBlob.len == msgLen);
     EXPECT_EQ(OH_CryptoMac_Create(macInfo.type, &ctx), CRYPTO_SUCCESS);
     EXPECT_EQ(OHTEST_CryptoCmac_SetParam(ctx, macInfo.paramType.cipherName), CRYPTO_SUCCESS);
-    EXPECT_EQ(OH_CryptoMac_Update(ctx, &msgBlob), CRYPTO_PARAMETER_CHECK_FAILED);
-    EXPECT_EQ(OH_CryptoMac_Final(ctx, &out), CRYPTO_PARAMETER_CHECK_FAILED);
-    EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_PARAMETER_CHECK_FAILED);
+    EXPECT_EQ(OH_CryptoMac_Update(ctx, &msgBlob), CRYPTO_OPERTION_ERROR);
+    EXPECT_EQ(OH_CryptoMac_Final(ctx, &out), CRYPTO_OPERTION_ERROR);
+    EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_SUCCESS);
 
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
