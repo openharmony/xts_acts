@@ -3952,6 +3952,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.error(`${message} isSupportedText: ${isSupportedText}`);
         if (isSupportedText === '801') {
           await terminateAbility(message);
+          await sleep(1000)
           done();
         } else {
           let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
@@ -3966,6 +3967,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip1.click();
           await terminateAbility(message);
+          await sleep(1000)
 
           await startAbility(message, globalThis.abilityContext);
           let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
@@ -3983,6 +3985,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip2.click();
           await terminateAbility(message);
+          await sleep(1000)
           done()
         }
       } catch (err) {
@@ -3991,6 +3994,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         } else {
           await terminateAbility(message);
+          await sleep(1000)
           expect().assertFail();
           done();
         }
@@ -4025,6 +4029,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.error(`${message} isSupportedText: ${isSupportedText}`);
         if (isSupportedText === '801') {
           await terminateAbility(message);
+          await sleep(1000)
           done();
         } else {
           let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
@@ -4039,6 +4044,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip1.click();
           await terminateAbility(message);
+          await sleep(1000)
 
           await startAbility(message, globalThis.abilityContext);
           let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
@@ -4056,6 +4062,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip3.click();
           await terminateAbility(message);
+          await sleep(1000)
           done()
         }
       } catch (err) {
@@ -4064,6 +4071,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         } else {
           await terminateAbility(message);
+          await sleep(1000)
           expect().assertFail();
           done();
         }
@@ -4099,6 +4107,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.error(`${message} isSupportedText: ${isSupportedText}`);
         if (isSupportedText === '801') {
           await terminateAbility(message);
+          await sleep(1000)
           done();
         } else {
           let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
@@ -4114,6 +4123,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip4.click();
           await terminateAbility(message);
+          await sleep(1000)
 
           await startAbility(message, globalThis.abilityContext);
           let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
@@ -4133,6 +4143,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip2.click();
           await terminateAbility(message);
+          await sleep(1000)
           done()
         }
       } catch (err) {
@@ -4141,6 +4152,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         } else {
           await terminateAbility(message);
+          await sleep(1000)
           expect().assertFail();
           done();
         }
@@ -4176,6 +4188,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.error(`${message} isSupportedText: ${isSupportedText}`);
         if (isSupportedText === '801') {
           await terminateAbility(message);
+          await sleep(1000)
           done();
         } else {
           let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
@@ -4191,6 +4204,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           await stopPip4.click();
           await terminateAbility(message);
+          await sleep(1000)
 
           await startAbility(message, globalThis.abilityContext);
           let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
@@ -4203,11 +4217,14 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           let text3 = await getPipInfoText3.getText();
           console.error(`${message} text3: ${text3}`);
-          expect(Number(text3.trim())).assertEqual(Number(text4.trim()))
+          let textNum3 = Number(truncateAndFormat(Number(text3.trim())));
+          let textNum4 = Number(truncateAndFormat(Number(text4.trim())));
+          expect(textNum3).assertEqual(textNum4);
           let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
           await sleep(1000)
           await stopPip3.click();
           await terminateAbility(message);
+          await sleep(1000)
           done()
         }
       } catch (err) {

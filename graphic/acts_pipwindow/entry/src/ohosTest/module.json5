@@ -54,6 +54,7 @@
         "label": "$string:entry_label",
         "visible": true,
         "orientation": "portrait",
+        "removeMissionAfterTerminate": true,
         "skills": [
           {
             "actions": [
