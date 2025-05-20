@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 {
   "app": {
     "signingConfigs": [
@@ -21,10 +20,8 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 19,
-        "compatibleSdkVersion": 12,
-        "targetSdkVersion": 12,
-        "runtimeOS": "OpenHarmony",
+        "compileSdkVersion": 20,
+        "compatibleSdkVersion": 16,
       }
     ]
   },

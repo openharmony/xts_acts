@@ -4,13 +4,13 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
-        "bundle-name": "com.test.actsquerycachetest",
+        "bundle-name": "com.acts.actscreatebundlecontexttest",
         "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsQueryCacheTest.hap"
+                "ActsCreateBundleContextTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

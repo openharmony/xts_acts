@@ -19,6 +19,7 @@ import { window } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    globalThis.contextEntry = this.context;
   }
 
   onDestroy() {

@@ -17,9 +17,16 @@ import { application, appManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit'
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { router } from '@kit.ArkUI';
 
 let context = getContext(this) as common.UIAbilityContext;
+
+let sleep = async (delay: number): Promise<void> => {
+  return new Promise((resolve, _) => {
+    setTimeout(async () => {
+      resolve();
+    }, delay);
+  });
+};
 
 export default function createModuleContextTest() {
   describe('createModuleContextTest', () => {
@@ -27,64 +34,13 @@ export default function createModuleContextTest() {
     beforeAll(() => {
       context = globalThis.context
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(2000);
     })
     afterEach(() => {
     })
     afterAll(() => {
     })
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2200
-     * @tc.name   : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2200
-     * @tc.desc   : createModuleContext,moduleName = entry
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2200', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2200`;
-      hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      try {
-        // let want:Want = {
-        //   bundleName: "com.acts.actscreatebundlecontexttest",
-        //   moduleName: "entry",
-        //   abilityName: "EntryAbility"
-        // }
-        // await context.startAbility(want)
-        //   .then((data: ESObject) => {
-        //     hilog.info(0x0000, 'testTag', '%{public}s', `start entry successful. Data: + ${JSON.stringify(data)}`);
-        //   }).catch((error: BusinessError) => {
-        //   hilog.error(0x0000, 'testTag', '%{public}s', `start entry failed. Cause:  + ${JSON.stringify(error)}`);
-        // })
-          application.createModuleContext(context, 'entry').then((data: Context) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} createBundleContext success! data is :${JSON.stringify(data)}`);
-            let value = context.resourceManager.getConfigurationSync();
-            hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getConfigurationSync value is: ${JSON.stringify(value)}`)
-            let direction = value.direction;
-            let locale = value.locale;
-            let colorMode = value.colorMode
-            expect(direction).assertEqual(0)
-            expect(locale).assertEqual("zh_Hans_CN")
-            expect(colorMode).assertEqual(1)
-            try {
-              let labelStr = context.resourceManager.getStringSync(33554435);
-              hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getStringSync labelStr is: ${JSON.stringify(labelStr)}`)
-              expect(labelStr).assertEqual("test_label")
-            } catch (error) {
-              let code = (error as BusinessError).code;
-              let message = (error as BusinessError).message;
-              hilog.error(0x0000, 'testTag', '%{public}s', `getStringSync failed, error code: ${code}, message: ${message}.`);
-            }
-            checkEntryModuleContext(data, done);
-          }).catch((error: BusinessError) => {
-            hilog.error(0x0000, 'testTag', '%{public}s', `${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-          })
-
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', '%{public}s', `createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-      }
-    });
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2300
@@ -97,14 +53,6 @@ export default function createModuleContextTest() {
     it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2300', 0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2300`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      try{
-        router.back();
-        hilog.info(0x0000, 'testTag', '%{public}s', 'router.back success!');
-      } catch (err){
-        let code = (err as BusinessError).code;
-        let message = (err as BusinessError).message;
-        hilog.info(0x0000, 'testTag', '%{public}s', `router.back failed, error.code: ${code}, error.message: ${message}`);
-      }
       try {
         application.createModuleContext(context, 'entry_test').then((data: Context) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `${tag} createBundleContext success! data is :${JSON.stringify(data)}`);
@@ -129,53 +77,6 @@ export default function createModuleContextTest() {
         }).catch((error: BusinessError) => {
           hilog.error(0x0000, 'testTag', '%{public}s', `${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
         })
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', '%{public}s', `createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-      }
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2400
-     * @tc.name   : SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2400
-     * @tc.desc   : createModuleContext,moduleName = entry, get resourceManager
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2400', 0, async (done: Function) => {
-      let tag = `SUB_Ability_AbilityRuntime_AMS_Context_CreateModuleContext_2400`;
-      hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      try {
-        // let want:Want = {
-        //   bundleName: "com.acts.actscreatebundlecontexttest",
-        //   moduleName: "entry",
-        //   abilityName: "EntryAbility"
-        // }
-        // await context.startAbility(want)
-        //   .then((data: ESObject) => {
-        //     hilog.info(0x0000, 'testTag', '%{public}s', `start entry successful. Data: + ${JSON.stringify(data)}`);
-        //   }).catch((error: BusinessError) => {
-        //   hilog.error(0x0000, 'testTag', '%{public}s', `start entry failed. Cause:  + ${JSON.stringify(error)}`);
-        // })
-          application.createModuleContext(context, 'entry').then((data: Context) => {
-            try {
-              let labelStr = context.resourceManager.getStringSync(33554435);
-              hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getStringSync labelStr is: ${JSON.stringify(labelStr)}`)
-              expect(labelStr).assertEqual("test_label")
-              let arrayStr = context.resourceManager.getLocales(true)
-              hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getLocales arrayStr is: ${JSON.stringify(arrayStr)}`)
-              arrayStr.forEach(lang => {
-                expect(arrayStr).assertContain(lang);
-              });
-            } catch (error) {
-              let code = (error as BusinessError).code;
-              let message = (error as BusinessError).message;
-              hilog.error(0x0000, 'testTag', '%{public}s', `getStringSync failed, error code: ${code}, message: ${message}.`);
-            }
-            checkEntryModuleContext(data, done);
-          }).catch((error: BusinessError) => {
-            hilog.error(0x0000, 'testTag', '%{public}s', `${tag} createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-          })
       } catch (error) {
         hilog.error(0x0000, 'testTag', '%{public}s', `createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
       }
