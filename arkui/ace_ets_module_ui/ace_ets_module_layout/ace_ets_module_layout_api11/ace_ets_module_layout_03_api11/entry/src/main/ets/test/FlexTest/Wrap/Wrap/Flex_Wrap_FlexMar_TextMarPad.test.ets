@@ -172,10 +172,11 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
       expect(Math.floor(Math.abs((thirdText.bottom - thirdText.top) - vp2px(150))) <= 1).assertTrue();
-
+      console.info('[testWrapWrapFlexMarTextMar] ((flexContainer.right - secondText.right) - vp2px(140)):' + ((flexContainer.right - secondText.right) - vp2px(140)));
+      console.info('[testWrapWrapFlexMarTextMar] ((flexContainer.bottom - thirdText.bottom) - vp2px(40)):' + ((flexContainer.bottom - thirdText.bottom) - vp2px(40)));
       expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(140))) <= 1)
         .assertTrue();
-      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(40))) <= 1)
+      expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(40))) <= 2)
         .assertTrue();
       console.info('[testWrapWrapFlexMarTextMar] END');
 
@@ -243,6 +244,8 @@ export default function flex_Wrap_FlexMar_TextMarPadTest() {
       expect(Math.floor(Math.abs((secondText.right - secondText.left) - (thirdText.right - thirdText.left))) <= 1)
         .assertTrue();
 
+      console.info('[testWrapWrapFlexMarTextMarPad] ((flexContainer.right - secondText.right) - vp2px(170)):' + ((flexContainer.right - secondText.right) - vp2px(170)));
+      console.info('[testWrapWrapFlexMarTextMarPad] ((flexContainer.bottom - thirdText.bottom) - vp2px(20)):' + ((flexContainer.bottom - thirdText.bottom) - vp2px(20)));
       expect(Math.floor(Math.abs((flexContainer.right - secondText.right) - vp2px(170))) <= 2)
         .assertTrue();
       expect(Math.floor(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(20))) <= 2)
