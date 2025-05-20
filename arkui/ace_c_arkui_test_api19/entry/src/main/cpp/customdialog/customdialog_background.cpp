@@ -70,7 +70,6 @@ static napi_value TestCustomDialog002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem dialog_Effect_item = { dialog_Effect_value,
         sizeof(dialog_Effect_value) / sizeof(ArkUI_NumberValue) };
     OH_ArkUI_CustomDialog_SetBackgroundEffect(dialog, &dialog_Effect_item);
-    OH_ArkUI_CustomDialog_OpenDialog(dialog, Call);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }

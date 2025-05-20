@@ -158,4 +158,92 @@ static napi_value TestCustomDialogHoverModeArea(napi_env env, napi_callback_info
     NAPI_END;
 }
 
+static napi_value TestCustomDialogLevelMode(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    ArkUI_NativeDialogAPI_2 *dialogAPI2 = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_2, dialogAPI2);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI2->setLevelMode(customDialog, ARKUI_LEVEL_MODE_OVERLAY);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomDialogLevelUniqueId(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    ArkUI_NativeDialogAPI_2 *dialogAPI2 = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_2, dialogAPI2);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI2->setLevelUniqueId(customDialog, 0);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomDialogImmersiveMode(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    ArkUI_NativeDialogAPI_2 *dialogAPI2 = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_2, dialogAPI2);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI2->setImmersiveMode(customDialog, ARKUI_IMMERSIVE_MODE_DEFAULT);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomDialogBackgroundColor(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI->setBackgroundColor(customDialog, '#FF94A0F0');
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomDialogCornerRadius(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI->setCornerRadius(customDialog, -10, 10, 15, 32);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomModalMode(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI->setModalMode(customDialog,false);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestCustomAutoCancel(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI->setAutoCancel(customDialog,false);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+
+static napi_value TestCustomMask(napi_env env, napi_callback_info info)
+{
+    ArkUI_NativeDialogAPI_1 *dialogAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_DIALOG, ArkUI_NativeDialogAPI_1, dialogAPI);
+    ArkUI_Rect mark_item = {.x = 10, .y = 10, .width = 200, .height = 150};
+    auto customDialog = dialogAPI->create();
+    int ret = dialogAPI->setMask(customDialog, COLOR_GREEN, &mark_item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
 } // namespace ArkUICapiTest
