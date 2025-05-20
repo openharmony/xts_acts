@@ -15,8 +15,32 @@
 
 import calendarPickerDateTest from "./calendarPicker/CalendarPickerDate.test"
 import SliderTest from "./slider/SliderEnableHapticFeedbackTest.test"
+import DragEndPendingTest from "./dragEndPending/dragEndPending.test"
+import SwiperIndicatorTest from "./swiperIndicator/swiperIndicator.test"
+import PointerEventTest from "./pointerEvent/pointerEvent.test"
+import swiperDigitIndicatorTest from "./swiperDigitIndicator/swiperDigitIndicator.test"
+import GetGestureParamTest from "./getGestureParam/getGestureParam.test"
+import LayoutCallbackOnNodeHandleTest from "./layoutCallbackOnNodeHandle/layoutCallbackOnNodeHandle.test"
+import SwiperArrowStyleTest from "./swiperArrowStyle/swiperArrowStyle.test"
+import ArkuiXComponentTest from "./arkuiXComponent/arkuiXComponent.test"
+import AccessibilityValueTest from "./accessibilityValue/accessibilityValue.test"
+import SurfaceHolderTest from "./surfaceHolder/surfaceHolder.test"
+import TextPickerCascadeTest from "./textPickerCascade/textPickerCascade.test"
+import CustomDialogTest from "./customDialog/customDialog.test"
 
 export default function testsuite() {
+   CustomDialogTest();
    calendarPickerDateTest();
    SliderTest();
+   DragEndPendingTest();
+   SwiperIndicatorTest();
+   PointerEventTest();
+   swiperDigitIndicatorTest();
+   GetGestureParamTest();
+   LayoutCallbackOnNodeHandleTest();
+   SwiperArrowStyleTest();
+   ArkuiXComponentTest();
+   AccessibilityValueTest();
+   SurfaceHolderTest();
+   TextPickerCascadeTest();
 }
