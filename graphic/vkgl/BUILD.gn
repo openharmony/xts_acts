@@ -242,6 +242,7 @@ group("VKGLCTSTest") {
     "src/deqpgles31/build0031b:ActsDeqpgles31Suite0031bTest",
     "src/deqpgles31/build0031c:ActsDeqpgles31Suite0031cTest",
     "src/deqpgles31/build0031d:ActsDeqpgles31Suite0031dTest",
+    "src/deqpgles31/build0031e:ActsDeqpgles31Suite0031eTest",
     "src/deqpgles31/build0032:ActsDeqpgles31Suite0032Test",
     "src/deqpgles31/build0032a:ActsDeqpgles31Suite0032aTest",
     "src/deqpgles31/build0032b:ActsDeqpgles31Suite0032bTest",
