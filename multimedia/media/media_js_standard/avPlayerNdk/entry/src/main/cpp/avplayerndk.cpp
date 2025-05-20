@@ -82,7 +82,7 @@ void waitAvPlayerStateChange(OH_AVPlayer *player, AVPlayerState state) {
         std::this_thread::sleep_for(std::chrono::milliseconds(g_gPlaytime));
         avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
         LOGE("OH_AVPlayer_GetState currentState:%{public}d gSleepTotalTime:%{public}d",
-        currentStage, gSleepTotalTime)
+        currentStage, gSleepTotalTime);
     }
 }
 
@@ -100,9 +100,12 @@ void checkAvPlayerStateChange(napi_env env, OH_AVPlayer *player, AVPlayerState s
         std::this_thread::sleep_for(std::chrono::milliseconds(g_gPlaytime));
         avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
         LOGE("OH_AVPlayer_GetState currentState:%{public}d gSleepTotalTime:%{public}d",
-        currentStage, gSleepTotalTime)
+        currentStage, gSleepTotalTime);
     }
 }
+
+static void AVPlayerOnError(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg) {}
+static void AVPlayerOnInfo(OH_AVPlayer *player, AVPlayerOnInfoType Type, int32_t extra) {}
 
 void InitGLES(EGLDisplay &display, EGLContext &context, EGLSurface &surface)
 {
@@ -209,6 +212,8 @@ static napi_value OhAvPlayerSetFDSource(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
         backParam = SUCCESS;
@@ -236,6 +241,8 @@ static napi_value OhAvPlayerSetFDSourceAbnormalTwo(napi_env env, napi_callback_i
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, INVALID_FD, PARAM_0, PARAM_0);
     if (errCode != AV_ERR_OK) {
@@ -279,6 +286,8 @@ static napi_value OhAvPlayerSetAudioRendererInfo(napi_env env, napi_callback_inf
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
         waitAvPlayerStateChange(player, AV_INITIALIZED);
@@ -298,6 +307,8 @@ static napi_value OhAvPlayerSetAudioInterruptMode(napi_env env, napi_callback_in
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     if (GetFDSourceInfo(player) == AV_ERR_OK) {
         waitAvPlayerStateChange(player, AV_INITIALIZED);
@@ -325,6 +336,8 @@ static napi_value OhAvPlayerPrepare(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     if (firstParam == PARAM_1) {
         GetFDSourceInfo(player);
@@ -350,6 +363,8 @@ static napi_value OhAvPlayerPlaySuccess(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_3], &fourthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         checkAvPlayerStateChange(env, player, AV_IDLE);
@@ -380,6 +395,8 @@ static napi_value OhAvPlayerPlay(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_3], &fourthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         waitAvPlayerStateChange(player, AV_IDLE);
@@ -411,6 +428,8 @@ static napi_value OhAvPlayerPauseSuccess(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_4], &fifthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         checkAvPlayerStateChange(env, player, AV_IDLE);
@@ -446,6 +465,8 @@ static napi_value OhAvPlayerPause(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_4], &fifthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         waitAvPlayerStateChange(player, AV_IDLE);
@@ -480,6 +501,8 @@ static napi_value OhAvPlayerStopSuccess(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_3], &fourthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         checkAvPlayerStateChange(env, player, AV_IDLE);
@@ -510,6 +533,8 @@ static napi_value OhAvPlayerStop(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_3], &fourthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         waitAvPlayerStateChange(player, AV_IDLE);
@@ -543,6 +568,8 @@ static napi_value OhAvPlayerReset(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_6], &seventhParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     if (firstParam == PARAM_1) {
         waitAvPlayerStateChange(player, AV_IDLE);
@@ -577,6 +604,8 @@ static napi_value OhAvPlayerRelease(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_Release(player);
     if (errCode == AV_ERR_OK) {
@@ -603,6 +632,8 @@ static napi_value OhAvPlayerReleaseSync(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_ReleaseSync(player);
     if (errCode == AV_ERR_OK) {
@@ -629,6 +660,8 @@ static napi_value OhAvPlayerSetVolume(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_SetVolume(player, PARAM_1F, PARAM_1F);
     if (errCode == AV_ERR_OK) {
@@ -654,6 +687,8 @@ static napi_value OhAvPlayerSetVolumeAbnormalOne(napi_env env, napi_callback_inf
 static OH_AVPlayer *GetPrepareAVPlayer()
 {
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     GetFDSourceInfo(player);
     waitAvPlayerStateChange(player, AV_INITIALIZED);
@@ -925,6 +960,8 @@ static napi_value OhAvPlayerSelectBitRate(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_SelectBitRate(player, PARAM_10);
     if (errCode == AV_ERR_OK) {
@@ -962,6 +999,8 @@ static napi_value OhAvPlayerSetVideoSurface(napi_env env, napi_callback_info inf
     OHNativeWindow *window = OH_NativeImage_AcquireNativeWindow(image);
     if (window != nullptr) {
         OH_AVPlayer *player = OH_AVPlayer_Create();
+        AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+        OH_AVPlayer_SetPlayerCallback(player, cb);
         waitAvPlayerStateChange(player, AV_IDLE);
         GetFDSourceInfo(player);
         waitAvPlayerStateChange(player, AV_INITIALIZED);
@@ -995,6 +1034,8 @@ static napi_value OhAvPlayerSetVideoSurfaceAbnormalTwo(napi_env env, napi_callba
     napi_value result = nullptr;
     int backParam = FAIL;
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     waitAvPlayerStateChange(player, AV_IDLE);
     OH_AVErrCode errCode = OH_AVPlayer_SetVideoSurface(player, nullptr);
     if (errCode != AV_ERR_OK) {
@@ -1073,6 +1114,8 @@ static napi_value OhAvPlayerGetState(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[PARAM_4], &fifthParam);
 
     OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
     OH_AVErrCode errCode;
     AVPlayerState state;
     if (firstParam == PARAM_1) {
@@ -1778,9 +1821,6 @@ static napi_value OhAvPlayerSetOnErrorCallbackAbnormal(napi_env env, napi_callba
     }
     return result;
 }
-
-static void AVPlayerOnError(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg) {}
-static void AVPlayerOnInfo(OH_AVPlayer *player, AVPlayerOnInfoType Type, int32_t extra) {}
 
 static napi_value OhAvPlayerSetPlayerCallback(napi_env env, napi_callback_info info)
 {
