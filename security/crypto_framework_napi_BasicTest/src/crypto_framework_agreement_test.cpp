@@ -358,13 +358,13 @@ static OH_CryptoKeyPair *OHTEST_ConvertX25519AsymKey(VectorAgreementSpec *vec, b
     Crypto_DataBlob sk = {.data = nullptr, .len = 0};
     Crypto_DataBlob pk = {.data = nullptr, .len = 0};
     if (isLocal) {
-        if (OHTEST_HexStringToDataBlob(vec->localPrivKey, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(vec->localPubKey, &pk, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(vec->localPrivKey, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(vec->localPubKey, &pk, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     } else {
-        if (OHTEST_HexStringToDataBlob(vec->peerPrivKey, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(vec->peerPubKey, &pk, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(vec->peerPrivKey, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(vec->peerPubKey, &pk, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     }
@@ -442,15 +442,15 @@ static OH_CryptoKeyPair *OHTEST_ConvertEccAsymKey(VectorEccAgreementSpec *infoSp
     Crypto_DataBlob pk_y = { .data = nullptr, .len = 0};
 
     if (isBob) {
-        if (OHTEST_HexStringToDataBlob(infoSpec->bobD, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->bobX, &pk_x, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->bobY, &pk_y, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(infoSpec->bobD, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->bobX, &pk_x, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->bobY, &pk_y, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     } else {
-        if (OHTEST_HexStringToDataBlob(infoSpec->aliceD, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->aliceX, &pk_x, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->aliceY, &pk_y, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(infoSpec->aliceD, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->aliceX, &pk_x, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->aliceY, &pk_y, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     }
@@ -597,17 +597,17 @@ static OH_CryptoKeyPair *OHTEST_ConvertDhAsymKey(VectorDhAgreementSpec *infoSpec
     Crypto_DataBlob g = { .data = nullptr, .len = 0};
 
     if (isBob) {
-        if (OHTEST_HexStringToDataBlob(infoSpec->bobSk, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->bobPk, &pk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->g, &g, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->p, &p, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(infoSpec->bobSk, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->bobPk, &pk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->g, &g, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->p, &p, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     } else {
-        if (OHTEST_HexStringToDataBlob(infoSpec->aliceSk, &sk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->alicePk, &pk, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->g, &g, false) != CRYPTO_SUCCESS
-            || OHTEST_HexStringToDataBlob(infoSpec->p, &p, false) != CRYPTO_SUCCESS) {
+        if (OHTEST_HexStringToDataBlob(infoSpec->aliceSk, &sk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->alicePk, &pk, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->g, &g, true) != CRYPTO_SUCCESS
+            || OHTEST_HexStringToDataBlob(infoSpec->p, &p, true) != CRYPTO_SUCCESS) {
             goto EXIT;
         }
     }
