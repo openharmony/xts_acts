@@ -3305,16 +3305,19 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           } else {
             console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
             await pipController.startPiP();
+            await sleep(1000);
             pipController.on('controlEvent', callback);
             let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let Bounds = await button1.getBounds()
+            let bottom = Bounds.bottom
             let BoundsCenter = await button1.getBoundsCenter();
             let x = BoundsCenter.x;
-            let y = BoundsCenter.y;
-            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            console.log(`${message} BoundsCenter x: ${x}, bottom: ${bottom}`);
             await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
               await component.click();
               await sleep(1000);
-              await driver.click(x, y + 182);
+              await driver.click(x, bottom - 98);
+              console.log(`${message} click position x: ${x}, y: ${bottom - 98}`);
             })
             await sleep(1000);
             expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
@@ -3382,17 +3385,20 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           } else {
             console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
             await pipController.startPiP();
+            await sleep(1000);
             pipController.on('controlEvent', callback);
             pipController.off('controlEvent');
             let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let Bounds = await button1.getBounds()
+            let bottom = Bounds.bottom
             let BoundsCenter = await button1.getBoundsCenter();
             let x = BoundsCenter.x;
-            let y = BoundsCenter.y;
-            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            console.log(`${message} BoundsCenter x: ${x}, bottom: ${bottom}`);
             await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
               await component.click();
               await sleep(1000);
-              await driver.click(x, y + 182);
+              await driver.click(x, bottom - 98);
+              console.log(`${message} click position x: ${x}, y: ${bottom - 98}`);
             })
             await sleep(1000);
             expect(controlParam).assertEqual(undefined);
