@@ -371,5 +371,44 @@ export default function imageHDR() {
       await checkMimeType(done, tag, 'test.arw', 'image/x-sony-arw');
     })
 
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
+      await checkMimeType(done, tag, 'test.nef', 'image/x-sony-arw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
+      await checkMimeType(done, tag, 'test.orf', 'image/x-sony-arw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
+      await checkMimeType(done, tag, 'test.srw', 'image/x-sony-arw');
+    })
+
   })
 }
