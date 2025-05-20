@@ -5376,8 +5376,88 @@ static napi_value AudioRendererRelease(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OH_AudioStreamBuilder_SetVolumeMode_Test_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioStream_VolumeMode volumeMode = OH_AudioStream_VolumeMode::AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL;
+    OH_AudioStream_Result res = OH_AudioStreamBuilder_SetVolumeMode(builder, volumeMode);
+
+    if (res == OH_AudioStream_Result::AUDIOSTREAM_SUCCESS) {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_001 SUCCESS, res is %{public}d", res);
+        napi_create_int32(env, TEST_PASS, &result);
+    }
+    else {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_001 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+    }
+    
+    return result;
+}
+
+static napi_value OH_AudioStreamBuilder_SetVolumeMode_Test_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioStream_VolumeMode volumeMode = OH_AudioStream_VolumeMode::AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL;
+    OH_AudioStream_Result res = OH_AudioStreamBuilder_SetVolumeMode(builder, volumeMode);
+
+    if (res == OH_AudioStream_Result::AUDIOSTREAM_SUCCESS) {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_002 SUCCESS, res is %{public}d", res);
+        napi_create_int32(env, TEST_PASS, &result);
+    }
+    else {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_002 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+    }
+    
+    return result;
+}
+
+static napi_value OH_AudioStreamBuilder_SetVolumeMode_Test_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioStreamBuilder *builder = nullptr;
+    OH_AudioStream_VolumeMode volumeMode = OH_AudioStream_VolumeMode::AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL;
+    OH_AudioStream_Result res = OH_AudioStreamBuilder_SetVolumeMode(builder, volumeMode);
+
+    if (res == OH_AudioStream_Result::AUDIOSTREAM_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_003 SUCCESS, res is %{public}d", res);
+        napi_create_int32(env, TEST_PASS, &result);
+    }
+    else {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_003 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+    }
+    
+    return result;
+}
+
+static napi_value OH_AudioStreamBuilder_SetVolumeMode_Test_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    int volumeMode = -1;
+    OH_AudioStream_Result res = OH_AudioStreamBuilder_SetVolumeMode(builder, static_cast<OH_AudioStream_VolumeMode>(volumeMode));
+
+    if (res == OH_AudioStream_Result::AUDIOSTREAM_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_004 SUCCESS, res is %{public}d", res);
+        napi_create_int32(env, TEST_PASS, &result);
+    }
+    else {
+        LOG("OH_AudioStreamBuilder_SetVolumeMode_Test_004 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+    }
+    
+    return result;
+}
+
 EXTERN_C_START
 napi_property_descriptor desc1[] = {
+    {"audioStreamBuilderSetVolumeModeTest_001", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_002", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_003", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioStreamBuilderSetVolumeModeTest_004", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_004, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"createAudioStreamBuilder", nullptr, CreateAudioStreamBuilder, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureGenerate", nullptr, AudioCaptureGenerate, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioCaptureGenerateErr", nullptr, AudioCaptureGenerateErr,

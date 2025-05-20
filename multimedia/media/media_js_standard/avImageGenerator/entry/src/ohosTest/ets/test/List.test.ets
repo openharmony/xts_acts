@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 import AVImageGeneratorTest from './AVImageGeneratorTest'
-
+import FetchScaledFrameByTimeTest from './FetchScaledFrameByTimeTest.test'
 
 
 export default function testsuite() {
+  FetchScaledFrameByTimeTest()
   AVImageGeneratorTest()
 }

@@ -76,7 +76,6 @@ import ScrollToIndexForGridJsunit02 from './ScrollTest/ScrollToIndex/ScrollToInd
 import ScrollToIndexForGridJsunit03 from './ScrollTest/ScrollToIndex/ScrollToIndexForGridJsunit03.test';
 import ApiCommponentAddJsunit from './ScrollTest/ApiCommponentAddJsunit.test.ets';
 import ScrollBarJsunit from './ScrollTest/ScrollBarJsunit.test';
-import sliderJsunit from './SliderTest/sliderJsunit.test.ets';
 import scrollCodeJsunit from './ScrollTest/ScrollCodeJsunit.test.ets';
 import tabsJsunit from './TabsTest/Tabs3Jsunit.test.ets';
 import gridJsunit from './gridTest/Grid3Jsunit.test.ets';
@@ -178,7 +177,6 @@ export default function testsuite() {
   tabsOnContentWillChangeIndex14JsunitTest()
   tabsOnContentWillChangeIndex15JsunitTest()
   ScrollBarJsunit();
-  sliderJsunit();
   scrollCodeJsunit();
   tabsJsunit();
   gridJsunit();

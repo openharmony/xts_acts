@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import avplayer from 'libentry.so'
 
 import fs from '@ohos.file.fs';
@@ -49,7 +49,7 @@ export default function AVPlayerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0100', Level.LEVEL0, async (done: Function) => {
       let filePath= "/data/storage/el2/base/haps/entry/files/ChinaDRMLab_Promo_210525-264-30-1080P-10000K.sm4c.ts";
       let res = fs.accessSync(filePath);
       if(res){
@@ -69,7 +69,7 @@ export default function AVPlayerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0200', Level.LEVEL0, async (done: Function) => {
       let filePath= "/data/storage/el2/base/haps/entry/files/ChinaDRMLab_Promo_210525-264-30-1080P-10000K.sm4c.ts";
       let res = fs.accessSync(filePath);
       if(res){
@@ -89,7 +89,7 @@ export default function AVPlayerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEIDA_AVPLAYER_DRM_0300', Level.LEVEL0, async (done: Function) => {
       let filePath= "/data/storage/el2/base/haps/entry/files/ChinaDRMLab_Promo_210525-264-30-1080P-10000K.sm4c.ts";
       let res = fs.accessSync(filePath);
       if(res){
@@ -109,7 +109,7 @@ export default function AVPlayerNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 0
        */
-      it('SUB_MULTIMEIDA_AUDIOCODEC_DRM_0100', 0, async (done: Function) => {
+      it('SUB_MULTIMEIDA_AUDIOCODEC_DRM_0100', Level.LEVEL0, async (done: Function) => {
         let result: number = avplayer.Test_AudioCodec_SetDecryptionConfig("ptr", "ptr", 0);
         expect(result).assertEqual(0);
         done();
@@ -122,7 +122,7 @@ export default function AVPlayerNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 0
        */
-      it('SUB_MULTIMEIDA_VIDEOCODEC_DRM_0100', 0, async (done: Function) => {
+      it('SUB_MULTIMEIDA_VIDEOCODEC_DRM_0100', Level.LEVEL0, async (done: Function) => {
         let result: number = avplayer.Test_VideoDecoder_SetDecryptionConfig("ptr", "ptr", 0);
         expect(result).assertEqual(0);
         done();
@@ -135,7 +135,7 @@ export default function AVPlayerNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 0
        */
-      it('SUB_MULTIMEIDA_AVDEMUXER_0100', 0, async (done: Function) => {
+      it('SUB_MULTIMEIDA_AVDEMUXER_0100', Level.LEVEL0, async (done: Function) => {
         let result: number = avplayer.TestAVDemuxer_SetMediaKeySystemInfoCallback("ptr", "ptr");
         expect(result).assertEqual(0);
         done();
@@ -148,7 +148,7 @@ export default function AVPlayerNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 0
        */
-      it('SUB_MULTIMEIDA_AVDEMUXER_0200', 0, async (done: Function) => {
+      it('SUB_MULTIMEIDA_AVDEMUXER_0200', Level.LEVEL0, async (done: Function) => {
         let result: number = avplayer.TestAVDemuxer_SetDemuxerMediaKeySystemInfoCallback("ptr", "ptr");
         expect(result).assertEqual(0);
         done();
@@ -161,7 +161,7 @@ export default function AVPlayerNdkTest() {
        * @tc.type       : Function
        * @tc.level      : Level 0
        */
-      it('SUB_MULTIMEIDA_AVDEMUXER_0300', 0, async (done: Function) => {
+      it('SUB_MULTIMEIDA_AVDEMUXER_0300', Level.LEVEL0, async (done: Function) => {
         let result: number = avplayer.TestAVDemuxer_GetMediaKeySystemInfo("ptr", "ptr");
         expect(result).assertEqual(0);
         done();

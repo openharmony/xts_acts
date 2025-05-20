@@ -15,6 +15,12 @@
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import { buffer } from '@kit.ArkTS';
 
+enum asyncType {
+  TYPE_IS_SYNC = 0,
+  TYPE_IS_PROMISE = 1,
+  TYPE_IS_CALLBACK = 2,
+}
+
 function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
@@ -126,5 +132,6 @@ export {
   createFullData,
   compareNumber,
   compareString,
-  doScryptCallback
+  doScryptCallback,
+  asyncType
 }
