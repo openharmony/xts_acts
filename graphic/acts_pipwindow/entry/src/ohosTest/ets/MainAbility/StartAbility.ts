@@ -25,12 +25,11 @@ export default class StartAbility extends Ability {
 
   onWindowStageCreate(windowStage) {
     console.log('StartAbility onWindowStageCreate')
-    windowStage.loadContent("MainAbility/pages/index/second", (err, data) => {
+    windowStage.loadContent("MainAbility/pages/index/second", (err) => {
       if (err.code) {
         console.error('Failed to load the content. Cause:' + JSON.stringify(err));
         return;
       }
-      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
     });
 
     AppStorage.setOrCreate('windowStageStart',windowStage);

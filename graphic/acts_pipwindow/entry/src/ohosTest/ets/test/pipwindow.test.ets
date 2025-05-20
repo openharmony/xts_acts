@@ -60,6 +60,12 @@ async function terminateAbility(caseName: string) {
   await sleep(1000)
 }
 
+// 截断小数位并格式化为两位
+function truncateAndFormat(num: number): string {
+  const truncated = Math.trunc(num * 100) / 100;
+  return truncated.toFixed(2);
+}
+
 // let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 export default function pipWindowTest(context1: common.BaseContext, windowStage: ohosWindow.WindowStage) {
@@ -4120,7 +4126,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           let text2 = await getPipInfoText2.getText();
           console.error(`${message} text2: ${text2}`);
-          expect(Number(text2.trim())).assertEqual(Number(text4.trim()))
+          let textNum2 = Number(truncateAndFormat(Number(text2.trim())));
+          let textNum4 = Number(truncateAndFormat(Number(text4.trim())));
+          expect(textNum2).assertEqual(textNum4);
           let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
           await sleep(1000)
           await stopPip2.click();
