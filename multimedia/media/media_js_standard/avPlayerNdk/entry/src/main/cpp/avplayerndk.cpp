@@ -95,7 +95,7 @@ void checkAvPlayerStateChange(napi_env env, OH_AVPlayer *player, AVPlayerState s
     while(state != currentStage) {
         gSleepTotalTime++;
         if (gSleepTotalTime > kMaxSleepAttempts) {
-            napi_throw_range_error(env, nullptr, 'error : check change State Timeout 400ms')
+            napi_throw_error((env), nullptr, "error : check change State Timeout 400ms");
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(g_gPlaytime));
         avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
