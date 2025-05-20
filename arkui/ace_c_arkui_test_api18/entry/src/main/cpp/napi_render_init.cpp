@@ -16,13 +16,13 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "datepicker/datepicker_test.h"
-#include "textpicker/text_picker_range_test.h"
 #include "textpicker/textPicker_enableHapticFeedback_test.h"
 #include "datepicker/datePicker_enableHapticFeedback_test.h"
 #include "swiper/swiper_indicator_test.h"
 #include "ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.h"
 #include "visibleAreaEventOptions/visibleAreaEventOptions.h"
 #include "gestureRecognizer/GestureInterrupterTest.h"
+#include "XComponent/xcomponent_lifecycle_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -37,8 +37,6 @@ static napi_value Init(napi_env env, napi_value exports)
     napi_property_descriptor desc[] = {
         { "getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testDatePickerMode", nullptr, DatePickerTest::DatePickerModeTest,
-         nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testTextPickerRange", nullptr, TextPickerRangeTest::CreateNativeNode,
          nullptr, nullptr, nullptr, napi_default, nullptr },
         {"textPickerEnableHapticFeedback", nullptr, TextPickerEnableHapticFeedbackTest::TextPickerEnableHapticFeedback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -59,6 +57,24 @@ static napi_value Init(napi_env env, napi_value exports)
         {"VisibleAreaEventOptionsTest_d", nullptr, VisibleAreaEventOptionsTest::VisibleAreaEventOptionsTest_d, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"TestGestureInterrupter", nullptr, GestureInterrupterTest::TestGestureInterrupter, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentCreateNativeNode", nullptr, XComponentLifeCycleTest::createNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentAttachToMainTree", nullptr, XComponentLifeCycleTest::attachToMainTree, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentDetachFromMainTree", nullptr, XComponentLifeCycleTest::detachFromMainTree, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentDispose", nullptr, XComponentLifeCycleTest::dispose, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentSetUserData", nullptr, XComponentLifeCycleTest::setUserData, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentGetUserData", nullptr, XComponentLifeCycleTest::getUserData, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentInitialize", nullptr, XComponentLifeCycleTest::initialize, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentFinalize", nullptr, XComponentLifeCycleTest::finalize, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"XComponentRemoveSurfaceCallback", nullptr, XComponentLifeCycleTest::removeSurfaceCallback, nullptr, nullptr,
          nullptr, napi_default, nullptr}
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

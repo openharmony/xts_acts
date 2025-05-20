@@ -68,7 +68,7 @@ export default function bindPopupTest(){
       await CommonFunc.sleep(1000);
       console.info("bindPopupTest_0100 click Two result is: " + JSON.stringify(sendEventByKey('image',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0100 END');
     });
@@ -109,7 +109,7 @@ export default function bindPopupTest(){
       }
       console.info("bindPopupTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0200 END');
       done();
@@ -134,7 +134,7 @@ export default function bindPopupTest(){
       }
       console.info("bindPopupTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       console.info('bindPopupTest_0300 END');
       done();

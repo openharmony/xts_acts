@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import featureAbility from '@ohos.ability.featureAbility';
 
 export default function AVSessionManagerCallback() {
@@ -53,7 +53,7 @@ export default function AVSessionManagerCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let session;
             avSession.createAVSession(context, tag, "audio", (err, value) => {
                 if (err) {
@@ -87,7 +87,7 @@ export default function AVSessionManagerCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             avSession.createAVSession(context, tag, 'aaa', (err, data) => {
                 if (err) {
                     console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
@@ -108,7 +108,7 @@ export default function AVSessionManagerCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             avSession.createAVSession(context, '', type, (err, data) => {
                 if (err) {
                     console.info(`TestLog: AVSession created error: code: ${err.code}, message: ${err.message}`);
@@ -129,7 +129,7 @@ export default function AVSessionManagerCallback() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_CALLBACK_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let session;
             avSession.createAVSession(context, tag, "video", (err, value) => {
                 if (err) {

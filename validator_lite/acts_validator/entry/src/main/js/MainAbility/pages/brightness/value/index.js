@@ -18,7 +18,7 @@ import brightness from '@system.brightness';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         value: 0,
         getValue : 0,
         str: '',
@@ -77,7 +77,8 @@ export default {
             params: {
                 step: '操作步骤：点击获取亮度、拖动滑动条',
                 result: '预期结果：获取亮度时显示当前屏幕的亮度值，调节滑动条时看到屏幕有明暗变化',
-                url: 'pages/brightness/value/index'
+                url: 'pages/brightness/value/index',
+                itemIndex: this.itemIndex
             }
         });
     },

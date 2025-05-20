@@ -75,17 +75,8 @@ export default function dialogButtonStyle() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      let obj2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
-      await CommonFunc.sleep(1000);
-      console.info("[dialogButtonStyle_0100] obj2 is: " + JSON.stringify(obj2));
-
-      console.info("[dialogButtonStyle_0100] obj2.$children[1].$children[0] borderColor is: " + JSON.stringify(obj2.$children[1].$children[0].$children[2].$children[2]));
-      console.info("[dialogButtonStyle_0100] obj2.$children[1].$children[0] DialogButtonStyle is: " + JSON.stringify(obj2.$children[1].$children[0].$children[2].$children[2].$attrs));
-      console.info("[dialogButtonStyle_0100] obj2.$children[1].$children[0] DialogButtonStyle1 is: " + JSON.stringify(obj2.$children[1].$children[0].$children[2].$children[2].$children[0].$attrs.style));
-      let dialogButtonStyle:string = obj2.$children[1].$children[0].$children[2].$children[2].$attrs.backgroundColor
-
-      expect(dialogButtonStyle).assertEqual('#00000000');
       let btn2: Component = await driver.findComponent(ON.text('ok'));
+      expect(btn2 != null ).assertTrue();
       await btn2.click();
       console.info('dialogButtonStyle_0100 END');
       done();

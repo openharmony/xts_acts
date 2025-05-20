@@ -18,7 +18,7 @@ import device from '@system.device';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         str: '',
         title: 'deviceInfo',
         pass: 'true ;',
@@ -98,7 +98,8 @@ export default {
             params: {
                 step: '操作步骤：点击获取信息按钮',
                 result: '预期结果：屏幕上显示设备信息，滑动看到所有信息',
-                url: 'pages/deviceInfo/index'
+                url: 'pages/deviceInfo/index',
+                itemIndex: this.itemIndex
             }
         });
     },

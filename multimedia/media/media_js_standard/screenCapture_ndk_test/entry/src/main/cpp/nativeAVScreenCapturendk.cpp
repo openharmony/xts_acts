@@ -55,6 +55,7 @@ static OH_AVScreenCapture *screenCaptureNormal;
 static struct OH_AVScreenCapture_ContentFilter *g_contentFilter;
 static OH_AVScreenCapture *screenCaptureRecord;
 static OH_AVScreenCapture *screenCaptureSurface;
+static OH_AVScreenCapture *screenCaptureContentChange;
 
 void SetConfig(OH_AVScreenCaptureConfig &config)
 {
@@ -111,6 +112,15 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     (void)buffer;
     (void)bufferType;
     (void)timestamp;
+    (void)userData;
+}
+
+void OnCaptureContentChanged(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureContentChangedEvent event,
+    OH_Rect* area, void *userData)
+{
+    (void)capture;
+    (void)event;
+    (void)area;
     (void)userData;
 }
 
@@ -787,6 +797,31 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi
     }
     napi_value res;
     napi_create_int32(env, resCapture, &res);
+static napi_value normalAVScreenCaptureContentChangedCallback(napi_env env, napi_callback_info info)
+{
+    screenCaptureContentChange = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCaptureContentChange, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCaptureContentChange, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCaptureContentChange, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCaptureContentChange, OnBufferAvailable, nullptr);
+
+    OH_AVScreenCapture_SetCaptureContentChangedCallback(screenCaptureContentChange, OnCaptureContentChanged, nullptr);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureContentChange, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCaptureContentChange);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
     return res;
 }
 
@@ -828,6 +863,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue", nullptr,
             normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue, nullptr, nullptr, nullptr, napi_default,
             nullptr},
+        {"normalAVScreenCaptureContentChangedCallback", nullptr, normalAVScreenCaptureContentChangedCallback,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

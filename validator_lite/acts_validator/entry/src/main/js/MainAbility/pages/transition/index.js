@@ -17,7 +17,7 @@ import router from '@system.router';
 
 export default {
     data: {
-        itemIndex: NaN,
+        itemIndex: -1,
         animationName: 'animationTest',
         animationName2: 'animation2',
         str: '',
@@ -32,7 +32,8 @@ export default {
             params: {
                 step: '操作步骤：观察界面变化',
                 result: '预期结果：界面上元素平移后还原',
-                url: 'pages/transition/index'
+                url: 'pages/transition/index',
+                itemIndex: this.itemIndex
             }
         });
     },

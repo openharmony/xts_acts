@@ -300,5 +300,21 @@ export default function nativeAVScreenCaptureNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
+     * @tc.name         OH_AVScreenCapture_SetCaptureContentChangedCallback
+     * @tc.desc         OH_AVScreenCapture_SetCaptureContentChangedCallback
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureContentChangedCallback-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureContentChangedCallback();
+      console.info(Tag + "normalAVScreenCaptureContentChangedCallback-------------res:" + result);
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
