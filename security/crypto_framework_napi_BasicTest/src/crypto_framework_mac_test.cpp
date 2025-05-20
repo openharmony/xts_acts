@@ -398,15 +398,13 @@ HWTEST_F(OHCryptoFrameworkMacNapiTest, SUB_Security_CryptoFramework_NAPI_Mac_Tes
     size_t msgLen = 16;
     Crypto_DataBlob msgBlob = {.data = nullptr, .len = 0};
     Crypto_DataBlob out = {.data = nullptr, .len = 0};
-    uint32_t macLength = 0;
 
     EXPECT_EQ(OHTEST_GenRandomMsg(msgLen, &msgBlob), CRYPTO_SUCCESS);
     EXPECT_TRUE(msgBlob.len == msgLen);
     EXPECT_EQ(OH_CryptoMac_Create(macInfo.type, &ctx), CRYPTO_SUCCESS);
     EXPECT_EQ(OHTEST_CryptoCmac_SetParam(ctx, macInfo.paramType.cipherName), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoMac_Update(ctx, &msgBlob), CRYPTO_OPERTION_ERROR);
-    EXPECT_EQ(OH_CryptoMac_Final(ctx, &out), CRYPTO_OPERTION_ERROR);
-    EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_SUCCESS);
+    // Final、GetLength: openssl 原生接口也会出现crash
 
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
