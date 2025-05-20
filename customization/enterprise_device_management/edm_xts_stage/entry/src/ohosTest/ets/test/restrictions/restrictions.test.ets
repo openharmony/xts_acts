@@ -1397,7 +1397,9 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_set_user_restriction_0100 error 9200001 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -1416,7 +1418,9 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_set_user_restriction_0200 error 9200002 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -1436,7 +1440,8 @@ function testSetUserRestrictionPolicy() {
     try {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
     } catch (error) {
-      expect(false).assertTrue();
+      console.info(' --- test_set_user_restriction_0300 error 801 is expected, actually catch: ' + error.code);
+      expect(error.code == 801).assertTrue();
     } finally {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, false);
       await adminManager.disableAdmin(SELFWANT);

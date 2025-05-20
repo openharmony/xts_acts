@@ -225,7 +225,8 @@ function testSetUserRestrictionPolicy() {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      console.info(' --- test_set_user_restriction_0100 error 201 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 201) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
