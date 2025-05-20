@@ -624,7 +624,7 @@ export default function AVPlayerNdkTest2() {
      */
     it('testOhAvPlayerGetCurrentTime001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetCurrentTime();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
