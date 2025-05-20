@@ -20,7 +20,6 @@
                 "mkdir /data/local/tmp/opengl",
                 "tar zxvf /data/local/tmp/opengldata.tar.gz -C /data/local/tmp/opengl",
                 "chmod -R 777 /data/local/tmp/opengl/mustpass/*",
-                "cp -r /data/local/tmp/opengl/mustpass /data/local/tmp",
                 "cp -r /data/local/tmp/opengl/data/* /data/local/tmp/opengl",
                 "cp /data/local/tmp/libdeqp* /system/lib",
                 "cp /data/local/tmp/librosen_context* /system/lib"
@@ -53,15 +52,91 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLEglTest.qpa->ActsOpenGLEglTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGLgl30 gtfmasterTest.qpa->ActsOpenGLgl30gtfmasterTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLglesTest.qpa->ActsOpenGLglesTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGLgl30masterTest.qpa->ActsOpenGLgl30masterTest.qpa"
                 },
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLglTest.qpa->ActsOpenGLglTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGLgl31gtfmasterTest.qpa->ActsOpenGLgl31gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl31masterTest.qpa->ActsOpenGLgl31masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl32gtfmasterTest.qpa->ActsOpenGLgl32gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl32masterTest.qpa->ActsOpenGLgl32masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl33gtfmasterTest.qpa->ActsOpenGLgl33gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl33masterTest.qpa->ActsOpenGLgl33masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl40gtfmasterTest.qpa->ActsOpenGLgl40gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl40masterTest.qpa->ActsOpenGLgl40masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl41gtfmasterTest.qpa->ActsOpenGLgl41gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl41masterTest.qpa->ActsOpenGLgl41masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl42gtfmasterTest.qpa->ActsOpenGLgl42gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl42masterTest.qpa->ActsOpenGLgl42masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl43gtfmasterTest.qpa->ActsOpenGLgl43gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl43masterTest.qpa->ActsOpenGLgl43masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl44gtfmasterTest.qpa->ActsOpenGLgl44gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl44masterTest.qpa->ActsOpenGLgl44masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl45gtfmasterTest.qpa->ActsOpenGLgl45gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl45masterTest.qpa->ActsOpenGLgl45masterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl46gtfmasterTest.qpa->ActsOpenGLgl46gtfmasterTest.qpa"
+                },
+                {
+                    "name": "pull",
+                    "value": "/data/local/tmp/ActsOpenGLgl46masterTest.qpa->ActsOpenGLgl46masterTest.qpa"
                 }
             ]
         }

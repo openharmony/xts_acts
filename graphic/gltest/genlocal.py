@@ -53,7 +53,7 @@ if __name__ == '__main__':
     tasklogfile = suitename+".qpa"
     putdir = latestpath+putfile
     tasklogpath = tasklogfile
-    mustpasspath = "testcases/vulkandata/vk-default/"+mustpassfile
+    mustpasspath = "testcases/opengldata/mustpass/"+mustpassfile
     curtime = ""
     if os.path.exists(tasklogpath):
         size = os.path.getsize(tasklogpath)
