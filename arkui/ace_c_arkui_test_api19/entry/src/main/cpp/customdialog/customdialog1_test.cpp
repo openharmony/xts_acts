@@ -180,6 +180,7 @@ namespace ArkUICapiTest {
     OH_ArkUI_CustomDialog_SetLevelMode(dialogController, ARKUI_LEVEL_MODE_OVERLAY);
     OH_ArkUI_CustomDialog_SetLevelUniqueId(dialogController, 0);
     OH_ArkUI_CustomDialog_SetImmersiveMode(dialogController, ARKUI_IMMERSIVE_MODE_DEFAULT);
+    OH_ArkUI_CustomDialog_SetHoverModeEnabled(dialogController,true);
     
     OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(dialogController, column9, OnWillDismiss);
     OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(dialogController, column9, OnWillAppear);
