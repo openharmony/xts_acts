@@ -3934,55 +3934,51 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         if (!enable) {
           done();
         }
-        // 用于判断rk设备是不是801？
-        let mXComponentController = new XComponentController();
-        let navId = "";
-        let config: pipWindow.PiPConfiguration = {
-          context: context1,
-          componentController: mXComponentController,
-          navigationId: navId,
-          templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
-          contentWidth: 500,
-          contentHeight: 500,
-          localStorage: undefined
-        };
-        await pipWindow.create(config);
-
         await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
         await sleep(1000)
         await createPip1.click();
-        let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
         await sleep(1000)
-        await getPipInfo1.click();
-        let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
-        await sleep(1000)
-        let text1 = await getPipInfoText1.getText();
-        console.error(`${message} text1: ${text1}`);
-        expect(Number(text1.trim())).assertEqual(1)
-        let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
-        await sleep(1000)
-        await stopPip1.click();
-        await terminateAbility(message);
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          done();
+        } else {
+          let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+          await sleep(1000)
+          await getPipInfo1.click();
+          let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
+          await sleep(1000)
+          let text1 = await getPipInfoText1.getText();
+          console.error(`${message} text1: ${text1}`);
+          expect(Number(text1.trim())).assertEqual(1)
+          let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
+          await sleep(1000)
+          await stopPip1.click();
+          await terminateAbility(message);
 
-        await startAbility(message, globalThis.abilityContext);
-        let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
-        await sleep(1000)
-        await createPip2.click();
-        let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
-        await sleep(1000)
-        await getPipInfo2.click();
-        let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
-        await sleep(1000)
-        let text2 = await getPipInfoText2.getText();
-        console.error(`${message} text2: ${text2}`);
-        expect(Number(text2.trim())).assertEqual(1)
-        let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
-        await sleep(1000)
-        await stopPip2.click();
-        await terminateAbility(message);
-        done()
+          await startAbility(message, globalThis.abilityContext);
+          let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
+          await sleep(1000)
+          await createPip2.click();
+          let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
+          await sleep(1000)
+          await getPipInfo2.click();
+          let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
+          await sleep(1000)
+          let text2 = await getPipInfoText2.getText();
+          console.error(`${message} text2: ${text2}`);
+          expect(Number(text2.trim())).assertEqual(1)
+          let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
+          await sleep(1000)
+          await stopPip2.click();
+          await terminateAbility(message);
+          done()
+        }
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4011,55 +4007,51 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         if (!enable) {
           done();
         }
-        // 用于判断rk设备是不是801？
-        let mXComponentController = new XComponentController();
-        let navId = "";
-        let config: pipWindow.PiPConfiguration = {
-          context: context1,
-          componentController: mXComponentController,
-          navigationId: navId,
-          templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
-          contentWidth: 500,
-          contentHeight: 500,
-          localStorage: undefined
-        };
-        await pipWindow.create(config);
-
         await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
         await sleep(1000)
         await createPip1.click();
-        let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
         await sleep(1000)
-        await getPipInfo1.click();
-        let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
-        await sleep(1000)
-        let text1 = await getPipInfoText1.getText();
-        console.error(`${message} text1: ${text1}`);
-        expect(Number(text1.trim())).assertEqual(1)
-        let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
-        await sleep(1000)
-        await stopPip1.click();
-        await terminateAbility(message);
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          done();
+        } else {
+          let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+          await sleep(1000)
+          await getPipInfo1.click();
+          let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
+          await sleep(1000)
+          let text1 = await getPipInfoText1.getText();
+          console.error(`${message} text1: ${text1}`);
+          expect(Number(text1.trim())).assertEqual(1)
+          let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
+          await sleep(1000)
+          await stopPip1.click();
+          await terminateAbility(message);
 
-        await startAbility(message, globalThis.abilityContext);
-        let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
-        await sleep(1000)
-        await createPip3.click();
-        let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
-        await sleep(1000)
-        await getPipInfo3.click();
-        let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
-        await sleep(1000)
-        let text3 = await getPipInfoText3.getText();
-        console.error(`${message} text3: ${text3}`);
-        expect(Number(text3.trim())).assertEqual(1)
-        let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
-        await sleep(1000)
-        await stopPip3.click();
-        await terminateAbility(message);
-        done()
+          await startAbility(message, globalThis.abilityContext);
+          let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
+          await sleep(1000)
+          await createPip3.click();
+          let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
+          await sleep(1000)
+          await getPipInfo3.click();
+          let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
+          await sleep(1000)
+          let text3 = await getPipInfoText3.getText();
+          console.error(`${message} text3: ${text3}`);
+          expect(Number(text3.trim())).assertEqual(1)
+          let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
+          await sleep(1000)
+          await stopPip3.click();
+          await terminateAbility(message);
+          done()
+        }
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4088,56 +4080,53 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         if (!enable) {
           done();
         }
-        // 用于判断rk设备是不是801？
-        let mXComponentController = new XComponentController();
-        let navId = "";
-        let config: pipWindow.PiPConfiguration = {
-          context: context1,
-          componentController: mXComponentController,
-          navigationId: navId,
-          templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
-          contentWidth: 500,
-          contentHeight: 500,
-          localStorage: undefined
-        };
-        await pipWindow.create(config);
 
         await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
         await sleep(1000)
         await createPip4.click();
-        let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
         await sleep(1000)
-        await getPipInfo4.click();
-        let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
-        await sleep(1000)
-        let text4 = await getPipInfoText4.getText();
-        console.error(`${message} text4: ${text4}`);
-        expect(Number(text4.trim())).assertLarger(0);
-        expect(Number(text4.trim())).assertLess(1);
-        let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
-        await sleep(1000)
-        await stopPip4.click();
-        await terminateAbility(message);
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          done();
+        } else {
+          let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+          await sleep(1000)
+          await getPipInfo4.click();
+          let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
+          await sleep(1000)
+          let text4 = await getPipInfoText4.getText();
+          console.error(`${message} text4: ${text4}`);
+          expect(Number(text4.trim())).assertLarger(0);
+          expect(Number(text4.trim())).assertLess(1);
+          let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
+          await sleep(1000)
+          await stopPip4.click();
+          await terminateAbility(message);
 
-        await startAbility(message, globalThis.abilityContext);
-        let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
-        await sleep(1000)
-        await createPip2.click();
-        let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
-        await sleep(1000)
-        await getPipInfo2.click();
-        let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
-        await sleep(1000)
-        let text2 = await getPipInfoText2.getText();
-        console.error(`${message} text2: ${text2}`);
-        expect(Number(text2.trim())).assertEqual(Number(text4.trim()))
-        let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
-        await sleep(1000)
-        await stopPip2.click();
-        await terminateAbility(message);
-        done()
+          await startAbility(message, globalThis.abilityContext);
+          let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
+          await sleep(1000)
+          await createPip2.click();
+          let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
+          await sleep(1000)
+          await getPipInfo2.click();
+          let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
+          await sleep(1000)
+          let text2 = await getPipInfoText2.getText();
+          console.error(`${message} text2: ${text2}`);
+          expect(Number(text2.trim())).assertEqual(Number(text4.trim()))
+          let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
+          await sleep(1000)
+          await stopPip2.click();
+          await terminateAbility(message);
+          done()
+        }
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4166,56 +4155,53 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         if (!enable) {
           done();
         }
-        // 用于判断rk设备是不是801？
-        let mXComponentController = new XComponentController();
-        let navId = "";
-        let config: pipWindow.PiPConfiguration = {
-          context: context1,
-          componentController: mXComponentController,
-          navigationId: navId,
-          templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
-          contentWidth: 500,
-          contentHeight: 500,
-          localStorage: undefined
-        };
-        await pipWindow.create(config);
 
         await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
         await sleep(1000)
         await createPip4.click();
-        let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
         await sleep(1000)
-        await getPipInfo4.click();
-        let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
-        await sleep(1000)
-        let text4 = await getPipInfoText4.getText();
-        console.error(`${message} text4: ${text4}`);
-        expect(Number(text4.trim())).assertLarger(0);
-        expect(Number(text4.trim())).assertLess(1);
-        let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
-        await sleep(1000)
-        await stopPip4.click();
-        await terminateAbility(message);
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          done();
+        } else {
+          let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+          await sleep(1000)
+          await getPipInfo4.click();
+          let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
+          await sleep(1000)
+          let text4 = await getPipInfoText4.getText();
+          console.error(`${message} text4: ${text4}`);
+          expect(Number(text4.trim())).assertLarger(0);
+          expect(Number(text4.trim())).assertLess(1);
+          let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
+          await sleep(1000)
+          await stopPip4.click();
+          await terminateAbility(message);
 
-        await startAbility(message, globalThis.abilityContext);
-        let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
-        await sleep(1000)
-        await createPip3.click();
-        let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
-        await sleep(1000)
-        await getPipInfo3.click();
-        let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
-        await sleep(1000)
-        let text3 = await getPipInfoText3.getText();
-        console.error(`${message} text3: ${text3}`);
-        expect(Number(text3.trim())).assertEqual(Number(text4.trim()))
-        let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
-        await sleep(1000)
-        await stopPip3.click();
-        await terminateAbility(message);
-        done()
+          await startAbility(message, globalThis.abilityContext);
+          let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
+          await sleep(1000)
+          await createPip3.click();
+          let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
+          await sleep(1000)
+          await getPipInfo3.click();
+          let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
+          await sleep(1000)
+          let text3 = await getPipInfoText3.getText();
+          console.error(`${message} text3: ${text3}`);
+          expect(Number(text3.trim())).assertEqual(Number(text4.trim()))
+          let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
+          await sleep(1000)
+          await stopPip3.click();
+          await terminateAbility(message);
+          done()
+        }
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {

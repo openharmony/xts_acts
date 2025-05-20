@@ -87,9 +87,13 @@ struct Second {
   @State getPipWindowInfoText2: string = '';
   @State getPipWindowInfoText3: string = '';
   @State getPipWindowInfoText4: string = '';
+  @State isSupported: number = 0;
   build() {
     Row() {
       Column() {
+        Button(this.isSupported.toString())
+          .id('isSupported')
+          .height('2%')
         Button() {
           Text('CreateStartPipWindow1')
             .fontSize(10)
@@ -102,11 +106,13 @@ struct Second {
         .onClick(()=>{
           let promise : Promise<pipWindow.PiPController> = pipWindow.create(config1);
           promise.then(async (data : pipWindow.PiPController) => {
+            this.isSupported = 0;
             pipController = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
             await pipController.startPiP();
             console.log(`Succeeded startPiP`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -122,9 +128,11 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.isSupported = 0
             this.getPipWindowInfoText1 = data.size.scale.toString()
             console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -144,8 +152,10 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController!.stopPiP().then(async () => {
+            this.isSupported = 0
             console.info(`Succeeded in stopPiP.`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -162,11 +172,13 @@ struct Second {
         .onClick(()=>{
           let promise : Promise<pipWindow.PiPController> = pipWindow.create(config2);
           promise.then(async (data : pipWindow.PiPController) => {
+            this.isSupported = 0
             pipController2 = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
             await pipController2.startPiP();
             console.log(`Succeeded startPiP`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -182,9 +194,11 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController2!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.isSupported = 0
             this.getPipWindowInfoText2 = data.size.scale.toString()
             console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -205,8 +219,10 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController2!.stopPiP().then(async () => {
+            this.isSupported = 0
             console.info(`Succeeded in stopPiP.`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -223,11 +239,13 @@ struct Second {
         .onClick(()=>{
           let promise : Promise<pipWindow.PiPController> = pipWindow.create(config3);
           promise.then(async (data : pipWindow.PiPController) => {
+            this.isSupported = 0
             pipController3 = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
             await pipController3.startPiP();
             console.log(`Succeeded startPiP`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -243,9 +261,11 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController3!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.isSupported = 0
             this.getPipWindowInfoText3 = data.size.scale.toString()
             console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -266,8 +286,10 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController3!.stopPiP().then(async () => {
+            this.isSupported = 0
             console.info(`Succeeded in stopPiP.`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -284,11 +306,13 @@ struct Second {
         .onClick(()=>{
           let promise : Promise<pipWindow.PiPController> = pipWindow.create(config4);
           promise.then(async (data : pipWindow.PiPController) => {
+            this.isSupported = 0
             pipController4 = data;
             console.info(`Succeeded in creating pip controller. Data:${data}`);
             await pipController4.startPiP();
             console.log(`Succeeded startPiP`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -304,9 +328,11 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController4!.getPiPWindowInfo().then(async (data : pipWindow.PiPWindowInfo) => {
+            this.isSupported = 0
             this.getPipWindowInfoText4 = data.size.scale.toString()
             console.info(`Succeeded in getPiPWindowInfo. Data:${JSON.stringify(data)}`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to getPiPWindowInfo. Cause:${err.code}, message:${err.message}`);
           });
         })
@@ -327,8 +353,10 @@ struct Second {
         .height('2%')
         .onClick(()=>{
           pipController4!.stopPiP().then(async () => {
+            this.isSupported = 0
             console.info(`Succeeded in stopPiP.`);
           }).catch((err: BusinessError) => {
+            this.isSupported = err.code;
             console.error(`Failed to stopPiP. Cause:${err.code}, message:${err.message}`);
           });
         })
