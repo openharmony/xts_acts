@@ -16,10 +16,16 @@
 import webRunJavaScriptOnDocumentStartTest from './WebRunJavaScriptOnDocumentStartTest.test';
 import webRunJavaScriptOnDocumentEndTest from './WebRunJavaScriptOnDocumentEndTest.test';
 import webRunJavaScriptOnHeadEndTest from './WebRunJavaScriptOnHeadEndTest.test';
+import webJavaScriptOnDocumentStartTest from './WebJavaScriptOnDocumentStartTest.test';
+import webJavaScriptOnDocumentEndTest from './WebJavaScriptOnDocumentEndTest.test';
+import webViewRegisterJavaScriptProxyErrorCode from './WebViewRegisterJavaScriptProxyErrorCode.test';
 
 
 export default function testsuite() {
   webRunJavaScriptOnDocumentStartTest();
   webRunJavaScriptOnDocumentEndTest();
   webRunJavaScriptOnHeadEndTest();
+  webJavaScriptOnDocumentStartTest();
+  webJavaScriptOnDocumentEndTest();
+  webViewRegisterJavaScriptProxyErrorCode();
 }
