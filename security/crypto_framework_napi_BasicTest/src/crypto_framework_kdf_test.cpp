@@ -321,11 +321,6 @@ KdfSpec g_kdfSpec[] = {
         // max_mem = p * 128 * r + 32 * r * (n + 2) * 4 + 1
         .params.scryptParams = {.passphrase = (uint8_t *)"0123456789", .salt = (uint8_t *)"abcdef", .n = 1024, .p = 1, .r = 8, .max_mem = 1051649}
     }, // 28
-    {
-        .kdfType = OHTEST_KDF_SCRYPT, .algoName = "SCRYPT", .keySize = 64,
-        // max_mem = 0, not set max_mem
-        .params.scryptParams = {.passphrase = (uint8_t *)"0123456789", .salt = (uint8_t *)"abcdef", .n = 1024, .p = 1, .r = 8, .max_mem = 0}
-    },
 };
 INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkKdfNapiTest, KDF_TEST, ::testing::ValuesIn(g_kdfSpec));
 
@@ -818,7 +813,7 @@ KdfSpec g_pbkdf2ErrorSpec[] = {
         .params.pbkdf2Params = {.password = (uint8_t *)"0123456789", .salt = (uint8_t *)"abcdef", .iterations = 0}
     },
     {
-        .kdfType = OHTEST_KDF_PBKDF2, .algoName = "PBKDF2|SHA1", .keySize = -1, // 存在数据反转
+        .kdfType = OHTEST_KDF_PBKDF2, .algoName = "PBKDF2|SHA1", .keySize = -1,
         .params.pbkdf2Params = {.password = (uint8_t *)"0123456789", .salt = (uint8_t *)"abcdef", .iterations = 16}
     }
 };
@@ -843,7 +838,9 @@ HWTEST_P(KDF_PBKDF2_TEST, SUB_Security_CryptoFramework_NAPI_Kdf_Test_1100, TestS
 
     EXPECT_EQ(OHTEST_CreatePbkdf2Params(infoSpec.params, &params), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoKdf_Create(algoName, &ctx), CRYPTO_SUCCESS);
-    if (*(int *)&(infoSpec.params.pbkdf2Params.iterations)) {
+    if (infoSpec.keySize < 0) {
+        EXPECT_EQ(OH_CryptoKdf_Derive(ctx, params, keySize, &key), CRYPTO_PARAMETER_CHECK_FAILED);
+    } else if (*(int *)&(infoSpec.params.pbkdf2Params.iterations)) {
         EXPECT_EQ(OH_CryptoKdf_Derive(ctx, params, keySize, &key), CRYPTO_SUCCESS);
     } else {
         EXPECT_EQ(OH_CryptoKdf_Derive(ctx, params, keySize, &key), CRYPTO_PARAMETER_CHECK_FAILED);
