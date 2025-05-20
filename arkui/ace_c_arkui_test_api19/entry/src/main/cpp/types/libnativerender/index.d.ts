@@ -13,3 +13,7 @@
  * limitations under the License.
  */
 export const testTextPickerRange: (a: string) => void;
+
+export const CustomDialogTest1: (a: string) => void;
+
+export const GetKeyEventData: () => object;

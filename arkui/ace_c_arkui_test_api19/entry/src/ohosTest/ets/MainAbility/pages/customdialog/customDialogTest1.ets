@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,21 @@
  * limitations under the License.
  */
 
-import customDialogBackGroundTest from "./customdialog/customDialogBackGroundTest.test"
-import customDialogTest from "./customdialog/customDialogTest.test"
-import textPickerRangeTest from "./textpicker/textPickerRangeTest.test"
-import customDialogTest1 from "./customdialog/customDialogTest1.test"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export default function testsuite() {
-  customDialogBackGroundTest();
-  customDialogTest();
-  textPickerRangeTest();
-  customDialogTest1()
+@Entry
+@Component
+struct CustomDialogTest1 {
+  PAGE_TAG: string = 'CustomDialogTest1';
+
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.CustomDialogTest1(this.PAGE_TAG);
+      })
+    }
+  }
 }
