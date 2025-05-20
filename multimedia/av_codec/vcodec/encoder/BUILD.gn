@@ -81,6 +81,7 @@ ohos_moduletest_suite("ActsEncoderTest") {
     "ipc:ipc_core",
     "media_foundation:media_foundation",
     "media_foundation:native_media_core",
+    "openssl:libcrypto_shared",
     "window_manager:libwm",
   ]
 
