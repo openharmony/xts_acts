@@ -15,6 +15,7 @@
 
 #include "common/common.h"
 #include "manager/plugin_manager.h"
+#include "drag/notify_drag_test.h"
 #include "calendarPicker/calendar_picker_test.h"
 
 
@@ -30,6 +31,8 @@ static napi_value Init(napi_env env, napi_value exports)
 
     napi_property_descriptor desc[] = {
         {"getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNotifyDragTest", nullptr, NotifyDragTest::testNotifyDragTest001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
         {"calendarPickerTest", nullptr, CalendarPickerTest::CalendarPickerMarkTodayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         

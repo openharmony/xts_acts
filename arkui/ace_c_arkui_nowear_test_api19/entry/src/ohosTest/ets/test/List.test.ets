@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import NotifyDragTest from "./drag/NotifyDragTest.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
 
 export default function testsuite() {
+   NotifyDragTest();
    calendarPickerTest();
 }
 
