@@ -40,7 +40,11 @@ export default function PanGestureTest(){
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`);
       let driver = await Driver.create();
       await Utils.sleep(1000);
-      await driver.swipe(200,200,100,100,600);
+      let Column = await driver.findComponent(ON.id('ColumnID'));
+      await Utils.sleep(500);
+      let rect = await Column.getBounds();
+      await Utils.sleep(500);
+      await driver.swipe(Math.round(rect.left+200),Math.round(rect.top+200),Math.round(rect.left+1),Math.round(rect.top+1),600);
       await Utils.sleep(1000)
       let object1:ESObject = nativeRender.GetPanGestureData();
       console.info("PanGestureSetDistanceMapCode" + object1.PanGestureSetDistanceMapCode);
@@ -73,7 +77,11 @@ export default function PanGestureTest(){
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`);
       let driver = await Driver.create();
       await Utils.sleep(1000);
-      await driver.swipe(200,200,100,100,600);
+      let Column = await driver.findComponent(ON.id('ColumnID'));
+      await Utils.sleep(500);
+      let rect = await Column.getBounds();
+      await Utils.sleep(500);
+      await driver.swipe(Math.round(rect.left+200),Math.round(rect.top+200),Math.round(rect.left+1),Math.round(rect.top+1),600);
       await Utils.sleep(1000)
       let object1:ESObject = nativeRender.GetPanGestureData();
       console.info("PanGestureSetDistanceMapCode" + object1.PanGestureSetDistanceMapCode);
@@ -106,7 +114,11 @@ export default function PanGestureTest(){
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`);
       let driver = await Driver.create();
       await Utils.sleep(1000);
-      await driver.swipe(200,200,100,100,600);
+      let Column = await driver.findComponent(ON.id('ColumnID'));
+      await Utils.sleep(500);
+      let rect = await Column.getBounds();
+      await Utils.sleep(500);
+      await driver.swipe(Math.round(rect.left+200),Math.round(rect.top+200),Math.round(rect.left+1),Math.round(rect.top+1),600);
       await Utils.sleep(1000)
       let object1:ESObject = nativeRender.GetPanGestureData();
       console.info("PanGestureSetDistanceMapCode" + object1.PanGestureSetDistanceMapCode);
@@ -140,7 +152,11 @@ export default function PanGestureTest(){
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`);
       let driver = await Driver.create();
       await Utils.sleep(1000);
-      await driver.swipe(200,200,100,100,600);
+      let Column = await driver.findComponent(ON.id('ColumnID'));
+      await Utils.sleep(500);
+      let rect = await Column.getBounds();
+      await Utils.sleep(500);
+      await driver.swipe(Math.round(rect.left+200),Math.round(rect.top+200),Math.round(rect.left+1),Math.round(rect.top+1),600);
       await Utils.sleep(1000)
       let object1:ESObject = nativeRender.GetPanGestureData();
       console.info("PanGestureSetDistanceMapCode" + object1.PanGestureSetDistanceMapCode);
