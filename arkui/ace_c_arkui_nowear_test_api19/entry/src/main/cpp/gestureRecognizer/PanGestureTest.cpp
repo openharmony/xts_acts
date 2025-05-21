@@ -137,6 +137,9 @@ napi_value PanGestureTest::PanGestureTest001(napi_env env, napi_callback_info in
     ArkUI_NumberValue heightValue[] = {{800}};
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
+    ArkUI_AttributeItem id_item = {};
+    id_item.string = "ColumnID";
+    nodeAPI->setAttribute(column, NODE_ID, &id_item);
     // 创建手势
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
@@ -267,6 +270,9 @@ napi_value PanGestureTest::PanGestureTest002(napi_env env, napi_callback_info in
     ArkUI_NumberValue heightValue[] = {{800}};
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
+    ArkUI_AttributeItem id_item = {};
+    id_item.string = "ColumnID";
+    nodeAPI->setAttribute(column, NODE_ID, &id_item);
     // 创建手势
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
@@ -391,6 +397,9 @@ napi_value PanGestureTest::PanGestureTest003(napi_env env, napi_callback_info in
     ArkUI_NumberValue heightValue[] = {{800}};
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
+    ArkUI_AttributeItem id_item = {};
+    id_item.string = "ColumnID";
+    nodeAPI->setAttribute(column, NODE_ID, &id_item);
     // 创建手势
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
@@ -507,6 +516,9 @@ napi_value PanGestureTest::PanGestureTest004(napi_env env, napi_callback_info in
     ArkUI_NumberValue heightValue[] = {{800}};
     ArkUI_AttributeItem height = {heightValue, 1};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &height);
+    ArkUI_AttributeItem id_item = {};
+    id_item.string = "ColumnID";
+    nodeAPI->setAttribute(column, NODE_ID, &id_item);
     // 创建手势
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
