@@ -1999,5 +1999,39 @@ export default function DeviceInfoTest() {
             expect(performanceClass).assertEqual(CLASS_LEVEL_LOW);
             console.info('device_info_test_078 : end');
         })
+
+        /**
+         * @tc.number    SUB_STARTUP_JS_DEVCEINFO_079
+         * @tc.name      testGetDeviceTypes
+         * @tc.desc      Get DeviceTypes.
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('testGetDeviceTypes', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+            console.info('testGetDeviceTypes start');
+            let deviceTypes = deviceinfo.DeviceTypes.TYPE_DEFAULT;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_DEFAULT is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('default');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_PHONE;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_PHONE is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('phone');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_TABLET;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_TABLET is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('tablet');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_2IN1;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_2IN1 is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('2in1');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_TV;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_TV is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('tv');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_WEARABLE;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_WEARABLE is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('wearable');
+            deviceTypes = deviceinfo.DeviceTypes.TYPE_CAR;
+            console.info('the value of the deviceinfo DeviceTypes.TYPE_CAR is :' + deviceTypes);
+            expect(deviceTypes).assertEqual('car');
+            console.info('testGetDeviceTypes : end');
+        })
     })
 }
