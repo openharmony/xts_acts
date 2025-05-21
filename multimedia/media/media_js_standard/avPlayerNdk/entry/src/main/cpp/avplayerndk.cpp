@@ -748,7 +748,6 @@ static napi_value OhAvPlayerGetCurrentTime(napi_env env, napi_callback_info info
     waitAvPlayerStateChange(player, AV_PREPARED);
     OH_AVPlayer_Play(player);
     waitAvPlayerStateChange(player, AV_PLAYING);
-    OH_AVPlayer_Seek(player, PARAM_1, AV_SEEK_NEXT_SYNC);
     int i = PARAM_0;
     int32_t currentTime = -PARAM_1;
     waitAvPlayerStateChange(player, AV_PLAYING);
