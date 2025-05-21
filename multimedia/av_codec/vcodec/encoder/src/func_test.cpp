@@ -39,6 +39,7 @@ constexpr uint32_t SECOND = 1000;
 constexpr uint32_t DEFAULT_WIDTH = 1280;
 constexpr uint32_t DEFAULT_HEIGHT = 720;
 constexpr uint32_t MAX_QUALITY = 100;
+constexpr uint32_t NO_SUPPORT_MODE = 100;
 } // namespace
 namespace OHOS {
 namespace Media {
