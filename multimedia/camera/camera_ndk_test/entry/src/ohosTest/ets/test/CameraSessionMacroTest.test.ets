@@ -40,12 +40,12 @@ function isEmpty(data: cameraInfo) {
 }
 
 async function closeFd() {
-        console.info('case come in closeFd')
-        if (fdNumber != null) {
-            fs.closeSync(fdNumber);
-        } else {
-            console.info('[fs.closeSync] case fdNumber is null');
-        }
+  console.info('case come in closeFd')
+  if (fdNumber != null) {
+    fs.closeSync(fdNumber);
+  } else {
+    console.info('[fs.closeSync] case fdNumber is null');
+  }
 }
 
 async function getPhotoReceiverSurface() {
@@ -388,8 +388,8 @@ export default function CameraSessionMacroTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ENABLE_MACRO_PROMISE_001
-     * @tc.name      : Check capture session enable macro  with promise 
-     * @tc.desc      : Check capture session enable macro  with promise 
+     * @tc.name      : Check capture session enable macro  with promise enable true
+     * @tc.desc      : Check capture session enable macro  with promise enable true
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -407,8 +407,8 @@ export default function CameraSessionMacroTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_SESSION_ENABLE_MACRO_PROMISE_002
-     * @tc.name      : Check capture session enable macro  with promise 
-     * @tc.desc      : Check capture session enable macro  with promise 
+     * @tc.name      : Check capture session enable macro  with promise enable false
+     * @tc.desc      : Check capture session enable macro  with promise enable false
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
