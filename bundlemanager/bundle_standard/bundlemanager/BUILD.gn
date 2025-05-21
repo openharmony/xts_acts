@@ -30,6 +30,7 @@ group("bundlemanager") {
       "actsbmskilltest:ActsBmsSkillTest",
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbmsorientationetstest:ActsBmsOrientationTest",
+      "actsbmssetshortcutvisibletest:ActsBmsSetShortcutVisibleTest",
       "actsbundlegetmainelementnametest:ActsBundleGetMainElementNameTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
