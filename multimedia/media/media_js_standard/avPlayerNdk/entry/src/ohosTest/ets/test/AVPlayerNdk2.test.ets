@@ -74,7 +74,7 @@ export default function AVPlayerNdkTest2() {
     })
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_CREATE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_CREATE_0100
      * @tc.name       : testOhAvPlayerCreate001
      * @tc.desc       : test OH_AVPlayer_Create
      * @tc.size       : MediumTest
@@ -88,7 +88,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETURLSOURCE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETURLSOURCE_0100
      * @tc.name       : testOhAvPlayerSetURLSource001
      * @tc.desc       : test OH_AVPlayer_SetURLSource
      * @tc.size       : MediumTest
@@ -102,7 +102,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETURLSOURCE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETURLSOURCE_0300
      * @tc.name       : testOhAvPlayerSetURLSource003
      * @tc.desc       : test OH_AVPlayer_SetURLSource
      * @tc.size       : MediumTest
@@ -116,7 +116,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETFDSOURCE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETFDSOURCE_0100
      * @tc.name       : testOhAvPlayerSetFDSource001
      * @tc.desc       : test OH_AVPlayer_SetFDSource
      * @tc.size       : MediumTest
@@ -130,7 +130,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETFDSOURCE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETFDSOURCE_0200
      * @tc.name       : testOhAvPlayerSetFDSource002
      * @tc.desc       : test OH_AVPlayer_SetFDSource
      * @tc.size       : MediumTest
@@ -144,7 +144,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETFDSOURCE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETFDSOURCE_0300
      * @tc.name       : testOhAvPlayerSetFDSource003
      * @tc.desc       : test OH_AVPlayer_SetFDSource
      * @tc.size       : MediumTest
@@ -157,7 +157,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETFDSOURCE_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETFDSOURCE_0400
      * @tc.name       : testOhAvPlayerSetFDSource004
      * @tc.desc       : test OH_AVPlayer_SetFDSource
      * @tc.size       : MediumTest
@@ -171,7 +171,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIORENDERERINFO_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETAUDIORENDERERINFO_0100
      * @tc.name       : testOhAvPlayerSetAudioRendererInfo001
      * @tc.desc       : test OH_AVPlayer_SetAudioRendererInfo
      * @tc.size       : MediumTest
@@ -185,7 +185,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOINTERRUPTMODE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETAUDIOINTERRUPTMODE_0100
      * @tc.name       : testOhAvPlayerSetAudioInterruptMode001
      * @tc.desc       : test OH_AVPlayer_SetAudioInterruptMode
      * @tc.size       : MediumTest
@@ -199,7 +199,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOEFFECTMODE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETAUDIOEFFECTMODE_0100
      * @tc.name       : testOhAvPlayerSetAudioEffectMode001
      * @tc.desc       : test OH_AVPlayer_SetAudioEffectMode
      * @tc.size       : MediumTest
@@ -213,7 +213,7 @@ export default function AVPlayerNdkTest2() {
     });
     
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PREPARE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PREPARE_0100
      * @tc.name       : testOhAvPlayerPrepare001
      * @tc.desc       : test OH_AVPlayer_Prepare
      * @tc.size       : MediumTest
@@ -227,7 +227,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PREPARE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PREPARE_0200
      * @tc.name       : testOhAvPlayerPrepare002
      * @tc.desc       : test OH_AVPlayer_Prepare
      * @tc.size       : MediumTest
@@ -241,7 +241,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PREPARE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PREPARE_0300
      * @tc.name       : testOhAvPlayerPrepare003
      * @tc.desc       : test OH_AVPlayer_Prepare
      * @tc.size       : MediumTest
@@ -255,7 +255,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PLAY_0100
      * @tc.name       : testOhAvPlayerPlay001
      * @tc.desc       : test OH_AVPlayer_Play
      * @tc.size       : MediumTest
@@ -269,7 +269,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PLAY_0200
      * @tc.name       : testOhAvPlayerPlay002
      * @tc.desc       : test OH_AVPlayer_Play
      * @tc.size       : MediumTest
@@ -283,7 +283,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PLAY_0300
      * @tc.name       : testOhAvPlayerPlay003
      * @tc.desc       : test OH_AVPlayer_Play
      * @tc.size       : MediumTest
@@ -296,7 +296,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PLAY_0400
      * @tc.name       : testOhAvPlayerPlay004
      * @tc.desc       : test OH_AVPlayer_Play
      * @tc.size       : MediumTest
@@ -310,7 +310,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PAUSE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PAUSE_0100
      * @tc.name       : testOhAvPlayerPause001
      * @tc.desc       : test OH_AVPlayer_Pause
      * @tc.size       : MediumTest
@@ -324,7 +324,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PAUSE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PAUSE_0200
      * @tc.name       : testOhAvPlayerPause002
      * @tc.desc       : test OH_AVPlayer_Pause
      * @tc.size       : MediumTest
@@ -338,7 +338,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PAUSE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PAUSE_0300
      * @tc.name       : testOhAvPlayerPause003
      * @tc.desc       : test OH_AVPlayer_Pause
      * @tc.size       : MediumTest
@@ -352,7 +352,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PAUSE_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PAUSE_0400
      * @tc.name       : testOhAvPlayerPause004
      * @tc.desc       : test OH_AVPlayer_Pause
      * @tc.size       : MediumTest
@@ -365,7 +365,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PAUSE_0500
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_PAUSE_0500
      * @tc.name       : testOhAvPlayerPause005
      * @tc.desc       : test OH_AVPlayer_Pause
      * @tc.size       : MediumTest
@@ -379,7 +379,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_STOP_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_STOP_0100
      * @tc.name       : testOhAvPlayerStop001
      * @tc.desc       : test OH_AVPlayer_Stop
      * @tc.size       : MediumTest
@@ -393,7 +393,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_STOP_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_STOP_0200
      * @tc.name       : testOhAvPlayerStop002
      * @tc.desc       : test OH_AVPlayer_Stop
      * @tc.size       : MediumTest
@@ -407,7 +407,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_STOP_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_STOP_0300
      * @tc.name       : testOhAvPlayerStop003
      * @tc.desc       : test OH_AVPlayer_Stop
      * @tc.size       : MediumTest
@@ -421,7 +421,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_STOP_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_STOP_0400
      * @tc.name       : testOhAvPlayerStop004
      * @tc.desc       : test OH_AVPlayer_Stop
      * @tc.size       : MediumTest
@@ -435,7 +435,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RESET_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RESET_0100
      * @tc.name       : testOhAvPlayerReset001
      * @tc.desc       : test OH_AVPlayer_Reset
      * @tc.size       : MediumTest
@@ -449,7 +449,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RESET_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RESET_0200
      * @tc.name       : testOhAvPlayerReset002
      * @tc.desc       : test OH_AVPlayer_Reset
      * @tc.size       : MediumTest
@@ -462,7 +462,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RESET_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RESET_0300
      * @tc.name       : testOhAvPlayerReset003
      * @tc.desc       : test OH_AVPlayer_Reset
      * @tc.size       : MediumTest
@@ -475,7 +475,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RESET_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RESET_0400
      * @tc.name       : testOhAvPlayerReset004
      * @tc.desc       : test OH_AVPlayer_Reset
      * @tc.size       : MediumTest
@@ -489,7 +489,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RESET_0500
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RESET_0500
      * @tc.name       : testOhAvPlayerReset005
      * @tc.desc       : test OH_AVPlayer_Reset
      * @tc.size       : MediumTest
@@ -503,7 +503,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RELEASE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RELEASE_0100
      * @tc.name       : testOhAvPlayerRelease001
      * @tc.desc       : test OH_AVPlayer_Release
      * @tc.size       : MediumTest
@@ -517,7 +517,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RELEASE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RELEASE_0200
      * @tc.name       : testOhAvPlayerRelease002
      * @tc.desc       : test OH_AVPlayer_Release
      * @tc.size       : MediumTest
@@ -531,7 +531,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RELEASESYNC_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RELEASESYNC_0100
      * @tc.name       : testOhAvPlayerReleaseSync001
      * @tc.desc       : test OH_AVPlayer_ReleaseSync
      * @tc.size       : MediumTest
@@ -545,7 +545,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_RELEASESYNC_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_RELEASESYNC_0200
      * @tc.name       : testOhAvPlayerReleaseSync002
      * @tc.desc       : test OH_AVPlayer_ReleaseSync
      * @tc.size       : MediumTest
@@ -559,7 +559,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVOLUME_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVOLUME_0100
      * @tc.name       : testOhAvPlayerSetVolume001
      * @tc.desc       : test OH_AVPlayer_SetVolume
      * @tc.size       : MediumTest
@@ -573,7 +573,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVOLUME_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVOLUME_0200
      * @tc.name       : testOhAvPlayerSetVolume002
      * @tc.desc       : test OH_AVPlayer_SetVolume
      * @tc.size       : MediumTest
@@ -587,7 +587,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SEEK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SEEK_0100
      * @tc.name       : testOhAvPlayerSeek001
      * @tc.desc       : test OH_AVPlayer_Seek
      * @tc.size       : MediumTest
@@ -601,7 +601,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SEEK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SEEK_0200
      * @tc.name       : testOhAvPlayerSeek002
      * @tc.desc       : test OH_AVPlayer_Seek
      * @tc.size       : MediumTest
@@ -615,7 +615,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTIME_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETCURRENTTIME_0100
      * @tc.name       : testOhAvPlayerGetCurrentTime001
      * @tc.desc       : test OH_AVPlayer_GetCurrentTime
      * @tc.size       : MediumTest
@@ -629,7 +629,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTIME_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETCURRENTTIME_0200
      * @tc.name       : testOhAvPlayerGetCurrentTime002
      * @tc.desc       : test OH_AVPlayer_GetCurrentTime
      * @tc.size       : MediumTest
@@ -643,7 +643,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETVIDEOWIDTH_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETVIDEOWIDTH_0100
      * @tc.name       : testOhAvPlayerGetVideoWidth001
      * @tc.desc       : test OH_AVPlayer_GetVideoWidth
      * @tc.size       : MediumTest
@@ -657,7 +657,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETVIDEOWIDTH_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETVIDEOWIDTH_0200
      * @tc.name       : testOhAvPlayerGetVideoWidth002
      * @tc.desc       : test OH_AVPlayer_GetVideoWidth
      * @tc.size       : MediumTest
@@ -671,7 +671,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETVIDEOHEIGHT_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETVIDEOHEIGHT_0100
      * @tc.name       : testOhAvPlayerGetVideoHeight001
      * @tc.desc       : test OH_AVPlayer_GetVideoHeight
      * @tc.size       : MediumTest
@@ -685,7 +685,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETVIDEOHEIGHT_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETVIDEOHEIGHT_0200
      * @tc.name       : testOhAvPlayerGetVideoHeight002
      * @tc.desc       : test OH_AVPlayer_GetVideoHeight
      * @tc.size       : MediumTest
@@ -699,7 +699,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYBACKSPEED_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYBACKSPEED_0100
      * @tc.name       : testOhAvPlayerSetPlaybackSpeed001
      * @tc.desc       : test OH_AVPlayer_SetPlaybackSpeed
      * @tc.size       : MediumTest
@@ -713,7 +713,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYBACKSPEED_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYBACKSPEED_0200
      * @tc.name       : testOhAvPlayerSetPlaybackSpeed002
      * @tc.desc       : test OH_AVPlayer_SetPlaybackSpeed
      * @tc.size       : MediumTest
@@ -727,7 +727,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /* *
-        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKSPEED_0300
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_TWOSETPLAYBACKSPEED_0300
         * @tc.name      : testOhAvPlayerSetPlaybackSpeed003
         * @tc.desc      : test AvPlayerSetPlaybackSpeedNormalThree
         * @tc.size      : MediumTest
@@ -741,7 +741,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /* *
-        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKSPEED_0400
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_TWOSETPLAYBACKSPEED_0400
         * @tc.name      : testOhAvPlayerSetPlaybackSpeed004
         * @tc.desc      : test AvPlayerGetPlaybackSpeedAbnormalThree
         * @tc.size      : MediumTest
@@ -755,7 +755,7 @@ export default function AVPlayerNdkTest2() {
     });
   
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETPLAYBACKSPEED_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETPLAYBACKSPEED_0100
      * @tc.name       : testOhAvPlayerGetPlaybackSpeed001
      * @tc.desc       : test OH_AVPlayer_GetPlaybackSpeed
      * @tc.size       : MediumTest
@@ -769,7 +769,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETPLAYBACKSPEED_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETPLAYBACKSPEED_0200
      * @tc.name       : testOhAvPlayerGetPlaybackSpeed002
      * @tc.desc       : test OH_AVPlayer_GetPlaybackSpeed
      * @tc.size       : MediumTest
@@ -783,7 +783,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /* *
-        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_GETPLAYBACKSPEED_0300
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_TWOGETPLAYBACKSPEED_0300
         * @tc.name      : testOhAvPlayerGetPlaybackSpeed003
         * @tc.desc      : test AvPlayerGetPlaybackSpeedNormalThree
         * @tc.size      : MediumTest
@@ -797,7 +797,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /* *
-        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_GETPLAYBACKSPEED_0400
+        * @tc.number    : SUB_MULTIMEIDA_AVPLAYER_TWOGETPLAYBACKSPEED_0400
         * @tc.name      : testOhAvPlayerGetPlaybackSpeed004
         * @tc.desc      : test AvPlayerGetPlaybackSpeedAbnormalThree
         * @tc.size      : MediumTest
@@ -811,7 +811,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SELECTBITRATE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SELECTBITRATE_0100
      * @tc.name       : testOhAvPlayerSelectBitRate001
      * @tc.desc       : test OH_AVPlayer_SelectBitRate
      * @tc.size       : MediumTest
@@ -825,7 +825,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SELECTBITRATE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SELECTBITRATE_0200
      * @tc.name       : testOhAvPlayerSelectBitRate002
      * @tc.desc       : test OH_AVPlayer_SelectBitRate
      * @tc.size       : MediumTest
@@ -839,7 +839,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0100
      * @tc.name       : testOhAvPlayerSetVideoSurface001
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
@@ -853,7 +853,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0200
      * @tc.name       : testOhAvPlayerSetVideoSurface002
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
@@ -867,7 +867,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0300
      * @tc.name       : testOhAvPlayerSetVideoSurface003
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
@@ -881,7 +881,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0100
      * @tc.name       : testOhAvPlayerSetVideoSurface004
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
@@ -895,7 +895,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETDURATION_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETDURATION_0100
      * @tc.name       : testOhAvPlayerGetDuration001
      * @tc.desc       : test OH_AVPlayer_GetDuration
      * @tc.size       : MediumTest
@@ -909,7 +909,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETDURATION_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETDURATION_0200
      * @tc.name       : testOhAvPlayerGetDuration002
      * @tc.desc       : test OH_AVPlayer_GetDuration
      * @tc.size       : MediumTest
@@ -923,7 +923,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETSTATE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETSTATE_0100
      * @tc.name       : testOhAvPlayerGetState001
      * @tc.desc       : test OH_AVPlayer_GetState
      * @tc.size       : MediumTest
@@ -937,7 +937,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETSTATE_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETSTATE_0200
      * @tc.name       : testOhAvPlayerGetState002
      * @tc.desc       : test OH_AVPlayer_GetState
      * @tc.size       : MediumTest
@@ -950,7 +950,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETSTATE_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETSTATE_0300
      * @tc.name       : testOhAvPlayerGetState003
      * @tc.desc       : test OH_AVPlayer_GetState
      * @tc.size       : MediumTest
@@ -963,7 +963,7 @@ export default function AVPlayerNdkTest2() {
       done();
     });
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETSTATE_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETSTATE_0400
      * @tc.name       : testOhAvPlayerGetState004
      * @tc.desc       : test OH_AVPlayer_GetState
      * @tc.size       : MediumTest
@@ -977,7 +977,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_ISPLAYING_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_ISPLAYING_0100
      * @tc.name       : testOhAvPlayerIsPlaying001
      * @tc.desc       : test OH_AVPlayer_IsPlaying
      * @tc.size       : MediumTest
@@ -991,7 +991,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_ISPLAYING_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_ISPLAYING_0200
      * @tc.name       : testOhAvPlayerIsPlaying002
      * @tc.desc       : test OH_AVPlayer_IsPlaying
      * @tc.size       : MediumTest
@@ -1005,7 +1005,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_ISLOOPING_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_ISLOOPING_0100
      * @tc.name       : testOhAvPlayerIsLooping001
      * @tc.desc       : test OH_AVPlayer_IsLooping
      * @tc.size       : MediumTest
@@ -1019,7 +1019,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_ISLOOPING_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_ISLOOPING_0200
      * @tc.name       : testOhAvPlayerIsLooping002
      * @tc.desc       : test OH_AVPlayer_IsLooping
      * @tc.size       : MediumTest
@@ -1033,7 +1033,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETLOOPING_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETLOOPING_0100
      * @tc.name       : testOhAvPlayerSetLooping001
      * @tc.desc       : test OH_AVPlayer_SetLooping
      * @tc.size       : MediumTest
@@ -1047,7 +1047,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETLOOPING_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETLOOPING_0200
      * @tc.name       : testOhAvPlayerSetLooping002
      * @tc.desc       : test OH_AVPlayer_SetLooping
      * @tc.size       : MediumTest
@@ -1061,7 +1061,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYERCALLBACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYERCALLBACK_0100
      * @tc.name       : testOhAvPlayerSetPlayerCallback001
      * @tc.desc       : test OH_AVPlayer_SetPlayerCallback
      * @tc.size       : MediumTest
@@ -1075,7 +1075,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYERCALLBACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYERCALLBACK_0200
      * @tc.name       : testOhAvPlayerSetPlayerCallback002
      * @tc.desc       : test OH_AVPlayer_SetPlayerCallback
      * @tc.size       : MediumTest
@@ -1089,7 +1089,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYERCALLBACK_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYERCALLBACK_0300
      * @tc.name       : testOhAvPlayerSetPlayerCallback003
      * @tc.desc       : test OH_AVPlayer_SetPlayerCallback
      * @tc.size       : MediumTest
@@ -1103,7 +1103,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYERCALLBACK_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETPLAYERCALLBACK_0400
      * @tc.name       : testOhAvPlayerSetPlayerCallback004
      * @tc.desc       : test OH_AVPlayer_SetPlayerCallback
      * @tc.size       : MediumTest
@@ -1117,7 +1117,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SELECTTRACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SELECTTRACK_0100
      * @tc.name       : testOhAvPlayerSelectTrack001
      * @tc.desc       : test OH_AVPlayer_SelectTrack
      * @tc.size       : MediumTest
@@ -1131,7 +1131,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SELECTTRACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SELECTTRACK_0200
      * @tc.name       : testOhAvPlayerSelectTrack002
      * @tc.desc       : test OH_AVPlayer_SelectTrack
      * @tc.size       : MediumTest
@@ -1145,7 +1145,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_DESELECTTRACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_DESELECTTRACK_0100
      * @tc.name       : testOhAvPlayerDeselectTrack001
      * @tc.desc       : test OH_AVPlayer_DeselectTrack
      * @tc.size       : MediumTest
@@ -1159,7 +1159,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_DESELECTTRACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_DESELECTTRACK_0200
      * @tc.name       : testOhAvPlayerDeselectTrack002
      * @tc.desc       : test OH_AVPlayer_DeselectTrack
      * @tc.size       : MediumTest
@@ -1173,7 +1173,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTRACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETCURRENTTRACK_0100
      * @tc.name       : testOhAvPlayerGetCurrentTrack001
      * @tc.desc       : test OH_AVPlayer_GetCurrentTrack
      * @tc.size       : MediumTest
@@ -1187,7 +1187,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_GETCURRENTTRACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_GETCURRENTTRACK_0200
      * @tc.name       : testOhAvPlayerGetCurrentTrack002
      * @tc.desc       : test OH_AVPlayer_GetCurrentTrack
      * @tc.size       : MediumTest
@@ -1201,7 +1201,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACK_0100
      * @tc.name       : testOhAvPlayerSetOnInfoCallback001
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1215,7 +1215,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACK_0200
      * @tc.name       : testOhAvPlayerSetOnInfoCallback002
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1229,7 +1229,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACK_0300
      * @tc.name       : testOhAvPlayerSetOnInfoCallback003
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1243,7 +1243,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACK_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACK_0400
      * @tc.name       : testOhAvPlayerSetOnInfoCallback004
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1257,7 +1257,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKABNORMAL_0100
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal001
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1271,7 +1271,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKABNORMAL_0200
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal002
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1285,7 +1285,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKABNORMAL_0300
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal003
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1299,7 +1299,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKABNORMAL_0400
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal004
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1313,7 +1313,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKABNORMAL_0500
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKABNORMAL_0500
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackAbnormal005
      * @tc.desc       : test OH_AVPlayer_SetOnInfoCallback
      * @tc.size       : MediumTest
@@ -1327,7 +1327,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONINFOCALLBACKWITHPREPARE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONINFOCALLBACKWITHPREPARE_0100
      * @tc.name       : testOhAvPlayerSetOnInfoCallbackWithPrepare001
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1341,7 +1341,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACK_0100
      * @tc.name       : testOhAvPlayerSetOnErrorCallback001
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1355,7 +1355,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACK_0200
      * @tc.name       : testOhAvPlayerSetOnErrorCallback002
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1369,7 +1369,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACK_0300
      * @tc.name       : testOhAvPlayerSetOnErrorCallback003
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1383,7 +1383,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACK_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACK_0400
      * @tc.name       : testOhAvPlayerSetOnErrorCallback004
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1397,7 +1397,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACKABNORMAL_0100
      * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal001
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1411,7 +1411,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0200
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACKABNORMAL_0200
      * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal002
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1425,7 +1425,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0300
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACKABNORMAL_0300
      * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal003
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1439,7 +1439,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0400
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACKABNORMAL_0400
      * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal004
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
@@ -1453,7 +1453,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_CPI_SETONERRORCALLBACKABNORMAL_0500
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWOCPI_SETONERRORCALLBACKABNORMAL_0500
      * @tc.name       : testOhAvPlayerSetOnErrorCallbackAbnormal005
      * @tc.desc       : test OH_AVPlayer_SetOnErrorCallback
      * @tc.size       : MediumTest
