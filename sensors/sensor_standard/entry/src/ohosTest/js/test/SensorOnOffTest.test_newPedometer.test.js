@@ -970,4 +970,37 @@ describe("SensorJsTest_sensor_56", function () {
                 done();
             }
     })
+
+    /*
+    * @tc.number: SensorOnOff_ErrCode_Test_0029
+    * @tc.name: SensorOnOff_ErrCode_Test_0029
+    * @tc.desc:Verification results of the incorrect parameters of the test interface
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("SensorOnOff_ErrCode_Test_0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+            try{
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER,(error, data) => {
+                    if (error) {
+                        console.error('SensorOnOff_ErrCode_Test_0029 getSingleSensor fail:' +JSON.stringify(error));
+                        done();
+                    } else {
+                    try {
+                        expect(typeof(data)).assertEqual("object");
+                        sensor.once(sensor.SensorId.PEDOMETER, callback, {'interval': -100000000});
+                        done();
+                    } catch (error) {
+                        console.error('SensorOnOff_ErrCode_Test_0029 catch error:' +JSON.stringify(error));
+                        expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
+                        done();
+                    }
+                    }
+                })
+            } catch (error) {
+                console.info('getSingleSensor fail, errCode:' + error.code + ' ,msg:' + error.message);
+                expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+                done();
+            }
+    })
 })}
