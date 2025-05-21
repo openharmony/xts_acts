@@ -2171,7 +2171,6 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponent(ON.text('bottom'))
             expect(await button.getText() == 'bottom').assertTrue()
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -2189,7 +2188,6 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponent(ON.text('bottom'))
             expect(await button.getText() == 'bottom').assertTrue()
-            await scrollBar.scrollToTop()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -2207,8 +2205,8 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             await scrollBar.scrollToTop()
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.text('next page'))
-            expect(await button.getText() == 'next page').assertTrue()
+            let button = await driver.findComponent(ON.text('bottom'))
+            expect(button == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -2226,8 +2224,8 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             await scrollBar.scrollToTop(600)
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponent(ON.text('next page'))
-            expect(await button.getText() == 'next page').assertTrue()
+            let button = await driver.findComponent(ON.text('bottom'))
+            expect(button == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 

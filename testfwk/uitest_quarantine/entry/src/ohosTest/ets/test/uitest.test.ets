@@ -130,8 +130,8 @@ export default function UiTest() {
       let center = await button.getBoundsCenter();
       await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
       await driver.delayMs(waitUiReadyMs)
-      let text1 = await driver.findComponent(ON.text('two'))
-      let text2 = await driver.findComponent(ON.text('three'))
+      let text1 = await driver.findComponent(ON.text('one'))
+      let text2 = await driver.findComponent(ON.text('two'))
       let point1 = await text1.getBoundsCenter()
       let point2 = await text2.getBoundsCenter()
       await driver.mouseDrag(point1, point2, 600)
