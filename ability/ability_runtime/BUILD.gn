@@ -49,7 +49,7 @@ group("ability_runtime") {
       "actscleantemptest:cleantempfiles",
       "actscollaborateresulttest:actscollaborateresulttest",
       "actscompletionhandlertest:actscompletionhandlertest",
-      "actscreatebundlecontexttest:actscreatebundlecontexttest",
+      "actscreatebundlecontexttest:ActsCreateBundleContextTest",
       "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
