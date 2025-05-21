@@ -1,0 +1,64 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//test/xts/tools/build/suite.gni")
+
+import("//test/xts/acts/graphic/vktest/comm.gni")
+
+action("cpOpenGL") {
+  testonly = true
+  script = "cpOpenGL.sh"
+  outputs = [ "${target_out_dir}/cpOpenGL.log" ]
+  root_opengl_path = rebase_path("//")
+  args = [ "$root_opengl_path" ]
+  deps = [
+    ":openGLTest",
+    "//third_party/vk-gl-cts/framework/platform:glcts",
+
+    # "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
+    # "//third_party/vk-gl-cts/external/openglcts/modules:deqp_glcts",
+  ]
+}
+
+group("openGLTest") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      # "src/egltest:ActsOpenGLEglTest",
+      # "src/glestest:ActsOpenGLglesTest",
+      # "src/gltest:ActsOpenGLglTest",
+      "src/gltest_main/gl30gtfmaster:ActsOpenGLgl30gtfmasterTest",
+      "src/gltest_main/gl30master:ActsOpenGLgl30masterTest",
+      "src/gltest_main/gl31gtfmaster:ActsOpenGLgl31gtfmasterTest",
+      "src/gltest_main/gl31master:ActsOpenGLgl31masterTest",
+      "src/gltest_main/gl32gtfmaster:ActsOpenGLgl32gtfmasterTest",
+      "src/gltest_main/gl32master:ActsOpenGLgl32masterTest",
+      "src/gltest_main/gl33gtfmaster:ActsOpenGLgl33gtfmasterTest",
+      "src/gltest_main/gl33master:ActsOpenGLgl33masterTest",
+      "src/gltest_main/gl40gtfmaster:ActsOpenGLgl40gtfmasterTest",
+      "src/gltest_main/gl40master:ActsOpenGLgl40masterTest",
+      "src/gltest_main/gl41gtfmaster:ActsOpenGLgl41gtfmasterTest",
+      "src/gltest_main/gl41master:ActsOpenGLgl41masterTest",
+      "src/gltest_main/gl42gtfmaster:ActsOpenGLgl42gtfmasterTest",
+      "src/gltest_main/gl42master:ActsOpenGLgl42masterTest",
+      "src/gltest_main/gl43gtfmaster:ActsOpenGLgl43gtfmasterTest",
+      "src/gltest_main/gl43master:ActsOpenGLgl43masterTest",
+      "src/gltest_main/gl44gtfmaster:ActsOpenGLgl44gtfmasterTest",
+      "src/gltest_main/gl44master:ActsOpenGLgl44masterTest",
+      "src/gltest_main/gl45gtfmaster:ActsOpenGLgl45gtfmasterTest",
+      "src/gltest_main/gl45master:ActsOpenGLgl45masterTest",
+      "src/gltest_main/gl46gtfmaster:ActsOpenGLgl46gtfmasterTest",
+      "src/gltest_main/gl46master:ActsOpenGLgl46masterTest",
+    ]
+  }
+}
