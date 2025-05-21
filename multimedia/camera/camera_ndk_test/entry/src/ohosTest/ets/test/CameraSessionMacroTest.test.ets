@@ -29,9 +29,6 @@ const CAMERA_OK = 0;
 const CAMERA_INVALID_ARGUMENT = 7400101;
 const CAMERA_OPERATION_NOT_ALLOWED = 7400102;
 const CAMERA_SESSION_NOT_CONFIG = 7400103;
-
-
-
 let mEnableCheckInvalidFocusPoint = false;
 let receiver: image.ImageReceiver;
 
