@@ -43,6 +43,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -70,6 +71,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -100,6 +102,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -130,6 +133,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -160,6 +164,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -190,6 +195,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -220,6 +226,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -247,6 +254,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -277,6 +285,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -304,6 +313,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             videoProcessingEngine.initializeEnvironment();
@@ -326,6 +336,7 @@
         if (deviceInfo.deviceType != 'phone') {
             expect(true).assertTrue();
             done();
+            return;
         }
         try {
             videoProcessingEngine.initializeEnvironment();
