@@ -27,7 +27,7 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                 "./resource/image/CUVAHdr.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
+                "./resource/image/CUVAHdr.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
                 "./resource/image/JPEGVividSingle.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
                 "./resource/image/mimeType_test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
                 "./resource/image/mimeType_test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
