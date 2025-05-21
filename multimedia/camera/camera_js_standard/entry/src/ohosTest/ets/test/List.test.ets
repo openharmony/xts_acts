@@ -40,36 +40,33 @@ import CameraPhotoSessionTest from './CameraPhotoSessionTest.test.ets'
 import {CameraConcurrentTest,isSupportCameras} from './CameraConcurrentTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
-let isSupportCamera = isSupportCameras();
 
 export default function cameraKit() {
   console.info(TAG + 'Entering cameraKit')
   //无权限优先执行
-  if (isSupportCamera) {
-    CameraNoPermissionErrorCodeTest()
-    CameraVideoQualityPrioritizationTest()
-    cameraTorchTest()
-    cameraInputTest()
-    cameraVideoSuperStabilizationTest()
-    cameraJSUnitOutput()
-    cameraSessionFlashTest()
-    cameraSessionExposureTest()
-    cameraSessionFocusTest()
-    cameraSessionZoomRatioTest()
-    cameraSessionVideoStabilizationTest()
-    cameraSessionBaseTest()
-    cameraSessionMultiSessionTest();
-    CameraErrorCodeUsecaseTest()
-    cameraManagerTest()
-    cameraPreconfigTest()
-    cameraEnumTest()
-    cameraSecureSessionTest()
-    CameraSessionCameraRotationTest()
-    CameraVideoCodecTypeTest()
-    cameraSessionAutoDeviceSwitchTest()
-    CameraMirrorTest()
-    CameraVideoMirrorTest()
-    CameraPhotoSessionTest()
-    CameraConcurrentTest()
-  }
+  CameraNoPermissionErrorCodeTest()
+  CameraVideoQualityPrioritizationTest()
+  cameraTorchTest()
+  cameraInputTest()
+  cameraVideoSuperStabilizationTest()
+  cameraJSUnitOutput()
+  cameraSessionFlashTest()
+  cameraSessionExposureTest()
+  cameraSessionFocusTest()
+  cameraSessionZoomRatioTest()
+  cameraSessionVideoStabilizationTest()
+  cameraSessionBaseTest()
+  cameraSessionMultiSessionTest();
+  CameraErrorCodeUsecaseTest()
+  cameraManagerTest()
+  cameraPreconfigTest()
+  cameraEnumTest()
+  cameraSecureSessionTest()
+  CameraSessionCameraRotationTest()
+  CameraVideoCodecTypeTest()
+  cameraSessionAutoDeviceSwitchTest()
+  CameraMirrorTest()
+  CameraVideoMirrorTest()
+  CameraPhotoSessionTest()
+  CameraConcurrentTest()
 }
