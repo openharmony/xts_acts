@@ -185,8 +185,10 @@ export default function AVScreenCaptureRecorderTest() {
         // mediaTestBase.RELEASECORDER_EVENT,
         mediaTestBase.END_EVENT);
 
+      mediaTestBase.outputName = mediaTestBase.resourceName();
+      mediaTestBase.outputFdObject = mediaTestBase.getFd(mediaTestBase.outputName);
       let avConfig: media.AVScreenCaptureRecordConfig = {
-        fd: -1,
+        fd: mediaTestBase.outputFdObject.fd,
         frameWidth: 640,
         frameHeight: 480,
         videoBitrate: 10000000,
