@@ -43,7 +43,7 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
     });
     try {
       let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
-      console.log(`====>ActsShareExtensionAbility deviceType: ${deviceType}`);
+      console.log(`====>ActsShareExtensionAbility deviceSupport: ${deviceSupport}`);
       if (deviceSupport === 'false') {
         console.log('====>ActsShareExtensionAbility terminateSelf start');
         setTimeout(() => {
