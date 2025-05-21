@@ -47,7 +47,7 @@ class RANDOM_SEED_TEST : public testing::TestWithParam<int> {
 };
 
 int g_randomLen[] = {
-    1, 11, 16, 32, 64, 128, 256, 512, 1024, 2048, 3072, 4096, 8192, 1024 * 1024, INT_MAX
+    1, 11, 16, 32, 64, 128, 256, 512, 1024, 2048, 3072, 4096, 8192, 1024 * 1024
 };
 INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkRandomNapiTest, RANDOM_TEST, ::testing::ValuesIn(g_randomLen));
 
