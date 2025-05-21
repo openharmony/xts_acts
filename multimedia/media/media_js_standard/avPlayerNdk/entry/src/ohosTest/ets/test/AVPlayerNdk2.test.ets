@@ -881,7 +881,7 @@ export default function AVPlayerNdkTest2() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_TWONDK_SETVIDEOSURFACE_0400
      * @tc.name       : testOhAvPlayerSetVideoSurface004
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest

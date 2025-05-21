@@ -180,7 +180,8 @@ static int64_t GetFileSize(const char *fileName)
     return fileSize;
 }
 
-static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info info){
+static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     size_t argc = PARAM_1;
     napi_value args[PARAM_1] = {nullptr};
@@ -425,7 +426,11 @@ static napi_value OhAvPlayerPauseSuccess(napi_env env, napi_callback_info info)
     size_t argc = PARAM_5;
     napi_value args[PARAM_5] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam, fifthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
+    int fifthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
