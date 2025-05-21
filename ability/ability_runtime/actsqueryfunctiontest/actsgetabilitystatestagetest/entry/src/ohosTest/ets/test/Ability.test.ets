@@ -19,7 +19,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from "@ohos.base";
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriberInfo_MainAbility: commonEvent.CommonEventSubscribeInfo = {
   events: ["GetCurrentTopAbility"],
 };
@@ -40,7 +40,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback2 = (): void => {
         console.log("====>onAbilityForegroundCallback2====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0200 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;
@@ -108,7 +108,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback3 = (): void => {
         console.log("====>onAbilityForegroundCallback3====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0300 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;
@@ -189,7 +189,7 @@ export default function abilityTest() {
       let subscriber: commonEvent.CommonEventSubscriber;
       let onAbilityForegroundCallback6 = (): void => {
         console.log("====>onAbilityForegroundCallback6====");
-        if (deviceType === '2in1') {
+        if (deviceSupport === 'false') {
           console.log("====>ACTS_GetAbilityState_0600 end====");
           commonEvent.unsubscribe(subscriber, UnSubscribeCallback);
           return;

@@ -24,7 +24,7 @@ import Want from '@ohos.app.ability.Want';
 import commonEventManager from '@ohos.commonEventManager';
 
 let driver = Driver.create();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
@@ -76,7 +76,7 @@ export default function OnAndOffScreenTest() {
       await sleep(1500)
       console.log(TAG + "slideScreen start");
       let cmd = '';
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         cmd = 'uinput -T -d 1070 1070 -u 1070 1070';
       } else {
         cmd = 'uinput -T -m 300 2700 280 200';
@@ -149,7 +149,7 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onActive) {
-            if (deviceType === '2in1') {
+            if (deviceSupport === 'false') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -239,7 +239,7 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onForeground) {
-            if (deviceType === '2in1') {
+            if (deviceSupport === 'false') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -330,7 +330,7 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onForeground && !flag) {
-            if (deviceType === '2in1') {
+            if (deviceSupport === 'false') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -456,7 +456,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2) {
-            if (deviceType === '2in1') {
+            if (deviceSupport === 'false') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
@@ -578,7 +578,7 @@ export default function OnAndOffScreenTest() {
           }
 
           if (data.event == onForeground2 && !flag) {
-            if (deviceType === '2in1') {
+            if (deviceSupport === 'false') {
               setTimeout(async () => {
                 commonEventManager.unsubscribe(subscriber, async (err, data) => {
                   console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
