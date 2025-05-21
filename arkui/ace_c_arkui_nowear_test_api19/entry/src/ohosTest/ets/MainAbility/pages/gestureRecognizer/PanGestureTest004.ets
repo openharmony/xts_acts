@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,21 @@
  * limitations under the License.
  */
 
-import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
-import PanGestureTest from "./gestureRecognizer/PanGestureTest.test"
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export default function testsuite() {
-   calendarPickerTest();
-   PanGestureTest();
+@Entry
+@Component
+struct PanGestureTest004 {
+  PAGE_TAG: string = 'PanGestureTest004';
+
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.PanGestureTest004(this.PAGE_TAG);
+      })
+    }
+  }
 }
-

@@ -16,6 +16,7 @@ add_library(nativerender SHARED
     component/component.cpp
     component/calendarPicker_component.cpp
     calendarPicker/calendar_picker_test.cpp
+    gestureRecognizer/PanGestureTest.cpp
     
 )
 
