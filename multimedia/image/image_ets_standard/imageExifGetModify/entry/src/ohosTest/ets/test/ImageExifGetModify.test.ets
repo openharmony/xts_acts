@@ -19573,9 +19573,12 @@ export default function imageExifGetModifyTest() {
                 .then(() => {
                   hilog.info(0x0000, testTag, `modifyImageProperty promise success %{public}s %{public}s %{public}s`, key,testType); 
                   checkResult = true
+                  done();
                 })
                 .catch(async (err: BusinessError) => {
                   hilog.info(0x0000, testTag, `modifyImageProperty promise failed %{public}s %{public}s %{public}s`, key, err.code);
+                  expect().assertFail();
+                  done();
                 })
               if (imageSourceApi != undefined) {
                 imageSourceApi.release();
