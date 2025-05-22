@@ -61,20 +61,19 @@ static int32_t g_gPlaytime = 100;
 int g_currentPathId = 0;
 
 #undef LOG_DOMIN 0x3200
-#define LOG_TAG 
 #define LOG_TAG "AVPlayerNdk_xtsDemo"
 #define LOG_MSG_TAG "AVPlayerNdk"
 #define LOG(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
 #define LOGE(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
 #define LOGD(format, ...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, 0xFF00, LOG_MSG_TAG, format, ##__VA_ARGS__))
 
-void waitAvPlayerStateChange(OH_AVPlayer *player, AVPlayerState state) {
+void waitAvPlayerStateChange(OH_AVPlayer *player, AVPlayerState state)
+{
     AVPlayerState currentStage;
-    OH_AVErrCode avErrorCode;
-    avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
+    OH_AVErrCode avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
     const int32_t kMaxSleepAttempts = 4;
     int32_t gSleepTotalTime = 0;
-    while(state != currentStage) {
+    while (state != currentStage) {
         gSleepTotalTime++;
         if (gSleepTotalTime > kMaxSleepAttempts) {
             break;
@@ -86,13 +85,13 @@ void waitAvPlayerStateChange(OH_AVPlayer *player, AVPlayerState state) {
     }
 }
 
-void checkAvPlayerStateChange(napi_env env, OH_AVPlayer *player, AVPlayerState state) {
+void checkAvPlayerStateChange(napi_env env, OH_AVPlayer *player, AVPlayerState state)
+{
     AVPlayerState currentStage;
-    OH_AVErrCode avErrorCode;
-    avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
+    OH_AVErrCode avErrorCode = OH_AVPlayer_GetState(player, &currentStage);
     const int32_t kMaxSleepAttempts = 4;
     int32_t gSleepTotalTime = 0;
-    while(state != currentStage) {
+    while (state != currentStage) {
         gSleepTotalTime++;
         if (gSleepTotalTime > kMaxSleepAttempts) {
             napi_throw_error((env), nullptr, "error : check change State Timeout 400ms");
@@ -181,7 +180,8 @@ static int64_t GetFileSize(const char *fileName)
     return fileSize;
 }
 
-static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info info){
+static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info info)
+{
     napi_value result = nullptr;
     size_t argc = PARAM_1;
     napi_value args[PARAM_1] = {nullptr};
@@ -195,7 +195,7 @@ static napi_value OhAvPlayerSetCurrentPathId(napi_env env, napi_callback_info in
 
 static OH_AVErrCode GetFDSourceInfo(OH_AVPlayer *player) {
     std::string filePath = PATH_NO_AUDIO;
-    if(g_currentPathId == 0) {
+    if (g_currentPathId == 0) {
         filePath = PATH_NO_AUDIO;
     } else if (g_currentPathId == 1) {
         filePath = PATH;
@@ -356,7 +356,10 @@ static napi_value OhAvPlayerPlaySuccess(napi_env env, napi_callback_info info)
     size_t argc = PARAM_4;
     napi_value args[PARAM_4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
@@ -388,7 +391,10 @@ static napi_value OhAvPlayerPlay(napi_env env, napi_callback_info info)
     size_t argc = PARAM_4;
     napi_value args[PARAM_4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
@@ -420,7 +426,11 @@ static napi_value OhAvPlayerPauseSuccess(napi_env env, napi_callback_info info)
     size_t argc = PARAM_5;
     napi_value args[PARAM_5] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam, fifthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
+    int fifthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
@@ -494,7 +504,10 @@ static napi_value OhAvPlayerStopSuccess(napi_env env, napi_callback_info info)
     size_t argc = PARAM_4;
     napi_value args[PARAM_4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
@@ -526,7 +539,10 @@ static napi_value OhAvPlayerStop(napi_env env, napi_callback_info info)
     size_t argc = PARAM_4;
     napi_value args[PARAM_4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int firstParam, secondParam, thirdParam, fourthParam;
+    int firstParam;
+    int secondParam;
+    int thirdParam;
+    int fourthParam;
     napi_get_value_int32(env, args[PARAM_0], &firstParam);
     napi_get_value_int32(env, args[PARAM_1], &secondParam);
     napi_get_value_int32(env, args[PARAM_2], &thirdParam);
@@ -1975,7 +1991,8 @@ static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"AvPlayerCreate", nullptr, OhAvPlayerCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"OhAvPlayerSetCurrentPathId", nullptr, OhAvPlayerSetCurrentPathId, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OhAvPlayerSetCurrentPathId", nullptr, OhAvPlayerSetCurrentPathId, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
         {"AvPlayerSetURLSourceAbnormalOne", nullptr, OhAvPlayerSetURLSourceAbnormalOne, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         {"AvPlayerSetURLSourceAbnormalTwo", nullptr, OhAvPlayerSetURLSourceAbnormalTwo, nullptr, nullptr, nullptr,
