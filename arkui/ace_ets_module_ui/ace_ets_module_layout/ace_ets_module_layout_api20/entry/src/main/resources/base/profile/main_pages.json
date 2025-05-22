@@ -8,6 +8,7 @@
         "MainAbility/pages/Column/ColumnFixAtIdealSizePage",
         "MainAbility/pages/Flex/FlexFixAtIdealSizePage",
         "MainAbility/pages/Row/RowFixAtIdealSizePage",
-        "MainAbility/pages/Stack/StackFixAtIdealSizePage"
+        "MainAbility/pages/Stack/StackFixAtIdealSizePage",
+        "MainAbility/pages/inspector/layoutInspector"
     ]
 }
