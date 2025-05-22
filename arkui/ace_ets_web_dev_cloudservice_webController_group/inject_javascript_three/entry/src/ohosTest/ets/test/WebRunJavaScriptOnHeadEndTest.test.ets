@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach,afterEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach,afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -95,6 +95,20 @@ export default function ActsWebRunJavaScriptHeadEndTest() {
       Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd003", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnHeadEnd003", '"testValue1"', 2025022105, done);
+      sendEventByKey('WebRunJavaScriptOnHeadEndTestButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_ACE_WEB_RUNJAVASCRIPTONHEADEND_API_0004
+    * @tc.name       : testWebRunJavaScriptOnHeadEnd004
+    * @tc.desc       : test runJavaScriptOnHeadEnd
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testWebRunJavaScriptOnHeadEnd004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitWebRunJavaScriptOnHeadEnd004", 10);
+      Utils.registerEvent("testWebRunJavaScriptOnHeadEnd004", true, 2025040803, done);
       sendEventByKey('WebRunJavaScriptOnHeadEndTestButton', 10, '');
     })
 

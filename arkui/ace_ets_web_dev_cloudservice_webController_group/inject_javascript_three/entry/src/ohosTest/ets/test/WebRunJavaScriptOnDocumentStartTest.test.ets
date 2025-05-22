@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach,afterEach, describe, it } from '@ohos/hypium';
+import { beforeAll, beforeEach,afterEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -67,6 +67,20 @@ export default function ActsWebRunJavaScriptOnDocumentStartTest() {
       Utils.emitEvent("emitWebRunJavaScriptOnDocumentStart001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testWebRunJavaScriptOnDocumentStart001", '"Red"', 20250221, done);
+      sendEventByKey('WebRunJavaScriptOnDocumentStartTestButton', 10, '');
+    })
+
+    /*
+   * @tc.number     : SUB_ACE_WEB_RUNJAVASCRIPTONDOCUMENTSTART_API_0002
+   * @tc.name       : testWebRunJavaScriptOnDocumentStart002
+   * @tc.desc       : test runJavaScriptOnDocumentStart
+   * @tc.size       : MediumTest
+   * @tc.type       : Function
+   * @tc.level      : Level 2
+   */
+    it('testWebRunJavaScriptOnDocumentStart002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitWebRunJavaScriptOnDocumentStart002", 10);
+      Utils.registerEvent("testWebRunJavaScriptOnDocumentStart002", true, 2025040801, done);
       sendEventByKey('WebRunJavaScriptOnDocumentStartTestButton', 10, '');
     })
 
