@@ -63,8 +63,7 @@ export default function SplitPlaceholder() {
       let obj1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
       console.log('SplitPlaceholder_0100 getInspectorTree is ', JSON.stringify(getInspectorTree()))
-      console.log('SplitPlaceholder_0100: ', JSON.stringify(obj1.$children[0].$children[3])
-
+      console.log('SplitPlaceholder_0100: ', JSON.stringify(obj1.$children[0].$children[3]))
       console.info('SplitPlaceholder_0100 END');
       done();
     });
