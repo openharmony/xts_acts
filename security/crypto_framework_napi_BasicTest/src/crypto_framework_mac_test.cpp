@@ -691,7 +691,6 @@ HWTEST_P(MAC_VECTOR_TEST, SUB_Security_CryptoFramework_NAPI_Mac_Vector_Test_0100
     EXPECT_TRUE(out.len == macInfo.macLen);
 
     OH_Crypto_FreeDataBlob(&out);
-    OH_Crypto_FreeDataBlob(&msgBlob);
     OH_CryptoSymKey_Destroy(key);
     OH_CryptoMac_Destroy(macCtx);
     OH_CryptoSymKeyGenerator_Destroy(ctx);
