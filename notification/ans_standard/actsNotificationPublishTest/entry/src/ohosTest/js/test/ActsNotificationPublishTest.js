@@ -14,6 +14,8 @@
 */
 
 import notification from '@ohos.notification'
+import notificationManager from '@ohos.notificationManager'
+import { UiDriver, BY } from '@ohos.UiTest';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.wantAgent'
@@ -22,7 +24,32 @@ export default function ActsNotificationPublishTest() {
   describe('SUB_NOTIFICATION_ANS_Publish_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_Publish_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_Publish_TEST START')
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+    beforeAll(async function (done) {
+      console.info(`${TAG} beforeAll START`)
+      notificationManager.requestEnableNotification((err) => {
+        if (err) {
+          console.info(`SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info("SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification success");
+        }
+      });
+  
+      await sleep(1500);
+      
+      let driver = await UiDriver.create();
+      console.info(`SUB_NOTIFICATION_ANS_Publish_TEST ===>====>come in driveFn`);
+      await sleep(1000);
+      console.info(`SUB_NOTIFICATION_ANS_Publish_TEST ===>====>driver is ${JSON.stringify(driver)}`);
+      let button = await driver.findComponent(BY.text('允许'));
+      console.info(`SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is ${JSON.stringify(button)}`);
+      await button.click();
+      await sleep(1500);
+      done()
+    });
     let wantAgentData = {}
 
     let picture_opts = {
