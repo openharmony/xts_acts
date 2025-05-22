@@ -47,6 +47,7 @@ export default function ActsNotificationPublishTest() {
       let button = await driver.findComponent(BY.text('允许'));
       console.info(`SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is ${JSON.stringify(button)}`);
       await button.click();
+      await sleep(1500);
       done()
     });
     let wantAgentData = {}
