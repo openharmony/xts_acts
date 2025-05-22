@@ -514,7 +514,7 @@ export default function inputMethodStageJSUnit() {
       console.info("====>Sub_Misc_inputMethod_TextInputType_0100 NUMBER_PASSWORD:" + number_password);
       expect(number_password).assertEqual(8);
       let screen_lock_password = inputMethod.TextInputType.SCREEN_LOCK_PASSWORD;
-      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 SCREEN_LOCK_PASSWORD:" + numscreen_lock_passwordber_password);
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 SCREEN_LOCK_PASSWORD:" + screen_lock_password);
       expect(screen_lock_password).assertEqual(9);
       let user_name = inputMethod.TextInputType.USER_NAME;
       console.info("====>Sub_Misc_inputMethod_TextInputType_0100 USER_NAME:" + user_name);

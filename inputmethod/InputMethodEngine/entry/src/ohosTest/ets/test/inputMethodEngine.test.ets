@@ -4079,7 +4079,6 @@ export default function inputMethodEngineJSUnit() {
           capitalizeMode: inputMethod.CapitalizeMode.NONE
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0100', 115, done, beforePublish);
@@ -4103,7 +4102,6 @@ export default function inputMethodEngineJSUnit() {
           capitalizeMode: inputMethod.CapitalizeMode.SENTENCES
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0200', 116, done, beforePublish);
@@ -4127,7 +4125,6 @@ export default function inputMethodEngineJSUnit() {
           capitalizeMode: inputMethod.CapitalizeMode.WORDS
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0300', 117, done, beforePublish);
@@ -4151,7 +4148,6 @@ export default function inputMethodEngineJSUnit() {
           capitalizeMode: inputMethod.CapitalizeMode.CHARACTERS
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0400', 118, done, beforePublish);
@@ -4174,7 +4170,6 @@ export default function inputMethodEngineJSUnit() {
           },
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0500', 119, done, beforePublish);
@@ -4197,7 +4192,6 @@ export default function inputMethodEngineJSUnit() {
           },
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_Placeholder_0100', 120, done, beforePublish);
@@ -4225,7 +4219,6 @@ export default function inputMethodEngineJSUnit() {
         ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
         ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_Placeholder_0200', 121, done, beforePublish);
@@ -4253,7 +4246,6 @@ export default function inputMethodEngineJSUnit() {
         ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
         ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_Placeholder_0300', 122, done, beforePublish);
@@ -4281,7 +4273,6 @@ export default function inputMethodEngineJSUnit() {
         ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
         ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_Placeholder_0400', 123, done, beforePublish);
@@ -4304,7 +4295,6 @@ export default function inputMethodEngineJSUnit() {
           },
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
-        runCmd();
       }
 
       testTemplate('Sub_InputMethod_IMF_Placeholder_0600', 124, done, beforePublish);
