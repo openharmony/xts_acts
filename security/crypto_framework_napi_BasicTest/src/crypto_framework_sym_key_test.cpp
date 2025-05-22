@@ -272,6 +272,9 @@ HWTEST_F(OHCryptoFrameworkSymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_SymK
 
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(convertKeyCtx);
+    OH_Crypto_FreeDataBlob(testData1);
+    OH_Crypto_FreeDataBlob(testData2);
+    OH_Crypto_FreeDataBlob(testData3);
 }
 
 /**

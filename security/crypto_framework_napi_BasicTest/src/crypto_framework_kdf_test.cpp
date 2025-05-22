@@ -67,8 +67,8 @@ class KDF_VECTOR_TEST : public testing::TestWithParam<KdfVectorSpec> {
 static OH_Crypto_ErrCode OHTEST_CreatePbkdf2Params(paramsSpec paramInfo, OH_CryptoKdfParams **params)
 {
     OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
-    Crypto_DataBlob password = {.data = paramInfo.pbkdf2Params.password, .len = sizeof((const char *)paramInfo.pbkdf2Params.password)};
-    Crypto_DataBlob salt = {.data = paramInfo.pbkdf2Params.salt, .len = sizeof((const char *)paramInfo.pbkdf2Params.salt)};
+    Crypto_DataBlob password = {.data = paramInfo.pbkdf2Params.password, .len = 0};
+    Crypto_DataBlob salt = {.data = paramInfo.pbkdf2Params.salt, .len = 0};
     Crypto_DataBlob iterations = {.data = (uint8_t *)&(paramInfo.pbkdf2Params.iterations), .len = sizeof(int)};
 
     ret = OH_CryptoKdfParams_Create("PBKDF2", params);
@@ -76,6 +76,7 @@ static OH_Crypto_ErrCode OHTEST_CreatePbkdf2Params(paramsSpec paramInfo, OH_Cryp
         return ret;
     }
     if (paramInfo.pbkdf2Params.password) {
+        password.len = strlen((const char *)paramInfo.pbkdf2Params.password);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &password);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -84,6 +85,7 @@ static OH_Crypto_ErrCode OHTEST_CreatePbkdf2Params(paramsSpec paramInfo, OH_Cryp
         }
     }
     if (paramInfo.pbkdf2Params.salt) {
+        salt.len = strlen((const char *)paramInfo.pbkdf2Params.salt);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -104,15 +106,16 @@ static OH_Crypto_ErrCode OHTEST_CreatePbkdf2Params(paramsSpec paramInfo, OH_Cryp
 static OH_Crypto_ErrCode OHTEST_CreateHkdfParams(paramsSpec paramInfo, OH_CryptoKdfParams **params)
 {
     OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
-    Crypto_DataBlob key = {.data = paramInfo.hkdfParams.key, .len = sizeof((const char *)paramInfo.hkdfParams.key)};
-    Crypto_DataBlob salt = {.data = paramInfo.hkdfParams.salt, .len = sizeof((const char *)paramInfo.hkdfParams.salt)};
-    Crypto_DataBlob info = {.data = paramInfo.hkdfParams.info, .len = sizeof((const char *)paramInfo.hkdfParams.info)};
+    Crypto_DataBlob key = {.data = paramInfo.hkdfParams.key, .len = 0};
+    Crypto_DataBlob salt = {.data = paramInfo.hkdfParams.salt, .len = 0};
+    Crypto_DataBlob info = {.data = paramInfo.hkdfParams.info, .len = 0};
 
     ret = OH_CryptoKdfParams_Create("HKDF", params);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
     if (paramInfo.hkdfParams.key) {
+        key.len = strlen((const char *)paramInfo.hkdfParams.key);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &key);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -121,6 +124,7 @@ static OH_Crypto_ErrCode OHTEST_CreateHkdfParams(paramsSpec paramInfo, OH_Crypto
         }
     }
     if (paramInfo.hkdfParams.salt) {
+        salt.len = strlen((const char *)paramInfo.hkdfParams.salt);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -129,6 +133,7 @@ static OH_Crypto_ErrCode OHTEST_CreateHkdfParams(paramsSpec paramInfo, OH_Crypto
         }
     }
     if (paramInfo.hkdfParams.info) {
+        info.len = strlen((const char *)paramInfo.hkdfParams.info);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_INFO_DATABLOB, &info);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -143,8 +148,8 @@ static OH_Crypto_ErrCode OHTEST_CreateHkdfParams(paramsSpec paramInfo, OH_Crypto
 static OH_Crypto_ErrCode OHTEST_CreateScryptParams(paramsSpec paramInfo, OH_CryptoKdfParams **params)
 {
     OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
-    Crypto_DataBlob passphrase = {.data = paramInfo.scryptParams.passphrase, .len = sizeof((const char *)paramInfo.scryptParams.passphrase)};
-    Crypto_DataBlob salt = {.data = paramInfo.scryptParams.salt, .len = sizeof((const char *)paramInfo.scryptParams.salt)};
+    Crypto_DataBlob passphrase = {.data = paramInfo.scryptParams.passphrase, .len = 0};
+    Crypto_DataBlob salt = {.data = paramInfo.scryptParams.salt, .len = 0};
     Crypto_DataBlob n = {.data = (uint8_t *)&(paramInfo.scryptParams.n), .len = sizeof(uint64_t)};
     Crypto_DataBlob p = {.data = (uint8_t *)&(paramInfo.scryptParams.p), .len = sizeof(uint64_t)};
     Crypto_DataBlob r = {.data = (uint8_t *)&(paramInfo.scryptParams.r), .len = sizeof(uint64_t)};
@@ -155,6 +160,7 @@ static OH_Crypto_ErrCode OHTEST_CreateScryptParams(paramsSpec paramInfo, OH_Cryp
         return ret;
     }
     if (paramInfo.scryptParams.passphrase) {
+        passphrase.len = strlen((const char *)paramInfo.scryptParams.passphrase);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &passphrase);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);
@@ -163,6 +169,7 @@ static OH_Crypto_ErrCode OHTEST_CreateScryptParams(paramsSpec paramInfo, OH_Cryp
         }
     }
     if (paramInfo.scryptParams.salt) {
+        salt.len = strlen((const char *)paramInfo.scryptParams.salt);
         ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
         if (ret != CRYPTO_SUCCESS) {
             OH_CryptoKdfParams_Destroy(*params);

@@ -1198,6 +1198,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1244,6 +1245,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx_B);
     OH_CryptoKeyPair_Destroy(keyPair_B);
     HcfBlobDataClearAndFree(&signData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1287,6 +1289,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1329,6 +1332,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1371,6 +1375,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1422,6 +1427,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
     OH_Crypto_FreeDataBlob(&out);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
@@ -1470,6 +1476,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoKeyPair_Destroy(keyPair_B);
     HcfBlobDataClearAndFree(&signData);
     OH_Crypto_FreeDataBlob(&rawSignData);
+    HcfBlobDataClearAndFree(&msgBlob);
 }
 
 /**
