@@ -1982,11 +1982,11 @@ export class KeyboardController {
   async Sub_InputMethod_IMF_Placeholder_0200(): Promise<void> {
     this.testTemplate('Sub_InputMethod_IMF_Placeholder_0200', await this.wrapAssertWithTwoIn1Judgement1(async () => {
       let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 editorAttribute is' + JSON.stringify(editorAttribute));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 editorAttribute is' + JSON.stringify(editorAttribute));
       let placeholderLength = editorAttribute.placeholder.length;
       let abilityNameLength = editorAttribute.abilityName.length;
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 placeholderLength is' + JSON.stringify(placeholderLength));
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 abilityNameLength is' + JSON.stringify(abilityNameLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 placeholderLength is' + JSON.stringify(placeholderLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 abilityNameLength is' + JSON.stringify(abilityNameLength));
       return placeholderLength === 255 && abilityNameLength === 127;
     }));
   }
@@ -1994,11 +1994,11 @@ export class KeyboardController {
   async Sub_InputMethod_IMF_Placeholder_0300(): Promise<void> {
     this.testTemplate('Sub_InputMethod_IMF_Placeholder_0300', await this.wrapAssertWithTwoIn1Judgement1(async () => {
       let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 editorAttribute is' + JSON.stringify(editorAttribute));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 editorAttribute is' + JSON.stringify(editorAttribute));
       let placeholderLength = editorAttribute.placeholder.length;
       let abilityNameLength = editorAttribute.abilityName.length;
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 placeholderLength is' + JSON.stringify(placeholderLength));
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 abilityNameLength is' + JSON.stringify(abilityNameLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 placeholderLength is' + JSON.stringify(placeholderLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 abilityNameLength is' + JSON.stringify(abilityNameLength));
       return placeholderLength === 255 && abilityNameLength === 127;
     }));
   }
@@ -2006,11 +2006,11 @@ export class KeyboardController {
   async Sub_InputMethod_IMF_Placeholder_0400(): Promise<void> {
     this.testTemplate('Sub_InputMethod_IMF_Placeholder_0400', await this.wrapAssertWithTwoIn1Judgement1(async () => {
       let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 editorAttribute is' + JSON.stringify(editorAttribute));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 editorAttribute is' + JSON.stringify(editorAttribute));
       let placeholderLength = editorAttribute.placeholder.length;
       let abilityNameLength = editorAttribute.abilityName.length;
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 placeholderLength is' + JSON.stringify(placeholderLength));
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 abilityNameLength is' + JSON.stringify(abilityNameLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 placeholderLength is' + JSON.stringify(placeholderLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 abilityNameLength is' + JSON.stringify(abilityNameLength));
       return placeholderLength === 255 && abilityNameLength === 127;
     }));
   }
@@ -2018,11 +2018,11 @@ export class KeyboardController {
   async Sub_InputMethod_IMF_Placeholder_0600(): Promise<void> {
     this.testTemplate('Sub_InputMethod_IMF_Placeholder_0600', await this.wrapAssertWithTwoIn1Judgement1(async () => {
       let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 editorAttribute is' + JSON.stringify(editorAttribute));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 editorAttribute is' + JSON.stringify(editorAttribute));
       let placeholderLength = editorAttribute.placeholder.length;
       let abilityNameLength = editorAttribute.abilityName.length;
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 placeholderLength is' + JSON.stringify(placeholderLength));
-      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 abilityNameLength is' + JSON.stringify(abilityNameLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 placeholderLength is' + JSON.stringify(placeholderLength));
+      console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 abilityNameLength is' + JSON.stringify(abilityNameLength));
       return placeholderLength === 0 && abilityNameLength === 0;
     }));
   }
