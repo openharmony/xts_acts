@@ -74,6 +74,12 @@ struct ScrollExample {
                   router.push({ uri: 'pages/fourth' })
                 })
             )
+            .gesture(
+              LongPressGesture({ repeat: false, duration: 1800 })
+                .onAction((event: GestureEvent) => {
+                  router.push({ uri: 'pages/fourth' })
+                })
+            )
             Button() {
               Text('Click twice')
                 .fontSize(25)
@@ -85,6 +91,12 @@ struct ScrollExample {
               TapGesture({ count: 1 })
                 .onAction(() => {
                   router.push({ uri: 'pages/third' })
+                })
+            )
+            .gesture(
+              LongPressGesture({ repeat: false })
+                .onAction((event: GestureEvent) => {
+                  router.push({ uri: 'pages/wearList' })
                 })
             )
             Button() {
