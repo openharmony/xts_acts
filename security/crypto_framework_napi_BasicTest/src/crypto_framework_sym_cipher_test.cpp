@@ -658,7 +658,6 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     HcfRandCreate(&randomObj);
     EXPECT_TRUE(randomObj != nullptr);
-    EXPECT_EQ(randomObj->generateRandom(randomObj, ivLen, &ivBlob), HCF_SUCCESS);
     EXPECT_EQ(randomObj->generateRandom(randomObj, aadLen, &aadBlob), HCF_SUCCESS);
 
     if (ivLen != 0) {
@@ -882,6 +881,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -934,6 +934,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -986,6 +987,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -1039,6 +1041,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -1090,6 +1093,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);

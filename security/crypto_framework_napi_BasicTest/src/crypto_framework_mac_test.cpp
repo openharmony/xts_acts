@@ -236,6 +236,7 @@ HWTEST_P(MAC_TEST, SUB_Security_CryptoFramework_NAPI_Mac_Test_0100, TestSize.Lev
     EXPECT_TRUE(out.len == macLength);
 
     OH_Crypto_FreeDataBlob(&out);
+    OH_Crypto_FreeDataBlob(&msgBlob);
     OH_CryptoSymKey_Destroy(key);
     OH_CryptoMac_Destroy(ctx);
 }
@@ -380,6 +381,7 @@ HWTEST_F(OHCryptoFrameworkMacNapiTest, SUB_Security_CryptoFramework_NAPI_Mac_Tes
     EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_SUCCESS);
 
     OH_Crypto_FreeDataBlob(&out);
+    OH_Crypto_FreeDataBlob(&msgBlob);
     OH_CryptoMac_Destroy(ctx);
 }
 
@@ -407,6 +409,7 @@ HWTEST_F(OHCryptoFrameworkMacNapiTest, SUB_Security_CryptoFramework_NAPI_Mac_Tes
     // Final、GetLength: openssl 原生接口也会出现crash
 
     OH_Crypto_FreeDataBlob(&out);
+    OH_Crypto_FreeDataBlob(&msgBlob);
     OH_CryptoMac_Destroy(ctx);
 }
 
@@ -688,6 +691,7 @@ HWTEST_P(MAC_VECTOR_TEST, SUB_Security_CryptoFramework_NAPI_Mac_Vector_Test_0100
     EXPECT_TRUE(out.len == macInfo.macLen);
 
     OH_Crypto_FreeDataBlob(&out);
+    OH_Crypto_FreeDataBlob(&msgBlob);
     OH_CryptoSymKey_Destroy(key);
     OH_CryptoMac_Destroy(macCtx);
     OH_CryptoSymKeyGenerator_Destroy(ctx);
