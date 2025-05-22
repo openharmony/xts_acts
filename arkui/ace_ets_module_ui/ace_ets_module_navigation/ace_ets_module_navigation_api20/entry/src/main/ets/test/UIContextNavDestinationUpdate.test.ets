@@ -65,7 +65,7 @@ export default function UIContextNavDestinationUpdate() {
       console.info('[UIContextNavDestinationUpdate_0100] pushOneBtn click');
       await driver.delayMs(1000);
 
-      let uniqueId: number = AppStorage.get('uniqueId') as number
+      let uniqueId: string = AppStorage.get('uniqueId') as string
       console.log('[UIContextNavDestinationUpdate_0100] uniqueId value : ' + uniqueId)
       expect(uniqueId !== '').assertTrue();
       AppStorage.delete('uniqueId');
