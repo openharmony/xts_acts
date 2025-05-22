@@ -180,10 +180,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_006 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -207,10 +207,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_007 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -234,10 +234,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_008 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -261,10 +261,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_009 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -288,10 +288,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_010 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -315,10 +315,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_011 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -342,10 +342,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_012 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -369,10 +369,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_013 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -396,10 +396,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_014 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -423,10 +423,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_015 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -450,10 +450,10 @@ describe('cloud_sync_test', () => {
       }
       fileSync.on('progress', callback);
       fileSync.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_016 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -611,10 +611,10 @@ describe('cloud_sync_test', () => {
       };
       fileCache.on('progress', callback);
       fileCache.off('progress', callback);
-      expect(false).assertTrue();
+      expect(true).assertTrue();
      } catch (err) {
        console.log('test_cloudSync_State_022 has failed for ' + err.message + ', code: ' + err.code);
-       expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+       expect(false).assertTrue();
      }
      done();
    });
@@ -642,7 +642,7 @@ describe('cloud_sync_test', () => {
         console.info("start download successfully");
       }).catch((err: BusinessError) => {
         console.error("test_cloudSync_State_023 start download failed: " + err.message + ", error code: " + err.code);
-        expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+        expect(false).assertTrue();
       });
      } catch (err) {
        console.log('test_cloudSync_State_023 has failed for ' + err.message + ', code: ' + err.code);
@@ -673,7 +673,7 @@ describe('cloud_sync_test', () => {
       fileCache.start(uri, (err: BusinessError) => {
         if (err) {
           console.error("test_cloudSync_State_024 start download failed: " + err.message + ", error code: " + err.code);
-          expect(err.code == 13600001 && err.message =='IPC error').assertTrue();
+          expect(false).assertTrue();
         } else {
           console.info("start download successfully");
         }
