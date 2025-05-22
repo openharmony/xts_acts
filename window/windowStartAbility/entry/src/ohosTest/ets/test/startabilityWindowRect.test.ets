@@ -403,7 +403,7 @@ export default function startabilityWindowRect() {
           let displayInfo = display.getDefaultDisplaySync();
           expect(windowRect4.width).assertEqual(displayInfo.width);
         } else {
-          expect(Math.abs(windowRect4.width-(curMinWidth as number))).assertLessOrEqual(1);
+          expect(Math.abs(windowRect4.width-(curMaxWidth as number))).assertLessOrEqual(1);
         }
         await terminateAbility(caseName);
 
@@ -599,7 +599,7 @@ export default function startabilityWindowRect() {
 
         let options4: StartOptions = {
           windowHeight: curMaxHeight as number + 10,
-          windowWidth: curMinWidth as number +10
+          windowWidth: curMaxWidth as number +10
         }
         console.error(caseName + ' start ability test4 begin.');
         let windowStageStart4: window.WindowStage = await startAbility(caseName, context, options4);
