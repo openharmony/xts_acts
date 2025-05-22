@@ -2609,6 +2609,49 @@ static napi_value OHCameraManagerGetCameraConcurrentInfos(napi_env env, napi_cal
     napi_create_int32(env, code, &result);
     return result;
 }
+
+static napi_value SessionIsMacroSupported(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_value result;
+    napi_value errorCode;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+
+    Camera_ErrorCode code = ndkCamera_->SessionIsMacroSupported(index);
+
+    napi_value MacroSupportedinfo = nullptr;
+    napi_create_object(env, &MacroSupportedinfo);
+
+    napi_get_boolean(env, ndkCamera_->isMacroSupported_, &result);
+    napi_set_named_property(env, MacroSupportedinfo, "isMacroSupported", result);
+
+    napi_create_int32(env, code, &errorCode);
+    napi_set_named_property(env, MacroSupportedinfo, "errorCode", errorCode);
+
+    return MacroSupportedinfo;
+}
+
+static napi_value SessionEnableMacro(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value errorCode;
+
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
+    bool isEnable;
+    napi_get_value_bool(env, args[1], &isEnable);
+    Camera_ErrorCode code = ndkCamera_->SessionEnableMacro(index, isEnable);
+    napi_create_int32(env, code, &errorCode);
+    return errorCode;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2733,6 +2776,10 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "cameraManagerUnregisterFoldStatusChange", nullptr, CameraManagerUnregisterFoldStatusChange,
             nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "sessionIsMacroSupported", nullptr, SessionIsMacroSupported, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "sessionEnableMacro", nullptr, SessionEnableMacro, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
     };
     napi_property_descriptor desc1[] = {
         {"oHCaptureSessionRegisterCallback", nullptr, OHCaptureSessionRegisterCallback, nullptr, nullptr, nullptr,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,17 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const testNotifyDragTest: (a: string) => void;
 
-export const calendarPickerTest: (a: string) => void;
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export const PanGestureTest001: (a: string) => string[];
+@Entry
+@Component
+struct TestNotifyDragTest {
+  PAGE_TAG: string = 'TestNotifyDragTest';
 
-export const PanGestureTest002: (a: string) => string[];
-
-export const PanGestureTest003: (a: string) => string[];
-
-export const PanGestureTest004: (a: string) => string[];
-
-export const GetPanGestureData: () => object;
-
+  build(){
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.testNotifyDragTest(this.PAGE_TAG);
+      })
+    }
+  }
+}
