@@ -57,6 +57,11 @@
 #define PARAM_0666 0666
 #define PATH_NO_AUDIO "/data/storage/el2/base/files/demo_no_audio_10s.mp4"
 #define PATH "/data/storage/el2/base/files/demo_video_audio_10s.mp4"
+#define MOV_PATH "/data/storage/el2/base/files/No_Support_Format.mov"
+#define MKV_PATH "/data/storage/el2/base/files/H264_AAC.mkv"
+#define MP3_PATH "/data/storage/el2/base/files/01.mp3"
+#define AAC_PATH "/data/storage/el2/base/files/AAC_48000_32_1.aac"
+#define WAV_PATH "/data/storage/el2/base/files/vorbis_48000_32_1.wav"
 static int32_t g_gPlaytime = 100;
 int g_currentPathId = 0;
 
@@ -202,6 +207,14 @@ static OH_AVErrCode GetFDSourceInfo(OH_AVPlayer *player) {
     }
     int fileDescribe = open(filePath.c_str(), O_RDONLY, PARAM_0666);
     int64_t fileSize = GetFileSize(filePath.c_str());
+    OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, fileDescribe, PARAM_0, fileSize);
+    close(fileDescribe);
+    return errCode;
+}
+
+static OH_AVErrCode GetFDSourceInfo(OH_AVPlayer *player, const char* fileName) {
+    int fileDescribe = open(fileName, O_RDONLY, PARAM_0666);
+    int64_t fileSize = GetFileSize(fileName);
     OH_AVErrCode errCode = OH_AVPlayer_SetFDSource(player, fileDescribe, PARAM_0, fileSize);
     close(fileDescribe);
     return errCode;
@@ -1609,6 +1622,198 @@ void NdkAVPlayerUser::HandleOnInfoStateChange(OH_AVPlayer *player, AVPlayerState
     }
 }
 
+typedef struct NdkAVPlayerSetPlaybackRateUser {
+    using OnInfoFunc = std::function<void(OH_AVPlayer *player, OH_AVFormat *infoBody)>;
+    using stateChangeFunc = std::function<void()>;
+    static void CreateSurface(NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser);
+    static void DestroySurface(NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser);
+    NdkAVPlayerSetPlaybackRateUser();
+    NdkAVPlayerSetPlaybackRateUser(const NdkAVPlayerSetPlaybackRateUser &other) = delete;
+    NdkAVPlayerSetPlaybackRateUser& operator=(const NdkAVPlayerSetPlaybackRateUser &other) = delete;
+    ~NdkAVPlayerSetPlaybackRateUser();
+    void OnStateChangeCb(OH_AVPlayer *player, OH_AVFormat *infoBody);
+    void OnPlaybackRateDoneCb(OH_AVPlayer *player, OH_AVFormat *infoBody);
+    void HandleOnInfoStateChange(OH_AVPlayer *player, AVPlayerState state);
+    std::map<uint32_t, OnInfoFunc> onInfoFuncs_;
+    std::map<uint32_t, stateChangeFunc> stateChangeFuncs_;
+    OH_AVPlayer *player = nullptr;
+    EGLDisplay display = nullptr;
+    EGLContext context = nullptr;
+    EGLSurface surface = nullptr;
+    OH_NativeImage *image = nullptr;
+    OHNativeWindow *window = nullptr;
+
+    int32_t errorCode = AV_ERR_UNKNOWN;
+    int32_t idleErrorCode = AV_ERR_UNKNOWN;
+
+    int32_t position = -1;
+    int32_t messageType = -1;
+    int32_t state = -1;
+    int32_t stateChangeReason = -1;
+    int32_t isEos = -1;
+    AVPlayerState avState = AV_IDLE;
+    float rate = 1.0f;
+    float setRate = 1.0f;
+} NdkAVPlayerSetPlaybackRateUser;
+
+void NdkAVPlayerSetPlaybackRateUser::CreateSurface(NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser)
+{
+    if (ndkAVPlayerUser == nullptr) {
+        return;
+    }
+    EGLDisplay display = nullptr;
+    EGLContext context = nullptr;
+    EGLSurface surface = nullptr;
+    InitGLES(ndkAVPlayerUser->display, ndkAVPlayerUser->context, ndkAVPlayerUser->surface);
+    GLuint textureId = PARAM_0;
+    glGenTextures(ONEVAL, &textureId);
+    ndkAVPlayerUser->image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    ndkAVPlayerUser->window = OH_NativeImage_AcquireNativeWindow(ndkAVPlayerUser->image);
+}
+
+void NdkAVPlayerSetPlaybackRateUser::DestroySurface(NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser)
+{
+    if (ndkAVPlayerUser == nullptr) {
+        return;
+    }
+    if (ndkAVPlayerUser->window) {
+        OH_NativeWindow_DestroyNativeWindow(ndkAVPlayerUser->window);
+    }
+    DestroyGLES(ndkAVPlayerUser->display, ndkAVPlayerUser->context, ndkAVPlayerUser->surface);
+    ndkAVPlayerUser->display = nullptr;
+    ndkAVPlayerUser->context = nullptr;
+    ndkAVPlayerUser->surface = nullptr;
+    ndkAVPlayerUser->image = nullptr;
+    ndkAVPlayerUser->window = nullptr;
+}
+
+NdkAVPlayerSetPlaybackRateUser::NdkAVPlayerSetPlaybackRateUser()
+{
+    onInfoFuncs_ = {
+        { AV_INFO_TYPE_STATE_CHANGE,
+            [this](OH_AVPlayer *player, OH_AVFormat *infoBody) { OnStateChangeCb(player, infoBody); } },
+        { AV_INFO_TYPE_PLAYBACK_RATE_DONE,
+            [this](OH_AVPlayer *player, OH_AVFormat *infoBody) { OnPlaybackRateDoneCb(player, infoBody); } },
+    };
+}
+
+NdkAVPlayerSetPlaybackRateUser::~NdkAVPlayerSetPlaybackRateUser()
+{
+    DestroySurface(this);
+}
+
+void NdkAVPlayerSetPlaybackRateUser::OnStateChangeCb(OH_AVPlayer *player, OH_AVFormat *infoBody)
+{
+    (void)player;
+    LOG("AVPlayerOnInfoType AV_INFO_TYPE_STATE_CHANGE");
+    OH_AVFormat_GetIntValue(infoBody, OH_PLAYER_STATE, &this->state);
+    OH_AVFormat_GetIntValue(infoBody, OH_PLAYER_STATE_CHANGE_REASON, &this->stateChangeReason);
+    LOG("AV_INFO_TYPE_STATE_CHANGE  state: %{public}d ,stateChangeReason: %{public}d", this->state, this->stateChangeReason);
+    this->avState = static_cast<AVPlayerState>(this->state);
+    HandleOnInfoStateChange(player, this->avState);
+}
+
+void NdkAVPlayerSetPlaybackRateUser::OnPlaybackRateDoneCb(OH_AVPlayer *player, OH_AVFormat *infoBody)
+{
+    LOG("AV_INFO_TYPE_PLAYBACK_RATE_DONE OnPlaybackRateDoneCb In");
+    (void)player;
+    float infoValue = 1.0f;
+    OH_AVFormat_GetFloatValue(infoBody, OH_PLAYER_PLAYBACK_RATE, &infoValue);
+    this->rate = static_cast<float>(infoValue);
+    LOG("AV_INFO_TYPE_PLAYBACK_RATE_DONE infoValue: %{public}f", infoValue);
+}
+
+void NdkAVPlayerSetPlaybackRateUser::HandleOnInfoStateChange(OH_AVPlayer *player, AVPlayerState state)
+{
+    if (player == nullptr) {
+        return;
+    }
+    int32_t ret = -1;
+    switch (state) {
+    case AV_IDLE: {
+        LOG("HandleOnInfoStateChange AVPlayerState AV_IDLE");
+        break;
+    }
+    case AV_INITIALIZED: {
+        LOG("HandleOnInfoStateChange AVPlayerState AV_INITIALIZED");
+        NdkAVPlayerSetPlaybackRateUser::CreateSurface(this);
+        ret = OH_AVPlayer_SetVideoSurface(player, this->window);
+        if (this->stateChangeFuncs_.count(AV_INITIALIZED) > 0) {
+            this->stateChangeFuncs_[AV_INITIALIZED]();
+        }
+        LOG("HandleOnInfoStateChange OH_AVPlayer_SetVideoSurface ret:%{public}d", ret);
+        ret = OH_AVPlayer_Prepare(player);
+        if (ret != AV_ERR_OK) {
+            // handle exception and error
+            LOGE("player %{public}s", "HandleOnInfoStateChange OH_AVPlayer_Prepare error");
+        }
+        break;
+    }
+    case AV_PREPARED:
+        if (this->stateChangeFuncs_.count(AV_PREPARED) > 0) {
+            this->stateChangeFuncs_[AV_PREPARED]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_PREPARED");
+        break;
+    case AV_PLAYING:
+        if (this->stateChangeFuncs_.count(AV_PLAYING) > 0) {
+            this->stateChangeFuncs_[AV_PLAYING]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_PLAYING");
+        break;
+    case AV_PAUSED:
+        if (this->stateChangeFuncs_.count(AV_PAUSED) > 0) {
+            this->stateChangeFuncs_[AV_PAUSED]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_PAUSED");
+        break;
+    case AV_STOPPED:
+        if (this->stateChangeFuncs_.count(AV_STOPPED) > 0) {
+            this->stateChangeFuncs_[AV_STOPPED]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_STOPPED");
+        break;
+    case AV_COMPLETED:
+        if (this->stateChangeFuncs_.count(AV_COMPLETED) > 0) {
+            this->stateChangeFuncs_[AV_COMPLETED]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_COMPLETED");
+        break;
+    case AV_ERROR:
+        if (this->stateChangeFuncs_.count(AV_ERROR) > 0) {
+            this->stateChangeFuncs_[AV_ERROR]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_ERROR");
+        break;
+    case AV_RELEASED:
+        if (this->stateChangeFuncs_.count(AV_RELEASED) > 0) {
+            this->stateChangeFuncs_[AV_RELEASED]();
+        }
+        LOG("HandleOnInfoStateChange AVPlayerState AV_RELEASED");
+        NdkAVPlayerSetPlaybackRateUser::DestroySurface(this);
+        break;
+    default:
+        break;
+    }
+}
+
+static void AVPlayerSetPlaybackRateOnInfoCallbackImpl(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat *infoBody,
+    void *userData)
+{
+    NdkAVPlayerSetPlaybackRateUser *user = reinterpret_cast<NdkAVPlayerSetPlaybackRateUser *>(userData);
+    if (user == nullptr || player == nullptr) {
+        LOGE("AVPlayerSetPlaybackRateOnInfoCallbackImpl user is nullptr");
+        return;
+    }
+    LOGD("OnInfo type %d", type);
+    if (user->onInfoFuncs_.count(type) > 0) {
+        user->onInfoFuncs_[type](player, infoBody);
+    } else {
+        LOGD("OnInfo: no member func, type %d", type);
+    }
+    return;
+}
+
 static void AVPlayerOnInfoCallbackImpl(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat *infoBody,
     void *userData)
 {
@@ -1986,6 +2191,515 @@ static napi_value OhAvPlayerGetCurrentTrackAbnormalOne(napi_env env, napi_callba
     return result;
 }
 
+static napi_value OhAvPlayerPrepareSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player);
+    while (true) {
+        sleep(1);
+        float delta = std::abs(ndkAVPlayerUser->rate - rate);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < 0.001) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerPlaySetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVPlayer_Play(ndkAVPlayerUser->player);
+            }
+        },
+        { AV_PLAYING,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player, MOV_PATH);
+    while (true) {
+        sleep(1);
+        float delta = std::abs(ndkAVPlayerUser->rate - rate);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < 0.001) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerPauseSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVPlayer_Play(ndkAVPlayerUser->player);
+            }
+        },
+        { AV_PLAYING,
+            [ndkAVPlayerUser]() { 
+                OH_AVPlayer_Pause(ndkAVPlayerUser->player);
+            }
+        },
+        { AV_PAUSED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player, MKV_PATH);
+    while (true) {
+        sleep(1);
+        float delta = std::abs(ndkAVPlayerUser->rate - rate);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < 0.001) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerStopSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVPlayer_Stop(ndkAVPlayerUser->player);
+            }
+        },
+        { AV_STOPPED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player, AAC_PATH);
+    while (true) {
+        sleep(1);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OPERATE_NOT_PERMIT) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerIdleSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(player, rate); 
+    LOG("idle OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+    if (errCode == AV_ERR_OPERATE_NOT_PERMIT) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerInitSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_INITIALIZED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player);
+    while (true) {
+        sleep(1);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OPERATE_NOT_PERMIT) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerReleaseSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_RELEASED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    OH_AVPlayer_Release(player);
+    while (true) {
+        sleep(1);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OPERATE_NOT_PERMIT) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerErrorSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_ERROR,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player);
+    OH_AVPlayer_Prepare(player);
+    while (true) {
+        sleep(1);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OPERATE_NOT_PERMIT) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerSetPlaybackRateError(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player);
+    while (true) {
+        sleep(1);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_INVALID_VAL) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
+static napi_value OhAvPlayerSetPlaybackRateTwice(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    double rate1;
+    napi_get_value_double(env, args[0], &rate1);
+    double rate2;
+    napi_get_value_double(env, args[1], &rate2);
+    int backParam = AV_ERR_OK;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    GetFDSourceInfo(player, MP3_PATH);
+    OH_AVPlayer_Prepare(player);
+    OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(player, rate1);
+    if (errCode != AV_ERR_OK) {
+        backParam = FAIL;
+    }
+    errCode = OH_AVPlayer_SetPlaybackRate(player, rate2);
+    if (errCode != AV_ERR_OK) {
+        backParam = FAIL;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+static napi_value OhAvPlayerSetPlaybackRateAfterSeek(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    GetFDSourceInfo(player, WAV_PATH);
+    OH_AVPlayer_Prepare(player);
+    OH_AVPlayer_Seek(player, PARAM_1, AV_SEEK_NEXT_SYNC);
+    OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(player, rate);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerSetPlaybackRateBeforeSeek(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    OH_AVPlayer *player = GetPrepareAVPlayer();
+    OH_AVPlayer_SetPlaybackRate(player, rate);
+    OH_AVErrCode errCode = OH_AVPlayer_Seek(player, PARAM_1, AV_SEEK_NEXT_SYNC);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerSetPlaybackRateBeforePause(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    OH_AVPlayer *player = GetPrepareAVPlayer();
+    OH_AVPlayer_Play(player);
+    OH_AVPlayer_SetPlaybackRate(player, rate);
+    OH_AVErrCode errCode = OH_AVPlayer_Pause(player);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerCompleteSetPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    double rate;
+    napi_get_value_double(env, args[0], &rate);
+    int backParam = FAIL;
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
+    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->setRate = rate;
+    ndkAVPlayerUser->stateChangeFuncs_ = {
+        { AV_PREPARED,
+            [ndkAVPlayerUser]() { 
+                OH_AVPlayer_Play(ndkAVPlayerUser->player);
+            }
+        },
+        { AV_COMPLETED,
+            [ndkAVPlayerUser]() { 
+                OH_AVErrCode errCode = OH_AVPlayer_SetPlaybackRate(ndkAVPlayerUser->player, ndkAVPlayerUser->setRate); 
+                ndkAVPlayerUser->errorCode = errCode;
+                LOG("OH_AVPlayer_SetPlaybackRate errCode:%{public}d", errCode);
+            }
+        },
+    };
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
+    GetFDSourceInfo(player, WAV_PATH);
+    while (true) {
+        float delta = std::abs(ndkAVPlayerUser->rate - rate);
+        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
+            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
+        if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < 0.001) {
+            backParam = SUCCESS;
+            break;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    delete ndkAVPlayerUser;
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2108,6 +2822,34 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerGetPlaybackSpeedNormalThree", nullptr, OhAvPlayerGetPlaybackSpeedNormalThree, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"AvPlayerGetPlaybackSpeedAbnormalThree", nullptr, OhAvPlayerGetPlaybackSpeedAbnormalThree, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerPrepareSetPlaybackRate", nullptr, OhAvPlayerPrepareSetPlaybackRate, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerPlaySetPlaybackRate", nullptr, OhAvPlayerPlaySetPlaybackRate, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerPauseSetPlaybackRate", nullptr, OhAvPlayerPauseSetPlaybackRate, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerStopSetPlaybackRate", nullptr, OhAvPlayerStopSetPlaybackRate, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerSetPlaybackRateError", nullptr, OhAvPlayerSetPlaybackRateError, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetPlaybackRateTwice", nullptr, OhAvPlayerSetPlaybackRateTwice, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetPlaybackRateAfterSeek", nullptr, OhAvPlayerSetPlaybackRateAfterSeek, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetPlaybackRateBeforeSeek", nullptr, OhAvPlayerSetPlaybackRateBeforeSeek, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerIdleSetPlaybackRate", nullptr, OhAvPlayerIdleSetPlaybackRate, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerInitSetPlaybackRate", nullptr, OhAvPlayerInitSetPlaybackRate, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerReleaseSetPlaybackRate", nullptr, OhAvPlayerReleaseSetPlaybackRate, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerErrorSetPlaybackRate", nullptr, OhAvPlayerErrorSetPlaybackRate, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerCompleteSetPlaybackRate", nullptr, OhAvPlayerCompleteSetPlaybackRate, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetPlaybackRateBeforePause", nullptr, OhAvPlayerSetPlaybackRateBeforePause, nullptr,
             nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
