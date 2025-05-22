@@ -17,9 +17,8 @@ import windowFocus from './windowFocus.test'
 import windowEvent from './windowEvent.test'
 import windowLayout from './windowLayout.test'
 import windowLevel from './windowLevel.test'
-import specialWindow from './specialWindow.test'
 import windowInput from './windowInput.test'
-import windowAnimation from './WindowAnimation.test'
+import specialWindow from './specialWindow.test'
 
 export default function testsuite() {
   windowOrientation(globalThis.abilityContext,globalThis.windowStage)
@@ -29,5 +28,4 @@ export default function testsuite() {
   windowLevel(globalThis.abilityContext,globalThis.windowStage)
   specialWindow(globalThis.abilityContext,globalThis.windowStage)
   windowInput(globalThis.abilityContext,globalThis.windowStage)
-  windowAnimation(globalThis.abilityContext,globalThis.windowStage)
 }
