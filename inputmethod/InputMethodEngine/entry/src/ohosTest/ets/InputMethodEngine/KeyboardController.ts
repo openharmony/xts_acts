@@ -2067,7 +2067,7 @@ export class KeyboardController {
     this.testTemplate('Sub_InputMethod_IMF_DiscardTypingText_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
       return new Promise((resolve, reject) => {
         let count = 0;
-        inputMethodEngine.getInputMethodAbility().on('discardTypingText', () => {
+        inputmethodengine.getInputMethodAbility().on('discardTypingText', () => {
           console.info(TAG + '====> Sub_InputMethod_IMF_DiscardTypingText_0100  is success');
           ++count;
           
@@ -2075,7 +2075,7 @@ export class KeyboardController {
         setTimeout(() => {
           console.info(TAG + `====> Sub_InputMethod_IMF_DiscardTypingText_0100 count = ${count}`);
           resolve(count === 1);
-          inputMethodEngine.getInputMethodAbility().off('discardTypingText');
+          inputmethodengine.getInputMethodAbility().off('discardTypingText');
         }, 1000);
       });
     }));
@@ -2094,13 +2094,13 @@ export class KeyboardController {
           console.info(TAG + '====> Sub_InputMethod_IMF_DiscardTypingText_1000 callback2  is success' );
           ++count2;
         };
-        inputMethodEngine.getInputMethodAbility().on('discardTypingText', callback1);
-        inputMethodEngine.getInputMethodAbility().on('discardTypingText', callback2);
-        inputMethodEngine.getInputMethodAbility().off('discardTypingText', callback1);
+        inputmethodengine.getInputMethodAbility().on('discardTypingText', callback1);
+        inputmethodengine.getInputMethodAbility().on('discardTypingText', callback2);
+        inputmethodengine.getInputMethodAbility().off('discardTypingText', callback1);
         setTimeout(() => {
           console.info(TAG + `====> Sub_InputMethod_IMF_DiscardTypingText_0100 count1 = ${count1}, count2 = ${count2}`);
           resolve(count1 === 2 && count2 === 1);
-          inputMethodEngine.getInputMethodAbility().off('discardTypingText');
+          inputmethodengine.getInputMethodAbility().off('discardTypingText');
         }, 1000);
       });
     }));

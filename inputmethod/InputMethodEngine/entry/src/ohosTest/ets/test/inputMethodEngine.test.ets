@@ -4300,7 +4300,7 @@ export default function inputMethodEngineJSUnit() {
         await inputMethod.getController().detach();
         const ATTRIBUTE: inputMethod.TextConfig = {
           inputAttribute: {
-            textInputType: 0, enterKeyType: 0, placeholder: undefind, abilityName: undefind
+            textInputType: 0, enterKeyType: 0, placeholder: undefined, abilityName: undefined
           },
         }
         await inputMethod.getController().attach(false, ATTRIBUTE);
@@ -4352,9 +4352,10 @@ export default function inputMethodEngineJSUnit() {
       const ATTRIBUTE: inputMethod.TextConfig = {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
-        }.
-        newEditBox: false
-      }
+        }, 
+      };
+      let newEditBoxValue: boolean = false;
+      ATTRIBUTE.newEditBox = newEditBoxValue;
 
       let beforePublish = async () => {
         await inputMethod.getController().detach();
@@ -4384,8 +4385,9 @@ export default function inputMethodEngineJSUnit() {
         inputAttribute: {
           textInputType: 0, enterKeyType: 0
         },
-        newEditBox: true
-      }
+      };
+      let newEditBoxValue: boolean = true;
+      ATTRIBUTE.newEditBox = newEditBoxValue;
 
       let beforePublish = async () => {
         await inputMethod.getController().detach();
