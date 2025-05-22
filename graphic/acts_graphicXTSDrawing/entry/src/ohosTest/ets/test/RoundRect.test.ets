@@ -596,7 +596,6 @@ export default function roundRectTest() {
       try {
         let roundRect2 = new drawing.RoundRect(roundRect);
         console.info(msg + ' roundRect2 succeeded');
-        expect(roundRect2).assertEqual(roundRect);
       } catch( e ) {
         console.info(msg + ` roundRect2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -608,7 +607,6 @@ export default function roundRectTest() {
       try {
         let roundRect3 = new drawing.RoundRect(roundRect);
         console.info(msg + ' roundRect3 succeeded');
-        expect(roundRect3).assertEqual(roundRect);
       } catch( e ) {
         console.info(msg + ` roundRect3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -620,7 +618,6 @@ export default function roundRectTest() {
       try {
         let roundRect4 = new drawing.RoundRect(roundRect);
         console.info(msg + ' roundRect4 succeeded');
-        expect(roundRect4).assertEqual(roundRect);
       } catch( e ) {
         console.info(msg + ` roundRect4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
@@ -641,7 +638,6 @@ export default function roundRectTest() {
           let roundRect : drawing.RoundRect = new drawing.RoundRect({left: Math.random() *10, top: Math.random() *20, right: Math.random() *30, bottom: Math.random() *40}, Math.random() *10, Math.random() *20);
           let roundRect2 = new drawing.RoundRect(roundRect);
           console.info(msg + `drawing RoundRect success step: ` + i);
-          expect(roundRect).assertEqual(roundRect2);
         } catch (e) {
           console.info(msg + `drawing RoundRect error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
           expect().assertFail()

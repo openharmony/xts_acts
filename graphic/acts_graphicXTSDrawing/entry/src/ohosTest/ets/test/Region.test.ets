@@ -2191,6 +2191,7 @@ export default function drawingTsRegionTest() {
       try {
         let rect7 = region2.getBounds();
         console.info(msg + `Region getBounds rect7 success`);
+        console.info(msg + `Region getBounds rect7: ` + JSON.stringify(rect7));
         expect(rect7.left == 0 && rect7.top == 0 && rect7.right == 100 && rect7.bottom == 100).assertEqual(true);
       } catch (e) {
         console.info(msg + `Region getBounds rect7 error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
