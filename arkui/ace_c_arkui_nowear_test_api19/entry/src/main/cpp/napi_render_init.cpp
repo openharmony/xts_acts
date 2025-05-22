@@ -17,6 +17,7 @@
 #include "manager/plugin_manager.h"
 #include "drag/notify_drag_test.h"
 #include "calendarPicker/calendar_picker_test.h"
+#include "gestureRecognizer/PanGestureTest.h"
 
 
 namespace ArkUICapiTest {
@@ -35,6 +36,16 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"calendarPickerTest", nullptr, CalendarPickerTest::CalendarPickerMarkTodayTest,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"PanGestureTest001", nullptr, PanGestureTest::PanGestureTest001, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"PanGestureTest002", nullptr, PanGestureTest::PanGestureTest002, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"PanGestureTest003", nullptr, PanGestureTest::PanGestureTest003, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"PanGestureTest004", nullptr, PanGestureTest::PanGestureTest004, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"GetPanGestureData", nullptr, PanGestureTest::GetPanGestureData,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
         
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

@@ -14,9 +14,11 @@
  */
 import NotifyDragTest from "./drag/NotifyDragTest.test"
 import calendarPickerTest from "./calendarPicker/CalendarPickerMarkTodayTest.test"
+import PanGestureTest from "./gestureRecognizer/PanGestureTest.test"
 
 export default function testsuite() {
    NotifyDragTest();
    calendarPickerTest();
+   PanGestureTest();
 }
 
