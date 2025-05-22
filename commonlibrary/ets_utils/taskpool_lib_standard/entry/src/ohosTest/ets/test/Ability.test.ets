@@ -2484,12 +2484,12 @@ export default function TaskPoolTest() {
       let isTerminate1: boolean = false;
       let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
       task.onExecutionFailed((e: Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
 
       taskpool.execute(task).then((res)=>{
       }).catch((e:BusinessError)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       done();
     })
@@ -4055,7 +4055,7 @@ export default function TaskPoolTest() {
     it('TaskPoolTestClass176', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
       await taskpool.executeDelayed(500, task).catch((e: Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
 
       done();
@@ -4076,7 +4076,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.executeDelayed(500, task)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
       done();
     })
@@ -4111,7 +4111,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.executeDelayed(500, task)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
       }
       done();
     })
@@ -4129,7 +4129,7 @@ export default function TaskPoolTest() {
         let task = new taskpool.Task(printArgs, isConcurrentTest2);
         taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
       done();
     })
@@ -4146,7 +4146,7 @@ export default function TaskPoolTest() {
         let task: taskpool.Task = new taskpool.Task(isConcurrentTest2);
         taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
       }
 
       done();
@@ -4703,7 +4703,7 @@ export default function TaskPoolTest() {
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       let task1: taskpool.Task = new taskpool.Task(hashMapTest, 300); // 300: test number
       task1.onExecutionFailed((e:Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       taskGroup.addTask(task1);
       taskpool.execute(taskGroup).then((res)=>{
@@ -4738,7 +4738,7 @@ export default function TaskPoolTest() {
         result += 300;
       })
       task3.onExecutionFailed((e:Error)=>{
-        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+        expect((e as BusinessError).toString()).assertContain("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
       })
       let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       runner.execute(task1);

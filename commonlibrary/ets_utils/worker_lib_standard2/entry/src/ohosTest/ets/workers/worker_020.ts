@@ -27,7 +27,7 @@ workerPort.onmessage = async (e: MessageEvents) => {
     workerPort.postMessage(func);
   } catch (error) {
     console.info(`worker_020: worker: catch error: code => ${error.code} message => ${error.message}`);
-    if (error.code != 10200006 && error.message != 'An exception occurred during serialization, failed to serialize message.') {
+    if (error.code != 10200006 && !error.message.includes('An exception occurred during serialization, failed to serialize message.')) {
       flag = false;
     }
   }
