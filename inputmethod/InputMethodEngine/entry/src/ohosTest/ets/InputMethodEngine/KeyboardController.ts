@@ -36,6 +36,9 @@ export class KeyboardController {
   private keyboardController: inputmethodengine.KeyboardController;
   private TextInputClient: inputmethodengine.TextInputClient;
   private InputClient: inputmethodengine.InputClient;
+  private capitalizeMode: inputmethodengine.CapitalizeMode;
+  private placeholder: string;
+  private abilityName: string;
 
   constructor(context) {
     this.mContext = context;
@@ -325,6 +328,54 @@ export class KeyboardController {
         case 114:
           console.debug(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800 event:' + data.event);
           that.Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0800();
+          break;
+        case 115:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0100 event:' + data.event);
+          that.Sub_InputMethod_IMF_CapitalizeMode_0100();
+          break;
+        case 116:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0200 event:' + data.event);
+          that.Sub_InputMethod_IMF_CapitalizeMode_0200();
+          break;
+        case 117:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0300 event:' + data.event);
+          that.Sub_InputMethod_IMF_CapitalizeMode_0300();
+          break;
+        case 118:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0400 event:' + data.event);
+          that.Sub_InputMethod_IMF_CapitalizeMode_0400();
+          break;
+        case 119:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0500 event:' + data.event);
+          that.Sub_InputMethod_IMF_CapitalizeMode_0500();
+          break;
+        case 120:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 event:' + data.event);
+          that.Sub_InputMethod_IMF_Placeholder_0100();
+          break;
+        case 121:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 event:' + data.event);
+          that.Sub_InputMethod_IMF_Placeholder_0200();
+          break;
+        case 122:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 event:' + data.event);
+          that.Sub_InputMethod_IMF_Placeholder_0300();
+          break;
+        case 123:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 event:' + data.event);
+          that.Sub_InputMethod_IMF_Placeholder_0400();
+          break;
+        case 124:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 event:' + data.event);
+          that.Sub_InputMethod_IMF_Placeholder_0600();
+          break;
+        case 125:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_DiscardTypingText_0100 event:' + data.event);
+          that.Sub_InputMethod_IMF_DiscardTypingText_0100();
+          break;
+        case 126:
+          console.debug(TAG + '====>Sub_InputMethod_IMF_DiscardTypingText_1000 event:' + data.event);
+          that.Sub_InputMethod_IMF_DiscardTypingText_1000();
           break;
       }
     }
@@ -1662,7 +1713,7 @@ export class KeyboardController {
       let attachOptions = this.InputClient.getAttachOptions();
 
       console.info(TAG + '====>Sub_Misc_inputMethodEngine_InputClient_getAttachOptions_0100 attachOptions is' + JSON.stringify(attachOptions));
-
+      
       return attachOptions.requestKeyboardReason === inputmethodengine.RequestKeyboardReason.NONE;
     }));
   }
@@ -1857,6 +1908,199 @@ export class KeyboardController {
           console.info(TAG + `====> Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200 count1 = ${count1}, count2 = ${count2}`);
           resolve(count1 === 1 && count2 === 1);
           this.InputClient.off('attachOptionsDidChange');
+        }, 1000);
+      });
+    }));
+  }
+
+  async Sub_InputMethod_IMF_CapitalizeMode_0100(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
+
+      console.info(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0100 editorAttribute is' + JSON.stringify(editorAttribute));
+      
+      return editorAttribute.capitalizeMode === inputmethodengine.CapitalizeMode.NONE;
+    }));
+  }
+
+  async Sub_InputMethod_IMF_CapitalizeMode_0200(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0200', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
+
+      console.info(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0200 editorAttribute is' + JSON.stringify(editorAttribute));
+      
+      return editorAttribute.capitalizeMode === inputmethodengine.CapitalizeMode.SENTENCES;
+    }));
+  }
+
+  async Sub_InputMethod_IMF_CapitalizeMode_0300(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0300', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
+
+      console.info(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0300 editorAttribute is' + JSON.stringify(editorAttribute));
+      
+      return editorAttribute.capitalizeMode === inputmethodengine.CapitalizeMode.WORDS;
+    }));
+  }
+
+  async Sub_InputMethod_IMF_CapitalizeMode_0400(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0400', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
+
+      console.info(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0400 editorAttribute is' + JSON.stringify(editorAttribute));
+      
+      return editorAttribute.capitalizeMode === inputmethodengine.CapitalizeMode.CHARACTERS;
+    }));
+  }
+
+  async Sub_InputMethod_IMF_CapitalizeMode_0500(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0500', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      let editorAttribute: inputmethodengine.EditorAttribute = this.InputClient.getEditorAttributeSync();
+
+      console.info(TAG + '====>Sub_InputMethod_IMF_CapitalizeMode_0500 editorAttribute is' + JSON.stringify(editorAttribute));
+      
+      return editorAttribute.capitalizeMode === inputmethodengine.CapitalizeMode.NONE;
+    }));
+  }
+
+  async Sub_InputMethod_IMF_Placeholder_0100(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_Placeholder_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputmethodengine.EditorAttribute) => {
+          console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} ,placeholder = ${attr.placeholder},abilityName= ${attr.abilityName}`); 
+          this.placeholder = attr.placeholder;
+          this.abilityName = attr.abilityName;
+          inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+        });
+        setTimeout(() => {
+          let placeholderLength = this.placeholder.length;
+          let abilityNameLength = this.abilityName.length;
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 placeholderLength is' + JSON.stringify(placeholderLength));
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0100 abilityNameLength is' + JSON.stringify(abilityNameLength));
+          resolve(placeholderLength === 0 && abilityNameLength === 0);
+        }, 500);
+      })
+    }));
+  }
+
+  async Sub_InputMethod_IMF_Placeholder_0200(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_Placeholder_0200', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputmethodengine.EditorAttribute) => {
+          console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} ,placeholder = ${attr.placeholder},abilityName= ${attr.abilityName}`); 
+          this.placeholder = attr.placeholder;
+          this.abilityName = attr.abilityName;
+          inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+        });
+        setTimeout(() => {
+          let placeholderLength = this.placeholder.length;
+          let abilityNameLength = this.abilityName.length;
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 placeholderLength is' + JSON.stringify(placeholderLength));
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0200 abilityNameLength is' + JSON.stringify(abilityNameLength));
+          resolve(placeholderLength === 255 && abilityNameLength === 127);
+        }, 500);
+      })
+    }));
+  }
+
+  async Sub_InputMethod_IMF_Placeholder_0300(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_Placeholder_0300', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputmethodengine.EditorAttribute) => {
+          console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} ,placeholder = ${attr.placeholder},abilityName= ${attr.abilityName}`); 
+          this.placeholder = attr.placeholder;
+          this.abilityName = attr.abilityName;
+          inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+        });
+        setTimeout(() => {
+          let placeholderLength = this.placeholder.length;
+          let abilityNameLength = this.abilityName.length;
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 placeholderLength is' + JSON.stringify(placeholderLength));
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0300 abilityNameLength is' + JSON.stringify(abilityNameLength));
+          resolve(placeholderLength === 255 && abilityNameLength === 127);
+        }, 500);
+      })
+    }));
+  }
+
+  async Sub_InputMethod_IMF_Placeholder_0400(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_Placeholder_0400', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputmethodengine.EditorAttribute) => {
+          console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} ,placeholder = ${attr.placeholder},abilityName= ${attr.abilityName}`); 
+          this.placeholder = attr.placeholder;
+          this.abilityName = attr.abilityName;
+          inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+        });
+        setTimeout(() => {
+          let placeholderLength = this.placeholder.length;
+          let abilityNameLength = this.abilityName.length;
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 placeholderLength is' + JSON.stringify(placeholderLength));
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0400 abilityNameLength is' + JSON.stringify(abilityNameLength));
+          resolve(placeholderLength === 255 && abilityNameLength === 127);
+        }, 500);
+      }) 
+    }));
+  }
+
+  async Sub_InputMethod_IMF_Placeholder_0600(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_Placeholder_0600', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputmethodengine.EditorAttribute) => {
+          console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} ,placeholder = ${attr.placeholder},abilityName= ${attr.abilityName}`); 
+          this.placeholder = attr.placeholder;
+          this.abilityName = attr.abilityName;
+          inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
+        });
+        setTimeout(() => {
+          let placeholderLength = this.placeholder.length;
+          let abilityNameLength = this.abilityName.length;
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 placeholderLength is' + JSON.stringify(placeholderLength));
+          console.info(TAG + '====>Sub_InputMethod_IMF_Placeholder_0600 abilityNameLength is' + JSON.stringify(abilityNameLength));
+          resolve(placeholderLength === 0 && abilityNameLength === 0);
+        }, 500);
+      }) 
+    }));
+  }
+
+  async Sub_InputMethod_IMF_DiscardTypingText_0100(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_DiscardTypingText_0100', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        let count = 0;
+        inputMethodEngine.getInputMethodAbility().on('discardTypingText', () => {
+          console.info(TAG + '====> Sub_InputMethod_IMF_DiscardTypingText_0100  is success');
+          ++count;
+          
+        });
+        setTimeout(() => {
+          console.info(TAG + `====> Sub_InputMethod_IMF_DiscardTypingText_0100 count = ${count}`);
+          resolve(count === 1);
+          inputMethodEngine.getInputMethodAbility().off('discardTypingText');
+        }, 1000);
+      });
+    }));
+  }
+
+  async Sub_InputMethod_IMF_DiscardTypingText_1000(): Promise<void> {
+    this.testTemplate('Sub_InputMethod_IMF_DiscardTypingText_1000', await this.wrapAssertWithTwoIn1Judgement(async () => {
+      return new Promise((resolve, reject) => {
+        let count1 = 0;
+        let count2 = 0;
+        let callback1 = (): void => {
+          console.info(TAG + '====> Sub_InputMethod_IMF_DiscardTypingText_1000 callback1  is success' );
+          ++count1;
+        };
+        let callback2 = (): void => {
+          console.info(TAG + '====> Sub_InputMethod_IMF_DiscardTypingText_1000 callback2  is success' );
+          ++count2;
+        };
+        inputMethodEngine.getInputMethodAbility().on('discardTypingText', callback1);
+        inputMethodEngine.getInputMethodAbility().on('discardTypingText', callback2);
+        inputMethodEngine.getInputMethodAbility().off('discardTypingText', callback1);
+        setTimeout(() => {
+          console.info(TAG + `====> Sub_InputMethod_IMF_DiscardTypingText_0100 count1 = ${count1}, count2 = ${count2}`);
+          resolve(count1 === 2 && count2 === 1);
+          inputMethodEngine.getInputMethodAbility().off('discardTypingText');
         }, 1000);
       });
     }));

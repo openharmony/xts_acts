@@ -544,5 +544,27 @@ export default function inputMethodAuthorityJSUnit() {
       };
     });
 
+    /**
+     * @tc.number  Sub_InputMethod_IMF_DiscardTypingText_0200
+     * @tc.name    Sub_InputMethod_IMF_DiscardTypingText_0200
+     * @tc.desc    Function test
+     * @tc.size    MediumTest
+     * @tc.type    Function
+     * @tc.level   Level2
+     */
+    it('Sub_InputMethod_IMF_DiscardTypingText_0200', Level.LEVEL2, async (done: Function) => {
+      try{
+        let inputMethodController = inputMethod.getController();
+        let state =  await inputMethodController.discardTypingText();
+        console.info("====>Sub_InputMethod_IMF_DiscardTypingText_0200 state is: " + state);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IMF_DiscardTypingText_0200 errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800009);
+        done();
+      };
+    });
+
   });
 };
