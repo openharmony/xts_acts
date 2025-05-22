@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import SplitPlaceholder from './SplitPlaceholder.test'
+import UIContextNavDestinationUpdate from './UIContextNavDestinationUpdate.test'
 
 export default function testsuite() {
   SplitPlaceholder();
+  UIContextNavDestinationUpdate();
 }
