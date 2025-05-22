@@ -19,6 +19,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let context = getContext(this) as common.UIAbilityContext;
+let count:number = 0;
 let a:number | undefined = 0
 let b:number | undefined = 0
 let c:number | undefined = 0
@@ -62,6 +63,7 @@ export default function contextMonitoringTest() {
       context = globalThis.context;
     })
     beforeEach(() => {
+      count = 0;
     })
     afterEach(async () => {
       a = 0;
@@ -736,6 +738,7 @@ export default function contextMonitoringTest() {
               globalThis.stageContext02.eventHub.emit('event01',1,2)
               expect(a).assertEqual(1)
               expect(b).assertEqual(2)
+              expect(count).assertEqual(1)
               setTimeout(() => {
                 commonEventManager.publish('ACTS_TEST_DESTROY',  ()=> {
                   hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage02 publish ACTS_TEST_DESTROY');
@@ -768,6 +771,7 @@ function eventCallback01(argOne?: number, argTwo?: number):void {
 function eventCallback02(argOne?: number, argTwo?: number):void {
   c = argOne
   d = argTwo
+  count++
   hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback02 success, c is: ${c}, d is: ${d}`);
 }
 
