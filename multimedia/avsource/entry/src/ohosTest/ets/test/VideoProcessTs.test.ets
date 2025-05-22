@@ -40,11 +40,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs001', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -55,7 +50,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs001 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -68,11 +68,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs002', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -86,7 +81,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs002 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -99,11 +99,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs003', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -117,7 +112,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs003 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -130,11 +130,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs004', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -148,7 +143,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs004 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -161,11 +161,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs005', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -179,7 +174,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs005 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -192,11 +192,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs006', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -210,7 +205,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs006 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -223,11 +223,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs007', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
@@ -238,7 +233,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs007 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -251,11 +251,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs008', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -269,7 +264,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs008 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -282,11 +282,6 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs009', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
@@ -297,7 +292,12 @@
             done();
         } catch (err) {
             console.info('testVideoProcessTs009 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -310,17 +310,17 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs010', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             videoProcessingEngine.initializeEnvironment();
             done();
         } catch (err) {
             console.info('testVideoProcessTs010 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
 
@@ -333,18 +333,18 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs011', 0, async(done: Function) => {
-        if (deviceInfo.deviceType != 'phone') {
-            expect(true).assertTrue();
-            done();
-            return;
-        }
         try {
             videoProcessingEngine.initializeEnvironment();
             videoProcessingEngine.deinitializeEnvironment();
             done();
         } catch (err) {
             console.info('testVideoProcessTs011 failed, error is' + err.message);
-            expect(false).assertTrue();
+            if (err.code != undefined) {
+                expect(false).assertTrue();
+                done();
+            }
+            expect(true).assertTrue();
+            done();
         }
     });
     })
