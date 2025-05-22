@@ -691,5 +691,58 @@ describe('fileIO_fs_copy', function () {
       expect(false).assertTrue();
     }
   });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIO_Copy_ASYNC_1900
+   * @tc.name fileIO_copy_async_019
+   * @tc.desc Test copy() interfaces.callback
+   * Test directory copied successfully by path.Contains progressListener, processedSize, and totalSize parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_copy_async_019', Level.LEVEL3, async function (done) {
+    let dpath = await nextFileName('fileIO_copy_async_019');
+    let ddpath = dpath + '/srcDir_first';
+    let dmpath = dpath + '/srcDir_second';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    let fpath1 = ddpath + 'test.txt';
+    let fpath2 = dmpath + 'test.txt';
+    let file1 = fs.openSync(fpath1, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let file2 = fs.openSync(fpath2, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.writeSync(file1.fd, 'aaaaaaaaaaaaa');
+    fs.writeSync(file2.fd, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    let stat1 = fs.statSync(fpath1);
+    console.info("fileIO_copy_async_019 file1 size is: " + stat1.size);
+    let stat2 = fs.statSync(fpath2);
+    console.info("fileIO_copy_async_019 file2 size is: " + stat2.size);
+    let srcDirUri = fileUri.getUriFromPath(fpath1);
+    let dstDirUri = fileUri.getUriFromPath(fpath2);
+
+    try {
+      let progressListener = (progress) => {
+        console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+      };
+      let options = {
+        "progressListener" : progressListener
+      }
+      fileIO.copy(srcDirUri, dstDirUri, options, (err) => {
+        if (err) {
+          console.log('fileIO_copy_async_019 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let stat3 = fs.statSync(fpath2);
+        let str = fs.readTextSync(fpath2);
+        console.info("fileIO_copy_async_019 copy end file2 size context is: " + stat3.size + ',context: ' + str);
+        expect(stat3.size == stat1.size).assertTrue();
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_copy_async_019 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
 });
 }
