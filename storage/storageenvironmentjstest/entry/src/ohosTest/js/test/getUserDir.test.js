@@ -102,8 +102,8 @@ export default function getUserDir() {
         expect(isString(path)).assertTrue();
       } catch (e) {
         console.info('environment_test_getUserDocumentDir_001 has failed for ' + e.message + ',code:' + e.code);
-        if (e.message == 'is not callable') {
-          expect(true).assertTrue();
+        if (e.code == 801) {
+          expect(e.message == "The device doesn't support this api").assertTrue();
         }else{
           expect(false).assertTrue();
         }

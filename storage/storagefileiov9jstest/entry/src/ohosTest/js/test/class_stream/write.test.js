@@ -1247,7 +1247,7 @@ describe('fileIO_fs_stream_write', function () {
             let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
             randomaccessfile.write('hello world', function(err, bytesWritten) {
                 console.info('fileIO_randomaccessfile_write_async_014 bytesWritten: ' + bytesWritten);
-                let readerIterator = fs.readLinesSync(fpath);
+                let readerIterator = fileIO.readLinesSync(fpath);
                 for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
                     console.info("fileIO_randomaccessfile_write_async_014 content: " + it.value);
                     expect(it.value == 'hello world').assertTrue();
