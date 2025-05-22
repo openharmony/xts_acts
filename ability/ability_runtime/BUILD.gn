@@ -101,6 +101,7 @@ group("ability_runtime") {
       "faapicover:faapicover",
       "featureability:featureability",
       "freeinstalltest:freeinstalltest",
+      "getresourcedirndk:getresourcedirndktest",
       "newwant:newwant",
       "registerjserror:registerjserror",
       "shareextensionability:actsshareextensionability",
