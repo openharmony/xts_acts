@@ -302,6 +302,28 @@ static napi_value OhAvPlayerSetAudioRendererInfo(napi_env env, napi_callback_inf
     return result;
 }
 
+static napi_value ohAvPlayerSetVolumeMode(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    AVPlayerCallback cb = { &AVPlayerOnInfo, &AVPlayerOnError };
+    OH_AVPlayer_SetPlayerCallback(player, cb);
+    waitAvPlayerStateChange(player, AV_IDLE);
+    if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        waitAvPlayerStateChange(player, AV_INITIALIZED);
+        OH_AudioStream_VolumeMode mode = AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL;
+        OH_AVErrCode errCode = OH_AVPlayer_SetVolumeMode(player, mode);
+        if (errCode == AV_ERR_OK) {
+            backParam = SUCCESS;
+        }
+    }
+    waitAvPlayerStateChange(player, AV_INITIALIZED);
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 static napi_value OhAvPlayerSetAudioInterruptMode(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -2079,6 +2101,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerSetOnErrorCallbackAbnormal", nullptr, OhAvPlayerSetOnErrorCallbackAbnormal, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"AvPlayerSetAudioRendererInfo", nullptr, OhAvPlayerSetAudioRendererInfo, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerSetVolumeMode", nullptr, ohAvPlayerSetVolumeMode, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"AvPlayerSetAudioInterruptMode", nullptr, OhAvPlayerSetAudioInterruptMode, nullptr, nullptr, nullptr,
             napi_default, nullptr},

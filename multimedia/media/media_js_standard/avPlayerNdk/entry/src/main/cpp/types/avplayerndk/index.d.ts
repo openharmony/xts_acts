@@ -22,6 +22,7 @@ export const AvPlayerSetFDSourceAbnormalTwo: () => number;
 export const AvPlayerSetFDSourceAbnormalThree: () => number;
 export const AvPlayerPrepare: (a:number,b:number,c:number) => number;
 export const AvPlayerSetAudioRendererInfo: () => number;
+export const AvPlayerSetVolumeMode: () => number;
 export const AvPlayerSetAudioInterruptMode: () => number;
 export const AvPlayerSetAudioEffectMode: () => number;
 export const AvPlayerSetOnInfoCallback: (a:number,b:number) => number;
