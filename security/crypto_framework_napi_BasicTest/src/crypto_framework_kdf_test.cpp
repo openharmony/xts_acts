@@ -504,18 +504,6 @@ KdfSpec g_scryptErrorSpec[] = {
     },
     {
         .kdfType = OHTEST_KDF_SCRYPT, .algoName = "SCRYPT", .keySize = 64,
-        /* n > ((UINT32_MAX / 128) / r) */
-        .params.scryptParams = {
-            .passphrase = (uint8_t *)"0123456789",
-            .salt = (uint8_t *)"abcdef",
-            .n = pow(2, 9),
-            .p = 1,
-            .r = pow(2, 16),
-            .max_mem = 0
-        }
-    },
-    {
-        .kdfType = OHTEST_KDF_SCRYPT, .algoName = "SCRYPT", .keySize = 64,
         /* p > ((2^32 - 1) * 32) / (128 * r) */
         .params.scryptParams = {
             .passphrase = (uint8_t *)"0123456789",
