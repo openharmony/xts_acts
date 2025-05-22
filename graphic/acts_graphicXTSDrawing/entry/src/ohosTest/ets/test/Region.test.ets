@@ -17,6 +17,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestT
 import drawing from '@ohos.graphics.drawing';
 import image from '@ohos.multimedia.image';
 import { getEnumCount, getRandomNumber } from './utils';
+import common2D from '@ohos.graphics.common2D';
 
 export default function drawingTsRegionTest() {
   describe('DrawingTsRegionTest', () => {
@@ -950,7 +951,7 @@ export default function drawingTsRegionTest() {
         region.setRect(Math.random() *100, Math.random() *200, Math.random() *100,Math.random() *200);
         console.info(msg + `drawing Region setRect success `);
       } catch (e) {
-        console.info(msg + `drawing Region setRect error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region setRect error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect().assertFail()
       }
       for (let i = 0; i < 20; i += 1) {
@@ -979,7 +980,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing Region null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing Region null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region null error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -987,7 +988,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing Region undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing Region undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
     })
@@ -1102,7 +1103,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing Region null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing Region null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region null error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1110,7 +1111,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region2 undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region2 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region2 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1118,7 +1119,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region3 null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region3 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region3 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1126,7 +1127,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region4 undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region4 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region4 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1134,7 +1135,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region5 null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region5 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region5 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1142,7 +1143,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region6 undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region6 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region6 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1150,7 +1151,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region7 null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region7 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region7 null error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1158,7 +1159,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing region8 undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing region8 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing region8 undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} `);
         expect(e.code).assertEqual(401);
       }
     })
@@ -1263,7 +1264,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing Region isEqual null success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing Region isEqual null error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region isEqual null error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
       try {
@@ -1271,7 +1272,7 @@ export default function drawingTsRegionTest() {
         console.info(msg + `drawing Region isEqual undefined success `);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `drawing Region isEqual undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+        console.info(msg + `drawing Region isEqual undefined error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
     })
@@ -1465,8 +1466,8 @@ export default function drawingTsRegionTest() {
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testRegionIsComplexMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testRegionIsComplexMultipleCalls';
+    it('testRegionIsEmptyMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testRegionIsEmptyMultipleCalls';
       let region = new drawing.Region();
       for (let i = 0; i < 20; i += 1) {
         try {
@@ -2079,7 +2080,7 @@ export default function drawingTsRegionTest() {
       try {
         let flag2: boolean = region.isEmpty();
         console.info(msg + `Region isEmpty flag2 success`);
-        expect(flag).assertEqual(true);
+        expect(flag2).assertEqual(true);
       } catch (e) {
         console.info(msg + `Region isEmpty flag2 error. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect().assertFail();
@@ -2218,6 +2219,7 @@ export default function drawingTsRegionTest() {
     it('testRegionSetRegionMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testRegionSetRegionMultipleCalls';
       let region = new drawing.Region();
+      let region2 = new drawing.Region();
       region.setRect(100, 100, 400, 400);
       for (let i = 0; i < 20; i += 1) {
         try {
