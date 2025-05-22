@@ -15,9 +15,9 @@
 import windowOrientation from './windowOrientation.test'
 import windowFocus from './windowFocus.test'
 import windowEvent from './windowEvent.test'
+import windowInput from './windowInput.test'
 import windowLayout from './windowLayout.test'
 import windowLevel from './windowLevel.test'
-import windowInput from './windowInput.test'
 import specialWindow from './specialWindow.test'
 
 export default function testsuite() {
